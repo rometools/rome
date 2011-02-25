@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+  This module supports Yahoo! MediaRSS elements for ROME feeds.
+  
+  Sample usage:
+  <pre>
+            SyndFeed feed =  input.build( myRSSFile );
+            List entries = feed.getEntries();
+            for( int i = 0; i < entries.size(); i++ ){
+                System.out.println( ((SyndEntry) entries.get(i)).getModule( MediaModule.URI ) );
+            }
+  </pre>
+  Alternatively, to add a media item to an entry:
+  <pre>
+      MediaContent[] contents = new MediaContent[1];
+      MediaContent myItem = new MediaContent( new UrlReference("http://me.com/movie.mpg") );
+      contents[0] = myItem();
+      Metadata md = new Metadata();
+      Thumbnail[] thumbs = new Thumbnail[2];
+      thumbs[0] = new Thumbnail( new URL("http://me.com/movie1.jpg") );
+      thumbs[1] = new Thumbnail( new URL("http://me.com/movie2.jpg") );
+      md.setThumbnail( thumbs );
+      myItem.setMetadata( md );
+      MediaEntryModuleImpl module = new MediaEntryModuleImpl();
+      module.setContents( contents );
+      mySyndEntry.getModules().add( module );
+      
+  </pre>
+  
+  <pre>
+ * This code is currently released under the Mozilla Public License.
+ * http://www.mozilla.org/MPL/
+ *
+ * Alternately you may apply the terms of the Apache Software License
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+  </pre>
+  </body>
+</html>

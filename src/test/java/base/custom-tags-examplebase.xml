@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<feed version="0.3" xmlns="http://purl.org/atom/ns#"
+xmlns:g="http://base.google.com/ns/1.0"
+
+xmlns:c="http://base.google.com/cns/1.0">
+<title> Google Jobs</title>
+<link href="http://www.google.com/support/jobs/" rel="alternate" type="text/html" />
+<modified>2005-10-11T18:30:02Z</modified>
+<author>
+
+<name>Google</name>
+</author>
+<id>tag:google.com,2005-10-15:/support/jobs</id>
+<entry>  
+<title>HR Analyst - Mountain View </title>
+
+<link href="http://www.google.com/support/jobs/bin/topic.py?dep_id=1077&amp;loc_id=116" />
+<summary>We have an immediate need for an experienced analytical HR professional. 
+The ideal candidate has a proven record of developing analytical frameworks to make
+fact-based decisions</summary>
+<id>tag:google.com,2005-10-15:/support/jobs/hr-analyst</id>
+<issued>2005-10-13T18:30:02Z</issued>
+<modified>2005-10-13T18:30:02Z</modified>
+
+<g:image_link>http://www.google.com/images/google_sm.gif</g:image_link>
+<g:expiration_date>2005-11-15</g:expiration_date>
+<g:job_function>Analyst</g:job_function>
+<g:location>1600 Amphitheatre Parkway, Mountain View, CA, 94043, USA</g:location>
+<g:label>Hi-Tech</g:label>
+<g:label>Business development</g:label>
+<g:label>Personnel</g:label>
+<g:label>Silicon Valley</g:label>
+<g:label>Staffing</g:label>
+
+<c:language_skills type="string">Fluent in English and German</c:language_skills>
+<c:prior_experience_years type="int">5</c:prior_experience_years>
+<c:start_date type="date">2005-11-15</c:start_date>
+<!-- this is test values added by me -->
+<c:test_url type="url">http://www.screaming-penguin.com</c:test_url>
+<c:test_boolean type="boolean">true</c:test_boolean>
+<c:test_intUnit type="intUnit">25 horses</c:test_intUnit>
+<c:test_floatUnit type="floatUnit">2.5 cows</c:test_floatUnit>
+<c:test_location type="location">125 Main St, Sometown, GA</c:test_location>
+<c:test_dateRange type="dateTimeRange">
+    <c:start>2005-07-04T20:00:00</c:start>
+    <c:end>2005-07-04T23:00:00</c:end>
+</c:test_dateRange>
+</entry>
+</feed>

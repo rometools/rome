@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<rss version="2.0" xmlns:yweather="http://xml.weather.yahoo.com/ns/rss/1.0" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
+ <channel>
+ <title>Yahoo! Weather - Sunnyvale, CA</title>
+ <link>http://us.rd.yahoo.com/dailynews/rss/weather/Sunnyvale__CA/*http://weather.yahoo.com/forecast/94089_f.html</link>
+ <description>Yahoo! Weather for Sunnyvale, CA</description>
+ <language>en-us</language>
+ <lastBuildDate>Mon, 21 Jan 2008 8:56 am PST</lastBuildDate>
+
+ <ttl>60</ttl>
+ <yweather:location city="Sunnyvale" region="CA" country="US" />
+ <yweather:units temperature="F" distance="mi" pressure="in" speed="mph" />
+ <yweather:wind chill="45" direction="0" speed="0" />
+ <yweather:atmosphere humidity="80" visibility="1609" pressure="29.99" rising="1" />
+  <yweather:astronomy sunrise="7:19 am" sunset="5:20 pm" />
+  <image>
+ <title>Yahoo! Weather</title>
+
+ <width>142</width>
+ <height>18</height>
+ <link>http://weather.yahoo.com/</link>
+ <url>http://l.yimg.com/us.yimg.com/i/us/nws/th/main_142b.gif</url>
+ </image>
+ <item>
+ <title>Conditions for Sunnyvale, CA at 8:56 am PST</title>
+
+  <geo:lat>37.39</geo:lat>
+ <geo:long>-122.03</geo:long>
+  <link>http://us.rd.yahoo.com/dailynews/rss/weather/Sunnyvale__CA/*http://weather.yahoo.com/forecast/94089_f.html</link>
+ <pubDate>Mon, 21 Jan 2008 8:56 am PST</pubDate>
+ <yweather:condition text="Light Rain" code="11" temp="45" date="Mon, 21 Jan 2008 8:56 am PST" />
+ <description><![CDATA[
+<img src="http://l.yimg.com/us.yimg.com/i/us/we/52/11.gif" /><br />
+ <b>Current Conditions:</b><br />
+ Light Rain, 45 F<BR /><BR />
+ <b>Forecast:</b><BR />
+  Mon - Showers. High: 49 Low: 40<br />
+  Tue - Showers. High: 51 Low: 40<br />
+ <br />
+<a href="http://us.rd.yahoo.com/dailynews/rss/weather/Sunnyvale__CA/*http://weather.yahoo.com/forecast/94089_f.html">Full Forecast at Yahoo! Weather</a><BR/>
+ (provided by The Weather Channel)<br/>
+ ]]></description>
+ <yweather:forecast day="Mon" date="21 Jan 2008" low="40" high="49" text="Showers" code="11" />
+
+<yweather:forecast day="Tue" date="22 Jan 2008" low="40" high="51" text="Showers" code="11" />
+  <guid isPermaLink="false">94089_2008_01_21_8_56_PST</guid>
+ </item>
+</channel>
+</rss><!-- p1.weather.re3.yahoo.com compressed/chunked Mon Jan 21 09:53:26 PST 2008 -->

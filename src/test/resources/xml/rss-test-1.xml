@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : rss-test-1.xml
+    Created on : November 17, 2005, 4:06 PM
+    Author     : rcooper
+    Description:
+        Purpose of the document follows.
+-->
+
+<rss version="2.0">
+
+<channel xmlns:g="http://base.google.com/ns/1.0" xmlns:dc="http://purl.org/dc/elements/1.1/" >
+<title> Google Jobs</title>
+<link>http://www.google.com/support/jobs/</link>
+<description>Information about job openings at Google Inc.</description>
+
+<item>
+<title>HR Analyst - Mountain View </title>
+<link>http://www.google.com/support/jobs/bin/topic.py?dep_id=1077&amp;loc_id=1116</link>
+<description> We have an immediate need for an experienced analytical HR professional. 
+The ideal candidate has a proven record of developing analytical frameworks to make 
+fact-based decisions. </description>
+<dc:date>2005-11-17T14:28:27-05:00</dc:date>
+<g:image_link>http://www.google.com/images/google_sm.gif</g:image_link>
+<g:expiration_date>2005-11-15</g:expiration_date>
+<g:job_function>Analyst</g:job_function>
+<g:location>1600 Amphitheatre Parkway, Mountain View, CA, 94043, USA</g:location>
+<g:label>Hi-Tech</g:label>
+<g:label>Business development</g:label>
+<g:label>Personnel</g:label>
+<g:label>Silicon Valley</g:label>
+<g:label>Staffing</g:label>
+
+</item>
+</channel>
+</rss>
