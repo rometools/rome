@@ -183,7 +183,7 @@ public class HttpClientFeedFetcher extends AbstractFeedFetcher {
             }
         }
 
-        System.setProperty("httpclient.useragent", getUserAgent());
+        System.setProperty("httpclient.useragent", userAgent);
 
         String urlStr = feedUrl.toString();
 
