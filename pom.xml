@@ -129,18 +129,21 @@
             <groupId>commons-httpclient</groupId>
             <artifactId>commons-httpclient</artifactId>
             <version>3.0.1</version>
+             <optional />
         </dependency>
         <dependency>
             <!-- Required at build time and to use HTTPClientFetcher -->
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
             <version>1.0.4</version>
+            <optional/>
         </dependency>
         <dependency>
             <!-- Required at build time and to use HTTPClientFetcher -->
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging-api</artifactId>
             <version>1.0.4</version>
+            <optional />
         </dependency>
         <dependency>
             <!-- Only required at compile time for testing -->
