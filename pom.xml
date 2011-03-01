@@ -3,9 +3,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.rometools</groupId>
-    <artifactId>rome-fetcher</artifactId>
+    <artifactId>fetcher</artifactId>
 
-    <name>Rome HTTP Fetcher</name>
+    <name>rome-fetcher</name>
     <version>1.0.1-SNAPSHOT</version>
     <inceptionYear>2004</inceptionYear>
     <organization>

@@ -83,6 +83,10 @@ public class HttpURLFeedFetcher extends AbstractFeedFetcher {
 		setFeedInfoCache(feedInfoCache);
 	}
 
+        public SyndFeed retrieveFeed(URL feedUrl) throws IllegalArgumentException, IOException, FeedException, FetcherException {
+            return this.retrieveFeed(this.getUserAgent(), feedUrl);
+        }
+
 	/**
 	 * Retrieve a feed over HTTP
 	 *
@@ -93,7 +97,7 @@ public class HttpURLFeedFetcher extends AbstractFeedFetcher {
 	 * @throws FeedException if the feed is not valid
 	 * @throws FetcherException if a HTTP error occurred
 	 */
-	public SyndFeed retrieveFeed(URL feedUrl) throws IllegalArgumentException, IOException, FeedException, FetcherException {
+	public SyndFeed retrieveFeed(String userAgent, URL feedUrl) throws IllegalArgumentException, IOException, FeedException, FetcherException {
 		if (feedUrl == null) {
 			throw new IllegalArgumentException("null is not a valid URL");
 		}
@@ -140,6 +144,9 @@ public class HttpURLFeedFetcher extends AbstractFeedFetcher {
 			fireEvent(FetcherEvent.EVENT_TYPE_FEED_POLLED, connection);
 			InputStream inputStream = null;
 			setRequestHeaders(connection, null);
+
+                        connection.addRequestProperty("User-Agent", userAgent);
+
 			httpConnection.connect();
 			try {
 				inputStream = httpConnection.getInputStream();						
@@ -238,9 +245,6 @@ public class HttpURLFeedFetcher extends AbstractFeedFetcher {
 		// header to retrieve feed gzipped
 		connection.setRequestProperty("Accept-Encoding", "gzip");
 
-		// set the user agent
-		connection.addRequestProperty("User-Agent", getUserAgent());	
-		
 		if (isUsingDeltaEncoding()) {
 		    connection.addRequestProperty("A-IM", "feed");
 		}		
