@@ -12,10 +12,11 @@
             <displayName>release</displayName>
             <goals>
                 <goal>clean</goal>
-                <goal>release:perform</goal>
+                <goal>source:jar</goal>
+                <goal>javadoc:jar</goal>
+                <goal>package</goal>
+                <goal>gpg:sign</goal>
+                <goal>repository:bundle-create</goal>
             </goals>
-            <properties>
-                <gpg.passphrase>"I come not to praise Caesar"</gpg.passphrase>
-            </properties>
         </action>
     </actions>
