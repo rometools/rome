@@ -7,4 +7,15 @@
                 <goal>site</goal>
             </goals>
         </action>
+        <action>
+            <actionName>CUSTOM-release</actionName>
+            <displayName>release</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>release:perform</goal>
+            </goals>
+            <properties>
+                <gpg.passphrase>"I come not to praise Caesar"</gpg.passphrase>
+            </properties>
+        </action>
     </actions>
