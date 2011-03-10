@@ -9,13 +9,20 @@
     <name>rome-modules</name>
     <description>Plugin collection for the ROME RSS and Atom Utilities</description>
     <url>http://www.rometools.org</url>
+    <developers>
+        <developer>
+            <id>kebernet</id>
+            <email>kebernet@gmail.com</email>
+            <name>Robert Cooper</name>
+        </developer>
+    </developers>
     <licenses>
-    <license>
-      <name>The Apache Software License, Version 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
     <scm>
         <connection>scm:svn:https://rometools.jira.com/svn/MODULES/trunk</connection>
         <developerConnection>scm:svn:https://rometools.jira.com/svn/MODULES/trunk</developerConnection>
