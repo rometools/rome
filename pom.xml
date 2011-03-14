@@ -5,10 +5,13 @@
     <groupId>org.rometools</groupId>
     <artifactId>rome-modules</artifactId>
     <packaging>jar</packaging>
-    <version>1.0</version>
+    <version>1.5-SNAPSHOT</version>
     <name>rome-modules</name>
     <description>Plugin collection for the ROME RSS and Atom Utilities</description>
     <url>http://www.rometools.org</url>
+    <issueManagement>
+        <url>https://rometools.jira.com/secure/IssueNavigator.jspa</url>
+    </issueManagement>
     <developers>
         <developer>
             <id>kebernet</id>
