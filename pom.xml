@@ -5,9 +5,13 @@
     <groupId>org.rometools</groupId>
     <artifactId>rome-opml</artifactId>
     <packaging>jar</packaging>
-    <version>1.0</version>
+    <version>1.5-SNAPSHOT</version>
     <name>rome-opml</name>
     <url>http://rometools.jira.com</url>
+    <description>Support for OPML 1 and OPML 2 in ROME</description>
+    <issueManagement>
+        <url>https://rometools.jira.com/secure/IssueNavigator.jspa</url>
+    </issueManagement>
     <developers>
         <developer>
             <id>kebernet</id>

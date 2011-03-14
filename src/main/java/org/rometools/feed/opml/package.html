@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    This package represents the base objects for OPML support for ROME.
+    <p>
+        There are three classes here that are relevant. <code>Opml</code>,
+        which represents the root document and <code>head</code> information,
+        <code>Outline</code> which represents a single node on an Opml 
+        outline tree, and provides convenience methods for commonly used
+        attributes such as <code>xmlUrl</code>. Finally, the 
+        <code>Attribute</code> class, which represents a specific attribute
+        on an Outline object. Since OPML supports free-form attribute
+        assignments, this is a very multi-purpose class.
+    </p>
+    <p>Sample Usage:
+        To use this parser, simply include the jar file in your classpath
+        as you are using ROME. Be sure it exists at the same level as ROME,
+        such that, if ROME is in the common classpath of an application server,
+        don't include this jar in your webapps WEB-INF/lib.
+        <code><pre>
+  WireFeedInput input = new WireFeedInput();
+  Opml feed = (Opml) input.build( new File("myOpml.xml") );
+  List&lt;Outline&gt; outlines = (List&lt;Outline&gt;) feed.getOutlines();
+        </pre></code>
+    </p>
+      
+      
+    <pre>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+    </pre>
+  </body>
+</html>
