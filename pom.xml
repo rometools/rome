@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>org.rometools</groupId>
-    <artifactId>fetcher</artifactId>
-
+    <artifactId>rome-fetcher</artifactId>
     <name>rome-fetcher</name>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.5-SNAPSHOT</version>
     <inceptionYear>2004</inceptionYear>
     <organization>
         <name>ROME Project</name>
         <url>http://rometools.jira.com</url>
     </organization>
-    <!--scm>
-        <connection>scm:cvs:pserver:snoopdave@cvs.dev.java.net:/cvs:rome/subprojects/fetcher</connection>
-        <url>https://rome.dev.java.net/source/browse/rome/</url>
-  </scm-->
+    <issueManagement>
+        <url>https://rometools.jira.com/secure/IssueNavigator.jspa</url>
+    </issueManagement>
+    <scm>
+        <connection>scm:svn:https://rometools.jira.com/svn/FETCHER/trunk</connection>
+        <developerConnection>scm:svn:https://rometools.jira.com/svn/FETCHER/trunk</developerConnection>
+        <url>https://rometools.jira.com/source/browse/FETCHER</url>
+    </scm>
     <licenses>
         <license>
             <name>Apache 2</name>
