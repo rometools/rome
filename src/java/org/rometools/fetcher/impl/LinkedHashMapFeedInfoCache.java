@@ -5,7 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * <p>An implementation of the {@link com.sun.syndication.fetcher.impl.FeedFetcherCache} interface.</p>
+ * <p>An implementation of the {@link org.rometools.fetcher.impl.FeedFetcherCache} interface.</p>
  * 
  * <p>Unlike the HashMapFeedInfoCache this implementation will not grow unbound</p>
  * 

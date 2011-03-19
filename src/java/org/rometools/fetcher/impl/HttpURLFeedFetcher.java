@@ -34,7 +34,7 @@ import com.sun.syndication.io.XmlReader;
 /**
  * <p>Class to retrieve syndication files via HTTP.</p>
  *
- * <p>If passed a {@link com.sun.syndication.fetcher.impl.FeedFetcherCache} in the
+ * <p>If passed a {@link org.rometools.fetcher.impl.FeedFetcherCache} in the
  * constructor it will use conditional gets to only retrieve modified content.</p>
  *
  * <p>The class uses the Accept-Encoding: gzip header to retrieve gzipped feeds where

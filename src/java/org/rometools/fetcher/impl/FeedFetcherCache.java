@@ -20,7 +20,7 @@ import java.net.URL;
 
 /**
  * <p>An interface to allow caching of feed details. Implementing this allows the
- * {@link com.sun.syndication.fetcher.io.HttpURLFeedFetcher} class to 
+ * {@link org.rometools.fetcher.io.HttpURLFeedFetcher} class to
  * enable conditional gets</p> 
  * 
  * @author Nick Lothian

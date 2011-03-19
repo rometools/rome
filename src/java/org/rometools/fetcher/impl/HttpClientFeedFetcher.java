@@ -17,8 +17,6 @@
 package org.rometools.fetcher.impl;
 
 import com.sun.syndication.feed.synd.SyndFeed;
-import org.rometools.fetcher.FetcherEvent;
-import org.rometools.fetcher.FetcherException;
 import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.XmlReader;
@@ -30,6 +28,9 @@ import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.HttpMethod;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.params.HttpClientParams;
+
+import org.rometools.fetcher.FetcherEvent;
+import org.rometools.fetcher.FetcherException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -145,7 +146,7 @@ public class HttpClientFeedFetcher extends AbstractFeedFetcher {
     }
 
     /**
-     * @param timeout Sets the read timeout for the URLConnection to a specified timeout, in milliseconds.
+     * @return timeout the read timeout for the URLConnection to a specified timeout, in milliseconds.
      */
     public int getReadTimeout() {
         return (int) this.getHttpClientParams()
@@ -157,7 +158,7 @@ public class HttpClientFeedFetcher extends AbstractFeedFetcher {
     }
 
     /**
-     * @see com.sun.syndication.fetcher.FeedFetcher#retrieveFeed(java.net.URL)
+     * @see org.rometools.fetcher.FeedFetcher#retrieveFeed(java.net.URL)
      */
     public SyndFeed retrieveFeed(String userAgent, URL feedUrl)
         throws IllegalArgumentException, IOException, FeedException, FetcherException {

@@ -24,7 +24,7 @@ import java.util.Map;
 
 
 /**
- * <p>A very simple implementation of the {@link com.sun.syndication.fetcher.impl.FeedFetcherCache} interface.</p>
+ * <p>A very simple implementation of the {@link org.rometools.fetcher.impl.FeedFetcherCache} interface.</p>
  * 
  * <p>This implementation uses a HashMap to cache retrieved feeds. This implementation is
  * most suitible for sort term (client aggregator?) use, as the memory usage will increase
