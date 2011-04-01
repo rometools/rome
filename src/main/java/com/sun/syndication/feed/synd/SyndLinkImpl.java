@@ -1,5 +1,6 @@
 /*
  * Copyright 2004 Sun Microsystems, Inc.
+ * Copyright 2011 ROME Team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,6 +54,7 @@ public class SyndLinkImpl implements Cloneable,Serializable, SyndLink {
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
      *
      */
+    @Override
     public Object clone() throws CloneNotSupportedException {
         return _objBean.clone();
     }
@@ -64,7 +66,11 @@ public class SyndLinkImpl implements Cloneable,Serializable, SyndLink {
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
      *
      */
+    @Override
     public boolean equals(Object other) {
+        if(!(other instanceof SyndLinkImpl)){
+            return false;
+        }
         return _objBean.equals(other);
     }
 
@@ -76,6 +82,7 @@ public class SyndLinkImpl implements Cloneable,Serializable, SyndLink {
      * @return the hashcode of the bean object.
      *
      */
+    @Override
     public int hashCode() {
         return _objBean.hashCode();
     }
@@ -86,6 +93,7 @@ public class SyndLinkImpl implements Cloneable,Serializable, SyndLink {
      * @return String representation for the object.
      *
      */
+    @Override
     public String toString() {
         return _objBean.toString();
     }

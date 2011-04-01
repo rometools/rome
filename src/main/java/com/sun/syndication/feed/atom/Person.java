@@ -58,6 +58,7 @@ public class Person implements Cloneable,Serializable, Extendable
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
      *
      */
+    @Override
     public Object clone() throws CloneNotSupportedException {
         return _objBean.clone();
     }
@@ -69,6 +70,7 @@ public class Person implements Cloneable,Serializable, Extendable
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
      *
      */
+    @Override
     public boolean equals(Object other) {
         return _objBean.equals(other);
     }
@@ -81,6 +83,7 @@ public class Person implements Cloneable,Serializable, Extendable
      * @return the hashcode of the bean object.
      *
      */
+    @Override
     public int hashCode() {
         return _objBean.hashCode();
     }
@@ -91,6 +94,7 @@ public class Person implements Cloneable,Serializable, Extendable
      * @return String representation for the object.
      *
      */
+    @Override
     public String toString() {
         return _objBean.toString();
     }

@@ -25,7 +25,7 @@ import com.sun.syndication.feed.CopyFrom;
  * @author Alejandro Abdelnur
  *
  */
-public interface SyndContent extends Cloneable,CopyFrom {
+public interface SyndContent extends Cloneable,CopyFrom<SyndContent> {
     /**
      * Returns the content type.
      * <p>

@@ -16,6 +16,7 @@
  */
 package com.sun.syndication.feed.synd;
 
+import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.impl.ObjectBean;
 import com.sun.syndication.feed.module.*;
 import com.sun.syndication.feed.module.impl.ModuleUtils;
@@ -38,12 +39,12 @@ public class SyndEntryImpl implements Serializable,SyndEntry {
     private Date _updatedDate;
     private SyndContent _title;       
     private SyndContent _description;
-    private List _links;
-    private List _contents; // deprecated by Atom 1.0
-    private List _modules;
-    private List _enclosures;
-    private List _authors;
-    private List _contributors;
+    private List<SyndLink> _links;
+    private List<SyndContent> _contents; // deprecated by Atom 1.0
+    private List<Module> _modules;
+    private List<SyndEnclosure> _enclosures;
+    private List<SyndPerson> _authors;
+    private List<SyndPerson> _contributors;
     private SyndFeed _source;
     private List _foreignMarkup;
     private Object wireEntry; // com.sun.syndication.feed.atom.Entry or com.sun.syndication.feed.rss.Item
@@ -95,6 +96,7 @@ public class SyndEntryImpl implements Serializable,SyndEntry {
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
      *
      */
+    @Override
     public Object clone() throws CloneNotSupportedException {
         return _objBean.clone();
     }
@@ -106,6 +108,7 @@ public class SyndEntryImpl implements Serializable,SyndEntry {
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
      *
      */
+    @Override
     public boolean equals(Object other) {
         if (other == null) {
             return false;
@@ -132,6 +135,7 @@ public class SyndEntryImpl implements Serializable,SyndEntry {
      * @return the hashcode of the bean object.
      *
      */
+    @Override
     public int hashCode() {
         return _objBean.hashCode();
     }
@@ -142,6 +146,7 @@ public class SyndEntryImpl implements Serializable,SyndEntry {
      * @return String representation for the object.
      *
      */
+    @Override
     public String toString() {
         return _objBean.toString();
     }
@@ -266,8 +271,8 @@ public class SyndEntryImpl implements Serializable,SyndEntry {
      *         an empty list if none.
      *
      */
-    public List getContents() {
-        return (_contents==null) ? (_contents=new ArrayList()) : _contents;
+    public List<SyndContent> getContents() {
+        return (_contents==null) ? (_contents=new ArrayList<SyndContent>()) : _contents;
     }
 
     /**
@@ -277,7 +282,7 @@ public class SyndEntryImpl implements Serializable,SyndEntry {
      *        an empty list or <b>null</b> if none.
      *
      */
-    public void setContents(List contents) {
+    public void setContents(List<SyndContent> contents) {
         _contents = contents;
     }
 
@@ -288,8 +293,8 @@ public class SyndEntryImpl implements Serializable,SyndEntry {
      *         an empty list if none.
      *
      */
-    public List getEnclosures() {
-        return (_enclosures==null) ? (_enclosures=new ArrayList()) : _enclosures;
+    public List<SyndEnclosure> getEnclosures() {
+        return (_enclosures==null) ? (_enclosures=new ArrayList<SyndEnclosure>()) : _enclosures;
     }
 
     /**
@@ -299,7 +304,7 @@ public class SyndEntryImpl implements Serializable,SyndEntry {
      *        an empty list or <b>null</b> if none.
      *
      */
-    public void setEnclosures(List enclosures) {
+    public void setEnclosures(List<SyndEnclosure> enclosures) {
         _enclosures = enclosures;
     }
 
@@ -335,7 +340,7 @@ public class SyndEntryImpl implements Serializable,SyndEntry {
      *         an empty list if none.
      *
      */
-    public List getCategories() {
+    public List<SyndCategory> getCategories() {
        return _categories;
     }
 
@@ -348,7 +353,7 @@ public class SyndEntryImpl implements Serializable,SyndEntry {
      *        an empty list or <b>null</b> if none.
      *
      */
-    public void setCategories(List categories) {
+    public void setCategories(List<SyndCategory> categories) {
         _categories = categories;
     }
 
@@ -359,9 +364,9 @@ public class SyndEntryImpl implements Serializable,SyndEntry {
      *         an empty list if none.
      *
      */
-    public List getModules() {
+    public List<Module> getModules() {
         if  (_modules==null) {
-            _modules=new ArrayList();
+            _modules=new ArrayList<Module>();
         }
         if (ModuleUtils.getModule(_modules,DCModule.URI)==null) {
             _modules.add(new DCModuleImpl());
@@ -376,7 +381,7 @@ public class SyndEntryImpl implements Serializable,SyndEntry {
      *        an empty list or <b>null</b> if none.
      *
      */
-    public void setModules(List modules) {
+    public void setModules(List<Module> modules) {
         _modules = modules;
     }
 
@@ -403,7 +408,7 @@ public class SyndEntryImpl implements Serializable,SyndEntry {
         return SyndEntry.class;
     }
 
-    public void copyFrom(Object obj) {
+    public void copyFrom(CopyFrom obj) {
         COPY_FROM_HELPER.copy(this,obj);
     }
 
@@ -434,8 +439,8 @@ public class SyndEntryImpl implements Serializable,SyndEntry {
      * <p>
      * @return Returns the links.
      */
-    public List getLinks() {
-        return (_links==null) ? (_links=new ArrayList()) : _links;
+    public List<SyndLink> getLinks() {
+        return (_links==null) ? (_links=new ArrayList<SyndLink>()) : _links;
     }
     
     /**
@@ -453,7 +458,7 @@ public class SyndEntryImpl implements Serializable,SyndEntry {
      * @return Returns the updatedDate.
      */
     public Date getUpdatedDate() {
-        return _updatedDate;
+        return _updatedDate == null ? null : new Date(_updatedDate.getTime());
     }
     
     /**
@@ -462,7 +467,7 @@ public class SyndEntryImpl implements Serializable,SyndEntry {
      * @param updatedDate The updatedDate to set.
      */
     public void setUpdatedDate(Date updatedDate) {
-        _updatedDate = updatedDate;
+        _updatedDate = new Date(updatedDate.getTime());
     }
 
     public List getAuthors() {
@@ -568,4 +573,13 @@ public class SyndEntryImpl implements Serializable,SyndEntry {
 	public void setWireEntry(Object wireEntry) {
 		this.wireEntry = wireEntry;
 	}
+
+    public SyndLink findRelatedLink(String relation) {
+        for(SyndLink l : this.getLinks()){
+            if(relation.equals(l.getRel())){
+                return l;
+            }
+        }
+        return null;
+    }
 }

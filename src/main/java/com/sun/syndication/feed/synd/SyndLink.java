@@ -1,5 +1,6 @@
 /*
  * Copyright 2004 Sun Microsystems, Inc.
+ * Copyright 2011 ROME Team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,6 +38,7 @@ public interface SyndLink {
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
      *
      */
+    @Override
     public abstract boolean equals(Object other);
 
     /**
@@ -47,6 +49,7 @@ public interface SyndLink {
      * @return the hashcode of the bean object.
      *
      */
+    @Override
     public abstract int hashCode();
 
     /**
@@ -55,6 +58,7 @@ public interface SyndLink {
      * @return String representation for the object.
      *
      */
+    @Override
     public abstract String toString();
 
     /**

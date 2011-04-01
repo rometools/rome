@@ -40,7 +40,7 @@ public interface Extendable {
      *         an empty list if none.
      *
      */
-    List getModules();
+    List<Module> getModules();
 
     /**
      * Sets the entry modules.
@@ -49,5 +49,5 @@ public interface Extendable {
      *        an empty list or <b>null</b> if none.
      *
      */
-    void setModules(List modules);
+    void setModules(List<Module> modules);
 }

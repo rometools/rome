@@ -16,6 +16,7 @@
  */
 package com.sun.syndication.feed.synd;
 
+import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.impl.ObjectBean;
 import com.sun.syndication.feed.impl.CopyFromHelper;
 
@@ -30,7 +31,7 @@ import java.io.Serializable;
  * @author Alejandro Abdelnur
  *
  */
-public class SyndContentImpl implements Serializable,SyndContent {
+public class SyndContentImpl implements Serializable, SyndContent {
     private ObjectBean _objBean;
     private String _type;
     private String _value;
@@ -157,7 +158,7 @@ public class SyndContentImpl implements Serializable,SyndContent {
         return SyndContent.class;
     }
 
-    public void copyFrom(Object obj) {
+    public void copyFrom(CopyFrom obj) {
         COPY_FROM_HELPER.copy(this,obj);
     }
 

@@ -17,7 +17,6 @@
 package com.sun.syndication.feed.atom;
 
 import com.sun.syndication.feed.impl.ObjectBean;
-import com.sun.syndication.feed.impl.ObjectBean;
 
 import java.io.Serializable;
 
@@ -49,6 +48,7 @@ public class Generator implements Cloneable,Serializable {
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
      *
      */
+    @Override
     public Object clone() throws CloneNotSupportedException {
         return _objBean.clone();
     }
@@ -60,7 +60,11 @@ public class Generator implements Cloneable,Serializable {
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
      *
      */
+    @Override
     public boolean equals(Object other) {
+        if(!(other instanceof Generator)){
+            return false;
+        }
         return _objBean.equals(other);
     }
 
@@ -72,6 +76,7 @@ public class Generator implements Cloneable,Serializable {
      * @return the hashcode of the bean object.
      *
      */
+    @Override
     public int hashCode() {
         return _objBean.hashCode();
     }
@@ -82,6 +87,7 @@ public class Generator implements Cloneable,Serializable {
      * @return String representation for the object.
      *
      */
+    @Override
     public String toString() {
         return _objBean.toString();
     }

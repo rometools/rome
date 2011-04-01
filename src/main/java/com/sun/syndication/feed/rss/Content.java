@@ -1,5 +1,6 @@
 /*
  * Copyright 2004 Sun Microsystems, Inc.
+ * Copyright 2011 The ROME Team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,19 +21,19 @@ import com.sun.syndication.feed.impl.ObjectBean;
 
 import java.io.Serializable;
 
+
 /**
  * Bean for item descriptions of RSS feeds.
  * <p>
  * @author Alejandro Abdelnur
  *
  */
-public class Content implements Cloneable,Serializable {
+public class Content implements Cloneable, Serializable {
+    public static final String HTML = "html";
+    public static final String TEXT = "text";
     private ObjectBean _objBean;
     private String _type;
     private String _value;
-    
-    public static final String HTML = "html";
-    public static final String TEXT = "text";
 
     /**
      * Default constructor. All properties are set to <b>null</b>.
@@ -40,61 +41,7 @@ public class Content implements Cloneable,Serializable {
      *
      */
     public Content() {
-        _objBean = new ObjectBean(this.getClass(),this);
-    }
-
-    /**
-     * Creates a deep 'bean' clone of the object.
-     * <p>
-     * @return a clone of the object.
-     * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     *
-     */
-    public Object clone() throws CloneNotSupportedException {
-        return _objBean.clone();
-    }
-
-    /**
-     * Indicates whether some other object is "equal to" this one as defined by the Object equals() method.
-     * <p>
-     * @param other he reference object with which to compare.
-     * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     *
-     */
-    public boolean equals(Object other) {
-        return _objBean.equals(other);
-    }
-
-    /**
-     * Returns a hashcode value for the object.
-     * <p>
-     * It follows the contract defined by the Object hashCode() method.
-     * <p>
-     * @return the hashcode of the bean object.
-     *
-     */
-    public int hashCode() {
-        return _objBean.hashCode();
-    }
-
-    /**
-     * Returns the String representation for the object.
-     * <p>
-     * @return String representation for the object.
-     *
-     */
-    public String toString() {
-        return _objBean.toString();
-    }
-
-    /**
-     * Returns the description type.
-     * <p>
-     * @return the description type, <b>null</b> if none.
-     *
-     */
-    public String getType() {
-        return _type;
+        _objBean = new ObjectBean(this.getClass(), this);
     }
 
     /**
@@ -108,13 +55,13 @@ public class Content implements Cloneable,Serializable {
     }
 
     /**
-     * Returns the description value.
+     * Returns the description type.
      * <p>
-     * @return the description value, <b>null</b> if none.
+     * @return the description type, <b>null</b> if none.
      *
      */
-    public String getValue() {
-        return _value;
+    public String getType() {
+        return _type;
     }
 
     /**
@@ -127,4 +74,65 @@ public class Content implements Cloneable,Serializable {
         _value = value;
     }
 
+    /**
+     * Returns the description value.
+     * <p>
+     * @return the description value, <b>null</b> if none.
+     *
+     */
+    public String getValue() {
+        return _value;
+    }
+
+    /**
+     * Creates a deep 'bean' clone of the object.
+     * <p>
+     * @return a clone of the object.
+     * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
+     *
+     */
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return _objBean.clone();
+    }
+
+    /**
+     * Indicates whether some other object is "equal to" this one as defined by the Object equals() method.
+     * <p>
+     * @param other he reference object with which to compare.
+     * @return <b>true</b> if 'this' object is equal to the 'other' object.
+     *
+     */
+    @Override
+    public boolean equals(Object other) {
+        if (!(other instanceof Content)) {
+            return false;
+        }
+
+        return _objBean.equals(other);
+    }
+
+    /**
+     * Returns a hashcode value for the object.
+     * <p>
+     * It follows the contract defined by the Object hashCode() method.
+     * <p>
+     * @return the hashcode of the bean object.
+     *
+     */
+    @Override
+    public int hashCode() {
+        return _objBean.hashCode();
+    }
+
+    /**
+     * Returns the String representation for the object.
+     * <p>
+     * @return String representation for the object.
+     *
+     */
+    @Override
+    public String toString() {
+        return _objBean.toString();
+    }
 }

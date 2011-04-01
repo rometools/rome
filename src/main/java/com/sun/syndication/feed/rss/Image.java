@@ -31,8 +31,8 @@ public class Image implements Cloneable,Serializable {
     private String _title;
     private String _url;
     private String _link;
-    private int _width = -1;
-    private int _height = -1;
+    private Integer _width = -1;
+    private Integer _height = -1;
     private String _description;
 
     /**
@@ -51,6 +51,7 @@ public class Image implements Cloneable,Serializable {
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
      *
      */
+    @Override
     public Object clone() throws CloneNotSupportedException {
         return _objBean.clone();
     }
@@ -62,7 +63,11 @@ public class Image implements Cloneable,Serializable {
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
      *
      */
+    @Override
     public boolean equals(Object other) {
+        if(!(other instanceof Image)){
+            return false;
+        }
         return _objBean.equals(other);
     }
 
@@ -74,6 +79,7 @@ public class Image implements Cloneable,Serializable {
      * @return the hashcode of the bean object.
      *
      */
+    @Override
     public int hashCode() {
         return _objBean.hashCode();
     }
@@ -84,6 +90,7 @@ public class Image implements Cloneable,Serializable {
      * @return String representation for the object.
      *
      */
+    @Override
     public String toString() {
         return _objBean.toString();
     }
@@ -154,7 +161,7 @@ public class Image implements Cloneable,Serializable {
      * @return the image width, <b>null</b> if none.
      *
      */
-    public int getWidth() {
+    public Integer getWidth() {
         return _width;
     }
 
@@ -164,7 +171,7 @@ public class Image implements Cloneable,Serializable {
      * @param width the image width to set, <b>null</b> if none.
      *
      */
-    public void setWidth(int width) {
+    public void setWidth(Integer width) {
         _width = width;
     }
 
@@ -174,7 +181,7 @@ public class Image implements Cloneable,Serializable {
      * @return the image height, <b>null</b> if none.
      *
      */
-    public int getHeight() {
+    public Integer getHeight() {
         return _height;
     }
 
@@ -184,7 +191,7 @@ public class Image implements Cloneable,Serializable {
      * @param height the image height to set, <b>null</b> if none.
      *
      */
-    public void setHeight(int height) {
+    public void setHeight(Integer height) {
         _height = height;
     }
 

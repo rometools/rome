@@ -16,6 +16,7 @@
  */
 package com.sun.syndication.feed.synd;
 
+import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.impl.ObjectBean;
 import com.sun.syndication.feed.impl.CopyFromHelper;
 import com.sun.syndication.feed.WireFeed;
@@ -657,7 +658,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
         return SyndFeed.class;
     }
 
-    public void copyFrom(Object obj) {
+    public void copyFrom(CopyFrom obj) {
         COPY_FROM_HELPER.copy(this,obj);
     }
 

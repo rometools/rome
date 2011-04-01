@@ -16,6 +16,7 @@
  */
 package com.sun.syndication.feed.module;
 
+import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.impl.CopyFromHelper;
 
 import java.util.*;
@@ -28,7 +29,7 @@ import java.util.*;
  *
  */
 public class SyModuleImpl extends ModuleImpl implements SyModule {
-    private static final Set PERIODS = new HashSet();
+    private static final Set<String> PERIODS = new HashSet<String>();
 
     static {
         PERIODS.add(HOURLY );
@@ -102,7 +103,7 @@ public class SyModuleImpl extends ModuleImpl implements SyModule {
      *
      */
     public Date getUpdateBase() {
-        return _updateBase;
+        return new Date(_updateBase.getTime());
     }
 
     /**
@@ -112,14 +113,14 @@ public class SyModuleImpl extends ModuleImpl implements SyModule {
      *
      */
     public void setUpdateBase(Date updateBase) {
-        _updateBase = updateBase;
+        _updateBase = new Date(updateBase.getTime());
     }
 
-    public Class getInterface() {
+    public Class<? extends Module> getInterface() {
         return SyModule.class;
     }
 
-    public void copyFrom(Object obj) {
+    public void copyFrom(CopyFrom obj) {
         COPY_FROM_HELPER.copy(this,obj);
     }
 

@@ -16,6 +16,7 @@
  */
 package com.sun.syndication.feed.module;
 
+import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.impl.ObjectBean;
 import com.sun.syndication.feed.impl.CopyFromHelper;
 
@@ -52,6 +53,7 @@ public class DCSubjectImpl implements Cloneable,Serializable, DCSubject {
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
      *
      */
+    @Override
     public Object clone() throws CloneNotSupportedException {
         return _objBean.clone();
     }
@@ -63,7 +65,11 @@ public class DCSubjectImpl implements Cloneable,Serializable, DCSubject {
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
      *
      */
+    @Override
     public boolean equals(Object other) {
+        if(!(other instanceof DCSubjectImpl)){
+            return false;
+        }
         return _objBean.equals(other);
     }
 
@@ -75,6 +81,7 @@ public class DCSubjectImpl implements Cloneable,Serializable, DCSubject {
      * @return the hashcode of the bean object.
      *
      */
+    @Override
     public int hashCode() {
         return _objBean.hashCode();
     }
@@ -85,6 +92,7 @@ public class DCSubjectImpl implements Cloneable,Serializable, DCSubject {
      * @return String representation for the object.
      *
      */
+    @Override
     public String toString() {
         return _objBean.toString();
     }
@@ -133,7 +141,7 @@ public class DCSubjectImpl implements Cloneable,Serializable, DCSubject {
         return DCSubject.class;
     }
 
-    public void copyFrom(Object obj) {
+    public void copyFrom(CopyFrom obj) {
         COPY_FROM_HELPER.copy(this,obj);
     }
 

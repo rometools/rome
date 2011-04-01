@@ -25,33 +25,41 @@ import java.util.List;
  */
 public class ModuleUtils {
 
-    public static List cloneModules(List modules) {
-        List cModules = null;
+    public static List<Module> cloneModules(List<Module> modules) {
+        List<Module> cModules = null;
         if (modules!=null) {
-            cModules = new ArrayList();
-            for (int i=0;i<modules.size();i++) {
-                Module module = (Module) modules.get(i);
+            cModules = new ArrayList<Module>();
+            for (Module module : modules) {
                 try {
-                    Object c = module.clone();
+                    Module c = (Module) module.clone();
                     cModules.add(c);
                 }
                 catch (Exception ex) {
-                    throw new RuntimeException("Cloning modules",ex);
+                    throw new RuntimeException("Cloning modules "+module.getUri(),ex);
                 }
             }
         }
         return cModules;
     }
 
-    public static Module getModule(List modules,String uri) {
+    /**
+     * 
+     *
+     * @since 1.5 Changed to return the first, not the last.
+     * 
+     * @param modules
+     * @param uri
+     * @return
+     */
+    public static Module getModule(List<Module> modules,String uri) {
         Module module = null;
-        for (int i=0;module==null && modules!=null && i<modules.size();i++) {
-            module = (Module) modules.get(i);
-            if (!module.getUri().equals(uri)) {
-                module = null;
+        for (int i=0;  modules!=null && i<modules.size();i++) {
+            module = modules.get(i);
+            if (module.getUri().equals(uri)) {
+                return module;
             }
         }
-        return module;
+        return null;
     }
 
 }

@@ -23,9 +23,9 @@ import com.sun.syndication.unittest.SyndFeedTest;
  *
  * @author robert.cooper
  */
-public class Issue1Test extends SyndFeedTest {
+public class Issue1TestX extends SyndFeedTest {
 
-    public Issue1Test(){
+    public Issue1TestX(){
         super("rss_2.0", "jira_issue1.xml");
     }
 

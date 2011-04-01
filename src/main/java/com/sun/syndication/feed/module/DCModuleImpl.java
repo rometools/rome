@@ -16,6 +16,7 @@
  */
 package com.sun.syndication.feed.module;
 
+import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.impl.CopyFromHelper;
 import com.sun.syndication.feed.impl.ObjectBean;
 
@@ -31,21 +32,21 @@ import java.util.*;
  */
 public class DCModuleImpl extends ModuleImpl implements DCModule {
     private ObjectBean _objBean;
-    private List _title;
-    private List _creator;
-    private List _subject;
-    private List _description;
-    private List _publisher;
-    private List _contributors;
-    private List _date;
-    private List _type;
-    private List _format;
-    private List _identifier;
-    private List _source;
-    private List _language;
-    private List _relation;
-    private List _coverage;
-    private List _rights;
+    private List<String> _title;
+    private List<String> _creator;
+    private List<DCSubject> _subject;
+    private List<String> _description;
+    private List<String> _publisher;
+    private List<String> _contributors;
+    private List<Date> _date;
+    private List<String> _type;
+    private List<String> _format;
+    private List<String> _identifier;
+    private List<String> _source;
+    private List<String> _language;
+    private List<String> _relation;
+    private List<String> _coverage;
+    private List<String> _rights;
 
     /**
      * Properties to be ignored when cloning.
@@ -364,7 +365,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      *         an empty list if none.
      *
      */
-    public List getDates() {
+    public List<Date> getDates() {
         return (_date == null) ? (_date = new ArrayList()) : _date;
     }
 
@@ -375,7 +376,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      * 		to set, an empty list or <b>null</b> if none.
      *
      */
-    public void setDates(List dates) {
+    public void setDates(List<Date> dates) {
         _date = dates;
     }
     
@@ -800,15 +801,16 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      * @return String representation for the object.
      *
      */
+    @Override
     public final String toString() {
         return _objBean.toString();
     }
     
-    public final Class getInterface() {
+    public final Class<? extends CopyFrom> getInterface() {
         return DCModule.class;
     }
 
-    public final void copyFrom(Object obj) {
+    public final void copyFrom(CopyFrom obj) {
         COPY_FROM_HELPER.copy(this,obj);
     }
 

@@ -55,7 +55,7 @@ public class Content implements Cloneable,Serializable {
     public static final String ESCAPED = "escaped"; 
 
     private String _mode;  
-    private static final Set MODES = new HashSet(); 
+    private static final Set<String> MODES = new HashSet<String>();
     static {
         MODES.add(XML);
         MODES.add(BASE64);
@@ -79,6 +79,7 @@ public class Content implements Cloneable,Serializable {
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
      *
      */
+    @Override
     public Object clone() throws CloneNotSupportedException {
         return _objBean.clone();
     }
@@ -90,7 +91,11 @@ public class Content implements Cloneable,Serializable {
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
      *
      */
+    @Override
     public boolean equals(Object other) {
+        if(!(other instanceof Content)){
+            return false;
+        }
         return _objBean.equals(other);
     }
 
@@ -102,6 +107,7 @@ public class Content implements Cloneable,Serializable {
      * @return the hashcode of the bean object.
      *
      */
+    @Override
     public int hashCode() {
         return _objBean.hashCode();
     }
@@ -112,6 +118,7 @@ public class Content implements Cloneable,Serializable {
      * @return String representation for the object.
      *
      */
+    @Override
     public String toString() {
         return _objBean.toString();
     }

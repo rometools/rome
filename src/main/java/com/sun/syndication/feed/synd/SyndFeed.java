@@ -39,7 +39,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
      * <p>
      * @return the real feed type supported.
      */
-    List getSupportedFeedTypes();
+    List<String> getSupportedFeedTypes();
 
     /**
      * Creates a real feed containing the information of the SyndFeedImpl.
@@ -235,7 +235,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
      * @return the entry links, <b>null</b> if none.
      *
      */
-    List getLinks();
+    List<SyndLink> getLinks();
 
     /**
      * Sets the entry links.
@@ -243,7 +243,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
      * @param links the entry links to set, <b>null</b> if none.
      *
      */
-    void setLinks(List links);
+    void setLinks(List<SyndLink> links);
 
     /**
      * Returns the feed description.
@@ -307,7 +307,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
      * @return the feed authors, <b>null</b> if none.
      *
      */
-    List getAuthors();
+    List<SyndPerson> getAuthors();
 
     /**
      * Sets the feed authors.
@@ -319,7 +319,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
      * @param authors the feed authors to set, <b>null</b> if none.
      *
      */
-    void setAuthors(List authors);
+    void setAuthors(List<SyndPerson> authors);
 
     /**
      * Returns the name of the first feed author in the collection of authors.
@@ -354,7 +354,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
      * @return the feed author, <b>null</b> if none.
      *
      */
-    public List getContributors();
+    public List<SyndPerson> getContributors();
 
     /**
      * Sets the feed author.
@@ -364,7 +364,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
      * @param contributors the feed contributors to set, <b>null</b> if none.
      *
      */
-    void setContributors(List contributors);
+    void setContributors(List<SyndPerson> contributors);
 
     /**
      * Returns the feed copyright.
@@ -411,7 +411,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
      *         an empty list if none.
      *
      */
-    List getCategories();
+    List<SyndCategory> getCategories();
 
     /**
      * Sets the feed categories.
@@ -422,16 +422,16 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
      *        an empty list or <b>null</b> if none.
      *
      */
-    void setCategories(List categories);
+    void setCategories(List<SyndCategory> categories);
 
     /**
      * Returns the feed entries.
      * <p>
-     * @return a list of SyndEntryImpl elements with the feed entries,
+     * @return a list of SyndEntry elements with the feed entries,
      *         an empty list if none.
      *
      */
-    List getEntries();
+    List<SyndEntry> getEntries();
 
     /**
      * Sets the feed entries.
@@ -440,7 +440,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
      *        an empty list or <b>null</b> if none.
      *
      */
-    void setEntries(List entries);
+    void setEntries(List<SyndEntry> entries);
 
     /**
      * Returns the feed language.
@@ -477,7 +477,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
      *         an empty list if none.
      *
      */
-    List getModules();
+    List<Module> getModules();
 
     /**
      * Sets the feed modules.

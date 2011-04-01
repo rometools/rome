@@ -23,6 +23,8 @@ import com.sun.syndication.feed.rss.Guid;
 import com.sun.syndication.feed.rss.Item;
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
+import com.sun.syndication.feed.synd.SyndLink;
+import com.sun.syndication.feed.synd.SyndLinkImpl;
 import com.sun.syndication.feed.synd.SyndPerson;
 
 import java.util.ArrayList;
@@ -42,6 +44,7 @@ public class ConverterForRSS094 extends ConverterForRSS093 {
         super(type);
     }
 
+    @Override
     public void copyInto(WireFeed feed,SyndFeed syndFeed) {
         Channel channel = (Channel) feed;
         super.copyInto(channel,syndFeed);
@@ -54,6 +57,7 @@ public class ConverterForRSS094 extends ConverterForRSS093 {
         }
     }
 
+    @Override
     protected SyndEntry createSyndEntry(Item item, boolean preserveWireItem) {
         SyndEntry syndEntry = super.createSyndEntry(item, preserveWireItem);
 
@@ -80,6 +84,12 @@ public class ConverterForRSS094 extends ConverterForRSS093 {
         else {
             syndEntry.setUri(item.getLink());
         }
+        if(item.getComments() != null){
+            SyndLinkImpl comments = new SyndLinkImpl();
+            comments.setRel("comments");
+            comments.setHref(item.getComments());
+            comments.setType("text/html");
+        }
         return syndEntry;
     }
 
@@ -93,6 +103,7 @@ public class ConverterForRSS094 extends ConverterForRSS093 {
         return channel;
     }
 
+    @Override
     protected Item createRSSItem(SyndEntry sEntry) {
         Item item = super.createRSSItem(sEntry);     
         if (sEntry.getAuthors()!=null && sEntry.getAuthors().size() > 0) {
@@ -116,7 +127,10 @@ public class ConverterForRSS094 extends ConverterForRSS093 {
             }
         }
         item.setGuid(guid);
-
+        SyndLink comments = sEntry.findRelatedLink("comments");
+        if(comments != null && (comments.getType() == null || comments.getType().endsWith("html"))){
+            item.setComments(comments.getHref());
+        }
         return item;
     }
 

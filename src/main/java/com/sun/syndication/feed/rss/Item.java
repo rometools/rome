@@ -1,5 +1,6 @@
 /*
  * Copyright 2004 Sun Microsystems, Inc.
+ * Copyright 2011 The ROME Team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,14 +46,14 @@ public class Item implements Cloneable, Serializable, Extendable {
     private Description _description;
     private Content _content;
     private Source _source;
-    private List _enclosures;
-    private List _categories;
+    private List<Enclosure> _enclosures;
+    private List<Category> _categories;
     private Guid _guid;
     private String _comments;
     private String _author;
     private Date _pubDate;
     private Date _expirationDate;
-    private List _modules;
+    private List<Module> _modules;
     private List _foreignMarkup;
 
     /**
@@ -71,6 +72,7 @@ public class Item implements Cloneable, Serializable, Extendable {
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
      *
      */
+    @Override
     public Object clone() throws CloneNotSupportedException {
         return _objBean.clone();
     }
@@ -82,8 +84,9 @@ public class Item implements Cloneable, Serializable, Extendable {
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
      *
      */
+    @Override
     public boolean equals(Object other) {
-        if (other == null) {
+        if (other == null || !(other instanceof Item)) {
             return false;
         }
         // can't use foreign markup in equals, due to JDOM equals impl
@@ -103,6 +106,7 @@ public class Item implements Cloneable, Serializable, Extendable {
      * @return the hashcode of the bean object.
      *
      */
+    @Override
     public int hashCode() {
         return _objBean.hashCode();
     }
@@ -113,6 +117,7 @@ public class Item implements Cloneable, Serializable, Extendable {
      * @return String representation for the object.
      *
      */
+    @Override
     public String toString() {
         return _objBean.toString();
     }
@@ -242,8 +247,8 @@ public class Item implements Cloneable, Serializable, Extendable {
      *         an empty list if none.
      *
      */
-    public List getEnclosures() {
-        return (_enclosures==null) ? (_enclosures=new ArrayList()) : _enclosures;
+    public List<Enclosure> getEnclosures() {
+        return (_enclosures==null) ? (_enclosures=new ArrayList<Enclosure>()) : _enclosures;
     }
 
     /**
@@ -253,7 +258,7 @@ public class Item implements Cloneable, Serializable, Extendable {
      *        an empty list or <b>null</b> if none.
      *
      */
-    public void setEnclosures(List enclosures) {
+    public void setEnclosures(List<Enclosure> enclosures) {
         _enclosures = enclosures;
     }
 
@@ -265,7 +270,7 @@ public class Item implements Cloneable, Serializable, Extendable {
      *
      */
     public List getCategories() {
-        return (_categories==null) ? (_categories=new ArrayList()) : _categories;
+        return (_categories==null) ? (_categories=new ArrayList<Category>()) : _categories;
     }
 
     /**
@@ -275,7 +280,7 @@ public class Item implements Cloneable, Serializable, Extendable {
      *        an empty list or <b>null</b> if none.
      *
      */
-    public void setCategories(List categories) {
+    public void setCategories(List<Category> categories) {
         _categories = categories;
     }
 
@@ -346,8 +351,8 @@ public class Item implements Cloneable, Serializable, Extendable {
      *         an empty list if none.
      *
      */
-    public List getModules() {
-        return (_modules==null) ? (_modules=new ArrayList()) : _modules;
+    public List<Module> getModules() {
+        return (_modules==null) ? (_modules=new ArrayList<Module>()) : _modules;
     }
 
     /**
@@ -357,7 +362,7 @@ public class Item implements Cloneable, Serializable, Extendable {
      *        an empty list or <b>null</b> if none.
      *
      */
-    public void setModules(List modules) {
+    public void setModules(List<Module> modules) {
         _modules = modules;
     }
 
@@ -379,7 +384,7 @@ public class Item implements Cloneable, Serializable, Extendable {
      *
      */
     public Date getPubDate() {
-        return _pubDate;
+        return _pubDate == null ? null : new Date( _pubDate.getTime());
     }
 
     /**
@@ -389,7 +394,7 @@ public class Item implements Cloneable, Serializable, Extendable {
      *
      */
     public void setPubDate(Date pubDate) {
-        _pubDate = pubDate;
+        _pubDate = pubDate == null ? null : new Date( pubDate.getTime());
     }
 
     /**
@@ -399,7 +404,7 @@ public class Item implements Cloneable, Serializable, Extendable {
      *
      */
     public Date getExpirationDate() {
-        return _expirationDate;
+        return _expirationDate == null ? null : new Date(_expirationDate.getTime());
     }
 
     /**
@@ -409,7 +414,7 @@ public class Item implements Cloneable, Serializable, Extendable {
      *
      */
     public void setExpirationDate(Date expirationDate) {
-        _expirationDate = expirationDate;
+        _expirationDate = expirationDate == null ? null : new Date(expirationDate.getTime());
     }
 
     /**

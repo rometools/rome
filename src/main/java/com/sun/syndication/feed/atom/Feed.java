@@ -35,9 +35,9 @@ import java.util.List;
 public class Feed extends WireFeed {
     
     private String    _xmlBase;
-    private List      _categories;    
-    private List      _authors; 
-    private List      _contributors;
+    private List<Category> _categories;
+    private List<Person>     _authors;
+    private List<Person>     _contributors;
     private Generator _generator;
     private String    _icon;       
     private String    _id;
@@ -46,11 +46,11 @@ public class Feed extends WireFeed {
     private Content   _subtitle;       // AKA tagline   
     private Content   _title;
     private Date      _updated;        // AKA modified
-    private List      _alternateLinks; 
-    private List      _otherLinks;    
-    private List      _entries;
+    private List<Link>      _alternateLinks;
+    private List<Link>      _otherLinks;
+    private List<Entry>      _entries;
     
-    private List      _modules;
+    private List<Module>      _modules;
    
     private Content   _info;           // Atom 0.3 only
     private String    _language;       // Atom 0.3 only
@@ -140,8 +140,8 @@ public class Feed extends WireFeed {
      * @return a list of Link elements with the feed alternate links,
      *         an empty list if none.
      */
-    public List getAlternateLinks() {
-        return (_alternateLinks==null) ? (_alternateLinks=new ArrayList()) : _alternateLinks;
+    public List<Link> getAlternateLinks() {
+        return (_alternateLinks==null) ? (_alternateLinks=new ArrayList<Link>()) : _alternateLinks;
     }
 
     /**
@@ -150,7 +150,7 @@ public class Feed extends WireFeed {
      * @param alternateLinks the list of Link elements with the feed alternate links to set,
      *        an empty list or <b>null</b> if none.
      */
-    public void setAlternateLinks(List alternateLinks) {
+    public void setAlternateLinks(List<Link> alternateLinks) {
         _alternateLinks = alternateLinks;
     }
 
@@ -160,7 +160,7 @@ public class Feed extends WireFeed {
      * @return a list of Link elements with the feed other links (non-alternate ones),
      *         an empty list if none.
      */
-    public List getOtherLinks() {
+    public List<Link> getOtherLinks() {
         return (_otherLinks==null) ? (_otherLinks=new ArrayList()) : _otherLinks;
     }
 
@@ -170,7 +170,7 @@ public class Feed extends WireFeed {
      * @param otherLinks the list of Link elements with the feed other links (non-alternate ones) to set,
      *        an empty list or <b>null</b> if none.
      */
-    public void setOtherLinks(List otherLinks) {
+    public void setOtherLinks(List<Link> otherLinks) {
         _otherLinks = otherLinks;
     }
 
@@ -180,8 +180,8 @@ public class Feed extends WireFeed {
      * @return the feed author, <b>null</b> if none.
      * 
      */
-    public List getAuthors() {
-        return (_authors==null) ? (_authors=new ArrayList()) : _authors;
+    public List<Person> getAuthors() {
+        return (_authors==null) ? (_authors=new ArrayList<Person>()) : _authors;
     }
 
     /**
@@ -190,7 +190,7 @@ public class Feed extends WireFeed {
      * @param authors the feed author to set, <b>null</b> if none.
      * 
      */
-    public void setAuthors(List authors) {
+    public void setAuthors(List<Person> authors) {
         _authors = authors;
     }
 
@@ -201,8 +201,8 @@ public class Feed extends WireFeed {
      *         an empty list if none.
      *
      */
-    public List getContributors() {
-        return (_contributors==null) ? (_contributors=new ArrayList()) : _contributors;
+    public List<Person> getContributors() {
+        return (_contributors==null) ? (_contributors=new ArrayList<Person>()) : _contributors;
     }
 
     /**
@@ -212,7 +212,7 @@ public class Feed extends WireFeed {
      *        an empty list or <b>null</b> if none.
      *
      */
-    public void setContributors(List contributors) {
+    public void setContributors(List<Person> contributors) {
         _contributors = contributors;
     }
 
@@ -335,8 +335,8 @@ public class Feed extends WireFeed {
      *         an empty list if none.
      *
      */
-    public List getEntries() {
-        return (_entries==null) ? (_entries=new ArrayList()) : _entries;
+    public List<Entry> getEntries() {
+        return (_entries==null) ? (_entries=new ArrayList<Entry>()) : _entries;
     }
 
     /**
@@ -357,8 +357,8 @@ public class Feed extends WireFeed {
      *         an empty list if none.
      *
      */
-    public List getModules() {
-        return (_modules==null) ? (_modules=new ArrayList()) : _modules;
+    public List<Module> getModules() {
+        return (_modules==null) ? (_modules=new ArrayList<Module>()) : _modules;
     }
 
     /**
@@ -368,7 +368,8 @@ public class Feed extends WireFeed {
      *        an empty list or <b>null</b> if none.
      *
      */
-    public void setModules(List modules) {
+    @Override
+    public void setModules(List<Module> modules) {
         _modules = modules;
     }
 
@@ -378,6 +379,7 @@ public class Feed extends WireFeed {
      * @param uri the URI of the ModuleImpl.
      * @return The module with the given URI, <b>null</b> if none.
      */
+    @Override
     public Module getModule(String uri) {
         return ModuleUtils.getModule(_modules,uri);
     }
@@ -398,7 +400,7 @@ public class Feed extends WireFeed {
      * @param categories The categories to set.
      * @since Atom 1.0
      */
-    public void setCategories(List categories) {
+    public void setCategories(List<Category> categories) {
         _categories = categories;
     }
     

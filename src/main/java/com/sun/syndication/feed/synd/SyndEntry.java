@@ -22,7 +22,6 @@ import java.util.List;
 import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.module.Extendable;
 import com.sun.syndication.feed.module.Module;
-import com.sun.syndication.feed.rss.Item;
 
 /**
  * Bean interface for entries of SyndFeedImpl feeds.
@@ -112,7 +111,7 @@ public interface SyndEntry extends Cloneable, CopyFrom, Extendable {
      * @return the entry links, <b>null</b> if none.
      *
      */
-    List getLinks();
+    List<SyndLink> getLinks();
 
     /**
      * Sets the entry links.
@@ -120,7 +119,7 @@ public interface SyndEntry extends Cloneable, CopyFrom, Extendable {
      * @param links the entry links to set, <b>null</b> if none.
      *
      */
-    void setLinks(List links);
+    void setLinks(List<SyndLink> links);
 
     /**
      * Returns the entry description.
@@ -145,7 +144,7 @@ public interface SyndEntry extends Cloneable, CopyFrom, Extendable {
      *         an empty list if none.
      *
      */
-    List getContents();
+    List<SyndContent> getContents();
 
     /**
      * Sets the entry contents.
@@ -154,7 +153,7 @@ public interface SyndEntry extends Cloneable, CopyFrom, Extendable {
      *        an empty list or <b>null</b> if none.
      *
      */
-    void setContents(List contents);
+    void setContents(List<SyndContent> contents);
 
     /**
      * Returns the entry enclosures.
@@ -163,7 +162,7 @@ public interface SyndEntry extends Cloneable, CopyFrom, Extendable {
      *         an empty list if none.
      *
      */
-    public List getEnclosures();
+    public List<SyndEnclosure> getEnclosures();
 
     /**
      * Sets the entry enclosures.
@@ -172,7 +171,7 @@ public interface SyndEntry extends Cloneable, CopyFrom, Extendable {
      *        an empty list or <b>null</b> if none.
      *
      */
-    public void setEnclosures(List enclosures);
+    public void setEnclosures(List<SyndEnclosure> enclosures);
 
     /**
      * Returns the entry published date.
@@ -220,7 +219,7 @@ public interface SyndEntry extends Cloneable, CopyFrom, Extendable {
      * @return the feed author, <b>null</b> if none.
      *
      */
-    List getAuthors();
+    List<SyndPerson> getAuthors();
 
     /**
      * Sets the entry author.
@@ -232,7 +231,7 @@ public interface SyndEntry extends Cloneable, CopyFrom, Extendable {
      * @param authors the feed author to set, <b>null</b> if none.
      *
      */
-    void setAuthors(List authors);
+    void setAuthors(List<SyndPerson> authors);
     
     /**
      * Returns the name of the first entry author in the collection of authors.
@@ -266,7 +265,7 @@ public interface SyndEntry extends Cloneable, CopyFrom, Extendable {
      * @return the feed author, <b>null</b> if none.
      *
      */
-    List getContributors();
+    List<SyndPerson> getContributors();
 
     /**
      * Sets the feed contributors.
@@ -276,7 +275,7 @@ public interface SyndEntry extends Cloneable, CopyFrom, Extendable {
      * @param contributors the feed contributors to set, <b>null</b> if none.
      *
      */
-    void setContributors(List contributors);
+    void setContributors(List<SyndPerson> contributors);
 
     /**
      * Returns the entry categories.
@@ -287,7 +286,7 @@ public interface SyndEntry extends Cloneable, CopyFrom, Extendable {
      *         an empty list if none.
      *
      */
-    List getCategories();
+    List<SyndCategory> getCategories();
 
     /**
      * Sets the entry categories.
@@ -298,7 +297,7 @@ public interface SyndEntry extends Cloneable, CopyFrom, Extendable {
      *        an empty list or <b>null</b> if none.
      *
      */
-    void setCategories(List categories);
+    void setCategories(List<SyndCategory> categories);
     
     /**
      * Returns the entry source.
@@ -346,7 +345,7 @@ public interface SyndEntry extends Cloneable, CopyFrom, Extendable {
      *         an empty list if none.
      *
      */
-    List getModules();
+    List<Module> getModules();
 
     /**
      * Sets the entry modules.
@@ -355,7 +354,7 @@ public interface SyndEntry extends Cloneable, CopyFrom, Extendable {
      *        an empty list or <b>null</b> if none.
      *
      */
-    void setModules(List modules);
+    void setModules(List<Module> modules);
 
     /**
      * Returns foreign markup found at channel level.
@@ -381,5 +380,11 @@ public interface SyndEntry extends Cloneable, CopyFrom, Extendable {
      *
      */
     public Object clone() throws CloneNotSupportedException;
+
+    /**
+     * Returns the first instance of a SyndLink with the specified relation, or null
+     *
+     */
+    public SyndLink findRelatedLink(String relation);
 
 }

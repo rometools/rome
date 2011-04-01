@@ -1,5 +1,6 @@
 /*
  * Copyright 2004 Sun Microsystems, Inc.
+ * Copyright 2011 ROME Team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,7 +43,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
     private ObjectBean _objBean;
     private String _feedType;
     private String _encoding;
-    private List _modules;
+    private List<Module> _modules;
     private List _foreignMarkup;
 
     /**
@@ -72,6 +73,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
      *
      */
+    @Override
     public Object clone() throws CloneNotSupportedException {
         return _objBean.clone();
     }
@@ -83,8 +85,12 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
      *
      */
+    @Override
     public boolean equals(Object other) {
         if (other == null) {
+            return false;
+        }
+        if (!(other instanceof WireFeed)){
             return false;
         }
         // can't use foreign markup in equals, due to JDOM equals impl
@@ -104,6 +110,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      * @return the hashcode of the bean object.
      *
      */
+    @Override
     public int hashCode() {
         return _objBean.hashCode();
     }
@@ -114,6 +121,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      * @return String representation for the object.
      *
      */
+    @Override
     public String toString() {
         return _objBean.toString();
     }
@@ -175,8 +183,8 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      *         an empty list if none.
      *
      */
-    public List getModules() {
-        return (_modules==null) ? (_modules=new ArrayList()) : _modules;
+    public List<Module> getModules() {
+        return (_modules==null) ? (_modules=new ArrayList<Module>()) : _modules;
     }
 
     /**
@@ -186,7 +194,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      *        an empty list or <b>null</b> if none.
      *
      */
-    public void setModules(List modules) {
+    public void setModules(List<Module> modules) {
         _modules = modules;
     }
 

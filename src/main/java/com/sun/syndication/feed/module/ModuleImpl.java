@@ -49,6 +49,7 @@ public abstract class ModuleImpl implements Cloneable,Serializable,Module {
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
      *
      */
+    @Override
     public Object clone() throws CloneNotSupportedException {
         return _objBean.clone();
     }
@@ -60,7 +61,11 @@ public abstract class ModuleImpl implements Cloneable,Serializable,Module {
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
      *
      */
+    @Override
     public boolean equals(Object other) {
+        if(!(other instanceof ModuleImpl)){
+            return false;
+        }
         return _objBean.equals(other);
     }
 
@@ -72,6 +77,7 @@ public abstract class ModuleImpl implements Cloneable,Serializable,Module {
      * @return the hashcode of the bean object.
      *
      */
+    @Override
     public int hashCode() {
         return _objBean.hashCode();
     }
@@ -82,6 +88,7 @@ public abstract class ModuleImpl implements Cloneable,Serializable,Module {
      * @return String representation for the object.
      *
      */
+    @Override
     public String toString() {
         return _objBean.toString();
     }

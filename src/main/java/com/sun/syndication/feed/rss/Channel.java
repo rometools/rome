@@ -1,5 +1,6 @@
 /*
  * Copyright 2004 Sun Microsystems, Inc.
+ * Copyright 2011 The ROME Team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,16 +41,18 @@ public class Channel extends WireFeed {
     public static final String FRIDAY    = "friday";
     public static final String SATURDAY  = "saturday";
 
-    private static final Set DAYS = new HashSet();
+    private static final Set<String> DAYS;
 
     static {
-        DAYS.add(SUNDAY   );
-        DAYS.add(MONDAY   );
-        DAYS.add(TUESDAY  );
-        DAYS.add(WEDNESDAY);
-        DAYS.add(THURSDAY );
-        DAYS.add(FRIDAY   );
-        DAYS.add(SATURDAY );
+        HashSet<String> days = new HashSet<String>();
+        days.add(SUNDAY   );
+        days.add(MONDAY   );
+        days.add(TUESDAY  );
+        days.add(WEDNESDAY);
+        days.add(THURSDAY );
+        days.add(FRIDAY   );
+        days.add(SATURDAY );
+        DAYS = Collections.unmodifiableSet(days);
     }
 
     private String _title;
@@ -67,13 +70,13 @@ public class Channel extends WireFeed {
     private String _docs;
     private String _managingEditor;
     private String _webMaster;
-    private List _skipHours;
-    private List _skipDays;
+    private List<Integer> _skipHours;
+    private List<String> _skipDays;
     private Cloud _cloud;
-    private List _categories;
+    private List<Category> _categories;
     private String _generator;
     private int _ttl = -1;
-    private List _modules;
+    private List<Module> _modules;
 
     /**
      * Default constructor, for bean cloning purposes only.
@@ -197,8 +200,8 @@ public class Channel extends WireFeed {
      *         an empty list if none.
      *
      */
-    public List getItems() {
-        return (_items==null) ? (_items=new ArrayList()) : _items;
+    public List<Item> getItems() {
+        return (_items==null) ? (_items=new ArrayList<Item>()) : _items;
     }
 
     /**
@@ -208,7 +211,7 @@ public class Channel extends WireFeed {
      *        an empty list or <b>null</b> if none.
      *
      */
-    public void setItems(List items) {
+    public void setItems(List<Item> items) {
         _items = items;
     }
 
@@ -299,7 +302,7 @@ public class Channel extends WireFeed {
      *
      */
     public Date getPubDate() {
-        return _pubDate;
+        return _pubDate == null ? null : new Date(_pubDate.getTime());
     }
 
     /**
@@ -309,7 +312,7 @@ public class Channel extends WireFeed {
      *
      */
     public void setPubDate(Date pubDate) {
-        _pubDate = pubDate;
+        _pubDate = pubDate == null ? null : new Date( pubDate.getTime());
     }
 
     /**
@@ -319,7 +322,7 @@ public class Channel extends WireFeed {
      *
      */
     public Date getLastBuildDate() {
-        return _lastBuildDate;
+        return _lastBuildDate == null ? null : new Date(_lastBuildDate.getTime());
     }
 
     /**
@@ -329,7 +332,7 @@ public class Channel extends WireFeed {
      *
      */
     public void setLastBuildDate(Date lastBuildDate) {
-        _lastBuildDate = lastBuildDate;
+        _lastBuildDate = lastBuildDate == null ? null : new Date( lastBuildDate.getTime());
     }
 
     /**
@@ -399,7 +402,7 @@ public class Channel extends WireFeed {
      *         an empty list if none.
      *
      */
-    public List getSkipHours() {
+    public List<Integer> getSkipHours() {
         return (_skipHours!=null) ? _skipHours : new ArrayList();
     }
 
@@ -410,7 +413,7 @@ public class Channel extends WireFeed {
      *        an empty list or <b>null</b> if none.
      *
      */
-    public void setSkipHours(List skipHours) {
+    public void setSkipHours(List<Integer> skipHours) {
         if (skipHours!=null) {
             for (int i=0;i<skipHours.size();i++) {
                 Integer iHour = (Integer) skipHours.get(i);
@@ -435,8 +438,8 @@ public class Channel extends WireFeed {
      *         an empty list if none.
      *
      */
-    public List getSkipDays() {
-        return (_skipDays!=null) ? _skipDays : new ArrayList();
+    public List<String> getSkipDays() {
+        return (_skipDays!=null) ? _skipDays : new ArrayList<String>();
     }
 
     /**
@@ -446,7 +449,7 @@ public class Channel extends WireFeed {
      *        an empty list or <b>null</b> if none.
      *
      */
-    public void setSkipDays(List skipDays) {
+    public void setSkipDays(List<String> skipDays) {
         if (skipDays!=null) {
             for (int i=0;i<skipDays.size();i++) {
                 String day = (String) skipDays.get(i);
@@ -492,8 +495,8 @@ public class Channel extends WireFeed {
      *         an empty list if none.
      *
      */
-    public List getCategories() {
-        return (_categories==null) ? (_categories=new ArrayList()) : _categories;
+    public List<Category> getCategories() {
+        return (_categories==null) ? (_categories=new ArrayList<Category>()) : _categories;
     }
 
     /**
@@ -503,7 +506,7 @@ public class Channel extends WireFeed {
      *        an empty list or <b>null</b> if none.
      *
      */
-    public void setCategories(List categories) {
+    public void setCategories(List<Category> categories) {
         _categories = categories;
     }
 
@@ -554,8 +557,9 @@ public class Channel extends WireFeed {
      *         an empty list if none.
      *
      */
-    public List getModules() {
-        return (_modules==null) ? (_modules=new ArrayList()) : _modules;
+    @Override
+    public List<Module> getModules() {
+        return (_modules==null) ? (_modules=new ArrayList<Module>()) : _modules;
     }
 
     /**
@@ -565,7 +569,8 @@ public class Channel extends WireFeed {
      *        an empty list or <b>null</b> if none.
      *
      */
-    public void setModules(List modules) {
+    @Override
+    public void setModules(List<Module> modules) {
         _modules = modules;
     }
 
@@ -575,6 +580,7 @@ public class Channel extends WireFeed {
      * @param uri the URI of the ModuleImpl.
      * @return The module with the given URI, <b>null</b> if none.
      */
+    @Override
     public Module getModule(String uri) {
         return ModuleUtils.getModule(_modules,uri);
     }
