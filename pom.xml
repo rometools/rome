@@ -150,7 +150,6 @@
                     <name>My Nexus Snapshots Repository</name>
                     <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
                 </snapshotRepository>
-
             </distributionManagement>
             <build>
                 <plugins>
