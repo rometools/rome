@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns="http://purl.org/rss/1.0/"
+         xmlns:content='http://purl.org/rss/1.0/modules/content/'
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/"
+         xmlns:sy="http://purl.org/rss/1.0/modules/syndication/">
+
+
+    <channel rdf:about="rss_1.0.channel.uri">
+        <title>rss_1.0.channel.title</title>
+        <link>rss_1.0.channel.link</link>
+        <description>rss_1.0.channel.description</description>
+
+        <image rdf:resource="rss_1.0.channel.image^rdf:resource"/>
+
+        <items>
+            <rdf:Seq>
+                <rdf:li resource="rss_1.0.channel.items[0]^rdf:resource" />
+                <rdf:li resource="rss_1.0.channel.items[1]^rdf:resource" />
+            </rdf:Seq>
+        </items>
+
+        <dc:title>rss_1.0.channel.dc:title</dc:title>
+        <dc:creator>rss_1.0.channel.dc:creator</dc:creator>
+        <dc:subject>
+           <rdf:Description>
+              <taxo:topic rdf:resource="rss_1.0.channel.dc:subject[0].taxo:topic^resource" />
+              <rdf:value>rss_1.0.channel.dc:subject[0]</rdf:value>
+           </rdf:Description>
+        </dc:subject>
+        <dc:subject>
+           <rdf:Description>
+               <taxo:topic rdf:resource="rss_1.0.channel.dc:subject[1].taxo:topic^resource" />
+               <rdf:value>rss_1.0.channel.dc:subject[1]</rdf:value>
+           </rdf:Description>
+        </dc:subject>
+        <dc:description>rss_1.0.channel.dc:description</dc:description>
+        <dc:publisher>rss_1.0.channel.dc:publisher</dc:publisher>
+        <dc:contributor>rss_1.0.channel.dc:contributor[0]</dc:contributor>
+        <dc:contributor>rss_1.0.channel.dc:contributor[1]</dc:contributor>
+        <dc:date>2001-01-01T00:00+00:00</dc:date>
+        <dc:type>rss_1.0.channel.dc:type</dc:type>
+        <dc:format>rss_1.0.channel.dc:format</dc:format>
+        <dc:identifier>rss_1.0.channel.dc:identifier</dc:identifier>
+        <dc:source>rss_1.0.channel.dc:source</dc:source>
+        <dc:language>rss_1.0.channel.dc:language</dc:language>
+        <dc:relation>rss_1.0.channel.dc:relation</dc:relation>
+        <dc:coverage>rss_1.0.channel.dc:coverage</dc:coverage>
+        <dc:rights>rss_1.0.channel.dc:rights</dc:rights>
+
+        <sy:updatePeriod>hourly</sy:updatePeriod>
+        <sy:updateFrequency>100</sy:updateFrequency>
+        <sy:updateBase>2001-01-01T01:00+00:00</sy:updateBase>
+
+    </channel>
+
+    <image rdf:about="rss_1.0.channel.image^rdf:resource">
+        <title>rss_1.0.image.title</title>
+        <url>rss_1.0.image.url</url>
+        <link>rss_1.0.image.link</link>
+    </image>
+
+    <textinput>
+        <title>rss_1.0.textinput.title</title>
+        <description>rss_1.0.textinput.description</description>
+        <name>rss_1.0.textinput.name</name>
+        <link>rss_1.0.textinput.link</link>
+    </textinput>
+    <item rdf:about="rss_1.0.channel.items[0]^rdf:resource">
+        <title>rss_1.0.item[0].title</title>
+        <link>rss_1.0.item[0].link</link>
+        <description>rss_1.0.item[0].description</description>
+
+        <dc:title>rss_1.0.item[0].dc:title</dc:title>
+        <dc:creator>rss_1.0.item[0].dc:creator</dc:creator>
+        <dc:subject>rss_1.0.item[0].dc:subject[0]</dc:subject>
+        <dc:subject>rss_1.0.item[0].dc:subject[1]</dc:subject>
+        <dc:description>rss_1.0.item[0].dc:description</dc:description>
+        <dc:publisher>rss_1.0.item[0].dc:publisher</dc:publisher>
+        <dc:contributor>rss_1.0.item[0].dc:contributor[0]</dc:contributor>
+        <dc:contributor>rss_1.0.item[0].dc:contributor[1]</dc:contributor>
+        <dc:date>2001-01-01T00:00+00:00</dc:date>
+        <dc:type>rss_1.0.item[0].dc:type</dc:type>
+        <dc:format>rss_1.0.item[0].dc:format</dc:format>
+        <dc:identifier>rss_1.0.item[0].dc:identifier</dc:identifier>
+        <dc:source>rss_1.0.item[0].dc:source</dc:source>
+        <dc:language>rss_1.0.item[0].dc:language</dc:language>
+        <dc:relation>rss_1.0.item[0].dc:relation</dc:relation>
+        <dc:coverage>rss_1.0.item[0].dc:coverage</dc:coverage>
+        <dc:rights>rss_1.0.item[0].dc:rights</dc:rights>
+        <content:encoded>rss_1.0.item[0].content</content:encoded>
+    </item>
+    <item rdf:about="rss_1.0.channel.items[1]^rdf:resource">
+        <title>rss_1.0.item[1].title</title>
+        <link>rss_1.0.item[1].link</link>
+        <description>rss_1.0.item[1].description</description>
+        <dc:title>rss_1.0.item[1].dc:title</dc:title>
+        <dc:creator>rss_1.0.item[1].dc:creator</dc:creator>
+        <dc:subject>rss_1.0.item[1].dc:subject[0]</dc:subject>
+        <dc:subject>rss_1.0.item[1].dc:subject[1]</dc:subject>
+        <dc:description>rss_1.0.item[1].dc:description</dc:description>
+        <dc:publisher>rss_1.0.item[1].dc:publisher</dc:publisher>
+        <dc:contributor>rss_1.0.item[1].dc:contributor[0]</dc:contributor>
+        <dc:contributor>rss_1.0.item[1].dc:contributor[1]</dc:contributor>
+        <dc:date>2001-01-01T00:00+00:00</dc:date>
+        <dc:type>rss_1.0.item[1].dc:type</dc:type>
+        <dc:format>rss_1.0.item[1].dc:format</dc:format>
+        <dc:identifier>rss_1.0.item[1].dc:identifier</dc:identifier>
+        <dc:source>rss_1.0.item[1].dc:source</dc:source>
+        <dc:language>rss_1.0.item[1].dc:language</dc:language>
+        <dc:relation>rss_1.0.item[1].dc:relation</dc:relation>
+        <dc:coverage>rss_1.0.item[1].dc:coverage</dc:coverage>
+        <dc:rights>rss_1.0.item[1].dc:rights</dc:rights>
+        <content:encoded>rss_1.0.item[1].content</content:encoded>
+    </item>
+
+</rdf:RDF>

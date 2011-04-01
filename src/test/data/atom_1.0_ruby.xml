@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+    <title>Sam Ruby style</title>
+    <subtitle>Base URI must be determined from self link</subtitle>
+
+    <link href="."/>
+    <link rel="self" href="http://www.example.com/blog/index.atom"/>
+
+    <id>http://www.example.com/blog</id>
+    <author>
+        <name>John Doe</name>
+        <email>john.doe@example.com</email>
+        <uri>.</uri>
+    </author>
+    <updated>2006-11-04T22:09:53-05:00</updated>
+
+    <entry>
+        <link href="bloggy-blog"/>
+        <id>tag:example.com,2004:2429</id>
+        <title>Bloggy-blog</title>
+        <summary type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">Summary1</div></summary>
+        <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">Content1</div></content>
+        <updated>2006-11-04T18:23:33-05:00</updated>
+    </entry>
+
+    <entry>
+        <link href="../frog/froggy-frog"/>
+        <id>tag:example.com,2004:2430</id>
+        <title>Froggy-frog</title>
+        <summary type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">Summary1</div></summary>
+        <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">Content1</div></content>
+        <updated>2006-11-04T18:23:30-05:00</updated>
+    </entry>
+
+</feed>
+

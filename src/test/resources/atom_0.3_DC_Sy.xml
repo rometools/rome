@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<feed version="0.3" xmlns="http://purl.org/atom/ns#"
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      xmlns:dc="http://purl.org/dc/elements/1.1/"
+      xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/"
+      xmlns:sy="http://purl.org/rss/1.0/modules/syndication/">
+
+  <title>atom_0.3.feed.title</title>
+  <link rel="alternate" type="atom_0.3.feed.link^type" href="atom_0.3.feed.link^href"/>
+  <author>
+    <name>atom_0.3.feed.author.name</name>
+    <url>atom_0.3.feed.author.url</url>
+    <email>atom_0.3.feed.author.email</email>
+  </author>
+  <contributor>
+    <name>atom_0.3.feed.contributor.name</name>
+    <url>atom_0.3.feed.contributor.url</url>
+    <email>atom_0.3.feed.contributor.email</email>
+  </contributor>
+  <tagline type="atom_0.3.feed.tagline^type" mode="xml">atom_0.3.feed.tagline</tagline>
+  <id>atom_0.3.feed.id</id>
+  <generator url="atom_0.3.feed.generator^url">atom_0.3.feed.generator</generator>
+  <copyright>atom_0.3.feed.copyright</copyright>
+  <info type="atom_0.3.feed.info^type" mode="xml">atom_0.3.feed.info</info>
+  <modified>2000-01-01T00:00:00Z</modified>
+
+    <dc:title>atom_0.3.feed.dc:title</dc:title>
+    <dc:creator>atom_0.3.feed.dc:creator</dc:creator>
+    <dc:subject>
+       <rdf:Description>
+          <taxo:topic rdf:resource="atom_0.3.feed.dc:subject[0].taxo:topic^resource" />
+          <rdf:value>atom_0.3.feed.dc:subject[0]</rdf:value>
+       </rdf:Description>
+    </dc:subject>
+    <dc:subject>
+       <rdf:Description>
+           <taxo:topic rdf:resource="atom_0.3.feed.dc:subject[1].taxo:topic^resource" />
+           <rdf:value>atom_0.3.feed.dc:subject[1]</rdf:value>
+       </rdf:Description>
+    </dc:subject>
+    <dc:description>atom_0.3.feed.dc:description</dc:description>
+    <dc:publisher>atom_0.3.feed.dc:publisher</dc:publisher>
+    <dc:contributor>atom_0.3.feed.dc:contributor[0]</dc:contributor>
+    <dc:contributor>atom_0.3.feed.dc:contributor[1]</dc:contributor>
+    <dc:date>2001-01-04T00:00+00:00</dc:date>
+    <dc:type>atom_0.3.feed.dc:type</dc:type>
+    <dc:format>atom_0.3.feed.dc:format</dc:format>
+    <dc:identifier>atom_0.3.feed.dc:identifier</dc:identifier>
+    <dc:source>atom_0.3.feed.dc:source</dc:source>
+    <dc:language>atom_0.3.feed.dc:language</dc:language>
+    <dc:relation>atom_0.3.feed.dc:relation</dc:relation>
+    <dc:coverage>atom_0.3.feed.dc:coverage</dc:coverage>
+    <dc:rights>atom_0.3.feed.dc:rights</dc:rights>
+
+    <sy:updatePeriod>hourly</sy:updatePeriod>
+    <sy:updateFrequency>100</sy:updateFrequency>
+    <sy:updateBase>2001-01-01T01:00+00:00</sy:updateBase>
+
+  <entry>
+    <title>atom_0.3.feed.entry[0].title</title>
+    <link rel="alternate" type="atom_0.3.feed.entry[0].link^type"
+          href="atom_0.3.feed.entry[0].link^href"/>
+    <id>atom_0.3.feed.entry[0]^id</id>
+    <author>
+      <name>atom_0.3.feed.entry[0].author.name</name>
+      <url>atom_0.3.feed.entry[0].author.url</url>
+      <email>atom_0.3.feed.entry[0].author.email</email>
+    </author>
+    <contributor>
+      <name>atom_0.3.feed.entry[0].contributor.name</name>
+      <url>atom_0.3.feed.entry[0].contributor.url</url>
+      <email>atom_0.3.feed.entry[0].contributor.email</email>
+    </contributor>
+    <modified>2000-01-01T00:00:00Z</modified>
+    <issued>2000-01-02T01:00:00Z</issued>
+    <created>2000-01-03T02:00:00Z</created>
+    <summary type="atom_0.3.feed.entry[0].summary^type" mode="xml">atom_0.3.feed.entry[0].summary</summary>
+    <content type="atom_0.3.feed.entry[0].content[0]^type" mode="xml">atom_0.3.feed.entry[0].content[0]</content>
+    <content type="atom_0.3.feed.entry[0].content[1]^type" mode="xml">atom_0.3.feed.entry[0].content[1]</content>
+
+      <dc:title>atom_0.3.feed.entry[0].dc:title</dc:title>
+      <dc:creator>atom_0.3.feed.entry[0].dc:creator</dc:creator>
+      <dc:subject>atom_0.3.feed.entry[0].dc:subject[0]</dc:subject>
+      <dc:subject>atom_0.3.feed.entry[0].dc:subject[1]</dc:subject>
+      <dc:description>atom_0.3.feed.entry[0].dc:description</dc:description>
+      <dc:publisher>atom_0.3.feed.entry[0].dc:publisher</dc:publisher>
+      <dc:contributor>atom_0.3.feed.entry[0].dc:contributor[0]</dc:contributor>
+      <dc:contributor>atom_0.3.feed.entry[0].dc:contributor[1]</dc:contributor>
+      <dc:date>2001-01-04T00:00+00:00</dc:date>
+      <dc:type>atom_0.3.feed.entry[0].dc:type</dc:type>
+      <dc:format>atom_0.3.feed.entry[0].dc:format</dc:format>
+      <dc:identifier>atom_0.3.feed.entry[0].dc:identifier</dc:identifier>
+      <dc:source>atom_0.3.feed.entry[0].dc:source</dc:source>
+      <dc:language>atom_0.3.feed.entry[0].dc:language</dc:language>
+      <dc:relation>atom_0.3.feed.entry[0].dc:relation</dc:relation>
+      <dc:coverage>atom_0.3.feed.entry[0].dc:coverage</dc:coverage>
+      <dc:rights>atom_0.3.feed.entry[0].dc:rights</dc:rights>
+
+  </entry>
+    <entry>
+      <title>atom_0.3.feed.entry[1].title</title>
+      <link rel="alternate" type="atom_0.3.feed.entry[1].link^type"
+            href="atom_0.3.feed.entry[1].link^href"/>
+      <id>atom_0.3.feed.entry[1]^id</id>
+      <author>
+        <name>atom_0.3.feed.entry[1].author.name</name>
+        <url>atom_0.3.feed.entry[1].author.url</url>
+        <email>atom_0.3.feed.entry[1].author.email</email>
+      </author>
+      <contributor>
+        <name>atom_0.3.feed.entry[1].contributor.name</name>
+        <url>atom_0.3.feed.entry[1].contributor.url</url>
+        <email>atom_0.3.feed.entry[1].contributor.email</email>
+      </contributor>
+      <modified>2000-02-01T00:00:00Z</modified>
+      <issued>2000-02-02T01:00:00Z</issued>
+      <created>2000-02-03T02:00:00Z</created>
+      <summary type="atom_0.3.feed.entry[1].summary^type" mode="xml">atom_0.3.feed.entry[1].summary</summary>
+      <content type="atom_0.3.feed.entry[1].content[0]^type" mode="xml">atom_0.3.feed.entry[1].content[0]</content>
+      <content type="atom_0.3.feed.entry[1].content[1]^type" mode="xml">atom_0.3.feed.entry[1].content[1]</content>
+
+        <dc:title>atom_0.3.feed.entry[1].dc:title</dc:title>
+        <dc:creator>atom_0.3.feed.entry[1].dc:creator</dc:creator>
+        <dc:subject>atom_0.3.feed.entry[1].dc:subject[0]</dc:subject>
+        <dc:subject>atom_0.3.feed.entry[1].dc:subject[1]</dc:subject>
+        <dc:description>atom_0.3.feed.entry[1].dc:description</dc:description>
+        <dc:publisher>atom_0.3.feed.entry[1].dc:publisher</dc:publisher>
+        <dc:contributor>atom_0.3.feed.entry[1].dc:contributor[0]</dc:contributor>
+        <dc:contributor>atom_0.3.feed.entry[1].dc:contributor[1]</dc:contributor>
+        <dc:date>2001-02-04T00:00+00:00</dc:date>
+        <dc:type>atom_0.3.feed.entry[1].dc:type</dc:type>
+        <dc:format>atom_0.3.feed.entry[1].dc:format</dc:format>
+        <dc:identifier>atom_0.3.feed.entry[1].dc:identifier</dc:identifier>
+        <dc:source>atom_0.3.feed.entry[1].dc:source</dc:source>
+        <dc:language>atom_0.3.feed.entry[1].dc:language</dc:language>
+        <dc:relation>atom_0.3.feed.entry[1].dc:relation</dc:relation>
+        <dc:coverage>atom_0.3.feed.entry[1].dc:coverage</dc:coverage>
+        <dc:rights>atom_0.3.feed.entry[1].dc:rights</dc:rights>
+
+    </entry>
+</feed>

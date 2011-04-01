@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.rometools</groupId>
+    <artifactId>rome</artifactId>
+    <name>ROME, RSS and atOM utilitiEs for Java</name>
+    <version>1.5-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <description>All Roads Lead to ROME. ROME is a set of Atom/RSS Java utilities that make it
+        easy to work in Java with most syndication formats. Today it accepts all flavors of RSS
+        (0.90, 0.91, 0.92, 0.93, 0.94, 1.0 and 2.0), Atom 0.3 and Atom 1.0 feeds. Rome includes
+        a set of parsers and generators for the various flavors of feeds, as well as converters
+        to convert from one format to another. The parsers can give you back Java objects that
+        are either specific for the format you want to work with, or a generic normalized
+        SyndFeed object that lets you work on with the data without bothering about the
+    underlying format. </description>
+    <url>https://rome.dev.java.net/</url>
+    <issueManagement>
+        <url>https://rometools.jira.com/browse/ROME#selectedTab=com.atlassian.jira.plugin.system.project%3Aissues-panel</url>
+    </issueManagement>
+    <ciManagement>
+        <notifiers>
+            <notifier>
+                <configuration>
+                    <address>dev@rome.dev.java.net</address>
+                </configuration>
+            </notifier>
+        </notifiers>
+    </ciManagement>
+    <inceptionYear>2004</inceptionYear>
+    <mailingLists>
+        <mailingList>
+            <name>dev@rome.dev.java.net</name>
+            <subscribe>
+            https://rome.dev.java.net/servlets/ProjectMailingListList</subscribe>
+            <unsubscribe>
+            https://rome.dev.java.net/servlets/ProjectMailingListList</unsubscribe>
+            <archive>
+            https://rome.dev.java.net/servlets/SummarizeList?listName=dev</archive>
+        </mailingList>
+    </mailingLists>
+    <developers>
+        <developer>
+            <name>Robert Cooper</name>
+            <url>http://www.screaming-penguin.com</url>
+            <timezone>-4</timezone>
+            <email>kebernet@gmail.com</email>
+        </developer>
+        <developer>
+            <name>Alejandro Abdelnur</name>
+            <url>http://blog.sun.com/roller/page/tucu/</url>
+            <timezone>0</timezone>
+        </developer>
+        <developer>
+            <name>Elaine Chien</name>
+            <timezone>0</timezone>
+        </developer>
+        <developer>
+            <name>Patrick Chanezon</name>
+            <url>http://www.chanezon.com/pat/weblog/</url>
+            <timezone>-9</timezone>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:svn:https://rometools.jira.com/svn/ROME/trunk</connection>
+        <developerConnection>scm:svn:https://rometools.jira.com/svn/ROME/trunk</developerConnection>
+        <url>https://rometools.jira.com/source/browse/ROME</url>
+    </scm>
+    <licenses>
+        <license>
+            <name>Apache 2</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+    <organization>
+        <name>ROME Project</name>
+        <url>http://www.rometools.org</url>
+    </organization>
+    <dependencies>
+        <dependency>
+            <groupId>org.jdom</groupId>
+            <artifactId>jdom</artifactId>
+            <version>1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-scm-plugin</artifactId>
+                <version>1.0</version>
+                <configuration>
+                    <goals>install</goals>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.0.2</version>
+                <configuration>
+                    <source>1.4</source>
+                    <target>1.4</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <profiles>
+        <profile>
+            <id>release</id>
+            <activation>
+                <property>
+                    <name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <distributionManagement>
+                <repository>
+                    <id>central.staging</id>
+                    <name>Nexus Release Repository</name>
+                    <url>http://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+                </repository>
+                <snapshotRepository>
+                    <id>sonatype.snapshots</id>
+                    <name>My Nexus Snapshots Repository</name>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+                </snapshotRepository>
+            </distributionManagement>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+</project>

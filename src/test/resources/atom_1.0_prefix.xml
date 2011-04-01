@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<atom:feed xmlns:atom='http://www.w3.org/2005/Atom'>
+    <atom:id>1</atom:id>
+    <atom:link rel="xxx1" type="xxx11" href="http://foo.com/1"/>
+    <atom:link atom:rel="xxx2" atom:type="xxx22" atom:href="http://foo.com/2"/>
+</atom:feed>
+

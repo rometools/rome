@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns='http://www.w3.org/2005/Atom'
+    xml:base='http://www.example.com/blog/index.atom'>
+
+    <title>Tim Bray style feed</title>
+    <subtitle>URIs must be determined from xml:base</subtitle>
+
+    <link href='./' />
+    <link rel='self' href='' />
+    
+    <id>http://www.example.com/blog</id>
+    <updated>2006-11-04T09:11:03-08:00</updated>
+    <author><name>John Doe</name></author>
+
+    <entry xml:base='2006-11-05'>
+        <link href='entry1' />
+        <title>Entry1</title>
+        <id>http://www.example.com/blog/2006-11-05/entry1</id>
+        <published>2006-11-05T12:00:00-08:00</published>
+          <updated>2006-11-06T09:09:13-08:00</updated>
+        <summary type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>Summary1</div></summary>
+        <content type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>Content1</div></content>
+    </entry>
+
+    <entry xml:base='2006-11-02'>
+        <link href='entry2' />
+        <title>Entry2</title>
+        <id>http://www.example.com/blog/2006-11-02/entry2</id>
+        <published>2006-11-01T12:00:00-08:00</published>
+          <updated>2006-11-02T09:09:12-08:00</updated>
+        <summary type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>Summary2</div></summary>
+        <content type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>Content2</div></content>
+    </entry>
+
+</feed>
