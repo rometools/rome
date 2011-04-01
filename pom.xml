@@ -13,7 +13,8 @@
         to convert from one format to another. The parsers can give you back Java objects that
         are either specific for the format you want to work with, or a generic normalized
         SyndFeed object that lets you work on with the data without bothering about the
-    underlying format. </description>
+    underlying format.
+    </description>
     <url>https://rome.dev.java.net/</url>
     <issueManagement>
         <url>https://rometools.jira.com/browse/ROME#selectedTab=com.atlassian.jira.plugin.system.project%3Aissues-panel</url>
@@ -32,11 +33,14 @@
         <mailingList>
             <name>dev@rome.dev.java.net</name>
             <subscribe>
-            https://rome.dev.java.net/servlets/ProjectMailingListList</subscribe>
+            https://rome.dev.java.net/servlets/ProjectMailingListList
+            </subscribe>
             <unsubscribe>
-            https://rome.dev.java.net/servlets/ProjectMailingListList</unsubscribe>
+            https://rome.dev.java.net/servlets/ProjectMailingListList
+            </unsubscribe>
             <archive>
-            https://rome.dev.java.net/servlets/SummarizeList?listName=dev</archive>
+            https://rome.dev.java.net/servlets/SummarizeList?listName=dev
+            </archive>
         </mailingList>
     </mailingLists>
     <developers>
@@ -76,11 +80,18 @@
         <name>ROME Project</name>
         <url>http://www.rometools.org</url>
     </organization>
+    <repositories>
+        <repository>
+            <id>rome.internal</id>
+            <name>ROME Local repository</name>
+            <url>https://rometools.jira.com/svn/ROME/repo/</url>
+        </repository>
+    </repositories>
     <dependencies>
         <dependency>
             <groupId>org.jdom</groupId>
             <artifactId>jdom</artifactId>
-            <version>1.1</version>
+            <version>1.1.1</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -139,6 +150,7 @@
                     <name>My Nexus Snapshots Repository</name>
                     <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
                 </snapshotRepository>
+
             </distributionManagement>
             <build>
                 <plugins>
