@@ -56,7 +56,8 @@ public class XmlFixerReader extends Reader {
                         hasContent = false;
                     }
                     else
-                    if (c==' ' || c=='\n') {
+                    //TODO lorenzo.sm: Pending to review. c=='\r' condition added.
+                    if (c==' ' || c=='\n' || c=='\r') {
                         loop = true;
                     }
                     else

@@ -42,6 +42,7 @@ public class ConverterForRSS092 extends ConverterForRSS091Userland {
         super(type);
     }
 
+    @Override
     protected SyndEntry createSyndEntry(Item item, boolean preserveWireItem) {
         SyndEntry syndEntry = super.createSyndEntry(item, preserveWireItem);
         List cats =  item.getCategories();
@@ -83,6 +84,7 @@ public class ConverterForRSS092 extends ConverterForRSS091Userland {
         return sEnclosures;
     }
 
+    @Override
     protected Item createRSSItem(SyndEntry sEntry) {
         Item item = super.createRSSItem(sEntry);
 

@@ -94,6 +94,7 @@ public class ConverterForRSS094 extends ConverterForRSS093 {
     }
 
 
+    @Override
     protected WireFeed createRealFeed(String type,SyndFeed syndFeed) {
         Channel channel = (Channel) super.createRealFeed(type,syndFeed);
         List cats = syndFeed.getCategories();    //c

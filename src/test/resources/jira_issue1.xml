@@ -1,275 +1,118 @@
 
-<!-- hackedString Clean--><?xml version="1.0" encoding="iso-8859-1"?><rss version="2.0">
-<channel> 
-    <title>Periodico Diario Horizonte - Noticias para Hispanos en Connecticut, Hispanic newspaper,spanish newspaper:Deportes</title> 
-    <link><![CDATA[http://www.diariohorizonte.com/]]></link> 
-    <description><![CDATA[Noticias del canal de Deportes]]></description>
-	<language>es-ES</language>
-<image>
-			<title>Periodico Diario Horizonte - Noticias para Hispanos en Connecticut, Hispanic newspaper,spanish newspaper</title>
-			<url>http://www.diariohorizonte.com/images/pleca_01.jpg</url>
-			<link>http://www.diariohorizonte.com</link>
-			<width>100</width>
-			<height>60</height>
-			</image><item> 
-      	  <title> Club Hemingway presenta campe&#243;n y subcampe&#243;n de P&#225;del
-</title> 
-          <description><![CDATA[ El Club Hemingway Starfish Resorts en Juan Dolio, SPM, inaugur&#243; ayer la primera Copa de P&#225;del, poniendo en funcionamiento cuatro canchas de este deporte con la presencia del campe&#243;n espa&#241;ol y subcampe&#243;n del mundo Bert&#237;n Osborne y Arturo Jim&#233;nez.
+<!-- hackedString Clean--><?xml version="1.0"?>
+<rss version="2.0"
+    xmlns:rometest='http://rome.dev.java.net/namespacetest'
+    xmlns:content='http://purl.org/rss/1.0/modules/content/'>
+    <channel>
+        <rometest:test>test</rometest:test>
+        <title>rss_2.0.channel.title</title>
+        <link>rss_2.0.channel.link</link>
+        <description>rss_2.0.channel.description</description>
+        <language>rss_2.0.channel.language</language>
+        <rating>rss_2.0.channel.rating</rating>
+        <copyright>rss_2.0.channel.copyright</copyright>
+        <pubDate> Mon, 01 Jan 2001 00:00:00 GMT
+        </pubDate>
+        <lastBuildDate>Mon, 01 Jan 2001 01:00:00 GMT</lastBuildDate>
+        <docs>rss_2.0.channel.docs</docs>
+        <managingEditor>rss_2.0.channel.managingEditor</managingEditor>
+        <webMaster>rss_2.0.channel.webMaster</webMaster>
+        <category domain="rss_2.0.channel.category[0]^domain">rss_2.0.channel.category[0]</category>
+        <category domain="rss_2.0.channel.category[1]^domain">rss_2.0.channel.category[1]</category>
+        <generator>rss_2.0.channel.generator</generator>
+        <ttl>100</ttl>
 
-Sorprendente fue el inicio de las confrontaciones, logrando triunfar en la ronda regular la pareja integrada por Encarna Gamis y Jos&#233; Campello,]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9545/club-hemingway-presenta-campe-243-n-y-subcampe-243-n-de]]></link> 
-  	      </item><item> 
-      	  <title> DECLARACION DE LA COMISION ELECTORAL A LA PRENSA.
-</title> 
-          <description><![CDATA[ R. DOMINICANA.-   La Comisi&#243;n Electoral de la Federaci&#243;n Dominicana de Futbol elegida el 11 de diciembre  del 2010 en la asamblea ordinaria y estatutaria  con la presencia de los delegados de la Fifa.
- 
-En reuni&#243;n celebrada este martes, a la una de la tarde en los salones deReuniones de la Federaci&#243;n Dominicana de Futbol del Centro Ol&#237;mpico JuanPablo Duarte, acord&#243; en primer lugar la]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9492/declaracion-de-la-comision-electoral-a-la-prensa]]></link> 
-  	      </item><item> 
-      	  <title> Stamford pierde de Westhill por lazos de tenis</title> 
-          <description><![CDATA[ STAMFORD, CONN.-   El torneo de Lucha Libre Ol&#237;mpica entre las escuela de secundarias de la ciudad de Stamford, Westhill and Stamford fue declarado en un empate, pero debido a que el jurado decidi&#243; utilizar la penalidad impuesta al luchador Julio S&#225;nchez de Stamford, por tener el lazo de uno de sus tenis completamente asegurado, le dieron el triunfo a Westhill.
+        <image>
+            <title>rss_2.0.channel.image.title</title>
+            <url>rss_2.0.channel.image.url</url>
+            <link>rss_2.0.channel.image.link</link>
+            <width>100</width>
+            <height>200</height>
+            <description>rss_2.0.channel.image.description</description>
+        </image>
 
-A pesar de que Julio S&#225;nchez de]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9470/stamford-pierde-de-westhill-por-lazos-de-tenis]]></link> 
-  	      </item><item> 
-      	  <title> Mutus deber&#225; pagar $23 millones por romper contrato de f&#250;tbol</title> 
-          <description><![CDATA[ Adrian Mutus, el delantero de la selecci&#243;n de f&#250;tbol de England Chelsea, podria perder tres de sus casas, tras ser multado por $23 millones de d&#243;lares.
+        <item>
+            <title>rss_2.0.channel.item[0].title</title>
+            <description>rss_2.0.channel.item[0].description</description>
+            <link>rss_2.0.channel.item[0].link</link>
+            <source url="rss_2.0.channel.item[0].source^url">rss_2.0.channel.item[0].source</source>
+            <enclosure url="rss_2.0.channel.item[0].enclousure[0]^url" length="100"
+                       type="rss_2.0.channel.item[0].enclousure[0]^type"/>
+            <enclosure url="rss_2.0.channel.item[0].enclousure[1]^url" length="100"
+                       type="rss_2.0.channel.item[0].enclousure[1]^type"/>
+            <category domain="rss_2.0.channel.item[0].category[0]^domain">rss_2.0.channel.item[0].category[0]</category>
+            <category domain="rss_2.0.channel.item[0].category[1]^domain">rss_2.0.channel.item[0].category[1]</category>
+            <pubDate>Mon, 01 Jan 2001 00:00:00 GMT</pubDate>
+            <expirationDate>Mon, 01 Jan 2001 01:00:00 GMT</expirationDate>
+            <author>rss_2.0.channel.item[0].author</author>
+            <comments>rss_2.0.channel.item[0].comments</comments>
+            <guid isPermaLink="true">rss_2.0.channel.item[0].guid</guid>
+            <rometest:test>test</rometest:test>
+            <content:encoded>rss_2.0.channel.item[0].content</content:encoded>
+        </item>
+        <item>
+            <title>rss_2.0.channel.item[1].title</title>
+            <description>rss_2.0.channel.item[1].description</description>
+            <link>rss_2.0.channel.item[1].link</link>
+            <source url="rss_2.0.channel.item[1].source^url">rss_2.0.channel.item[1].source</source>
+            <enclosure url="rss_2.0.channel.item[1].enclousure[0]^url" length="100"
+                       type="rss_2.0.channel.item[1].enclousure[0]^type"/>
+            <enclosure url="rss_2.0.channel.item[1].enclousure[1]^url" length="100"
+                       type="rss_2.0.channel.item[1].enclousure[1]^type"/>
+            <category domain="rss_2.0.channel.item[1].category[0]^domain">rss_2.0.channel.item[1].category[0]</category>
+            <category domain="rss_2.0.channel.item[1].category[1]^domain">rss_2.0.channel.item[1].category[1]</category>
+            <pubDate>Mon, 02 Jan 2001 00:00:00 GMT</pubDate>
+            <expirationDate>Mon, 01 Jan 2001 01:00:00 GMT</expirationDate>
+            <author>rss_2.0.channel.item[1].author</author>
+            <comments>rss_2.0.channel.item[1].comments</comments>
+            <guid isPermaLink="false">rss_2.0.channel.item[1].guid</guid>
+            <rometest:test>test</rometest:test>
+            <content:encoded>rss_2.0.channel.item[1].content</content:encoded>
+        </item>
 
-Mutus est&#225; casado con Consuelo Matos G&#243;mez, la hija del se&#241;or Leonardo Matos Berrido, presidente de la Liga Dominicana de Baseball. Ella fue nombrada funcionaria externa de la Rep&#250;blica Dominicana en el Vaticano.
+        <textInput>
+            <title>rss_2.0.channel.textInput.title</title>
+            <description>rss_2.0.channel.textInput.description</description>
+            <name>rss_2.0.channel.textInput.name</name>
+            <link>rss_2.0.channel.textInput.link</link>
+        </textInput>
+        <skipHours>
+            <hours>0</hours>
+            <hours>1</hours>
+            <hours>2</hours>
+            <hours>3</hours>
+            <hours>4</hours>
+            <hours>5</hours>
+            <hours>6</hours>
+            <hours>7</hours>
+            <hours>8</hours>
+            <hours>9</hours>
+            <hours>10</hours>
+            <hours>11</hours>
+            <hours>12</hours>
+            <hours>13</hours>
+            <hours>14</hours>
+            <hours>15</hours>
+            <hours>16</hours>
+            <hours>17</hours>
+            <hours>18</hours>
+            <hours>19</hours>
+            <hours>20</hours>
+            <hours>21</hours>
+            <hours>23</hours>
+        </skipHours>
+        <skipdays>
+          <day>Monday</day>
+          <day>Tuesday</day>
+          <day>Wednesday</day>
+          <day>Thursday</day>
+          <day>Friday</day>
+          <day>Saturday</day>
+          <day>Sunday</day>
+        </skipdays>
+        <cloud domain="rss_2.0.channel.cloud^domain" port="100" path="rss_2.0.channel.cloud^path"
+                registerProcedure="rss_2.0.channel.cloud^registerProcedure"
+                protocol="rss_2.0.channel.cloud^protocol"/>
 
-Mutus posee dos en Coral]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9443/mutus-deber-225-pagar-23-millones-por-romper-contrato-de]]></link> 
-  	      </item><item> 
-      	  <title> Ciro P&#233;rez empata serie final torneo de basket Superior de SC
-</title> 
-          <description><![CDATA[ 
-SAN CRISTOBAL.- Ciro P&#233;rez obtuvo una victoria convincente sobre Los Buitres 79-71 para empatar la serie final del XXII Torneo de Baloncesto Superior de esta provincia, dedicado Inmemoriam al mayor Edgar Encarnaci&#243;n Mateo.
-
-La primera mitad finaliz&#243; 37-36 a favor de Ciro P&#233;rez. Los parciales terminaron 23-23, 14-.13,17-17 y 25-18.
-
-Los mejores anotadores por Ciro P&#233;rez los estelares Eddy]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9344/ciro-p-233-rez-empata-serie-final-torneo-de-basket-superior-de]]></link> 
-  	      </item><item> 
-      	  <title> Águilas rechazan protesta de los Leones</title> 
-          <description><![CDATA[ El Consejo Directivo de Las Águilas Cibae&#241;as aclara a su fiel y numerosa fanaticada y a la opini&#243;n p&#250;blica...
-
-que ha estado dando fiel seguimiento a todo cuanto ha acontecido posteriormente a la victoria obtenida en el terreno de juego, el pasado d&#237;a 7 de diciembre en el Estadio Quisqueya, de Santo Domingo.
-
-Este partido concluy&#243; 3 por 2 carreras a favor de las Águilas sobre los Leones del]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9298/aguilas-rechazan-protesta-de-los-leones]]></link> 
-  	      </item><item> 
-      	  <title> 116-91. Udrih ayud&#243; a los Kings a romper una racha perdedora
-</title> 
-          <description><![CDATA[  El base esloveno Beno Udrih lider&#243; el ataque con 23 puntos y llev&#243; a los Kings de Sacramento a conseguir el triunfo por 116-91 sobre los Wizards de Washington para romper una racha de ocho derrotas consecutivas.
-
-En duelo de equipos con marca perdedora, los Kings se pusieron con 5-15, guiados por Udrih, que jug&#243; 26 minutos y encest&#243; 6 de 9 tiros de campo, incluidos 3 de 4 triples y 8 de 10]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9247/116-91-udrih-ayud-243-a-los-kings-a-romper-una-racha]]></link> 
-  	      </item><item> 
-      	  <title> Independiente, el quinto clasificado de Argentina a la Copa Libertadores 2011
-</title> 
-          <description><![CDATA[  El Independiente participar&#225; en 2011 en la Copa Libertadores de Am&#233;rica tras ganar el mi&#233;rcoles la Copa Sudamericana en la final con el brasile&#241;o Goi&#225;s, y es el quinto equipo de Argentina clasificado para el torneo m&#225;s importante del continente.
-
-Tambi&#233;n se han asegurado plazas en esa competici&#243;n Argentinos Juniors (campe&#243;n del Clausura 2010), Estudiantes, Godoy Cruz y V&#233;lez Sarsfield.
-
-El]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9246/independiente-el-quinto-clasificado-de-argentina-a-la-copa]]></link> 
-  	      </item><item> 
-      	  <title> Ciro P&#233;rez gana en el inicio serie final torneo basket superior de SC
-</title> 
-          <description><![CDATA[ SAN CRISTOBAL.- El quinteto del club Ciro P&#233;rez derrot&#243; a Los Buitres con pizarra 83-61 en el inicio del XXII Torneo de Baloncesto Superior de esta provincia, dedicado In Memorian al mayor Edgar Encarnaci&#243;n Mateo. La primera mitad fue ganada por Ciro P&#233;rez 43-34. Los parciales terminaron 20-22, 14-21, 19-15 y 8-26.
-
-Fue un partido f&#225;cil para los m&#225;ximos ganadores del basket local, ante un]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9236/ciro-p-233-rez-gana-en-el-inicio-serie-final-torneo-basket]]></link> 
-  	      </item><item> 
-      	  <title> El dominicano Pe&#241;a se va con los Cachorros por un a&#241;o y 10 millones de d&#243;lares
-</title> 
-          <description><![CDATA[  Como se esperaba, el primera base dominicano Carlos Pe&#241;a se decidi&#243; por la oferta que ten&#237;a de los Cachorros de Chicago y llegaron a un acuerdo para firmar un contrato por una temporada y 10 millones de d&#243;lares. Pe&#241;a jug&#243; los cuatro &#250;ltimos a&#241;os con los Rays de Tampa Bay y la pasada temporada no fue la mejor al quedarse con un promedio de bateo de .196, 28 jonrones y 84 carreras]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9224/el-dominicano-pe-241-a-se-va-con-los-cachorros-por-un-a-241-o]]></link> 
-  	      </item><item> 
-      	  <title> Los Dodgers llegan a acuerdos con Padilla y Gwyn Jr.
-</title> 
-          <description><![CDATA[  Los Dodgers de los Ángeles llegaron a un acuerdo para firmar contrato al abridor nicaragüense Vicente Padilla, y en una jornada de gran actividad para el equipo tambi&#233;n acordaron con Tony Gwyn Jr.
-
-En el marco de las reuniones de invierno de las Grandes Ligas, el gerente general de los Dodgers, Ned Colleti, no quiso abundar sobre los acuerdos a que lleg&#243; esta tarde, pero varias fuentes cercanas]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9220/los-dodgers-llegan-a-acuerdos-con-padilla-y-gwyn-jr]]></link> 
-  	      </item><item> 
-      	  <title> Col&#243;n y Luna lideran Águilas al triunfo 3-2 sobre los Leones
-</title> 
-          <description><![CDATA[  Bartolo Col&#243;n volvi&#243; a lanzar un buen partido por cuarta apertura consecutiva y el parador en corto Omar Luna conect&#243; un cuadrangular de dos carreras y las Águilas Cibae&#241;as doblegaron 3-2 a los Leones del Escogido en el estadio Quisqueya de la capital dominicana.
-
-Col&#243;n (3-0) se mantuvo en el mont&#237;culo durante cinco y dos tercios de entradas en las que concedi&#243; dos carreras, una de ellas]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9209/col-243-n-y-luna-lideran-aguilas-al-triunfo-3-2-sobre-los]]></link> 
-  	      </item><item> 
-      	  <title> El Atl&#233;tico Nacional destituye al entrenador y prepara poda de extranjeros
-</title> 
-          <description><![CDATA[ - El primer campe&#243;n colombiano de una Copa Libertadores, Atl&#233;tico Nacional, destituy&#243; hoy al entrenador Jos&#233; Fernando Santa y prepara una poda de jugadores, entre ellos los argentinos Ezequiel Maggiolo y Marcos Mondaini, as&#237; como el uruguayo Dami&#225;n Sant&#237;n.
-
-El equipo verde y blanco de la ciudad de Medell&#237;n fue el primer eliminado de los Cuadrangulares Semifinales del Torneo Finalizaci&#243;n]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9208/el-atl-233-tico-nacional-destituye-al-entrenador-y-prepara-poda]]></link> 
-  	      </item><item> 
-      	  <title> Ciro P&#233;rez y Buitres inician este mi&#233;rcoles serie final basket superior de SC
-</title> 
-          <description><![CDATA[ SAN CRISTOBAL.- Los quintetos de los clubes Ciro P&#233;rez y Loa Buitres inician este mi&#233;rcoles la serie final del XXII Torneo de Baloncesto Superior de esta provincia, dedicado In Memorian al mayor Edgar Encarnaci&#243;n Mateo.
- 
-La serie est&#225; pautada para comenzar a las 8:30 de la noche en el polideportivo techado de esta ciudad. Estar&#225; precedida de una ceremonia de apertura en donde se rendir&#225;]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9203/ciro-p-233-rez-y-buitres-inician-este-mi-233-rcoles-serie]]></link> 
-  	      </item><item> 
-      	  <title> Choque de estrellas en un partido entre Rep&#250;blica Dominicana y Puerto Rico
-</title> 
-          <description><![CDATA[  Un reconocido grupo de peloteros de la Rep&#250;blica Dominicana, que gan&#243; el pasado Torneo Premundial de B&#233;isbol, representar&#225; a su pa&#237;s en el Partido Interligas contra la selecci&#243;n de Puerto Rico el pr&#243;ximo 12 de diciembre en Mayagüez (oeste), informaron hoy los organizadores.
-
-El inicialista Willy Ot&#225;&#241;ez, el jardinero Jos&#233; Constanza y el veterano receptor Alberto Castillo encabezan a los]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9198/choque-de-estrellas-en-un-partido-entre-rep-250-blica]]></link> 
-  	      </item><item> 
-      	  <title> La NBA rescata a los Hornets para que no pierdan valor ni cambien de sede
-</title> 
-          <description><![CDATA[  Los Hornets de Nueva Orleans, que tuvieron un comienzo de Liga brillante con marca de 8-0, han comenzado a perder fuerza en el campo y fuera se encuentran en graves problemas econ&#243;micos que obligaron a la NBA a tener que comprarlos para que no perdieran valor y tampoco el resto de la liga.
-El comisionado de la NBA, David Stern, fue categ&#243;rico cuando dijo que la decisi&#243;n no hab&#237;a sido nada f&#225;cil,]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9182/la-nba-rescata-a-los-hornets-para-que-no-pierdan-valor-ni]]></link> 
-  	      </item><item> 
-      	  <title> S&#243;lo Messi puede privar a Espa&#241;a del Bal&#243;n de Oro que buscan Iniesta y Xavi
-</title> 
-          <description><![CDATA[ El argentino Lionel Messi es el &#250;nico jugador capaz de privar a Espa&#241;a del segundo Bal&#243;n de Oro de su historia, una distinci&#243;n que el delantero del Barcelona persigue junto a sus compa&#241;eros de equipo Xavi Hern&#225;ndez y Andr&#233;s Iniesta.
-
-Los tres fueron designados hoy como finalistas de un premio que, por primera vez en la historia, se otorgar&#225; de forma conjunta con el de mejor jugador de la]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9158/s-243-lo-messi-puede-privar-a-espa-241-a-del-bal-243-n-de-oro]]></link> 
-  	      </item><item> 
-      	  <title> Muerte entrenador boxeo Pastor Ralph consterna comunidad deportiva internacional
-</title> 
-          <description><![CDATA[ 
-NUEVA YORK.- La comunidad deportiva internacional est&#225; consternada con la muerte tr&#225;gica del entrenador de boxeo Pastor Ralph, ocurrida este domingo en esta ciudad.
-
-Pastor Ralph era el entrenador del destacado boxeador san cristobalense Yovanny Lorenzo, quien se encuentra en esta ciudad y ha mostrado su pesar por su deceso.
-
-Lorenzo, un peleador de grandes dotes internacionales, dijo que el]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9147/muerte-entrenador-boxeo-pastor-ralph-consterna-comunidad]]></link> 
-  	      </item><item> 
-      	  <title> Medias Rojas dan otro giro en negociaciones con Gonz&#225;lez
-</title> 
-          <description><![CDATA[  Las negociaciones entre los Medias Rojas de Boston y el primera base mexicano Adri&#225;n Gonz&#225;lez han vuelto a reanudarse y al parecer esta vez de manera definitiva.
-
-S&#243;lo unas horas despu&#233;s de que el representante de Gonz&#225;lez hab&#237;a declarado que se paralizaron las negociaciones al no poderse concretar ning&#250;n acuerdo, se supo a trav&#233;s de fuentes cercanas al equipo que el acuerdo est&#225; pr&#225;cticamente]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9146/medias-rojas-dan-otro-giro-en-negociaciones-con-gonz-225-lez]]></link> 
-  	      </item><item> 
-      	  <title> Los Leones se afirman en la clasificaci&#243;n tras vencer a Caribes
-</title> 
-          <description><![CDATA[ CARACAS.- Un rally de seis anotaciones en el noveno tramo, fue decisivo para los Leones del Caracas, que super&#243; hoy a Cardenales de Lara por 8-2, para quedar en la zona de clasificaci&#243;n en el b&#233;isbol profesional de Venezuela.
-Los crepusculares rompieron la paridad en la parte baja del tercer tramo, y tras tres entradas de blanqueo de Ronald Uviedo, un error de Jackson Meli&#225;n en la derecha al]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9128/los-leones-se-afirman-en-la-clasificaci-243-n-tras-vencer-a]]></link> 
-  	      </item><item> 
-      	  <title> Estrellas, Gigantes y Toros ganan en el b&#233;isbol dominicano
-</title> 
-          <description><![CDATA[ Los conjuntos Toros del Este, Estrellas de Oriente y Gigantes del Cibao ganaron hoy sus respectivos compromisos en el campeonato de b&#233;isbol profesional de la Rep&#250;blica Dominicana.Los Gigantes le ganaron 7-3 a los Leones del Escogido en el estadio Juli&#225;n Javier de la nordestana ciudad de San Francisco de Macor&#237;s, lo que le vali&#243; para empatar en el cuarto lugar de la tabla con las Águilas Cibae&#241;as,]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9127/estrellas-gigantes-y-toros-ganan-en-el-b-233-isbol]]></link> 
-  	      </item><item> 
-      	  <title> Berkman llega a un acuerdo con los Cardenales
-</title> 
-          <description><![CDATA[  Los Cardenales de San Luis y el agente libre Lance Berkman llegaron a un acuerdo para firmar un contrato de una temporada y ocho millones de d&#243;lares.
-
-El primera base, de 34 a&#241;os de edad, nombrado en cinco ocasiones para el Juego de las Estrellas por la Liga Nacional jugando para los Astros de Houston, el a&#241;o pasado bate&#243; para promedio de .248 con el equipo tejano y los Yanquis de Nueva York, y]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9126/berkman-llega-a-un-acuerdo-con-los-cardenales]]></link> 
-  	      </item><item> 
-      	  <title> Los Eagles se quejan de que su mariscal Vick recibe muchos golpes
-</title> 
-          <description><![CDATA[ - Los Eagles de Philadelphia dieron a conocer su postura respecto a lo que ellos consideran una exagerada cantidad de golpes que est&#225; recibiendo su mariscal de campo Michael Vick y calificaron esas acciones como ilegales.
-Mientras que de acuerdo con el diario Philadelphia Daily News, la liga est&#225; tomando acciones por la preocupaci&#243;n de los Eagles.
-
-Al parecer, parad&#243;jicamente el problema para]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9123/los-eagles-se-quejan-de-que-su-mariscal-vick-recibe-muchos]]></link> 
-  	      </item><item> 
-      	  <title> Jeter y los Yankees llegan a un acuerdo para firmar contrato
-</title> 
-          <description><![CDATA[  El parador en corto Derek Jeter y los Yankees de Nueva York llegaron hoy a un nuevo acuerdo para firmar contrato.
-Dos fuentes cercana a las negociaciones dieron a conocer que ambas partes llegaron a un acuerdo.
-
-Indicaron que tanto los Yankees como el capit&#225;n de ese equipo esperaban concluir los pormenores del contrato que podr&#237;a llegar a los 17 millones de d&#243;lares por a&#241;o durante tres]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9122/jeter-y-los-yankees-llegan-a-un-acuerdo-para-firmar-contrato]]></link> 
-  	      </item><item> 
-      	  <title> Los Toros siguen firmes en la cima de la pelota dominicana
-</title> 
-          <description><![CDATA[  El conjunto de los Toros del Este se mantiene firme en la cima del campeonato de b&#233;isbol profesional dominicano, tras su victoria el viernes ante los sotaneros Tigres de Licey.  En esta jornada tambi&#233;n vencieron los Leones del Escogido ante las Águilas Cibae&#241;as, mientras que las Estrellas de Oriente y los Gigantes del Cibao dividieron honores en una cartelera doble.
-
-Los Toros ganaron 5-3 su]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9117/los-toros-siguen-firmes-en-la-cima-de-la-pelota-dominicana]]></link> 
-  	      </item><item> 
-      	  <title> Los Navegantes del Magallanes nuevo l&#237;der al caer las Águilas en Venezuela
-</title> 
-          <description><![CDATA[ - Los Navegantes del Magallanes, con dos tramos de mucha producci&#243;n, vencieron hoy a los Bravos de Margarita por 7-5, para asumir el primer lugar del b&#233;isbol profesional venezolano, tras la derrota de las Águilas ante Tigres.
-Los insulares fueron los primeros en inaugurar el marcador en la parte alta del tercer cap&#237;tulo gracias a tr&#237;o de imparables corridos de C&#233;sar Hern&#225;ndez, Francisco Leandro y]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9116/los-navegantes-del-magallanes-nuevo-l-237-der-al-caer-las]]></link> 
-  	      </item><item> 
-      	  <title> 104-92. Garnett y Rondo dieron a los Celtics el sexto triunfo consecutivo
-</title> 
-          <description><![CDATA[  La marcha triunfal de los Celtics de Boston se mantuvo una jornada mas despu&#233;s de ganar por 104-92 a los Bulls de Chicago en duelo de equipos l&#237;deres de la Conferencia Este.
-El alero Kevin Garnett aport&#243; un doble-doble de 20 puntos con 17 rebotes, su mejor marca en ese apartado en lo que va de temporada, para liderar al ataque de los Celtics, que lograron el sexto triunfo consecutivo.
-
-El base]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9114/104-92-garnett-y-rondo-dieron-a-los-celtics-el-sexto-triunfo]]></link> 
-  	      </item><item> 
-      	  <title> 92-100. Stoudemire mantuvo ganadores a los Knicks
-</title> 
-          <description><![CDATA[  El ala-p&#237;vot Amare Stoudemire aport&#243; 34 puntos con 10 rebotes para guiar a los Knicks de Nueva York a un triunfo por 92-100 ante los Hornets de Nueva Orleans.
-
-Los Knicks (11-9) tuvieron que hacer un viaje al "New Orleans Arena", de los Hornets, para conseguir su tercer triunfo consecutivo, despu&#233;s de haber roto otra racha de cinco victorias seguidos.
-
-El base Raymond Felton sigue creciendo]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9113/92-100-stoudemire-mantuvo-ganadores-a-los-knicks]]></link> 
-  	      </item><item> 
-      	  <title> 113-80. Los Lakers cortan la racha de derrotas y arrollan a los Kings
-</title> 
-          <description><![CDATA[  Los Ángeles Lakers frenaron en seco una racha de cuatro derrotas consecutivas, la peor desde que Pau Gasol lleg&#243; al equipo en 2008, y consiguieron una sencilla victoria (113-80) frente a los Sacramento Kings, un rival d&#233;bil y sin entidad al que despacharon con una facilidad insultante.
-Kobe Bryant fue el m&#225;ximo anotador del partido con 22 puntos, mientras que Gasol a&#241;adi&#243; 16 tantos, cinco]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9112/113-80-los-lakers-cortan-la-racha-de-derrotas-y-arrollan-a-los]]></link> 
-  	      </item><item> 
-      	  <title> Cinco clubes colombianos de f&#250;tbol investigados por v&#237;nculos por narcotr&#225;fico
-</title> 
-          <description><![CDATA[ BOGOTA.- Al menos cinco clubes colombianos de f&#250;tbol son investigados por presuntos v&#237;nculos con el narcotr&#225;fico y lavado de activos, inform&#243; hoy el director de la Polic&#237;a Nacional, el general Óscar Naranjo."No solamente est&#225; en marcha la investigaci&#243;n" contra el club bogotano Independiente Santa Fe, sino que "hay otras cuatro m&#225;s en marcha en todo el pa&#237;s", explic&#243; Naranjo en declaraciones a]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9092/cinco-clubes-colombianos-de-f-250-tbol-investigados-por]]></link> 
-  	      </item><item> 
-      	  <title> James gan&#243; a los Cavaliers y reivindic&#243; su marcha como un acierto
-</title> 
-          <description><![CDATA[ HOUSTON.-  Si quedaba alguna duda de que la salida de LeBron James de los Cavaliers de Cleveland hab&#237;a sido todo un acierto deportivo por su parte, la manera en que jug&#243; al frente de los Heat de Miami y descubri&#243; las "debilidades" de su ex equipo le sirvieron para quedar reivindicado por completo.Al margen de toda la animadversi&#243;n, con insultos y ofensas escritas y verbales que los seguidores de]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9070/james-gan-243-a-los-cavaliers-y-reivindic-243-su-marcha-como]]></link> 
-  	      </item><item> 
-      	  <title> 101-107. Richardson, Hill y Nash fueron la combinaci&#243;n ganadora
-</title> 
-          <description><![CDATA[  Un nuevo duelo de equipos ofensivos por excelencia dej&#243; a los Suns de Phoenix como ganadores por 101-107 ante los Warriors de Golden State, que perdieron el noveno partido en los &#250;ltimos 10 que han disputado.
-
-Esta vez fue el escolta Jason Richardson, ex jugador de los Warriors, quien con 25 puntos lider&#243; el ataque de los Suns, que tambi&#233;n tuvieron el apoyo del veterano alero Grant Hill al]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9066/101-107-richardson-hill-y-nash-fueron-la-combinaci-243-n]]></link> 
-  	      </item><item> 
-      	  <title> "King" James hizo historia y silenci&#243; a los cr&#237;ticos en regreso a Cleveland
-</title> 
-          <description><![CDATA[ Un sinf&#237;n de emociones fue lo que le toc&#243; vivir al alero LeBron James en su primera visita a Cleveland para enfrentarse a su ex equipo, los Cavaliers, aunque finalmente consegui&#243; una nueva marca y silenci&#243; por completo a sus cr&#237;ticos.
-
-James jug&#243; los primeros siete a&#241;os de su carrera profesional con los Cavaliers y consigui&#243; entre otras cosas dos premios de Jugador M&#225;s Valioso (MVP) de la]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9065/king-james-hizo-historia-y-silenci-243-a-los-cr-237-ticos]]></link> 
-  	      </item><item> 
-      	  <title> Tiger Woods a punto de recuperar primer lugar mundialmente</title> 
-          <description><![CDATA[  El estadounidense Tiger Woods comenz&#243; hoy a dar los primeros pasos para recuperar el cetro mundial de golf, actualmente en posesi&#243;n del ingl&#233;s Lee Westwood, al situarse como l&#237;der en el Chevorn World Challenge tras la primera ronda.
-
-Este torneo californiano, que se disputa en el Sherwood Country Club de Thousand Oaks, pese a no estar integrado oficialmente en el PGA Tour, s&#237; reparte puntos]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9051/tiger-woods-a-punto-de-recuperar-primer-lugar-mundialmente]]></link> 
-  	      </item><item> 
-      	  <title> Ram&#237;rez sale del contrato para obtener un mejor sueldo con Medias Blancas
-</title> 
-          <description><![CDATA[ El parador en corto cubano Alexei Ram&#237;rez decidi&#243; renunciar a su contrato de 1,1 mill&#243;n de d&#243;lares, pero continuar&#225; perteneciendo a los Medias Blancas de Chicago.
-
-Ram&#237;rez, quien se convirti&#243; en uno de los campocortos m&#225;s completos de la Liga Americana, continuar&#225; con los Medias Blancas hasta que concluya la temporada del 2013.
-
-El movimiento del cubano lo esperaba el equipo, ya que de esa]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9041/ram-237-rez-sale-del-contrato-para-obtener-un-mejor-sueldo-con]]></link> 
-  	      </item><item> 
-      	  <title> LeBron James regresa a Cleveland con problemas en el avi&#243;n de los Heat
-</title> 
-          <description><![CDATA[ Houston (EE.UU.), 2 dic (EFE).- El alero LeBron James, quiz&#225; como premonici&#243;n al ambiente que se pueda encontrar cuando esta noche salte de nuevo al "Quickens Loans Arena" para medirse a su ex equipo, Cleveland Cavaliers, sufri&#243; problemas en el vuelo, ya que el avi&#243;n en que viajaron los Heat de Miami tuvo fallos en un ala.El equipo de Miami viaj&#243; la pasada madrugada nada m&#225;s concluir el partido]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9035/lebron-james-regresa-a-cleveland-con-problemas-en-el-avi-243-n]]></link> 
-  	      </item><item> 
-      	  <title> Agüero jura la Constituci&#243;n Espa&#241;ola y obtiene la doble nacionalidad
-</title> 
-          <description><![CDATA[  El argentino Sergio Kun Agüero, delantero del Atl&#233;tico de Madrid, jur&#243; hoy la Constituci&#243;n Espa&#241;ola y obtuvo la doble nacionalidad, por lo que deja de ocupar plaza de extracomunitario en la plantilla del equipo rojiblanco, seg&#250;n inform&#243; el club.
-
-Este hecho pone fin a un largo proceso iniciado en 2008, cuando comenzaron los tr&#225;mites burocr&#225;ticos para obtener la doble nacionalidad tras haber]]></description> 
-      	  <link><![CDATA[http://diariohorizonte.com/noticia/9071/aguero-jura-la-constituci-243-n-espa-241-ola-y-obtiene-la]]></link> 
-  	      </item></channel>
-	</rss>
+    </channel>
+</rss>

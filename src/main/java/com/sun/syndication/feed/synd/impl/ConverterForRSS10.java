@@ -40,6 +40,7 @@ public class ConverterForRSS10 extends ConverterForRSS090 {
         super(type);
     }
 
+    @Override
     public void copyInto(WireFeed feed,SyndFeed syndFeed) {
         Channel channel = (Channel) feed;
         super.copyInto(channel,syndFeed);
@@ -55,6 +56,7 @@ public class ConverterForRSS10 extends ConverterForRSS090 {
     // rss.content -> synd.content
     // rss.description -> synd.description
     
+    @Override
     protected SyndEntry createSyndEntry(Item item, boolean preserveWireItem) {
         SyndEntry syndEntry = super.createSyndEntry(item, preserveWireItem);
 
@@ -78,6 +80,7 @@ public class ConverterForRSS10 extends ConverterForRSS090 {
         return syndEntry;
     }
 
+    @Override
     protected WireFeed createRealFeed(String type,SyndFeed syndFeed) {
         Channel channel = (Channel) super.createRealFeed(type,syndFeed);        
         if (syndFeed.getUri() != null) {
@@ -94,6 +97,7 @@ public class ConverterForRSS10 extends ConverterForRSS090 {
     // synd.content -> rss.content
     // synd.description -> rss.description
     
+    @Override
     protected Item createRSSItem(SyndEntry sEntry) {
         Item item = super.createRSSItem(sEntry);
 

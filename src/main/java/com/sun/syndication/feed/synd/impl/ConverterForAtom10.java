@@ -358,7 +358,7 @@ public class ConverterForAtom10 implements Converter {
             }
         }
         // no alternate link? then use THE link if there is one
-        if (alternateLinks.size() == 0 && syndFeed.getLink() != null) {
+        if (alternateLinks.isEmpty() && syndFeed.getLink() != null) {
             Link link = new Link();
             link.setRel("alternate");
             link.setHref(syndFeed.getLink());
@@ -485,7 +485,7 @@ public class ConverterForAtom10 implements Converter {
             }
         }
         // no alternate link? then use THE link if there is one
-        if (alternateLinks.size() == 0 && sEntry.getLink() != null) {
+        if (alternateLinks.isEmpty() && sEntry.getLink() != null) {
             Link link = new Link();
             link.setRel("alternate");
             link.setHref(sEntry.getLink());

@@ -33,6 +33,7 @@ public class ConverterForRSS093 extends ConverterForRSS092 {
         super(type);
     }
 
+    @Override
     protected SyndEntry createSyndEntry(Item item, boolean preserveWireItem) {
         SyndEntry syndEntry = super.createSyndEntry(item, preserveWireItem);
         Date pubDate = item.getPubDate();
@@ -42,6 +43,7 @@ public class ConverterForRSS093 extends ConverterForRSS092 {
         return syndEntry;
     }
 
+    @Override
     protected Item createRSSItem(SyndEntry sEntry) {
         Item item = super.createRSSItem(sEntry);
         item.setPubDate(sEntry.getPublishedDate());        //c
