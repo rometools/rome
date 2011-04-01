@@ -1,0 +1,58 @@
+
+ROME Propono Subproject
+
+
+ROME Propono 0.6, September 30, 2007
+------------------------------------
+
+* Updated for APP final (draft #17) w/new APP URI "http://www.w3.org/2007/app"
+
+* Tested file-based server against Tim Bray's Ape (from CVS September 30, 2007) 
+  with some warning and one error that is apparently due to a bug in Ape.
+
+* Now includes pre-release of ROME 0.9.1 with key Atom parse fixes.
+
+* Changed arguements in Atom server's AtomHandler interface to accept 
+  AtomRequest objects instead of String[] pathinfo arrays.
+
+* Added support for relative URIs in the Service Document 
+  - Fixes https://rome.dev.java.net/issues/show_bug.cgi?id=67
+  - Added Collection.getHrefResolved()
+  - Added Categories.getHrefResolved()
+
+* Added new options to the file-based server's propono.properties file so you
+  can turn on/off relative URIs and inline categories.
+    propono.atomserver.filebased.relativeURIs=true
+    propono.atomserver.filebased.inlineCategories=true
+
+* Added support for out-of-line categories in Atom client classes
+  - Added new Categories.href property
+  - New ClientCategories classes can fetch remote categories from href URI
+  - Fixes https://rome.dev.java.net/issues/show_bug.cgi?id=68
+
+* Added support for out-of-line categories in Atom server classes
+  - New AtomHandler.getCategoriesDocument(String[] pathInfo) method
+  - New AtomHandler.isCategoriesDocumentURI(String[] pathInfo) method
+
+* Renamed Introspection to Service Document
+  - AtomHandler.isIntrospectionURI() -> AtomHandler.isSerivceDocumentURI()
+  - AtomHandler.getIntrospection() -> AtomHandler.getServiceDocument()
+  - Added String[] pathInfo argument to getServiceDocument()
+
+* Renamed PubControlModule to AppModule becuase it also supports app:edited
+  - Added rome.properties file to configure AppModule
+
+
+ROME Propono 0.5, April 23, 2007
+--------------------------------
+
+* Fixes in Blog Client constructors
+* AtomServlet uses application/atomsvc+xml for the Service Document
+* Fixed issue #66: don't expect entry to be returned from update
+* Made example builds more configurable
+
+
+ROME Propono 0.4, April 10, 2007
+--------------------------------
+
+* Initial release

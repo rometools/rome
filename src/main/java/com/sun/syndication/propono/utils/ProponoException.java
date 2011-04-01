@@ -1,0 +1,153 @@
+/*   
+ * Copyright 2007 Sun Microsystems, Inc.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */ 
+package com.sun.syndication.propono.utils;
+
+import java.io.PrintStream;
+import java.io.PrintWriter;
+
+
+/**
+ * Base Propono exception class.
+ */
+public class ProponoException extends Exception {
+    
+    private Throwable mRootCause = null;
+    private String longMessage = null;
+    
+    
+    /**
+     * Construct emtpy exception object.
+     */
+    public ProponoException() {
+        super();
+    }
+    
+    
+    /**
+     * Construct ProponoException with message string.
+     * @param s Error message string.
+     */
+    public ProponoException(String s) {
+        super(s);
+    }
+    
+    /**
+     * Construct ProponoException with message string.
+     * @param s Error message string.
+     */
+    public ProponoException(String s, String longMessage) {
+        super(s);
+        this.longMessage = longMessage;
+    }
+    
+    
+    /**
+     * Construct ProponoException, wrapping existing throwable.
+     * @param s Error message
+     * @param t Existing connection to wrap.
+     */
+    public ProponoException(String s, Throwable t) {
+        super(s);
+        mRootCause = t;
+    }
+    
+    /**
+     * Construct ProponoException, wrapping existing throwable.
+     * @param s Error message
+     * @param t Existing connection to wrap.
+     */
+    public ProponoException(String s, String longMessge, Throwable t) {
+        super(s);
+        mRootCause = t;
+        this.longMessage = longMessage;
+    }
+    
+    
+    /**
+     * Construct ProponoException, wrapping existing throwable.
+     * @param t Existing exception to be wrapped.
+     */
+    public ProponoException(Throwable t) {
+        mRootCause = t;
+    }
+    
+    
+    /**
+     * Get root cause object, or null if none.
+     * @return Root cause or null if none.
+     */
+    public Throwable getRootCause() {
+        return mRootCause;
+    }
+    
+    
+    /**
+     * Get root cause message.
+     * @return Root cause message.
+     */
+    public String getRootCauseMessage() {
+        String rcmessage = null;
+        if (getRootCause()!=null) {
+            if (getRootCause().getCause()!=null) {
+                rcmessage = getRootCause().getCause().getMessage();
+            }
+            rcmessage = (rcmessage == null) ? getRootCause().getMessage() : rcmessage;
+            rcmessage = (rcmessage == null) ? super.getMessage() : rcmessage;
+            rcmessage = (rcmessage == null) ? "NONE" : rcmessage;
+        }
+        return rcmessage;
+    }
+    
+    
+    /**
+     * Print stack trace for exception and for root cause exception if htere is one.
+     * @see java.lang.Throwable#printStackTrace()
+     */
+    public void printStackTrace() {
+        super.printStackTrace();
+        if (mRootCause != null) {
+            System.out.println("--- ROOT CAUSE ---");
+            mRootCause.printStackTrace();
+        }
+    }
+    
+    
+    /**
+     * Print stack trace for exception and for root cause exception if htere is one.
+     * @param s Stream to print to.
+     */
+    public void printStackTrace(PrintStream s) {
+        super.printStackTrace(s);
+        if (mRootCause != null) {
+            s.println("--- ROOT CAUSE ---");
+            mRootCause.printStackTrace(s);
+        }
+    }
+    
+    
+    /**
+     * Print stack trace for exception and for root cause exception if htere is one.
+     * @param s Writer to write to.
+     */
+    public void printStackTrace(PrintWriter s) {
+        super.printStackTrace(s);
+        if (null != mRootCause) {
+            s.println("--- ROOT CAUSE ---");
+            mRootCause.printStackTrace(s);
+        }
+    }
+    
+}
