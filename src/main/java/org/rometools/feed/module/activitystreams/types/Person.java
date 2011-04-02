@@ -45,7 +45,7 @@ import com.sun.syndication.feed.atom.Link;
  *</dl></blockquote>
  @author robert.cooper
  */
-public class Person extends AbstractObject  {
+public class Person extends ActivityObject  {
 
     @Override
     public String getTypeIRI() {

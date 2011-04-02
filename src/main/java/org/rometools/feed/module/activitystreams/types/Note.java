@@ -49,7 +49,7 @@ package org.rometools.feed.module.activitystreams.types;
  *</dl></blockquote>
  * @author robert.cooper
  */
-public class Note extends AbstractObject {
+public class Note extends ActivityObject {
 
     @Override
     public String getTypeIRI() {

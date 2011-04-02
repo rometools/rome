@@ -23,7 +23,7 @@ import com.sun.syndication.feed.atom.Entry;
  *
  * @author robert.cooper
  */
-public abstract class AbstractObject extends Entry {
+public abstract class ActivityObject extends Entry {
     
     
     public abstract String getTypeIRI();

@@ -17,10 +17,19 @@
 
 package org.rometools.feed.module.activitystreams;
 
+import org.rometools.feed.module.activitystreams.types.ActivityObject;
+import org.rometools.feed.module.activitystreams.types.Verb;
+
 /**
  *
  * @author robert.cooper
  */
 public interface ActivityStreamModule {
+
+    public Verb getVerb();
+    public void setVerb(Verb verb);
+
+    public ActivityObject getObject();
+    public void setObject(ActivityObject object);
 
 }

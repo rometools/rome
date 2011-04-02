@@ -77,7 +77,7 @@ import com.sun.syndication.feed.atom.Link;
  *</dl></blockquote>
  * @author robert.cooper
  */
-public class Bookmark extends AbstractObject {
+public class Bookmark extends ActivityObject {
 
     @Override
     public String getTypeIRI() {

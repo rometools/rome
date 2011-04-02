@@ -47,7 +47,7 @@ package org.rometools.feed.module.activitystreams.types;
  *</dl></blockquote>
  * @author robert.cooper
  */
-public class File extends AbstractObject {
+public class File extends ActivityObject {
 
     @Override
     public String getTypeIRI() {

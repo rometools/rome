@@ -45,7 +45,7 @@ package org.rometools.feed.module.activitystreams.types;
  *</dl></blockquote>
  * @author robert.cooper
  */
-public class Article extends AbstractObject {
+public class Article extends ActivityObject {
     @Override
     public String getTypeIRI() {
         return "http://activitystrea.ms/schema/1.0/article";

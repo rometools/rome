@@ -42,7 +42,7 @@ package org.rometools.feed.module.activitystreams.types;
  *</dl>
  * @author robert.cooper
  */
-public class Audio extends AbstractObject {
+public class Audio extends ActivityObject {
 
     @Override
     public String getTypeIRI() {

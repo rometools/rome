@@ -28,7 +28,7 @@ package org.rometools.feed.module.activitystreams.types;
  
  * @author robert.cooper
  */
-public class List extends AbstractObject
+public class List extends ActivityObject
 {
 
     @Override
