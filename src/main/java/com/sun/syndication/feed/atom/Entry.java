@@ -250,8 +250,8 @@ public class Entry implements Cloneable, Serializable, Extendable {
         boolean mediaEntry = false;
         List links = getOtherLinks();
 
-        for (Iterator it = links.iterator(); it.hasNext();) {
-            Link link = (Link) it.next();
+        for (Iterator<Link> it = links.iterator(); it.hasNext();) {
+            Link link = it.next();
 
             if ("edit-media".equals(link.getRel())) {
                 mediaEntry = true;
@@ -559,5 +559,15 @@ public class Entry implements Cloneable, Serializable, Extendable {
     @Override
     public String toString() {
         return _objBean.toString();
+    }
+
+
+    public Link findRelatedLink(String relation){
+        for(Link l : this._otherLinks){
+            if(relation.equals(l.getRel())){
+                return l;
+            }
+        }
+        return null;
     }
 }
