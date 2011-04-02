@@ -1,5 +1,7 @@
 package org.rometools.feed.module.sse.modules;
 
+import com.sun.syndication.feed.CopyFrom;
+
 /**
  * <sx:conflicts> element within <sx:sync>
  * <p>
@@ -8,7 +10,7 @@ package org.rometools.feed.module.sse.modules;
 public class Conflicts extends SSEModule {
     public static final String NAME = "conflicts";
 
-    public void copyFrom(Object obj) {
+    public void copyFrom(CopyFrom obj) {
         // nothing to copy, just a place-holder
     }
 }

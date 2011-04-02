@@ -1,5 +1,6 @@
 package org.rometools.feed.module.sse.modules;
 
+import com.sun.syndication.feed.CopyFrom;
 import java.util.Date;
 
 /**
@@ -13,7 +14,7 @@ public class Update extends SSEModule {
     private Date when;
     private String by;
 
-    public void copyFrom(Object other) {
+    public void copyFrom(CopyFrom other) {
         Update otherUpdate = (Update)other;
         otherUpdate.when = when == null ? null : (Date) when.clone();
         // dont copy immutable

@@ -1,5 +1,6 @@
 package org.rometools.feed.module.sse.modules;
 
+import com.sun.syndication.feed.CopyFrom;
 import java.util.Date;
 
 /**
@@ -30,7 +31,7 @@ public class Sharing extends SSEModule {
     private Date until;
     private Related related;
 
-    public void copyFrom(Object obj) {
+    public void copyFrom(CopyFrom obj) {
         Sharing sharing = (Sharing)obj;
         ordered = sharing.ordered;
         since = sharing.since == null ? null : (Date) sharing.since.clone();

@@ -14,6 +14,7 @@
  */
 package org.rometools.feed.module.opensearch.impl;
 
+import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.atom.Link;
 import com.sun.syndication.feed.module.ModuleImpl;
 import org.rometools.feed.module.opensearch.OpenSearchModule;
@@ -124,7 +125,7 @@ public class OpenSearchModuleImpl extends ModuleImpl implements OpenSearchModule
     /* (non-Javadoc)
      * @see com.sun.syndication.feed.CopyFrom#copyFrom(java.lang.Object)
      */
-    public void copyFrom(Object obj) {
+    public void copyFrom(CopyFrom obj) {
         OpenSearchModule osm = (OpenSearchModuleImpl) obj;
 
         setTotalResults(osm.getTotalResults());

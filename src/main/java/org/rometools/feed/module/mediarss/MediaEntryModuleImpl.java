@@ -21,6 +21,7 @@
  */
 package org.rometools.feed.module.mediarss;
 
+import com.sun.syndication.feed.CopyFrom;
 import java.io.Serializable;
 
 import com.sun.syndication.feed.impl.EqualsBean;
@@ -85,6 +86,7 @@ public class MediaEntryModuleImpl extends MediaModuleImpl
         return mediaGroups;
     }
 
+    @Override
     public Object clone() {
         MediaEntryModuleImpl m = new MediaEntryModuleImpl();
         m.setMediaContents((MediaContent[]) mediaContents.clone());
@@ -96,21 +98,33 @@ public class MediaEntryModuleImpl extends MediaModuleImpl
         return m;
     }
 
+    @Override
     public boolean equals(Object obj) {
         EqualsBean eBean = new EqualsBean(MediaEntryModuleImpl.class, this);
 
         return eBean.beanEquals(obj);
     }
 
+    @Override
     public int hashCode() {
         EqualsBean equals = new EqualsBean(MediaEntryModuleImpl.class, this);
 
         return equals.beanHashCode();
     }
 
+    @Override
     public String toString() {
         ToStringBean tsBean = new ToStringBean(MediaEntryModuleImpl.class, this);
 
         return tsBean.toString();
+    }
+
+    public void copyFrom(CopyFrom obj) {
+        MediaEntryModuleImpl other = (MediaEntryModuleImpl) obj;
+        other = (MediaEntryModuleImpl) other.clone();
+        this.setMediaContents(other.getMediaContents());
+        this.setMediaGroups(other.getMediaGroups());
+        this.setMetadata(other.getMetadata());
+        this.setPlayer(other.getPlayer());
     }
 }

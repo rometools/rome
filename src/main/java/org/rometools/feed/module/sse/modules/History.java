@@ -1,5 +1,6 @@
 package org.rometools.feed.module.sse.modules;
 
+import com.sun.syndication.feed.CopyFrom;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,7 +25,7 @@ public class History extends SSEModule {
     public History() {
     }
 
-    public void copyFrom(Object other) {
+    public void copyFrom(CopyFrom other) {
         History otherHistory = (History)other;
         when = otherHistory.when == null ? null : (Date) otherHistory.when.clone();
         // dont copy immutable

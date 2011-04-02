@@ -1,5 +1,6 @@
 package org.rometools.feed.module.sse.modules;
 
+import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.rss.Item;
 
 import java.util.Date;
@@ -42,7 +43,7 @@ public class Conflict extends SSEModule {
     private String by;
     private Item conflictItem;
 
-    public void copyFrom(Object obj) {
+    public void copyFrom(CopyFrom obj) {
         Conflict conflict = (Conflict)obj;
         conflict.when = when == null ? null : (Date) when.clone();
         conflict.by = by;

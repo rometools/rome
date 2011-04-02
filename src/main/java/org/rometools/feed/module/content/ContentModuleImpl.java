@@ -43,6 +43,7 @@
  */
 package org.rometools.feed.module.content;
 
+import com.sun.syndication.feed.CopyFrom;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,7 +74,7 @@ public class ContentModuleImpl extends com.sun.syndication.feed.module.ModuleImp
         this.encodeds = encodeds;
     }
 
-    public void copyFrom(Object obj) {
+    public void copyFrom(CopyFrom obj) {
         ContentModule cm = (ContentModule) obj;
         this.setEncodeds(cm.getEncodeds());
         this.setContentItems(cm.getContentItems());

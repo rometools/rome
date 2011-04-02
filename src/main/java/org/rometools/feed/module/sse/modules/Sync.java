@@ -1,5 +1,6 @@
 package org.rometools.feed.module.sse.modules;
 
+import com.sun.syndication.feed.CopyFrom;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class Sync extends SSEModule {
     private History history;
     private List conflicts;
 
-    public void copyFrom(Object obj) {
+    public void copyFrom(CopyFrom obj) {
         Sync sync = (Sync)obj;
         deleted = sync.deleted;
         version = sync.version;

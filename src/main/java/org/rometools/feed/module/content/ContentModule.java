@@ -40,6 +40,7 @@
  */
 package org.rometools.feed.module.content;
 
+import com.sun.syndication.feed.module.Module;
 import java.util.List;
 
 
@@ -47,7 +48,7 @@ import java.util.List;
  * @version $Revision: 1.1 $
  * @author  <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
-public interface ContentModule extends com.sun.syndication.feed.module.Module {
+public interface ContentModule extends Module {
     public static final String URI = "http://purl.org/rss/1.0/modules/content/";
     public static final String RDF_URI = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
 
@@ -62,10 +63,6 @@ public interface ContentModule extends com.sun.syndication.feed.module.Module {
      * @return List of content Strings
      */
     public void setEncodeds(List encodeds);
-
-    public void copyFrom(Object obj);
-
-    public Class getInterface();
 
     public String getUri();
 

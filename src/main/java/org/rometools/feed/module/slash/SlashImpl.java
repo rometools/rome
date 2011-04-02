@@ -40,6 +40,7 @@
  */
 
 package org.rometools.feed.module.slash;
+import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.impl.EqualsBean;
 
 /**
@@ -94,7 +95,7 @@ public class SlashImpl implements Slash {
 
 
     
-    public void copyFrom(Object object) {
+    public void copyFrom(CopyFrom object) {
 	Slash source =(Slash) object;
 	this.setHitParade( arrayCopy( source.getHitParade() ));
 	this.setComments( source.getComments() );

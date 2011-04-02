@@ -1,5 +1,6 @@
 package org.rometools.feed.module.sse.modules;
 
+import com.sun.syndication.feed.CopyFrom;
 import java.util.Date;
 
 /**
@@ -37,7 +38,7 @@ public class Related extends SSEModule {
     public static final String TYPE_ATTRIBUTE = "type";
     public static final String UNTIL_ATTRIBUTE = "until";
 
-    public void copyFrom(Object obj) {
+    public void copyFrom(CopyFrom obj) {
         Related related = (Related)obj;
         related.link = link;
         related.since = since == null ? null : (Date) since.clone();

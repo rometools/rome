@@ -1,5 +1,6 @@
 package org.rometools.feed.module.sse.modules;
 
+import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.module.Module;
 import org.jdom.Namespace;
 
@@ -49,5 +50,5 @@ public abstract class SSEModule implements Module {
         return clone;
     }
 
-    public abstract void copyFrom(Object obj);
+    public abstract void copyFrom(CopyFrom obj);
 }

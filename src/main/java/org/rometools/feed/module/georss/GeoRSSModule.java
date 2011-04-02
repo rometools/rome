@@ -16,6 +16,7 @@
  */
 package org.rometools.feed.module.georss;
 
+import com.sun.syndication.feed.CopyFrom;
 import org.jdom.Namespace;
 
 import com.sun.syndication.feed.module.ModuleImpl;
@@ -124,7 +125,7 @@ public abstract class GeoRSSModule extends ModuleImpl implements Cloneable {
          *
          * @see com.sun.syndication.feed.CopyFrom#copyFrom(java.lang.Object)
          */
-    public void copyFrom(Object obj) {
+    public void copyFrom(CopyFrom obj) {
         GeoRSSModule geoRSSModule = (GeoRSSModule) obj;
         geometry = geoRSSModule.getGeometry();
         try {

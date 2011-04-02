@@ -35,6 +35,7 @@
  */
 package org.rometools.feed.module.yahooweather;
 
+import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.module.ModuleImpl;
 import org.rometools.feed.module.yahooweather.types.Astronomy;
 import org.rometools.feed.module.yahooweather.types.Atmosphere;
@@ -68,7 +69,7 @@ public class YWeatherModuleImpl extends ModuleImpl
         return CopyFromInterface.class;
     }
 
-    public void copyFrom(Object o) {
+    public void copyFrom(CopyFrom o) {
         YWeatherModuleImpl from = (YWeatherModuleImpl) o;
         this.setAstronomy((from.getAstronomy() != null)
             ? (Astronomy) from.getAstronomy().clone() : null);
