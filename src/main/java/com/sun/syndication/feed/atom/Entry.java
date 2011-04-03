@@ -229,7 +229,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @param issued the entry issued date, <b>null</b> if none.
      */
     public void setIssued(Date issued) {
-        _published = new Date(issued.getTime());
+        _published = issued == null ? null : new Date(issued.getTime());
     }
 
     /**
@@ -238,7 +238,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @return the entry issued date, <b>null</b> if none.
      */
     public Date getIssued() {
-        return new Date(_published.getTime());
+        return _published == null ? null : new Date(_published.getTime());
     }
 
     /**
@@ -269,7 +269,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @param modified the entry modified date, <b>null</b> if none.
      */
     public void setModified(Date modified) {
-        _updated = new Date(modified.getTime());
+        _updated = modified == null ? null : new Date(modified.getTime());
     }
 
     /**
@@ -278,7 +278,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @return the entry modified date, <b>null</b> if none.
      */
     public Date getModified() {
-        return new Date(_updated.getTime());
+        return _updated == null ? null : new Date(_updated.getTime());
     }
 
     /**
@@ -340,7 +340,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @since Atom 1.0
      */
     public void setPublished(Date published) {
-        _published = new Date(published.getTime());
+        _published = published == null ? null : new Date(published.getTime());
     }
 
     /**
@@ -466,7 +466,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @since Atom 1.0
      */
     public void setUpdated(Date updated) {
-        _updated = new Date(updated.getTime());
+        _updated = updated == null? null : new Date(updated.getTime());
     }
 
     /**
@@ -476,7 +476,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @since Atom 1.0
      */
     public Date getUpdated() {
-        return new Date(_updated.getTime());
+        return _updated == null ? null : new Date(_updated.getTime());
     }
 
     /**
