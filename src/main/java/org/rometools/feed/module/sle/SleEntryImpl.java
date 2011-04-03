@@ -17,13 +17,13 @@
  */
 package org.rometools.feed.module.sle;
 
+import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.impl.ObjectBean;
 import org.rometools.feed.module.sle.io.*;
 import org.rometools.feed.module.sle.io.LabelNamespaceElement;
 import org.rometools.feed.module.sle.types.EntryValue;
 import org.rometools.feed.module.sle.types.Group;
 import org.rometools.feed.module.sle.types.Sort;
-import org.jdom.Namespace;
 
 /**This is a <b>parse only</b> module that holds the values of enternal fields declared in the SLE module.
  * These will <b>not</b> be persisted on an output() call, <b>nor</b> will changing a value here change a
@@ -123,7 +123,7 @@ public class SleEntryImpl implements SleEntry {
      *
      * @param obj the instance to copy properties from.
      */
-    public void copyFrom(Object obj) {
+    public void copyFrom(CopyFrom obj) {
         SleEntry entry = (SleEntry) obj;
         this.setGroupValues((EntryValue[]) entry.getGroupValues().clone());
         this.setSortValues((EntryValue[]) entry.getSortValues().clone());

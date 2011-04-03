@@ -38,6 +38,7 @@
  */
 package org.rometools.feed.module.base;
 
+import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.impl.EqualsBean;
 
 import org.rometools.feed.module.base.types.CloneableType;
@@ -1102,6 +1103,7 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     //TODO: Finish
+    @Override
     public Object clone() throws CloneNotSupportedException {
         try {
             GoogleBaseImpl gbi = new GoogleBaseImpl();
@@ -1114,7 +1116,7 @@ public class GoogleBaseImpl implements GoogleBase {
         }
     }
 
-    public void copyFrom(Object obj) {
+    public void copyFrom(CopyFrom obj) {
         if(!(obj instanceof GoogleBase)) {
             return;
         }

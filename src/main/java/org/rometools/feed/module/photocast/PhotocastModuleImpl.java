@@ -43,6 +43,7 @@
 
 package org.rometools.feed.module.photocast;
 
+import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.impl.EqualsBean;
 import com.sun.syndication.feed.impl.ToStringBean;
 import org.rometools.feed.module.photocast.types.Metadata;
@@ -106,7 +107,7 @@ public class PhotocastModuleImpl implements PhotocastModule {
         this.metadata = metadata;
     }
 
-    public void copyFrom(Object obj) {
+    public void copyFrom(CopyFrom obj) {
         PhotocastModule pm = (PhotocastModule) obj;
         this.setPhotoDate((pm.getPhotoDate() == null) ? null
                                                       : (Date) pm.getPhotoDate()

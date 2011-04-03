@@ -22,6 +22,7 @@
  */
 package org.rometools.feed.module.mediarss;
 
+import com.sun.syndication.feed.CopyFrom;
 import java.io.Serializable;
 
 import com.sun.syndication.feed.module.ModuleImpl;
@@ -102,7 +103,7 @@ public class MediaModuleImpl extends ModuleImpl implements MediaModule, Serializ
         return m;
     }
 
-    public void copyFrom(Object obj) {
+    public void copyFrom(CopyFrom obj) {
         MediaModule m = (MediaModule) obj;
         this.metadata = (Metadata) m.getMetadata().clone();
         this.player = m.getPlayer();

@@ -40,10 +40,10 @@
  *
  */
 package org.rometools.feed.module.itunes;
+import com.sun.syndication.feed.CopyFrom;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -137,7 +137,7 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
      * Required by the ROME API
      * @param obj object to copy property values from
      */
-    public void copyFrom(Object obj) {
+    public void copyFrom(CopyFrom obj) {
         FeedInformationImpl info = (FeedInformationImpl) obj;
         this.setAuthor(info.getAuthor());
         this.setBlock(info.getBlock());

@@ -40,6 +40,8 @@
  */
 package org.rometools.feed.module.itunes;
 
+import com.sun.syndication.feed.CopyFrom;
+
 
 
 /**
@@ -75,7 +77,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
      * Defined by the ROME module API
      * @param obj Object to copy from
      */
-    public abstract void copyFrom(Object obj);
+    public abstract void copyFrom(CopyFrom obj);
 
     /**
      * Defined by the ROME API

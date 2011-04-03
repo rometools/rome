@@ -40,6 +40,7 @@
  */
 package org.rometools.feed.module.itunes;
 
+import com.sun.syndication.feed.CopyFrom;
 import org.rometools.feed.module.itunes.types.Duration;
 
 
@@ -77,7 +78,7 @@ public class EntryInformationImpl extends AbstractITunesObject implements EntryI
      * Defined by the ROME module API
      * @param obj Object to copy from
      */
-    public void copyFrom(Object obj) {
+    public void copyFrom(CopyFrom obj) {
         EntryInformationImpl info = (EntryInformationImpl) obj;
         this.setAuthor(info.getAuthor());
         this.setBlock(info.getBlock());

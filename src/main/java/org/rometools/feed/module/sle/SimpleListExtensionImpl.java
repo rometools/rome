@@ -17,6 +17,7 @@
  */
 package org.rometools.feed.module.sle;
 
+import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.module.ModuleImpl;
 import org.rometools.feed.module.sle.types.Group;
 import org.rometools.feed.module.sle.types.Sort;
@@ -94,7 +95,7 @@ public class SimpleListExtensionImpl extends ModuleImpl implements SimpleListExt
      *
      * @param obj the instance to copy properties from.
      */
-    public void copyFrom(Object obj) {
+    public void copyFrom(CopyFrom obj) {
         SimpleListExtension sle = (SimpleListExtension) obj;
         this.setGroupFields((Group[]) sle.getGroupFields().clone());
         this.setSortFields((Sort[]) sle.getSortFields().clone());

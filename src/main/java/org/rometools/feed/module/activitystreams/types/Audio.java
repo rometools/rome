@@ -1,12 +1,12 @@
 /*
  *  Copyright 2011 robert.cooper.
- * 
+ *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
  *  You may obtain a copy of the License at
- * 
+ *
  *       http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  *  Unless required by applicable law or agreed to in writing, software
  *  distributed under the License is distributed on an "AS IS" BASIS,
  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -14,8 +14,8 @@
  *  limitations under the License.
  *  under the License.
  */
-
 package org.rometools.feed.module.activitystreams.types;
+
 
 /**
  * <p>The "audio" Object type represents audio content.
@@ -43,14 +43,17 @@ package org.rometools.feed.module.activitystreams.types;
  * @author robert.cooper
  */
 public class Audio extends ActivityObject {
-
-    @Override
-    public String getTypeIRI() {
-        return "http://activitystrea.ms/schema/1.0/audio";
-    }
-
-
     private String embedCode;
+    private String streamLink;
+
+    /**
+     * Set the value of embedCode
+     *
+     * @param newembedCode new value of embedCode
+     */
+    public void setEmbedCode(String newembedCode) {
+        this.embedCode = newembedCode;
+    }
 
     /**
      * Get the value of embedCode
@@ -62,16 +65,13 @@ public class Audio extends ActivityObject {
     }
 
     /**
-     * Set the value of embedCode
+     * Set the value of streamLink
      *
-     * @param newembedCode new value of embedCode
+     * @param newstreamLink new value of streamLink
      */
-    public void setEmbedCode(String newembedCode) {
-        this.embedCode = newembedCode;
+    public void setStreamLink(String newstreamLink) {
+        this.streamLink = newstreamLink;
     }
-
-
-    private String streamLink;
 
     /**
      * Get the value of streamLink
@@ -82,13 +82,8 @@ public class Audio extends ActivityObject {
         return this.streamLink;
     }
 
-    /**
-     * Set the value of streamLink
-     *
-     * @param newstreamLink new value of streamLink
-     */
-    public void setStreamLink(String newstreamLink) {
-        this.streamLink = newstreamLink;
+    @Override
+    public String getTypeIRI() {
+        return "http://activitystrea.ms/schema/1.0/audio";
     }
-
 }

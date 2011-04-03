@@ -20,6 +20,7 @@
 
 package org.rometools.feed.module.base;
 
+import com.sun.syndication.feed.CopyFrom;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,11 +44,12 @@ public class CustomTagsImpl implements CustomTags {
 	this.values = values;
     }
     
-    public void copyFrom(Object object) {
+    public void copyFrom(CopyFrom object) {
 	CustomTags ct = (CustomTags) object;
 	this.values = new ArrayList( ct.getValues() );
     }
     
+    @Override
     public Object clone() {
 	CustomTagsImpl cti = new CustomTagsImpl();
 	cti.values = new ArrayList( this.values );

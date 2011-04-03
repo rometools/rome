@@ -40,6 +40,7 @@
 
 package org.rometools.feed.module.cc;
 
+import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.impl.EqualsBean;
 import com.sun.syndication.feed.impl.ToStringBean;
 import org.rometools.feed.module.cc.types.License;
@@ -95,7 +96,7 @@ public class CreativeCommonsImpl implements CreativeCommons {
 	return clone;
     }
 
-    public void copyFrom(Object object) {
+    public void copyFrom(CopyFrom object) {
 	CreativeCommons source = (CreativeCommons) object;
 	this.setAllLicenses( (License[]) arrayCopy( source.getAllLicenses() ));
 	this.setLicenses( source.getLicenses() );

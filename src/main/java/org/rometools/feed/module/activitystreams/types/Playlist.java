@@ -15,29 +15,24 @@
  *  under the License.
  */
 
-package org.rometools.feed.module.activitystreams;
-
-import org.rometools.feed.module.activitystreams.types.ActivityObject;
-import org.rometools.feed.module.activitystreams.types.Mood;
-import org.rometools.feed.module.activitystreams.types.Verb;
+package org.rometools.feed.module.activitystreams.types;
 
 /**
  *
+ *<p>The "playlist" object type represents an ordered list of
+ *          time-based media items, such as video and audio objects.
+ *</p>
+ *<p>The "playlist" object type is identified by the URI <tt>http://activitystrea.ms/schema/1.0/playlist</tt>.
+ *</p>
+ *<p>A playlist has no additional components.
+ *</p>
  * @author robert.cooper
  */
-public interface ActivityStreamModule {
+public class Playlist extends ActivityObject  {
 
-    public Verb getVerb();
-    public void setVerb(Verb verb);
-
-    public ActivityObject getObject();
-    public void setObject(ActivityObject object);
-
-    public ActivityObject getTarget();
-    public void setTarget(ActivityObject object);
-
-    public Mood getMood();
-    public void setMood(Mood mood);
-
+    @Override
+    public String getTypeIRI() {
+        return "http://activitystrea.ms/schema/1.0/playlist";
+    }
 
 }

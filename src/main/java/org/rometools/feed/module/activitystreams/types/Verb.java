@@ -10,14 +10,11 @@
  *  Unless required by applicable law or agreed to in writing, software
  *  distributed under the License is distributed on an "AS IS" BASIS,
  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
+ *  See the icense for the specific language governing permissions and
  *  limitations under the License.
  *  under the License.
  */
 package org.rometools.feed.module.activitystreams.types;
-
-import java.util.HashMap;
-import java.util.Map;
 
 
 /**
@@ -129,9 +126,61 @@ public enum Verb {
      *
      * The "update" Verb is identified by the URI http://activitystrea.ms/schema/1.0/update.
      */
-    UPDATE("http://activitystrea.ms/schema/1.0/update");
+    UPDATE("http://activitystrea.ms/schema/1.0/update"),
+    /**
+     *
+     *<p>The "positive RSVP" verb indicates that the actor has made a
+     *          positive RSVP for the object. This specification only defines the
+     *          meaning of this verb when its object is an event (see <a class='info' href='#event'>Section&nbsp;4.2.1<span> (</span><span class='info'>Event</span><span>)</span></a>), though implementors SHOULD be prepared to
+     *          handle other object types as meaning MAY be provided by extension
+     *          specifications.
+     *</p>
+     *<p>The use of this Verb is only appropriate when the RSVP was
+     *          created by an explicit action by the actor. It is not appropriate to
+     *          use this verb when a user has been added as an attendee by an event
+     *          organiser or administrator.
+     *</p>
+     *<p>The verb URI for the "positive RSVP" Verb is <tt>http://activitystrea.ms/schema/1.0/rsvp-yes</tt>.
+     *</p>
+     */
+    RSVP_YES("http://activitystrea.ms/schema/1.0/rsvp-yes"),
+    /**
+     * <p>The "possible RSVP" verb indicates that the actor has made a
+     *          possible RSVP for the object. This specification only defines the
+     *          meaning of this verb when its object is an event (see <a class='info' href='#event'>Section&nbsp;4.2.1<span> (</span><span class='info'>Event</span><span>)</span></a>), though implementors SHOULD be prepared to
+     *          handle other object types as meaning MAY be provided by extension
+     *          specifications.
+     *</p>
+     *<p>The use of this Verb is only appropriate when the RSVP was
+     *          created by an explicit action by the actor. It is not appropriate to
+     *          use this verb when a user has been added as an attendee by an event
+     *          organiser or administrator.
+     *</p>
+     *<p>The verb URI for the "possible RSVP" Verb is <tt>http://activitystrea.ms/schema/1.0/rsvp-maybe</tt>.
+     *</p>
+     */
+    RSVP_MAYBE("http://activitystrea.ms/schema/1.0/rsvp-maybe"),
+    /**
+     * <p>The "negative RSVP" verb indicates that the actor has made a
+     *          negative RSVP for the object. This specification only defines the
+     *          meaning of this verb when its object is an event (see <a class='info' href='#event'>Section&nbsp;4.2.1<span> (</span><span class='info'>Event</span><span>)</span></a>), though implementors SHOULD be prepared to
+     *          handle other object types as meaning MAY be provided by extension
+     *          specifications.
+     *</p>
+     *<p>The use of this Verb is only appropriate when the RSVP was
+     *          created by an explicit action by the actor. It is not appropriate to
+     *          use this verb when a user has been added as an attendee by an event
+     *          organiser or administrator.
+     *</p>
+     *<p>The verb URI for the "negative RSVP" Verb is <tt>http://activitystrea.ms/schema/1.0/rsvp-no</tt>.
+     *</p>
+     */
+    RSVP_NO("http://activitystrea.ms/schema/1.0/rsvp-no");
     private final String iri;
 
+    /**
+     * @param iri
+     */
     Verb(final String iri){
         this.iri = iri;
     }
@@ -140,7 +189,11 @@ public enum Verb {
     public String toString(){
         return iri;
     }
-
+    /**
+     * 
+     * @param iri
+     * @return
+     */
     public static Verb fromIRI(String iri){
         for(Verb v: Verb.values()){
             if(v.toString().equals(iri)){

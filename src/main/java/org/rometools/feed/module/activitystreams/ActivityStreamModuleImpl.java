@@ -17,6 +17,7 @@
 package org.rometools.feed.module.activitystreams;
 
 import org.rometools.feed.module.activitystreams.types.ActivityObject;
+import org.rometools.feed.module.activitystreams.types.Mood;
 import org.rometools.feed.module.activitystreams.types.Verb;
 
 
@@ -62,5 +63,21 @@ public class ActivityStreamModuleImpl implements ActivityStreamModule {
      */
     public Verb getVerb() {
         return this.verb;
+    }
+
+    public ActivityObject getTarget() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void setTarget(ActivityObject object) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    } 
+
+    public Mood getMood() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void setMood(Mood mood) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
