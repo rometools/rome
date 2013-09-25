@@ -1,0 +1,40 @@
+# Rss and atOM utiliEs (ROME) v0.7 Date and Time Parsing
+
+
+Date and time elements seem to be error prone. RSS feeds use RFC822 datetime formats and Atom feeds use W3C datetime formats. Both RFC822 and W3C support quite a few flavors for specifying date and time. Some feeds use the wrong standard (such as some RSS feeds using W3C dates). Other feeds have an ENTER before or after the date. And another feeds use an arbitrary format altogether.
+
+
+
+To help cope with this ROME makes a few tricks:
+
+
+ 
+* It trims datetime elements before parsing them.
+ 
+* It tries both RFC822 and W3C formats in all feeds.
+ 
+* It uses custom format masks (if provided) when the previous steps fail.
+ 
+
+## Using Custom Format Masks
+
+
+
+Custom format masks can be specified in the _/rome.properties_ file in any of the classpath elements.
+
+
+
+The masks must be specified in the _datetime.extra.masks_ property.
+
+
+
+If more than one mask is to be specified they must be separated with '|' characters.
+
+
+
+The syntax for the masks is the one use by by the _java.text.SimpleDateFormat_ class. Always US Locale is assumed for the masks.
+
+
+
+If datetime masks are specified in more than one _/rome.properties_ file in teh classpath, they are all aggregated.
+

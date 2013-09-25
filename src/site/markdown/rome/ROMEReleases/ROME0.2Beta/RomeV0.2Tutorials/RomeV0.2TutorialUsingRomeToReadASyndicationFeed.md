@@ -1,0 +1,88 @@
+# Rome v0.2 Tutorial, Using Rome to read a syndication feed
+
+
+**Software requirements:** J2SE 1.4\+, JDOM B10 and Rome 0.2.
+
+
+
+Rome represents syndication feeds (RSS and Atom) as instances of the com.sun.syndication.synd.SyndFeedI interface. The SyndFeedI interfaces and its properties follow the Java Bean patterns. The default implementations provided with Rome are all lightweight classes.
+
+
+
+Rome includes parsers to process syndication feeds into SyndFeedI instances. The SyndFeedInput class handles the parsers using the correct one based on the syndication feed being processed. The developer does not need to worry about selecting the right parser for a syndication feed, the SyndFeedInput will take care of it by peeking at the syndication feed structure. All it takes to read a syndication feed using Rome are the following 2 lines of code:
+
+
+
+```
+
+SyndFeedInput input = new SyndFeedInput();
+SyndFeedI feed = input.build(feedUrl.openStream());
+
+```
+
+
+The first line creates a SyndFeedInput instance that will work with any syndication feed type (RSS and Atom versions). The second line instructs the SyndFeedInput to read the syndication feed from the InputStream of a URL pointing to the feed. The SyndFeedInput.build() method returns a SyndFeedI instance that can be easily processed.
+
+
+
+The default SyndFeedI implementation has a detailed and clear toString() implementation. The following line just prints it to the application's output.
+
+
+
+```
+
+System.out.println(feed);
+
+```
+
+
+Following is the full code for a Java application that reads a syndication feed and prints the SyndFeedI bean to the application's output.
+
+
+
+```
+
+package com.sun.syndication.samples;
+
+import java.net.URL;
+import com.sun.syndication.feed.synd.SyndFeedI;
+import com.sun.syndication.io.SyndFeedInput;
+
+/**
+ * It Reads and prints any RSS/Atom feed type.
+ * <p>
+ * @author Alejandro Abdelnur
+ *
+ */
+public class FeedReader {
+
+    public static void main(String[] args) {
+        boolean ok = false;
+        if (args.length==1) {
+            try {
+                URL feedUrl = new URL(args[0]);
+
+                SyndFeedInput input = new SyndFeedInput();
+                SyndFeedI feed = input.build(feedUrl.openStream());
+
+                System.out.println(feed);
+
+                ok = true;
+            }
+            catch (Exception ex) {
+                ex.printStackTrace();
+                System.out.println("ERROR: "+ex.getMessage());
+            }
+        }
+
+        if (!ok) {
+            System.out.println();
+            System.out.println("FeedReader reads and prints any RSS/Atom feed type.");
+            System.out.println("The first parameter must be the URL of the feed to read.");
+            System.out.println();
+        }
+    }
+
+}
+
+```

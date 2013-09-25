@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/DECORATION/1.3.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/DECORATION/1.3.0 http://maven.apache.org/xsd/decoration-1.3.0.xsd"
+	name="ROME">
+	<bannerLeft>
+		<name>ROME</name>
+		<src>images/romelogo.png</src>
+		<href>http://github.com/</href>
+	</bannerLeft>
+	<publishDate position="right"/>
+	<version position="right"/>
+	<body>
+		<menu name="Projects">
+			<item name="ROME" href="rome/index.html" />
+			<item name="ROME Fetcher" href="fetcher/index.html" />
+			<item name="ROME Mano" href="mano/index.html" />
+			<item name="ROME Modules" href="modules/index.html" />
+			<item name="ROME OPML" href="opml/index.html" />
+			<item name="ROME Propono" href="propono/index.html" />
+			<item name="ROME Incubator" href="incubator/index.html" />
+		</menu>
+		<menu ref="reports" />
+	</body>
+</project>
