@@ -1,0 +1,19 @@
+ -----
+ ROME and OSGI
+ -----
+ mkurz
+ -----
+ 2011-08-15 10:54:49.376
+ -----
+
+ROME and OSGI
+
+
+ From ROME 1.0 RC2 onwards, the ROME jar includes OSGi information in its manifest.
+
+
+ Note that we have received some reports that ROME plugin classloading may cause problems with OSGi. Setting the system property "rome.pluginmanager.useloadclass" to "true" may help avoid this. See {{{http://java.net/jira/browse/ROME\-118}Issue 118}} for further information.
+
+
+ \-\- Main.nicklothian \- 08 Jan 2009
+

@@ -1,0 +1,362 @@
+ -----
+ Understanding the Rome common classes and interfaces
+ -----
+ mkurz
+ -----
+ 2011-08-14 17:31:39.284
+ -----
+
+Understanding the Rome common classes and interfaces
+
+
+ The Rome common package contains a set of Java classes that provide support for all the basic features Java Beans commonly must have: toString, equals, hashcode and cloning. There is also a simple enumeration base class (missing Java 5.0 already).
+
+
+ By implementing or extending the common classes and interfaces Beans don't have to hand code these functions. This greatly simplifies things when Beans have several properties, collection properties and composite properties.
+
+
+ The common classes use Java Bean instrospection on the properties of the classes extending and using them. This is done recursively on all properties.
+
+
+ All Rome Beans (interfaces and default implementations) leverage and use these classes and interfaces defined in the common package.
+
+
+ Ideally all this classes and interface should be part of a general component outside of Rome as they are not syndication specific (something like a commons\-bean component if we use Jakarta Commons naming). They cannot be hidden in an implementation package as Rome public API uses them.
+
+
+*ToString and ToStringBean
+
+
+ Beans implementing the ToString interface must implement the toString(String prefix) method. This method must print the bean properties names and values, one per per line, separating the name and value with an '\=' sign and prefixing the name with the given prefix parameter using the same notation used in the JSP expression language used in JSTL and in JSP 2.0. This must be done recursively for all array, collection and ToString properties.
+
+
+ The ToStringBean class provides an implementation of the ToString interface with the defined behavior. The ToStringBean constructor takes the class definition the ToStringBean class should use for properties scanning \-using instrospection\- for printing, normally it is the class of the Bean using the ToStringBean. Beans leveraging the ToStringBean implementation can do it using two different patterns.
+
+
+*Extending ToStringBean
+
+
+
++------+
+
+public class MyBean extend ToStringBean {
+
+        public MyBean() {
+            super(MyBean.class);
+        }
+
+        public Foo getFoo() { ... }
+        public void setFoo(Foo foo) { ... }
+
+        public String getName() { ... }
+        public void setName(String name) { ... }
+
+        public List getValues() { ... }
+        public void setValues(List values) { ... }
+    }
+
++------+
+
+**Using a ToStringBean in delegation mode
+
+
+
++------+
+
+public class MyBean implements ToString {
+
+        public Foo getFoo() { ... }
+        public void setFoo(Foo foo) { ... }
+
+        public String getName() { ... }
+        public void setName(String name) { ... }
+
+        public List getValues() { ... }
+        public void setValues(List values) { ... }
+
+        public String toString(String prefix) {
+        ToStringBean tsBean = new ToStringBean(MyBean.class,this);
+        return tsBean.toString(prefix);
+        }
+
+        public String toString() {
+            return toString("myBean");
+        }
+    }
+
++------+
+
+*EqualBean
+
+
+ The EqualsBean class provides a recursive introspetion\-based implementation of the equals() and hashCode() methods working on the Bean properties. The EqualsBean constructor takes the class definition that should be properties scanned (using introspection) by the equals() and thehashCode() methods. The EqualsBean class works on array, collection, bean and basic type properties. Java Beans leveraging the EqualsBean implementation can do it using two different patterns.
+
+
+**Extending EqualsBean
+
+
+
++------+
+
+public class MyBean extend EqualsBean {
+
+        public MyBean() {
+            super(MyBean.class);
+        }
+
+        public Foo getFoo() { ... }
+        public void setFoo(Foo foo) { ... }
+
+        public String getName() { ... }
+        public void setName(String name) { ... }
+
+        public List getValues() { ... }
+        public void setValues(List values) { ... }
+    }
+
++------+
+
+**Using a EqualsBean in delegation mode
+
+
+
++------+
+
+public class MyBean implements ToString {
+
+        public Foo getFoo() { ... }
+        public void setFoo(Foo foo) { ... }
+
+        public String getName() { ... }
+        public void setName(String name) { ... }
+
+        public List getValues() { ... }
+        public void setValues(List values) { ... }
+
+        public boolean equals(Object obj) {
+            EqualsBean eBean = new EqualsBean(MyBean.class,this);
+            return eBean.beanEquals(obj);
+        }
+
+        public int hashCode() {
+            EqualsBean equals = new EqualsBean(MyBean.class,this);
+            return equals.beanHashCode();
+        }
+    }
+
++------+
+
+*CloneableBean
+
+
+ The CloneableBean class provides a recursive introspetion\-based implementation of the clone() method working on the Bean properties. The CloneableBean class works on array, collection, bean and basic type properties. Java Beans leveraging the CloneableBean implementation can do it using two different patterns.
+
+
+**Extending CloneableBean
+
+
+
++------+
+
+public class MyBean extend CloneableBean {
+
+        public Foo getFoo() { ... }
+        public void setFoo(Foo foo) { ... }
+
+        public String getName() { ... }
+        public void setName(String name) { ... }
+
+        public List getValues() { ... }
+        public void setValues(List values) { ... }
+    }
+
++------+
+
+**Using a CloneableBean in delegation mode
+
+
+
++------+
+
+public class MyBean implements Cloneable {
+
+        public Foo getFoo() { ... }
+        public void setFoo(Foo foo) { ... }
+
+        public String getName() { ... }
+        public void setName(String name) { ... }
+
+        public List getValues() { ... }
+        public void setValues(List values) { ... }
+
+        public Object clone() {
+            CloneableBean cBean = new CloneableBean(this);
+            return cBean.beanClone();
+        }
+    }
+
++------+
+
+ By default, the CloneableBean copies all properties of the given object. It also supports an ignore\-properties set, the property names in this set will not be copied to the cloned instance. This is useful for cases where the Bean has convenience properties (properties that are actually references to other properties or properties of properties). For example SyndFeed and SyndEntry beans have convenience properties, publishedDate, author, copyright and categories all of them mapped to properties in the DC Module.
+
+
+*ObjectBean
+
+
+ The ObjectBean is a convenience bean providing ToStringBean, EqualsBean and CloneableBean functionality support. Also, ObjectBeans implements the Serializable interface making the beans serializable if all its properties are. Beans extending ObjectBean get toString(), equals(), hashCode() and clone() support as defined above.
+
+
+ And example of using the ObjectBean class is:
+
+
+
++------+
+
+public class MyBean extends ObjectBean {
+
+        public MyBean() {
+            super(MyBean.class);
+        }
+
+        public Foo getFoo() { ... }
+        public void setFoo(Foo foo) { ... }
+
+        public String getName() { ... }
+        public void setName(String name) { ... }
+
+        public List getValues() { ... }
+        public void setValues(List values) { ... }
+    }
+
++------+
+
+*Enum
+
+
+ The Enum is an enumeration base class \[Too bad Java 5.0 is not here yet (Aug/16/2004)\] with equals(), hashCode(), toString(), clone() and serialization support. When used as properties of Beans implementing any of the above function it provides a seamless integration.
+
+
+ And example of using the EnumBean class is:
+
+
+
++------+
+
+public static class Day extends Enum {
+        private Day(String name) {
+            super(name);
+        }
+
+        public static final Day SUNDAY = new Day("sunday");
+        public static final Day MONDAY = new Day("monday");
+        public static final Day TUESDAY = new Day("tuesday");
+        public static final Day WEDNESDAY = new Day("wednesday");
+        public static final Day THURSDAY = new Day("thursday");
+        public static final Day FRIDAY = new Day("friday");
+        public static final Day SATURDAY = new Day("saturday");
+
+    }
+
++------+
+
+*CopyFrom
+
+
+ The CopyFrom interface defines functionality similar to a deep cloning. The difference with the clone() method (besides the deep cloning requirements) is that the object to be the copy of the original one has to be explicitly created and it is this object the one that triggers the deep copying process. Implemetations of the CopyFrom interface should work propertly on arrays, collections, CopyFrom and basic type properties.
+
+
+ Using CopyFrom objects enables copying data between different implementations of a given interface without these implementation having to know about each other.
+
+
+ CopyFrom is unidirectional. A class implementing the CopyFrom knows how to extract properties from the given class (commonly having an interface in common).
+
+
+ A simple example using the CopyFrom interface is:
+
+
+
++------+
+
+public interface Foo extends CopyFrom {
+        public void setName(String name);
+        public String getName();
+
+        public void setValues(Set values);
+        public Set getValues();
+    }
+
+    public class FooImplA implements Foo {
+        private String _name;
+        private Set _values;
+
+        public void setName(String name) {
+            _name = name;
+        }
+
+        public String getName() {
+            return _name;
+        }
+
+        public void setValues(Set values) {
+            _values = values;
+        }
+
+        public Set getValues() {
+            return _values;
+        }
+
+        public void copyFrom(Object obj) {
+            Foo other = (Foo) obj;
+            setName(other.getName());
+            setValues(new HashSet(other.getValues());
+        }
+
+        public Class getInterface() {
+            return Foo.class;
+        }
+    }
+
+    public class FooImplB implements Foo {
+        private Map _data;
+
+        public FooImplB() {
+            _data = new HashMap();
+        }
+
+        public void setName(String name) {
+            _data.put("name",name);
+        }
+
+        public String getName() {
+            return (String) _data.get("name");
+        }
+
+        public void setValues(Set values) {
+            _data.put("values",values);
+        }
+
+        public Set getValues() {
+            return (Set) _data.get("values");
+        }
+
+        public void copyFrom(Object obj) {
+            Foo other = (Foo) obj;
+            setName(other.getName());
+            setValues(new HashSet(other.getValues());
+        }
+
+        public Class getInterface() {
+            return Foo.class;
+        }
+    }
+
++------+
+
+ A use case for the CopyFrom functionality is a Java Bean implementation of an interface and a persistency implementation (such as Hibernate) of the the same interface that may add extra persistency related properties to the bean (ie, the 'Id' property as the persistency layer primary key).
+
+
+ For bean, array and collection properties the bean being invoked which copyFrom() method is invoked is responsible for those properties.
+
+
+ For properties implementing the CopyFrom interface, the bean must create a property instance implementing the interface returned by the getInterface() method. This allows the bean doing the copyFrom() to handle specialized subclasses of property elements propertly. This is also applicacle to array and collection properties. The 'modules' property of the SyndFeed and SyndEntry beans is a use case of this feature where the copyFrom() invocation must create different beans subclasses for each type of module, the getInteface() helps to find the right implementation.
+

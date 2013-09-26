@@ -1,0 +1,441 @@
+ -----
+ sites to move from java.net
+ -----
+ mkurz
+ -----
+ 2011-08-16 03:51:15.314
+ -----
+
+sites to move from java.net
+
+
+ *----+--+--+
+| |
+  source 
+
+||
+  target 
+
+||
+ state
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/HowToBuild}http://wiki.java.net/twiki/bin/view/Javawsxml/HowToBuild}} 
+
+|
+  {{{./HowToBuildRome.html}How to build Rome?}} 
+
+|
+ 
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/PoweredByRome}http://wiki.java.net/twiki/bin/view/Javawsxml/PoweredByRome}} 
+
+|
+  {{{./ProductsOrSitesPoweredByROME.html}Products or sites powered by ROME (rome)}} 
+
+|
+  missing images
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/PreservingWireFeeds}http://wiki.java.net/twiki/bin/view/Javawsxml/PreservingWireFeeds}} 
+
+|
+  {{{./PreservingWireFeeds.html}Preserving WireFeeds (rome)}} 
+
+|
+  
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/ProjectMotivation}http://wiki.java.net/twiki/bin/view/Javawsxml/ProjectMotivation}} 
+
+|
+  {{{./WhyThisProject.html}Why this project?}} 
+
+|
+  
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/Rome04Common}http://wiki.java.net/twiki/bin/view/Javawsxml/Rome04Common}} 
+
+|
+  {{{./HowRomeWorks/UnderstandingTheRomeCommonClassesAndInterfaces.html}Understanding the Rome common classes and interfaces (rome)}} 
+
+|
+  
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/Rome04HowRomeWorks}http://wiki.java.net/twiki/bin/view/Javawsxml/Rome04HowRomeWorks}} 
+
+|
+  {{{./HowRomeWorks/index.html}How Rome works (rome)}} 
+
+|
+  
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/Rome04TutorialFeedAggregator}http://wiki.java.net/twiki/bin/view/Javawsxml/Rome04TutorialFeedAggregator}} 
+
+|
+  {{{./HowRomeWorks/RomeV0.4TutorialUsingRomeToAggregateManySyndicationFeedsIntoASingleOne.html}Rome v0.4 Tutorial, Using Rome to aggregate many syndication feeds into a single one (rome)}} 
+
+|
+  
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/Rome04TutorialFeedConverter}http://wiki.java.net/twiki/bin/view/Javawsxml/Rome04TutorialFeedConverter}} 
+
+|
+  {{{./HowRomeWorks/RomeV0.4TutorialUsingRomeToConvertASyndicationFeedFromOneTypeToAnother.html}Rome v0.4 Tutorial, Using Rome to convert a syndication feed from one type to another (rome)}} 
+
+|
+  
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/Rome04TutorialFeedReader}http://wiki.java.net/twiki/bin/view/Javawsxml/Rome04TutorialFeedReader}} 
+
+|
+  {{{./HowRomeWorks/RomeV0.4TutorialUsingRomeToReadASyndicationFeed.html}Rome v0.4 Tutorial, Using Rome to read a syndication feed (rome)}} 
+
+|
+  
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/Rome04TutorialFeedWriter}http://wiki.java.net/twiki/bin/view/Javawsxml/Rome04TutorialFeedWriter}} 
+
+|
+  {{{./HowRomeWorks/RomeV0.4TutorialUsingRomeToCreateAndWriteASyndicationFeed.html}Rome v0.4 Tutorial, Using Rome to create and write a syndication feed (rome)}} 
+
+|
+  
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/Rome04TutorialSampleModule}http://wiki.java.net/twiki/bin/view/Javawsxml/Rome04TutorialSampleModule}} 
+
+|
+  {{{./HowRomeWorks/RomeV0.4TutorialDefiningACustomModuleBeanParserAndGenerator.html}Rome v0.4 Tutorial, Defining a Custom Module (bean, parser and generator)}} 
+
+|
+  
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/Rome04Tutorials}http://wiki.java.net/twiki/bin/view/Javawsxml/Rome04Tutorials}} 
+
+|
+  {{{./ROMEReleases/ROME0.4Beta/RomeV0.4Tutorials/index.html}Rome v0.4 Tutorials (rome)}}
+
+|
+  
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/Rome04URIMapping}http://wiki.java.net/twiki/bin/view/Javawsxml/Rome04URIMapping}} 
+
+|
+  {{{./RomeV0.4FeedAndEntryURIMapping.html}Rome v0.4, Feed and Entry URI Mapping (rome)}}
+
+|
+ 
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/Rome05BeanUtils}http://wiki.java.net/twiki/bin/view/Javawsxml/Rome05BeanUtils}} 
+
+|
+  {{{./RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/UnderstandingRssAndAtOMUtilitiEsROMEBeanUtilities.html}Understanding Rss and atOM utilitiEs (ROME) Bean Utilities}} 
+
+|
+ 
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/Rome05CharsetEncoding}http://wiki.java.net/twiki/bin/view/Javawsxml/Rome05CharsetEncoding}} 
+
+|
+  {{{./RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/XMLCharsetEncodingDetectionHowRssAndAtOMUtilitiEsROMEHelpsGettingTheRightCharsetEncoding.html}XML Charset Encoding detection, how Rss and atOM utilitiEs (ROME) helps getting the right charset encoding}} 
+
+|
+ 
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/Rome05CopyFrom}http://wiki.java.net/twiki/bin/view/Javawsxml/Rome05CopyFrom}} 
+
+|
+  {{{./RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/TheCopyFromInterface.html}The CopyFrom interface (rome)}} 
+
+|
+ 
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/Rome05DateMapping}http://wiki.java.net/twiki/bin/view/Javawsxml/Rome05DateMapping}} 
+
+|
+  {{{./RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/FeedsDateElementsMappingToSyndFeedAndSyndEntry.html}Feeds Date Elements Mapping to SyndFeed and SyndEntry (rome)}} 
+
+|
+ 
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/Rome05Plugins}http://wiki.java.net/twiki/bin/view/Javawsxml/Rome05Plugins}} 
+
+|
+  {{{./RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEPluginsMechanism.html}Rss and atOM utilitiEs (ROME) Plugins Mechanism}} 
+
+|
+ 
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/Rome05SamplesHowTo}http://wiki.java.net/twiki/bin/view/Javawsxml/Rome05SamplesHowTo}} 
+
+|
+  {{{./RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEV0.5HowToBuildAndRunTheTutorialsSampleCode.html}Rss and atOM utilitiEs (ROME) v0.5, How to build and run the tutorials sample code}} 
+
+|
+ 
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/Rome05TutorialFeedAggregator}http://wiki.java.net/twiki/bin/view/Javawsxml/Rome05TutorialFeedAggregator}} 
+
+|
+  {{{./RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEV0.5TutorialUsingROMEToAggregateManySyndicationFeedsIntoASingleOne.html}Rss and atOM utilitiEs (ROME) v0.5 Tutorial, Using ROME to aggregate many syndication feeds into a single one}} 
+
+|
+ 
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/Rome05TutorialFeedConverter}http://wiki.java.net/twiki/bin/view/Javawsxml/Rome05TutorialFeedConverter}} 
+
+|
+  {{{./RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEV0.5TutorialUsingROMEToConvertASyndicationFeedFromOneTypeToAnother.html}Rss and atOM utilitiEs (ROME) v0.5 Tutorial, Using ROME to convert a syndication feed from one type to another}} 
+
+|
+ 
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/Rome05TutorialFeedReader}http://wiki.java.net/twiki/bin/view/Javawsxml/Rome05TutorialFeedReader}} 
+
+|
+  {{{./RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEV0.5TutorialUsingROMEToReadASyndicationFeed.html}Rss and atOM utilitiEs (ROME) v0.5 Tutorial, Using ROME to read a syndication feed}} 
+
+|
+ 
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/Rome05TutorialFeedServlet}http://wiki.java.net/twiki/bin/view/Javawsxml/Rome05TutorialFeedServlet}} 
+
+|
+  {{{./RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEV0.5TutorialUsingROMEWithinAServletToCreateAndReturnAFeed.html}Rss and atOM utilitiEs (ROME) v0.5 Tutorial, Using ROME within a Servlet to create and return a feed}} 
+
+|
+  links in code examples messed up
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/Rome05TutorialFeedWriter}http://wiki.java.net/twiki/bin/view/Javawsxml/Rome05TutorialFeedWriter}} 
+
+|
+  {{{./RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEV0.5TutorialUsingROMEToCreateAndWriteASyndicationFeed.html}Rss and atOM utilitiEs (ROME) v0.5 Tutorial, Using ROME to create and write a syndication feed}} 
+
+|
+  links in code examples messed up
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/Rome05TutorialSampleModule}http://wiki.java.net/twiki/bin/view/Javawsxml/Rome05TutorialSampleModule}} 
+
+|
+  {{{./RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEV0.5TutorialDefiningACustomModuleBeanParserAndGenerator.html}Rss and atOM utilitiEs (ROME) v0.5 Tutorial, Defining a Custom Module (bean, parser and generator)}} 
+
+|
+ 
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/Rome05Tutorials}http://wiki.java.net/twiki/bin/view/Javawsxml/Rome05Tutorials}} 
+
+|
+  {{{./RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/index.html}Rss and atOM utilitiEs (ROME) v0.5 and above Tutorials and Articles}} 
+
+|
+ 
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/Rome05URIMapping}http://wiki.java.net/twiki/bin/view/Javawsxml/Rome05URIMapping}} 
+
+|
+  {{{./RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/FeedAndEntryURIMappingHowSyndFeedAndSyndEntryUriPropertiesMapToRSSAndAtomElements.html}Feed and Entry URI Mapping, how SyndFeed and SyndEntry 'uri' properties map to RSS and Atom elements (rome)}} 
+
+|
+ 
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/Rome07DateParsing}http://wiki.java.net/twiki/bin/view/Javawsxml/Rome07DateParsing}} 
+
+|
+  {{{./RssAndAtOMUtiliEsROMEV0.7DateAndTimeParsing.html}Rss and atOM utiliEs (ROME) v0.7 Date and Time Parsing}} 
+
+|
+ 
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/ROME2Proposal2}http://wiki.java.net/twiki/bin/view/Javawsxml/ROME2Proposal2}} 
+
+|
+  {{{./ROMEDevelopmentProposals/ROME22ndProposalJuly18th2006CURRENT.html}ROME2 2nd Proposal (July 18th 2006) CURRENT}} 
+
+|
+ 
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/ROME2Proposal}http://wiki.java.net/twiki/bin/view/Javawsxml/ROME2Proposal}} 
+
+|
+  {{{./ROMEDevelopmentProposals/ROME21stProposalJune10th2006NOTCURRENT.html}ROME2 1st Proposal (June 10th 2006) NOT CURRENT}} 
+
+|
+ 
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/RomeAndMaven2}http://wiki.java.net/twiki/bin/view/Javawsxml/RomeAndMaven2}} 
+
+|
+  {{{./ROMEAndMaven2.html}ROME and Maven 2 (rome)}} 
+
+|
+ 
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/RomeAndOSGi}http://wiki.java.net/twiki/bin/view/Javawsxml/RomeAndOSGi}} 
+
+|
+  {{{./ROMEAndOSGI.html}ROME and OSGI (rome)}} 
+
+|
+ 
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/RomeAPIFAQ}http://wiki.java.net/twiki/bin/view/Javawsxml/RomeAPIFAQ}} 
+
+|
+  {{{./RomeAPIFAQ.html}Rome API FAQ (rome)}} 
+
+|
+  
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/RomeComparisonOtherLibs}http://wiki.java.net/twiki/bin/view/Javawsxml/RomeComparisonOtherLibs}} 
+
+|
+  {{{./WhatSWrongWithOtherExistingRSSParsingLibraries.html}What's wrong with other existing RSS parsing libraries?}} 
+
+|
+  
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/RomeDevelopmentProcess}http://wiki.java.net/twiki/bin/view/Javawsxml/RomeDevelopmentProcess}} 
+
+|
+  {{{./ROMEDevelopmentProcess.html}ROME Development Process (rome)}} 
+
+|
+ 
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/RomeFeatureRequests}http://wiki.java.net/twiki/bin/view/Javawsxml/RomeFeatureRequests}} 
+
+|
+  {{{./ROMEDevelopmentProposals/ROMEFeatureRequests.html}ROME Feature Requests (rome)}} 
+
+|
+ 
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/RomeProposals}http://wiki.java.net/twiki/bin/view/Javawsxml/RomeProposals}} 
+
+|
+  {{{./ROMEDevelopmentProposals/index.html}ROME Development Proposals (rome)}} 
+
+|
+ 
+
+|
+*----+--+--+
+|
+  {{{http://wiki.java.net/twiki/bin/view/Javawsxml/RomeWhatAPIToUse}http://wiki.java.net/twiki/bin/view/Javawsxml/RomeWhatAPIToUse}} 
+
+|
+  {{{./WhatPartOfTheAPIYouShouldBeUsing.html}What part of the API you should be using (rome)}} 
+
+|
+  
+
+|
+*----+--+--+

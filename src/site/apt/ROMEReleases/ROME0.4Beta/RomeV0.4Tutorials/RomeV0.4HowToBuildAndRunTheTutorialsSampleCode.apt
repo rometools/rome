@@ -1,0 +1,84 @@
+ -----
+ Rome v0.4, How to build and run the tutorials sample code
+ -----
+ mkurz
+ -----
+ 2011-08-15 13:32:24.939
+ -----
+
+Rome v0.4, How to build and run the tutorials sample code
+
+
+*Building the samples with Maven
+
+
+ This is, as usual, the easiest way.
+
+
+ There's only one configuration step: Maven downloads dependencies from an online repository (by default ibiblio), to a local repository (on UNIX usually in \~/.maven/repository). Because the rome distribution is not yet on ibiblio, you need to add it yourself, either to your local repository, or to your own intranet maven repository if you have such a thing in your organization.
+
+
+ If you built Rome run maven jar:install in the rome project to install Rome's jar in your Maven repository.
+
+
+ If you got Rome binary distribution copy the Rome's jar file to your Maven repository (on UNIX that would be <<<cp rome\-0.4/rome\-0.4.jar   \~/.maven/repository/rome/jars/>>>).
+
+
+ Then building the samples it's easy as a pie, just run maven jar in the samples sub\-project and you are all set.
+
+
+ To build the sample Web Application, just run maven war in the samples sub\-project. The WAR file, <<<rome\-samples.war>>>, will be created under the <<<target>>> directory.
+
+
+*Building the samples with Ant
+
+
+ The targets present in the build.xml are very helpful, ant get\-deps will download from ibiblio to rome\-samples/target/lib all the jar files Rome depends on and are needed for building an application using Rome.
+
+
+ In order to build the samples (or any subprojects), you'll need to first ensure that rome itself is built. You can do this simply by running ant in the project root directory.
+
+
+ Once this is done, change to the samples directory, and just run ant. This will produce two files, rome\-samples.jar which contains the sample applications, and rome\-samples.war which will contain a deployable web application war file for the FeedServlet sample.
+
+
+*Running the samples with Maven
+
+
+ The Maven goals for running the samples are defined in maven.xml. They should all generate the same file named toto, but somehow it ends up empty. However the output is correctly sent to the console. We'll fix that glitch later.
+
+
+ 
+ * <<<maven run\-agr>>> runs the FeedAggregator sample
+ 
+ * <<<maven run\-conv>>> runs the FeedConverter sample
+ 
+ * <<<maven run\-read>>> runs the FeedReader sample
+ 
+ * <<<maven run\-write>>> runs the FeedWriter sample
+ 
+ * <<<maven run\-sampleModule>>> runs the FeedConverter sample against a file with Sample Module data (shows off custom module plugin)
+ 
+ []
+
+ To run the sample Web Application you'll need to deploy the WAR file into your servlet container. If you are using Tomcat 4 or Tomcat 5 and the WAR file was dropped in the <<<$\{TOMCAT\}/webapps>>> directory the URL for the <<<FeedServlet>>> would be {{{http://localhost:8080/rome\-samples/feed}http://localhost:8080/rome\-samples/feed}} in a default localhost Tomcat installation. 
+
+
+*Running the samples with Ant
+
+
+ All ant targets for the samples generate the same file named toto: feel free to customize this build.xml to your own needs. Also today all these targets depends on the jar target, which represents some overhead if you have already built. Get rid of that once your project is well setup.
+
+
+ 
+ * <<<ant run\-aggr>>> runs the FeedAggregator sample
+ 
+ * <<<ant run\-conv>>> runs the FeedConverter sample
+ 
+ * <<<ant run\-read>>> runs the FeedReader sample
+ 
+ * <<<ant run\-write>>> runs the FeedWriter sample
+ 
+ * <<<ant run\-sampleModule>>> runs the FeedConverter sample against a file with Sample Module data (shows off custom module plugin)
+ 
+ []

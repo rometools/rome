@@ -1,0 +1,73 @@
+ -----
+ Rome v0.1, How to build and run the tutorials sample code
+ -----
+ mkurz
+ -----
+ 2011-08-15 14:39:07.651
+ -----
+
+Rome v0.1, How to build and run the tutorials sample code
+
+
+*Building the samples with Maven
+
+
+ This is, as usual, the easiest way.
+
+
+ There's only one configuration step: Maven downloads dependencies from an online repository (by default ibiblio), to a local repository (on UNIX usually in \~/.maven/repository). Because the rome distribution is not yet on ibiblio, you need to add it yourself, either to your local repository, or to your own intranet maven repository if you have such a thing in your organization.
+
+
+ If you built Rome run maven jar:install in the rome project to install Rome's jar in your Maven repository.
+
+
+ If you got Rome binary distribution copy the Rome's jar file to your Maven repository (on UNIX that would be cp rome\-0.1/rome\-0.1.jar   \~/.maven/repository/rome/jars/).
+
+
+ Then building the samples it's easy as a pie, just run maven jar in the rome\-samples project and you are all set.
+
+
+*Building the samples with Ant
+
+
+ Hopefully maven is helpful in supporting poor ant users who did not make the switch yet:\-) We generated an Ant build.xml file in order for you to be able to build rome\-samples with Ant. (Actually, Maven did it for us, the maven ant goal).
+
+
+ The targets present in the build.xml are very helpful, ant get\-deps will download from ibiblio to rome\-samples/target/lib all the jar files Rome depends on and are needed for building an application using Rome.
+
+
+ The only thing that will be left out is Rome's jar file itself: you'll need to copy it to the rome\-samples/target/lib directory (For example in UNIX would be cp rome\-0.1/rome\-0.1.jar  rome\-samples/target/lib, where rome\-0.1 is the binary distribution).
+
+
+ To build rome\-samples just run ant jar.
+
+
+*Running the samples with Maven
+
+
+ The Maven goals for running the samples are defined in maven.xml. They should all generate the same file named toto, but somehow it ends up empty. However the output is correctly sent to the console. We'll fix that glitch later.
+
+
+ maven run\-agr runs the FeedAggregator sample
+
+
+ maven run\-conv runs the FeedConverter sample
+
+
+ maven run\-read runs the FeedReader sample
+
+
+*Running the samples with Ant
+
+
+ All ant targets for the samples generate the same file named toto: feel free to customize this build.xml to your own needs. Also today all these targets depends on the jar target, which represents some overhead if you have already built. Get rid of that once your project is well setup.
+
+
+ ant run\-aggr runs the FeedAggregator sample
+
+
+ ant run\-conv runs the FeedConverter sample
+
+
+ ant run\-read runs the FeedReader sample
+

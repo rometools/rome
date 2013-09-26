@@ -1,0 +1,60 @@
+ -----
+ ROME 0.2 Beta
+ -----
+ mkurz
+ -----
+ 2011-08-15 14:31:23.934
+ -----
+
+ROME 0.2 Beta
+
+
+*Dependencies
+
+
+ 
+ * J2SE 1.4\+
+ 
+ * {{{http://www.jdom.org/}JDOM Beta 10}}
+ 
+ []
+
+*Downloads
+
+
+
+ * {{{./rome\-0.2\-src.zip}rome\-0.2\-src.zip}}
+
+ * {{{./rome\-0.2.tar.gz}rome\-0.2.tar.gz}}
+
+ * {{{./rome\-0.2.zip}rome\-0.2.zip}}
+
+ * {{{./rome\-0.2\-src.tar.gz}rome\-0.2\-src.tar.gz}}
+
+ * {{{./rome\-samples\-0.2\-src.tar.gz}rome\-samples\-0.2\-src.tar.gz}}
+
+ * {{{./rome\-samples\-0.2.tar.gz}rome\-samples\-0.2.tar.gz}}
+
+ * {{{./rome\-samples\-0.2.zip}rome\-samples\-0.2.zip}}
+
+ * {{{./rome\-samples\-0.2\-src.zip}rome\-samples\-0.2\-src.zip}}
+
+ []
+
+*Aditional Information
+
+
+ 
+ * {{{./RomeV0.2Tutorials/index.html}Tutorials}}
+ 
+ * Changes Log
+ 
+ []
+
+*Known Issues
+
+
+ 
+ * Same issues as Rome v0.1
+ 
+ []

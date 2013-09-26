@@ -1,0 +1,58 @@
+ -----
+ ROME 1.0 RC2
+ -----
+ mkurz
+ -----
+ 2011-08-14 17:19:36.245
+ -----
+
+ROME 1.0 RC2
+
+
+*What is New, Highlights
+
+
+ 
+ * ROME is now {{{../HowToBuildRome.html}built using Maven 2}}
+ 
+ * ROME jars are now available in the {{{../ROMEAndMaven2.html}java.net Maven repository}}
+ 
+ * More lenient handling of Number formats during parsing
+ 
+ * Better date parsing for Atom dates
+ 
+ * Complete details in the {{{../ChangeLog.html}change log}}
+ 
+ []
+
+*Dependencies
+
+
+ 
+ * {{{http://wiki.java.net/twiki/bin/view/Javawsxml/J2SE}J2SE}} 1.4\+
+ 
+ * {{{http://www.jdom.org/}JDOM 1.0}}
+ 
+ []
+
+*Downloads
+
+
+
+ * {{{./rome\-fetcher\-1.0RC2\-src.zip}rome\-fetcher\-1.0RC2\-src.zip}}
+
+ * {{{./rome\-1.0RC2.jar}rome\-1.0RC2.jar}}
+
+ * {{{./rome\-1.0RC2\-javadoc.jar}rome\-1.0RC2\-javadoc.jar}}
+
+ * {{{./rome\-1.0RC2\-sources.jar}rome\-1.0RC2\-sources.jar}}
+
+ []
+
+*Documentation
+
+
+ 
+ * {{{http://rome.dev.java.net/apidocs/1_0RC2/overview\-summary.html}Javadocs}}
+ 
+ []
