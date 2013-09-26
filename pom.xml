@@ -8,10 +8,19 @@
     <version>1.5-SNAPSHOT</version>
     <name>rome-modules</name>
     <description>Plugin collection for the ROME RSS and Atom Utilities</description>
-    <url>http://www.rometools.org</url>
+    <url>http://rometools.github.io/rome-modules/</url>
+    <organization>
+        <name>ROME Project</name>
+        <url>https://github.com/rometools/</url>
+    </organization>
     <issueManagement>
-        <url>https://rometools.jira.com/secure/IssueNavigator.jspa</url>
+        <url>https://github.com/rometools/rome-modules/issues</url>
     </issueManagement>
+    <scm>
+        <connection>scm:git:git@github.com:rometools/rome-modules.git</connection>
+        <developerConnection>scm:git:git@github.com:rometools/rome-modules.git</developerConnection>
+        <url>https://github.com/rometools/rome-modules/</url>
+    </scm>
     <developers>
         <developer>
             <id>kebernet</id>
@@ -26,11 +35,6 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-    <scm>
-        <connection>scm:svn:https://rometools.jira.com/svn/MODULES/trunk</connection>
-        <developerConnection>scm:svn:https://rometools.jira.com/svn/MODULES/trunk</developerConnection>
-        <url>https://rometools.jira.com/source/browse/MODULES</url>
-    </scm>
     <repositories>
         <repository>
             <id>maven2-repository.dev.java.net</id>
@@ -74,11 +78,30 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>2.2</version>
+                <version>2.6</version>
                 <configuration>
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<port>9000</port>
+					<tempWebappDirectory>${basedir}/target/site/tempdir</tempWebappDirectory>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-scm-publish-plugin</artifactId>
+				<version>1.0-beta-2</version>
+				<configuration>
+					<scmBranch>gh-pages</scmBranch>
+					<pubScmUrl>scm:git:git@github.com:rometools/rome-modules.git</pubScmUrl>
+					<content>${project.build.directory}/site</content>
+				</configuration>
+			</plugin>
         </plugins>
     </build>
     <profiles>
@@ -148,4 +171,33 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.6</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>javadoc</report>
+							<report>test-javadoc</report>
+						</reports>
+					</reportSet>
+					<reportSet>
+						<id>aggregate</id>
+						<inherited>false</inherited>
+						<reports>
+							<report>aggregate</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+		</plugins>
+	</reporting>
 </project>
