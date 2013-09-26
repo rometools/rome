@@ -1,0 +1,36 @@
+ -----
+ Dependencies
+ -----
+ mkurz
+ -----
+ 2011-08-15 17:42:31.999
+ -----
+
+Dependencies
+
+ The Rome Fetcher aims to introduce the absolute minimum number of extra dependencies. Currently (30\-June\-2004) no extra dependencies over those required
+ by Rome are required to use the fetcher.
+
+ The current dependencies required to use the Rome Fetcher are:
+
+ * JDK 1.4\+
+ 
+ * Current version of Rome
+ 
+ * JDom v 1.0
+ 
+ []
+
+ To build the Rome Fetcher the {{{http://jakarta.apache.org/commons/httpclient/}Jakarta HTTP Client}} is required.
+
+ If the {{{./HttpClientFeedFetcher.html}HttpClientFeedFetcher (fetcher)}} fetcher implementation is used then the Jakarta HTTP Client and Jakarta Commons Logging is required.
+
+ To build and run the unit tests for the Rome Fetcher the following additional dependencies are required:
+
+ * servletapi version 2.3
+ 
+ * jetty 4.2.12
+ 
+ []
+
+ Note that Maven will automatically download the correct versions of all dependancies.

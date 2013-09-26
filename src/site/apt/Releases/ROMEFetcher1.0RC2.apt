@@ -1,0 +1,57 @@
+ -----
+ ROME Fetcher 1.0 RC2
+ -----
+ mkurz
+ -----
+ 2011-08-15 17:51:50.236
+ -----
+
+ROME Fetcher 1.0 RC2
+
+ Note that there was no 1.0 RC1 Fetcher release
+
+*Downloads
+
+ * {{{./rome\-fetcher\-1.0RC2\-src.zip}rome\-fetcher\-1.0RC2\-src.zip}}
+
+ * {{{./rome\-fetcher\-1.0RC2.jar}rome\-fetcher\-1.0RC2.jar}}
+
+ * {{{./rome\-fetcher\-1.0RC2\-javadoc.jar}rome\-fetcher\-1.0RC2\-javadoc.jar}}
+
+ * {{{./rome\-fetcher\-1.0RC2\-sources.jar}rome\-fetcher\-1.0RC2\-sources.jar}}
+
+ []
+
+*Tutorials
+
+ * {{{../BuildingTheRomeFetcher.html}Building the Rome Fetcher (fetcher)}}
+ 
+ * {{{../UsingTheRomeFetcherModuleToRetrieveFeeds.html}Using the Rome Fetcher module to retrieve feeds (fetcher)}}
+ 
+ * {{{../SampleProgramsIncluded.html}Sample programs included (fetcher)}}
+ 
+ []
+
+*API Docs
+
+ * {{{./rome-fetcher-1.0RC2-javadoc.jar}Fetcher API Docs}}
+ 
+ []
+
+*Todo list
+
+ * {{{../TodoList.html}Todo list (fetcher)}}
+ 
+ []
+
+*Issues
+
+ * {{{../KnownIssues.html}Known Issues (fetcher)}}
+ 
+ []
+
+*Change Log
+ 
+ * {{{../ChangeLog.html}Change Log (fetcher)}}
+ 
+ []
