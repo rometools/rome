@@ -6,7 +6,7 @@
 	<bannerLeft>
 		<name>ROME fetcher</name>
 		<src>images/romelogo.png</src>
-		<href>http://github.com/</href>
+		<href>http://github.com/rometools/</href>
 	</bannerLeft>
 	<publishDate position="right" />
 	<version position="right" />
