@@ -1,0 +1,89 @@
+ -----
+ ROME 0.6 Beta
+ -----
+ mkurz
+ -----
+ 2011-08-15 12:36:05.599
+ -----
+
+ROME 0.6 Beta
+
+
+ Normally each release of ROME includes a whole new set of Wiki pages with the corresponding version number. ROME 0.6 is reusing ROME 0.5 Wiki pages as most of the changes are internal and the documentation has not changed.
+
+
+*What is New, Highlights
+
+
+ 
+ * Bug fixes
+ 
+ []
+
+*Dependencies
+
+
+ 
+ * J2SE 1.4\+
+ 
+ * {{{http://www.jdom.org/}JDOM 1.0}}
+ 
+ []
+
+*Downloads
+
+
+
+ * {{{./rome\-0.6\-src.zip}rome\-0.6\-src.zip}}
+
+ * {{{./rome\-0.6.tar.gz}rome\-0.6.tar.gz}}
+
+ * {{{./rome\-0.6.zip}rome\-0.6.zip}}
+
+ * {{{./rome\-0.6\-src.tar.gz}rome\-0.6\-src.tar.gz}}
+
+ * {{{./rome\-samples\-0.6\-src.tar.gz}rome\-samples\-0.6\-src.tar.gz}}
+
+ * {{{./rome\-samples\-0.6\-src.zip}rome\-samples\-0.6\-src.zip}}
+
+ []
+
+*Additional Information 
+
+
+ 
+ * {{{../RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/index.html}Tutorials}}
+ 
+ * {{{../ChangeLog.html}Changes Log}}
+ 
+ * Inside ROME, How Things Work 
+ 
+  * {{{../HowRomeWorks/index.html}How ROME Works}}, Understanding ROME, a detailed overview by Dave Johnson (This doc is based on ROME v0.4)
+ 
+  * {{{../RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEPluginsMechanism.html}ROME Plugins Mechanism}}, bootstrap, adding and changing parsers, generators, converters and modules
+ 
+  * {{{../RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/FeedsDateElementsMappingToSyndFeedAndSyndEntry.html}Feeds Date Elements}}, how Date data is mapped to SyndFeed and SyndEntry
+ 
+  * {{{../RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/FeedAndEntryURIMappingHowSyndFeedAndSyndEntryUriPropertiesMapToRSSAndAtomElements.html}Feed and Entry URI Mapping}}, how SyndFeed and SyndEntry 'uri' properties map to concrete feed elements
+ 
+  * {{{../RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/XMLCharsetEncodingDetectionHowRssAndAtOMUtilitiEsROMEHelpsGettingTheRightCharsetEncoding.html}XML Charset Encoding Detection}}, how ROME helps getting the right charset encoding
+ 
+  * {{{../RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEV0.5TutorialDefiningACustomModuleBeanParserAndGenerator.html}Creating a custom Module}}, creating all necessary pieces, bean, parser and generator
+ 
+  * {{{../RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/TheCopyFromInterface.html}The CopyFrom interface}}
+ 
+ 
+ 
+ * Implementation documents 
+ 
+  * {{{../RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/UnderstandingRssAndAtOMUtilitiEsROMEBeanUtilities.html}ROME bean utilities, equals, toString and clonning}}
+ 
+ 
+ 
+ []
+
+*Known Issues
+
+
+ None.
+

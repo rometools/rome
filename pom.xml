@@ -15,7 +15,7 @@
         SyndFeed object that lets you work on with the data without bothering about the
     underlying format.
     </description>
-    <url>https://github.com/rometools/rome/</url>
+    <url>http://rometools.github.io/rome/</url>
     <issueManagement>
         <url>https://github.com/rometools/rome/issues</url>
     </issueManagement>

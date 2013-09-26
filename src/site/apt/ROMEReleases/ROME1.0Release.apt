@@ -1,0 +1,66 @@
+ -----
+ ROME 1.0 Release
+ -----
+ mkurz
+ -----
+ 2011-08-15 14:48:27.959
+ -----
+
+ROME 1.0 Release
+
+
+ <ROME 1.0 was released on March 12, 2009>
+
+
+*What is New / Highlights
+
+
+ Normally each release of ROME includes a whole new set of Wiki pages with the corresponding version number. ROME 1.0 is reusing wikis from previous versions as there are not significant changes. 
+
+
+ 
+ * ROME can now optionally preserve WireFeed (ie, Atom/RSS specific) data and make it available via the SyndFeed data model. See {{{../PreservingWireFeeds.html}PreservingWireFeeds}} for further details
+ 
+ []
+
+ 
+ * Complete details in the {{{../ChangeLog.html}change log}}
+ 
+ []
+
+**Downloads
+
+
+
+ * {{{./rome\-1.0.jar}rome\-1.0.jar}}
+
+ * {{{./rome\-1.0\-sources.jar}rome\-1.0\-sources.jar}}
+
+ * {{{./rome\-1.0\-javadoc.jar}rome\-1.0\-javadoc.jar}}
+
+ * {{{./rome\-1.0.jar}rome\-1.0.jar}}
+
+ * {{{./rome\-1.0\-javadoc.jar}rome\-1.0\-javadoc.jar}}
+
+ * {{{./rome\-1.0\-sources.jar}rome\-1.0\-sources.jar}}
+
+ []
+
+**Dependencies
+
+
+ 
+ * J2SE 1.4\+
+ 
+ * {{{http://www.jdom.org/}JDOM 1.0}}\
+
+ 
+ []
+
+**Documentation
+
+
+ 
+ * {{{http://rome.dev.java.net/apidocs/1_0/overview\-summary.html}Javadocs}}
+ 
+ []

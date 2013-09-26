@@ -1,0 +1,275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Java.net &mdash; 404 - Not Found</title>
+    <link href="http://asset-3.java.net/stylesheets/print_packaged.css?20110729.62b47ea" media="print" rel="stylesheet" type="text/css" />
+    <script src="http://asset-1.java.net/javascripts/head_packaged.js?20110729.62b47ea" type="text/javascript"></script>
+        <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+                publisher:'bcd30425-1749-43d6-a311-18a82f89771a'
+        });
+    </script>
+        <script type="text/javascript">
+//<![CDATA[
+var page={};
+//]]>
+</script>
+    <script type="text/javascript" charset="utf-8">
+      function debug(m){}
+    </script>
+    
+    <link href="http://asset-2.java.net/theme/stylesheets/java_net.css?20110729.62b47ea" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://asset-1.java.net/theme/stylesheets/layout.css?20110729.62b47ea" media="screen" rel="stylesheet" type="text/css" />
+    <!--[if IE]><style type="text/css" media="all">@import "/theme/stylesheets/ie.css";</style><![endif]-->
+    <!--[if lte IE 6]><style type="text/css" media="all">@import "/theme/stylesheets/ie6.css";</style><![endif]-->
+    <!--[if IE 7]><style type="text/css" media="all">@import "/theme/stylesheets/ie7.css";</style><![endif]-->
+    <!--[if IE 8]><style type="text/css" media="all">@import "/theme/stylesheets/ie8.css";</style><![endif]-->
+
+    <meta name="keywords" content="" />
+  </head>
+  <body class="front not-logged-in article-type-page one-sidebar">
+    <div id="container">
+      
+      <div id="skip-nav" class="element-invisible">
+        <!-- To adjust the display of the skip link see the Advanced theme settings
+        (General settings), and never use display:none! -->
+        <a href="#main-content">Skip to main content</a>
+      </div>
+      <div id="leaderboard">
+        <div id="block-block-31"  class="block">
+          <div class="block-inner">
+            <div class="content">
+                <a href="/people/new">Create Account</a>
+  <span class="separator"></span>
+  <a href="/people/login" rel="nofollow">Login</a>
+  <span class="separator"></span>
+  <a href="/projects/help/pages/Home" target="_blank">Help</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="header" class="clearfix">
+        <div id="branding">
+          <div class="logo-site-name">
+            <strong>
+              <span id="logo">
+                <a href="http://www.java.net/" rel="home" class="active">
+                  <img alt="java.net - Go to Homepage" border="0" class="logo-link" src="http://asset-0.java.net/theme/images/logo.png?20110729.62b47ea" title="Java.net - Go to the Homepage" />
+                </a>
+              </span>
+            </strong>
+          </div>
+          <div id="site-slogan">The Source for Java Technology Collaboration</div>
+        </div>
+        <div id="search-box" class="hide-label">
+          <form action="http://www.java.net/search/node" method="post" id="search-theme-form">
+            <div id="search">
+              <input type="hidden" value="search_form" id="edit-search-form" name="form_id" />
+              <div style="margin-left: -10px;" class="checks">
+                <span><input type="checkbox" name="type[forum]" id="edit-forums" value="forum" /> Forums</span>
+                <span><input type="checkbox" name="type[blog]" id="edit-blogs" value="blog" /> Blogs</span>
+                <span><input type="checkbox" name="projects" id="edit-projects" value="project" /> Projects</span>
+                <span><input type="checkbox" name="people" id="edit-people" value="people" /> People</span>
+              </div>
+              <input type="text" class="form-text" id="edit-search-theme-form-1" value="Search All" size="15" onclick="this.value = ''" onblur="if (!this.value) this.value = ''" name="keys" />
+              <input type="submit" value="" name="op" title="Search" class="form-submit" alt="Search" />
+            </div>
+          </form>
+        </div>
+      </div>
+    <div id="primary" class="nav">
+      <div id="primary-inner">
+                <h2 class="element-invisible">Main Menu</h2>
+       <ul class="primary-links clearfix">
+          <li class=""><a href="http://www.java.net/" title="Return to the java.net homepage" class="active">Home</a></li>
+          <li class=""><a href="http://www.java.net/projects" title="View the projects hosted on java.net">Projects</a></li>
+          <li class=""><a href="http://www.java.net/forums" title="Participate in the java.net forums">Forums</a></li>
+          <li class=""><a href="/people" title="View all the people involved with java.net">People</a></li>
+          <li class=""><a href="http://www.java.net/jugs/java-user-groups" title="Get involved in your local Java User Group (JUG)">Java User Groups</a></li>
+                  </ul>
+       </div>
+    </div>
+    <div id="columns">
+      <div class="columns-inner clearfix">
+        <div id="content-column">
+          <div class="content-inner">
+           <div id="navig-breadcrumbs">
+              <a href="/">java.net</a><span>></span>
+            </div>
+            <div id="block-quicktabs-2"  class="block">
+              <div class="block-inner">
+                <div class="content">
+                  <!-- BEGIN CONTENT AREA -->
+                  
+                  
+
+<div class="contentPadding">
+  <h2 class="pageTitle">Not Found</h2>
+  <!-- This file lives in public/404.html -->
+  <div style="padding: 10px 0 10px 0;">
+    The page you were looking for doesn't exist.<br/>
+    You may have mistyped the address or the page may have moved.
+  </div>
+  <a href="#" onclick="history.back(); return false;"><span class="bullet">&laquo;</span>&nbsp;back</a>
+  &nbsp;|&nbsp;
+  <a href="/">home&nbsp;<span class="bullet">&raquo;</span></a>
+</div>
+
+
+                  <!--END CONTENT AREA-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="sidebar-first" class="sidebar">
+          <div id="block-menu-menu-get-involved"  class="block">
+            <div class="block-inner">
+              <h2>Get Involved</h2>
+              <div class="content">
+                <ul class="menu">
+                  <li class="leaf">
+                    <a href="http://about.java.net/" title="About Java.net">About Java.net</a>
+                  </li>
+                  <li class="leaf">
+                    <a href="http://www.java.net/request-project" title="Create a Project">Create a Project</a>
+                  </li>
+                  <li class="leaf">
+                    <a href="http://www.java.net/enhancements" title="">Java.net Enhancements</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div id="block-menu-menu-get-informed" class="block">
+            <div class="block-inner">
+              <h2>Get Informed</h2>
+              <div class="content">
+                <ul class="menu">
+                  <li class="leaf">
+                    <a href="http://www.java.net/articles" title="">Articles</a>
+                  </li>
+                  <li class="leaf">
+                    <a href="http://www.java.net/blogfront" title="">Blogs</a>
+                  </li>
+                  <li class="leaf">
+                    <a href="http://www.java.net/events" title="">Events</a>
+                  </li>
+                  <li class="leaf">
+                    <a href="http://www.java.net/today/archive" title="Archive">java.net Archives</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <div id="tertiary-content">
+      <div id="block-menu-menu-footer-menu"  class="block">
+        <div class="block-inner">
+          <div class="content">
+            <ul class="menu">
+              <li class="leaf first">
+                <a href="http://www.java.net/contact" title="">Feedback</a>
+              </li>
+              <li class="leaf">
+                <a href="http://www.java.net/javanet-faq" title="">FAQ</a>
+              </li>
+              <li class="leaf">
+                <a href="http://www.java.net/javanet-web-site-terms-use" title="">Terms of Use</a>
+              </li>
+              <li class="leaf">
+                <a href="http://www.oracle.com/us/legal/privacy/index.html" title="">Privacy</a>
+              </li>
+              <li class="leaf last">
+                <a href="http://www.oracle.com/us/legal/third-party-trademarks/index.html" title="">Trademarks</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <div id="footer-region">
+        <div class="block">
+          <div class="block-inner">
+            <div class="content">
+              <div style="width: 59%; float: left;">
+                <p>
+                  Your use of this web site or any of its content or software indicates
+                  your agreement to be bound by these
+                  <a href="http://www.java.net/javanet-web-site-terms-use">Terms of Participation</a>.
+                </p>
+                <p>
+                  Copyright © 2011, Oracle and/or its affiliates. All rights reserved.
+                  Oracle and Java are registered trademarks of Oracle and/or its affiliates.
+                  Other names may be trademarks of their respective owners.
+                </p>
+                <p>(<a href="/projects/help/pages/ReleaseNotes">revision 20110729.62b47ea</a>)</p>
+              </div>
+              <div style="width: 310px; float: right; text-align: right; margin-right: 10px">
+                <div style="float: right;">
+                  <a href="http://www.oracle.com" title="Oracle"><img alt="" src="http://asset-2.java.net/theme/images/oracle.png?20110729.62b47ea" /></a>
+                  <a href="http://kenai.com" title="Kenai.com"><img alt="" src="http://asset-2.java.net/theme/images/kenai.png?20110729.62b47ea" /></a>
+                  <a href="http://www.cognisync.com" title="Cognisync"><img alt="" src="http://asset-0.java.net/theme/images/cognisync.png?20110729.62b47ea" /></a>
+                  <br />
+                  <div class="powered-by">
+                    Powered by Oracle, Project Kenai and Cognisync
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+    </div>
+        <!-- popups that are anchored to specific elements -->
+    <div class="popupMenuShadow" id="contextMenuShadow"></div>
+    <div class="popupMenuContainer" id="contextMenu">
+      <div class="popupMenu inline">	
+        <div class="upArrow"></div>
+        <div class="header"></div>
+        <div class="contextMenuBody" id="contextMenuBody">&nbsp;</div>
+      </div>
+    </div> 
+    
+    <!-- large content loaded via ajax. Faded but not modal. -->
+    <div class="jqmWindow" id="jqm_large_overlay">
+      <div class="jqmHeader">
+        <div class="jqmTitle">&nbsp;</div>
+        <img alt="Close" class="jqmClose" src="http://asset-2.java.net/images/close.gif?20110729.62b47ea" />
+      </div>
+      <div class="jqmTarget">
+        <img alt="loading" src="http://asset-2.java.net/images/activity.gif?20110729.62b47ea" />
+      </div>
+      <div class="jqmFooter">
+      	<div class="jqmClose functionButtonContainer"><button class="functionButton" title="Done"> Done </button></div>
+      </div>
+    </div>
+    
+    <!-- confirmation dialogs with buttons. Faded and modal. -->
+    <div class="jqmWindow" id="jqm_dialog">
+      <div class="jqmHeader">
+        <div class="jqmTitle">Please Confirm</div>
+        <img alt="Close" class="jqmClose" src="http://asset-2.java.net/images/close.gif?20110729.62b47ea" />
+      </div>
+      <div class="jqmTarget">&nbsp;</div>
+      <div class="jqmFooter">
+      	<div class="jqmClose functionButtonContainer"><button class="functionButton" id="jq_no_button" title="No" onclick="Modal.no()"> No </button></div>
+      	<div class="jqmClose functionButtonContainer"><button class="functionButton" id="jq_yes_button" title="Yes" onclick="Modal.yes();"> Yes </button></div>
+      </div>
+    </div>    
+
+    <div id="jq-ui-autocomplete-parent"></div>
+    
+  </body>
+  <script src="http://asset-0.java.net/javascripts/body_packaged.js?20110729.62b47ea" type="text/javascript"></script>
+  <script src="http://asset-3.java.net/theme/javascript/java_custom.js?20110729.62b47ea" type="text/javascript"></script>
+  
+</html>

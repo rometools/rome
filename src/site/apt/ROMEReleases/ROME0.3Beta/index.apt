@@ -1,0 +1,60 @@
+ -----
+ ROME 0.3 Beta
+ -----
+ mkurz
+ -----
+ 2011-08-15 13:47:07.902
+ -----
+
+ROME 0.3 Beta
+
+
+*Dependencies 
+
+
+ 
+ * J2SE 1.4\+
+ 
+ * {{{http://www.jdom.org/}JDOM Beta 10}}
+ 
+ []
+
+*Downloads 
+
+
+
+ * {{{./rome\-0.3\-src.zip}rome\-0.3\-src.zip}}
+
+ * {{{./rome\-0.3.tar.gz}rome\-0.3.tar.gz}}
+
+ * {{{./rome\-0.3.zip}rome\-0.3.zip}}
+
+ * {{{./rome\-0.3\-src.tar.gz}rome\-0.3\-src.tar.gz}}
+
+ * {{{./rome\-samples\-0.3\-src.tar.gz}rome\-samples\-0.3\-src.tar.gz}}
+
+ * {{{./rome\-samples\-0.3\-src.zip}rome\-samples\-0.3\-src.zip}}
+
+ []
+
+*Additional Information
+
+
+ 
+ * {{{./RomeV0.3Tutorials/index.html}Tutorials}} (2 New ones)
+ 
+ * Changes Log
+ 
+ []
+
+*Known Issues
+
+
+ 
+ * Same issues as Rome v0.1
+ 
+ * When processing XML documents with DTD (ie: Netscape RSS 0.91) if the XML parser implementation is not Xerces and the system does not have access ot the internet, the XML parser will fail.
+ 
+ * If the feed starts with a {{{http://www.unicode.org/faq/utf_bom.html#BOM}BOM}} the JAXP SAX parser may fail, using {{{http://xml.apache.org/xerces2\-j}Xerces 2.6.2}} addresses the problem.
+ 
+ []

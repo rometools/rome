@@ -1,0 +1,210 @@
+ -----
+ Products or sites powered by ROME
+ -----
+ sbasegmez
+ -----
+ 2013-03-14 07:44:37.389
+ -----
+
+Products or sites powered by ROME
+
+
+ If your site or project is powered by ROME, please take the time to write a short testimonial on this wiki page, or send a mail to {{{mailto:users@rome.dev.java.net.}users@rome.dev.java.net.}} Feel free to use our "Powered by ROME" badges in your work. (Several badge variations are available at the bottom of this page.)
+
+
+ 
+
+
+*Open Source using ROME
+
+
+
+ * {{{http://firenze.berlios.de/}Firenze}}\
+ Firenze is a free Java based open source command line podcast receiver. It is powered by the ROME syndication framework. With Firenze you can easily subscribe to your favorite Podcast feeds and reveive them.
+
+ * {{{http://fnr.sourceforge.net/}Feed'n Read}}\
+ Feed'n Read (FnR) is a free Java based open source newsfeed reader. It is powered by the ROME syndication framework and therefore supports all current formats (RSS 0.90, 0.91, 0.92, 0.93, 0.94, 1.00, 2.00, ATOM 0.30 and 1.00). It disposes of an intuitive, fast and responsive user interface using the eclipse Rich Client Platform (RCP), i.e. JFace and SWT. Thus it combines the platform independent Java world on one hand with a fast native user interface on the other hand.
+
+ * {{{http://tudu.sourceforge.net/}Tudu Lists}}\
+ An AJAXian Todo Lists manager. We moved from our hand\-made solution to ROME with great pleasure \- it was fast and easy, and the overall performance is very good (11 ms per request in average today). You can try it out on our live site at {{{http://tudu.ess.ch/}http://tudu.ess.ch}}.
+
+ * {{{http://snipsnap.org/}SnipSnap}}
+
+ * {{{http://www.rollerweblogger.org/page/project}Roller Weblogger and Aggregator}}\
+ Roller is a weblog server. In Roller 1.1 there is a new aggregator feature, called PlanetRoller, based on ROME and ROME fetcher. Dave Johnson, who created Roller, {{{http://rollerweblogger.org/page/roller/20050213#rome_texen_planet_roller}created PlanetRoller in a couple of days}}, leveraging ROME and ROME fetcher to do all the hard work. You can try out at {{{http://www.rollerweblogger.org/planet/roller.html}PlanetRoller}}.
+
+ * {{{http://incubator.apache.org/activemq/}ActiveMQ}}\
+ Apache ActiveMQ is a fast open source JMS 1.1 provider and Message Fabric supporting clustering, peer networks, discovery, TCP, SSL, multicast, persistence, XA and integrates seamlessly into J2EE 1.4 containers, light weight containers and any Java application. ActiveMQ is released under the Apache 2.0 License. \
+ Currently ActiveMQ is using Rome to be able to {{{http://docs.codehaus.org/display/ACTIVEMQ/RSS\+and\+Atom}browse message queues}} (with or without filters applied) as RSS or Atom feeds.
+
+ * {{{http://www.xwiki.org/}XWiki}}
+
+ * {{{http://www.thauvin.net/mobitopia/mobibot/}mobibot}}
+
+ * {{{http://sourceforge.net/projects/stat4j/}stat4j}}\
+ Used ROME to create an RSS/ATOM Log4j Appender. Read more about it {{{http://www.jroller.com/comments/laraDAB?anchor\=rss_atom_log4j_appender}here}}.
+
+ * {{{http://www.spotdev.net/}SPOT Manager}}\
+ SPOT Manager uses ROME to parse RSS feeds and send them to your MSN Direct wristwatch! Learn about MSN Direct {{{http://www.msndirect.com/}here.}} Download the program from {{{http://www.spotdev.net/}SPOTDev.net}}.
+
+ * {{{http://logdistiller.sf.net/}LogDistiller}}\
+ LogDistiller is an extensible tool to merge and sort logs : reports can be stored in a feed file thanks to Rome.
+
+ * {{{http://openvision.tv/}ION Internet Video Console}}\
+ The I/ON Internet Video Console fuses together leading technologies into one simple media player, connecting you directly to the video you want. Avoid the ads, pop\-ups, and spyware that come with watching video in a browser and watch the web. ROME powers our RSS capabilities. Learn more and download {{{http://openvision.tv/}here}}.
+
+ * {{{http://code.google.com/p/blog\-mover}Blog Mover}}\
+ Blog Mover's goal is allowing your blog moving freely between each BSP(Blog Service Provider). Learn more and try it {{{http://blog\-mover.redv.com/}here}}.
+
+ * {{{http://scarab.tigris.org/}Scarab}}\
+ The goal of the Scarab project is to build a highly customisable Artifact tracking system. It's distributed under a BSD/Apache style license.
+
+ * {{{http://ozmozr.org/}Ozmozr}}\
+ Ozmozr is a website for online learning communities being developed by the {{{http://www.cosl.usu.edu/}Center for Open Sustainable Learning}} at {{{http://www.usu.edu/}Utah State University}}. In ozmozr, users are both content producers and consumers, relying on their social networks to filter and distribute meaningful content. Ozmozr was built to leverage emergent technologies and support social and collaborative information filtering, self\-organization, identity development, and free/open resource\-sharing.
+
+ []
+
+*Open Source Research Prototypes using ROME
+
+
+
+ * {{{http://www.infosys.tuwien.ac.at/prototype/morse/}MORSE}}\
+ The {{{http://www.infosys.tuwien.ac.at/prototype/morse/}Model\-Aware Repository and Service Environment}} (MORSE) is a service\-based environment for the storage and retrieval of models and model\-instances at both design\- and runtime. Models, and model\-elements are identified by Universally Unique Identifiers (UUID) and stored and managed in the MORSE repository. The MORSE repository provides versioning capabilities so that models can be manipulated at runtime and new and old versions of the models can be maintained in parallel. MORSE exposes various services to runtime clients and modeling tools. For instance, a {{{http://www.infosys.tuwien.ac.at/m2projects/at.ac.tuwien.infosys.tholmes.morse/rs\-impl/}feed}} reflects the latest changes within the repository.
+
+ []
+
+*Free, Based On Open Standards, using ROME
+
+
+
+ * {{{http://www.scheduleworld.com/}ScheduleWorld}}
+
+ * {{{http://feedpod.dev.java.net/}FeedPod}}
+
+ []
+
+*Commercial using ROME
+
+
+
+ * {{{http://interactivebrokers.com/}Interactive Brokers TraderWorkstation (TWS)}}\
+ Interactive Brokers is leading software based broker. IB offers Universal Direct\-Access Trading and sophisticated trade management tools at highly competitive costs to professional traders and investors worldwide. IB is the gateway to trading a broad array of financial instruments \-\- stocks, options, futures, corporate bonds as well as forex \-\- on over 50 exchanges and marketplaces in 14 countries. TraderWorkstation is java\-based trading platform; ROME library is used to fetch, aggregate and visualize news related to securities listed in the application.
+
+ * {{{http://weblogs.at/parss/stories/2315/}parss}}\
+ From the antville guys, that we met at blogtalk 1.0 2 years ago.
+
+ * {{{http://www.publicinteractive.com/}Public Interactive}}\
+ Public Interactive® is the leading integrated Application Service Provider (ASP) of on\-line collaborative tools, community engagement technologies, content syndication services and member and audience relationship management systems for the public broadcasting industry. Rome is used for syndicating news content and Podcasts local published by stations in the Public Interactive network.
+
+ * {{{http://www.blog\-city.com/}Blog\-City Ltd}}\
+ Blog\-City.com has been using ROME for many months now, utilising both the core project and the Fetcher project to allow bloggers to run their own mini\-aggregators within their blog.
+
+ * {{{http://www.reger.com/}Reger.com}}\
+ All blogs running at reger.com include ROME feeds. With the custom ROME module we wrote entry data is included in the RSS feeds. DataBlogging allows people to append activity\-specific data to each of their entries. In addition to the pre\-built log types (Running Log, Biking Log, Movie Log, etc), users can create custom log types with whatever data fields they need. The module outputs those data fields. Users simply customize their log types, adding and removing fields, and then the RSS feed automatically includes it. An RDDL document for the namespace can be found at{{{http://www.reger.com/about/specs/entrydata.rddl}http://www.reger.com/about/specs/entrydata.rddl}} Thanks again for all of the help and for making ROME great!
+
+ * {{{http://techrepublic.com.com/}CNET Networks/TechRepublic.com}}\
+ CNET Networks uses ROME with an application called the RSS Harvester. The purpose of this application is to harvest a list of predefined RSS/ATOM feeds, saving all new items for each feed in a database. In addition, each feed has an associated keyword that allows for easy surfacing of harvested data. \
+ Once the feed data has been collected, internal editors can surface links to the harvested data on the TechRepublic website by including a call to a JSP component. This component passes several parameters including the number of items to return, the number of items from a particular site and an associated keyword. For example, {{{http://techrepublic.com.com/2001\-10591\-0.html}http://techrepublic.com.com/2001\-10591\-0.html}} (see the section "More on ...") we surface related articles. \
+ We are also using Rome for Re\-Blogging on TechRepublic.com. Users can start their own blogs on the site as well as choose to import an RSS feed from an existing blog such as blogger.com. When the user imports an existing blog we use Rome to parse the RSS/ATOM feed then convert it to a TechRepublic blog. Any new blog posts on the external blog are automatically imported to TechRepublic.
+
+ * {{{http://www.edmunds.com/insideline/}Edmunds.com Inside Line}}\
+ We are currently using ROME as our feed generator and as a feed parser. Currently we publish RSS feeds of our latest articles on www.insideline.com, however, we also use it to provide updates between our sites. For example, our community site {{{http://townhall\-talk.edmunds.com/}Townhall}} produces RSS feeds which we then parse using ROME on our {{{http://www.edmunds.com/insideline}Inside Line}} property. Rome has significantly speed up our development times thanks to its clean object model and its ability to generate multiple feed types.
+
+ * {{{http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewArtist?artistId\=118405710}HBO Podcasts}} (iTunes Music Store Link)\
+ HoPE (HBO Podcast Engine) powered by ROME and the iTunes Podcast module. To date has served over 15\-million podcasts for HBO podcast content such as The Sopranos, Real Time with Bill Maher, and Rome
+
+ * {{{http://www.dressupyourwedding.com/Article.do}DressUpYourWedding}}
+
+ []
+
+*Sites using ROME
+
+
+
+ * {{{http://www.yabot.net/}Yabot}}\
+ Yabot is a news service currently available in five editions (May 2008).
+
+   Discovering and implementing ROME made Yabot's feed aggregation faster and easier. In previous versions we rendered the XML our selves but with ROME now doing most of this work developers can focus on presentation and integration features. Thanks!
+
+Mats, co\-founder @ Yabot \-{{{http://www.yabot.net/}http://www.yabot.net}}
+
+ * {{{http://www.wasalive.com/}WASALive}}\
+ Wasalive is a news, blogs and forums search engine. Results are sort by a mix of relevancy and date. Thanks to ROME library, Wasabot fetch and parse more than 70k feeds/days and store 3M posts. Thanks to ROME UTF8 support Wasalive is avalaible in {{{http://ru.wasalive.com/}Russian}}, {{{http://fr.wasalive.com/}French}},{{{http://es.wasalive.com/}Spanish}}, {{{http://en.wasalive.com/}English}}
+
+ * {{{http://www.airport\-information.com/}http://www.airport\-information.com}}\
+ Rome is used to create a RSS feed with news on airports worldwide. The database runs under Tomcat. The Rome library was very helpful and allowed an easy and quick implementation. \-\- Main.airportinformation \- 28 Jan 2008
+
+ * {{{http://www.abclinuxu.cz/}http://www.abclinuxu.cz}}\
+ I use rome in daily production on www.abclinuxu.cz for watching cca 8 feeds and generating cca 60 feeds. After fixing charset related issues (thanks!) it runs smoothly. I am happy that I could remove my old propietary RSS rw code with Rome ... Leos
+
+ * {{{http://feeds.my.aol.com/}http://feeds.my.aol.com}}\
+ The latest My AOL product, a customizable, feed\-driven web application, uses the Rome library to read, manipulate, and normalize RSS, RDF, and Atom feeds. My AOL was built on a very rapid development schedule, and Rome made much of it a lot easier than it otherwise would have been. \-\-Bill Kocik, Sr. Software Engineer, America Online, Inc.
+
+ * {{{http://www.backbase.com/}http://www.backbase.com}}\
+ Rome is used on our site to provide rss feeds for forum threads. Implementation took me something like few hours (including downloading and installation), so needless to say I am very happy. Thanks. m.j.milicevic
+
+ * {{{http://oszone.org/}The Open Source Zone}}\
+ Rome is used to power the {{{http://oszone.org/channels}Planet}} section of The Open Source Zone, where we aggregate the most interesting feeds concerning Open Source. Took very little to implement, thanks to Rome. Rome Fetcher is used too, which is great.
+
+ * {{{http://www.rel8r.com/}rel8r.com}}\
+ rel8r is a tag search and feed aggregator. Rome is used extensively for collecting feeds as well as for publishing all of the aggregated feeds. We love it. \- Travis
+
+ * {{{http://newsrack.in/}NewsRack}}\
+ Several organizations in the social development sector monitor news that is relevant to their work. This is a time\-consuming and laborious process for some groups, especially when the news is monitored, marked, cut, and filed using hard copies of newspapers and magazines. This process is very much the case in India. However, much of this work can be automated using web versions of newspapers and magazines. In this context, the broad goal of this project is to automate news monitoring. \
+ NewsRack is a tool/service for classifying, filing, and long\-term archiving of news. Users specify filtering rules which are used to select relevant articles from incoming news feeds. The selected articles are then classified into various categories. This process is similar to the process of specifying email filters to pre\-sort incoming mail into various folders. \
+ NewsRack is currently using Rome. I am looking for developers, so, if this project tickles you, please get in touch! \- Subramanya Sastry
+
+ * {{{http://www.rsspress.it/}http://www.rsspress.it}}\
+ An Italian Rss Aggregator, with a very nice design and layout, very simple to use, with a lot of rss feeds not only in italian language. You can register it and have your personalized homepage with your preferred news.
+
+ * {{{http://www.geonames.org/rss\-to\-georss\-converter.html}Geonames RSS to GeoRSS}}\
+ The Geonames "RSS to GeoRSS Converter" reads the entries of an RSS feed and searches the Geonames Database to find a location for the entry text. If a relevant location is found, its latitude and longitude are added to the RSS feed using the GeoRSS encoding.
+
+ * {{{http://www.feedarea.de/}feedarea.de}}\
+ FeedArea.de is a RSS, Atom and Podcast portal using Rome for handling the feed submissions.
+
+ * {{{http://www.podblock.de/}podblock.de}} / {{{http://www.podblock.com/}podblock.com}}\
+ PodBlock is a podcast portal using Rome for handling the feed submissions.
+
+ * {{{http://www.javamix.co.uk/}javaMix.co.uk}}\
+ javaMix is a java news aggregation website using Rome to find the news.
+
+ * {{{http://www.javamix.co.uk/}JavaMix}}\
+ the latest java news, articles and resources
+
+ * {{{http://wirecatch.com/}Wirecatch}}\
+ Wirecatch is a semantic news aggregator and visualization tool. It uses Rome to grab several news feeds and show connections and relationships between names, concepts and documents.
+
+ * {{{http://swiftmob.com/}Swift}}\
+ Swift imports rss feeds and formats them for mobile devices. Swift also include many other tools for building mobile friendly webpages that will reshape themselves for each phone so the experience for the end user is as good as possible.
+
+ * {{{http://devmeat.com/}DevMeat}}\
+ DevMeat deliver fresh meat for software developers and Rome is TOP cook !
+
+ * {{{http://folder2feed.nogoodatcoding.com/}Folder2Feed}}\
+ Folder2Feed allows users to generate feeds from the contents of local and network folders; providing an easy way to monitor updates to folders of interest for a large audience.
+
+ * {{{http://www.podcast.tv/}podcast.tv}}
+
+ * {{{http://www.podcast.it/}podcast.it}}
+
+ * {{{http://www.podcast.at/}podcast.at}}\
+ Podcast.tv, podcast.it and podcast.at are podcast directories using Rome for handling the feed submissions and parsing.
+
+ * {{{http://collaborationtoday.info/}CollaborationToday.info}}\
+Collaboration Today is a news aggregator, also an open source software developed by OpenNTF. This site is for IBM Collaboration Solutions professionals covering news about various IBM products like IBM Connections, IBM Notes/ Domino, IBM WebSphere Portal etc. and cross product topics like mobile, cloud and analytics. Rome is running on background and fetching stories from various sites.
+
+ []
+
+*Powered By ROME Badges Here are badges for use with your ROME\-powered site or software:
+
+
+
+ * <<Static:>>
+
+ * <<Animated:>>
+
+ []
+
+ Please copy the image to your own server rather than link to the image on its current host.
+
