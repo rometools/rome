@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.rometools</groupId>
-    <artifactId>rome-propono</artifactId>\
+    <artifactId>rome-propono</artifactId>
     <name>rome-propono</name>
     <version>1.1-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -12,11 +12,19 @@
         Atom server framework and a Blog client that supports both Atom protocol
     and the MetaWeblog API.
     </description>
-
-    <url>http://www.rometools.org</url>
+    <url>http://rometools.github.io/rome-propono/</url>
+    <organization>
+        <name>ROME Project</name>
+        <url>https://github.com/rometools/</url>
+    </organization>
     <issueManagement>
-        <url>https://rometools.jira.com/browse/PROPONO</url>
+        <url>https://github.com/rometools/rome-propono/issues</url>
     </issueManagement>
+    <scm>
+        <connection>scm:git:git@github.com:rometools/rome-propono.git</connection>
+        <developerConnection>scm:git:git@github.com:rometools/rome-propono.git</developerConnection>
+        <url>https://github.com/rometools/rome-propono/</url>
+    </scm>
     <ciManagement>
         <notifiers>
             <notifier>
@@ -54,10 +62,6 @@
             <email>kebernet@gmail.com</email>
         </developer>
     </developers>
-    <organization>
-        <name>ROME Project</name>
-        <url>http://www.rometools.org</url>
-    </organization>
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
@@ -65,11 +69,6 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-    <scm>
-        <connection>scm:svn:https://rometools.jira.com/svn/MODULES/trunk</connection>
-        <developerConnection>scm:svn:https://rometools.jira.com/svn/MODULES/trunk</developerConnection>
-        <url>https://rometools.jira.com/source/browse/MODULES</url>
-    </scm>
     <repositories>
         <repository>
             <id>oauth</id>
@@ -133,6 +132,25 @@
                     </execution>
                 </executions>
             </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<port>9000</port>
+					<tempWebappDirectory>${basedir}/target/site/tempdir</tempWebappDirectory>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-scm-publish-plugin</artifactId>
+				<version>1.0-beta-2</version>
+				<configuration>
+					<scmBranch>gh-pages</scmBranch>
+					<pubScmUrl>scm:git:git@github.com:rometools/rome-propono.git</pubScmUrl>
+					<content>${project.build.directory}/site</content>
+				</configuration>
+			</plugin>
         </plugins>
 
     </build>
@@ -237,12 +255,31 @@
 
     <reporting>
         <plugins>
-            <plugin>
-                <artifactId>maven-changes-plugin</artifactId>
-                <configuration>
-                    <xmlPath>${basedir}/xdocs/changes.xml</xmlPath>
-                </configuration>
-            </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.6</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>javadoc</report>
+							<report>test-javadoc</report>
+						</reports>
+					</reportSet>
+					<reportSet>
+						<id>aggregate</id>
+						<inherited>false</inherited>
+						<reports>
+							<report>aggregate</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
         </plugins>
     </reporting>
 
@@ -288,5 +325,4 @@
             </build>
         </profile>
     </profiles>
-
 </project>
