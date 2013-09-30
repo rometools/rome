@@ -1,0 +1,13 @@
+ -----
+ HttpClientFeedFetcher
+ -----
+ mkurz
+ -----
+ 2011-08-15 17:40:11.468
+ -----
+
+HttpClientFeedFetcher
+
+
+ An implementation of the <<<FeedFetcher>>> which uses the Jakarta HTTP Client. This HTTP client has many benefits over the standard Java implementation.
+

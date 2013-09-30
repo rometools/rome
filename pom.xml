@@ -7,18 +7,18 @@
     <version>1.2</version>
     <inceptionYear>2004</inceptionYear>
     <description>A well behaved feed fetcher API for ROME</description>
-    <url>http://www.rometools.org</url>
+    <url>http://rometools.github.io/rome-fetcher/</url>
     <organization>
         <name>ROME Project</name>
-        <url>http://rometools.jira.com</url>
+        <url>https://github.com/rometools/</url>
     </organization>
     <issueManagement>
-        <url>https://rometools.jira.com/secure/IssueNavigator.jspa</url>
+        <url>https://github.com/rometools/rome-fetcher/issues</url>
     </issueManagement>
     <scm>
-        <connection>scm:svn:https://rometools.jira.com/svn/FETCHER/trunk</connection>
-        <developerConnection>scm:svn:https://rometools.jira.com/svn/FETCHER/trunk</developerConnection>
-        <url>https://rometools.jira.com/source/browse/FETCHER</url>
+        <connection>scm:git:git@github.com:rometools/rome-fetcher.git</connection>
+        <developerConnection>scm:git:git@github.com:rometools/rome-fetcher.git</developerConnection>
+        <url>https://github.com/rometools/rome-fetcher/</url>
     </scm>
     <licenses>
         <license>
@@ -89,12 +89,30 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>2.2</version>
+                <version>2.6</version>
                 <configuration>
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
-
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<port>9000</port>
+					<tempWebappDirectory>${basedir}/target/site/tempdir</tempWebappDirectory>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-scm-publish-plugin</artifactId>
+				<version>1.0-beta-2</version>
+				<configuration>
+					<scmBranch>gh-pages</scmBranch>
+					<pubScmUrl>scm:git:git@github.com:rometools/rome-fetcher.git</pubScmUrl>
+					<content>${project.build.directory}/site</content>
+				</configuration>
+			</plugin>
         </plugins>
     </build>
     <dependencies>
@@ -237,4 +255,32 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.6</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>javadoc</report>
+						</reports>
+					</reportSet>
+					<reportSet>
+						<id>aggregate</id>
+						<inherited>false</inherited>
+						<reports>
+							<report>aggregate</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+		</plugins>
+	</reporting>
 </project>

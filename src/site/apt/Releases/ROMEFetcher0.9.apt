@@ -1,0 +1,51 @@
+ -----
+ ROME Fetcher 0.9
+ -----
+ mkurz
+ -----
+ 2011-08-15 17:51:04.383
+ -----
+
+ROME Fetcher 0.9
+
+ Note that there was no 0.8 Fetcher release
+
+*Downloads
+
+ * {{{./rome\-fetcher\-0.9\-src.zip}rome\-fetcher\-0.9\-src.zip}}
+
+ * {{{./rome\-fetcher\-0.9.tar.gz}rome\-fetcher\-0.9.tar.gz}}
+
+ * {{{./rome\-fetcher\-0.9.zip}rome\-fetcher\-0.9.zip}}
+
+ * {{{./rome\-fetcher\-0.9\-src.tar.gz}rome\-fetcher\-0.9\-src.tar.gz}}
+
+ []
+
+*Tutorials
+
+ * {{{../BuildingTheRomeFetcher.html}Building the Rome Fetcher (fetcher)}}
+ 
+ * {{{../UsingTheRomeFetcherModuleToRetrieveFeeds.html}Using the Rome Fetcher module to retrieve feeds (fetcher)}}
+ 
+ * {{{../SampleProgramsIncluded.html}Sample programs included (fetcher)}}
+ 
+ []
+
+*Todo list
+
+ * {{{../TodoList.html}Todo list (fetcher)}}
+ 
+ []
+
+*Issues
+
+ * {{{../KnownIssues.html}Known Issues (fetcher)}}
+ 
+ []
+
+*Change Log
+
+ * {{{../ChangeLog.html}Change Log (fetcher)}}
+ 
+ []

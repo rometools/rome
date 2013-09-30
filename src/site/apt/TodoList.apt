@@ -1,0 +1,29 @@
+ -----
+ Todo list
+ -----
+ mkurz
+ -----
+ 2011-08-15 17:33:17.559
+ -----
+
+Todo list
+
+ Please discuss items here on the rome dev mailing list
+
+ * Automatically update the
+ 	\-{{{https://github.com/rometools/rome-fetcher/blob/master/src/java/org/rometools/fetcher/FeedFetcher.java}default User\-Agent version number}}
+ 	via the build\- Done: 23\-June\-2004
+
+ * Listener Architecture (for URL changes via 3xx redirection etc) Done: 30\-June\-2004
+
+ * {{{http://radio.userland.com/userGuide/reference/howToRedirectRss}RSS Redirection}}
+
+ * Unit Tests: smart unit tests along the lines of Mark Pilgrim's tests, in his
+ 	\-{{{http://diveintomark.org/projects/feed_parser/}Python Universal Feed Parser}}. He instantiates a web server to a local directory where the samples live,
+ 	and then fetches the feeds from the server, which allows him to test in depth the behavior of gzip compression and etags handling.\- Done 30\-June\-2004
+
+ * Better character encoding handling \- See {{{http://diveintomark.org/archives/2004/02/13/xml\-media\-types}http://diveintomark.org/archives/2004/02/13/xml\-media\-types}}
+
+ * A caching feed fetcher
+
+ []
