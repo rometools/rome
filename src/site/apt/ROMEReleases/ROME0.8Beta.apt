@@ -1,0 +1,94 @@
+ -----
+ ROME 0.8 Beta
+ -----
+ mkurz
+ -----
+ 2011-08-15 12:35:29.441
+ -----
+
+ROME 0.8 Beta
+
+
+ Normally each release of ROME includes a whole new set of Wiki pages with the corresponding version number. ROME 0.8 is reusing ROME 0.7 Wiki pages as much as possible.
+
+
+*What is New, Highlights
+
+
+ 
+ * ROME now supports the final version of the Atom Syndication Format {{{http://www.ietf.org/rfc/rfc4287}RFC 4287}}: let's Nuke all these feeds! <<NEW>>
+ 
+ * Enclosure support at the Synd level, for all our podcaster friends
+ 
+ * Bug fixes
+ 
+ * details in the ChangeList
+ 
+ * Modules galore: Content, iTunes Podcast, Slash, Google Base, Creative Commons, MediaRSS
+ 
+ []
+
+*Dependencies
+
+
+ 
+ * J2SE 1.4\+
+ 
+ * {{{http://www.jdom.org/}JDOM 1.0}}
+ 
+ []
+
+*Downloads
+
+
+
+ * {{{./rome\-0.8\-src.zip}rome\-0.8\-src.zip}}
+
+ * {{{./rome\-0.8.tar.gz}rome\-0.8.tar.gz}}
+
+ * {{{./rome\-0.8.zip}rome\-0.8.zip}}
+
+ * {{{./rome\-0.8\-src.tar.gz}rome\-0.8\-src.tar.gz}}
+
+ []
+
+*Additional Information 
+
+
+ 
+ * {{{../RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/index.html}Tutorials}}
+ 
+ * {{{../ChangeLog.html}Changes Log}}
+ 
+ * Inside ROME, How Things Work 
+ 
+  * {{{../HowRomeWorks/index.html}How ROME Works}}, Understanding ROME, a detailed overview by Dave Johnson (This doc is based on ROME v0.4)
+ 
+  * {{{../RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEPluginsMechanism.html}ROME Plugins Mechanism}}, bootstrap, adding and changing parsers, generators, converters and modules
+ 
+  * {{{../RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/FeedsDateElementsMappingToSyndFeedAndSyndEntry.html}Feeds Date Elements}}, how Date data is mapped to SyndFeed and SyndEntry
+ 
+  * {{{../RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/FeedAndEntryURIMappingHowSyndFeedAndSyndEntryUriPropertiesMapToRSSAndAtomElements.html}Feed and Entry URI Mapping}}, how SyndFeed and SyndEntry 'uri' properties map to concrete feed elements
+ 
+  * {{{../RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/XMLCharsetEncodingDetectionHowRssAndAtOMUtilitiEsROMEHelpsGettingTheRightCharsetEncoding.html}XML Charset Encoding Detection}}, how ROME helps getting the right charset encoding
+ 
+  * {{{../RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEV0.5TutorialDefiningACustomModuleBeanParserAndGenerator.html}Creating a custom Module}}, creating all necessary pieces, bean, parser and generator
+ 
+  * {{{../RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/TheCopyFromInterface.html}The CopyFrom interface}}
+ 
+  * {{{../RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/UnderstandingRssAndAtOMUtilitiEsROMEBeanUtilities.html}ROME bean utilities, equals, toString and clonning}}
+ 
+  * {{{../RssAndAtOMUtiliEsROMEV0.7DateAndTimeParsing.html}Customizing Date and time parsing}} in the rome.properties file <<NEW>>
+ 
+ 
+ 
+ []
+
+*Known Issues
+
+
+ None.
+
+
+ \-\- {{{http://wiki.java.net/twiki/bin/view/Main/PatrickChanezon}PatrickChanezon}} \- 02 Feb 2006
+

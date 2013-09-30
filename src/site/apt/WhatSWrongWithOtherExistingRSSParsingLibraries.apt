@@ -1,0 +1,85 @@
+ -----
+ What's wrong with other existing RSS parsing libraries?
+ -----
+ mkurz
+ -----
+ 2011-08-14 14:34:42.032
+ -----
+
+What's wrong with other existing RSS parsing libraries?
+
+
+ Before we started with Rome we've evaluated other Java syndication management libraries to see if they'd fit our criteria. Feel free to update this evaluation if we forgot or mischaracterized your favorite library: this is a wiki after all:\-)
+
+
+*Informa
+
+
+ The {{{http://informa.sourceforge.net/}Informa: RSS Library for Java}} which exists since 2002 is too complicated to grasp and use. As of this writing it has {{{http://informa.sourceforge.net/apidocs/de/nava/informa/core/package\-summary.html}19 interfaces and 12 marker interfaces}}. It supports all RSS flavors in input, and only 1.0 and 0.91 in output.
+
+
+ No RSS 2.0 output.
+
+
+ No support for Atom at all.
+
+
+ They have some interesting features such as Hibernate and Castor based database serialization, and JSP taglibs, which are useful paraphernalia for server side application development. This seems to be their main focus of development today.
+
+
+ But we prefer to focus on our ESCAPE design criteria, so that our library does one thing really well: syndication parsing, abstract representation and conversion from/to all formats.
+
+
+ Thus our library will be useful for both client and server side developers.
+
+
+ We will develop the server side add\-on later when the basics will be well oiled.
+
+
+**RSS4J
+
+
+ {{{http://www.churchillobjects.com/c/13005.html}RSS4J}} was released in version 0.92 in april 2002. It did not evolve since then.
+
+
+ The web site explains:
+
+
+ <This toolkit supports the three most commonly used RSS standards \- 0.90 (the original), 0.91 and 1.0. RSS 0.92 and 0.93 are not supported due to the dramatic changes it makes to the format and the fact that 1.0 is already finalized.>
+
+
+ No need to say more: it seems to be a dead project and doesn't even start to address our requirements.
+
+
+**RSS Utilities
+
+
+ {{{http://java.sun.com/developer/technicalArticles/javaserverpages/rss_utilities/}RSS Utilities}} seems like a one\-shot project from Rodrigo Oliveira, released in august 2003. It is a taglib to display RSS in JSPs, and includes a small parser for RSS 0.91, 0.92 and 2.0.
+
+
+ It does not seem to be maintained, does not address RSS 1.0 and Atom.
+
+
+ I would encourage Rodrigo to rewrite his taglibs using Rome as the parser, and eventually to contribute them to Rome.
+
+
+**RSSLibJ
+
+
+ {{{http://enigmastation.com/rsslibj}RSSLibJ}} is a full\-Java RSS generation and consumption library, primarily centering on generating RSS feeds but able to consume them as well. It's maintained, but undergoing a refactoring to change a rather undesirable dependency.
+
+
+ (This isn't a review \- this was added by one of RSSLibJ 's authors.)
+
+
+**Sandler
+
+
+ Sandler is yet another parser except that it only supports Atom feeds. I can't say more than that because I haven't used it. And now I won't have to.
+
+
+**Conclusion
+
+
+ These are the only RSS or Syndication management libraries we found in Java when we reviewed what was available and wether it was worth starting a new project. Feel free to add to it if we forgot something.
+

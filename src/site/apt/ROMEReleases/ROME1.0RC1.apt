@@ -1,0 +1,68 @@
+ -----
+ ROME 1.0 RC1
+ -----
+ mkurz
+ -----
+ 2011-08-14 17:22:56.542
+ -----
+
+ROME 1.0 RC1
+
+
+*Rss and atOM utiliEs (ROME) v1.0 RC1 (16 Jul 2008)
+
+
+ Normally each release of ROME includes a whole new set of Wiki pages with the corresponding version number. ROME 1.0 is reusing wikis from previous versions as there are not significant changes.
+
+
+*What is New, Highlights
+
+
+ 
+ * Several XmlReader fixes
+ 
+ * Several Atom 1.0 bean, parser and generator fixes
+ 
+ * Some RSS fixes
+ 
+ * Removal of unused namespaces
+ 
+ * Details in the {{{../ChangeLog.html}change log}}
+ 
+ []
+
+*Dependencies
+
+
+ 
+ * J2SE 1.4\+
+ 
+ * {{{http://www.jdom.org/}JDOM 1.0}}
+ 
+ []
+
+*Downloads
+
+
+
+ * {{{./rome\-samples\-1.0RC1\-src.zip}rome\-samples\-1.0RC1\-src.zip}}
+
+ * {{{./rome\-1.0RC1\-src.zip}rome\-1.0RC1\-src.zip}}
+
+ * {{{./rome\-1.0RC1.tar.gz}rome\-1.0RC1.tar.gz}}
+
+ * {{{./rome\-1.0RC1.zip}rome\-1.0RC1.zip}}
+
+ * {{{./rome\-1.0RC1\-src.tar.gz}rome\-1.0RC1\-src.tar.gz}}
+
+ * {{{./rome\-samples\-1.0RC1\-src.tar.gz}rome\-samples\-1.0RC1\-src.tar.gz}}
+
+ []
+
+*Documentation 
+
+
+ 
+ * {{{http://rome.dev.java.net/apidocs/1_0RC1/overview\-summary.html}Javadocs}}
+ 
+ []

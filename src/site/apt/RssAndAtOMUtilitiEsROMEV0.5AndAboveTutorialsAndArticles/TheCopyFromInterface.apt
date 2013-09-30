@@ -1,0 +1,109 @@
+ -----
+ The CopyFrom interface
+ -----
+ mkurz
+ -----
+ 2011-08-15 08:57:12.280
+ -----
+
+The CopyFrom interface
+
+
+ The CopyFrom interface defines functionality similar to a deep cloning. The difference with the clone() method (besides the deep cloning requirements) is that the object to be the copy of the original one has to be explicitly created and it is this object the one that triggers the deep copying process. Implemetations of the CopyFrom interface should work propertly on arrays, collections, CopyFrom and basic type properties.
+
+
+ Using CopyFrom objects enables copying data between different implementations of a given interface without these implementation having to know about each other.
+
+
+ CopyFrom is unidirectional. A class implementing the CopyFrom knows how to extract properties from the given class (commonly having an interface in common).
+
+
+ A simple example using the CopyFrom interface is:
+
+
+
++------+
+
+    public interface Foo extends CopyFrom {
+        public void setName(String name);
+        public String getName();
+
+        public void setValues(Set values);
+        public Set getValues();
+    }
+
+    public class FooImplA implements Foo {
+        private String _name;
+        private Set _values;
+
+        public void setName(String name) {
+            _name = name;
+        }
+
+        public String getName() {
+            return _name;
+        }
+
+        public void setValues(Set values) {
+            _values = values;
+        }
+
+        public Set getValues() {
+            return _values;
+        }
+
+        public void copyFrom(Object obj) {
+            Foo other = (Foo) obj;
+            setName(other.getName());
+            setValues(new HashSet(other.getValues());
+        }
+
+        public Class getInterface() {
+            return Foo.class;
+        }
+    }
+
+    public class FooImplB implements Foo {
+        private Map _data;
+
+        public FooImplB() {
+            _data = new HashMap();
+        }
+
+        public void setName(String name) {
+            _data.put("name",name);
+        }
+
+        public String getName() {
+            return (String) _data.get("name");
+        }
+
+        public void setValues(Set values) {
+            _data.put("values",values);
+        }
+
+        public Set getValues() {
+            return (Set) _data.get("values");
+        }
+
+        public void copyFrom(Object obj) {
+            Foo other = (Foo) obj;
+            setName(other.getName());
+            setValues(new HashSet(other.getValues());
+        }
+
+        public Class getInterface() {
+            return Foo.class;
+        }
+    }
+
++------+
+
+ A use case for the CopyFrom functionality is a Java Bean implementation of an interface and a persistency implementation (such as Hibernate) of the the same interface that may add extra persistency related properties to the bean (ie, the 'Id' property as the persistency layer primary key).
+
+
+ For bean, array and collection properties the bean being invoked which copyFrom() method is invoked is responsible for those properties.
+
+
+ For properties implementing the CopyFrom interface, the bean must create a property instance implementing the interface returned by the getInterface() method. This allows the bean doing the copyFrom() to handle specialized subclasses of property elements propertly. This is also applicacle to array and collection properties. The 'modules' property of the SyndFeed and SyndEntry beans is a use case of this feature where the copyFrom() invocation must create different beans subclasses for each type of module, the getInteface() helps to find the right implementation.
+
