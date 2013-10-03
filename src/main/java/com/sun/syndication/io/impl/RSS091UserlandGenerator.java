@@ -16,40 +16,40 @@
  */
 package com.sun.syndication.io.impl;
 
-import com.sun.syndication.feed.rss.Channel;
-import com.sun.syndication.feed.rss.Description;
-import com.sun.syndication.feed.rss.Image;
-import com.sun.syndication.feed.rss.Item;
-import com.sun.syndication.io.FeedException;
+import java.util.Date;
+import java.util.List;
 
 import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.Namespace;
 
-import java.util.Date;
-import java.util.List;
-
+import com.sun.syndication.feed.rss.Channel;
+import com.sun.syndication.feed.rss.Description;
+import com.sun.syndication.feed.rss.Image;
+import com.sun.syndication.feed.rss.Item;
+import com.sun.syndication.io.FeedException;
 
 /**
  * Feed Generator for RSS 0.91
  * <p/>
- *
+ * 
  * @author Elaine Chien
- *
+ * 
  */
 public class RSS091UserlandGenerator extends RSS090Generator {
-    private String _version;
+    private final String _version;
 
     public RSS091UserlandGenerator() {
         this("rss_0.91U", "0.91");
     }
 
-    protected RSS091UserlandGenerator(String type, String version) {
+    protected RSS091UserlandGenerator(final String type, final String version) {
         super(type);
-        _version = version;
+        this._version = version;
     }
 
+    @Override
     protected Namespace getFeedNamespace() {
         return Namespace.NO_NAMESPACE;
     }
@@ -62,22 +62,22 @@ public class RSS091UserlandGenerator extends RSS090Generator {
     }
 
     protected String getVersion() {
-        return _version;
+        return this._version;
     }
 
-    protected void addChannel(Channel channel, Element parent)
-        throws FeedException {
+    @Override
+    protected void addChannel(final Channel channel, final Element parent) throws FeedException {
         super.addChannel(channel, parent);
 
-        Element eChannel = parent.getChild("channel", getFeedNamespace());
+        final Element eChannel = parent.getChild("channel", getFeedNamespace());
 
         addImage(channel, eChannel);
         addTextInput(channel, eChannel);
         addItems(channel, eChannel);
     }
 
-    protected void checkChannelConstraints(Element eChannel)
-        throws FeedException {
+    @Override
+    protected void checkChannelConstraints(final Element eChannel) throws FeedException {
         checkNotNullAndLength(eChannel, "title", 1, 100);
         checkNotNullAndLength(eChannel, "description", 1, 500);
         checkNotNullAndLength(eChannel, "link", 1, 500);
@@ -91,21 +91,21 @@ public class RSS091UserlandGenerator extends RSS090Generator {
         checkLength(eChannel, "managingEditor", 1, 100);
         checkLength(eChannel, "webMaster", 1, 100);
 
-        Element skipHours = eChannel.getChild("skipHours");
+        final Element skipHours = eChannel.getChild("skipHours");
 
         if (skipHours != null) {
-            List<Element> hours = skipHours.getChildren();
+            final List<Element> hours = skipHours.getChildren();
 
             for (int i = 0; i < hours.size(); i++) {
-                Element hour = (Element) hours.get(i);
-                int value = Integer.parseInt(hour.getText().trim());
+                final Element hour = hours.get(i);
+                final int value = Integer.parseInt(hour.getText().trim());
 
                 if (isHourFormat24()) {
-                    if ((value < 1) || (value > 24)) {
+                    if (value < 1 || value > 24) {
                         throw new FeedException("Invalid hour value " + value + ", it must be between 1 and 24");
                     }
                 } else {
-                    if ((value < 0) || (value > 23)) {
+                    if (value < 0 || value > 23) {
                         throw new FeedException("Invalid hour value " + value + ", it must be between 0 and 23");
                     }
                 }
@@ -113,8 +113,8 @@ public class RSS091UserlandGenerator extends RSS090Generator {
         }
     }
 
-    protected void checkImageConstraints(Element eImage)
-        throws FeedException {
+    @Override
+    protected void checkImageConstraints(final Element eImage) throws FeedException {
         checkNotNullAndLength(eImage, "title", 1, 100);
         checkNotNullAndLength(eImage, "url", 1, 500);
 
@@ -124,29 +124,31 @@ public class RSS091UserlandGenerator extends RSS090Generator {
         checkLength(eImage, "description", 1, 100);
     }
 
-    protected void checkItemConstraints(Element eItem)
-        throws FeedException {
+    @Override
+    protected void checkItemConstraints(final Element eItem) throws FeedException {
         checkNotNullAndLength(eItem, "title", 1, 100);
         checkNotNullAndLength(eItem, "link", 1, 500);
 
         checkLength(eItem, "description", 1, 500);
     }
 
-    protected void checkTextInputConstraints(Element eTextInput)
-        throws FeedException {
+    @Override
+    protected void checkTextInputConstraints(final Element eTextInput) throws FeedException {
         checkNotNullAndLength(eTextInput, "title", 1, 100);
         checkNotNullAndLength(eTextInput, "description", 1, 500);
         checkNotNullAndLength(eTextInput, "name", 1, 20);
         checkNotNullAndLength(eTextInput, "link", 1, 500);
     }
 
-    protected Document createDocument(Element root) {
+    @Override
+    protected Document createDocument(final Element root) {
         return new Document(root);
     }
 
-    protected Element createRootElement(Channel channel) {
-        Element root = new Element("rss", getFeedNamespace());
-        Attribute version = new Attribute("version", getVersion());
+    @Override
+    protected Element createRootElement(final Channel channel) {
+        final Element root = new Element("rss", getFeedNamespace());
+        final Attribute version = new Attribute("version", getVersion());
         root.setAttribute(version);
         root.addNamespaceDeclaration(getContentNamespace());
         generateModuleNamespaceDefs(root);
@@ -154,8 +156,8 @@ public class RSS091UserlandGenerator extends RSS090Generator {
         return root;
     }
 
-    protected Element generateSkipDaysElement(List<String> days) {
-        Element skipDaysElement = new Element("skipDays");
+    protected Element generateSkipDaysElement(final List<String> days) {
+        final Element skipDaysElement = new Element("skipDays");
 
         for (int i = 0; i < days.size(); i++) {
             skipDaysElement.addContent(generateSimpleElement("day", days.get(i).toString()));
@@ -164,8 +166,8 @@ public class RSS091UserlandGenerator extends RSS090Generator {
         return skipDaysElement;
     }
 
-    protected Element generateSkipHoursElement(List<Integer> hours) {
-        Element skipHoursElement = new Element("skipHours", getFeedNamespace());
+    protected Element generateSkipHoursElement(final List<Integer> hours) {
+        final Element skipHoursElement = new Element("skipHours", getFeedNamespace());
 
         for (int i = 0; i < hours.size(); i++) {
             skipHoursElement.addContent(generateSimpleElement("hour", hours.get(i).toString()));
@@ -174,108 +176,111 @@ public class RSS091UserlandGenerator extends RSS090Generator {
         return skipHoursElement;
     }
 
-    protected void populateChannel(Channel channel, Element eChannel) {
+    @Override
+    protected void populateChannel(final Channel channel, final Element eChannel) {
         super.populateChannel(channel, eChannel);
 
-        String language = channel.getLanguage();
+        final String language = channel.getLanguage();
 
         if (language != null) {
             eChannel.addContent(generateSimpleElement("language", language));
         }
 
-        String rating = channel.getRating();
+        final String rating = channel.getRating();
 
         if (rating != null) {
             eChannel.addContent(generateSimpleElement("rating", rating));
         }
 
-        String copyright = channel.getCopyright();
+        final String copyright = channel.getCopyright();
 
         if (copyright != null) {
             eChannel.addContent(generateSimpleElement("copyright", copyright));
         }
 
-        Date pubDate = channel.getPubDate();
+        final Date pubDate = channel.getPubDate();
 
         if (pubDate != null) {
             eChannel.addContent(generateSimpleElement("pubDate", DateParser.formatRFC822(pubDate)));
         }
 
-        Date lastBuildDate = channel.getLastBuildDate();
+        final Date lastBuildDate = channel.getLastBuildDate();
 
         if (lastBuildDate != null) {
             eChannel.addContent(generateSimpleElement("lastBuildDate", DateParser.formatRFC822(lastBuildDate)));
         }
 
-        String docs = channel.getDocs();
+        final String docs = channel.getDocs();
 
         if (docs != null) {
             eChannel.addContent(generateSimpleElement("docs", docs));
         }
 
-        String managingEditor = channel.getManagingEditor();
+        final String managingEditor = channel.getManagingEditor();
 
         if (managingEditor != null) {
             eChannel.addContent(generateSimpleElement("managingEditor", managingEditor));
         }
 
-        String webMaster = channel.getWebMaster();
+        final String webMaster = channel.getWebMaster();
 
         if (webMaster != null) {
             eChannel.addContent(generateSimpleElement("webMaster", webMaster));
         }
 
-        List<Integer> skipHours = channel.getSkipHours();
+        final List<Integer> skipHours = channel.getSkipHours();
 
-        if ((skipHours != null) && (skipHours.size() > 0)) {
+        if (skipHours != null && skipHours.size() > 0) {
             eChannel.addContent(generateSkipHoursElement(skipHours));
         }
 
-        List<String> skipDays = channel.getSkipDays();
+        final List<String> skipDays = channel.getSkipDays();
 
-        if ((skipDays != null) && (skipDays.size() > 0)) {
+        if (skipDays != null && skipDays.size() > 0) {
             eChannel.addContent(generateSkipDaysElement(skipDays));
         }
     }
 
-    protected void populateFeed(Channel channel, Element parent)
-        throws FeedException {
+    @Override
+    protected void populateFeed(final Channel channel, final Element parent) throws FeedException {
         addChannel(channel, parent);
     }
 
-    protected void populateImage(Image image, Element eImage) {
+    @Override
+    protected void populateImage(final Image image, final Element eImage) {
         super.populateImage(image, eImage);
 
-        Integer width = image.getWidth();
+        final Integer width = image.getWidth();
 
         if (width != null) {
             eImage.addContent(generateSimpleElement("width", String.valueOf(width)));
         }
 
-        Integer height = image.getHeight();
+        final Integer height = image.getHeight();
 
         if (height != null) {
             eImage.addContent(generateSimpleElement("height", String.valueOf(height)));
         }
 
-        String description = image.getDescription();
+        final String description = image.getDescription();
 
         if (description != null) {
             eImage.addContent(generateSimpleElement("description", description));
         }
     }
 
-    protected void populateItem(Item item, Element eItem, int index) {
+    @Override
+    protected void populateItem(final Item item, final Element eItem, final int index) {
         super.populateItem(item, eItem, index);
 
-        Description description = item.getDescription();
+        final Description description = item.getDescription();
 
         if (description != null) {
             eItem.addContent(generateSimpleElement("description", description.getValue()));
         }
 
-        if ((item.getModule(getContentNamespace().getURI()) == null) && (item.getContent() != null)) {
-            Element elem = new Element("encoded", getContentNamespace());
+        if (item.getModule(getContentNamespace().getURI()) == null && item.getContent() != null) {
+            final Element elem = new Element("encoded", getContentNamespace());
             elem.addContent(item.getContent().getValue());
             eItem.addContent(elem);
         }

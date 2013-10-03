@@ -16,127 +16,139 @@
  */
 package com.sun.syndication.io.impl;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
 import com.sun.syndication.io.DelegatingModuleGenerator;
 import com.sun.syndication.io.DelegatingModuleParser;
 import com.sun.syndication.io.WireFeedGenerator;
 import com.sun.syndication.io.WireFeedParser;
 
-import java.util.*;
-
 /**
  * <p>
+ * 
  * @author Alejandro Abdelnur
- *
+ * 
  */
 public abstract class PluginManager {
-    private String[] _propertyValues;
+    private final String[] _propertyValues;
     private Map _pluginsMap;
     private List _pluginsList;
-    private List _keys;
-    private WireFeedParser _parentParser;
-    private WireFeedGenerator _parentGenerator;
+    private final List _keys;
+    private final WireFeedParser _parentParser;
+    private final WireFeedGenerator _parentGenerator;
 
     /**
      * Creates a PluginManager
      * <p>
+     * 
      * @param propertyKey property key defining the plugins classes
-     *
+     * 
      */
-    protected PluginManager(String propertyKey) {
+    protected PluginManager(final String propertyKey) {
         this(propertyKey, null, null);
     }
 
-    protected PluginManager(String propertyKey, WireFeedParser parentParser,
-                            WireFeedGenerator parentGenerator)
-    {
-        _parentParser = parentParser;
-        _parentGenerator = parentGenerator;
-        _propertyValues = PropertiesLoader.getPropertiesLoader().getTokenizedProperty(propertyKey,", ");
+    protected PluginManager(final String propertyKey, final WireFeedParser parentParser, final WireFeedGenerator parentGenerator) {
+        this._parentParser = parentParser;
+        this._parentGenerator = parentGenerator;
+        this._propertyValues = PropertiesLoader.getPropertiesLoader().getTokenizedProperty(propertyKey, ", ");
         loadPlugins();
-        _pluginsMap = Collections.unmodifiableMap(_pluginsMap);
-        _pluginsList = Collections.unmodifiableList(_pluginsList);
-        _keys = Collections.unmodifiableList(new ArrayList(_pluginsMap.keySet()));
+        this._pluginsMap = Collections.unmodifiableMap(this._pluginsMap);
+        this._pluginsList = Collections.unmodifiableList(this._pluginsList);
+        this._keys = Collections.unmodifiableList(new ArrayList(this._pluginsMap.keySet()));
     }
 
     protected abstract String getKey(Object obj);
 
     protected List getKeys() {
-        return _keys;
+        return this._keys;
     }
 
     protected List getPlugins() {
-        return _pluginsList;
+        return this._pluginsList;
     }
 
     protected Map getPluginMap() {
-        return _pluginsMap;
+        return this._pluginsMap;
     }
 
-    protected Object getPlugin(String key) {
-        return _pluginsMap.get(key);
+    protected Object getPlugin(final String key) {
+        return this._pluginsMap.get(key);
     }
 
     // PRIVATE - LOADER PART
 
     private void loadPlugins() {
-        List finalPluginsList = new ArrayList();
-        _pluginsList = new ArrayList();
-        _pluginsMap = new HashMap();
+        final List finalPluginsList = new ArrayList();
+        this._pluginsList = new ArrayList();
+        this._pluginsMap = new HashMap();
         String className = null;
         try {
-            Class[] classes = getClasses();
-            for (int i=0;i<classes.length;i++) {
-                className = classes[i].getName();
-                Object plugin  = classes[i].newInstance();
+            final Class[] classes = getClasses();
+            for (final Class classe : classes) {
+                className = classe.getName();
+                final Object plugin = classe.newInstance();
                 if (plugin instanceof DelegatingModuleParser) {
-                    ((DelegatingModuleParser) plugin).setFeedParser(_parentParser);
+                    ((DelegatingModuleParser) plugin).setFeedParser(this._parentParser);
                 }
                 if (plugin instanceof DelegatingModuleGenerator) {
-                    ((DelegatingModuleGenerator) plugin).setFeedGenerator(_parentGenerator);
+                    ((DelegatingModuleGenerator) plugin).setFeedGenerator(this._parentGenerator);
                 }
 
-                _pluginsMap.put(getKey(plugin), plugin);
-                _pluginsList.add(plugin); // to preserve the order of definition in the rome.properties files
+                this._pluginsMap.put(getKey(plugin), plugin);
+                this._pluginsList.add(plugin); // to preserve the order of
+                                               // definition
+                // in the rome.properties files
             }
-            Iterator i = _pluginsMap.values().iterator();
+            Iterator i = this._pluginsMap.values().iterator();
             while (i.hasNext()) {
-                finalPluginsList.add(i.next()); // to remove overridden plugin impls
+                finalPluginsList.add(i.next()); // to remove overridden plugin
+                                                // impls
             }
 
-            i = _pluginsList.iterator();
+            i = this._pluginsList.iterator();
             while (i.hasNext()) {
-                Object plugin = i.next();
+                final Object plugin = i.next();
                 if (!finalPluginsList.contains(plugin)) {
                     i.remove();
                 }
             }
-        }
-        catch (Exception ex) {
-            throw new RuntimeException("could not instantiate plugin "+className,ex);
-        }catch (ExceptionInInitializerError er) {
-            throw new RuntimeException("could not instantiate plugin "+className,er);
+        } catch (final Exception ex) {
+            throw new RuntimeException("could not instantiate plugin " + className, ex);
+        } catch (final ExceptionInInitializerError er) {
+            throw new RuntimeException("could not instantiate plugin " + className, er);
         }
     }
 
     /**
-     * Loads and returns the classes defined in the properties files. If the system property "rome.pluginmanager.useloadclass" is
-     * set to true then classLoader.loadClass will be used to load classes (instead of Class.forName). This is designed to improve
-     * OSGi compatibility. Further information can be found in https://rome.dev.java.net/issues/show_bug.cgi?id=118 
+     * Loads and returns the classes defined in the properties files. If the
+     * system property "rome.pluginmanager.useloadclass" is set to true then
+     * classLoader.loadClass will be used to load classes (instead of
+     * Class.forName). This is designed to improve OSGi compatibility. Further
+     * information can be found in
+     * https://rome.dev.java.net/issues/show_bug.cgi?id=118
      * <p>
+     * 
      * @return array containing the classes defined in the properties files.
-     * @throws java.lang.ClassNotFoundException thrown if one of the classes defined in the properties file cannot be loaded
-     *         and hard failure is ON.
-     *
+     * @throws java.lang.ClassNotFoundException thrown if one of the classes
+     *             defined in the properties file cannot be loaded and hard
+     *             failure is ON.
+     * 
      */
     private Class[] getClasses() throws ClassNotFoundException {
-        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-        List classes = new ArrayList();
-        boolean useLoadClass = Boolean.valueOf(System.getProperty("rome.pluginmanager.useloadclass", "false")).booleanValue();
-        for (int i = 0; i <_propertyValues.length; i++) {
-        	Class mClass = (useLoadClass ?  classLoader.loadClass(_propertyValues[i]) : Class.forName(_propertyValues[i], true, classLoader));
+        final ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        final List classes = new ArrayList();
+        final boolean useLoadClass = Boolean.valueOf(System.getProperty("rome.pluginmanager.useloadclass", "false")).booleanValue();
+        for (final String _propertyValue : this._propertyValues) {
+            final Class mClass = useLoadClass ? classLoader.loadClass(_propertyValue) : Class.forName(_propertyValue, true, classLoader);
             classes.add(mClass);
         }
-        Class[] array = new Class[classes.size()];
+        final Class[] array = new Class[classes.size()];
         classes.toArray(array);
         return array;
     }

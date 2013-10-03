@@ -16,8 +16,6 @@
  */
 package com.sun.syndication.feed.synd.impl;
 
-
-
 /**
  */
 public class ConverterForRSS091Netscape extends ConverterForRSS091Userland {
@@ -26,7 +24,7 @@ public class ConverterForRSS091Netscape extends ConverterForRSS091Userland {
         this("rss_0.91N");
     }
 
-    protected ConverterForRSS091Netscape(String type) {
+    protected ConverterForRSS091Netscape(final String type) {
         super(type);
     }
 

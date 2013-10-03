@@ -16,10 +16,11 @@
  */
 package com.sun.syndication.io.impl;
 
-import com.sun.syndication.feed.rss.Description;
 import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
+
+import com.sun.syndication.feed.rss.Description;
 
 /**
  */
@@ -29,33 +30,38 @@ public class RSS20Parser extends RSS094Parser {
         this("rss_2.0");
     }
 
-    protected RSS20Parser(String type) {
+    protected RSS20Parser(final String type) {
         super(type);
     }
 
+    @Override
     protected String getRSSVersion() {
-            return "2.0";
+        return "2.0";
     }
 
-    protected boolean isHourFormat24(Element rssRoot) {
+    @Override
+    protected boolean isHourFormat24(final Element rssRoot) {
         return false;
     }
 
-    protected Description parseItemDescription(Element rssRoot,Element eDesc) {
-        Description desc = super.parseItemDescription(rssRoot,eDesc);
-        desc.setType("text/html"); // change as per https://rome.dev.java.net/issues/show_bug.cgi?id=26 
+    @Override
+    protected Description parseItemDescription(final Element rssRoot, final Element eDesc) {
+        final Description desc = super.parseItemDescription(rssRoot, eDesc);
+        desc.setType("text/html"); // change as per
+                                   // https://rome.dev.java.net/issues/show_bug.cgi?id=26
         return desc;
     }
-    
-    public boolean isMyType(Document document) {
+
+    @Override
+    public boolean isMyType(final Document document) {
         boolean ok;
-        Element rssRoot = document.getRootElement();
+        final Element rssRoot = document.getRootElement();
         ok = rssRoot.getName().equals("rss");
         if (ok) {
             ok = false;
-            Attribute version = rssRoot.getAttribute("version");
-            if (version!=null) {
-                // At this point, as far ROME is concerned RSS 2.0, 2.00 and 
+            final Attribute version = rssRoot.getAttribute("version");
+            if (version != null) {
+                // At this point, as far ROME is concerned RSS 2.0, 2.00 and
                 // 2.0.X are all the same, so let's use startsWith for leniency.
                 ok = version.getValue().startsWith(getRSSVersion());
             }

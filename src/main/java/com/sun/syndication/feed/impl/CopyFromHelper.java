@@ -16,13 +16,19 @@
  */
 package com.sun.syndication.feed.impl;
 
-import com.sun.syndication.feed.CopyFrom;
-import com.sun.syndication.feed.impl.BeanIntrospector;
-
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Array;
 import java.lang.reflect.Method;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+import com.sun.syndication.feed.CopyFrom;
 
 /**
  * @author Alejandro Abdelnur
@@ -30,119 +36,127 @@ import java.util.*;
 public class CopyFromHelper {
     private static final Object[] NO_PARAMS = new Object[0];
 
-    private Class _beanInterfaceClass;
-    private Map _baseInterfaceMap; //ENTRIES(propertyName,interface.class)
-    private Map _baseImplMap;      //ENTRIES(interface.class,implementation.class)
+    private final Class _beanInterfaceClass;
+    private final Map _baseInterfaceMap; // ENTRIES(propertyName,interface.class)
+    private final Map _baseImplMap; // ENTRIES(interface.class,implementation.class)
 
-    public CopyFromHelper(Class beanInterfaceClass,Map basePropInterfaceMap,Map basePropClassImplMap) {
-        _beanInterfaceClass = beanInterfaceClass;
-        _baseInterfaceMap = basePropInterfaceMap;
-        _baseImplMap = basePropClassImplMap;
+    public CopyFromHelper(final Class beanInterfaceClass, final Map basePropInterfaceMap, final Map basePropClassImplMap) {
+        this._beanInterfaceClass = beanInterfaceClass;
+        this._baseInterfaceMap = basePropInterfaceMap;
+        this._baseImplMap = basePropClassImplMap;
     }
 
-    public void copy(Object target,Object source) {
+    public void copy(final Object target, final Object source) {
         try {
-            PropertyDescriptor[] pds = BeanIntrospector.getPropertyDescriptors(_beanInterfaceClass);
-            if (pds!=null) {
-                for (int i=0;i<pds.length;i++) {
-                    String propertyName = pds[i].getName();
-                    Method pReadMethod = pds[i].getReadMethod();
-                    Method pWriteMethod = pds[i].getWriteMethod();
-                    if (pReadMethod!=null && pWriteMethod!=null &&       // ensure it has getter and setter methods
-                        pReadMethod.getDeclaringClass()!=Object.class && // filter Object.class getter methods
-                        pReadMethod.getParameterTypes().length==0 &&     // filter getter methods that take parameters
-                        _baseInterfaceMap.containsKey(propertyName)) {   // only copies properties defined as copyFrom-able
-                        Object value = pReadMethod.invoke(source,NO_PARAMS);
-                        if (value!=null) {
-                            Class baseInterface = (Class) _baseInterfaceMap.get(propertyName);
-                            value = doCopy(value,baseInterface);
-                            pWriteMethod.invoke(target,new Object[]{value});
+            final PropertyDescriptor[] pds = BeanIntrospector.getPropertyDescriptors(this._beanInterfaceClass);
+            if (pds != null) {
+                for (final PropertyDescriptor pd : pds) {
+                    final String propertyName = pd.getName();
+                    final Method pReadMethod = pd.getReadMethod();
+                    final Method pWriteMethod = pd.getWriteMethod();
+                    if (pReadMethod != null && pWriteMethod != null && // ensure
+                                                                       // it has
+                                                                       // getter
+                                                                       // and
+                                                                       // setter
+                                                                       // methods
+                            pReadMethod.getDeclaringClass() != Object.class && // filter
+                                                                               // Object.class
+                                                                               // getter
+                                                                               // methods
+                            pReadMethod.getParameterTypes().length == 0 && // filter
+                                                                           // getter
+                                                                           // methods
+                                                                           // that
+                                                                           // take
+                                                                           // parameters
+                            this._baseInterfaceMap.containsKey(propertyName)) { // only
+                        // copies
+                        // properties
+                        // defined
+                        // as
+                        // copyFrom-able
+                        Object value = pReadMethod.invoke(source, NO_PARAMS);
+                        if (value != null) {
+                            final Class baseInterface = (Class) this._baseInterfaceMap.get(propertyName);
+                            value = doCopy(value, baseInterface);
+                            pWriteMethod.invoke(target, new Object[] { value });
                         }
                     }
                 }
             }
-        }
-        catch (Exception ex) {
-            throw new RuntimeException("Could not do a copyFrom "+ex, ex);
+        } catch (final Exception ex) {
+            throw new RuntimeException("Could not do a copyFrom " + ex, ex);
         }
     }
 
-    private CopyFrom createInstance(Class interfaceClass) throws Exception {
-        if( _baseImplMap.get(interfaceClass) == null ){
+    private CopyFrom createInstance(final Class interfaceClass) throws Exception {
+        if (this._baseImplMap.get(interfaceClass) == null) {
             return null;
-        }
-        else {
-            return (CopyFrom) ((Class)_baseImplMap.get(interfaceClass)).newInstance();
+        } else {
+            return (CopyFrom) ((Class) this._baseImplMap.get(interfaceClass)).newInstance();
         }
     }
 
-    private Object doCopy(Object value,Class baseInterface) throws Exception {
-        if (value!=null) {
-            Class vClass = value.getClass();
+    private Object doCopy(Object value, final Class baseInterface) throws Exception {
+        if (value != null) {
+            final Class vClass = value.getClass();
             if (vClass.isArray()) {
-                value = doCopyArray(value,baseInterface);
-            }
-            else
-            if (value instanceof Collection) {
-                value = doCopyCollection((Collection)value,baseInterface);
-            }
-            else
-            if (value instanceof Map) {
-                value = doCopyMap((Map)value,baseInterface);
-            }
-            else
-            if (isBasicType(vClass)) {
+                value = doCopyArray(value, baseInterface);
+            } else if (value instanceof Collection) {
+                value = doCopyCollection((Collection) value, baseInterface);
+            } else if (value instanceof Map) {
+                value = doCopyMap((Map) value, baseInterface);
+            } else if (isBasicType(vClass)) {
                 // value = value; // nothing to do here
                 if (value instanceof Date) { // because Date it is not inmutable
-                    value = ((Date)value).clone();
+                    value = ((Date) value).clone();
                 }
-            }
-            else { // it goes CopyFrom
+            } else { // it goes CopyFrom
                 if (value instanceof CopyFrom) {
-                    CopyFrom source = (CopyFrom) value;
+                    final CopyFrom source = (CopyFrom) value;
                     CopyFrom target = createInstance(source.getInterface());
-                    target = target == null ?  (CopyFrom) value.getClass().newInstance() : target;
+                    target = target == null ? (CopyFrom) value.getClass().newInstance() : target;
                     target.copyFrom(source);
                     value = target;
-                }
-                else {
-                    throw new Exception("unsupported class for 'copyFrom' "+value.getClass());
+                } else {
+                    throw new Exception("unsupported class for 'copyFrom' " + value.getClass());
                 }
             }
         }
         return value;
     }
 
-    private Object doCopyArray(Object array,Class baseInterface) throws Exception {
-        Class elementClass = array.getClass().getComponentType();
-        int length = Array.getLength(array);
-        Object newArray = Array.newInstance(elementClass,length);
-        for (int i=0;i<length;i++) {
-            Object element = doCopy(Array.get(array,i),baseInterface);
-            Array.set(newArray,i,element);
+    private Object doCopyArray(final Object array, final Class baseInterface) throws Exception {
+        final Class elementClass = array.getClass().getComponentType();
+        final int length = Array.getLength(array);
+        final Object newArray = Array.newInstance(elementClass, length);
+        for (int i = 0; i < length; i++) {
+            final Object element = doCopy(Array.get(array, i), baseInterface);
+            Array.set(newArray, i, element);
         }
         return newArray;
     }
 
-    private Object doCopyCollection(Collection collection,Class baseInterface) throws Exception {
+    private Object doCopyCollection(final Collection collection, final Class baseInterface) throws Exception {
         // expecting SETs or LISTs only, going default implementation of them
-        Collection newColl = (collection instanceof Set) ? (Collection)new HashSet() : (Collection)new ArrayList();
-        Iterator i = collection.iterator();
+        final Collection newColl = collection instanceof Set ? (Collection) new HashSet() : (Collection) new ArrayList();
+        final Iterator i = collection.iterator();
         while (i.hasNext()) {
-            Object element = doCopy(i.next(),baseInterface);
+            final Object element = doCopy(i.next(), baseInterface);
             newColl.add(element);
         }
         return newColl;
     }
 
-    private Object doCopyMap(Map map,Class baseInterface) throws Exception {
-        Map newMap = new HashMap();
-        Iterator entries = map.entrySet().iterator();
+    private Object doCopyMap(final Map map, final Class baseInterface) throws Exception {
+        final Map newMap = new HashMap();
+        final Iterator entries = map.entrySet().iterator();
         while (entries.hasNext()) {
-            Map.Entry entry = (Map.Entry) entries.next();
-            Object key = entry.getKey(); // we are assuming string KEYS
-            Object element = doCopy(entry.getValue(),baseInterface);
-            newMap.put(key,element);
+            final Map.Entry entry = (Map.Entry) entries.next();
+            final Object key = entry.getKey(); // we are assuming string KEYS
+            final Object element = doCopy(entry.getValue(), baseInterface);
+            newMap.put(key, element);
         }
         return newMap;
     }
@@ -162,7 +176,7 @@ public class CopyFromHelper {
         BASIC_TYPES.add(Date.class);
     }
 
-    private boolean isBasicType(Class vClass) {
+    private boolean isBasicType(final Class vClass) {
         return BASIC_TYPES.contains(vClass);
     }
 

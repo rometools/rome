@@ -16,9 +16,11 @@
  */
 package com.sun.syndication.io.impl;
 
-import com.sun.syndication.io.WireFeedParser;
-import org.jdom2.Document;
 import java.util.List;
+
+import org.jdom2.Document;
+
+import com.sun.syndication.io.WireFeedParser;
 
 /**
  * Parses an XML document (JDOM Document) into a Feed.
@@ -30,24 +32,26 @@ import java.util.List;
  * <p>
  * WireFeedParser instances are thread safe.
  * <p>
- * Parsers for a specific type must extend this class and register in the parser list.
- * (Right now registration is hardcoded in the WireFeedParser constructor).
+ * Parsers for a specific type must extend this class and register in the parser
+ * list. (Right now registration is hardcoded in the WireFeedParser
+ * constructor).
  * <p>
+ * 
  * @author Alejandro Abdelnur
- *
+ * 
  */
 public class FeedParsers extends PluginManager {
 
     /**
-     * WireFeedParser.classes=  [className] ...
-     *
+     * WireFeedParser.classes= [className] ...
+     * 
      */
     public static final String FEED_PARSERS_KEY = "WireFeedParser.classes";
 
     /**
      * Creates a parser instance.
      * <p>
-     *
+     * 
      */
     public FeedParsers() {
         super(FEED_PARSERS_KEY);
@@ -60,14 +64,16 @@ public class FeedParsers extends PluginManager {
     /**
      * Finds the real parser type for the given document feed.
      * <p>
+     * 
      * @param document document feed to find the parser for.
-     * @return the parser for the given document or <b>null</b> if there is no parser for that document.
-     *
+     * @return the parser for the given document or <b>null</b> if there is no
+     *         parser for that document.
+     * 
      */
-    public WireFeedParser getParserFor(Document document) {
-        List parsers = getPlugins();
+    public WireFeedParser getParserFor(final Document document) {
+        final List parsers = getPlugins();
         WireFeedParser parser = null;
-        for (int i=0;parser==null && i<parsers.size();i++) {
+        for (int i = 0; parser == null && i < parsers.size(); i++) {
             parser = (WireFeedParser) parsers.get(i);
             if (!parser.isMyType(document)) {
                 parser = null;
@@ -76,8 +82,9 @@ public class FeedParsers extends PluginManager {
         return parser;
     }
 
-    protected String getKey(Object obj) {
-        return ((WireFeedParser)obj).getType();
+    @Override
+    protected String getKey(final Object obj) {
+        return ((WireFeedParser) obj).getType();
     }
 
 }

@@ -16,63 +16,67 @@
  */
 package com.sun.syndication.feed.atom;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.sun.syndication.feed.impl.ObjectBean;
 import com.sun.syndication.feed.module.Extendable;
 import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.feed.module.impl.ModuleUtils;
 
-import java.io.Serializable;
-import java.util.List;
-import java.util.ArrayList;
-
 /**
  * Bean for person elements of Atom feeds.
  * <p>
+ * 
  * @author Alejandro Abdelnur
  * @author Dave Johnson (updated for Atom 1.0)
  */
-public class Person implements Cloneable,Serializable, Extendable
-{
-    
-    private ObjectBean _objBean;
-    
+public class Person implements Cloneable, Serializable, Extendable {
+
+    private final ObjectBean _objBean;
+
     private String _name;
-    private String _uri;  // since Atom 1.0 (was called url)
-    private String _uriResolved; 
+    private String _uri; // since Atom 1.0 (was called url)
+    private String _uriResolved;
     private String _email;
     private List<Module> _modules;
 
     /**
      * Default constructor. All properties are set to <b>null</b>.
      * <p>
-     *
+     * 
      */
     public Person() {
-        _objBean = new ObjectBean(this.getClass(),this);
+        this._objBean = new ObjectBean(this.getClass(), this);
     }
 
     /**
      * Creates a deep 'bean' clone of the object.
      * <p>
+     * 
      * @return a clone of the object.
-     * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     *
+     * @throws CloneNotSupportedException thrown if an element of the object
+     *             cannot be cloned.
+     * 
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return _objBean.clone();
+        return this._objBean.clone();
     }
 
     /**
-     * Indicates whether some other object is "equal to" this one as defined by the Object equals() method.
+     * Indicates whether some other object is "equal to" this one as defined by
+     * the Object equals() method.
      * <p>
+     * 
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     *
+     * 
      */
     @Override
-    public boolean equals(Object other) {
-        return _objBean.equals(other);
+    public boolean equals(final Object other) {
+        return this._objBean.equals(other);
     }
 
     /**
@@ -80,141 +84,157 @@ public class Person implements Cloneable,Serializable, Extendable
      * <p>
      * It follows the contract defined by the Object hashCode() method.
      * <p>
+     * 
      * @return the hashcode of the bean object.
-     *
+     * 
      */
     @Override
     public int hashCode() {
-        return _objBean.hashCode();
+        return this._objBean.hashCode();
     }
 
     /**
      * Returns the String representation for the object.
      * <p>
+     * 
      * @return String representation for the object.
-     *
+     * 
      */
     @Override
     public String toString() {
-        return _objBean.toString();
+        return this._objBean.toString();
     }
 
     /**
-      * Returns the person name.
-      * <p>
-      * @return the person name, <b>null</b> if none.
-      *
-      */
+     * Returns the person name.
+     * <p>
+     * 
+     * @return the person name, <b>null</b> if none.
+     * 
+     */
     public String getName() {
-        return _name;
+        return this._name;
     }
 
     /**
-      * Sets the personname.
-      * <p>
-      * @param name the person name, <b>null</b> if none.
-      *
-      */
-    public void setName(String name) {
-        _name = name;
+     * Sets the personname.
+     * <p>
+     * 
+     * @param name the person name, <b>null</b> if none.
+     * 
+     */
+    public void setName(final String name) {
+        this._name = name;
     }
 
     /**
-      * Returns the person URL (same as {@link #getUri()})
-      * <p>
-      * @return the person URL, <b>null</b> if none.
-      */
+     * Returns the person URL (same as {@link #getUri()})
+     * <p>
+     * 
+     * @return the person URL, <b>null</b> if none.
+     */
     public String getUrl() {
-        return _uri;
+        return this._uri;
     }
 
     /**
-      * Sets the person URL (same as {@link #setUri(java.lang.String)})
-      * <p>
-      * @param url the person URL, <b>null</b> if none.
-      */
-    public void setUrl(String url) {
-        _uri = url;
+     * Sets the person URL (same as {@link #setUri(java.lang.String)})
+     * <p>
+     * 
+     * @param url the person URL, <b>null</b> if none.
+     */
+    public void setUrl(final String url) {
+        this._uri = url;
     }
 
-    public void setUriResolved(String uriResolved) {
-        _uriResolved = uriResolved;
+    public void setUriResolved(final String uriResolved) {
+        this._uriResolved = uriResolved;
     }
 
-    public String getUriResolved(String resolveURI) {
-        return _uriResolved != null ? _uriResolved : _uri;
+    public String getUriResolved(final String resolveURI) {
+        return this._uriResolved != null ? this._uriResolved : this._uri;
     }
 
     /**
-      * Returns the person email.
-      * <p>
-      * @return the person email, <b>null</b> if none.
-      *
-      */
+     * Returns the person email.
+     * <p>
+     * 
+     * @return the person email, <b>null</b> if none.
+     * 
+     */
     public String getEmail() {
-        return _email;
+        return this._email;
     }
 
     /**
-      * Sets the person email.
-      * <p>
-      * @param email the person email, <b>null</b> if none.
-      *
-      */
-    public void setEmail(String email) {
-        _email = email;
+     * Sets the person email.
+     * <p>
+     * 
+     * @param email the person email, <b>null</b> if none.
+     * 
+     */
+    public void setEmail(final String email) {
+        this._email = email;
     }
 
     /**
      * Returns the uri
      * <p>
+     * 
      * @return Returns the uri.
      * @since Atom 1.0
      */
     public String getUri() {
-        return _uri;
+        return this._uri;
     }
-    
+
     /**
      * Set the uri
      * <p>
+     * 
      * @param uri The uri to set.
      * @since Atom 1.0
      */
-    public void setUri(String uri) {
-        _uri = uri;
+    public void setUri(final String uri) {
+        this._uri = uri;
     }
 
     /**
      * Returns the entry modules.
      * <p>
-     * @return a list of ModuleImpl elements with the entry modules,
-     *         an emtpy list if none.
-     *
+     * 
+     * @return a list of ModuleImpl elements with the entry modules, an emtpy
+     *         list if none.
+     * 
      */
+    @Override
     public List<Module> getModules() {
-        return (_modules==null) ? (_modules=new ArrayList<Module>()) : _modules;
+        return this._modules == null ? (this._modules = new ArrayList<Module>()) : this._modules;
     }
 
     /**
      * Sets the entry modules.
      * <p>
-     * @param modules the list of ModuleImpl elements with the entry modules to set,
-     *        an empty list or <b>null</b> if none.
-     *
+     * 
+     * @param modules the list of ModuleImpl elements with the entry modules to
+     *            set, an empty list or <b>null</b> if none.
+     * 
      */
-    public void setModules(List<Module> modules) {
-        _modules = modules;
+    @Override
+    public void setModules(final List<Module> modules) {
+        this._modules = modules;
     }
 
     /**
      * Returns the module identified by a given URI.
      * <p>
+     * 
      * @param uri the URI of the ModuleImpl.
      * @return The module with the given URI, <b>null</b> if none.
      */
-    public Module getModule(String uri) {
-        return ModuleUtils.getModule(_modules,uri);
+    @Override
+    public Module getModule(final String uri) {
+        return ModuleUtils.getModule(this._modules, uri);
     }
 
 }

@@ -16,24 +16,25 @@
  */
 package com.sun.syndication.unittest;
 
-import com.sun.syndication.io.impl.DateParser;
-import junit.framework.TestCase;
-
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
-import java.util.Date;
+
+import junit.framework.TestCase;
+
+import com.sun.syndication.io.impl.DateParser;
 
 /**
- *
+ * 
  * Start of tests for DateParser
- *
+ * 
  * @author Nick Lothian
- *
+ * 
  */
 public class TestDateParser extends TestCase {
     public void testParse() {
-        Calendar cal = new GregorianCalendar();
+        final Calendar cal = new GregorianCalendar();
         cal.setTimeZone(TimeZone.getTimeZone("GMT"));
 
         // four-digit year
@@ -84,43 +85,43 @@ public class TestDateParser extends TestCase {
         assertEquals(0, cal.get(Calendar.MINUTE));
         assertEquals(51, cal.get(Calendar.SECOND));
 
-        //RFC822
+        // RFC822
         sDate = "Tue, 19 Jul 2005 23:00:51 GMT";
         assertNotNull(DateParser.parseDate(sDate));
 
-        //RFC822
+        // RFC822
         sDate = "Tue, 19 Jul 05 23:00:51 GMT";
         assertNotNull(DateParser.parseDate(sDate));
 
-        Calendar c = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
-        c.set(2000,Calendar.JANUARY,01,0,0,0);
-        Date expectedDate = c.getTime();
+        final Calendar c = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
+        c.set(2000, Calendar.JANUARY, 01, 0, 0, 0);
+        final Date expectedDate = c.getTime();
 
-        //W3C
+        // W3C
         sDate = "2000-01-01T00:00:00Z";
-        assertEquals(expectedDate.getTime()/1000,DateParser.parseDate(sDate).getTime()/1000);
+        assertEquals(expectedDate.getTime() / 1000, DateParser.parseDate(sDate).getTime() / 1000);
 
-        //W3C
+        // W3C
         sDate = "2000-01-01T00:00Z";
-        assertEquals(expectedDate.getTime()/1000,DateParser.parseDate(sDate).getTime()/1000);
+        assertEquals(expectedDate.getTime() / 1000, DateParser.parseDate(sDate).getTime() / 1000);
 
-        //W3C
+        // W3C
         sDate = "2000-01-01";
-        assertEquals(expectedDate.getTime()/1000,DateParser.parseDate(sDate).getTime()/1000);
+        assertEquals(expectedDate.getTime() / 1000, DateParser.parseDate(sDate).getTime() / 1000);
 
-        //W3C
+        // W3C
         sDate = "2000-01";
-        assertEquals(expectedDate.getTime()/1000,DateParser.parseDate(sDate).getTime()/1000);
+        assertEquals(expectedDate.getTime() / 1000, DateParser.parseDate(sDate).getTime() / 1000);
 
-        //W3C
+        // W3C
         sDate = "2000";
-        assertEquals(expectedDate.getTime()/1000,DateParser.parseDate(sDate).getTime()/1000);
+        assertEquals(expectedDate.getTime() / 1000, DateParser.parseDate(sDate).getTime() / 1000);
 
-        //EXTRA
+        // EXTRA
         sDate = "18:10 2000/10/10";
         assertNotNull(DateParser.parseDate(sDate));
 
-        //INVALID
+        // INVALID
         sDate = "X20:10 2000-10-10";
         assertNull(DateParser.parseDate(sDate));
 

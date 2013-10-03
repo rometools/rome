@@ -1,88 +1,87 @@
 package com.sun.syndication.unittest;
 
-import junit.framework.TestCase;
-
-import com.sun.syndication.feed.synd.SyndFeed;
-import com.sun.syndication.feed.WireFeed;
-import com.sun.syndication.io.SyndFeedInput;
-import com.sun.syndication.io.WireFeedInput;
-
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.io.InputStream;
+
+import junit.framework.TestCase;
 
 import org.jdom2.Document;
 import org.jdom2.input.SAXBuilder;
 
+import com.sun.syndication.feed.WireFeed;
+import com.sun.syndication.feed.synd.SyndFeed;
+import com.sun.syndication.io.SyndFeedInput;
+import com.sun.syndication.io.WireFeedInput;
+
 /**
  * @author pat, tucu
- *
+ * 
  */
 public abstract class FeedTest extends TestCase {
-    private String _feedFileName;
-    private Document _jDomDoc  = null;
+    private final String _feedFileName;
+    private Document _jDomDoc = null;
     private WireFeed _wireFeed = null;
     private SyndFeed _syndFeed = null;
-    
+
     private boolean preservingWireFeed = false;
 
-    protected FeedTest(String feedFileName) {
-        _feedFileName = feedFileName;
+    protected FeedTest(final String feedFileName) {
+        this._feedFileName = feedFileName;
     }
 
     protected String getFeedFileName() {
-        return _feedFileName;
+        return this._feedFileName;
     }
 
     protected Reader getFeedReader() throws Exception {
-      InputStream resource = Thread.currentThread().
-                                          getContextClassLoader().getResourceAsStream(getFeedFileName());
-      assertNotNull("Could not find resource " + getFeedFileName(), resource);
-      return new InputStreamReader(resource);
+        final InputStream resource = Thread.currentThread().getContextClassLoader().getResourceAsStream(getFeedFileName());
+        assertNotNull("Could not find resource " + getFeedFileName(), resource);
+        return new InputStreamReader(resource);
     }
 
     protected Document getJDomDoc() throws Exception {
-        SAXBuilder saxBuilder = new SAXBuilder(false);
+        final SAXBuilder saxBuilder = new SAXBuilder(false);
         return saxBuilder.build(getFeedReader());
     }
 
     protected WireFeed getWireFeed() throws Exception {
-        WireFeedInput in = new WireFeedInput();
+        final WireFeedInput in = new WireFeedInput();
         return in.build(getFeedReader());
     }
 
-    protected SyndFeed getSyndFeed(boolean preserveWireFeed) throws Exception {
-        SyndFeedInput in = new SyndFeedInput();
+    protected SyndFeed getSyndFeed(final boolean preserveWireFeed) throws Exception {
+        final SyndFeedInput in = new SyndFeedInput();
         in.setPreserveWireFeed(preserveWireFeed);
         return in.build(getFeedReader());
     }
 
     protected Document getCachedJDomDoc() throws Exception {
-        if (_jDomDoc==null) {
-            _jDomDoc = getJDomDoc();
+        if (this._jDomDoc == null) {
+            this._jDomDoc = getJDomDoc();
         }
-        return _jDomDoc;
+        return this._jDomDoc;
     }
 
     protected WireFeed getCachedWireFeed() throws Exception {
-        if (_wireFeed==null) {
-            _wireFeed = getWireFeed();
+        if (this._wireFeed == null) {
+            this._wireFeed = getWireFeed();
         }
-        return _wireFeed;
+        return this._wireFeed;
     }
 
-    protected SyndFeed getCachedSyndFeed(boolean preserveWireFeed) throws Exception {
-    
-    	if (_syndFeed==null || preservingWireFeed != preserveWireFeed) {
-            _syndFeed = getSyndFeed(preserveWireFeed);
-            preservingWireFeed = preserveWireFeed;
+    protected SyndFeed getCachedSyndFeed(final boolean preserveWireFeed) throws Exception {
+
+        if (this._syndFeed == null || this.preservingWireFeed != preserveWireFeed) {
+            this._syndFeed = getSyndFeed(preserveWireFeed);
+            this.preservingWireFeed = preserveWireFeed;
         }
-        return _syndFeed;    	
-    	
+        return this._syndFeed;
+
     }
-    
+
     protected SyndFeed getCachedSyndFeed() throws Exception {
-    	return getCachedSyndFeed(false);
+        return this.getCachedSyndFeed(false);
     }
 
 }

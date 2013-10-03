@@ -17,27 +17,26 @@
 
 package com.sun.syndication.unittest.issues;
 
-import com.sun.syndication.feed.synd.SyndEntry;
-import com.sun.syndication.unittest.TestSyndFeedRSS094;
 import java.util.List;
 
+import com.sun.syndication.feed.synd.SyndEntry;
+import com.sun.syndication.unittest.TestSyndFeedRSS094;
+
 /**
- *
+ * 
  * @author robert.cooper
  */
 public class Issue2Test extends TestSyndFeedRSS094 {
 
     @Override
-    protected void _testItem(int i) throws Exception {
+    protected void _testItem(final int i) throws Exception {
         super._testItem(i);
-        List<SyndEntry> items = getCachedSyndFeed()
-                         .getEntries();
-        SyndEntry entry = items.get(i);
+        final List<SyndEntry> items = this.getCachedSyndFeed().getEntries();
+        final SyndEntry entry = items.get(i);
         _testComments(entry, i);
     }
 
-    protected void _testComments(SyndEntry entry, int i)
-        throws Exception {
+    protected void _testComments(final SyndEntry entry, final int i) throws Exception {
         assertProperty(entry.findRelatedLink("comments").getHref(), "rss_0.94.channel.item[" + i + "].comments");
     }
 

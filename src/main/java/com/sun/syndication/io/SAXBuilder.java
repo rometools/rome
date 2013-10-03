@@ -17,21 +17,24 @@ import org.xml.sax.XMLReader;
  * 
  */
 public class SAXBuilder extends org.jdom2.input.SAXBuilder {
-        public SAXBuilder(XMLReaderJDOMFactory factory) {
-            super(factory);
-        }
-        
-        /**
-         * 
-         * @deprecated use SAXBuilder(XMLReaderJDOMFactory) with either XMLReaders.DTDVALIDATING or XMLReaders.NONVALIDATING
-         * @param _validate 
-         */
-	public SAXBuilder(boolean _validate) {
-		super(_validate ? XMLReaders.DTDVALIDATING : XMLReaders.NONVALIDATING);
-	}
+    public SAXBuilder(final XMLReaderJDOMFactory factory) {
+        super(factory);
+    }
 
-	public XMLReader createParser() throws JDOMException {
-		return super.createParser();
-	}
-	
+    /**
+     * 
+     * @deprecated use SAXBuilder(XMLReaderJDOMFactory) with either
+     *             XMLReaders.DTDVALIDATING or XMLReaders.NONVALIDATING
+     * @param _validate
+     */
+    @Deprecated
+    public SAXBuilder(final boolean _validate) {
+        super(_validate ? XMLReaders.DTDVALIDATING : XMLReaders.NONVALIDATING);
+    }
+
+    @Override
+    public XMLReader createParser() throws JDOMException {
+        return super.createParser();
+    }
+
 }

@@ -17,55 +17,60 @@
  */
 package com.sun.syndication.feed.rss;
 
-import com.sun.syndication.feed.impl.ObjectBean;
-
 import java.io.Serializable;
+
+import com.sun.syndication.feed.impl.ObjectBean;
 
 /**
  * Bean for categories of RSS feeds.
  * <p>
+ * 
  * @author Alejandro Abdelnur
- *
+ * 
  */
-public class Category implements Cloneable,Serializable {
-    private ObjectBean _objBean;
+public class Category implements Cloneable, Serializable {
+    private final ObjectBean _objBean;
     private String _domain;
     private String _value;
 
     /**
      * Default constructor. All properties are set to <b>null</b>.
      * <p>
-     *
+     * 
      */
     public Category() {
-        _objBean = new ObjectBean(this.getClass(),this);
+        this._objBean = new ObjectBean(this.getClass(), this);
     }
 
     /**
      * Creates a deep 'bean' clone of the object.
      * <p>
+     * 
      * @return a clone of the object.
-     * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     *
+     * @throws CloneNotSupportedException thrown if an element of the object
+     *             cannot be cloned.
+     * 
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return _objBean.clone();
+        return this._objBean.clone();
     }
 
     /**
-     * Indicates whether some other object is "equal to" this one as defined by the Object equals() method.
+     * Indicates whether some other object is "equal to" this one as defined by
+     * the Object equals() method.
      * <p>
+     * 
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     *
+     * 
      */
     @Override
-    public boolean equals(Object other) {
-        if(!(other instanceof Category)){
+    public boolean equals(final Object other) {
+        if (!(other instanceof Category)) {
             return false;
         }
-        return _objBean.equals(other);
+        return this._objBean.equals(other);
     }
 
     /**
@@ -73,62 +78,69 @@ public class Category implements Cloneable,Serializable {
      * <p>
      * It follows the contract defined by the Object hashCode() method.
      * <p>
+     * 
      * @return the hashcode of the bean object.
-     *
+     * 
      */
+    @Override
     public int hashCode() {
-        return _objBean.hashCode();
+        return this._objBean.hashCode();
     }
 
     /**
      * Returns the String representation for the object.
      * <p>
+     * 
      * @return String representation for the object.
-     *
+     * 
      */
     @Override
     public String toString() {
-        return _objBean.toString();
+        return this._objBean.toString();
     }
 
     /**
      * Returns the category domain.
      * <p>
+     * 
      * @return the category domain, <b>null</b> if none.
-     *
+     * 
      */
     public String getDomain() {
-        return _domain;
+        return this._domain;
     }
 
     /**
      * Sets the category domain.
      * <p>
+     * 
      * @param domain the category domain to set, <b>null</b> if none.
-     *
+     * 
      */
-    public void setDomain(String domain) {
-        _domain = domain;
+    public void setDomain(final String domain) {
+        this._domain = domain;
     }
 
     /**
      * Returns the category value.
      * <p>
+     * 
      * @return the category value, <b>null</b> if none.
-     *
+     * 
      */
     public String getValue() {
-        return _value;
+        return this._value;
     }
 
     /**
      * Sets the category value.
      * <p>
+     * 
      * @param value the category value to set, <b>null</b> if none.
-     *
+     * 
      */
-    public void setValue(String value) {
-        _value = value;
+    public void setValue(final String value) {
+        this._value = value;
     }
 
 }

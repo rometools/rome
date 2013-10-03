@@ -17,33 +17,36 @@
 package com.sun.syndication.io;
 
 /**
- * Exception thrown by WireFeedInput, WireFeedOutput, WireFeedParser and WireFeedGenerator instances if they
- * can not parse or generate a feed.
+ * Exception thrown by WireFeedInput, WireFeedOutput, WireFeedParser and
+ * WireFeedGenerator instances if they can not parse or generate a feed.
  * <p>
+ * 
  * @author Alejandro Abdelnur
- *
+ * 
  */
 public class FeedException extends Exception {
 
     /**
      * Creates a FeedException with a message.
      * <p>
+     * 
      * @param msg exception message.
-     *
+     * 
      */
-    public FeedException(String msg) {
+    public FeedException(final String msg) {
         super(msg);
     }
 
     /**
      * Creates a FeedException with a message and a root cause exception.
      * <p>
+     * 
      * @param msg exception message.
      * @param rootCause root cause exception.
-     *
+     * 
      */
-    public FeedException(String msg,Throwable rootCause) {
-        super(msg,rootCause);
+    public FeedException(final String msg, final Throwable rootCause) {
+        super(msg, rootCause);
     }
 
 }

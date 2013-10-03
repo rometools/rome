@@ -6,7 +6,7 @@ package com.sun.syndication.unittest;
 
 /**
  * @author pat
- *
+ * 
  */
 public class TestSyndFeedRSS091U extends TestSyndFeedRSS091N {
 

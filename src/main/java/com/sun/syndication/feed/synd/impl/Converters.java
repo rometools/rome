@@ -16,23 +16,20 @@
  */
 package com.sun.syndication.feed.synd.impl;
 
-import com.sun.syndication.io.impl.PluginManager;
-import com.sun.syndication.feed.synd.Converter;
-
 import java.util.List;
 
+import com.sun.syndication.feed.synd.Converter;
+import com.sun.syndication.io.impl.PluginManager;
+
 /**
- * Created by IntelliJ IDEA.
- * User: tucu
- * Date: May 21, 2004
- * Time: 5:26:04 PM
- * To change this template use Options | File Templates.
+ * Created by IntelliJ IDEA. User: tucu Date: May 21, 2004 Time: 5:26:04 PM To
+ * change this template use Options | File Templates.
  */
 public class Converters extends PluginManager {
 
     /**
-     * Converter.classes=  [className] ...
-     *
+     * Converter.classes= [className] ...
+     * 
      */
     public static final String CONVERTERS_KEY = "Converter.classes";
 
@@ -40,12 +37,13 @@ public class Converters extends PluginManager {
         super(CONVERTERS_KEY);
     }
 
-    public Converter getConverter(String feedType) {
+    public Converter getConverter(final String feedType) {
         return (Converter) getPlugin(feedType);
     }
 
-    protected String getKey(Object obj) {
-        return ((Converter)obj).getType();
+    @Override
+    protected String getKey(final Object obj) {
+        return ((Converter) obj).getType();
     }
 
     public List getSupportedFeedTypes() {

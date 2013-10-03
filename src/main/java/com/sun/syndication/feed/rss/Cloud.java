@@ -17,18 +17,19 @@
  */
 package com.sun.syndication.feed.rss;
 
-import com.sun.syndication.feed.impl.ObjectBean;
-
 import java.io.Serializable;
+
+import com.sun.syndication.feed.impl.ObjectBean;
 
 /**
  * Bean for clouds of RSS feeds.
  * <p>
+ * 
  * @author Alejandro Abdelnur
- *
+ * 
  */
-public class Cloud implements Cloneable,Serializable {
-    private ObjectBean _objBean;
+public class Cloud implements Cloneable, Serializable {
+    private final ObjectBean _objBean;
     private String _domain;
     private int _port;
     private String _path;
@@ -38,33 +39,38 @@ public class Cloud implements Cloneable,Serializable {
     /**
      * Default constructor. All properties are set to <b>null</b>.
      * <p>
-     *
+     * 
      */
     public Cloud() {
-        _objBean = new ObjectBean(this.getClass(),this);
+        this._objBean = new ObjectBean(this.getClass(), this);
     }
 
     /**
      * Creates a deep 'bean' clone of the object.
      * <p>
+     * 
      * @return a clone of the object.
-     * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     *
+     * @throws CloneNotSupportedException thrown if an element of the object
+     *             cannot be cloned.
+     * 
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return _objBean.clone();
+        return this._objBean.clone();
     }
 
     /**
-     * Indicates whether some other object is "equal to" this one as defined by the Object equals() method.
+     * Indicates whether some other object is "equal to" this one as defined by
+     * the Object equals() method.
      * <p>
+     * 
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     *
+     * 
      */
-    public boolean equals(Object other) {
-        return _objBean.equals(other);
+    @Override
+    public boolean equals(final Object other) {
+        return this._objBean.equals(other);
     }
 
     /**
@@ -72,123 +78,136 @@ public class Cloud implements Cloneable,Serializable {
      * <p>
      * It follows the contract defined by the Object hashCode() method.
      * <p>
+     * 
      * @return the hashcode of the bean object.
-     *
+     * 
      */
     @Override
     public int hashCode() {
-        return _objBean.hashCode();
+        return this._objBean.hashCode();
     }
 
     /**
      * Returns the String representation for the object.
      * <p>
+     * 
      * @return String representation for the object.
-     *
+     * 
      */
     @Override
     public String toString() {
-        return _objBean.toString();
+        return this._objBean.toString();
     }
 
     /**
      * Returns the cloud domain.
      * <p>
+     * 
      * @return the cloud domain, <b>null</b> if none.
-     *
+     * 
      */
     public String getDomain() {
-        return _domain;
+        return this._domain;
     }
 
     /**
      * Sets the cloud domain.
      * <p>
+     * 
      * @param domain the cloud domain to set, <b>null</b> if none.
-     *
+     * 
      */
-    public void setDomain(String domain) {
-        _domain = domain;
+    public void setDomain(final String domain) {
+        this._domain = domain;
     }
 
     /**
      * Returns the cloud port.
      * <p>
+     * 
      * @return the cloud port, <b>null</b> if none.
-     *
+     * 
      */
     public int getPort() {
-        return _port;
+        return this._port;
     }
 
     /**
      * Sets the cloud port.
      * <p>
+     * 
      * @param port the cloud port to set, <b>null</b> if none.
-     *
+     * 
      */
-    public void setPort(int port) {
-        _port = port;
+    public void setPort(final int port) {
+        this._port = port;
     }
 
     /**
      * Returns the cloud path.
      * <p>
+     * 
      * @return the cloud path, <b>null</b> if none.
-     *
+     * 
      */
     public String getPath() {
-        return _path;
+        return this._path;
     }
 
     /**
      * Sets the cloud path.
      * <p>
+     * 
      * @param path the cloud path to set, <b>null</b> if none.
-     *
+     * 
      */
-    public void setPath(String path) {
-        _path = path;
+    public void setPath(final String path) {
+        this._path = path;
     }
 
     /**
      * Returns the cloud register procedure.
      * <p>
+     * 
      * @return the cloud register procedure, <b>null</b> if none.
-     *
+     * 
      */
     public String getRegisterProcedure() {
-        return _registerProcedure;
+        return this._registerProcedure;
     }
 
     /**
      * Sets the cloud register procedure.
      * <p>
-     * @param registerProcedure the cloud register procedure to set, <b>null</b> if none.
-     *
+     * 
+     * @param registerProcedure the cloud register procedure to set, <b>null</b>
+     *            if none.
+     * 
      */
-    public void setRegisterProcedure(String registerProcedure) {
-        _registerProcedure = registerProcedure;
+    public void setRegisterProcedure(final String registerProcedure) {
+        this._registerProcedure = registerProcedure;
     }
 
     /**
      * Returns the cloud protocol.
      * <p>
+     * 
      * @return the cloud protocol, <b>null</b> if none.
-     *
+     * 
      */
     public String getProtocol() {
-        return _protocol;
+        return this._protocol;
     }
 
     /**
      * Sets the cloud protocol.
      * <p>
+     * 
      * @param protocol the cloud protocol to set, <b>null</b> if none.
-     *
+     * 
      */
-    public void setProtocol(String protocol) {
-        _protocol = protocol;
+    public void setProtocol(final String protocol) {
+        this._protocol = protocol;
     }
 
 }

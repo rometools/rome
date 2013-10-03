@@ -16,6 +16,11 @@
  */
 package com.sun.syndication.feed.synd.impl;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.module.DCModule;
 import com.sun.syndication.feed.rss.Category;
@@ -29,11 +34,6 @@ import com.sun.syndication.feed.synd.SyndLink;
 import com.sun.syndication.feed.synd.SyndLinkImpl;
 import com.sun.syndication.feed.synd.SyndPerson;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 /**
  */
 public class ConverterForRSS094 extends ConverterForRSS093 {
@@ -42,52 +42,58 @@ public class ConverterForRSS094 extends ConverterForRSS093 {
         this("rss_0.94");
     }
 
-    protected ConverterForRSS094(String type) {
+    protected ConverterForRSS094(final String type) {
         super(type);
     }
 
     @Override
-    public void copyInto(WireFeed feed,SyndFeed syndFeed) {
-        Channel channel = (Channel) feed;
-        super.copyInto(channel,syndFeed);
-        List<Category> cats = channel.getCategories();    //c
-        if (cats.size()>0) {
-            Set<SyndCategory> s = new HashSet<SyndCategory>();                // using a set to remove duplicates
-            s.addAll(createSyndCategories(cats)); // feed native categories (as syndcat)
-            s.addAll(syndFeed.getCategories());   // DC subjects (as syndcat)
+    public void copyInto(final WireFeed feed, final SyndFeed syndFeed) {
+        final Channel channel = (Channel) feed;
+        super.copyInto(channel, syndFeed);
+        final List<Category> cats = channel.getCategories(); // c
+        if (cats.size() > 0) {
+            final Set<SyndCategory> s = new HashSet<SyndCategory>(); // using a
+                                                                     // set to
+            // remove
+            // duplicates
+            s.addAll(createSyndCategories(cats)); // feed native categories
+                                                  // (as
+            // syndcat)
+            s.addAll(syndFeed.getCategories()); // DC subjects (as syndcat)
             syndFeed.setCategories(new ArrayList<SyndCategory>(s));
         }
     }
 
     @Override
-    protected SyndEntry createSyndEntry(Item item, boolean preserveWireItem) {
-        SyndEntry syndEntry = super.createSyndEntry(item, preserveWireItem);
+    protected SyndEntry createSyndEntry(final Item item, final boolean preserveWireItem) {
+        final SyndEntry syndEntry = super.createSyndEntry(item, preserveWireItem);
 
         // adding native feed author to DC creators list
-        String author = item.getAuthor();
-        if (author!=null) {
-            List<String> creators = ((DCModule)syndEntry.getModule(DCModule.URI)).getCreators();
+        final String author = item.getAuthor();
+        if (author != null) {
+            final List<String> creators = ((DCModule) syndEntry.getModule(DCModule.URI)).getCreators();
             if (!creators.contains(author)) {
-                Set<String> s = new HashSet<String>(); // using a set to remove duplicates
-                s.addAll(creators);    // DC creators
-                s.add(author);         // feed native author
+                final Set<String> s = new HashSet<String>(); // using a set to
+                                                             // remove
+                // duplicates
+                s.addAll(creators); // DC creators
+                s.add(author); // feed native author
                 creators.clear();
                 creators.addAll(s);
             }
         }
 
-        Guid guid = item.getGuid();
-        if (guid!=null) {
+        final Guid guid = item.getGuid();
+        if (guid != null) {
             syndEntry.setUri(guid.getValue());
-            if (item.getLink()==null && guid.isPermaLink()) {
+            if (item.getLink() == null && guid.isPermaLink()) {
                 syndEntry.setLink(guid.getValue());
             }
-        }
-        else {
+        } else {
             syndEntry.setUri(item.getLink());
         }
-        if(item.getComments() != null){
-            SyndLinkImpl comments = new SyndLinkImpl();
+        if (item.getComments() != null) {
+            final SyndLinkImpl comments = new SyndLinkImpl();
             comments.setRel("comments");
             comments.setHref(item.getComments());
             comments.setType("text/html");
@@ -95,43 +101,41 @@ public class ConverterForRSS094 extends ConverterForRSS093 {
         return syndEntry;
     }
 
-
     @Override
-    protected WireFeed createRealFeed(String type,SyndFeed syndFeed) {
-        Channel channel = (Channel) super.createRealFeed(type,syndFeed);
-        List<SyndCategory> cats = syndFeed.getCategories();    //c
-        if (cats.size()>0) {
+    protected WireFeed createRealFeed(final String type, final SyndFeed syndFeed) {
+        final Channel channel = (Channel) super.createRealFeed(type, syndFeed);
+        final List<SyndCategory> cats = syndFeed.getCategories(); // c
+        if (cats.size() > 0) {
             channel.setCategories(createRSSCategories(cats));
         }
         return channel;
     }
 
     @Override
-    protected Item createRSSItem(SyndEntry sEntry) {
-        Item item = super.createRSSItem(sEntry);     
-        if (sEntry.getAuthors()!=null && sEntry.getAuthors().size() > 0) {
-            SyndPerson author = (SyndPerson)sEntry.getAuthors().get(0);
-            item.setAuthor(author.getEmail());  
-        }  
+    protected Item createRSSItem(final SyndEntry sEntry) {
+        final Item item = super.createRSSItem(sEntry);
+        if (sEntry.getAuthors() != null && sEntry.getAuthors().size() > 0) {
+            final SyndPerson author = sEntry.getAuthors().get(0);
+            item.setAuthor(author.getEmail());
+        }
 
         Guid guid = null;
-        String uri = sEntry.getUri();
-        if (uri!=null) {
+        final String uri = sEntry.getUri();
+        if (uri != null) {
             guid = new Guid();
             guid.setPermaLink(false);
             guid.setValue(uri);
-        }
-        else {
-            String link = sEntry.getLink();
-            if (link!=null) {
+        } else {
+            final String link = sEntry.getLink();
+            if (link != null) {
                 guid = new Guid();
                 guid.setPermaLink(true);
                 guid.setValue(link);
             }
         }
         item.setGuid(guid);
-        SyndLink comments = sEntry.findRelatedLink("comments");
-        if(comments != null && (comments.getType() == null || comments.getType().endsWith("html"))){
+        final SyndLink comments = sEntry.findRelatedLink("comments");
+        if (comments != null && (comments.getType() == null || comments.getType().endsWith("html"))) {
             item.setComments(comments.getHref());
         }
         return item;

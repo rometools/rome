@@ -16,42 +16,44 @@
  */
 package com.sun.syndication.io.impl;
 
-import com.sun.syndication.feed.module.Module;
-import com.sun.syndication.io.ModuleGenerator;
-import org.jdom2.Element;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import org.jdom2.Element;
+
+import com.sun.syndication.feed.module.Module;
+import com.sun.syndication.io.ModuleGenerator;
 
 /**
  */
 public class ModuleGenerators extends PluginManager {
     private Set _allNamespaces;
 
-    public ModuleGenerators(String propertyKey, BaseWireFeedGenerator parentGenerator) {
+    public ModuleGenerators(final String propertyKey, final BaseWireFeedGenerator parentGenerator) {
         super(propertyKey, null, parentGenerator);
     }
 
-    public ModuleGenerator getGenerator(String uri) {
+    public ModuleGenerator getGenerator(final String uri) {
         return (ModuleGenerator) getPlugin(uri);
     }
 
-    protected String getKey(Object obj) {
-        return ((ModuleGenerator)obj).getNamespaceUri();
+    @Override
+    protected String getKey(final Object obj) {
+        return ((ModuleGenerator) obj).getNamespaceUri();
     }
 
     public List getModuleNamespaces() {
         return getKeys();
     }
 
-    public void generateModules(List modules, Element element) {
-        Map generators = getPluginMap();
+    public void generateModules(final List modules, final Element element) {
+        final Map generators = getPluginMap();
         for (int i = 0; i < modules.size(); i++) {
-            Module module = (Module) modules.get(i);
-            String namespaceUri = module.getUri();
-            ModuleGenerator generator = (ModuleGenerator)generators.get(namespaceUri);
+            final Module module = (Module) modules.get(i);
+            final String namespaceUri = module.getUri();
+            final ModuleGenerator generator = (ModuleGenerator) generators.get(namespaceUri);
             if (generator != null) {
                 generator.generate(module, element);
             }
@@ -59,14 +61,14 @@ public class ModuleGenerators extends PluginManager {
     }
 
     public Set getAllNamespaces() {
-        if (_allNamespaces==null) {
-            _allNamespaces = new HashSet();
-            List mUris = getModuleNamespaces();
-            for (int i=0;i<mUris.size();i++) {
-                ModuleGenerator mGen = getGenerator((String)mUris.get(i));
-                _allNamespaces.addAll(mGen.getNamespaces());
+        if (this._allNamespaces == null) {
+            this._allNamespaces = new HashSet();
+            final List mUris = getModuleNamespaces();
+            for (int i = 0; i < mUris.size(); i++) {
+                final ModuleGenerator mGen = getGenerator((String) mUris.get(i));
+                this._allNamespaces.addAll(mGen.getNamespaces());
             }
         }
-        return _allNamespaces;
+        return this._allNamespaces;
     }
 }

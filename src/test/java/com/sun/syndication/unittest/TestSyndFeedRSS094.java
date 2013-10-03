@@ -4,53 +4,48 @@
  */
 package com.sun.syndication.unittest;
 
-import com.sun.syndication.feed.synd.SyndEntry;
-
 import java.util.List;
 
+import com.sun.syndication.feed.synd.SyndEntry;
 
 /**
  * @author pat
- *
+ * 
  */
 public class TestSyndFeedRSS094 extends TestSyndFeedRSS093 {
     public TestSyndFeedRSS094() {
         super("rss_0.94");
     }
 
-    protected TestSyndFeedRSS094(String type) {
+    protected TestSyndFeedRSS094(final String type) {
         super(type);
     }
 
-    protected TestSyndFeedRSS094(String feedType, String feedFileName) {
+    protected TestSyndFeedRSS094(final String feedType, final String feedFileName) {
         super(feedType, feedFileName);
     }
 
     public void testCategories() throws Exception {
-        _testCategories(getCachedSyndFeed().getCategories(), "channel");
-    }
-
-    
-
-    @Override
-    protected void _testDescriptionType(SyndEntry entry, int i)
-        throws Exception {
+        _testCategories(this.getCachedSyndFeed().getCategories(), "channel");
     }
 
     @Override
-    protected void _testItem(int i) throws Exception {
+    protected void _testDescriptionType(final SyndEntry entry, final int i) throws Exception {
+    }
+
+    @Override
+    protected void _testItem(final int i) throws Exception {
         super._testItem(i);
 
-        List<SyndEntry> items = getCachedSyndFeed()
-                         .getEntries();
-        SyndEntry entry = (SyndEntry) items.get(i);
+        final List<SyndEntry> items = this.getCachedSyndFeed().getEntries();
+        final SyndEntry entry = items.get(i);
 
         assertProperty(entry.getAuthor(), "channel.item[" + i + "].author");
-       
+
     }
 
     @Override
-    protected void _testUri(SyndEntry entry, int i) throws Exception {
+    protected void _testUri(final SyndEntry entry, final int i) throws Exception {
         assertProperty(entry.getUri(), "channel.item[" + i + "].guid");
     }
 }

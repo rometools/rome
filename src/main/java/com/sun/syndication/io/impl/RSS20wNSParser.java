@@ -19,19 +19,20 @@ package com.sun.syndication.io.impl;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.Namespace;
-import com.sun.syndication.feed.WireFeed;
 
+import com.sun.syndication.feed.WireFeed;
 
 /**
  * To address issue with certain feeds (brought up by Charles Miller):
- *
+ * 
  * "During the debacle that was the rollout of RSS2.0, this namespace was tried,
  * and even appeared in Dave Winer's Scripting News feed for a while. It was
  * then withdrawn, but the wonderful thing about standards is the moment you
  * roll one out, even if it's marked as unfinished and subject to change,
  * someone will end up stuck with it forever."
- *
- * Note that there is not counter part on the generator, we only generate the final RSS2
+ * 
+ * Note that there is not counter part on the generator, we only generate the
+ * final RSS2
  * 
  */
 public class RSS20wNSParser extends RSS20Parser {
@@ -41,31 +42,34 @@ public class RSS20wNSParser extends RSS20Parser {
         this("rss_2.0wNS");
     }
 
-    protected RSS20wNSParser(String type) {
+    protected RSS20wNSParser(final String type) {
         super(type);
     }
 
-    public boolean isMyType(Document document) {
-        Element rssRoot = document.getRootElement();
-        Namespace defaultNS = rssRoot.getNamespace();
-        boolean ok = defaultNS!=null && defaultNS.equals(getRSSNamespace());
+    @Override
+    public boolean isMyType(final Document document) {
+        final Element rssRoot = document.getRootElement();
+        final Namespace defaultNS = rssRoot.getNamespace();
+        boolean ok = defaultNS != null && defaultNS.equals(getRSSNamespace());
         if (ok) {
             ok = super.isMyType(document);
         }
         return ok;
     }
 
+    @Override
     protected Namespace getRSSNamespace() {
         return Namespace.getNamespace(RSS20_URI);
     }
 
     /**
-     * After we parse the feed we put "rss_2.0" in it (so converters and generators work)
-     * this parser is a phantom.
-     *
+     * After we parse the feed we put "rss_2.0" in it (so converters and
+     * generators work) this parser is a phantom.
+     * 
      */
-    protected WireFeed parseChannel(Element rssRoot)  {
-        WireFeed wFeed = super.parseChannel(rssRoot);
+    @Override
+    protected WireFeed parseChannel(final Element rssRoot) {
+        final WireFeed wFeed = super.parseChannel(rssRoot);
         wFeed.setFeedType("rss_2.0");
         return wFeed;
     }

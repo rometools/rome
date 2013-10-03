@@ -16,54 +16,54 @@
  */
 package com.sun.syndication.io.impl;
 
-import com.sun.syndication.feed.module.Module;
-import com.sun.syndication.feed.module.DCModule;
-import com.sun.syndication.feed.module.DCSubject;
-import com.sun.syndication.io.ModuleGenerator;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import org.jdom2.Attribute;
 import org.jdom2.Element;
 import org.jdom2.Namespace;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.Collections;
-
+import com.sun.syndication.feed.module.DCModule;
+import com.sun.syndication.feed.module.DCSubject;
+import com.sun.syndication.feed.module.Module;
+import com.sun.syndication.io.ModuleGenerator;
 
 /**
  * Feed Generator for DublinCore Module.
  * <p/>
- *
+ * 
  * @author Elaine Chien
- *
+ * 
  */
 public class DCModuleGenerator implements ModuleGenerator {
 
-    private static final String DC_URI  = "http://purl.org/dc/elements/1.1/";
+    private static final String DC_URI = "http://purl.org/dc/elements/1.1/";
     private static final String TAXO_URI = "http://purl.org/rss/1.0/modules/taxonomy/";
     private static final String RDF_URI = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
 
-    private static final Namespace DC_NS  = Namespace.getNamespace("dc", DC_URI);
+    private static final Namespace DC_NS = Namespace.getNamespace("dc", DC_URI);
     private static final Namespace TAXO_NS = Namespace.getNamespace("taxo", TAXO_URI);
     private static final Namespace RDF_NS = Namespace.getNamespace("rdf", RDF_URI);
 
     private static final Set<Namespace> NAMESPACES;
 
     static {
-        Set<Namespace> nss = new HashSet<Namespace>();
+        final Set<Namespace> nss = new HashSet<Namespace>();
         nss.add(DC_NS);
         nss.add(TAXO_NS);
         nss.add(RDF_NS);
         NAMESPACES = Collections.unmodifiableSet(nss);
     }
 
+    @Override
     public final String getNamespaceUri() {
         return DC_URI;
     }
-    
+
     private final Namespace getDCNamespace() {
         return DC_NS;
     }
@@ -81,12 +81,13 @@ public class DCModuleGenerator implements ModuleGenerator {
      * generator uses.
      * <p/>
      * It is used by the the feed generators to add their namespace definition
-     * in the root element of the generated document (forward-missing of
-     * Java 5.0 Generics).
+     * in the root element of the generated document (forward-missing of Java
+     * 5.0 Generics).
      * <p/>
-     *
+     * 
      * @return a set with all the URIs this module generator uses.
      */
+    @Override
     public final Set<Namespace> getNamespaces() {
         return NAMESPACES;
     }
@@ -94,11 +95,13 @@ public class DCModuleGenerator implements ModuleGenerator {
     /**
      * Populate an element tree with elements for a module.
      * <p>
+     * 
      * @param module the module to populate from.
      * @param element the root element to attach child elements to.
      */
-    public final void generate(Module module, Element element) {
-        DCModule dcModule = (DCModule) module;
+    @Override
+    public final void generate(final Module module, final Element element) {
+        final DCModule dcModule = (DCModule) module;
 
         if (dcModule.getTitle() != null) {
             element.addContent(generateSimpleElementList("title", dcModule.getTitles()));
@@ -106,9 +109,9 @@ public class DCModuleGenerator implements ModuleGenerator {
         if (dcModule.getCreator() != null) {
             element.addContent(generateSimpleElementList("creator", dcModule.getCreators()));
         }
-        List<DCSubject> subjects = dcModule.getSubjects();
+        final List<DCSubject> subjects = dcModule.getSubjects();
         for (int i = 0; i < subjects.size(); i++) {
-            element.addContent(generateSubjectElement((DCSubject) subjects.get(i)));
+            element.addContent(generateSubjectElement(subjects.get(i)));
         }
         if (dcModule.getDescription() != null) {
             element.addContent(generateSimpleElementList("description", dcModule.getDescriptions()));
@@ -120,9 +123,8 @@ public class DCModuleGenerator implements ModuleGenerator {
             element.addContent(generateSimpleElementList("contributor", dcModule.getContributors()));
         }
         if (dcModule.getDate() != null) {
-            for (Iterator<Date> i = dcModule.getDates().iterator(); i.hasNext();) {
-                element.addContent(generateSimpleElement("date",
-                        DateParser.formatW3CDateTime((Date) i.next())));
+            for (final Date date : dcModule.getDates()) {
+                element.addContent(generateSimpleElement("date", DateParser.formatW3CDateTime(date)));
             }
         }
         if (dcModule.getType() != null) {
@@ -154,21 +156,22 @@ public class DCModuleGenerator implements ModuleGenerator {
     /**
      * Utility method to generate an element for a subject.
      * <p>
+     * 
      * @param subject the subject to generate an element for.
      * @return the element for the subject.
      */
-    protected final Element generateSubjectElement(DCSubject subject) {
-        Element subjectElement = new Element("subject", getDCNamespace());
+    protected final Element generateSubjectElement(final DCSubject subject) {
+        final Element subjectElement = new Element("subject", getDCNamespace());
 
         if (subject.getTaxonomyUri() != null) {
-            Element descriptionElement = new Element("Description", getRDFNamespace());
-            Element topicElement = new Element("topic", getTaxonomyNamespace());
-            Attribute resourceAttribute = new Attribute("resource", subject.getTaxonomyUri(), getRDFNamespace());
+            final Element descriptionElement = new Element("Description", getRDFNamespace());
+            final Element topicElement = new Element("topic", getTaxonomyNamespace());
+            final Attribute resourceAttribute = new Attribute("resource", subject.getTaxonomyUri(), getRDFNamespace());
             topicElement.setAttribute(resourceAttribute);
             descriptionElement.addContent(topicElement);
 
             if (subject.getValue() != null) {
-                Element valueElement = new Element("value", getRDFNamespace());
+                final Element valueElement = new Element("value", getRDFNamespace());
                 valueElement.addContent(subject.getValue());
                 descriptionElement.addContent(valueElement);
             }
@@ -179,16 +182,16 @@ public class DCModuleGenerator implements ModuleGenerator {
         return subjectElement;
     }
 
-
     /**
      * Utility method to generate a single element containing a string.
      * <p>
+     * 
      * @param name the name of the elment to generate.
      * @param value the value of the text in the element.
      * @return the element generated.
      */
-    protected final Element generateSimpleElement(String name, String value)  {
-        Element element = new Element(name, getDCNamespace());
+    protected final Element generateSimpleElement(final String name, final String value) {
+        final Element element = new Element(name, getDCNamespace());
         element.addContent(value);
 
         return element;
@@ -197,14 +200,15 @@ public class DCModuleGenerator implements ModuleGenerator {
     /**
      * Utility method to generate a list of simple elements.
      * <p>
+     * 
      * @param name the name of the element list to generate.
      * @param value the list of values for the elements.
      * @return a list of Elements created.
      */
-    protected final List<Element> generateSimpleElementList(String name, List<String> value) {
-        List<Element> elements = new ArrayList<Element>();
-        for (Iterator<String> i = value.iterator(); i.hasNext();) {
-            elements.add(generateSimpleElement(name, (String) i.next()));
+    protected final List<Element> generateSimpleElementList(final String name, final List<String> value) {
+        final List<Element> elements = new ArrayList<Element>();
+        for (final String string : value) {
+            elements.add(generateSimpleElement(name, string));
         }
 
         return elements;

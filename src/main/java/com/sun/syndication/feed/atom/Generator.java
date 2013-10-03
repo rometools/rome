@@ -16,18 +16,19 @@
  */
 package com.sun.syndication.feed.atom;
 
-import com.sun.syndication.feed.impl.ObjectBean;
-
 import java.io.Serializable;
+
+import com.sun.syndication.feed.impl.ObjectBean;
 
 /**
  * Bean for the generator element of Atom feeds.
  * <p>
+ * 
  * @author Alejandro Abdelnur
- *
+ * 
  */
-public class Generator implements Cloneable,Serializable {
-    private ObjectBean _objBean;
+public class Generator implements Cloneable, Serializable {
+    private final ObjectBean _objBean;
     private String _url;
     private String _version;
     private String _value;
@@ -35,37 +36,41 @@ public class Generator implements Cloneable,Serializable {
     /**
      * Default constructor. All properties are set to <b>null</b>.
      * <p>
-     *
+     * 
      */
     public Generator() {
-        _objBean = new ObjectBean(this.getClass(),this);
+        this._objBean = new ObjectBean(this.getClass(), this);
     }
 
     /**
      * Creates a deep 'bean' clone of the object.
      * <p>
+     * 
      * @return a clone of the object.
-     * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     *
+     * @throws CloneNotSupportedException thrown if an element of the object
+     *             cannot be cloned.
+     * 
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return _objBean.clone();
+        return this._objBean.clone();
     }
 
     /**
-     * Indicates whether some other object is "equal to" this one as defined by the Object equals() method.
+     * Indicates whether some other object is "equal to" this one as defined by
+     * the Object equals() method.
      * <p>
+     * 
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     *
+     * 
      */
     @Override
-    public boolean equals(Object other) {
-        if(!(other instanceof Generator)){
+    public boolean equals(final Object other) {
+        if (!(other instanceof Generator)) {
             return false;
         }
-        return _objBean.equals(other);
+        return this._objBean.equals(other);
     }
 
     /**
@@ -73,83 +78,91 @@ public class Generator implements Cloneable,Serializable {
      * <p>
      * It follows the contract defined by the Object hashCode() method.
      * <p>
+     * 
      * @return the hashcode of the bean object.
-     *
+     * 
      */
     @Override
     public int hashCode() {
-        return _objBean.hashCode();
+        return this._objBean.hashCode();
     }
 
     /**
      * Returns the String representation for the object.
      * <p>
+     * 
      * @return String representation for the object.
-     *
+     * 
      */
     @Override
     public String toString() {
-        return _objBean.toString();
+        return this._objBean.toString();
     }
 
     /**
-      * Returns the generator URL.
-      * <p>
-      * @return the generator URL, <b>null</b> if none.
-      *
-      */
+     * Returns the generator URL.
+     * <p>
+     * 
+     * @return the generator URL, <b>null</b> if none.
+     * 
+     */
     public String getUrl() {
-        return _url;
+        return this._url;
     }
 
     /**
-      * Sets the generator URL.
-      * <p>
-      * @param url the generator URL, <b>null</b> if none.
-      *
-      */
-    public void setUrl(String url) {
-        _url = url;
+     * Sets the generator URL.
+     * <p>
+     * 
+     * @param url the generator URL, <b>null</b> if none.
+     * 
+     */
+    public void setUrl(final String url) {
+        this._url = url;
     }
 
     /**
      * Returns the generator version.
      * <p>
+     * 
      * @return the generator version, <b>null</b> if none.
-     *
+     * 
      */
     public String getVersion() {
-        return _version;
+        return this._version;
     }
 
     /**
      * Sets the generator version.
      * <p>
+     * 
      * @param version the generator version, <b>null</b> if none.
-     *
+     * 
      */
-    public void setVersion(String version) {
-        _version = version;
+    public void setVersion(final String version) {
+        this._version = version;
     }
 
     /**
      * Returns the generator value.
      * <p>
+     * 
      * @return the generator value, <b>null</b> if none.
-     *
+     * 
      */
     public String getValue() {
-        return _value;
+        return this._value;
     }
 
     /**
      * Sets the generator value.
      * <p>
+     * 
      * @param value the generator value, <b>null</b> if none.
-     *
+     * 
      */
-    public void setValue(String value) {
-        _value = value;
+    public void setValue(final String value) {
+        this._value = value;
     }
 
 }

@@ -16,18 +16,19 @@
  */
 package com.sun.syndication.feed.rss;
 
-import com.sun.syndication.feed.impl.ObjectBean;
-
 import java.io.Serializable;
+
+import com.sun.syndication.feed.impl.ObjectBean;
 
 /**
  * Bean for images of RSS feeds.
  * <p>
+ * 
  * @author Alejandro Abdelnur
- *
+ * 
  */
-public class Image implements Cloneable,Serializable {
-    private ObjectBean _objBean;
+public class Image implements Cloneable, Serializable {
+    private final ObjectBean _objBean;
     private String _title;
     private String _url;
     private String _link;
@@ -38,37 +39,41 @@ public class Image implements Cloneable,Serializable {
     /**
      * Default constructor. All properties are set to <b>null</b>.
      * <p>
-     *
+     * 
      */
     public Image() {
-        _objBean = new ObjectBean(this.getClass(),this);
+        this._objBean = new ObjectBean(this.getClass(), this);
     }
 
     /**
      * Creates a deep 'bean' clone of the object.
      * <p>
+     * 
      * @return a clone of the object.
-     * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     *
+     * @throws CloneNotSupportedException thrown if an element of the object
+     *             cannot be cloned.
+     * 
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return _objBean.clone();
+        return this._objBean.clone();
     }
 
     /**
-     * Indicates whether some other object is "equal to" this one as defined by the Object equals() method.
+     * Indicates whether some other object is "equal to" this one as defined by
+     * the Object equals() method.
      * <p>
+     * 
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     *
+     * 
      */
     @Override
-    public boolean equals(Object other) {
-        if(!(other instanceof Image)){
+    public boolean equals(final Object other) {
+        if (!(other instanceof Image)) {
             return false;
         }
-        return _objBean.equals(other);
+        return this._objBean.equals(other);
     }
 
     /**
@@ -76,143 +81,157 @@ public class Image implements Cloneable,Serializable {
      * <p>
      * It follows the contract defined by the Object hashCode() method.
      * <p>
+     * 
      * @return the hashcode of the bean object.
-     *
+     * 
      */
     @Override
     public int hashCode() {
-        return _objBean.hashCode();
+        return this._objBean.hashCode();
     }
 
     /**
      * Returns the String representation for the object.
      * <p>
+     * 
      * @return String representation for the object.
-     *
+     * 
      */
     @Override
     public String toString() {
-        return _objBean.toString();
+        return this._objBean.toString();
     }
 
     /**
      * Returns the image title.
      * <p>
+     * 
      * @return the image title, <b>null</b> if none.
-     *
+     * 
      */
     public String getTitle() {
-        return _title;
+        return this._title;
     }
 
     /**
      * Sets the image title.
      * <p>
+     * 
      * @param title the image title to set, <b>null</b> if none.
-     *
+     * 
      */
-    public void setTitle(String title) {
-        _title = title;
+    public void setTitle(final String title) {
+        this._title = title;
     }
 
     /**
      * Returns the image URL.
      * <p>
+     * 
      * @return the image URL, <b>null</b> if none.
-     *
+     * 
      */
     public String getUrl() {
-        return _url;
+        return this._url;
     }
 
     /**
      * Sets the image URL.
      * <p>
+     * 
      * @param url the image URL to set, <b>null</b> if none.
-     *
+     * 
      */
-    public void setUrl(String url) {
-        _url = url;
+    public void setUrl(final String url) {
+        this._url = url;
     }
 
     /**
      * Returns the image link.
      * <p>
+     * 
      * @return the image link, <b>null</b> if none.
-     *
+     * 
      */
     public String getLink() {
-        return _link;
+        return this._link;
     }
 
     /**
      * Sets the image link.
      * <p>
+     * 
      * @param link the image link to set, <b>null</b> if none.
-     *
+     * 
      */
-    public void setLink(String link) {
-        _link = link;
+    public void setLink(final String link) {
+        this._link = link;
     }
 
     /**
      * Returns the image width.
      * <p>
+     * 
      * @return the image width, <b>null</b> if none.
-     *
+     * 
      */
     public Integer getWidth() {
-        return _width;
+        return this._width;
     }
 
     /**
      * Sets the image width.
      * <p>
+     * 
      * @param width the image width to set, <b>null</b> if none.
-     *
+     * 
      */
-    public void setWidth(Integer width) {
-        _width = width;
+    public void setWidth(final Integer width) {
+        this._width = width;
     }
 
     /**
      * Returns the image height.
      * <p>
+     * 
      * @return the image height, <b>null</b> if none.
-     *
+     * 
      */
     public Integer getHeight() {
-        return _height;
+        return this._height;
     }
 
     /**
      * Sets the image height.
      * <p>
+     * 
      * @param height the image height to set, <b>null</b> if none.
-     *
+     * 
      */
-    public void setHeight(Integer height) {
-        _height = height;
+    public void setHeight(final Integer height) {
+        this._height = height;
     }
 
     /**
      * Returns the image description.
      * <p>
+     * 
      * @return the image description, <b>null</b> if none.
-     *
+     * 
      */
     public String getDescription() {
-        return _description;
+        return this._description;
     }
 
     /**
      * Sets the image description.
      * <p>
+     * 
      * @param description the image description to set, <b>null</b> if none.
-     *
+     * 
      */
-    public void setDescription(String description) {
-        _description = description;
+    public void setDescription(final String description) {
+        this._description = description;
     }
 
 }

@@ -16,26 +16,25 @@
  */
 package com.sun.syndication.feed.module.impl;
 
-import com.sun.syndication.feed.module.Module;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import com.sun.syndication.feed.module.Module;
 
 /**
  */
 public class ModuleUtils {
 
-    public static List<Module> cloneModules(List<Module> modules) {
+    public static List<Module> cloneModules(final List<Module> modules) {
         List<Module> cModules = null;
-        if (modules!=null) {
+        if (modules != null) {
             cModules = new ArrayList<Module>();
-            for (Module module : modules) {
+            for (final Module module : modules) {
                 try {
-                    Module c = (Module) module.clone();
+                    final Module c = (Module) module.clone();
                     cModules.add(c);
-                }
-                catch (Exception ex) {
-                    throw new RuntimeException("Cloning modules "+module.getUri(),ex);
+                } catch (final Exception ex) {
+                    throw new RuntimeException("Cloning modules " + module.getUri(), ex);
                 }
             }
         }
@@ -44,16 +43,16 @@ public class ModuleUtils {
 
     /**
      * 
-     *
+     * 
      * @since 1.5 Changed to return the first, not the last.
      * 
      * @param modules
      * @param uri
      * @return
      */
-    public static Module getModule(List<Module> modules,String uri) {
+    public static Module getModule(final List<Module> modules, final String uri) {
         Module module = null;
-        for (int i=0;  modules!=null && i<modules.size();i++) {
+        for (int i = 0; modules != null && i < modules.size(); i++) {
             module = modules.get(i);
             if (module.getUri().equals(uri)) {
                 return module;

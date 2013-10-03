@@ -20,51 +20,53 @@ package com.sun.syndication.feed.synd;
 import com.sun.syndication.feed.module.Extendable;
 
 /**
- * Bean interface for authors and contributors of SyndFeedImpl feeds and entries.
+ * Bean interface for authors and contributors of SyndFeedImpl feeds and
+ * entries.
  * <p>
+ * 
  * @author Dave Johnson
- *
+ * 
  */
-public interface SyndPerson extends Cloneable, Extendable
-{
+public interface SyndPerson extends Cloneable, Extendable {
 
     /**
-     * Returns  name of person
+     * Returns name of person
      */
     public String getName();
-    
+
     /**
      * Sets name of person.
      */
     public void setName(String name);
-    
+
     /**
      * Returns URI of person.
      */
     public String getUri();
-    
-    /** 
+
+    /**
      * Sets URI of person.
      */
     public void setUri(String uri);
-    
-    /** 
+
+    /**
      * Returns email of person.
      */
     public String getEmail();
-    
+
     /**
      * Sets email of person.
      */
     public void setEmail(String email);
-    
-    
+
     /**
      * Creates a deep clone of the object.
      * <p>
+     * 
      * @return a clone of the object.
-     * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     *
+     * @throws CloneNotSupportedException thrown if an element of the object
+     *             cannot be cloned.
+     * 
      */
     public Object clone() throws CloneNotSupportedException;
 

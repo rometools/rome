@@ -16,43 +16,49 @@
  */
 package com.sun.syndication.io.impl;
 
-import com.sun.syndication.feed.rss.*;
-import com.sun.syndication.io.FeedException;
+import java.util.List;
+
 import org.jdom2.Attribute;
 import org.jdom2.Element;
 
-import java.util.List;
-
+import com.sun.syndication.feed.rss.Category;
+import com.sun.syndication.feed.rss.Channel;
+import com.sun.syndication.feed.rss.Cloud;
+import com.sun.syndication.feed.rss.Enclosure;
+import com.sun.syndication.feed.rss.Item;
+import com.sun.syndication.feed.rss.Source;
+import com.sun.syndication.io.FeedException;
 
 /**
  * Feed Generator for RSS 0.92
  * <p/>
- *
+ * 
  * @author Elaine Chien
- *
+ * 
  */
 
 public class RSS092Generator extends RSS091UserlandGenerator {
 
     public RSS092Generator() {
-        this("rss_0.92","0.92");
+        this("rss_0.92", "0.92");
     }
 
-    protected RSS092Generator(String type,String version) {
-        super(type,version);
+    protected RSS092Generator(final String type, final String version) {
+        super(type, version);
     }
 
-    protected void populateChannel(Channel channel,Element eChannel) {
-        super.populateChannel(channel,eChannel);
+    @Override
+    protected void populateChannel(final Channel channel, final Element eChannel) {
+        super.populateChannel(channel, eChannel);
 
-        Cloud cloud = channel.getCloud();
-        if (cloud!=null) {
+        final Cloud cloud = channel.getCloud();
+        if (cloud != null) {
             eChannel.addContent(generateCloud(cloud));
         }
     }
 
-    protected Element generateCloud(Cloud cloud) {
-        Element eCloud = new Element("cloud",getFeedNamespace());
+    protected Element generateCloud(final Cloud cloud) {
+        final Element eCloud = new Element("cloud", getFeedNamespace());
 
         if (cloud.getDomain() != null) {
             eCloud.setAttribute(new Attribute("domain", cloud.getDomain()));
@@ -77,31 +83,32 @@ public class RSS092Generator extends RSS091UserlandGenerator {
     }
 
     // Another one to thanks DW for
-    protected int getNumberOfEnclosures(List<Enclosure> enclosures) {
-        return (enclosures.size()>0) ? 1 : 0;
+    protected int getNumberOfEnclosures(final List<Enclosure> enclosures) {
+        return enclosures.size() > 0 ? 1 : 0;
     }
 
-    protected void populateItem(Item item, Element eItem, int index) {
-        super.populateItem(item,eItem, index);
+    @Override
+    protected void populateItem(final Item item, final Element eItem, final int index) {
+        super.populateItem(item, eItem, index);
 
-        Source source =item.getSource();
+        final Source source = item.getSource();
         if (source != null) {
             eItem.addContent(generateSourceElement(source));
         }
 
-        List<Enclosure> enclosures = item.getEnclosures();
-        for(int i = 0; i < getNumberOfEnclosures(enclosures); i++) {
-            eItem.addContent(generateEnclosure((Enclosure)enclosures.get(i)));
+        final List<Enclosure> enclosures = item.getEnclosures();
+        for (int i = 0; i < getNumberOfEnclosures(enclosures); i++) {
+            eItem.addContent(generateEnclosure(enclosures.get(i)));
         }
 
-        List<Category> categories = item.getCategories();
-        for(int i = 0; i < categories.size(); i++) {
-            eItem.addContent(generateCategoryElement((Category)categories.get(i)));
+        final List<Category> categories = item.getCategories();
+        for (int i = 0; i < categories.size(); i++) {
+            eItem.addContent(generateCategoryElement(categories.get(i)));
         }
     }
 
-    protected Element generateSourceElement(Source source) {
-        Element sourceElement = new Element("source",getFeedNamespace());
+    protected Element generateSourceElement(final Source source) {
+        final Element sourceElement = new Element("source", getFeedNamespace());
         if (source.getUrl() != null) {
             sourceElement.setAttribute(new Attribute("url", source.getUrl()));
         }
@@ -109,8 +116,8 @@ public class RSS092Generator extends RSS091UserlandGenerator {
         return sourceElement;
     }
 
-    protected Element generateEnclosure(Enclosure enclosure) {
-        Element enclosureElement = new Element("enclosure",getFeedNamespace());
+    protected Element generateEnclosure(final Enclosure enclosure) {
+        final Element enclosureElement = new Element("enclosure", getFeedNamespace());
         if (enclosure.getUrl() != null) {
             enclosureElement.setAttribute("url", enclosure.getUrl());
         }
@@ -123,8 +130,8 @@ public class RSS092Generator extends RSS091UserlandGenerator {
         return enclosureElement;
     }
 
-    protected Element generateCategoryElement(Category category) {
-        Element categoryElement = new Element("category",getFeedNamespace());
+    protected Element generateCategoryElement(final Category category) {
+        final Element categoryElement = new Element("category", getFeedNamespace());
         if (category.getDomain() != null) {
             categoryElement.setAttribute("domain", category.getDomain());
         }
@@ -132,29 +139,33 @@ public class RSS092Generator extends RSS091UserlandGenerator {
         return categoryElement;
     }
 
-
-    protected void checkChannelConstraints(Element eChannel) throws FeedException {
-        checkNotNullAndLength(eChannel,"title", 0, -1);
-        checkNotNullAndLength(eChannel,"description", 0, -1);
-        checkNotNullAndLength(eChannel,"link", 0, -1);
+    @Override
+    protected void checkChannelConstraints(final Element eChannel) throws FeedException {
+        checkNotNullAndLength(eChannel, "title", 0, -1);
+        checkNotNullAndLength(eChannel, "description", 0, -1);
+        checkNotNullAndLength(eChannel, "link", 0, -1);
     }
 
-    protected void checkImageConstraints(Element eImage) throws FeedException {
-        checkNotNullAndLength(eImage,"title", 0, -1);
-        checkNotNullAndLength(eImage,"url", 0, -1);
+    @Override
+    protected void checkImageConstraints(final Element eImage) throws FeedException {
+        checkNotNullAndLength(eImage, "title", 0, -1);
+        checkNotNullAndLength(eImage, "url", 0, -1);
     }
 
-    protected void checkTextInputConstraints(Element eTextInput) throws FeedException {
-        checkNotNullAndLength(eTextInput,"title", 0, -1);
-        checkNotNullAndLength(eTextInput,"description", 0, -1);
-        checkNotNullAndLength(eTextInput,"name", 0, -1);
-        checkNotNullAndLength(eTextInput,"link", 0, -1);
+    @Override
+    protected void checkTextInputConstraints(final Element eTextInput) throws FeedException {
+        checkNotNullAndLength(eTextInput, "title", 0, -1);
+        checkNotNullAndLength(eTextInput, "description", 0, -1);
+        checkNotNullAndLength(eTextInput, "name", 0, -1);
+        checkNotNullAndLength(eTextInput, "link", 0, -1);
     }
 
-    protected void checkItemsConstraints(Element parent) throws FeedException {
+    @Override
+    protected void checkItemsConstraints(final Element parent) throws FeedException {
     }
 
-    protected void checkItemConstraints(Element eItem) throws FeedException {
+    @Override
+    protected void checkItemConstraints(final Element eItem) throws FeedException {
     }
 
 }

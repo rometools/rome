@@ -16,57 +16,63 @@
  */
 package com.sun.syndication.feed.module;
 
-import com.sun.syndication.feed.impl.ObjectBean;
-
 import java.io.Serializable;
+
+import com.sun.syndication.feed.impl.ObjectBean;
 
 /**
  * Base class for modules describing Metadata of feeds, default implementations.
  * Examples of such modules are the Dublin Core and Syndication modules.
  * <p>
+ * 
  * @author Alejandro Abdelnur
- *
+ * 
  */
-public abstract class ModuleImpl implements Cloneable,Serializable,Module {
-    private ObjectBean _objBean;
-    private String _uri;
+public abstract class ModuleImpl implements Cloneable, Serializable, Module {
+    private final ObjectBean _objBean;
+    private final String _uri;
 
     /**
      * Constructor.
      * <p>
+     * 
      * @param uri URI of the module.
-     *
+     * 
      */
-    protected ModuleImpl(Class beanClass,String uri) {
-        _objBean = new ObjectBean(beanClass,this);
-        _uri = uri;
+    protected ModuleImpl(final Class beanClass, final String uri) {
+        this._objBean = new ObjectBean(beanClass, this);
+        this._uri = uri;
     }
 
     /**
      * Creates a deep 'bean' clone of the object.
      * <p>
+     * 
      * @return a clone of the object.
-     * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     *
+     * @throws CloneNotSupportedException thrown if an element of the object
+     *             cannot be cloned.
+     * 
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return _objBean.clone();
+        return this._objBean.clone();
     }
 
     /**
-     * Indicates whether some other object is "equal to" this one as defined by the Object equals() method.
+     * Indicates whether some other object is "equal to" this one as defined by
+     * the Object equals() method.
      * <p>
+     * 
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     *
+     * 
      */
     @Override
-    public boolean equals(Object other) {
-        if(!(other instanceof ModuleImpl)){
+    public boolean equals(final Object other) {
+        if (!(other instanceof ModuleImpl)) {
             return false;
         }
-        return _objBean.equals(other);
+        return this._objBean.equals(other);
     }
 
     /**
@@ -74,33 +80,37 @@ public abstract class ModuleImpl implements Cloneable,Serializable,Module {
      * <p>
      * It follows the contract defined by the Object hashCode() method.
      * <p>
+     * 
      * @return the hashcode of the bean object.
-     *
+     * 
      */
     @Override
     public int hashCode() {
-        return _objBean.hashCode();
+        return this._objBean.hashCode();
     }
 
     /**
      * Returns the String representation for the object.
      * <p>
+     * 
      * @return String representation for the object.
-     *
+     * 
      */
     @Override
     public String toString() {
-        return _objBean.toString();
+        return this._objBean.toString();
     }
 
     /**
      * Returns the URI of the module.
      * <p>
+     * 
      * @return URI of the module.
-     *
+     * 
      */
+    @Override
     public String getUri() {
-        return _uri;
+        return this._uri;
     }
 
 }

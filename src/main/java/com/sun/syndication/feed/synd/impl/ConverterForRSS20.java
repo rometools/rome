@@ -16,9 +16,6 @@
  */
 package com.sun.syndication.feed.synd.impl;
 
-
-
-
 /**
  */
 public class ConverterForRSS20 extends ConverterForRSS094 {
@@ -27,7 +24,7 @@ public class ConverterForRSS20 extends ConverterForRSS094 {
         this("rss_2.0");
     }
 
-    protected ConverterForRSS20(String type) {
+    protected ConverterForRSS20(final String type) {
         super(type);
     }
 

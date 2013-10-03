@@ -16,86 +16,96 @@
  */
 package com.sun.syndication.feed.impl;
 
-import com.sun.syndication.feed.impl.CloneableBean;
-import com.sun.syndication.feed.impl.EqualsBean;
-
 import java.io.Serializable;
 import java.util.Set;
 
 /**
- * Convenience class providing clone(), toString(), equals() and hashCode() functionality for Java Beans.
+ * Convenience class providing clone(), toString(), equals() and hashCode()
+ * functionality for Java Beans.
  * <p>
  * It works on all read/write properties, recursively.
  * <p>
- * It uses the CloneableBean, EqualsBean and ToStringBean classes in a delegation pattern.
+ * It uses the CloneableBean, EqualsBean and ToStringBean classes in a
+ * delegation pattern.
  * <p>
  * <h3>ObjectBean programming conventions</h3>
  * <P>
- * All ObjectBean subclasses having properties that return collections they should never
- * return null if the property has been set to <b>null</b> or if a collection has not been set.
- * They should create and return an empty collection, this empty collection instance should
- * also be set to the corresponding property.
+ * All ObjectBean subclasses having properties that return collections they
+ * should never return null if the property has been set to <b>null</b> or if a
+ * collection has not been set. They should create and return an empty
+ * collection, this empty collection instance should also be set to the
+ * corresponding property.
  * <P>
  * All ObjectBean subclasses properties should be live references.
  * <p>
+ * 
  * @author Alejandro Abdelnur
- *
+ * 
  */
 public class ObjectBean implements Serializable, Cloneable {
-    private EqualsBean _equalsBean;
-    private ToStringBean _toStringBean;
-    private CloneableBean _cloneableBean;
+    private final EqualsBean _equalsBean;
+    private final ToStringBean _toStringBean;
+    private final CloneableBean _cloneableBean;
 
     /**
      * Constructor.
      * <p>
+     * 
      * @param beanClass the class/interface to be used for property scanning.
-     *
+     * 
      */
-    public ObjectBean(Class beanClass,Object obj) {
-        this(beanClass,obj,null);
+    public ObjectBean(final Class beanClass, final Object obj) {
+        this(beanClass, obj, null);
     }
 
     /**
      * Constructor.
      * <p>
      * The property names in the ignoreProperties Set will not be copied into
-     * the cloned instance. This is useful for cases where the Bean has convenience
-     * properties (properties that are actually references to other properties or
-     * properties of properties). For example SyndFeed and SyndEntry beans have
-     * convenience properties, publishedDate, author, copyright and categories all
-     * of them mapped to properties in the DC Module.
+     * the cloned instance. This is useful for cases where the Bean has
+     * convenience properties (properties that are actually references to other
+     * properties or properties of properties). For example SyndFeed and
+     * SyndEntry beans have convenience properties, publishedDate, author,
+     * copyright and categories all of them mapped to properties in the DC
+     * Module.
      * <p>
+     * 
      * @param beanClass the class/interface to be used for property scanning.
      * @param ignoreProperties properties to ignore when cloning.
-     *
+     * 
      */
-    public ObjectBean(Class beanClass,Object obj,Set ignoreProperties) {
-        _equalsBean = new EqualsBean(beanClass,obj);
-        _toStringBean = new ToStringBean(beanClass,obj);
-        _cloneableBean = new CloneableBean(obj,ignoreProperties);
+    public ObjectBean(final Class beanClass, final Object obj, final Set ignoreProperties) {
+        this._equalsBean = new EqualsBean(beanClass, obj);
+        this._toStringBean = new ToStringBean(beanClass, obj);
+        this._cloneableBean = new CloneableBean(obj, ignoreProperties);
     }
 
     /**
      * Creates a deep 'bean' clone of the object.
      * <p>
+     * 
      * @return a clone of the object.
-     * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     *
+     * @throws CloneNotSupportedException thrown if an element of the object
+     *             cannot be cloned.
+     * 
      */
+    @Override
     public Object clone() throws CloneNotSupportedException {
-        return _cloneableBean.beanClone();
+        return this._cloneableBean.beanClone();
     }
 
     /**
-     * Indicates whether some other object is "equal to" this one as defined by the Object equals() method.
+     * Indicates whether some other object is "equal to" this one as defined by
+     * the Object equals() method.
      * <p>
+     * 
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     *
+     * 
      */
-    public boolean equals(Object other) {
-        return _equalsBean.beanEquals(other);
+    @Override
+    public boolean equals(final Object other) {
+        return this._equalsBean.beanEquals(other);
     }
 
     /**
@@ -103,22 +113,25 @@ public class ObjectBean implements Serializable, Cloneable {
      * <p>
      * It follows the contract defined by the Object hashCode() method.
      * <p>
+     * 
      * @return the hashcode of the bean object.
-     *
+     * 
      */
+    @Override
     public int hashCode() {
-        return _equalsBean.beanHashCode();
+        return this._equalsBean.beanHashCode();
     }
 
     /**
      * Returns the String representation for the object.
      * <p>
+     * 
      * @return String representation for the object.
-     *
+     * 
      */
+    @Override
     public String toString() {
-        return _toStringBean.toString();
+        return this._toStringBean.toString();
     }
 
 }
-

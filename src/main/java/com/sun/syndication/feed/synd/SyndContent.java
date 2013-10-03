@@ -18,70 +18,80 @@ package com.sun.syndication.feed.synd;
 
 import com.sun.syndication.feed.CopyFrom;
 
-
 /**
  * Bean interface for content of SyndFeedImpl entries.
  * <p>
+ * 
  * @author Alejandro Abdelnur
- *
+ * 
  */
-public interface SyndContent extends Cloneable,CopyFrom<SyndContent> {
+public interface SyndContent extends Cloneable, CopyFrom<SyndContent> {
     /**
      * Returns the content type.
      * <p>
-     * When used for the description of an entry, if <b>null</b> 'text/plain' must be assumed.
+     * When used for the description of an entry, if <b>null</b> 'text/plain'
+     * must be assumed.
      * <p>
+     * 
      * @return the content type, <b>null</b> if none.
-     *
+     * 
      */
     String getType();
 
     /**
      * Sets the content type.
      * <p>
-     * When used for the description of an entry, if <b>null</b> 'text/plain' must be assumed.
+     * When used for the description of an entry, if <b>null</b> 'text/plain'
+     * must be assumed.
      * <p>
+     * 
      * @param type the content type to set, <b>null</b> if none.
-     *
+     * 
      */
     void setType(String type);
-    
+
     /**
      * Gets the content mode (needed for Atom 0.3 support).
+     * 
      * @return type the content, <b>null</b> if none.
-     *
+     * 
      */
     String getMode();
 
     /**
      * Sets the content mode (needed for Atom 0.3 support).
+     * 
      * @param mode the content mode to set, <b>null</b> if none.
-     *
+     * 
      */
     void setMode(String mode);
 
     /**
      * Returns the content value.
      * <p>
+     * 
      * @return the content value, <b>null</b> if none.
-     *
+     * 
      */
     String getValue();
 
     /**
      * Sets the content value.
      * <p>
+     * 
      * @param value the content value to set, <b>null</b> if none.
-     *
+     * 
      */
     void setValue(String value);
 
     /**
      * Creates a deep clone of the object.
      * <p>
+     * 
      * @return a clone of the object.
-     * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     *
+     * @throws CloneNotSupportedException thrown if an element of the object
+     *             cannot be cloned.
+     * 
      */
     public Object clone() throws CloneNotSupportedException;
 

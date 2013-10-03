@@ -16,14 +16,15 @@
  */
 package com.sun.syndication.io.impl;
 
+import java.util.List;
+
+import org.jdom2.Element;
+
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.rss.Channel;
 import com.sun.syndication.feed.rss.Description;
 import com.sun.syndication.feed.rss.Guid;
 import com.sun.syndication.feed.rss.Item;
-import org.jdom2.Element;
-
-import java.util.List;
 
 /**
  */
@@ -33,28 +34,30 @@ public class RSS094Parser extends RSS093Parser {
         this("rss_0.94");
     }
 
-    protected RSS094Parser(String type) {
+    protected RSS094Parser(final String type) {
         super(type);
     }
 
+    @Override
     protected String getRSSVersion() {
-            return "0.94";
+        return "0.94";
     }
 
-    protected WireFeed parseChannel(Element rssRoot)  {
-        Channel channel = (Channel) super.parseChannel(rssRoot);
-        Element eChannel = rssRoot.getChild("channel",getRSSNamespace());
+    @Override
+    protected WireFeed parseChannel(final Element rssRoot) {
+        final Channel channel = (Channel) super.parseChannel(rssRoot);
+        final Element eChannel = rssRoot.getChild("channel", getRSSNamespace());
 
-        List<Element> eCats = eChannel.getChildren("category",getRSSNamespace());
+        final List<Element> eCats = eChannel.getChildren("category", getRSSNamespace());
         channel.setCategories(parseCategories(eCats));
 
-        Element eTtl = eChannel.getChild("ttl",getRSSNamespace());
-        if (eTtl!=null && eTtl.getText() != null ) {
-            Integer ttlValue = null;        
-            try{
-                 ttlValue = new Integer(eTtl.getText());
-            } catch(NumberFormatException nfe ){ 
-                ; //let it go by
+        final Element eTtl = eChannel.getChild("ttl", getRSSNamespace());
+        if (eTtl != null && eTtl.getText() != null) {
+            Integer ttlValue = null;
+            try {
+                ttlValue = new Integer(eTtl.getText());
+            } catch (final NumberFormatException nfe) {
+                ; // let it go by
             }
             if (ttlValue != null) {
                 channel.setTtl(ttlValue.intValue());
@@ -64,38 +67,43 @@ public class RSS094Parser extends RSS093Parser {
         return channel;
     }
 
-    public Item parseItem(Element rssRoot,Element eItem) {
-        Item item = super.parseItem(rssRoot,eItem);
+    @Override
+    public Item parseItem(final Element rssRoot, final Element eItem) {
+        final Item item = super.parseItem(rssRoot, eItem);
         item.setExpirationDate(null);
 
-        Element e = eItem.getChild("author",getRSSNamespace());
-        if (e!=null) {
+        Element e = eItem.getChild("author", getRSSNamespace());
+        if (e != null) {
             item.setAuthor(e.getText());
         }
 
-        e = eItem.getChild("guid",getRSSNamespace());
-        if (e!=null) {
-            Guid guid = new Guid();
-            String att = e.getAttributeValue("isPermaLink");//getRSSNamespace()); DONT KNOW WHY DOESN'T WORK
-            if (att!=null) {
+        e = eItem.getChild("guid", getRSSNamespace());
+        if (e != null) {
+            final Guid guid = new Guid();
+            final String att = e.getAttributeValue("isPermaLink");// getRSSNamespace());
+            // DONT KNOW WHY
+            // DOESN'T WORK
+            if (att != null) {
                 guid.setPermaLink(att.equalsIgnoreCase("true"));
             }
             guid.setValue(e.getText());
             item.setGuid(guid);
         }
 
-        e = eItem.getChild("comments",getRSSNamespace());
-        if (e!=null) {
+        e = eItem.getChild("comments", getRSSNamespace());
+        if (e != null) {
             item.setComments(e.getText());
         }
 
         return item;
     }
 
-    protected Description parseItemDescription(Element rssRoot,Element eDesc) {
-        Description desc = super.parseItemDescription(rssRoot,eDesc);
-        String att = eDesc.getAttributeValue("type");//getRSSNamespace()); DONT KNOW WHY DOESN'T WORK
-        if (att==null) {
+    @Override
+    protected Description parseItemDescription(final Element rssRoot, final Element eDesc) {
+        final Description desc = super.parseItemDescription(rssRoot, eDesc);
+        String att = eDesc.getAttributeValue("type");// getRSSNamespace()); DONT
+                                                     // KNOW WHY DOESN'T WORK
+        if (att == null) {
             att = "text/html";
         }
         desc.setType(att);

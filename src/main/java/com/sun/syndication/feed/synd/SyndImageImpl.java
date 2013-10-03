@@ -16,23 +16,24 @@
  */
 package com.sun.syndication.feed.synd;
 
-import com.sun.syndication.feed.CopyFrom;
-import com.sun.syndication.feed.impl.ObjectBean;
-import com.sun.syndication.feed.impl.CopyFromHelper;
-
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.io.Serializable;
+
+import com.sun.syndication.feed.CopyFrom;
+import com.sun.syndication.feed.impl.CopyFromHelper;
+import com.sun.syndication.feed.impl.ObjectBean;
 
 /**
  * Bean for images of SyndFeedImpl feeds.
  * <p>
+ * 
  * @author Alejandro Abdelnur
- *
+ * 
  */
-public class SyndImageImpl implements Serializable,SyndImage {
-    private ObjectBean _objBean;
+public class SyndImageImpl implements Serializable, SyndImage {
+    private final ObjectBean _objBean;
     private String _title;
     private String _url;
     private String _link;
@@ -41,32 +42,38 @@ public class SyndImageImpl implements Serializable,SyndImage {
     /**
      * Default constructor. All properties are set to <b>null</b>.
      * <p>
-     *
+     * 
      */
     public SyndImageImpl() {
-        _objBean = new ObjectBean(SyndImage.class,this);
+        this._objBean = new ObjectBean(SyndImage.class, this);
     }
 
     /**
      * Creates a deep 'bean' clone of the object.
      * <p>
+     * 
      * @return a clone of the object.
-     * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     *
+     * @throws CloneNotSupportedException thrown if an element of the object
+     *             cannot be cloned.
+     * 
      */
+    @Override
     public Object clone() throws CloneNotSupportedException {
-        return _objBean.clone();
+        return this._objBean.clone();
     }
 
     /**
-     * Indicates whether some other object is "equal to" this one as defined by the Object equals() method.
+     * Indicates whether some other object is "equal to" this one as defined by
+     * the Object equals() method.
      * <p>
+     * 
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     *
+     * 
      */
-    public boolean equals(Object other) {
-        return _objBean.equals(other);
+    @Override
+    public boolean equals(final Object other) {
+        return this._objBean.equals(other);
     }
 
     /**
@@ -74,123 +81,145 @@ public class SyndImageImpl implements Serializable,SyndImage {
      * <p>
      * It follows the contract defined by the Object hashCode() method.
      * <p>
+     * 
      * @return the hashcode of the bean object.
-     *
+     * 
      */
+    @Override
     public int hashCode() {
-        return _objBean.hashCode();
+        return this._objBean.hashCode();
     }
 
     /**
      * Returns the String representation for the object.
      * <p>
+     * 
      * @return String representation for the object.
-     *
+     * 
      */
+    @Override
     public String toString() {
-        return _objBean.toString();
+        return this._objBean.toString();
     }
 
     /**
      * Returns the image title.
      * <p>
+     * 
      * @return the image title, <b>null</b> if none.
-     *
+     * 
      */
+    @Override
     public String getTitle() {
-        return _title;
+        return this._title;
     }
 
     /**
      * Sets the image title.
      * <p>
+     * 
      * @param title the image title to set, <b>null</b> if none.
-     *
+     * 
      */
-    public void setTitle(String title) {
-        _title = title;
+    @Override
+    public void setTitle(final String title) {
+        this._title = title;
     }
 
     /**
      * Returns the image URL.
      * <p>
+     * 
      * @return the image URL, <b>null</b> if none.
-     *
+     * 
      */
+    @Override
     public String getUrl() {
-        return _url;
+        return this._url;
     }
 
     /**
      * Sets the image URL.
      * <p>
+     * 
      * @param url the image URL to set, <b>null</b> if none.
-     *
+     * 
      */
-    public void setUrl(String url) {
-        _url = url;
+    @Override
+    public void setUrl(final String url) {
+        this._url = url;
     }
 
     /**
      * Returns the image link.
      * <p>
+     * 
      * @return the image link, <b>null</b> if none.
-     *
+     * 
      */
+    @Override
     public String getLink() {
-        return _link;
+        return this._link;
     }
 
     /**
      * Sets the image link.
      * <p>
+     * 
      * @param link the image link to set, <b>null</b> if none.
-     *
+     * 
      */
-    public void setLink(String link) {
-        _link = link;
+    @Override
+    public void setLink(final String link) {
+        this._link = link;
     }
 
     /**
      * Returns the image description.
      * <p>
+     * 
      * @return the image description, <b>null</b> if none.
-     *
+     * 
      */
+    @Override
     public String getDescription() {
-        return _description;
+        return this._description;
     }
 
     /**
      * Sets the image description.
      * <p>
+     * 
      * @param description the image description to set, <b>null</b> if none.
-     *
+     * 
      */
-    public void setDescription(String description) {
-        _description = description;
+    @Override
+    public void setDescription(final String description) {
+        this._description = description;
     }
 
+    @Override
     public Class getInterface() {
         return SyndImage.class;
     }
 
-    public void copyFrom(CopyFrom syndImage) {
-        COPY_FROM_HELPER.copy(this,syndImage);
+    @Override
+    public void copyFrom(final CopyFrom syndImage) {
+        COPY_FROM_HELPER.copy(this, syndImage);
     }
 
     private static final CopyFromHelper COPY_FROM_HELPER;
 
     static {
-        Map basePropInterfaceMap = new HashMap();
-        basePropInterfaceMap.put("title",String.class);
-        basePropInterfaceMap.put("url",String.class);
-        basePropInterfaceMap.put("link",String.class);
-        basePropInterfaceMap.put("description",String.class);
+        final Map basePropInterfaceMap = new HashMap();
+        basePropInterfaceMap.put("title", String.class);
+        basePropInterfaceMap.put("url", String.class);
+        basePropInterfaceMap.put("link", String.class);
+        basePropInterfaceMap.put("description", String.class);
 
-        Map basePropClassImplMap = Collections.EMPTY_MAP;
+        final Map basePropClassImplMap = Collections.EMPTY_MAP;
 
-        COPY_FROM_HELPER = new CopyFromHelper(SyndImage.class,basePropInterfaceMap,basePropClassImplMap);
+        COPY_FROM_HELPER = new CopyFromHelper(SyndImage.class, basePropInterfaceMap, basePropClassImplMap);
     }
 
 }

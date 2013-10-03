@@ -17,31 +17,32 @@
  */
 package com.sun.syndication.feed.rss;
 
-import com.sun.syndication.feed.impl.ObjectBean;
-import com.sun.syndication.feed.module.Module;
-import com.sun.syndication.feed.module.impl.ModuleUtils;
-import com.sun.syndication.feed.module.Extendable;
-
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.io.Serializable;
 
 import org.jdom2.Element;
+
+import com.sun.syndication.feed.impl.ObjectBean;
+import com.sun.syndication.feed.module.Extendable;
+import com.sun.syndication.feed.module.Module;
+import com.sun.syndication.feed.module.impl.ModuleUtils;
 
 /**
  * Bean for items of RSS feeds.
  * <p>
  * It handles all RSS versions without loosing information.
  * <p>
- * For RSS1.0 it supports Dublin Core and Syndication modules. Note that
- * those modules currently support simple syntax format only.
+ * For RSS1.0 it supports Dublin Core and Syndication modules. Note that those
+ * modules currently support simple syntax format only.
  * <p>
+ * 
  * @author Alejandro Abdelnur
- *
+ * 
  */
 public class Item implements Cloneable, Serializable, Extendable {
-    private ObjectBean _objBean;
+    private final ObjectBean _objBean;
     private String _title;
     private String _link;
     private String _uri;
@@ -61,40 +62,44 @@ public class Item implements Cloneable, Serializable, Extendable {
     /**
      * Default constructor. All properties are set to <b>null</b>.
      * <p>
-     *
+     * 
      */
     public Item() {
-        _objBean = new ObjectBean(this.getClass(),this);
+        this._objBean = new ObjectBean(this.getClass(), this);
     }
 
     /**
      * Creates a deep 'bean' clone of the object.
      * <p>
+     * 
      * @return a clone of the object.
-     * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     *
+     * @throws CloneNotSupportedException thrown if an element of the object
+     *             cannot be cloned.
+     * 
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return _objBean.clone();
+        return this._objBean.clone();
     }
 
     /**
-     * Indicates whether some other object is "equal to" this one as defined by the Object equals() method.
+     * Indicates whether some other object is "equal to" this one as defined by
+     * the Object equals() method.
      * <p>
+     * 
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     *
+     * 
      */
     @Override
-    public boolean equals(Object other) {
+    public boolean equals(final Object other) {
         if (other == null || !(other instanceof Item)) {
             return false;
         }
         // can't use foreign markup in equals, due to JDOM equals impl
-        List<Element> fm = getForeignMarkup();
-        setForeignMarkup(((Item)other).getForeignMarkup());       
-        boolean ret = _objBean.equals(other);
+        final List<Element> fm = getForeignMarkup();
+        setForeignMarkup(((Item) other).getForeignMarkup());
+        final boolean ret = this._objBean.equals(other);
         // restore foreign markup
         setForeignMarkup(fm);
         return ret;
@@ -105,338 +110,374 @@ public class Item implements Cloneable, Serializable, Extendable {
      * <p>
      * It follows the contract defined by the Object hashCode() method.
      * <p>
+     * 
      * @return the hashcode of the bean object.
-     *
+     * 
      */
     @Override
     public int hashCode() {
-        return _objBean.hashCode();
+        return this._objBean.hashCode();
     }
 
     /**
      * Returns the String representation for the object.
      * <p>
+     * 
      * @return String representation for the object.
-     *
+     * 
      */
     @Override
     public String toString() {
-        return _objBean.toString();
+        return this._objBean.toString();
     }
 
     /**
      * Returns the item title.
      * <p>
+     * 
      * @return the item title, <b>null</b> if none.
-     *
+     * 
      */
     public String getTitle() {
-        return _title;
+        return this._title;
     }
 
     /**
      * Sets the item title.
      * <p>
+     * 
      * @param title the item title to set, <b>null</b> if none.
-     *
+     * 
      */
-    public void setTitle(String title) {
-        _title = title;
+    public void setTitle(final String title) {
+        this._title = title;
     }
 
     /**
      * Returns the item link.
      * <p>
+     * 
      * @return the item link, <b>null</b> if none.
-     *
+     * 
      */
     public String getLink() {
-        return _link;
+        return this._link;
     }
 
     /**
      * Sets the item link.
      * <p>
+     * 
      * @param link the item link to set, <b>null</b> if none.
-     *
+     * 
      */
-    public void setLink(String link) {
-        _link = link;
+    public void setLink(final String link) {
+        this._link = link;
     }
 
     /**
      * Returns the item uri.
      * <p>
+     * 
      * @return the item uri, <b>null</b> if none.
      */
     public String getUri() {
-        return _uri;
+        return this._uri;
     }
 
     /**
      * Sets the item uri.
      * <p>
+     * 
      * @param uri the item uri to set, <b>null</b> if none.
      */
-    public void setUri(String uri) {
-        _uri = uri;
+    public void setUri(final String uri) {
+        this._uri = uri;
     }
 
     /**
      * Returns the item description.
      * <p>
+     * 
      * @return the item description, <b>null</b> if none.
-     *
+     * 
      */
     public Description getDescription() {
-        return _description;
+        return this._description;
     }
 
     /**
      * Sets the item description.
      * <p>
+     * 
      * @param description the item description to set, <b>null</b> if none.
-     *
+     * 
      */
-    public void setDescription(Description description) {
-        _description = description;
+    public void setDescription(final Description description) {
+        this._description = description;
     }
 
     /**
      * Returns the item content.
      * <p>
+     * 
      * @return the item content, <b>null</b> if none.
-     *
+     * 
      */
     public Content getContent() {
-        return _content;
+        return this._content;
     }
 
     /**
      * Sets the item content.
      * <p>
+     * 
      * @param content the item content to set, <b>null</b> if none.
-     *
+     * 
      */
-    public void setContent(Content content) {
-        _content = content;
+    public void setContent(final Content content) {
+        this._content = content;
     }
 
     /**
      * Returns the item source.
      * <p>
+     * 
      * @return the item source, <b>null</b> if none.
-     *
+     * 
      */
     public Source getSource() {
-        return _source;
+        return this._source;
     }
 
     /**
      * Sets the item source.
      * <p>
+     * 
      * @param source the item source to set, <b>null</b> if none.
-     *
+     * 
      */
-    public void setSource(Source source) {
-        _source = source;
+    public void setSource(final Source source) {
+        this._source = source;
     }
 
     /**
      * Returns the item enclosures.
      * <p>
-     * @return a list of Enclosure elements with the item enclosures,
-     *         an empty list if none.
-     *
+     * 
+     * @return a list of Enclosure elements with the item enclosures, an empty
+     *         list if none.
+     * 
      */
     public List<Enclosure> getEnclosures() {
-        return (_enclosures==null) ? (_enclosures=new ArrayList<Enclosure>()) : _enclosures;
+        return this._enclosures == null ? (this._enclosures = new ArrayList<Enclosure>()) : this._enclosures;
     }
 
     /**
      * Sets the item enclosures.
      * <p>
-     * @param enclosures the list of Enclosure elements with the item enclosures to set,
-     *        an empty list or <b>null</b> if none.
-     *
+     * 
+     * @param enclosures the list of Enclosure elements with the item enclosures
+     *            to set, an empty list or <b>null</b> if none.
+     * 
      */
-    public void setEnclosures(List<Enclosure> enclosures) {
-        _enclosures = enclosures;
+    public void setEnclosures(final List<Enclosure> enclosures) {
+        this._enclosures = enclosures;
     }
 
     /**
      * Returns the item categories.
      * <p>
-     * @return a list of Category elements with the item categories,
-     *         an empty list if none.
-     *
+     * 
+     * @return a list of Category elements with the item categories, an empty
+     *         list if none.
+     * 
      */
     public List<Category> getCategories() {
-        return (_categories==null) ? (_categories=new ArrayList<Category>()) : _categories;
+        return this._categories == null ? (this._categories = new ArrayList<Category>()) : this._categories;
     }
 
     /**
      * Sets the item categories.
      * <p>
-     * @param categories the list of Categories elements with the item categories to set,
-     *        an empty list or <b>null</b> if none.
-     *
+     * 
+     * @param categories the list of Categories elements with the item
+     *            categories to set, an empty list or <b>null</b> if none.
+     * 
      */
-    public void setCategories(List<Category> categories) {
-        _categories = categories;
+    public void setCategories(final List<Category> categories) {
+        this._categories = categories;
     }
 
     /**
      * Returns the item GUID.
      * <p>
+     * 
      * @return the item GUID, <b>null</b> if none.
-     *
+     * 
      */
     public Guid getGuid() {
-        return _guid;
+        return this._guid;
     }
 
     /**
      * Sets the item GUID.
      * <p>
+     * 
      * @param guid the item GUID to set, <b>null</b> if none.
-     *
+     * 
      */
-    public void setGuid(Guid guid) {
-        _guid = guid;
+    public void setGuid(final Guid guid) {
+        this._guid = guid;
     }
 
     /**
      * Returns the item comments.
      * <p>
+     * 
      * @return the item comments, <b>null</b> if none.
-     *
+     * 
      */
     public String getComments() {
-        return _comments;
+        return this._comments;
     }
 
     /**
      * Sets the item comments.
      * <p>
+     * 
      * @param comments the item comments to set, <b>null</b> if none.
-     *
+     * 
      */
-    public void setComments(String comments) {
-        _comments = comments;
+    public void setComments(final String comments) {
+        this._comments = comments;
     }
 
     /**
      * Returns the item author.
      * <p>
+     * 
      * @return the item author, <b>null</b> if none.
-     *
+     * 
      */
     public String getAuthor() {
-        return _author;
+        return this._author;
     }
 
     /**
      * Sets the item author.
      * <p>
+     * 
      * @param author the item author to set, <b>null</b> if none.
-     *
+     * 
      */
-    public void setAuthor(String author) {
-        _author = author;
+    public void setAuthor(final String author) {
+        this._author = author;
     }
 
     /**
      * Returns the item modules.
      * <p>
-     * @return a list of ModuleImpl elements with the item modules,
-     *         an empty list if none.
-     *
+     * 
+     * @return a list of ModuleImpl elements with the item modules, an empty
+     *         list if none.
+     * 
      */
+    @Override
     public List<Module> getModules() {
-        return (_modules==null) ? (_modules=new ArrayList<Module>()) : _modules;
+        return this._modules == null ? (this._modules = new ArrayList<Module>()) : this._modules;
     }
 
     /**
      * Sets the item modules.
      * <p>
-     * @param modules the list of ModuleImpl elements with the item modules to set,
-     *        an empty list or <b>null</b> if none.
-     *
+     * 
+     * @param modules the list of ModuleImpl elements with the item modules to
+     *            set, an empty list or <b>null</b> if none.
+     * 
      */
-    public void setModules(List<Module> modules) {
-        _modules = modules;
+    @Override
+    public void setModules(final List<Module> modules) {
+        this._modules = modules;
     }
 
     /**
      * Returns the module identified by a given URI.
      * <p>
+     * 
      * @param uri the URI of the ModuleImpl.
      * @return The module with the given URI, <b>null</b> if none.
      */
-    public Module getModule(String uri) {
-        return ModuleUtils.getModule(_modules,uri);
+    @Override
+    public Module getModule(final String uri) {
+        return ModuleUtils.getModule(this._modules, uri);
     }
-
 
     /**
      * Returns the item publishing date.
      * <p>
+     * 
      * @return the item publishing date, <b>null</b> if none.
-     *
+     * 
      */
     public Date getPubDate() {
-        return _pubDate == null ? null : new Date( _pubDate.getTime());
+        return this._pubDate == null ? null : new Date(this._pubDate.getTime());
     }
 
     /**
      * Sets the item publishing date.
      * <p>
+     * 
      * @param pubDate the item publishing date to set, <b>null</b> if none.
-     *
+     * 
      */
-    public void setPubDate(Date pubDate) {
-        _pubDate = pubDate == null ? null : new Date( pubDate.getTime());
+    public void setPubDate(final Date pubDate) {
+        this._pubDate = pubDate == null ? null : new Date(pubDate.getTime());
     }
 
     /**
      * Returns the item expiration date.
      * <p>
+     * 
      * @return the item expiration date, <b>null</b> if none.
-     *
+     * 
      */
     public Date getExpirationDate() {
-        return _expirationDate == null ? null : new Date(_expirationDate.getTime());
+        return this._expirationDate == null ? null : new Date(this._expirationDate.getTime());
     }
 
     /**
      * Sets the item expiration date.
      * <p>
-     * @param expirationDate the item expiration date to set, <b>null</b> if none.
-     *
+     * 
+     * @param expirationDate the item expiration date to set, <b>null</b> if
+     *            none.
+     * 
      */
-    public void setExpirationDate(Date expirationDate) {
-        _expirationDate = expirationDate == null ? null : new Date(expirationDate.getTime());
+    public void setExpirationDate(final Date expirationDate) {
+        this._expirationDate = expirationDate == null ? null : new Date(expirationDate.getTime());
     }
 
     /**
      * Returns foreign markup found at item level.
      * <p>
+     * 
      * @return Opaque object to discourage use
-     *
+     * 
      */
     public List<Element> getForeignMarkup() {
-        return (_foreignMarkup==null) ? (_foreignMarkup=new ArrayList<Element>()) : _foreignMarkup;
+        return this._foreignMarkup == null ? (this._foreignMarkup = new ArrayList<Element>()) : this._foreignMarkup;
     }
 
     /**
      * Sets foreign markup found at item level.
      * <p>
+     * 
      * @param foreignMarkup Opaque object to discourage use
-     *
+     * 
      */
-    public void setForeignMarkup(List<Element> foreignMarkup) {
-        _foreignMarkup = (List<Element>)foreignMarkup;
+    public void setForeignMarkup(final List<Element> foreignMarkup) {
+        this._foreignMarkup = foreignMarkup;
     }
 
 }

@@ -16,10 +16,10 @@
  */
 package com.sun.syndication.feed.synd.impl;
 
+import java.util.Date;
+
 import com.sun.syndication.feed.rss.Item;
 import com.sun.syndication.feed.synd.SyndEntry;
-
-import java.util.Date;
 
 /**
  */
@@ -29,24 +29,24 @@ public class ConverterForRSS093 extends ConverterForRSS092 {
         this("rss_0.93");
     }
 
-    protected ConverterForRSS093(String type) {
+    protected ConverterForRSS093(final String type) {
         super(type);
     }
 
     @Override
-    protected SyndEntry createSyndEntry(Item item, boolean preserveWireItem) {
-        SyndEntry syndEntry = super.createSyndEntry(item, preserveWireItem);
-        Date pubDate = item.getPubDate();
-        if (pubDate!=null) {
-            syndEntry.setPublishedDate(pubDate);     //c
+    protected SyndEntry createSyndEntry(final Item item, final boolean preserveWireItem) {
+        final SyndEntry syndEntry = super.createSyndEntry(item, preserveWireItem);
+        final Date pubDate = item.getPubDate();
+        if (pubDate != null) {
+            syndEntry.setPublishedDate(pubDate); // c
         }
         return syndEntry;
     }
 
     @Override
-    protected Item createRSSItem(SyndEntry sEntry) {
-        Item item = super.createRSSItem(sEntry);
-        item.setPubDate(sEntry.getPublishedDate());        //c
+    protected Item createRSSItem(final SyndEntry sEntry) {
+        final Item item = super.createRSSItem(sEntry);
+        item.setPubDate(sEntry.getPublishedDate()); // c
         return item;
     }
 

@@ -16,6 +16,12 @@
  */
 package com.sun.syndication.feed.synd.impl;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.module.DCModule;
 import com.sun.syndication.feed.rss.Channel;
@@ -30,13 +36,6 @@ import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.feed.synd.SyndImage;
 import com.sun.syndication.feed.synd.SyndPerson;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-
 /**
  */
 public class ConverterForRSS091Userland extends ConverterForRSS090 {
@@ -44,32 +43,34 @@ public class ConverterForRSS091Userland extends ConverterForRSS090 {
         this("rss_0.91U");
     }
 
-    protected ConverterForRSS091Userland(String type) {
+    protected ConverterForRSS091Userland(final String type) {
         super(type);
     }
 
     @Override
-    public void copyInto(WireFeed feed, SyndFeed syndFeed) {
-        Channel channel = (Channel) feed;
+    public void copyInto(final WireFeed feed, final SyndFeed syndFeed) {
+        final Channel channel = (Channel) feed;
         super.copyInto(channel, syndFeed);
-        syndFeed.setLanguage(channel.getLanguage()); //c
-        syndFeed.setCopyright(channel.getCopyright()); //c
+        syndFeed.setLanguage(channel.getLanguage()); // c
+        syndFeed.setCopyright(channel.getCopyright()); // c
 
-        Date pubDate = channel.getPubDate();
+        final Date pubDate = channel.getPubDate();
 
         if (pubDate != null) {
-            syndFeed.setPublishedDate(pubDate); //c
+            syndFeed.setPublishedDate(pubDate); // c
         } else if (channel.getLastBuildDate() != null) {
-            syndFeed.setPublishedDate(channel.getLastBuildDate()); //c
+            syndFeed.setPublishedDate(channel.getLastBuildDate()); // c
         }
 
-        String author = channel.getManagingEditor();
+        final String author = channel.getManagingEditor();
 
         if (author != null) {
-            List<String> creators = ((DCModule) syndFeed.getModule(DCModule.URI)).getCreators();
+            final List<String> creators = ((DCModule) syndFeed.getModule(DCModule.URI)).getCreators();
 
             if (!creators.contains(author)) {
-                Set<String> s = new HashSet<String>(); // using a set to remove duplicates
+                final Set<String> s = new HashSet<String>(); // using a set to
+                                                             // remove
+                // duplicates
                 s.addAll(creators); // DC creators
                 s.add(author); // feed native author
                 creators.clear();
@@ -78,8 +79,8 @@ public class ConverterForRSS091Userland extends ConverterForRSS090 {
         }
     }
 
-    protected Description createItemDescription(SyndContent sContent) {
-        Description desc = new Description();
+    protected Description createItemDescription(final SyndContent sContent) {
+        final Description desc = new Description();
         desc.setValue(sContent.getValue());
         desc.setType(sContent.getType());
 
@@ -87,8 +88,8 @@ public class ConverterForRSS091Userland extends ConverterForRSS090 {
     }
 
     @Override
-    protected Image createRSSImage(SyndImage sImage) {
-        Image image = super.createRSSImage(sImage);
+    protected Image createRSSImage(final SyndImage sImage) {
+        final Image image = super.createRSSImage(sImage);
         image.setDescription(sImage.getDescription());
 
         return image;
@@ -98,20 +99,20 @@ public class ConverterForRSS091Userland extends ConverterForRSS090 {
     // synd.content -> rss.content
     // synd.description -> rss.description
     @Override
-    protected Item createRSSItem(SyndEntry sEntry) {
-        Item item = super.createRSSItem(sEntry);
+    protected Item createRSSItem(final SyndEntry sEntry) {
+        final Item item = super.createRSSItem(sEntry);
 
-        SyndContent sContent = sEntry.getDescription();
+        final SyndContent sContent = sEntry.getDescription();
 
         if (sContent != null) {
             item.setDescription(createItemDescription(sContent));
         }
 
-        List<SyndContent> contents = sEntry.getContents();
+        final List<SyndContent> contents = sEntry.getContents();
 
-        if ((contents != null) && (contents.size() > 0)) {
-            SyndContent syndContent = (SyndContent) contents.get(0);
-            Content cont = new Content();
+        if (contents != null && contents.size() > 0) {
+            final SyndContent syndContent = contents.get(0);
+            final Content cont = new Content();
             cont.setValue(syndContent.getValue());
             cont.setType(syndContent.getType());
             item.setContent(cont);
@@ -121,16 +122,14 @@ public class ConverterForRSS091Userland extends ConverterForRSS090 {
     }
 
     @Override
-    protected WireFeed createRealFeed(String type, SyndFeed syndFeed) {
-        Channel channel = (Channel) super.createRealFeed(type, syndFeed);
-        channel.setLanguage(syndFeed.getLanguage()); //c
-        channel.setCopyright(syndFeed.getCopyright()); //c
-        channel.setPubDate(syndFeed.getPublishedDate()); //c        
+    protected WireFeed createRealFeed(final String type, final SyndFeed syndFeed) {
+        final Channel channel = (Channel) super.createRealFeed(type, syndFeed);
+        channel.setLanguage(syndFeed.getLanguage()); // c
+        channel.setCopyright(syndFeed.getCopyright()); // c
+        channel.setPubDate(syndFeed.getPublishedDate()); // c
 
-        if ((syndFeed.getAuthors() != null) && (syndFeed.getAuthors()
-                                                            .size() > 0)) {
-            SyndPerson author = (SyndPerson) syndFeed.getAuthors()
-                                                     .get(0);
+        if (syndFeed.getAuthors() != null && syndFeed.getAuthors().size() > 0) {
+            final SyndPerson author = syndFeed.getAuthors().get(0);
             channel.setManagingEditor(author.getName());
         }
 
@@ -141,25 +140,25 @@ public class ConverterForRSS091Userland extends ConverterForRSS090 {
     // rss.content -> synd.content
     // rss.description -> synd.description
     @Override
-    protected SyndEntry createSyndEntry(Item item, boolean preserveWireItem) {
-        SyndEntry syndEntry = super.createSyndEntry(item, preserveWireItem);
-        Description desc = item.getDescription();
+    protected SyndEntry createSyndEntry(final Item item, final boolean preserveWireItem) {
+        final SyndEntry syndEntry = super.createSyndEntry(item, preserveWireItem);
+        final Description desc = item.getDescription();
 
         if (desc != null) {
-            SyndContent descContent = new SyndContentImpl();
+            final SyndContent descContent = new SyndContentImpl();
             descContent.setType(desc.getType());
             descContent.setValue(desc.getValue());
             syndEntry.setDescription(descContent);
         }
 
-        Content cont = item.getContent();
+        final Content cont = item.getContent();
 
         if (cont != null) {
-            SyndContent content = new SyndContentImpl();
+            final SyndContent content = new SyndContentImpl();
             content.setType(cont.getType());
             content.setValue(cont.getValue());
 
-            List<SyndContent> syndContents = new ArrayList<SyndContent>();
+            final List<SyndContent> syndContents = new ArrayList<SyndContent>();
             syndContents.add(content);
             syndEntry.setContents(syndContents);
         }
@@ -168,8 +167,8 @@ public class ConverterForRSS091Userland extends ConverterForRSS090 {
     }
 
     @Override
-    protected SyndImage createSyndImage(Image rssImage) {
-        SyndImage syndImage = super.createSyndImage(rssImage);
+    protected SyndImage createSyndImage(final Image rssImage) {
+        final SyndImage syndImage = super.createSyndImage(rssImage);
         syndImage.setDescription(rssImage.getDescription());
 
         return syndImage;

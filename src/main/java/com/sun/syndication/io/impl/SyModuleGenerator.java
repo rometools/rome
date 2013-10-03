@@ -16,70 +16,77 @@
  */
 package com.sun.syndication.io.impl;
 
-import com.sun.syndication.feed.module.Module;
-import com.sun.syndication.feed.module.SyModule;
-import com.sun.syndication.io.ModuleGenerator;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
 import org.jdom2.Element;
 import org.jdom2.Namespace;
 
-import java.util.Set;
-import java.util.HashSet;
-import java.util.Collections;
+import com.sun.syndication.feed.module.Module;
+import com.sun.syndication.feed.module.SyModule;
+import com.sun.syndication.io.ModuleGenerator;
 
 /**
  * Feed Generator for SY ModuleImpl
  * <p/>
- *
+ * 
  * @author Elaine Chien
- *
+ * 
  */
 
 public class SyModuleGenerator implements ModuleGenerator {
 
-    private static final String SY_URI  = "http://purl.org/rss/1.0/modules/syndication/";
-    private static final Namespace SY_NS  = Namespace.getNamespace("sy", SY_URI);
+    private static final String SY_URI = "http://purl.org/rss/1.0/modules/syndication/";
+    private static final Namespace SY_NS = Namespace.getNamespace("sy", SY_URI);
 
     private static final Set<Namespace> NAMESPACES;
 
     static {
-        Set<Namespace> nss = new HashSet<Namespace>();
+        final Set<Namespace> nss = new HashSet<Namespace>();
         nss.add(SY_NS);
         NAMESPACES = Collections.unmodifiableSet(nss);
     }
 
+    @Override
     public String getNamespaceUri() {
         return SY_URI;
     }
 
     /**
-     * Returns a set with all the URIs (JDOM Namespace elements) this module generator uses.
+     * Returns a set with all the URIs (JDOM Namespace elements) this module
+     * generator uses.
      * <p/>
-     * It is used by the the feed generators to add their namespace definition in
-     * the root element of the generated document (forward-missing of Java 5.0 Generics).
+     * It is used by the the feed generators to add their namespace definition
+     * in the root element of the generated document (forward-missing of Java
+     * 5.0 Generics).
      * <p/>
-     *
-     * @return a set with all the URIs (JDOM Namespace elements) this module generator uses.
+     * 
+     * @return a set with all the URIs (JDOM Namespace elements) this module
+     *         generator uses.
      */
+    @Override
     public Set<Namespace> getNamespaces() {
         return NAMESPACES;
     }
 
-    public void generate(Module module, Element element) {
+    @Override
+    public void generate(final Module module, final Element element) {
 
-        SyModule syModule = (SyModule)module;
+        final SyModule syModule = (SyModule) module;
 
         if (syModule.getUpdatePeriod() != null) {
-            Element updatePeriodElement = new Element("updatePeriod", SY_NS);
+            final Element updatePeriodElement = new Element("updatePeriod", SY_NS);
             updatePeriodElement.addContent(syModule.getUpdatePeriod());
             element.addContent(updatePeriodElement);
         }
 
-        Element updateFrequencyElement = new Element("updateFrequency", SY_NS);
+        final Element updateFrequencyElement = new Element("updateFrequency", SY_NS);
         updateFrequencyElement.addContent(String.valueOf(syModule.getUpdateFrequency()));
         element.addContent(updateFrequencyElement);
 
         if (syModule.getUpdateBase() != null) {
-            Element updateBaseElement = new Element("updateBase", SY_NS);
+            final Element updateBaseElement = new Element("updateBase", SY_NS);
             updateBaseElement.addContent(DateParser.formatW3CDateTime(syModule.getUpdateBase()));
             element.addContent(updateBaseElement);
         }

@@ -16,72 +16,76 @@
  */
 package com.sun.syndication.io.impl;
 
+import java.util.List;
+
+import org.jdom2.Element;
+
 import com.sun.syndication.feed.rss.Category;
 import com.sun.syndication.feed.rss.Channel;
 import com.sun.syndication.feed.rss.Guid;
 import com.sun.syndication.feed.rss.Item;
-import org.jdom2.Element;
-
-import java.util.List;
-
 
 /**
  * Feed Generator for RSS 2.0
  * <p/>
- *
+ * 
  * @author Elaine Chien
- *
+ * 
  */
 
 public class RSS20Generator extends RSS094Generator {
 
     public RSS20Generator() {
-        this("rss_2.0","2.0");
+        this("rss_2.0", "2.0");
     }
 
-    protected RSS20Generator(String feedType,String version) {
-        super(feedType,version);
+    protected RSS20Generator(final String feedType, final String version) {
+        super(feedType, version);
     }
 
-    protected void populateChannel(Channel channel,Element eChannel) {
-        super.populateChannel(channel,eChannel);
+    @Override
+    protected void populateChannel(final Channel channel, final Element eChannel) {
+        super.populateChannel(channel, eChannel);
 
-        String generator = channel.getGenerator();
+        final String generator = channel.getGenerator();
         if (generator != null) {
             eChannel.addContent(generateSimpleElement("generator", generator));
         }
 
-        int ttl = channel.getTtl();
-        if (ttl>-1) {
+        final int ttl = channel.getTtl();
+        if (ttl > -1) {
             eChannel.addContent(generateSimpleElement("ttl", String.valueOf(ttl)));
         }
 
-        List<Category> categories = channel.getCategories();
-        for(int i = 0; i < categories.size(); i++) {
-            eChannel.addContent(generateCategoryElement((Category)categories.get(i)));
+        final List<Category> categories = channel.getCategories();
+        for (int i = 0; i < categories.size(); i++) {
+            eChannel.addContent(generateCategoryElement(categories.get(i)));
         }
 
     }
 
-    public void populateItem(Item item, Element eItem, int index) {
-        super.populateItem(item,eItem, index);
+    @Override
+    public void populateItem(final Item item, final Element eItem, final int index) {
+        super.populateItem(item, eItem, index);
 
-        Element eDescription = eItem.getChild("description",getFeedNamespace());
-        if (eDescription != null) eDescription.removeAttribute("type");
+        final Element eDescription = eItem.getChild("description", getFeedNamespace());
+        if (eDescription != null) {
+            eDescription.removeAttribute("type");
+        }
 
-        String author = item.getAuthor();
+        final String author = item.getAuthor();
         if (author != null) {
             eItem.addContent(generateSimpleElement("author", author));
         }
 
-        String comments = item.getComments();
+        final String comments = item.getComments();
         if (comments != null) {
             eItem.addContent(generateSimpleElement("comments", comments));
         }
 
-        Guid guid = item.getGuid();
+        final Guid guid = item.getGuid();
         if (guid != null) {
-            Element eGuid = generateSimpleElement("guid",guid.getValue());
+            final Element eGuid = generateSimpleElement("guid", guid.getValue());
             if (!guid.isPermaLink()) {
                 eGuid.setAttribute("isPermaLink", "false");
             }

@@ -1,15 +1,16 @@
 package com.sun.syndication.unittest;
 
 /**
- *
+ * 
  * <p>
+ * 
  * @author Alejandro Abdelnur
- *
+ * 
  */
 public class TestOpsRSS094 extends FeedOpsTest {
 
-    public static void main(String[] args) throws Exception {
-        FeedOpsTest test = new TestOpsRSS094();
+    public static void main(final String[] args) throws Exception {
+        final FeedOpsTest test = new TestOpsRSS094();
         test.testWireFeedSyndFeedConversion();
     }
 

@@ -16,20 +16,20 @@
  */
 package com.sun.syndication.io.impl;
 
-import com.sun.syndication.feed.module.DCModuleImpl;
-import com.sun.syndication.feed.module.DCSubjectImpl;
-import com.sun.syndication.feed.module.Module;
-import com.sun.syndication.feed.module.DCModule;
-import com.sun.syndication.feed.module.DCSubject;
-import com.sun.syndication.io.ModuleParser;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import org.jdom2.Attribute;
 import org.jdom2.Element;
 import org.jdom2.Namespace;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
+import com.sun.syndication.feed.module.DCModule;
+import com.sun.syndication.feed.module.DCModuleImpl;
+import com.sun.syndication.feed.module.DCSubject;
+import com.sun.syndication.feed.module.DCSubjectImpl;
+import com.sun.syndication.feed.module.Module;
+import com.sun.syndication.io.ModuleParser;
 
 /**
  * Parser for the Dublin Core module.
@@ -43,6 +43,7 @@ public class DCModuleParser implements ModuleParser {
     private static final Namespace RDF_NS = Namespace.getNamespace(RDF_URI);
     private static final Namespace TAXO_NS = Namespace.getNamespace(TAXO_URI);
 
+    @Override
     public final String getNamespaceUri() {
         return DCModule.URI;
     }
@@ -62,12 +63,14 @@ public class DCModuleParser implements ModuleParser {
     /**
      * Parse an element tree and return the module found in it.
      * <p>
+     * 
      * @param dcRoot the root element containing the module elements.
      * @return the module parsed from the element tree, <i>null</i> if none.
      */
-    public Module parse(Element dcRoot) {
+    @Override
+    public Module parse(final Element dcRoot) {
         boolean foundSomething = false;
-        DCModule dcm = new DCModuleImpl();
+        final DCModule dcm = new DCModuleImpl();
 
         List<Element> eList = dcRoot.getChildren("title", getDCNamespace());
         if (eList.size() > 0) {
@@ -145,21 +148,22 @@ public class DCModuleParser implements ModuleParser {
             dcm.setRightsList(parseElementList(eList));
         }
 
-        return (foundSomething) ? dcm : null;
+        return foundSomething ? dcm : null;
     }
 
     /**
      * Utility method to parse a taxonomy from an element.
      * <p>
+     * 
      * @param desc the taxonomy description element.
      * @return the string contained in the resource of the element.
      */
-    protected final String getTaxonomy(Element desc) {
+    protected final String getTaxonomy(final Element desc) {
         String d = null;
-        Element taxo = desc.getChild("topic", getTaxonomyNamespace());
-        if (taxo!=null) {
-            Attribute a = taxo.getAttribute("resource", getRDFNamespace());
-            if (a!=null) {
+        final Element taxo = desc.getChild("topic", getTaxonomyNamespace());
+        if (taxo != null) {
+            final Attribute a = taxo.getAttribute("resource", getRDFNamespace());
+            if (a != null) {
                 d = a.getValue();
             }
         }
@@ -169,26 +173,27 @@ public class DCModuleParser implements ModuleParser {
     /**
      * Utility method to parse a list of subjects out of a list of elements.
      * <p>
+     * 
      * @param eList the element list to parse.
      * @return a list of subjects parsed from the elements.
      */
-    protected final List<DCSubject> parseSubjects(List<Element> eList) {
-        List<DCSubject> subjects = new ArrayList<DCSubject>();
-        for (Iterator<Element> i = eList.iterator(); i.hasNext();) {
-            Element eSubject = (Element) i.next();
-            Element eDesc = eSubject.getChild("Description", getRDFNamespace());
+    protected final List<DCSubject> parseSubjects(final List<Element> eList) {
+        final List<DCSubject> subjects = new ArrayList<DCSubject>();
+        for (final Element element : eList) {
+            final Element eSubject = element;
+            final Element eDesc = eSubject.getChild("Description", getRDFNamespace());
             if (eDesc != null) {
-                String taxonomy = getTaxonomy(eDesc);
-                List<Element> eValues = eDesc.getChildren("value", getRDFNamespace());
-                for (Iterator<Element> v = eValues.iterator(); v.hasNext();) {
-                    Element eValue = (Element) v.next();
-                    DCSubject subject = new DCSubjectImpl();
+                final String taxonomy = getTaxonomy(eDesc);
+                final List<Element> eValues = eDesc.getChildren("value", getRDFNamespace());
+                for (final Element element2 : eValues) {
+                    final Element eValue = element2;
+                    final DCSubject subject = new DCSubjectImpl();
                     subject.setTaxonomyUri(taxonomy);
                     subject.setValue(eValue.getText());
                     subjects.add(subject);
                 }
             } else {
-                DCSubject subject = new DCSubjectImpl();
+                final DCSubject subject = new DCSubjectImpl();
                 subject.setValue(eSubject.getText());
                 subjects.add(subject);
             }
@@ -200,13 +205,14 @@ public class DCModuleParser implements ModuleParser {
     /**
      * Utility method to parse a list of strings out of a list of elements.
      * <p>
+     * 
      * @param eList the list of elements to parse.
      * @return the list of strings
      */
-    protected final List<String> parseElementList(List<Element> eList) {
-        List<String> values= new ArrayList<String>();
-        for (Iterator<Element> i = eList.iterator(); i.hasNext();) {
-            Element e = (Element) i.next();
+    protected final List<String> parseElementList(final List<Element> eList) {
+        final List<String> values = new ArrayList<String>();
+        for (final Element element : eList) {
+            final Element e = element;
             values.add(e.getText());
         }
 
@@ -216,13 +222,14 @@ public class DCModuleParser implements ModuleParser {
     /**
      * Utility method to parse a list of dates out of a list of elements.
      * <p>
+     * 
      * @param eList the list of elements to parse.
      * @return the list of dates.
      */
-    protected final List<Date> parseElementListDate(List<Element> eList) {
-        List<Date> values = new ArrayList<Date>();
-        for (Iterator<Element> i = eList.iterator(); i.hasNext();) {
-            Element e = (Element) i.next();
+    protected final List<Date> parseElementListDate(final List<Element> eList) {
+        final List<Date> values = new ArrayList<Date>();
+        for (final Element element : eList) {
+            final Element e = element;
             values.add(DateParser.parseDate(e.getText()));
         }
 

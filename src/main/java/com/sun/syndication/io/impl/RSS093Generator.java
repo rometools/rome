@@ -16,47 +16,49 @@
  */
 package com.sun.syndication.io.impl;
 
-import com.sun.syndication.feed.rss.Enclosure;
-import com.sun.syndication.feed.rss.Item;
-import org.jdom2.Element;
-
 import java.util.Date;
 import java.util.List;
 
+import org.jdom2.Element;
+
+import com.sun.syndication.feed.rss.Enclosure;
+import com.sun.syndication.feed.rss.Item;
 
 /**
  * Feed Generator for RSS 0.93
  * <p/>
- *
+ * 
  * @author Elaine Chien
- *
+ * 
  */
 public class RSS093Generator extends RSS092Generator {
 
     public RSS093Generator() {
-        this("rss_0.93","0.93");
+        this("rss_0.93", "0.93");
     }
 
-    protected RSS093Generator(String feedType,String version) {
-        super(feedType,version);
+    protected RSS093Generator(final String feedType, final String version) {
+        super(feedType, version);
     }
 
-    protected void populateItem(Item item, Element eItem, int index) {
-        super.populateItem(item,eItem, index);
+    @Override
+    protected void populateItem(final Item item, final Element eItem, final int index) {
+        super.populateItem(item, eItem, index);
 
-        Date pubDate = item.getPubDate();
+        final Date pubDate = item.getPubDate();
         if (pubDate != null) {
             eItem.addContent(generateSimpleElement("pubDate", DateParser.formatRFC822(pubDate)));
         }
 
-        Date expirationDate = item.getExpirationDate();
+        final Date expirationDate = item.getExpirationDate();
         if (expirationDate != null) {
             eItem.addContent(generateSimpleElement("expirationDate", DateParser.formatRFC822(expirationDate)));
         }
     }
 
     // Another one to thanks DW for
-    protected int getNumberOfEnclosures(List<Enclosure> enclosures) {
+    @Override
+    protected int getNumberOfEnclosures(final List<Enclosure> enclosures) {
         return enclosures.size();
     }
 

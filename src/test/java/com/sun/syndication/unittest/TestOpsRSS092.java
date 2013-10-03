@@ -1,10 +1,11 @@
 package com.sun.syndication.unittest;
 
 /**
- *
+ * 
  * <p>
+ * 
  * @author Alejandro Abdelnur
- *
+ * 
  */
 public class TestOpsRSS092 extends FeedOpsTest {
 

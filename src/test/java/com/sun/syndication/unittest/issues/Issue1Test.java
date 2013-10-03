@@ -16,12 +16,6 @@
  */
 package com.sun.syndication.unittest.issues;
 
-import com.sun.syndication.io.impl.XmlFixerReader;
-import com.sun.syndication.io.XmlReader;
-import com.sun.syndication.unittest.SyndFeedTest;
-
-import org.jdom2.input.SAXBuilder;
-
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -32,9 +26,14 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.io.Writer;
 
+import org.jdom2.input.SAXBuilder;
+
+import com.sun.syndication.io.XmlReader;
+import com.sun.syndication.io.impl.XmlFixerReader;
+import com.sun.syndication.unittest.SyndFeedTest;
 
 /**
- *
+ * 
  * @author robert.cooper
  */
 public class Issue1Test extends SyndFeedTest {
@@ -45,9 +44,9 @@ public class Issue1Test extends SyndFeedTest {
     }
 
     public void testAmpHandling() throws Exception {
-        String input = "&amp; &aa &";
-        BufferedReader reader = new BufferedReader(new XmlFixerReader(new StringReader(input)));
-        String output = reader.readLine();
+        final String input = "&amp; &aa &";
+        final BufferedReader reader = new BufferedReader(new XmlFixerReader(new StringReader(input)));
+        final String output = reader.readLine();
         reader.close();
         assertEquals("&amp; &amp;aa &amp;", output);
     }
@@ -104,7 +103,8 @@ public class Issue1Test extends SyndFeedTest {
         _testValidTrim(" <!-- - -- --> \n <!-- - -- --> ", "<hello></hello>");
         _testValidTrim(" <!-- - -- --> \n <!-- - -- --> ", XML_PROLOG + "<hello></hello>");
 
-        //TODO lorenzo.sm: This test was added to trim \r char (as with \n). Source of "bad" RSS http://www.diariohorizonte.com/rss/71/deportes
+        // TODO lorenzo.sm: This test was added to trim \r char (as with \n).
+        // Source of "bad" RSS http://www.diariohorizonte.com/rss/71/deportes
         _testValidTrim("\r\n<!-- hackedString Clean-->", XML_PROLOG + "<hello></hello>");
 
         _testInvalidTrim("x", "<hello></hello>");
@@ -126,10 +126,9 @@ public class Issue1Test extends SyndFeedTest {
     }
 
     // XML Stream generator
-    protected InputStream getStream(String garbish, String xmlDoc)
-        throws IOException {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream(1024);
-        Writer writer = new OutputStreamWriter(baos);
+    protected InputStream getStream(final String garbish, final String xmlDoc) throws IOException {
+        final ByteArrayOutputStream baos = new ByteArrayOutputStream(1024);
+        final Writer writer = new OutputStreamWriter(baos);
         writer.write(garbish);
         writer.write(xmlDoc);
         writer.close();
@@ -137,40 +136,36 @@ public class Issue1Test extends SyndFeedTest {
         return new ByteArrayInputStream(baos.toByteArray());
     }
 
-    protected void _testInvalidEntities(String xmlDoc)
-        throws Exception {
+    protected void _testInvalidEntities(final String xmlDoc) throws Exception {
         try {
             _testXmlParse("", xmlDoc);
             assertTrue(false);
-        } catch (Exception ex) {
+        } catch (final Exception ex) {
         }
     }
 
-    protected void _testInvalidTrim(String garbish, String xmlDoc)
-        throws Exception {
+    protected void _testInvalidTrim(final String garbish, final String xmlDoc) throws Exception {
         try {
             _testXmlParse(garbish, xmlDoc);
             assertTrue(false);
-        } catch (Exception ex) {
+        } catch (final Exception ex) {
         }
     }
 
-    protected void _testValidEntities(String xmlDoc) throws Exception {
+    protected void _testValidEntities(final String xmlDoc) throws Exception {
         _testXmlParse("", xmlDoc);
     }
 
-    protected void _testValidTrim(String garbish, String xmlDoc)
-        throws Exception {
+    protected void _testValidTrim(final String garbish, final String xmlDoc) throws Exception {
         _testXmlParse(garbish, xmlDoc);
     }
 
-    protected void _testXmlParse(String garbish, String xmlDoc)
-        throws Exception {
-        InputStream is = getStream(garbish, xmlDoc);
+    protected void _testXmlParse(final String garbish, final String xmlDoc) throws Exception {
+        final InputStream is = getStream(garbish, xmlDoc);
         Reader reader = new XmlReader(is);
         reader = new XmlFixerReader(reader);
 
-        SAXBuilder saxBuilder = new SAXBuilder();
+        final SAXBuilder saxBuilder = new SAXBuilder();
         saxBuilder.build(reader);
     }
 }

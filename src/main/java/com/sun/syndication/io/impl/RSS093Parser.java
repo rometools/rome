@@ -16,8 +16,9 @@
  */
 package com.sun.syndication.io.impl;
 
-import com.sun.syndication.feed.rss.Item;
 import org.jdom2.Element;
+
+import com.sun.syndication.feed.rss.Item;
 
 /**
  */
@@ -27,28 +28,30 @@ public class RSS093Parser extends RSS092Parser {
         this("rss_0.93");
     }
 
-    protected RSS093Parser(String type) {
+    protected RSS093Parser(final String type) {
         super(type);
     }
 
+    @Override
     protected String getRSSVersion() {
-            return "0.93";
+        return "0.93";
     }
 
-    protected Item parseItem(Element rssRoot,Element eItem) {
-        Item item = super.parseItem(rssRoot,eItem);
-        Element e = eItem.getChild("pubDate",getRSSNamespace());
-        if (e!=null) {
+    @Override
+    protected Item parseItem(final Element rssRoot, final Element eItem) {
+        final Item item = super.parseItem(rssRoot, eItem);
+        Element e = eItem.getChild("pubDate", getRSSNamespace());
+        if (e != null) {
             item.setPubDate(DateParser.parseDate(e.getText()));
         }
-        e = eItem.getChild("expirationDate",getRSSNamespace());
-        if (e!=null) {
+        e = eItem.getChild("expirationDate", getRSSNamespace());
+        if (e != null) {
             item.setExpirationDate(DateParser.parseDate(e.getText()));
         }
-        e = eItem.getChild("description",getRSSNamespace());
-        if (e!=null) {
-            String type = e.getAttributeValue("type");
-            if (type!=null) {
+        e = eItem.getChild("description", getRSSNamespace());
+        if (e != null) {
+            final String type = e.getAttributeValue("type");
+            if (type != null) {
                 item.getDescription().setType(type);
             }
         }

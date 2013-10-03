@@ -16,57 +16,63 @@
  */
 package com.sun.syndication.feed.synd;
 
-import com.sun.syndication.feed.CopyFrom;
-import com.sun.syndication.feed.impl.ObjectBean;
-import com.sun.syndication.feed.impl.CopyFromHelper;
-
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.io.Serializable;
+
+import com.sun.syndication.feed.CopyFrom;
+import com.sun.syndication.feed.impl.CopyFromHelper;
+import com.sun.syndication.feed.impl.ObjectBean;
 
 /**
  * Bean for content of SyndFeedImpl entries.
  * <p>
+ * 
  * @author Alejandro Abdelnur
- *
+ * 
  */
 public class SyndContentImpl implements Serializable, SyndContent {
-    private ObjectBean _objBean;
+    private final ObjectBean _objBean;
     private String _type;
     private String _value;
     private String _mode;
 
-
     /**
      * Default constructor. All properties are set to <b>null</b>.
      * <p>
-     *
+     * 
      */
     public SyndContentImpl() {
-        _objBean = new ObjectBean(SyndContent.class,this);
+        this._objBean = new ObjectBean(SyndContent.class, this);
     }
 
     /**
      * Creates a deep 'bean' clone of the object.
      * <p>
+     * 
      * @return a clone of the object.
-     * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     *
+     * @throws CloneNotSupportedException thrown if an element of the object
+     *             cannot be cloned.
+     * 
      */
+    @Override
     public Object clone() throws CloneNotSupportedException {
-        return _objBean.clone();
+        return this._objBean.clone();
     }
 
     /**
-     * Indicates whether some other object is "equal to" this one as defined by the Object equals() method.
+     * Indicates whether some other object is "equal to" this one as defined by
+     * the Object equals() method.
      * <p>
+     * 
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     *
+     * 
      */
-    public boolean equals(Object other) {
-        return _objBean.equals(other);
+    @Override
+    public boolean equals(final Object other) {
+        return this._objBean.equals(other);
     }
 
     /**
@@ -74,104 +80,123 @@ public class SyndContentImpl implements Serializable, SyndContent {
      * <p>
      * It follows the contract defined by the Object hashCode() method.
      * <p>
+     * 
      * @return the hashcode of the bean object.
-     *
+     * 
      */
+    @Override
     public int hashCode() {
-        return _objBean.hashCode();
+        return this._objBean.hashCode();
     }
 
     /**
      * Returns the String representation for the object.
      * <p>
+     * 
      * @return String representation for the object.
-     *
+     * 
      */
+    @Override
     public String toString() {
-        return _objBean.toString();
+        return this._objBean.toString();
     }
 
     /**
      * Returns the content type.
      * <p>
-     * When used for the description of an entry, if <b>null</b> 'text/plain' must be assumed.
+     * When used for the description of an entry, if <b>null</b> 'text/plain'
+     * must be assumed.
      * <p>
+     * 
      * @return the content type, <b>null</b> if none.
-     *
+     * 
      */
+    @Override
     public String getType() {
-        return _type;
+        return this._type;
     }
 
     /**
      * Sets the content type.
      * <p>
-     * When used for the description of an entry, if <b>null</b> 'text/plain' must be assumed.
+     * When used for the description of an entry, if <b>null</b> 'text/plain'
+     * must be assumed.
      * <p>
+     * 
      * @param type the content type to set, <b>null</b> if none.
-     *
+     * 
      */
-    public void setType(String type) {
-        _type = type;
+    @Override
+    public void setType(final String type) {
+        this._type = type;
     }
 
     /**
      * Returns the content mode.
+     * 
      * @return the content mode, <b>null</b> if none.
-     *
+     * 
      */
+    @Override
     public String getMode() {
-        return _mode;
+        return this._mode;
     }
 
     /**
      * Sets the content mode.
+     * 
      * @param mode the content mode to set, <b>null</b> if none.
-     *
+     * 
      */
-    public void setMode(String mode) {
-        _mode = mode;
+    @Override
+    public void setMode(final String mode) {
+        this._mode = mode;
     }
 
     /**
      * Returns the content value.
      * <p>
+     * 
      * @return the content value, <b>null</b> if none.
-     *
+     * 
      */
+    @Override
     public String getValue() {
-        return _value;
+        return this._value;
     }
 
     /**
      * Sets the content value.
      * <p>
+     * 
      * @param value the content value to set, <b>null</b> if none.
-     *
+     * 
      */
-    public void setValue(String value) {
-        _value = value;
+    @Override
+    public void setValue(final String value) {
+        this._value = value;
     }
 
-
+    @Override
     public Class getInterface() {
         return SyndContent.class;
     }
 
-    public void copyFrom(CopyFrom obj) {
-        COPY_FROM_HELPER.copy(this,obj);
+    @Override
+    public void copyFrom(final CopyFrom obj) {
+        COPY_FROM_HELPER.copy(this, obj);
     }
 
     private static final CopyFromHelper COPY_FROM_HELPER;
 
     static {
-        Map basePropInterfaceMap = new HashMap();
-        basePropInterfaceMap.put("type",String.class);
-        basePropInterfaceMap.put("value",String.class);
+        final Map basePropInterfaceMap = new HashMap();
+        basePropInterfaceMap.put("type", String.class);
+        basePropInterfaceMap.put("value", String.class);
 
-        Map basePropClassImplMap = Collections.EMPTY_MAP;
+        final Map basePropClassImplMap = Collections.EMPTY_MAP;
 
-        COPY_FROM_HELPER = new CopyFromHelper(SyndContent.class,basePropInterfaceMap,basePropClassImplMap);
+        COPY_FROM_HELPER = new CopyFromHelper(SyndContent.class, basePropInterfaceMap, basePropClassImplMap);
     }
 
 }

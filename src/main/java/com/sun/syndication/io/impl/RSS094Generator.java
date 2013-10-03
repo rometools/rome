@@ -16,38 +16,40 @@
  */
 package com.sun.syndication.io.impl;
 
-import com.sun.syndication.feed.rss.Description;
-import com.sun.syndication.feed.rss.Item;
 import org.jdom2.Attribute;
 import org.jdom2.Element;
+
+import com.sun.syndication.feed.rss.Description;
+import com.sun.syndication.feed.rss.Item;
 
 /**
  * Feed Generator for RSS 0.94
  * <p/>
- *
+ * 
  * @author Elaine Chien
- *
+ * 
  */
 
 public class RSS094Generator extends RSS093Generator {
 
     public RSS094Generator() {
-        this("rss_0.94","0.94");
+        this("rss_0.94", "0.94");
     }
 
-    protected RSS094Generator(String feedType,String version) {
-        super(feedType,version);
+    protected RSS094Generator(final String feedType, final String version) {
+        super(feedType, version);
     }
 
-    protected void populateItem(Item item, Element eItem, int index) {
-        super.populateItem(item,eItem, index);
+    @Override
+    protected void populateItem(final Item item, final Element eItem, final int index) {
+        super.populateItem(item, eItem, index);
 
-        Description description = item.getDescription();
-        if (description!=null && description.getType()!=null) {
-            Element eDescription = eItem.getChild("description",getFeedNamespace());
-            eDescription.setAttribute(new Attribute("type",description.getType()));
+        final Description description = item.getDescription();
+        if (description != null && description.getType() != null) {
+            final Element eDescription = eItem.getChild("description", getFeedNamespace());
+            eDescription.setAttribute(new Attribute("type", description.getType()));
         }
-        eItem.removeChild("expirationDate",getFeedNamespace());
+        eItem.removeChild("expirationDate", getFeedNamespace());
     }
 
 }

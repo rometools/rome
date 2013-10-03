@@ -16,6 +16,15 @@
  */
 package com.sun.syndication.io.impl;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.Namespace;
+
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.feed.rss.Channel;
@@ -23,14 +32,6 @@ import com.sun.syndication.feed.rss.Image;
 import com.sun.syndication.feed.rss.Item;
 import com.sun.syndication.feed.rss.TextInput;
 import com.sun.syndication.io.FeedException;
-import org.jdom2.Document;
-import org.jdom2.Element;
-import org.jdom2.Namespace;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
 
 /**
  */
@@ -39,35 +40,34 @@ public class RSS090Parser extends BaseWireFeedParser {
     private static final String RDF_URI = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
     private static final String RSS_URI = "http://my.netscape.com/rdf/simple/0.9/";
     private static final String CONTENT_URI = "http://purl.org/rss/1.0/modules/content/";
-    
+
     private static final Namespace RDF_NS = Namespace.getNamespace(RDF_URI);
     private static final Namespace RSS_NS = Namespace.getNamespace(RSS_URI);
     private static final Namespace CONTENT_NS = Namespace.getNamespace(CONTENT_URI);
-
 
     public RSS090Parser() {
         this("rss_0.9", RSS_NS);
     }
 
-    protected RSS090Parser(String type, Namespace ns) {
+    protected RSS090Parser(final String type, final Namespace ns) {
         super(type, ns);
     }
 
-    public boolean isMyType(Document document) {
+    @Override
+    public boolean isMyType(final Document document) {
         boolean ok = false;
 
-        Element rssRoot = document.getRootElement();
-        Namespace defaultNS = rssRoot.getNamespace();
-        List<Namespace> additionalNSs = rssRoot.getAdditionalNamespaces();
+        final Element rssRoot = document.getRootElement();
+        final Namespace defaultNS = rssRoot.getNamespace();
+        final List<Namespace> additionalNSs = rssRoot.getAdditionalNamespaces();
 
-        ok = defaultNS!=null && defaultNS.equals(getRDFNamespace());
+        ok = defaultNS != null && defaultNS.equals(getRDFNamespace());
         if (ok) {
-            if (additionalNSs==null) {
+            if (additionalNSs == null) {
                 ok = false;
-            }
-            else {
+            } else {
                 ok = false;
-                for (int i=0;!ok && i<additionalNSs.size();i++) {
+                for (int i = 0; !ok && i < additionalNSs.size(); i++) {
                     ok = getRSSNamespace().equals(additionalNSs.get(i));
                 }
             }
@@ -75,29 +75,33 @@ public class RSS090Parser extends BaseWireFeedParser {
         return ok;
     }
 
-    public WireFeed parse(Document document, boolean validate) throws IllegalArgumentException,FeedException {
+    @Override
+    public WireFeed parse(final Document document, final boolean validate) throws IllegalArgumentException, FeedException {
         if (validate) {
             validateFeed(document);
         }
-        Element rssRoot = document.getRootElement();
+        final Element rssRoot = document.getRootElement();
         return parseChannel(rssRoot);
     }
 
-    protected void validateFeed(Document document) throws FeedException {
+    protected void validateFeed(final Document document) throws FeedException {
         // TBD
         // here we have to validate the Feed against a schema or whatever
         // not sure how to do it
-        // one posibility would be to inject our own schema for the feed (they don't exist out there)
-        // to the document, produce an ouput and attempt to parse it again with validation turned on.
+        // one posibility would be to inject our own schema for the feed (they
+        // don't exist out there)
+        // to the document, produce an ouput and attempt to parse it again with
+        // validation turned on.
         // otherwise will have to check the document elements by hand.
     }
 
     /**
-     * Returns the namespace used by RSS elements in document of the RSS version the parser supports.
+     * Returns the namespace used by RSS elements in document of the RSS version
+     * the parser supports.
      * <P>
      * This implementation returns the EMTPY namespace.
      * <p>
-     *
+     * 
      * @return returns the EMPTY namespace.
      */
     protected Namespace getRSSNamespace() {
@@ -105,11 +109,12 @@ public class RSS090Parser extends BaseWireFeedParser {
     }
 
     /**
-     * Returns the namespace used by RDF elements in document of the RSS version the parser supports.
+     * Returns the namespace used by RDF elements in document of the RSS version
+     * the parser supports.
      * <P>
      * This implementation returns the EMTPY namespace.
      * <p>
-     *
+     * 
      * @return returns the EMPTY namespace.
      */
     protected Namespace getRDFNamespace() {
@@ -121,7 +126,7 @@ public class RSS090Parser extends BaseWireFeedParser {
      * <P>
      * This implementation returns the EMTPY namespace.
      * <p>
-     *
+     * 
      * @return returns the EMPTY namespace.
      */
     protected Namespace getContentNamespace() {
@@ -131,30 +136,31 @@ public class RSS090Parser extends BaseWireFeedParser {
     /**
      * Parses the root element of an RSS document into a Channel bean.
      * <p/>
-     * It reads title, link and description and delegates to parseImage, parseItems
-     * and parseTextInput. This delegation always passes the root element of the RSS
-     * document as different RSS version may have this information in different parts
-     * of the XML tree (no assumptions made thanks to the specs variaty)
+     * It reads title, link and description and delegates to parseImage,
+     * parseItems and parseTextInput. This delegation always passes the root
+     * element of the RSS document as different RSS version may have this
+     * information in different parts of the XML tree (no assumptions made
+     * thanks to the specs variaty)
      * <p/>
-     *
+     * 
      * @param rssRoot the root element of the RSS document to parse.
      * @return the parsed Channel bean.
      */
-    protected WireFeed parseChannel(Element rssRoot) {
-        Element eChannel = rssRoot.getChild("channel", getRSSNamespace());
+    protected WireFeed parseChannel(final Element rssRoot) {
+        final Element eChannel = rssRoot.getChild("channel", getRSSNamespace());
 
-        Channel channel = new Channel(getType());
+        final Channel channel = new Channel(getType());
 
-        Element e = eChannel.getChild("title",getRSSNamespace());
-        if (e!=null) {
+        Element e = eChannel.getChild("title", getRSSNamespace());
+        if (e != null) {
             channel.setTitle(e.getText());
         }
-        e = eChannel.getChild("link",getRSSNamespace());
-        if (e!=null) {
+        e = eChannel.getChild("link", getRSSNamespace());
+        if (e != null) {
             channel.setLink(e.getText());
         }
-        e = eChannel.getChild("description",getRSSNamespace());
-        if (e!=null) {
+        e = eChannel.getChild("description", getRSSNamespace());
+        if (e != null) {
             channel.setDescription(e.getText());
         }
 
@@ -162,13 +168,13 @@ public class RSS090Parser extends BaseWireFeedParser {
 
         channel.setTextInput(parseTextInput(rssRoot));
 
-        // Unfortunately Microsoft's SSE extension has a special case of 
-        // effectively putting the sharing channel module inside the RSS tag 
-        // and not inside the channel itself. So we also need to look for 
+        // Unfortunately Microsoft's SSE extension has a special case of
+        // effectively putting the sharing channel module inside the RSS tag
+        // and not inside the channel itself. So we also need to look for
         // channel modules from the root RSS element.
-        List<Module> allFeedModules = new ArrayList<Module>();
-        List<Module> rootModules = parseFeedModules(rssRoot);
-        List<Module> channelModules = parseFeedModules(eChannel); 
+        final List<Module> allFeedModules = new ArrayList<Module>();
+        final List<Module> rootModules = parseFeedModules(rssRoot);
+        final List<Module> channelModules = parseFeedModules(eChannel);
         if (rootModules != null) {
             allFeedModules.addAll(rootModules);
         }
@@ -178,67 +184,69 @@ public class RSS090Parser extends BaseWireFeedParser {
         channel.setModules(allFeedModules);
         channel.setItems(parseItems(rssRoot));
 
-        List<Element> foreignMarkup = 
-            extractForeignMarkup(eChannel, channel, getRSSNamespace());
+        final List<Element> foreignMarkup = extractForeignMarkup(eChannel, channel, getRSSNamespace());
         if (foreignMarkup.size() > 0) {
             channel.setForeignMarkup(foreignMarkup);
-        }          
+        }
         return channel;
     }
 
-
     /**
-     * This method exists because RSS0.90 and RSS1.0 have the 'item' elements under the root elemment.
-     * And RSS0.91, RSS0.02, RSS0.93, RSS0.94 and RSS2.0 have the item elements under the 'channel' element.
+     * This method exists because RSS0.90 and RSS1.0 have the 'item' elements
+     * under the root elemment. And RSS0.91, RSS0.02, RSS0.93, RSS0.94 and
+     * RSS2.0 have the item elements under the 'channel' element.
      * <p/>
      */
-    protected List<Element> getItems(Element rssRoot) {
-        return rssRoot.getChildren("item",getRSSNamespace());
+    protected List<Element> getItems(final Element rssRoot) {
+        return rssRoot.getChildren("item", getRSSNamespace());
     }
 
     /**
-     * This method exists because RSS0.90 and RSS1.0 have the 'image' element under the root elemment.
-     * And RSS0.91, RSS0.02, RSS0.93, RSS0.94 and RSS2.0 have it under the 'channel' element.
+     * This method exists because RSS0.90 and RSS1.0 have the 'image' element
+     * under the root elemment. And RSS0.91, RSS0.02, RSS0.93, RSS0.94 and
+     * RSS2.0 have it under the 'channel' element.
      * <p/>
      */
-    protected Element getImage(Element rssRoot) {
-        return rssRoot.getChild("image",getRSSNamespace());
+    protected Element getImage(final Element rssRoot) {
+        return rssRoot.getChild("image", getRSSNamespace());
     }
 
     /**
-     * This method exists because RSS0.90 and RSS1.0 have the 'textinput' element under the root elemment.
-     * And RSS0.91, RSS0.02, RSS0.93, RSS0.94 and RSS2.0 have it under the 'channel' element.
+     * This method exists because RSS0.90 and RSS1.0 have the 'textinput'
+     * element under the root elemment. And RSS0.91, RSS0.02, RSS0.93, RSS0.94
+     * and RSS2.0 have it under the 'channel' element.
      * <p/>
      */
-    protected Element getTextInput(Element rssRoot) {
-        return rssRoot.getChild("textinput",getRSSNamespace());
+    protected Element getTextInput(final Element rssRoot) {
+        return rssRoot.getChild("textinput", getRSSNamespace());
     }
 
     /**
-     * Parses the root element of an RSS document looking for  image information.
+     * Parses the root element of an RSS document looking for image information.
      * <p/>
      * It reads title and url out of the 'image' element.
      * <p/>
-     *
-     * @param rssRoot the root element of the RSS document to parse for image information.
+     * 
+     * @param rssRoot the root element of the RSS document to parse for image
+     *            information.
      * @return the parsed image bean.
      */
-    protected Image parseImage(Element rssRoot) {
+    protected Image parseImage(final Element rssRoot) {
         Image image = null;
-        Element eImage = getImage(rssRoot);
-        if (eImage!=null) {
+        final Element eImage = getImage(rssRoot);
+        if (eImage != null) {
             image = new Image();
 
-            Element e = eImage.getChild("title",getRSSNamespace());
-            if (e!=null) {
+            Element e = eImage.getChild("title", getRSSNamespace());
+            if (e != null) {
                 image.setTitle(e.getText());
             }
-            e = eImage.getChild("url",getRSSNamespace());
-            if (e!=null) {
+            e = eImage.getChild("url", getRSSNamespace());
+            if (e != null) {
                 image.setUrl(e.getText());
             }
-            e = eImage.getChild("link",getRSSNamespace());
-            if (e!=null) {
+            e = eImage.getChild("link", getRSSNamespace());
+            if (e != null) {
                 image.setLink(e.getText());
             }
         }
@@ -246,22 +254,25 @@ public class RSS090Parser extends BaseWireFeedParser {
     }
 
     /**
-     * Parses the root element of an RSS document looking for all items information.
+     * Parses the root element of an RSS document looking for all items
+     * information.
      * <p/>
-     * It iterates through the item elements list, obtained from the getItems() method, and invoke parseItem()
-     * for each item element. The resulting RSSItem of each item element is stored in a list.
+     * It iterates through the item elements list, obtained from the getItems()
+     * method, and invoke parseItem() for each item element. The resulting
+     * RSSItem of each item element is stored in a list.
      * <p/>
-     *
-     * @param rssRoot the root element of the RSS document to parse for all items information.
+     * 
+     * @param rssRoot the root element of the RSS document to parse for all
+     *            items information.
      * @return a list with all the parsed RSSItem beans.
      */
-    protected List<Item> parseItems(Element rssRoot)  {
-        Collection<Element> eItems = getItems(rssRoot);
+    protected List<Item> parseItems(final Element rssRoot) {
+        final Collection<Element> eItems = getItems(rssRoot);
 
-        List<Item> items = new ArrayList<Item>();
-        for (Iterator<Element> i=eItems.iterator();i.hasNext();) {
-            Element eItem = (Element) i.next();
-            items.add(parseItem(rssRoot,eItem));
+        final List<Item> items = new ArrayList<Item>();
+        for (final Element element : eItems) {
+            final Element eItem = element;
+            items.add(parseItem(rssRoot, eItem));
         }
         return items;
     }
@@ -271,33 +282,35 @@ public class RSS090Parser extends BaseWireFeedParser {
      * <p/>
      * It reads title and link out of the 'item' element.
      * <p/>
-     *
-     * @param rssRoot the root element of the RSS document in case it's needed for context.
+     * 
+     * @param rssRoot the root element of the RSS document in case it's needed
+     *            for context.
      * @param eItem the item element to parse.
      * @return the parsed RSSItem bean.
      */
-    protected Item parseItem(Element rssRoot,Element eItem) {
-        Item item = new Item();
-        Element e = eItem.getChild("title",getRSSNamespace());
-        if (e!=null) {
+    protected Item parseItem(final Element rssRoot, final Element eItem) {
+        final Item item = new Item();
+        Element e = eItem.getChild("title", getRSSNamespace());
+        if (e != null) {
             item.setTitle(e.getText());
         }
-        e = eItem.getChild("link",getRSSNamespace());
-        if (e!=null) {
+        e = eItem.getChild("link", getRSSNamespace());
+        if (e != null) {
             item.setLink(e.getText());
             item.setUri(e.getText());
         }
-        
+
         item.setModules(parseItemModules(eItem));
-                
-        List<Element> foreignMarkup = 
-            extractForeignMarkup(eItem, item, getRSSNamespace());
-        //content:encoded elements are treated special, without a module, they have to be removed from the foreign
-        //markup to avoid duplication in case of read/write. Note that this fix will break if a content module is
-        //used
-        Iterator<Element> iterator = foreignMarkup.iterator();
+
+        final List<Element> foreignMarkup = extractForeignMarkup(eItem, item, getRSSNamespace());
+        // content:encoded elements are treated special, without a module, they
+        // have to be removed from the foreign
+        // markup to avoid duplication in case of read/write. Note that this fix
+        // will break if a content module is
+        // used
+        final Iterator<Element> iterator = foreignMarkup.iterator();
         while (iterator.hasNext()) {
-            Element ie = (Element)iterator.next();
+            final Element ie = iterator.next();
             if (getContentNamespace().equals(ie.getNamespace()) && ie.getName().equals("encoded")) {
                 iterator.remove();
             }
@@ -308,40 +321,41 @@ public class RSS090Parser extends BaseWireFeedParser {
         return item;
     }
 
-
     /**
-     * Parses the root element of an RSS document looking for  text-input information.
+     * Parses the root element of an RSS document looking for text-input
+     * information.
      * <p/>
-     * It reads title, description, name and link out of the 'textinput' or 'textInput' element.
+     * It reads title, description, name and link out of the 'textinput' or
+     * 'textInput' element.
      * <p/>
-     *
-     * @param rssRoot the root element of the RSS document to parse for text-input information.
+     * 
+     * @param rssRoot the root element of the RSS document to parse for
+     *            text-input information.
      * @return the parsed RSSTextInput bean.
      */
-    protected TextInput parseTextInput(Element rssRoot) {
+    protected TextInput parseTextInput(final Element rssRoot) {
         TextInput textInput = null;
-        Element eTextInput = getTextInput(rssRoot);
-        if (eTextInput!=null) {
+        final Element eTextInput = getTextInput(rssRoot);
+        if (eTextInput != null) {
             textInput = new TextInput();
-            Element e = eTextInput.getChild("title",getRSSNamespace());
-            if (e!=null) {
+            Element e = eTextInput.getChild("title", getRSSNamespace());
+            if (e != null) {
                 textInput.setTitle(e.getText());
             }
-            e = eTextInput.getChild("description",getRSSNamespace());
-            if (e!=null) {
+            e = eTextInput.getChild("description", getRSSNamespace());
+            if (e != null) {
                 textInput.setDescription(e.getText());
             }
-            e = eTextInput.getChild("name",getRSSNamespace());
-            if (e!=null) {
+            e = eTextInput.getChild("name", getRSSNamespace());
+            if (e != null) {
                 textInput.setName(e.getText());
             }
-            e = eTextInput.getChild("link",getRSSNamespace());
-            if (e!=null) {
+            e = eTextInput.getChild("link", getRSSNamespace());
+            if (e != null) {
                 textInput.setLink(e.getText());
             }
         }
         return textInput;
     }
-
 
 }
