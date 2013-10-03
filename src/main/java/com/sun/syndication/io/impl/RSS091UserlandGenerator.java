@@ -22,10 +22,10 @@ import com.sun.syndication.feed.rss.Image;
 import com.sun.syndication.feed.rss.Item;
 import com.sun.syndication.io.FeedException;
 
-import org.jdom.Attribute;
-import org.jdom.Document;
-import org.jdom.Element;
-import org.jdom.Namespace;
+import org.jdom2.Attribute;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.Namespace;
 
 import java.util.Date;
 import java.util.List;

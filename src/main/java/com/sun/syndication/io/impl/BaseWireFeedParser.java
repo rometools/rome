@@ -5,11 +5,11 @@ import com.sun.syndication.feed.module.Extendable;
 import com.sun.syndication.io.WireFeedParser;
 import java.util.ArrayList;
 import java.util.Iterator;
-import org.jdom.Element;
+import org.jdom2.Element;
 
 import java.util.List;
-import org.jdom.Namespace;
-import org.jdom.Attribute;
+import org.jdom2.Namespace;
+import org.jdom2.Attribute;
 
 /**
  * @author Alejandro Abdelnur

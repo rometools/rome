@@ -19,10 +19,10 @@ package com.sun.syndication.io.impl;
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.atom.*;
 import com.sun.syndication.io.FeedException;
-import org.jdom.Document;
-import org.jdom.Element;
-import org.jdom.Namespace;
-import org.jdom.output.XMLOutputter;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.Namespace;
+import org.jdom2.output.XMLOutputter;
 
 import java.util.*;
 
@@ -242,7 +242,7 @@ public class Atom03Parser extends BaseWireFeedParser {
             List eContent = e.getContent();
             Iterator i = eContent.iterator();
             while (i.hasNext()) {
-                org.jdom.Content c = (org.jdom.Content) i.next();
+                org.jdom2.Content c = (org.jdom2.Content) i.next();
                 if (c instanceof Element) {
                     Element eC = (Element) c;
                     if (eC.getNamespace().equals(getAtomNamespace())) {

@@ -20,8 +20,8 @@ import com.sun.syndication.feed.rss.Description;
 import com.sun.syndication.feed.rss.Item;
 import com.sun.syndication.feed.rss.Channel;
 import com.sun.syndication.io.FeedException;
-import org.jdom.Element;
-import org.jdom.Namespace;
+import org.jdom2.Element;
+import org.jdom2.Namespace;
 
 import java.util.List;
 

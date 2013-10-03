@@ -21,7 +21,7 @@ import com.sun.syndication.feed.rss.Channel;
 import com.sun.syndication.feed.rss.Description;
 import com.sun.syndication.feed.rss.Guid;
 import com.sun.syndication.feed.rss.Item;
-import org.jdom.Element;
+import org.jdom2.Element;
 
 import java.util.List;
 

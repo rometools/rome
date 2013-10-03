@@ -17,7 +17,7 @@
 package com.sun.syndication.io.impl;
 
 import com.sun.syndication.io.WireFeedParser;
-import org.jdom.Document;
+import org.jdom2.Document;
 import java.util.List;
 
 /**

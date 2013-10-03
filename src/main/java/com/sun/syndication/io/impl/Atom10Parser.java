@@ -20,10 +20,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.jdom.Document; 
-import org.jdom.Element;
-import org.jdom.Namespace;
-import org.jdom.output.XMLOutputter; 
+import org.jdom2.Document; 
+import org.jdom2.Element;
+import org.jdom2.Namespace;
+import org.jdom2.output.XMLOutputter; 
 
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.atom.Category;
@@ -40,10 +40,10 @@ import java.io.IOException;
 import java.io.Reader;
 import java.net.MalformedURLException;
 import java.util.regex.Pattern;
-import org.jdom.Attribute;
-import org.jdom.JDOMException;
-import org.jdom.Parent;
-import org.jdom.input.SAXBuilder;
+import org.jdom2.Attribute;
+import org.jdom2.JDOMException;
+import org.jdom2.Parent;
+import org.jdom2.input.SAXBuilder;
 
 /**
  * Parser for Atom 1.0
@@ -323,7 +323,7 @@ public class Atom10Parser extends BaseWireFeedParser {
             List eContent = e.getContent();
             Iterator i = eContent.iterator();
             while (i.hasNext()) {
-                org.jdom.Content c = (org.jdom.Content) i.next();
+                org.jdom2.Content c = (org.jdom2.Content) i.next();
                 if (c instanceof Element) {
                     Element eC = (Element) c;
                     if (eC.getNamespace().equals(getAtomNamespace())) {

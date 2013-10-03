@@ -16,7 +16,7 @@
  */
 package com.sun.syndication.io;
 
-import org.jdom.input.JDOMParseException;
+import org.jdom2.input.JDOMParseException;
 
 /**
  * Exception thrown by WireFeedInput instance if it can not parse a feed.

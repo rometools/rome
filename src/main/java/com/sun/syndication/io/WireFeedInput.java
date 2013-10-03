@@ -26,10 +26,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
 
-import org.jdom.Document;
-import org.jdom.JDOMException;
-import org.jdom.input.DOMBuilder;
-import org.jdom.input.JDOMParseException;
+import org.jdom2.Document;
+import org.jdom2.JDOMException;
+import org.jdom2.input.DOMBuilder;
+import org.jdom2.input.JDOMParseException;
 import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXNotRecognizedException;
@@ -153,7 +153,7 @@ public class WireFeedInput {
     /**
      * Builds an WireFeed (RSS or Atom) from a file.
      * <p>
-     * NOTE: This method delages to the 'AsbtractFeed WireFeedInput#build(org.jdom.Document)'.
+     * NOTE: This method delages to the 'AsbtractFeed WireFeedInput#build(org.jdom2.Document)'.
      * <p>
      * @param file file to read to create the WireFeed.
      * @return the WireFeed read from the file.
@@ -177,7 +177,7 @@ public class WireFeedInput {
     /**
      * Builds an WireFeed (RSS or Atom) from an Reader.
      * <p>
-     * NOTE: This method delages to the 'AsbtractFeed WireFeedInput#build(org.jdom.Document)'.
+     * NOTE: This method delages to the 'AsbtractFeed WireFeedInput#build(org.jdom2.Document)'.
      * <p>
      * @param reader Reader to read to create the WireFeed.
      * @return the WireFeed read from the Reader.
@@ -208,7 +208,7 @@ public class WireFeedInput {
     /**
      * Builds an WireFeed (RSS or Atom) from an W3C SAX InputSource.
      * <p>
-     * NOTE: This method delages to the 'AsbtractFeed WireFeedInput#build(org.jdom.Document)'.
+     * NOTE: This method delages to the 'AsbtractFeed WireFeedInput#build(org.jdom2.Document)'.
      * <p>
      * @param is W3C SAX InputSource to read to create the WireFeed.
      * @return the WireFeed read from the W3C SAX InputSource.
@@ -236,7 +236,7 @@ public class WireFeedInput {
     /**
      * Builds an WireFeed (RSS or Atom) from an W3C DOM document.
      * <p>
-     * NOTE: This method delages to the 'AsbtractFeed WireFeedInput#build(org.jdom.Document)'.
+     * NOTE: This method delages to the 'AsbtractFeed WireFeedInput#build(org.jdom2.Document)'.
      * <p>
      * @param document W3C DOM document to read to create the WireFeed.
      * @return the WireFeed read from the W3C DOM document.
@@ -278,9 +278,9 @@ public class WireFeedInput {
     }
 
     /**
-     * Creates and sets up a org.jdom.input.SAXBuilder for parsing.
+     * Creates and sets up a org.jdom2.input.SAXBuilder for parsing.
      * 
-     * @return a new org.jdom.input.SAXBuilder object
+     * @return a new org.jdom2.input.SAXBuilder object
      */
     protected SAXBuilder createSAXBuilder() {
         SAXBuilder saxBuilder = new SAXBuilder(_validate);        
