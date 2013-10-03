@@ -118,10 +118,6 @@ public class EqualsBean implements Serializable {
         Object bean1 = _obj;
         Object bean2 = obj;
         boolean eq;
-        if (bean2==null) {
-            eq = false;
-        }
-        else
         if (bean1==null && bean2==null) {
             eq = true;
         }
