@@ -123,8 +123,8 @@ public class RSS091UserlandParser extends RSS090Parser {
         }
         e = eChannel.getChild("skipHours");
         if (e!=null) {
-            List skipHours = new ArrayList();
-            List eHours = e.getChildren("hour",getRSSNamespace());
+            List<Integer> skipHours = new ArrayList<Integer>();
+            List<Element> eHours = e.getChildren("hour",getRSSNamespace());
             for (int i=0;i<eHours.size();i++) {
                 Element eHour = (Element) eHours.get(i);
                 skipHours.add(new Integer(eHour.getText().trim()));
@@ -134,8 +134,8 @@ public class RSS091UserlandParser extends RSS090Parser {
 
         e = eChannel.getChild("skipDays");
         if (e!=null) {
-            List skipDays = new ArrayList();
-            List eDays = e.getChildren("day",getRSSNamespace());
+            List<String> skipDays = new ArrayList<String>();
+            List<Element> eDays = e.getChildren("day",getRSSNamespace());
             for (int i=0;i<eDays.size();i++) {
                 Element eDay = (Element) eDays.get(i);
                 skipDays.add(eDay.getText().trim());
@@ -185,9 +185,10 @@ public class RSS091UserlandParser extends RSS090Parser {
     /**
      * It looks for the 'item' elements under the 'channel' elemment.
      */
-    protected List getItems(Element rssRoot) {
+    protected List<Element> getItems(Element rssRoot) {
         Element eChannel = rssRoot.getChild("channel",getRSSNamespace());
-        return (eChannel!=null) ? eChannel.getChildren("item",getRSSNamespace()) : Collections.EMPTY_LIST;
+        List<Element> emptyList = Collections.emptyList();
+        return (eChannel!=null) ? eChannel.getChildren("item",getRSSNamespace()) : emptyList;
     }
 
     /**

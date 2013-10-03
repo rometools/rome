@@ -2,6 +2,7 @@ package com.sun.syndication.io.impl;
 
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.module.Extendable;
+import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.WireFeedParser;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -60,21 +61,21 @@ public abstract class BaseWireFeedParser implements WireFeedParser {
         return _type;
     }
 
-    protected List parseFeedModules(Element feedElement) {
+    protected List<Module> parseFeedModules(Element feedElement) {
         return _feedModuleParsers.parseModules(feedElement);
     }
 
-    protected List parseItemModules(Element itemElement) {
+    protected List<Module> parseItemModules(Element itemElement) {
         return _itemModuleParsers.parseModules(itemElement);
     }
 
-    protected List parsePersonModules(Element itemElement) {
+    protected List<Module> parsePersonModules(Element itemElement) {
         return _personModuleParsers.parseModules(itemElement);
     }
 
-    protected List extractForeignMarkup(Element e, Extendable ext, Namespace basens) {
-        ArrayList foreignMarkup = new ArrayList();
-        Iterator children = e.getChildren().iterator();
+    protected List<Element> extractForeignMarkup(Element e, Extendable ext, Namespace basens) {
+        ArrayList<Element> foreignMarkup = new ArrayList<Element>();
+        Iterator<Element> children = e.getChildren().iterator();
         while (children.hasNext()) {
             Element elem = (Element)children.next();
             if  ( 
@@ -89,7 +90,7 @@ public abstract class BaseWireFeedParser implements WireFeedParser {
             }
         }
         // Now we can detach the foreign markup elements
-        Iterator fm = foreignMarkup.iterator();
+        Iterator<Element> fm = foreignMarkup.iterator();
         while (fm.hasNext()) {
             Element elem = (Element)fm.next();
             elem.detach();

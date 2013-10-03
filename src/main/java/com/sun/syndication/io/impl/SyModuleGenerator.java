@@ -39,10 +39,10 @@ public class SyModuleGenerator implements ModuleGenerator {
     private static final String SY_URI  = "http://purl.org/rss/1.0/modules/syndication/";
     private static final Namespace SY_NS  = Namespace.getNamespace("sy", SY_URI);
 
-    private static final Set NAMESPACES;
+    private static final Set<Namespace> NAMESPACES;
 
     static {
-        Set nss = new HashSet();
+        Set<Namespace> nss = new HashSet<Namespace>();
         nss.add(SY_NS);
         NAMESPACES = Collections.unmodifiableSet(nss);
     }
@@ -60,7 +60,7 @@ public class SyModuleGenerator implements ModuleGenerator {
      *
      * @return a set with all the URIs (JDOM Namespace elements) this module generator uses.
      */
-    public Set getNamespaces() {
+    public Set<Namespace> getNamespaces() {
         return NAMESPACES;
     }
 

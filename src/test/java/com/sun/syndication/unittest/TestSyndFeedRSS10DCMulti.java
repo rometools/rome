@@ -96,7 +96,7 @@ public class TestSyndFeedRSS10DCMulti extends TestSyndFeedRSS10 {
     }
 
     protected void _testItemDCModule(int i) throws Exception {
-        List entries = getCachedSyndFeed().getEntries();
+        List<SyndEntry> entries = getCachedSyndFeed().getEntries();
         SyndEntry entry = (SyndEntry) entries.get(i);
         DCModule dc = (DCModule) entry.getModule(DCModule.URI);
         _testDCModule(dc, "item[" + i + "].");

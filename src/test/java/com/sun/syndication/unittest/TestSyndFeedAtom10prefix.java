@@ -1,15 +1,7 @@
 package com.sun.syndication.unittest;
 
-import com.sun.syndication.feed.synd.SyndLink;
-import com.sun.syndication.feed.synd.SyndEntry;
-import com.sun.syndication.feed.synd.SyndEnclosure;
-import com.sun.syndication.feed.synd.SyndContent;
 import com.sun.syndication.feed.atom.Feed;
 import com.sun.syndication.feed.atom.Link;
-import com.sun.syndication.io.impl.DateParser;
-
-import java.util.List;
-import java.util.Date;
 
 public class TestSyndFeedAtom10prefix extends FeedTest {
 

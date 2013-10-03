@@ -22,12 +22,12 @@ import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.feed.module.DCModule;
 import com.sun.syndication.feed.module.DCSubject;
 import com.sun.syndication.io.ModuleParser;
-import com.sun.syndication.io.WireFeedParser;
 import org.jdom2.Attribute;
 import org.jdom2.Element;
 import org.jdom2.Namespace;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -69,7 +69,7 @@ public class DCModuleParser implements ModuleParser {
         boolean foundSomething = false;
         DCModule dcm = new DCModuleImpl();
 
-        List eList = dcRoot.getChildren("title", getDCNamespace());
+        List<Element> eList = dcRoot.getChildren("title", getDCNamespace());
         if (eList.size() > 0) {
             foundSomething = true;
             dcm.setTitles(parseElementList(eList));
@@ -172,15 +172,15 @@ public class DCModuleParser implements ModuleParser {
      * @param eList the element list to parse.
      * @return a list of subjects parsed from the elements.
      */
-    protected final List parseSubjects(List eList) {
-        List subjects = new ArrayList();
-        for (Iterator i = eList.iterator(); i.hasNext();) {
+    protected final List<DCSubject> parseSubjects(List<Element> eList) {
+        List<DCSubject> subjects = new ArrayList<DCSubject>();
+        for (Iterator<Element> i = eList.iterator(); i.hasNext();) {
             Element eSubject = (Element) i.next();
             Element eDesc = eSubject.getChild("Description", getRDFNamespace());
             if (eDesc != null) {
                 String taxonomy = getTaxonomy(eDesc);
-                List eValues = eDesc.getChildren("value", getRDFNamespace());
-                for (Iterator v = eValues.iterator(); v.hasNext();) {
+                List<Element> eValues = eDesc.getChildren("value", getRDFNamespace());
+                for (Iterator<Element> v = eValues.iterator(); v.hasNext();) {
                     Element eValue = (Element) v.next();
                     DCSubject subject = new DCSubjectImpl();
                     subject.setTaxonomyUri(taxonomy);
@@ -203,9 +203,9 @@ public class DCModuleParser implements ModuleParser {
      * @param eList the list of elements to parse.
      * @return the list of strings
      */
-    protected final List parseElementList(List eList) {
-        List values= new ArrayList();
-        for (Iterator i = eList.iterator(); i.hasNext();) {
+    protected final List<String> parseElementList(List<Element> eList) {
+        List<String> values= new ArrayList<String>();
+        for (Iterator<Element> i = eList.iterator(); i.hasNext();) {
             Element e = (Element) i.next();
             values.add(e.getText());
         }
@@ -219,9 +219,9 @@ public class DCModuleParser implements ModuleParser {
      * @param eList the list of elements to parse.
      * @return the list of dates.
      */
-    protected final List parseElementListDate(List eList) {
-        List values = new ArrayList();
-        for (Iterator i = eList.iterator(); i.hasNext();) {
+    protected final List<Date> parseElementListDate(List<Element> eList) {
+        List<Date> values = new ArrayList<Date>();
+        for (Iterator<Element> i = eList.iterator(); i.hasNext();) {
             Element e = (Element) i.next();
             values.add(DateParser.parseDate(e.getText()));
         }

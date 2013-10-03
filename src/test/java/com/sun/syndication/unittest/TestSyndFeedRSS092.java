@@ -32,7 +32,7 @@ public class TestSyndFeedRSS092 extends TestSyndFeedRSS091N {
 
     protected void _testItem(int i) throws Exception {
         super._testItem(i);
-        List items = getCachedSyndFeed().getEntries();
+        List<SyndEntry> items = getCachedSyndFeed().getEntries();
         SyndEntry entry = (SyndEntry) items.get(i);
 
         assertProperty(entry.getTitle(),"channel.item["+i+"].title");
@@ -42,9 +42,9 @@ public class TestSyndFeedRSS092 extends TestSyndFeedRSS091N {
         _testEnclosures(entry.getEnclosures(),"channel.item["+i+"]");
     }
 
-    protected void _testCategories(List cats,String prefix) throws Exception {
-        Set s1 = new HashSet();
-        Set s2 = new HashSet();
+    protected void _testCategories(List<SyndCategory> cats,String prefix) throws Exception {
+        Set<String> s1 = new HashSet<String>();
+        Set<String> s2 = new HashSet<String>();
         for (int i=0;i<cats.size();i++) {
             SyndCategory cat = (SyndCategory) cats.get(i);
             s1.add(cat.getTaxonomyUri()+" "+cat.getName());
@@ -53,9 +53,9 @@ public class TestSyndFeedRSS092 extends TestSyndFeedRSS091N {
         assertTrue(s1.equals(s2));
     }
 
-    protected void _testEnclosures(List encs,String prefix) throws Exception {
-        Set s1 = new HashSet();
-        Set s2 = new HashSet();
+    protected void _testEnclosures(List<SyndEnclosure> encs,String prefix) throws Exception {
+        Set<String> s1 = new HashSet<String>();
+        Set<String> s2 = new HashSet<String>();
         for (int i=0;i<encs.size();i++) {
             SyndEnclosure enc = (SyndEnclosure) encs.get(i);
             s1.add(enc.getUrl()+" "+enc.getType()+" "+enc.getLength());

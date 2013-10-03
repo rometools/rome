@@ -17,6 +17,7 @@
 package com.sun.syndication.io.impl;
 
 import com.sun.syndication.feed.WireFeed;
+import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.feed.rss.Channel;
 import com.sun.syndication.feed.rss.Image;
 import com.sun.syndication.feed.rss.Item;
@@ -57,7 +58,7 @@ public class RSS090Parser extends BaseWireFeedParser {
 
         Element rssRoot = document.getRootElement();
         Namespace defaultNS = rssRoot.getNamespace();
-        List additionalNSs = rssRoot.getAdditionalNamespaces();
+        List<Namespace> additionalNSs = rssRoot.getAdditionalNamespaces();
 
         ok = defaultNS!=null && defaultNS.equals(getRDFNamespace());
         if (ok) {
@@ -165,9 +166,9 @@ public class RSS090Parser extends BaseWireFeedParser {
         // effectively putting the sharing channel module inside the RSS tag 
         // and not inside the channel itself. So we also need to look for 
         // channel modules from the root RSS element.
-        List allFeedModules = new ArrayList();
-        List rootModules = parseFeedModules(rssRoot);
-        List channelModules = parseFeedModules(eChannel); 
+        List<Module> allFeedModules = new ArrayList<Module>();
+        List<Module> rootModules = parseFeedModules(rssRoot);
+        List<Module> channelModules = parseFeedModules(eChannel); 
         if (rootModules != null) {
             allFeedModules.addAll(rootModules);
         }
@@ -177,7 +178,7 @@ public class RSS090Parser extends BaseWireFeedParser {
         channel.setModules(allFeedModules);
         channel.setItems(parseItems(rssRoot));
 
-        List foreignMarkup = 
+        List<Element> foreignMarkup = 
             extractForeignMarkup(eChannel, channel, getRSSNamespace());
         if (foreignMarkup.size() > 0) {
             channel.setForeignMarkup(foreignMarkup);
@@ -191,7 +192,7 @@ public class RSS090Parser extends BaseWireFeedParser {
      * And RSS0.91, RSS0.02, RSS0.93, RSS0.94 and RSS2.0 have the item elements under the 'channel' element.
      * <p/>
      */
-    protected List getItems(Element rssRoot) {
+    protected List<Element> getItems(Element rssRoot) {
         return rssRoot.getChildren("item",getRSSNamespace());
     }
 
@@ -254,11 +255,11 @@ public class RSS090Parser extends BaseWireFeedParser {
      * @param rssRoot the root element of the RSS document to parse for all items information.
      * @return a list with all the parsed RSSItem beans.
      */
-    protected List parseItems(Element rssRoot)  {
-        Collection eItems = getItems(rssRoot);
+    protected List<Item> parseItems(Element rssRoot)  {
+        Collection<Element> eItems = getItems(rssRoot);
 
-        List items = new ArrayList();
-        for (Iterator i=eItems.iterator();i.hasNext();) {
+        List<Item> items = new ArrayList<Item>();
+        for (Iterator<Element> i=eItems.iterator();i.hasNext();) {
             Element eItem = (Element) i.next();
             items.add(parseItem(rssRoot,eItem));
         }
@@ -289,12 +290,12 @@ public class RSS090Parser extends BaseWireFeedParser {
         
         item.setModules(parseItemModules(eItem));
                 
-        List foreignMarkup = 
+        List<Element> foreignMarkup = 
             extractForeignMarkup(eItem, item, getRSSNamespace());
         //content:encoded elements are treated special, without a module, they have to be removed from the foreign
         //markup to avoid duplication in case of read/write. Note that this fix will break if a content module is
         //used
-        Iterator iterator = foreignMarkup.iterator();
+        Iterator<Element> iterator = foreignMarkup.iterator();
         while (iterator.hasNext()) {
             Element ie = (Element)iterator.next();
             if (getContentNamespace().equals(ie.getNamespace()) && ie.getName().equals("encoded")) {

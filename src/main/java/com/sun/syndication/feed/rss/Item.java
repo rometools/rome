@@ -27,6 +27,8 @@ import java.util.Date;
 import java.util.List;
 import java.io.Serializable;
 
+import org.jdom2.Element;
+
 /**
  * Bean for items of RSS feeds.
  * <p>
@@ -54,7 +56,7 @@ public class Item implements Cloneable, Serializable, Extendable {
     private Date _pubDate;
     private Date _expirationDate;
     private List<Module> _modules;
-    private List _foreignMarkup;
+    private List<Element> _foreignMarkup;
 
     /**
      * Default constructor. All properties are set to <b>null</b>.
@@ -90,7 +92,7 @@ public class Item implements Cloneable, Serializable, Extendable {
             return false;
         }
         // can't use foreign markup in equals, due to JDOM equals impl
-        Object fm = getForeignMarkup();
+        List<Element> fm = getForeignMarkup();
         setForeignMarkup(((Item)other).getForeignMarkup());       
         boolean ret = _objBean.equals(other);
         // restore foreign markup
@@ -269,7 +271,7 @@ public class Item implements Cloneable, Serializable, Extendable {
      *         an empty list if none.
      *
      */
-    public List getCategories() {
+    public List<Category> getCategories() {
         return (_categories==null) ? (_categories=new ArrayList<Category>()) : _categories;
     }
 
@@ -423,8 +425,8 @@ public class Item implements Cloneable, Serializable, Extendable {
      * @return Opaque object to discourage use
      *
      */
-    public Object getForeignMarkup() {
-        return (_foreignMarkup==null) ? (_foreignMarkup=new ArrayList()) : _foreignMarkup;
+    public List<Element> getForeignMarkup() {
+        return (_foreignMarkup==null) ? (_foreignMarkup=new ArrayList<Element>()) : _foreignMarkup;
     }
 
     /**
@@ -433,8 +435,8 @@ public class Item implements Cloneable, Serializable, Extendable {
      * @param foreignMarkup Opaque object to discourage use
      *
      */
-    public void setForeignMarkup(Object foreignMarkup) {
-        _foreignMarkup = (List)foreignMarkup;
+    public void setForeignMarkup(List<Element> foreignMarkup) {
+        _foreignMarkup = (List<Element>)foreignMarkup;
     }
 
 }

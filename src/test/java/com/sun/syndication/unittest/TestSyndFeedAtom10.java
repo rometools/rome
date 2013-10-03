@@ -7,8 +7,9 @@ package com.sun.syndication.unittest;
 import java.util.Date;
 import java.util.List;
 
+import org.jdom2.Element;
+
 import com.sun.syndication.feed.atom.Entry;
-import com.sun.syndication.feed.rss.Item;
 import com.sun.syndication.feed.synd.SyndContent;
 import com.sun.syndication.feed.synd.SyndEnclosure;
 import com.sun.syndication.feed.synd.SyndEntry;
@@ -39,7 +40,7 @@ public class TestSyndFeedAtom10 extends TestSyndFeedAtom03 {
         assertProperty(getCachedSyndFeed().getTitleEx().getValue(),"feed.title");
         assertEquals("html", getCachedSyndFeed().getTitleEx().getType());
         
-        List altLinks = getCachedSyndFeed().getLinks();
+        List<SyndLink> altLinks = getCachedSyndFeed().getLinks();
         assertEquals(3, altLinks.size());
         
         assertEquals("http://example.com/blog", ((SyndLink)altLinks.get(0)).getHref());
@@ -62,7 +63,7 @@ public class TestSyndFeedAtom10 extends TestSyndFeedAtom03 {
     }
 
     public void testForeignMarkup() throws Exception {
-        assertEquals(1, ((List)getCachedSyndFeed().getForeignMarkup()).size());
+        assertEquals(1, ((List<Element>)getCachedSyndFeed().getForeignMarkup()).size());
     }
 
     public void testPublishedDate() throws Exception {
@@ -72,7 +73,7 @@ public class TestSyndFeedAtom10 extends TestSyndFeedAtom03 {
 
 
     protected void _testEntry(int i) throws Exception {
-        List items = getCachedSyndFeed().getEntries();
+        List<SyndEntry> items = getCachedSyndFeed().getEntries();
         SyndEntry entry = (SyndEntry) items.get(i);
 
         assertProperty(entry.getTitle(),"feed.entry["+i+"].title");
@@ -86,10 +87,10 @@ public class TestSyndFeedAtom10 extends TestSyndFeedAtom03 {
         assertEquals(entry.getPublishedDate(),d);
         assertProperty(entry.getDescription().getValue(),"feed.entry["+i+"].summary");
         assertProperty(((SyndContent)entry.getContents().get(0)).getValue(),"feed.entry["+i+"].content[0]");
-        assertEquals(1, ((List)entry.getForeignMarkup()).size());
+        assertEquals(1, ((List<Element>)entry.getForeignMarkup()).size());
   
         if (i == 0) {
-            List links = entry.getLinks();
+            List<SyndLink> links = entry.getLinks();
             assertEquals(4, links.size());
 
             assertEquals("http://example.com/blog/entry1", ((SyndLink)links.get(0)).getHref());

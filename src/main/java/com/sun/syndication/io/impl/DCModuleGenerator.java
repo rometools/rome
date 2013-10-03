@@ -50,10 +50,10 @@ public class DCModuleGenerator implements ModuleGenerator {
     private static final Namespace TAXO_NS = Namespace.getNamespace("taxo", TAXO_URI);
     private static final Namespace RDF_NS = Namespace.getNamespace("rdf", RDF_URI);
 
-    private static final Set NAMESPACES;
+    private static final Set<Namespace> NAMESPACES;
 
     static {
-        Set nss = new HashSet();
+        Set<Namespace> nss = new HashSet<Namespace>();
         nss.add(DC_NS);
         nss.add(TAXO_NS);
         nss.add(RDF_NS);
@@ -87,7 +87,7 @@ public class DCModuleGenerator implements ModuleGenerator {
      *
      * @return a set with all the URIs this module generator uses.
      */
-    public final Set getNamespaces() {
+    public final Set<Namespace> getNamespaces() {
         return NAMESPACES;
     }
 
@@ -106,7 +106,7 @@ public class DCModuleGenerator implements ModuleGenerator {
         if (dcModule.getCreator() != null) {
             element.addContent(generateSimpleElementList("creator", dcModule.getCreators()));
         }
-        List subjects = dcModule.getSubjects();
+        List<DCSubject> subjects = dcModule.getSubjects();
         for (int i = 0; i < subjects.size(); i++) {
             element.addContent(generateSubjectElement((DCSubject) subjects.get(i)));
         }
@@ -120,7 +120,7 @@ public class DCModuleGenerator implements ModuleGenerator {
             element.addContent(generateSimpleElementList("contributor", dcModule.getContributors()));
         }
         if (dcModule.getDate() != null) {
-            for (Iterator i = dcModule.getDates().iterator(); i.hasNext();) {
+            for (Iterator<Date> i = dcModule.getDates().iterator(); i.hasNext();) {
                 element.addContent(generateSimpleElement("date",
                         DateParser.formatW3CDateTime((Date) i.next())));
             }
@@ -201,9 +201,9 @@ public class DCModuleGenerator implements ModuleGenerator {
      * @param value the list of values for the elements.
      * @return a list of Elements created.
      */
-    protected final List generateSimpleElementList(String name, List value) {
-        List elements = new ArrayList();
-        for (Iterator i = value.iterator(); i.hasNext();) {
+    protected final List<Element> generateSimpleElementList(String name, List<String> value) {
+        List<Element> elements = new ArrayList<Element>();
+        for (Iterator<String> i = value.iterator(); i.hasNext();) {
             elements.add(generateSimpleElement(name, (String) i.next()));
         }
 

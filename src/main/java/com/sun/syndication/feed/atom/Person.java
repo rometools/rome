@@ -40,7 +40,7 @@ public class Person implements Cloneable,Serializable, Extendable
     private String _uri;  // since Atom 1.0 (was called url)
     private String _uriResolved; 
     private String _email;
-    private List _modules;
+    private List<Module> _modules;
 
     /**
      * Default constructor. All properties are set to <b>null</b>.
@@ -192,8 +192,8 @@ public class Person implements Cloneable,Serializable, Extendable
      *         an emtpy list if none.
      *
      */
-    public List getModules() {
-        return (_modules==null) ? (_modules=new ArrayList()) : _modules;
+    public List<Module> getModules() {
+        return (_modules==null) ? (_modules=new ArrayList<Module>()) : _modules;
     }
 
     /**
@@ -203,7 +203,7 @@ public class Person implements Cloneable,Serializable, Extendable
      *        an empty list or <b>null</b> if none.
      *
      */
-    public void setModules(List modules) {
+    public void setModules(List<Module> modules) {
         _modules = modules;
     }
 

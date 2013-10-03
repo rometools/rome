@@ -45,7 +45,7 @@ public class RSS094Parser extends RSS093Parser {
         Channel channel = (Channel) super.parseChannel(rssRoot);
         Element eChannel = rssRoot.getChild("channel",getRSSNamespace());
 
-        List eCats = eChannel.getChildren("category",getRSSNamespace());
+        List<Element> eCats = eChannel.getChildren("category",getRSSNamespace());
         channel.setCategories(parseCategories(eCats));
 
         Element eTtl = eChannel.getChild("ttl",getRSSNamespace());

@@ -105,13 +105,13 @@ public class Atom10Generator extends BaseWireFeedGenerator {
     protected void addFeed(Feed feed,Element parent) throws FeedException {
         Element eFeed = parent;
         populateFeedHeader(feed,eFeed);
-        generateForeignMarkup(eFeed, (List)feed.getForeignMarkup());
+        generateForeignMarkup(eFeed, (List<Element>)feed.getForeignMarkup());
         checkFeedHeaderConstraints(eFeed);
         generateFeedModules(feed.getModules(),eFeed);
     }
 
     protected void addEntries(Feed feed,Element parent) throws FeedException {
-        List items = feed.getEntries();
+        List<Entry> items = feed.getEntries();
         for (int i=0;i<items.size();i++) {
             addEntry((Entry)items.get(i),parent);
         }
@@ -124,7 +124,7 @@ public class Atom10Generator extends BaseWireFeedGenerator {
             eEntry.setAttribute("base", entry.getXmlBase(), Namespace.XML_NAMESPACE);
         }
         populateEntry(entry,eEntry);
-        generateForeignMarkup(eEntry, (List)entry.getForeignMarkup());
+        generateForeignMarkup(eEntry, (List<Element>)entry.getForeignMarkup());
         checkEntryConstraints(eEntry);
         generateItemModules(entry.getModules(),eEntry);
         parent.addContent(eEntry);
@@ -137,7 +137,7 @@ public class Atom10Generator extends BaseWireFeedGenerator {
             eFeed.addContent(titleElement);
         }
 
-        List links = feed.getAlternateLinks();
+        List<Link> links = feed.getAlternateLinks();
         if (links != null) for (int i = 0; i < links.size(); i++) {
             eFeed.addContent(generateLinkElement((Link)links.get(i)));
         }
@@ -146,12 +146,12 @@ public class Atom10Generator extends BaseWireFeedGenerator {
             eFeed.addContent(generateLinkElement((Link)links.get(j)));
         }
 
-        List cats = feed.getCategories();
-        if (cats != null) for (Iterator iter=cats.iterator(); iter.hasNext();) {
+        List<Category> cats = feed.getCategories();
+        if (cats != null) for (Iterator<Category> iter=cats.iterator(); iter.hasNext();) {
             eFeed.addContent(generateCategoryElement((Category)iter.next()));
         }
             
-        List authors = feed.getAuthors();
+        List<Person> authors = feed.getAuthors();
         if (authors != null && authors.size() > 0) {
             for (int i = 0; i < authors.size(); i++) {
                 Element authorElement = new Element("author", getFeedNamespace());
@@ -160,7 +160,7 @@ public class Atom10Generator extends BaseWireFeedGenerator {
             }
         }
 
-        List contributors = feed.getContributors();
+        List<Person> contributors = feed.getContributors();
         if (contributors != null && contributors.size() > 0) {
             for (int i = 0; i < contributors.size(); i++) {
                 Element contributorElement = new Element("contributor", getFeedNamespace());
@@ -208,7 +208,7 @@ public class Atom10Generator extends BaseWireFeedGenerator {
             fillContentElement(titleElement, entry.getTitleEx());
             eEntry.addContent(titleElement);
         }
-        List links = entry.getAlternateLinks();
+        List<Link> links = entry.getAlternateLinks();
         if (links != null) {
             for (int i = 0; i < links.size(); i++) {
                 eEntry.addContent(generateLinkElement((Link)links.get(i)));
@@ -221,14 +221,14 @@ public class Atom10Generator extends BaseWireFeedGenerator {
             }
         }
 
-        List cats = entry.getCategories();
+        List<Category> cats = entry.getCategories();
         if (cats != null) {
             for (int i = 0; i < cats.size(); i++) {
                 eEntry.addContent(generateCategoryElement((Category)cats.get(i)));
             }
         }
         
-        List authors = entry.getAuthors();
+        List<Person> authors = entry.getAuthors();
         if (authors != null && authors.size() > 0) {
             for (int i = 0; i < authors.size(); i++)  {
                 Element authorElement = new Element("author", getFeedNamespace());
@@ -237,7 +237,7 @@ public class Atom10Generator extends BaseWireFeedGenerator {
             }
         }
 
-        List contributors = entry.getContributors();
+        List<Person> contributors = entry.getContributors();
         if (contributors != null && contributors.size() > 0) {
             for (int i = 0; i < contributors.size(); i++) {
                 Element contributorElement = new Element("contributor", getFeedNamespace());
@@ -409,7 +409,7 @@ public class Atom10Generator extends BaseWireFeedGenerator {
                 catch (Exception ex) {
                     throw new FeedException("Invalid XML",ex);
                 }
-                List children = tmpDoc.getRootElement().removeContent();
+                List<org.jdom2.Content> children = tmpDoc.getRootElement().removeContent();
                 contentElement.addContent(children);
             } else { 
                 // must be type html, text or some other non-XML format
@@ -453,7 +453,7 @@ public class Atom10Generator extends BaseWireFeedGenerator {
         throws IllegalArgumentException, FeedException, IOException {
         
         // Build a feed containing only the entry
-        List entries = new ArrayList();
+        List<Entry> entries = new ArrayList<Entry>();
         entries.add(entry);
         Feed feed1 = new Feed();
         feed1.setFeedType("atom_1.0");

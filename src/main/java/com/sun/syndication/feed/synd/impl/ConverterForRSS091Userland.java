@@ -66,10 +66,10 @@ public class ConverterForRSS091Userland extends ConverterForRSS090 {
         String author = channel.getManagingEditor();
 
         if (author != null) {
-            List creators = ((DCModule) syndFeed.getModule(DCModule.URI)).getCreators();
+            List<String> creators = ((DCModule) syndFeed.getModule(DCModule.URI)).getCreators();
 
             if (!creators.contains(author)) {
-                Set s = new HashSet(); // using a set to remove duplicates
+                Set<String> s = new HashSet<String>(); // using a set to remove duplicates
                 s.addAll(creators); // DC creators
                 s.add(author); // feed native author
                 creators.clear();
@@ -107,7 +107,7 @@ public class ConverterForRSS091Userland extends ConverterForRSS090 {
             item.setDescription(createItemDescription(sContent));
         }
 
-        List contents = sEntry.getContents();
+        List<SyndContent> contents = sEntry.getContents();
 
         if ((contents != null) && (contents.size() > 0)) {
             SyndContent syndContent = (SyndContent) contents.get(0);
@@ -159,7 +159,7 @@ public class ConverterForRSS091Userland extends ConverterForRSS090 {
             content.setType(cont.getType());
             content.setValue(cont.getValue());
 
-            List syndContents = new ArrayList();
+            List<SyndContent> syndContents = new ArrayList<SyndContent>();
             syndContents.add(content);
             syndEntry.setContents(syndContents);
         }

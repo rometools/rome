@@ -161,7 +161,7 @@ public class Feed extends WireFeed {
      *         an empty list if none.
      */
     public List<Link> getOtherLinks() {
-        return (_otherLinks==null) ? (_otherLinks=new ArrayList()) : _otherLinks;
+        return (_otherLinks==null) ? (_otherLinks=new ArrayList<Link>()) : _otherLinks;
     }
 
     /**
@@ -346,7 +346,7 @@ public class Feed extends WireFeed {
      *        an empty list or <b>null</b> if none.
      *
      */
-    public void setEntries(List entries) {
+    public void setEntries(List<Entry> entries) {
         _entries = entries;
     }
 
@@ -390,8 +390,8 @@ public class Feed extends WireFeed {
      * @return Returns the categories.
      * @since Atom 1.0
      */
-    public List getCategories() {
-        return (_categories==null) ? (_categories=new ArrayList()) : _categories;
+    public List<Category> getCategories() {
+        return (_categories==null) ? (_categories=new ArrayList<Category>()) : _categories;
     }
     
     /**

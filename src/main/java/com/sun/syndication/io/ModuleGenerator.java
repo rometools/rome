@@ -17,7 +17,6 @@
 package com.sun.syndication.io;
 
 import com.sun.syndication.feed.module.Module;
-import com.sun.syndication.feed.WireFeed;
 import org.jdom2.Element;
 
 import java.util.Set;

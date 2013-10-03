@@ -88,7 +88,7 @@ public class RSS090Generator extends BaseWireFeedGenerator {
         addImage(channel,parent);
         addTextInput(channel,parent);
         addItems(channel,parent);
-        generateForeignMarkup(parent, (List)channel.getForeignMarkup());
+        generateForeignMarkup(parent, (List<Element>)channel.getForeignMarkup());
     }
 
     protected void addChannel(Channel channel,Element parent) throws FeedException {
@@ -204,7 +204,7 @@ public class RSS090Generator extends BaseWireFeedGenerator {
     }
 
     protected void addItems(Channel channel,Element parent) throws FeedException {
-        List items = channel.getItems();
+        List<Item> items = channel.getItems();
         for (int i=0;i<items.size();i++) {
             addItem((Item)items.get(i),parent, i);
         }
@@ -228,7 +228,7 @@ public class RSS090Generator extends BaseWireFeedGenerator {
         if (link!=null) {
             eItem.addContent(generateSimpleElement("link",link));
         }
-        generateForeignMarkup(eItem, (List)item.getForeignMarkup());
+        generateForeignMarkup(eItem, (List<Element>)item.getForeignMarkup());
     }
 
     protected Element generateSimpleElement(String name, String value) {

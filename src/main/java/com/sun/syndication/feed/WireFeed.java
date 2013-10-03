@@ -26,6 +26,8 @@ import java.util.List;
 import java.util.ArrayList;
 import java.io.Serializable;
 
+import org.jdom2.Element;
+
 /**
  * Parent class of the RSS (Channel) and Atom (Feed) feed beans.
  * <p>
@@ -44,7 +46,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
     private String _feedType;
     private String _encoding;
     private List<Module> _modules;
-    private List _foreignMarkup;
+    private List<Element> _foreignMarkup;
 
     /**
      * Default constructor, for bean cloning purposes only.
@@ -94,7 +96,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
             return false;
         }
         // can't use foreign markup in equals, due to JDOM equals impl
-        Object fm = getForeignMarkup();
+        List<Element> fm = getForeignMarkup();
         setForeignMarkup(((WireFeed)other).getForeignMarkup());        
         boolean ret = _objBean.equals(other);
         // restore foreign markup
@@ -214,8 +216,8 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      * @return Opaque object to discourage use
      *
      */
-    public Object getForeignMarkup() {
-        return (_foreignMarkup==null) ? (_foreignMarkup=new ArrayList()) : _foreignMarkup;
+    public List<Element> getForeignMarkup() {
+        return (_foreignMarkup==null) ? (_foreignMarkup=new ArrayList<Element>()) : _foreignMarkup;
     }
 
     /**
@@ -224,7 +226,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      * @param foreignMarkup Opaque object to discourage use
      *
      */
-    public void setForeignMarkup(Object foreignMarkup) {
-        _foreignMarkup = (List)foreignMarkup;
+    public void setForeignMarkup(List<Element> foreignMarkup) {
+        _foreignMarkup = (List<Element>)foreignMarkup;
     }
 }

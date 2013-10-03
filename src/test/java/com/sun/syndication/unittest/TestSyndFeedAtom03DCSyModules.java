@@ -101,7 +101,7 @@ public class TestSyndFeedAtom03DCSyModules extends TestSyndFeedAtom03 {
     }
 
     protected void _testEntryDCModule(int i) throws Exception {
-        List entries = getCachedSyndFeed().getEntries();
+        List<SyndEntry> entries = getCachedSyndFeed().getEntries();
         SyndEntry entry = (SyndEntry) entries.get(i);
         DCModule dc = (DCModule) entry.getModule(DCModule.URI);
         _testDCModule(dc,"feed.entry["+i+"].",true,i);

@@ -30,7 +30,7 @@ public class TestSyndFeedRSS093 extends TestSyndFeedRSS092 {
 
     protected void _testItem(int i) throws Exception {
         super._testItem(i);
-        List items = getCachedSyndFeed().getEntries();
+        List<SyndEntry> items = getCachedSyndFeed().getEntries();
         SyndEntry entry = (SyndEntry) items.get(i);
         Date d = DateParser.parseRFC822("Mon, 0"+(i+1)+" Jan 2001 00:00:00 GMT");
         assertEquals(entry.getPublishedDate(),d);

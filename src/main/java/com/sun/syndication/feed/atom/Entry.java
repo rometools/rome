@@ -16,17 +16,18 @@
  */
 package com.sun.syndication.feed.atom;
 
-import com.sun.syndication.feed.impl.ObjectBean;
-import com.sun.syndication.feed.module.Extendable;
-import com.sun.syndication.feed.module.Module;
-import com.sun.syndication.feed.module.impl.ModuleUtils;
-
 import java.io.Serializable;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+
+import org.jdom2.Element;
+
+import com.sun.syndication.feed.impl.ObjectBean;
+import com.sun.syndication.feed.module.Extendable;
+import com.sun.syndication.feed.module.Module;
+import com.sun.syndication.feed.module.impl.ModuleUtils;
 
 
 /**
@@ -47,7 +48,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
     private List<Category> _categories;
     private List<Content> _contents;
     private List<Person> _contributors;
-    private List<Link> _foreignMarkup;
+    private List<Element> _foreignMarkup;
     private List<Module> _modules;
     private List<Link> _otherLinks;
     private ObjectBean _objBean;
@@ -80,7 +81,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @return a list of Link elements with the entry alternate links, an empty list if none.
      */
     public List<Link> getAlternateLinks() {
-        return (_alternateLinks == null) ? (_alternateLinks = new ArrayList()) : _alternateLinks;
+        return (_alternateLinks == null) ? (_alternateLinks = new ArrayList<Link>()) : _alternateLinks;
     }
 
     /**
@@ -109,7 +110,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @param categories The categories to set.
      * @since Atom 1.0
      */
-    public void setCategories(List categories) {
+    public void setCategories(List<Category> categories) {
         _categories = categories;
     }
 
@@ -119,8 +120,8 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @return Returns the categories.
      * @since Atom 1.0
      */
-    public List getCategories() {
-        return (_categories == null) ? (_categories = new ArrayList()) : _categories;
+    public List<Category> getCategories() {
+        return (_categories == null) ? (_categories = new ArrayList<Category>()) : _categories;
     }
 
     /**
@@ -129,7 +130,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @param contents the list of Content elements with the entry contents to set,
      *        an empty list or <b>null</b> if none.
      */
-    public void setContents(List contents) {
+    public void setContents(List<Content> contents) {
         _contents = contents;
     }
 
@@ -162,7 +163,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      *
      */
     public List<Person> getContributors() {
-        return (_contributors == null) ? (_contributors = new ArrayList()) : _contributors;
+        return (_contributors == null) ? (_contributors = new ArrayList<Person>()) : _contributors;
     }
 
     /**
@@ -189,8 +190,8 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @param foreignMarkup Opaque object to discourage use
      *
      */
-    public void setForeignMarkup(Object foreignMarkup) {
-        _foreignMarkup = (List) foreignMarkup;
+    public void setForeignMarkup(List<Element> foreignMarkup) {
+        _foreignMarkup = (List<Element>) foreignMarkup;
     }
 
     /**
@@ -199,8 +200,8 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @return list of Opaque object to discourage use
      *
      */
-    public Object getForeignMarkup() {
-        return (_foreignMarkup == null) ? (_foreignMarkup = new ArrayList()) : _foreignMarkup;
+    public List<Element> getForeignMarkup() {
+        return (_foreignMarkup == null) ? (_foreignMarkup = new ArrayList<Element>()) : _foreignMarkup;
     }
 
     /**
@@ -248,7 +249,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      */
     public boolean isMediaEntry() {
         boolean mediaEntry = false;
-        List links = getOtherLinks();
+        List<Link> links = getOtherLinks();
 
         for (Iterator<Link> it = links.iterator(); it.hasNext();) {
             Link link = it.next();
@@ -298,7 +299,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      *        an empty list or <b>null</b> if none.
      *
      */
-    public void setModules(List modules) {
+    public void setModules(List<Module> modules) {
         _modules = modules;
     }
 
@@ -309,8 +310,8 @@ public class Entry implements Cloneable, Serializable, Extendable {
      *         an emtpy list if none.
      *
      */
-    public List getModules() {
-        return (_modules == null) ? (_modules = new ArrayList()) : _modules;
+    public List<Module> getModules() {
+        return (_modules == null) ? (_modules = new ArrayList<Module>()) : _modules;
     }
 
     /**
@@ -527,7 +528,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
             return false;
         }
         // can't use foreign markup in equals, due to JDOM equals impl
-        Object fm = getForeignMarkup();
+        List<Element> fm = getForeignMarkup();
         setForeignMarkup(((Entry) other).getForeignMarkup());
 
         boolean ret = _objBean.equals(other);

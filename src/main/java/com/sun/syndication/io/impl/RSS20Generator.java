@@ -56,7 +56,7 @@ public class RSS20Generator extends RSS094Generator {
             eChannel.addContent(generateSimpleElement("ttl", String.valueOf(ttl)));
         }
 
-        List categories = channel.getCategories();
+        List<Category> categories = channel.getCategories();
         for(int i = 0; i < categories.size(); i++) {
             eChannel.addContent(generateCategoryElement((Category)categories.get(i)));
         }
