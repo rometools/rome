@@ -20,8 +20,8 @@ import com.sun.syndication.feed.rss.Description;
 import com.sun.syndication.feed.rss.Item;
 import com.sun.syndication.feed.rss.Channel;
 import com.sun.syndication.io.FeedException;
-import org.jdom.Element;
-import org.jdom.Namespace;
+import org.jdom2.Element;
+import org.jdom2.Namespace;
 
 import java.util.List;
 
@@ -55,7 +55,7 @@ public class RSS10Generator extends RSS090Generator {
         if (channel.getUri() != null) {
             eChannel.setAttribute("about", channel.getUri(), getRDFNamespace());
         }
-        List items = channel.getItems();
+        List<Item> items = channel.getItems();
         if (items.size()>0) {
             Element eItems = new Element("items",getFeedNamespace());
             Element eSeq = new Element("Seq",getRDFNamespace());

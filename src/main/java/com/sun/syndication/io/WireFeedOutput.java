@@ -18,11 +18,11 @@ package com.sun.syndication.io;
 
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.io.impl.FeedGenerators;
-import org.jdom.Document;
-import org.jdom.JDOMException;
-import org.jdom.output.DOMOutputter;
-import org.jdom.output.Format;
-import org.jdom.output.XMLOutputter;
+import org.jdom2.Document;
+import org.jdom2.JDOMException;
+import org.jdom2.output.DOMOutputter;
+import org.jdom2.output.Format;
+import org.jdom2.output.XMLOutputter;
 
 import java.io.IOException;
 import java.io.Writer;

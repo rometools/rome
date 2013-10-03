@@ -52,7 +52,7 @@ public class TestSyndFeedAtom03 extends SyndFeedTest {
 
 
     protected void _testEntry(int i) throws Exception {
-        List items = getCachedSyndFeed().getEntries();
+        List<SyndEntry> items = getCachedSyndFeed().getEntries();
         SyndEntry entry = (SyndEntry) items.get(i);
         assertProperty(entry.getTitle(),"feed.entry["+i+"].title");
         assertProperty(entry.getLink(),"feed.entry["+i+"].link^href");

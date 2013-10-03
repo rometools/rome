@@ -95,7 +95,7 @@ public abstract class SyndFeedTest extends FeedTest {
 	}
 
 	public void testEntries() throws Exception {
-		List entrylist = getCachedSyndFeed().getEntries();
+		List<SyndEntry> entrylist = getCachedSyndFeed().getEntries();
 		assertEquals(2, entrylist.size());
 	}
 
@@ -228,7 +228,7 @@ public abstract class SyndFeedTest extends FeedTest {
 	  <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 	    <cloud domain="rpc.sys.com" port="80" path="/RPC2" registerProcedure="pingMe" protocol="soap"/>
 	    <ttl>60</ttl>
-	      <rating>(PICS-1.1 Òhttp://www.classify.org/safesurf/Ó l r (SS~~000 1))</rating>
+	      <rating>(PICS-1.1 ï¿½http://www.classify.org/safesurf/ï¿½ l r (SS~~000 1))</rating>
 
   <skiphours>
     <hour>0</hour>

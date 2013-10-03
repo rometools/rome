@@ -19,7 +19,7 @@ package com.sun.syndication.unittest;
 import com.sun.syndication.io.XmlReader;
 import com.sun.syndication.io.impl.XmlFixerReader;
 import junit.framework.TestCase;
-import org.jdom.input.SAXBuilder;
+import org.jdom2.input.SAXBuilder;
 
 import java.io.*;
 

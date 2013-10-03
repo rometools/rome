@@ -36,7 +36,7 @@ public class SyndPersonImpl implements Serializable, SyndPerson {
     private String _name;
     private String _uri;
     private String _email;
-    private List _modules;
+    private List<Module> _modules;
 
     /**
      * For implementations extending SyndContentImpl to be able to use the ObjectBean functionality
@@ -163,10 +163,10 @@ public class SyndPersonImpl implements Serializable, SyndPerson {
      * @return a list of ModuleImpl elements with the person modules,
      *         an empty list if none.
      */
-    public List getModules()
+    public List<Module> getModules()
     {
         if  (_modules==null) {
-            _modules=new ArrayList();
+            _modules=new ArrayList<Module>();
         }
         return _modules;
     }
@@ -178,7 +178,7 @@ public class SyndPersonImpl implements Serializable, SyndPerson {
      *        an empty list or <b>null</b> if none.
      *
      */
-    public void setModules(List modules) {
+    public void setModules(List<Module> modules) {
         _modules = modules;
     }
 

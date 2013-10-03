@@ -271,7 +271,7 @@ class SyndCategoryListFacade extends AbstractList<SyndCategory> {
     public static List<DCSubject> convertElementsSyndCategoryToSubject(List<SyndCategory> cList) {
         List<DCSubject> sList = null;
         if (cList!=null) {
-            sList = new ArrayList();
+            sList = new ArrayList<DCSubject>();
             for (int i=0;i<cList.size();i++) {
                 SyndCategoryImpl sCat = (SyndCategoryImpl) cList.get(i);
                 DCSubject subject = null;

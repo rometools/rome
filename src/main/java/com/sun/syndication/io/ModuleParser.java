@@ -17,7 +17,7 @@
 package com.sun.syndication.io;
 
 import com.sun.syndication.feed.module.Module;
-import org.jdom.Element;
+import org.jdom2.Element;
 
 /**
  * Parses module metadata from a XML node (JDOM element).

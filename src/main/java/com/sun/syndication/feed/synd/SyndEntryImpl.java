@@ -26,6 +26,8 @@ import com.sun.syndication.feed.impl.CopyFromHelper;
 import java.util.*;
 import java.io.Serializable; 
 
+import org.jdom2.Element;
+
 /**
  * Bean for entries of SyndFeedImpl feeds.
  * <p>
@@ -46,13 +48,13 @@ public class SyndEntryImpl implements Serializable,SyndEntry {
     private List<SyndPerson> _authors;
     private List<SyndPerson> _contributors;
     private SyndFeed _source;
-    private List _foreignMarkup;
+    private List<Element> _foreignMarkup;
     private Object wireEntry; // com.sun.syndication.feed.atom.Entry or com.sun.syndication.feed.rss.Item
     
     // ISSUE: some converters assume this is never null
-    private List _categories = new ArrayList(); 
+    private List<SyndCategory> _categories = new ArrayList<SyndCategory>(); 
 
-    private static final Set IGNORE_PROPERTIES = new HashSet();
+    private static final Set<String> IGNORE_PROPERTIES = new HashSet<String>();
 
     /**
      * Unmodifiable Set containing the convenience properties of this class.
@@ -60,7 +62,7 @@ public class SyndEntryImpl implements Serializable,SyndEntry {
      * Convenience properties are mapped to Modules, for cloning the convenience properties
      * can be ignored as the will be copied as part of the module cloning.
      */
-    public static final Set CONVENIENCE_PROPERTIES = Collections.unmodifiableSet(IGNORE_PROPERTIES);
+    public static final Set<String> CONVENIENCE_PROPERTIES = Collections.unmodifiableSet(IGNORE_PROPERTIES);
 
     static {
         IGNORE_PROPERTIES.add("publishedDate");
@@ -119,7 +121,7 @@ public class SyndEntryImpl implements Serializable,SyndEntry {
             return false;
         }
         // can't use foreign markup in equals, due to JDOM equals impl
-        Object fm = getForeignMarkup();
+        List<Element> fm = getForeignMarkup();
         setForeignMarkup(((SyndEntryImpl)other).getForeignMarkup());              
         boolean ret = _objBean.equals(other);
         // restore foreign markup
@@ -448,7 +450,7 @@ public class SyndEntryImpl implements Serializable,SyndEntry {
      * <p>
      * @param links The links to set.
      */
-    public void setLinks(List links) {
+    public void setLinks(List<SyndLink> links) {
         _links = links;
     }    
     
@@ -470,14 +472,14 @@ public class SyndEntryImpl implements Serializable,SyndEntry {
         _updatedDate = new Date(updatedDate.getTime());
     }
 
-    public List getAuthors() {
-        return (_authors==null) ? (_authors=new ArrayList()) : _authors;
+    public List<SyndPerson> getAuthors() {
+        return (_authors==null) ? (_authors=new ArrayList<SyndPerson>()) : _authors;
     }
 
     /* (non-Javadoc)
      * @see com.sun.syndication.feed.synd.SyndEntry#setAuthors(java.util.List)
      */
-    public void setAuthors(List authors) {
+    public void setAuthors(List<SyndPerson> authors) {
         _authors = authors;
     }
 
@@ -525,14 +527,14 @@ public class SyndEntryImpl implements Serializable,SyndEntry {
         }
     }
     
-    public List getContributors() {
-        return (_contributors==null) ? (_contributors=new ArrayList()) : _contributors;
+    public List<SyndPerson> getContributors() {
+        return (_contributors==null) ? (_contributors=new ArrayList<SyndPerson>()) : _contributors;
     }
 
     /* (non-Javadoc)
      * @see com.sun.syndication.feed.synd.SyndEntry#setContributors(java.util.List)
      */
-    public void setContributors(List contributors) {
+    public void setContributors(List<SyndPerson> contributors) {
         _contributors = contributors;
     }
     
@@ -551,8 +553,8 @@ public class SyndEntryImpl implements Serializable,SyndEntry {
      *         an empty list if none.
      *
      */
-    public Object getForeignMarkup() {
-        return (_foreignMarkup==null) ? (_foreignMarkup=new ArrayList()) : _foreignMarkup;
+    public List<Element> getForeignMarkup() {
+        return (_foreignMarkup==null) ? (_foreignMarkup=new ArrayList<Element>()) : _foreignMarkup;
     }
 
     /**
@@ -562,8 +564,8 @@ public class SyndEntryImpl implements Serializable,SyndEntry {
      *         an empty list if none.
      *
      */
-    public void setForeignMarkup(Object foreignMarkup) {
-        _foreignMarkup = (List)foreignMarkup;
+    public void setForeignMarkup(List<Element> foreignMarkup) {
+        _foreignMarkup = (List<Element>)foreignMarkup;
     }
 
 	public Object getWireEntry() {

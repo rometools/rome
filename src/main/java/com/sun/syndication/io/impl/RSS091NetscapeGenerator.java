@@ -16,9 +16,9 @@
  */
 package com.sun.syndication.io.impl;
 
-import org.jdom.DocType;
-import org.jdom.Document;
-import org.jdom.Element;
+import org.jdom2.DocType;
+import org.jdom2.Document;
+import org.jdom2.Element;
 
 /**
  * Feed Generator for RSS 0.91

@@ -1,6 +1,6 @@
 package com.sun.syndication.io;
 
-import org.jdom.JDOMException;
+import org.jdom2.JDOMException;
 import org.xml.sax.XMLReader;
 
 /*
@@ -14,7 +14,7 @@ import org.xml.sax.XMLReader;
  * Crimson is one parser which is known not to support these features.
  * 
  */
-public class SAXBuilder extends org.jdom.input.SAXBuilder {
+public class SAXBuilder extends org.jdom2.input.SAXBuilder {
 
 	public SAXBuilder(boolean _validate) {
 		super(_validate);

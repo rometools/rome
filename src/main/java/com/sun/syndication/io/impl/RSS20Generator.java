@@ -20,7 +20,7 @@ import com.sun.syndication.feed.rss.Category;
 import com.sun.syndication.feed.rss.Channel;
 import com.sun.syndication.feed.rss.Guid;
 import com.sun.syndication.feed.rss.Item;
-import org.jdom.Element;
+import org.jdom2.Element;
 
 import java.util.List;
 
@@ -56,7 +56,7 @@ public class RSS20Generator extends RSS094Generator {
             eChannel.addContent(generateSimpleElement("ttl", String.valueOf(ttl)));
         }
 
-        List categories = channel.getCategories();
+        List<Category> categories = channel.getCategories();
         for(int i = 0; i < categories.size(); i++) {
             eChannel.addContent(generateCategoryElement((Category)categories.get(i)));
         }

@@ -19,10 +19,10 @@ package com.sun.syndication.io.impl;
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.atom.*;
 import com.sun.syndication.io.FeedException;
-import org.jdom.Document;
-import org.jdom.Element;
-import org.jdom.Namespace;
-import org.jdom.output.XMLOutputter;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.Namespace;
+import org.jdom2.output.XMLOutputter;
 
 import java.util.*;
 
@@ -76,13 +76,13 @@ public class Atom03Parser extends BaseWireFeedParser {
             feed.setTitleEx(parseContent(e));
         }
 
-        List eList = eFeed.getChildren("link",getAtomNamespace());
+        List<Element> eList = eFeed.getChildren("link",getAtomNamespace());
         feed.setAlternateLinks(parseAlternateLinks(eList));
         feed.setOtherLinks(parseOtherLinks(eList));
 
         e = eFeed.getChild("author",getAtomNamespace());
         if (e!=null) {
-            List authors = new ArrayList();
+            List<Person> authors = new ArrayList<Person>();
             authors.add(parsePerson(e));
             feed.setAuthors(authors);
         }
@@ -139,7 +139,7 @@ public class Atom03Parser extends BaseWireFeedParser {
             feed.setEntries(parseEntries(eList));
         }
 
-        List foreignMarkup = 
+        List<Element> foreignMarkup = 
             extractForeignMarkup(eFeed, feed, getAtomNamespace());
         if (foreignMarkup.size() > 0) {
             feed.setForeignMarkup(foreignMarkup);
@@ -165,8 +165,8 @@ public class Atom03Parser extends BaseWireFeedParser {
     }
 
     // List(Elements) -> List(Link)
-    private List parseLinks(List eLinks,boolean alternate) {
-        List links = new ArrayList();
+    private List<Link> parseLinks(List<Element> eLinks,boolean alternate) {
+        List<Link> links = new ArrayList<Link>();
         for (int i=0;i<eLinks.size();i++) {
             Element eLink = (Element) eLinks.get(i);
             String rel = getAttributeValue(eLink, "rel");
@@ -185,12 +185,12 @@ public class Atom03Parser extends BaseWireFeedParser {
     }
 
     // List(Elements) -> List(Link)
-    private List parseAlternateLinks(List eLinks) {
+    private List<Link> parseAlternateLinks(List<Element> eLinks) {
         return parseLinks(eLinks,true);
     }
 
     // List(Elements) -> List(Link)
-    private List parseOtherLinks(List eLinks) {
+    private List<Link> parseOtherLinks(List<Element> eLinks) {
         return parseLinks(eLinks,false);
     }
 
@@ -212,8 +212,8 @@ public class Atom03Parser extends BaseWireFeedParser {
     }
 
     // List(Elements) -> List(Persons)
-    private List parsePersons(List ePersons) {
-        List persons = new ArrayList();
+    private List<Person> parsePersons(List<Element> ePersons) {
+        List<Person> persons = new ArrayList<Person>();
         for (int i=0;i<ePersons.size();i++) {
             persons.add(parsePerson((Element)ePersons.get(i)));
         }
@@ -239,10 +239,10 @@ public class Atom03Parser extends BaseWireFeedParser {
         else
         if (mode.equals(Content.XML)) {
             XMLOutputter outputter = new XMLOutputter();
-            List eContent = e.getContent();
-            Iterator i = eContent.iterator();
+            List<org.jdom2.Content> eContent = e.getContent();
+            Iterator<org.jdom2.Content> i = eContent.iterator();
             while (i.hasNext()) {
-                org.jdom.Content c = (org.jdom.Content) i.next();
+                org.jdom2.Content c = (org.jdom2.Content) i.next();
                 if (c instanceof Element) {
                     Element eC = (Element) c;
                     if (eC.getNamespace().equals(getAtomNamespace())) {
@@ -261,8 +261,8 @@ public class Atom03Parser extends BaseWireFeedParser {
     }
 
     // List(Elements) -> List(Entries)
-    private List parseEntries(List eEntries) {
-        List entries = new ArrayList();
+    private List<Entry> parseEntries(List<Element> eEntries) {
+        List<Entry> entries = new ArrayList<Entry>();
         for (int i=0;i<eEntries.size();i++) {
             entries.add(parseEntry((Element)eEntries.get(i)));
         }
@@ -277,13 +277,13 @@ public class Atom03Parser extends BaseWireFeedParser {
             entry.setTitleEx(parseContent(e));
         }
 
-        List eList = eEntry.getChildren("link",getAtomNamespace());
+        List<Element> eList = eEntry.getChildren("link",getAtomNamespace());
         entry.setAlternateLinks(parseAlternateLinks(eList));
         entry.setOtherLinks(parseOtherLinks(eList));
 
         e = eEntry.getChild("author",getAtomNamespace());
         if (e!=null) {
-            List authors = new ArrayList();
+            List<Person> authors = new ArrayList<Person>();
             authors.add(parsePerson(e));
             entry.setAuthors(authors);
         }
@@ -320,7 +320,7 @@ public class Atom03Parser extends BaseWireFeedParser {
 
         eList = eEntry.getChildren("content",getAtomNamespace());
         if (eList.size()>0) {
-            List content = new ArrayList();
+            List<Content> content = new ArrayList<Content>();
             for (int i=0;i<eList.size();i++) {
                 content.add(parseContent((Element)eList.get(i)));
             }
@@ -329,7 +329,7 @@ public class Atom03Parser extends BaseWireFeedParser {
 
         entry.setModules(parseItemModules(eEntry));
 
-        List foreignMarkup = 
+        List<Element> foreignMarkup = 
             extractForeignMarkup(eEntry, entry, getAtomNamespace());
         if (foreignMarkup.size() > 0) {
             entry.setForeignMarkup(foreignMarkup);

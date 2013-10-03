@@ -27,8 +27,8 @@ public class PropertiesLoader {
     private static final String EXTRA_PLUGIN_FILE = "rome.properties";
 
 
-    private static Map clMap =
-        new WeakHashMap();
+    private static Map<ClassLoader, PropertiesLoader> clMap =
+        new WeakHashMap<ClassLoader, PropertiesLoader>();
 
 
     /**
@@ -65,7 +65,7 @@ public class PropertiesLoader {
      *
      */
     private PropertiesLoader(String masterFileLocation,String extraFileLocation) throws IOException {
-        List propertiesList = new ArrayList();
+        List<Properties> propertiesList = new ArrayList<Properties>();
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
 
         try {
@@ -82,7 +82,7 @@ public class PropertiesLoader {
             throw ex;
         }
 
-        Enumeration urls = classLoader.getResources(extraFileLocation);
+        Enumeration<URL> urls = classLoader.getResources(extraFileLocation);
         while (urls.hasMoreElements()) {
             URL url = (URL) urls.nextElement();
             Properties p = new Properties();
@@ -115,7 +115,7 @@ public class PropertiesLoader {
      *
      */
     public String[] getTokenizedProperty(String key,String separator) {
-        List entriesList = new ArrayList();
+        List<String> entriesList = new ArrayList<String>();
         for (int i=0;i<_properties.length;i++) {
             String values = _properties[i].getProperty(key);
             if (values!=null) {
@@ -140,7 +140,7 @@ public class PropertiesLoader {
      *
      */
     public String[] getProperty(String key) {
-        List entriesList = new ArrayList();
+        List<String> entriesList = new ArrayList<String>();
         for (int i=0;i<_properties.length;i++) {
             String values = _properties[i].getProperty(key);
             if (values!=null) {

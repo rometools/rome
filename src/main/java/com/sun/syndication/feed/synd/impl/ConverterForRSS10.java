@@ -72,7 +72,7 @@ public class ConverterForRSS10 extends ConverterForRSS090 {
             SyndContent contContent = new SyndContentImpl();
             contContent.setType(cont.getType());
             contContent.setValue(cont.getValue());
-            List contents = new ArrayList();
+            List<SyndContent> contents = new ArrayList<SyndContent>();
             contents.add(contContent);
             syndEntry.setContents(contents);
         }
@@ -105,7 +105,7 @@ public class ConverterForRSS10 extends ConverterForRSS090 {
         if (desc!=null) {
             item.setDescription(createItemDescription(desc));
         }
-        List contents = sEntry.getContents();
+        List<SyndContent> contents = sEntry.getContents();
         if (contents!=null && contents.size() > 0) {
             item.setContent(createItemContent((SyndContent)contents.get(0)));
         }

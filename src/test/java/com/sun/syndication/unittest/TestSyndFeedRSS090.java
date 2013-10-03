@@ -51,7 +51,7 @@ public class TestSyndFeedRSS090 extends SyndFeedTest {
     }
 
     protected void _testItem(int i) throws Exception {
-        List items = getCachedSyndFeed().getEntries();
+        List<SyndEntry> items = getCachedSyndFeed().getEntries();
         SyndEntry entry = (SyndEntry) items.get(i);
         assertProperty(entry.getTitle(),"item["+i+"].title");
         assertProperty(entry.getLink(),"item["+i+"].link");

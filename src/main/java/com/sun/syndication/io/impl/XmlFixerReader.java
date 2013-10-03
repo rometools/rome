@@ -339,7 +339,7 @@ public class XmlFixerReader extends Reader {
         in.close();
     }
 
-    private static Map CODED_ENTITIES = new HashMap();
+    private static Map<String, String> CODED_ENTITIES = new HashMap<String, String>();
 
     static {
         // note: refer to Character entity references in HTML 4

@@ -24,6 +24,8 @@ import com.sun.syndication.feed.module.Module;
 import java.util.Date;
 import java.util.List;
 
+import org.jdom2.Element;
+
 /**
  * Bean interface for all types of feeds.
  * <p>
@@ -486,7 +488,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
      *        an empty list or <b>null</b> if none.
      *
      */
-    void setModules(List modules);
+    void setModules(List<Module> modules);
 
     /**
      * Returns foreign markup found at channel level.
@@ -494,7 +496,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
      * @return Opaque object to discourage use
      *
      */
-    public Object getForeignMarkup();
+    public List<Element> getForeignMarkup();
 
     /**
      * Sets foreign markup found at channel level.
@@ -502,7 +504,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
      * @param foreignMarkup Opaque object to discourage use
      *
      */
-    public void setForeignMarkup(Object foreignMarkup);
+    public void setForeignMarkup(List<Element> foreignMarkup);
     
     /**
      * Creates a deep clone of the object.

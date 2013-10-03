@@ -18,7 +18,7 @@ package com.sun.syndication.io;
 
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.io.FeedException;
-import org.jdom.Document;
+import org.jdom2.Document;
 
 /**
  * Generates an XML document (JDOM) out of a feed for a specific real feed type.

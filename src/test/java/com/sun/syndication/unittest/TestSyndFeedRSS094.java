@@ -41,7 +41,7 @@ public class TestSyndFeedRSS094 extends TestSyndFeedRSS093 {
     protected void _testItem(int i) throws Exception {
         super._testItem(i);
 
-        List items = getCachedSyndFeed()
+        List<SyndEntry> items = getCachedSyndFeed()
                          .getEntries();
         SyndEntry entry = (SyndEntry) items.get(i);
 

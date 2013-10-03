@@ -20,7 +20,7 @@ import com.sun.syndication.io.impl.XmlFixerReader;
 import com.sun.syndication.io.XmlReader;
 import com.sun.syndication.unittest.SyndFeedTest;
 
-import org.jdom.input.SAXBuilder;
+import org.jdom2.input.SAXBuilder;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
