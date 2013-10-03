@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>org.rometools</groupId>
     <artifactId>rome</artifactId>
+    <version>2.0.0-SNAPSHOT</version>
+    
     <name>ROME, RSS and atOM utilitiEs for Java</name>
-    <version>1.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+
     <description>All Roads Lead to ROME. ROME is a set of Atom/RSS Java utilities that make it
         easy to work in Java with most syndication formats. Today it accepts all flavors of RSS
         (0.90, 0.91, 0.92, 0.93, 0.94, 1.0 and 2.0), Atom 0.3 and Atom 1.0 feeds. Rome includes
@@ -15,10 +19,13 @@
         SyndFeed object that lets you work on with the data without bothering about the
     underlying format.
     </description>
+
     <url>http://rometools.github.io/rome/</url>
+
     <issueManagement>
         <url>https://github.com/rometools/rome/issues</url>
     </issueManagement>
+
     <ciManagement>
         <notifiers>
             <notifier>
@@ -28,7 +35,9 @@
             </notifier>
         </notifiers>
     </ciManagement>
+
     <inceptionYear>2004</inceptionYear>
+
     <mailingLists>
         <mailingList>
             <name>dev@rome.dev.java.net</name>
@@ -37,6 +46,7 @@
             <archive>https://rome.dev.java.net/servlets/SummarizeList?listName=dev</archive>
         </mailingList>
     </mailingLists>
+
     <developers>
         <developer>
             <name>Robert Cooper</name>
@@ -58,29 +68,36 @@
             <url>http://www.chanezon.com/pat/weblog/</url>
             <timezone>-9</timezone>
         </developer>
+        <developer>
+            <name>Patrick Gotthard</name>
+            <url>http://www.patrick-gotthard.de</url>
+            <timezone>+1</timezone>
+        </developer>
     </developers>
+
     <scm>
         <connection>scm:git:git@github.com:rometools/rome.git</connection>
         <developerConnection>scm:git:git@github.com:rometools/rome.git</developerConnection>
         <url>https://github.com/rometools/rome</url>
     </scm>
+
     <licenses>
         <license>
             <name>Apache 2</name>
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
         </license>
     </licenses>
+
     <organization>
         <name>ROME Project</name>
         <url>http://www.rometools.org</url>
     </organization>
-    <repositories>
-        <repository>
-            <id>rome.internal</id>
-            <name>ROME Local repository</name>
-            <url>https://rometools.jira.com/svn/ROME/repo/</url>
-        </repository>
-    </repositories>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.jdom</groupId>
@@ -94,12 +111,13 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-scm-plugin</artifactId>
-                <version>1.0</version>
+                <version>1.8.1</version>
                 <configuration>
                     <goals>install</goals>
                 </configuration>
@@ -107,11 +125,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.0.2</version>
+                <version>3.1</version>
                 <configuration>
-                    <source>1.5</source>
-                    <target>1.5</target>
-                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <source>1.6</source>
+                    <target>1.6</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -155,6 +172,7 @@
 			</plugin>
         </plugins>
     </build>
+
     <profiles>
         <profile>
             <id>release</id>
@@ -219,9 +237,7 @@
             </build>
         </profile>
     </profiles>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+
 	<reporting>
 		<plugins>
 			<plugin>
@@ -251,4 +267,5 @@
 			</plugin>
 		</plugins>
 	</reporting>
+
 </project>
