@@ -20,7 +20,6 @@ public abstract class FeedOpsTest extends FeedTest {
 
     protected FeedOpsTest(final String feedType) {
         super(feedType + ".xml");
-        System.out.println("Testing " + feedType + ".xml");
     }
 
     // 1.2a

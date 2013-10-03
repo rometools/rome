@@ -31,7 +31,6 @@ public class TestBase64 extends TestCase {
         final String s = "Hello World!";
         String encoded = Base64.encode(s);
         encoded = encoded.substring(0, 3) + "\n\r\n" + encoded.substring(3);
-        System.out.println(encoded);
         final String decoded = Base64.decode(encoded);
         assertEquals(s, decoded);
     }
