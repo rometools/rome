@@ -33,6 +33,7 @@ import com.sun.syndication.feed.module.impl.ModuleUtils;
  * 
  */
 public class SyndPersonImpl implements Serializable, SyndPerson {
+    private static final long serialVersionUID = 8523373264589239335L;
     private final ObjectBean objBean;
     private String name;
     private String uri;

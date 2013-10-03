@@ -27,6 +27,7 @@ import com.sun.syndication.feed.impl.ObjectBean;
 import com.sun.syndication.feed.module.Extendable;
 import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.feed.module.impl.ModuleUtils;
+import com.sun.syndication.feed.synd.SyndPerson;
 
 /**
  * Bean for entry elements of Atom feeds.
@@ -36,6 +37,7 @@ import com.sun.syndication.feed.module.impl.ModuleUtils;
  * @author Dave Johnson (updated for Atom 1.0)
  */
 public class Entry implements Cloneable, Serializable, Extendable {
+    private static final long serialVersionUID = 4874483180016783939L;
     private Content summary;
     private Content title;
     private Date created; // Atom 0.3 only
@@ -43,10 +45,10 @@ public class Entry implements Cloneable, Serializable, Extendable {
     private Date updated; // AKA modified
     private Feed source;
     private List<Link> alternateLinks;
-    private List<Person> authors;
+    private List<SyndPerson> authors;
     private List<Category> categories;
     private List<Content> contents;
-    private List<Person> contributors;
+    private List<SyndPerson> contributors;
     private List<Element> foreignMarkup;
     private List<Module> modules;
     private List<Link> otherLinks;
@@ -93,7 +95,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @param authors the author of the entry, <b>null</b> if none.
      * 
      */
-    public void setAuthors(final List<Person> authors) {
+    public void setAuthors(final List<SyndPerson> authors) {
         this.authors = authors;
     }
 
@@ -104,8 +106,8 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @return the entry author, <b>null</b> if none.
      * 
      */
-    public List<Person> getAuthors() {
-        return authors == null ? (authors = new ArrayList<Person>()) : authors;
+    public List<SyndPerson> getAuthors() {
+        return authors == null ? (authors = new ArrayList<SyndPerson>()) : authors;
     }
 
     /**
@@ -160,7 +162,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      *            contributors to set, an empty list or <b>null</b> if none.
      * 
      */
-    public void setContributors(final List<Person> contributors) {
+    public void setContributors(final List<SyndPerson> contributors) {
         this.contributors = contributors;
     }
 
@@ -172,8 +174,8 @@ public class Entry implements Cloneable, Serializable, Extendable {
      *         list if none.
      * 
      */
-    public List<Person> getContributors() {
-        return contributors == null ? (contributors = new ArrayList<Person>()) : contributors;
+    public List<SyndPerson> getContributors() {
+        return contributors == null ? (contributors = new ArrayList<SyndPerson>()) : contributors;
     }
 
     /**

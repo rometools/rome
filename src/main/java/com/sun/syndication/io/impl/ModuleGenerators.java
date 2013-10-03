@@ -22,14 +22,15 @@ import java.util.Map;
 import java.util.Set;
 
 import org.jdom2.Element;
+import org.jdom2.Namespace;
 
 import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.ModuleGenerator;
 
 /**
  */
-public class ModuleGenerators extends PluginManager {
-    private Set allNamespaces;
+public class ModuleGenerators extends PluginManager<ModuleGenerator> {
+    private Set<Namespace> allNamespaces;
 
     public ModuleGenerators(final String propertyKey, final BaseWireFeedGenerator parentGenerator) {
         super(propertyKey, null, parentGenerator);
@@ -44,28 +45,28 @@ public class ModuleGenerators extends PluginManager {
         return ((ModuleGenerator) obj).getNamespaceUri();
     }
 
-    public List getModuleNamespaces() {
+    public List<String> getModuleNamespaces() {
         return getKeys();
     }
 
-    public void generateModules(final List modules, final Element element) {
-        final Map generators = getPluginMap();
+    public void generateModules(final List<Module> modules, final Element element) {
+        final Map<String, ModuleGenerator> generators = getPluginMap();
         for (int i = 0; i < modules.size(); i++) {
-            final Module module = (Module) modules.get(i);
+            final Module module = modules.get(i);
             final String namespaceUri = module.getUri();
-            final ModuleGenerator generator = (ModuleGenerator) generators.get(namespaceUri);
+            final ModuleGenerator generator = generators.get(namespaceUri);
             if (generator != null) {
                 generator.generate(module, element);
             }
         }
     }
 
-    public Set getAllNamespaces() {
+    public Set<Namespace> getAllNamespaces() {
         if (allNamespaces == null) {
-            allNamespaces = new HashSet();
-            final List mUris = getModuleNamespaces();
+            allNamespaces = new HashSet<Namespace>();
+            final List<String> mUris = getModuleNamespaces();
             for (int i = 0; i < mUris.size(); i++) {
-                final ModuleGenerator mGen = getGenerator((String) mUris.get(i));
+                final ModuleGenerator mGen = getGenerator(mUris.get(i));
                 allNamespaces.addAll(mGen.getNamespaces());
             }
         }

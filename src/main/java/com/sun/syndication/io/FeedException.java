@@ -26,6 +26,8 @@ package com.sun.syndication.io;
  */
 public class FeedException extends Exception {
 
+    private static final long serialVersionUID = -8761681574235401334L;
+
     /**
      * Creates a FeedException with a message.
      * <p>

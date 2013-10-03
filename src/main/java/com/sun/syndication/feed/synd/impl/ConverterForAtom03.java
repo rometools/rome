@@ -108,7 +108,7 @@ public class ConverterForAtom03 implements Converter {
             syndFeed.setLanguage(language);
         }
 
-        final List<Person> authors = aFeed.getAuthors();
+        final List<SyndPerson> authors = aFeed.getAuthors();
         if (authors != null && authors.size() > 0) {
             syndFeed.setAuthors(createSyndPersons(authors));
         }
@@ -232,7 +232,7 @@ public class ConverterForAtom03 implements Converter {
             syndEntry.setContents(sContents);
         }
 
-        final List<Person> authors = entry.getAuthors();
+        final List<SyndPerson> authors = entry.getAuthors();
         if (authors != null && authors.size() > 0) {
             syndEntry.setAuthors(createSyndPersons(authors));
             final SyndPerson person0 = syndEntry.getAuthors().get(0);
@@ -341,8 +341,8 @@ public class ConverterForAtom03 implements Converter {
         return aFeed;
     }
 
-    protected static List<Person> createAtomPersons(final List<SyndPerson> sPersons) {
-        final List<Person> persons = new ArrayList<Person>();
+    protected static List<SyndPerson> createAtomPersons(final List<SyndPerson> sPersons) {
+        final List<SyndPerson> persons = new ArrayList<SyndPerson>();
         for (final SyndPerson syndPerson : sPersons) {
             final SyndPerson sPerson = syndPerson;
             final Person person = new Person();
@@ -355,15 +355,14 @@ public class ConverterForAtom03 implements Converter {
         return persons;
     }
 
-    protected static List<SyndPerson> createSyndPersons(final List<Person> aPersons) {
+    protected static List<SyndPerson> createSyndPersons(final List<SyndPerson> aPersons) {
         final List<SyndPerson> persons = new ArrayList<SyndPerson>();
-        for (final Person person2 : aPersons) {
-            final Person aPerson = person2;
+        for (final SyndPerson person2 : aPersons) {
             final SyndPerson person = new SyndPersonImpl();
-            person.setName(aPerson.getName());
-            person.setUri(aPerson.getUri());
-            person.setEmail(aPerson.getEmail());
-            person.setModules(aPerson.getModules());
+            person.setName(person2.getName());
+            person.setUri(person2.getUri());
+            person.setEmail(person2.getEmail());
+            person.setModules(person2.getModules());
             persons.add(person);
         }
         return persons;
@@ -467,7 +466,7 @@ public class ConverterForAtom03 implements Converter {
         } else if (sEntry.getAuthor() != null) {
             final Person person = new Person();
             person.setName(sEntry.getAuthor());
-            final List<Person> authors = new ArrayList<Person>();
+            final List<SyndPerson> authors = new ArrayList<SyndPerson>();
             authors.add(person);
             aEntry.setAuthors(authors);
         }

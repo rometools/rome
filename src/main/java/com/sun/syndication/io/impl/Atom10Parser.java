@@ -41,6 +41,7 @@ import com.sun.syndication.feed.atom.Feed;
 import com.sun.syndication.feed.atom.Generator;
 import com.sun.syndication.feed.atom.Link;
 import com.sun.syndication.feed.atom.Person;
+import com.sun.syndication.feed.synd.SyndPerson;
 import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.WireFeedInput;
 import com.sun.syndication.io.WireFeedOutput;
@@ -293,8 +294,8 @@ public class Atom10Parser extends BaseWireFeedParser {
     }
 
     // List(Elements) -> List(Persons)
-    private List<Person> parsePersons(final String baseURI, final List<Element> ePersons) {
-        final List<Person> persons = new ArrayList<Person>();
+    private List<SyndPerson> parsePersons(final String baseURI, final List<Element> ePersons) {
+        final List<SyndPerson> persons = new ArrayList<SyndPerson>();
         for (int i = 0; i < ePersons.size(); i++) {
             persons.add(parsePerson(baseURI, ePersons.get(i)));
         }
@@ -594,7 +595,6 @@ public class Atom10Parser extends BaseWireFeedParser {
         base = stripTrailingSlash(base);
         append = stripStartingSlash(append);
         if (append.startsWith("..")) {
-            final String ret = null;
             final String[] parts = append.split("/");
             for (final String part : parts) {
                 if ("..".equals(part)) {

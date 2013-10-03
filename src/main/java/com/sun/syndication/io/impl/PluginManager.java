@@ -34,11 +34,11 @@ import com.sun.syndication.io.WireFeedParser;
  * @author Alejandro Abdelnur
  * 
  */
-public abstract class PluginManager {
+public abstract class PluginManager<T> {
     private final String[] propertyValues;
-    private Map pluginsMap;
-    private List pluginsList;
-    private final List keys;
+    private Map<String, T> pluginsMap;
+    private List<T> pluginsList;
+    private final List<String> keys;
     private final WireFeedParser parentParser;
     private final WireFeedGenerator parentGenerator;
 
@@ -60,39 +60,39 @@ public abstract class PluginManager {
         loadPlugins();
         pluginsMap = Collections.unmodifiableMap(pluginsMap);
         pluginsList = Collections.unmodifiableList(pluginsList);
-        keys = Collections.unmodifiableList(new ArrayList(pluginsMap.keySet()));
+        keys = Collections.unmodifiableList(new ArrayList<String>(pluginsMap.keySet()));
     }
 
     protected abstract String getKey(Object obj);
 
-    protected List getKeys() {
+    protected List<String> getKeys() {
         return keys;
     }
 
-    protected List getPlugins() {
+    protected List<T> getPlugins() {
         return pluginsList;
     }
 
-    protected Map getPluginMap() {
+    protected Map<String, T> getPluginMap() {
         return pluginsMap;
     }
 
-    protected Object getPlugin(final String key) {
+    protected T getPlugin(final String key) {
         return pluginsMap.get(key);
     }
 
     // PRIVATE - LOADER PART
 
     private void loadPlugins() {
-        final List finalPluginsList = new ArrayList();
-        pluginsList = new ArrayList();
-        pluginsMap = new HashMap();
+        final List<T> finalPluginsList = new ArrayList<T>();
+        pluginsList = new ArrayList<T>();
+        pluginsMap = new HashMap<String, T>();
         String className = null;
         try {
-            final Class[] classes = getClasses();
-            for (final Class classe : classes) {
+            final Class<T>[] classes = getClasses();
+            for (final Class<T> classe : classes) {
                 className = classe.getName();
-                final Object plugin = classe.newInstance();
+                final T plugin = classe.newInstance();
                 if (plugin instanceof DelegatingModuleParser) {
                     ((DelegatingModuleParser) plugin).setFeedParser(parentParser);
                 }
@@ -105,7 +105,7 @@ public abstract class PluginManager {
                                          // definition
                 // in the rome.properties files
             }
-            Iterator i = pluginsMap.values().iterator();
+            Iterator<T> i = pluginsMap.values().iterator();
             while (i.hasNext()) {
                 finalPluginsList.add(i.next()); // to remove overridden plugin
                                                 // impls
@@ -140,15 +140,17 @@ public abstract class PluginManager {
      *             failure is ON.
      * 
      */
-    private Class[] getClasses() throws ClassNotFoundException {
+    private Class<T>[] getClasses() throws ClassNotFoundException {
         final ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-        final List classes = new ArrayList();
+        final List<Class<T>> classes = new ArrayList<Class<T>>();
         final boolean useLoadClass = Boolean.valueOf(System.getProperty("rome.pluginmanager.useloadclass", "false")).booleanValue();
         for (final String _propertyValue : propertyValues) {
-            final Class mClass = useLoadClass ? classLoader.loadClass(_propertyValue) : Class.forName(_propertyValue, true, classLoader);
+            @SuppressWarnings("unchecked")
+            final Class<T> mClass = (Class<T>) (useLoadClass ? classLoader.loadClass(_propertyValue) : Class.forName(_propertyValue, true, classLoader));
             classes.add(mClass);
         }
-        final Class[] array = new Class[classes.size()];
+        @SuppressWarnings("unchecked")
+        final Class<T>[] array = (Class<T>[]) new Class[classes.size()];
         classes.toArray(array);
         return array;
     }

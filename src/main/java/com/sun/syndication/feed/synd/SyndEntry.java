@@ -32,7 +32,7 @@ import com.sun.syndication.feed.module.Module;
  * @author Alejandro Abdelnur
  * 
  */
-public interface SyndEntry extends Cloneable, CopyFrom, Extendable {
+public interface SyndEntry extends Cloneable, CopyFrom<SyndEntry>, Extendable {
 
     /**
      * Returns the entry URI.

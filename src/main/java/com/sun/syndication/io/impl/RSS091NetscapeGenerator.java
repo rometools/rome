@@ -28,7 +28,6 @@ import org.jdom2.Element;
  * 
  */
 public class RSS091NetscapeGenerator extends RSS091UserlandGenerator {
-    private String version;
 
     public RSS091NetscapeGenerator() {
         this("rss_0.91N", "0.91");

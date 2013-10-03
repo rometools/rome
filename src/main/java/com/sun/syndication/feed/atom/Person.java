@@ -24,6 +24,7 @@ import com.sun.syndication.feed.impl.ObjectBean;
 import com.sun.syndication.feed.module.Extendable;
 import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.feed.module.impl.ModuleUtils;
+import com.sun.syndication.feed.synd.SyndPerson;
 
 /**
  * Bean for person elements of Atom feeds.
@@ -32,7 +33,9 @@ import com.sun.syndication.feed.module.impl.ModuleUtils;
  * @author Alejandro Abdelnur
  * @author Dave Johnson (updated for Atom 1.0)
  */
-public class Person implements Cloneable, Serializable, Extendable {
+public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
+
+    private static final long serialVersionUID = 8853656713347735541L;
 
     private final ObjectBean objBean;
 

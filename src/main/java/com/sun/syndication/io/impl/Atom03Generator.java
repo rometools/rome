@@ -31,7 +31,7 @@ import com.sun.syndication.feed.atom.Entry;
 import com.sun.syndication.feed.atom.Feed;
 import com.sun.syndication.feed.atom.Generator;
 import com.sun.syndication.feed.atom.Link;
-import com.sun.syndication.feed.atom.Person;
+import com.sun.syndication.feed.synd.SyndPerson;
 import com.sun.syndication.io.FeedException;
 
 /**
@@ -138,7 +138,7 @@ public class Atom03Generator extends BaseWireFeedGenerator {
             eFeed.addContent(authorElement);
         }
 
-        final List<Person> contributors = feed.getContributors();
+        final List<SyndPerson> contributors = feed.getContributors();
         for (int i = 0; i < contributors.size(); i++) {
             final Element contributorElement = new Element("contributor", getFeedNamespace());
             fillPersonElement(contributorElement, contributors.get(i));
@@ -198,7 +198,7 @@ public class Atom03Generator extends BaseWireFeedGenerator {
             eEntry.addContent(authorElement);
         }
 
-        final List<Person> contributors = entry.getContributors();
+        final List<SyndPerson> contributors = entry.getContributors();
         for (int i = 0; i < contributors.size(); i++) {
             final Element contributorElement = new Element("contributor", getFeedNamespace());
             fillPersonElement(contributorElement, contributors.get(i));
@@ -271,12 +271,12 @@ public class Atom03Generator extends BaseWireFeedGenerator {
         return linkElement;
     }
 
-    protected void fillPersonElement(final Element element, final Person person) {
+    protected void fillPersonElement(final Element element, final SyndPerson person) {
         if (person.getName() != null) {
             element.addContent(generateSimpleElement("name", person.getName()));
         }
-        if (person.getUrl() != null) {
-            element.addContent(generateSimpleElement("url", person.getUrl()));
+        if (person.getUri() != null) {
+            element.addContent(generateSimpleElement("url", person.getUri()));
         }
 
         if (person.getEmail() != null) {

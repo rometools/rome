@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 /**
@@ -41,12 +42,12 @@ import java.util.Set;
  * 
  */
 public class CloneableBean implements Serializable, Cloneable {
-
-    private static final Class[] NO_PARAMS_DEF = new Class[0];
+    private static final long serialVersionUID = -6520053043831187823L;
+    private static final Class<?>[] NO_PARAMS_DEF = new Class[0];
     private static final Object[] NO_PARAMS = new Object[0];
 
     private final Object obj;
-    private Set ignoreProperties;
+    private Set<String> ignoreProperties;
 
     /**
      * Default constructor.
@@ -103,9 +104,9 @@ public class CloneableBean implements Serializable, Cloneable {
      * @param ignoreProperties properties to ignore when cloning.
      * 
      */
-    public CloneableBean(final Object obj, final Set ignoreProperties) {
+    public CloneableBean(final Object obj, final Set<String> ignoreProperties) {
         this.obj = obj;
-        this.ignoreProperties = ignoreProperties != null ? ignoreProperties : Collections.EMPTY_SET;
+        this.ignoreProperties = ignoreProperties != null ? ignoreProperties : Collections.<String>emptySet();
     }
 
     /**
@@ -191,21 +192,22 @@ public class CloneableBean implements Serializable, Cloneable {
         return clonedBean;
     }
 
-    private Object doClone(Object value) throws Exception {
+    @SuppressWarnings("unchecked")
+    private <T extends Object> T doClone(T value) throws Exception {
         if (value != null) {
-            final Class vClass = value.getClass();
+            final Class<?> vClass = value.getClass();
             if (vClass.isArray()) {
-                value = cloneArray(value);
+                value = (T) cloneArray((T[]) value);
             } else if (value instanceof Collection) {
-                value = cloneCollection((Collection) value);
+                value = (T) cloneCollection((Collection<Object>) value);
             } else if (value instanceof Map) {
-                value = cloneMap((Map) value);
+                value = (T) cloneMap((Map<Object, Object>) value);
             } else if (isBasicType(vClass)) {
                 // NOTHING SPECIAL TO DO HERE, THEY ARE INMUTABLE
             } else if (value instanceof Cloneable) {
                 final Method cloneMethod = vClass.getMethod("clone", NO_PARAMS_DEF);
                 if (Modifier.isPublic(cloneMethod.getModifiers())) {
-                    value = cloneMethod.invoke(value, NO_PARAMS);
+                    value = (T) cloneMethod.invoke(value, NO_PARAMS);
                 } else {
                     throw new CloneNotSupportedException("Cannot clone a " + value.getClass() + " object, clone() is not public");
                 }
@@ -216,42 +218,41 @@ public class CloneableBean implements Serializable, Cloneable {
         return value;
     }
 
-    private Object cloneArray(final Object array) throws Exception {
-        final Class elementClass = array.getClass().getComponentType();
+    private <T> T[] cloneArray(final T[] array) throws Exception {
+        final Class<?> elementClass = array.getClass().getComponentType();
         final int length = Array.getLength(array);
-        final Object newArray = Array.newInstance(elementClass, length);
+        @SuppressWarnings("unchecked")
+        final T[] newArray = (T[]) Array.newInstance(elementClass, length);
         for (int i = 0; i < length; i++) {
-            final Object element = doClone(Array.get(array, i));
-            Array.set(newArray, i, element);
+            Array.set(newArray, i, doClone(Array.get(array, i)));
         }
         return newArray;
     }
 
-    private Object cloneCollection(final Collection collection) throws Exception {
-        final Class mClass = collection.getClass();
-        final Collection newColl = (Collection) mClass.newInstance();
-        final Iterator i = collection.iterator();
+    private <T> Collection<T> cloneCollection(final Collection<T> collection) throws Exception {
+        @SuppressWarnings("unchecked")
+        final Class<Collection<T>> mClass = (Class<Collection<T>>) collection.getClass();
+        final Collection<T> newColl = (Collection<T>) mClass.newInstance();
+        final Iterator<T> i = collection.iterator();
         while (i.hasNext()) {
-            final Object element = doClone(i.next());
-            newColl.add(element);
+            newColl.add(doClone(i.next()));
         }
         return newColl;
     }
 
-    private Object cloneMap(final Map map) throws Exception {
-        final Class mClass = map.getClass();
-        final Map newMap = (Map) mClass.newInstance();
-        final Iterator entries = map.entrySet().iterator();
+    private <S, T> Map<S, T> cloneMap(final Map<S, T> map) throws Exception {
+        @SuppressWarnings("unchecked")
+        final Class<Map<S, T>> mClass = (Class<Map<S, T>>) map.getClass();
+        final Map<S, T> newMap = (Map<S, T>) mClass.newInstance();
+        final Iterator<Entry<S, T>> entries = map.entrySet().iterator();
         while (entries.hasNext()) {
-            final Map.Entry entry = (Map.Entry) entries.next();
-            final Object key = doClone(entry.getKey());
-            final Object value = doClone(entry.getValue());
-            newMap.put(key, value);
+            final Map.Entry<S, T> entry = (Map.Entry<S, T>) entries.next();
+            newMap.put(doClone(entry.getKey()), doClone(entry.getValue()));
         }
         return newMap;
     }
 
-    private static final Set BASIC_TYPES = new HashSet();
+    private static final Set<Class<?>> BASIC_TYPES = new HashSet<Class<?>>();
 
     static {
         BASIC_TYPES.add(Boolean.class);
@@ -265,7 +266,7 @@ public class CloneableBean implements Serializable, Cloneable {
         BASIC_TYPES.add(String.class);
     }
 
-    private static final Map CONSTRUCTOR_BASIC_TYPES = new HashMap();
+    private static final Map<Class<?>, Class<?>[]> CONSTRUCTOR_BASIC_TYPES = new HashMap<Class<?>, Class<?>[]>();
 
     static {
         CONSTRUCTOR_BASIC_TYPES.put(Boolean.class, new Class[] { Boolean.TYPE });
@@ -279,7 +280,7 @@ public class CloneableBean implements Serializable, Cloneable {
         CONSTRUCTOR_BASIC_TYPES.put(String.class, new Class[] { String.class });
     }
 
-    private boolean isBasicType(final Class vClass) {
+    private boolean isBasicType(final Class<?> vClass) {
         return BASIC_TYPES.contains(vClass);
     }
 

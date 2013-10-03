@@ -39,6 +39,7 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * 
  */
 public class DCModuleImpl extends ModuleImpl implements DCModule {
+    private static final long serialVersionUID = -6502372914221178645L;
     private final ObjectBean objBean;
     private List<String> title;
     private List<String> creator;
@@ -940,19 +941,19 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
     }
 
     @Override
-    public final Class<? extends CopyFrom> getInterface() {
+    public final Class<DCModule> getInterface() {
         return DCModule.class;
     }
 
     @Override
-    public final void copyFrom(final CopyFrom obj) {
+    public final void copyFrom(final CopyFrom<?> obj) {
         COPY_FROM_HELPER.copy(this, obj);
     }
 
     private static final CopyFromHelper COPY_FROM_HELPER;
 
     static {
-        final Map basePropInterfaceMap = new HashMap();
+        final Map<String, Class<?>> basePropInterfaceMap = new HashMap<String, Class<?>>();
         basePropInterfaceMap.put("titles", String.class);
         basePropInterfaceMap.put("creators", String.class);
         basePropInterfaceMap.put("subjects", DCSubject.class);
@@ -969,7 +970,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
         basePropInterfaceMap.put("coverages", String.class);
         basePropInterfaceMap.put("rightsList", String.class);
 
-        final Map basePropClassImplMap = new HashMap();
+        final Map<Class<? extends CopyFrom<?>>, Class<?>> basePropClassImplMap = new HashMap<Class<? extends CopyFrom<?>>, Class<?>>();
         basePropClassImplMap.put(DCSubject.class, DCSubjectImpl.class);
 
         COPY_FROM_HELPER = new CopyFromHelper(DCModule.class, basePropInterfaceMap, basePropClassImplMap);

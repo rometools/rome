@@ -13,6 +13,7 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * @author Alejandro Abdelnur
  */
 public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
+    private static final long serialVersionUID = -5813049622142257411L;
     private final ObjectBean objBean;
     private String url;
     private String type;
@@ -148,24 +149,24 @@ public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
     }
 
     @Override
-    public Class<? extends CopyFrom> getInterface() {
+    public Class<SyndEnclosure> getInterface() {
         return SyndEnclosure.class;
     }
 
     @Override
-    public void copyFrom(final CopyFrom obj) {
+    public void copyFrom(final CopyFrom<?> obj) {
         COPY_FROM_HELPER.copy(this, obj);
     }
 
     private static final CopyFromHelper COPY_FROM_HELPER;
 
     static {
-        final Map basePropInterfaceMap = new HashMap();
+        final Map<String, Class<?>> basePropInterfaceMap = new HashMap<String, Class<?>>();
         basePropInterfaceMap.put("url", String.class);
         basePropInterfaceMap.put("type", String.class);
         basePropInterfaceMap.put("length", Long.TYPE);
 
-        final Map basePropClassImplMap = Collections.EMPTY_MAP;
+        final Map<Class<? extends CopyFrom<?>>, Class<?>> basePropClassImplMap = Collections.<Class<? extends CopyFrom<?>>, Class<?>>emptyMap();
 
         COPY_FROM_HELPER = new CopyFromHelper(SyndEnclosure.class, basePropInterfaceMap, basePropClassImplMap);
     }

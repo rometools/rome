@@ -18,6 +18,7 @@ import java.io.InputStream;
  * 
  */
 public class XmlReaderException extends IOException {
+    private static final long serialVersionUID = 622706428081721579L;
     private final String bomEncoding;
     private final String xmlGuessEncoding;
     private final String xmlEncoding;

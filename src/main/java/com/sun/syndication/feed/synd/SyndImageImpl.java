@@ -33,6 +33,7 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * 
  */
 public class SyndImageImpl implements Serializable, SyndImage {
+    private static final long serialVersionUID = 5078981553559513247L;
     private final ObjectBean objBean;
     private String title;
     private String url;
@@ -199,25 +200,25 @@ public class SyndImageImpl implements Serializable, SyndImage {
     }
 
     @Override
-    public Class getInterface() {
+    public Class<SyndImage> getInterface() {
         return SyndImage.class;
     }
 
     @Override
-    public void copyFrom(final CopyFrom syndImage) {
+    public void copyFrom(final CopyFrom<?> syndImage) {
         COPY_FROM_HELPER.copy(this, syndImage);
     }
 
     private static final CopyFromHelper COPY_FROM_HELPER;
 
     static {
-        final Map basePropInterfaceMap = new HashMap();
+        final Map<String, Class<?>> basePropInterfaceMap = new HashMap<String, Class<?>>();
         basePropInterfaceMap.put("title", String.class);
         basePropInterfaceMap.put("url", String.class);
         basePropInterfaceMap.put("link", String.class);
         basePropInterfaceMap.put("description", String.class);
 
-        final Map basePropClassImplMap = Collections.EMPTY_MAP;
+        final Map<Class<? extends CopyFrom<?>>, Class<?>> basePropClassImplMap = Collections.<Class<? extends CopyFrom<?>>, Class<?>>emptyMap();
 
         COPY_FROM_HELPER = new CopyFromHelper(SyndImage.class, basePropInterfaceMap, basePropClassImplMap);
     }

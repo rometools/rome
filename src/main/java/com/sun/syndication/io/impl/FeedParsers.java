@@ -40,7 +40,7 @@ import com.sun.syndication.io.WireFeedParser;
  * @author Alejandro Abdelnur
  * 
  */
-public class FeedParsers extends PluginManager {
+public class FeedParsers extends PluginManager<WireFeedParser> {
 
     /**
      * WireFeedParser.classes= [className] ...
@@ -57,7 +57,7 @@ public class FeedParsers extends PluginManager {
         super(FEED_PARSERS_KEY);
     }
 
-    public List getSupportedFeedTypes() {
+    public List<String> getSupportedFeedTypes() {
         return getKeys();
     }
 
@@ -71,7 +71,7 @@ public class FeedParsers extends PluginManager {
      * 
      */
     public WireFeedParser getParserFor(final Document document) {
-        final List parsers = getPlugins();
+        final List<WireFeedParser> parsers = getPlugins();
         WireFeedParser parser = null;
         for (int i = 0; parser == null && i < parsers.size(); i++) {
             parser = (WireFeedParser) parsers.get(i);

@@ -36,7 +36,7 @@ import com.sun.syndication.feed.atom.Entry;
 import com.sun.syndication.feed.atom.Feed;
 import com.sun.syndication.feed.atom.Generator;
 import com.sun.syndication.feed.atom.Link;
-import com.sun.syndication.feed.atom.Person;
+import com.sun.syndication.feed.synd.SyndPerson;
 import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.WireFeedOutput;
 
@@ -157,7 +157,7 @@ public class Atom10Generator extends BaseWireFeedGenerator {
             }
         }
 
-        final List<Person> authors = feed.getAuthors();
+        final List<SyndPerson> authors = feed.getAuthors();
         if (authors != null && authors.size() > 0) {
             for (int i = 0; i < authors.size(); i++) {
                 final Element authorElement = new Element("author", getFeedNamespace());
@@ -166,7 +166,7 @@ public class Atom10Generator extends BaseWireFeedGenerator {
             }
         }
 
-        final List<Person> contributors = feed.getContributors();
+        final List<SyndPerson> contributors = feed.getContributors();
         if (contributors != null && contributors.size() > 0) {
             for (int i = 0; i < contributors.size(); i++) {
                 final Element contributorElement = new Element("contributor", getFeedNamespace());
@@ -234,7 +234,7 @@ public class Atom10Generator extends BaseWireFeedGenerator {
             }
         }
 
-        final List<Person> authors = entry.getAuthors();
+        final List<SyndPerson> authors = entry.getAuthors();
         if (authors != null && authors.size() > 0) {
             for (int i = 0; i < authors.size(); i++) {
                 final Element authorElement = new Element("author", getFeedNamespace());
@@ -243,7 +243,7 @@ public class Atom10Generator extends BaseWireFeedGenerator {
             }
         }
 
-        final List<Person> contributors = entry.getContributors();
+        final List<SyndPerson> contributors = entry.getContributors();
         if (contributors != null && contributors.size() > 0) {
             for (int i = 0; i < contributors.size(); i++) {
                 final Element contributorElement = new Element("contributor", getFeedNamespace());
@@ -349,7 +349,7 @@ public class Atom10Generator extends BaseWireFeedGenerator {
         return linkElement;
     }
 
-    protected void fillPersonElement(final Element element, final Person person) {
+    protected void fillPersonElement(final Element element, final SyndPerson person) {
         if (person.getName() != null) {
             element.addContent(generateSimpleElement("name", person.getName()));
         }

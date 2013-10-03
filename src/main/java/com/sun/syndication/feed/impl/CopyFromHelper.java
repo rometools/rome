@@ -26,6 +26,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.sun.syndication.feed.CopyFrom;
@@ -36,11 +37,11 @@ import com.sun.syndication.feed.CopyFrom;
 public class CopyFromHelper {
     private static final Object[] NO_PARAMS = new Object[0];
 
-    private final Class beanInterfaceClass;
-    private final Map baseInterfaceMap; // ENTRIES(propertyName,interface.class)
-    private final Map baseImplMap; // ENTRIES(interface.class,implementation.class)
+    private final Class<? extends CopyFrom<?>> beanInterfaceClass;
+    private final Map<String, Class<?>> baseInterfaceMap; // ENTRIES(propertyName,interface.class)
+    private final Map<Class<? extends CopyFrom<?>>, Class<?>> baseImplMap; // ENTRIES(interface.class,implementation.class)
 
-    public CopyFromHelper(final Class beanInterfaceClass, final Map basePropInterfaceMap, final Map basePropClassImplMap) {
+    public CopyFromHelper(final Class<? extends CopyFrom<?>> beanInterfaceClass, final Map<String, Class<?>> basePropInterfaceMap, final Map<Class<? extends CopyFrom<?>>, Class<?>> basePropClassImplMap) {
         this.beanInterfaceClass = beanInterfaceClass;
         baseInterfaceMap = basePropInterfaceMap;
         baseImplMap = basePropClassImplMap;
@@ -78,7 +79,7 @@ public class CopyFromHelper {
                         // copyFrom-able
                         Object value = pReadMethod.invoke(source, NO_PARAMS);
                         if (value != null) {
-                            final Class baseInterface = (Class) baseInterfaceMap.get(propertyName);
+                            final Class<?> baseInterface = baseInterfaceMap.get(propertyName);
                             value = doCopy(value, baseInterface);
                             pWriteMethod.invoke(target, new Object[] { value });
                         }
@@ -90,33 +91,34 @@ public class CopyFromHelper {
         }
     }
 
-    private CopyFrom createInstance(final Class interfaceClass) throws Exception {
+    private CopyFrom<?> createInstance(final Class<? extends CopyFrom<?>> interfaceClass) throws Exception {
         if (baseImplMap.get(interfaceClass) == null) {
             return null;
         } else {
-            return (CopyFrom) ((Class) baseImplMap.get(interfaceClass)).newInstance();
+            return (CopyFrom<?>) baseImplMap.get(interfaceClass).newInstance();
         }
     }
 
-    private Object doCopy(Object value, final Class baseInterface) throws Exception {
+    @SuppressWarnings("unchecked")
+    private Object doCopy(Object value, final Class<?> baseInterface) throws Exception {
         if (value != null) {
-            final Class vClass = value.getClass();
+            final Class<?> vClass = value.getClass();
             if (vClass.isArray()) {
                 value = doCopyArray(value, baseInterface);
             } else if (value instanceof Collection) {
-                value = doCopyCollection((Collection) value, baseInterface);
+                value = doCopyCollection((Collection<?>) value, baseInterface);
             } else if (value instanceof Map) {
-                value = doCopyMap((Map) value, baseInterface);
+                value = doCopyMap((Map<Object, Object>) value, baseInterface);
             } else if (isBasicType(vClass)) {
                 // value = value; // nothing to do here
                 if (value instanceof Date) { // because Date it is not inmutable
                     value = ((Date) value).clone();
                 }
             } else { // it goes CopyFrom
-                if (value instanceof CopyFrom) {
-                    final CopyFrom source = (CopyFrom) value;
-                    CopyFrom target = createInstance(source.getInterface());
-                    target = target == null ? (CopyFrom) value.getClass().newInstance() : target;
+                if (value instanceof CopyFrom<?>) {
+                    final CopyFrom<?> source = (CopyFrom<?>) value;
+                    CopyFrom<?> target = createInstance(source.getInterface());
+                    target = target == null ? (CopyFrom<?>) value.getClass().newInstance() : target;
                     target.copyFrom(source);
                     value = target;
                 } else {
@@ -127,8 +129,8 @@ public class CopyFromHelper {
         return value;
     }
 
-    private Object doCopyArray(final Object array, final Class baseInterface) throws Exception {
-        final Class elementClass = array.getClass().getComponentType();
+    private Object doCopyArray(final Object array, final Class<?> baseInterface) throws Exception {
+        final Class<?> elementClass = array.getClass().getComponentType();
         final int length = Array.getLength(array);
         final Object newArray = Array.newInstance(elementClass, length);
         for (int i = 0; i < length; i++) {
@@ -138,30 +140,27 @@ public class CopyFromHelper {
         return newArray;
     }
 
-    private Object doCopyCollection(final Collection collection, final Class baseInterface) throws Exception {
+    private Collection<Object> doCopyCollection(final Collection<?> collection, final Class<?> baseInterface) throws Exception {
         // expecting SETs or LISTs only, going default implementation of them
-        final Collection newColl = collection instanceof Set ? (Collection) new HashSet() : (Collection) new ArrayList();
-        final Iterator i = collection.iterator();
+        final Collection<Object> newColl = collection instanceof Set ? new HashSet<Object>() : new ArrayList<Object>();
+        final Iterator<?> i = collection.iterator();
         while (i.hasNext()) {
-            final Object element = doCopy(i.next(), baseInterface);
-            newColl.add(element);
+            newColl.add(doCopy(i.next(), baseInterface));
         }
         return newColl;
     }
 
-    private Object doCopyMap(final Map map, final Class baseInterface) throws Exception {
-        final Map newMap = new HashMap();
-        final Iterator entries = map.entrySet().iterator();
+    private Map<Object, Object> doCopyMap(final Map<Object, Object> map, final Class<?> baseInterface) throws Exception {
+        final Map<Object, Object> newMap = new HashMap<Object, Object>();
+        final Iterator<Entry<Object, Object>> entries = map.entrySet().iterator();
         while (entries.hasNext()) {
-            final Map.Entry entry = (Map.Entry) entries.next();
-            final Object key = entry.getKey(); // we are assuming string KEYS
-            final Object element = doCopy(entry.getValue(), baseInterface);
-            newMap.put(key, element);
+            final Map.Entry<Object, Object> entry = entries.next();
+            newMap.put(entry.getKey(), doCopy(entry.getValue(), baseInterface));
         }
         return newMap;
     }
 
-    private static final Set BASIC_TYPES = new HashSet();
+    private static final Set<Class<?>> BASIC_TYPES = new HashSet<Class<?>>();
 
     static {
         BASIC_TYPES.add(Boolean.class);
@@ -176,7 +175,7 @@ public class CopyFromHelper {
         BASIC_TYPES.add(Date.class);
     }
 
-    private boolean isBasicType(final Class vClass) {
+    private boolean isBasicType(final Class<?> vClass) {
         return BASIC_TYPES.contains(vClass);
     }
 

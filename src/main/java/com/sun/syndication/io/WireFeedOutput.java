@@ -46,7 +46,7 @@ import com.sun.syndication.io.impl.FeedGenerators;
  * 
  */
 public class WireFeedOutput {
-    private static Map clMap = new WeakHashMap();
+    private static Map<ClassLoader, FeedGenerators> clMap = new WeakHashMap<ClassLoader, FeedGenerators>();
 
     private static FeedGenerators getFeedGenerators() {
         synchronized (WireFeedOutput.class) {
@@ -68,7 +68,7 @@ public class WireFeedOutput {
      * @return a list of String elements with the supported output feed types.
      * 
      */
-    public static List getSupportedFeedTypes() {
+    public static List<String> getSupportedFeedTypes() {
         return getFeedGenerators().getSupportedFeedTypes();
     }
 

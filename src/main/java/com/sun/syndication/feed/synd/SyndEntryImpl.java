@@ -47,6 +47,7 @@ import com.sun.syndication.feed.synd.impl.URINormalizer;
  * 
  */
 public class SyndEntryImpl implements Serializable, SyndEntry {
+    private static final long serialVersionUID = 1944144041409866698L;
     private final ObjectBean objBean;
     private String uri;
     private String link;
@@ -94,7 +95,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      *            CloneableBean for details).
      * 
      */
-    protected SyndEntryImpl(final Class beanClass, final Set convenienceProperties) {
+    protected SyndEntryImpl(final Class<?> beanClass, final Set<String> convenienceProperties) {
         objBean = new ObjectBean(beanClass, this, convenienceProperties);
     }
 
@@ -483,19 +484,19 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
     }
 
     @Override
-    public Class getInterface() {
+    public Class<SyndEntry> getInterface() {
         return SyndEntry.class;
     }
 
     @Override
-    public void copyFrom(final CopyFrom obj) {
+    public void copyFrom(final CopyFrom<?> obj) {
         COPY_FROM_HELPER.copy(this, obj);
     }
 
     private static final CopyFromHelper COPY_FROM_HELPER;
 
     static {
-        final Map basePropInterfaceMap = new HashMap();
+        final Map<String, Class<?>> basePropInterfaceMap = new HashMap<String, Class<?>>();
         basePropInterfaceMap.put("uri", String.class);
         basePropInterfaceMap.put("title", String.class);
         basePropInterfaceMap.put("link", String.class);
@@ -505,7 +506,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
         basePropInterfaceMap.put("enclosures", SyndEnclosure.class);
         basePropInterfaceMap.put("modules", Module.class);
 
-        final Map basePropClassImplMap = new HashMap();
+        final Map<Class<? extends CopyFrom<?>>, Class<?>> basePropClassImplMap = new HashMap<Class<? extends CopyFrom<?>>, Class<?>>();
         basePropClassImplMap.put(SyndContent.class, SyndContentImpl.class);
         basePropClassImplMap.put(SyndEnclosure.class, SyndEnclosureImpl.class);
         basePropClassImplMap.put(DCModule.class, DCModuleImpl.class);

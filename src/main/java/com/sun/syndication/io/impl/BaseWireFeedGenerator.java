@@ -1,5 +1,6 @@
 package com.sun.syndication.io.impl;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -9,6 +10,7 @@ import org.jdom2.Element;
 import org.jdom2.Namespace;
 import org.jdom2.Parent;
 
+import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.WireFeedGenerator;
 
 /**
@@ -42,8 +44,8 @@ public abstract class BaseWireFeedGenerator implements WireFeedGenerator {
         feedModuleGenerators = new ModuleGenerators(type + FEED_MODULE_GENERATORS_POSFIX_KEY, this);
         itemModuleGenerators = new ModuleGenerators(type + ITEM_MODULE_GENERATORS_POSFIX_KEY, this);
         personModuleGenerators = new ModuleGenerators(type + PERSON_MODULE_GENERATORS_POSFIX_KEY, this);
-        final Set allModuleNamespaces = new HashSet();
-        Iterator i = feedModuleGenerators.getAllNamespaces().iterator();
+        final Set<Namespace> allModuleNamespaces = new HashSet<Namespace>();
+        Iterator<Namespace> i = feedModuleGenerators.getAllNamespaces().iterator();
         while (i.hasNext()) {
             allModuleNamespaces.add(i.next());
         }
@@ -70,21 +72,21 @@ public abstract class BaseWireFeedGenerator implements WireFeedGenerator {
         }
     }
 
-    protected void generateFeedModules(final List modules, final Element feed) {
+    protected void generateFeedModules(final List<Module> modules, final Element feed) {
         feedModuleGenerators.generateModules(modules, feed);
     }
 
-    public void generateItemModules(final List modules, final Element item) {
+    public void generateItemModules(final List<Module> modules, final Element item) {
         itemModuleGenerators.generateModules(modules, item);
     }
 
-    public void generatePersonModules(final List modules, final Element person) {
+    public void generatePersonModules(final List<Module> modules, final Element person) {
         personModuleGenerators.generateModules(modules, person);
     }
 
-    protected void generateForeignMarkup(final Element e, final List foreignMarkup) {
+    protected void generateForeignMarkup(final Element e, final List<Element> foreignMarkup) {
         if (foreignMarkup != null) {
-            final Iterator elems = foreignMarkup.iterator();
+            final Iterator<Element> elems = foreignMarkup.iterator();
             while (elems.hasNext()) {
                 final Element elem = (Element) elems.next();
                 final Parent parent = elem.getParent();
@@ -109,17 +111,17 @@ public abstract class BaseWireFeedGenerator implements WireFeedGenerator {
      * make sure their namespace declarations are present.
      */
     protected static void purgeUnusedNamespaceDeclarations(final Element root) {
-        final java.util.Set usedPrefixes = new java.util.HashSet();
+        final Set<String> usedPrefixes = new HashSet<String>();
         collectUsedPrefixes(root, usedPrefixes);
 
-        final List list = root.getAdditionalNamespaces();
-        final List additionalNamespaces = new java.util.ArrayList();
+        final List<Namespace> list = root.getAdditionalNamespaces();
+        final List<Namespace> additionalNamespaces = new ArrayList<Namespace>();
         additionalNamespaces.addAll(list); // the duplication will prevent a
                                            // ConcurrentModificationException
                                            // below
 
         for (int i = 0; i < additionalNamespaces.size(); i++) {
-            final Namespace ns = (Namespace) additionalNamespaces.get(i);
+            final Namespace ns = additionalNamespaces.get(i);
             final String prefix = ns.getPrefix();
             if (prefix != null && prefix.length() > 0 && !usedPrefixes.contains(prefix)) {
                 root.removeNamespaceDeclaration(ns);
@@ -127,12 +129,12 @@ public abstract class BaseWireFeedGenerator implements WireFeedGenerator {
         }
     }
 
-    private static void collectUsedPrefixes(final Element el, final java.util.Set collector) {
+    private static void collectUsedPrefixes(final Element el, final Set<String> collector) {
         final String prefix = el.getNamespacePrefix();
         if (prefix != null && prefix.length() > 0 && !collector.contains(prefix)) {
             collector.add(prefix);
         }
-        final List kids = el.getChildren();
+        final List<Element> kids = el.getChildren();
         for (int i = 0; i < kids.size(); i++) {
             collectUsedPrefixes((Element) kids.get(i), collector); // recursion
                                                                    // - worth it

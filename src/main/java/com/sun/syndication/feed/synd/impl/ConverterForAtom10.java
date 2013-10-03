@@ -114,12 +114,12 @@ public class ConverterForAtom10 implements Converter {
         // Core Atom language/author/copyright/modified elements have precedence
         // over DC equivalent info.
 
-        final List<Person> authors = aFeed.getAuthors();
+        final List<SyndPerson> authors = aFeed.getAuthors();
         if (authors != null && authors.size() > 0) {
             syndFeed.setAuthors(ConverterForAtom03.createSyndPersons(authors));
         }
 
-        final List<Person> contributors = aFeed.getContributors();
+        final List<SyndPerson> contributors = aFeed.getContributors();
         if (contributors != null && contributors.size() > 0) {
             syndFeed.setContributors(ConverterForAtom03.createSyndPersons(contributors));
         }
@@ -185,14 +185,14 @@ public class ConverterForAtom10 implements Converter {
             syndEntry.setContents(sContents);
         }
 
-        final List<Person> authors = entry.getAuthors();
+        final List<SyndPerson> authors = entry.getAuthors();
         if (authors != null && authors.size() > 0) {
             syndEntry.setAuthors(ConverterForAtom03.createSyndPersons(authors));
             final SyndPerson person0 = syndEntry.getAuthors().get(0);
             syndEntry.setAuthor(person0.getName());
         }
 
-        final List<Person> contributors = entry.getContributors();
+        final List<SyndPerson> contributors = entry.getContributors();
         if (contributors != null && contributors.size() > 0) {
             syndEntry.setContributors(ConverterForAtom03.createSyndPersons(contributors));
         }
@@ -520,13 +520,13 @@ public class ConverterForAtom10 implements Converter {
         final List<SyndContent> syndContents = sEntry.getContents();
         aEntry.setContents(createAtomContents(syndContents));
 
-        List authors = sEntry.getAuthors();
+        List<SyndPerson> authors = sEntry.getAuthors();
         if (authors != null && authors.size() > 0) {
             aEntry.setAuthors(ConverterForAtom03.createAtomPersons(authors));
         } else if (sEntry.getAuthor() != null) {
             final Person person = new Person();
             person.setName(sEntry.getAuthor());
-            authors = new ArrayList();
+            authors = new ArrayList<SyndPerson>();
             authors.add(person);
             aEntry.setAuthors(authors);
         }

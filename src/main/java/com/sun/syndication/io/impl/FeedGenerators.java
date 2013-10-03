@@ -36,7 +36,7 @@ import com.sun.syndication.io.WireFeedGenerator;
  * @author Alejandro Abdelnur
  * 
  */
-public class FeedGenerators extends PluginManager {
+public class FeedGenerators extends PluginManager<WireFeedGenerator> {
 
     /**
      * WireFeedGenerator.classes= [className] ...
@@ -49,7 +49,7 @@ public class FeedGenerators extends PluginManager {
     }
 
     public WireFeedGenerator getGenerator(final String feedType) {
-        return (WireFeedGenerator) getPlugin(feedType);
+        return getPlugin(feedType);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class FeedGenerators extends PluginManager {
         return ((WireFeedGenerator) obj).getType();
     }
 
-    public List getSupportedFeedTypes() {
+    public List<String> getSupportedFeedTypes() {
         return getKeys();
     }
 

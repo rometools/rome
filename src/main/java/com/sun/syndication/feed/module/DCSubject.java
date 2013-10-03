@@ -27,7 +27,7 @@ import com.sun.syndication.feed.CopyFrom;
  * @author Alejandro Abdelnur
  * 
  */
-public interface DCSubject extends Cloneable, CopyFrom {
+public interface DCSubject extends Cloneable, CopyFrom<DCSubject> {
     /**
      * Returns the DublinCore subject taxonomy URI.
      * <p>

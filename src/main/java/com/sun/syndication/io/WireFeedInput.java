@@ -57,11 +57,11 @@ import com.sun.syndication.io.impl.XmlFixerReader;
  */
 public class WireFeedInput {
 
-    private static Map clMap = new WeakHashMap();
+    private static Map<ClassLoader, FeedParsers> clMap = new WeakHashMap<ClassLoader, FeedParsers>();
 
     private static FeedParsers getFeedParsers() {
         synchronized (WireFeedInput.class) {
-            FeedParsers parsers = (FeedParsers) clMap.get(Thread.currentThread().getContextClassLoader());
+            FeedParsers parsers = clMap.get(Thread.currentThread().getContextClassLoader());
             if (parsers == null) {
                 parsers = new FeedParsers();
                 clMap.put(Thread.currentThread().getContextClassLoader(), parsers);
@@ -96,7 +96,7 @@ public class WireFeedInput {
      * @return a list of String elements with the supported input feed types.
      * 
      */
-    public static List getSupportedFeedTypes() {
+    public static List<String> getSupportedFeedTypes() {
         return getFeedParsers().getSupportedFeedTypes();
     }
 

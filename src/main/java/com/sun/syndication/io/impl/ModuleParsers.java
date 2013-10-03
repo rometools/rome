@@ -28,7 +28,7 @@ import com.sun.syndication.io.WireFeedParser;
 
 /**
  */
-public class ModuleParsers extends PluginManager {
+public class ModuleParsers extends PluginManager<ModuleParser> {
     public ModuleParsers(final String propertyKey, final WireFeedParser parentParser) {
         super(propertyKey, parentParser, null);
     }
@@ -38,7 +38,7 @@ public class ModuleParsers extends PluginManager {
         return ((ModuleParser) obj).getNamespaceUri();
     }
 
-    public List getModuleNamespaces() {
+    public List<String> getModuleNamespaces() {
         return getKeys();
     }
 

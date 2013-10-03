@@ -43,6 +43,7 @@ import java.util.Set;
  * 
  */
 public class ObjectBean implements Serializable, Cloneable {
+    private static final long serialVersionUID = -8784981605711980095L;
     private final EqualsBean equalsBean;
     private final ToStringBean toStringBean;
     private final CloneableBean cloneableBean;
@@ -54,7 +55,7 @@ public class ObjectBean implements Serializable, Cloneable {
      * @param beanClass the class/interface to be used for property scanning.
      * 
      */
-    public ObjectBean(final Class beanClass, final Object obj) {
+    public ObjectBean(final Class<?> beanClass, final Object obj) {
         this(beanClass, obj, null);
     }
 
@@ -74,7 +75,7 @@ public class ObjectBean implements Serializable, Cloneable {
      * @param ignoreProperties properties to ignore when cloning.
      * 
      */
-    public ObjectBean(final Class beanClass, final Object obj, final Set ignoreProperties) {
+    public ObjectBean(final Class<?> beanClass, final Object obj, final Set<String> ignoreProperties) {
         equalsBean = new EqualsBean(beanClass, obj);
         toStringBean = new ToStringBean(beanClass, obj);
         cloneableBean = new CloneableBean(obj, ignoreProperties);

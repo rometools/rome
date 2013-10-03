@@ -35,6 +35,7 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * 
  */
 public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
+    private static final long serialVersionUID = 6276396184267118968L;
     private final ObjectBean objBean;
     private String taxonomyUri;
     private String value;
@@ -155,23 +156,23 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
     }
 
     @Override
-    public Class getInterface() {
+    public Class<DCSubject> getInterface() {
         return DCSubject.class;
     }
 
     @Override
-    public void copyFrom(final CopyFrom obj) {
+    public void copyFrom(final CopyFrom<?> obj) {
         COPY_FROM_HELPER.copy(this, obj);
     }
 
     private static final CopyFromHelper COPY_FROM_HELPER;
 
     static {
-        final Map basePropInterfaceMap = new HashMap();
+        final Map<String, Class<?>> basePropInterfaceMap = new HashMap<String, Class<?>>();
         basePropInterfaceMap.put("taxonomyUri", String.class);
         basePropInterfaceMap.put("value", String.class);
 
-        final Map basePropClassImplMap = Collections.EMPTY_MAP;
+        final Map<Class<? extends CopyFrom<?>>, Class<?>> basePropClassImplMap = Collections.<Class<? extends CopyFrom<?>>, Class<?>>emptyMap();
 
         COPY_FROM_HELPER = new CopyFromHelper(DCSubject.class, basePropInterfaceMap, basePropClassImplMap);
     }

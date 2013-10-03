@@ -29,6 +29,7 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * @author Dave Johnson (updated for Atom 1.0)
  */
 public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
+    private static final long serialVersionUID = -3620141754437170078L;
 
     private final ObjectBean objBean;
 

@@ -23,6 +23,7 @@ import java.util.List;
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.feed.module.impl.ModuleUtils;
+import com.sun.syndication.feed.synd.SyndPerson;
 
 /**
  * Bean for Atom feeds.
@@ -34,11 +35,11 @@ import com.sun.syndication.feed.module.impl.ModuleUtils;
  * @author Dave Johnson (updated for Atom 1.0)
  */
 public class Feed extends WireFeed {
-
+    private static final long serialVersionUID = -9175445106675422528L;
     private String xmlBase;
     private List<Category> categories;
-    private List<Person> authors;
-    private List<Person> contributors;
+    private List<SyndPerson> authors;
+    private List<SyndPerson> contributors;
     private Generator generator;
     private String icon;
     private String id;
@@ -199,8 +200,8 @@ public class Feed extends WireFeed {
      * @return the feed author, <b>null</b> if none.
      * 
      */
-    public List<Person> getAuthors() {
-        return authors == null ? (authors = new ArrayList<Person>()) : authors;
+    public List<SyndPerson> getAuthors() {
+        return authors == null ? (authors = new ArrayList<SyndPerson>()) : authors;
     }
 
     /**
@@ -210,7 +211,7 @@ public class Feed extends WireFeed {
      * @param authors the feed author to set, <b>null</b> if none.
      * 
      */
-    public void setAuthors(final List<Person> authors) {
+    public void setAuthors(final List<SyndPerson> authors) {
         this.authors = authors;
     }
 
@@ -222,8 +223,8 @@ public class Feed extends WireFeed {
      *         list if none.
      * 
      */
-    public List<Person> getContributors() {
-        return contributors == null ? (contributors = new ArrayList<Person>()) : contributors;
+    public List<SyndPerson> getContributors() {
+        return contributors == null ? (contributors = new ArrayList<SyndPerson>()) : contributors;
     }
 
     /**
@@ -234,7 +235,7 @@ public class Feed extends WireFeed {
      *            contributors to set, an empty list or <b>null</b> if none.
      * 
      */
-    public void setContributors(final List<Person> contributors) {
+    public void setContributors(final List<SyndPerson> contributors) {
         this.contributors = contributors;
     }
 

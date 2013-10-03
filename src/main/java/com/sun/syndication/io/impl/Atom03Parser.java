@@ -31,6 +31,7 @@ import com.sun.syndication.feed.atom.Entry;
 import com.sun.syndication.feed.atom.Generator;
 import com.sun.syndication.feed.atom.Link;
 import com.sun.syndication.feed.atom.Person;
+import com.sun.syndication.feed.synd.SyndPerson;
 import com.sun.syndication.io.FeedException;
 
 /**
@@ -92,7 +93,7 @@ public class Atom03Parser extends BaseWireFeedParser {
 
         e = eFeed.getChild("author", getAtomNamespace());
         if (e != null) {
-            final List<Person> authors = new ArrayList<Person>();
+            final List<SyndPerson> authors = new ArrayList<SyndPerson>();
             authors.add(parsePerson(e));
             feed.setAuthors(authors);
         }
@@ -220,8 +221,8 @@ public class Atom03Parser extends BaseWireFeedParser {
     }
 
     // List(Elements) -> List(Persons)
-    private List<Person> parsePersons(final List<Element> ePersons) {
-        final List<Person> persons = new ArrayList<Person>();
+    private List<SyndPerson> parsePersons(final List<Element> ePersons) {
+        final List<SyndPerson> persons = new ArrayList<SyndPerson>();
         for (int i = 0; i < ePersons.size(); i++) {
             persons.add(parsePerson(ePersons.get(i)));
         }
@@ -287,7 +288,7 @@ public class Atom03Parser extends BaseWireFeedParser {
 
         e = eEntry.getChild("author", getAtomNamespace());
         if (e != null) {
-            final List<Person> authors = new ArrayList<Person>();
+            final List<SyndPerson> authors = new ArrayList<SyndPerson>();
             authors.add(parsePerson(e));
             entry.setAuthors(authors);
         }
