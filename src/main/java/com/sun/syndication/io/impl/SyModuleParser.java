@@ -20,8 +20,8 @@ import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.feed.module.SyModule;
 import com.sun.syndication.feed.module.SyModuleImpl;
 import com.sun.syndication.io.ModuleParser;
-import org.jdom.Element;
-import org.jdom.Namespace;
+import org.jdom2.Element;
+import org.jdom2.Namespace;
 
 /**
  */

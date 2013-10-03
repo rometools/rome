@@ -19,8 +19,8 @@ package com.sun.syndication.io.impl;
 import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.ModuleParser;
 import com.sun.syndication.io.WireFeedParser;
-import org.jdom.Element;
-import org.jdom.Namespace;
+import org.jdom2.Element;
+import org.jdom2.Namespace;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,9 +40,9 @@ public class ModuleParsers extends PluginManager {
         return getKeys();
     }
 
-    public List parseModules(Element root) {
-        List parsers = getPlugins();
-        List modules = null;
+    public List<Module> parseModules(Element root) {
+        List<ModuleParser> parsers = getPlugins();
+        List<Module> modules = null;
         for (int i=0;i<parsers.size();i++) {
             ModuleParser parser = (ModuleParser) parsers.get(i);
             String namespaceUri = parser.getNamespaceUri();
@@ -51,7 +51,7 @@ public class ModuleParsers extends PluginManager {
                 Module module = parser.parse(root);
                 if (module != null) {
                     if (modules == null) {
-                        modules = new ArrayList();
+                        modules = new ArrayList<Module>();
                     }
                     modules.add(module);
                 }
@@ -65,7 +65,7 @@ public class ModuleParsers extends PluginManager {
 //        boolean hasElements = namespace.equals(root.getNamespace());
 
         if (!hasElements) {
-            List children = root.getChildren();
+            List<Element> children = root.getChildren();
             for (int i=0;!hasElements && i < children.size();i++) {
                 Element child = (Element) children.get(i);
                 hasElements = namespace.equals(child.getNamespace());

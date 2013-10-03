@@ -16,8 +16,9 @@
  */
 package com.sun.syndication.io.impl;
 
+import com.sun.syndication.feed.rss.Enclosure;
 import com.sun.syndication.feed.rss.Item;
-import org.jdom.Element;
+import org.jdom2.Element;
 
 import java.util.Date;
 import java.util.List;
@@ -55,7 +56,7 @@ public class RSS093Generator extends RSS092Generator {
     }
 
     // Another one to thanks DW for
-    protected int getNumberOfEnclosures(List enclosures) {
+    protected int getNumberOfEnclosures(List<Enclosure> enclosures) {
         return enclosures.size();
     }
 

@@ -60,7 +60,7 @@ public class Channel extends WireFeed {
     private String _link;
     private String _uri;
     private Image _image;
-    private List _items;
+    private List<Item> _items;
     private TextInput _textInput;
     private String _language;
     private String _rating;
@@ -403,7 +403,7 @@ public class Channel extends WireFeed {
      *
      */
     public List<Integer> getSkipHours() {
-        return (_skipHours!=null) ? _skipHours : new ArrayList();
+        return (_skipHours!=null) ? _skipHours : new ArrayList<Integer>();
     }
 
     /**

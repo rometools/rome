@@ -18,9 +18,11 @@ package com.sun.syndication.feed.synd.impl;
 
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.module.DCModule;
+import com.sun.syndication.feed.rss.Category;
 import com.sun.syndication.feed.rss.Channel;
 import com.sun.syndication.feed.rss.Guid;
 import com.sun.syndication.feed.rss.Item;
+import com.sun.syndication.feed.synd.SyndCategory;
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.feed.synd.SyndLink;
@@ -48,12 +50,12 @@ public class ConverterForRSS094 extends ConverterForRSS093 {
     public void copyInto(WireFeed feed,SyndFeed syndFeed) {
         Channel channel = (Channel) feed;
         super.copyInto(channel,syndFeed);
-        List cats = channel.getCategories();    //c
+        List<Category> cats = channel.getCategories();    //c
         if (cats.size()>0) {
-            Set s = new HashSet();                // using a set to remove duplicates
+            Set<SyndCategory> s = new HashSet<SyndCategory>();                // using a set to remove duplicates
             s.addAll(createSyndCategories(cats)); // feed native categories (as syndcat)
             s.addAll(syndFeed.getCategories());   // DC subjects (as syndcat)
-            syndFeed.setCategories(new ArrayList(s));
+            syndFeed.setCategories(new ArrayList<SyndCategory>(s));
         }
     }
 
@@ -64,9 +66,9 @@ public class ConverterForRSS094 extends ConverterForRSS093 {
         // adding native feed author to DC creators list
         String author = item.getAuthor();
         if (author!=null) {
-            List creators = ((DCModule)syndEntry.getModule(DCModule.URI)).getCreators();
+            List<String> creators = ((DCModule)syndEntry.getModule(DCModule.URI)).getCreators();
             if (!creators.contains(author)) {
-                Set s = new HashSet(); // using a set to remove duplicates
+                Set<String> s = new HashSet<String>(); // using a set to remove duplicates
                 s.addAll(creators);    // DC creators
                 s.add(author);         // feed native author
                 creators.clear();
@@ -97,7 +99,7 @@ public class ConverterForRSS094 extends ConverterForRSS093 {
     @Override
     protected WireFeed createRealFeed(String type,SyndFeed syndFeed) {
         Channel channel = (Channel) super.createRealFeed(type,syndFeed);
-        List cats = syndFeed.getCategories();    //c
+        List<SyndCategory> cats = syndFeed.getCategories();    //c
         if (cats.size()>0) {
             channel.setCategories(createRSSCategories(cats));
         }

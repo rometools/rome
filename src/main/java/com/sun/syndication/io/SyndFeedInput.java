@@ -18,7 +18,7 @@ package com.sun.syndication.io;
 
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.feed.synd.SyndFeedImpl;
-import org.jdom.Document;
+import org.jdom2.Document;
 import org.xml.sax.InputSource;
 
 import java.io.File;

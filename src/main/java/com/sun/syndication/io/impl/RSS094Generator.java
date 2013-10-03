@@ -18,8 +18,8 @@ package com.sun.syndication.io.impl;
 
 import com.sun.syndication.feed.rss.Description;
 import com.sun.syndication.feed.rss.Item;
-import org.jdom.Attribute;
-import org.jdom.Element;
+import org.jdom2.Attribute;
+import org.jdom2.Element;
 
 /**
  * Feed Generator for RSS 0.94

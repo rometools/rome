@@ -22,10 +22,10 @@ import com.sun.syndication.feed.rss.Image;
 import com.sun.syndication.feed.rss.Item;
 import com.sun.syndication.io.FeedException;
 
-import org.jdom.Attribute;
-import org.jdom.Document;
-import org.jdom.Element;
-import org.jdom.Namespace;
+import org.jdom2.Attribute;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.Namespace;
 
 import java.util.Date;
 import java.util.List;
@@ -94,7 +94,7 @@ public class RSS091UserlandGenerator extends RSS090Generator {
         Element skipHours = eChannel.getChild("skipHours");
 
         if (skipHours != null) {
-            List hours = skipHours.getChildren();
+            List<Element> hours = skipHours.getChildren();
 
             for (int i = 0; i < hours.size(); i++) {
                 Element hour = (Element) hours.get(i);
@@ -154,7 +154,7 @@ public class RSS091UserlandGenerator extends RSS090Generator {
         return root;
     }
 
-    protected Element generateSkipDaysElement(List days) {
+    protected Element generateSkipDaysElement(List<String> days) {
         Element skipDaysElement = new Element("skipDays");
 
         for (int i = 0; i < days.size(); i++) {
@@ -164,7 +164,7 @@ public class RSS091UserlandGenerator extends RSS090Generator {
         return skipDaysElement;
     }
 
-    protected Element generateSkipHoursElement(List hours) {
+    protected Element generateSkipHoursElement(List<Integer> hours) {
         Element skipHoursElement = new Element("skipHours", getFeedNamespace());
 
         for (int i = 0; i < hours.size(); i++) {
@@ -225,13 +225,13 @@ public class RSS091UserlandGenerator extends RSS090Generator {
             eChannel.addContent(generateSimpleElement("webMaster", webMaster));
         }
 
-        List skipHours = channel.getSkipHours();
+        List<Integer> skipHours = channel.getSkipHours();
 
         if ((skipHours != null) && (skipHours.size() > 0)) {
             eChannel.addContent(generateSkipHoursElement(skipHours));
         }
 
-        List skipDays = channel.getSkipDays();
+        List<String> skipDays = channel.getSkipDays();
 
         if ((skipDays != null) && (skipDays.size() > 0)) {
             eChannel.addContent(generateSkipDaysElement(skipDays));

@@ -1,8 +1,6 @@
 
 package com.sun.syndication.unittest;
 
-import com.sun.syndication.feed.synd.SyndCategory;
-import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndEnclosure;
 
 import java.util.List;
@@ -19,9 +17,9 @@ public class TestSyndFeedRSS092Alt extends TestSyndFeedRSS092 {
         super(feedType,feedFileName);
     }
 
-    protected void _testEnclosures(List encs,String prefix) throws Exception {
-        Set s1 = new HashSet();
-        Set s2 = new HashSet();
+    protected void _testEnclosures(List<SyndEnclosure> encs,String prefix) throws Exception {
+        Set<String> s1 = new HashSet<String>();
+        Set<String> s2 = new HashSet<String>();
         for (int i=0;i<encs.size();i++) {
             SyndEnclosure enc = (SyndEnclosure) encs.get(i);
             s1.add(enc.getUrl()+" "+enc.getType()+" "+enc.getLength());

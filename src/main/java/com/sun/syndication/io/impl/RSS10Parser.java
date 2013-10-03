@@ -21,9 +21,9 @@ import com.sun.syndication.feed.rss.Channel;
 import com.sun.syndication.feed.rss.Content;
 import com.sun.syndication.feed.rss.Description;
 import com.sun.syndication.feed.rss.Item;
-import org.jdom.Document;
-import org.jdom.Element;
-import org.jdom.Namespace;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.Namespace;
 
 import java.util.List;
 
@@ -56,7 +56,7 @@ public class RSS10Parser extends RSS090Parser {
 
         Element rssRoot = document.getRootElement();
         Namespace defaultNS = rssRoot.getNamespace();
-        List additionalNSs = rssRoot.getAdditionalNamespaces();
+        List<Namespace> additionalNSs = rssRoot.getAdditionalNamespaces();
 
         ok = defaultNS!=null && defaultNS.equals(getRDFNamespace());
         if (ok) {

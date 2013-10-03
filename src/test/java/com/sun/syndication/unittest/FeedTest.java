@@ -11,8 +11,8 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.InputStream;
 
-import org.jdom.Document;
-import org.jdom.input.SAXBuilder;
+import org.jdom2.Document;
+import org.jdom2.input.SAXBuilder;
 
 /**
  * @author pat, tucu

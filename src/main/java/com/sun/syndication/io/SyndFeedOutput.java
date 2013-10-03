@@ -17,7 +17,7 @@
 package com.sun.syndication.io;
 
 import com.sun.syndication.feed.synd.SyndFeed;
-import org.jdom.Document;
+import org.jdom2.Document;
 
 import java.io.File;
 import java.io.IOException;

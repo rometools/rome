@@ -19,11 +19,11 @@ package com.sun.syndication.io.impl;
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.atom.*;
 import com.sun.syndication.io.FeedException;
-import org.jdom.Attribute;
-import org.jdom.Document;
-import org.jdom.Element;
-import org.jdom.Namespace;
-import org.jdom.input.SAXBuilder;
+import org.jdom2.Attribute;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.Namespace;
+import org.jdom2.input.SAXBuilder;
 
 import java.io.StringReader;
 import java.util.List;
@@ -90,11 +90,11 @@ public class Atom03Generator extends BaseWireFeedGenerator {
         populateFeedHeader(feed,eFeed);
         checkFeedHeaderConstraints(eFeed);
         generateFeedModules(feed.getModules(),eFeed);
-        generateForeignMarkup(eFeed, (List)feed.getForeignMarkup()); 
+        generateForeignMarkup(eFeed, (List<Element>)feed.getForeignMarkup()); 
     }
 
     protected void addEntries(Feed feed,Element parent) throws FeedException {
-        List items = feed.getEntries();
+        List<Entry> items = feed.getEntries();
         for (int i=0;i<items.size();i++) {
             addEntry((Entry)items.get(i),parent);
         }
@@ -116,7 +116,7 @@ public class Atom03Generator extends BaseWireFeedGenerator {
             eFeed.addContent(titleElement);
         }
 
-        List links = feed.getAlternateLinks();
+        List<Link> links = feed.getAlternateLinks();
         for (int i = 0; i < links.size(); i++) {
             eFeed.addContent(generateLinkElement((Link)links.get(i)));
         }
@@ -131,7 +131,7 @@ public class Atom03Generator extends BaseWireFeedGenerator {
             eFeed.addContent(authorElement);
         }
 
-        List contributors = feed.getContributors();
+        List<Person> contributors = feed.getContributors();
         for (int i = 0; i < contributors.size(); i++) {
             Element contributorElement = new Element("contributor", getFeedNamespace());
             fillPersonElement(contributorElement, (Person)contributors.get(i));
@@ -175,7 +175,7 @@ public class Atom03Generator extends BaseWireFeedGenerator {
             fillContentElement(titleElement, entry.getTitleEx());
             eEntry.addContent(titleElement);
         }
-        List links = entry.getAlternateLinks();
+        List<Link> links = entry.getAlternateLinks();
         for (int i = 0; i < links.size(); i++) {
             eEntry.addContent(generateLinkElement((Link)links.get(i)));
         }
@@ -191,7 +191,7 @@ public class Atom03Generator extends BaseWireFeedGenerator {
             eEntry.addContent(authorElement);
         }
 
-        List contributors = entry.getContributors();
+        List<Person> contributors = entry.getContributors();
         for (int i = 0; i < contributors.size(); i++) {
             Element contributorElement = new Element("contributor", getFeedNamespace());
             fillPersonElement(contributorElement, (Person)contributors.get(i));
@@ -225,14 +225,14 @@ public class Atom03Generator extends BaseWireFeedGenerator {
             eEntry.addContent(summaryElement);
         }
 
-        List contents = entry.getContents();
+        List<Content> contents = entry.getContents();
         for (int i = 0; i < contents.size(); i++) {
             Element contentElement = new Element("content", getFeedNamespace());
             fillContentElement(contentElement, (Content)contents.get(i));
             eEntry.addContent(contentElement);
         }
         
-        generateForeignMarkup(eEntry, (List)entry.getForeignMarkup());
+        generateForeignMarkup(eEntry, (List<Element>)entry.getForeignMarkup());
     }
 
     protected void checkFeedHeaderConstraints(Element eFeed) throws FeedException {
@@ -329,7 +329,7 @@ public class Atom03Generator extends BaseWireFeedGenerator {
                     throw new FeedException("Invalid XML",ex);
                 }
 
-                List children = tmpDoc.getRootElement().removeContent();
+                List<org.jdom2.Content> children = tmpDoc.getRootElement().removeContent();
                 contentElement.addContent(children);
             }
         }

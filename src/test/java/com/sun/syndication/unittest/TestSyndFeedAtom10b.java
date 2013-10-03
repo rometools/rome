@@ -4,8 +4,6 @@ import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.impl.Atom10Parser;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class TestSyndFeedAtom10b extends FeedTest {
@@ -26,9 +24,8 @@ public class TestSyndFeedAtom10b extends FeedTest {
 	}
 
 	public void testXmlBaseConformance() throws Exception {
-		List errors = new ArrayList();
 		SyndFeed feed = getSyndFeed(false);
-		List entries = feed.getEntries();
+		List<SyndEntry> entries = feed.getEntries();
 		for (int index = 0; index < entries.size(); index++) {
 			SyndEntry entry = (SyndEntry) entries.get(index);
             assertEquals(

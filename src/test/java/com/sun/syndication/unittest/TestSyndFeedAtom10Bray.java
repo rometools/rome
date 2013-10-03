@@ -4,10 +4,6 @@ import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.impl.Atom10Parser;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 public class TestSyndFeedAtom10Bray extends FeedTest {
 
     protected void setUp() throws Exception {

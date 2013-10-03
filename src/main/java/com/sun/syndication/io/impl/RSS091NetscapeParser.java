@@ -16,7 +16,7 @@
  */
 package com.sun.syndication.io.impl;
 
-import org.jdom.*;
+import org.jdom2.*;
 
 /**
  */

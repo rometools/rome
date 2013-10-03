@@ -34,7 +34,7 @@ public class TestSyndFeedRSS10 extends TestSyndFeedRSS090 {
 
     protected void _testItem(int i) throws Exception {
         super._testItem(i);
-        List items = getCachedSyndFeed().getEntries();
+        List<SyndEntry> items = getCachedSyndFeed().getEntries();
         SyndEntry entry = (SyndEntry) items.get(i);
         assertProperty(entry.getDescription().getValue(),"item["+i+"].description");
         assertProperty(((SyndContent)entry.getContents().get(0)).getValue(), "item["+i+"].content");
