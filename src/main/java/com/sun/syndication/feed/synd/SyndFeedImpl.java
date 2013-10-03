@@ -17,7 +17,6 @@
 package com.sun.syndication.feed.synd;
 
 import com.sun.syndication.feed.CopyFrom;
-import com.sun.syndication.feed.atom.Person;
 import com.sun.syndication.feed.impl.ObjectBean;
 import com.sun.syndication.feed.impl.CopyFromHelper;
 import com.sun.syndication.feed.WireFeed;
@@ -169,16 +168,15 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      *
      */
     public boolean equals(Object other) {
-        if (other == null) {
+        if (other == null || !(other instanceof SyndFeedImpl)) {
             return false;
         }
-        // can't use foreign markup in equals, due to JDOM equals impl
-        List<Element> fm = getForeignMarkup();
-        setForeignMarkup(((SyndFeedImpl)other).getForeignMarkup());       
-        boolean ret = _objBean.equals(other);
-        // restore foreign markup
-        setForeignMarkup(fm);
-        return ret;
+    	// can't use foreign markup in equals, due to JDOM equals impl
+    	List<Element> fm = getForeignMarkup();
+    	setForeignMarkup(((SyndFeedImpl)other).getForeignMarkup());       
+    	boolean ret = _objBean.equals(other);
+    	setForeignMarkup(fm); // restore foreign markup
+    	return ret;
     }
 
     /**
