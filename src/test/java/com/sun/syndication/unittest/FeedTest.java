@@ -19,19 +19,19 @@ import com.sun.syndication.io.WireFeedInput;
  * 
  */
 public abstract class FeedTest extends TestCase {
-    private final String _feedFileName;
-    private Document _jDomDoc = null;
-    private WireFeed _wireFeed = null;
-    private SyndFeed _syndFeed = null;
+    private final String feedFileName;
+    private Document jDomDoc = null;
+    private WireFeed wireFeed = null;
+    private SyndFeed syndFeed = null;
 
     private boolean preservingWireFeed = false;
 
     protected FeedTest(final String feedFileName) {
-        this._feedFileName = feedFileName;
+        this.feedFileName = feedFileName;
     }
 
     protected String getFeedFileName() {
-        return this._feedFileName;
+        return feedFileName;
     }
 
     protected Reader getFeedReader() throws Exception {
@@ -57,26 +57,26 @@ public abstract class FeedTest extends TestCase {
     }
 
     protected Document getCachedJDomDoc() throws Exception {
-        if (this._jDomDoc == null) {
-            this._jDomDoc = getJDomDoc();
+        if (jDomDoc == null) {
+            jDomDoc = getJDomDoc();
         }
-        return this._jDomDoc;
+        return jDomDoc;
     }
 
     protected WireFeed getCachedWireFeed() throws Exception {
-        if (this._wireFeed == null) {
-            this._wireFeed = getWireFeed();
+        if (wireFeed == null) {
+            wireFeed = getWireFeed();
         }
-        return this._wireFeed;
+        return wireFeed;
     }
 
     protected SyndFeed getCachedSyndFeed(final boolean preserveWireFeed) throws Exception {
 
-        if (this._syndFeed == null || this.preservingWireFeed != preserveWireFeed) {
-            this._syndFeed = getSyndFeed(preserveWireFeed);
-            this.preservingWireFeed = preserveWireFeed;
+        if (syndFeed == null || preservingWireFeed != preserveWireFeed) {
+            syndFeed = getSyndFeed(preserveWireFeed);
+            preservingWireFeed = preserveWireFeed;
         }
-        return this._syndFeed;
+        return syndFeed;
 
     }
 

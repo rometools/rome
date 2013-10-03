@@ -28,12 +28,12 @@ import com.sun.syndication.feed.impl.ObjectBean;
  */
 public class Category implements Cloneable, Serializable {
 
-    private final ObjectBean _objBean;
+    private final ObjectBean objBean;
 
-    private String _term;
-    private String _scheme;
-    private String _schemeResolved;
-    private String _label;
+    private String term;
+    private String scheme;
+    private String schemeResolved;
+    private String label;
 
     /**
      * Default constructor. All properties are set to <b>null</b>.
@@ -41,7 +41,7 @@ public class Category implements Cloneable, Serializable {
      * 
      */
     public Category() {
-        this._objBean = new ObjectBean(this.getClass(), this);
+        objBean = new ObjectBean(this.getClass(), this);
     }
 
     /**
@@ -55,7 +55,7 @@ public class Category implements Cloneable, Serializable {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return this._objBean.clone();
+        return objBean.clone();
     }
 
     /**
@@ -72,7 +72,7 @@ public class Category implements Cloneable, Serializable {
         if (!(other instanceof Category)) {
             return false;
         }
-        return this._objBean.equals(other);
+        return objBean.equals(other);
     }
 
     /**
@@ -86,7 +86,7 @@ public class Category implements Cloneable, Serializable {
      */
     @Override
     public int hashCode() {
-        return this._objBean.hashCode();
+        return objBean.hashCode();
     }
 
     /**
@@ -98,7 +98,7 @@ public class Category implements Cloneable, Serializable {
      */
     @Override
     public String toString() {
-        return this._objBean.toString();
+        return objBean.toString();
     }
 
     /**
@@ -108,7 +108,7 @@ public class Category implements Cloneable, Serializable {
      * @return Label for category.
      */
     public String getLabel() {
-        return this._label;
+        return label;
     }
 
     /**
@@ -118,7 +118,7 @@ public class Category implements Cloneable, Serializable {
      * @param label Label for category.
      */
     public void setLabel(final String label) {
-        this._label = label;
+        this.label = label;
     }
 
     /**
@@ -128,7 +128,7 @@ public class Category implements Cloneable, Serializable {
      * @return Scheme URI for category.
      */
     public String getScheme() {
-        return this._scheme;
+        return scheme;
     }
 
     /**
@@ -138,15 +138,15 @@ public class Category implements Cloneable, Serializable {
      * @param scheme Scheme URI for category.
      */
     public void setScheme(final String scheme) {
-        this._scheme = scheme;
+        this.scheme = scheme;
     }
 
     public void setSchemeResolved(final String schemeResolved) {
-        this._schemeResolved = schemeResolved;
+        this.schemeResolved = schemeResolved;
     }
 
     public String getSchemeResolved() {
-        return this._schemeResolved != null ? this._schemeResolved : this._scheme;
+        return schemeResolved != null ? schemeResolved : scheme;
     }
 
     /**
@@ -156,7 +156,7 @@ public class Category implements Cloneable, Serializable {
      * @return Term for category.
      */
     public String getTerm() {
-        return this._term;
+        return term;
     }
 
     /**
@@ -166,6 +166,6 @@ public class Category implements Cloneable, Serializable {
      * @param term Term for category.
      */
     public void setTerm(final String term) {
-        this._term = term;
+        this.term = term;
     }
 }

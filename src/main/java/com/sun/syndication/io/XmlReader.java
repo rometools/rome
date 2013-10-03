@@ -67,11 +67,11 @@ public class XmlReader extends Reader {
     private static final String UTF_16LE = "UTF-16LE";
     private static final String UTF_16 = "UTF-16";
 
-    private static String _staticDefaultEncoding = null;
+    private static String staticDefaultEncoding = null;
 
-    private Reader _reader;
-    private String _encoding;
-    private final String _defaultEncoding;
+    private Reader reader;
+    private String encoding;
+    private final String defaultEncoding;
 
     /**
      * Sets the default encoding to use if none is set in HTTP content-type, XML
@@ -85,7 +85,7 @@ public class XmlReader extends Reader {
      * @param encoding charset encoding to default to.
      */
     public static void setDefaultEncoding(final String encoding) {
-        _staticDefaultEncoding = encoding;
+        staticDefaultEncoding = encoding;
     }
 
     /**
@@ -98,7 +98,7 @@ public class XmlReader extends Reader {
      * @return the default encoding to use.
      */
     public static String getDefaultEncoding() {
-        return _staticDefaultEncoding;
+        return staticDefaultEncoding;
     }
 
     /**
@@ -167,7 +167,7 @@ public class XmlReader extends Reader {
      * 
      */
     public XmlReader(final InputStream is, final boolean lenient, final String defaultEncoding) throws IOException, XmlReaderException {
-        this._defaultEncoding = defaultEncoding == null ? _staticDefaultEncoding : defaultEncoding;
+        this.defaultEncoding = defaultEncoding == null ? staticDefaultEncoding : defaultEncoding;
         try {
             doRawStream(is, lenient);
         } catch (final XmlReaderException ex) {
@@ -255,7 +255,7 @@ public class XmlReader extends Reader {
      * 
      */
     public XmlReader(final URLConnection conn) throws IOException {
-        this._defaultEncoding = _staticDefaultEncoding;
+        defaultEncoding = staticDefaultEncoding;
         final boolean lenient = true;
         if (conn instanceof HttpURLConnection) {
             try {
@@ -338,7 +338,7 @@ public class XmlReader extends Reader {
      */
     public XmlReader(final InputStream is, final String httpContentType, final boolean lenient, final String defaultEncoding) throws IOException,
             XmlReaderException {
-        this._defaultEncoding = defaultEncoding == null ? _staticDefaultEncoding : defaultEncoding;
+        this.defaultEncoding = defaultEncoding == null ? staticDefaultEncoding : defaultEncoding;
         try {
             doHttpStream(is, httpContentType, lenient);
         } catch (final XmlReaderException ex) {
@@ -407,7 +407,7 @@ public class XmlReader extends Reader {
                 encoding = ex.getContentTypeEncoding();
             }
             if (encoding == null) {
-                encoding = this._defaultEncoding == null ? UTF_8 : this._defaultEncoding;
+                encoding = defaultEncoding == null ? UTF_8 : defaultEncoding;
             }
             prepareReader(ex.getInputStream(), encoding);
         }
@@ -421,12 +421,12 @@ public class XmlReader extends Reader {
      * 
      */
     public String getEncoding() {
-        return this._encoding;
+        return encoding;
     }
 
     @Override
     public int read(final char[] buf, final int offset, final int len) throws IOException {
-        return this._reader.read(buf, offset, len);
+        return reader.read(buf, offset, len);
     }
 
     /**
@@ -438,7 +438,7 @@ public class XmlReader extends Reader {
      */
     @Override
     public void close() throws IOException {
-        this._reader.close();
+        reader.close();
     }
 
     private void doRawStream(final InputStream is, final boolean lenient) throws IOException {
@@ -462,8 +462,8 @@ public class XmlReader extends Reader {
     }
 
     private void prepareReader(final InputStream is, final String encoding) throws IOException {
-        this._reader = new InputStreamReader(is, encoding);
-        this._encoding = encoding;
+        reader = new InputStreamReader(is, encoding);
+        this.encoding = encoding;
     }
 
     // InputStream is passed for XmlReaderException creation only
@@ -471,7 +471,7 @@ public class XmlReader extends Reader {
         String encoding;
         if (bomEnc == null) {
             if (xmlGuessEnc == null || xmlEnc == null) {
-                encoding = this._defaultEncoding == null ? UTF_8 : this._defaultEncoding;
+                encoding = defaultEncoding == null ? UTF_8 : defaultEncoding;
             } else if (xmlEnc.equals(UTF_16) && (xmlGuessEnc.equals(UTF_16BE) || xmlGuessEnc.equals(UTF_16LE))) {
                 encoding = xmlGuessEnc;
             } else {
@@ -513,7 +513,7 @@ public class XmlReader extends Reader {
                     if (appXml) {
                         encoding = calculateRawEncoding(bomEnc, xmlGuessEnc, xmlEnc, is);
                     } else {
-                        encoding = this._defaultEncoding == null ? US_ASCII : this._defaultEncoding;
+                        encoding = defaultEncoding == null ? US_ASCII : defaultEncoding;
                     }
                 } else if (bomEnc != null && (cTEnc.equals(UTF_16BE) || cTEnc.equals(UTF_16LE))) {
                     throw new XmlReaderException(HTTP_EX_1.format(new Object[] { cTMime, cTEnc, bomEnc, xmlGuessEnc, xmlEnc }), cTMime, cTEnc, bomEnc,

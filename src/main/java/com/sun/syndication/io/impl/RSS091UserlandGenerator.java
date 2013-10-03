@@ -38,7 +38,7 @@ import com.sun.syndication.io.FeedException;
  * 
  */
 public class RSS091UserlandGenerator extends RSS090Generator {
-    private final String _version;
+    private final String version;
 
     public RSS091UserlandGenerator() {
         this("rss_0.91U", "0.91");
@@ -46,7 +46,7 @@ public class RSS091UserlandGenerator extends RSS090Generator {
 
     protected RSS091UserlandGenerator(final String type, final String version) {
         super(type);
-        this._version = version;
+        this.version = version;
     }
 
     @Override
@@ -62,7 +62,7 @@ public class RSS091UserlandGenerator extends RSS090Generator {
     }
 
     protected String getVersion() {
-        return this._version;
+        return version;
     }
 
     @Override

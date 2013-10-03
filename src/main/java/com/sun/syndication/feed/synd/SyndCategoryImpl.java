@@ -34,8 +34,8 @@ import com.sun.syndication.feed.module.DCSubjectImpl;
  * 
  */
 public class SyndCategoryImpl implements Serializable, SyndCategory {
-    private final ObjectBean _objBean;
-    private final DCSubject _subject;
+    private final ObjectBean objBean;
+    private final DCSubject subject;
 
     /**
      * For implementations extending SyndContentImpl to be able to use the
@@ -45,8 +45,8 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
      * @param subject the DC subject to wrap.
      */
     SyndCategoryImpl(final DCSubject subject) {
-        this._objBean = new ObjectBean(SyndCategory.class, this);
-        this._subject = subject;
+        objBean = new ObjectBean(SyndCategory.class, this);
+        this.subject = subject;
     }
 
     /**
@@ -60,7 +60,7 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return this._objBean.clone();
+        return objBean.clone();
     }
 
     /**
@@ -77,7 +77,7 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
         if (!(other instanceof SyndCategoryImpl)) {
             return false;
         }
-        return this._objBean.equals(other);
+        return objBean.equals(other);
     }
 
     /**
@@ -91,7 +91,7 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
      */
     @Override
     public int hashCode() {
-        return this._objBean.hashCode();
+        return objBean.hashCode();
     }
 
     /**
@@ -103,7 +103,7 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
      */
     @Override
     public String toString() {
-        return this._objBean.toString();
+        return objBean.toString();
     }
 
     /**
@@ -114,7 +114,7 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
      * 
      */
     DCSubject getSubject() {
-        return this._subject;
+        return subject;
     }
 
     /**
@@ -135,7 +135,7 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
      */
     @Override
     public String getName() {
-        return this._subject.getValue();
+        return subject.getValue();
     }
 
     /**
@@ -147,7 +147,7 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
      */
     @Override
     public void setName(final String name) {
-        this._subject.setValue(name);
+        subject.setValue(name);
     }
 
     /**
@@ -159,7 +159,7 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
      */
     @Override
     public String getTaxonomyUri() {
-        return this._subject.getTaxonomyUri();
+        return subject.getTaxonomyUri();
     }
 
     /**
@@ -171,7 +171,7 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
      */
     @Override
     public void setTaxonomyUri(final String taxonomyUri) {
-        this._subject.setTaxonomyUri(taxonomyUri);
+        subject.setTaxonomyUri(taxonomyUri);
     }
 
 }
@@ -195,7 +195,7 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
  * 
  */
 class SyndCategoryListFacade extends AbstractList<SyndCategory> {
-    private final List<DCSubject> _subjects;
+    private final List<DCSubject> subjects;
 
     /**
      * Default constructor. Creates and empty list.
@@ -212,7 +212,7 @@ class SyndCategoryListFacade extends AbstractList<SyndCategory> {
      * 
      */
     public SyndCategoryListFacade(final List<DCSubject> subjects) {
-        this._subjects = subjects;
+        this.subjects = subjects;
     }
 
     /**
@@ -225,7 +225,7 @@ class SyndCategoryListFacade extends AbstractList<SyndCategory> {
      */
     @Override
     public SyndCategory get(final int index) {
-        return new SyndCategoryImpl(this._subjects.get(index));
+        return new SyndCategoryImpl(subjects.get(index));
     }
 
     /**
@@ -237,7 +237,7 @@ class SyndCategoryListFacade extends AbstractList<SyndCategory> {
      */
     @Override
     public int size() {
-        return this._subjects.size();
+        return subjects.size();
     }
 
     /**
@@ -254,7 +254,7 @@ class SyndCategoryListFacade extends AbstractList<SyndCategory> {
     public SyndCategory set(final int index, final SyndCategory obj) {
         final SyndCategoryImpl sCat = (SyndCategoryImpl) obj;
         DCSubject subject = sCat != null ? sCat.getSubject() : null;
-        subject = this._subjects.set(index, subject);
+        subject = subjects.set(index, subject);
         return subject != null ? new SyndCategoryImpl(subject) : null;
     }
 
@@ -270,7 +270,7 @@ class SyndCategoryListFacade extends AbstractList<SyndCategory> {
     public void add(final int index, final SyndCategory obj) {
         final SyndCategoryImpl sCat = (SyndCategoryImpl) obj;
         final DCSubject subject = sCat != null ? sCat.getSubject() : null;
-        this._subjects.add(index, subject);
+        subjects.add(index, subject);
     }
 
     /**
@@ -284,7 +284,7 @@ class SyndCategoryListFacade extends AbstractList<SyndCategory> {
      */
     @Override
     public SyndCategory remove(final int index) {
-        final DCSubject subject = this._subjects.remove(index);
+        final DCSubject subject = subjects.remove(index);
         return subject != null ? new SyndCategoryImpl(subject) : null;
     }
 

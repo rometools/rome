@@ -29,15 +29,15 @@ import com.sun.syndication.feed.impl.ObjectBean;
  */
 public class Link implements Cloneable, Serializable {
 
-    private final ObjectBean _objBean;
+    private final ObjectBean objBean;
 
-    private String _href;
-    private String _hrefResolved;
-    private String _rel = "alternate";
-    private String _type;
-    private String _hreflang;
-    private String _title;
-    private long _length;
+    private String href;
+    private String hrefResolved;
+    private String rel = "alternate";
+    private String type;
+    private String hreflang;
+    private String title;
+    private long length;
 
     /**
      * Default constructor. All properties are set to <b>null</b>.
@@ -45,7 +45,7 @@ public class Link implements Cloneable, Serializable {
      * 
      */
     public Link() {
-        this._objBean = new ObjectBean(this.getClass(), this);
+        objBean = new ObjectBean(this.getClass(), this);
     }
 
     /**
@@ -59,7 +59,7 @@ public class Link implements Cloneable, Serializable {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return this._objBean.clone();
+        return objBean.clone();
     }
 
     /**
@@ -73,7 +73,7 @@ public class Link implements Cloneable, Serializable {
      */
     @Override
     public boolean equals(final Object other) {
-        return this._objBean.equals(other);
+        return objBean.equals(other);
     }
 
     /**
@@ -87,7 +87,7 @@ public class Link implements Cloneable, Serializable {
      */
     @Override
     public int hashCode() {
-        return this._objBean.hashCode();
+        return objBean.hashCode();
     }
 
     /**
@@ -99,7 +99,7 @@ public class Link implements Cloneable, Serializable {
      */
     @Override
     public String toString() {
-        return this._objBean.toString();
+        return objBean.toString();
     }
 
     /**
@@ -110,7 +110,7 @@ public class Link implements Cloneable, Serializable {
      * 
      */
     public String getRel() {
-        return this._rel;
+        return rel;
     }
 
     /**
@@ -122,7 +122,7 @@ public class Link implements Cloneable, Serializable {
      */
     public void setRel(final String rel) {
         // TODO add check, ask P@ about the check
-        this._rel = rel;
+        this.rel = rel;
     }
 
     /**
@@ -133,7 +133,7 @@ public class Link implements Cloneable, Serializable {
      * 
      */
     public String getType() {
-        return this._type;
+        return type;
     }
 
     /**
@@ -144,7 +144,7 @@ public class Link implements Cloneable, Serializable {
      * 
      */
     public void setType(final String type) {
-        this._type = type;
+        this.type = type;
     }
 
     /**
@@ -155,7 +155,7 @@ public class Link implements Cloneable, Serializable {
      * 
      */
     public String getHref() {
-        return this._href;
+        return href;
     }
 
     /**
@@ -166,15 +166,15 @@ public class Link implements Cloneable, Serializable {
      * 
      */
     public void setHref(final String href) {
-        this._href = href;
+        this.href = href;
     }
 
     public void setHrefResolved(final String hrefResolved) {
-        this._hrefResolved = hrefResolved;
+        this.hrefResolved = hrefResolved;
     }
 
     public String getHrefResolved() {
-        return this._hrefResolved != null ? this._hrefResolved : this._href;
+        return hrefResolved != null ? hrefResolved : href;
     }
 
     /**
@@ -185,7 +185,7 @@ public class Link implements Cloneable, Serializable {
      * 
      */
     public String getTitle() {
-        return this._title;
+        return title;
     }
 
     /**
@@ -196,7 +196,7 @@ public class Link implements Cloneable, Serializable {
      * 
      */
     public void setTitle(final String title) {
-        this._title = title;
+        this.title = title;
     }
 
     /**
@@ -207,7 +207,7 @@ public class Link implements Cloneable, Serializable {
      * @since Atom 1.0
      */
     public String getHreflang() {
-        return this._hreflang;
+        return hreflang;
     }
 
     /**
@@ -218,7 +218,7 @@ public class Link implements Cloneable, Serializable {
      * @since Atom 1.0
      */
     public void setHreflang(final String hreflang) {
-        this._hreflang = hreflang;
+        this.hreflang = hreflang;
     }
 
     /**
@@ -228,7 +228,7 @@ public class Link implements Cloneable, Serializable {
      * @return Returns the length.
      */
     public long getLength() {
-        return this._length;
+        return length;
     }
 
     /**
@@ -238,6 +238,6 @@ public class Link implements Cloneable, Serializable {
      * @param length The length to set.
      */
     public void setLength(final long length) {
-        this._length = length;
+        this.length = length;
     }
 }

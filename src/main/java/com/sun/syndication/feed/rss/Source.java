@@ -29,9 +29,9 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * 
  */
 public class Source implements Cloneable, Serializable {
-    private final ObjectBean _objBean;
-    private String _url;
-    private String _value;
+    private final ObjectBean objBean;
+    private String url;
+    private String value;
 
     /**
      * Default constructor. All properties are set to <b>null</b>.
@@ -39,7 +39,7 @@ public class Source implements Cloneable, Serializable {
      * 
      */
     public Source() {
-        this._objBean = new ObjectBean(this.getClass(), this);
+        objBean = new ObjectBean(this.getClass(), this);
     }
 
     /**
@@ -53,7 +53,7 @@ public class Source implements Cloneable, Serializable {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return this._objBean.clone();
+        return objBean.clone();
     }
 
     /**
@@ -70,7 +70,7 @@ public class Source implements Cloneable, Serializable {
         if (!(other instanceof Source)) {
             return false;
         }
-        return this._objBean.equals(other);
+        return objBean.equals(other);
     }
 
     /**
@@ -84,7 +84,7 @@ public class Source implements Cloneable, Serializable {
      */
     @Override
     public int hashCode() {
-        return this._objBean.hashCode();
+        return objBean.hashCode();
     }
 
     /**
@@ -96,7 +96,7 @@ public class Source implements Cloneable, Serializable {
      */
     @Override
     public String toString() {
-        return this._objBean.toString();
+        return objBean.toString();
     }
 
     /**
@@ -107,7 +107,7 @@ public class Source implements Cloneable, Serializable {
      * 
      */
     public String getUrl() {
-        return this._url;
+        return url;
     }
 
     /**
@@ -118,7 +118,7 @@ public class Source implements Cloneable, Serializable {
      * 
      */
     public void setUrl(final String url) {
-        this._url = url;
+        this.url = url;
     }
 
     /**
@@ -129,7 +129,7 @@ public class Source implements Cloneable, Serializable {
      * 
      */
     public String getValue() {
-        return this._value;
+        return value;
     }
 
     /**
@@ -140,6 +140,6 @@ public class Source implements Cloneable, Serializable {
      * 
      */
     public void setValue(final String value) {
-        this._value = value;
+        this.value = value;
     }
 }

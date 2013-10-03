@@ -61,28 +61,28 @@ public class Channel extends WireFeed {
         DAYS = Collections.unmodifiableSet(days);
     }
 
-    private String _title;
-    private String _description;
-    private String _link;
-    private String _uri;
-    private Image _image;
-    private List<Item> _items;
-    private TextInput _textInput;
-    private String _language;
-    private String _rating;
-    private String _copyright;
-    private Date _pubDate;
-    private Date _lastBuildDate;
-    private String _docs;
-    private String _managingEditor;
-    private String _webMaster;
-    private List<Integer> _skipHours;
-    private List<String> _skipDays;
-    private Cloud _cloud;
-    private List<Category> _categories;
-    private String _generator;
-    private int _ttl = -1;
-    private List<Module> _modules;
+    private String title;
+    private String description;
+    private String link;
+    private String uri;
+    private Image image;
+    private List<Item> items;
+    private TextInput textInput;
+    private String language;
+    private String rating;
+    private String copyright;
+    private Date pubDate;
+    private Date lastBuildDate;
+    private String docs;
+    private String managingEditor;
+    private String webMaster;
+    private List<Integer> skipHours;
+    private List<String> skipDays;
+    private Cloud cloud;
+    private List<Category> categories;
+    private String generator;
+    private int ttl = -1;
+    private List<Module> modules;
 
     /**
      * Default constructor, for bean cloning purposes only.
@@ -111,7 +111,7 @@ public class Channel extends WireFeed {
      * 
      */
     public String getTitle() {
-        return this._title;
+        return title;
     }
 
     /**
@@ -122,7 +122,7 @@ public class Channel extends WireFeed {
      * 
      */
     public void setTitle(final String title) {
-        this._title = title;
+        this.title = title;
     }
 
     /**
@@ -133,7 +133,7 @@ public class Channel extends WireFeed {
      * 
      */
     public String getDescription() {
-        return this._description;
+        return description;
     }
 
     /**
@@ -144,7 +144,7 @@ public class Channel extends WireFeed {
      * 
      */
     public void setDescription(final String description) {
-        this._description = description;
+        this.description = description;
     }
 
     /**
@@ -155,7 +155,7 @@ public class Channel extends WireFeed {
      * 
      */
     public String getLink() {
-        return this._link;
+        return link;
     }
 
     /**
@@ -166,7 +166,7 @@ public class Channel extends WireFeed {
      * 
      */
     public void setLink(final String link) {
-        this._link = link;
+        this.link = link;
     }
 
     /**
@@ -176,7 +176,7 @@ public class Channel extends WireFeed {
      * @return the channel uri, <b>null</b> if none.
      */
     public String getUri() {
-        return this._uri;
+        return uri;
     }
 
     /**
@@ -186,7 +186,7 @@ public class Channel extends WireFeed {
      * @param uri the channel uri, <b>null</b> if none.
      */
     public void setUri(final String uri) {
-        this._uri = uri;
+        this.uri = uri;
     }
 
     /**
@@ -197,7 +197,7 @@ public class Channel extends WireFeed {
      * 
      */
     public Image getImage() {
-        return this._image;
+        return image;
     }
 
     /**
@@ -208,7 +208,7 @@ public class Channel extends WireFeed {
      * 
      */
     public void setImage(final Image image) {
-        this._image = image;
+        this.image = image;
     }
 
     /**
@@ -220,7 +220,7 @@ public class Channel extends WireFeed {
      * 
      */
     public List<Item> getItems() {
-        return this._items == null ? (this._items = new ArrayList<Item>()) : this._items;
+        return items == null ? (items = new ArrayList<Item>()) : items;
     }
 
     /**
@@ -232,7 +232,7 @@ public class Channel extends WireFeed {
      * 
      */
     public void setItems(final List<Item> items) {
-        this._items = items;
+        this.items = items;
     }
 
     /**
@@ -243,7 +243,7 @@ public class Channel extends WireFeed {
      * 
      */
     public TextInput getTextInput() {
-        return this._textInput;
+        return textInput;
     }
 
     /**
@@ -254,7 +254,7 @@ public class Channel extends WireFeed {
      * 
      */
     public void setTextInput(final TextInput textInput) {
-        this._textInput = textInput;
+        this.textInput = textInput;
     }
 
     /**
@@ -265,7 +265,7 @@ public class Channel extends WireFeed {
      * 
      */
     public String getLanguage() {
-        return this._language;
+        return language;
     }
 
     /**
@@ -276,7 +276,7 @@ public class Channel extends WireFeed {
      * 
      */
     public void setLanguage(final String language) {
-        this._language = language;
+        this.language = language;
     }
 
     /**
@@ -287,7 +287,7 @@ public class Channel extends WireFeed {
      * 
      */
     public String getRating() {
-        return this._rating;
+        return rating;
     }
 
     /**
@@ -298,7 +298,7 @@ public class Channel extends WireFeed {
      * 
      */
     public void setRating(final String rating) {
-        this._rating = rating;
+        this.rating = rating;
     }
 
     /**
@@ -309,7 +309,7 @@ public class Channel extends WireFeed {
      * 
      */
     public String getCopyright() {
-        return this._copyright;
+        return copyright;
     }
 
     /**
@@ -320,7 +320,7 @@ public class Channel extends WireFeed {
      * 
      */
     public void setCopyright(final String copyright) {
-        this._copyright = copyright;
+        this.copyright = copyright;
     }
 
     /**
@@ -331,7 +331,7 @@ public class Channel extends WireFeed {
      * 
      */
     public Date getPubDate() {
-        return this._pubDate == null ? null : new Date(this._pubDate.getTime());
+        return pubDate == null ? null : new Date(pubDate.getTime());
     }
 
     /**
@@ -342,7 +342,7 @@ public class Channel extends WireFeed {
      * 
      */
     public void setPubDate(final Date pubDate) {
-        this._pubDate = pubDate == null ? null : new Date(pubDate.getTime());
+        this.pubDate = pubDate == null ? null : new Date(pubDate.getTime());
     }
 
     /**
@@ -353,7 +353,7 @@ public class Channel extends WireFeed {
      * 
      */
     public Date getLastBuildDate() {
-        return this._lastBuildDate == null ? null : new Date(this._lastBuildDate.getTime());
+        return lastBuildDate == null ? null : new Date(lastBuildDate.getTime());
     }
 
     /**
@@ -365,7 +365,7 @@ public class Channel extends WireFeed {
      * 
      */
     public void setLastBuildDate(final Date lastBuildDate) {
-        this._lastBuildDate = lastBuildDate == null ? null : new Date(lastBuildDate.getTime());
+        this.lastBuildDate = lastBuildDate == null ? null : new Date(lastBuildDate.getTime());
     }
 
     /**
@@ -376,7 +376,7 @@ public class Channel extends WireFeed {
      * 
      */
     public String getDocs() {
-        return this._docs;
+        return docs;
     }
 
     /**
@@ -387,7 +387,7 @@ public class Channel extends WireFeed {
      * 
      */
     public void setDocs(final String docs) {
-        this._docs = docs;
+        this.docs = docs;
     }
 
     /**
@@ -398,7 +398,7 @@ public class Channel extends WireFeed {
      * 
      */
     public String getManagingEditor() {
-        return this._managingEditor;
+        return managingEditor;
     }
 
     /**
@@ -410,7 +410,7 @@ public class Channel extends WireFeed {
      * 
      */
     public void setManagingEditor(final String managingEditor) {
-        this._managingEditor = managingEditor;
+        this.managingEditor = managingEditor;
     }
 
     /**
@@ -421,7 +421,7 @@ public class Channel extends WireFeed {
      * 
      */
     public String getWebMaster() {
-        return this._webMaster;
+        return webMaster;
     }
 
     /**
@@ -432,7 +432,7 @@ public class Channel extends WireFeed {
      * 
      */
     public void setWebMaster(final String webMaster) {
-        this._webMaster = webMaster;
+        this.webMaster = webMaster;
     }
 
     /**
@@ -444,7 +444,7 @@ public class Channel extends WireFeed {
      * 
      */
     public List<Integer> getSkipHours() {
-        return this._skipHours != null ? this._skipHours : new ArrayList<Integer>();
+        return skipHours != null ? skipHours : new ArrayList<Integer>();
     }
 
     /**
@@ -469,7 +469,7 @@ public class Channel extends WireFeed {
                 }
             }
         }
-        this._skipHours = skipHours;
+        this.skipHours = skipHours;
     }
 
     /**
@@ -481,7 +481,7 @@ public class Channel extends WireFeed {
      * 
      */
     public List<String> getSkipDays() {
-        return this._skipDays != null ? this._skipDays : new ArrayList<String>();
+        return skipDays != null ? skipDays : new ArrayList<String>();
     }
 
     /**
@@ -507,7 +507,7 @@ public class Channel extends WireFeed {
                 }
             }
         }
-        this._skipDays = skipDays;
+        this.skipDays = skipDays;
     }
 
     /**
@@ -518,7 +518,7 @@ public class Channel extends WireFeed {
      * 
      */
     public Cloud getCloud() {
-        return this._cloud;
+        return cloud;
     }
 
     /**
@@ -529,7 +529,7 @@ public class Channel extends WireFeed {
      * 
      */
     public void setCloud(final Cloud cloud) {
-        this._cloud = cloud;
+        this.cloud = cloud;
     }
 
     /**
@@ -541,7 +541,7 @@ public class Channel extends WireFeed {
      * 
      */
     public List<Category> getCategories() {
-        return this._categories == null ? (this._categories = new ArrayList<Category>()) : this._categories;
+        return categories == null ? (categories = new ArrayList<Category>()) : categories;
     }
 
     /**
@@ -553,7 +553,7 @@ public class Channel extends WireFeed {
      * 
      */
     public void setCategories(final List<Category> categories) {
-        this._categories = categories;
+        this.categories = categories;
     }
 
     /**
@@ -564,7 +564,7 @@ public class Channel extends WireFeed {
      * 
      */
     public String getGenerator() {
-        return this._generator;
+        return generator;
     }
 
     /**
@@ -575,7 +575,7 @@ public class Channel extends WireFeed {
      * 
      */
     public void setGenerator(final String generator) {
-        this._generator = generator;
+        this.generator = generator;
     }
 
     /**
@@ -586,7 +586,7 @@ public class Channel extends WireFeed {
      * 
      */
     public int getTtl() {
-        return this._ttl;
+        return ttl;
     }
 
     /**
@@ -597,7 +597,7 @@ public class Channel extends WireFeed {
      * 
      */
     public void setTtl(final int ttl) {
-        this._ttl = ttl;
+        this.ttl = ttl;
     }
 
     /**
@@ -610,7 +610,7 @@ public class Channel extends WireFeed {
      */
     @Override
     public List<Module> getModules() {
-        return this._modules == null ? (this._modules = new ArrayList<Module>()) : this._modules;
+        return modules == null ? (modules = new ArrayList<Module>()) : modules;
     }
 
     /**
@@ -623,7 +623,7 @@ public class Channel extends WireFeed {
      */
     @Override
     public void setModules(final List<Module> modules) {
-        this._modules = modules;
+        this.modules = modules;
     }
 
     /**
@@ -635,7 +635,7 @@ public class Channel extends WireFeed {
      */
     @Override
     public Module getModule(final String uri) {
-        return ModuleUtils.getModule(this._modules, uri);
+        return ModuleUtils.getModule(modules, uri);
     }
 
 }

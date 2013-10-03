@@ -29,12 +29,12 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * 
  */
 public class Cloud implements Cloneable, Serializable {
-    private final ObjectBean _objBean;
-    private String _domain;
-    private int _port;
-    private String _path;
-    private String _registerProcedure;
-    private String _protocol;
+    private final ObjectBean objBean;
+    private String domain;
+    private int port;
+    private String path;
+    private String registerProcedure;
+    private String protocol;
 
     /**
      * Default constructor. All properties are set to <b>null</b>.
@@ -42,7 +42,7 @@ public class Cloud implements Cloneable, Serializable {
      * 
      */
     public Cloud() {
-        this._objBean = new ObjectBean(this.getClass(), this);
+        objBean = new ObjectBean(this.getClass(), this);
     }
 
     /**
@@ -56,7 +56,7 @@ public class Cloud implements Cloneable, Serializable {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return this._objBean.clone();
+        return objBean.clone();
     }
 
     /**
@@ -70,7 +70,7 @@ public class Cloud implements Cloneable, Serializable {
      */
     @Override
     public boolean equals(final Object other) {
-        return this._objBean.equals(other);
+        return objBean.equals(other);
     }
 
     /**
@@ -84,7 +84,7 @@ public class Cloud implements Cloneable, Serializable {
      */
     @Override
     public int hashCode() {
-        return this._objBean.hashCode();
+        return objBean.hashCode();
     }
 
     /**
@@ -96,7 +96,7 @@ public class Cloud implements Cloneable, Serializable {
      */
     @Override
     public String toString() {
-        return this._objBean.toString();
+        return objBean.toString();
     }
 
     /**
@@ -107,7 +107,7 @@ public class Cloud implements Cloneable, Serializable {
      * 
      */
     public String getDomain() {
-        return this._domain;
+        return domain;
     }
 
     /**
@@ -118,7 +118,7 @@ public class Cloud implements Cloneable, Serializable {
      * 
      */
     public void setDomain(final String domain) {
-        this._domain = domain;
+        this.domain = domain;
     }
 
     /**
@@ -129,7 +129,7 @@ public class Cloud implements Cloneable, Serializable {
      * 
      */
     public int getPort() {
-        return this._port;
+        return port;
     }
 
     /**
@@ -140,7 +140,7 @@ public class Cloud implements Cloneable, Serializable {
      * 
      */
     public void setPort(final int port) {
-        this._port = port;
+        this.port = port;
     }
 
     /**
@@ -151,7 +151,7 @@ public class Cloud implements Cloneable, Serializable {
      * 
      */
     public String getPath() {
-        return this._path;
+        return path;
     }
 
     /**
@@ -162,7 +162,7 @@ public class Cloud implements Cloneable, Serializable {
      * 
      */
     public void setPath(final String path) {
-        this._path = path;
+        this.path = path;
     }
 
     /**
@@ -173,7 +173,7 @@ public class Cloud implements Cloneable, Serializable {
      * 
      */
     public String getRegisterProcedure() {
-        return this._registerProcedure;
+        return registerProcedure;
     }
 
     /**
@@ -185,7 +185,7 @@ public class Cloud implements Cloneable, Serializable {
      * 
      */
     public void setRegisterProcedure(final String registerProcedure) {
-        this._registerProcedure = registerProcedure;
+        this.registerProcedure = registerProcedure;
     }
 
     /**
@@ -196,7 +196,7 @@ public class Cloud implements Cloneable, Serializable {
      * 
      */
     public String getProtocol() {
-        return this._protocol;
+        return protocol;
     }
 
     /**
@@ -207,7 +207,7 @@ public class Cloud implements Cloneable, Serializable {
      * 
      */
     public void setProtocol(final String protocol) {
-        this._protocol = protocol;
+        this.protocol = protocol;
     }
 
 }

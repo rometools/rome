@@ -33,18 +33,18 @@ import com.sun.syndication.feed.module.impl.ModuleUtils;
  * 
  */
 public class SyndPersonImpl implements Serializable, SyndPerson {
-    private final ObjectBean _objBean;
-    private String _name;
-    private String _uri;
-    private String _email;
-    private List<Module> _modules;
+    private final ObjectBean objBean;
+    private String name;
+    private String uri;
+    private String email;
+    private List<Module> modules;
 
     /**
      * For implementations extending SyndContentImpl to be able to use the
      * ObjectBean functionality with extended interfaces.
      */
     public SyndPersonImpl() {
-        this._objBean = new ObjectBean(SyndPerson.class, this);
+        objBean = new ObjectBean(SyndPerson.class, this);
     }
 
     /**
@@ -58,7 +58,7 @@ public class SyndPersonImpl implements Serializable, SyndPerson {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return this._objBean.clone();
+        return objBean.clone();
     }
 
     /**
@@ -75,7 +75,7 @@ public class SyndPersonImpl implements Serializable, SyndPerson {
         if (!(other instanceof SyndPersonImpl)) {
             return false;
         }
-        return this._objBean.equals(other);
+        return objBean.equals(other);
     }
 
     /**
@@ -89,7 +89,7 @@ public class SyndPersonImpl implements Serializable, SyndPerson {
      */
     @Override
     public int hashCode() {
-        return this._objBean.hashCode();
+        return objBean.hashCode();
     }
 
     /**
@@ -101,7 +101,7 @@ public class SyndPersonImpl implements Serializable, SyndPerson {
      */
     @Override
     public String toString() {
-        return this._objBean.toString();
+        return objBean.toString();
     }
 
     /**
@@ -113,7 +113,7 @@ public class SyndPersonImpl implements Serializable, SyndPerson {
      */
     @Override
     public String getName() {
-        return this._name;
+        return name;
     }
 
     /**
@@ -125,7 +125,7 @@ public class SyndPersonImpl implements Serializable, SyndPerson {
      */
     @Override
     public void setName(final String name) {
-        this._name = name;
+        this.name = name;
     }
 
     /**
@@ -137,7 +137,7 @@ public class SyndPersonImpl implements Serializable, SyndPerson {
      */
     @Override
     public String getEmail() {
-        return this._email;
+        return email;
     }
 
     /**
@@ -149,7 +149,7 @@ public class SyndPersonImpl implements Serializable, SyndPerson {
      */
     @Override
     public void setEmail(final String email) {
-        this._email = email;
+        this.email = email;
     }
 
     /**
@@ -161,7 +161,7 @@ public class SyndPersonImpl implements Serializable, SyndPerson {
      */
     @Override
     public String getUri() {
-        return this._uri;
+        return uri;
     }
 
     /**
@@ -173,7 +173,7 @@ public class SyndPersonImpl implements Serializable, SyndPerson {
      */
     @Override
     public void setUri(final String uri) {
-        this._uri = uri;
+        this.uri = uri;
     }
 
     /**
@@ -185,10 +185,10 @@ public class SyndPersonImpl implements Serializable, SyndPerson {
      */
     @Override
     public List<Module> getModules() {
-        if (this._modules == null) {
-            this._modules = new ArrayList<Module>();
+        if (modules == null) {
+            modules = new ArrayList<Module>();
         }
-        return this._modules;
+        return modules;
     }
 
     /**
@@ -201,7 +201,7 @@ public class SyndPersonImpl implements Serializable, SyndPerson {
      */
     @Override
     public void setModules(final List<Module> modules) {
-        this._modules = modules;
+        this.modules = modules;
     }
 
     /**

@@ -40,8 +40,8 @@ public class EqualsBean implements Serializable {
 
     private static final Object[] NO_PARAMS = new Object[0];
 
-    private final Class _beanClass;
-    private final Object _obj;
+    private final Class beanClass;
+    private final Object obj;
 
     /**
      * Default constructor.
@@ -53,8 +53,8 @@ public class EqualsBean implements Serializable {
      * 
      */
     protected EqualsBean(final Class beanClass) {
-        this._beanClass = beanClass;
-        this._obj = this;
+        this.beanClass = beanClass;
+        obj = this;
     }
 
     /**
@@ -64,18 +64,18 @@ public class EqualsBean implements Serializable {
      * <p>
      * <code>
      *   public class Foo  implements FooI {
-     *       private EqualsBean _equalsBean;
+     *       private EqualsBean equalsBean;
      * 
      *       public Foo() {
-     *           _equalsBean = new EqualsBean(FooI.class);
+     *           equalsBean = new EqualsBean(FooI.class);
      *       }
      * 
      *       public boolean equals(Object obj) {
-     *           return _equalsBean.beanEquals(obj);
+     *           return equalsBean.beanEquals(obj);
      *       }
      * 
      *       public int hashCode() {
-     *           return _equalsBean.beanHashCode();
+     *           return equalsBean.beanHashCode();
      *       }
      * 
      *   }
@@ -90,8 +90,8 @@ public class EqualsBean implements Serializable {
         if (!beanClass.isInstance(obj)) {
             throw new IllegalArgumentException(obj.getClass() + " is not instance of " + beanClass);
         }
-        this._beanClass = beanClass;
-        this._obj = obj;
+        this.beanClass = beanClass;
+        this.obj = obj;
     }
 
     /**
@@ -127,7 +127,7 @@ public class EqualsBean implements Serializable {
      * 
      */
     public boolean beanEquals(final Object obj) {
-        final Object bean1 = this._obj;
+        final Object bean1 = this.obj;
         final Object bean2 = obj;
         boolean eq;
         if (bean1 == null && bean2 == null) {
@@ -135,12 +135,12 @@ public class EqualsBean implements Serializable {
         } else if (bean1 == null || bean2 == null) {
             eq = false;
         } else {
-            if (!this._beanClass.isInstance(bean2)) {
+            if (!beanClass.isInstance(bean2)) {
                 eq = false;
             } else {
                 eq = true;
                 try {
-                    final PropertyDescriptor[] pds = BeanIntrospector.getPropertyDescriptors(this._beanClass);
+                    final PropertyDescriptor[] pds = BeanIntrospector.getPropertyDescriptors(beanClass);
                     if (pds != null) {
                         for (int i = 0; eq && i < pds.length; i++) {
                             final Method pReadMethod = pds[i].getReadMethod();
@@ -208,7 +208,7 @@ public class EqualsBean implements Serializable {
      * 
      */
     public int beanHashCode() {
-        return this._obj.toString().hashCode();
+        return obj.toString().hashCode();
     }
 
     private boolean doEquals(final Object obj1, final Object obj2) {

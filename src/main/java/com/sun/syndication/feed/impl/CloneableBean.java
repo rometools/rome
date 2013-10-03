@@ -45,8 +45,8 @@ public class CloneableBean implements Serializable, Cloneable {
     private static final Class[] NO_PARAMS_DEF = new Class[0];
     private static final Object[] NO_PARAMS = new Object[0];
 
-    private final Object _obj;
-    private Set _ignoreProperties;
+    private final Object obj;
+    private Set ignoreProperties;
 
     /**
      * Default constructor.
@@ -56,7 +56,7 @@ public class CloneableBean implements Serializable, Cloneable {
      * 
      */
     protected CloneableBean() {
-        this._obj = this;
+        obj = this;
     }
 
     /**
@@ -66,14 +66,14 @@ public class CloneableBean implements Serializable, Cloneable {
      * <p>
      * <code>
      *   public class Foo implements Cloneable {
-     *       private CloneableBean _cloneableBean;
+     *       private CloneableBean cloneableBean;
      * 
      *       public Foo() {
-     *           _cloneableBean = new CloneableBean(this);
+     *           cloneableBean = new CloneableBean(this);
      *       }
      * 
      *       public Object clone() throws CloneNotSupportedException {
-     *           return _cloneableBean.beanClone();
+     *           return cloneableBean.beanClone();
      *       }
      * 
      *   }
@@ -104,8 +104,8 @@ public class CloneableBean implements Serializable, Cloneable {
      * 
      */
     public CloneableBean(final Object obj, final Set ignoreProperties) {
-        this._obj = obj;
-        this._ignoreProperties = ignoreProperties != null ? ignoreProperties : Collections.EMPTY_SET;
+        this.obj = obj;
+        this.ignoreProperties = ignoreProperties != null ? ignoreProperties : Collections.EMPTY_SET;
     }
 
     /**
@@ -142,8 +142,8 @@ public class CloneableBean implements Serializable, Cloneable {
     public Object beanClone() throws CloneNotSupportedException {
         Object clonedBean;
         try {
-            clonedBean = this._obj.getClass().newInstance();
-            final PropertyDescriptor[] pds = BeanIntrospector.getPropertyDescriptors(this._obj.getClass());
+            clonedBean = obj.getClass().newInstance();
+            final PropertyDescriptor[] pds = BeanIntrospector.getPropertyDescriptors(obj.getClass());
             if (pds != null) {
                 for (int i = 0; i < pds.length; i++) {
                     final Method pReadMethod = pds[i].getReadMethod();
@@ -154,7 +154,7 @@ public class CloneableBean implements Serializable, Cloneable {
                                                                        // and
                                                                        // setter
                                                                        // methods
-                            !this._ignoreProperties.contains(pds[i].getName()) && // is
+                            !ignoreProperties.contains(pds[i].getName()) && // is
                             // not
                             // in
                             // the
@@ -173,7 +173,7 @@ public class CloneableBean implements Serializable, Cloneable {
                                                                            // that
                                                                            // take
                                                                            // parameters
-                        Object value = pReadMethod.invoke(this._obj, NO_PARAMS);
+                        Object value = pReadMethod.invoke(obj, NO_PARAMS);
                         if (value != null) {
                             value = doClone(value);
                             pWriteMethod.invoke(clonedBean, new Object[] { value });
@@ -186,7 +186,7 @@ public class CloneableBean implements Serializable, Cloneable {
         } catch (final Exception ex) {
             System.out.println(ex);
             ex.printStackTrace(System.out);
-            throw new CloneNotSupportedException("Cannot clone a " + this._obj.getClass() + " object");
+            throw new CloneNotSupportedException("Cannot clone a " + obj.getClass() + " object");
         }
         return clonedBean;
     }

@@ -41,13 +41,13 @@ import java.util.Set;
  */
 public class BeanIntrospector {
 
-    private static final Map _introspected = new HashMap();
+    private static final Map introspected = new HashMap();
 
     public static synchronized PropertyDescriptor[] getPropertyDescriptors(final Class klass) throws IntrospectionException {
-        PropertyDescriptor[] descriptors = (PropertyDescriptor[]) _introspected.get(klass);
+        PropertyDescriptor[] descriptors = (PropertyDescriptor[]) introspected.get(klass);
         if (descriptors == null) {
             descriptors = getPDs(klass);
-            _introspected.put(klass, descriptors);
+            introspected.put(klass, descriptors);
         }
         return descriptors;
     }

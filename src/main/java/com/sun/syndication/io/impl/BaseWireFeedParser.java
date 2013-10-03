@@ -35,18 +35,18 @@ public abstract class BaseWireFeedParser implements WireFeedParser {
      */
     private static final String PERSON_MODULE_PARSERS_POSFIX_KEY = ".person.ModuleParser.classes";
 
-    private final String _type;
-    private final ModuleParsers _feedModuleParsers;
-    private final ModuleParsers _itemModuleParsers;
-    private final ModuleParsers _personModuleParsers;
-    private final Namespace _namespace;
+    private final String type;
+    private final ModuleParsers feedModuleParsers;
+    private final ModuleParsers itemModuleParsers;
+    private final ModuleParsers personModuleParsers;
+    private final Namespace namespace;
 
     protected BaseWireFeedParser(final String type, final Namespace namespace) {
-        this._type = type;
-        this._namespace = namespace;
-        this._feedModuleParsers = new ModuleParsers(type + FEED_MODULE_PARSERS_POSFIX_KEY, this);
-        this._itemModuleParsers = new ModuleParsers(type + ITEM_MODULE_PARSERS_POSFIX_KEY, this);
-        this._personModuleParsers = new ModuleParsers(type + PERSON_MODULE_PARSERS_POSFIX_KEY, this);
+        this.type = type;
+        this.namespace = namespace;
+        feedModuleParsers = new ModuleParsers(type + FEED_MODULE_PARSERS_POSFIX_KEY, this);
+        itemModuleParsers = new ModuleParsers(type + ITEM_MODULE_PARSERS_POSFIX_KEY, this);
+        personModuleParsers = new ModuleParsers(type + PERSON_MODULE_PARSERS_POSFIX_KEY, this);
     }
 
     /**
@@ -60,19 +60,19 @@ public abstract class BaseWireFeedParser implements WireFeedParser {
      */
     @Override
     public String getType() {
-        return this._type;
+        return type;
     }
 
     protected List<Module> parseFeedModules(final Element feedElement) {
-        return this._feedModuleParsers.parseModules(feedElement);
+        return feedModuleParsers.parseModules(feedElement);
     }
 
     protected List<Module> parseItemModules(final Element itemElement) {
-        return this._itemModuleParsers.parseModules(itemElement);
+        return itemModuleParsers.parseModules(itemElement);
     }
 
     protected List<Module> parsePersonModules(final Element itemElement) {
-        return this._personModuleParsers.parseModules(itemElement);
+        return personModuleParsers.parseModules(itemElement);
     }
 
     protected List<Element> extractForeignMarkup(final Element e, final Extendable ext, final Namespace basens) {
@@ -103,7 +103,7 @@ public abstract class BaseWireFeedParser implements WireFeedParser {
     protected Attribute getAttribute(final Element e, final String attributeName) {
         Attribute attribute = e.getAttribute(attributeName);
         if (attribute == null) {
-            attribute = e.getAttribute(attributeName, this._namespace);
+            attribute = e.getAttribute(attributeName, namespace);
         }
         return attribute;
     }

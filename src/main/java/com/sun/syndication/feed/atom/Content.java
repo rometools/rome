@@ -31,11 +31,11 @@ import com.sun.syndication.feed.impl.ObjectBean;
  */
 public class Content implements Cloneable, Serializable {
 
-    private final ObjectBean _objBean;
+    private final ObjectBean objBean;
 
-    private String _type;
-    private String _value;
-    private String _src;
+    private String type;
+    private String value;
+    private String src;
 
     /** @since Atom 1.0 */
     public static final String TEXT = "text";
@@ -55,7 +55,7 @@ public class Content implements Cloneable, Serializable {
     /** Atom 0.3 only */
     public static final String ESCAPED = "escaped";
 
-    private String _mode;
+    private String mode;
     private static final Set<String> MODES = new HashSet<String>();
     static {
         MODES.add(XML);
@@ -69,7 +69,7 @@ public class Content implements Cloneable, Serializable {
      * 
      */
     public Content() {
-        this._objBean = new ObjectBean(this.getClass(), this);
+        objBean = new ObjectBean(this.getClass(), this);
     }
 
     /**
@@ -83,7 +83,7 @@ public class Content implements Cloneable, Serializable {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return this._objBean.clone();
+        return objBean.clone();
     }
 
     /**
@@ -100,7 +100,7 @@ public class Content implements Cloneable, Serializable {
         if (!(other instanceof Content)) {
             return false;
         }
-        return this._objBean.equals(other);
+        return objBean.equals(other);
     }
 
     /**
@@ -114,7 +114,7 @@ public class Content implements Cloneable, Serializable {
      */
     @Override
     public int hashCode() {
-        return this._objBean.hashCode();
+        return objBean.hashCode();
     }
 
     /**
@@ -126,7 +126,7 @@ public class Content implements Cloneable, Serializable {
      */
     @Override
     public String toString() {
-        return this._objBean.toString();
+        return objBean.toString();
     }
 
     /**
@@ -138,7 +138,7 @@ public class Content implements Cloneable, Serializable {
      * @since Atom 1.0
      */
     public String getType() {
-        return this._type;
+        return type;
     }
 
     /**
@@ -150,7 +150,7 @@ public class Content implements Cloneable, Serializable {
      * @since Atom 1.0
      */
     public void setType(final String type) {
-        this._type = type;
+        this.type = type;
     }
 
     /**
@@ -162,7 +162,7 @@ public class Content implements Cloneable, Serializable {
      * @return the content mode, <b>null</b> if none.
      */
     public String getMode() {
-        return this._mode;
+        return mode;
     }
 
     /**
@@ -178,7 +178,7 @@ public class Content implements Cloneable, Serializable {
         if (mode == null || !MODES.contains(mode)) {
             throw new IllegalArgumentException("Invalid mode [" + mode + "]");
         }
-        this._mode = mode;
+        this.mode = mode;
     }
 
     /**
@@ -191,7 +191,7 @@ public class Content implements Cloneable, Serializable {
      * 
      */
     public String getValue() {
-        return this._value;
+        return value;
     }
 
     /**
@@ -204,7 +204,7 @@ public class Content implements Cloneable, Serializable {
      * 
      */
     public void setValue(final String value) {
-        this._value = value;
+        this.value = value;
     }
 
     /**
@@ -215,7 +215,7 @@ public class Content implements Cloneable, Serializable {
      * @since Atom 1.0
      */
     public String getSrc() {
-        return this._src;
+        return src;
     }
 
     /**
@@ -226,6 +226,6 @@ public class Content implements Cloneable, Serializable {
      * @since Atom 1.0
      */
     public void setSrc(final String src) {
-        this._src = src;
+        this.src = src;
     }
 }

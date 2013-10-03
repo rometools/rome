@@ -33,11 +33,11 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * 
  */
 public class SyndImageImpl implements Serializable, SyndImage {
-    private final ObjectBean _objBean;
-    private String _title;
-    private String _url;
-    private String _link;
-    private String _description;
+    private final ObjectBean objBean;
+    private String title;
+    private String url;
+    private String link;
+    private String description;
 
     /**
      * Default constructor. All properties are set to <b>null</b>.
@@ -45,7 +45,7 @@ public class SyndImageImpl implements Serializable, SyndImage {
      * 
      */
     public SyndImageImpl() {
-        this._objBean = new ObjectBean(SyndImage.class, this);
+        objBean = new ObjectBean(SyndImage.class, this);
     }
 
     /**
@@ -59,7 +59,7 @@ public class SyndImageImpl implements Serializable, SyndImage {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return this._objBean.clone();
+        return objBean.clone();
     }
 
     /**
@@ -73,7 +73,7 @@ public class SyndImageImpl implements Serializable, SyndImage {
      */
     @Override
     public boolean equals(final Object other) {
-        return this._objBean.equals(other);
+        return objBean.equals(other);
     }
 
     /**
@@ -87,7 +87,7 @@ public class SyndImageImpl implements Serializable, SyndImage {
      */
     @Override
     public int hashCode() {
-        return this._objBean.hashCode();
+        return objBean.hashCode();
     }
 
     /**
@@ -99,7 +99,7 @@ public class SyndImageImpl implements Serializable, SyndImage {
      */
     @Override
     public String toString() {
-        return this._objBean.toString();
+        return objBean.toString();
     }
 
     /**
@@ -111,7 +111,7 @@ public class SyndImageImpl implements Serializable, SyndImage {
      */
     @Override
     public String getTitle() {
-        return this._title;
+        return title;
     }
 
     /**
@@ -123,7 +123,7 @@ public class SyndImageImpl implements Serializable, SyndImage {
      */
     @Override
     public void setTitle(final String title) {
-        this._title = title;
+        this.title = title;
     }
 
     /**
@@ -135,7 +135,7 @@ public class SyndImageImpl implements Serializable, SyndImage {
      */
     @Override
     public String getUrl() {
-        return this._url;
+        return url;
     }
 
     /**
@@ -147,7 +147,7 @@ public class SyndImageImpl implements Serializable, SyndImage {
      */
     @Override
     public void setUrl(final String url) {
-        this._url = url;
+        this.url = url;
     }
 
     /**
@@ -159,7 +159,7 @@ public class SyndImageImpl implements Serializable, SyndImage {
      */
     @Override
     public String getLink() {
-        return this._link;
+        return link;
     }
 
     /**
@@ -171,7 +171,7 @@ public class SyndImageImpl implements Serializable, SyndImage {
      */
     @Override
     public void setLink(final String link) {
-        this._link = link;
+        this.link = link;
     }
 
     /**
@@ -183,7 +183,7 @@ public class SyndImageImpl implements Serializable, SyndImage {
      */
     @Override
     public String getDescription() {
-        return this._description;
+        return description;
     }
 
     /**
@@ -195,7 +195,7 @@ public class SyndImageImpl implements Serializable, SyndImage {
      */
     @Override
     public void setDescription(final String description) {
-        this._description = description;
+        this.description = description;
     }
 
     @Override

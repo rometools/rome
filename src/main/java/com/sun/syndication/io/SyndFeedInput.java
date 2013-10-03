@@ -38,7 +38,7 @@ import com.sun.syndication.feed.synd.SyndFeedImpl;
  * 
  */
 public class SyndFeedInput {
-    private final WireFeedInput _feedInput;
+    private final WireFeedInput feedInput;
     private boolean preserveWireFeed = false;
 
     /**
@@ -59,7 +59,7 @@ public class SyndFeedInput {
      * 
      */
     public SyndFeedInput(final boolean validate) {
-        this._feedInput = new WireFeedInput(validate);
+        feedInput = new WireFeedInput(validate);
     }
 
     /**
@@ -81,7 +81,7 @@ public class SyndFeedInput {
      * 
      */
     public void setXmlHealerOn(final boolean heals) {
-        this._feedInput.setXmlHealerOn(heals);
+        feedInput.setXmlHealerOn(heals);
     }
 
     /**
@@ -104,7 +104,7 @@ public class SyndFeedInput {
      * 
      */
     public boolean getXmlHealerOn() {
-        return this._feedInput.getXmlHealerOn();
+        return feedInput.getXmlHealerOn();
     }
 
     /**
@@ -121,7 +121,7 @@ public class SyndFeedInput {
      * 
      */
     public SyndFeed build(final File file) throws FileNotFoundException, IOException, IllegalArgumentException, FeedException {
-        return new SyndFeedImpl(this._feedInput.build(file), this.preserveWireFeed);
+        return new SyndFeedImpl(feedInput.build(file), preserveWireFeed);
     }
 
     /**
@@ -136,7 +136,7 @@ public class SyndFeedInput {
      * 
      */
     public SyndFeed build(final Reader reader) throws IllegalArgumentException, FeedException {
-        return new SyndFeedImpl(this._feedInput.build(reader), this.preserveWireFeed);
+        return new SyndFeedImpl(feedInput.build(reader), preserveWireFeed);
     }
 
     /**
@@ -151,7 +151,7 @@ public class SyndFeedInput {
      * 
      */
     public SyndFeed build(final InputSource is) throws IllegalArgumentException, FeedException {
-        return new SyndFeedImpl(this._feedInput.build(is), this.preserveWireFeed);
+        return new SyndFeedImpl(feedInput.build(is), preserveWireFeed);
     }
 
     /**
@@ -166,7 +166,7 @@ public class SyndFeedInput {
      * 
      */
     public SyndFeed build(final org.w3c.dom.Document document) throws IllegalArgumentException, FeedException {
-        return new SyndFeedImpl(this._feedInput.build(document), this.preserveWireFeed);
+        return new SyndFeedImpl(feedInput.build(document), preserveWireFeed);
     }
 
     /**
@@ -181,7 +181,7 @@ public class SyndFeedInput {
      * 
      */
     public SyndFeed build(final Document document) throws IllegalArgumentException, FeedException {
-        return new SyndFeedImpl(this._feedInput.build(document), this.preserveWireFeed);
+        return new SyndFeedImpl(feedInput.build(document), preserveWireFeed);
     }
 
     /**
@@ -190,7 +190,7 @@ public class SyndFeedInput {
      *         default.
      */
     public boolean isPreserveWireFeed() {
-        return this.preserveWireFeed;
+        return preserveWireFeed;
     }
 
     /**

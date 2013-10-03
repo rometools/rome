@@ -47,25 +47,25 @@ import com.sun.syndication.feed.synd.impl.URINormalizer;
  * 
  */
 public class SyndEntryImpl implements Serializable, SyndEntry {
-    private final ObjectBean _objBean;
-    private String _uri;
-    private String _link;
-    private Date _updatedDate;
-    private SyndContent _title;
-    private SyndContent _description;
-    private List<SyndLink> _links;
-    private List<SyndContent> _contents; // deprecated by Atom 1.0
-    private List<Module> _modules;
-    private List<SyndEnclosure> _enclosures;
-    private List<SyndPerson> _authors;
-    private List<SyndPerson> _contributors;
-    private SyndFeed _source;
-    private List<Element> _foreignMarkup;
+    private final ObjectBean objBean;
+    private String uri;
+    private String link;
+    private Date updatedDate;
+    private SyndContent title;
+    private SyndContent description;
+    private List<SyndLink> links;
+    private List<SyndContent> contents; // deprecated by Atom 1.0
+    private List<Module> modules;
+    private List<SyndEnclosure> enclosures;
+    private List<SyndPerson> authors;
+    private List<SyndPerson> contributors;
+    private SyndFeed source;
+    private List<Element> foreignMarkup;
     private Object wireEntry; // com.sun.syndication.feed.atom.Entry or
                               // com.sun.syndication.feed.rss.Item
 
     // ISSUE: some converters assume this is never null
-    private List<SyndCategory> _categories = new ArrayList<SyndCategory>();
+    private List<SyndCategory> categories = new ArrayList<SyndCategory>();
 
     private static final Set<String> IGNORE_PROPERTIES = new HashSet<String>();
 
@@ -95,7 +95,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      * 
      */
     protected SyndEntryImpl(final Class beanClass, final Set convenienceProperties) {
-        this._objBean = new ObjectBean(beanClass, this, convenienceProperties);
+        objBean = new ObjectBean(beanClass, this, convenienceProperties);
     }
 
     /**
@@ -118,7 +118,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return this._objBean.clone();
+        return objBean.clone();
     }
 
     /**
@@ -144,7 +144,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
         // can't use foreign markup in equals, due to JDOM equals impl
         final List<Element> fm = getForeignMarkup();
         setForeignMarkup(((SyndEntryImpl) other).getForeignMarkup());
-        final boolean ret = this._objBean.equals(other);
+        final boolean ret = objBean.equals(other);
         // restore foreign markup
         setForeignMarkup(fm);
         return ret;
@@ -161,7 +161,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public int hashCode() {
-        return this._objBean.hashCode();
+        return objBean.hashCode();
     }
 
     /**
@@ -173,7 +173,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public String toString() {
-        return this._objBean.toString();
+        return objBean.toString();
     }
 
     /**
@@ -193,7 +193,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public String getUri() {
-        return this._uri;
+        return uri;
     }
 
     /**
@@ -211,7 +211,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public void setUri(final String uri) {
-        this._uri = URINormalizer.normalize(uri);
+        this.uri = URINormalizer.normalize(uri);
     }
 
     /**
@@ -223,8 +223,8 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public String getTitle() {
-        if (this._title != null) {
-            return this._title.getValue();
+        if (title != null) {
+            return title.getValue();
         }
         return null;
     }
@@ -238,10 +238,10 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public void setTitle(final String title) {
-        if (this._title == null) {
-            this._title = new SyndContentImpl();
+        if (this.title == null) {
+            this.title = new SyndContentImpl();
         }
-        this._title.setValue(title);
+        this.title.setValue(title);
     }
 
     /**
@@ -253,7 +253,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public SyndContent getTitleEx() {
-        return this._title;
+        return title;
     }
 
     /**
@@ -265,7 +265,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public void setTitleEx(final SyndContent title) {
-        this._title = title;
+        this.title = title;
     }
 
     /**
@@ -277,7 +277,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public String getLink() {
-        return this._link;
+        return link;
     }
 
     /**
@@ -289,7 +289,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public void setLink(final String link) {
-        this._link = link;
+        this.link = link;
     }
 
     /**
@@ -301,7 +301,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public SyndContent getDescription() {
-        return this._description;
+        return description;
     }
 
     /**
@@ -313,7 +313,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public void setDescription(final SyndContent description) {
-        this._description = description;
+        this.description = description;
     }
 
     /**
@@ -326,7 +326,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public List<SyndContent> getContents() {
-        return this._contents == null ? (this._contents = new ArrayList<SyndContent>()) : this._contents;
+        return contents == null ? (contents = new ArrayList<SyndContent>()) : contents;
     }
 
     /**
@@ -339,7 +339,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public void setContents(final List<SyndContent> contents) {
-        this._contents = contents;
+        this.contents = contents;
     }
 
     /**
@@ -352,7 +352,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public List<SyndEnclosure> getEnclosures() {
-        return this._enclosures == null ? (this._enclosures = new ArrayList<SyndEnclosure>()) : this._enclosures;
+        return enclosures == null ? (enclosures = new ArrayList<SyndEnclosure>()) : enclosures;
     }
 
     /**
@@ -365,7 +365,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public void setEnclosures(final List<SyndEnclosure> enclosures) {
-        this._enclosures = enclosures;
+        this.enclosures = enclosures;
     }
 
     /**
@@ -409,7 +409,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public List<SyndCategory> getCategories() {
-        return this._categories;
+        return categories;
     }
 
     /**
@@ -425,7 +425,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public void setCategories(final List<SyndCategory> categories) {
-        this._categories = categories;
+        this.categories = categories;
     }
 
     /**
@@ -438,13 +438,13 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public List<Module> getModules() {
-        if (this._modules == null) {
-            this._modules = new ArrayList<Module>();
+        if (modules == null) {
+            modules = new ArrayList<Module>();
         }
-        if (ModuleUtils.getModule(this._modules, DCModule.URI) == null) {
-            this._modules.add(new DCModuleImpl());
+        if (ModuleUtils.getModule(modules, DCModule.URI) == null) {
+            modules.add(new DCModuleImpl());
         }
-        return this._modules;
+        return modules;
     }
 
     /**
@@ -457,7 +457,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public void setModules(final List<Module> modules) {
-        this._modules = modules;
+        this.modules = modules;
     }
 
     /**
@@ -522,7 +522,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public List<SyndLink> getLinks() {
-        return this._links == null ? (this._links = new ArrayList<SyndLink>()) : this._links;
+        return links == null ? (links = new ArrayList<SyndLink>()) : links;
     }
 
     /**
@@ -533,7 +533,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public void setLinks(final List<SyndLink> links) {
-        this._links = links;
+        this.links = links;
     }
 
     /**
@@ -544,7 +544,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public Date getUpdatedDate() {
-        return this._updatedDate == null ? null : new Date(this._updatedDate.getTime());
+        return updatedDate == null ? null : new Date(updatedDate.getTime());
     }
 
     /**
@@ -555,12 +555,12 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public void setUpdatedDate(final Date updatedDate) {
-        this._updatedDate = new Date(updatedDate.getTime());
+        this.updatedDate = new Date(updatedDate.getTime());
     }
 
     @Override
     public List<SyndPerson> getAuthors() {
-        return this._authors == null ? (this._authors = new ArrayList<SyndPerson>()) : this._authors;
+        return authors == null ? (authors = new ArrayList<SyndPerson>()) : authors;
     }
 
     /*
@@ -569,7 +569,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public void setAuthors(final List<SyndPerson> authors) {
-        this._authors = authors;
+        this.authors = authors;
     }
 
     /**
@@ -586,10 +586,10 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
     public String getAuthor() {
         String author;
 
-        // Start out looking for one or more authors in _authors. For non-Atom
-        // feeds, _authors may actually be null.
-        if (this._authors != null && this._authors.size() > 0) {
-            author = this._authors.get(0).getName();
+        // Start out looking for one or more authors in authors. For non-Atom
+        // feeds, authors may actually be null.
+        if (authors != null && authors.size() > 0) {
+            author = authors.get(0).getName();
         } else {
             author = getDCModule().getCreator();
         }
@@ -624,7 +624,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
 
     @Override
     public List<SyndPerson> getContributors() {
-        return this._contributors == null ? (this._contributors = new ArrayList<SyndPerson>()) : this._contributors;
+        return contributors == null ? (contributors = new ArrayList<SyndPerson>()) : contributors;
     }
 
     /*
@@ -634,17 +634,17 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public void setContributors(final List<SyndPerson> contributors) {
-        this._contributors = contributors;
+        this.contributors = contributors;
     }
 
     @Override
     public SyndFeed getSource() {
-        return this._source;
+        return source;
     }
 
     @Override
     public void setSource(final SyndFeed source) {
-        this._source = source;
+        this.source = source;
     }
 
     /**
@@ -657,7 +657,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public List<Element> getForeignMarkup() {
-        return this._foreignMarkup == null ? (this._foreignMarkup = new ArrayList<Element>()) : this._foreignMarkup;
+        return foreignMarkup == null ? (foreignMarkup = new ArrayList<Element>()) : foreignMarkup;
     }
 
     /**
@@ -670,12 +670,12 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public void setForeignMarkup(final List<Element> foreignMarkup) {
-        this._foreignMarkup = foreignMarkup;
+        this.foreignMarkup = foreignMarkup;
     }
 
     @Override
     public Object getWireEntry() {
-        return this.wireEntry;
+        return wireEntry;
     }
 
     public void setWireEntry(final Object wireEntry) {

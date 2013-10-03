@@ -18,7 +18,7 @@ import com.sun.syndication.io.impl.DateParser;
  * 
  */
 public abstract class SyndFeedTest extends FeedTest {
-    private String _prefix = null;
+    private String prefix = null;
 
     protected SyndFeedTest(final String feedType) {
         this(feedType, feedType + ".xml");
@@ -26,11 +26,11 @@ public abstract class SyndFeedTest extends FeedTest {
 
     protected SyndFeedTest(final String feedType, final String feedFileName) {
         super(feedFileName);
-        this._prefix = feedType;
+        prefix = feedType;
     }
 
     protected String getPrefix() {
-        return this._prefix;
+        return prefix;
     }
 
     protected void assertProperty(final String property, final String value) {
@@ -38,7 +38,7 @@ public abstract class SyndFeedTest extends FeedTest {
     }
 
     protected void assertEqualsStr(final String expected, final String actual) {
-        assertEquals(this._prefix + "." + expected, actual);
+        assertEquals(prefix + "." + expected, actual);
     }
 
     public void testPreserveWireFeed() throws Exception {

@@ -48,7 +48,7 @@ public class TestXmlReader extends TestCase {
         test.testHttp();
     }
 
-    protected void _testRawNoBomValid(final String encoding) throws Exception {
+    protected void testRawNoBomValid(final String encoding) throws Exception {
         InputStream is = getXmlStream("no-bom", XML1, encoding, encoding);
         XmlReader xmlReader = new XmlReader(is, false);
         assertEquals(xmlReader.getEncoding(), "UTF-8");
@@ -70,7 +70,7 @@ public class TestXmlReader extends TestCase {
         assertEquals(xmlReader.getEncoding(), encoding);
     }
 
-    protected void _testRawNoBomInvalid(final String encoding) throws Exception {
+    protected void testRawNoBomInvalid(final String encoding) throws Exception {
         final InputStream is = getXmlStream("no-bom", XML3, encoding, encoding);
         try {
             final XmlReader xmlReader = new XmlReader(is, false);
@@ -81,12 +81,12 @@ public class TestXmlReader extends TestCase {
     }
 
     public void testRawNoBom() throws Exception {
-        _testRawNoBomValid("US-ASCII");
-        _testRawNoBomValid("UTF-8");
-        _testRawNoBomValid("ISO-8859-1");
+        testRawNoBomValid("US-ASCII");
+        testRawNoBomValid("UTF-8");
+        testRawNoBomValid("ISO-8859-1");
     }
 
-    protected void _testRawBomValid(final String encoding) throws Exception {
+    protected void testRawBomValid(final String encoding) throws Exception {
         final InputStream is = getXmlStream(encoding + "-bom", XML3, encoding, encoding);
         final XmlReader xmlReader = new XmlReader(is, false);
         if (!encoding.equals("UTF-16")) {
@@ -96,7 +96,7 @@ public class TestXmlReader extends TestCase {
         }
     }
 
-    protected void _testRawBomInvalid(final String bomEnc, final String streamEnc, final String prologEnc) throws Exception {
+    protected void testRawBomInvalid(final String bomEnc, final String streamEnc, final String prologEnc) throws Exception {
         final InputStream is = getXmlStream(bomEnc, XML3, streamEnc, prologEnc);
         try {
             final XmlReader xmlReader = new XmlReader(is, false);
@@ -107,83 +107,83 @@ public class TestXmlReader extends TestCase {
     }
 
     public void testRawBom() throws Exception {
-        _testRawBomValid("UTF-8");
-        _testRawBomValid("UTF-16BE");
-        _testRawBomValid("UTF-16LE");
-        _testRawBomValid("UTF-16");
+        testRawBomValid("UTF-8");
+        testRawBomValid("UTF-16BE");
+        testRawBomValid("UTF-16LE");
+        testRawBomValid("UTF-16");
 
-        _testRawBomInvalid("UTF-8-bom", "US-ASCII", "US-ASCII");
-        _testRawBomInvalid("UTF-8-bom", "ISO-8859-1", "ISO-8859-1");
-        _testRawBomInvalid("UTF-8-bom", "UTF-8", "UTF-16");
-        _testRawBomInvalid("UTF-8-bom", "UTF-8", "UTF-16BE");
-        _testRawBomInvalid("UTF-8-bom", "UTF-8", "UTF-16LE");
-        _testRawBomInvalid("UTF-16BE-bom", "UTF-16BE", "UTF-16LE");
-        _testRawBomInvalid("UTF-16LE-bom", "UTF-16LE", "UTF-16BE");
-        _testRawBomInvalid("UTF-16LE-bom", "UTF-16LE", "UTF-8");
+        testRawBomInvalid("UTF-8-bom", "US-ASCII", "US-ASCII");
+        testRawBomInvalid("UTF-8-bom", "ISO-8859-1", "ISO-8859-1");
+        testRawBomInvalid("UTF-8-bom", "UTF-8", "UTF-16");
+        testRawBomInvalid("UTF-8-bom", "UTF-8", "UTF-16BE");
+        testRawBomInvalid("UTF-8-bom", "UTF-8", "UTF-16LE");
+        testRawBomInvalid("UTF-16BE-bom", "UTF-16BE", "UTF-16LE");
+        testRawBomInvalid("UTF-16LE-bom", "UTF-16LE", "UTF-16BE");
+        testRawBomInvalid("UTF-16LE-bom", "UTF-16LE", "UTF-8");
     }
 
     public void testHttp() throws Exception {
-        _testHttpValid("application/xml", "no-bom", "US-ASCII", null);
-        _testHttpValid("application/xml", "UTF-8-bom", "US-ASCII", null);
-        _testHttpValid("application/xml", "UTF-8-bom", "UTF-8", null);
-        _testHttpValid("application/xml", "UTF-8-bom", "UTF-8", "UTF-8");
-        _testHttpValid("application/xml;charset=UTF-8", "UTF-8-bom", "UTF-8", null);
-        _testHttpValid("application/xml;charset=\"UTF-8\"", "UTF-8-bom", "UTF-8", null);
-        _testHttpValid("application/xml;charset='UTF-8'", "UTF-8-bom", "UTF-8", null);
-        _testHttpValid("application/xml;charset=UTF-8", "UTF-8-bom", "UTF-8", "UTF-8");
-        _testHttpValid("application/xml;charset=UTF-16", "UTF-16BE-bom", "UTF-16BE", null);
-        _testHttpValid("application/xml;charset=UTF-16", "UTF-16BE-bom", "UTF-16BE", "UTF-16");
-        _testHttpValid("application/xml;charset=UTF-16", "UTF-16BE-bom", "UTF-16BE", "UTF-16BE");
+        testHttpValid("application/xml", "no-bom", "US-ASCII", null);
+        testHttpValid("application/xml", "UTF-8-bom", "US-ASCII", null);
+        testHttpValid("application/xml", "UTF-8-bom", "UTF-8", null);
+        testHttpValid("application/xml", "UTF-8-bom", "UTF-8", "UTF-8");
+        testHttpValid("application/xml;charset=UTF-8", "UTF-8-bom", "UTF-8", null);
+        testHttpValid("application/xml;charset=\"UTF-8\"", "UTF-8-bom", "UTF-8", null);
+        testHttpValid("application/xml;charset='UTF-8'", "UTF-8-bom", "UTF-8", null);
+        testHttpValid("application/xml;charset=UTF-8", "UTF-8-bom", "UTF-8", "UTF-8");
+        testHttpValid("application/xml;charset=UTF-16", "UTF-16BE-bom", "UTF-16BE", null);
+        testHttpValid("application/xml;charset=UTF-16", "UTF-16BE-bom", "UTF-16BE", "UTF-16");
+        testHttpValid("application/xml;charset=UTF-16", "UTF-16BE-bom", "UTF-16BE", "UTF-16BE");
 
-        _testHttpInvalid("application/xml;charset=UTF-16BE", "UTF-16BE-bom", "UTF-16BE", null);
-        _testHttpInvalid("application/xml;charset=UTF-16BE", "UTF-16BE-bom", "UTF-16BE", "UTF-16");
-        _testHttpInvalid("application/xml;charset=UTF-16BE", "UTF-16BE-bom", "UTF-16BE", "UTF-16BE");
-        _testHttpInvalid("application/xml", "UTF-8-bom", "US-ASCII", "US-ASCII");
-        _testHttpInvalid("application/xml;charset=UTF-16", "UTF-16LE", "UTF-8", "UTF-8");
-        _testHttpInvalid("application/xml;charset=UTF-16", "no-bom", "UTF-16BE", "UTF-16BE");
+        testHttpInvalid("application/xml;charset=UTF-16BE", "UTF-16BE-bom", "UTF-16BE", null);
+        testHttpInvalid("application/xml;charset=UTF-16BE", "UTF-16BE-bom", "UTF-16BE", "UTF-16");
+        testHttpInvalid("application/xml;charset=UTF-16BE", "UTF-16BE-bom", "UTF-16BE", "UTF-16BE");
+        testHttpInvalid("application/xml", "UTF-8-bom", "US-ASCII", "US-ASCII");
+        testHttpInvalid("application/xml;charset=UTF-16", "UTF-16LE", "UTF-8", "UTF-8");
+        testHttpInvalid("application/xml;charset=UTF-16", "no-bom", "UTF-16BE", "UTF-16BE");
 
-        _testHttpValid("text/xml", "no-bom", "US-ASCII", null);
-        _testHttpValid("text/xml;charset=UTF-8", "UTF-8-bom", "UTF-8", "UTF-8");
-        _testHttpValid("text/xml;charset=UTF-8", "UTF-8-bom", "UTF-8", null);
-        _testHttpValid("text/xml;charset=UTF-16", "UTF-16BE-bom", "UTF-16BE", null);
-        _testHttpValid("text/xml;charset=UTF-16", "UTF-16BE-bom", "UTF-16BE", "UTF-16");
-        _testHttpValid("text/xml;charset=UTF-16", "UTF-16BE-bom", "UTF-16BE", "UTF-16BE");
-        _testHttpValid("text/xml", "UTF-8-bom", "US-ASCII", null);
+        testHttpValid("text/xml", "no-bom", "US-ASCII", null);
+        testHttpValid("text/xml;charset=UTF-8", "UTF-8-bom", "UTF-8", "UTF-8");
+        testHttpValid("text/xml;charset=UTF-8", "UTF-8-bom", "UTF-8", null);
+        testHttpValid("text/xml;charset=UTF-16", "UTF-16BE-bom", "UTF-16BE", null);
+        testHttpValid("text/xml;charset=UTF-16", "UTF-16BE-bom", "UTF-16BE", "UTF-16");
+        testHttpValid("text/xml;charset=UTF-16", "UTF-16BE-bom", "UTF-16BE", "UTF-16BE");
+        testHttpValid("text/xml", "UTF-8-bom", "US-ASCII", null);
 
-        _testAlternateDefaultEncoding("application/xml", "UTF-8-bom", "UTF-8", null, null);
-        _testAlternateDefaultEncoding("application/xml", "no-bom", "US-ASCII", null, "US-ASCII");
-        _testAlternateDefaultEncoding("application/xml", "UTF-8-bom", "UTF-8", null, "UTF-8");
-        _testAlternateDefaultEncoding("text/xml", "no-bom", "US-ASCII", null, null);
-        _testAlternateDefaultEncoding("text/xml", "no-bom", "US-ASCII", null, "US-ASCII");
-        _testAlternateDefaultEncoding("text/xml", "no-bom", "US-ASCII", null, "UTF-8");
+        testAlternateDefaultEncoding("application/xml", "UTF-8-bom", "UTF-8", null, null);
+        testAlternateDefaultEncoding("application/xml", "no-bom", "US-ASCII", null, "US-ASCII");
+        testAlternateDefaultEncoding("application/xml", "UTF-8-bom", "UTF-8", null, "UTF-8");
+        testAlternateDefaultEncoding("text/xml", "no-bom", "US-ASCII", null, null);
+        testAlternateDefaultEncoding("text/xml", "no-bom", "US-ASCII", null, "US-ASCII");
+        testAlternateDefaultEncoding("text/xml", "no-bom", "US-ASCII", null, "UTF-8");
 
-        _testHttpInvalid("text/xml;charset=UTF-16BE", "UTF-16BE-bom", "UTF-16BE", null);
-        _testHttpInvalid("text/xml;charset=UTF-16BE", "UTF-16BE-bom", "UTF-16BE", "UTF-16");
-        _testHttpInvalid("text/xml;charset=UTF-16BE", "UTF-16BE-bom", "UTF-16BE", "UTF-16BE");
-        _testHttpInvalid("text/xml;charset=UTF-16", "no-bom", "UTF-16BE", "UTF-16BE");
-        _testHttpInvalid("text/xml;charset=UTF-16", "no-bom", "UTF-16BE", null);
+        testHttpInvalid("text/xml;charset=UTF-16BE", "UTF-16BE-bom", "UTF-16BE", null);
+        testHttpInvalid("text/xml;charset=UTF-16BE", "UTF-16BE-bom", "UTF-16BE", "UTF-16");
+        testHttpInvalid("text/xml;charset=UTF-16BE", "UTF-16BE-bom", "UTF-16BE", "UTF-16BE");
+        testHttpInvalid("text/xml;charset=UTF-16", "no-bom", "UTF-16BE", "UTF-16BE");
+        testHttpInvalid("text/xml;charset=UTF-16", "no-bom", "UTF-16BE", null);
 
-        _testHttpLenient("text/xml", "no-bom", "US-ASCII", null, "US-ASCII");
-        _testHttpLenient("text/xml;charset=UTF-8", "UTF-8-bom", "UTF-8", "UTF-8", "UTF-8");
-        _testHttpLenient("text/xml;charset=UTF-8", "UTF-8-bom", "UTF-8", null, "UTF-8");
-        _testHttpLenient("text/xml;charset=UTF-16", "UTF-16BE-bom", "UTF-16BE", null, "UTF-16BE");
-        _testHttpLenient("text/xml;charset=UTF-16", "UTF-16BE-bom", "UTF-16BE", "UTF-16", "UTF-16");
-        _testHttpLenient("text/xml;charset=UTF-16", "UTF-16BE-bom", "UTF-16BE", "UTF-16BE", "UTF-16BE");
-        _testHttpLenient("text/xml", "UTF-8-bom", "US-ASCII", null, "US-ASCII");
+        testHttpLenient("text/xml", "no-bom", "US-ASCII", null, "US-ASCII");
+        testHttpLenient("text/xml;charset=UTF-8", "UTF-8-bom", "UTF-8", "UTF-8", "UTF-8");
+        testHttpLenient("text/xml;charset=UTF-8", "UTF-8-bom", "UTF-8", null, "UTF-8");
+        testHttpLenient("text/xml;charset=UTF-16", "UTF-16BE-bom", "UTF-16BE", null, "UTF-16BE");
+        testHttpLenient("text/xml;charset=UTF-16", "UTF-16BE-bom", "UTF-16BE", "UTF-16", "UTF-16");
+        testHttpLenient("text/xml;charset=UTF-16", "UTF-16BE-bom", "UTF-16BE", "UTF-16BE", "UTF-16BE");
+        testHttpLenient("text/xml", "UTF-8-bom", "US-ASCII", null, "US-ASCII");
 
-        _testHttpLenient("text/xml;charset=UTF-16BE", "UTF-16BE-bom", "UTF-16BE", null, "UTF-16BE");
-        _testHttpLenient("text/xml;charset=UTF-16BE", "UTF-16BE-bom", "UTF-16BE", "UTF-16", "UTF-16");
-        _testHttpLenient("text/xml;charset=UTF-16BE", "UTF-16BE-bom", "UTF-16BE", "UTF-16BE", "UTF-16BE");
-        _testHttpLenient("text/xml;charset=UTF-16", "no-bom", "UTF-16BE", "UTF-16BE", "UTF-16BE");
-        _testHttpLenient("text/xml;charset=UTF-16", "no-bom", "UTF-16BE", null, "UTF-16");
+        testHttpLenient("text/xml;charset=UTF-16BE", "UTF-16BE-bom", "UTF-16BE", null, "UTF-16BE");
+        testHttpLenient("text/xml;charset=UTF-16BE", "UTF-16BE-bom", "UTF-16BE", "UTF-16", "UTF-16");
+        testHttpLenient("text/xml;charset=UTF-16BE", "UTF-16BE-bom", "UTF-16BE", "UTF-16BE", "UTF-16BE");
+        testHttpLenient("text/xml;charset=UTF-16", "no-bom", "UTF-16BE", "UTF-16BE", "UTF-16BE");
+        testHttpLenient("text/xml;charset=UTF-16", "no-bom", "UTF-16BE", null, "UTF-16");
 
-        _testHttpLenient("text/html", "no-bom", "US-ASCII", "US-ASCII", "US-ASCII");
-        _testHttpLenient("text/html", "no-bom", "US-ASCII", null, "US-ASCII");
-        _testHttpLenient("text/html;charset=UTF-8", "no-bom", "US-ASCII", "UTF-8", "UTF-8");
-        _testHttpLenient("text/html;charset=UTF-16BE", "no-bom", "US-ASCII", "UTF-8", "UTF-8");
+        testHttpLenient("text/html", "no-bom", "US-ASCII", "US-ASCII", "US-ASCII");
+        testHttpLenient("text/html", "no-bom", "US-ASCII", null, "US-ASCII");
+        testHttpLenient("text/html;charset=UTF-8", "no-bom", "US-ASCII", "UTF-8", "UTF-8");
+        testHttpLenient("text/html;charset=UTF-16BE", "no-bom", "US-ASCII", "UTF-8", "UTF-8");
     }
 
-    public void _testAlternateDefaultEncoding(final String cT, final String bomEnc, final String streamEnc, final String prologEnc, final String alternateEnc)
+    public void testAlternateDefaultEncoding(final String cT, final String bomEnc, final String streamEnc, final String prologEnc, final String alternateEnc)
             throws Exception {
         try {
             final InputStream is = getXmlStream(bomEnc, prologEnc == null ? XML1 : XML3, streamEnc, prologEnc);
@@ -201,7 +201,7 @@ public class TestXmlReader extends TestCase {
         }
     }
 
-    public void _testHttpValid(final String cT, final String bomEnc, final String streamEnc, final String prologEnc) throws Exception {
+    public void testHttpValid(final String cT, final String bomEnc, final String streamEnc, final String prologEnc) throws Exception {
         final InputStream is = getXmlStream(bomEnc, prologEnc == null ? XML1 : XML3, streamEnc, prologEnc);
         final XmlReader xmlReader = new XmlReader(is, cT, false);
         if (!streamEnc.equals("UTF-16")) {
@@ -212,7 +212,7 @@ public class TestXmlReader extends TestCase {
         }
     }
 
-    protected void _testHttpInvalid(final String cT, final String bomEnc, final String streamEnc, final String prologEnc) throws Exception {
+    protected void testHttpInvalid(final String cT, final String bomEnc, final String streamEnc, final String prologEnc) throws Exception {
         final InputStream is = getXmlStream(bomEnc, prologEnc == null ? XML2 : XML3, streamEnc, prologEnc);
         try {
             new XmlReader(is, cT, false);
@@ -222,7 +222,7 @@ public class TestXmlReader extends TestCase {
         }
     }
 
-    protected void _testHttpLenient(final String cT, final String bomEnc, final String streamEnc, final String prologEnc, final String shouldbe)
+    protected void testHttpLenient(final String cT, final String bomEnc, final String streamEnc, final String prologEnc, final String shouldbe)
             throws Exception {
         final InputStream is = getXmlStream(bomEnc, prologEnc == null ? XML2 : XML3, streamEnc, prologEnc);
         final XmlReader xmlReader = new XmlReader(is, cT, true);

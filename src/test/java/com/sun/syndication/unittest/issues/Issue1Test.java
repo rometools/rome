@@ -52,77 +52,77 @@ public class Issue1Test extends SyndFeedTest {
     }
 
     public void testHtmlEntities() throws Exception {
-        _testValidEntities("<hello></hello>");
-        _testValidEntities(XML_PROLOG + "<hello></hello>");
-        _testValidEntities(" <!-- just in case -->\n" + XML_PROLOG + "<hello></hello>");
+        testValidEntities("<hello></hello>");
+        testValidEntities(XML_PROLOG + "<hello></hello>");
+        testValidEntities(" <!-- just in case -->\n" + XML_PROLOG + "<hello></hello>");
 
-        _testValidEntities("<hello>&apos;&yen;&#250;&yen;</hello>");
-        _testValidEntities(XML_PROLOG + "<hello>&apos;&yen;&#250;&yen;</hello>");
-        _testValidEntities(" <!-- just in case -->\n" + XML_PROLOG + "<hello>&apos;&yen;&#250;&yen;</hello>");
+        testValidEntities("<hello>&apos;&yen;&#250;&yen;</hello>");
+        testValidEntities(XML_PROLOG + "<hello>&apos;&yen;&#250;&yen;</hello>");
+        testValidEntities(" <!-- just in case -->\n" + XML_PROLOG + "<hello>&apos;&yen;&#250;&yen;</hello>");
 
-        _testValidEntities("<hello>&Pi;&Rho;#913;&Rho;</hello>");
-        _testValidEntities(XML_PROLOG + "<hello>&Pi;&Rho;&#913;&Rho;</hello>");
-        _testValidEntities(" <!-- just in case -->\n" + XML_PROLOG + "<hello>&Pi;&Rho;&#913;&Rho;</hello>");
+        testValidEntities("<hello>&Pi;&Rho;#913;&Rho;</hello>");
+        testValidEntities(XML_PROLOG + "<hello>&Pi;&Rho;&#913;&Rho;</hello>");
+        testValidEntities(" <!-- just in case -->\n" + XML_PROLOG + "<hello>&Pi;&Rho;&#913;&Rho;</hello>");
 
-        _testValidEntities("<hello>&OElig;&mdash;&#8211;&mdash;</hello>");
-        _testValidEntities(XML_PROLOG + "<hello>&OElig;&mdash;&#8211;&mdash;</hello>");
-        _testValidEntities(" <!-- just in case -->\n" + XML_PROLOG + "<hello>&OElig;&mdash;&#8211;&mdash;</hello>");
+        testValidEntities("<hello>&OElig;&mdash;&#8211;&mdash;</hello>");
+        testValidEntities(XML_PROLOG + "<hello>&OElig;&mdash;&#8211;&mdash;</hello>");
+        testValidEntities(" <!-- just in case -->\n" + XML_PROLOG + "<hello>&OElig;&mdash;&#8211;&mdash;</hello>");
 
-        _testInvalidEntities("<hello>&apos;&yexn;&#250;&yen;</hello>");
-        _testInvalidEntities(XML_PROLOG + "<hello>&apos;&yexn;&#250;&yen;</hello>");
-        _testInvalidEntities(" <!-- just in case -->\n" + XML_PROLOG + "<hello>&apos;&yexn;&#250;&yen;</hello>");
+        testInvalidEntities("<hello>&apos;&yexn;&#250;&yen;</hello>");
+        testInvalidEntities(XML_PROLOG + "<hello>&apos;&yexn;&#250;&yen;</hello>");
+        testInvalidEntities(" <!-- just in case -->\n" + XML_PROLOG + "<hello>&apos;&yexn;&#250;&yen;</hello>");
 
-        _testInvalidEntities("<hello>&Pi;&Rhox;#913;&Rho;</hello>");
-        _testInvalidEntities(XML_PROLOG + "<hello>&Pi;&Rhox;&#913;&Rho;</hello>");
-        _testInvalidEntities(" <!-- just in case -->\n" + XML_PROLOG + "<hello>&Pi;&Rhox;&#913;&Rho;</hello>");
+        testInvalidEntities("<hello>&Pi;&Rhox;#913;&Rho;</hello>");
+        testInvalidEntities(XML_PROLOG + "<hello>&Pi;&Rhox;&#913;&Rho;</hello>");
+        testInvalidEntities(" <!-- just in case -->\n" + XML_PROLOG + "<hello>&Pi;&Rhox;&#913;&Rho;</hello>");
 
-        _testInvalidEntities("<hello>&apos;&yen;&#2x50;&yen;</hello>");
-        _testInvalidEntities(XML_PROLOG + "<hello>&apos;&yen;&#2x50;&yen;</hello>");
-        _testInvalidEntities(" <!-- just in case -->\n" + XML_PROLOG + "<hello>&apos;&yen;&#2x50;&yen;</hello>");
+        testInvalidEntities("<hello>&apos;&yen;&#2x50;&yen;</hello>");
+        testInvalidEntities(XML_PROLOG + "<hello>&apos;&yen;&#2x50;&yen;</hello>");
+        testInvalidEntities(" <!-- just in case -->\n" + XML_PROLOG + "<hello>&apos;&yen;&#2x50;&yen;</hello>");
 
-        _testInvalidEntities("<hello>&Pi;&Rho;&#9x13;&Rho;</hello>");
-        _testInvalidEntities(XML_PROLOG + "<hello>&Pi;&Rho;&#9x13;&Rho;</hello>");
-        _testInvalidEntities(" <!-- just in case -->\n" + XML_PROLOG + "<hello>&Pi;&Rho;&#9x13;&Rho;</hello>");
+        testInvalidEntities("<hello>&Pi;&Rho;&#9x13;&Rho;</hello>");
+        testInvalidEntities(XML_PROLOG + "<hello>&Pi;&Rho;&#9x13;&Rho;</hello>");
+        testInvalidEntities(" <!-- just in case -->\n" + XML_PROLOG + "<hello>&Pi;&Rho;&#9x13;&Rho;</hello>");
     }
 
     public void testTrim() throws Exception {
-        _testValidTrim("", "<hello></hello>");
-        _testValidTrim("", XML_PROLOG + "<hello></hello>");
-        _testValidTrim(" ", "<hello></hello>");
-        _testValidTrim(" ", XML_PROLOG + "<hello></hello>");
-        _testValidTrim(" \n", "<hello></hello>");
-        _testValidTrim(" \n", XML_PROLOG + "<hello></hello>");
-        _testValidTrim("<!-- - -- -->", "<hello></hello>");
-        _testValidTrim("<!-- - -- -->", XML_PROLOG + "<hello></hello>");
-        _testValidTrim(" <!-- - -- -->", "<hello></hello>");
-        _testValidTrim(" <!-- - -- -->", XML_PROLOG + "<hello></hello>");
-        _testValidTrim(" <!-- - -- --> ", "<hello></hello>");
-        _testValidTrim(" <!-- - -- --> ", XML_PROLOG + "<hello></hello>");
-        _testValidTrim(" <!-- - -- --> <!-- - -- --> ", "<hello></hello>");
-        _testValidTrim(" <!-- - -- --> <!-- - -- --> ", XML_PROLOG + "<hello></hello>");
-        _testValidTrim(" <!-- - -- --> \n <!-- - -- --> ", "<hello></hello>");
-        _testValidTrim(" <!-- - -- --> \n <!-- - -- --> ", XML_PROLOG + "<hello></hello>");
+        testValidTrim("", "<hello></hello>");
+        testValidTrim("", XML_PROLOG + "<hello></hello>");
+        testValidTrim(" ", "<hello></hello>");
+        testValidTrim(" ", XML_PROLOG + "<hello></hello>");
+        testValidTrim(" \n", "<hello></hello>");
+        testValidTrim(" \n", XML_PROLOG + "<hello></hello>");
+        testValidTrim("<!-- - -- -->", "<hello></hello>");
+        testValidTrim("<!-- - -- -->", XML_PROLOG + "<hello></hello>");
+        testValidTrim(" <!-- - -- -->", "<hello></hello>");
+        testValidTrim(" <!-- - -- -->", XML_PROLOG + "<hello></hello>");
+        testValidTrim(" <!-- - -- --> ", "<hello></hello>");
+        testValidTrim(" <!-- - -- --> ", XML_PROLOG + "<hello></hello>");
+        testValidTrim(" <!-- - -- --> <!-- - -- --> ", "<hello></hello>");
+        testValidTrim(" <!-- - -- --> <!-- - -- --> ", XML_PROLOG + "<hello></hello>");
+        testValidTrim(" <!-- - -- --> \n <!-- - -- --> ", "<hello></hello>");
+        testValidTrim(" <!-- - -- --> \n <!-- - -- --> ", XML_PROLOG + "<hello></hello>");
 
         // TODO lorenzo.sm: This test was added to trim \r char (as with \n).
         // Source of "bad" RSS http://www.diariohorizonte.com/rss/71/deportes
-        _testValidTrim("\r\n<!-- hackedString Clean-->", XML_PROLOG + "<hello></hello>");
+        testValidTrim("\r\n<!-- hackedString Clean-->", XML_PROLOG + "<hello></hello>");
 
-        _testInvalidTrim("x", "<hello></hello>");
-        _testInvalidTrim("x", XML_PROLOG + "<hello></hello>");
-        _testInvalidTrim(" x", "<hello></hello>");
-        _testInvalidTrim(" x", XML_PROLOG + "<hello></hello>");
-        _testInvalidTrim(" x\n", "<hello></hello>");
-        _testInvalidTrim(" x\n", XML_PROLOG + "<hello></hello>");
-        _testInvalidTrim("<!-- - -- - ->", "<hello></hello>");
-        _testInvalidTrim("<!-- - -- - ->", XML_PROLOG + "<hello></hello>");
-        _testInvalidTrim(" <!-- - -- -- >", "<hello></hello>");
-        _testInvalidTrim(" <!-- - -- -- >", XML_PROLOG + "<hello></hello>");
-        _testInvalidTrim(" <!-- - -- -->x ", "<hello></hello>");
-        _testInvalidTrim(" <!-- - -- -->x ", XML_PROLOG + "<hello></hello>");
-        _testInvalidTrim(" <!-- - -- --> x <!-- - -- --> ", "<hello></hello>");
-        _testInvalidTrim(" <!-- - -- --> x <!-- - -- --> ", XML_PROLOG + "<hello></hello>");
-        _testInvalidTrim(" <!-- - -- --> x\n <!-- - -- --> ", "<hello></hello>");
-        _testInvalidTrim(" <!-- - -- --> x\n <!-- - -- --> ", XML_PROLOG + "<hello></hello>");
+        testInvalidTrim("x", "<hello></hello>");
+        testInvalidTrim("x", XML_PROLOG + "<hello></hello>");
+        testInvalidTrim(" x", "<hello></hello>");
+        testInvalidTrim(" x", XML_PROLOG + "<hello></hello>");
+        testInvalidTrim(" x\n", "<hello></hello>");
+        testInvalidTrim(" x\n", XML_PROLOG + "<hello></hello>");
+        testInvalidTrim("<!-- - -- - ->", "<hello></hello>");
+        testInvalidTrim("<!-- - -- - ->", XML_PROLOG + "<hello></hello>");
+        testInvalidTrim(" <!-- - -- -- >", "<hello></hello>");
+        testInvalidTrim(" <!-- - -- -- >", XML_PROLOG + "<hello></hello>");
+        testInvalidTrim(" <!-- - -- -->x ", "<hello></hello>");
+        testInvalidTrim(" <!-- - -- -->x ", XML_PROLOG + "<hello></hello>");
+        testInvalidTrim(" <!-- - -- --> x <!-- - -- --> ", "<hello></hello>");
+        testInvalidTrim(" <!-- - -- --> x <!-- - -- --> ", XML_PROLOG + "<hello></hello>");
+        testInvalidTrim(" <!-- - -- --> x\n <!-- - -- --> ", "<hello></hello>");
+        testInvalidTrim(" <!-- - -- --> x\n <!-- - -- --> ", XML_PROLOG + "<hello></hello>");
     }
 
     // XML Stream generator
@@ -136,31 +136,31 @@ public class Issue1Test extends SyndFeedTest {
         return new ByteArrayInputStream(baos.toByteArray());
     }
 
-    protected void _testInvalidEntities(final String xmlDoc) throws Exception {
+    protected void testInvalidEntities(final String xmlDoc) throws Exception {
         try {
-            _testXmlParse("", xmlDoc);
+            testXmlParse("", xmlDoc);
             assertTrue(false);
         } catch (final Exception ex) {
         }
     }
 
-    protected void _testInvalidTrim(final String garbish, final String xmlDoc) throws Exception {
+    protected void testInvalidTrim(final String garbish, final String xmlDoc) throws Exception {
         try {
-            _testXmlParse(garbish, xmlDoc);
+            testXmlParse(garbish, xmlDoc);
             assertTrue(false);
         } catch (final Exception ex) {
         }
     }
 
-    protected void _testValidEntities(final String xmlDoc) throws Exception {
-        _testXmlParse("", xmlDoc);
+    protected void testValidEntities(final String xmlDoc) throws Exception {
+        testXmlParse("", xmlDoc);
     }
 
-    protected void _testValidTrim(final String garbish, final String xmlDoc) throws Exception {
-        _testXmlParse(garbish, xmlDoc);
+    protected void testValidTrim(final String garbish, final String xmlDoc) throws Exception {
+        testXmlParse(garbish, xmlDoc);
     }
 
-    protected void _testXmlParse(final String garbish, final String xmlDoc) throws Exception {
+    protected void testXmlParse(final String garbish, final String xmlDoc) throws Exception {
         final InputStream is = getStream(garbish, xmlDoc);
         Reader reader = new XmlReader(is);
         reader = new XmlFixerReader(reader);

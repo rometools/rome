@@ -36,24 +36,24 @@ import com.sun.syndication.feed.module.impl.ModuleUtils;
  * @author Dave Johnson (updated for Atom 1.0)
  */
 public class Entry implements Cloneable, Serializable, Extendable {
-    private Content _summary;
-    private Content _title;
-    private Date _created; // Atom 0.3 only
-    private Date _published; // AKA issued
-    private Date _updated; // AKA modified
-    private Feed _source;
-    private List<Link> _alternateLinks;
-    private List<Person> _authors;
-    private List<Category> _categories;
-    private List<Content> _contents;
-    private List<Person> _contributors;
-    private List<Element> _foreignMarkup;
-    private List<Module> _modules;
-    private List<Link> _otherLinks;
-    private final ObjectBean _objBean;
-    private String _id;
-    private String _rights;
-    private String _xmlBase;
+    private Content summary;
+    private Content title;
+    private Date created; // Atom 0.3 only
+    private Date published; // AKA issued
+    private Date updated; // AKA modified
+    private Feed source;
+    private List<Link> alternateLinks;
+    private List<Person> authors;
+    private List<Category> categories;
+    private List<Content> contents;
+    private List<Person> contributors;
+    private List<Element> foreignMarkup;
+    private List<Module> modules;
+    private List<Link> otherLinks;
+    private final ObjectBean objBean;
+    private String id;
+    private String rights;
+    private String xmlBase;
 
     /**
      * Default constructor. All properties are set to <b>null</b>.
@@ -61,7 +61,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * 
      */
     public Entry() {
-        this._objBean = new ObjectBean(this.getClass(), this);
+        objBean = new ObjectBean(this.getClass(), this);
     }
 
     /**
@@ -72,7 +72,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      *            links to set, an empty list or <b>null</b> if none.
      */
     public void setAlternateLinks(final List<Link> alternateLinks) {
-        this._alternateLinks = alternateLinks;
+        this.alternateLinks = alternateLinks;
     }
 
     /**
@@ -83,7 +83,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      *         list if none.
      */
     public List<Link> getAlternateLinks() {
-        return this._alternateLinks == null ? (this._alternateLinks = new ArrayList<Link>()) : this._alternateLinks;
+        return alternateLinks == null ? (alternateLinks = new ArrayList<Link>()) : alternateLinks;
     }
 
     /**
@@ -94,7 +94,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * 
      */
     public void setAuthors(final List<Person> authors) {
-        this._authors = authors;
+        this.authors = authors;
     }
 
     /**
@@ -105,7 +105,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * 
      */
     public List<Person> getAuthors() {
-        return this._authors == null ? (this._authors = new ArrayList<Person>()) : this._authors;
+        return authors == null ? (authors = new ArrayList<Person>()) : authors;
     }
 
     /**
@@ -116,7 +116,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @since Atom 1.0
      */
     public void setCategories(final List<Category> categories) {
-        this._categories = categories;
+        this.categories = categories;
     }
 
     /**
@@ -127,7 +127,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @since Atom 1.0
      */
     public List<Category> getCategories() {
-        return this._categories == null ? (this._categories = new ArrayList<Category>()) : this._categories;
+        return categories == null ? (categories = new ArrayList<Category>()) : categories;
     }
 
     /**
@@ -138,7 +138,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      *            set, an empty list or <b>null</b> if none.
      */
     public void setContents(final List<Content> contents) {
-        this._contents = contents;
+        this.contents = contents;
     }
 
     /**
@@ -149,7 +149,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      *         if none.
      */
     public List<Content> getContents() {
-        return this._contents == null ? (this._contents = new ArrayList<Content>()) : this._contents;
+        return contents == null ? (contents = new ArrayList<Content>()) : contents;
     }
 
     /**
@@ -161,7 +161,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * 
      */
     public void setContributors(final List<Person> contributors) {
-        this._contributors = contributors;
+        this.contributors = contributors;
     }
 
     /**
@@ -173,7 +173,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * 
      */
     public List<Person> getContributors() {
-        return this._contributors == null ? (this._contributors = new ArrayList<Person>()) : this._contributors;
+        return contributors == null ? (contributors = new ArrayList<Person>()) : contributors;
     }
 
     /**
@@ -183,7 +183,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @param created the entry created date, <b>null</b> if none.
      */
     public void setCreated(final Date created) {
-        this._created = new Date(created.getTime());
+        this.created = new Date(created.getTime());
     }
 
     /**
@@ -193,7 +193,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @return the entry created date, <b>null</b> if none.
      */
     public Date getCreated() {
-        return this._created == null ? null : new Date(this._created.getTime());
+        return created == null ? null : new Date(created.getTime());
     }
 
     /**
@@ -204,7 +204,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * 
      */
     public void setForeignMarkup(final List<Element> foreignMarkup) {
-        this._foreignMarkup = foreignMarkup;
+        this.foreignMarkup = foreignMarkup;
     }
 
     /**
@@ -215,7 +215,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * 
      */
     public List<Element> getForeignMarkup() {
-        return this._foreignMarkup == null ? (this._foreignMarkup = new ArrayList<Element>()) : this._foreignMarkup;
+        return foreignMarkup == null ? (foreignMarkup = new ArrayList<Element>()) : foreignMarkup;
     }
 
     /**
@@ -226,7 +226,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * 
      */
     public void setId(final String id) {
-        this._id = id;
+        this.id = id;
     }
 
     /**
@@ -237,7 +237,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * 
      */
     public String getId() {
-        return this._id;
+        return id;
     }
 
     /**
@@ -248,7 +248,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @param issued the entry issued date, <b>null</b> if none.
      */
     public void setIssued(final Date issued) {
-        this._published = issued == null ? null : new Date(issued.getTime());
+        published = issued == null ? null : new Date(issued.getTime());
     }
 
     /**
@@ -259,7 +259,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @return the entry issued date, <b>null</b> if none.
      */
     public Date getIssued() {
-        return this._published == null ? null : new Date(this._published.getTime());
+        return published == null ? null : new Date(published.getTime());
     }
 
     /**
@@ -290,7 +290,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @param modified the entry modified date, <b>null</b> if none.
      */
     public void setModified(final Date modified) {
-        this._updated = modified == null ? null : new Date(modified.getTime());
+        updated = modified == null ? null : new Date(modified.getTime());
     }
 
     /**
@@ -301,7 +301,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @return the entry modified date, <b>null</b> if none.
      */
     public Date getModified() {
-        return this._updated == null ? null : new Date(this._updated.getTime());
+        return updated == null ? null : new Date(updated.getTime());
     }
 
     /**
@@ -313,7 +313,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      */
     @Override
     public Module getModule(final String uri) {
-        return ModuleUtils.getModule(this._modules, uri);
+        return ModuleUtils.getModule(modules, uri);
     }
 
     /**
@@ -326,7 +326,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      */
     @Override
     public void setModules(final List<Module> modules) {
-        this._modules = modules;
+        this.modules = modules;
     }
 
     /**
@@ -339,7 +339,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      */
     @Override
     public List<Module> getModules() {
-        return this._modules == null ? (this._modules = new ArrayList<Module>()) : this._modules;
+        return modules == null ? (modules = new ArrayList<Module>()) : modules;
     }
 
     /**
@@ -350,7 +350,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      *            links to set, an empty list or <b>null</b> if none.
      */
     public void setOtherLinks(final List<Link> otherLinks) {
-        this._otherLinks = otherLinks;
+        this.otherLinks = otherLinks;
     }
 
     /**
@@ -361,7 +361,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      *         set, an empty list if none.
      */
     public List<Link> getOtherLinks() {
-        return this._otherLinks == null ? (this._otherLinks = new ArrayList<Link>()) : this._otherLinks;
+        return otherLinks == null ? (otherLinks = new ArrayList<Link>()) : otherLinks;
     }
 
     /**
@@ -372,7 +372,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @since Atom 1.0
      */
     public void setPublished(final Date published) {
-        this._published = published == null ? null : new Date(published.getTime());
+        this.published = published == null ? null : new Date(published.getTime());
     }
 
     /**
@@ -383,7 +383,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @since Atom 1.0
      */
     public Date getPublished() {
-        return this._published == null ? null : new Date(this._published.getTime());
+        return published == null ? null : new Date(published.getTime());
     }
 
     /**
@@ -394,7 +394,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @since Atom 1.0
      */
     public void setRights(final String rights) {
-        this._rights = rights;
+        this.rights = rights;
     }
 
     /**
@@ -405,7 +405,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @since Atom 1.0
      */
     public String getRights() {
-        return this._rights;
+        return rights;
     }
 
     /**
@@ -415,7 +415,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @param source The source to set.
      */
     public void setSource(final Feed source) {
-        this._source = source;
+        this.source = source;
     }
 
     /**
@@ -425,7 +425,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @return Returns the source.
      */
     public Feed getSource() {
-        return this._source;
+        return source;
     }
 
     /**
@@ -436,7 +436,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * 
      */
     public void setSummary(final Content summary) {
-        this._summary = summary;
+        this.summary = summary;
     }
 
     /**
@@ -447,7 +447,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * 
      */
     public Content getSummary() {
-        return this._summary;
+        return summary;
     }
 
     /**
@@ -458,11 +458,11 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * 
      */
     public void setTitle(final String title) {
-        if (this._title == null) {
-            this._title = new Content();
+        if (this.title == null) {
+            this.title = new Content();
         }
 
-        this._title.setValue(title);
+        this.title.setValue(title);
     }
 
     /**
@@ -473,8 +473,8 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * 
      */
     public String getTitle() {
-        if (this._title != null) {
-            return this._title.getValue();
+        if (title != null) {
+            return title.getValue();
         }
 
         return null;
@@ -488,7 +488,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * 
      */
     public void setTitleEx(final Content title) {
-        this._title = title;
+        this.title = title;
     }
 
     /**
@@ -499,7 +499,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * 
      */
     public Content getTitleEx() {
-        return this._title;
+        return title;
     }
 
     /**
@@ -510,7 +510,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @since Atom 1.0
      */
     public void setUpdated(final Date updated) {
-        this._updated = updated == null ? null : new Date(updated.getTime());
+        this.updated = updated == null ? null : new Date(updated.getTime());
     }
 
     /**
@@ -521,7 +521,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @since Atom 1.0
      */
     public Date getUpdated() {
-        return this._updated == null ? null : new Date(this._updated.getTime());
+        return updated == null ? null : new Date(updated.getTime());
     }
 
     /**
@@ -532,7 +532,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @since Atom 1.0
      */
     public void setXmlBase(final String xmlBase) {
-        this._xmlBase = xmlBase;
+        this.xmlBase = xmlBase;
     }
 
     /**
@@ -543,7 +543,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @since Atom 1.0
      */
     public String getXmlBase() {
-        return this._xmlBase;
+        return xmlBase;
     }
 
     /**
@@ -557,7 +557,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return this._objBean.clone();
+        return objBean.clone();
     }
 
     /**
@@ -581,7 +581,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
         final List<Element> fm = getForeignMarkup();
         setForeignMarkup(((Entry) other).getForeignMarkup());
 
-        final boolean ret = this._objBean.equals(other);
+        final boolean ret = objBean.equals(other);
         // restore foreign markup
         setForeignMarkup(fm);
 
@@ -599,7 +599,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      */
     @Override
     public int hashCode() {
-        return this._objBean.hashCode();
+        return objBean.hashCode();
     }
 
     /**
@@ -611,11 +611,11 @@ public class Entry implements Cloneable, Serializable, Extendable {
      */
     @Override
     public String toString() {
-        return this._objBean.toString();
+        return objBean.toString();
     }
 
     public Link findRelatedLink(final String relation) {
-        for (final Link l : this._otherLinks) {
+        for (final Link l : otherLinks) {
             if (relation.equals(l.getRel())) {
                 return l;
             }

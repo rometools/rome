@@ -83,9 +83,9 @@ public class WireFeedInput {
         }
     }
 
-    private final boolean _validate;
+    private final boolean validate;
 
-    private boolean _xmlHealerOn;
+    private boolean xmlHealerOn;
 
     /**
      * Returns the list of supported input feed types.
@@ -118,8 +118,8 @@ public class WireFeedInput {
      * 
      */
     public WireFeedInput(final boolean validate) {
-        this._validate = false; // TODO FIX THIS THINGY
-        this._xmlHealerOn = true;
+        this.validate = false; // TODO FIX THIS THINGY
+        xmlHealerOn = true;
     }
 
     /**
@@ -141,7 +141,7 @@ public class WireFeedInput {
      * 
      */
     public void setXmlHealerOn(final boolean heals) {
-        this._xmlHealerOn = heals;
+        xmlHealerOn = heals;
     }
 
     /**
@@ -164,7 +164,7 @@ public class WireFeedInput {
      * 
      */
     public boolean getXmlHealerOn() {
-        return this._xmlHealerOn;
+        return xmlHealerOn;
     }
 
     /**
@@ -186,7 +186,7 @@ public class WireFeedInput {
     public WireFeed build(final File file) throws FileNotFoundException, IOException, IllegalArgumentException, FeedException {
         WireFeed feed;
         Reader reader = new FileReader(file);
-        if (this._xmlHealerOn) {
+        if (xmlHealerOn) {
             reader = new XmlFixerReader(reader);
         }
         feed = this.build(reader);
@@ -211,7 +211,7 @@ public class WireFeedInput {
     public WireFeed build(Reader reader) throws IllegalArgumentException, FeedException {
         final SAXBuilder saxBuilder = createSAXBuilder();
         try {
-            if (this._xmlHealerOn) {
+            if (xmlHealerOn) {
                 reader = new XmlFixerReader(reader);
             }
             final Document document = saxBuilder.build(reader);
@@ -297,7 +297,7 @@ public class WireFeedInput {
         if (parser == null) {
             throw new IllegalArgumentException("Invalid document");
         }
-        return parser.parse(document, this._validate);
+        return parser.parse(document, validate);
     }
 
     /**
@@ -306,7 +306,7 @@ public class WireFeedInput {
      * @return a new org.jdom2.input.SAXBuilder object
      */
     protected SAXBuilder createSAXBuilder() {
-        final SAXBuilder saxBuilder = new SAXBuilder(this._validate ? XMLReaders.DTDVALIDATING : XMLReaders.NONVALIDATING);
+        final SAXBuilder saxBuilder = new SAXBuilder(validate ? XMLReaders.DTDVALIDATING : XMLReaders.NONVALIDATING);
         saxBuilder.setEntityResolver(RESOLVER);
 
         //

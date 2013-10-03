@@ -29,8 +29,8 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * 
  */
 public abstract class ModuleImpl implements Cloneable, Serializable, Module {
-    private final ObjectBean _objBean;
-    private final String _uri;
+    private final ObjectBean objBean;
+    private final String uri;
 
     /**
      * Constructor.
@@ -40,8 +40,8 @@ public abstract class ModuleImpl implements Cloneable, Serializable, Module {
      * 
      */
     protected ModuleImpl(final Class beanClass, final String uri) {
-        this._objBean = new ObjectBean(beanClass, this);
-        this._uri = uri;
+        objBean = new ObjectBean(beanClass, this);
+        this.uri = uri;
     }
 
     /**
@@ -55,7 +55,7 @@ public abstract class ModuleImpl implements Cloneable, Serializable, Module {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return this._objBean.clone();
+        return objBean.clone();
     }
 
     /**
@@ -72,7 +72,7 @@ public abstract class ModuleImpl implements Cloneable, Serializable, Module {
         if (!(other instanceof ModuleImpl)) {
             return false;
         }
-        return this._objBean.equals(other);
+        return objBean.equals(other);
     }
 
     /**
@@ -86,7 +86,7 @@ public abstract class ModuleImpl implements Cloneable, Serializable, Module {
      */
     @Override
     public int hashCode() {
-        return this._objBean.hashCode();
+        return objBean.hashCode();
     }
 
     /**
@@ -98,7 +98,7 @@ public abstract class ModuleImpl implements Cloneable, Serializable, Module {
      */
     @Override
     public String toString() {
-        return this._objBean.toString();
+        return objBean.toString();
     }
 
     /**
@@ -110,7 +110,7 @@ public abstract class ModuleImpl implements Cloneable, Serializable, Module {
      */
     @Override
     public String getUri() {
-        return this._uri;
+        return uri;
     }
 
 }

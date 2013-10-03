@@ -33,10 +33,10 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * 
  */
 public class SyndContentImpl implements Serializable, SyndContent {
-    private final ObjectBean _objBean;
-    private String _type;
-    private String _value;
-    private String _mode;
+    private final ObjectBean objBean;
+    private String type;
+    private String value;
+    private String mode;
 
     /**
      * Default constructor. All properties are set to <b>null</b>.
@@ -44,7 +44,7 @@ public class SyndContentImpl implements Serializable, SyndContent {
      * 
      */
     public SyndContentImpl() {
-        this._objBean = new ObjectBean(SyndContent.class, this);
+        objBean = new ObjectBean(SyndContent.class, this);
     }
 
     /**
@@ -58,7 +58,7 @@ public class SyndContentImpl implements Serializable, SyndContent {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return this._objBean.clone();
+        return objBean.clone();
     }
 
     /**
@@ -72,7 +72,7 @@ public class SyndContentImpl implements Serializable, SyndContent {
      */
     @Override
     public boolean equals(final Object other) {
-        return this._objBean.equals(other);
+        return objBean.equals(other);
     }
 
     /**
@@ -86,7 +86,7 @@ public class SyndContentImpl implements Serializable, SyndContent {
      */
     @Override
     public int hashCode() {
-        return this._objBean.hashCode();
+        return objBean.hashCode();
     }
 
     /**
@@ -98,7 +98,7 @@ public class SyndContentImpl implements Serializable, SyndContent {
      */
     @Override
     public String toString() {
-        return this._objBean.toString();
+        return objBean.toString();
     }
 
     /**
@@ -113,7 +113,7 @@ public class SyndContentImpl implements Serializable, SyndContent {
      */
     @Override
     public String getType() {
-        return this._type;
+        return type;
     }
 
     /**
@@ -128,7 +128,7 @@ public class SyndContentImpl implements Serializable, SyndContent {
      */
     @Override
     public void setType(final String type) {
-        this._type = type;
+        this.type = type;
     }
 
     /**
@@ -139,7 +139,7 @@ public class SyndContentImpl implements Serializable, SyndContent {
      */
     @Override
     public String getMode() {
-        return this._mode;
+        return mode;
     }
 
     /**
@@ -150,7 +150,7 @@ public class SyndContentImpl implements Serializable, SyndContent {
      */
     @Override
     public void setMode(final String mode) {
-        this._mode = mode;
+        this.mode = mode;
     }
 
     /**
@@ -162,7 +162,7 @@ public class SyndContentImpl implements Serializable, SyndContent {
      */
     @Override
     public String getValue() {
-        return this._value;
+        return value;
     }
 
     /**
@@ -174,7 +174,7 @@ public class SyndContentImpl implements Serializable, SyndContent {
      */
     @Override
     public void setValue(final String value) {
-        this._value = value;
+        this.value = value;
     }
 
     @Override

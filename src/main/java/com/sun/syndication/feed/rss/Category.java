@@ -29,9 +29,9 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * 
  */
 public class Category implements Cloneable, Serializable {
-    private final ObjectBean _objBean;
-    private String _domain;
-    private String _value;
+    private final ObjectBean objBean;
+    private String domain;
+    private String value;
 
     /**
      * Default constructor. All properties are set to <b>null</b>.
@@ -39,7 +39,7 @@ public class Category implements Cloneable, Serializable {
      * 
      */
     public Category() {
-        this._objBean = new ObjectBean(this.getClass(), this);
+        objBean = new ObjectBean(this.getClass(), this);
     }
 
     /**
@@ -53,7 +53,7 @@ public class Category implements Cloneable, Serializable {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return this._objBean.clone();
+        return objBean.clone();
     }
 
     /**
@@ -70,7 +70,7 @@ public class Category implements Cloneable, Serializable {
         if (!(other instanceof Category)) {
             return false;
         }
-        return this._objBean.equals(other);
+        return objBean.equals(other);
     }
 
     /**
@@ -84,7 +84,7 @@ public class Category implements Cloneable, Serializable {
      */
     @Override
     public int hashCode() {
-        return this._objBean.hashCode();
+        return objBean.hashCode();
     }
 
     /**
@@ -96,7 +96,7 @@ public class Category implements Cloneable, Serializable {
      */
     @Override
     public String toString() {
-        return this._objBean.toString();
+        return objBean.toString();
     }
 
     /**
@@ -107,7 +107,7 @@ public class Category implements Cloneable, Serializable {
      * 
      */
     public String getDomain() {
-        return this._domain;
+        return domain;
     }
 
     /**
@@ -118,7 +118,7 @@ public class Category implements Cloneable, Serializable {
      * 
      */
     public void setDomain(final String domain) {
-        this._domain = domain;
+        this.domain = domain;
     }
 
     /**
@@ -129,7 +129,7 @@ public class Category implements Cloneable, Serializable {
      * 
      */
     public String getValue() {
-        return this._value;
+        return value;
     }
 
     /**
@@ -140,7 +140,7 @@ public class Category implements Cloneable, Serializable {
      * 
      */
     public void setValue(final String value) {
-        this._value = value;
+        this.value = value;
     }
 
 }

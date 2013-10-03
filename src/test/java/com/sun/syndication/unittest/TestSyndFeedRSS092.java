@@ -31,19 +31,19 @@ public class TestSyndFeedRSS092 extends TestSyndFeedRSS091N {
     }
 
     @Override
-    protected void _testItem(final int i) throws Exception {
-        super._testItem(i);
+    protected void testItem(final int i) throws Exception {
+        super.testItem(i);
         final List<SyndEntry> items = this.getCachedSyndFeed().getEntries();
         final SyndEntry entry = items.get(i);
 
         assertProperty(entry.getTitle(), "channel.item[" + i + "].title");
         assertProperty(entry.getLink(), "channel.item[" + i + "].link");
         assertProperty(entry.getDescription().getValue(), "channel.item[" + i + "].description");
-        _testCategories(entry.getCategories(), "channel.item[" + i + "]");
-        _testEnclosures(entry.getEnclosures(), "channel.item[" + i + "]");
+        testCategories(entry.getCategories(), "channel.item[" + i + "]");
+        testEnclosures(entry.getEnclosures(), "channel.item[" + i + "]");
     }
 
-    protected void _testCategories(final List<SyndCategory> cats, final String prefix) throws Exception {
+    protected void testCategories(final List<SyndCategory> cats, final String prefix) throws Exception {
         final Set<String> s1 = new HashSet<String>();
         final Set<String> s2 = new HashSet<String>();
         for (int i = 0; i < cats.size(); i++) {
@@ -54,7 +54,7 @@ public class TestSyndFeedRSS092 extends TestSyndFeedRSS091N {
         assertTrue(s1.equals(s2));
     }
 
-    protected void _testEnclosures(final List<SyndEnclosure> encs, final String prefix) throws Exception {
+    protected void testEnclosures(final List<SyndEnclosure> encs, final String prefix) throws Exception {
         final Set<String> s1 = new HashSet<String>();
         final Set<String> s2 = new HashSet<String>();
         for (int i = 0; i < encs.size(); i++) {

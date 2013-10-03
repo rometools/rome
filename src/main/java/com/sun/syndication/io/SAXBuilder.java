@@ -25,11 +25,11 @@ public class SAXBuilder extends org.jdom2.input.SAXBuilder {
      * 
      * @deprecated use SAXBuilder(XMLReaderJDOMFactory) with either
      *             XMLReaders.DTDVALIDATING or XMLReaders.NONVALIDATING
-     * @param _validate
+     * @param validate
      */
     @Deprecated
-    public SAXBuilder(final boolean _validate) {
-        super(_validate ? XMLReaders.DTDVALIDATING : XMLReaders.NONVALIDATING);
+    public SAXBuilder(final boolean validate) {
+        super(validate ? XMLReaders.DTDVALIDATING : XMLReaders.NONVALIDATING);
     }
 
     @Override

@@ -53,21 +53,21 @@ import com.sun.syndication.feed.synd.impl.URINormalizer;
  */
 public class SyndFeedImpl implements Serializable, SyndFeed {
 
-    private final ObjectBean _objBean;
+    private final ObjectBean objBean;
 
-    private String _encoding;
-    private String _uri;
-    private SyndContent _title;
-    private SyndContent _description;
-    private String _feedType;
-    private String _link;
-    private List<SyndLink> _links;
-    private SyndImage _image;
-    private List<SyndEntry> _entries;
-    private List<Module> _modules;
-    private List<SyndPerson> _authors;
-    private List<SyndPerson> _contributors;
-    private List<Element> _foreignMarkup;
+    private String encoding;
+    private String uri;
+    private SyndContent title;
+    private SyndContent description;
+    private String feedType;
+    private String link;
+    private List<SyndLink> links;
+    private SyndImage image;
+    private List<SyndEntry> entries;
+    private List<Module> modules;
+    private List<SyndPerson> authors;
+    private List<SyndPerson> contributors;
+    private List<Element> foreignMarkup;
 
     private WireFeed wireFeed = null;
     private boolean preserveWireFeed = false;
@@ -118,7 +118,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * 
      */
     protected SyndFeedImpl(final Class beanClass, final Set convenienceProperties) {
-        this._objBean = new ObjectBean(beanClass, this, convenienceProperties);
+        objBean = new ObjectBean(beanClass, this, convenienceProperties);
     }
 
     /**
@@ -155,15 +155,15 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
         this(SyndFeed.class, IGNORE_PROPERTIES);
 
         if (preserveWireFeed) {
-            this.wireFeed = feed;
+            wireFeed = feed;
             this.preserveWireFeed = preserveWireFeed;
         }
 
         if (feed != null) {
-            this._feedType = feed.getFeedType();
-            final Converter converter = CONVERTERS.getConverter(this._feedType);
+            feedType = feed.getFeedType();
+            final Converter converter = CONVERTERS.getConverter(feedType);
             if (converter == null) {
-                throw new IllegalArgumentException("Invalid feed type [" + this._feedType + "]");
+                throw new IllegalArgumentException("Invalid feed type [" + feedType + "]");
             }
             converter.copyInto(feed, this);
         }
@@ -181,7 +181,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return this._objBean.clone();
+        return objBean.clone();
     }
 
     /**
@@ -201,7 +201,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
         // can't use foreign markup in equals, due to JDOM equals impl
         final List<Element> fm = getForeignMarkup();
         setForeignMarkup(((SyndFeedImpl) other).getForeignMarkup());
-        final boolean ret = this._objBean.equals(other);
+        final boolean ret = objBean.equals(other);
         setForeignMarkup(fm); // restore foreign markup
         return ret;
     }
@@ -217,7 +217,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public int hashCode() {
-        return this._objBean.hashCode();
+        return objBean.hashCode();
     }
 
     /**
@@ -229,7 +229,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public String toString() {
-        return this._objBean.toString();
+        return objBean.toString();
     }
 
     /**
@@ -244,7 +244,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public WireFeed createWireFeed() {
-        return this.createWireFeed(this._feedType);
+        return this.createWireFeed(feedType);
     }
 
     /**
@@ -281,7 +281,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public WireFeed originalWireFeed() {
-        return this.wireFeed;
+        return wireFeed;
     }
 
     /**
@@ -294,7 +294,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public String getFeedType() {
-        return this._feedType;
+        return feedType;
     }
 
     /**
@@ -306,7 +306,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public void setFeedType(final String feedType) {
-        this._feedType = feedType;
+        this.feedType = feedType;
     }
 
     /**
@@ -319,7 +319,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public String getEncoding() {
-        return this._encoding;
+        return encoding;
     }
 
     /**
@@ -331,7 +331,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public void setEncoding(final String encoding) {
-        this._encoding = encoding;
+        this.encoding = encoding;
     }
 
     /**
@@ -363,7 +363,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public String getUri() {
-        return this._uri;
+        return uri;
     }
 
     /**
@@ -393,7 +393,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public void setUri(final String uri) {
-        this._uri = URINormalizer.normalize(uri);
+        this.uri = URINormalizer.normalize(uri);
     }
 
     /**
@@ -405,8 +405,8 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public String getTitle() {
-        if (this._title != null) {
-            return this._title.getValue();
+        if (title != null) {
+            return title.getValue();
         }
         return null;
     }
@@ -420,10 +420,10 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public void setTitle(final String title) {
-        if (this._title == null) {
-            this._title = new SyndContentImpl();
+        if (this.title == null) {
+            this.title = new SyndContentImpl();
         }
-        this._title.setValue(title);
+        this.title.setValue(title);
     }
 
     /**
@@ -435,7 +435,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public SyndContent getTitleEx() {
-        return this._title;
+        return title;
     }
 
     /**
@@ -447,7 +447,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public void setTitleEx(final SyndContent title) {
-        this._title = title;
+        this.title = title;
     }
 
     /**
@@ -471,7 +471,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public String getLink() {
-        return this._link;
+        return link;
     }
 
     /**
@@ -495,7 +495,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public void setLink(final String link) {
-        this._link = link;
+        this.link = link;
     }
 
     /**
@@ -507,8 +507,8 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public String getDescription() {
-        if (this._description != null) {
-            return this._description.getValue();
+        if (description != null) {
+            return description.getValue();
         }
         return null;
     }
@@ -522,10 +522,10 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public void setDescription(final String description) {
-        if (this._description == null) {
-            this._description = new SyndContentImpl();
+        if (this.description == null) {
+            this.description = new SyndContentImpl();
         }
-        this._description.setValue(description);
+        this.description.setValue(description);
     }
 
     /**
@@ -537,7 +537,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public SyndContent getDescriptionEx() {
-        return this._description;
+        return description;
     }
 
     /**
@@ -549,7 +549,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public void setDescriptionEx(final SyndContent description) {
-        this._description = description;
+        this.description = description;
     }
 
     /**
@@ -621,7 +621,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public SyndImage getImage() {
-        return this._image;
+        return image;
     }
 
     /**
@@ -633,7 +633,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public void setImage(final SyndImage image) {
-        this._image = image;
+        this.image = image;
     }
 
     /**
@@ -678,7 +678,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public List<SyndEntry> getEntries() {
-        return this._entries == null ? (this._entries = new ArrayList<SyndEntry>()) : this._entries;
+        return entries == null ? (entries = new ArrayList<SyndEntry>()) : entries;
     }
 
     /**
@@ -691,7 +691,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public void setEntries(final List<SyndEntry> entries) {
-        this._entries = entries;
+        this.entries = entries;
     }
 
     /**
@@ -734,13 +734,13 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public List<Module> getModules() {
-        if (this._modules == null) {
-            this._modules = new ArrayList<Module>();
+        if (modules == null) {
+            modules = new ArrayList<Module>();
         }
-        if (ModuleUtils.getModule(this._modules, DCModule.URI) == null) {
-            this._modules.add(new DCModuleImpl());
+        if (ModuleUtils.getModule(modules, DCModule.URI) == null) {
+            modules.add(new DCModuleImpl());
         }
-        return this._modules;
+        return modules;
     }
 
     /**
@@ -753,7 +753,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public void setModules(final List<Module> modules) {
-        this._modules = modules;
+        this.modules = modules;
     }
 
     /**
@@ -821,7 +821,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public List<SyndLink> getLinks() {
-        return this._links == null ? (this._links = new ArrayList<SyndLink>()) : this._links;
+        return links == null ? (links = new ArrayList<SyndLink>()) : links;
     }
 
     /**
@@ -832,17 +832,17 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public void setLinks(final List<SyndLink> links) {
-        this._links = links;
+        this.links = links;
     }
 
     @Override
     public List<SyndPerson> getAuthors() {
-        return this._authors == null ? (this._authors = new ArrayList<SyndPerson>()) : this._authors;
+        return authors == null ? (authors = new ArrayList<SyndPerson>()) : authors;
     }
 
     @Override
     public void setAuthors(final List<SyndPerson> authors) {
-        this._authors = authors;
+        this.authors = authors;
     }
 
     /**
@@ -877,12 +877,12 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
 
     @Override
     public List<SyndPerson> getContributors() {
-        return this._contributors == null ? (this._contributors = new ArrayList<SyndPerson>()) : this._contributors;
+        return contributors == null ? (contributors = new ArrayList<SyndPerson>()) : contributors;
     }
 
     @Override
     public void setContributors(final List<SyndPerson> contributors) {
-        this._contributors = contributors;
+        this.contributors = contributors;
     }
 
     /**
@@ -894,7 +894,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public List<Element> getForeignMarkup() {
-        return this._foreignMarkup == null ? (this._foreignMarkup = new ArrayList<Element>()) : this._foreignMarkup;
+        return foreignMarkup == null ? (foreignMarkup = new ArrayList<Element>()) : foreignMarkup;
     }
 
     /**
@@ -906,11 +906,11 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public void setForeignMarkup(final List<Element> foreignMarkup) {
-        this._foreignMarkup = foreignMarkup;
+        this.foreignMarkup = foreignMarkup;
     }
 
     @Override
     public boolean isPreservingWireFeed() {
-        return this.preserveWireFeed;
+        return preserveWireFeed;
     }
 }

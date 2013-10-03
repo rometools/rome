@@ -43,10 +43,10 @@ public class TestSyndFeedAtom03DCSyModules extends TestSyndFeedAtom03 {
 
     public void testFeedDCModule() throws Exception {
         final DCModule dc = (DCModule) this.getCachedSyndFeed().getModule(DCModule.URI);
-        _testDCModule(dc, "feed.", false, 0);
+        testDCModule(dc, "feed.", false, 0);
     }
 
-    protected void _testDCModule(final DCModule dc, final String prefix, final boolean isEntry, final int index) throws Exception {
+    protected void testDCModule(final DCModule dc, final String prefix, final boolean isEntry, final int index) throws Exception {
         assertNotNull(dc);
         assertProperty(dc.getTitle(), prefix + "dc:title");
 
@@ -98,15 +98,15 @@ public class TestSyndFeedAtom03DCSyModules extends TestSyndFeedAtom03 {
     }
 
     public void testEntriesDCModule() throws Exception {
-        _testEntryDCModule(0);
-        _testEntryDCModule(1);
+        testEntryDCModule(0);
+        testEntryDCModule(1);
     }
 
-    protected void _testEntryDCModule(final int i) throws Exception {
+    protected void testEntryDCModule(final int i) throws Exception {
         final List<SyndEntry> entries = this.getCachedSyndFeed().getEntries();
         final SyndEntry entry = entries.get(i);
         final DCModule dc = (DCModule) entry.getModule(DCModule.URI);
-        _testDCModule(dc, "feed.entry[" + i + "].", true, i);
+        testDCModule(dc, "feed.entry[" + i + "].", true, i);
 
     }
 

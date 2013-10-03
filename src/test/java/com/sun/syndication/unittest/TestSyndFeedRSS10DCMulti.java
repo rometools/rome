@@ -29,10 +29,10 @@ public class TestSyndFeedRSS10DCMulti extends TestSyndFeedRSS10 {
 
     public void testChannelDCModule() throws Exception {
         final DCModule dc = (DCModule) this.getCachedSyndFeed().getModule(DCModule.URI);
-        _testDCModule(dc, "channel.");
+        testDCModule(dc, "channel.");
     }
 
-    protected void _testDCModule(final DCModule dc, final String prefix) throws Exception {
+    protected void testDCModule(final DCModule dc, final String prefix) throws Exception {
         assertNotNull(dc);
 
         assertProperty(dc.getTitles().get(0), prefix + "dc:title[0]");
@@ -90,14 +90,14 @@ public class TestSyndFeedRSS10DCMulti extends TestSyndFeedRSS10 {
     }
 
     public void testItemsDCModule() throws Exception {
-        _testItemDCModule(0);
-        _testItemDCModule(1);
+        testItemDCModule(0);
+        testItemDCModule(1);
     }
 
-    protected void _testItemDCModule(final int i) throws Exception {
+    protected void testItemDCModule(final int i) throws Exception {
         final List<SyndEntry> entries = this.getCachedSyndFeed().getEntries();
         final SyndEntry entry = entries.get(i);
         final DCModule dc = (DCModule) entry.getModule(DCModule.URI);
-        _testDCModule(dc, "item[" + i + "].");
+        testDCModule(dc, "item[" + i + "].");
     }
 }

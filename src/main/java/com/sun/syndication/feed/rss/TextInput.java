@@ -29,11 +29,11 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * 
  */
 public class TextInput implements Cloneable, Serializable {
-    private final ObjectBean _objBean;
-    private String _title;
-    private String _description;
-    private String _name;
-    private String _link;
+    private final ObjectBean objBean;
+    private String title;
+    private String description;
+    private String name;
+    private String link;
 
     /**
      * Default constructor. All properties are set to <b>null</b>.
@@ -41,7 +41,7 @@ public class TextInput implements Cloneable, Serializable {
      * 
      */
     public TextInput() {
-        this._objBean = new ObjectBean(this.getClass(), this);
+        objBean = new ObjectBean(this.getClass(), this);
     }
 
     /**
@@ -55,7 +55,7 @@ public class TextInput implements Cloneable, Serializable {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return this._objBean.clone();
+        return objBean.clone();
     }
 
     /**
@@ -72,7 +72,7 @@ public class TextInput implements Cloneable, Serializable {
         if (!(other instanceof TextInput)) {
             return false;
         }
-        return this._objBean.equals(other);
+        return objBean.equals(other);
     }
 
     /**
@@ -86,7 +86,7 @@ public class TextInput implements Cloneable, Serializable {
      */
     @Override
     public int hashCode() {
-        return this._objBean.hashCode();
+        return objBean.hashCode();
     }
 
     /**
@@ -98,7 +98,7 @@ public class TextInput implements Cloneable, Serializable {
      */
     @Override
     public String toString() {
-        return this._objBean.toString();
+        return objBean.toString();
     }
 
     /**
@@ -109,7 +109,7 @@ public class TextInput implements Cloneable, Serializable {
      * 
      */
     public String getTitle() {
-        return this._title;
+        return title;
     }
 
     /**
@@ -120,7 +120,7 @@ public class TextInput implements Cloneable, Serializable {
      * 
      */
     public void setTitle(final String title) {
-        this._title = title;
+        this.title = title;
     }
 
     /**
@@ -131,7 +131,7 @@ public class TextInput implements Cloneable, Serializable {
      * 
      */
     public String getDescription() {
-        return this._description;
+        return description;
     }
 
     /**
@@ -143,7 +143,7 @@ public class TextInput implements Cloneable, Serializable {
      * 
      */
     public void setDescription(final String description) {
-        this._description = description;
+        this.description = description;
     }
 
     /**
@@ -154,7 +154,7 @@ public class TextInput implements Cloneable, Serializable {
      * 
      */
     public String getName() {
-        return this._name;
+        return name;
     }
 
     /**
@@ -165,7 +165,7 @@ public class TextInput implements Cloneable, Serializable {
      * 
      */
     public void setName(final String name) {
-        this._name = name;
+        this.name = name;
     }
 
     /**
@@ -176,7 +176,7 @@ public class TextInput implements Cloneable, Serializable {
      * 
      */
     public String getLink() {
-        return this._link;
+        return link;
     }
 
     /**
@@ -187,7 +187,7 @@ public class TextInput implements Cloneable, Serializable {
      * 
      */
     public void setLink(final String link) {
-        this._link = link;
+        this.link = link;
     }
 
 }

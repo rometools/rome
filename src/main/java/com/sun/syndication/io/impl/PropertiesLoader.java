@@ -56,7 +56,7 @@ public class PropertiesLoader {
         }
     }
 
-    private final Properties[] _properties;
+    private final Properties[] properties;
 
     /**
      * Creates a PropertiesLoader.
@@ -100,8 +100,8 @@ public class PropertiesLoader {
             propertiesList.add(p);
         }
 
-        this._properties = new Properties[propertiesList.size()];
-        propertiesList.toArray(this._properties);
+        properties = new Properties[propertiesList.size()];
+        propertiesList.toArray(properties);
     }
 
     /**
@@ -119,8 +119,8 @@ public class PropertiesLoader {
      */
     public String[] getTokenizedProperty(final String key, final String separator) {
         final List<String> entriesList = new ArrayList<String>();
-        for (final Properties _propertie : this._properties) {
-            final String values = _propertie.getProperty(key);
+        for (final Properties property : properties) {
+            final String values = property.getProperty(key);
             if (values != null) {
                 final StringTokenizer st = new StringTokenizer(values, separator);
                 while (st.hasMoreTokens()) {
@@ -147,8 +147,8 @@ public class PropertiesLoader {
      */
     public String[] getProperty(final String key) {
         final List<String> entriesList = new ArrayList<String>();
-        for (final Properties _propertie : this._properties) {
-            final String values = _propertie.getProperty(key);
+        for (final Properties property : properties) {
+            final String values = property.getProperty(key);
             if (values != null) {
                 entriesList.add(values);
             }

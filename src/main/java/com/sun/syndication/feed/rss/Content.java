@@ -31,9 +31,9 @@ import com.sun.syndication.feed.impl.ObjectBean;
 public class Content implements Cloneable, Serializable {
     public static final String HTML = "html";
     public static final String TEXT = "text";
-    private final ObjectBean _objBean;
-    private String _type;
-    private String _value;
+    private final ObjectBean objBean;
+    private String type;
+    private String value;
 
     /**
      * Default constructor. All properties are set to <b>null</b>.
@@ -41,7 +41,7 @@ public class Content implements Cloneable, Serializable {
      * 
      */
     public Content() {
-        this._objBean = new ObjectBean(this.getClass(), this);
+        objBean = new ObjectBean(this.getClass(), this);
     }
 
     /**
@@ -52,7 +52,7 @@ public class Content implements Cloneable, Serializable {
      * 
      */
     public void setType(final String type) {
-        this._type = type;
+        this.type = type;
     }
 
     /**
@@ -63,7 +63,7 @@ public class Content implements Cloneable, Serializable {
      * 
      */
     public String getType() {
-        return this._type;
+        return type;
     }
 
     /**
@@ -74,7 +74,7 @@ public class Content implements Cloneable, Serializable {
      * 
      */
     public void setValue(final String value) {
-        this._value = value;
+        this.value = value;
     }
 
     /**
@@ -85,7 +85,7 @@ public class Content implements Cloneable, Serializable {
      * 
      */
     public String getValue() {
-        return this._value;
+        return value;
     }
 
     /**
@@ -99,7 +99,7 @@ public class Content implements Cloneable, Serializable {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return this._objBean.clone();
+        return objBean.clone();
     }
 
     /**
@@ -117,7 +117,7 @@ public class Content implements Cloneable, Serializable {
             return false;
         }
 
-        return this._objBean.equals(other);
+        return objBean.equals(other);
     }
 
     /**
@@ -131,7 +131,7 @@ public class Content implements Cloneable, Serializable {
      */
     @Override
     public int hashCode() {
-        return this._objBean.hashCode();
+        return objBean.hashCode();
     }
 
     /**
@@ -143,6 +143,6 @@ public class Content implements Cloneable, Serializable {
      */
     @Override
     public String toString() {
-        return this._objBean.toString();
+        return objBean.toString();
     }
 }

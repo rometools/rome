@@ -46,7 +46,7 @@ public class Atom03Generator extends BaseWireFeedGenerator {
     private static final String ATOM_03_URI = "http://purl.org/atom/ns#";
     private static final Namespace ATOM_NS = Namespace.getNamespace(ATOM_03_URI);
 
-    private final String _version;
+    private final String version;
 
     public Atom03Generator() {
         this("atom_0.3", "0.3");
@@ -54,11 +54,11 @@ public class Atom03Generator extends BaseWireFeedGenerator {
 
     protected Atom03Generator(final String type, final String version) {
         super(type);
-        this._version = version;
+        this.version = version;
     }
 
     protected String getVersion() {
-        return this._version;
+        return version;
     }
 
     protected Namespace getFeedNamespace() {

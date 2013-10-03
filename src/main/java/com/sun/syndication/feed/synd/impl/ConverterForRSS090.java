@@ -34,19 +34,19 @@ import com.sun.syndication.feed.synd.SyndImageImpl;
 /**
  */
 public class ConverterForRSS090 implements Converter {
-    private final String _type;
+    private final String type;
 
     public ConverterForRSS090() {
         this("rss_0.9");
     }
 
     protected ConverterForRSS090(final String type) {
-        this._type = type;
+        this.type = type;
     }
 
     @Override
     public String getType() {
-        return this._type;
+        return type;
     }
 
     @Override

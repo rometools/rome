@@ -30,14 +30,14 @@ import com.sun.syndication.feed.impl.ObjectBean;
  */
 public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
 
-    private final ObjectBean _objBean;
+    private final ObjectBean objBean;
 
-    private String _href;
-    private String _rel;
-    private String _type;
-    private String _hreflang;
-    private String _title;
-    private long _length;
+    private String href;
+    private String rel;
+    private String type;
+    private String hreflang;
+    private String title;
+    private long length;
 
     /**
      * Default constructor. All properties are set to <b>null</b>.
@@ -45,7 +45,7 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
      * 
      */
     public SyndLinkImpl() {
-        this._objBean = new ObjectBean(this.getClass(), this);
+        objBean = new ObjectBean(this.getClass(), this);
     }
 
     /**
@@ -59,7 +59,7 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return this._objBean.clone();
+        return objBean.clone();
     }
 
     /**
@@ -76,7 +76,7 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
         if (!(other instanceof SyndLinkImpl)) {
             return false;
         }
-        return this._objBean.equals(other);
+        return objBean.equals(other);
     }
 
     /**
@@ -90,7 +90,7 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
      */
     @Override
     public int hashCode() {
-        return this._objBean.hashCode();
+        return objBean.hashCode();
     }
 
     /**
@@ -102,7 +102,7 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
      */
     @Override
     public String toString() {
-        return this._objBean.toString();
+        return objBean.toString();
     }
 
     /**
@@ -114,7 +114,7 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
      */
     @Override
     public String getRel() {
-        return this._rel;
+        return rel;
     }
 
     /**
@@ -127,7 +127,7 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
     @Override
     public void setRel(final String rel) {
         // TODO add check, ask P@ about the check
-        this._rel = rel;
+        this.rel = rel;
     }
 
     /**
@@ -139,7 +139,7 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
      */
     @Override
     public String getType() {
-        return this._type;
+        return type;
     }
 
     /**
@@ -151,7 +151,7 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
      */
     @Override
     public void setType(final String type) {
-        this._type = type;
+        this.type = type;
     }
 
     /**
@@ -163,7 +163,7 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
      */
     @Override
     public String getHref() {
-        return this._href;
+        return href;
     }
 
     /**
@@ -175,7 +175,7 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
      */
     @Override
     public void setHref(final String href) {
-        this._href = href;
+        this.href = href;
     }
 
     /**
@@ -187,7 +187,7 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
      */
     @Override
     public String getTitle() {
-        return this._title;
+        return title;
     }
 
     /**
@@ -199,7 +199,7 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
      */
     @Override
     public void setTitle(final String title) {
-        this._title = title;
+        this.title = title;
     }
 
     /**
@@ -210,7 +210,7 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
      */
     @Override
     public String getHreflang() {
-        return this._hreflang;
+        return hreflang;
     }
 
     /**
@@ -221,7 +221,7 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
      */
     @Override
     public void setHreflang(final String hreflang) {
-        this._hreflang = hreflang;
+        this.hreflang = hreflang;
     }
 
     /**
@@ -232,7 +232,7 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
      */
     @Override
     public long getLength() {
-        return this._length;
+        return length;
     }
 
     /**
@@ -243,6 +243,6 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
      */
     @Override
     public void setLength(final long length) {
-        this._length = length;
+        this.length = length;
     }
 }

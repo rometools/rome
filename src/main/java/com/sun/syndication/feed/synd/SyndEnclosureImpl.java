@@ -13,10 +13,10 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * @author Alejandro Abdelnur
  */
 public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
-    private final ObjectBean _objBean;
-    private String _url;
-    private String _type;
-    private long _length;
+    private final ObjectBean objBean;
+    private String url;
+    private String type;
+    private long length;
 
     /**
      * Default constructor. All properties are set to <b>null</b>.
@@ -24,7 +24,7 @@ public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
      * 
      */
     public SyndEnclosureImpl() {
-        this._objBean = new ObjectBean(SyndEnclosure.class, this);
+        objBean = new ObjectBean(SyndEnclosure.class, this);
     }
 
     /**
@@ -38,7 +38,7 @@ public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return this._objBean.clone();
+        return objBean.clone();
     }
 
     /**
@@ -52,7 +52,7 @@ public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
      */
     @Override
     public boolean equals(final Object other) {
-        return this._objBean.equals(other);
+        return objBean.equals(other);
     }
 
     /**
@@ -66,7 +66,7 @@ public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
      */
     @Override
     public int hashCode() {
-        return this._objBean.hashCode();
+        return objBean.hashCode();
     }
 
     /**
@@ -78,7 +78,7 @@ public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
      */
     @Override
     public String toString() {
-        return this._objBean.toString();
+        return objBean.toString();
     }
 
     /**
@@ -89,7 +89,7 @@ public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
      */
     @Override
     public String getUrl() {
-        return this._url;
+        return url;
     }
 
     /**
@@ -100,7 +100,7 @@ public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
      */
     @Override
     public void setUrl(final String url) {
-        this._url = url;
+        this.url = url;
     }
 
     /**
@@ -111,7 +111,7 @@ public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
      */
     @Override
     public long getLength() {
-        return this._length;
+        return length;
     }
 
     /**
@@ -122,7 +122,7 @@ public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
      */
     @Override
     public void setLength(final long length) {
-        this._length = length;
+        this.length = length;
     }
 
     /**
@@ -133,7 +133,7 @@ public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
      */
     @Override
     public String getType() {
-        return this._type;
+        return type;
     }
 
     /**
@@ -144,7 +144,7 @@ public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
      */
     @Override
     public void setType(final String type) {
-        this._type = type;
+        this.type = type;
     }
 
     @Override

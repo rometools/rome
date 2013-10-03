@@ -6,24 +6,24 @@ import com.sun.syndication.io.impl.Base64;
 
 public class TestBase64 extends TestCase {
 
-    private void _testEncodeDecode(final String s) {
+    private void testEncodeDecode(final String s) {
         final String encoded = Base64.encode(s);
         final String decoded = Base64.decode(encoded);
         assertEquals(s, decoded);
     }
 
     public void testEncodeDecode() {
-        _testEncodeDecode("");
-        _testEncodeDecode("A");
-        _testEncodeDecode("AB");
-        _testEncodeDecode("ABC");
-        _testEncodeDecode("ABCD");
-        _testEncodeDecode("ABCDE");
-        _testEncodeDecode("&");
-        _testEncodeDecode("a&");
-        _testEncodeDecode("ab&");
-        _testEncodeDecode("abc&");
-        _testEncodeDecode("abcd&");
+        testEncodeDecode("");
+        testEncodeDecode("A");
+        testEncodeDecode("AB");
+        testEncodeDecode("ABC");
+        testEncodeDecode("ABCD");
+        testEncodeDecode("ABCDE");
+        testEncodeDecode("&");
+        testEncodeDecode("a&");
+        testEncodeDecode("ab&");
+        testEncodeDecode("abc&");
+        testEncodeDecode("abcd&");
 
     }
 

@@ -73,7 +73,7 @@ public class TestSyndFeedAtom10 extends TestSyndFeedAtom03 {
     }
 
     @Override
-    protected void _testEntry(final int i) throws Exception {
+    protected void testEntry(final int i) throws Exception {
         final List<SyndEntry> items = this.getCachedSyndFeed().getEntries();
         final SyndEntry entry = items.get(i);
 
@@ -111,12 +111,12 @@ public class TestSyndFeedAtom10 extends TestSyndFeedAtom03 {
 
     @Override
     public void testEntry0() throws Exception {
-        _testEntry(0);
+        testEntry(0);
     }
 
     @Override
     public void testEntry1() throws Exception {
-        _testEntry(1);
+        testEntry(1);
     }
 
     @Override

@@ -26,16 +26,16 @@ public class TestSyndFeedRSS094 extends TestSyndFeedRSS093 {
     }
 
     public void testCategories() throws Exception {
-        _testCategories(this.getCachedSyndFeed().getCategories(), "channel");
+        testCategories(this.getCachedSyndFeed().getCategories(), "channel");
     }
 
     @Override
-    protected void _testDescriptionType(final SyndEntry entry, final int i) throws Exception {
+    protected void testDescriptionType(final SyndEntry entry, final int i) throws Exception {
     }
 
     @Override
-    protected void _testItem(final int i) throws Exception {
-        super._testItem(i);
+    protected void testItem(final int i) throws Exception {
+        super.testItem(i);
 
         final List<SyndEntry> items = this.getCachedSyndFeed().getEntries();
         final SyndEntry entry = items.get(i);
@@ -45,7 +45,7 @@ public class TestSyndFeedRSS094 extends TestSyndFeedRSS093 {
     }
 
     @Override
-    protected void _testUri(final SyndEntry entry, final int i) throws Exception {
+    protected void testUri(final SyndEntry entry, final int i) throws Exception {
         assertProperty(entry.getUri(), "channel.item[" + i + "].guid");
     }
 }

@@ -28,13 +28,13 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * 
  */
 public class Image implements Cloneable, Serializable {
-    private final ObjectBean _objBean;
-    private String _title;
-    private String _url;
-    private String _link;
-    private Integer _width = -1;
-    private Integer _height = -1;
-    private String _description;
+    private final ObjectBean objBean;
+    private String title;
+    private String url;
+    private String link;
+    private Integer width = -1;
+    private Integer height = -1;
+    private String description;
 
     /**
      * Default constructor. All properties are set to <b>null</b>.
@@ -42,7 +42,7 @@ public class Image implements Cloneable, Serializable {
      * 
      */
     public Image() {
-        this._objBean = new ObjectBean(this.getClass(), this);
+        objBean = new ObjectBean(this.getClass(), this);
     }
 
     /**
@@ -56,7 +56,7 @@ public class Image implements Cloneable, Serializable {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return this._objBean.clone();
+        return objBean.clone();
     }
 
     /**
@@ -73,7 +73,7 @@ public class Image implements Cloneable, Serializable {
         if (!(other instanceof Image)) {
             return false;
         }
-        return this._objBean.equals(other);
+        return objBean.equals(other);
     }
 
     /**
@@ -87,7 +87,7 @@ public class Image implements Cloneable, Serializable {
      */
     @Override
     public int hashCode() {
-        return this._objBean.hashCode();
+        return objBean.hashCode();
     }
 
     /**
@@ -99,7 +99,7 @@ public class Image implements Cloneable, Serializable {
      */
     @Override
     public String toString() {
-        return this._objBean.toString();
+        return objBean.toString();
     }
 
     /**
@@ -110,7 +110,7 @@ public class Image implements Cloneable, Serializable {
      * 
      */
     public String getTitle() {
-        return this._title;
+        return title;
     }
 
     /**
@@ -121,7 +121,7 @@ public class Image implements Cloneable, Serializable {
      * 
      */
     public void setTitle(final String title) {
-        this._title = title;
+        this.title = title;
     }
 
     /**
@@ -132,7 +132,7 @@ public class Image implements Cloneable, Serializable {
      * 
      */
     public String getUrl() {
-        return this._url;
+        return url;
     }
 
     /**
@@ -143,7 +143,7 @@ public class Image implements Cloneable, Serializable {
      * 
      */
     public void setUrl(final String url) {
-        this._url = url;
+        this.url = url;
     }
 
     /**
@@ -154,7 +154,7 @@ public class Image implements Cloneable, Serializable {
      * 
      */
     public String getLink() {
-        return this._link;
+        return link;
     }
 
     /**
@@ -165,7 +165,7 @@ public class Image implements Cloneable, Serializable {
      * 
      */
     public void setLink(final String link) {
-        this._link = link;
+        this.link = link;
     }
 
     /**
@@ -176,7 +176,7 @@ public class Image implements Cloneable, Serializable {
      * 
      */
     public Integer getWidth() {
-        return this._width;
+        return width;
     }
 
     /**
@@ -187,7 +187,7 @@ public class Image implements Cloneable, Serializable {
      * 
      */
     public void setWidth(final Integer width) {
-        this._width = width;
+        this.width = width;
     }
 
     /**
@@ -198,7 +198,7 @@ public class Image implements Cloneable, Serializable {
      * 
      */
     public Integer getHeight() {
-        return this._height;
+        return height;
     }
 
     /**
@@ -209,7 +209,7 @@ public class Image implements Cloneable, Serializable {
      * 
      */
     public void setHeight(final Integer height) {
-        this._height = height;
+        this.height = height;
     }
 
     /**
@@ -220,7 +220,7 @@ public class Image implements Cloneable, Serializable {
      * 
      */
     public String getDescription() {
-        return this._description;
+        return description;
     }
 
     /**
@@ -231,7 +231,7 @@ public class Image implements Cloneable, Serializable {
      * 
      */
     public void setDescription(final String description) {
-        this._description = description;
+        this.description = description;
     }
 
 }

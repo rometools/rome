@@ -35,7 +35,7 @@ import com.sun.syndication.feed.synd.SyndFeed;
  * 
  */
 public class SyndFeedOutput {
-    private final WireFeedOutput _feedOutput;
+    private final WireFeedOutput feedOutput;
 
     /**
      * Creates a SyndFeedOutput instance.
@@ -43,7 +43,7 @@ public class SyndFeedOutput {
      * 
      */
     public SyndFeedOutput() {
-        this._feedOutput = new WireFeedOutput();
+        feedOutput = new WireFeedOutput();
     }
 
     /**
@@ -64,7 +64,7 @@ public class SyndFeedOutput {
      * 
      */
     public String outputString(final SyndFeed feed) throws FeedException {
-        return this._feedOutput.outputString(feed.createWireFeed());
+        return feedOutput.outputString(feed.createWireFeed());
     }
 
     /**
@@ -86,7 +86,7 @@ public class SyndFeedOutput {
      * 
      */
     public String outputString(final SyndFeed feed, final boolean prettyPrint) throws FeedException {
-        return this._feedOutput.outputString(feed.createWireFeed(), prettyPrint);
+        return feedOutput.outputString(feed.createWireFeed(), prettyPrint);
     }
 
     /**
@@ -110,7 +110,7 @@ public class SyndFeedOutput {
      * 
      */
     public void output(final SyndFeed feed, final File file) throws IOException, FeedException {
-        this._feedOutput.output(feed.createWireFeed(), file);
+        feedOutput.output(feed.createWireFeed(), file);
     }
 
     /**
@@ -135,7 +135,7 @@ public class SyndFeedOutput {
      * 
      */
     public void output(final SyndFeed feed, final File file, final boolean prettyPrint) throws IOException, FeedException {
-        this._feedOutput.output(feed.createWireFeed(), file, prettyPrint);
+        feedOutput.output(feed.createWireFeed(), file, prettyPrint);
     }
 
     /**
@@ -159,7 +159,7 @@ public class SyndFeedOutput {
      * 
      */
     public void output(final SyndFeed feed, final Writer writer) throws IOException, FeedException {
-        this._feedOutput.output(feed.createWireFeed(), writer);
+        feedOutput.output(feed.createWireFeed(), writer);
     }
 
     /**
@@ -184,7 +184,7 @@ public class SyndFeedOutput {
      * 
      */
     public void output(final SyndFeed feed, final Writer writer, final boolean prettyPrint) throws IOException, FeedException {
-        this._feedOutput.output(feed.createWireFeed(), writer, prettyPrint);
+        feedOutput.output(feed.createWireFeed(), writer, prettyPrint);
     }
 
     /**
@@ -202,7 +202,7 @@ public class SyndFeedOutput {
      * 
      */
     public org.w3c.dom.Document outputW3CDom(final SyndFeed feed) throws FeedException {
-        return this._feedOutput.outputW3CDom(feed.createWireFeed());
+        return feedOutput.outputW3CDom(feed.createWireFeed());
     }
 
     /**
@@ -220,7 +220,7 @@ public class SyndFeedOutput {
      * 
      */
     public Document outputJDom(final SyndFeed feed) throws FeedException {
-        return this._feedOutput.outputJDom(feed.createWireFeed());
+        return feedOutput.outputJDom(feed.createWireFeed());
     }
 
 }

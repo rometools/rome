@@ -36,19 +36,19 @@ import com.sun.syndication.feed.CopyFrom;
 public class CopyFromHelper {
     private static final Object[] NO_PARAMS = new Object[0];
 
-    private final Class _beanInterfaceClass;
-    private final Map _baseInterfaceMap; // ENTRIES(propertyName,interface.class)
-    private final Map _baseImplMap; // ENTRIES(interface.class,implementation.class)
+    private final Class beanInterfaceClass;
+    private final Map baseInterfaceMap; // ENTRIES(propertyName,interface.class)
+    private final Map baseImplMap; // ENTRIES(interface.class,implementation.class)
 
     public CopyFromHelper(final Class beanInterfaceClass, final Map basePropInterfaceMap, final Map basePropClassImplMap) {
-        this._beanInterfaceClass = beanInterfaceClass;
-        this._baseInterfaceMap = basePropInterfaceMap;
-        this._baseImplMap = basePropClassImplMap;
+        this.beanInterfaceClass = beanInterfaceClass;
+        baseInterfaceMap = basePropInterfaceMap;
+        baseImplMap = basePropClassImplMap;
     }
 
     public void copy(final Object target, final Object source) {
         try {
-            final PropertyDescriptor[] pds = BeanIntrospector.getPropertyDescriptors(this._beanInterfaceClass);
+            final PropertyDescriptor[] pds = BeanIntrospector.getPropertyDescriptors(beanInterfaceClass);
             if (pds != null) {
                 for (final PropertyDescriptor pd : pds) {
                     final String propertyName = pd.getName();
@@ -70,7 +70,7 @@ public class CopyFromHelper {
                                                                            // that
                                                                            // take
                                                                            // parameters
-                            this._baseInterfaceMap.containsKey(propertyName)) { // only
+                            baseInterfaceMap.containsKey(propertyName)) { // only
                         // copies
                         // properties
                         // defined
@@ -78,7 +78,7 @@ public class CopyFromHelper {
                         // copyFrom-able
                         Object value = pReadMethod.invoke(source, NO_PARAMS);
                         if (value != null) {
-                            final Class baseInterface = (Class) this._baseInterfaceMap.get(propertyName);
+                            final Class baseInterface = (Class) baseInterfaceMap.get(propertyName);
                             value = doCopy(value, baseInterface);
                             pWriteMethod.invoke(target, new Object[] { value });
                         }
@@ -91,10 +91,10 @@ public class CopyFromHelper {
     }
 
     private CopyFrom createInstance(final Class interfaceClass) throws Exception {
-        if (this._baseImplMap.get(interfaceClass) == null) {
+        if (baseImplMap.get(interfaceClass) == null) {
             return null;
         } else {
-            return (CopyFrom) ((Class) this._baseImplMap.get(interfaceClass)).newInstance();
+            return (CopyFrom) ((Class) baseImplMap.get(interfaceClass)).newInstance();
         }
     }
 

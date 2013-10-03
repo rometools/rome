@@ -34,13 +34,13 @@ import com.sun.syndication.feed.module.impl.ModuleUtils;
  */
 public class Person implements Cloneable, Serializable, Extendable {
 
-    private final ObjectBean _objBean;
+    private final ObjectBean objBean;
 
-    private String _name;
-    private String _uri; // since Atom 1.0 (was called url)
-    private String _uriResolved;
-    private String _email;
-    private List<Module> _modules;
+    private String name;
+    private String uri; // since Atom 1.0 (was called url)
+    private String uriResolved;
+    private String email;
+    private List<Module> modules;
 
     /**
      * Default constructor. All properties are set to <b>null</b>.
@@ -48,7 +48,7 @@ public class Person implements Cloneable, Serializable, Extendable {
      * 
      */
     public Person() {
-        this._objBean = new ObjectBean(this.getClass(), this);
+        objBean = new ObjectBean(this.getClass(), this);
     }
 
     /**
@@ -62,7 +62,7 @@ public class Person implements Cloneable, Serializable, Extendable {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return this._objBean.clone();
+        return objBean.clone();
     }
 
     /**
@@ -76,7 +76,7 @@ public class Person implements Cloneable, Serializable, Extendable {
      */
     @Override
     public boolean equals(final Object other) {
-        return this._objBean.equals(other);
+        return objBean.equals(other);
     }
 
     /**
@@ -90,7 +90,7 @@ public class Person implements Cloneable, Serializable, Extendable {
      */
     @Override
     public int hashCode() {
-        return this._objBean.hashCode();
+        return objBean.hashCode();
     }
 
     /**
@@ -102,7 +102,7 @@ public class Person implements Cloneable, Serializable, Extendable {
      */
     @Override
     public String toString() {
-        return this._objBean.toString();
+        return objBean.toString();
     }
 
     /**
@@ -113,7 +113,7 @@ public class Person implements Cloneable, Serializable, Extendable {
      * 
      */
     public String getName() {
-        return this._name;
+        return name;
     }
 
     /**
@@ -124,7 +124,7 @@ public class Person implements Cloneable, Serializable, Extendable {
      * 
      */
     public void setName(final String name) {
-        this._name = name;
+        this.name = name;
     }
 
     /**
@@ -134,7 +134,7 @@ public class Person implements Cloneable, Serializable, Extendable {
      * @return the person URL, <b>null</b> if none.
      */
     public String getUrl() {
-        return this._uri;
+        return uri;
     }
 
     /**
@@ -144,15 +144,15 @@ public class Person implements Cloneable, Serializable, Extendable {
      * @param url the person URL, <b>null</b> if none.
      */
     public void setUrl(final String url) {
-        this._uri = url;
+        uri = url;
     }
 
     public void setUriResolved(final String uriResolved) {
-        this._uriResolved = uriResolved;
+        this.uriResolved = uriResolved;
     }
 
     public String getUriResolved(final String resolveURI) {
-        return this._uriResolved != null ? this._uriResolved : this._uri;
+        return uriResolved != null ? uriResolved : uri;
     }
 
     /**
@@ -163,7 +163,7 @@ public class Person implements Cloneable, Serializable, Extendable {
      * 
      */
     public String getEmail() {
-        return this._email;
+        return email;
     }
 
     /**
@@ -174,7 +174,7 @@ public class Person implements Cloneable, Serializable, Extendable {
      * 
      */
     public void setEmail(final String email) {
-        this._email = email;
+        this.email = email;
     }
 
     /**
@@ -185,7 +185,7 @@ public class Person implements Cloneable, Serializable, Extendable {
      * @since Atom 1.0
      */
     public String getUri() {
-        return this._uri;
+        return uri;
     }
 
     /**
@@ -196,7 +196,7 @@ public class Person implements Cloneable, Serializable, Extendable {
      * @since Atom 1.0
      */
     public void setUri(final String uri) {
-        this._uri = uri;
+        this.uri = uri;
     }
 
     /**
@@ -209,7 +209,7 @@ public class Person implements Cloneable, Serializable, Extendable {
      */
     @Override
     public List<Module> getModules() {
-        return this._modules == null ? (this._modules = new ArrayList<Module>()) : this._modules;
+        return modules == null ? (modules = new ArrayList<Module>()) : modules;
     }
 
     /**
@@ -222,7 +222,7 @@ public class Person implements Cloneable, Serializable, Extendable {
      */
     @Override
     public void setModules(final List<Module> modules) {
-        this._modules = modules;
+        this.modules = modules;
     }
 
     /**
@@ -234,7 +234,7 @@ public class Person implements Cloneable, Serializable, Extendable {
      */
     @Override
     public Module getModule(final String uri) {
-        return ModuleUtils.getModule(this._modules, uri);
+        return ModuleUtils.getModule(modules, uri);
     }
 
 }

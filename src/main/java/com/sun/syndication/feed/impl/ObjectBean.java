@@ -43,9 +43,9 @@ import java.util.Set;
  * 
  */
 public class ObjectBean implements Serializable, Cloneable {
-    private final EqualsBean _equalsBean;
-    private final ToStringBean _toStringBean;
-    private final CloneableBean _cloneableBean;
+    private final EqualsBean equalsBean;
+    private final ToStringBean toStringBean;
+    private final CloneableBean cloneableBean;
 
     /**
      * Constructor.
@@ -75,9 +75,9 @@ public class ObjectBean implements Serializable, Cloneable {
      * 
      */
     public ObjectBean(final Class beanClass, final Object obj, final Set ignoreProperties) {
-        this._equalsBean = new EqualsBean(beanClass, obj);
-        this._toStringBean = new ToStringBean(beanClass, obj);
-        this._cloneableBean = new CloneableBean(obj, ignoreProperties);
+        equalsBean = new EqualsBean(beanClass, obj);
+        toStringBean = new ToStringBean(beanClass, obj);
+        cloneableBean = new CloneableBean(obj, ignoreProperties);
     }
 
     /**
@@ -91,7 +91,7 @@ public class ObjectBean implements Serializable, Cloneable {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return this._cloneableBean.beanClone();
+        return cloneableBean.beanClone();
     }
 
     /**
@@ -105,7 +105,7 @@ public class ObjectBean implements Serializable, Cloneable {
      */
     @Override
     public boolean equals(final Object other) {
-        return this._equalsBean.beanEquals(other);
+        return equalsBean.beanEquals(other);
     }
 
     /**
@@ -119,7 +119,7 @@ public class ObjectBean implements Serializable, Cloneable {
      */
     @Override
     public int hashCode() {
-        return this._equalsBean.beanHashCode();
+        return equalsBean.beanHashCode();
     }
 
     /**
@@ -131,7 +131,7 @@ public class ObjectBean implements Serializable, Cloneable {
      */
     @Override
     public String toString() {
-        return this._toStringBean.toString();
+        return toStringBean.toString();
     }
 
 }

@@ -17,7 +17,7 @@ public class TestSyndFeedRSS092Alt extends TestSyndFeedRSS092 {
     }
 
     @Override
-    protected void _testEnclosures(final List<SyndEnclosure> encs, final String prefix) throws Exception {
+    protected void testEnclosures(final List<SyndEnclosure> encs, final String prefix) throws Exception {
         final Set<String> s1 = new HashSet<String>();
         final Set<String> s2 = new HashSet<String>();
         for (int i = 0; i < encs.size(); i++) {

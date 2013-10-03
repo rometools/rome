@@ -52,7 +52,7 @@ public class TestSyndFeedAtom03 extends SyndFeedTest {
         assertEquals(this.getCachedSyndFeed().getPublishedDate(), d);
     }
 
-    protected void _testEntry(final int i) throws Exception {
+    protected void testEntry(final int i) throws Exception {
         final List<SyndEntry> items = this.getCachedSyndFeed().getEntries();
         final SyndEntry entry = items.get(i);
         assertProperty(entry.getTitle(), "feed.entry[" + i + "].title");
@@ -66,11 +66,11 @@ public class TestSyndFeedAtom03 extends SyndFeedTest {
     }
 
     public void testEntry0() throws Exception {
-        _testEntry(0);
+        testEntry(0);
     }
 
     public void testEntry1() throws Exception {
-        _testEntry(1);
+        testEntry(1);
     }
 
     @Override

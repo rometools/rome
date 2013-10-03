@@ -31,55 +31,55 @@ public abstract class BaseWireFeedGenerator implements WireFeedGenerator {
      */
     private static final String PERSON_MODULE_GENERATORS_POSFIX_KEY = ".person.ModuleGenerator.classes";
 
-    private final String _type;
-    private final ModuleGenerators _feedModuleGenerators;
-    private final ModuleGenerators _itemModuleGenerators;
-    private final ModuleGenerators _personModuleGenerators;
-    private final Namespace[] _allModuleNamespaces;
+    private final String type;
+    private final ModuleGenerators feedModuleGenerators;
+    private final ModuleGenerators itemModuleGenerators;
+    private final ModuleGenerators personModuleGenerators;
+    private final Namespace[] allModuleNamespaces;
 
     protected BaseWireFeedGenerator(final String type) {
-        this._type = type;
-        this._feedModuleGenerators = new ModuleGenerators(type + FEED_MODULE_GENERATORS_POSFIX_KEY, this);
-        this._itemModuleGenerators = new ModuleGenerators(type + ITEM_MODULE_GENERATORS_POSFIX_KEY, this);
-        this._personModuleGenerators = new ModuleGenerators(type + PERSON_MODULE_GENERATORS_POSFIX_KEY, this);
+        this.type = type;
+        feedModuleGenerators = new ModuleGenerators(type + FEED_MODULE_GENERATORS_POSFIX_KEY, this);
+        itemModuleGenerators = new ModuleGenerators(type + ITEM_MODULE_GENERATORS_POSFIX_KEY, this);
+        personModuleGenerators = new ModuleGenerators(type + PERSON_MODULE_GENERATORS_POSFIX_KEY, this);
         final Set allModuleNamespaces = new HashSet();
-        Iterator i = this._feedModuleGenerators.getAllNamespaces().iterator();
+        Iterator i = feedModuleGenerators.getAllNamespaces().iterator();
         while (i.hasNext()) {
             allModuleNamespaces.add(i.next());
         }
-        i = this._itemModuleGenerators.getAllNamespaces().iterator();
+        i = itemModuleGenerators.getAllNamespaces().iterator();
         while (i.hasNext()) {
             allModuleNamespaces.add(i.next());
         }
-        i = this._personModuleGenerators.getAllNamespaces().iterator();
+        i = personModuleGenerators.getAllNamespaces().iterator();
         while (i.hasNext()) {
             allModuleNamespaces.add(i.next());
         }
-        this._allModuleNamespaces = new Namespace[allModuleNamespaces.size()];
-        allModuleNamespaces.toArray(this._allModuleNamespaces);
+        this.allModuleNamespaces = new Namespace[allModuleNamespaces.size()];
+        allModuleNamespaces.toArray(this.allModuleNamespaces);
     }
 
     @Override
     public String getType() {
-        return this._type;
+        return type;
     }
 
     protected void generateModuleNamespaceDefs(final Element root) {
-        for (final Namespace _allModuleNamespace : this._allModuleNamespaces) {
+        for (final Namespace _allModuleNamespace : allModuleNamespaces) {
             root.addNamespaceDeclaration(_allModuleNamespace);
         }
     }
 
     protected void generateFeedModules(final List modules, final Element feed) {
-        this._feedModuleGenerators.generateModules(modules, feed);
+        feedModuleGenerators.generateModules(modules, feed);
     }
 
     public void generateItemModules(final List modules, final Element item) {
-        this._itemModuleGenerators.generateModules(modules, item);
+        itemModuleGenerators.generateModules(modules, item);
     }
 
     public void generatePersonModules(final List modules, final Element person) {
-        this._personModuleGenerators.generateModules(modules, person);
+        personModuleGenerators.generateModules(modules, person);
     }
 
     protected void generateForeignMarkup(final Element e, final List foreignMarkup) {

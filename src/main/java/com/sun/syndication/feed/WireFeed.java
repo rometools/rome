@@ -43,11 +43,11 @@ import com.sun.syndication.feed.module.impl.ModuleUtils;
  * 
  */
 public abstract class WireFeed implements Cloneable, Serializable, Extendable {
-    private final ObjectBean _objBean;
-    private String _feedType;
-    private String _encoding;
-    private List<Module> _modules;
-    private List<Element> _foreignMarkup;
+    private final ObjectBean objBean;
+    private String feedType;
+    private String encoding;
+    private List<Module> modules;
+    private List<Element> foreignMarkup;
 
     /**
      * Default constructor, for bean cloning purposes only.
@@ -55,7 +55,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      * 
      */
     protected WireFeed() {
-        this._objBean = new ObjectBean(this.getClass(), this);
+        objBean = new ObjectBean(this.getClass(), this);
     }
 
     /**
@@ -67,7 +67,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      */
     protected WireFeed(final String type) {
         this();
-        this._feedType = type;
+        feedType = type;
     }
 
     /**
@@ -81,7 +81,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return this._objBean.clone();
+        return objBean.clone();
     }
 
     /**
@@ -104,7 +104,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
         // can't use foreign markup in equals, due to JDOM equals impl
         final List<Element> fm = getForeignMarkup();
         setForeignMarkup(((WireFeed) other).getForeignMarkup());
-        final boolean ret = this._objBean.equals(other);
+        final boolean ret = objBean.equals(other);
         // restore foreign markup
         setForeignMarkup(fm);
         return ret;
@@ -121,7 +121,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      */
     @Override
     public int hashCode() {
-        return this._objBean.hashCode();
+        return objBean.hashCode();
     }
 
     /**
@@ -133,7 +133,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      */
     @Override
     public String toString() {
-        return this._objBean.toString();
+        return objBean.toString();
     }
 
     /**
@@ -145,7 +145,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      * 
      */
     public void setFeedType(final String feedType) {
-        this._feedType = feedType;
+        this.feedType = feedType;
     }
 
     /**
@@ -154,7 +154,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      * @return the type of the feed.
      */
     public String getFeedType() {
-        return this._feedType;
+        return feedType;
     }
 
     /**
@@ -168,7 +168,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      * 
      */
     public String getEncoding() {
-        return this._encoding;
+        return encoding;
     }
 
     /**
@@ -182,7 +182,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      * 
      */
     public void setEncoding(final String encoding) {
-        this._encoding = encoding;
+        this.encoding = encoding;
     }
 
     /**
@@ -195,7 +195,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      */
     @Override
     public List<Module> getModules() {
-        return this._modules == null ? (this._modules = new ArrayList<Module>()) : this._modules;
+        return modules == null ? (modules = new ArrayList<Module>()) : modules;
     }
 
     /**
@@ -208,7 +208,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      */
     @Override
     public void setModules(final List<Module> modules) {
-        this._modules = modules;
+        this.modules = modules;
     }
 
     /**
@@ -220,7 +220,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      */
     @Override
     public Module getModule(final String uri) {
-        return ModuleUtils.getModule(this._modules, uri);
+        return ModuleUtils.getModule(modules, uri);
     }
 
     /**
@@ -231,7 +231,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      * 
      */
     public List<Element> getForeignMarkup() {
-        return this._foreignMarkup == null ? (this._foreignMarkup = new ArrayList<Element>()) : this._foreignMarkup;
+        return foreignMarkup == null ? (foreignMarkup = new ArrayList<Element>()) : foreignMarkup;
     }
 
     /**
@@ -242,6 +242,6 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      * 
      */
     public void setForeignMarkup(final List<Element> foreignMarkup) {
-        this._foreignMarkup = foreignMarkup;
+        this.foreignMarkup = foreignMarkup;
     }
 }

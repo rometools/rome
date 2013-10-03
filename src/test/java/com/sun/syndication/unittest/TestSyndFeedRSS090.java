@@ -53,24 +53,24 @@ public class TestSyndFeedRSS090 extends SyndFeedTest {
         assertProperty(this.getCachedSyndFeed().getImage().getLink(), "image.link");
     }
 
-    protected void _testItem(final int i) throws Exception {
+    protected void testItem(final int i) throws Exception {
         final List<SyndEntry> items = this.getCachedSyndFeed().getEntries();
         final SyndEntry entry = items.get(i);
         assertProperty(entry.getTitle(), "item[" + i + "].title");
         assertProperty(entry.getLink(), "item[" + i + "].link");
 
-        _testUri(entry, i);
+        testUri(entry, i);
     }
 
     public void testItem0() throws Exception {
-        _testItem(0);
+        testItem(0);
     }
 
     public void testItem1() throws Exception {
-        _testItem(1);
+        testItem(1);
     }
 
-    protected void _testUri(final SyndEntry entry, final int i) throws Exception {
+    protected void testUri(final SyndEntry entry, final int i) throws Exception {
         assertProperty(entry.getUri(), "item[" + i + "].link");
     }
 

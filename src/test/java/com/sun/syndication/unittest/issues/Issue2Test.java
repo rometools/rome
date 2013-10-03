@@ -29,14 +29,14 @@ import com.sun.syndication.unittest.TestSyndFeedRSS094;
 public class Issue2Test extends TestSyndFeedRSS094 {
 
     @Override
-    protected void _testItem(final int i) throws Exception {
-        super._testItem(i);
+    protected void testItem(final int i) throws Exception {
+        super.testItem(i);
         final List<SyndEntry> items = this.getCachedSyndFeed().getEntries();
         final SyndEntry entry = items.get(i);
-        _testComments(entry, i);
+        testComments(entry, i);
     }
 
-    protected void _testComments(final SyndEntry entry, final int i) throws Exception {
+    protected void testComments(final SyndEntry entry, final int i) throws Exception {
         assertProperty(entry.findRelatedLink("comments").getHref(), "rss_0.94.channel.item[" + i + "].comments");
     }
 

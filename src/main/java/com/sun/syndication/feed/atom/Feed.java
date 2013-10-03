@@ -35,26 +35,26 @@ import com.sun.syndication.feed.module.impl.ModuleUtils;
  */
 public class Feed extends WireFeed {
 
-    private String _xmlBase;
-    private List<Category> _categories;
-    private List<Person> _authors;
-    private List<Person> _contributors;
-    private Generator _generator;
-    private String _icon;
-    private String _id;
-    private String _logo;
-    private String _rights; // AKA copyright
-    private Content _subtitle; // AKA tagline
-    private Content _title;
-    private Date _updated; // AKA modified
-    private List<Link> _alternateLinks;
-    private List<Link> _otherLinks;
-    private List<Entry> _entries;
+    private String xmlBase;
+    private List<Category> categories;
+    private List<Person> authors;
+    private List<Person> contributors;
+    private Generator generator;
+    private String icon;
+    private String id;
+    private String logo;
+    private String rights; // AKA copyright
+    private Content subtitle; // AKA tagline
+    private Content title;
+    private Date updated; // AKA modified
+    private List<Link> alternateLinks;
+    private List<Link> otherLinks;
+    private List<Entry> entries;
 
-    private List<Module> _modules;
+    private List<Module> modules;
 
-    private Content _info; // Atom 0.3 only
-    private String _language; // Atom 0.3 only
+    private Content info; // Atom 0.3 only
+    private String language; // Atom 0.3 only
 
     /**
      * Default constructor, for bean cloning purposes only.
@@ -83,7 +83,7 @@ public class Feed extends WireFeed {
      * 
      */
     public String getLanguage() {
-        return this._language;
+        return language;
     }
 
     /**
@@ -94,7 +94,7 @@ public class Feed extends WireFeed {
      * 
      */
     public void setLanguage(final String language) {
-        this._language = language;
+        this.language = language;
     }
 
     /**
@@ -105,8 +105,8 @@ public class Feed extends WireFeed {
      * 
      */
     public String getTitle() {
-        if (this._title != null) {
-            return this._title.getValue();
+        if (title != null) {
+            return title.getValue();
         }
         return null;
     }
@@ -119,10 +119,10 @@ public class Feed extends WireFeed {
      * 
      */
     public void setTitle(final String title) {
-        if (this._title == null) {
-            this._title = new Content();
+        if (this.title == null) {
+            this.title = new Content();
         }
-        this._title.setValue(title);
+        this.title.setValue(title);
     }
 
     /**
@@ -133,7 +133,7 @@ public class Feed extends WireFeed {
      * 
      */
     public Content getTitleEx() {
-        return this._title;
+        return title;
     }
 
     /**
@@ -144,7 +144,7 @@ public class Feed extends WireFeed {
      * 
      */
     public void setTitleEx(final Content title) {
-        this._title = title;
+        this.title = title;
     }
 
     /**
@@ -155,7 +155,7 @@ public class Feed extends WireFeed {
      *         list if none.
      */
     public List<Link> getAlternateLinks() {
-        return this._alternateLinks == null ? (this._alternateLinks = new ArrayList<Link>()) : this._alternateLinks;
+        return alternateLinks == null ? (alternateLinks = new ArrayList<Link>()) : alternateLinks;
     }
 
     /**
@@ -166,7 +166,7 @@ public class Feed extends WireFeed {
      *            links to set, an empty list or <b>null</b> if none.
      */
     public void setAlternateLinks(final List<Link> alternateLinks) {
-        this._alternateLinks = alternateLinks;
+        this.alternateLinks = alternateLinks;
     }
 
     /**
@@ -177,7 +177,7 @@ public class Feed extends WireFeed {
      *         ones), an empty list if none.
      */
     public List<Link> getOtherLinks() {
-        return this._otherLinks == null ? (this._otherLinks = new ArrayList<Link>()) : this._otherLinks;
+        return otherLinks == null ? (otherLinks = new ArrayList<Link>()) : otherLinks;
     }
 
     /**
@@ -189,7 +189,7 @@ public class Feed extends WireFeed {
      *            none.
      */
     public void setOtherLinks(final List<Link> otherLinks) {
-        this._otherLinks = otherLinks;
+        this.otherLinks = otherLinks;
     }
 
     /**
@@ -200,7 +200,7 @@ public class Feed extends WireFeed {
      * 
      */
     public List<Person> getAuthors() {
-        return this._authors == null ? (this._authors = new ArrayList<Person>()) : this._authors;
+        return authors == null ? (authors = new ArrayList<Person>()) : authors;
     }
 
     /**
@@ -211,7 +211,7 @@ public class Feed extends WireFeed {
      * 
      */
     public void setAuthors(final List<Person> authors) {
-        this._authors = authors;
+        this.authors = authors;
     }
 
     /**
@@ -223,7 +223,7 @@ public class Feed extends WireFeed {
      * 
      */
     public List<Person> getContributors() {
-        return this._contributors == null ? (this._contributors = new ArrayList<Person>()) : this._contributors;
+        return contributors == null ? (contributors = new ArrayList<Person>()) : contributors;
     }
 
     /**
@@ -235,7 +235,7 @@ public class Feed extends WireFeed {
      * 
      */
     public void setContributors(final List<Person> contributors) {
-        this._contributors = contributors;
+        this.contributors = contributors;
     }
 
     /**
@@ -245,7 +245,7 @@ public class Feed extends WireFeed {
      * @return the feed tag line, <b>null</b> if none.
      */
     public Content getTagline() {
-        return this._subtitle;
+        return subtitle;
     }
 
     /**
@@ -256,7 +256,7 @@ public class Feed extends WireFeed {
      * @param tagline the feed tagline to set, <b>null</b> if none.
      */
     public void setTagline(final Content tagline) {
-        this._subtitle = tagline;
+        subtitle = tagline;
     }
 
     /**
@@ -267,7 +267,7 @@ public class Feed extends WireFeed {
      * 
      */
     public String getId() {
-        return this._id;
+        return id;
     }
 
     /**
@@ -278,7 +278,7 @@ public class Feed extends WireFeed {
      * 
      */
     public void setId(final String id) {
-        this._id = id;
+        this.id = id;
     }
 
     /**
@@ -289,7 +289,7 @@ public class Feed extends WireFeed {
      * 
      */
     public Generator getGenerator() {
-        return this._generator;
+        return generator;
     }
 
     /**
@@ -300,7 +300,7 @@ public class Feed extends WireFeed {
      * 
      */
     public void setGenerator(final Generator generator) {
-        this._generator = generator;
+        this.generator = generator;
     }
 
     /**
@@ -310,7 +310,7 @@ public class Feed extends WireFeed {
      * @return the feed copyright, <b>null</b> if none.
      */
     public String getCopyright() {
-        return this._rights;
+        return rights;
     }
 
     /**
@@ -321,7 +321,7 @@ public class Feed extends WireFeed {
      * @param copyright the feed copyright to set, <b>null</b> if none.
      */
     public void setCopyright(final String copyright) {
-        this._rights = copyright;
+        rights = copyright;
     }
 
     /**
@@ -331,7 +331,7 @@ public class Feed extends WireFeed {
      * @return the feed info, <b>null</b> if none.
      */
     public Content getInfo() {
-        return this._info;
+        return info;
     }
 
     /**
@@ -341,7 +341,7 @@ public class Feed extends WireFeed {
      * @param info the feed info to set, <b>null</b> if none.
      */
     public void setInfo(final Content info) {
-        this._info = info;
+        this.info = info;
     }
 
     /**
@@ -351,7 +351,7 @@ public class Feed extends WireFeed {
      * @return the feed modified date, <b>null</b> if none.
      */
     public Date getModified() {
-        return this._updated;
+        return updated;
     }
 
     /**
@@ -362,7 +362,7 @@ public class Feed extends WireFeed {
      * @param modified the feed modified date to set, <b>null</b> if none.
      */
     public void setModified(final Date modified) {
-        this._updated = modified;
+        updated = modified;
     }
 
     /**
@@ -374,7 +374,7 @@ public class Feed extends WireFeed {
      * 
      */
     public List<Entry> getEntries() {
-        return this._entries == null ? (this._entries = new ArrayList<Entry>()) : this._entries;
+        return entries == null ? (entries = new ArrayList<Entry>()) : entries;
     }
 
     /**
@@ -386,7 +386,7 @@ public class Feed extends WireFeed {
      * 
      */
     public void setEntries(final List<Entry> entries) {
-        this._entries = entries;
+        this.entries = entries;
     }
 
     /**
@@ -399,7 +399,7 @@ public class Feed extends WireFeed {
      */
     @Override
     public List<Module> getModules() {
-        return this._modules == null ? (this._modules = new ArrayList<Module>()) : this._modules;
+        return modules == null ? (modules = new ArrayList<Module>()) : modules;
     }
 
     /**
@@ -412,7 +412,7 @@ public class Feed extends WireFeed {
      */
     @Override
     public void setModules(final List<Module> modules) {
-        this._modules = modules;
+        this.modules = modules;
     }
 
     /**
@@ -424,7 +424,7 @@ public class Feed extends WireFeed {
      */
     @Override
     public Module getModule(final String uri) {
-        return ModuleUtils.getModule(this._modules, uri);
+        return ModuleUtils.getModule(modules, uri);
     }
 
     /**
@@ -435,7 +435,7 @@ public class Feed extends WireFeed {
      * @since Atom 1.0
      */
     public List<Category> getCategories() {
-        return this._categories == null ? (this._categories = new ArrayList<Category>()) : this._categories;
+        return categories == null ? (categories = new ArrayList<Category>()) : categories;
     }
 
     /**
@@ -446,7 +446,7 @@ public class Feed extends WireFeed {
      * @since Atom 1.0
      */
     public void setCategories(final List<Category> categories) {
-        this._categories = categories;
+        this.categories = categories;
     }
 
     /**
@@ -457,7 +457,7 @@ public class Feed extends WireFeed {
      * @since Atom 1.0
      */
     public String getIcon() {
-        return this._icon;
+        return icon;
     }
 
     /**
@@ -468,7 +468,7 @@ public class Feed extends WireFeed {
      * @since Atom 1.0
      */
     public void setIcon(final String icon) {
-        this._icon = icon;
+        this.icon = icon;
     }
 
     /**
@@ -479,7 +479,7 @@ public class Feed extends WireFeed {
      * @since Atom 1.0
      */
     public String getLogo() {
-        return this._logo;
+        return logo;
     }
 
     /**
@@ -490,7 +490,7 @@ public class Feed extends WireFeed {
      * @since Atom 1.0
      */
     public void setLogo(final String logo) {
-        this._logo = logo;
+        this.logo = logo;
     }
 
     /**
@@ -501,7 +501,7 @@ public class Feed extends WireFeed {
      * @since Atom 1.0
      */
     public String getRights() {
-        return this._rights;
+        return rights;
     }
 
     /**
@@ -512,7 +512,7 @@ public class Feed extends WireFeed {
      * @since Atom 1.0
      */
     public void setRights(final String rights) {
-        this._rights = rights;
+        this.rights = rights;
     }
 
     /**
@@ -523,7 +523,7 @@ public class Feed extends WireFeed {
      * @since Atom 1.0
      */
     public Content getSubtitle() {
-        return this._subtitle;
+        return subtitle;
     }
 
     /**
@@ -534,7 +534,7 @@ public class Feed extends WireFeed {
      * @since Atom 1.0
      */
     public void setSubtitle(final Content subtitle) {
-        this._subtitle = subtitle;
+        this.subtitle = subtitle;
     }
 
     /**
@@ -545,7 +545,7 @@ public class Feed extends WireFeed {
      * @since Atom 1.0
      */
     public Date getUpdated() {
-        return this._updated;
+        return updated;
     }
 
     /**
@@ -556,7 +556,7 @@ public class Feed extends WireFeed {
      * @since Atom 1.0
      */
     public void setUpdated(final Date updated) {
-        this._updated = updated;
+        this.updated = updated;
     }
 
     /**
@@ -567,7 +567,7 @@ public class Feed extends WireFeed {
      * @since Atom 1.0
      */
     public String getXmlBase() {
-        return this._xmlBase;
+        return xmlBase;
     }
 
     /**
@@ -578,6 +578,6 @@ public class Feed extends WireFeed {
      * @since Atom 1.0
      */
     public void setXmlBase(final String xmlBase) {
-        this._xmlBase = xmlBase;
+        this.xmlBase = xmlBase;
     }
 }

@@ -35,9 +35,9 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * 
  */
 public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
-    private final ObjectBean _objBean;
-    private String _taxonomyUri;
-    private String _value;
+    private final ObjectBean objBean;
+    private String taxonomyUri;
+    private String value;
 
     /**
      * Default constructor. All properties are set to <b>null</b>.
@@ -45,7 +45,7 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
      * 
      */
     public DCSubjectImpl() {
-        this._objBean = new ObjectBean(this.getClass(), this);
+        objBean = new ObjectBean(this.getClass(), this);
     }
 
     /**
@@ -59,7 +59,7 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return this._objBean.clone();
+        return objBean.clone();
     }
 
     /**
@@ -76,7 +76,7 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
         if (!(other instanceof DCSubjectImpl)) {
             return false;
         }
-        return this._objBean.equals(other);
+        return objBean.equals(other);
     }
 
     /**
@@ -90,7 +90,7 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
      */
     @Override
     public int hashCode() {
-        return this._objBean.hashCode();
+        return objBean.hashCode();
     }
 
     /**
@@ -102,7 +102,7 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
      */
     @Override
     public String toString() {
-        return this._objBean.toString();
+        return objBean.toString();
     }
 
     /**
@@ -114,7 +114,7 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
      */
     @Override
     public String getTaxonomyUri() {
-        return this._taxonomyUri;
+        return taxonomyUri;
     }
 
     /**
@@ -127,7 +127,7 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
      */
     @Override
     public void setTaxonomyUri(final String taxonomyUri) {
-        this._taxonomyUri = taxonomyUri;
+        this.taxonomyUri = taxonomyUri;
     }
 
     /**
@@ -139,7 +139,7 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
      */
     @Override
     public String getValue() {
-        return this._value;
+        return value;
     }
 
     /**
@@ -151,7 +151,7 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
      */
     @Override
     public void setValue(final String value) {
-        this._value = value;
+        this.value = value;
     }
 
     @Override

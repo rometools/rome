@@ -29,7 +29,7 @@ import com.sun.syndication.io.ModuleGenerator;
 /**
  */
 public class ModuleGenerators extends PluginManager {
-    private Set _allNamespaces;
+    private Set allNamespaces;
 
     public ModuleGenerators(final String propertyKey, final BaseWireFeedGenerator parentGenerator) {
         super(propertyKey, null, parentGenerator);
@@ -61,14 +61,14 @@ public class ModuleGenerators extends PluginManager {
     }
 
     public Set getAllNamespaces() {
-        if (this._allNamespaces == null) {
-            this._allNamespaces = new HashSet();
+        if (allNamespaces == null) {
+            allNamespaces = new HashSet();
             final List mUris = getModuleNamespaces();
             for (int i = 0; i < mUris.size(); i++) {
                 final ModuleGenerator mGen = getGenerator((String) mUris.get(i));
-                this._allNamespaces.addAll(mGen.getNamespaces());
+                allNamespaces.addAll(mGen.getNamespaces());
             }
         }
-        return this._allNamespaces;
+        return allNamespaces;
     }
 }

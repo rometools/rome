@@ -29,16 +29,16 @@ public class TestSyndFeedRSS093 extends TestSyndFeedRSS092 {
     }
 
     @Override
-    protected void _testItem(final int i) throws Exception {
-        super._testItem(i);
+    protected void testItem(final int i) throws Exception {
+        super.testItem(i);
         final List<SyndEntry> items = this.getCachedSyndFeed().getEntries();
         final SyndEntry entry = items.get(i);
         final Date d = DateParser.parseRFC822("Mon, 0" + (i + 1) + " Jan 2001 00:00:00 GMT");
         assertEquals(entry.getPublishedDate(), d);
-        _testDescriptionType(entry, i);
+        testDescriptionType(entry, i);
     }
 
-    protected void _testDescriptionType(final SyndEntry entry, final int i) throws Exception {
+    protected void testDescriptionType(final SyndEntry entry, final int i) throws Exception {
         assertProperty(entry.getDescription().getType(), "channel.item[" + i + "].description^type");
     }
 

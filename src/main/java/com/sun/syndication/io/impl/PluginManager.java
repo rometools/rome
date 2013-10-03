@@ -35,12 +35,12 @@ import com.sun.syndication.io.WireFeedParser;
  * 
  */
 public abstract class PluginManager {
-    private final String[] _propertyValues;
-    private Map _pluginsMap;
-    private List _pluginsList;
-    private final List _keys;
-    private final WireFeedParser _parentParser;
-    private final WireFeedGenerator _parentGenerator;
+    private final String[] propertyValues;
+    private Map pluginsMap;
+    private List pluginsList;
+    private final List keys;
+    private final WireFeedParser parentParser;
+    private final WireFeedGenerator parentGenerator;
 
     /**
      * Creates a PluginManager
@@ -54,39 +54,39 @@ public abstract class PluginManager {
     }
 
     protected PluginManager(final String propertyKey, final WireFeedParser parentParser, final WireFeedGenerator parentGenerator) {
-        this._parentParser = parentParser;
-        this._parentGenerator = parentGenerator;
-        this._propertyValues = PropertiesLoader.getPropertiesLoader().getTokenizedProperty(propertyKey, ", ");
+        this.parentParser = parentParser;
+        this.parentGenerator = parentGenerator;
+        propertyValues = PropertiesLoader.getPropertiesLoader().getTokenizedProperty(propertyKey, ", ");
         loadPlugins();
-        this._pluginsMap = Collections.unmodifiableMap(this._pluginsMap);
-        this._pluginsList = Collections.unmodifiableList(this._pluginsList);
-        this._keys = Collections.unmodifiableList(new ArrayList(this._pluginsMap.keySet()));
+        pluginsMap = Collections.unmodifiableMap(pluginsMap);
+        pluginsList = Collections.unmodifiableList(pluginsList);
+        keys = Collections.unmodifiableList(new ArrayList(pluginsMap.keySet()));
     }
 
     protected abstract String getKey(Object obj);
 
     protected List getKeys() {
-        return this._keys;
+        return keys;
     }
 
     protected List getPlugins() {
-        return this._pluginsList;
+        return pluginsList;
     }
 
     protected Map getPluginMap() {
-        return this._pluginsMap;
+        return pluginsMap;
     }
 
     protected Object getPlugin(final String key) {
-        return this._pluginsMap.get(key);
+        return pluginsMap.get(key);
     }
 
     // PRIVATE - LOADER PART
 
     private void loadPlugins() {
         final List finalPluginsList = new ArrayList();
-        this._pluginsList = new ArrayList();
-        this._pluginsMap = new HashMap();
+        pluginsList = new ArrayList();
+        pluginsMap = new HashMap();
         String className = null;
         try {
             final Class[] classes = getClasses();
@@ -94,24 +94,24 @@ public abstract class PluginManager {
                 className = classe.getName();
                 final Object plugin = classe.newInstance();
                 if (plugin instanceof DelegatingModuleParser) {
-                    ((DelegatingModuleParser) plugin).setFeedParser(this._parentParser);
+                    ((DelegatingModuleParser) plugin).setFeedParser(parentParser);
                 }
                 if (plugin instanceof DelegatingModuleGenerator) {
-                    ((DelegatingModuleGenerator) plugin).setFeedGenerator(this._parentGenerator);
+                    ((DelegatingModuleGenerator) plugin).setFeedGenerator(parentGenerator);
                 }
 
-                this._pluginsMap.put(getKey(plugin), plugin);
-                this._pluginsList.add(plugin); // to preserve the order of
-                                               // definition
+                pluginsMap.put(getKey(plugin), plugin);
+                pluginsList.add(plugin); // to preserve the order of
+                                         // definition
                 // in the rome.properties files
             }
-            Iterator i = this._pluginsMap.values().iterator();
+            Iterator i = pluginsMap.values().iterator();
             while (i.hasNext()) {
                 finalPluginsList.add(i.next()); // to remove overridden plugin
                                                 // impls
             }
 
-            i = this._pluginsList.iterator();
+            i = pluginsList.iterator();
             while (i.hasNext()) {
                 final Object plugin = i.next();
                 if (!finalPluginsList.contains(plugin)) {
@@ -144,7 +144,7 @@ public abstract class PluginManager {
         final ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         final List classes = new ArrayList();
         final boolean useLoadClass = Boolean.valueOf(System.getProperty("rome.pluginmanager.useloadclass", "false")).booleanValue();
-        for (final String _propertyValue : this._propertyValues) {
+        for (final String _propertyValue : propertyValues) {
             final Class mClass = useLoadClass ? classLoader.loadClass(_propertyValue) : Class.forName(_propertyValue, true, classLoader);
             classes.add(mClass);
         }

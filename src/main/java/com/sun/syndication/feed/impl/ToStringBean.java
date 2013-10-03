@@ -51,8 +51,8 @@ public class ToStringBean implements Serializable {
 
     private static final Object[] NO_PARAMS = new Object[0];
 
-    private final Class _beanClass;
-    private final Object _obj;
+    private final Class beanClass;
+    private final Object obj;
 
     /**
      * Default constructor.
@@ -65,8 +65,8 @@ public class ToStringBean implements Serializable {
      * 
      */
     protected ToStringBean(final Class beanClass) {
-        this._beanClass = beanClass;
-        this._obj = this;
+        this.beanClass = beanClass;
+        obj = this;
     }
 
     /**
@@ -96,8 +96,8 @@ public class ToStringBean implements Serializable {
      * 
      */
     public ToStringBean(final Class beanClass, final Object obj) {
-        this._beanClass = beanClass;
-        this._obj = obj;
+        this.beanClass = beanClass;
+        this.obj = obj;
     }
 
     /**
@@ -115,7 +115,7 @@ public class ToStringBean implements Serializable {
         final String[] tsInfo = (String[]) (stack.isEmpty() ? null : stack.peek());
         String prefix;
         if (tsInfo == null) {
-            final String className = this._obj.getClass().getName();
+            final String className = obj.getClass().getName();
             prefix = className.substring(className.lastIndexOf(".") + 1);
         } else {
             prefix = tsInfo[0];
@@ -135,7 +135,7 @@ public class ToStringBean implements Serializable {
     private String toString(final String prefix) {
         final StringBuffer sb = new StringBuffer(128);
         try {
-            final PropertyDescriptor[] pds = BeanIntrospector.getPropertyDescriptors(this._beanClass);
+            final PropertyDescriptor[] pds = BeanIntrospector.getPropertyDescriptors(beanClass);
             if (pds != null) {
                 for (final PropertyDescriptor pd : pds) {
                     final String pName = pd.getName();
@@ -151,13 +151,13 @@ public class ToStringBean implements Serializable {
                                                                            // that
                                                                            // take
                                                                            // parameters
-                        final Object value = pReadMethod.invoke(this._obj, NO_PARAMS);
+                        final Object value = pReadMethod.invoke(obj, NO_PARAMS);
                         printProperty(sb, prefix + "." + pName, value);
                     }
                 }
             }
         } catch (final Exception ex) {
-            sb.append("\n\nEXCEPTION: Could not complete " + this._obj.getClass() + ".toString(): " + ex.getMessage() + "\n");
+            sb.append("\n\nEXCEPTION: Could not complete " + obj.getClass() + ".toString(): " + ex.getMessage() + "\n");
         }
         return sb.toString();
     }

@@ -33,14 +33,14 @@ public class XmlFixerReader extends Reader {
     public XmlFixerReader(final Reader in) {
         super(in);
         this.in = in;
-        this._buffer = new StringBuffer();
-        this._state = 0;
+        buffer = new StringBuffer();
+        state = 0;
     }
 
     private boolean trimmed;
-    private final StringBuffer _buffer;
-    private int _bufferPos;
-    private int _state = 0;
+    private final StringBuffer buffer;
+    private int bufferPos;
+    private int state = 0;
 
     private boolean trimStream() throws IOException {
         boolean hasContent = true;
@@ -50,7 +50,7 @@ public class XmlFixerReader extends Reader {
         do {
             switch (state) {
                 case 0:
-                    c = this.in.read();
+                    c = in.read();
                     if (c == -1) {
                         loop = false;
                         hasContent = false;
@@ -58,114 +58,114 @@ public class XmlFixerReader extends Reader {
                         loop = true;
                     } else if (c == '<') {
                         state = 1;
-                        this._buffer.setLength(0);
-                        this._bufferPos = 0;
-                        this._buffer.append((char) c);
+                        buffer.setLength(0);
+                        bufferPos = 0;
+                        buffer.append((char) c);
                         loop = true;
                     } else {
-                        this._buffer.setLength(0);
-                        this._bufferPos = 0;
-                        this._buffer.append((char) c);
+                        buffer.setLength(0);
+                        bufferPos = 0;
+                        buffer.append((char) c);
                         loop = false;
                         hasContent = true;
-                        this._state = 3;
+                        this.state = 3;
                     }
                     break;
                 case 1:
-                    c = this.in.read();
+                    c = in.read();
                     if (c == -1) {
                         loop = false;
                         hasContent = true;
-                        this._state = 3;
+                        this.state = 3;
                     } else if (c != '!') {
-                        this._buffer.append((char) c);
-                        this._state = 3;
+                        buffer.append((char) c);
+                        this.state = 3;
                         loop = false;
                         hasContent = true;
-                        this._state = 3;
+                        this.state = 3;
                     } else {
-                        this._buffer.append((char) c);
+                        buffer.append((char) c);
                         state = 2;
                         loop = true;
                     }
                     break;
                 case 2:
-                    c = this.in.read();
+                    c = in.read();
                     if (c == -1) {
                         loop = false;
                         hasContent = true;
-                        this._state = 3;
+                        this.state = 3;
                     } else if (c == '-') {
-                        this._buffer.append((char) c);
+                        buffer.append((char) c);
                         state = 3;
                         loop = true;
                     } else {
-                        this._buffer.append((char) c);
+                        buffer.append((char) c);
                         loop = false;
                         hasContent = true;
-                        this._state = 3;
+                        this.state = 3;
                     }
                     break;
                 case 3:
-                    c = this.in.read();
+                    c = in.read();
                     if (c == -1) {
                         loop = false;
                         hasContent = true;
-                        this._state = 3;
+                        this.state = 3;
                     } else if (c == '-') {
-                        this._buffer.append((char) c);
+                        buffer.append((char) c);
                         state = 4;
                         loop = true;
                     } else {
-                        this._buffer.append((char) c);
+                        buffer.append((char) c);
                         loop = false;
                         hasContent = true;
-                        this._state = 3;
+                        this.state = 3;
                     }
                     break;
                 case 4:
-                    c = this.in.read();
+                    c = in.read();
                     if (c == -1) {
                         loop = false;
                         hasContent = true;
-                        this._state = 3;
+                        this.state = 3;
                     } else if (c != '-') {
-                        this._buffer.append((char) c);
+                        buffer.append((char) c);
                         loop = true;
                     } else {
-                        this._buffer.append((char) c);
+                        buffer.append((char) c);
                         state = 5;
                         loop = true;
                     }
                     break;
                 case 5:
-                    c = this.in.read();
+                    c = in.read();
                     if (c == -1) {
                         loop = false;
                         hasContent = true;
-                        this._state = 3;
+                        this.state = 3;
                     } else if (c != '-') {
-                        this._buffer.append((char) c);
+                        buffer.append((char) c);
                         loop = true;
                         state = 4;
                     } else {
-                        this._buffer.append((char) c);
+                        buffer.append((char) c);
                         state = 6;
                         loop = true;
                     }
                     break;
                 case 6:
-                    c = this.in.read();
+                    c = in.read();
                     if (c == -1) {
                         loop = false;
                         hasContent = true;
-                        this._state = 3;
+                        this.state = 3;
                     } else if (c != '>') {
-                        this._buffer.append((char) c);
+                        buffer.append((char) c);
                         loop = true;
                         state = 4;
                     } else {
-                        this._buffer.setLength(0);
+                        buffer.setLength(0);
                         state = 0;
                         loop = true;
                     }
@@ -180,24 +180,24 @@ public class XmlFixerReader extends Reader {
     @Override
     public int read() throws IOException {
         boolean loop;
-        if (!this.trimmed) { // trims XML stream
-            this.trimmed = true;
+        if (!trimmed) { // trims XML stream
+            trimmed = true;
             if (!trimStream()) {
                 return -1;
             }
         }
         int c;
         do { // converts literal entities to coded entities
-            switch (this._state) {
+            switch (state) {
                 case 0: // reading chars from stream
-                    c = this.in.read();
+                    c = in.read();
                     if (c > -1) {
                         if (c == '&') {
-                            this._state = 1;
-                            this._buffer.setLength(0);
-                            this._bufferPos = 0;
-                            this._buffer.append((char) c);
-                            this._state = 1;
+                            state = 1;
+                            buffer.setLength(0);
+                            bufferPos = 0;
+                            buffer.append((char) c);
+                            state = 1;
                             loop = true;
                         } else {
                             loop = false;
@@ -207,49 +207,49 @@ public class XmlFixerReader extends Reader {
                     }
                     break;
                 case 1: // reading entity from stream
-                    c = this.in.read();
+                    c = in.read();
                     if (c > -1) {
                         if (c == ';') {
-                            this._buffer.append((char) c);
-                            this._state = 2;
+                            buffer.append((char) c);
+                            state = 2;
                             loop = true;
                         } else if (c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z' || c == '#' || c >= '0' && c <= '9') {
-                            this._buffer.append((char) c);
+                            buffer.append((char) c);
                             loop = true;
                         } else {
                             // no ';' to match the '&' lets just make the '&'
                             // a legal xml character entity '&amp;'
-                            this._buffer.insert(1, "amp;");
-                            this._buffer.append((char) c);
-                            this._state = 3;
+                            buffer.insert(1, "amp;");
+                            buffer.append((char) c);
+                            state = 3;
                             loop = true;
                         }
                     } else {
                         // no ';' to match the '&' lets just make the '&'
                         // a legal xml character entity '&amp;'
-                        this._buffer.insert(1, "amp;");
-                        this._state = 3;
+                        buffer.insert(1, "amp;");
+                        state = 3;
                         loop = true;
                     }
                     break;
                 case 2: // replacing entity
                     c = 0;
-                    final String literalEntity = this._buffer.toString();
+                    final String literalEntity = buffer.toString();
                     final String codedEntity = CODED_ENTITIES.get(literalEntity);
                     if (codedEntity != null) {
-                        this._buffer.setLength(0);
-                        this._buffer.append(codedEntity);
+                        buffer.setLength(0);
+                        buffer.append(codedEntity);
                     } // else we leave what was in the stream
-                    this._state = 3;
+                    state = 3;
                     loop = true;
                     break;
                 case 3: // consuming buffer
-                    if (this._bufferPos < this._buffer.length()) {
-                        c = this._buffer.charAt(this._bufferPos++);
+                    if (bufferPos < buffer.length()) {
+                        c = buffer.charAt(bufferPos++);
                         loop = false;
                     } else {
                         c = 0;
-                        this._state = 0;
+                        state = 0;
                         loop = true;
                     }
                     break;
@@ -292,7 +292,7 @@ public class XmlFixerReader extends Reader {
 
     @Override
     public boolean ready() throws IOException {
-        return this._state != 0 || this.in.ready();
+        return state != 0 || in.ready();
     }
 
     @Override
@@ -312,7 +312,7 @@ public class XmlFixerReader extends Reader {
 
     @Override
     public void close() throws IOException {
-        this.in.close();
+        in.close();
     }
 
     private static Map<String, String> CODED_ENTITIES = new HashMap<String, String>();

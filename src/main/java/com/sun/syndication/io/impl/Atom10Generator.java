@@ -53,7 +53,7 @@ public class Atom10Generator extends BaseWireFeedGenerator {
     private static final String ATOM_10_URI = "http://www.w3.org/2005/Atom";
     private static final Namespace ATOM_NS = Namespace.getNamespace(ATOM_10_URI);
 
-    private final String _version;
+    private final String version;
 
     public Atom10Generator() {
         this("atom_1.0", "1.0");
@@ -61,11 +61,11 @@ public class Atom10Generator extends BaseWireFeedGenerator {
 
     protected Atom10Generator(final String type, final String version) {
         super(type);
-        this._version = version;
+        this.version = version;
     }
 
     protected String getVersion() {
-        return this._version;
+        return version;
     }
 
     protected Namespace getFeedNamespace() {

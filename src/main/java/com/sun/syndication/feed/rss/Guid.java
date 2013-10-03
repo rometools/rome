@@ -29,9 +29,9 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * 
  */
 public class Guid implements Cloneable, Serializable {
-    private final ObjectBean _objBean;
-    private boolean _permaLink;
-    private String _value;
+    private final ObjectBean objBean;
+    private boolean permaLink;
+    private String value;
 
     /**
      * Default constructor. All properties are set to <b>null</b>.
@@ -39,7 +39,7 @@ public class Guid implements Cloneable, Serializable {
      * 
      */
     public Guid() {
-        this._objBean = new ObjectBean(this.getClass(), this);
+        objBean = new ObjectBean(this.getClass(), this);
     }
 
     /**
@@ -53,7 +53,7 @@ public class Guid implements Cloneable, Serializable {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return this._objBean.clone();
+        return objBean.clone();
     }
 
     /**
@@ -70,7 +70,7 @@ public class Guid implements Cloneable, Serializable {
         if (!(other instanceof Guid)) {
             return false;
         }
-        return this._objBean.equals(other);
+        return objBean.equals(other);
     }
 
     /**
@@ -84,7 +84,7 @@ public class Guid implements Cloneable, Serializable {
      */
     @Override
     public int hashCode() {
-        return this._objBean.hashCode();
+        return objBean.hashCode();
     }
 
     /**
@@ -96,7 +96,7 @@ public class Guid implements Cloneable, Serializable {
      */
     @Override
     public String toString() {
-        return this._objBean.toString();
+        return objBean.toString();
     }
 
     /**
@@ -107,7 +107,7 @@ public class Guid implements Cloneable, Serializable {
      * 
      */
     public boolean isPermaLink() {
-        return this._permaLink;
+        return permaLink;
     }
 
     /**
@@ -118,7 +118,7 @@ public class Guid implements Cloneable, Serializable {
      * 
      */
     public void setPermaLink(final boolean permaLink) {
-        this._permaLink = permaLink;
+        this.permaLink = permaLink;
     }
 
     /**
@@ -129,7 +129,7 @@ public class Guid implements Cloneable, Serializable {
      * 
      */
     public String getValue() {
-        return this._value;
+        return value;
     }
 
     /**
@@ -140,7 +140,7 @@ public class Guid implements Cloneable, Serializable {
      * 
      */
     public void setValue(final String value) {
-        this._value = value;
+        this.value = value;
     }
 
 }

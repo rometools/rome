@@ -44,19 +44,19 @@ import com.sun.syndication.feed.synd.SyndPersonImpl;
 /**
  */
 public class ConverterForAtom03 implements Converter {
-    private final String _type;
+    private final String type;
 
     public ConverterForAtom03() {
         this("atom_0.3");
     }
 
     protected ConverterForAtom03(final String type) {
-        this._type = type;
+        this.type = type;
     }
 
     @Override
     public String getType() {
-        return this._type;
+        return type;
     }
 
     @Override

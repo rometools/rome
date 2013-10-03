@@ -18,12 +18,12 @@ import java.io.InputStream;
  * 
  */
 public class XmlReaderException extends IOException {
-    private final String _bomEncoding;
-    private final String _xmlGuessEncoding;
-    private final String _xmlEncoding;
-    private final String _contentTypeMime;
-    private final String _contentTypeEncoding;
-    private final InputStream _is;
+    private final String bomEncoding;
+    private final String xmlGuessEncoding;
+    private final String xmlEncoding;
+    private final String contentTypeMime;
+    private final String contentTypeEncoding;
+    private final InputStream is;
 
     /**
      * Creates an exception instance if the charset encoding could not be
@@ -62,12 +62,12 @@ public class XmlReaderException extends IOException {
     public XmlReaderException(final String msg, final String ctMime, final String ctEnc, final String bomEnc, final String xmlGuessEnc, final String xmlEnc,
             final InputStream is) {
         super(msg);
-        this._contentTypeMime = ctMime;
-        this._contentTypeEncoding = ctEnc;
-        this._bomEncoding = bomEnc;
-        this._xmlGuessEncoding = xmlGuessEnc;
-        this._xmlEncoding = xmlEnc;
-        this._is = is;
+        contentTypeMime = ctMime;
+        contentTypeEncoding = ctEnc;
+        bomEncoding = bomEnc;
+        xmlGuessEncoding = xmlGuessEnc;
+        xmlEncoding = xmlEnc;
+        this.is = is;
     }
 
     /**
@@ -78,7 +78,7 @@ public class XmlReaderException extends IOException {
      * 
      */
     public String getBomEncoding() {
-        return this._bomEncoding;
+        return bomEncoding;
     }
 
     /**
@@ -89,7 +89,7 @@ public class XmlReaderException extends IOException {
      * 
      */
     public String getXmlGuessEncoding() {
-        return this._xmlGuessEncoding;
+        return xmlGuessEncoding;
     }
 
     /**
@@ -100,7 +100,7 @@ public class XmlReaderException extends IOException {
      * 
      */
     public String getXmlEncoding() {
-        return this._xmlEncoding;
+        return xmlEncoding;
     }
 
     /**
@@ -113,7 +113,7 @@ public class XmlReaderException extends IOException {
      * 
      */
     public String getContentTypeMime() {
-        return this._contentTypeMime;
+        return contentTypeMime;
     }
 
     /**
@@ -127,7 +127,7 @@ public class XmlReaderException extends IOException {
      * 
      */
     public String getContentTypeEncoding() {
-        return this._contentTypeEncoding;
+        return contentTypeEncoding;
     }
 
     /**
@@ -139,6 +139,6 @@ public class XmlReaderException extends IOException {
      * 
      */
     public InputStream getInputStream() {
-        return this._is;
+        return is;
     }
 }

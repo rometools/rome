@@ -47,9 +47,9 @@ public class SyModuleImpl extends ModuleImpl implements SyModule {
         PERIODS.add(YEARLY);
     }
 
-    private String _updatePeriod;
-    private int _updateFrequency;
-    private Date _updateBase;
+    private String updatePeriod;
+    private int updateFrequency;
+    private Date updateBase;
 
     /**
      * Default constructor. All properties are set to <b>null</b>.
@@ -69,7 +69,7 @@ public class SyModuleImpl extends ModuleImpl implements SyModule {
      */
     @Override
     public String getUpdatePeriod() {
-        return this._updatePeriod;
+        return updatePeriod;
     }
 
     /**
@@ -85,7 +85,7 @@ public class SyModuleImpl extends ModuleImpl implements SyModule {
         if (!PERIODS.contains(updatePeriod)) {
             throw new IllegalArgumentException("Invalid period [" + updatePeriod + "]");
         }
-        this._updatePeriod = updatePeriod;
+        this.updatePeriod = updatePeriod;
     }
 
     /**
@@ -97,7 +97,7 @@ public class SyModuleImpl extends ModuleImpl implements SyModule {
      */
     @Override
     public int getUpdateFrequency() {
-        return this._updateFrequency;
+        return updateFrequency;
     }
 
     /**
@@ -110,7 +110,7 @@ public class SyModuleImpl extends ModuleImpl implements SyModule {
      */
     @Override
     public void setUpdateFrequency(final int updateFrequency) {
-        this._updateFrequency = updateFrequency;
+        this.updateFrequency = updateFrequency;
     }
 
     /**
@@ -122,7 +122,7 @@ public class SyModuleImpl extends ModuleImpl implements SyModule {
      */
     @Override
     public Date getUpdateBase() {
-        return new Date(this._updateBase.getTime());
+        return new Date(updateBase.getTime());
     }
 
     /**
@@ -135,7 +135,7 @@ public class SyModuleImpl extends ModuleImpl implements SyModule {
      */
     @Override
     public void setUpdateBase(final Date updateBase) {
-        this._updateBase = new Date(updateBase.getTime());
+        this.updateBase = new Date(updateBase.getTime());
     }
 
     @Override
