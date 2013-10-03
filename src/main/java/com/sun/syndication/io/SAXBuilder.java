@@ -1,6 +1,8 @@
 package com.sun.syndication.io;
 
 import org.jdom2.JDOMException;
+import org.jdom2.input.sax.XMLReaderJDOMFactory;
+import org.jdom2.input.sax.XMLReaders;
 import org.xml.sax.XMLReader;
 
 /*
@@ -15,9 +17,17 @@ import org.xml.sax.XMLReader;
  * 
  */
 public class SAXBuilder extends org.jdom2.input.SAXBuilder {
-
+        public SAXBuilder(XMLReaderJDOMFactory factory) {
+            super(factory);
+        }
+        
+        /**
+         * 
+         * @deprecated use SAXBuilder(XMLReaderJDOMFactory) with either XMLReaders.DTDVALIDATING or XMLReaders.NONVALIDATING
+         * @param _validate 
+         */
 	public SAXBuilder(boolean _validate) {
-		super(_validate);
+		super(_validate ? XMLReaders.DTDVALIDATING : XMLReaders.NONVALIDATING);
 	}
 
 	public XMLReader createParser() throws JDOMException {

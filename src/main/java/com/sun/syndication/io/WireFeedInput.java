@@ -39,6 +39,7 @@ import org.xml.sax.XMLReader;
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.io.impl.FeedParsers;
 import com.sun.syndication.io.impl.XmlFixerReader;
+import org.jdom2.input.sax.XMLReaders;
 
 /**
  * Parses an XML document (File, InputStream, Reader, W3C SAX InputSource, W3C DOM Document or JDom DOcument)
@@ -283,7 +284,7 @@ public class WireFeedInput {
      * @return a new org.jdom2.input.SAXBuilder object
      */
     protected SAXBuilder createSAXBuilder() {
-        SAXBuilder saxBuilder = new SAXBuilder(_validate);        
+        SAXBuilder saxBuilder = new SAXBuilder(_validate ? XMLReaders.DTDVALIDATING : XMLReaders.NONVALIDATING);        
         saxBuilder.setEntityResolver(RESOLVER);
 
         //
