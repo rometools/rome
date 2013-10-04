@@ -140,16 +140,20 @@ public abstract class PluginManager<T> {
      *             failure is ON.
      * 
      */
+    @SuppressWarnings("unchecked")
     private Class<T>[] getClasses() throws ClassNotFoundException {
         final ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         final List<Class<T>> classes = new ArrayList<Class<T>>();
         final boolean useLoadClass = Boolean.valueOf(System.getProperty("rome.pluginmanager.useloadclass", "false")).booleanValue();
-        for (final String _propertyValue : propertyValues) {
-            @SuppressWarnings("unchecked")
-            final Class<T> mClass = (Class<T>) (useLoadClass ? classLoader.loadClass(_propertyValue) : Class.forName(_propertyValue, true, classLoader));
+        for (final String propertyValue : propertyValues) {
+            final Class<T> mClass;
+            if (useLoadClass) {
+                mClass = (Class<T>) classLoader.loadClass(propertyValue);
+            } else {
+                mClass = (Class<T>) Class.forName(propertyValue, true, classLoader);
+            }
             classes.add(mClass);
         }
-        @SuppressWarnings("unchecked")
         final Class<T>[] array = (Class<T>[]) new Class[classes.size()];
         classes.toArray(array);
         return array;

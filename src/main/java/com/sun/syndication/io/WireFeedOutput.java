@@ -132,7 +132,12 @@ public class WireFeedOutput {
     public String outputString(final WireFeed feed, final boolean prettyPrint) throws IllegalArgumentException, FeedException {
         final Document doc = outputJDom(feed);
         final String encoding = feed.getEncoding();
-        final Format format = prettyPrint ? Format.getPrettyFormat() : Format.getCompactFormat();
+        Format format;
+        if (prettyPrint) {
+            format = Format.getPrettyFormat();
+        } else {
+            format = Format.getCompactFormat();
+        }
         if (encoding != null) {
             format.setEncoding(encoding);
         }
@@ -257,7 +262,12 @@ public class WireFeedOutput {
     public void output(final WireFeed feed, final Writer writer, final boolean prettyPrint) throws IllegalArgumentException, IOException, FeedException {
         final Document doc = outputJDom(feed);
         final String encoding = feed.getEncoding();
-        final Format format = prettyPrint ? Format.getPrettyFormat() : Format.getCompactFormat();
+        Format format;
+        if (prettyPrint) {
+            format = Format.getPrettyFormat();
+        } else {
+            format = Format.getCompactFormat();
+        }
         if (encoding != null) {
             format.setEncoding(encoding);
         }

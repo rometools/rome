@@ -257,7 +257,11 @@ public class Atom10Parser extends BaseWireFeedParser {
                 links.add(link);
             }
         }
-        return links.size() > 0 ? links : null;
+        if (links.size() > 0) {
+            return links;
+        } else {
+            return null;
+        }
     }
 
     private List<Link> parseOtherLinks(final Feed feed, final Entry entry, final String baseURI, final List<Element> eLinks) {
@@ -269,7 +273,11 @@ public class Atom10Parser extends BaseWireFeedParser {
                 links.add(link);
             }
         }
-        return links.size() > 0 ? links : null;
+        if (links.size() > 0) {
+            return links;
+        } else {
+            return null;
+        }
     }
 
     private Person parsePerson(final String baseURI, final Element ePerson) {
@@ -299,7 +307,11 @@ public class Atom10Parser extends BaseWireFeedParser {
         for (int i = 0; i < ePersons.size(); i++) {
             persons.add(parsePerson(baseURI, ePersons.get(i)));
         }
-        return persons.size() > 0 ? persons : null;
+        if (persons.size() > 0) {
+            return persons;
+        } else {
+            return null;
+        }
     }
 
     private Content parseContent(final Element e) {
@@ -316,7 +328,9 @@ public class Atom10Parser extends BaseWireFeedParser {
     private String parseTextConstructToString(final Element e) {
         String value = null;
         String type = getAttributeValue(e, "type");
-        type = type != null ? type : Content.TEXT;
+        if (type == null) {
+            type = Content.TEXT;
+        }
         if (type.equals(Content.XHTML) || type.indexOf("/xml") != -1 || type.indexOf("+xml") != -1) {
             // XHTML content needs special handling
             final XMLOutputter outputter = new XMLOutputter();
@@ -345,7 +359,11 @@ public class Atom10Parser extends BaseWireFeedParser {
         for (int i = 0; i < eEntries.size(); i++) {
             entries.add(this.parseEntry(feed, eEntries.get(i), baseURI));
         }
-        return entries.size() > 0 ? entries : null;
+        if (entries.size() > 0) {
+            return entries;
+        } else {
+            return null;
+        }
     }
 
     protected Entry parseEntry(final Feed feed, final Element eEntry, final String baseURI) {
@@ -434,7 +452,11 @@ public class Atom10Parser extends BaseWireFeedParser {
             final Element eCategory = eCategories.get(i);
             cats.add(parseCategory(baseURI, eCategory));
         }
-        return cats.size() > 0 ? cats : null;
+        if (cats.size() > 0) {
+            return cats;
+        } else {
+            return null;
+        }
     }
 
     private Category parseCategory(final String baseURI, final Element eCategory) {
@@ -489,7 +511,9 @@ public class Atom10Parser extends BaseWireFeedParser {
             return url;
         }
         if (isRelativeURI(url)) {
-            url = !".".equals(url) && !"./".equals(url) ? url : "";
+            if (".".equals(url) || "./".equals(url)) {
+                url = "";
+            }
 
             if (url.startsWith("/") && baseURI != null) {
                 String base = null;

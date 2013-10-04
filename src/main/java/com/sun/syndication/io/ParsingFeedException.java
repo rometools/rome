@@ -63,7 +63,11 @@ public class ParsingFeedException extends FeedException {
      *         is not available.
      */
     public int getLineNumber() {
-        return getCause() instanceof JDOMParseException ? ((JDOMParseException) getCause()).getLineNumber() : -1;
+        if (getCause() instanceof JDOMParseException) {
+            return ((JDOMParseException) getCause()).getLineNumber();
+        } else {
+            return -1;
+        }
     }
 
     /**
@@ -77,7 +81,11 @@ public class ParsingFeedException extends FeedException {
      *         information is not available.
      */
     public int getColumnNumber() {
-        return getCause() instanceof JDOMParseException ? ((JDOMParseException) getCause()).getColumnNumber() : -1;
+        if (getCause() instanceof JDOMParseException) {
+            return ((JDOMParseException) getCause()).getColumnNumber();
+        } else {
+            return -1;
+        }
     }
 
 }

@@ -67,8 +67,8 @@ public abstract class BaseWireFeedGenerator implements WireFeedGenerator {
     }
 
     protected void generateModuleNamespaceDefs(final Element root) {
-        for (final Namespace _allModuleNamespace : allModuleNamespaces) {
-            root.addNamespaceDeclaration(_allModuleNamespace);
+        for (final Namespace allModuleNamespace : allModuleNamespaces) {
+            root.addNamespaceDeclaration(allModuleNamespace);
         }
     }
 

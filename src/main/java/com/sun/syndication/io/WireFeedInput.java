@@ -306,7 +306,12 @@ public class WireFeedInput {
      * @return a new org.jdom2.input.SAXBuilder object
      */
     protected SAXBuilder createSAXBuilder() {
-        final SAXBuilder saxBuilder = new SAXBuilder(validate ? XMLReaders.DTDVALIDATING : XMLReaders.NONVALIDATING);
+        SAXBuilder saxBuilder;
+        if (validate) {
+            saxBuilder = new SAXBuilder(XMLReaders.DTDVALIDATING);
+        } else {
+            saxBuilder = new SAXBuilder(XMLReaders.NONVALIDATING);
+        }
         saxBuilder.setEntityResolver(RESOLVER);
 
         //

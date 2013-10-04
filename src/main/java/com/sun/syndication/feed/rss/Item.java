@@ -271,7 +271,10 @@ public class Item implements Cloneable, Serializable, Extendable {
      * 
      */
     public List<Enclosure> getEnclosures() {
-        return enclosures == null ? (enclosures = new ArrayList<Enclosure>()) : enclosures;
+        if (enclosures == null) {
+            enclosures = new ArrayList<Enclosure>();
+        }
+        return enclosures;
     }
 
     /**
@@ -295,7 +298,10 @@ public class Item implements Cloneable, Serializable, Extendable {
      * 
      */
     public List<Category> getCategories() {
-        return categories == null ? (categories = new ArrayList<Category>()) : categories;
+        if (categories == null) {
+            categories = new ArrayList<Category>();
+        }
+        return categories;
     }
 
     /**
@@ -386,7 +392,10 @@ public class Item implements Cloneable, Serializable, Extendable {
      */
     @Override
     public List<Module> getModules() {
-        return modules == null ? (modules = new ArrayList<Module>()) : modules;
+        if (modules == null) {
+            modules = new ArrayList<Module>();
+        }
+        return modules;
     }
 
     /**
@@ -422,7 +431,11 @@ public class Item implements Cloneable, Serializable, Extendable {
      * 
      */
     public Date getPubDate() {
-        return pubDate == null ? null : new Date(pubDate.getTime());
+        if (pubDate == null) {
+            return null;
+        } else {
+            return new Date(pubDate.getTime());
+        }
     }
 
     /**
@@ -433,7 +446,11 @@ public class Item implements Cloneable, Serializable, Extendable {
      * 
      */
     public void setPubDate(final Date pubDate) {
-        this.pubDate = pubDate == null ? null : new Date(pubDate.getTime());
+        if (pubDate == null) {
+            this.pubDate = null;
+        } else {
+            this.pubDate = new Date(pubDate.getTime());
+        }
     }
 
     /**
@@ -444,7 +461,11 @@ public class Item implements Cloneable, Serializable, Extendable {
      * 
      */
     public Date getExpirationDate() {
-        return expirationDate == null ? null : new Date(expirationDate.getTime());
+        if (expirationDate == null) {
+            return null;
+        } else {
+            return new Date(expirationDate.getTime());
+        }
     }
 
     /**
@@ -456,7 +477,11 @@ public class Item implements Cloneable, Serializable, Extendable {
      * 
      */
     public void setExpirationDate(final Date expirationDate) {
-        this.expirationDate = expirationDate == null ? null : new Date(expirationDate.getTime());
+        if (expirationDate == null) {
+            this.expirationDate = null;
+        } else {
+            this.expirationDate = new Date(expirationDate.getTime());
+        }
     }
 
     /**
@@ -467,7 +492,10 @@ public class Item implements Cloneable, Serializable, Extendable {
      * 
      */
     public List<Element> getForeignMarkup() {
-        return foreignMarkup == null ? (foreignMarkup = new ArrayList<Element>()) : foreignMarkup;
+        if (foreignMarkup == null) {
+            foreignMarkup = new ArrayList<Element>();
+        }
+        return foreignMarkup;
     }
 
     /**

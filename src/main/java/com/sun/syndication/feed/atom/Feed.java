@@ -201,7 +201,10 @@ public class Feed extends WireFeed {
      * 
      */
     public List<SyndPerson> getAuthors() {
-        return authors == null ? (authors = new ArrayList<SyndPerson>()) : authors;
+        if (authors == null) {
+            authors = new ArrayList<SyndPerson>();
+        }
+        return authors;
     }
 
     /**
@@ -224,7 +227,10 @@ public class Feed extends WireFeed {
      * 
      */
     public List<SyndPerson> getContributors() {
-        return contributors == null ? (contributors = new ArrayList<SyndPerson>()) : contributors;
+        if (contributors == null) {
+            contributors = new ArrayList<SyndPerson>();
+        }
+        return contributors;
     }
 
     /**

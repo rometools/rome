@@ -147,7 +147,11 @@ public class Category implements Cloneable, Serializable {
     }
 
     public String getSchemeResolved() {
-        return schemeResolved != null ? schemeResolved : scheme;
+        if (schemeResolved != null) {
+            return schemeResolved;
+        } else {
+            return scheme;
+        }
     }
 
     /**

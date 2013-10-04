@@ -29,6 +29,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.text.MessageFormat;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -167,7 +168,11 @@ public class XmlReader extends Reader {
      * 
      */
     public XmlReader(final InputStream is, final boolean lenient, final String defaultEncoding) throws IOException, XmlReaderException {
-        this.defaultEncoding = defaultEncoding == null ? staticDefaultEncoding : defaultEncoding;
+        if (defaultEncoding == null) {
+            this.defaultEncoding = staticDefaultEncoding;
+        } else {
+            this.defaultEncoding = defaultEncoding;
+        }
         try {
             doRawStream(is, lenient);
         } catch (final XmlReaderException ex) {
@@ -338,7 +343,11 @@ public class XmlReader extends Reader {
      */
     public XmlReader(final InputStream is, final String httpContentType, final boolean lenient, final String defaultEncoding) throws IOException,
             XmlReaderException {
-        this.defaultEncoding = defaultEncoding == null ? staticDefaultEncoding : defaultEncoding;
+        if (defaultEncoding == null) {
+            this.defaultEncoding = staticDefaultEncoding;
+        } else {
+            this.defaultEncoding = defaultEncoding;
+        }
         try {
             doHttpStream(is, httpContentType, lenient);
         } catch (final XmlReaderException ex) {
@@ -407,7 +416,11 @@ public class XmlReader extends Reader {
                 encoding = ex.getContentTypeEncoding();
             }
             if (encoding == null) {
-                encoding = defaultEncoding == null ? UTF_8 : defaultEncoding;
+                if (defaultEncoding == null) {
+                    encoding = UTF_8;
+                } else {
+                    encoding = defaultEncoding;
+                }
             }
             prepareReader(ex.getInputStream(), encoding);
         }
@@ -471,7 +484,11 @@ public class XmlReader extends Reader {
         String encoding;
         if (bomEnc == null) {
             if (xmlGuessEnc == null || xmlEnc == null) {
-                encoding = defaultEncoding == null ? UTF_8 : defaultEncoding;
+                if (defaultEncoding == null) {
+                    encoding = UTF_8;
+                } else {
+                    encoding = defaultEncoding;
+                }
             } else if (xmlEnc.equals(UTF_16) && (xmlGuessEnc.equals(UTF_16BE) || xmlGuessEnc.equals(UTF_16LE))) {
                 encoding = xmlGuessEnc;
             } else {
@@ -513,7 +530,11 @@ public class XmlReader extends Reader {
                     if (appXml) {
                         encoding = calculateRawEncoding(bomEnc, xmlGuessEnc, xmlEnc, is);
                     } else {
-                        encoding = defaultEncoding == null ? US_ASCII : defaultEncoding;
+                        if (defaultEncoding == null) {
+                            encoding = US_ASCII;
+                        } else {
+                            encoding = defaultEncoding;
+                        }
                     }
                 } else if (bomEnc != null && (cTEnc.equals(UTF_16BE) || cTEnc.equals(UTF_16LE))) {
                     throw new XmlReaderException(HTTP_EX_1.format(new Object[] { cTMime, cTEnc, bomEnc, xmlGuessEnc, xmlEnc }), cTMime, cTEnc, bomEnc,
@@ -541,7 +562,11 @@ public class XmlReader extends Reader {
         String mime = null;
         if (httpContentType != null) {
             final int i = httpContentType.indexOf(";");
-            mime = (i == -1 ? httpContentType : httpContentType.substring(0, i)).trim();
+            if (i == -1) {
+                mime = httpContentType.trim();
+            } else {
+                mime = httpContentType.substring(0, i).trim();
+            }
         }
         return mime;
     }
@@ -557,8 +582,12 @@ public class XmlReader extends Reader {
             if (i > -1) {
                 final String postMime = httpContentType.substring(i + 1);
                 final Matcher m = CHARSET_PATTERN.matcher(postMime);
-                encoding = m.find() ? m.group(1) : null;
-                encoding = encoding != null ? encoding.toUpperCase() : null;
+                if (m.find()) {
+                    encoding = m.group(1);
+                }
+                if (encoding != null) {
+                    encoding = encoding.toUpperCase(Locale.ENGLISH);
+                }
             }
             if (encoding != null && (encoding.startsWith("\"") && encoding.endsWith("\"") || encoding.startsWith("'") && encoding.endsWith("'"))) {
                 encoding = encoding.substring(1, encoding.length() - 1);
@@ -655,7 +684,7 @@ public class XmlReader extends Reader {
                 }
                 final Matcher m = ENCODING_PATTERN.matcher(prolog);
                 if (m.find()) {
-                    encoding = m.group(1).toUpperCase();
+                    encoding = m.group(1).toUpperCase(Locale.ENGLISH);
                     encoding = encoding.substring(1, encoding.length() - 1);
                 }
             }

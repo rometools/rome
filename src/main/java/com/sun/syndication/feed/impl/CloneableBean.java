@@ -106,7 +106,11 @@ public class CloneableBean implements Serializable, Cloneable {
      */
     public CloneableBean(final Object obj, final Set<String> ignoreProperties) {
         this.obj = obj;
-        this.ignoreProperties = ignoreProperties != null ? ignoreProperties : Collections.<String>emptySet();
+        if (ignoreProperties == null) {
+            this.ignoreProperties = Collections.<String>emptySet();
+        } else {
+            this.ignoreProperties = ignoreProperties;
+        }
     }
 
     /**

@@ -85,7 +85,11 @@ public class NumberParser {
      */
     public static float parseFloat(final String str, final float def) {
         final Float result = parseFloat(str);
-        return result == null ? def : result.floatValue();
+        if (result == null) {
+            return def;
+        } else {
+            return result.floatValue();
+        }
     }
 
     /**
@@ -98,7 +102,11 @@ public class NumberParser {
      */
     public static long parseLong(final String str, final long def) {
         final Long ret = parseLong(str);
-        return null == ret ? def : ret.longValue();
+        if (null == ret) {
+            return def;
+        } else {
+            return ret.longValue();
+        }
     }
 
 }

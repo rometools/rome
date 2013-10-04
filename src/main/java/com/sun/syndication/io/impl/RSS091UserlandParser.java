@@ -197,7 +197,11 @@ public class RSS091UserlandParser extends RSS090Parser {
     protected List<Element> getItems(final Element rssRoot) {
         final Element eChannel = rssRoot.getChild("channel", getRSSNamespace());
         final List<Element> emptyList = Collections.emptyList();
-        return eChannel != null ? eChannel.getChildren("item", getRSSNamespace()) : emptyList;
+        if (eChannel != null) {
+            return eChannel.getChildren("item", getRSSNamespace());
+        } else {
+            return emptyList;
+        }
     }
 
     /**
@@ -206,7 +210,11 @@ public class RSS091UserlandParser extends RSS090Parser {
     @Override
     protected Element getImage(final Element rssRoot) {
         final Element eChannel = rssRoot.getChild("channel", getRSSNamespace());
-        return eChannel != null ? eChannel.getChild("image", getRSSNamespace()) : null;
+        if (eChannel != null) {
+            return eChannel.getChild("image", getRSSNamespace());
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -223,7 +231,11 @@ public class RSS091UserlandParser extends RSS090Parser {
     protected Element getTextInput(final Element rssRoot) {
         final String elementName = getTextInputLabel();
         final Element eChannel = rssRoot.getChild("channel", getRSSNamespace());
-        return eChannel != null ? eChannel.getChild(elementName, getRSSNamespace()) : null;
+        if (eChannel != null) {
+            return eChannel.getChild(elementName, getRSSNamespace());
+        } else {
+            return null;
+        }
     }
 
     /**

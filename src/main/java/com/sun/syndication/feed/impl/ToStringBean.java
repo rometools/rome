@@ -115,8 +115,13 @@ public class ToStringBean implements Serializable {
     @Override
     public String toString() {
         final Stack<String[]> stack = PREFIX_TL.get();
-        final String[] tsInfo = (stack.isEmpty() ? null : stack.peek());
-        String prefix;
+        final String[] tsInfo;
+        if (stack.isEmpty()) {
+            tsInfo = null;
+        } else {
+            tsInfo = stack.peek();
+        }
+        final String prefix;
         if (tsInfo == null) {
             final String className = obj.getClass().getName();
             prefix = className.substring(className.lastIndexOf(".") + 1);

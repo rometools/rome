@@ -56,7 +56,11 @@ public class SyModuleParser implements ModuleParser {
             foundSomething = true;
             sm.setUpdateBase(DateParser.parseDate(e.getText()));
         }
-        return foundSomething ? sm : null;
+        if (foundSomething) {
+            return sm;
+        } else {
+            return null;
+        }
     }
 
 }

@@ -221,7 +221,10 @@ public class Channel extends WireFeed {
      * 
      */
     public List<Item> getItems() {
-        return items == null ? (items = new ArrayList<Item>()) : items;
+        if (items == null) {
+            items = new ArrayList<Item>();
+        }
+        return items;
     }
 
     /**
@@ -332,7 +335,11 @@ public class Channel extends WireFeed {
      * 
      */
     public Date getPubDate() {
-        return pubDate == null ? null : new Date(pubDate.getTime());
+        if (pubDate == null) {
+            return null;
+        } else {
+            return new Date(pubDate.getTime());
+        }
     }
 
     /**
@@ -343,7 +350,11 @@ public class Channel extends WireFeed {
      * 
      */
     public void setPubDate(final Date pubDate) {
-        this.pubDate = pubDate == null ? null : new Date(pubDate.getTime());
+        if (pubDate == null) {
+            this.pubDate = null;
+        } else {
+            this.pubDate = new Date(pubDate.getTime());
+        }
     }
 
     /**
@@ -354,7 +365,11 @@ public class Channel extends WireFeed {
      * 
      */
     public Date getLastBuildDate() {
-        return lastBuildDate == null ? null : new Date(lastBuildDate.getTime());
+        if (lastBuildDate == null) {
+            return null;
+        } else {
+            return new Date(lastBuildDate.getTime());
+        }
     }
 
     /**
@@ -366,7 +381,11 @@ public class Channel extends WireFeed {
      * 
      */
     public void setLastBuildDate(final Date lastBuildDate) {
-        this.lastBuildDate = lastBuildDate == null ? null : new Date(lastBuildDate.getTime());
+        if (lastBuildDate == null) {
+            this.lastBuildDate = null;
+        } else {
+            this.lastBuildDate = new Date(lastBuildDate.getTime());
+        }
     }
 
     /**
@@ -445,7 +464,11 @@ public class Channel extends WireFeed {
      * 
      */
     public List<Integer> getSkipHours() {
-        return skipHours != null ? skipHours : new ArrayList<Integer>();
+        if (skipHours != null) {
+            return skipHours;
+        } else {
+            return new ArrayList<Integer>();
+        }
     }
 
     /**
@@ -482,7 +505,11 @@ public class Channel extends WireFeed {
      * 
      */
     public List<String> getSkipDays() {
-        return skipDays != null ? skipDays : new ArrayList<String>();
+        if (skipDays != null) {
+            return skipDays;
+        } else {
+            return new ArrayList<String>();
+        }
     }
 
     /**
@@ -542,7 +569,10 @@ public class Channel extends WireFeed {
      * 
      */
     public List<Category> getCategories() {
-        return categories == null ? (categories = new ArrayList<Category>()) : categories;
+        if (categories == null) {
+            categories = new ArrayList<Category>();
+        }
+        return categories;
     }
 
     /**
@@ -611,7 +641,10 @@ public class Channel extends WireFeed {
      */
     @Override
     public List<Module> getModules() {
-        return modules == null ? (modules = new ArrayList<Module>()) : modules;
+        if (modules == null) {
+            modules = new ArrayList<Module>();
+        }
+        return modules;
     }
 
     /**

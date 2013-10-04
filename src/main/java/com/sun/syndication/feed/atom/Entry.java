@@ -85,7 +85,10 @@ public class Entry implements Cloneable, Serializable, Extendable {
      *         list if none.
      */
     public List<Link> getAlternateLinks() {
-        return alternateLinks == null ? (alternateLinks = new ArrayList<Link>()) : alternateLinks;
+        if (alternateLinks == null) {
+            alternateLinks = new ArrayList<Link>();
+        }
+        return alternateLinks;
     }
 
     /**
@@ -107,7 +110,10 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * 
      */
     public List<SyndPerson> getAuthors() {
-        return authors == null ? (authors = new ArrayList<SyndPerson>()) : authors;
+        if (authors == null) {
+            authors = new ArrayList<SyndPerson>();
+        }
+        return authors;
     }
 
     /**
@@ -129,7 +135,10 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @since Atom 1.0
      */
     public List<Category> getCategories() {
-        return categories == null ? (categories = new ArrayList<Category>()) : categories;
+        if (categories == null) {
+            categories = new ArrayList<Category>();
+        }
+        return categories;
     }
 
     /**
@@ -151,7 +160,10 @@ public class Entry implements Cloneable, Serializable, Extendable {
      *         if none.
      */
     public List<Content> getContents() {
-        return contents == null ? (contents = new ArrayList<Content>()) : contents;
+        if (contents == null) {
+            contents = new ArrayList<Content>();
+        }
+        return contents;
     }
 
     /**
@@ -175,7 +187,10 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * 
      */
     public List<SyndPerson> getContributors() {
-        return contributors == null ? (contributors = new ArrayList<SyndPerson>()) : contributors;
+        if (contributors == null) {
+            contributors = new ArrayList<SyndPerson>();
+        }
+        return contributors;
     }
 
     /**
@@ -195,7 +210,11 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @return the entry created date, <b>null</b> if none.
      */
     public Date getCreated() {
-        return created == null ? null : new Date(created.getTime());
+        if (created == null) {
+            return null;
+        } else {
+            return new Date(created.getTime());
+        }
     }
 
     /**
@@ -217,7 +236,10 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * 
      */
     public List<Element> getForeignMarkup() {
-        return foreignMarkup == null ? (foreignMarkup = new ArrayList<Element>()) : foreignMarkup;
+        if (foreignMarkup == null) {
+            foreignMarkup = new ArrayList<Element>();
+        }
+        return foreignMarkup;
     }
 
     /**
@@ -250,7 +272,11 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @param issued the entry issued date, <b>null</b> if none.
      */
     public void setIssued(final Date issued) {
-        published = issued == null ? null : new Date(issued.getTime());
+        if (issued == null) {
+            published = null;
+        } else {
+            published = new Date(issued.getTime());
+        }
     }
 
     /**
@@ -261,7 +287,11 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @return the entry issued date, <b>null</b> if none.
      */
     public Date getIssued() {
-        return published == null ? null : new Date(published.getTime());
+        if (published == null) {
+            return null;
+        } else {
+            return new Date(published.getTime());
+        }
     }
 
     /**
@@ -292,7 +322,11 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @param modified the entry modified date, <b>null</b> if none.
      */
     public void setModified(final Date modified) {
-        updated = modified == null ? null : new Date(modified.getTime());
+        if (modified == null) {
+            updated = null;
+        } else {
+            updated = new Date(modified.getTime());
+        }
     }
 
     /**
@@ -303,7 +337,11 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @return the entry modified date, <b>null</b> if none.
      */
     public Date getModified() {
-        return updated == null ? null : new Date(updated.getTime());
+        if (updated == null) {
+            return null;
+        } else {
+            return new Date(updated.getTime());
+        }
     }
 
     /**
@@ -341,7 +379,10 @@ public class Entry implements Cloneable, Serializable, Extendable {
      */
     @Override
     public List<Module> getModules() {
-        return modules == null ? (modules = new ArrayList<Module>()) : modules;
+        if (modules == null) {
+            modules = new ArrayList<Module>();
+        }
+        return modules;
     }
 
     /**
@@ -363,7 +404,10 @@ public class Entry implements Cloneable, Serializable, Extendable {
      *         set, an empty list if none.
      */
     public List<Link> getOtherLinks() {
-        return otherLinks == null ? (otherLinks = new ArrayList<Link>()) : otherLinks;
+        if (otherLinks == null) {
+            otherLinks = new ArrayList<Link>();
+        }
+        return otherLinks;
     }
 
     /**
@@ -374,7 +418,11 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @since Atom 1.0
      */
     public void setPublished(final Date published) {
-        this.published = published == null ? null : new Date(published.getTime());
+        if (published == null) {
+            this.published = null;
+        } else {
+            this.published = new Date(published.getTime());
+        }
     }
 
     /**
@@ -385,7 +433,11 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @since Atom 1.0
      */
     public Date getPublished() {
-        return published == null ? null : new Date(published.getTime());
+        if (published == null) {
+            return null;
+        } else {
+            return new Date(published.getTime());
+        }
     }
 
     /**
@@ -512,7 +564,11 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @since Atom 1.0
      */
     public void setUpdated(final Date updated) {
-        this.updated = updated == null ? null : new Date(updated.getTime());
+        if (updated == null) {
+            this.updated = null;
+        } else {
+            this.updated = new Date(updated.getTime());
+        }
     }
 
     /**
@@ -523,7 +579,11 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @since Atom 1.0
      */
     public Date getUpdated() {
-        return updated == null ? null : new Date(updated.getTime());
+        if (updated == null) {
+            return null;
+        } else {
+            return new Date(updated.getTime());
+        }
     }
 
     /**

@@ -327,7 +327,10 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public List<SyndContent> getContents() {
-        return contents == null ? (contents = new ArrayList<SyndContent>()) : contents;
+        if (contents == null) {
+            contents = new ArrayList<SyndContent>();
+        }
+        return contents;
     }
 
     /**
@@ -353,7 +356,10 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public List<SyndEnclosure> getEnclosures() {
-        return enclosures == null ? (enclosures = new ArrayList<SyndEnclosure>()) : enclosures;
+        if (enclosures == null) {
+            enclosures = new ArrayList<SyndEnclosure>();
+        }
+        return enclosures;
     }
 
     /**
@@ -523,7 +529,10 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public List<SyndLink> getLinks() {
-        return links == null ? (links = new ArrayList<SyndLink>()) : links;
+        if (links == null) {
+            links = new ArrayList<SyndLink>();
+        }
+        return links;
     }
 
     /**
@@ -545,7 +554,11 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public Date getUpdatedDate() {
-        return updatedDate == null ? null : new Date(updatedDate.getTime());
+        if (updatedDate == null) {
+            return null;
+        } else {
+            return new Date(updatedDate.getTime());
+        }
     }
 
     /**
@@ -561,7 +574,10 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
 
     @Override
     public List<SyndPerson> getAuthors() {
-        return authors == null ? (authors = new ArrayList<SyndPerson>()) : authors;
+        if (authors == null) {
+            authors = new ArrayList<SyndPerson>();
+        }
+        return authors;
     }
 
     /*
@@ -625,14 +641,12 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
 
     @Override
     public List<SyndPerson> getContributors() {
-        return contributors == null ? (contributors = new ArrayList<SyndPerson>()) : contributors;
+        if (contributors == null) {
+            contributors = new ArrayList<SyndPerson>();
+        }
+        return contributors;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.sun.syndication.feed.synd.SyndEntry#setContributors(java.util.List)
-     */
     @Override
     public void setContributors(final List<SyndPerson> contributors) {
         this.contributors = contributors;
@@ -658,7 +672,10 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public List<Element> getForeignMarkup() {
-        return foreignMarkup == null ? (foreignMarkup = new ArrayList<Element>()) : foreignMarkup;
+        if (foreignMarkup == null) {
+            foreignMarkup = new ArrayList<Element>();
+        }
+        return foreignMarkup;
     }
 
     /**

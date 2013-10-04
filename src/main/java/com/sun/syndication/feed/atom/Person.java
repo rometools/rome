@@ -155,7 +155,11 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
     }
 
     public String getUriResolved(final String resolveURI) {
-        return uriResolved != null ? uriResolved : uri;
+        if (uriResolved != null) {
+            return uriResolved;
+        } else {
+            return uri;
+        }
     }
 
     /**
@@ -212,7 +216,10 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
      */
     @Override
     public List<Module> getModules() {
-        return modules == null ? (modules = new ArrayList<Module>()) : modules;
+        if (modules == null) {
+            modules = new ArrayList<Module>();
+        }
+        return modules;
     }
 
     /**

@@ -175,7 +175,11 @@ public class Link implements Cloneable, Serializable {
     }
 
     public String getHrefResolved() {
-        return hrefResolved != null ? hrefResolved : href;
+        if (hrefResolved != null) {
+            return hrefResolved;
+        } else {
+            return href;
+        }
     }
 
     /**
