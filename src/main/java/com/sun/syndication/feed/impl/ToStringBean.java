@@ -23,6 +23,7 @@ import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Stack;
 
 /**
@@ -37,12 +38,14 @@ import java.util.Stack;
  * 
  */
 public class ToStringBean implements Serializable {
-    private static final ThreadLocal PREFIX_TL = new ThreadLocal() {
+    private static final long serialVersionUID = -5850496718959612854L;
+
+    private static final ThreadLocal<Stack<String[]>> PREFIX_TL = new ThreadLocal<Stack<String[]>>() {
         @Override
-        public Object get() {
-            Object o = super.get();
+        public Stack<String[]> get() {
+            Stack<String[]> o = super.get();
             if (o == null) {
-                o = new Stack();
+                o = new Stack<String[]>();
                 set(o);
             }
             return o;
@@ -51,7 +54,7 @@ public class ToStringBean implements Serializable {
 
     private static final Object[] NO_PARAMS = new Object[0];
 
-    private final Class beanClass;
+    private final Class<?> beanClass;
     private final Object obj;
 
     /**
@@ -64,7 +67,7 @@ public class ToStringBean implements Serializable {
      *            interface class.
      * 
      */
-    protected ToStringBean(final Class beanClass) {
+    protected ToStringBean(final Class<?> beanClass) {
         this.beanClass = beanClass;
         obj = this;
     }
@@ -95,7 +98,7 @@ public class ToStringBean implements Serializable {
      * @param obj object bean to create String representation.
      * 
      */
-    public ToStringBean(final Class beanClass, final Object obj) {
+    public ToStringBean(final Class<?> beanClass, final Object obj) {
         this.beanClass = beanClass;
         this.obj = obj;
     }
@@ -111,8 +114,8 @@ public class ToStringBean implements Serializable {
      */
     @Override
     public String toString() {
-        final Stack stack = (Stack) PREFIX_TL.get();
-        final String[] tsInfo = (String[]) (stack.isEmpty() ? null : stack.peek());
+        final Stack<String[]> stack = PREFIX_TL.get();
+        final String[] tsInfo = (stack.isEmpty() ? null : stack.peek());
         String prefix;
         if (tsInfo == null) {
             final String className = obj.getClass().getName();
@@ -168,18 +171,19 @@ public class ToStringBean implements Serializable {
         } else if (value.getClass().isArray()) {
             printArrayProperty(sb, prefix, value);
         } else if (value instanceof Map) {
-            final Map map = (Map) value;
-            final Iterator i = map.entrySet().iterator();
+            @SuppressWarnings("unchecked")
+            final Map<Object, Object> map = (Map<Object, Object>) value;
+            final Iterator<Entry<Object, Object>> i = map.entrySet().iterator();
             if (i.hasNext()) {
                 while (i.hasNext()) {
-                    final Map.Entry me = (Map.Entry) i.next();
+                    final Map.Entry<Object, Object> me = i.next();
                     final String ePrefix = prefix + "[" + me.getKey() + "]";
                     final Object eValue = me.getValue();
 
                     // NEW
                     final String[] tsInfo = new String[2];
                     tsInfo[0] = ePrefix;
-                    final Stack stack = (Stack) PREFIX_TL.get();
+                    final Stack<String[]> stack = PREFIX_TL.get();
                     stack.push(tsInfo);
                     final String s = eValue != null ? eValue.toString() : "null";
                     stack.pop();
@@ -193,8 +197,9 @@ public class ToStringBean implements Serializable {
                 sb.append(prefix).append("=[]\n");
             }
         } else if (value instanceof Collection) {
-            final Collection collection = (Collection) value;
-            final Iterator i = collection.iterator();
+            @SuppressWarnings("unchecked")
+            final Collection<Object> collection = (Collection<Object>) value;
+            final Iterator<Object> i = collection.iterator();
             if (i.hasNext()) {
                 int c = 0;
                 while (i.hasNext()) {
@@ -204,7 +209,7 @@ public class ToStringBean implements Serializable {
                     // NEW
                     final String[] tsInfo = new String[2];
                     tsInfo[0] = cPrefix;
-                    final Stack stack = (Stack) PREFIX_TL.get();
+                    final Stack<String[]> stack = PREFIX_TL.get();
                     stack.push(tsInfo);
                     final String s = cValue != null ? cValue.toString() : "null";
                     stack.pop();
@@ -220,7 +225,7 @@ public class ToStringBean implements Serializable {
         } else {
             final String[] tsInfo = new String[2];
             tsInfo[0] = prefix;
-            final Stack stack = (Stack) PREFIX_TL.get();
+            final Stack<String[]> stack = PREFIX_TL.get();
             stack.push(tsInfo);
             final String s = value.toString();
             stack.pop();

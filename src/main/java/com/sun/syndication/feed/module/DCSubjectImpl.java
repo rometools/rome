@@ -161,7 +161,7 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
     }
 
     @Override
-    public void copyFrom(final CopyFrom<?> obj) {
+    public void copyFrom(final CopyFrom<DCSubject> obj) {
         COPY_FROM_HELPER.copy(this, obj);
     }
 

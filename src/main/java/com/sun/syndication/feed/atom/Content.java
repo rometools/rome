@@ -30,6 +30,7 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * @author Dave Johnson (updated for Atom 1.0)
  */
 public class Content implements Cloneable, Serializable {
+    private static final long serialVersionUID = 2036205883043031310L;
 
     private final ObjectBean objBean;
 

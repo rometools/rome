@@ -37,6 +37,7 @@ import com.sun.syndication.feed.impl.CopyFromHelper;
  * 
  */
 public class SyModuleImpl extends ModuleImpl implements SyModule {
+    private static final long serialVersionUID = -8345879299577437933L;
     private static final Set<String> PERIODS = new HashSet<String>();
 
     static {
@@ -144,19 +145,19 @@ public class SyModuleImpl extends ModuleImpl implements SyModule {
     }
 
     @Override
-    public void copyFrom(final CopyFrom obj) {
+    public void copyFrom(final CopyFrom<Module> obj) {
         COPY_FROM_HELPER.copy(this, obj);
     }
 
     private static final CopyFromHelper COPY_FROM_HELPER;
 
     static {
-        final Map basePropInterfaceMap = new HashMap();
+        final Map<String, Class<?>> basePropInterfaceMap = new HashMap<String, Class<?>>();
         basePropInterfaceMap.put("updatePeriod", String.class);
         basePropInterfaceMap.put("updateFrequency", Integer.TYPE);
         basePropInterfaceMap.put("updateBase", Date.class);
 
-        final Map basePropClassImplMap = Collections.EMPTY_MAP;
+        final Map<Class<? extends CopyFrom<?>>, Class<?>> basePropClassImplMap = Collections.<Class<? extends CopyFrom<?>>, Class<?>>emptyMap();
 
         COPY_FROM_HELPER = new CopyFromHelper(SyModule.class, basePropInterfaceMap, basePropClassImplMap);
     }

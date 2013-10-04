@@ -83,8 +83,8 @@ public class FeedParsers extends PluginManager<WireFeedParser> {
     }
 
     @Override
-    protected String getKey(final Object obj) {
-        return ((WireFeedParser) obj).getType();
+    protected String getKey(final WireFeedParser obj) {
+        return obj.getType();
     }
 
 }

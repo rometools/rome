@@ -946,7 +946,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
     }
 
     @Override
-    public final void copyFrom(final CopyFrom<?> obj) {
+    public final void copyFrom(final CopyFrom<Module> obj) {
         COPY_FROM_HELPER.copy(this, obj);
     }
 

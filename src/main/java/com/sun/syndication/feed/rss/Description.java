@@ -29,6 +29,7 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * 
  */
 public class Description implements Cloneable, Serializable {
+    private static final long serialVersionUID = 2110945913225451453L;
     private final ObjectBean objBean;
     private String type;
     private String value;

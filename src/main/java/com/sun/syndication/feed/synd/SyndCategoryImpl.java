@@ -34,6 +34,7 @@ import com.sun.syndication.feed.module.DCSubjectImpl;
  * 
  */
 public class SyndCategoryImpl implements Serializable, SyndCategory {
+    private static final long serialVersionUID = -2151815243404151131L;
     private final ObjectBean objBean;
     private final DCSubject subject;
 

@@ -52,6 +52,7 @@ import com.sun.syndication.feed.synd.impl.URINormalizer;
  * 
  */
 public class SyndFeedImpl implements Serializable, SyndFeed {
+    private static final long serialVersionUID = -2529165503200548045L;
 
     private final ObjectBean objBean;
 
@@ -102,7 +103,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * @return the real feed type supported.
      */
     @Override
-    public List getSupportedFeedTypes() {
+    public List<String> getSupportedFeedTypes() {
         return CONVERTERS.getSupportedFeedTypes();
     }
 
@@ -117,7 +118,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      *            CloneableBean for details).
      * 
      */
-    protected SyndFeedImpl(final Class beanClass, final Set convenienceProperties) {
+    protected SyndFeedImpl(final Class<?> beanClass, final Set<String> convenienceProperties) {
         objBean = new ObjectBean(beanClass, this, convenienceProperties);
     }
 
@@ -779,12 +780,12 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     }
 
     @Override
-    public Class getInterface() {
+    public Class<SyndFeed> getInterface() {
         return SyndFeed.class;
     }
 
     @Override
-    public void copyFrom(final CopyFrom obj) {
+    public void copyFrom(final CopyFrom<SyndFeed> obj) {
         COPY_FROM_HELPER.copy(this, obj);
     }
 
@@ -793,7 +794,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     private static final CopyFromHelper COPY_FROM_HELPER;
 
     static {
-        final Map basePropInterfaceMap = new HashMap();
+        final Map<String, Class<?>> basePropInterfaceMap = new HashMap<String, Class<?>>();
         basePropInterfaceMap.put("feedType", String.class);
         basePropInterfaceMap.put("encoding", String.class);
         basePropInterfaceMap.put("uri", String.class);
@@ -804,7 +805,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
         basePropInterfaceMap.put("entries", SyndEntry.class);
         basePropInterfaceMap.put("modules", Module.class);
 
-        final Map basePropClassImplMap = new HashMap();
+        final Map<Class<? extends CopyFrom<?>>, Class<?>> basePropClassImplMap = new HashMap<Class<? extends CopyFrom<?>>, Class<?>>();
         basePropClassImplMap.put(SyndEntry.class, SyndEntryImpl.class);
         basePropClassImplMap.put(SyndImage.class, SyndImageImpl.class);
         basePropClassImplMap.put(DCModule.class, DCModuleImpl.class);

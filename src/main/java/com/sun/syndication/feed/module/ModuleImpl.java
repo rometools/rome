@@ -29,6 +29,7 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * 
  */
 public abstract class ModuleImpl implements Cloneable, Serializable, Module {
+    private static final long serialVersionUID = 3621352305155841238L;
     private final ObjectBean objBean;
     private final String uri;
 
@@ -39,7 +40,7 @@ public abstract class ModuleImpl implements Cloneable, Serializable, Module {
      * @param uri URI of the module.
      * 
      */
-    protected ModuleImpl(final Class beanClass, final String uri) {
+    protected ModuleImpl(final Class<?> beanClass, final String uri) {
         objBean = new ObjectBean(beanClass, this);
         this.uri = uri;
     }

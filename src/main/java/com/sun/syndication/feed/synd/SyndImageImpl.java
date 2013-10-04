@@ -205,7 +205,7 @@ public class SyndImageImpl implements Serializable, SyndImage {
     }
 
     @Override
-    public void copyFrom(final CopyFrom<?> syndImage) {
+    public void copyFrom(final CopyFrom<SyndImage> syndImage) {
         COPY_FROM_HELPER.copy(this, syndImage);
     }
 

@@ -43,6 +43,7 @@ import com.sun.syndication.feed.module.impl.ModuleUtils;
  * 
  */
 public abstract class WireFeed implements Cloneable, Serializable, Extendable {
+    private static final long serialVersionUID = -3608120400805691829L;
     private final ObjectBean objBean;
     private String feedType;
     private String encoding;

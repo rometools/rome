@@ -53,8 +53,8 @@ public class FeedGenerators extends PluginManager<WireFeedGenerator> {
     }
 
     @Override
-    protected String getKey(final Object obj) {
-        return ((WireFeedGenerator) obj).getType();
+    protected String getKey(final WireFeedGenerator obj) {
+        return obj.getType();
     }
 
     public List<String> getSupportedFeedTypes() {

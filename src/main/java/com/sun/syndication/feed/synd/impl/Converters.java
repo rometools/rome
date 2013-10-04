@@ -25,7 +25,7 @@ import com.sun.syndication.io.impl.PluginManager;
  * Created by IntelliJ IDEA. User: tucu Date: May 21, 2004 Time: 5:26:04 PM To
  * change this template use Options | File Templates.
  */
-public class Converters extends PluginManager {
+public class Converters extends PluginManager<Converter> {
 
     /**
      * Converter.classes= [className] ...
@@ -38,15 +38,15 @@ public class Converters extends PluginManager {
     }
 
     public Converter getConverter(final String feedType) {
-        return (Converter) getPlugin(feedType);
+        return getPlugin(feedType);
     }
 
     @Override
-    protected String getKey(final Object obj) {
-        return ((Converter) obj).getType();
+    protected String getKey(final Converter obj) {
+        return obj.getType();
     }
 
-    public List getSupportedFeedTypes() {
+    public List<String> getSupportedFeedTypes() {
         return getKeys();
     }
 

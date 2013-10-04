@@ -28,6 +28,7 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * @author Dave Johnson (updated for Atom 1.0)
  */
 public class Link implements Cloneable, Serializable {
+    private static final long serialVersionUID = 670365139518027828L;
 
     private final ObjectBean objBean;
 

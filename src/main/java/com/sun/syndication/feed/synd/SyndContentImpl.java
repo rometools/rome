@@ -33,6 +33,7 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * 
  */
 public class SyndContentImpl implements Serializable, SyndContent {
+    private static final long serialVersionUID = -8831050456661121113L;
     private final ObjectBean objBean;
     private String type;
     private String value;
@@ -178,23 +179,23 @@ public class SyndContentImpl implements Serializable, SyndContent {
     }
 
     @Override
-    public Class getInterface() {
+    public Class<SyndContent> getInterface() {
         return SyndContent.class;
     }
 
     @Override
-    public void copyFrom(final CopyFrom obj) {
+    public void copyFrom(final CopyFrom<SyndContent> obj) {
         COPY_FROM_HELPER.copy(this, obj);
     }
 
     private static final CopyFromHelper COPY_FROM_HELPER;
 
     static {
-        final Map basePropInterfaceMap = new HashMap();
+        final Map<String, Class<?>> basePropInterfaceMap = new HashMap<String, Class<?>>();
         basePropInterfaceMap.put("type", String.class);
         basePropInterfaceMap.put("value", String.class);
 
-        final Map basePropClassImplMap = Collections.EMPTY_MAP;
+        final Map<Class<? extends CopyFrom<?>>, Class<?>> basePropClassImplMap = Collections.<Class<? extends CopyFrom<?>>, Class<?>>emptyMap();
 
         COPY_FROM_HELPER = new CopyFromHelper(SyndContent.class, basePropInterfaceMap, basePropClassImplMap);
     }

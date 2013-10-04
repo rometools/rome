@@ -41,8 +41,8 @@ public class ModuleGenerators extends PluginManager<ModuleGenerator> {
     }
 
     @Override
-    protected String getKey(final Object obj) {
-        return ((ModuleGenerator) obj).getNamespaceUri();
+    protected String getKey(final ModuleGenerator obj) {
+        return obj.getNamespaceUri();
     }
 
     public List<String> getModuleNamespaces() {

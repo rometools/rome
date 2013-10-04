@@ -37,10 +37,11 @@ import java.lang.reflect.Method;
  * 
  */
 public class EqualsBean implements Serializable {
+    private static final long serialVersionUID = 9120107899175152601L;
 
     private static final Object[] NO_PARAMS = new Object[0];
 
-    private final Class beanClass;
+    private final Class<?> beanClass;
     private final Object obj;
 
     /**
@@ -52,7 +53,7 @@ public class EqualsBean implements Serializable {
      * @param beanClass the class/interface to be used for property scanning.
      * 
      */
-    protected EqualsBean(final Class beanClass) {
+    protected EqualsBean(final Class<?> beanClass) {
         this.beanClass = beanClass;
         obj = this;
     }
@@ -86,7 +87,7 @@ public class EqualsBean implements Serializable {
      * @param obj object bean to test equality.
      * 
      */
-    public EqualsBean(final Class beanClass, final Object obj) {
+    public EqualsBean(final Class<?> beanClass, final Object obj) {
         if (!beanClass.isInstance(obj)) {
             throw new IllegalArgumentException(obj.getClass() + " is not instance of " + beanClass);
         }
@@ -214,8 +215,8 @@ public class EqualsBean implements Serializable {
     private boolean doEquals(final Object obj1, final Object obj2) {
         boolean eq = obj1 == obj2;
         if (!eq && obj1 != null && obj2 != null) {
-            final Class classObj1 = obj1.getClass();
-            final Class classObj2 = obj2.getClass();
+            final Class<?> classObj1 = obj1.getClass();
+            final Class<?> classObj2 = obj2.getClass();
             if (classObj1.isArray() && classObj2.isArray()) {
                 eq = equalsArray(obj1, obj2);
             } else {

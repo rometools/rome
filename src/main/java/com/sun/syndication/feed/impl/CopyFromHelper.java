@@ -100,27 +100,27 @@ public class CopyFromHelper {
     }
 
     @SuppressWarnings("unchecked")
-    private Object doCopy(Object value, final Class<?> baseInterface) throws Exception {
+    private <T> T doCopy(T value, final Class<?> baseInterface) throws Exception {
         if (value != null) {
             final Class<?> vClass = value.getClass();
             if (vClass.isArray()) {
-                value = doCopyArray(value, baseInterface);
+                value = (T) this.<Object>doCopyArray((Object[]) value, baseInterface);
             } else if (value instanceof Collection) {
-                value = doCopyCollection((Collection<?>) value, baseInterface);
+                value = (T) this.<Object>doCopyCollection((Collection<Object>) value, baseInterface);
             } else if (value instanceof Map) {
-                value = doCopyMap((Map<Object, Object>) value, baseInterface);
+                value = (T) this.<Object, Object>doCopyMap((Map<Object, Object>) value, baseInterface);
             } else if (isBasicType(vClass)) {
                 // value = value; // nothing to do here
                 if (value instanceof Date) { // because Date it is not inmutable
-                    value = ((Date) value).clone();
+                    value = (T) ((Date) value).clone();
                 }
             } else { // it goes CopyFrom
                 if (value instanceof CopyFrom<?>) {
-                    final CopyFrom<?> source = (CopyFrom<?>) value;
-                    CopyFrom<?> target = createInstance(source.getInterface());
-                    target = target == null ? (CopyFrom<?>) value.getClass().newInstance() : target;
+                    final CopyFrom<T> source = (CopyFrom<T>) value;
+                    CopyFrom<T> target = (CopyFrom<T>) createInstance(source.getInterface());
+                    target = target == null ? (CopyFrom<T>) value.getClass().newInstance() : target;
                     target.copyFrom(source);
-                    value = target;
+                    value = (T) target;
                 } else {
                     throw new Exception("unsupported class for 'copyFrom' " + value.getClass());
                 }
@@ -129,10 +129,11 @@ public class CopyFromHelper {
         return value;
     }
 
-    private Object doCopyArray(final Object array, final Class<?> baseInterface) throws Exception {
+    private <T> T[] doCopyArray(final T[] array, final Class<?> baseInterface) throws Exception {
         final Class<?> elementClass = array.getClass().getComponentType();
         final int length = Array.getLength(array);
-        final Object newArray = Array.newInstance(elementClass, length);
+        @SuppressWarnings("unchecked")
+        final T[] newArray = (T[]) Array.newInstance(elementClass, length);
         for (int i = 0; i < length; i++) {
             final Object element = doCopy(Array.get(array, i), baseInterface);
             Array.set(newArray, i, element);
@@ -140,21 +141,21 @@ public class CopyFromHelper {
         return newArray;
     }
 
-    private Collection<Object> doCopyCollection(final Collection<?> collection, final Class<?> baseInterface) throws Exception {
+    private <T> Collection<T> doCopyCollection(final Collection<T> collection, final Class<?> baseInterface) throws Exception {
         // expecting SETs or LISTs only, going default implementation of them
-        final Collection<Object> newColl = collection instanceof Set ? new HashSet<Object>() : new ArrayList<Object>();
-        final Iterator<?> i = collection.iterator();
+        final Collection<T> newColl = collection instanceof Set ? new HashSet<T>() : new ArrayList<T>();
+        final Iterator<T> i = collection.iterator();
         while (i.hasNext()) {
-            newColl.add(doCopy(i.next(), baseInterface));
+            newColl.add(this.<T>doCopy(i.next(), baseInterface));
         }
         return newColl;
     }
 
-    private Map<Object, Object> doCopyMap(final Map<Object, Object> map, final Class<?> baseInterface) throws Exception {
-        final Map<Object, Object> newMap = new HashMap<Object, Object>();
-        final Iterator<Entry<Object, Object>> entries = map.entrySet().iterator();
+    private <S, T> Map<S, T> doCopyMap(final Map<S, T> map, final Class<?> baseInterface) throws Exception {
+        final Map<S, T> newMap = new HashMap<S, T>();
+        final Iterator<Entry<S, T>> entries = map.entrySet().iterator();
         while (entries.hasNext()) {
-            final Map.Entry<Object, Object> entry = entries.next();
+            final Map.Entry<S, T> entry = entries.next();
             newMap.put(entry.getKey(), doCopy(entry.getValue(), baseInterface));
         }
         return newMap;

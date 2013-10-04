@@ -63,7 +63,7 @@ public abstract class PluginManager<T> {
         keys = Collections.unmodifiableList(new ArrayList<String>(pluginsMap.keySet()));
     }
 
-    protected abstract String getKey(Object obj);
+    protected abstract String getKey(T obj);
 
     protected List<String> getKeys() {
         return keys;
