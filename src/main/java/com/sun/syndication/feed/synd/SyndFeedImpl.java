@@ -788,7 +788,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     }
 
     @Override
-    public void copyFrom(final CopyFrom<SyndFeed> obj) {
+    public void copyFrom(final CopyFrom<? extends SyndFeed> obj) {
         COPY_FROM_HELPER.copy(this, obj);
     }
 

@@ -46,6 +46,6 @@ public interface CopyFrom<T> {
      * @param obj the instance to copy properties from.
      * 
      */
-    public void copyFrom(CopyFrom<T> obj);
+    public void copyFrom(CopyFrom<? extends T> obj);
 
 }

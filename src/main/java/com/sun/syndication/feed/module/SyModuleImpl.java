@@ -145,7 +145,7 @@ public class SyModuleImpl extends ModuleImpl implements SyModule {
     }
 
     @Override
-    public void copyFrom(final CopyFrom<Module> obj) {
+    public void copyFrom(final CopyFrom<? extends Module> obj) {
         COPY_FROM_HELPER.copy(this, obj);
     }
 

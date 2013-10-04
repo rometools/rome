@@ -154,7 +154,7 @@ public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
     }
 
     @Override
-    public void copyFrom(final CopyFrom<SyndEnclosure> obj) {
+    public void copyFrom(final CopyFrom<? extends SyndEnclosure> obj) {
         COPY_FROM_HELPER.copy(this, obj);
     }
 

@@ -184,7 +184,7 @@ public class SyndContentImpl implements Serializable, SyndContent {
     }
 
     @Override
-    public void copyFrom(final CopyFrom<SyndContent> obj) {
+    public void copyFrom(final CopyFrom<? extends SyndContent> obj) {
         COPY_FROM_HELPER.copy(this, obj);
     }
 

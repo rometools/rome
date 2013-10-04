@@ -495,7 +495,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
     }
 
     @Override
-    public void copyFrom(final CopyFrom<SyndEntry> obj) {
+    public void copyFrom(final CopyFrom<? extends SyndEntry> obj) {
         COPY_FROM_HELPER.copy(this, obj);
     }
 
