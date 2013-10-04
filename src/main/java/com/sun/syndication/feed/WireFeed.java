@@ -195,7 +195,10 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      */
     @Override
     public List<Module> getModules() {
-        return modules == null ? (modules = new ArrayList<Module>()) : modules;
+        if (modules == null) {
+            modules = new ArrayList<Module>();
+        }
+        return modules;
     }
 
     /**
@@ -231,7 +234,10 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      * 
      */
     public List<Element> getForeignMarkup() {
-        return foreignMarkup == null ? (foreignMarkup = new ArrayList<Element>()) : foreignMarkup;
+        if (foreignMarkup == null) {
+            foreignMarkup = new ArrayList<Element>();
+        }
+        return foreignMarkup;
     }
 
     /**

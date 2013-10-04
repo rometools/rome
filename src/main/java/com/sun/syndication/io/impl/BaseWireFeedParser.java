@@ -110,7 +110,11 @@ public abstract class BaseWireFeedParser implements WireFeedParser {
 
     protected String getAttributeValue(final Element e, final String attributeName) {
         final Attribute attr = getAttribute(e, attributeName);
-        return attr != null ? attr.getValue() : null;
+        if (attr != null) {
+            return attr.getValue();
+        } else {
+            return null;
+        }
     }
 
 }

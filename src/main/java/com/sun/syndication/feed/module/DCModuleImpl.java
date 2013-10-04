@@ -108,7 +108,10 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public List<String> getTitles() {
-        return title == null ? (title = new ArrayList<String>()) : title;
+        if (title == null) {
+            title = new ArrayList<String>();
+        }
+        return title;
     }
 
     /**
@@ -133,7 +136,11 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public String getTitle() {
-        return title != null && title.size() > 0 ? (String) title.get(0) : null;
+        if (title != null && title.size() > 0) {
+            return title.get(0);
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -160,7 +167,10 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public List<String> getCreators() {
-        return creator == null ? (creator = new ArrayList<String>()) : creator;
+        if (creator == null) {
+            creator = new ArrayList<String>();
+        }
+        return creator;
     }
 
     /**
@@ -185,7 +195,11 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public String getCreator() {
-        return creator != null && creator.size() > 0 ? (String) creator.get(0) : null;
+        if (creator != null && creator.size() > 0) {
+            return creator.get(0);
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -212,7 +226,10 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public List<DCSubject> getSubjects() {
-        return subject == null ? (subject = new ArrayList<DCSubject>()) : subject;
+        if (subject == null) {
+            subject = new ArrayList<DCSubject>();
+        }
+        return subject;
     }
 
     /**
@@ -237,7 +254,11 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public DCSubject getSubject() {
-        return subject != null && subject.size() > 0 ? (DCSubject) subject.get(0) : null;
+        if (subject != null && subject.size() > 0) {
+            return subject.get(0);
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -264,7 +285,10 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public List<String> getDescriptions() {
-        return description == null ? (description = new ArrayList<String>()) : description;
+        if (description == null) {
+            description = new ArrayList<String>();
+        }
+        return description;
     }
 
     /**
@@ -289,7 +313,11 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public String getDescription() {
-        return description != null && description.size() > 0 ? (String) description.get(0) : null;
+        if (description != null && description.size() > 0) {
+            return description.get(0);
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -317,7 +345,10 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public List<String> getPublishers() {
-        return publisher == null ? (publisher = new ArrayList<String>()) : publisher;
+        if (publisher == null) {
+            publisher = new ArrayList<String>();
+        }
+        return publisher;
     }
 
     /**
@@ -342,7 +373,11 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public String getPublisher() {
-        return publisher != null && publisher.size() > 0 ? (String) publisher.get(0) : null;
+        if (publisher != null && publisher.size() > 0) {
+            return publisher.get(0);
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -370,7 +405,10 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public List<String> getContributors() {
-        return contributors == null ? (contributors = new ArrayList<String>()) : contributors;
+        if (contributors == null) {
+            contributors = new ArrayList<String>();
+        }
+        return contributors;
     }
 
     /**
@@ -395,7 +433,11 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public String getContributor() {
-        return contributors != null && contributors.size() > 0 ? (String) contributors.get(0) : null;
+        if (contributors != null && contributors.size() > 0) {
+            return contributors.get(0);
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -423,7 +465,10 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public List<Date> getDates() {
-        return date == null ? (date = new ArrayList<Date>()) : date;
+        if (date == null) {
+            date = new ArrayList<Date>();
+        }
+        return date;
     }
 
     /**
@@ -448,7 +493,11 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public Date getDate() {
-        return date != null && date.size() > 0 ? (Date) date.get(0) : null;
+        if (date != null && date.size() > 0) {
+            return date.get(0);
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -475,7 +524,10 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public List<String> getTypes() {
-        return type == null ? (type = new ArrayList<String>()) : type;
+        if (type == null) {
+            type = new ArrayList<String>();
+        }
+        return type;
     }
 
     /**
@@ -500,7 +552,11 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public String getType() {
-        return type != null && type.size() > 0 ? (String) type.get(0) : null;
+        if (type != null && type.size() > 0) {
+            return type.get(0);
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -527,7 +583,10 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public List<String> getFormats() {
-        return format == null ? (format = new ArrayList<String>()) : format;
+        if (format == null) {
+            format = new ArrayList<String>();
+        }
+        return format;
     }
 
     /**
@@ -552,7 +611,11 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public String getFormat() {
-        return format != null && format.size() > 0 ? (String) format.get(0) : null;
+        if (format != null && format.size() > 0) {
+            return format.get(0);
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -579,7 +642,10 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public List<String> getIdentifiers() {
-        return identifier == null ? (identifier = new ArrayList<String>()) : identifier;
+        if (identifier == null) {
+            identifier = new ArrayList<String>();
+        }
+        return identifier;
     }
 
     /**
@@ -604,7 +670,11 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public String getIdentifier() {
-        return identifier != null && identifier.size() > 0 ? (String) identifier.get(0) : null;
+        if (identifier != null && identifier.size() > 0) {
+            return identifier.get(0);
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -632,7 +702,10 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public List<String> getSources() {
-        return source == null ? (source = new ArrayList<String>()) : source;
+        if (source == null) {
+            source = new ArrayList<String>();
+        }
+        return source;
     }
 
     /**
@@ -657,7 +730,11 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public String getSource() {
-        return source != null && source.size() > 0 ? (String) source.get(0) : null;
+        if (source != null && source.size() > 0) {
+            return source.get(0);
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -684,7 +761,10 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public List<String> getLanguages() {
-        return language == null ? (language = new ArrayList<String>()) : language;
+        if (language == null) {
+            language = new ArrayList<String>();
+        }
+        return language;
     }
 
     /**
@@ -709,7 +789,11 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public String getLanguage() {
-        return language != null && language.size() > 0 ? (String) language.get(0) : null;
+        if (language != null && language.size() > 0) {
+            return language.get(0);
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -737,7 +821,10 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public List<String> getRelations() {
-        return relation == null ? (relation = new ArrayList<String>()) : relation;
+        if (relation == null) {
+            relation = new ArrayList<String>();
+        }
+        return relation;
     }
 
     /**
@@ -762,7 +849,11 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public String getRelation() {
-        return relation != null && relation.size() > 0 ? (String) relation.get(0) : null;
+        if (relation != null && relation.size() > 0) {
+            return relation.get(0);
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -790,7 +881,10 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public List<String> getCoverages() {
-        return coverage == null ? (coverage = new ArrayList<String>()) : coverage;
+        if (coverage == null) {
+            coverage = new ArrayList<String>();
+        }
+        return coverage;
     }
 
     /**
@@ -815,7 +909,11 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public String getCoverage() {
-        return coverage != null && coverage.size() > 0 ? (String) coverage.get(0) : null;
+        if (coverage != null && coverage.size() > 0) {
+            return coverage.get(0);
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -843,7 +941,10 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public List<String> getRightsList() {
-        return rights == null ? (rights = new ArrayList<String>()) : rights;
+        if (rights == null) {
+            rights = new ArrayList<String>();
+        }
+        return rights;
     }
 
     /**
@@ -868,7 +969,11 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public String getRights() {
-        return rights != null && rights.size() > 0 ? (String) rights.get(0) : null;
+        if (rights != null && rights.size() > 0) {
+            return rights.get(0);
+        } else {
+            return null;
+        }
     }
 
     /**

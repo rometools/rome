@@ -678,7 +678,10 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public List<SyndEntry> getEntries() {
-        return entries == null ? (entries = new ArrayList<SyndEntry>()) : entries;
+        if (entries == null) {
+            entries = new ArrayList<SyndEntry>();
+        }
+        return entries;
     }
 
     /**
@@ -821,7 +824,10 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public List<SyndLink> getLinks() {
-        return links == null ? (links = new ArrayList<SyndLink>()) : links;
+        if (links == null) {
+            links = new ArrayList<SyndLink>();
+        }
+        return links;
     }
 
     /**
@@ -837,7 +843,10 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
 
     @Override
     public List<SyndPerson> getAuthors() {
-        return authors == null ? (authors = new ArrayList<SyndPerson>()) : authors;
+        if (authors == null) {
+            authors = new ArrayList<SyndPerson>();
+        }
+        return authors;
     }
 
     @Override
@@ -877,7 +886,10 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
 
     @Override
     public List<SyndPerson> getContributors() {
-        return contributors == null ? (contributors = new ArrayList<SyndPerson>()) : contributors;
+        if (contributors == null) {
+            contributors = new ArrayList<SyndPerson>();
+        }
+        return contributors;
     }
 
     @Override
@@ -894,7 +906,10 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public List<Element> getForeignMarkup() {
-        return foreignMarkup == null ? (foreignMarkup = new ArrayList<Element>()) : foreignMarkup;
+        if (foreignMarkup == null) {
+            foreignMarkup = new ArrayList<Element>();
+        }
+        return foreignMarkup;
     }
 
     /**

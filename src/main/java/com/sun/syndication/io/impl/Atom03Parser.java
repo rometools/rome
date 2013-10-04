@@ -189,7 +189,11 @@ public class Atom03Parser extends BaseWireFeedParser {
                 }
             }
         }
-        return links.size() > 0 ? links : null;
+        if (links.size() > 0) {
+            return links;
+        } else {
+            return null;
+        }
     }
 
     // List(Elements) -> List(Link)
@@ -225,7 +229,11 @@ public class Atom03Parser extends BaseWireFeedParser {
         for (int i = 0; i < ePersons.size(); i++) {
             persons.add(parsePerson(ePersons.get(i)));
         }
-        return persons.size() > 0 ? persons : null;
+        if (persons.size() > 0) {
+            return persons;
+        } else {
+            return null;
+        }
     }
 
     private Content parseContent(final Element e) {
@@ -270,7 +278,11 @@ public class Atom03Parser extends BaseWireFeedParser {
         for (int i = 0; i < eEntries.size(); i++) {
             entries.add(parseEntry(eEntries.get(i)));
         }
-        return entries.size() > 0 ? entries : null;
+        if (entries.size() > 0) {
+            return entries;
+        } else {
+            return null;
+        }
     }
 
     private Entry parseEntry(final Element eEntry) {

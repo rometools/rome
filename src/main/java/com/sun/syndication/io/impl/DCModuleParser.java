@@ -147,8 +147,11 @@ public class DCModuleParser implements ModuleParser {
             foundSomething = true;
             dcm.setRightsList(parseElementList(eList));
         }
-
-        return foundSomething ? dcm : null;
+        if (foundSomething) {
+            return dcm;
+        } else {
+            return null;
+        }
     }
 
     /**
