@@ -13,6 +13,7 @@ import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.WireFeedInput;
+import org.jdom2.input.sax.XMLReaders;
 
 /**
  * @author pat, tucu
@@ -41,7 +42,7 @@ public abstract class FeedTest extends TestCase {
     }
 
     protected Document getJDomDoc() throws Exception {
-        final SAXBuilder saxBuilder = new SAXBuilder(false);
+        final SAXBuilder saxBuilder = new SAXBuilder(XMLReaders.NONVALIDATING);
         return saxBuilder.build(getFeedReader());
     }
 
