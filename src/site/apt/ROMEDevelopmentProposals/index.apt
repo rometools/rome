@@ -8,17 +8,12 @@
 
 ROME Development Proposals
 
-
 *ROME Development Proposals
-
 
  Link to new ROME feature and release proposals here.
 
-
 *ROME2 Proposal
 
-
- 
  * {{{../ROMEROADMAPProposed.html}ROME ROADMAP (Proposed) (rome)}}
  
  * {{{./ROME21stProposalJune10th2006NOTCURRENT.html}ROME2 first proposal }} (Jun/10/2006).
@@ -29,9 +24,7 @@ ROME Development Proposals
 
 *Requests for Enhancement (RFEs)
 
-
- 
- * {{{https://rometools.jira.com/browse/ROME}Issue tracking system}} \- file RFEs here
+ * {{{https://github.com/rometools/rome/issues}Issue tracking system}} \- file RFEs here
  
  * {{{./ROMEFeatureRequests.html}Feature Requests}} \- old feature request page
  

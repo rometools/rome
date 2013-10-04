@@ -8,69 +8,24 @@
 
 ROME ROADMAP (Proposed)
 
-
- *----+--+
-| |
- version
-
-||
- changes
-
-|
 *----+--+
-|
- 1.1
-
-|
- Omnibus release with ROME patches + JDK 1.5 changes.
-
-|
+|| version || changes |
 *----+--+
-|
- 1.5
-
-|
- Migration to org.rometools (light break compat)
-
-|
+| 1.1 | Omnibus release with ROME patches + JDK 1.5 changes.|
 *----+--+
-|
- 1.6
-
-|
- Elimination of Synd* interfaces and Synd*Impl in favor of base objects (break compat)
-
-|
+| 1.5 | Migration to org.rometools (light break compat)|
 *----+--+
-|
- 1.7
-
-|
- Introduction of "Rome" class with pass-by-ref context for modules
-
-|
+| 1.6 | Elimination of Synd* interfaces and Synd*Impl in favor of base objects (break compat)|
 *----+--+
-|
- 1.8
-
-|
- Addition of a factory by package for the Rome class.
-
-|
+| 1.7 | Introduction of "Rome" class with pass-by-ref context for modules|
 *----+--+
-|
- 1.9
-
-|
- JSR-330   remix of the Rome class and all deps.
-
-|
+| 1.8 | Addition of a factory by package for the Rome class.|
+*----+--+
+| 1.9 | JSR-330   remix of the Rome class and all deps.|
 *----+--+
 
 *Old Development Proposals
 
-
- 
  * {{{./ROMEDevelopmentProposals/ROME22ndProposalJuly18th2006CURRENT.html}ROME2 2nd Proposal (July 18th 2006) CURRENT (rome)}}
  
  * {{{./ROMEDevelopmentProposals/ROME21stProposalJune10th2006NOTCURRENT.html}ROME2 1st Proposal (June 10th 2006) NOT CURRENT (rome)}}

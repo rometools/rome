@@ -8,11 +8,8 @@
 
 ROME Development Process
 
-
  We're welcoming our first external developer, {{{http://www.mackmo.com/nick/blog/}Nick Lothian}} today, so we thought it would be good to set a few basic rules for this project. We don't want to be too formal, since we're still alpha, and trust our developer's common sense to "do the right thing".
 
-
- 
  * Please before commiting anything send an email in the rome developer lists to explain what you want to do
  
  * When you create some new code, please javadoc it, and unit tests are welcome 
