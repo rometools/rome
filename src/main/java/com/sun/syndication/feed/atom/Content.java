@@ -174,7 +174,9 @@ public class Content implements Cloneable, Serializable {
      * @param mode the content mode, <b>null</b> if none.
      */
     public void setMode(String mode) {
-        mode = mode != null ? mode.toLowerCase() : null;
+        if (mode != null) {
+            mode = mode.toLowerCase();
+        }
         if (mode == null || !MODES.contains(mode)) {
             throw new IllegalArgumentException("Invalid mode [" + mode + "]");
         }

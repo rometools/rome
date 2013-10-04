@@ -145,7 +145,12 @@ public abstract class PluginManager {
         final List classes = new ArrayList();
         final boolean useLoadClass = Boolean.valueOf(System.getProperty("rome.pluginmanager.useloadclass", "false")).booleanValue();
         for (final String propertyValue : propertyValues) {
-            final Class mClass = useLoadClass ? classLoader.loadClass(propertyValue) : Class.forName(propertyValue, true, classLoader);
+            final Class mClass;
+            if (useLoadClass) {
+                mClass = classLoader.loadClass(propertyValue);
+            } else {
+                mClass = Class.forName(propertyValue, true, classLoader);
+            }
             classes.add(mClass);
         }
         final Class[] array = new Class[classes.size()];

@@ -327,7 +327,9 @@ public class Atom10Parser extends BaseWireFeedParser {
     private String parseTextConstructToString(final Element e) {
         String value = null;
         String type = getAttributeValue(e, "type");
-        type = type != null ? type : Content.TEXT;
+        if (type == null) {
+            type = Content.TEXT;
+        }
         if (type.equals(Content.XHTML) || type.indexOf("/xml") != -1 || type.indexOf("+xml") != -1) {
             // XHTML content needs special handling
             final XMLOutputter outputter = new XMLOutputter();
@@ -508,7 +510,9 @@ public class Atom10Parser extends BaseWireFeedParser {
             return url;
         }
         if (isRelativeURI(url)) {
-            url = !".".equals(url) && !"./".equals(url) ? url : "";
+            if (".".equals(url) || "./".equals(url)) {
+                url = "";
+            }
 
             if (url.startsWith("/") && baseURI != null) {
                 String base = null;

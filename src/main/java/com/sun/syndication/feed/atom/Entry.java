@@ -270,7 +270,11 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @param issued the entry issued date, <b>null</b> if none.
      */
     public void setIssued(final Date issued) {
-        published = issued == null ? null : new Date(issued.getTime());
+        if (issued == null) {
+            published = null;
+        } else {
+            published = new Date(issued.getTime());
+        }
     }
 
     /**
@@ -316,7 +320,11 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @param modified the entry modified date, <b>null</b> if none.
      */
     public void setModified(final Date modified) {
-        updated = modified == null ? null : new Date(modified.getTime());
+        if (modified == null) {
+            updated = null;
+        } else {
+            updated = new Date(modified.getTime());
+        }
     }
 
     /**
@@ -408,7 +416,11 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @since Atom 1.0
      */
     public void setPublished(final Date published) {
-        this.published = published == null ? null : new Date(published.getTime());
+        if (published == null) {
+            this.published = null;
+        } else {
+            this.published = new Date(published.getTime());
+        }
     }
 
     /**
@@ -550,7 +562,11 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @since Atom 1.0
      */
     public void setUpdated(final Date updated) {
-        this.updated = updated == null ? null : new Date(updated.getTime());
+        if (updated == null) {
+            this.updated = null;
+        } else {
+            this.updated = new Date(updated.getTime());
+        }
     }
 
     /**

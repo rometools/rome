@@ -253,7 +253,12 @@ class SyndCategoryListFacade extends AbstractList<SyndCategory> {
     @Override
     public SyndCategory set(final int index, final SyndCategory obj) {
         final SyndCategoryImpl sCat = (SyndCategoryImpl) obj;
-        DCSubject subject = sCat != null ? sCat.getSubject() : null;
+        DCSubject subject;
+        if (sCat != null) {
+            subject = sCat.getSubject();
+        } else {
+            subject = null;
+        }
         subject = subjects.set(index, subject);
         if (subject != null) {
             return new SyndCategoryImpl(subject);
@@ -273,7 +278,12 @@ class SyndCategoryListFacade extends AbstractList<SyndCategory> {
     @Override
     public void add(final int index, final SyndCategory obj) {
         final SyndCategoryImpl sCat = (SyndCategoryImpl) obj;
-        final DCSubject subject = sCat != null ? sCat.getSubject() : null;
+        DCSubject subject;
+        if (sCat != null) {
+            subject = sCat.getSubject();
+        } else {
+            subject = null;
+        }
         subjects.add(index, subject);
     }
 

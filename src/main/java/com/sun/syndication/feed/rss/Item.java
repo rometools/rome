@@ -445,7 +445,11 @@ public class Item implements Cloneable, Serializable, Extendable {
      * 
      */
     public void setPubDate(final Date pubDate) {
-        this.pubDate = pubDate == null ? null : new Date(pubDate.getTime());
+        if (pubDate == null) {
+            this.pubDate = null;
+        } else {
+            this.pubDate = new Date(pubDate.getTime());
+        }
     }
 
     /**
@@ -472,7 +476,11 @@ public class Item implements Cloneable, Serializable, Extendable {
      * 
      */
     public void setExpirationDate(final Date expirationDate) {
-        this.expirationDate = expirationDate == null ? null : new Date(expirationDate.getTime());
+        if (expirationDate == null) {
+            this.expirationDate = null;
+        } else {
+            this.expirationDate = new Date(expirationDate.getTime());
+        }
     }
 
     /**

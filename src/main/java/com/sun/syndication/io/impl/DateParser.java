@@ -105,7 +105,9 @@ public class DateParser {
      * 
      */
     private static Date parseUsingMask(final String[] masks, String sDate) {
-        sDate = sDate != null ? sDate.trim() : null;
+        if (sDate != null) {
+            sDate = sDate.trim();
+        }
         ParsePosition pp = null;
         Date d = null;
         for (int i = 0; d == null && i < masks.length; i++) {

@@ -239,7 +239,9 @@ public class Atom03Parser extends BaseWireFeedParser {
     private Content parseContent(final Element e) {
         String value = null;
         String type = getAttributeValue(e, "type");
-        type = type != null ? type : "text/plain";
+        if (type == null) {
+            type = "text/plain";
+        }
         String mode = getAttributeValue(e, "mode");
         if (mode == null) {
             mode = Content.XML; // default to xml content

@@ -114,8 +114,16 @@ public class Base64 {
 
             eData[eIndex++] = (byte) e1;
             eData[eIndex++] = (byte) e2;
-            eData[eIndex++] = pad < 2 ? (byte) e3 : (byte) '=';
-            eData[eIndex++] = pad < 1 ? (byte) e4 : (byte) '=';
+            if (pad < 2) {
+                eData[eIndex++] = (byte) e3;
+            } else {
+                eData[eIndex++] = (byte) '=';
+            }
+            if (pad < 1) {
+                eData[eIndex++] = (byte) e4;
+            } else {
+                eData[eIndex++] = (byte) '=';
+            }
 
         }
         return eData;

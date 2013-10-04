@@ -116,7 +116,9 @@ public class CopyFromHelper {
                 if (value instanceof CopyFrom) {
                     final CopyFrom source = (CopyFrom) value;
                     CopyFrom target = createInstance(source.getInterface());
-                    target = target == null ? (CopyFrom) value.getClass().newInstance() : target;
+                    if (target == null) {
+                        target = (CopyFrom) value.getClass().newInstance();
+                    }
                     target.copyFrom(source);
                     value = target;
                 } else {
@@ -140,7 +142,12 @@ public class CopyFromHelper {
 
     private Object doCopyCollection(final Collection collection, final Class baseInterface) throws Exception {
         // expecting SETs or LISTs only, going default implementation of them
-        final Collection newColl = collection instanceof Set ? (Collection) new HashSet() : (Collection) new ArrayList();
+        final Collection newColl;
+        if (collection instanceof Set) {
+            newColl = new HashSet();
+        } else {
+            newColl = new ArrayList();
+        }
         final Iterator i = collection.iterator();
         while (i.hasNext()) {
             final Object element = doCopy(i.next(), baseInterface);

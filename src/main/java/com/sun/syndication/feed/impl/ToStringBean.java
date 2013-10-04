@@ -111,9 +111,14 @@ public class ToStringBean implements Serializable {
      */
     @Override
     public String toString() {
-        final Stack stack = (Stack) PREFIX_TL.get();
-        final String[] tsInfo = (String[]) (stack.isEmpty() ? null : stack.peek());
-        String prefix;
+        final Stack<String[]> stack = (Stack<String[]>) PREFIX_TL.get();
+        final String[] tsInfo;
+        if (stack.isEmpty()) {
+            tsInfo = null;
+        } else {
+            tsInfo = stack.peek();
+        }
+        final String prefix;
         if (tsInfo == null) {
             final String className = obj.getClass().getName();
             prefix = className.substring(className.lastIndexOf(".") + 1);
@@ -181,7 +186,12 @@ public class ToStringBean implements Serializable {
                     tsInfo[0] = ePrefix;
                     final Stack stack = (Stack) PREFIX_TL.get();
                     stack.push(tsInfo);
-                    final String s = eValue != null ? eValue.toString() : "null";
+                    final String s;
+                    if (eValue != null) {
+                        s = eValue.toString();
+                    } else {
+                        s = "null";
+                    }
                     stack.pop();
                     if (tsInfo[1] == null) {
                         sb.append(ePrefix).append("=").append(s).append("\n");
@@ -206,7 +216,12 @@ public class ToStringBean implements Serializable {
                     tsInfo[0] = cPrefix;
                     final Stack stack = (Stack) PREFIX_TL.get();
                     stack.push(tsInfo);
-                    final String s = cValue != null ? cValue.toString() : "null";
+                    final String s;
+                    if (cValue != null) {
+                        s = cValue.toString();
+                    } else {
+                        s = "null";
+                    }
                     stack.pop();
                     if (tsInfo[1] == null) {
                         sb.append(cPrefix).append("=").append(s).append("\n");

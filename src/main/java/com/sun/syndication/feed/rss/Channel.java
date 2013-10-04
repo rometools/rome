@@ -349,7 +349,11 @@ public class Channel extends WireFeed {
      * 
      */
     public void setPubDate(final Date pubDate) {
-        this.pubDate = pubDate == null ? null : new Date(pubDate.getTime());
+        if (pubDate == null) {
+            this.pubDate = null;
+        } else {
+            this.pubDate = new Date(pubDate.getTime());
+        }
     }
 
     /**
@@ -376,7 +380,11 @@ public class Channel extends WireFeed {
      * 
      */
     public void setLastBuildDate(final Date lastBuildDate) {
-        this.lastBuildDate = lastBuildDate == null ? null : new Date(lastBuildDate.getTime());
+        if (lastBuildDate == null) {
+            this.lastBuildDate = null;
+        } else {
+            this.lastBuildDate = new Date(lastBuildDate.getTime());
+        }
     }
 
     /**
