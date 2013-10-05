@@ -27,7 +27,7 @@
         <url>https://github.com/rometools/rome/issues</url>
     </issueManagement>
 
-    <ciManagement>
+<!--    <ciManagement>
         <notifiers>
             <notifier>
                 <configuration>
@@ -35,33 +35,23 @@
                 </configuration>
             </notifier>
         </notifiers>
-    </ciManagement>
+    </ciManagement>-->
 
     <inceptionYear>2004</inceptionYear>
 
-    <mailingLists>
+<!--    <mailingLists>
         <mailingList>
             <name>dev@rome.dev.java.net</name>
             <subscribe>https://rome.dev.java.net/servlets/ProjectMailingListList</subscribe>
             <unsubscribe>https://rome.dev.java.net/servlets/ProjectMailingListList</unsubscribe>
             <archive>https://rome.dev.java.net/servlets/SummarizeList?listName=dev</archive>
         </mailingList>
-    </mailingLists>
+    </mailingLists>-->
 
     <developers>
         <developer>
-            <name>Robert Cooper</name>
-            <url>http://www.screaming-penguin.com</url>
-            <timezone>-4</timezone>
-            <email>kebernet@gmail.com</email>
-        </developer>
-        <developer>
             <name>Alejandro Abdelnur</name>
             <url>http://blog.sun.com/roller/page/tucu/</url>
-            <timezone>0</timezone>
-        </developer>
-        <developer>
-            <name>Elaine Chien</name>
             <timezone>0</timezone>
         </developer>
         <developer>
@@ -70,9 +60,24 @@
             <timezone>-9</timezone>
         </developer>
         <developer>
+            <name>Elaine Chien</name>
+            <timezone>0</timezone>
+        </developer>
+        <developer>
+            <name>Robert Cooper</name>
+            <url>http://www.screaming-penguin.com</url>
+            <timezone>-4</timezone>
+            <email>kebernet@gmail.com</email>
+        </developer>
+        <developer>
             <name>Patrick Gotthard</name>
             <url>http://www.patrick-gotthard.de</url>
             <timezone>+1</timezone>
+        </developer>
+        <developer>
+            <name>Dave Johnson</name>
+            <url>http://rollerweblogger.org/roller</url>
+            <timezone>-5</timezone>
         </developer>
     </developers>
 
@@ -91,7 +96,7 @@
 
     <organization>
         <name>ROME Project</name>
-        <url>http://www.rometools.org</url>
+        <url>https://github.com/rometools</url>
     </organization>
 
     <properties>
