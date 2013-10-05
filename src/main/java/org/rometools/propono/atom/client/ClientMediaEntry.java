@@ -41,7 +41,7 @@ import org.apache.commons.httpclient.Header;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.jdom.JDOMException;
+import org.jdom2.JDOMException;
 
 /**
  * Client implementation of Atom media-link entry, an Atom entry that provides

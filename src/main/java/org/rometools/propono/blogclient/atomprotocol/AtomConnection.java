@@ -28,7 +28,7 @@ import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import org.jdom.Document;
+import org.jdom2.Document;
 
 import org.rometools.propono.blogclient.BlogConnection;
 import org.rometools.propono.blogclient.Blog;

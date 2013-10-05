@@ -16,8 +16,8 @@
 package org.rometools.propono.atom.server.impl;
 
 import java.util.Iterator;
-import org.jdom.Document;
-import org.jdom.output.XMLOutputter;
+import org.jdom2.Document;
+import org.jdom2.output.XMLOutputter;
 
 
 import com.sun.syndication.feed.WireFeed;

@@ -20,8 +20,8 @@
 package org.rometools.propono.atom.common.rome;
 
 import com.sun.syndication.io.impl.DateParser;
-import org.jdom.Element;
-import org.jdom.Namespace;
+import org.jdom2.Element;
+import org.jdom2.Namespace;
 
 import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.ModuleParser;

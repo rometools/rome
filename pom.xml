@@ -4,7 +4,7 @@
     <groupId>org.rometools</groupId>
     <artifactId>rome-propono</artifactId>
     <name>rome-propono</name>
-    <version>1.1-SNAPSHOT</version>
+    <version>2.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <description>The ROME Propono subproject is a Java class library that
         supports publishing protocols, specifically the Atom Publishing Protocol
@@ -160,7 +160,7 @@
         <dependency>
             <groupId>org.rometools</groupId>
             <artifactId>rome</artifactId>
-            <version>1.1-SNAPSHOT</version>
+            <version>2.0.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>

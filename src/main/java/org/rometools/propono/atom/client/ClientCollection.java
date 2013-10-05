@@ -33,7 +33,7 @@ import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpMethodBase;
 import org.apache.commons.httpclient.MultiThreadedHttpConnectionManager;
 import org.apache.commons.httpclient.methods.GetMethod;
-import org.jdom.Element;
+import org.jdom2.Element;
 
 /**
  * Models an Atom collection, extends Collection and adds methods for adding,
