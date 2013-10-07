@@ -24,10 +24,12 @@ import com.sun.syndication.feed.module.impl.ModuleUtils;
 import com.sun.syndication.feed.rss.Channel;
 import com.sun.syndication.feed.rss.Image;
 import com.sun.syndication.feed.rss.Item;
+import com.sun.syndication.feed.rss.Source;
 import com.sun.syndication.feed.synd.Converter;
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndEntryImpl;
 import com.sun.syndication.feed.synd.SyndFeed;
+import com.sun.syndication.feed.synd.SyndFeedImpl;
 import com.sun.syndication.feed.synd.SyndImage;
 import com.sun.syndication.feed.synd.SyndImageImpl;
 
@@ -104,7 +106,19 @@ public class ConverterForRSS090 implements Converter {
         syndEntry.setLink(item.getLink());
         syndEntry.setTitle(item.getTitle());
         syndEntry.setLink(item.getLink());
+        syndEntry.setSource(createSource(item.getSource()));
         return syndEntry;
+    }
+
+    protected SyndFeed createSource(final Source source) {
+        SyndFeed feed = null;
+        if (source != null) {
+            feed = new SyndFeedImpl();
+            feed.setLink(source.getUrl());
+            feed.setUri(source.getUrl());
+            feed.setTitle(source.getValue());
+        }
+        return feed;
     }
 
     @Override
@@ -166,12 +180,23 @@ public class ConverterForRSS090 implements Converter {
             item.setForeignMarkup(sEntry.getForeignMarkup());
         }
 
+        item.setSource(createSource(sEntry.getSource()));
         final String uri = sEntry.getUri();
         if (uri != null) {
             item.setUri(uri);
         }
 
         return item;
+    }
+
+    protected Source createSource(final SyndFeed feed) {
+        Source source = null;
+        if (feed != null) {
+            source = new Source();
+            source.setUrl(feed.getUri());
+            source.setValue(feed.getTitle());
+        }
+        return source;
     }
 
 }
