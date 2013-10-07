@@ -115,6 +115,7 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
      * @return the person name, <b>null</b> if none.
      * 
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -126,6 +127,7 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
      * @param name the person name, <b>null</b> if none.
      * 
      */
+    @Override
     public void setName(final String name) {
         this.name = name;
     }
@@ -169,6 +171,7 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
      * @return the person email, <b>null</b> if none.
      * 
      */
+    @Override
     public String getEmail() {
         return email;
     }
@@ -180,6 +183,7 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
      * @param email the person email, <b>null</b> if none.
      * 
      */
+    @Override
     public void setEmail(final String email) {
         this.email = email;
     }
@@ -191,6 +195,7 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
      * @return Returns the uri.
      * @since Atom 1.0
      */
+    @Override
     public String getUri() {
         return uri;
     }
@@ -202,6 +207,7 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
      * @param uri The uri to set.
      * @since Atom 1.0
      */
+    @Override
     public void setUri(final String uri) {
         this.uri = uri;
     }

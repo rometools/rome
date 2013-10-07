@@ -166,7 +166,7 @@ public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
         basePropInterfaceMap.put("type", String.class);
         basePropInterfaceMap.put("length", Long.TYPE);
 
-        final Map<Class<? extends CopyFrom<?>>, Class<?>> basePropClassImplMap = Collections.<Class<? extends CopyFrom<?>>, Class<?>>emptyMap();
+        final Map<Class<? extends CopyFrom<?>>, Class<?>> basePropClassImplMap = Collections.<Class<? extends CopyFrom<?>>, Class<?>> emptyMap();
 
         COPY_FROM_HELPER = new CopyFromHelper(SyndEnclosure.class, basePropInterfaceMap, basePropClassImplMap);
     }

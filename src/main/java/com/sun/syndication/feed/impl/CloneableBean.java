@@ -107,7 +107,7 @@ public class CloneableBean implements Serializable, Cloneable {
     public CloneableBean(final Object obj, final Set<String> ignoreProperties) {
         this.obj = obj;
         if (ignoreProperties == null) {
-            this.ignoreProperties = Collections.<String>emptySet();
+            this.ignoreProperties = Collections.<String> emptySet();
         } else {
             this.ignoreProperties = ignoreProperties;
         }
@@ -236,7 +236,7 @@ public class CloneableBean implements Serializable, Cloneable {
     private <T> Collection<T> cloneCollection(final Collection<T> collection) throws Exception {
         @SuppressWarnings("unchecked")
         final Class<Collection<T>> mClass = (Class<Collection<T>>) collection.getClass();
-        final Collection<T> newColl = (Collection<T>) mClass.newInstance();
+        final Collection<T> newColl = mClass.newInstance();
         final Iterator<T> i = collection.iterator();
         while (i.hasNext()) {
             newColl.add(doClone(i.next()));
@@ -247,10 +247,10 @@ public class CloneableBean implements Serializable, Cloneable {
     private <S, T> Map<S, T> cloneMap(final Map<S, T> map) throws Exception {
         @SuppressWarnings("unchecked")
         final Class<Map<S, T>> mClass = (Class<Map<S, T>>) map.getClass();
-        final Map<S, T> newMap = (Map<S, T>) mClass.newInstance();
+        final Map<S, T> newMap = mClass.newInstance();
         final Iterator<Entry<S, T>> entries = map.entrySet().iterator();
         while (entries.hasNext()) {
-            final Map.Entry<S, T> entry = (Map.Entry<S, T>) entries.next();
+            final Map.Entry<S, T> entry = entries.next();
             newMap.put(doClone(entry.getKey()), doClone(entry.getValue()));
         }
         return newMap;

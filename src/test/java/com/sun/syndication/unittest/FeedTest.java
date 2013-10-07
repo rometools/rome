@@ -8,12 +8,12 @@ import junit.framework.TestCase;
 
 import org.jdom2.Document;
 import org.jdom2.input.SAXBuilder;
+import org.jdom2.input.sax.XMLReaders;
 
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.WireFeedInput;
-import org.jdom2.input.sax.XMLReaders;
 
 /**
  * @author pat, tucu

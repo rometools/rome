@@ -195,7 +195,7 @@ public class SyndContentImpl implements Serializable, SyndContent {
         basePropInterfaceMap.put("type", String.class);
         basePropInterfaceMap.put("value", String.class);
 
-        final Map<Class<? extends CopyFrom<?>>, Class<?>> basePropClassImplMap = Collections.<Class<? extends CopyFrom<?>>, Class<?>>emptyMap();
+        final Map<Class<? extends CopyFrom<?>>, Class<?>> basePropClassImplMap = Collections.<Class<? extends CopyFrom<?>>, Class<?>> emptyMap();
 
         COPY_FROM_HELPER = new CopyFromHelper(SyndContent.class, basePropInterfaceMap, basePropClassImplMap);
     }

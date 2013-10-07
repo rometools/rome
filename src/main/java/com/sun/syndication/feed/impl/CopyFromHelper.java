@@ -41,7 +41,8 @@ public class CopyFromHelper {
     private final Map<String, Class<?>> baseInterfaceMap; // ENTRIES(propertyName,interface.class)
     private final Map<Class<? extends CopyFrom<?>>, Class<?>> baseImplMap; // ENTRIES(interface.class,implementation.class)
 
-    public CopyFromHelper(final Class<? extends CopyFrom<?>> beanInterfaceClass, final Map<String, Class<?>> basePropInterfaceMap, final Map<Class<? extends CopyFrom<?>>, Class<?>> basePropClassImplMap) {
+    public CopyFromHelper(final Class<? extends CopyFrom<?>> beanInterfaceClass, final Map<String, Class<?>> basePropInterfaceMap,
+            final Map<Class<? extends CopyFrom<?>>, Class<?>> basePropClassImplMap) {
         this.beanInterfaceClass = beanInterfaceClass;
         baseInterfaceMap = basePropInterfaceMap;
         baseImplMap = basePropClassImplMap;
@@ -104,11 +105,11 @@ public class CopyFromHelper {
         if (value != null) {
             final Class<?> vClass = value.getClass();
             if (vClass.isArray()) {
-                value = (T) this.<Object>doCopyArray((Object[]) value, baseInterface);
+                value = (T) this.<Object> doCopyArray((Object[]) value, baseInterface);
             } else if (value instanceof Collection) {
-                value = (T) this.<Object>doCopyCollection((Collection<Object>) value, baseInterface);
+                value = (T) this.<Object> doCopyCollection((Collection<Object>) value, baseInterface);
             } else if (value instanceof Map) {
-                value = (T) this.<Object, Object>doCopyMap((Map<Object, Object>) value, baseInterface);
+                value = (T) this.<Object, Object> doCopyMap((Map<Object, Object>) value, baseInterface);
             } else if (isBasicType(vClass)) {
                 // value = value; // nothing to do here
                 if (value instanceof Date) { // because Date it is not inmutable
@@ -153,7 +154,7 @@ public class CopyFromHelper {
         }
         final Iterator<T> i = collection.iterator();
         while (i.hasNext()) {
-            newColl.add(this.<T>doCopy(i.next(), baseInterface));
+            newColl.add(this.<T> doCopy(i.next(), baseInterface));
         }
         return newColl;
     }

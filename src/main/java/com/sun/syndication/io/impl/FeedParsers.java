@@ -74,7 +74,7 @@ public class FeedParsers extends PluginManager<WireFeedParser> {
         final List<WireFeedParser> parsers = getPlugins();
         WireFeedParser parser = null;
         for (int i = 0; parser == null && i < parsers.size(); i++) {
-            parser = (WireFeedParser) parsers.get(i);
+            parser = parsers.get(i);
             if (!parser.isMyType(document)) {
                 parser = null;
             }

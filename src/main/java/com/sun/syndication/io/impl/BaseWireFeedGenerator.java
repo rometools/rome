@@ -88,7 +88,7 @@ public abstract class BaseWireFeedGenerator implements WireFeedGenerator {
         if (foreignMarkup != null) {
             final Iterator<Element> elems = foreignMarkup.iterator();
             while (elems.hasNext()) {
-                final Element elem = (Element) elems.next();
+                final Element elem = elems.next();
                 final Parent parent = elem.getParent();
                 if (parent != null) {
                     parent.removeContent(elem);
@@ -136,8 +136,8 @@ public abstract class BaseWireFeedGenerator implements WireFeedGenerator {
         }
         final List<Element> kids = el.getChildren();
         for (int i = 0; i < kids.size(); i++) {
-            collectUsedPrefixes((Element) kids.get(i), collector); // recursion
-                                                                   // - worth it
+            collectUsedPrefixes(kids.get(i), collector); // recursion
+                                                         // - worth it
         }
     }
 

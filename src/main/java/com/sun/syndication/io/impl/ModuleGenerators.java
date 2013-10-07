@@ -37,7 +37,7 @@ public class ModuleGenerators extends PluginManager<ModuleGenerator> {
     }
 
     public ModuleGenerator getGenerator(final String uri) {
-        return (ModuleGenerator) getPlugin(uri);
+        return getPlugin(uri);
     }
 
     @Override

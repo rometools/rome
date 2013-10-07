@@ -218,7 +218,7 @@ public class SyndImageImpl implements Serializable, SyndImage {
         basePropInterfaceMap.put("link", String.class);
         basePropInterfaceMap.put("description", String.class);
 
-        final Map<Class<? extends CopyFrom<?>>, Class<?>> basePropClassImplMap = Collections.<Class<? extends CopyFrom<?>>, Class<?>>emptyMap();
+        final Map<Class<? extends CopyFrom<?>>, Class<?>> basePropClassImplMap = Collections.<Class<? extends CopyFrom<?>>, Class<?>> emptyMap();
 
         COPY_FROM_HELPER = new CopyFromHelper(SyndImage.class, basePropInterfaceMap, basePropClassImplMap);
     }

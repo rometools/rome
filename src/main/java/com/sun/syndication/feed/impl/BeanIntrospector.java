@@ -94,14 +94,15 @@ public class BeanIntrospector {
         return pds;
     }
 
-    private static List<PropertyDescriptor> merge(final Map<String, PropertyDescriptor> getters, final Map<String, PropertyDescriptor> setters) throws IntrospectionException {
+    private static List<PropertyDescriptor> merge(final Map<String, PropertyDescriptor> getters, final Map<String, PropertyDescriptor> setters)
+            throws IntrospectionException {
         final List<PropertyDescriptor> props = new ArrayList<PropertyDescriptor>();
         final Set<String> processedProps = new HashSet<String>();
         final Iterator<String> gs = getters.keySet().iterator();
         while (gs.hasNext()) {
-            final String name = (String) gs.next();
-            final PropertyDescriptor getter = (PropertyDescriptor) getters.get(name);
-            final PropertyDescriptor setter = (PropertyDescriptor) setters.get(name);
+            final String name = gs.next();
+            final PropertyDescriptor getter = getters.get(name);
+            final PropertyDescriptor setter = setters.get(name);
             if (setter != null) {
                 processedProps.add(name);
                 final PropertyDescriptor prop = new PropertyDescriptor(name, getter.getReadMethod(), setter.getWriteMethod());
@@ -114,8 +115,8 @@ public class BeanIntrospector {
         writeOnlyProps.removeAll(processedProps);
         final Iterator<String> ss = writeOnlyProps.iterator();
         while (ss.hasNext()) {
-            final String name = (String) ss.next();
-            final PropertyDescriptor setter = (PropertyDescriptor) setters.get(name);
+            final String name = ss.next();
+            final PropertyDescriptor setter = setters.get(name);
             props.add(setter);
         }
         return props;

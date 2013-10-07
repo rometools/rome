@@ -154,7 +154,7 @@ public abstract class PluginManager<T> {
             }
             classes.add(mClass);
         }
-        final Class<T>[] array = (Class<T>[]) new Class[classes.size()];
+        final Class<T>[] array = new Class[classes.size()];
         classes.toArray(array);
         return array;
     }
