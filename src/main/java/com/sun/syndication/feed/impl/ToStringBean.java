@@ -190,7 +190,12 @@ public class ToStringBean implements Serializable {
                     tsInfo[0] = ePrefix;
                     final Stack<String[]> stack = PREFIX_TL.get();
                     stack.push(tsInfo);
-                    final String s = eValue != null ? eValue.toString() : "null";
+                    final String s;
+                    if (eValue == null) {
+                        s = "null";
+                    } else {
+                        s = eValue.toString();
+                    }
                     stack.pop();
                     if (tsInfo[1] == null) {
                         sb.append(ePrefix).append("=").append(s).append("\n");
@@ -216,7 +221,12 @@ public class ToStringBean implements Serializable {
                     tsInfo[0] = cPrefix;
                     final Stack<String[]> stack = PREFIX_TL.get();
                     stack.push(tsInfo);
-                    final String s = cValue != null ? cValue.toString() : "null";
+                    final String s;
+                    if (cValue == null) {
+                        s = "null";
+                    } else {
+                        s = cValue.toString();
+                    }
                     stack.pop();
                     if (tsInfo[1] == null) {
                         sb.append(cPrefix).append("=").append(s).append("\n");

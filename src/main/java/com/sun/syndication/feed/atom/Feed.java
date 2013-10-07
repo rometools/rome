@@ -156,7 +156,10 @@ public class Feed extends WireFeed {
      *         list if none.
      */
     public List<Link> getAlternateLinks() {
-        return alternateLinks == null ? (alternateLinks = new ArrayList<Link>()) : alternateLinks;
+        if (alternateLinks == null) {
+            alternateLinks = new ArrayList<Link>();
+        }
+        return alternateLinks;
     }
 
     /**
@@ -178,7 +181,10 @@ public class Feed extends WireFeed {
      *         ones), an empty list if none.
      */
     public List<Link> getOtherLinks() {
-        return otherLinks == null ? (otherLinks = new ArrayList<Link>()) : otherLinks;
+        if (otherLinks == null) {
+            otherLinks = new ArrayList<Link>();
+        }
+        return otherLinks;
     }
 
     /**
@@ -381,7 +387,10 @@ public class Feed extends WireFeed {
      * 
      */
     public List<Entry> getEntries() {
-        return entries == null ? (entries = new ArrayList<Entry>()) : entries;
+        if (entries == null) {
+            entries = new ArrayList<Entry>();
+        }
+        return entries;
     }
 
     /**
@@ -406,7 +415,10 @@ public class Feed extends WireFeed {
      */
     @Override
     public List<Module> getModules() {
-        return modules == null ? (modules = new ArrayList<Module>()) : modules;
+        if (modules == null) {
+            modules = new ArrayList<Module>();
+        }
+        return modules;
     }
 
     /**
@@ -442,7 +454,10 @@ public class Feed extends WireFeed {
      * @since Atom 1.0
      */
     public List<Category> getCategories() {
-        return categories == null ? (categories = new ArrayList<Category>()) : categories;
+        if (categories == null) {
+            categories = new ArrayList<Category>();
+        }
+        return categories;
     }
 
     /**
