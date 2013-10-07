@@ -39,33 +39,37 @@ package org.rometools.feed.module.yahooweather;
 import org.rometools.feed.module.yahooweather.types.Condition;
 import org.rometools.feed.module.yahooweather.types.Forecast;
 
-
 /**
  * An interface describing the entry/item level data for Yahoo Weather.
+ * 
  * @version $Id: YWeatherEntryModule.java,v 1.2 2008/01/22 14:50:06 kebernet Exp $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public interface YWeatherEntryModule extends YWeatherModule {
     /**
      * The current conditions.
+     * 
      * @return The current conditions.
      */
     public Condition getCondition();
 
     /**
      * The current conditions.
+     * 
      * @param condition The current conditions.
      */
     public void setCondition(Condition condition);
 
     /**
      * Forecasts for this location.
+     * 
      * @return Forecasts for this location.
      */
     public Forecast[] getForecasts();
 
     /**
      * Forecasts for this location.
+     * 
      * @param forecasts Forecasts for this location.
      */
     public void setForecasts(Forecast[] forecasts);

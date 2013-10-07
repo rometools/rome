@@ -1,11 +1,9 @@
-
-
 /*
  * PhotocastModuleImpl.java
  *
  * Created on March 30, 2006, 6:23 PM
  *
-  *
+ *
  * This library is provided under dual licenses.
  * You may choose the terms of the Lesser General Public License or the Apache
  * License at your discretion.
@@ -43,17 +41,17 @@
 
 package org.rometools.feed.module.photocast;
 
+import java.net.URL;
+import java.util.Date;
+
+import org.rometools.feed.module.photocast.types.Metadata;
+
 import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.impl.EqualsBean;
 import com.sun.syndication.feed.impl.ToStringBean;
-import org.rometools.feed.module.photocast.types.Metadata;
-
-import java.net.URL;
-
-import java.util.Date;
 
 /**
- *
+ * 
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class PhotocastModuleImpl implements PhotocastModule {
@@ -71,7 +69,7 @@ public class PhotocastModuleImpl implements PhotocastModule {
         return photoDate;
     }
 
-    public void setPhotoDate(Date photoDate) {
+    public void setPhotoDate(final Date photoDate) {
         this.photoDate = photoDate;
     }
 
@@ -79,7 +77,7 @@ public class PhotocastModuleImpl implements PhotocastModule {
         return cropDate;
     }
 
-    public void setCropDate(Date cropDate) {
+    public void setCropDate(final Date cropDate) {
         this.cropDate = cropDate;
     }
 
@@ -87,7 +85,7 @@ public class PhotocastModuleImpl implements PhotocastModule {
         return imageUrl;
     }
 
-    public void setImageUrl(URL imageUrl) {
+    public void setImageUrl(final URL imageUrl) {
         this.imageUrl = imageUrl;
     }
 
@@ -95,7 +93,7 @@ public class PhotocastModuleImpl implements PhotocastModule {
         return thumbnailUrl;
     }
 
-    public void setThumbnailUrl(URL thumbnailUrl) {
+    public void setThumbnailUrl(final URL thumbnailUrl) {
         this.thumbnailUrl = thumbnailUrl;
     }
 
@@ -103,34 +101,27 @@ public class PhotocastModuleImpl implements PhotocastModule {
         return metadata;
     }
 
-    public void setMetadata(Metadata metadata) {
+    public void setMetadata(final Metadata metadata) {
         this.metadata = metadata;
     }
 
-    public void copyFrom(CopyFrom obj) {
-        PhotocastModule pm = (PhotocastModule) obj;
-        this.setPhotoDate((pm.getPhotoDate() == null) ? null
-                                                      : (Date) pm.getPhotoDate()
-                                                                 .clone());
-        this.setCropDate((pm.getCropDate() == null) ? null
-                                                    : (Date) pm.getCropDate()
-                                                               .clone());
-        this.setImageUrl(pm.getImageUrl());
-        this.setThumbnailUrl(pm.getThumbnailUrl());
-        this.setMetadata(pm.getMetadata());
+    public void copyFrom(final CopyFrom obj) {
+        final PhotocastModule pm = (PhotocastModule) obj;
+        setPhotoDate(pm.getPhotoDate() == null ? null : (Date) pm.getPhotoDate().clone());
+        setCropDate(pm.getCropDate() == null ? null : (Date) pm.getCropDate().clone());
+        setImageUrl(pm.getImageUrl());
+        setThumbnailUrl(pm.getThumbnailUrl());
+        setMetadata(pm.getMetadata());
     }
 
+    @Override
     public Object clone() {
-        PhotocastModuleImpl pm = new PhotocastModuleImpl();
-        pm.setPhotoDate((this.getPhotoDate() == null) ? null
-                                                      : (Date) this.getPhotoDate()
-                                                                   .clone());
-        pm.setCropDate((this.getCropDate() == null) ? null
-                                                    : (Date) this.getCropDate()
-                                                                 .clone());
-        pm.setImageUrl(this.getThumbnailUrl());
-        pm.setThumbnailUrl(this.getThumbnailUrl());
-        pm.setMetadata(this.getMetadata());
+        final PhotocastModuleImpl pm = new PhotocastModuleImpl();
+        pm.setPhotoDate(getPhotoDate() == null ? null : (Date) getPhotoDate().clone());
+        pm.setCropDate(getCropDate() == null ? null : (Date) getCropDate().clone());
+        pm.setImageUrl(getThumbnailUrl());
+        pm.setThumbnailUrl(getThumbnailUrl());
+        pm.setMetadata(getMetadata());
 
         return pm;
     }
@@ -143,20 +134,23 @@ public class PhotocastModuleImpl implements PhotocastModule {
         return PhotocastModule.class;
     }
 
+    @Override
     public String toString() {
-        ToStringBean tsBean = new ToStringBean(PhotocastModuleImpl.class, this);
+        final ToStringBean tsBean = new ToStringBean(PhotocastModuleImpl.class, this);
 
         return tsBean.toString();
     }
 
-    public boolean equals(Object obj) {
-        EqualsBean eBean = new EqualsBean(PhotocastModuleImpl.class, this);
+    @Override
+    public boolean equals(final Object obj) {
+        final EqualsBean eBean = new EqualsBean(PhotocastModuleImpl.class, this);
 
         return eBean.beanEquals(obj);
     }
 
+    @Override
     public int hashCode() {
-        EqualsBean equals = new EqualsBean(PhotocastModuleImpl.class, this);
+        final EqualsBean equals = new EqualsBean(PhotocastModuleImpl.class, this);
 
         return equals.beanHashCode();
     }

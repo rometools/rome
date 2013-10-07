@@ -40,20 +40,23 @@
 
 package org.rometools.feed.module.cc;
 
-import com.sun.syndication.feed.module.Module;
 import org.rometools.feed.module.cc.types.License;
 
+import com.sun.syndication.feed.module.Module;
+
 /**
- *
+ * 
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public interface CreativeCommons extends Module {
-    
+
     public static final String URI = "rome:CreativeCommons";
-    
+
     public License[] getAllLicenses();
+
     public void setAllLicenses(License[] licenses);
-    
+
     public License[] getLicenses();
-    public void setLicenses(License[] license );
+
+    public void setLicenses(License[] license);
 }

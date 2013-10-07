@@ -17,11 +17,13 @@ package org.rometools.feed.module.opensearch;
 
 import com.sun.syndication.feed.module.Module;
 
-/** Provides access to A9 Open Search information.
+/**
+ * Provides access to A9 Open Search information.
+ * 
  * @author Michael W. Nassif (enrouteinc@gmail.com)
  */
-public interface OpenSearchModule extends Module, OpenSearchResponse{
+public interface OpenSearchModule extends Module, OpenSearchResponse {
 
-	public final static String URI = "http://a9.com/-/spec/opensearch/1.1/";
-	
+    public final static String URI = "http://a9.com/-/spec/opensearch/1.1/";
+
 }

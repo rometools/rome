@@ -42,19 +42,19 @@ import java.io.Serializable;
 import com.sun.syndication.feed.impl.EqualsBean;
 import com.sun.syndication.feed.impl.ToStringBean;
 
-
 /**
  * The location of this forecast. Attributes:
- *      <ul class="topspace">
- *        <li>city: city name (string)</li>
- *        <li>region: state, territory, or region, if given (string)</li>
- *        <li>country: two-character country code. (string)</li></ul>
+ * <ul class="topspace">
+ * <li>city: city name (string)</li>
+ * <li>region: state, territory, or region, if given (string)</li>
+ * <li>country: two-character country code. (string)</li>
+ * </ul>
+ * 
  * @version $Id: Location.java,v 1.2 2008/01/22 14:50:05 kebernet Exp $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Location implements Serializable, Cloneable {
-    private transient ToStringBean toString = new ToStringBean(Location.class,
-            this);
+    private transient ToStringBean toString = new ToStringBean(Location.class, this);
     private transient EqualsBean equals = new EqualsBean(Location.class, this);
     private String city;
     private String region;
@@ -69,11 +69,12 @@ public class Location implements Serializable, Cloneable {
 
     /**
      * Constructs a new Location object.
+     * 
      * @param city city name
      * @param region state, territory, or region, if given
      * @param country two-character country code.
      */
-    public Location(String city, String region, String country) {
+    public Location(final String city, final String region, final String country) {
         super();
         this.city = city;
         this.region = region;
@@ -82,6 +83,7 @@ public class Location implements Serializable, Cloneable {
 
     /**
      * City name
+     * 
      * @return city name.
      */
     public String getCity() {
@@ -90,14 +92,16 @@ public class Location implements Serializable, Cloneable {
 
     /**
      * City name
+     * 
      * @param city city name
      */
-    public void setCity(String city) {
+    public void setCity(final String city) {
         this.city = city;
     }
 
     /**
      * state, territory, or region, if given
+     * 
      * @return state, territory, or region, if given
      */
     public String getRegion() {
@@ -106,14 +110,16 @@ public class Location implements Serializable, Cloneable {
 
     /**
      * state, territory, or region, if given
+     * 
      * @param region state, territory, or region, if given
      */
-    public void setRegion(String region) {
+    public void setRegion(final String region) {
         this.region = region;
     }
 
     /**
      * country two-character country code.
+     * 
      * @return country two-character country code.
      */
     public String getCountry() {
@@ -122,25 +128,30 @@ public class Location implements Serializable, Cloneable {
 
     /**
      * country two-character country code.
+     * 
      * @param country country two-character country code.
      */
-    public void setCountry(String country) {
+    public void setCountry(final String country) {
         this.country = country;
     }
 
-    public boolean equals(Object o) {
-        return this.equals.equals(o);
+    @Override
+    public boolean equals(final Object o) {
+        return equals.equals(o);
     }
 
+    @Override
     public int hashCode() {
-        return this.equals.hashCode();
+        return equals.hashCode();
     }
 
+    @Override
     public String toString() {
-        return this.toString.toString();
+        return toString.toString();
     }
 
+    @Override
     public Object clone() {
-        return new Location(this.city, this.region, this.country);
+        return new Location(city, region, country);
     }
 }

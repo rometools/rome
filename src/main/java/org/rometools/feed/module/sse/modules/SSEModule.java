@@ -1,16 +1,16 @@
 package org.rometools.feed.module.sse.modules;
 
-import com.sun.syndication.feed.CopyFrom;
-import com.sun.syndication.feed.module.Module;
-import org.jdom.Namespace;
-
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.jdom2.Namespace;
+
+import com.sun.syndication.feed.CopyFrom;
+import com.sun.syndication.feed.module.Module;
+
 /**
- * The base module for SSE data synchronization.  Defines a namespace, uri, and basic
- * copying operations.
+ * The base module for SSE data synchronization. Defines a namespace, uri, and basic copying operations.
  */
 public abstract class SSEModule implements Module {
     public static final String SSE_SCHEMA_URI = "http://www.microsoft.com/schemas/rss/sse";
@@ -22,7 +22,7 @@ public abstract class SSEModule implements Module {
     public static final Set NAMESPACES;
 
     static {
-        Set nss = new HashSet();
+        final Set nss = new HashSet();
         nss.add(SSEModule.SSE_NS);
         NAMESPACES = Collections.unmodifiableSet(nss);
     }
@@ -35,15 +35,16 @@ public abstract class SSEModule implements Module {
         return getClass();
     }
 
+    @Override
     public Object clone() {
         SSEModule clone = null;
         try {
-            clone = (SSEModule) this.getClass().newInstance();
+            clone = this.getClass().newInstance();
             clone.copyFrom(this);
-        } catch (InstantiationException e) {
+        } catch (final InstantiationException e) {
             // TODO: use logging
             e.printStackTrace();
-        } catch (IllegalAccessException e) {
+        } catch (final IllegalAccessException e) {
             // TODO: use logging
             e.printStackTrace();
         }

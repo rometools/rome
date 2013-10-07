@@ -7,46 +7,50 @@
 
 package org.rometools.feed.module.opensearch;
 
-import org.rometools.feed.module.opensearch.OpenSearchModule;
+import java.io.File;
+
+import junit.framework.Test;
+import junit.framework.TestSuite;
+
 import org.rometools.feed.module.AbstractTestCase;
-import junit.framework.*;
+
 import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.SyndFeedOutput;
-import java.io.File;
 
 /**
- *
+ * 
  * @author cooper
  */
 public class OpenSearchModuleTest extends AbstractTestCase {
-    
-    public OpenSearchModuleTest(String testName) {
+
+    public OpenSearchModuleTest(final String testName) {
         super(testName);
     }
-    
+
     public static Test suite() {
-        TestSuite suite = new TestSuite(OpenSearchModuleTest.class);
-        
+        final TestSuite suite = new TestSuite(OpenSearchModuleTest.class);
+
         return suite;
     }
-    
+
     public void testEndToEnd() throws Exception {
-        SyndFeedInput input = new SyndFeedInput();
-        File test = new File( super.getTestFile( "os") );
-        File[] files = test.listFiles();
-        for( int j=0; j < files.length; j++ ){
-            if( !files[j].getName().endsWith(".xml") )
+        final SyndFeedInput input = new SyndFeedInput();
+        final File test = new File(super.getTestFile("os"));
+        final File[] files = test.listFiles();
+        for (int j = 0; j < files.length; j++) {
+            if (!files[j].getName().endsWith(".xml")) {
                 continue;
-            SyndFeed feed =  input.build( files[j] );
-            Module m = feed.getModule( OpenSearchModule.URI );
-            SyndFeedOutput output = new SyndFeedOutput();
-            File outfile = new File( "target/" + files[j].getName() ) ;
-            output.output( feed, outfile );
-            SyndFeed feed2 = input.build( outfile );
-            assertEquals( m, feed2.getModule(OpenSearchModule.URI));
+            }
+            final SyndFeed feed = input.build(files[j]);
+            final Module m = feed.getModule(OpenSearchModule.URI);
+            final SyndFeedOutput output = new SyndFeedOutput();
+            final File outfile = new File("target/" + files[j].getName());
+            output.output(feed, outfile);
+            final SyndFeed feed2 = input.build(outfile);
+            assertEquals(m, feed2.getModule(OpenSearchModule.URI));
         }
     }
-    
+
 }

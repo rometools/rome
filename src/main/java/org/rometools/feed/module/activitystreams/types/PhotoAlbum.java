@@ -18,23 +18,25 @@
 package org.rometools.feed.module.activitystreams.types;
 
 /**
- * <p>The "photo album" object type represents a collection of
- *          images.
- *</p>
- *<p>The "photo album" object type is identified by the URI <tt>http://activitystrea.ms/schema/1.0/photo-album</tt>.
- *</p>
- *<p>The photo album has the following additional components:
- *</p>
- *<p></p>
- *<blockquote class="text"><dl>
- *<dt>Preview Image Link</dt>
- *<dd>A Media Link Construct
- *              describing an image file that can be used as a preview image for
- *              the album. Represented by the Representative Image component of
- *              the base Object Construct. Processors MAY ignore thumbnails that
- *              are of an inappropriate size for their user interface.
- *</dd>
- *</dl></blockquote>
+ * <p>
+ * The "photo album" object type represents a collection of images.
+ * </p>
+ * <p>
+ * The "photo album" object type is identified by the URI <tt>http://activitystrea.ms/schema/1.0/photo-album</tt>.
+ * </p>
+ * <p>
+ * The photo album has the following additional components:
+ * </p>
+ * <p>
+ * </p>
+ * <blockquote class="text">
+ * <dl>
+ * <dt>Preview Image Link</dt>
+ * <dd>A Media Link Construct describing an image file that can be used as a preview image for the album. Represented by the Representative Image component of
+ * the base Object Construct. Processors MAY ignore thumbnails that are of an inappropriate size for their user interface.</dd>
+ * </dl>
+ * </blockquote>
+ * 
  * @author robert.cooper
  */
 public class PhotoAlbum extends ActivityObject {

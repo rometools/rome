@@ -7,29 +7,23 @@
 
 package org.rometools.feed.module.sle.io;
 
-import junit.framework.*;
-import com.sun.syndication.feed.module.Module;
-import org.rometools.feed.module.sle.SimpleListExtension;
-import org.rometools.feed.module.sle.types.Group;
-import org.rometools.feed.module.sle.types.Sort;
-import java.util.HashSet;
-import java.util.Set;
-import org.jdom.Element;
-import org.jdom.Namespace;
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
 
 /**
- *
+ * 
  * @author cooper
  */
 public class ModuleGeneratorTest extends TestCase {
-    
-    public ModuleGeneratorTest(String testName) {
+
+    public ModuleGeneratorTest(final String testName) {
         super(testName);
     }
 
     public static Test suite() {
-        TestSuite suite = new TestSuite(ModuleGeneratorTest.class);
-        
+        final TestSuite suite = new TestSuite(ModuleGeneratorTest.class);
+
         return suite;
     }
 
@@ -40,6 +34,4 @@ public class ModuleGeneratorTest extends TestCase {
         // TODO add your test code.
     }
 
-    
-    
 }

@@ -3,7 +3,7 @@
  *
  * Created on April 18, 2006, 7:18 PM
  *
-  * This code is currently released under the Mozilla Public License.
+ * This code is currently released under the Mozilla Public License.
  * http://www.mozilla.org/MPL/
  *
  * Alternately you may apply the terms of the Apache Software License
@@ -22,10 +22,9 @@
  */
 package org.rometools.feed.module.mediarss.types;
 
-
-/** This class is an idenfier for UrlReference and PlayerReference and
- * is required for constructing a MediaContent object.
- *
+/**
+ * This class is an idenfier for UrlReference and PlayerReference and is required for constructing a MediaContent object.
+ * 
  * @author cooper
  */
 public interface Reference {

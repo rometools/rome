@@ -39,10 +39,9 @@
  */
 package org.rometools.feed.module.base.types;
 
-
-
 /**
  * Enumeration of values suitable for "price_type" or "salary_type".
+ * 
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @version $Revision: 1.1 $
  */
@@ -58,18 +57,20 @@ public class PriceTypeEnumeration implements CloneableType {
     /**
      * String value encapsulated
      */
-    private String value;
+    private final String value;
 
     /**
      * Creates a new instance of PriceTypeEnumeration
+     * 
      * @param value Value to encapsulate
      */
-    private PriceTypeEnumeration(String value) {
+    private PriceTypeEnumeration(final String value) {
         this.value = value;
     }
 
     /**
      * Returns the string value of this instance.
+     * 
      * @return Returns the string value of this instance.
      */
     public String getValue() {
@@ -78,10 +79,11 @@ public class PriceTypeEnumeration implements CloneableType {
 
     /**
      * Returns a PriceTypeEnumeration based on the String value or null.
+     * 
      * @param value Value to search for.
      * @return PriceTypeEnumeration or null.
      */
-    public static PriceTypeEnumeration findByValue(String value) {
+    public static PriceTypeEnumeration findByValue(final String value) {
         if (value.equalsIgnoreCase("negotiable")) {
             return PriceTypeEnumeration.NEGOTIABLE;
         } else {
@@ -91,16 +93,20 @@ public class PriceTypeEnumeration implements CloneableType {
 
     /**
      * Returns a duplicate of this instance
+     * 
      * @return The same instance.
      */
+    @Override
     public Object clone() {
         return this;
     }
 
     /**
      * Returns the string value of this instance.
+     * 
      * @return Returns the string value of this instance.
      */
+    @Override
     public String toString() {
         return value;
     }

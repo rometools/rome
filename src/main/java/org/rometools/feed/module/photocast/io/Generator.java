@@ -3,7 +3,7 @@
  *
  * Created on March 30, 2006, 6:43 PM
  *
-  *
+ *
  * This library is provided under dual licenses.
  * You may choose the terms of the Lesser General Public License or the Apache
  * License at your discretion.
@@ -41,50 +41,54 @@
 
 package org.rometools.feed.module.photocast.io;
 
-import com.sun.syndication.feed.module.Module;
-import org.rometools.feed.module.photocast.PhotocastModule;
-import com.sun.syndication.io.ModuleGenerator;
 import java.util.HashSet;
 import java.util.Set;
-import org.jdom.Element;
-import org.jdom.Namespace;
+
+import org.jdom2.Element;
+import org.jdom2.Namespace;
+import org.rometools.feed.module.photocast.PhotocastModule;
+
+import com.sun.syndication.feed.module.Module;
+import com.sun.syndication.io.ModuleGenerator;
 
 /**
- *
+ * 
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Generator implements ModuleGenerator {
-    
-    private static final Namespace NS = Namespace.getNamespace( "apple-wallpapers", PhotocastModule.URI );
+
+    private static final Namespace NS = Namespace.getNamespace("apple-wallpapers", PhotocastModule.URI);
     private static final HashSet NAMESPACES = new HashSet();
     private static final String FEED_VERSION = "0.9";
-    static{
-        NAMESPACES.add( NS );
+    static {
+        NAMESPACES.add(NS);
     }
+
     /** Creates a new instance of Generator */
     public Generator() {
         super();
     }
 
-    public void generate(Module module, Element element) {
-        if( !(module instanceof PhotocastModule ) )
-            return;
-        PhotocastModule pm = (PhotocastModule) module;
-        if( element.getName().equals("channel") || element.getName().equals("feed") ){
-            element.addContent( generateSimpleElement( "feedVersion", FEED_VERSION) );
+    public void generate(final Module module, final Element element) {
+        if (!(module instanceof PhotocastModule)) {
             return;
         }
-        element.addContent( generateSimpleElement("photoDate", Parser.PHOTO_DATE_FORMAT.format(pm.getPhotoDate())));
-        element.addContent( generateSimpleElement("cropDate", Parser.CROP_DATE_FORMAT.format( pm.getCropDate() )));
-        element.addContent( generateSimpleElement("thumbnail", pm.getThumbnailUrl().toString() ) );
-        element.addContent( generateSimpleElement("image", pm.getImageUrl().toString() ) );
-        Element e = new Element( "metadata", NS );
-        Element pd = new Element( "PhotoDate", "" );
-        pd.addContent( pm.getMetadata().getPhotoDate().toString() );
-        e.addContent( pd );
-        Element com = new Element("Comments", "");
-        com.addContent( pm.getMetadata().getComments() );
-        e.addContent( com );
+        final PhotocastModule pm = (PhotocastModule) module;
+        if (element.getName().equals("channel") || element.getName().equals("feed")) {
+            element.addContent(generateSimpleElement("feedVersion", FEED_VERSION));
+            return;
+        }
+        element.addContent(generateSimpleElement("photoDate", Parser.PHOTO_DATE_FORMAT.format(pm.getPhotoDate())));
+        element.addContent(generateSimpleElement("cropDate", Parser.CROP_DATE_FORMAT.format(pm.getCropDate())));
+        element.addContent(generateSimpleElement("thumbnail", pm.getThumbnailUrl().toString()));
+        element.addContent(generateSimpleElement("image", pm.getImageUrl().toString()));
+        final Element e = new Element("metadata", NS);
+        final Element pd = new Element("PhotoDate", "");
+        pd.addContent(pm.getMetadata().getPhotoDate().toString());
+        e.addContent(pd);
+        final Element com = new Element("Comments", "");
+        com.addContent(pm.getMetadata().getComments());
+        e.addContent(com);
         element.addContent(e);
     }
 
@@ -95,11 +99,12 @@ public class Generator implements ModuleGenerator {
     public String getNamespaceUri() {
         return PhotocastModule.URI;
     }
-    protected Element generateSimpleElement(String name, String value) {
-        Element element = new Element(name, NS);
+
+    protected Element generateSimpleElement(final String name, final String value) {
+        final Element element = new Element(name, NS);
         element.addContent(value);
 
         return element;
     }
-   
+
 }

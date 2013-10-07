@@ -27,59 +27,73 @@ import java.io.Serializable;
 import com.sun.syndication.feed.impl.EqualsBean;
 import com.sun.syndication.feed.impl.ToStringBean;
 
-
 /**
- *
+ * 
  * <strong>&lt;media:hash&gt;</strong></p>
- *
- * <p>This is the hash of the binary media file. It can appear multiple times as long as each instance is a different <em>algo</em>. It has 1 optional attribute.</p><p></p>
- *
- * <pre>        &lt;media:hash algo="md5"&gt;dfdec888b72151965a34b4b59031290a&lt;/media:hash&gt;</pre>
- *
- * <p><em>algo</em> indicates the algorithm used to create the hash. Possible values are 'md5' and 'sha-1'. Default value is 'md5'. It is an optional attribute.
+ * 
+ * <p>
+ * This is the hash of the binary media file. It can appear multiple times as long as each instance is a different <em>algo</em>. It has 1 optional attribute.
+ * </p>
+ * <p>
+ * </p>
+ * 
+ * <pre>
+ * &lt;media:hash algo="md5"&gt;dfdec888b72151965a34b4b59031290a&lt;/media:hash&gt;
+ * </pre>
+ * 
+ * <p>
+ * <em>algo</em> indicates the algorithm used to create the hash. Possible values are 'md5' and 'sha-1'. Default value is 'md5'. It is an optional attribute.
+ * 
  * @author cooper
  */
 public class Hash extends AbstractSchemeValue implements Serializable {
-	private static final long serialVersionUID = 3566980635881544337L;
+    private static final long serialVersionUID = 3566980635881544337L;
 
-	/**
+    /**
      * Creates a new instance of Hash
+     * 
      * @param algorithm algoright used
      * @param value value of the hash
      */
-    public Hash(String algorithm, String value) {
-        super(algorithm == null ? "MD5": algorithm , value);
+    public Hash(final String algorithm, final String value) {
+        super(algorithm == null ? "MD5" : algorithm, value);
     }
+
     /**
      * Creates a new instance of Hash assuming the default algorithm of MD5
+     * 
      * @param algorithm algoright used
      */
-    public Hash(String value ){
-        this( null, value);
+    public Hash(final String value) {
+        this(null, value);
     }
 
     /**
      * Alsorithm used for the hash
+     * 
      * @return Alsorithm used for the hash
      */
     public String getAlgorithm() {
         return super.getScheme();
     }
 
-    public boolean equals(Object obj) {
-        EqualsBean eBean = new EqualsBean(this.getClass(), this);
+    @Override
+    public boolean equals(final Object obj) {
+        final EqualsBean eBean = new EqualsBean(this.getClass(), this);
 
         return eBean.beanEquals(obj);
     }
 
+    @Override
     public int hashCode() {
-        EqualsBean equals = new EqualsBean(this.getClass(), this);
+        final EqualsBean equals = new EqualsBean(this.getClass(), this);
 
         return equals.beanHashCode();
     }
 
+    @Override
     public String toString() {
-        ToStringBean tsBean = new ToStringBean(this.getClass(), this);
+        final ToStringBean tsBean = new ToStringBean(this.getClass(), this);
 
         return tsBean.toString();
     }

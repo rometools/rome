@@ -20,11 +20,13 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.jdom.Element;
+import org.jdom2.Element;
+import org.rometools.feed.module.georss.geometries.AbstractGeometry;
+import org.rometools.feed.module.georss.geometries.Point;
+import org.rometools.feed.module.georss.geometries.Position;
 
 import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.ModuleGenerator;
-import org.rometools.feed.module.georss.geometries.*;
 
 /**
  * W3CGeoGenerator produces georss elements in georss W3C geo format.
@@ -34,18 +36,18 @@ import org.rometools.feed.module.georss.geometries.*;
  * 
  */
 public class W3CGeoGenerator implements ModuleGenerator {
-    
+
     private static boolean isShort = true;
 
     private static final Set NAMESPACES;
-    
+
     static {
-        Set nss = new HashSet();
+        final Set nss = new HashSet();
         nss.add(GeoRSSModule.W3CGEO_NS);
         NAMESPACES = Collections.unmodifiableSet(nss);
     }
-    
-    public static void enableDefaultPointElement(){
+
+    public static void enableDefaultPointElement() {
         isShort = false;
     }
 
@@ -70,10 +72,9 @@ public class W3CGeoGenerator implements ModuleGenerator {
     /*
      * (non-Javadoc)
      * 
-     * @see com.sun.syndication.io.ModuleGenerator#generate(com.sun.syndication.feed.module.Module,
-     *      org.jdom.Element)
+     * @see com.sun.syndication.io.ModuleGenerator#generate(com.sun.syndication.feed.module.Module, org.jdom2.Element)
      */
-    public void generate(Module module, Element element) {
+    public void generate(final Module module, final Element element) {
         // this is not necessary, it is done to avoid the namespace definition
         // in every item.
         Element root = element;
@@ -88,21 +89,20 @@ public class W3CGeoGenerator implements ModuleGenerator {
             element.addContent(pointElement);
         }
 
-        GeoRSSModule geoRSSModule = (GeoRSSModule) module;
-         AbstractGeometry geometry = geoRSSModule.getGeometry();
-        
+        final GeoRSSModule geoRSSModule = (GeoRSSModule) module;
+        final AbstractGeometry geometry = geoRSSModule.getGeometry();
+
         if (geometry instanceof Point) {
-            Position pos = ((Point)geometry).getPosition();
-            
-            Element latElement = new Element("lat", GeoRSSModule.W3CGEO_NS);
+            final Position pos = ((Point) geometry).getPosition();
+
+            final Element latElement = new Element("lat", GeoRSSModule.W3CGEO_NS);
             latElement.addContent(String.valueOf(pos.getLatitude()));
             pointElement.addContent(latElement);
-            Element lngElement = new Element("long", GeoRSSModule.W3CGEO_NS);
+            final Element lngElement = new Element("long", GeoRSSModule.W3CGEO_NS);
             lngElement.addContent(String.valueOf(pos.getLongitude()));
             pointElement.addContent(lngElement);
-        }
-        else {
-             System.err.println("W3C Geo format can't handle geometries of type: " + geometry.getClass().getName());
+        } else {
+            System.err.println("W3C Geo format can't handle geometries of type: " + geometry.getClass().getName());
         }
     }
 }

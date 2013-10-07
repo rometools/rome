@@ -43,14 +43,14 @@
  */
 package org.rometools.feed.module.content;
 
-import com.sun.syndication.feed.CopyFrom;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sun.syndication.feed.CopyFrom;
 
 /**
  * @version $Revision: 1.4 $
- * @author  <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
+ * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class ContentModuleImpl extends com.sun.syndication.feed.module.ModuleImpl implements ContentModule {
     private List encodeds;
@@ -61,24 +61,24 @@ public class ContentModuleImpl extends com.sun.syndication.feed.module.ModuleImp
         super(ContentModuleImpl.class, URI);
     }
 
-    protected ContentModuleImpl(java.lang.Class beanClass, java.lang.String uri) {
+    protected ContentModuleImpl(final java.lang.Class beanClass, final java.lang.String uri) {
         super(beanClass, uri);
     }
 
     public List getEncodeds() {
-        this.encodeds = this.encodeds == null ? new ArrayList() : this.encodeds;
-        return this.encodeds;
+        encodeds = encodeds == null ? new ArrayList() : encodeds;
+        return encodeds;
     }
 
-    public void setEncodeds(List encodeds) {
+    public void setEncodeds(final List encodeds) {
         this.encodeds = encodeds;
     }
 
-    public void copyFrom(CopyFrom obj) {
-        ContentModule cm = (ContentModule) obj;
-        this.setEncodeds(cm.getEncodeds());
-        this.setContentItems(cm.getContentItems());
-        this.setContents(cm.getContents());
+    public void copyFrom(final CopyFrom obj) {
+        final ContentModule cm = (ContentModule) obj;
+        setEncodeds(cm.getEncodeds());
+        setContentItems(cm.getContentItems());
+        setContents(cm.getContents());
     }
 
     public Class getInterface() {
@@ -86,24 +86,24 @@ public class ContentModuleImpl extends com.sun.syndication.feed.module.ModuleImp
     }
 
     public List getContentItems() {
-        this.contentItems = this.contentItems == null ? new ArrayList() : this.contentItems;
-        return this.contentItems;
+        contentItems = contentItems == null ? new ArrayList() : contentItems;
+        return contentItems;
     }
 
-    public void setContentItems(List list) {
-        this.contentItems = list;
+    public void setContentItems(final List list) {
+        contentItems = list;
     }
 
     public List getContents() {
-        this.contents = this.contents == null ? new ArrayList() : this.contents;
-        return this.contents;
+        contents = contents == null ? new ArrayList() : contents;
+        return contents;
     }
 
-    public void setContents(List contents) {
+    public void setContents(final List contents) {
         this.contents = contents;
     }
 
-    public String toString(String str) {
+    public String toString(final String str) {
         return contentItems.toString();
     }
 }

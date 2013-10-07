@@ -13,14 +13,16 @@ import java.io.Serializable;
 
 /**
  * Abstract base class for rings (closed linear objects used for polygon borders)
+ * 
  * @author runaas
  */
 public abstract class AbstractRing implements Cloneable, Serializable {
-    
+
     /** Creates a new instance of AbstractRing */
     public AbstractRing() {
     }
-    
+
+    @Override
     public Object clone() throws CloneNotSupportedException {
         return super.clone();
     }

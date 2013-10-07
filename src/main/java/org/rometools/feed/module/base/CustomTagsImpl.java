@@ -20,49 +20,50 @@
 
 package org.rometools.feed.module.base;
 
-import com.sun.syndication.feed.CopyFrom;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.sun.syndication.feed.CopyFrom;
 
 /**
  * @version $Revision: 1.1 $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class CustomTagsImpl implements CustomTags {
-    
+
     private List values;
+
     /** Creates a new instance of CustomTagsImpl */
     public CustomTagsImpl() {
     }
-    
-    public List getValues(){
-	values = (values == null )? new ArrayList() : values;
-	return values;
+
+    public List getValues() {
+        values = values == null ? new ArrayList() : values;
+        return values;
     }
-    
-    public void setValues(List values){
-	this.values = values;
+
+    public void setValues(final List values) {
+        this.values = values;
     }
-    
-    public void copyFrom(CopyFrom object) {
-	CustomTags ct = (CustomTags) object;
-	this.values = new ArrayList( ct.getValues() );
+
+    public void copyFrom(final CopyFrom object) {
+        final CustomTags ct = (CustomTags) object;
+        values = new ArrayList(ct.getValues());
     }
-    
+
     @Override
     public Object clone() {
-	CustomTagsImpl cti = new CustomTagsImpl();
-	cti.values = new ArrayList( this.values );
-	return cti;
+        final CustomTagsImpl cti = new CustomTagsImpl();
+        cti.values = new ArrayList(values);
+        return cti;
     }
-    
-    public Class getInterface(){
-	return CustomTags.class;
+
+    public Class getInterface() {
+        return CustomTags.class;
     }
 
     public String getUri() {
-	return CustomTags.URI;
+        return CustomTags.URI;
     }
 
-    
 }

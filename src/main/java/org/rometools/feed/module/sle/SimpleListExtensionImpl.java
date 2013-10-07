@@ -17,11 +17,11 @@
  */
 package org.rometools.feed.module.sle;
 
-import com.sun.syndication.feed.CopyFrom;
-import com.sun.syndication.feed.module.ModuleImpl;
 import org.rometools.feed.module.sle.types.Group;
 import org.rometools.feed.module.sle.types.Sort;
 
+import com.sun.syndication.feed.CopyFrom;
+import com.sun.syndication.feed.module.ModuleImpl;
 
 /**
  * 
@@ -37,7 +37,7 @@ public class SimpleListExtensionImpl extends ModuleImpl implements SimpleListExt
         super(SimpleListExtensionImpl.class, SimpleListExtension.URI);
     }
 
-    public void setGroupFields(Group[] groupFields) {
+    public void setGroupFields(final Group[] groupFields) {
         this.groupFields = groupFields;
     }
 
@@ -48,17 +48,16 @@ public class SimpleListExtensionImpl extends ModuleImpl implements SimpleListExt
     /**
      * Returns the interface the copyFrom works on.
      * <p>
-     * This is useful when dealing with properties that may have multiple implementations.
-     * For example, Module.
+     * This is useful when dealing with properties that may have multiple implementations. For example, Module.
      * <p>
-     *
+     * 
      * @return the interface the copyFrom works on.
      */
     public Class getInterface() {
         return SimpleListExtension.class;
     }
 
-    public void setSortFields(Sort[] sortFields) {
+    public void setSortFields(final Sort[] sortFields) {
         this.sortFields = sortFields;
     }
 
@@ -66,7 +65,7 @@ public class SimpleListExtensionImpl extends ModuleImpl implements SimpleListExt
         return sortFields;
     }
 
-    public void setTreatAs(String treatAs) {
+    public void setTreatAs(final String treatAs) {
         this.treatAs = treatAs;
     }
 
@@ -77,9 +76,10 @@ public class SimpleListExtensionImpl extends ModuleImpl implements SimpleListExt
     /**
      * Returns the URI of the module.
      * <p>
-     *
+     * 
      * @return URI of the module.
      */
+    @Override
     public String getUri() {
         return SimpleListExtension.URI;
     }
@@ -89,16 +89,16 @@ public class SimpleListExtensionImpl extends ModuleImpl implements SimpleListExt
      * <p>
      * Any existing properties in this bean are lost.
      * <p>
-     * This method is useful for moving from one implementation of a bean interface to another.
-     * For example from the default SyndFeed bean implementation to a Hibernate ready implementation.
+     * This method is useful for moving from one implementation of a bean interface to another. For example from the default SyndFeed bean implementation to a
+     * Hibernate ready implementation.
      * <p>
-     *
+     * 
      * @param obj the instance to copy properties from.
      */
-    public void copyFrom(CopyFrom obj) {
-        SimpleListExtension sle = (SimpleListExtension) obj;
-        this.setGroupFields((Group[]) sle.getGroupFields().clone());
-        this.setSortFields((Sort[]) sle.getSortFields().clone());
-        this.setTreatAs(sle.getTreatAs());
+    public void copyFrom(final CopyFrom obj) {
+        final SimpleListExtension sle = (SimpleListExtension) obj;
+        setGroupFields(sle.getGroupFields().clone());
+        setSortFields(sle.getSortFields().clone());
+        setTreatAs(sle.getTreatAs());
     }
 }

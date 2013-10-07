@@ -42,23 +42,18 @@ import java.io.Serializable;
 import com.sun.syndication.feed.impl.EqualsBean;
 import com.sun.syndication.feed.impl.ToStringBean;
 
-
 /**
- *  Units for various aspects of the forecast. Attributes:
- *       <ul class="topspace">
- *         <li>temperature: degree units, f for Fahrenheit or c for Celsius (character)</li>
- *         <li>distance: units for distance, mi for miles or km for kilometers
- *           (string)</li>
- *         <li>pressure: units of barometric pressure, in for pounds per square
- *           inch or mb for millibars (string)</li>
- *         <li>speed: units of speed, mph for miles per hour or kph for kilometers
- *           per hour (string)</li>
- *       </ul>
- *       Note that the default RSS feed uses Fahrenheit degree units and English
- *       units for all other attributes (miles, pounds per square inch, miles
- *       per hour). If Celsius has been specified as the degree units for the
- *       feed (using the u request parameter), all the units are in metric format
- *       (Celsius, kilometers, millibars, kilometers per hour).
+ * Units for various aspects of the forecast. Attributes:
+ * <ul class="topspace">
+ * <li>temperature: degree units, f for Fahrenheit or c for Celsius (character)</li>
+ * <li>distance: units for distance, mi for miles or km for kilometers (string)</li>
+ * <li>pressure: units of barometric pressure, in for pounds per square inch or mb for millibars (string)</li>
+ * <li>speed: units of speed, mph for miles per hour or kph for kilometers per hour (string)</li>
+ * </ul>
+ * Note that the default RSS feed uses Fahrenheit degree units and English units for all other attributes (miles, pounds per square inch, miles per hour). If
+ * Celsius has been specified as the degree units for the feed (using the u request parameter), all the units are in metric format (Celsius, kilometers,
+ * millibars, kilometers per hour).
+ * 
  * @version $Id: Wind.java,v 1.2 2008/01/22 14:50:05 kebernet Exp $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
@@ -70,7 +65,7 @@ public class Wind implements Serializable, Cloneable {
     private int speed;
 
     /**
-     *  Simple Constructor
+     * Simple Constructor
      */
     public Wind() {
         super();
@@ -78,31 +73,36 @@ public class Wind implements Serializable, Cloneable {
 
     /**
      * Constructs a new Wind object
+     * 
      * @param chill wind chill adjusted temperature
      * @param direction direction of wind in degrees
      * @param speed speed of wind
      */
-    public Wind(int chill, int direction, int speed) {
+    public Wind(final int chill, final int direction, final int speed) {
         super();
         this.chill = chill;
         this.direction = direction;
         this.speed = speed;
     }
 
-    public boolean equals(Object o) {
-        return this.equals.equals(o);
+    @Override
+    public boolean equals(final Object o) {
+        return equals.equals(o);
     }
 
+    @Override
     public int hashCode() {
-        return this.equals.hashCode();
+        return equals.hashCode();
     }
 
+    @Override
     public String toString() {
-        return this.toString.toString();
+        return toString.toString();
     }
 
     /**
      * Wind chill adjusted temperature.
+     * 
      * @return int temperature value
      * @see Units
      */
@@ -112,15 +112,17 @@ public class Wind implements Serializable, Cloneable {
 
     /**
      * Wind chill adjusted temperature.
+     * 
      * @param chill int temperature value
      * @see Units
      */
-    public void setChill(int chill) {
+    public void setChill(final int chill) {
         this.chill = chill;
     }
 
     /**
      * Direction of wind in degrees
+     * 
      * @return int direction of wind.
      */
     public int getDirection() {
@@ -129,14 +131,16 @@ public class Wind implements Serializable, Cloneable {
 
     /**
      * Direction of wind in degrees
+     * 
      * @param direction int direction of wind.
      */
-    public void setDirection(int direction) {
+    public void setDirection(final int direction) {
         this.direction = direction;
     }
 
     /**
      * Speed of wind
+     * 
      * @return int speed of wind
      * @see Units
      */
@@ -146,14 +150,16 @@ public class Wind implements Serializable, Cloneable {
 
     /**
      * Speed of wind
+     * 
      * @param speed int speed of wind
      * @see Units
      */
-    public void setSpeed(int speed) {
+    public void setSpeed(final int speed) {
         this.speed = speed;
     }
 
+    @Override
     public Object clone() {
-        return new Wind(this.chill, this.direction, this.speed);
+        return new Wind(chill, direction, speed);
     }
 }

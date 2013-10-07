@@ -22,23 +22,24 @@
  */
 package org.rometools.feed.module.mediarss;
 
-import com.sun.syndication.feed.CopyFrom;
 import java.io.Serializable;
 
-import com.sun.syndication.feed.module.ModuleImpl;
 import org.rometools.feed.module.mediarss.types.Metadata;
 import org.rometools.feed.module.mediarss.types.PlayerReference;
 
+import com.sun.syndication.feed.CopyFrom;
+import com.sun.syndication.feed.module.ModuleImpl;
 
 /**
- *
+ * 
  * This class represents feed/channel level elements for MediaRSS
+ * 
  * @author cooper
  */
 public class MediaModuleImpl extends ModuleImpl implements MediaModule, Serializable {
-	private static final long serialVersionUID = 1506805082848531979L;
+    private static final long serialVersionUID = 1506805082848531979L;
 
-	private Metadata metadata;
+    private Metadata metadata;
     private PlayerReference player;
 
     /** Creates a new instance of MediaModuleImpl */
@@ -48,10 +49,11 @@ public class MediaModuleImpl extends ModuleImpl implements MediaModule, Serializ
 
     /**
      * constructor that passes values up to ModuleImpl.
+     * 
      * @param clazz
      * @param uri
      */
-    public MediaModuleImpl(Class clazz, String uri) {
+    public MediaModuleImpl(final Class clazz, final String uri) {
         super(clazz, uri);
     }
 
@@ -61,14 +63,16 @@ public class MediaModuleImpl extends ModuleImpl implements MediaModule, Serializ
 
     /**
      * Metadata for a feed.
+     * 
      * @param metadata Metadata for a feed.
      */
-    public void setMetadata(Metadata metadata) {
+    public void setMetadata(final Metadata metadata) {
         this.metadata = metadata;
     }
 
     /**
      * Metadata for a feed.
+     * 
      * @return Metadata for a feed.
      */
     public Metadata getMetadata() {
@@ -77,35 +81,39 @@ public class MediaModuleImpl extends ModuleImpl implements MediaModule, Serializ
 
     /**
      * Player for a feed.
+     * 
      * @param player Player for a feed.
      */
-    public void setPlayer(PlayerReference player) {
+    public void setPlayer(final PlayerReference player) {
         this.player = player;
     }
 
     /**
      * Player for a feed.
+     * 
      * @return Player for a feed.
      */
     public PlayerReference getPlayer() {
         return player;
     }
 
+    @Override
     public String getUri() {
         return MediaModule.URI;
     }
 
+    @Override
     public Object clone() {
-        MediaModuleImpl m = new MediaModuleImpl();
+        final MediaModuleImpl m = new MediaModuleImpl();
         m.setMetadata((Metadata) metadata.clone());
         m.setPlayer(player);
 
         return m;
     }
 
-    public void copyFrom(CopyFrom obj) {
-        MediaModule m = (MediaModule) obj;
-        this.metadata = (Metadata) m.getMetadata().clone();
-        this.player = m.getPlayer();
+    public void copyFrom(final CopyFrom obj) {
+        final MediaModule m = (MediaModule) obj;
+        metadata = (Metadata) m.getMetadata().clone();
+        player = m.getPlayer();
     }
 }

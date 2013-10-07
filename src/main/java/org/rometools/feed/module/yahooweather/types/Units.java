@@ -42,24 +42,19 @@ import java.io.Serializable;
 import com.sun.syndication.feed.impl.EqualsBean;
 import com.sun.syndication.feed.impl.ToStringBean;
 
-
 /**
  * Units for various aspects of the forecast. Attributes:
- *      <ul class="topspace">
- *        <li>temperature: degree units, f for Fahrenheit or c for Celsius (character)</li>
- *        <li>distance: units for distance, mi for miles or km for kilometers
- *          (string)</li>
- *         <li>pressure: units of barometric pressure, in for pounds per square
- *           inch or mb for millibars (string) [<em>I am pretty sure this is wrong.
+ * <ul class="topspace">
+ * <li>temperature: degree units, f for Fahrenheit or c for Celsius (character)</li>
+ * <li>distance: units for distance, mi for miles or km for kilometers (string)</li>
+ * <li>pressure: units of barometric pressure, in for pounds per square inch or mb for millibars (string) [<em>I am pretty sure this is wrong.
  *           I believe this number of be inches of Mercury, not PSI.</em>]</li>
- *         <li>speed: units of speed, mph for miles per hour or kph for kilometers
- *           per hour (string)</li>
- *       </ul>
- *      Note that the default RSS feed uses Fahrenheit degree units and English
- *      units for all other attributes (miles, pounds per square inch, miles
- *      per hour). If Celsius has been specified as the degree units for the
- *      feed (using the u request parameter), all the units are in metric format
- *      (Celsius, kilometers, millibars, kilometers per hour).
+ * <li>speed: units of speed, mph for miles per hour or kph for kilometers per hour (string)</li>
+ * </ul>
+ * Note that the default RSS feed uses Fahrenheit degree units and English units for all other attributes (miles, pounds per square inch, miles per hour). If
+ * Celsius has been specified as the degree units for the feed (using the u request parameter), all the units are in metric format (Celsius, kilometers,
+ * millibars, kilometers per hour).
+ * 
  * @version $Id: Units.java,v 1.2 2008/01/22 14:50:05 kebernet Exp $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
@@ -80,13 +75,13 @@ public class Units implements Serializable, Cloneable {
 
     /**
      * Constructs a new Units object
+     * 
      * @param temperature units of temp ("f" or "c");
      * @param distance units of distance ("mi" or "km")
      * @param pressure units of pressure ("in" or "mb")
      * @param speed units of speed ("mph" or "kph")
      */
-    public Units(String temperature, String distance, String pressure,
-        String speed) {
+    public Units(final String temperature, final String distance, final String pressure, final String speed) {
         super();
         this.temperature = temperature;
         this.distance = distance;
@@ -96,6 +91,7 @@ public class Units implements Serializable, Cloneable {
 
     /**
      * Units of Temperature.
+     * 
      * @return temperature units of temp ("f" or "c");
      */
     public String getTemperature() {
@@ -104,14 +100,16 @@ public class Units implements Serializable, Cloneable {
 
     /**
      * Units of Temperature.
+     * 
      * @param temperature units of temp ("f" or "c");
      */
-    public void setTemperature(String temperature) {
+    public void setTemperature(final String temperature) {
         this.temperature = temperature;
     }
 
-    /** Units of distance
-     *
+    /**
+     * Units of distance
+     * 
      * @return distance units of distance ("mi" or "km")
      */
     public String getDistance() {
@@ -120,14 +118,16 @@ public class Units implements Serializable, Cloneable {
 
     /**
      * Units of distance
+     * 
      * @param distance units of distance ("mi" or "km")
      */
-    public void setDistance(String distance) {
+    public void setDistance(final String distance) {
         this.distance = distance;
     }
 
     /**
      * Units of pressure
+     * 
      * @return units of pressure ("in" or "mb")
      */
     public String getPressure() {
@@ -136,14 +136,16 @@ public class Units implements Serializable, Cloneable {
 
     /**
      * Units of pressure
+     * 
      * @param pressure units of pressure ("in" or "mb")
      */
-    public void setPressure(String pressure) {
+    public void setPressure(final String pressure) {
         this.pressure = pressure;
     }
 
     /**
      * Units of speed
+     * 
      * @return units of speed ("mph" or "kph")
      */
     public String getSpeed() {
@@ -152,26 +154,30 @@ public class Units implements Serializable, Cloneable {
 
     /**
      * Units of speed
+     * 
      * @param speed units of speed ("mph" or "kph")
      */
-    public void setSpeed(String speed) {
+    public void setSpeed(final String speed) {
         this.speed = speed;
     }
 
-    public boolean equals(Object o) {
-        return this.equals.equals(o);
+    @Override
+    public boolean equals(final Object o) {
+        return equals.equals(o);
     }
 
+    @Override
     public int hashCode() {
-        return this.equals.hashCode();
+        return equals.hashCode();
     }
 
+    @Override
     public String toString() {
-        return this.toString.toString();
+        return toString.toString();
     }
 
+    @Override
     public Object clone() {
-        return new Units(this.temperature, this.distance, this.pressure,
-            this.speed);
+        return new Units(temperature, distance, pressure, speed);
     }
 }

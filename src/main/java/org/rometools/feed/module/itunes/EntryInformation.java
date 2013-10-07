@@ -43,25 +43,27 @@ package org.rometools.feed.module.itunes;
 
 import org.rometools.feed.module.itunes.types.Duration;
 
-
 /**
  * This class contains information for iTunes podcast feeds that exist at the Item level.
+ * 
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @version $Revision: 1.2 $
- *
+ * 
  */
-public interface EntryInformation extends ITunes{
+public interface EntryInformation extends ITunes {
 
     /**
      * Returns the Duration object for this Item
+     * 
      * @return Returns the Duration object for this Item
      */
     public Duration getDuration();
 
     /**
      * Sets the Duration object for this Item
+     * 
      * @param duration Sets the Duration object for this Item
      */
-    public void setDuration(Duration duration) ;
+    public void setDuration(Duration duration);
 
 }

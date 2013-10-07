@@ -16,30 +16,28 @@
  */
 package org.rometools.feed.module.activitystreams.types;
 
-
 /**
- * <p>The "audio" Object type represents audio content.
- *</p>
- *<p>The "audio" Object type is identified by the URI <tt>http://activitystrea.ms/schema/1.0/audio</tt>.
- *</p>
- *<p>An audio has the following additional components:
- *</p>
- *<p></p>
- *<blockquote class="text"><dl>
- *<dt>Audio Stream Link</dt>
- *<dd>A Media Link Construct linking
- *              to the audio content itself. Represented in JSON as a property
- *              called <tt>stream</tt> whose value is a JSON
- *              object with properties as defined in [TODO: xref the JSON
- *              serialization of a Media Link Construct]
- *</dd>
- *<dt>Embed Code</dt>
- *<dd>An HTML fragment that, when embedded in
- *              an HTML page, will provide an interactive player UI for the
- *              audio stream. Represented in JSON as a property called <tt>embedCode</tt> whose value is a JSON string
- *              containing the fragment of HTML.
- *</dd>
- *</dl>
+ * <p>
+ * The "audio" Object type represents audio content.
+ * </p>
+ * <p>
+ * The "audio" Object type is identified by the URI <tt>http://activitystrea.ms/schema/1.0/audio</tt>.
+ * </p>
+ * <p>
+ * An audio has the following additional components:
+ * </p>
+ * <p>
+ * </p>
+ * <blockquote class="text">
+ * <dl>
+ * <dt>Audio Stream Link</dt>
+ * <dd>A Media Link Construct linking to the audio content itself. Represented in JSON as a property called <tt>stream</tt> whose value is a JSON object with
+ * properties as defined in [TODO: xref the JSON serialization of a Media Link Construct]</dd>
+ * <dt>Embed Code</dt>
+ * <dd>An HTML fragment that, when embedded in an HTML page, will provide an interactive player UI for the audio stream. Represented in JSON as a property
+ * called <tt>embedCode</tt> whose value is a JSON string containing the fragment of HTML.</dd>
+ * </dl>
+ * 
  * @author robert.cooper
  */
 public class Audio extends ActivityObject {
@@ -48,38 +46,38 @@ public class Audio extends ActivityObject {
 
     /**
      * Set the value of embedCode
-     *
+     * 
      * @param newembedCode new value of embedCode
      */
-    public void setEmbedCode(String newembedCode) {
-        this.embedCode = newembedCode;
+    public void setEmbedCode(final String newembedCode) {
+        embedCode = newembedCode;
     }
 
     /**
      * Get the value of embedCode
-     *
+     * 
      * @return the value of embedCode
      */
     public String getEmbedCode() {
-        return this.embedCode;
+        return embedCode;
     }
 
     /**
      * Set the value of streamLink
-     *
+     * 
      * @param newstreamLink new value of streamLink
      */
-    public void setStreamLink(String newstreamLink) {
-        this.streamLink = newstreamLink;
+    public void setStreamLink(final String newstreamLink) {
+        streamLink = newstreamLink;
     }
 
     /**
      * Get the value of streamLink
-     *
+     * 
      * @return the value of streamLink
      */
     public String getStreamLink() {
-        return this.streamLink;
+        return streamLink;
     }
 
     @Override

@@ -20,12 +20,12 @@ package org.rometools.feed.module.activitystreams.types;
 import junit.framework.TestCase;
 
 /**
- *
+ * 
  * @author robert.cooper
  */
 public class VerbTest extends TestCase {
-    
-    public VerbTest(String testName) {
+
+    public VerbTest(final String testName) {
         super(testName);
     }
 
@@ -39,18 +39,14 @@ public class VerbTest extends TestCase {
         super.tearDown();
     }
 
-    
-
     /**
      * Test of valueOf method, of class Verb.
      */
     public void testValueOf() {
         System.out.println("valueOf");
-        String fav = Verb.MARK_AS_FAVORITE.toString();
+        final String fav = Verb.MARK_AS_FAVORITE.toString();
         assertEquals("http://activitystrea.ms/schema/1.0/favorite", fav);
         assertEquals(Verb.MARK_AS_FAVORITE, Verb.fromIRI(fav));
     }
-
-    
 
 }

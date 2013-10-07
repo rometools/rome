@@ -18,13 +18,15 @@
 package org.rometools.feed.module.activitystreams.types;
 
 /**
- * <p>The "group" Object type represents a social networking group. A
- *          group is a collection of people which people can join and leave.
- *</p>
- *<p>The "group" Object type is identified by the URI <tt>http://activitystrea.ms/schema/1.0/group</tt>.
- *</p>
- *<p>A group has no additional components.
- 
+ * <p>
+ * The "group" Object type represents a social networking group. A group is a collection of people which people can join and leave.
+ * </p>
+ * <p>
+ * The "group" Object type is identified by the URI <tt>http://activitystrea.ms/schema/1.0/group</tt>.
+ * </p>
+ * <p>
+ * A group has no additional components.
+ * 
  * @author robert.cooper
  */
 public class Group {

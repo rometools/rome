@@ -43,11 +43,11 @@ package org.rometools.feed.module.content;
 
 import java.util.List;
 
-
-/** This class represents a content item per the "Original Syntax".
- * http://purl.org/rss/1.0/modules/content/
+/**
+ * This class represents a content item per the "Original Syntax". http://purl.org/rss/1.0/modules/content/
+ * 
  * @version $Revision: 1.1 $
- * @author  <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
+ * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class ContentItem implements Cloneable {
     private String contentFormat;
@@ -64,70 +64,71 @@ public class ContentItem implements Cloneable {
     }
 
     public String getContentFormat() {
-        return this.contentFormat;
+        return contentFormat;
     }
 
-    public void setContentFormat(String contentFormat) {
+    public void setContentFormat(final String contentFormat) {
         this.contentFormat = contentFormat;
     }
 
     public String getContentEncoding() {
-        return this.contentEncoding;
+        return contentEncoding;
     }
 
-    public void setContentEncoding(String contentEncoding) {
+    public void setContentEncoding(final String contentEncoding) {
         this.contentEncoding = contentEncoding;
     }
 
     public String getContentValue() {
-        return this.contentValue;
+        return contentValue;
     }
 
-    public void setContentValue(String contentValue) {
+    public void setContentValue(final String contentValue) {
         this.contentValue = contentValue;
     }
 
     public List getContentValueDOM() {
-        return this.contentValueDOM;
+        return contentValueDOM;
     }
 
-    public void setContentValueDOM(List contentValueDOM) {
+    public void setContentValueDOM(final List contentValueDOM) {
         this.contentValueDOM = contentValueDOM;
     }
 
     public String getContentAbout() {
-        return this.contentAbout;
+        return contentAbout;
     }
 
-    public void setContentAbout(String contentAbout) {
+    public void setContentAbout(final String contentAbout) {
         this.contentAbout = contentAbout;
     }
 
     public String getContentValueParseType() {
-        return this.contentValueParseType;
+        return contentValueParseType;
     }
 
-    public void setContentValueParseType(String contentValueParseType) {
+    public void setContentValueParseType(final String contentValueParseType) {
         this.contentValueParseType = contentValueParseType;
     }
 
     public List getContentValueNamespaces() {
-        return this.contentValueNamespace;
+        return contentValueNamespace;
     }
 
-    public void setContentValueNamespaces(List contentValueNamespace) {
+    public void setContentValueNamespaces(final List contentValueNamespace) {
         this.contentValueNamespace = contentValueNamespace;
     }
 
     public String getContentResource() {
-        return this.contentResource;
+        return contentResource;
     }
 
-    public void setContentResource(String contentResource) {
+    public void setContentResource(final String contentResource) {
         this.contentResource = contentResource;
     }
 
-    public boolean equals(Object obj) {
+    @Override
+    public boolean equals(final Object obj) {
         if (obj == null) {
             return false;
         }
@@ -135,68 +136,70 @@ public class ContentItem implements Cloneable {
             return false;
         }
         final ContentItem other = (ContentItem) obj;
-        if ((this.contentFormat == null) ? (other.contentFormat != null) : !this.contentFormat.equals(other.contentFormat)) {
-            //System.out.println("format");
+        if (contentFormat == null ? other.contentFormat != null : !contentFormat.equals(other.contentFormat)) {
+            // System.out.println("format");
             return false;
         }
-        if ((this.contentEncoding == null) ? (other.contentEncoding != null) : !this.contentEncoding.equals(other.contentEncoding)) {
-            //System.out.println("enc");
+        if (contentEncoding == null ? other.contentEncoding != null : !contentEncoding.equals(other.contentEncoding)) {
+            // System.out.println("enc");
             return false;
         }
-        String thisCV = this.contentValue.replaceAll(" xmlns=\"http://www.w3.org/1999/xhtml\"", "").trim();;
-        String thatCV = other.contentValue.replaceAll(" xmlns=\"http://www.w3.org/1999/xhtml\"", "").trim();
-        if ((this.contentValue == null) ? (other.contentValue != null) : !thisCV.equals(thatCV)) {
+        final String thisCV = contentValue.replaceAll(" xmlns=\"http://www.w3.org/1999/xhtml\"", "").trim();
+        ;
+        final String thatCV = other.contentValue.replaceAll(" xmlns=\"http://www.w3.org/1999/xhtml\"", "").trim();
+        if (contentValue == null ? other.contentValue != null : !thisCV.equals(thatCV)) {
 
             return false;
         }
-        if (this.contentValueDOM != other.contentValueDOM && (this.contentValueDOM == null || !this.contentValueDOM.equals(other.contentValueDOM))) {
-            //System.out.println("vd");
+        if (contentValueDOM != other.contentValueDOM && (contentValueDOM == null || !contentValueDOM.equals(other.contentValueDOM))) {
+            // System.out.println("vd");
             return false;
         }
-        if ((this.contentAbout == null) ? (other.contentAbout != null) : !this.contentAbout.equals(other.contentAbout)) {
-            //System.out.println("abt");
+        if (contentAbout == null ? other.contentAbout != null : !contentAbout.equals(other.contentAbout)) {
+            // System.out.println("abt");
             return false;
         }
-        if ((this.contentValueParseType == null) ? (other.contentValueParseType != null) : !this.contentValueParseType.equals(other.contentValueParseType)) {
-            //System.out.println("pt");
+        if (contentValueParseType == null ? other.contentValueParseType != null : !contentValueParseType.equals(other.contentValueParseType)) {
+            // System.out.println("pt");
             return false;
         }
-        if (this.contentValueNamespace != other.contentValueNamespace && (this.contentValueNamespace == null || !this.contentValueNamespace.equals(other.contentValueNamespace))) {
-            //System.out.println("ns");
+        if (contentValueNamespace != other.contentValueNamespace
+                && (contentValueNamespace == null || !contentValueNamespace.equals(other.contentValueNamespace))) {
+            // System.out.println("ns");
             return false;
         }
-        if ((this.contentResource == null) ? (other.contentResource != null) : !this.contentResource.equals(other.contentResource)) {
-           //System.out.println("res");
+        if (contentResource == null ? other.contentResource != null : !contentResource.equals(other.contentResource)) {
+            // System.out.println("res");
             return false;
         }
         return true;
     }
 
-
+    @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + (this.contentFormat != null ? this.contentFormat.hashCode() : 0);
-        hash = 97 * hash + (this.contentEncoding != null ? this.contentEncoding.hashCode() : 0);
-        hash = 97 * hash + (this.contentValue != null ? this.contentValue.hashCode() : 0);
-        hash = 97 * hash + (this.contentValueDOM != null ? this.contentValueDOM.hashCode() : 0);
-        hash = 97 * hash + (this.contentAbout != null ? this.contentAbout.hashCode() : 0);
-        hash = 97 * hash + (this.contentValueParseType != null ? this.contentValueParseType.hashCode() : 0);
-        hash = 97 * hash + (this.contentValueNamespace != null ? this.contentValueNamespace.hashCode() : 0);
-        hash = 97 * hash + (this.contentResource != null ? this.contentResource.hashCode() : 0);
+        hash = 97 * hash + (contentFormat != null ? contentFormat.hashCode() : 0);
+        hash = 97 * hash + (contentEncoding != null ? contentEncoding.hashCode() : 0);
+        hash = 97 * hash + (contentValue != null ? contentValue.hashCode() : 0);
+        hash = 97 * hash + (contentValueDOM != null ? contentValueDOM.hashCode() : 0);
+        hash = 97 * hash + (contentAbout != null ? contentAbout.hashCode() : 0);
+        hash = 97 * hash + (contentValueParseType != null ? contentValueParseType.hashCode() : 0);
+        hash = 97 * hash + (contentValueNamespace != null ? contentValueNamespace.hashCode() : 0);
+        hash = 97 * hash + (contentResource != null ? contentResource.hashCode() : 0);
         return hash;
     }
 
-   
+    @Override
     public Object clone() {
-        ContentItem o = new ContentItem();
-        o.contentAbout = this.contentAbout;
-        o.contentEncoding = this.contentEncoding;
-        o.contentFormat = this.contentFormat;
-        o.contentResource = this.contentResource;
-        o.contentValue = this.contentValue;
-        o.contentValueDOM = this.contentValueDOM;
-        o.contentValueNamespace = this.contentValueNamespace;
-        o.contentValueParseType = this.contentValueParseType;
+        final ContentItem o = new ContentItem();
+        o.contentAbout = contentAbout;
+        o.contentEncoding = contentEncoding;
+        o.contentFormat = contentFormat;
+        o.contentResource = contentResource;
+        o.contentValue = contentValue;
+        o.contentValueDOM = contentValueDOM;
+        o.contentValueNamespace = contentValueNamespace;
+        o.contentValueParseType = contentValueParseType;
 
         return o;
     }

@@ -21,61 +21,62 @@ import com.sun.syndication.feed.CopyFrom;
 
 /**
  * Implementation of the FeedBurner RSS extension.
- *
+ * 
  * @version 1.0
  * @author Georg Schmidl <georg.schmidl@scandio.de>
- *
+ * 
  */
 public class FeedBurnerImpl implements FeedBurner {
 
-	private static final long serialVersionUID = 4595722221441468838L;
+    private static final long serialVersionUID = 4595722221441468838L;
 
-	private String awareness;
-	private String origLink;
-	private String origEnclosureLink;
+    private String awareness;
+    private String origLink;
+    private String origEnclosureLink;
 
-	public String getAwareness() {
-		return awareness;
-	}
+    public String getAwareness() {
+        return awareness;
+    }
 
-	public void setAwareness(String awareness) {
-		this.awareness = awareness;
-	}
+    public void setAwareness(final String awareness) {
+        this.awareness = awareness;
+    }
 
-	public String getOrigLink() {
-		return origLink;
-	}
+    public String getOrigLink() {
+        return origLink;
+    }
 
-	public void setOrigLink(String origLink) {
-		this.origLink = origLink;
-	}
+    public void setOrigLink(final String origLink) {
+        this.origLink = origLink;
+    }
 
-	public String getOrigEnclosureLink() {
-		return origEnclosureLink;
-	}
+    public String getOrigEnclosureLink() {
+        return origEnclosureLink;
+    }
 
-	public void setOrigEnclosureLink(String origEnclosureLink) {
-		this.origEnclosureLink = origEnclosureLink;
-	}
+    public void setOrigEnclosureLink(final String origEnclosureLink) {
+        this.origEnclosureLink = origEnclosureLink;
+    }
 
-	public String getUri() {
-		return FeedBurner.URI;
-	}
+    public String getUri() {
+        return FeedBurner.URI;
+    }
 
-	public void copyFrom(CopyFrom object) {
-		FeedBurner source = (FeedBurner) object;
-		this.setAwareness(source.getAwareness());
-		this.setOrigLink(source.getOrigLink());
-		this.setOrigEnclosureLink(source.getOrigEnclosureLink());
-	}
+    public void copyFrom(final CopyFrom object) {
+        final FeedBurner source = (FeedBurner) object;
+        setAwareness(source.getAwareness());
+        setOrigLink(source.getOrigLink());
+        setOrigEnclosureLink(source.getOrigEnclosureLink());
+    }
 
-	public Class getInterface() {
-		return FeedBurner.class;
-	}
+    public Class getInterface() {
+        return FeedBurner.class;
+    }
 
-	public Object clone() {
-		FeedBurnerImpl fbi = new FeedBurnerImpl();
-		fbi.copyFrom( this );
-		return fbi;
+    @Override
+    public Object clone() {
+        final FeedBurnerImpl fbi = new FeedBurnerImpl();
+        fbi.copyFrom(this);
+        return fbi;
     }
 }

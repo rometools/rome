@@ -40,16 +40,18 @@
  *
  */
 package org.rometools.feed.module.itunes;
-import com.sun.syndication.feed.CopyFrom;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+import com.sun.syndication.feed.CopyFrom;
 
 /**
  * This class contains information for iTunes podcast feeds that exist at the Channel level.
+ * 
  * @version $Revision: 1.2 $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
@@ -67,23 +69,26 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
 
     /**
      * The parent categories for this feed
+     * 
      * @return The parent categories for this feed
      */
     public List getCategories() {
-	return (categories==null) ? (categories=new ArrayList()) : categories;
+        return categories == null ? (categories = new ArrayList()) : categories;
     }
 
     /**
      * The parent categories for this feed
+     * 
      * @param categories The parent categories for this feed
      */
-    public void setCategories(List categories) {
+    public void setCategories(final List categories) {
         this.categories = categories;
     }
 
     /**
      * Returns the owner name for the feed
-     * @return  Returns the owner name for the feed
+     * 
+     * @return Returns the owner name for the feed
      */
     public String getOwnerName() {
         return ownerName;
@@ -91,14 +96,16 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
 
     /**
      * Sets the owner name for the feed
+     * 
      * @param ownerName Sets the owner name for the feed
      */
-    public void setOwnerName(String ownerName) {
+    public void setOwnerName(final String ownerName) {
         this.ownerName = ownerName;
     }
 
     /**
      * Returns the owner email address for the feed.
+     * 
      * @return Returns the owner email address for the feed.
      */
     public String getOwnerEmailAddress() {
@@ -107,16 +114,18 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
 
     /**
      * Sets the owner email address for the feed.
+     * 
      * @param ownerEmailAddress Sets the owner email address for the feed.
      */
-    public void setOwnerEmailAddress(String ownerEmailAddress) {
+    public void setOwnerEmailAddress(final String ownerEmailAddress) {
         this.ownerEmailAddress = ownerEmailAddress;
     }
 
     /**
      * Returns the URL for the image.
-     *
+     * 
      * NOTE: To specification images should be in PNG or JPEG format.
+     * 
      * @return Returns the URL for the image.
      */
     public URL getImage() {
@@ -125,46 +134,49 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
 
     /**
      * Sets the URL for the image.
-     *
+     * 
      * NOTE: To specification images should be in PNG or JPEG format.
+     * 
      * @param image Sets the URL for the image.
      */
-    public void setImage(URL image) {
+    public void setImage(final URL image) {
         this.image = image;
     }
 
     /**
      * Required by the ROME API
+     * 
      * @param obj object to copy property values from
      */
-    public void copyFrom(CopyFrom obj) {
-        FeedInformationImpl info = (FeedInformationImpl) obj;
-        this.setAuthor(info.getAuthor());
-        this.setBlock(info.getBlock());
+    @Override
+    public void copyFrom(final CopyFrom obj) {
+        final FeedInformationImpl info = (FeedInformationImpl) obj;
+        setAuthor(info.getAuthor());
+        setBlock(info.getBlock());
 
-        this.getCategories().clear();
+        getCategories().clear();
         if (info.getCategories() != null) {
-            this.getCategories().addAll(info.getCategories());
+            getCategories().addAll(info.getCategories());
         }
 
-        this.setExplicit(info.getExplicit());
+        setExplicit(info.getExplicit());
 
         try {
             if (info.getImage() != null) {
-                this.setImage(new URL(info.getImage().toExternalForm()));
+                setImage(new URL(info.getImage().toExternalForm()));
             }
-        } catch (MalformedURLException e) {
+        } catch (final MalformedURLException e) {
             Logger.getAnonymousLogger().fine("Error copying URL:" + info.getImage());
         }
 
         if (info.getKeywords() != null) {
-            this.setKeywords((String[]) info.getKeywords().clone());
+            setKeywords(info.getKeywords().clone());
         }
 
-        this.setOwnerEmailAddress(info.getOwnerEmailAddress());
-        this.setOwnerName(info.getOwnerName());
-        this.setSubtitle(info.getSubtitle());
-        this.setSummary(info.getSummary());
+        setOwnerEmailAddress(info.getOwnerEmailAddress());
+        setOwnerName(info.getOwnerName());
+        setSubtitle(info.getSubtitle());
+        setSummary(info.getSummary());
     }
 
     /**
@@ -172,23 +184,25 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
      * 
      * @return Returns a copy of this FeedInformationImpl object
      */
+    @Override
     public Object clone() {
-        FeedInformationImpl info = new FeedInformationImpl();
+        final FeedInformationImpl info = new FeedInformationImpl();
         info.copyFrom(this);
 
         return info;
     }
 
+    @Override
     public String toString() {
-        StringBuffer sb = new StringBuffer("[");
+        final StringBuffer sb = new StringBuffer("[");
         sb.append(" email: ");
-        sb.append(this.getOwnerEmailAddress());
+        sb.append(getOwnerEmailAddress());
         sb.append(" name: ");
-        sb.append(this.getOwnerName());
+        sb.append(getOwnerName());
         sb.append(" image: ");
-        sb.append(this.getImage());
+        sb.append(getImage());
         sb.append(" categories: ");
-        sb.append(this.getCategories());
+        sb.append(getCategories());
         sb.append("]");
         sb.append(super.toString());
 

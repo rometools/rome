@@ -10,53 +10,59 @@
 package org.rometools.feed.module.georss.geometries;
 
 /**
- * Linear boundary object constructed by linear interpolation between points.
- * Start and end point should be identical.
+ * Linear boundary object constructed by linear interpolation between points. Start and end point should be identical.
+ * 
  * @author runaas
  */
 public final class LinearRing extends AbstractRing {
     private PositionList posList;
-    
+
     /** Creates a new instance of LinearLing */
     public LinearRing() {
     }
-    
-    public LinearRing(PositionList posList) {
+
+    public LinearRing(final PositionList posList) {
         this.posList = posList;
     }
-    
+
+    @Override
     public Object clone() throws CloneNotSupportedException {
-        LinearRing retval = (LinearRing)super.clone();
-        if (posList != null)
-            retval.posList = (PositionList)posList.clone();
+        final LinearRing retval = (LinearRing) super.clone();
+        if (posList != null) {
+            retval.posList = (PositionList) posList.clone();
+        }
         return retval;
     }
-    
-    public boolean equals(Object obj) {
-        if (this == obj)
+
+    @Override
+    public boolean equals(final Object obj) {
+        if (this == obj) {
             return true;
-        if (!super.equals(obj))
+        }
+        if (!super.equals(obj)) {
             return false;
-        return getPositionList().equals(((LinearRing)obj).getPositionList());
+        }
+        return getPositionList().equals(((LinearRing) obj).getPositionList());
     }
-    
+
     /**
      * Get the position list
-     *
+     * 
      * @return the positionlist
      */
     public PositionList getPositionList() {
-        if (posList == null)
+        if (posList == null) {
             posList = new PositionList();
+        }
         return posList;
     }
-    
+
     /**
      * Set the position list
-     *
+     * 
      * @param posList the new position list
      */
-    public void setPositionList(PositionList posList) {
+    public void setPositionList(final PositionList posList) {
         this.posList = posList;
     }
 }

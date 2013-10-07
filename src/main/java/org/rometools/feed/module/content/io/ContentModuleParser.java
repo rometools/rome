@@ -43,20 +43,20 @@
  */
 package org.rometools.feed.module.content.io;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.jdom2.Attribute;
+import org.jdom2.Element;
+import org.jdom2.Namespace;
+import org.jdom2.output.XMLOutputter;
 import org.rometools.feed.module.content.ContentItem;
 import org.rometools.feed.module.content.ContentModule;
 import org.rometools.feed.module.content.ContentModuleImpl;
-import org.jdom.Attribute;
-import org.jdom.Element;
-import org.jdom.Namespace;
 
-import org.jdom.output.XMLOutputter;
-
-import java.util.ArrayList;
-import java.util.List;
 /**
  * @version $Revision: 1.3 $
- * @author  <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
+ * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class ContentModuleParser implements com.sun.syndication.io.ModuleParser {
     private static final Namespace CONTENT_NS = Namespace.getNamespace("content", ContentModule.URI);
@@ -70,45 +70,45 @@ public class ContentModuleParser implements com.sun.syndication.io.ModuleParser 
         return ContentModule.URI;
     }
 
-    public com.sun.syndication.feed.module.Module parse(org.jdom.Element element) {
+    public com.sun.syndication.feed.module.Module parse(final org.jdom2.Element element) {
         boolean foundSomething = false;
-        ContentModule cm = new ContentModuleImpl();
-        List encodeds = element.getChildren("encoded", CONTENT_NS);
-        ArrayList contentStrings = new ArrayList();
-        ArrayList encodedStrings = new ArrayList();
+        final ContentModule cm = new ContentModuleImpl();
+        final List encodeds = element.getChildren("encoded", CONTENT_NS);
+        final ArrayList contentStrings = new ArrayList();
+        final ArrayList encodedStrings = new ArrayList();
 
         if (encodeds.size() > 0) {
             foundSomething = true;
 
             for (int i = 0; i < encodeds.size(); i++) {
-                Element encodedElement = (Element) encodeds.get(i);
+                final Element encodedElement = (Element) encodeds.get(i);
                 encodedStrings.add(encodedElement.getText());
                 contentStrings.add(encodedElement.getText());
             }
         }
 
-        ArrayList contentItems = new ArrayList();
-        List items = element.getChildren("items", CONTENT_NS);
+        final ArrayList contentItems = new ArrayList();
+        final List items = element.getChildren("items", CONTENT_NS);
 
         for (int i = 0; i < items.size(); i++) {
             foundSomething = true;
 
-            List lis = ((Element) items.get(i)).getChild("Bag", RDF_NS).getChildren("li", RDF_NS);
+            final List lis = ((Element) items.get(i)).getChild("Bag", RDF_NS).getChildren("li", RDF_NS);
 
             for (int j = 0; j < lis.size(); j++) {
-                ContentItem ci = new ContentItem();
-                Element li = (Element) lis.get(j);
-                Element item = li.getChild("item", CONTENT_NS);
-                Element format = item.getChild("format", CONTENT_NS);
-                Element encoding = item.getChild("encoding", CONTENT_NS);
-                Element value = item.getChild("value", RDF_NS);
+                final ContentItem ci = new ContentItem();
+                final Element li = (Element) lis.get(j);
+                final Element item = li.getChild("item", CONTENT_NS);
+                final Element format = item.getChild("format", CONTENT_NS);
+                final Element encoding = item.getChild("encoding", CONTENT_NS);
+                final Element value = item.getChild("value", RDF_NS);
 
                 if (value != null) {
                     if (value.getAttributeValue("parseType", RDF_NS) != null) {
                         ci.setContentValueParseType(value.getAttributeValue("parseType", RDF_NS));
                     }
 
-                    if ((ci.getContentValueParseType() != null) && ci.getContentValueParseType().equals("Literal")) {
+                    if (ci.getContentValueParseType() != null && ci.getContentValueParseType().equals("Literal")) {
                         ci.setContentValue(getXmlInnerText(value));
                         contentStrings.add(getXmlInnerText(value));
                         ci.setContentValueNamespaces(value.getAdditionalNamespaces());
@@ -117,7 +117,7 @@ public class ContentModuleParser implements com.sun.syndication.io.ModuleParser 
                         contentStrings.add(value.getText());
                     }
 
-                    ci.setContentValueDOM(((Element) value.clone()).getContent());
+                    ci.setContentValueDOM(value.clone().getContent());
                 }
 
                 if (format != null) {
@@ -129,7 +129,7 @@ public class ContentModuleParser implements com.sun.syndication.io.ModuleParser 
                 }
 
                 if (item != null) {
-                    Attribute about = item.getAttribute("about", RDF_NS);
+                    final Attribute about = item.getAttribute("about", RDF_NS);
 
                     if (about != null) {
                         ci.setContentAbout(about.getValue());
@@ -144,13 +144,13 @@ public class ContentModuleParser implements com.sun.syndication.io.ModuleParser 
         cm.setContentItems(contentItems);
         cm.setContents(contentStrings);
 
-        return (foundSomething) ? cm : null;
+        return foundSomething ? cm : null;
     }
 
-    protected String getXmlInnerText(Element e) {
-        StringBuffer sb = new StringBuffer();
-        XMLOutputter xo = new XMLOutputter();
-        List children = e.getContent();
+    protected String getXmlInnerText(final Element e) {
+        final StringBuffer sb = new StringBuffer();
+        final XMLOutputter xo = new XMLOutputter();
+        final List children = e.getContent();
         sb.append(xo.outputString(children));
 
         return sb.toString();

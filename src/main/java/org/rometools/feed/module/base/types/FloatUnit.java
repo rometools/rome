@@ -41,10 +41,9 @@ package org.rometools.feed.module.base.types;
 
 import org.rometools.feed.module.base.io.GoogleBaseParser;
 
-
-/** This class represents a quantity consisting of a float value and an optional
- * units specification.
- *
+/**
+ * This class represents a quantity consisting of a float value and an optional units specification.
+ * 
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @version $Revision: 1.1 $
  */
@@ -56,31 +55,34 @@ public class FloatUnit implements CloneableType {
     /**
      * Float value
      */
-    private float value;
+    private final float value;
 
     /**
      * Looks for a char in an array
+     * 
      * @param find char to search for
      * @param array array to search
      * @return boolean indicating presence.
      */
-    private boolean inCharArray( char find, char[] array ){
-        for( int i=0; i < array.length; i++ ){
-            if( find == array[i])
+    private boolean inCharArray(final char find, final char[] array) {
+        for (final char element : array) {
+            if (find == element) {
                 return true;
+            }
         }
         return false;
     }
-    
+
     /**
      * Creates a new float unit by parsing a String value
+     * 
      * @param source String value to parse
      */
-    public FloatUnit(String source) {
-        String parse = source.trim();
+    public FloatUnit(final String source) {
+        final String parse = source.trim();
         int space = -1;
-        for( int i=0; i < parse.length(); i++ ){
-            if( !inCharArray( parse.charAt(i), GoogleBaseParser.FLOAT_CHARS ) ){
+        for (int i = 0; i < parse.length(); i++) {
+            if (!inCharArray(parse.charAt(i), GoogleBaseParser.FLOAT_CHARS)) {
                 space = i;
                 break;
             }
@@ -90,26 +92,27 @@ public class FloatUnit implements CloneableType {
             space = parse.length();
         }
 
-        this.value = Float.parseFloat(
-                GoogleBaseParser.stripNonValidCharacters(GoogleBaseParser.FLOAT_CHARS, parse.substring(0, space)));
+        value = Float.parseFloat(GoogleBaseParser.stripNonValidCharacters(GoogleBaseParser.FLOAT_CHARS, parse.substring(0, space)));
 
-         if (space != parse.length()) {
-            this.units = parse.substring(space, parse.length()).trim();
-        }       
+        if (space != parse.length()) {
+            units = parse.substring(space, parse.length()).trim();
+        }
     }
 
     /**
      * Creates a new instance of FloatUnit
+     * 
      * @param value float value
      * @param units Units represented, or null.
      */
-    public FloatUnit(float value, String units) {
+    public FloatUnit(final float value, final String units) {
         this.value = value;
         this.units = units;
     }
 
     /**
      * Returns the units.
+     * 
      * @return Returns the units.
      */
     public String getUnits() {
@@ -118,6 +121,7 @@ public class FloatUnit implements CloneableType {
 
     /**
      * Returns the float value.
+     * 
      * @return Returns the float value.
      */
     public float getValue() {
@@ -126,34 +130,40 @@ public class FloatUnit implements CloneableType {
 
     /**
      * Duplicates the object.
+     * 
      * @return Duplicate FloatUnit
      */
+    @Override
     public Object clone() {
-        return new FloatUnit(0 + this.value, this.units);
+        return new FloatUnit(0 + value, units);
     }
 
     /**
      * Returns a String representation of the object.
+     * 
      * @return Returns a String representation of the object.
      */
+    @Override
     public String toString() {
-        if ((this.units != null) && (this.units.trim().length() > 0)) {
-            return this.value + " " + this.units;
+        if (units != null && units.trim().length() > 0) {
+            return value + " " + units;
         } else {
             return Float.toString(value);
         }
     }
-    
-    public boolean equals( Object o ){
-	if(!(o instanceof FloatUnit) )
-	    return false;
-	FloatUnit f = (FloatUnit) o;
-	if( f.getValue() != this.value ){
-	    return false;	    
-	}
-	if( this.units == f.getUnits() || ( this.units != null && this.units.equals( f.getUnits() )) ){
-	    return true;
-	}
-	return false;
+
+    @Override
+    public boolean equals(final Object o) {
+        if (!(o instanceof FloatUnit)) {
+            return false;
+        }
+        final FloatUnit f = (FloatUnit) o;
+        if (f.getValue() != value) {
+            return false;
+        }
+        if (units == f.getUnits() || units != null && units.equals(f.getUnits())) {
+            return true;
+        }
+        return false;
     }
 }

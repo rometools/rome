@@ -22,21 +22,20 @@
  */
 package org.rometools.feed.module.mediarss.types;
 
-import com.sun.syndication.feed.impl.EqualsBean;
-import com.sun.syndication.feed.impl.ToStringBean;
-
 import java.io.Serializable;
 import java.text.NumberFormat;
 
+import com.sun.syndication.feed.impl.EqualsBean;
 
 /**
  * Represents a <a href="http://www.ietf.org/rfc/rfc2326.txt">RFC 2326 3.6 Normal Play Time</a> timestamp.
+ * 
  * @author cooper
  */
 public class Time implements Serializable {
-	private static final long serialVersionUID = 4088522049885593073L;
+    private static final long serialVersionUID = 4088522049885593073L;
 
-	private static final long SECOND = 1000;
+    private static final long SECOND = 1000;
     private static final long MINUTE = 60 * SECOND;
     private static final long HOUR = 60 * MINUTE * SECOND;
     private static final NumberFormat nf = NumberFormat.getInstance();
@@ -49,29 +48,31 @@ public class Time implements Serializable {
 
     /**
      * Creates a new instance of Time
+     * 
      * @param milliseconds milliseconds in length or offset.
      */
-    public Time(long milliseconds) {
+    public Time(final long milliseconds) {
         this.milliseconds = milliseconds;
     }
 
     /**
      * Creates a new instance of Time
+     * 
      * @param value <a href="http://www.ietf.org/rfc/rfc2326.txt">RFC 2326 3.6 Normal Play Time</a> value
      */
-    public Time(String value) {
-        String[] values = value.split(":");
+    public Time(final String value) {
+        final String[] values = value.split(":");
         int count = values.length - 1;
-        this.milliseconds = (long) (Double.parseDouble(values[count]) * (double) SECOND);
+        milliseconds = (long) (Double.parseDouble(values[count]) * SECOND);
         count--;
 
         if (count >= 0) {
-            milliseconds += (Long.parseLong(values[count]) * MINUTE);
+            milliseconds += Long.parseLong(values[count]) * MINUTE;
             count--;
         }
 
         if (count >= 0) {
-            milliseconds += (Long.parseLong(values[count]) * HOUR);
+            milliseconds += Long.parseLong(values[count]) * HOUR;
         }
     }
 
@@ -79,27 +80,30 @@ public class Time implements Serializable {
         return milliseconds;
     }
 
-    public boolean equals(Object obj) {
-        EqualsBean eBean = new EqualsBean(this.getClass(), this);
+    @Override
+    public boolean equals(final Object obj) {
+        final EqualsBean eBean = new EqualsBean(this.getClass(), this);
 
         return eBean.beanEquals(obj);
     }
 
+    @Override
     public int hashCode() {
-        EqualsBean equals = new EqualsBean(this.getClass(), this);
+        final EqualsBean equals = new EqualsBean(this.getClass(), this);
 
         return equals.beanHashCode();
     }
 
+    @Override
     public String toString() {
-        long value = this.milliseconds;
-        long hours = value / HOUR;
-        value -= (hours * HOUR);
+        long value = milliseconds;
+        final long hours = value / HOUR;
+        value -= hours * HOUR;
 
-        long minutes = value / MINUTE;
-        value -= (minutes * MINUTE);
+        final long minutes = value / MINUTE;
+        value -= minutes * MINUTE;
 
-        double seconds = (double) value / (double) SECOND;
+        final double seconds = (double) value / (double) SECOND;
 
         return nf.format(hours) + ":" + nf.format(minutes) + ":" + seconds;
     }

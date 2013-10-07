@@ -1,23 +1,32 @@
 package org.rometools.feed.module.sse.modules;
 
-import com.sun.syndication.feed.CopyFrom;
 import java.util.Date;
 
+import com.sun.syndication.feed.CopyFrom;
+
 /**
- * <pre><sx:related></pre>Element within <pre><sx:sharing></pre>.
+ * <pre>
+ * <sx:related>
+ * </pre>
+ * 
+ * Element within
+ * 
+ * <pre>
+ * <sx:sharing>
+ * </pre>
+ * 
+ * .
  */
 public class Related extends SSEModule {
     public static final String NAME = "related";
 
     /**
-     * Indicates whether the link points to a file containing the complete collection of items for
-     * this feed.
+     * Indicates whether the link points to a file containing the complete collection of items for this feed.
      */
     public static final int COMPLETE = 0;
 
     /**
-     * Indicates whether the link points to a feed whose contents are being incorporated into this
-     * feed by the publisher.
+     * Indicates whether the link points to a feed whose contents are being incorporated into this feed by the publisher.
      */
     public static final int AGGREGATED = 1;
 
@@ -38,8 +47,9 @@ public class Related extends SSEModule {
     public static final String TYPE_ATTRIBUTE = "type";
     public static final String UNTIL_ATTRIBUTE = "until";
 
-    public void copyFrom(CopyFrom obj) {
-        Related related = (Related)obj;
+    @Override
+    public void copyFrom(final CopyFrom obj) {
+        final Related related = (Related) obj;
         related.link = link;
         related.since = since == null ? null : (Date) since.clone();
         related.title = title;
@@ -49,7 +59,7 @@ public class Related extends SSEModule {
 
     /**
      * link A required, URL attribute. The URL for related feeds.
-     *
+     * 
      * @return the URL for related feeds
      */
     // TODO: use a java.net.URL?
@@ -59,17 +69,16 @@ public class Related extends SSEModule {
 
     /**
      * Set the URL for related feeds.
-     *
+     * 
      * @param link the URL for related feeds.
      */
-    public void setLink(String link) {
+    public void setLink(final String link) {
         this.link = link;
     }
 
-
     /**
      * title An optional, string attribute. The name or description of the related feed.
-     *
+     * 
      * @return The name or description of the related feed.
      */
     public String getTitle() {
@@ -78,10 +87,10 @@ public class Related extends SSEModule {
 
     /**
      * Set the name or description of the related feed.
-     *
+     * 
      * @param title the name or description of the related feed.
      */
-    public void setTitle(String title) {
+    public void setTitle(final String title) {
         this.title = title;
     }
 
@@ -90,9 +99,8 @@ public class Related extends SSEModule {
      * <p>
      * "complete" if the link points to file containing the complete collection of items for this feed.
      * <p>
-     * "aggregated" if the link points to a feed whose contents are being incorporated into this feed
-     * by the publisher.
-     *
+     * "aggregated" if the link points to a feed whose contents are being incorporated into this feed by the publisher.
+     * 
      * @return the type of the releated feed.
      */
     public Integer getType() {
@@ -101,17 +109,17 @@ public class Related extends SSEModule {
 
     /**
      * Set the type of relationship, complete or aggregated.
-     *
+     * 
      * @param type the type of relationship, complete or aggregated.
      */
-    public void setType(Integer type) {
+    public void setType(final Integer type) {
         this.type = type;
     }
 
     /**
-     * An optional, date-time attribute. This is the starting point of the related feed. If this attribute
-     * is omitted or blank, it is assumed that this is a complete feed.
-     *
+     * An optional, date-time attribute. This is the starting point of the related feed. If this attribute is omitted or blank, it is assumed that this is a
+     * complete feed.
+     * 
      * @return the starting point of the related feed.
      */
     public Date getSince() {
@@ -120,16 +128,16 @@ public class Related extends SSEModule {
 
     /**
      * Set the starting point of the related feed.
-     *
+     * 
      * @param since the starting point of the related feed.
      */
-    public void setSince(Date since) {
+    public void setSince(final Date since) {
         this.since = since;
     }
 
     /**
      * An optional, date-time attribute. This is the ending point of a feed.
-     *
+     * 
      * @return the ending point of the feed, until.
      */
     public Date getUntil() {
@@ -138,10 +146,10 @@ public class Related extends SSEModule {
 
     /**
      * Set the ending point of the feed, until. An optional, date-time attribute.
-     *
+     * 
      * @param until the ending point of the feed.
      */
-    public void setUntil(Date until) {
+    public void setUntil(final Date until) {
         this.until = until;
     }
 }

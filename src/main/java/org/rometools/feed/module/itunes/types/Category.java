@@ -42,10 +42,9 @@ package org.rometools.feed.module.itunes.types;
 
 import java.io.Serializable;
 
-
 /**
- * This Category information. Basically a name and an optional Subcategory.
- * Categories are defined by Apple. See ITMS for a view.
+ * This Category information. Basically a name and an optional Subcategory. Categories are defined by Apple. See ITMS for a view.
+ * 
  * @version $Revision: 1.2 $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
@@ -57,15 +56,18 @@ public class Category implements Serializable {
     public Category() {
     }
 
-    /** Creates a new instance of Category with a given name.
+    /**
+     * Creates a new instance of Category with a given name.
+     * 
      * @param name Name of the category.
      */
-    public Category(String name) {
-        this.setName(name);
+    public Category(final String name) {
+        setName(name);
     }
 
     /**
      * Returns the name of the category
+     * 
      * @return Returns the name of the category
      */
     public String getName() {
@@ -74,14 +76,16 @@ public class Category implements Serializable {
 
     /**
      * Sets the name of the category
+     * 
      * @param name Sets the name of the category
      */
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
     /**
      * Returns the Subcategory object for this category
+     * 
      * @return Returns the Subcategory object for this category
      */
     public Subcategory getSubcategory() {
@@ -90,32 +94,36 @@ public class Category implements Serializable {
 
     /**
      * Sets the Subcategory object for this category
+     * 
      * @param subcategory Sets the Subcategory object for this category
      */
-    public void setSubcategory(Subcategory subcategory) {
+    public void setSubcategory(final Subcategory subcategory) {
         this.subcategory = subcategory;
     }
 
     /**
      * Returns a copy of this category.
+     * 
      * @return Returns a copy of this category.
      */
+    @Override
     public Object clone() {
-        Category c = new Category();
-        c.setName(this.getName());
+        final Category c = new Category();
+        c.setName(getName());
 
-        if (this.getSubcategory() != null) {
-            c.setSubcategory((Subcategory) this.getSubcategory().clone());
+        if (getSubcategory() != null) {
+            c.setSubcategory((Subcategory) getSubcategory().clone());
         }
 
         return c;
     }
 
+    @Override
     public String toString() {
-        StringBuffer sb = new StringBuffer(this.getName());
+        final StringBuffer sb = new StringBuffer(getName());
 
-        if (this.getSubcategory() != null) {
-            sb.append(" -> " + this.getSubcategory().toString());
+        if (getSubcategory() != null) {
+            sb.append(" -> " + getSubcategory().toString());
         }
 
         return sb.toString();

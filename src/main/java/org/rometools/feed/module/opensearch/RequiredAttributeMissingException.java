@@ -20,19 +20,19 @@ package org.rometools.feed.module.opensearch;
  */
 public class RequiredAttributeMissingException extends RuntimeException {
 
-	public RequiredAttributeMissingException(String arg0, Throwable arg1) {
-		super(arg0, arg1);
-		// TODO Auto-generated constructor stub
-	}
+    public RequiredAttributeMissingException(final String arg0, final Throwable arg1) {
+        super(arg0, arg1);
+        // TODO Auto-generated constructor stub
+    }
 
-	public RequiredAttributeMissingException(String arg0) {
-		super(arg0);
-		// TODO Auto-generated constructor stub
-	}
+    public RequiredAttributeMissingException(final String arg0) {
+        super(arg0);
+        // TODO Auto-generated constructor stub
+    }
 
-	public RequiredAttributeMissingException(Throwable arg0) {
-		super(arg0);
-		// TODO Auto-generated constructor stub
-	}
+    public RequiredAttributeMissingException(final Throwable arg0) {
+        super(arg0);
+        // TODO Auto-generated constructor stub
+    }
 
 }

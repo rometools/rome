@@ -43,6 +43,7 @@ import java.util.HashMap;
 
 /**
  * This class represents a specific shipping option for an item.
+ * 
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @version $Revision: 1.1 $
  */
@@ -50,23 +51,24 @@ public class ShippingType implements CloneableType {
     /**
      * price of the shipping.
      */
-    private FloatUnit price;
+    private final FloatUnit price;
     /**
      * Service used.
      */
-    private ServiceEnumeration service;
+    private final ServiceEnumeration service;
     /**
      * Country to ship to
      */
-    private String country;
+    private final String country;
 
     /**
      * Creates a new instance of ShippingType
+     * 
      * @param price The price of the shipping option
      * @param service Shipping service used.
      * @param country Country shipped to.
      */
-    public ShippingType(FloatUnit price, ServiceEnumeration service, String country) {
+    public ShippingType(final FloatUnit price, final ServiceEnumeration service, final String country) {
         this.price = price;
         this.service = service;
         this.country = country;
@@ -74,6 +76,7 @@ public class ShippingType implements CloneableType {
 
     /**
      * Returns the destination country.
+     * 
      * @return Returns the destination country.
      */
     public String getCountry() {
@@ -82,6 +85,7 @@ public class ShippingType implements CloneableType {
 
     /**
      * Returns the price of this shipping option.
+     * 
      * @return Returns the price of this shipping option.
      */
     public FloatUnit getPrice() {
@@ -90,6 +94,7 @@ public class ShippingType implements CloneableType {
 
     /**
      * Returns the ServiceEnumeration instance for the shipping service used.
+     * 
      * @return Returns the ServiceEnumeration instance for the shipping service used.
      */
     public ServiceEnumeration getService() {
@@ -98,32 +103,40 @@ public class ShippingType implements CloneableType {
 
     /**
      * Clones this object.
+     * 
      * @return Duplicate ShippingType object.
      */
+    @Override
     public Object clone() {
-        return new ShippingType(this.price, this.service, this.country);
+        return new ShippingType(price, service, country);
     }
 
     /**
      * Returns a String representation of this object.
+     * 
      * @return String representation of this object.
      */
+    @Override
     public String toString() {
-        return this.country + " " + this.price + " " + this.service;
+        return country + " " + price + " " + service;
     }
 
-    public boolean equals( Object o ){
-	if( !(o instanceof ShippingType))
-	    return false;
-	if( this.toString().equals( o.toString() ) )
-	    return true;
-	return false;
+    @Override
+    public boolean equals(final Object o) {
+        if (!(o instanceof ShippingType)) {
+            return false;
+        }
+        if (toString().equals(o.toString())) {
+            return true;
+        }
+        return false;
     }
+
     /**
      * Enumeration class of valid options for ServiceType.
      */
     public static class ServiceEnumeration {
-	/**
+        /**
          * Looks up a ServiceEnumeration based on the string value.
          */
         private static final HashMap lookup = new HashMap();
@@ -139,44 +152,49 @@ public class ShippingType implements CloneableType {
          * Overnight
          */
         public static final ServiceEnumeration OVERNIGHT = new ServiceEnumeration("Overnight");
-        
+
         /**
          * String value
          */
-        private String value;
+        private final String value;
 
         /**
          * Creates a new instance of ServiceEnumeration.
+         * 
          * @param value String value to encapsulate.
          */
-        private ServiceEnumeration(String value) {
+        private ServiceEnumeration(final String value) {
             this.value = value;
             lookup.put(this.value.toUpperCase(), this);
         }
 
         /**
          * String value of this Service.
+         * 
          * @return String value of this Service.
          */
         public String getValue() {
-            return this.value;
+            return value;
         }
 
         /**
          * Looks up a ServiceEnumeration based on the string value.
+         * 
          * @param value String value to search for.
          * @return ServiceEnumeration or null.
          */
-        public static ServiceEnumeration findByValue(String value) {
+        public static ServiceEnumeration findByValue(final String value) {
             return (ServiceEnumeration) lookup.get(value.toUpperCase());
         }
 
         /**
          * String value of this Service.
+         * 
          * @return String value of this Service.
          */
+        @Override
         public String toString() {
-            return this.value;
+            return value;
         }
     }
 }

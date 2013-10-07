@@ -27,23 +27,35 @@ import java.io.Serializable;
 import com.sun.syndication.feed.impl.EqualsBean;
 import com.sun.syndication.feed.impl.ToStringBean;
 
-
 /**
- *
+ * 
  * <strong>&lt;media:credit&gt;</strong></p>
- *
- * <p>Notable entity and the contribution to the creation of the media object. Current entities can include people, companies, locations, etc. Specific entities can have multiple roles, and several entities can have the same role.
- * These should appear as distinct &lt;media:credit&gt; elements.
- * It has 2 optional attributes.</p>
- * <pre>        &lt;media:credit role="producer" scheme="urn:ebu"&gt;entity name&lt;/media:credit&gt;
+ * 
+ * <p>
+ * Notable entity and the contribution to the creation of the media object. Current entities can include people, companies, locations, etc. Specific entities
+ * can have multiple roles, and several entities can have the same role. These should appear as distinct &lt;media:credit&gt; elements. It has 2 optional
+ * attributes.
+ * </p>
+ * 
+ * <pre>
+ * &lt;media:credit role="producer" scheme="urn:ebu"&gt;entity name&lt;/media:credit&gt;
  * </pre>
- * <p>role specifies the role the entity played. Must be lowercase. It is an optional attribute.</p>
- *
- * <p><em>scheme</em> is the URI that identifies the role scheme. It is an optional attribute. If this attribute is not included, the default scheme is 'urn:ebu'. See: European Broadcasting Union Role Codes.</p>
- *
- *
- * <p>Example roles:</p>
- * <pre>        actor
+ * <p>
+ * role specifies the role the entity played. Must be lowercase. It is an optional attribute.
+ * </p>
+ * 
+ * <p>
+ * <em>scheme</em> is the URI that identifies the role scheme. It is an optional attribute. If this attribute is not included, the default scheme is 'urn:ebu'.
+ * See: European Broadcasting Union Role Codes.
+ * </p>
+ * 
+ * 
+ * <p>
+ * Example roles:
+ * </p>
+ * 
+ * <pre>
+ * actor
  *        anchor person
  *        author
  *        choreographer
@@ -65,37 +77,41 @@ import com.sun.syndication.feed.impl.ToStringBean;
  *        reporter
  *        vocalist
  * </pre>
- * <p>Additional roles: <a href="http://www.ebu.ch/en/technical/metadata/specifications/role_codes.php">European Broadcasting Union Role Codes</a>
+ * <p>
+ * Additional roles: <a href="http://www.ebu.ch/en/technical/metadata/specifications/role_codes.php">European Broadcasting Union Role Codes</a>
+ * 
  * @author cooper
  */
 public class Credit implements Serializable {
-	private static final long serialVersionUID = 7722721287224043428L;
-	/**
+    private static final long serialVersionUID = 7722721287224043428L;
+    /**
      * Scheme value for the EBU credits.
      */
     public static final String SCHEME_EBU = "urn:ebu";
-    private String name;
-    private String role;
-    private String scheme;
+    private final String name;
+    private final String role;
+    private final String scheme;
 
     /**
      * Creates a new instance of Credit
+     * 
      * @param scheme schem used
      * @param role role name
      * @param name persons name
      */
-    public Credit(String scheme, String role, String name) {
+    public Credit(final String scheme, final String role, final String name) {
         if (name == null) {
             throw new NullPointerException("A credit name cannot be null.");
         }
 
-        this.scheme = (scheme == null) ? SCHEME_EBU : scheme;
-        this.role = (role == null) ? null : role.toLowerCase();
+        this.scheme = scheme == null ? SCHEME_EBU : scheme;
+        this.role = role == null ? null : role.toLowerCase();
         this.name = name;
     }
 
     /**
      * Person/organizations name
+     * 
      * @return Person/organizations name
      */
     public String getName() {
@@ -104,6 +120,7 @@ public class Credit implements Serializable {
 
     /**
      * Role name
+     * 
      * @return Role name
      */
     public String getRole() {
@@ -112,26 +129,30 @@ public class Credit implements Serializable {
 
     /**
      * Scheme used.
+     * 
      * @return Scheme used.
      */
     public String getScheme() {
         return scheme;
     }
 
-    public boolean equals(Object obj) {
-        EqualsBean eBean = new EqualsBean(this.getClass(), this);
+    @Override
+    public boolean equals(final Object obj) {
+        final EqualsBean eBean = new EqualsBean(this.getClass(), this);
 
         return eBean.beanEquals(obj);
     }
 
+    @Override
     public int hashCode() {
-        EqualsBean equals = new EqualsBean(this.getClass(), this);
+        final EqualsBean equals = new EqualsBean(this.getClass(), this);
 
         return equals.beanHashCode();
     }
 
+    @Override
     public String toString() {
-        ToStringBean tsBean = new ToStringBean(this.getClass(), this);
+        final ToStringBean tsBean = new ToStringBean(this.getClass(), this);
 
         return tsBean.toString();
     }

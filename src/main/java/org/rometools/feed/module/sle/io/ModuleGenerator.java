@@ -8,20 +8,19 @@
  */
 package org.rometools.feed.module.sle.io;
 
-import com.sun.syndication.feed.module.Module;
+import java.util.HashSet;
+import java.util.Set;
+
+import org.jdom2.Element;
+import org.jdom2.Namespace;
 import org.rometools.feed.module.sle.SimpleListExtension;
 import org.rometools.feed.module.sle.types.Group;
 import org.rometools.feed.module.sle.types.Sort;
 
-import org.jdom.Element;
-import org.jdom.Namespace;
-
-import java.util.HashSet;
-import java.util.Set;
-
+import com.sun.syndication.feed.module.Module;
 
 /**
- *
+ * 
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class ModuleGenerator implements com.sun.syndication.io.ModuleGenerator {
@@ -39,7 +38,7 @@ public class ModuleGenerator implements com.sun.syndication.io.ModuleGenerator {
     /**
      * Returns the namespace URI this generator handles.
      * <p>
-     *
+     * 
      * @return the namespace URI.
      */
     public String getNamespaceUri() {
@@ -49,10 +48,10 @@ public class ModuleGenerator implements com.sun.syndication.io.ModuleGenerator {
     /**
      * Returns a set with all the URIs (JDOM Namespace elements) this module generator uses.
      * <p/>
-     * It is used by the the feed generators to add their namespace definition in
-     * the root element of the generated document (forward-missing of Java 5.0 Generics).
+     * It is used by the the feed generators to add their namespace definition in the root element of the generated document (forward-missing of Java 5.0
+     * Generics).
      * <p/>
-     *
+     * 
      * @return a set with all the URIs (JDOM Namespace elements) this module generator uses.
      */
     public Set getNamespaces() {
@@ -62,23 +61,23 @@ public class ModuleGenerator implements com.sun.syndication.io.ModuleGenerator {
     /**
      * Generates and injectts module metadata in a XML node (JDOM element).
      * <p>
-     *
+     * 
      * @param module the module to inject into the XML node (JDOM element).
      * @param element the XML node to inject the module metadata to.
      */
-    public void generate(Module module, Element element) {
+    public void generate(final Module module, final Element element) {
         if (!(module instanceof SimpleListExtension)) {
             return;
         }
 
-        SimpleListExtension sle = (SimpleListExtension) module;
+        final SimpleListExtension sle = (SimpleListExtension) module;
         addNotNullElement(element, "treatAs", sle.getTreatAs());
 
-        Group[] groups = sle.getGroupFields();
-        Element listInfo = new Element("listinfo", ModuleParser.NS);
+        final Group[] groups = sle.getGroupFields();
+        final Element listInfo = new Element("listinfo", ModuleParser.NS);
 
-        for (int i = 0; (groups != null) && (i < groups.length); i++) {
-            Element group = new Element("group", ModuleParser.NS);
+        for (int i = 0; groups != null && i < groups.length; i++) {
+            final Element group = new Element("group", ModuleParser.NS);
 
             if (groups[i].getNamespace() != Namespace.NO_NAMESPACE) {
                 addNotNullAttribute(group, "ns", groups[i].getNamespace().getURI());
@@ -89,10 +88,10 @@ public class ModuleGenerator implements com.sun.syndication.io.ModuleGenerator {
             listInfo.addContent(group);
         }
 
-        Sort[] sorts = sle.getSortFields();
+        final Sort[] sorts = sle.getSortFields();
 
-        for (int i = 0; (sorts != null) && (i < sorts.length); i++) {
-            Element sort = new Element("sort", ModuleParser.NS);
+        for (int i = 0; sorts != null && i < sorts.length; i++) {
+            final Element sort = new Element("sort", ModuleParser.NS);
 
             if (sorts[i].getNamespace() != Namespace.NO_NAMESPACE) {
                 addNotNullAttribute(sort, "ns", sorts[i].getNamespace().getURI());
@@ -114,27 +113,27 @@ public class ModuleGenerator implements com.sun.syndication.io.ModuleGenerator {
         }
     }
 
-    protected void addNotNullAttribute(Element target, String name, Object value) {
-        if ((target == null) || (value == null)) {
+    protected void addNotNullAttribute(final Element target, final String name, final Object value) {
+        if (target == null || value == null) {
             return;
         } else {
             target.setAttribute(name, value.toString());
         }
     }
 
-    protected Element addNotNullElement(Element target, String name, Object value) {
+    protected Element addNotNullElement(final Element target, final String name, final Object value) {
         if (value == null) {
             return null;
         } else {
-            Element e = generateSimpleElement(name, value.toString());
+            final Element e = generateSimpleElement(name, value.toString());
             target.addContent(e);
 
             return e;
         }
     }
 
-    protected Element generateSimpleElement(String name, String value) {
-        Element element = new Element(name, ModuleParser.NS);
+    protected Element generateSimpleElement(final String name, final String value) {
+        final Element element = new Element(name, ModuleParser.NS);
         element.addContent(value);
 
         return element;

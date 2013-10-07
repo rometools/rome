@@ -40,31 +40,34 @@
 
 package org.rometools.feed.module.slash;
 
-import com.sun.syndication.feed.module.Module;
 import java.io.Serializable;
 
-/** This interface represents the Slash RSS extension.
+import com.sun.syndication.feed.module.Module;
+
+/**
+ * This interface represents the Slash RSS extension.
+ * 
  * @version $Revision: 1.2 $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public interface Slash extends Module, Serializable {
-    
+
     public static final String URI = "http://purl.org/rss/1.0/modules/slash/";
-    
+
     public String getSection();
-    
+
     public void setSection(String section);
-    
+
     public String getDepartment();
-    
+
     public void setDepartment(String department);
-    
+
     public Integer getComments();
-    
-    public void setComments(Integer comments );
-    
+
+    public void setComments(Integer comments);
+
     public Integer[] getHitParade();
-    
-    public void setHitParade( Integer[] hitParade );
-    
+
+    public void setHitParade(Integer[] hitParade);
+
 }

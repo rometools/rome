@@ -40,26 +40,28 @@
  */
 package org.rometools.feed.module.content;
 
-import com.sun.syndication.feed.module.Module;
 import java.util.List;
 
+import com.sun.syndication.feed.module.Module;
 
 /**
  * @version $Revision: 1.1 $
- * @author  <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
+ * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public interface ContentModule extends Module {
     public static final String URI = "http://purl.org/rss/1.0/modules/content/";
     public static final String RDF_URI = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
 
-    /** Returns a List of Strings containing the New Syntax Encoded values
-     * are in the element.
+    /**
+     * Returns a List of Strings containing the New Syntax Encoded values are in the element.
+     * 
      * @return List of content Strings
      */
     public List getEncodeds();
 
-    /** Sets a List of Strings containing the New Syntax Encoded values
-     * are in the element.
+    /**
+     * Sets a List of Strings containing the New Syntax Encoded values are in the element.
+     * 
      * @return List of content Strings
      */
     public void setEncodeds(List encodeds);
@@ -68,26 +70,32 @@ public interface ContentModule extends Module {
 
     public String toString(String str);
 
-    /** Contains a list of ContentItems that represent the "Original Syntax" set.
+    /**
+     * Contains a list of ContentItems that represent the "Original Syntax" set.
+     * 
      * @see com.totsp.xml.syndication.content.ContentItem
      * @return List of ContentItems.
      */
     public List getContentItems();
 
-    /** Contains a list of ContentItems that represent the "Original Syntax" set.
+    /**
+     * Contains a list of ContentItems that represent the "Original Syntax" set.
+     * 
      * @see com.totsp.xml.syndication.content.ContentItem
      * @param List of ContentItems.
      */
     public void setContentItems(List list);
 
-    /** Returns a List of Strings containing whatever new or original syntax items
-     * are in the element.
+    /**
+     * Returns a List of Strings containing whatever new or original syntax items are in the element.
+     * 
      * @return List of content Strings
      */
     public List getContents();
 
-    /** Sets a List of Strings containing whatever new or original syntax items
-     * are in the element.
+    /**
+     * Sets a List of Strings containing whatever new or original syntax items are in the element.
+     * 
      * @return List of content Strings
      */
     public void setContents(List contents);

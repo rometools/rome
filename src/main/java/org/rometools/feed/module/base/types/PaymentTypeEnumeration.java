@@ -42,7 +42,7 @@ package org.rometools.feed.module.base.types;
 import java.util.HashMap;
 
 /**
- *
+ * 
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @version $Revision: 1.1 $
  */
@@ -57,10 +57,10 @@ public class PaymentTypeEnumeration {
     public static final PaymentTypeEnumeration DISCOVER = new PaymentTypeEnumeration("Discover");
     public static final PaymentTypeEnumeration WIRE_TRANSFER = new PaymentTypeEnumeration("Wire transfer");
     public static final PaymentTypeEnumeration PAYPAL = new PaymentTypeEnumeration("Paypal");
-    private String value;
+    private final String value;
 
     /** Creates a new instance of PaymentTypeEnumeration */
-    private PaymentTypeEnumeration(String value) {
+    private PaymentTypeEnumeration(final String value) {
         this.value = value;
         lookup.put(this.value.toUpperCase(), this);
     }
@@ -69,14 +69,16 @@ public class PaymentTypeEnumeration {
         return value;
     }
 
-    public static PaymentTypeEnumeration findByValue(String value) {
+    public static PaymentTypeEnumeration findByValue(final String value) {
         return (PaymentTypeEnumeration) lookup.get(value.toUpperCase());
     }
 
+    @Override
     public Object clone() {
         return this;
     }
 
+    @Override
     public String toString() {
         return value;
     }

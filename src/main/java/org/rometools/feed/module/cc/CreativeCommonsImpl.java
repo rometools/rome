@@ -40,86 +40,89 @@
 
 package org.rometools.feed.module.cc;
 
+import java.lang.reflect.Array;
+
+import org.rometools.feed.module.cc.types.License;
+
 import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.impl.EqualsBean;
 import com.sun.syndication.feed.impl.ToStringBean;
-import org.rometools.feed.module.cc.types.License;
-import java.lang.reflect.Array;
 
 /**
  * @version $Revision: 1.1 $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class CreativeCommonsImpl implements CreativeCommons {
-    
-   public static final String RDF_URI = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
-   public static final String RSS2_URI ="http://backend.userland.com/creativeCommonsRssModule";
-   public static final String RSS1_URI = "http://web.resource.org/cc/";
-      
-   private License[] allLicenses;
-   private License[] licenses;
-   
-    protected Object arrayCopy(Object[] source) {
-        if(source == null) {
+
+    public static final String RDF_URI = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
+    public static final String RSS2_URI = "http://backend.userland.com/creativeCommonsRssModule";
+    public static final String RSS1_URI = "http://web.resource.org/cc/";
+
+    private License[] allLicenses;
+    private License[] licenses;
+
+    protected Object arrayCopy(final Object[] source) {
+        if (source == null) {
             return null;
         }
 
-        Object[] array = (Object[])Array.newInstance(source.getClass().getComponentType(),source.length);
+        final Object[] array = (Object[]) Array.newInstance(source.getClass().getComponentType(), source.length);
 
-        for(int i = 0; i < source.length; i++) {
+        for (int i = 0; i < source.length; i++) {
             array[i] = source[i];
         }
 
         return array;
     }
-    
+
     public License[] getAllLicenses() {
         return allLicenses;
     }
 
-    public void setAllLicenses(License[] allLicenses) {
+    public void setAllLicenses(final License[] allLicenses) {
         this.allLicenses = allLicenses;
     }
-    
-     public Class getInterface() {
-	return CreativeCommons.class;
-    }
 
+    public Class getInterface() {
+        return CreativeCommons.class;
+    }
 
     public String getUri() {
-	return CreativeCommons.URI;
+        return CreativeCommons.URI;
     }
 
-    public Object clone()  {
-        CreativeCommonsImpl clone = new CreativeCommonsImpl();
-	clone.copyFrom( this );
-	return clone;
+    @Override
+    public Object clone() {
+        final CreativeCommonsImpl clone = new CreativeCommonsImpl();
+        clone.copyFrom(this);
+        return clone;
     }
 
-    public void copyFrom(CopyFrom object) {
-	CreativeCommons source = (CreativeCommons) object;
-	this.setAllLicenses( (License[]) arrayCopy( source.getAllLicenses() ));
-	this.setLicenses( source.getLicenses() );
+    public void copyFrom(final CopyFrom object) {
+        final CreativeCommons source = (CreativeCommons) object;
+        setAllLicenses((License[]) arrayCopy(source.getAllLicenses()));
+        setLicenses(source.getLicenses());
     }
-    
-    public boolean equals(Object obj) {
-        EqualsBean eBean = new EqualsBean(this.getClass(),this);
+
+    @Override
+    public boolean equals(final Object obj) {
+        final EqualsBean eBean = new EqualsBean(this.getClass(), this);
 
         return eBean.beanEquals(obj);
     }
-
 
     public License[] getLicenses() {
         return licenses;
     }
 
-    public void setLicenses(License[] licenses) {
+    public void setLicenses(final License[] licenses) {
         this.licenses = licenses;
     }
-    
+
+    @Override
     public String toString() {
-	
-	    ToStringBean tsb = new ToStringBean( CreativeCommonsImpl.class, this );
-	    return tsb.toString();
+
+        final ToStringBean tsb = new ToStringBean(CreativeCommonsImpl.class, this);
+        return tsb.toString();
     }
 }

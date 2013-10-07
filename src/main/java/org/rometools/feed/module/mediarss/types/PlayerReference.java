@@ -22,39 +22,51 @@
  */
 package org.rometools.feed.module.mediarss.types;
 
-import com.sun.syndication.feed.impl.EqualsBean;
-import com.sun.syndication.feed.impl.ToStringBean;
-
 import java.io.Serializable;
 import java.net.URI;
 
+import com.sun.syndication.feed.impl.EqualsBean;
+import com.sun.syndication.feed.impl.ToStringBean;
 
 /**
- *
+ * 
  * <strong>&lt;media:player&gt;</strong></p>
- * <p>Allows the media object to be accessed through a web browser media player console.
- * This element is required only if a direct media <em>url</em> attribute is not specified in the &lt;media:content&gt; element. It has 1 required attribute, and 2 optional attributes.</p>
- * <pre>        &lt;media:player url="http://www.foo.com/player?id=1111" height="200" width="400" /&gt;</pre>
- * <p><em>url</em> is the url of the player console that plays the media. It is a required attribute.</p>
- *
- * <p><em>height</em> is the height of the browser window that the <em>url</em> should be opened in. It is an optional attribute.</p>
- * <p><em>width</em> is the width of the browser window that the <em>url</em> should be opened in. It is an optional attribute.</p>
+ * <p>
+ * Allows the media object to be accessed through a web browser media player console. This element is required only if a direct media <em>url</em> attribute is
+ * not specified in the &lt;media:content&gt; element. It has 1 required attribute, and 2 optional attributes.
+ * </p>
+ * 
+ * <pre>
+ * &lt;media:player url="http://www.foo.com/player?id=1111" height="200" width="400" /&gt;
+ * </pre>
+ * <p>
+ * <em>url</em> is the url of the player console that plays the media. It is a required attribute.
+ * </p>
+ * 
+ * <p>
+ * <em>height</em> is the height of the browser window that the <em>url</em> should be opened in. It is an optional attribute.
+ * </p>
+ * <p>
+ * <em>width</em> is the width of the browser window that the <em>url</em> should be opened in. It is an optional attribute.
+ * </p>
+ * 
  * @author cooper
  */
 public class PlayerReference implements Reference, Serializable {
-	private static final long serialVersionUID = -2618211012392630834L;
-	
-	private Integer height;
-    private Integer width;
-    private URI url;
+    private static final long serialVersionUID = -2618211012392630834L;
+
+    private final Integer height;
+    private final Integer width;
+    private final URI url;
 
     /**
      * Creates a new instance of PlayerReference
+     * 
      * @param url url of the player
      * @param width width of the player
      * @param height height of the player
      */
-    public PlayerReference(URI url, Integer width, Integer height) {
+    public PlayerReference(final URI url, final Integer width, final Integer height) {
         super();
 
         if (url == null) {
@@ -68,14 +80,16 @@ public class PlayerReference implements Reference, Serializable {
 
     /**
      * Constructs a new PlayerReference
+     * 
      * @param url URL of the player
      */
-    public PlayerReference(URI url) {
+    public PlayerReference(final URI url) {
         this(url, null, null);
     }
 
     /**
      * Height of the player
+     * 
      * @return Height of the player
      */
     public Integer getHeight() {
@@ -84,6 +98,7 @@ public class PlayerReference implements Reference, Serializable {
 
     /**
      * URL of the player
+     * 
      * @return URL of the player
      */
     public URI getUrl() {
@@ -92,26 +107,30 @@ public class PlayerReference implements Reference, Serializable {
 
     /**
      * Width of the player
+     * 
      * @return Width of the player
      */
     public Integer getWidth() {
         return width;
     }
 
-    public boolean equals(Object obj) {
-        EqualsBean eBean = new EqualsBean(this.getClass(), this);
+    @Override
+    public boolean equals(final Object obj) {
+        final EqualsBean eBean = new EqualsBean(this.getClass(), this);
 
         return eBean.beanEquals(obj);
     }
 
+    @Override
     public int hashCode() {
-        EqualsBean equals = new EqualsBean(this.getClass(), this);
+        final EqualsBean equals = new EqualsBean(this.getClass(), this);
 
         return equals.beanHashCode();
     }
 
+    @Override
     public String toString() {
-        ToStringBean tsBean = new ToStringBean(this.getClass(), this);
+        final ToStringBean tsBean = new ToStringBean(this.getClass(), this);
 
         return tsBean.toString();
     }

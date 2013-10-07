@@ -39,8 +39,9 @@
  */
 package org.rometools.feed.module.base.types;
 
-/** Simple enumeration for Genders.
- *
+/**
+ * Simple enumeration for Genders.
+ * 
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @version $Revision: 1.1 $
  */
@@ -49,19 +50,19 @@ public class GenderEnumeration implements CloneableType {
     public static final GenderEnumeration MALE = new GenderEnumeration("Male");
     /** Women */
     public static final GenderEnumeration FEMALE = new GenderEnumeration("Female");
-    private String value;
+    private final String value;
 
-    private GenderEnumeration(String value) {
+    private GenderEnumeration(final String value) {
         this.value = value;
     }
 
     /** Returns the proper instance based on the string value */
-    public static GenderEnumeration findByValue(String value) {
+    public static GenderEnumeration findByValue(final String value) {
         if (value == null) {
             return null;
         }
 
-        String gender = value.toUpperCase();
+        final String gender = value.toUpperCase();
 
         if (gender.charAt(0) == 'M') {
             return GenderEnumeration.MALE;
@@ -74,14 +75,16 @@ public class GenderEnumeration implements CloneableType {
 
     /** Returns the value of the instance */
     public String getValue() {
-        return this.value;
+        return value;
     }
-    
+
     /** Returns a reference to the same object. :P */
+    @Override
     public Object clone() {
         return this;
     }
 
+    @Override
     public String toString() {
         return value;
     }

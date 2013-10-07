@@ -3,48 +3,51 @@ package org.rometools.feed.module;
 import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
-
 import java.io.File;
-
 import java.lang.reflect.InvocationTargetException;
+import java.net.URISyntaxException;
 
 import junit.framework.TestCase;
 
-
 /**
  * Abstract base class for test cases.
- *
+ * 
  * @author <a href="jason@zenplex.com">Jason van Zyl</a>
  */
 public abstract class AbstractTestCase extends TestCase {
     /**
-     * Basedir for all file I/O. Important when running tests from
-     * the reactor.
+     * Basedir for all file I/O. Important when running tests from the reactor.
      */
-    public String basedir = System.getProperty("basedir") +"/src/test/resources";
+    public String basedir = System.getProperty("basedir") + "/src/test/resources";
 
     /**
      * Constructor.
      */
-    public AbstractTestCase(String testName) {
+    public AbstractTestCase(final String testName) {
         super(testName);
     }
 
     /**
      * Get test input file.
-     *
+     * 
      * @param path Path to test input file.
      */
-    public String getTestFile(String path) {
-        return new File(basedir, path).getAbsolutePath();
+    public String getTestFile(final String path) {
+        try {
+            return new File(this.getClass().getResource("/" + path).toURI()).getAbsolutePath();
+        } catch (final URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    /** This method takes a JavaBean and generates a standard toString() type result for it.
+    /**
+     * This method takes a JavaBean and generates a standard toString() type result for it.
+     * 
      * @param o JavaBean object to stringinate
      * @return STRINGIATION! Stringingating the countryside. Stringinating all the peasants.
      */
-    public static String beanToString(Object o, boolean showNulls) {
-        StringBuffer result = new StringBuffer();
+    public static String beanToString(final Object o, final boolean showNulls) {
+        final StringBuffer result = new StringBuffer();
 
         if (o == null) {
             return "--- null";
@@ -57,40 +60,40 @@ public abstract class AbstractTestCase extends TestCase {
         result.append("\r\n");
 
         try {
-            PropertyDescriptor[] pds = Introspector.getBeanInfo(o.getClass()).getPropertyDescriptors();
+            final PropertyDescriptor[] pds = Introspector.getBeanInfo(o.getClass()).getPropertyDescriptors();
 
-            for (int pdi = 0; pdi < pds.length; pdi++) {
+            for (final PropertyDescriptor pd : pds) {
                 String out = "";
 
                 try {
-                    Object value = pds[pdi].getReadMethod().invoke(o, (Object[]) null);
+                    final Object value = pd.getReadMethod().invoke(o, (Object[]) null);
 
-                    if ((value != null) && value.getClass().isArray()) {
-                        Object[] values = (Object[]) value;
+                    if (value != null && value.getClass().isArray()) {
+                        final Object[] values = (Object[]) value;
 
-                        for (int i = 0; i < values.length; i++) {
-                            out += (values[i] + " ");
+                        for (final Object value2 : values) {
+                            out += value2 + " ";
                         }
                     } else {
                         out += value;
                     }
 
                     if (!out.equals("null") || showNulls) {
-                        result.append("Property: " + pds[pdi].getName() + " Value: " + out);
+                        result.append("Property: " + pd.getName() + " Value: " + out);
                     }
-                } catch (IllegalAccessException iae) {
-                    result.append("Property: " + pds[pdi].getName() + " (Illegal Access to Value) ");
-                } catch (InvocationTargetException iae) {
-                    result.append("Property: " + pds[pdi].getName() + " (InvocationTargetException) " + iae.toString());
-                } catch (Exception e) {
-                    result.append("Property: " + pds[pdi].getName() + " (Other Exception )" + e.toString());
+                } catch (final IllegalAccessException iae) {
+                    result.append("Property: " + pd.getName() + " (Illegal Access to Value) ");
+                } catch (final InvocationTargetException iae) {
+                    result.append("Property: " + pd.getName() + " (InvocationTargetException) " + iae.toString());
+                } catch (final Exception e) {
+                    result.append("Property: " + pd.getName() + " (Other Exception )" + e.toString());
                 }
 
                 if (!out.equals("null") || showNulls) {
                     result.append("\r\n");
                 }
             }
-        } catch (IntrospectionException ie) {
+        } catch (final IntrospectionException ie) {
             result.append("Introspection Exception: " + ie.toString());
             result.append("\r\n");
         }
@@ -103,16 +106,16 @@ public abstract class AbstractTestCase extends TestCase {
 
         return result.toString();
     }
-    
-    public boolean assertEquals( String message, Object[] control , Object[] test){
-	if( control == null && test == null ){
-	    return true;
-	}
-	assertTrue( message+" Nulls", ( control != null && test != null));
-	assertEquals( message+" [size]", control.length, test.length );
-	for( int i=0; i < control.length; i++ ){
-	    assertEquals( message +"["+i+"]", control[i], test[i]);
-	}
-	return true;
+
+    public boolean assertEquals(final String message, final Object[] control, final Object[] test) {
+        if (control == null && test == null) {
+            return true;
+        }
+        assertTrue(message + " Nulls", control != null && test != null);
+        assertEquals(message + " [size]", control.length, test.length);
+        for (int i = 0; i < control.length; i++) {
+            assertEquals(message + "[" + i + "]", control[i], test[i]);
+        }
+        return true;
     }
 }

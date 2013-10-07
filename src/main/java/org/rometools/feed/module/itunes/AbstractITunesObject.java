@@ -42,18 +42,19 @@ package org.rometools.feed.module.itunes;
 
 import com.sun.syndication.feed.CopyFrom;
 
-
-
 /**
- * This is an abstract object that implements the attributes common across Feeds
- * or Items in an iTunes compatible RSS feed.
+ * This is an abstract object that implements the attributes common across Feeds or Items in an iTunes compatible RSS feed.
+ * 
  * @version $Revision: 1.4 $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneable {
     /**
      * The URI that iTunes used for its custom tags.
-     * <p>What is up with using a versioned DTD anyway?</p>\
+     * <p>
+     * What is up with using a versioned DTD anyway?
+     * </p>
+     * \
      */
     public static final String URI = "http://www.itunes.com/dtds/podcast-1.0.dtd";
 
@@ -75,12 +76,14 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
 
     /**
      * Defined by the ROME module API
+     * 
      * @param obj Object to copy from
      */
     public abstract void copyFrom(CopyFrom obj);
 
     /**
      * Defined by the ROME API
+     * 
      * @return Class of the Interface for this module.
      */
     public Class getInterface() {
@@ -89,6 +92,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
 
     /**
      * The URI this module implements
+     * 
      * @return "http://www.itunes.com/dtds/podcast-1.0.dtd"
      */
     public String getUri() {
@@ -97,12 +101,15 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
 
     /**
      * Required by the ROME API
+     * 
      * @return A clone of this module object
      */
+    @Override
     public abstract Object clone();
 
     /**
      * Returns the author string for this feed or entry
+     * 
      * @return Returns the author string for this feed or entry
      */
     public String getAuthor() {
@@ -111,14 +118,16 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
 
     /**
      * Sets the author string for this feed or entry
+     * 
      * @param author Sets the author string for this feed or entry
      */
-    public void setAuthor(String author) {
+    public void setAuthor(final String author) {
         this.author = author;
     }
 
     /**
      * Boolean as to whether to block this feed or entry
+     * 
      * @return Boolean as to whether to block this feed or entry
      */
     public boolean getBlock() {
@@ -127,14 +136,16 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
 
     /**
      * Boolean as to whether to block this feed or entry
+     * 
      * @param block Boolean as to whether to block this feed or entry
      */
-    public void setBlock(boolean block) {
+    public void setBlock(final boolean block) {
         this.block = block;
     }
 
     /**
      * Boolean as to whether this feed or entry contains adult content
+     * 
      * @return Boolean as to whether this feed or entry contains adult content
      */
     public boolean getExplicit() {
@@ -143,16 +154,18 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
 
     /**
      * Boolean as to whether this feed or entry contains adult content
+     * 
      * @param explicit Boolean as to whether this feed or entry contains adult content
      */
-    public void setExplicit(boolean explicit) {
+    public void setExplicit(final boolean explicit) {
         this.explicit = explicit;
     }
 
     /**
      * A list of keywords for this feed or entry
-     *
+     * 
      * Must not contain spaces
+     * 
      * @return A list of keywords for this feed or entry
      */
     public String[] getKeywords() {
@@ -161,16 +174,18 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
 
     /**
      * A list of keywords for this feed or entry
-     *
+     * 
      * Must not contain spaces
+     * 
      * @param keywords A list of keywords for this feed or enty
      */
-    public void setKeywords(String[] keywords) {
+    public void setKeywords(final String[] keywords) {
         this.keywords = keywords;
     }
 
     /**
      * A subtitle for this feed or entry
+     * 
      * @return A subtitle for this feed or entry
      */
     public String getSubtitle() {
@@ -179,14 +194,16 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
 
     /**
      * A subtitle for this feed or entry
+     * 
      * @param subtitle A subtitle for this feed or entry
      */
-    public void setSubtitle(String subtitle) {
+    public void setSubtitle(final String subtitle) {
         this.subtitle = subtitle;
     }
 
     /**
      * A subtitle for this feed or entry
+     * 
      * @return A subtitle for this feed or entry
      */
     public String getSummary() {
@@ -195,32 +212,34 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
 
     /**
      * A subtitle for this feed or entry
+     * 
      * @param summary A subtitle for this feed or entry
      */
-    public void setSummary(String summary) {
+    public void setSummary(final String summary) {
         this.summary = summary;
     }
 
+    @Override
     public String toString() {
-        StringBuffer sb = new StringBuffer("[");
+        final StringBuffer sb = new StringBuffer("[");
         sb.append(" Author: ");
-        sb.append(this.getAuthor());
+        sb.append(getAuthor());
         sb.append(" Block: ");
-        sb.append(this.getBlock());
+        sb.append(getBlock());
         sb.append(" Explicit: ");
-        sb.append(this.getExplicit());
+        sb.append(getExplicit());
         sb.append(" Keywords: ");
 
-        if (this.getKeywords() != null) {
+        if (getKeywords() != null) {
             for (int i = 0; i < keywords.length; i++) {
-                sb.append("'" + this.getKeywords()[i] + "'");
+                sb.append("'" + getKeywords()[i] + "'");
             }
         }
 
         sb.append(" Subtitle: ");
-        sb.append(this.getSubtitle());
+        sb.append(getSubtitle());
         sb.append(" Summary: ");
-        sb.append(this.getSummary());
+        sb.append(getSummary());
         sb.append("]");
 
         return sb.toString();

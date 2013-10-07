@@ -7,23 +7,24 @@
 
 package org.rometools.feed.module.mediarss.types;
 
-import org.rometools.feed.module.mediarss.types.Time;
-import junit.framework.*;
-import java.text.NumberFormat;
+import junit.framework.Assert;
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
 
 /**
- *
+ * 
  * @author cooper
  */
 public class TimeTest extends TestCase {
-    
-    public TimeTest(String testName) {
+
+    public TimeTest(final String testName) {
         super(testName);
     }
 
     public static Test suite() {
-        TestSuite suite = new TestSuite(TimeTest.class);
-        
+        final TestSuite suite = new TestSuite(TimeTest.class);
+
         return suite;
     }
 
@@ -31,12 +32,12 @@ public class TimeTest extends TestCase {
      * Test of toString method, of class com.sun.syndication.feed.module.mediarss.types.Time.
      */
     public void testToString() {
-        Time t = new Time( "12:05:35.3");
-        System.out.println( t );
-        Time t2 = new Time( t.toString() );
-        this.assertEquals( t.toString(), t2.toString() );
-        System.out.println( t2 );
-        System.out.println( new Time( "3:54.00001").toString() );
+        final Time t = new Time("12:05:35.3");
+        System.out.println(t);
+        final Time t2 = new Time(t.toString());
+        Assert.assertEquals(t.toString(), t2.toString());
+        System.out.println(t2);
+        System.out.println(new Time("3:54.00001").toString());
     }
-    
+
 }

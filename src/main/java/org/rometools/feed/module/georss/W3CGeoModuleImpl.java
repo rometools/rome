@@ -16,10 +16,8 @@
  */
 package org.rometools.feed.module.georss;
 
-
 /**
- * W3CGeoModuleImpl is the implementation of the {@link GeoRSSModule} Interface
- * for the W3C geo format.
+ * W3CGeoModuleImpl is the implementation of the {@link GeoRSSModule} Interface for the W3C geo format.
  * 
  * @author Marc Wick
  * @version $Id: W3CGeoModuleImpl.java,v 1.2 2007/04/18 09:59:29 marcwick Exp $
@@ -27,18 +25,17 @@ package org.rometools.feed.module.georss;
  */
 public class W3CGeoModuleImpl extends GeoRSSModule {
 
-	public W3CGeoModuleImpl() {
-		super(GeoRSSModule.class, GeoRSSModule.GEORSS_W3CGEO_URI);
-	}
+    public W3CGeoModuleImpl() {
+        super(GeoRSSModule.class, GeoRSSModule.GEORSS_W3CGEO_URI);
+    }
 
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.sun.syndication.feed.CopyFrom#getInterface()
-	 */
-	public Class getInterface() {
-		return GeoRSSModule.class;
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sun.syndication.feed.CopyFrom#getInterface()
+     */
+    public Class getInterface() {
+        return GeoRSSModule.class;
+    }
 
 }

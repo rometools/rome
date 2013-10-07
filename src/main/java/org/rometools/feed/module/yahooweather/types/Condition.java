@@ -38,36 +38,28 @@
 package org.rometools.feed.module.yahooweather.types;
 
 import java.io.Serializable;
-
 import java.util.Date;
 
 import com.sun.syndication.feed.impl.EqualsBean;
 import com.sun.syndication.feed.impl.ToStringBean;
 
-
 /**
  * The current weather conditions. Attributes:
- *       <ul class="topspace">
- *         <li>text: a textual description of conditions, for example, "Partly
- *           Cloudy" (string)</li>
- *         <li>code: the condition code for this forecast. You could use this
- *           code to choose a text description or image for the forecast. The
- *           possible values for this element are described in <a href="#codes">Condition
- *           Codes</a> (integer)</li>
- *         <li>temp: the current temperature, in the units specified by the yweather:units
- *           element (integer)</li>
- *         <li>date: the current date and time for which this forecast applies.
- *           [<em>I believe this should be the time this condition information was captured</em>]
- *           The date is in <a href="http://www.rfc-editor.org/rfc/rfc822.txt">RFC822
- *           Section 5</a> format, for example "Wed, 30 Nov 2005 1:56 pm
- *           PST" (string)</li>
- *       </ul>
+ * <ul class="topspace">
+ * <li>text: a textual description of conditions, for example, "Partly Cloudy" (string)</li>
+ * <li>code: the condition code for this forecast. You could use this code to choose a text description or image for the forecast. The possible values for this
+ * element are described in <a href="#codes">Condition Codes</a> (integer)</li>
+ * <li>temp: the current temperature, in the units specified by the yweather:units element (integer)</li>
+ * <li>date: the current date and time for which this forecast applies. [<em>I believe this should be the time this condition information was captured</em>] The
+ * date is in <a href="http://www.rfc-editor.org/rfc/rfc822.txt">RFC822 Section 5</a> format, for example "Wed, 30 Nov 2005 1:56 pm PST" (string)</li>
+ * </ul>
+ * 
  * @version $Id: Condition.java,v 1.2 2008/01/22 14:50:05 kebernet Exp $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Condition implements Serializable, Cloneable {
-    private EqualsBean equals = new EqualsBean(Condition.class, this);
-    private ToStringBean toString = new ToStringBean(Condition.class, this);
+    private final EqualsBean equals = new EqualsBean(Condition.class, this);
+    private final ToStringBean toString = new ToStringBean(Condition.class, this);
     private String text;
     private ConditionCode code;
     private int temperature;
@@ -82,13 +74,13 @@ public class Condition implements Serializable, Cloneable {
 
     /**
      * Constructs a new Condition.
-     * @param text a textual description of conditions, for example, "Partly
-     *             Cloudy"
+     * 
+     * @param text a textual description of conditions, for example, "Partly Cloudy"
      * @param code the condition code for this forecast.
      * @param temperature the current temperature
      * @param date the current date and time
      */
-    public Condition(String text, ConditionCode code, int temperature, Date date) {
+    public Condition(final String text, final ConditionCode code, final int temperature, final Date date) {
         super();
         this.text = text;
         this.code = code;
@@ -98,8 +90,8 @@ public class Condition implements Serializable, Cloneable {
 
     /**
      * Description of condition
-     * @return a textual description of conditions, for example, "Partly
-     *             Cloudy"
+     * 
+     * @return a textual description of conditions, for example, "Partly Cloudy"
      */
     public String getText() {
         return text;
@@ -107,15 +99,16 @@ public class Condition implements Serializable, Cloneable {
 
     /**
      * Description of condition
-     * @param text a textual description of conditions, for example, "Partly
-     *             Cloudy"
+     * 
+     * @param text a textual description of conditions, for example, "Partly Cloudy"
      */
-    public void setText(String text) {
+    public void setText(final String text) {
         this.text = text;
     }
 
     /**
      * Condition code
+     * 
      * @return condition code
      */
     public ConditionCode getCode() {
@@ -124,14 +117,16 @@ public class Condition implements Serializable, Cloneable {
 
     /**
      * Condition code
+     * 
      * @param code Condition code
      */
-    public void setCode(ConditionCode code) {
+    public void setCode(final ConditionCode code) {
         this.code = code;
     }
 
     /**
      * Current Temperature
+     * 
      * @return the current temperature
      * @see Units
      */
@@ -141,15 +136,17 @@ public class Condition implements Serializable, Cloneable {
 
     /**
      * Current Temperature
+     * 
      * @param temperature the current temperature
      * @see Units
      */
-    public void setTemperature(int temperature) {
+    public void setTemperature(final int temperature) {
         this.temperature = temperature;
     }
 
     /**
      * Date recorded
+     * 
      * @return the current date and time
      */
     public Date getDate() {
@@ -158,26 +155,30 @@ public class Condition implements Serializable, Cloneable {
 
     /**
      * Date recorded
+     * 
      * @param date the current date and time
      */
-    public void setDate(Date date) {
+    public void setDate(final Date date) {
         this.date = date;
     }
 
-    public boolean equals(Object o) {
-        return this.equals.equals(o);
+    @Override
+    public boolean equals(final Object o) {
+        return equals.equals(o);
     }
 
+    @Override
     public int hashCode() {
-        return this.equals.hashCode();
+        return equals.hashCode();
     }
 
+    @Override
     public String toString() {
-        return this.toString.toString();
+        return toString.toString();
     }
 
+    @Override
     public Object clone() {
-        return new Condition(this.text, this.code, this.temperature,
-            (this.date != null) ? new Date(this.date.getTime()) : null);
+        return new Condition(text, code, temperature, date != null ? new Date(date.getTime()) : null);
     }
 }

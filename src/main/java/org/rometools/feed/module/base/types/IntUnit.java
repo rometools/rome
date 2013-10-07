@@ -41,27 +41,29 @@ package org.rometools.feed.module.base.types;
 
 import org.rometools.feed.module.base.io.GoogleBaseParser;
 
-
 /**
- *
+ * 
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @version $Revision: 1.1 $
  */
 public class IntUnit implements CloneableType {
     private String units;
-    private int value;
-    private boolean inCharArray( char find, char[] array ){
-        for( int i=0; i < array.length; i++ ){
-            if( find == array[i])
+    private final int value;
+
+    private boolean inCharArray(final char find, final char[] array) {
+        for (final char element : array) {
+            if (find == element) {
                 return true;
+            }
         }
         return false;
     }
-    public IntUnit(String source) {
-        String parse = source.trim();
+
+    public IntUnit(final String source) {
+        final String parse = source.trim();
         int space = -1;
-        for( int i=0; i < parse.length(); i++ ){
-            if( !inCharArray( parse.charAt(i), GoogleBaseParser.INTEGER_CHARS ) ){
+        for (int i = 0; i < parse.length(); i++) {
+            if (!inCharArray(parse.charAt(i), GoogleBaseParser.INTEGER_CHARS)) {
                 space = i;
                 break;
             }
@@ -70,16 +72,15 @@ public class IntUnit implements CloneableType {
             space = parse.length();
         }
 
-        this.value = Integer.parseInt(
-                GoogleBaseParser.stripNonValidCharacters(GoogleBaseParser.INTEGER_CHARS, parse.substring(0, space)));
+        value = Integer.parseInt(GoogleBaseParser.stripNonValidCharacters(GoogleBaseParser.INTEGER_CHARS, parse.substring(0, space)));
 
         if (space != parse.length()) {
-            this.units = parse.substring(space, parse.length()).trim();
+            units = parse.substring(space, parse.length()).trim();
         }
     }
 
     /** Creates a new instance of IntUnit */
-    public IntUnit(int value, String units) {
+    public IntUnit(final int value, final String units) {
         this.value = value;
         this.units = units;
     }
@@ -92,28 +93,32 @@ public class IntUnit implements CloneableType {
         return value;
     }
 
+    @Override
     public Object clone() {
-        return new IntUnit(this.value, this.units);
+        return new IntUnit(value, units);
     }
 
+    @Override
     public String toString() {
-        if ((this.units != null) && (this.units.trim().length() > 0)) {
-            return this.value + " " + this.units;
+        if (units != null && units.trim().length() > 0) {
+            return value + " " + units;
         } else {
             return Integer.toString(value);
         }
     }
-    
-    public boolean equals( Object o ){
-	if(!(o instanceof IntUnit) )
-	    return false;
-	IntUnit f = (IntUnit) o;
-	if( f.getValue() != this.value ){
-	    return false;	    
-	}
-	if( this.units == f.getUnits() || ( this.units != null && this.units.equals( f.getUnits() )) ){
-	    return true;
-	}
-	return false;
+
+    @Override
+    public boolean equals(final Object o) {
+        if (!(o instanceof IntUnit)) {
+            return false;
+        }
+        final IntUnit f = (IntUnit) o;
+        if (f.getValue() != value) {
+            return false;
+        }
+        if (units == f.getUnits() || units != null && units.equals(f.getUnits())) {
+            return true;
+        }
+        return false;
     }
 }

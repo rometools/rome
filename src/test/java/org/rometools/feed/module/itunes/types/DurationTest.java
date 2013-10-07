@@ -20,38 +20,38 @@
  *
  */
 package org.rometools.feed.module.itunes.types;
-import org.rometools.feed.module.itunes.types.Duration;
-import junit.framework.*;
 
-import java.text.NumberFormat;
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+
 /**
- *
+ * 
  * @author cooper
  */
 public class DurationTest extends TestCase {
-    private Duration duration = new Duration((2 * Duration.HOUR) +
-            (3 * Duration.MINUTE) + (20 * Duration.SECOND));
-    private Duration duration2 = new Duration((12000 * Duration.HOUR) +
-            (61 * Duration.MINUTE) + (61 * Duration.SECOND));
-    private Duration duration3 = new Duration("1:20:01");
-    private long duration3ms = Duration.HOUR * 1 + Duration.MINUTE * 20 + Duration.SECOND * 1;
+    private final Duration duration = new Duration(2 * Duration.HOUR + 3 * Duration.MINUTE + 20 * Duration.SECOND);
+    private final Duration duration2 = new Duration(12000 * Duration.HOUR + 61 * Duration.MINUTE + 61 * Duration.SECOND);
+    private final Duration duration3 = new Duration("1:20:01");
+    private final long duration3ms = Duration.HOUR * 1 + Duration.MINUTE * 20 + Duration.SECOND * 1;
 
-    private Duration duration4 = new Duration("1:02");
-    private long duration4ms = Duration.MINUTE * 1 + Duration.SECOND * 2;
-    
-    
-    public DurationTest(String testName) {
+    private final Duration duration4 = new Duration("1:02");
+    private final long duration4ms = Duration.MINUTE * 1 + Duration.SECOND * 2;
+
+    public DurationTest(final String testName) {
         super(testName);
     }
 
+    @Override
     protected void setUp() throws Exception {
     }
 
+    @Override
     protected void tearDown() throws Exception {
     }
 
     public static Test suite() {
-        TestSuite suite = new TestSuite(DurationTest.class);
+        final TestSuite suite = new TestSuite(DurationTest.class);
 
         return suite;
     }
@@ -66,10 +66,10 @@ public class DurationTest extends TestCase {
         System.out.println(duration2.toString());
         assertEquals("Long time failed", "12001:02:01", duration2.toString());
     }
-    
-    public void testGetMilliseconds(){
-        System.out.println("testGetMilliseconds" );
-        assertEquals("Milliseconds from 3 string constructor", this.duration3ms, this.duration3.getMilliseconds() );
-        assertEquals("Milliseconds from 2 string constructor", this.duration4ms, this.duration4.getMilliseconds() );
+
+    public void testGetMilliseconds() {
+        System.out.println("testGetMilliseconds");
+        assertEquals("Milliseconds from 3 string constructor", duration3ms, duration3.getMilliseconds());
+        assertEquals("Milliseconds from 2 string constructor", duration4ms, duration4.getMilliseconds());
     }
 }

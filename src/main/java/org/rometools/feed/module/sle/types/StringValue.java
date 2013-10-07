@@ -17,26 +17,27 @@
  */
 package org.rometools.feed.module.sle.types;
 
+import org.jdom2.Namespace;
+
 import com.sun.syndication.feed.impl.ObjectBean;
-import org.jdom.Namespace;
 
-
-/** An EntryValue implementation for "text" data-types.
- *
+/**
+ * An EntryValue implementation for "text" data-types.
+ * 
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class StringValue implements EntryValue {
-    private ObjectBean obj = new ObjectBean(StringValue.class, this);
+    private final ObjectBean obj = new ObjectBean(StringValue.class, this);
     private String element;
     private String label;
     private String value;
     private Namespace namespace = Namespace.XML_NAMESPACE;
-    
+
     /** Creates a new instance of StringValue */
     public StringValue() {
     }
 
-    public void setElement(String element) {
+    public void setElement(final String element) {
         this.element = element;
     }
 
@@ -44,7 +45,7 @@ public class StringValue implements EntryValue {
         return element;
     }
 
-    public void setLabel(String label) {
+    public void setLabel(final String label) {
         this.label = label;
     }
 
@@ -52,7 +53,7 @@ public class StringValue implements EntryValue {
         return label;
     }
 
-    public void setValue(String value) {
+    public void setValue(final String value) {
         this.value = value;
     }
 
@@ -60,33 +61,37 @@ public class StringValue implements EntryValue {
         return value;
     }
 
+    @Override
     public Object clone() {
-        StringValue clone = new StringValue();
-        clone.setElement(this.getElement());
-        clone.setLabel(this.getLabel());
-        clone.setValue(this.value);
-        clone.setNamespace( this.namespace );
-        
+        final StringValue clone = new StringValue();
+        clone.setElement(getElement());
+        clone.setLabel(getLabel());
+        clone.setValue(value);
+        clone.setNamespace(namespace);
+
         return clone;
     }
 
-    public boolean equals(Object o) {
+    @Override
+    public boolean equals(final Object o) {
         return obj.equals(o);
     }
 
+    @Override
     public int hashCode() {
         return obj.hashCode();
     }
 
+    @Override
     public String toString() {
-        return "[Namespace: "+ namespace+ " Element:" + element + " Label:" + label + " Value:" + value + "]";
+        return "[Namespace: " + namespace + " Element:" + element + " Label:" + label + " Value:" + value + "]";
     }
 
     public Namespace getNamespace() {
         return namespace;
     }
 
-    public void setNamespace(Namespace namespace) {
+    public void setNamespace(final Namespace namespace) {
         this.namespace = namespace == null ? Namespace.XML_NAMESPACE : namespace;
     }
 }

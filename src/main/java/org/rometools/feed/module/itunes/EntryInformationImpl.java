@@ -40,12 +40,13 @@
  */
 package org.rometools.feed.module.itunes;
 
-import com.sun.syndication.feed.CopyFrom;
 import org.rometools.feed.module.itunes.types.Duration;
 
+import com.sun.syndication.feed.CopyFrom;
 
 /**
  * This class contains information for iTunes podcast feeds that exist at the Item level.
+ * 
  * @version $Revision: 1.2 $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
@@ -60,6 +61,7 @@ public class EntryInformationImpl extends AbstractITunesObject implements EntryI
 
     /**
      * Returns the Duration object for this Item
+     * 
      * @return Returns the Duration object for this Item
      */
     public Duration getDuration() {
@@ -68,50 +70,56 @@ public class EntryInformationImpl extends AbstractITunesObject implements EntryI
 
     /**
      * Sets the Duration object for this Item
+     * 
      * @param duration Sets the Duration object for this Item
      */
-    public void setDuration(Duration duration) {
+    public void setDuration(final Duration duration) {
         this.duration = duration;
     }
 
     /**
      * Defined by the ROME module API
+     * 
      * @param obj Object to copy from
      */
-    public void copyFrom(CopyFrom obj) {
-        EntryInformationImpl info = (EntryInformationImpl) obj;
-        this.setAuthor(info.getAuthor());
-        this.setBlock(info.getBlock());
+    @Override
+    public void copyFrom(final CopyFrom obj) {
+        final EntryInformationImpl info = (EntryInformationImpl) obj;
+        setAuthor(info.getAuthor());
+        setBlock(info.getBlock());
 
         if (info.getDuration() != null) {
-            this.setDuration(new Duration(info.getDuration().getMilliseconds()));
+            setDuration(new Duration(info.getDuration().getMilliseconds()));
         }
 
-        this.setExplicit(info.getExplicit());
+        setExplicit(info.getExplicit());
 
         if (info.getKeywords() != null) {
-            this.setKeywords((String[]) info.getKeywords().clone());
+            setKeywords(info.getKeywords().clone());
         }
 
-        this.setSubtitle(info.getSubtitle());
-        this.setSummary(info.getSummary());
+        setSubtitle(info.getSubtitle());
+        setSummary(info.getSummary());
     }
 
     /**
      * Required by the ROME API
+     * 
      * @return A clone of this module object
      */
+    @Override
     public Object clone() {
-        EntryInformationImpl info = new EntryInformationImpl();
+        final EntryInformationImpl info = new EntryInformationImpl();
         info.copyFrom(this);
 
         return info;
     }
 
+    @Override
     public String toString() {
-        StringBuffer sb = new StringBuffer("[");
+        final StringBuffer sb = new StringBuffer("[");
         sb.append(" Duration: ");
-        sb.append(this.getDuration());
+        sb.append(getDuration());
         sb.append("]");
         sb.append(super.toString());
 

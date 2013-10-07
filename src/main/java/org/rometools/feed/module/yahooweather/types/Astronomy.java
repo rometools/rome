@@ -38,27 +38,24 @@
 package org.rometools.feed.module.yahooweather.types;
 
 import java.io.Serializable;
-
 import java.util.Date;
 
 import com.sun.syndication.feed.impl.EqualsBean;
 import com.sun.syndication.feed.impl.ToStringBean;
 
-
 /**
  * Forecast information about current astronomical conditions. Attributes:
- *       <ul class="topspace">
- *         <li>sunrise: today's sunrise time. The time is a string in a local
- *           time format of "h:mm am/pm", for example "7:02 am" (string)</li>
- *         <li>sunset today's sunset time. The time is a string in a local time
- *           format of "h:mm am/pm", for example "4:51 pm" (string)</li>
- *       </ul>
+ * <ul class="topspace">
+ * <li>sunrise: today's sunrise time. The time is a string in a local time format of "h:mm am/pm", for example "7:02 am" (string)</li>
+ * <li>sunset today's sunset time. The time is a string in a local time format of "h:mm am/pm", for example "4:51 pm" (string)</li>
+ * </ul>
+ * 
  * @version $Id: Astronomy.java,v 1.2 2008/01/22 14:50:05 kebernet Exp $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Astronomy implements Serializable, Cloneable {
-    private EqualsBean equals = new EqualsBean(Astronomy.class, this);
-    private ToStringBean toString = new ToStringBean(Astronomy.class, this);
+    private final EqualsBean equals = new EqualsBean(Astronomy.class, this);
+    private final ToStringBean toString = new ToStringBean(Astronomy.class, this);
     private Date sunrise;
     private Date sunset;
 
@@ -71,35 +68,38 @@ public class Astronomy implements Serializable, Cloneable {
 
     /**
      * Constructs a new Astronomy object
+     * 
      * @param sunrise time of sunrise (from 0ms)
      * @param sunset time of sunset (from 0ms)
      */
-    public Astronomy(Date sunrise, Date sunset) {
+    public Astronomy(final Date sunrise, final Date sunset) {
         this.sunrise = sunrise;
         this.sunset = sunset;
     }
 
+    @Override
     public Object clone() {
-        return new Astronomy((this.getSunrise() != null)
-            ? new Date(this.getSunrise().getTime()) : null,
-            (this.getSunset() != null) ? new Date(this.getSunset().getTime())
-                                       : null);
+        return new Astronomy(getSunrise() != null ? new Date(getSunrise().getTime()) : null, getSunset() != null ? new Date(getSunset().getTime()) : null);
     }
 
-    public boolean equals(Object o) {
-        return this.equals.equals(o);
+    @Override
+    public boolean equals(final Object o) {
+        return equals.equals(o);
     }
 
+    @Override
     public int hashCode() {
-        return this.equals.hashCode();
+        return equals.hashCode();
     }
 
+    @Override
     public String toString() {
-        return this.toString.toString();
+        return toString.toString();
     }
 
     /**
      * Time of sunrise
+     * 
      * @return ime of sunrise (from 0ms)
      */
     public Date getSunrise() {
@@ -108,14 +108,16 @@ public class Astronomy implements Serializable, Cloneable {
 
     /**
      * Time of sunrise
+     * 
      * @param sunrise ime of sunrise (from 0ms)
      */
-    public void setSunrise(Date sunrise) {
+    public void setSunrise(final Date sunrise) {
         this.sunrise = sunrise;
     }
 
     /**
      * Time of sunset
+     * 
      * @return time of sunset (from 0ms)
      */
     public Date getSunset() {
@@ -124,9 +126,10 @@ public class Astronomy implements Serializable, Cloneable {
 
     /**
      * Time of sunset
+     * 
      * @param sunset time of sunset (from 0ms)
      */
-    public void setSunset(Date sunset) {
+    public void setSunset(final Date sunset) {
         this.sunset = sunset;
     }
 }

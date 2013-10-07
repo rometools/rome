@@ -41,9 +41,9 @@ package org.rometools.feed.module.base.types;
 
 import java.util.StringTokenizer;
 
-
-/** Represents the size on an item in 2 or 3 dimensions.
- *
+/**
+ * Represents the size on an item in 2 or 3 dimensions.
+ * 
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @version $Revision: 1.2 $
  */
@@ -55,43 +55,46 @@ public class Size implements CloneableType {
     /**
      * length
      */
-    private FloatUnit length;
+    private final FloatUnit length;
     /**
      * width
      */
-    private FloatUnit width;
+    private final FloatUnit width;
 
     /**
      * Creates a new Size object parsing a string value.
+     * 
      * @param source String value to parse
      */
-    public Size(String source) {
-        StringTokenizer tok = new StringTokenizer(source, "Xx");
-        this.length = new FloatUnit( tok.nextToken());
-        this.width = new FloatUnit( tok.nextToken());
+    public Size(final String source) {
+        final StringTokenizer tok = new StringTokenizer(source, "Xx");
+        length = new FloatUnit(tok.nextToken());
+        width = new FloatUnit(tok.nextToken());
 
         if (tok.hasMoreTokens()) {
-            this.height = new FloatUnit( tok.nextToken());
+            height = new FloatUnit(tok.nextToken());
         }
     }
 
     /**
      * Creates a new instance of Size
+     * 
      * @param length lenght value
      * @param width width value
      */
-    public Size(FloatUnit length, FloatUnit width) {
+    public Size(final FloatUnit length, final FloatUnit width) {
         this.length = length;
         this.width = width;
     }
 
     /**
      * Creates a new instance of Size.
+     * 
      * @param length Length value.
      * @param width Width value.
      * @param height Height value.
      */
-    public Size(FloatUnit length, FloatUnit width, FloatUnit height) {
+    public Size(final FloatUnit length, final FloatUnit width, final FloatUnit height) {
         this.length = length;
         this.width = width;
         this.height = height;
@@ -99,6 +102,7 @@ public class Size implements CloneableType {
 
     /**
      * Height value.
+     * 
      * @return Height value.
      */
     public FloatUnit getHeight() {
@@ -107,6 +111,7 @@ public class Size implements CloneableType {
 
     /**
      * Length value.
+     * 
      * @return Length value.
      */
     public FloatUnit getLength() {
@@ -115,6 +120,7 @@ public class Size implements CloneableType {
 
     /**
      * Width value.
+     * 
      * @return Width value.
      */
     public FloatUnit getWidth() {
@@ -123,20 +129,24 @@ public class Size implements CloneableType {
 
     /**
      * Duplicates this object.
+     * 
      * @return A duplicate Size object.
      */
+    @Override
     public Object clone() {
-        if (this.height != null) {
-            return new Size(this.length, this.width, this.height);
+        if (height != null) {
+            return new Size(length, width, height);
         } else {
-            return new Size(this.length, this.width);
+            return new Size(length, width);
         }
     }
 
     /**
      * Returns a string representation of this object.
+     * 
      * @return A string representation of this object.
      */
+    @Override
     public String toString() {
         if (height != null) {
             return length + "x" + width + "x" + height;
@@ -144,11 +154,15 @@ public class Size implements CloneableType {
             return length + "x" + width;
         }
     }
-    public boolean equals( Object o ){
-	if( !(o instanceof Size))
-	    return false;
-	if( this.toString().equals( o.toString() ) )
-	    return true;
-	return false;
+
+    @Override
+    public boolean equals(final Object o) {
+        if (!(o instanceof Size)) {
+            return false;
+        }
+        if (toString().equals(o.toString())) {
+            return true;
+        }
+        return false;
     }
 }

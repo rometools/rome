@@ -38,179 +38,152 @@
 package org.rometools.feed.module.yahooweather.io;
 
 import java.text.SimpleDateFormat;
-
 import java.util.HashSet;
 
-import com.sun.syndication.feed.module.Module;
+import org.jdom2.Element;
+import org.jdom2.Namespace;
 import org.rometools.feed.module.yahooweather.YWeatherModule;
 import org.rometools.feed.module.yahooweather.YWeatherModuleImpl;
 import org.rometools.feed.module.yahooweather.types.Forecast;
+
+import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.ModuleGenerator;
 
-import org.jdom.Element;
-import org.jdom.Namespace;
-
-
-/** The ModuleGenerator implementation for the Yahoo Weather plug in.
+/**
+ * The ModuleGenerator implementation for the Yahoo Weather plug in.
+ * 
  * @version $Revision: 1.3 $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class WeatherModuleGenerator implements ModuleGenerator {
-    private static final Namespace NS = Namespace.getNamespace("yweather",
-            YWeatherModule.URI);
-    private static final SimpleDateFormat TIME_ONLY = new SimpleDateFormat(
-            "h:mm a");
-    private static final SimpleDateFormat LONG_DATE = new SimpleDateFormat(
-            "EEE, d MMM yyyy h:mm a zzz");
-    private static final SimpleDateFormat SHORT_DATE = new SimpleDateFormat(
-            "d MMM yyyy");
+    private static final Namespace NS = Namespace.getNamespace("yweather", YWeatherModule.URI);
+    private static final SimpleDateFormat TIME_ONLY = new SimpleDateFormat("h:mm a");
+    private static final SimpleDateFormat LONG_DATE = new SimpleDateFormat("EEE, d MMM yyyy h:mm a zzz");
+    private static final SimpleDateFormat SHORT_DATE = new SimpleDateFormat("d MMM yyyy");
 
     /** Creates a new instance of SlashModuleGenerator */
     public WeatherModuleGenerator() {
     }
 
-    public void generate(Module module, Element element) {
-        if(!(module instanceof YWeatherModuleImpl)) {
+    public void generate(final Module module, final Element element) {
+        if (!(module instanceof YWeatherModuleImpl)) {
             return;
         }
 
-        YWeatherModuleImpl weather = (YWeatherModuleImpl) module;
+        final YWeatherModuleImpl weather = (YWeatherModuleImpl) module;
 
-        if(weather.getAstronomy() != null) {
-            Element astro = new Element("astronomy", WeatherModuleGenerator.NS);
+        if (weather.getAstronomy() != null) {
+            final Element astro = new Element("astronomy", WeatherModuleGenerator.NS);
 
-            if(weather.getAstronomy().getSunrise() != null) {
-                astro.setAttribute("sunrise",
-                    TIME_ONLY.format(weather.getAstronomy().getSunrise())
-                             .toLowerCase());
+            if (weather.getAstronomy().getSunrise() != null) {
+                astro.setAttribute("sunrise", TIME_ONLY.format(weather.getAstronomy().getSunrise()).toLowerCase());
             }
 
-            if(weather.getAstronomy().getSunrise() != null) {
-                astro.setAttribute("sunset",
-                    TIME_ONLY.format(weather.getAstronomy().getSunset())
-                             .toLowerCase());
+            if (weather.getAstronomy().getSunrise() != null) {
+                astro.setAttribute("sunset", TIME_ONLY.format(weather.getAstronomy().getSunset()).toLowerCase());
             }
 
             element.addContent(astro);
         }
 
-        if(weather.getAtmosphere() != null) {
-            Element atmos = new Element("atmosphere", WeatherModuleGenerator.NS);
-            atmos.setAttribute("humidity",
-                Integer.toString(weather.getAtmosphere().getHumidity()));
-            atmos.setAttribute("visibility",
-                Integer.toString(
-                    (int) (weather.getAtmosphere().getVisibility() * 100d)));
-            atmos.setAttribute("pressure",
-                Double.toString(weather.getAtmosphere().getPressure()));
+        if (weather.getAtmosphere() != null) {
+            final Element atmos = new Element("atmosphere", WeatherModuleGenerator.NS);
+            atmos.setAttribute("humidity", Integer.toString(weather.getAtmosphere().getHumidity()));
+            atmos.setAttribute("visibility", Integer.toString((int) (weather.getAtmosphere().getVisibility() * 100d)));
+            atmos.setAttribute("pressure", Double.toString(weather.getAtmosphere().getPressure()));
 
-            if(weather.getAtmosphere().getChange() != null) {
-                atmos.setAttribute("rising",
-                    Integer.toString(weather.getAtmosphere().getChange()
-                                            .getCode()));
+            if (weather.getAtmosphere().getChange() != null) {
+                atmos.setAttribute("rising", Integer.toString(weather.getAtmosphere().getChange().getCode()));
             }
 
             element.addContent(atmos);
         }
 
-        if(weather.getCondition() != null) {
-            Element condition = new Element("condition",
-                    WeatherModuleGenerator.NS);
+        if (weather.getCondition() != null) {
+            final Element condition = new Element("condition", WeatherModuleGenerator.NS);
 
-            if(weather.getCondition().getText() != null) {
+            if (weather.getCondition().getText() != null) {
                 condition.setAttribute("text", weather.getCondition().getText());
             }
 
-            if(weather.getCondition().getCode() != null) {
-                condition.setAttribute("code",
-                    Integer.toString(weather.getCondition().getCode().getCode()));
+            if (weather.getCondition().getCode() != null) {
+                condition.setAttribute("code", Integer.toString(weather.getCondition().getCode().getCode()));
             }
 
-            if(weather.getCondition().getDate() != null) {
-                condition.setAttribute("date",
-                    LONG_DATE.format(weather.getCondition().getDate())
-                             .replaceAll("AM", "am").replaceAll("PM", "pm"));
+            if (weather.getCondition().getDate() != null) {
+                condition.setAttribute("date", LONG_DATE.format(weather.getCondition().getDate()).replaceAll("AM", "am").replaceAll("PM", "pm"));
             }
 
-            condition.setAttribute("temp",
-                Integer.toString(weather.getCondition().getTemperature()));
+            condition.setAttribute("temp", Integer.toString(weather.getCondition().getTemperature()));
             element.addContent(condition);
         }
 
-        if(weather.getLocation() != null) {
-            Element location = new Element("location", WeatherModuleGenerator.NS);
+        if (weather.getLocation() != null) {
+            final Element location = new Element("location", WeatherModuleGenerator.NS);
 
-            if(weather.getLocation().getCity() != null) {
+            if (weather.getLocation().getCity() != null) {
                 location.setAttribute("city", weather.getLocation().getCity());
             }
 
-            if(weather.getLocation().getRegion() != null) {
-                location.setAttribute("region",
-                    weather.getLocation().getRegion());
+            if (weather.getLocation().getRegion() != null) {
+                location.setAttribute("region", weather.getLocation().getRegion());
             }
 
-            if(weather.getLocation().getCountry() != null) {
-                location.setAttribute("country",
-                    weather.getLocation().getCountry());
+            if (weather.getLocation().getCountry() != null) {
+                location.setAttribute("country", weather.getLocation().getCountry());
             }
 
             element.addContent(location);
         }
 
-        if(weather.getUnits() != null) {
-            Element units = new Element("units", WeatherModuleGenerator.NS);
+        if (weather.getUnits() != null) {
+            final Element units = new Element("units", WeatherModuleGenerator.NS);
 
-            if(weather.getUnits().getDistance() != null) {
+            if (weather.getUnits().getDistance() != null) {
                 units.setAttribute("distance", weather.getUnits().getDistance());
             }
 
-            if(weather.getUnits().getPressure() != null) {
+            if (weather.getUnits().getPressure() != null) {
                 units.setAttribute("pressure", weather.getUnits().getPressure());
             }
 
-            if(weather.getUnits().getSpeed() != null) {
+            if (weather.getUnits().getSpeed() != null) {
                 units.setAttribute("speed", weather.getUnits().getSpeed());
             }
 
-            if(weather.getUnits().getTemperature() != null) {
-                units.setAttribute("temperature",
-                    weather.getUnits().getTemperature());
+            if (weather.getUnits().getTemperature() != null) {
+                units.setAttribute("temperature", weather.getUnits().getTemperature());
             }
 
             element.addContent(units);
         }
 
-        if(weather.getWind() != null) {
-            Element wind = new Element("wind", WeatherModuleGenerator.NS);
-            wind.setAttribute("chill",
-                Integer.toString(weather.getWind().getChill()));
-            wind.setAttribute("direction",
-                Integer.toString(weather.getWind().getDirection()));
-            wind.setAttribute("speed",
-                Integer.toString(weather.getWind().getSpeed()));
+        if (weather.getWind() != null) {
+            final Element wind = new Element("wind", WeatherModuleGenerator.NS);
+            wind.setAttribute("chill", Integer.toString(weather.getWind().getChill()));
+            wind.setAttribute("direction", Integer.toString(weather.getWind().getDirection()));
+            wind.setAttribute("speed", Integer.toString(weather.getWind().getSpeed()));
             element.addContent(wind);
         }
 
-        if(weather.getForecasts() != null) {
-            for(int i = 0; i < weather.getForecasts().length; i++) {
-                Element forecast = new Element("forecast",
-                        WeatherModuleGenerator.NS);
-                Forecast f = weather.getForecasts()[i];
+        if (weather.getForecasts() != null) {
+            for (int i = 0; i < weather.getForecasts().length; i++) {
+                final Element forecast = new Element("forecast", WeatherModuleGenerator.NS);
+                final Forecast f = weather.getForecasts()[i];
 
-                if(f.getCode() != null) {
-                    forecast.setAttribute("code",
-                        Integer.toString(f.getCode().getCode()));
+                if (f.getCode() != null) {
+                    forecast.setAttribute("code", Integer.toString(f.getCode().getCode()));
                 }
 
-                if(f.getDate() != null) {
+                if (f.getDate() != null) {
                     forecast.setAttribute("date", SHORT_DATE.format(f.getDate()));
                 }
 
-                if(f.getDay() != null) {
+                if (f.getDay() != null) {
                     forecast.setAttribute("day", f.getDay());
                 }
 
-                if(f.getText() != null) {
+                if (f.getText() != null) {
                     forecast.setAttribute("text", f.getText());
                 }
 
@@ -221,15 +194,15 @@ public class WeatherModuleGenerator implements ModuleGenerator {
         }
     }
 
-    protected Element generateSimpleElement(String name, String value) {
-        Element element = new Element(name, WeatherModuleGenerator.NS);
+    protected Element generateSimpleElement(final String name, final String value) {
+        final Element element = new Element(name, WeatherModuleGenerator.NS);
         element.addContent(value);
 
         return element;
     }
 
     public java.util.Set getNamespaces() {
-        HashSet set = new HashSet();
+        final HashSet set = new HashSet();
         set.add(WeatherModuleGenerator.NS);
 
         return set;

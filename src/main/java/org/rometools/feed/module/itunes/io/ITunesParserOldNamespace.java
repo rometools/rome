@@ -21,22 +21,22 @@
 
 package org.rometools.feed.module.itunes.io;
 
-import org.jdom.Namespace;
-import com.sun.syndication.io.WireFeedParser;
+import org.jdom2.Namespace;
 
 /**
- *
+ * 
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
-public class ITunesParserOldNamespace extends ITunesParser{
+public class ITunesParserOldNamespace extends ITunesParser {
     String URI = "http://www.itunes.com/DTDs/Podcast-1.0.dtd";
 
     /** Creates a new instance of ITunesParserOldNamespace */
     public ITunesParserOldNamespace() {
         super();
-        super.ns = Namespace.getNamespace( URI );
+        super.ns = Namespace.getNamespace(URI);
     }
 
+    @Override
     public String getNamespaceUri() {
         return URI;
     }

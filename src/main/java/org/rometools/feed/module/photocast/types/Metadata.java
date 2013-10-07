@@ -3,7 +3,7 @@
  *
  * Created on March 30, 2006, 6:16 PM
  *
-  *
+ *
  * This library is provided under dual licenses.
  * You may choose the terms of the Lesser General Public License or the Apache
  * License at your discretion.
@@ -45,27 +45,29 @@ import com.sun.syndication.feed.impl.EqualsBean;
 import com.sun.syndication.feed.impl.ToStringBean;
 
 /**
- * This is an immutable class representing
- * the apple-wallpapers:metadata tag in the photocast module.
+ * This is an immutable class representing the apple-wallpapers:metadata tag in the photocast module.
+ * 
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Metadata {
-    
-    private PhotoDate photoDate;
-    private String comments;
-    
+
+    private final PhotoDate photoDate;
+    private final String comments;
+
     /**
      * Creates a new instance of Metadata with a set photoDate and comments value.
+     * 
      * @param photoDate PhotoDate value to use
      * @param comments comments about this photo.
      */
-    public Metadata(PhotoDate photoDate, String comments) {
+    public Metadata(final PhotoDate photoDate, final String comments) {
         this.photoDate = photoDate == null ? new PhotoDate() : photoDate;
-        this.comments = comments == null ? "" : comments;        
+        this.comments = comments == null ? "" : comments;
     }
 
     /**
      * Returns the PhotoDate value.
+     * 
      * @return Returns the PhotoDate value.
      */
     public PhotoDate getPhotoDate() {
@@ -74,29 +76,35 @@ public class Metadata {
 
     /**
      * Returns comments about the photo.
+     * 
      * @return Returns comments about the photo.
      */
     public String getComments() {
         return comments;
     }
+
     /**
      * Returns a String representation of the metadata object.
+     * 
      * @return Returns a String representation of the metadata object.
      */
+    @Override
     public String toString() {
-        ToStringBean tsBean = new ToStringBean(Metadata.class, this);
+        final ToStringBean tsBean = new ToStringBean(Metadata.class, this);
 
         return tsBean.toString();
     }
 
-    public boolean equals(Object obj) {
-        EqualsBean eBean = new EqualsBean(Metadata.class, this);
+    @Override
+    public boolean equals(final Object obj) {
+        final EqualsBean eBean = new EqualsBean(Metadata.class, this);
 
         return eBean.beanEquals(obj);
     }
 
+    @Override
     public int hashCode() {
-        EqualsBean equals = new EqualsBean(Metadata.class, this);
+        final EqualsBean equals = new EqualsBean(Metadata.class, this);
 
         return equals.beanHashCode();
     }

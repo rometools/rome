@@ -1,9 +1,9 @@
 package org.rometools.feed.module.sse.modules;
 
+import java.util.Date;
+
 import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.rss.Item;
-
-import java.util.Date;
 
 /**
  * <sx:conflict> element within <sx:conflicts>
@@ -14,27 +14,22 @@ public class Conflict extends SSEModule {
     public static final String NAME = "conflict";
 
     /**
-     * An optional, string attribute. This text attribute identifies the endpoint that
-     * made the conflicting modification. It is used and compared programmatically.
-     * See sx:update for format guidance.
+     * An optional, string attribute. This text attribute identifies the endpoint that made the conflicting modification. It is used and compared
+     * programmatically. See sx:update for format guidance.
      * <p>
-     * Note: Either or both of the when or by attributes MUST be present; it is
-     * invalid to have neither.
+     * Note: Either or both of the when or by attributes MUST be present; it is invalid to have neither.
      */
     public static final String BY_ATTRIBUTE = "by";
 
     /**
-     * A required, integer attribute. This is the version number of the conflicting
-     * modification.
+     * A required, integer attribute. This is the version number of the conflicting modification.
      */
     public static final String VERSION_ATTRIBUTE = "version";
 
     /**
-     * An optional, date-time attribute. This is the date-time when the conflicting
-     * modification took place. See sx:update for format guidance.
+     * An optional, date-time attribute. This is the date-time when the conflicting modification took place. See sx:update for format guidance.
      * <p>
-     * Note: Either or both of the when or by attributes MUST be present; it is
-     * invalid to have neither.
+     * Note: Either or both of the when or by attributes MUST be present; it is invalid to have neither.
      */
     public static final String WHEN_ATTRIBUTE = "when";
 
@@ -43,14 +38,15 @@ public class Conflict extends SSEModule {
     private String by;
     private Item conflictItem;
 
-    public void copyFrom(CopyFrom obj) {
-        Conflict conflict = (Conflict)obj;
+    @Override
+    public void copyFrom(final CopyFrom obj) {
+        final Conflict conflict = (Conflict) obj;
         conflict.when = when == null ? null : (Date) when.clone();
         conflict.by = by;
         conflict.version = version;
         try {
             conflict.conflictItem = (Item) conflictItem.clone();
-        } catch (CloneNotSupportedException e) {
+        } catch (final CloneNotSupportedException e) {
             // should not happen
             e.printStackTrace();
         }
@@ -60,7 +56,7 @@ public class Conflict extends SSEModule {
         return by;
     }
 
-    public void setBy(String by) {
+    public void setBy(final String by) {
         this.by = by;
     }
 
@@ -68,7 +64,7 @@ public class Conflict extends SSEModule {
         return version;
     }
 
-    public void setVersion(Integer version) {
+    public void setVersion(final Integer version) {
         this.version = version;
     }
 
@@ -76,11 +72,11 @@ public class Conflict extends SSEModule {
         return when;
     }
 
-    public void setWhen(Date when) {
+    public void setWhen(final Date when) {
         this.when = when;
     }
 
-    public void setItem(Item conflictItem) {
+    public void setItem(final Item conflictItem) {
         this.conflictItem = conflictItem;
     }
 

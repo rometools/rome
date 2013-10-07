@@ -25,20 +25,22 @@ package org.rometools.feed.module.mediarss;
 import org.rometools.feed.module.mediarss.types.MediaContent;
 import org.rometools.feed.module.mediarss.types.MediaGroup;
 
-
 /**
  * Represents entry/item level information.
+ * 
  * @author cooper
  */
 public interface MediaEntryModule extends MediaModule {
     /**
      * Returns the MediaContent items for the entry.
+     * 
      * @return Returns the MediaContent items for the entry.
      */
     public MediaContent[] getMediaContents();
 
     /**
      * Returns the media groups for the entry.
+     * 
      * @return Returns the media groups for the entry.
      */
     public MediaGroup[] getMediaGroups();

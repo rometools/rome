@@ -25,18 +25,18 @@ package org.rometools.feed.module.mediarss.types;
 
 import java.io.Serializable;
 
-
-/** Simple data bean parent for scheme-value type entities.
- *
+/**
+ * Simple data bean parent for scheme-value type entities.
+ * 
  * @author cooper
  */
 public abstract class AbstractSchemeValue implements Serializable {
-	private static final long serialVersionUID = -917128796432458636L;
-	private String scheme;
-    private String value;
+    private static final long serialVersionUID = -917128796432458636L;
+    private final String scheme;
+    private final String value;
 
-    public AbstractSchemeValue(String scheme, String value) {
-        if ((scheme == null) || (value == null)) {
+    public AbstractSchemeValue(final String scheme, final String value) {
+        if (scheme == null || value == null) {
             throw new NullPointerException("Scheme and value cannot be null.");
         }
 

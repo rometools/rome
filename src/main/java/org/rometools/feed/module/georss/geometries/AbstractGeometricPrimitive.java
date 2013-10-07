@@ -10,14 +10,15 @@
 package org.rometools.feed.module.georss.geometries;
 
 /**
- * Abstract base class for geometric primitives (non-composite geometric objects) 
+ * Abstract base class for geometric primitives (non-composite geometric objects)
+ * 
  * @author runaas
  */
 public abstract class AbstractGeometricPrimitive extends AbstractGeometry {
-    
+
     /** Creates a new instance of GeometricPrimitive */
     public AbstractGeometricPrimitive() {
-        
+
     }
-    
+
 }

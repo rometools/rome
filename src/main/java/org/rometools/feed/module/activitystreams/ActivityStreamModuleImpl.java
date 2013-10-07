@@ -20,9 +20,8 @@ import org.rometools.feed.module.activitystreams.types.ActivityObject;
 import org.rometools.feed.module.activitystreams.types.Mood;
 import org.rometools.feed.module.activitystreams.types.Verb;
 
-
 /**
- *
+ * 
  * @author robert.cooper
  */
 public class ActivityStreamModuleImpl implements ActivityStreamModule {
@@ -31,53 +30,53 @@ public class ActivityStreamModuleImpl implements ActivityStreamModule {
 
     /**
      * Set the value of object
-     *
+     * 
      * @param newobject new value of object
      */
-    public void setObject(ActivityObject newobject) {
-        this.object = newobject;
+    public void setObject(final ActivityObject newobject) {
+        object = newobject;
     }
 
     /**
      * Get the value of object
-     *
+     * 
      * @return the value of object
      */
     public ActivityObject getObject() {
-        return this.object;
+        return object;
     }
 
     /**
      * Set the value of verb
-     *
+     * 
      * @param newverb new value of verb
      */
-    public void setVerb(Verb newverb) {
-        this.verb = newverb;
+    public void setVerb(final Verb newverb) {
+        verb = newverb;
     }
 
     /**
      * Get the value of verb
-     *
+     * 
      * @return the value of verb
      */
     public Verb getVerb() {
-        return this.verb;
+        return verb;
     }
 
     public ActivityObject getTarget() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void setTarget(ActivityObject object) {
+    public void setTarget(final ActivityObject object) {
         throw new UnsupportedOperationException("Not supported yet.");
-    } 
+    }
 
     public Mood getMood() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void setMood(Mood mood) {
+    public void setMood(final Mood mood) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }

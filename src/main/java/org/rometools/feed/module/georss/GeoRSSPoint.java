@@ -21,42 +21,41 @@ package org.rometools.feed.module.georss;
  * 
  */
 public class GeoRSSPoint implements Cloneable {
-	private double latitude;
+    private double latitude;
 
-	private double longitude;
+    private double longitude;
 
-	/**
-	 * @return the latitude
-	 */
-	public double getLatitude() {
-		return latitude;
-	}
+    /**
+     * @return the latitude
+     */
+    public double getLatitude() {
+        return latitude;
+    }
 
-	/**
-	 * @param latitude
-	 *            the latitude to set
-	 */
-	public void setLatitude(double latitude) {
-		this.latitude = latitude;
-	}
+    /**
+     * @param latitude the latitude to set
+     */
+    public void setLatitude(final double latitude) {
+        this.latitude = latitude;
+    }
 
-	/**
-	 * @return the longitude
-	 */
-	public double getLongitude() {
-		return longitude;
-	}
+    /**
+     * @return the longitude
+     */
+    public double getLongitude() {
+        return longitude;
+    }
 
-	/**
-	 * @param longitude
-	 *            the longitude to set
-	 */
-	public void setLongitude(double longitude) {
-		this.longitude = longitude;
-	}
+    /**
+     * @param longitude the longitude to set
+     */
+    public void setLongitude(final double longitude) {
+        this.longitude = longitude;
+    }
 
-	public Object clone() throws CloneNotSupportedException {
-		return super.clone();
-	}
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 
 }

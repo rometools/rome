@@ -21,30 +21,33 @@
  */
 package org.rometools.feed.module.mediarss;
 
-import com.sun.syndication.feed.module.Module;
 import org.rometools.feed.module.mediarss.types.Metadata;
 import org.rometools.feed.module.mediarss.types.PlayerReference;
 
+import com.sun.syndication.feed.module.Module;
 
 /**
  * This is the base module for MediaRSS.
- * <p>It represents information that can be stored at the feed level,
- * as well is a base for entry level information, as the same
- * information can apply.</p>
+ * <p>
+ * It represents information that can be stored at the feed level, as well is a base for entry level information, as the same information can apply.
+ * </p>
+ * 
  * @author Nathanial X. Freitas
  */
 public interface MediaModule extends Module {
-    //the URI of the MediaRSS specification as hosted by yahoo
+    // the URI of the MediaRSS specification as hosted by yahoo
     public final static String URI = "http://search.yahoo.com/mrss/";
 
     /**
      * Returns Metadata associated with the feed.
+     * 
      * @return Returns Metadata associated with the feed.
      */
     public Metadata getMetadata();
 
     /**
      * Returns a player reference associated with the feed.
+     * 
      * @return Returns a player reference associated with the feed.
      */
     public PlayerReference getPlayer();

@@ -39,16 +39,15 @@
  */
 package org.rometools.feed.module.itunes.types;
 
+import java.io.Serializable;
 import java.text.NumberFormat;
 import java.util.StringTokenizer;
-import java.io.Serializable;
 
 import com.sun.syndication.io.impl.NumberParser;
 
-
 /**
- * An encapsulation of the duration of a podcast. This will serialize (via .toString()) 
- * to HH:MM:SS format, and can parse [H]*H:[M]*M:[S]*S or [M]*M:[S]*S.
+ * An encapsulation of the duration of a podcast. This will serialize (via .toString()) to HH:MM:SS format, and can parse [H]*H:[M]*M:[S]*S or [M]*M:[S]*S.
+ * 
  * @version $Revision: 1.7 $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
@@ -57,7 +56,7 @@ public class Duration implements Serializable {
     static final long MINUTE = SECOND * 60;
     static final long HOUR = MINUTE * 60;
     static final NumberFormat NUM_FORMAT = NumberFormat.getNumberInstance();
-    static{
+    static {
         NUM_FORMAT.setMinimumFractionDigits(0);
         NUM_FORMAT.setMaximumFractionDigits(0);
         NUM_FORMAT.setMinimumIntegerDigits(2);
@@ -74,58 +73,62 @@ public class Duration implements Serializable {
 
     /**
      * Creates a new instance of Duration specifying a length in milliseconds
-     * @param milliseconds Creates a new instance of Duration specifying a length in milliseconds 
+     * 
+     * @param milliseconds Creates a new instance of Duration specifying a length in milliseconds
      */
     public Duration(final long milliseconds) {
-        this.setMilliseconds(milliseconds);
+        setMilliseconds(milliseconds);
     }
 
     /**
      * Creates a new duration object with the given hours, minutes and seconds
+     * 
      * @param hours number of hours
      * @param minutes number of minutes
      * @param seconds number of seconds
      */
     public Duration(final int hours, final int minutes, final float seconds) {
-        this.setMilliseconds((hours * HOUR) + (minutes * MINUTE) +
-            (long)(seconds * SECOND));
+        setMilliseconds(hours * HOUR + minutes * MINUTE + (long) (seconds * SECOND));
     }
-    
+
     /**
      * Creates a new Duration parsing the String value.
+     * 
      * @param duration A String to parse
      */
-    public Duration( final String duration ){
-        StringTokenizer tok = new StringTokenizer( duration, ":" );
-        switch (tok.countTokens() ){
-            case 1:
-                this.setMilliseconds( (long) (NumberParser.parseFloat(tok.nextToken(), 0f) * SECOND) );
-                break;
-            case 2:
-                this.setMilliseconds(NumberParser.parseLong( tok.nextToken(), 0l ) * MINUTE + (long) (NumberParser.parseFloat(tok.nextToken(), 0f) * SECOND) );
-                break;
-            case 3:
-                this.setMilliseconds(NumberParser.parseLong(tok.nextToken(), 0l) * HOUR + NumberParser.parseLong(tok.nextToken(), 0l) * MINUTE + (long) (NumberParser.parseFloat(tok.nextToken(), 0f) * SECOND) );
-                break;
-            default:
-                throw new RuntimeException("Illegal time value: "+ duration);
+    public Duration(final String duration) {
+        final StringTokenizer tok = new StringTokenizer(duration, ":");
+        switch (tok.countTokens()) {
+        case 1:
+            setMilliseconds((long) (NumberParser.parseFloat(tok.nextToken(), 0f) * SECOND));
+            break;
+        case 2:
+            setMilliseconds(NumberParser.parseLong(tok.nextToken(), 0l) * MINUTE + (long) (NumberParser.parseFloat(tok.nextToken(), 0f) * SECOND));
+            break;
+        case 3:
+            setMilliseconds(NumberParser.parseLong(tok.nextToken(), 0l) * HOUR + NumberParser.parseLong(tok.nextToken(), 0l) * MINUTE
+                    + (long) (NumberParser.parseFloat(tok.nextToken(), 0f) * SECOND));
+            break;
+        default:
+            throw new RuntimeException("Illegal time value: " + duration);
         }
     }
 
     /**
      * Returns a String representation in the formation HH:MM:SS
+     * 
      * @return Returns a String representation in the formation HH:MM:SS
      */
+    @Override
     public String toString() {
-        Time time = new Time();
+        final Time time = new Time();
 
-        
-        return NUM_FORMAT.format(time.hours) + ":" + NUM_FORMAT.format(time.minutes) + ":" +
-        NUM_FORMAT.format( Math.round(time.seconds) );
+        return NUM_FORMAT.format(time.hours) + ":" + NUM_FORMAT.format(time.minutes) + ":" + NUM_FORMAT.format(Math.round(time.seconds));
     }
 
     /**
      * Returns the millisecond length
+     * 
      * @return the millisecond length
      */
     public long getMilliseconds() {
@@ -134,9 +137,10 @@ public class Duration implements Serializable {
 
     /**
      * Sets the millisecond length
+     * 
      * @param milliseconds the millisecond length
      */
-    public void setMilliseconds(long milliseconds) {
+    public void setMilliseconds(final long milliseconds) {
         this.milliseconds = milliseconds;
     }
 
@@ -148,10 +152,10 @@ public class Duration implements Serializable {
         public Time() {
             long time = getMilliseconds();
             hours = (int) (time / HOUR);
-            time = time - (long) hours * HOUR;
+            time = time - hours * HOUR;
             minutes = (int) (time / MINUTE);
-            time = time - (long) minutes * MINUTE;
-            seconds = (float) ( (float) time / (float) SECOND);
+            time = time - minutes * MINUTE;
+            seconds = (float) time / (float) SECOND;
         }
     }
 }

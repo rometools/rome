@@ -10,7 +10,8 @@ import com.sun.syndication.feed.CopyFrom;
 public class Conflicts extends SSEModule {
     public static final String NAME = "conflicts";
 
-    public void copyFrom(CopyFrom obj) {
+    @Override
+    public void copyFrom(final CopyFrom obj) {
         // nothing to copy, just a place-holder
     }
 }

@@ -18,17 +18,20 @@
 package org.rometools.feed.module.activitystreams.types;
 
 /**
- *
- *<p>The "playlist" object type represents an ordered list of
- *          time-based media items, such as video and audio objects.
- *</p>
- *<p>The "playlist" object type is identified by the URI <tt>http://activitystrea.ms/schema/1.0/playlist</tt>.
- *</p>
- *<p>A playlist has no additional components.
- *</p>
+ * 
+ * <p>
+ * The "playlist" object type represents an ordered list of time-based media items, such as video and audio objects.
+ * </p>
+ * <p>
+ * The "playlist" object type is identified by the URI <tt>http://activitystrea.ms/schema/1.0/playlist</tt>.
+ * </p>
+ * <p>
+ * A playlist has no additional components.
+ * </p>
+ * 
  * @author robert.cooper
  */
-public class Playlist extends ActivityObject  {
+public class Playlist extends ActivityObject {
 
     @Override
     public String getTypeIRI() {

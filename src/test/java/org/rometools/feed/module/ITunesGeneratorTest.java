@@ -6,33 +6,32 @@
  */
 package org.rometools.feed.module;
 
-import org.rometools.feed.module.itunes.ITunes;
+import java.io.File;
+import java.util.List;
+
+import junit.framework.Test;
+import junit.framework.TestSuite;
+
+import org.rometools.feed.module.itunes.AbstractITunesObject;
+
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.SyndFeedOutput;
 import com.sun.syndication.io.XmlReader;
-import org.rometools.feed.module.itunes.AbstractITunesObject;
-import junit.framework.*;
-
-import java.io.File;
-
-import java.util.List;
-
 
 /**
- *
+ * 
  * @author cooper
  */
 public class ITunesGeneratorTest extends AbstractTestCase {
-    
 
-    public ITunesGeneratorTest(String testName) {
+    public ITunesGeneratorTest(final String testName) {
         super(testName);
     }
 
     public static Test suite() {
-        TestSuite suite = new TestSuite(ITunesGeneratorTest.class);
+        final TestSuite suite = new TestSuite(ITunesGeneratorTest.class);
 
         return suite;
     }
@@ -44,29 +43,29 @@ public class ITunesGeneratorTest extends AbstractTestCase {
         System.out.println("testEndToEnd");
         testFile("xml/leshow.xml");
 
-        //testFile( "/test/xml/apple.xml" );
-        //testFile( "/test/xml/lr.xml" );
+        // testFile( "/test/xml/apple.xml" );
+        // testFile( "/test/xml/lr.xml" );
     }
 
-    private void testFile(String filename) throws Exception {
-        File feed = new File(this.getTestFile(filename));
-        SyndFeedInput input = new SyndFeedInput();
-        SyndFeed syndfeed = input.build(new XmlReader(feed.toURL()));
+    private void testFile(final String filename) throws Exception {
+        final File feed = new File(getTestFile(filename));
+        final SyndFeedInput input = new SyndFeedInput();
+        final SyndFeed syndfeed = input.build(new XmlReader(feed.toURL()));
 
-        SyndFeedOutput output = new SyndFeedOutput();
-        File outfeed = new File("target/"+ feed.getName());
+        final SyndFeedOutput output = new SyndFeedOutput();
+        final File outfeed = new File("target/" + feed.getName());
         output.output(syndfeed, outfeed);
 
-        SyndFeed syndCheck = input.build(new XmlReader(outfeed.toURL()));
+        final SyndFeed syndCheck = input.build(new XmlReader(outfeed.toURL()));
         System.out.println(syndCheck.getModule(AbstractITunesObject.URI).toString());
         assertEquals("Feed Level: ", syndfeed.getModule(AbstractITunesObject.URI).toString(), syndCheck.getModule(AbstractITunesObject.URI).toString());
 
-        List syndEntries = syndfeed.getEntries();
-        List syndChecks = syndCheck.getEntries();
+        final List syndEntries = syndfeed.getEntries();
+        final List syndChecks = syndCheck.getEntries();
 
         for (int i = 0; i < syndEntries.size(); i++) {
-            SyndEntry entry = (SyndEntry) syndEntries.get(i);
-            SyndEntry check = (SyndEntry) syndChecks.get(i);
+            final SyndEntry entry = (SyndEntry) syndEntries.get(i);
+            final SyndEntry check = (SyndEntry) syndChecks.get(i);
             System.out.println("Original: " + entry.getModule(AbstractITunesObject.URI));
             System.out.println("Check:    " + check.getModule(AbstractITunesObject.URI));
             assertEquals("Entry Level: ", entry.getModule(AbstractITunesObject.URI).toString(), check.getModule(AbstractITunesObject.URI).toString());

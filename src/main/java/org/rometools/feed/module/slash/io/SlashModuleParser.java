@@ -40,64 +40,65 @@
 
 package org.rometools.feed.module.slash.io;
 
-import com.sun.syndication.feed.module.Module;
-import com.sun.syndication.io.ModuleParser;
-import com.sun.syndication.io.WireFeedParser;
+import java.util.StringTokenizer;
+
+import org.jdom2.Element;
+import org.jdom2.Namespace;
 import org.rometools.feed.module.slash.Slash;
 import org.rometools.feed.module.slash.SlashImpl;
 
-import java.util.StringTokenizer;
-import org.jdom.Element;
-import org.jdom.Namespace;
+import com.sun.syndication.feed.module.Module;
+import com.sun.syndication.io.ModuleParser;
 
-/** ModuleParser implementation for Slash RSS.
+/**
+ * ModuleParser implementation for Slash RSS.
+ * 
  * @version $Revision: 1.3 $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class SlashModuleParser implements ModuleParser {
-    
-    private static final Namespace NS = Namespace.getNamespace( Slash.URI);
-    
+
+    private static final Namespace NS = Namespace.getNamespace(Slash.URI);
+
     /** Creates a new instance of SlashModuleParser */
     public SlashModuleParser() {
-	super();
+        super();
     }
 
     public String getNamespaceUri() {
-	return Slash.URI;
+        return Slash.URI;
     }
 
-    public Module parse(Element element) {
-	SlashImpl si = new SlashImpl();
-	Element tag = element.getChild( "hit_parade", SlashModuleParser.NS);
-	if( tag!= null ){
-	    StringTokenizer tok = new StringTokenizer( tag.getText() , ",");
-	    Integer[] hp = new Integer[tok.countTokens() ];
-	    for(int i=0; tok.hasMoreTokens(); i++ ){
-		hp[i] = new Integer( tok.nextToken() );
-	    }
-	    si.setHitParade( hp );
-	}
-	tag = null;
-	tag = element.getChild("comments", SlashModuleParser.NS);
-	if(tag != null ){
-	    si.setComments( new Integer( tag.getText() ));
-	}
-	tag = null;
-	tag = element.getChild("department", SlashModuleParser.NS);
-	if( tag != null ){
-	    si.setDepartment( tag.getText().trim() );
-	}
-	tag = null;
-	tag = element.getChild("section", SlashModuleParser.NS);
-	if( tag!= null ){
-	    si.setSection( tag.getText().trim());
-	}
-	if( si.getHitParade() != null || si.getComments() != null ||
-	    si.getDepartment() !=null || si.getSection() != null ){
-	    return si;
-	}
-	return null;
+    public Module parse(final Element element) {
+        final SlashImpl si = new SlashImpl();
+        Element tag = element.getChild("hit_parade", SlashModuleParser.NS);
+        if (tag != null) {
+            final StringTokenizer tok = new StringTokenizer(tag.getText(), ",");
+            final Integer[] hp = new Integer[tok.countTokens()];
+            for (int i = 0; tok.hasMoreTokens(); i++) {
+                hp[i] = new Integer(tok.nextToken());
+            }
+            si.setHitParade(hp);
+        }
+        tag = null;
+        tag = element.getChild("comments", SlashModuleParser.NS);
+        if (tag != null) {
+            si.setComments(new Integer(tag.getText()));
+        }
+        tag = null;
+        tag = element.getChild("department", SlashModuleParser.NS);
+        if (tag != null) {
+            si.setDepartment(tag.getText().trim());
+        }
+        tag = null;
+        tag = element.getChild("section", SlashModuleParser.NS);
+        if (tag != null) {
+            si.setSection(tag.getText().trim());
+        }
+        if (si.getHitParade() != null || si.getComments() != null || si.getDepartment() != null || si.getSection() != null) {
+            return si;
+        }
+        return null;
     }
-    
+
 }

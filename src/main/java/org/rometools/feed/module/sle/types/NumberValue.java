@@ -17,28 +17,29 @@
  */
 package org.rometools.feed.module.sle.types;
 
-import com.sun.syndication.feed.impl.ObjectBean;
-
 import java.math.BigDecimal;
-import org.jdom.Namespace;
 
+import org.jdom2.Namespace;
+
+import com.sun.syndication.feed.impl.ObjectBean;
 
 /**
  * An EntryValue implementation for "number" data-type values.
+ * 
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class NumberValue implements EntryValue {
     private BigDecimal value;
-    private ObjectBean obj = new ObjectBean(NumberValue.class, this);
+    private final ObjectBean obj = new ObjectBean(NumberValue.class, this);
     private String element;
     private String label;
     private Namespace namespace = Namespace.XML_NAMESPACE;
-    
+
     /** Creates a new instance of NumberValue */
     public NumberValue() {
     }
 
-    public void setElement(String element) {
+    public void setElement(final String element) {
         this.element = element;
     }
 
@@ -46,7 +47,7 @@ public class NumberValue implements EntryValue {
         return element;
     }
 
-    public void setLabel(String label) {
+    public void setLabel(final String label) {
         this.label = label;
     }
 
@@ -54,7 +55,7 @@ public class NumberValue implements EntryValue {
         return label;
     }
 
-    public void setValue(BigDecimal value) {
+    public void setValue(final BigDecimal value) {
         this.value = value;
     }
 
@@ -62,24 +63,28 @@ public class NumberValue implements EntryValue {
         return value;
     }
 
+    @Override
     public Object clone() {
-        NumberValue clone = new NumberValue();
-        clone.setElement(this.getElement());
-        clone.setLabel(this.getLabel());
-        clone.setValue(this.value);
-        clone.setNamespace( this.namespace );
-        
+        final NumberValue clone = new NumberValue();
+        clone.setElement(getElement());
+        clone.setLabel(getLabel());
+        clone.setValue(value);
+        clone.setNamespace(namespace);
+
         return clone;
     }
 
-    public boolean equals(Object o) {
+    @Override
+    public boolean equals(final Object o) {
         return obj.equals(o);
     }
 
+    @Override
     public int hashCode() {
         return obj.hashCode();
     }
 
+    @Override
     public String toString() {
         return "[Element:" + element + " Label:" + label + " Value:" + value + "]";
     }
@@ -88,7 +93,7 @@ public class NumberValue implements EntryValue {
         return namespace;
     }
 
-    public void setNamespace(Namespace namespace) {
+    public void setNamespace(final Namespace namespace) {
         this.namespace = namespace == null ? Namespace.XML_NAMESPACE : namespace;
     }
 }

@@ -20,65 +20,62 @@ package org.rometools.feed.module.activitystreams.types;
 import com.sun.syndication.feed.atom.Link;
 
 /**
- * <p>The "person" Object type represents a user account. This is often
-          represents a person, but might also be a company or fictitious
- *          character that is being represented by a user account.
- *</p>
- *<p>The "person" Object type is identified by the URI <tt>http://activitystrea.ms/schema/1.0/person</tt>.
- *</p>
- *<p>A person has the following additional components:
- *</p>
- *<p></p>
- *<blockquote class="text"><dl>
- *<dt>Display Name</dt>
- *<dd>A name that can be used for the
- *              person in the user interface. This is often a name by which the
- *              individual is known in a given context; no restriction is placed
- *              on what kind of name may be used here. Represented by the Name
- *              component of the base Object Construct.
- *</dd>
- *<dt>Avatar</dt>
- *<dd>A link to an "avatar" or "userpic" image
- *              for the user. Represented by the Representative Image component
- *              of the base Object Construct.
- *</dd>
- *</dl></blockquote>
- @author robert.cooper
+ * <p>
+ * The "person" Object type represents a user account. This is often represents a person, but might also be a company or fictitious character that is being
+ * represented by a user account.
+ * </p>
+ * <p>
+ * The "person" Object type is identified by the URI <tt>http://activitystrea.ms/schema/1.0/person</tt>.
+ * </p>
+ * <p>
+ * A person has the following additional components:
+ * </p>
+ * <p>
+ * </p>
+ * <blockquote class="text">
+ * <dl>
+ * <dt>Display Name</dt>
+ * <dd>A name that can be used for the person in the user interface. This is often a name by which the individual is known in a given context; no restriction is
+ * placed on what kind of name may be used here. Represented by the Name component of the base Object Construct.</dd>
+ * <dt>Avatar</dt>
+ * <dd>A link to an "avatar" or "userpic" image for the user. Represented by the Representative Image component of the base Object Construct.</dd>
+ * </dl>
+ * </blockquote>
+ * 
+ * @author robert.cooper
  */
-public class Person extends ActivityObject  {
+public class Person extends ActivityObject {
 
     @Override
     public String getTypeIRI() {
-       return "http://activitystrea.ms/schema/1.0/person";
+        return "http://activitystrea.ms/schema/1.0/person";
     }
-
-
 
     /**
      * Get the value of avatar
-     *
+     * 
      * @return the value of avatar
      */
     public Link getAvatar() {
-        Link result = this.findRelatedLink("avatar");
-        if(result != null){
+        final Link result = findRelatedLink("avatar");
+        if (result != null) {
             return result;
         }
-        return this.findRelatedLink("userpic");
+        return findRelatedLink("userpic");
     }
 
     /**
      * Set the value of avatar
-     *
+     * 
      * @param newavatar new value of avatar
      */
-    public void setAvatar(Link newavatar) {
-        Link old = this.getAvatar();
-        if(old != null){
-            this.getOtherLinks().remove(old);
+    public void setAvatar(final Link newavatar) {
+        final Link old = getAvatar();
+        if (old != null) {
+            getOtherLinks().remove(old);
         }
         newavatar.setRel("avatar");
-        this.getOtherLinks().add(newavatar);
+        getOtherLinks().add(newavatar);
     }
 
 }

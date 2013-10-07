@@ -18,18 +18,19 @@
 package org.rometools.feed.module.activitystreams.types;
 
 /**
- *<p>The "list" object type represents a collection of related
- *          objects.
- *</p>
- *<p>The "list" object type is identified by the URI <tt>http://activitystrea.ms/schema/1.0/list</tt>.
- *</p>
- *<p>A list has no additional components.
- *</p>
- 
+ * <p>
+ * The "list" object type represents a collection of related objects.
+ * </p>
+ * <p>
+ * The "list" object type is identified by the URI <tt>http://activitystrea.ms/schema/1.0/list</tt>.
+ * </p>
+ * <p>
+ * A list has no additional components.
+ * </p>
+ * 
  * @author robert.cooper
  */
-public class List extends ActivityObject
-{
+public class List extends ActivityObject {
 
     @Override
     public String getTypeIRI() {

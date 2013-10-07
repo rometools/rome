@@ -42,9 +42,9 @@ package org.rometools.feed.module.itunes.types;
 
 import java.io.Serializable;
 
-
 /**
  * This class represents a Subcategor of a Category.
+ * 
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @version $Revision: 1.2 $
  */
@@ -55,15 +55,18 @@ public class Subcategory implements Serializable {
     public Subcategory() {
     }
 
-    /** Creates a new instance of Category with a given name.
+    /**
+     * Creates a new instance of Category with a given name.
+     * 
      * @param name Name of the category.
      */
-    public Subcategory(String name) {
-        this.setName(name);
+    public Subcategory(final String name) {
+        setName(name);
     }
 
     /**
      * Returns the name of the subcategory.
+     * 
      * @return Returns the name of the subcategory.
      */
     public String getName() {
@@ -72,28 +75,33 @@ public class Subcategory implements Serializable {
 
     /**
      * Set the name of the subcategory.
+     * 
      * @param name Set the name of the subcategory.
      */
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
     /**
      * Clones the object.
+     * 
      * @return Clone of the object.
      */
+    @Override
     public Object clone() {
-        Subcategory sc = new Subcategory();
-        sc.setName(this.getName());
+        final Subcategory sc = new Subcategory();
+        sc.setName(getName());
 
         return sc;
     }
 
     /**
      * String representation of the object.
+     * 
      * @return String representation of the object.
      */
+    @Override
     public String toString() {
-        return new StringBuffer(this.getName()).toString();
+        return new StringBuffer(getName()).toString();
     }
 }

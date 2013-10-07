@@ -16,64 +16,64 @@
  */
 package org.rometools.feed.module.georss;
 
-import org.jdom.Element;
+import org.jdom2.Element;
+import org.rometools.feed.module.georss.geometries.Point;
+import org.rometools.feed.module.georss.geometries.Position;
 
 import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.ModuleParser;
-import org.rometools.feed.module.georss.geometries.*;
 
 /**
  * W3CGeoParser is a parser for the W3C geo format.
- *
+ * 
  * @author Marc Wick
  * @version $Id: W3CGeoParser.java,v 1.4 2007/04/18 09:59:29 marcwick Exp $
- *
+ * 
  */
 public class W3CGeoParser implements ModuleParser {
-    
-        /*
-         * (non-Javadoc)
-         *
-         * @see com.sun.syndication.io.ModuleParser#getNamespaceUri()
-         */
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sun.syndication.io.ModuleParser#getNamespaceUri()
+     */
     public String getNamespaceUri() {
         return GeoRSSModule.GEORSS_W3CGEO_URI;
     }
-    
-    
-    static Module parseW3C(Element element) {
+
+    static Module parseW3C(final Element element) {
         GeoRSSModule geoRSSModule = null;
-        
+
         // do we have an optional "Point" element ?
-        Element pointElement = element
-                .getChild("Point", GeoRSSModule.W3CGEO_NS);
-        
+        Element pointElement = element.getChild("Point", GeoRSSModule.W3CGEO_NS);
+
         // we don't have an optional "Point" element
         if (pointElement == null) {
             pointElement = element;
         }
-        
-        Element lat = pointElement.getChild("lat", GeoRSSModule.W3CGEO_NS);
+
+        final Element lat = pointElement.getChild("lat", GeoRSSModule.W3CGEO_NS);
         Element lng = pointElement.getChild("long", GeoRSSModule.W3CGEO_NS);
-        if (lng == null)
+        if (lng == null) {
             lng = pointElement.getChild("lon", GeoRSSModule.W3CGEO_NS);
+        }
         if (lat != null && lng != null) {
             geoRSSModule = new W3CGeoModuleImpl();
-            Position pos = new Position(Double.parseDouble(lat.getText()), Double.parseDouble(lng.getText()));
+            final Position pos = new Position(Double.parseDouble(lat.getText()), Double.parseDouble(lng.getText()));
             geoRSSModule.setGeometry(new Point(pos));
         }
-        
+
         return geoRSSModule;
     }
-    
-        /*
-         * (non-Javadoc)
-         *
-         * @see com.sun.syndication.io.ModuleParser#parse(org.jdom.Element)
-         */
-    public Module parse(Element element) {
-        Module geoRssModule = parseW3C(element);
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sun.syndication.io.ModuleParser#parse(org.jdom2.Element)
+     */
+    public Module parse(final Element element) {
+        final Module geoRssModule = parseW3C(element);
         return geoRssModule;
     }
-    
+
 }

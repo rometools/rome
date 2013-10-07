@@ -23,69 +23,75 @@
  */
 package org.rometools.feed.module.mediarss.types;
 
-import com.sun.syndication.feed.impl.EqualsBean;
-
 import java.io.Serializable;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import com.sun.syndication.feed.impl.EqualsBean;
 
 /**
  * Used to indicate a URL primary reference for a MediaContent object.
+ * 
  * @author cooper
  */
 public class UrlReference implements Reference, Serializable {
-	private static final long serialVersionUID = -178149736468242989L;
-	
-	private URI url;
-    
+    private static final long serialVersionUID = -178149736468242989L;
+
+    private final URI url;
+
     /**
      * Creates a new UrlReference.
+     * 
      * @param url URL to the media source
      */
-    public UrlReference(URI url) {
+    public UrlReference(final URI url) {
         if (url == null) {
             throw new NullPointerException("url cannot be null.");
         }
-        
+
         this.url = url;
     }
-    
+
     /**
      * Creates a new instance of UrlReference
+     * 
      * @param url String value of a URL
      * @throws java.net.MalformedURLException thrown on bad URLs
      */
-    public UrlReference(String url) throws URISyntaxException  {
+    public UrlReference(final String url) throws URISyntaxException {
         super();
-        
+
         if (url == null) {
             throw new NullPointerException("url cannot be null.");
         }
-        
+
         this.url = new URI(url);
     }
-    
+
     /**
      * Returns the URL value
+     * 
      * @return Returns the URL value
      */
     public URI getUrl() {
-        return this.url;
+        return url;
     }
-    
-    public boolean equals(Object obj) {
-        EqualsBean eBean = new EqualsBean(this.getClass(), this);
-        
+
+    @Override
+    public boolean equals(final Object obj) {
+        final EqualsBean eBean = new EqualsBean(this.getClass(), this);
+
         return eBean.beanEquals(obj);
     }
-    
+
+    @Override
     public int hashCode() {
-        EqualsBean equals = new EqualsBean(this.getClass(), this);
-        
+        final EqualsBean equals = new EqualsBean(this.getClass(), this);
+
         return equals.beanHashCode();
     }
-    
+
+    @Override
     public String toString() {
         return url.toString();
     }

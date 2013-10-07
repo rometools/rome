@@ -16,22 +16,20 @@
  */
 package org.rometools.feed.module.feedburner.io;
 
-import com.sun.syndication.feed.module.Module;
-import com.sun.syndication.io.ModuleParser;
-
-import org.jdom.Element;
-import org.jdom.Namespace;
-
+import org.jdom2.Element;
+import org.jdom2.Namespace;
 import org.rometools.feed.module.feedburner.FeedBurner;
 import org.rometools.feed.module.feedburner.FeedBurnerImpl;
 
+import com.sun.syndication.feed.module.Module;
+import com.sun.syndication.io.ModuleParser;
 
 /**
  * ModuleParser implementation for the FeedBurner RSS extension.
- *
+ * 
  * @version 1.0
  * @author Georg Schmidl <georg.schmidl@scandio.de>
- *
+ * 
  */
 public class FeedBurnerModuleParser implements ModuleParser {
     private static final Namespace NS = Namespace.getNamespace(FeedBurner.URI);
@@ -40,8 +38,8 @@ public class FeedBurnerModuleParser implements ModuleParser {
         return FeedBurner.URI;
     }
 
-    public Module parse(Element element) {
-        FeedBurnerImpl fbi = new FeedBurnerImpl();
+    public Module parse(final Element element) {
+        final FeedBurnerImpl fbi = new FeedBurnerImpl();
         boolean returnObj = false;
         Element tag = element.getChild("awareness", FeedBurnerModuleParser.NS);
 

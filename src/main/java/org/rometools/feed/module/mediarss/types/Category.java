@@ -27,44 +27,54 @@ import java.io.Serializable;
 import com.sun.syndication.feed.impl.EqualsBean;
 import com.sun.syndication.feed.impl.ToStringBean;
 
-
 /**
- *
+ * 
  * <strong>&lt;media:category&gt;</strong></p>
- *        <p> Allows a taxonomy to be set that gives an indication of the type of media content, and its particular contents.
- * It has 2 optional attributes.  </p>
- * <pre>        &lt;media:category scheme="http://search.yahoo.com/mrss/category_
+ * <p>
+ * Allows a taxonomy to be set that gives an indication of the type of media content, and its particular contents. It has 2 optional attributes.
+ * </p>
+ * 
+ * <pre>
+ * &lt;media:category scheme="http://search.yahoo.com/mrss/category_
  *        schema"&gt;music/artist/album/song&lt;/media:category&gt;
- *
+ * 
  *        &lt;media:category scheme="http://dmoz.org" label="Ace Ventura - Pet
  *        Detective"&gt;Arts/Movies/Titles/A/Ace_Ventura_Series/Ace_Ventura_
  *        -_Pet_Detective&lt;/media:category&gt;
- *
+ * 
  *        &lt;media:category scheme="urn:flickr:tags"&gt;ycantpark
- *        mobile&lt;/media:category&gt;</pre>
- *
- * <p><em>scheme</em> is the URI that identifies the categorization scheme. It is an optional attribute. If this attribute is not included, the default scheme is 'http://search.yahoo.com/mrss/category_schema'.</p>
- *
- * <p><em>label</em> is the human readable label that can be displayed in end user applications. It is an optional attribute.</p>
+ *        mobile&lt;/media:category&gt;
+ * </pre>
+ * 
+ * <p>
+ * <em>scheme</em> is the URI that identifies the categorization scheme. It is an optional attribute. If this attribute is not included, the default scheme is
+ * 'http://search.yahoo.com/mrss/category_schema'.
+ * </p>
+ * 
+ * <p>
+ * <em>label</em> is the human readable label that can be displayed in end user applications. It is an optional attribute.
+ * </p>
+ * 
  * @author cooper
  */
 public class Category implements Serializable {
-	private static final long serialVersionUID = 5182373808661745402L;
-	/**
+    private static final long serialVersionUID = 5182373808661745402L;
+    /**
      * Schem for FLICKR tags
      */
     public static final String SCHEME_FLICKR_TAGS = "urn:flickr:tags";
     private String label;
     private String scheme;
-    private String value;
+    private final String value;
 
     /**
      * Creates a new instance of Category
+     * 
      * @param scheme scheme used
      * @param label label for the category
      * @param value value of the category item
      */
-    public Category(String scheme, String label, String value) {
+    public Category(final String scheme, final String label, final String value) {
         this.scheme = scheme;
         this.value = value;
         this.label = label;
@@ -72,14 +82,16 @@ public class Category implements Serializable {
 
     /**
      * Creates a new Category.
+     * 
      * @param value value of the category.
      */
-    public Category(String value) {
+    public Category(final String value) {
         this.value = value;
     }
 
     /**
      * label is the human readable label that can be displayed in end user applications. It is an optional attribute.
+     * 
      * @return label is the human readable label that can be displayed in end user applications. It is an optional attribute.
      */
     public String getLabel() {
@@ -87,8 +99,11 @@ public class Category implements Serializable {
     }
 
     /**
-     * scheme is the URI that identifies the categorization scheme. It is an optional attribute. If this attribute is not included, the default scheme is 'http://search.yahoo.com/mrss/category_schema'.
-     * @return scheme is the URI that identifies the categorization scheme. It is an optional attribute. If this attribute is not included, the default scheme is 'http://search.yahoo.com/mrss/category_schema'.
+     * scheme is the URI that identifies the categorization scheme. It is an optional attribute. If this attribute is not included, the default scheme is
+     * 'http://search.yahoo.com/mrss/category_schema'.
+     * 
+     * @return scheme is the URI that identifies the categorization scheme. It is an optional attribute. If this attribute is not included, the default scheme
+     *         is 'http://search.yahoo.com/mrss/category_schema'.
      */
     public String getScheme() {
         return scheme;
@@ -96,26 +111,30 @@ public class Category implements Serializable {
 
     /**
      * value of the category
+     * 
      * @return value of the category
      */
     public String getValue() {
         return value;
     }
 
-    public boolean equals(Object obj) {
-        EqualsBean eBean = new EqualsBean(this.getClass(), this);
+    @Override
+    public boolean equals(final Object obj) {
+        final EqualsBean eBean = new EqualsBean(this.getClass(), this);
 
         return eBean.beanEquals(obj);
     }
 
+    @Override
     public int hashCode() {
-        EqualsBean equals = new EqualsBean(this.getClass(), this);
+        final EqualsBean equals = new EqualsBean(this.getClass(), this);
 
         return equals.beanHashCode();
     }
 
+    @Override
     public String toString() {
-        ToStringBean tsBean = new ToStringBean(this.getClass(), this);
+        final ToStringBean tsBean = new ToStringBean(this.getClass(), this);
 
         return tsBean.toString();
     }

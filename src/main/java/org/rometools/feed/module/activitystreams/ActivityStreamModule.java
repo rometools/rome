@@ -22,22 +22,25 @@ import org.rometools.feed.module.activitystreams.types.Mood;
 import org.rometools.feed.module.activitystreams.types.Verb;
 
 /**
- *
+ * 
  * @author robert.cooper
  */
 public interface ActivityStreamModule {
 
     public Verb getVerb();
+
     public void setVerb(Verb verb);
 
     public ActivityObject getObject();
+
     public void setObject(ActivityObject object);
 
     public ActivityObject getTarget();
+
     public void setTarget(ActivityObject object);
 
     public Mood getMood();
-    public void setMood(Mood mood);
 
+    public void setMood(Mood mood);
 
 }

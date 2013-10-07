@@ -13,24 +13,27 @@ import java.io.Serializable;
 
 /**
  * Abstract base class for geometries.
- *
+ * 
  * @author runaas
  */
 public abstract class AbstractGeometry implements Cloneable, Serializable {
-    
+
     /** Creates a new instance of Geometry */
     public AbstractGeometry() {
     }
-    
+
     /**
      * Make a deep copy of the geometric object
+     * 
      * @return A copy of the object
      */
+    @Override
     public Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
-    
-     public boolean equals(Object obj) {
-         return obj != null && obj.getClass() == getClass();
-     }
+
+    @Override
+    public boolean equals(final Object obj) {
+        return obj != null && obj.getClass() == getClass();
+    }
 }

@@ -41,69 +41,79 @@ import org.rometools.feed.module.yahooweather.types.Location;
 import org.rometools.feed.module.yahooweather.types.Units;
 import org.rometools.feed.module.yahooweather.types.Wind;
 
-
 /**
  * An interface describing feed/channel level data for Yahoo Weather.
+ * 
  * @version $Id: YWeatherFeedModule.java,v 1.3 2008/03/29 16:19:12 kebernet Exp $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public interface YWeatherFeedModule extends YWeatherModule {
     /**
      * The location the feed is for.
+     * 
      * @return The location the feed is for.
      */
     public Location getLocation();
 
     /**
      * The location the feed is for.
+     * 
      * @param location The location the feed is for.
      */
     public void setLocation(Location location);
 
     /**
      * Astronomical information for the location.
+     * 
      * @return Astronomical information for the location.
      */
     public Astronomy getAstronomy();
 
     /**
      * Astronomical information for the location.
+     * 
      * @param astronomy Astronomical information for the location.
      */
     public void setAstronomy(Astronomy astronomy);
 
     /**
      * Units that data in the feed is provided in.
+     * 
      * @return Units that data in the feed is provided in.
      */
     public Units getUnits();
 
     /**
      * Units that data in the feed is provided in.
+     * 
      * @param units Units that data in the feed is provided in.
      */
     public void setUnits(Units units);
 
     /**
      * Current wind conditions at the location.
+     * 
      * @return Current wind conditions at the location.
      */
     public Wind getWind();
 
     /**
      * Current wind conditions at the location.
+     * 
      * @param wind Current wind conditions at the location.
      */
     public void setWind(Wind wind);
 
     /**
      * The current atmospheric conditions.
+     * 
      * @return Atmosphere object.
      */
     public Atmosphere getAtmosphere();
 
     /**
      * Sets the current atmopheric condictions
+     * 
      * @param value Atmosphere object.
      */
     public void setAtmosphere(Atmosphere value);

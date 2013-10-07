@@ -40,64 +40,71 @@
 
 package org.rometools.feed.module.slash.io;
 
+import java.util.HashSet;
+
+import org.jdom2.Element;
+import org.jdom2.Namespace;
+import org.rometools.feed.module.slash.Slash;
+
 import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.ModuleGenerator;
-import org.rometools.feed.module.slash.Slash;
-import java.util.HashSet;
-import org.jdom.Element;
-import org.jdom.Namespace;
 
-/** The ModuleGenerator implementation for the Slash plug in.
+/**
+ * The ModuleGenerator implementation for the Slash plug in.
+ * 
  * @version $Revision: 1.1 $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class SlashModuleGenerator implements ModuleGenerator {
-    
+
     private static final Namespace NS = Namespace.getNamespace("slash", Slash.URI);
-    
+
     /** Creates a new instance of SlashModuleGenerator */
     public SlashModuleGenerator() {
     }
-    
-    public void generate(Module module, Element element) {
-	if( !( module instanceof Slash) )
-	    return;
-	Slash slash = (Slash) module;
-	if(slash.getComments() != null ){
-	    element.addContent( this.generateSimpleElement("comments", slash.getComments().toString()));	    
-	}
-	if(slash.getDepartment() != null){
-	    element.addContent( this.generateSimpleElement("department", slash.getDepartment()));	    
-	}
-	if(slash.getSection() != null){
-	    element.addContent( this.generateSimpleElement("section", slash.getSection()));	    
-	}
-	if(slash.getHitParade() != null && slash.getHitParade().length > 0 ){
-	    StringBuffer buff = new StringBuffer();
-	    Integer[] p = slash.getHitParade();
-	    for(int i=0; i < p.length; i++){
-		if(i!= 0)
-		    buff.append(",");
-		buff.append( p[i] );
-	    }
-	    element.addContent(this.generateSimpleElement("hit_parade", buff.toString()));
-	}
-	
+
+    public void generate(final Module module, final Element element) {
+        if (!(module instanceof Slash)) {
+            return;
+        }
+        final Slash slash = (Slash) module;
+        if (slash.getComments() != null) {
+            element.addContent(generateSimpleElement("comments", slash.getComments().toString()));
+        }
+        if (slash.getDepartment() != null) {
+            element.addContent(generateSimpleElement("department", slash.getDepartment()));
+        }
+        if (slash.getSection() != null) {
+            element.addContent(generateSimpleElement("section", slash.getSection()));
+        }
+        if (slash.getHitParade() != null && slash.getHitParade().length > 0) {
+            final StringBuffer buff = new StringBuffer();
+            final Integer[] p = slash.getHitParade();
+            for (int i = 0; i < p.length; i++) {
+                if (i != 0) {
+                    buff.append(",");
+                }
+                buff.append(p[i]);
+            }
+            element.addContent(generateSimpleElement("hit_parade", buff.toString()));
+        }
+
     }
-    
-    protected Element generateSimpleElement(String name,String value) {
-	Element element = new Element(name,SlashModuleGenerator.NS);
-	element.addContent(value);	
-	return element;
+
+    protected Element generateSimpleElement(final String name, final String value) {
+        final Element element = new Element(name, SlashModuleGenerator.NS);
+        element.addContent(value);
+        return element;
     }
+
     public java.util.Set getNamespaces() {
-	HashSet set = new HashSet();
-	set.add( SlashModuleGenerator.NS );
-	return set;
+        final HashSet set = new HashSet();
+        set.add(SlashModuleGenerator.NS);
+        return set;
     }
-    
+
     public String getNamespaceUri() {
-	return Slash.URI;
+        return Slash.URI;
     }
-    
+
 }

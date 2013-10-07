@@ -14,20 +14,19 @@
  */
 package org.rometools.feed.module.opensearch.impl;
 
-import com.sun.syndication.feed.CopyFrom;
-import com.sun.syndication.feed.atom.Link;
-import com.sun.syndication.feed.module.ModuleImpl;
-import org.rometools.feed.module.opensearch.OpenSearchModule;
-import org.rometools.feed.module.opensearch.entity.OSQuery;
-
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.rometools.feed.module.opensearch.OpenSearchModule;
+import org.rometools.feed.module.opensearch.entity.OSQuery;
+
+import com.sun.syndication.feed.CopyFrom;
+import com.sun.syndication.feed.atom.Link;
+import com.sun.syndication.feed.module.ModuleImpl;
 
 /**
- * @author Michael W. Nassif (enrouteinc@gmail.com)
- * OpenSearch Module implementation
+ * @author Michael W. Nassif (enrouteinc@gmail.com) OpenSearch Module implementation
  */
 public class OpenSearchModuleImpl extends ModuleImpl implements OpenSearchModule, Serializable {
     private int totalResults = -1;
@@ -37,7 +36,7 @@ public class OpenSearchModuleImpl extends ModuleImpl implements OpenSearchModule
     private List queries;
 
     public OpenSearchModuleImpl() {
-        super(OpenSearchModuleImpl.class, OpenSearchModuleImpl.URI);
+        super(OpenSearchModuleImpl.class, OpenSearchModule.URI);
     }
 
     /**
@@ -50,7 +49,7 @@ public class OpenSearchModuleImpl extends ModuleImpl implements OpenSearchModule
     /**
      * @param itemsPerPage The itemsPerPage to set.
      */
-    public void setItemsPerPage(int itemsPerPage) {
+    public void setItemsPerPage(final int itemsPerPage) {
         this.itemsPerPage = itemsPerPage;
     }
 
@@ -64,28 +63,27 @@ public class OpenSearchModuleImpl extends ModuleImpl implements OpenSearchModule
     /**
      * @param link The link to set.
      */
-    public void setLink(Link link) {
+    public void setLink(final Link link) {
         this.link = link;
     }
 
-    
     /**
      * @return Returns the queries.
      */
     public List getQueries() {
-        this.queries = (queries == null) ? new LinkedList() : queries;
+        queries = queries == null ? new LinkedList() : queries;
 
-        return this.queries;
+        return queries;
     }
 
     /**
      * @param queries The queries to set.
      */
-    public void setQueries(List queries) {
+    public void setQueries(final List queries) {
         this.queries = queries;
     }
 
-    public void addQuery(OSQuery query) {
+    public void addQuery(final OSQuery query) {
         if (queries != null) {
             queries.add(query);
         } else {
@@ -104,7 +102,7 @@ public class OpenSearchModuleImpl extends ModuleImpl implements OpenSearchModule
     /**
      * @param startIndex The startIndex to set.
      */
-    public void setStartIndex(int startIndex) {
+    public void setStartIndex(final int startIndex) {
         this.startIndex = startIndex;
     }
 
@@ -118,15 +116,17 @@ public class OpenSearchModuleImpl extends ModuleImpl implements OpenSearchModule
     /**
      * @param totalResults The totalResults to set.
      */
-    public void setTotalResults(int totalResults) {
+    public void setTotalResults(final int totalResults) {
         this.totalResults = totalResults;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see com.sun.syndication.feed.CopyFrom#copyFrom(java.lang.Object)
      */
-    public void copyFrom(CopyFrom obj) {
-        OpenSearchModule osm = (OpenSearchModuleImpl) obj;
+    public void copyFrom(final CopyFrom obj) {
+        final OpenSearchModule osm = (OpenSearchModuleImpl) obj;
 
         setTotalResults(osm.getTotalResults());
         setItemsPerPage(osm.getItemsPerPage());
@@ -136,7 +136,9 @@ public class OpenSearchModuleImpl extends ModuleImpl implements OpenSearchModule
         // setQueries(osm.getQueries());
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see com.sun.syndication.feed.CopyFrom#getInterface()
      */
     public Class getInterface() {

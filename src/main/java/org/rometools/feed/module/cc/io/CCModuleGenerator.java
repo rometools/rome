@@ -40,103 +40,105 @@
 
 package org.rometools.feed.module.cc.io;
 
-import com.sun.syndication.feed.module.Module;
-import com.sun.syndication.io.ModuleGenerator;
+import java.util.HashSet;
+import java.util.Set;
+
+import org.jdom2.Element;
+import org.jdom2.Namespace;
 import org.rometools.feed.module.cc.CreativeCommons;
 import org.rometools.feed.module.cc.CreativeCommonsImpl;
 import org.rometools.feed.module.cc.types.License;
-import java.util.HashSet;
-import java.util.Set;
-import org.jdom.Element;
-import org.jdom.Namespace;
+
+import com.sun.syndication.feed.module.Module;
+import com.sun.syndication.io.ModuleGenerator;
 
 /**
  * @version $Revision: 1.1 $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
-public class CCModuleGenerator implements ModuleGenerator{
-    
-    private static final Namespace RSS1 = Namespace.getNamespace( "cc", CreativeCommonsImpl.RSS1_URI );
-    private static final Namespace RSS2 = Namespace.getNamespace( "creativeCommons", CreativeCommonsImpl.RSS2_URI);
+public class CCModuleGenerator implements ModuleGenerator {
+
+    private static final Namespace RSS1 = Namespace.getNamespace("cc", CreativeCommonsImpl.RSS1_URI);
+    private static final Namespace RSS2 = Namespace.getNamespace("creativeCommons", CreativeCommonsImpl.RSS2_URI);
     private static final Namespace RSS = Namespace.getNamespace("http://purl.org/rss/1.0/");
     private static final Namespace RDF = Namespace.getNamespace("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#");
     private static final HashSet NAMESPACES = new HashSet();
-    static{
-	NAMESPACES.add( RSS1 );
-	NAMESPACES.add( RSS2 );
-	NAMESPACES.add( RDF );
+    static {
+        NAMESPACES.add(RSS1);
+        NAMESPACES.add(RSS2);
+        NAMESPACES.add(RDF);
     }
-    
+
     /**
      * Creates a new instance of CCModuleGenerator
      */
     public CCModuleGenerator() {
-	super();
+        super();
     }
 
-    public void generate(Module module, Element element) {
-	Element root = element;
-	while( root.getParentElement() != null ){
-	    root = root.getParentElement();
-	}
-	if( root.getNamespace().equals( RDF )|| root.getNamespace().equals( RSS )){
-	    generateRSS1( (CreativeCommons) module, element);
-	} else {
-	    generateRSS2( (CreativeCommons) module, element);
-	}
+    public void generate(final Module module, final Element element) {
+        Element root = element;
+        while (root.getParentElement() != null) {
+            root = root.getParentElement();
+        }
+        if (root.getNamespace().equals(RDF) || root.getNamespace().equals(RSS)) {
+            generateRSS1((CreativeCommons) module, element);
+        } else {
+            generateRSS2((CreativeCommons) module, element);
+        }
     }
 
     public Set getNamespaces() {
-	return NAMESPACES;
+        return NAMESPACES;
     }
 
     public String getNamespaceUri() {
-	return CreativeCommons.URI;
+        return CreativeCommons.URI;
     }
-    
-    private void generateRSS1( CreativeCommons module, Element element ){
-	//throw new RuntimeException( "Generating RSS1 Feeds not currently Supported.");
-	
-	System.out.println(element.getName());
-	if( element.getName().equals("channel")){
-	    // Do all licenses list.
-	    License[] all = module.getAllLicenses();
-	    for( int i=0; i < all.length ; i++){
-		Element license = new Element( "License", RSS1 );
-		license.setAttribute( "about", all[i].getValue(), RDF );
-		License.Behaviour[] permits = all[i].getPermits();
-		for( int j=0; permits != null && j < permits.length; j++ ){
-		    Element permit = new Element( "permits", RSS1 );
-		    permit.setAttribute( "resource", permits[j].toString(), RDF);
-		    license.addContent( permit );
-		}
-		License.Behaviour[] requires = all[i].getPermits();
-		for( int j=0; requires != null && j < requires.length; j++ ){
-		    Element permit = new Element( "requires", RSS1 );
-		    permit.setAttribute( "resource", permits[j].toString(), RDF);
-		    license.addContent( permit );
-		}
-		System.out.println("Is Root?"+element.getParentElement());
-		element.getParentElement().addContent( license );
-	    }	    
-	}
-	 
-	//Do local licenses
-	License[] licenses = module.getLicenses();
-	for( int i=0; i < licenses.length; i++ ){
-	    Element license = new Element( "license", RSS1 );
-	    license.setAttribute( "resource", licenses[i].getValue(), RDF);
-	    element.addContent( license );
-	}
-	
+
+    private void generateRSS1(final CreativeCommons module, final Element element) {
+        // throw new RuntimeException( "Generating RSS1 Feeds not currently Supported.");
+
+        System.out.println(element.getName());
+        if (element.getName().equals("channel")) {
+            // Do all licenses list.
+            final License[] all = module.getAllLicenses();
+            for (final License element2 : all) {
+                final Element license = new Element("License", RSS1);
+                license.setAttribute("about", element2.getValue(), RDF);
+                final License.Behaviour[] permits = element2.getPermits();
+                for (int j = 0; permits != null && j < permits.length; j++) {
+                    final Element permit = new Element("permits", RSS1);
+                    permit.setAttribute("resource", permits[j].toString(), RDF);
+                    license.addContent(permit);
+                }
+                final License.Behaviour[] requires = element2.getPermits();
+                for (int j = 0; requires != null && j < requires.length; j++) {
+                    final Element permit = new Element("requires", RSS1);
+                    permit.setAttribute("resource", permits[j].toString(), RDF);
+                    license.addContent(permit);
+                }
+                System.out.println("Is Root?" + element.getParentElement());
+                element.getParentElement().addContent(license);
+            }
+        }
+
+        // Do local licenses
+        final License[] licenses = module.getLicenses();
+        for (final License license2 : licenses) {
+            final Element license = new Element("license", RSS1);
+            license.setAttribute("resource", license2.getValue(), RDF);
+            element.addContent(license);
+        }
+
     }
-    
-    private void generateRSS2( CreativeCommons module, Element element ){
-	License[] licenses = module.getLicenses();
-        for( int i=0; licenses != null &&  i < licenses.length; i++ ){
-	    Element license = new Element( "license", RSS2 );
-	    license.setText( licenses[i].getValue() );
-	    element.addContent( license );
-	}
+
+    private void generateRSS2(final CreativeCommons module, final Element element) {
+        final License[] licenses = module.getLicenses();
+        for (int i = 0; licenses != null && i < licenses.length; i++) {
+            final Element license = new Element("license", RSS2);
+            license.setText(licenses[i].getValue());
+            element.addContent(license);
+        }
     }
 }

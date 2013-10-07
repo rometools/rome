@@ -39,9 +39,15 @@
  */
 package org.rometools.feed.module.base.io;
 
-import com.sun.syndication.feed.module.Module;
-import com.sun.syndication.io.ModuleGenerator;
+import java.beans.PropertyDescriptor;
+import java.net.URL;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
+import org.jdom2.Element;
+import org.jdom2.Namespace;
 import org.rometools.feed.module.base.GoogleBase;
 import org.rometools.feed.module.base.GoogleBaseImpl;
 import org.rometools.feed.module.base.types.CurrencyEnumeration;
@@ -56,111 +62,101 @@ import org.rometools.feed.module.base.types.ShortDate;
 import org.rometools.feed.module.base.types.Size;
 import org.rometools.feed.module.base.types.YearType;
 
-import org.jdom.Element;
-import org.jdom.Namespace;
-
-import java.beans.PropertyDescriptor;
-
-import java.net.URL;
-
-import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
-
+import com.sun.syndication.feed.module.Module;
+import com.sun.syndication.io.ModuleGenerator;
 
 /**
- *
+ * 
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper
  * @version $Revision: 1.1 $
  */
 public class GoogleBaseGenerator implements ModuleGenerator {
-    private static final Namespace NS = Namespace.getNamespace("g-core",GoogleBase.URI);
-    
+    private static final Namespace NS = Namespace.getNamespace("g-core", GoogleBase.URI);
+
     /** Creates a new instance of GoogleBaseGenerator */
     public GoogleBaseGenerator() {
-	super();
+        super();
     }
-    
+
     public String getNamespaceUri() {
-	return GoogleBase.URI;
+        return GoogleBase.URI;
     }
-    
+
     public Set getNamespaces() {
-	HashSet set = new HashSet();
-	set.add(GoogleBaseGenerator.NS);
-	
-	return set;
+        final HashSet set = new HashSet();
+        set.add(GoogleBaseGenerator.NS);
+
+        return set;
     }
-    
-    public void generate(Module module,Element element) {
-	GoogleBaseImpl mod = (GoogleBaseImpl)module;
-	HashMap props2tags = new HashMap(GoogleBaseParser.PROPS2TAGS);
-	PropertyDescriptor[] pds = GoogleBaseParser.pds;
-	
-	for(int i = 0; i < pds.length; i++) {
-	    String tagName = (String)props2tags.get(pds[i].getName());
-	    
-	    if(tagName == null) {
-		continue;
-	    }
-	    
-	    Object[] values = null;
-	    
-	    try {
-		if(pds[i].getPropertyType().isArray()) {
-		    values = (Object[])pds[i].getReadMethod().invoke(mod,(Object[])null);
-		} else {
-		    values = new Object[] {
-			pds[i].getReadMethod().invoke(mod,(Object[])null)
-		    };
-		}
-		
-		for(int j = 0; (values != null)&&(j < values.length); j++) {
-		    if(values[j] != null) {
-			element.addContent(this.generateTag(values[j],tagName));
-		    }
-		}
-	    } catch(Exception e) {
-		e.printStackTrace();
-	    }
-	}
+
+    public void generate(final Module module, final Element element) {
+        final GoogleBaseImpl mod = (GoogleBaseImpl) module;
+        final HashMap props2tags = new HashMap(GoogleBaseParser.PROPS2TAGS);
+        final PropertyDescriptor[] pds = GoogleBaseParser.pds;
+
+        for (final PropertyDescriptor pd : pds) {
+            final String tagName = (String) props2tags.get(pd.getName());
+
+            if (tagName == null) {
+                continue;
+            }
+
+            Object[] values = null;
+
+            try {
+                if (pd.getPropertyType().isArray()) {
+                    values = (Object[]) pd.getReadMethod().invoke(mod, (Object[]) null);
+                } else {
+                    values = new Object[] { pd.getReadMethod().invoke(mod, (Object[]) null) };
+                }
+
+                for (int j = 0; values != null && j < values.length; j++) {
+                    if (values[j] != null) {
+                        element.addContent(generateTag(values[j], tagName));
+                    }
+                }
+            } catch (final Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
-    
-    public Element generateTag(Object o,String tagName) {
-	if(o instanceof URL||o instanceof Float||o instanceof Boolean||o instanceof Integer||o instanceof String||o instanceof FloatUnit||o instanceof IntUnit||o instanceof GenderEnumeration||o instanceof PaymentTypeEnumeration||o instanceof PriceTypeEnumeration||o instanceof CurrencyEnumeration||o instanceof Size||o instanceof YearType) {
-	    return this.generateSimpleElement(tagName,o.toString());
-	} else if(o instanceof ShortDate) {
-	    return this.generateSimpleElement(tagName,GoogleBaseParser.SHORT_DT_FMT.format(o));
-	} else if(o instanceof Date) {
-	    return this.generateSimpleElement(tagName,GoogleBaseParser.LONG_DT_FMT.format(o));
-	} else if(o instanceof ShippingType) {
-	    ShippingType st = (ShippingType)o;
-	    Element element = new Element(tagName,GoogleBaseGenerator.NS);
-	    
-	    element.addContent(this.generateSimpleElement("country",st.getCountry()));
-	    
-	    element.addContent(this.generateSimpleElement("service", st.getService().toString() ));
-	    
-	    element.addContent(this.generateSimpleElement("price",st.getPrice().toString()));
-	    
-	    return element;
-	} else if(o instanceof DateTimeRange) {
-	    DateTimeRange dtr = (DateTimeRange)o;
-	    Element element = new Element(tagName,GoogleBaseGenerator.NS);
-	    element.addContent(this.generateSimpleElement("start",GoogleBaseParser.LONG_DT_FMT.format(dtr.getStart())));
-	    element.addContent(this.generateSimpleElement("end",GoogleBaseParser.LONG_DT_FMT.format(dtr.getEnd())));
-	    
-	    return element;
-	}
-	
-	throw new RuntimeException("Unknown class type to handle: " + o.getClass().getName());
+
+    public Element generateTag(final Object o, final String tagName) {
+        if (o instanceof URL || o instanceof Float || o instanceof Boolean || o instanceof Integer || o instanceof String || o instanceof FloatUnit
+                || o instanceof IntUnit || o instanceof GenderEnumeration || o instanceof PaymentTypeEnumeration || o instanceof PriceTypeEnumeration
+                || o instanceof CurrencyEnumeration || o instanceof Size || o instanceof YearType) {
+            return generateSimpleElement(tagName, o.toString());
+        } else if (o instanceof ShortDate) {
+            return generateSimpleElement(tagName, GoogleBaseParser.SHORT_DT_FMT.format(o));
+        } else if (o instanceof Date) {
+            return generateSimpleElement(tagName, GoogleBaseParser.LONG_DT_FMT.format(o));
+        } else if (o instanceof ShippingType) {
+            final ShippingType st = (ShippingType) o;
+            final Element element = new Element(tagName, GoogleBaseGenerator.NS);
+
+            element.addContent(generateSimpleElement("country", st.getCountry()));
+
+            element.addContent(generateSimpleElement("service", st.getService().toString()));
+
+            element.addContent(generateSimpleElement("price", st.getPrice().toString()));
+
+            return element;
+        } else if (o instanceof DateTimeRange) {
+            final DateTimeRange dtr = (DateTimeRange) o;
+            final Element element = new Element(tagName, GoogleBaseGenerator.NS);
+            element.addContent(generateSimpleElement("start", GoogleBaseParser.LONG_DT_FMT.format(dtr.getStart())));
+            element.addContent(generateSimpleElement("end", GoogleBaseParser.LONG_DT_FMT.format(dtr.getEnd())));
+
+            return element;
+        }
+
+        throw new RuntimeException("Unknown class type to handle: " + o.getClass().getName());
     }
-    
-    protected Element generateSimpleElement(String name,String value) {
-	Element element = new Element(name,GoogleBaseGenerator.NS);
-	element.addContent(value);
-	
-	return element;
+
+    protected Element generateSimpleElement(final String name, final String value) {
+        final Element element = new Element(name, GoogleBaseGenerator.NS);
+        element.addContent(value);
+
+        return element;
     }
 }

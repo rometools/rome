@@ -41,9 +41,9 @@ package org.rometools.feed.module.base.types;
 
 import java.util.Date;
 
-
-/** Represents a time range.
- *
+/**
+ * Represents a time range.
+ * 
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @version $Revision: 1.2 $
  */
@@ -59,26 +59,27 @@ public class DateTimeRange implements CloneableType {
 
     /**
      * Creates a new instance of DateTimeRange
+     * 
      * @param start Beginning of the timeframe.
      * @param end End of the Timeframe.
      */
-    public DateTimeRange(Date start, Date end) {
-        this.start= start;
-        this.end = end ;
+    public DateTimeRange(final Date start, final Date end) {
+        this.start = start;
+        this.end = end;
     }
 
-    
     /**
      * The end of the timeframe.
+     * 
      * @return The end of the timeframe.
      */
     public Date getEnd() {
         return end;
     }
 
-   
     /**
      * The beginning of the timeframe.
+     * 
      * @return The beginning of the timeframe.
      */
     public Date getStart() {
@@ -87,17 +88,19 @@ public class DateTimeRange implements CloneableType {
 
     /**
      * Clones the object
+     * 
      * @return Duplicate of this object.
      */
+    @Override
     public Object clone() {
-        DateTimeRange retValue = new DateTimeRange(null, null);
+        final DateTimeRange retValue = new DateTimeRange(null, null);
 
-        if (this.getStart() != null) {
-            retValue.start = ((Date) this.getStart().clone());
+        if (getStart() != null) {
+            retValue.start = (Date) getStart().clone();
         }
 
-        if (this.getEnd() != null) {
-            retValue.end = ((Date) this.getEnd().clone());
+        if (getEnd() != null) {
+            retValue.end = (Date) getEnd().clone();
         }
 
         return retValue;
@@ -105,23 +108,29 @@ public class DateTimeRange implements CloneableType {
 
     /**
      * String representation of the object.
+     * 
      * @return String representation of the object.
      */
+    @Override
     public String toString() {
-        return "Start: " + this.start + " End: " + this.end;
+        return "Start: " + start + " End: " + end;
     }
-    
-    public boolean equals( Object o ){
-	if( !(o instanceof DateTimeRange )  || o == null )
-	    return false;
-	DateTimeRange d = (DateTimeRange) o;
-	if( this.start == d.getStart() && this.end == d.getEnd() ){
-	    return true;
-	}
-	if( this.start != null && !this.start.equals( d.getStart()) )
-	    return false;
-	if( this.end != null && !this.end.equals( d.getEnd()) )
-	    return false;
-	return true;
+
+    @Override
+    public boolean equals(final Object o) {
+        if (!(o instanceof DateTimeRange) || o == null) {
+            return false;
+        }
+        final DateTimeRange d = (DateTimeRange) o;
+        if (start == d.getStart() && end == d.getEnd()) {
+            return true;
+        }
+        if (start != null && !start.equals(d.getStart())) {
+            return false;
+        }
+        if (end != null && !end.equals(d.getEnd())) {
+            return false;
+        }
+        return true;
     }
 }

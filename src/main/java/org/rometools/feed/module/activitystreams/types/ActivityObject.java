@@ -17,32 +17,33 @@
 
 package org.rometools.feed.module.activitystreams.types;
 
-import com.sun.syndication.feed.atom.Entry;
 import org.rometools.feed.module.georss.GeoRSSModule;
 import org.rometools.feed.module.portablecontacts.ContactModule;
+
+import com.sun.syndication.feed.atom.Entry;
+
 /**
- *
+ * 
  * @author robert.cooper
  */
 public abstract class ActivityObject extends Entry implements HasLocation {
-    
-    
+
     public abstract String getTypeIRI();
 
     public GeoRSSModule getLocation() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void setLocation(GeoRSSModule location) {
+    public void setLocation(final GeoRSSModule location) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public ContactModule getAddress(){
-         throw new UnsupportedOperationException("Not supported yet.");
+    public ContactModule getAddress() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void setAddress(ContactModule address){
-         throw new UnsupportedOperationException("Not supported yet.");
+    public void setAddress(final ContactModule address) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }

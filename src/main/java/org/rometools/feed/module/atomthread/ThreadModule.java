@@ -18,7 +18,7 @@
 package org.rometools.feed.module.atomthread;
 
 /**
- *
+ * 
  * @author robert.cooper
  */
 public interface ThreadModule {

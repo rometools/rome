@@ -40,18 +40,18 @@
  */
 package org.rometools.feed.module.itunes.io;
 
-import com.sun.syndication.feed.module.Module;
+import java.util.HashSet;
+import java.util.Iterator;
+
+import org.jdom2.Element;
+import org.jdom2.Namespace;
 import org.rometools.feed.module.itunes.AbstractITunesObject;
 import org.rometools.feed.module.itunes.EntryInformationImpl;
 import org.rometools.feed.module.itunes.FeedInformationImpl;
 import org.rometools.feed.module.itunes.types.Category;
+
+import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.ModuleGenerator;
-
-import org.jdom.Element;
-import org.jdom.Namespace;
-
-import java.util.HashSet;
-import java.util.Iterator;
 
 /**
  * @version $Revision: 1.3 $
@@ -69,10 +69,10 @@ public class ITunesGenerator implements ModuleGenerator {
     public ITunesGenerator() {
     }
 
-    public void generate(Module module, Element element) {
+    public void generate(final Module module, final Element element) {
         Element root = element;
 
-        while ((root.getParent() != null) && root.getParent() instanceof Element) {
+        while (root.getParent() != null && root.getParent() instanceof Element) {
             root = (Element) root.getParent();
         }
 
@@ -82,32 +82,32 @@ public class ITunesGenerator implements ModuleGenerator {
             return;
         }
 
-        AbstractITunesObject itunes = (AbstractITunesObject) module;
+        final AbstractITunesObject itunes = (AbstractITunesObject) module;
 
         if (itunes instanceof FeedInformationImpl) {
-            //Do Channel Specific Stuff.
-            FeedInformationImpl info = (FeedInformationImpl) itunes;
-            Element owner = this.generateSimpleElement("owner", "");
-            Element email = this.generateSimpleElement("email", info.getOwnerEmailAddress());
+            // Do Channel Specific Stuff.
+            final FeedInformationImpl info = (FeedInformationImpl) itunes;
+            final Element owner = generateSimpleElement("owner", "");
+            final Element email = generateSimpleElement("email", info.getOwnerEmailAddress());
             owner.addContent(email);
 
-            Element name = this.generateSimpleElement("name", info.getOwnerName());
+            final Element name = generateSimpleElement("name", info.getOwnerName());
             owner.addContent(name);
             element.addContent(owner);
 
             if (info.getImage() != null) {
-                Element image = this.generateSimpleElement("image", "");
+                final Element image = generateSimpleElement("image", "");
                 image.setAttribute("href", info.getImage().toExternalForm());
                 element.addContent(image);
             }
 
-            for (Iterator it = info.getCategories().iterator(); it.hasNext();) {
-        	Category cat = (Category) it.next();
-                Element category = this.generateSimpleElement("category", "");
+            for (final Iterator it = info.getCategories().iterator(); it.hasNext();) {
+                final Category cat = (Category) it.next();
+                final Element category = generateSimpleElement("category", "");
                 category.setAttribute("text", cat.getName());
 
                 if (cat.getSubcategory() != null) {
-                    Element subcat = this.generateSimpleElement("category", "");
+                    final Element subcat = generateSimpleElement("category", "");
                     subcat.setAttribute("text", cat.getSubcategory().getName());
                     category.addContent(subcat);
                 }
@@ -115,29 +115,29 @@ public class ITunesGenerator implements ModuleGenerator {
                 element.addContent(category);
             }
         } else if (itunes instanceof EntryInformationImpl) {
-            EntryInformationImpl info = (EntryInformationImpl) itunes;
+            final EntryInformationImpl info = (EntryInformationImpl) itunes;
 
             if (info.getDuration() != null) {
-                element.addContent(this.generateSimpleElement("duration", info.getDuration().toString()));
+                element.addContent(generateSimpleElement("duration", info.getDuration().toString()));
             }
         }
 
         if (itunes.getAuthor() != null) {
-            element.addContent(this.generateSimpleElement("author", itunes.getAuthor()));
+            element.addContent(generateSimpleElement("author", itunes.getAuthor()));
         }
 
         if (itunes.getBlock()) {
-            element.addContent(this.generateSimpleElement("block", ""));
+            element.addContent(generateSimpleElement("block", ""));
         }
 
         if (itunes.getExplicit()) {
-            element.addContent(this.generateSimpleElement("explicit", "yes"));
+            element.addContent(generateSimpleElement("explicit", "yes"));
         } else {
-            element.addContent(this.generateSimpleElement("explicit", "no"));
+            element.addContent(generateSimpleElement("explicit", "no"));
         }
 
         if (itunes.getKeywords() != null) {
-            StringBuffer sb = new StringBuffer();
+            final StringBuffer sb = new StringBuffer();
 
             for (int i = 0; i < itunes.getKeywords().length; i++) {
                 if (i != 0) {
@@ -147,34 +147,38 @@ public class ITunesGenerator implements ModuleGenerator {
                 sb.append(itunes.getKeywords()[i]);
             }
 
-            element.addContent(this.generateSimpleElement("keywords", sb.toString()));
+            element.addContent(generateSimpleElement("keywords", sb.toString()));
         }
 
         if (itunes.getSubtitle() != null) {
-            element.addContent(this.generateSimpleElement("subtitle", itunes.getSubtitle()));
+            element.addContent(generateSimpleElement("subtitle", itunes.getSubtitle()));
         }
 
         if (itunes.getSummary() != null) {
-            element.addContent(this.generateSimpleElement("summary", itunes.getSummary()));
+            element.addContent(generateSimpleElement("summary", itunes.getSummary()));
         }
     }
 
-    /** Returns the list of namespaces this module uses.
+    /**
+     * Returns the list of namespaces this module uses.
+     * 
      * @return set of Namespace objects.
      */
     public java.util.Set getNamespaces() {
         return SET;
     }
 
-    /** Returns the namespace URI this module handles.
+    /**
+     * Returns the namespace URI this module handles.
+     * 
      * @return Returns the namespace URI this module handles.
      */
     public String getNamespaceUri() {
         return AbstractITunesObject.URI;
     }
 
-    protected Element generateSimpleElement(String name, String value) {
-        Element element = new Element(name, NS);
+    protected Element generateSimpleElement(final String name, final String value) {
+        final Element element = new Element(name, NS);
         element.addContent(value);
 
         return element;

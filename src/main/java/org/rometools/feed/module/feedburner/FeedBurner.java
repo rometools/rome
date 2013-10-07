@@ -23,25 +23,25 @@ import com.sun.syndication.feed.module.Module;
 
 /**
  * Interface for the FeedBurner RSS extension.
- *
+ * 
  * @version 1.0
  * @author Georg Schmidl <georg.schmidl@scandio.de>
- *
+ * 
  */
 public interface FeedBurner extends Module, Serializable, Cloneable {
 
-	public static final String URI = "http://rssnamespace.org/feedburner/ext/1.0";
+    public static final String URI = "http://rssnamespace.org/feedburner/ext/1.0";
 
-	public String getAwareness();
+    public String getAwareness();
 
-	public void setAwareness(String awareness);
+    public void setAwareness(String awareness);
 
-	public String getOrigLink();
+    public String getOrigLink();
 
-	public void setOrigLink(String origLink);
+    public void setOrigLink(String origLink);
 
-	public String getOrigEnclosureLink();
+    public String getOrigEnclosureLink();
 
-	public void setOrigEnclosureLink(String origEnclosureLink);
+    public void setOrigEnclosureLink(String origEnclosureLink);
 
 }

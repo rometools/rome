@@ -28,61 +28,68 @@ import java.io.Serializable;
 import com.sun.syndication.feed.impl.EqualsBean;
 import com.sun.syndication.feed.impl.ToStringBean;
 
-
 /**
  * <strong>&lt;media:group&gt;</strong></p>
- * <p>&lt;media:group&gt; is a sub-element of &lt;item&gt;. It allows grouping of &lt;media:content&gt; elements that are effectively the same content, yet different representations.&nbsp;For instance: the same song recorded in both the WAV and MP3 format.
- * It's an optional element that must only be used for this purpose.</p>
+ * <p>
+ * &lt;media:group&gt; is a sub-element of &lt;item&gt;. It allows grouping of &lt;media:content&gt; elements that are effectively the same content, yet
+ * different representations.&nbsp;For instance: the same song recorded in both the WAV and MP3 format. It's an optional element that must only be used for this
+ * purpose.
+ * </p>
+ * 
  * @author cooper
  */
 public class MediaGroup implements Cloneable, Serializable {
-	private static final long serialVersionUID = 768465435081309082L;
-	
-	private Integer defaultContentIndex;
+    private static final long serialVersionUID = 768465435081309082L;
+
+    private Integer defaultContentIndex;
     private Metadata metadata;
     private MediaContent[] contents = new MediaContent[0];
 
     /**
      * Creates a new instance of MediaGroup
+     * 
      * @param contents Contents of the group.
      */
-    public MediaGroup(MediaContent[] contents) {
-        this.setContents(contents);
+    public MediaGroup(final MediaContent[] contents) {
+        setContents(contents);
     }
 
     /**
      * Creates a new instance of MediaGroup
+     * 
      * @param contents contents of the group
      * @param defaultContentIndex index of the default content value.
      */
-    public MediaGroup(MediaContent[] contents, Integer defaultContentIndex) {
-        this.setContents(contents);
-        this.setDefaultContentIndex(defaultContentIndex);
+    public MediaGroup(final MediaContent[] contents, final Integer defaultContentIndex) {
+        setContents(contents);
+        setDefaultContentIndex(defaultContentIndex);
     }
 
     /**
      * Creates a new instance of MediaGroup
+     * 
      * @param contents contents of the group
      * @param defaultContentIndex index of the default content item.
      * @param metadata metadata for the group.
      */
-    public MediaGroup(MediaContent[] contents, Integer defaultContentIndex,
-        Metadata metadata) {
-        this.setContents(contents);
-        this.setDefaultContentIndex(defaultContentIndex);
-        this.setMetadata(metadata);
+    public MediaGroup(final MediaContent[] contents, final Integer defaultContentIndex, final Metadata metadata) {
+        setContents(contents);
+        setDefaultContentIndex(defaultContentIndex);
+        setMetadata(metadata);
     }
 
     /**
      * MediaContents for the group
+     * 
      * @param contents MediaContents for the group
      */
-    public void setContents(MediaContent[] contents) {
-        this.contents = (contents == null) ? new MediaContent[0] : contents;
+    public void setContents(final MediaContent[] contents) {
+        this.contents = contents == null ? new MediaContent[0] : contents;
     }
 
     /**
      * MediaContents for the group
+     * 
      * @return MediaContents for the group
      */
     public MediaContent[] getContents() {
@@ -91,9 +98,10 @@ public class MediaGroup implements Cloneable, Serializable {
 
     /**
      * Default content index MediaContent.
+     * 
      * @param defaultContentIndex Default content index MediaContent.
      */
-    public void setDefaultContentIndex(Integer defaultContentIndex) {
+    public void setDefaultContentIndex(final Integer defaultContentIndex) {
         for (int i = 0; i < getContents().length; i++) {
             if (i == defaultContentIndex.intValue()) {
                 getContents()[i].setDefaultContent(true);
@@ -107,6 +115,7 @@ public class MediaGroup implements Cloneable, Serializable {
 
     /**
      * Default content index MediaContent.
+     * 
      * @return Default content index MediaContent.
      */
     public Integer getDefaultContentIndex() {
@@ -115,39 +124,44 @@ public class MediaGroup implements Cloneable, Serializable {
 
     /**
      * Metadata for the group
+     * 
      * @param metadata Metadata for the group
      */
-    public void setMetadata(Metadata metadata) {
+    public void setMetadata(final Metadata metadata) {
         this.metadata = metadata;
     }
 
     /**
      * Metadata for the group
+     * 
      * @return Metadata for the group
      */
     public Metadata getMetadata() {
         return metadata;
     }
 
+    @Override
     public Object clone() {
-        return new MediaGroup(getContents(), getDefaultContentIndex(),
-            getMetadata());
+        return new MediaGroup(getContents(), getDefaultContentIndex(), getMetadata());
     }
 
-    public boolean equals(Object obj) {
-        EqualsBean eBean = new EqualsBean(this.getClass(), this);
+    @Override
+    public boolean equals(final Object obj) {
+        final EqualsBean eBean = new EqualsBean(this.getClass(), this);
 
         return eBean.beanEquals(obj);
     }
 
+    @Override
     public int hashCode() {
-        EqualsBean equals = new EqualsBean(this.getClass(), this);
+        final EqualsBean equals = new EqualsBean(this.getClass(), this);
 
         return equals.beanHashCode();
     }
 
+    @Override
     public String toString() {
-        ToStringBean tsBean = new ToStringBean(this.getClass(), this);
+        final ToStringBean tsBean = new ToStringBean(this.getClass(), this);
 
         return tsBean.toString();
     }

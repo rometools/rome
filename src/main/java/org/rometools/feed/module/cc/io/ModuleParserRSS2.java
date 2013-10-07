@@ -40,80 +40,85 @@
 
 package org.rometools.feed.module.cc.io;
 
-import com.sun.syndication.feed.module.Module;
-import com.sun.syndication.io.ModuleParser;
-import org.rometools.feed.module.cc.CreativeCommonsImpl;
-import org.rometools.feed.module.cc.types.License;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import org.jdom.Element;
-import org.jdom.Namespace;
+
+import org.jdom2.Element;
+import org.jdom2.Namespace;
+import org.rometools.feed.module.cc.CreativeCommonsImpl;
+import org.rometools.feed.module.cc.types.License;
+
+import com.sun.syndication.feed.module.Module;
+import com.sun.syndication.io.ModuleParser;
 
 /**
- *
+ * 
  * @version $Revision: 1.3 $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class ModuleParserRSS2 implements ModuleParser {
-    
-    private static final Namespace NS = Namespace.getNamespace( CreativeCommonsImpl.RSS2_URI );
-    
+
+    private static final Namespace NS = Namespace.getNamespace(CreativeCommonsImpl.RSS2_URI);
+
     /** Creates a new instance of ModuleParserRSS2 */
     public ModuleParserRSS2() {
     }
 
-    public Module parse(Element element) {
-	CreativeCommonsImpl module = new CreativeCommonsImpl();
-	//Do channel global
-	{
-	    Element root = element;
-	    while( !root.getName().equals("channel") && !root.getName().equals("feed") )
-		root = root.getParentElement();
-	    ArrayList licenses = new ArrayList();
-	    List items = null;
-	    if( root.getName().equals("channel"))
-		items = root.getChildren("item");
-	    else
-		items = root.getChildren("entry");
-	    
-	    Iterator iit = items.iterator();
-	    while( iit.hasNext() ){
-		Element item = (Element) iit.next();
-		List licenseTags = item.getChildren( "license", NS );
-		Iterator lit = licenseTags.iterator();
-		while(lit.hasNext() ){
-		    Element licenseTag = (Element) lit.next();
-		    License license = License.findByValue( licenseTag.getTextTrim() );
-		    if( !licenses.contains( license ));
-			licenses.add( license );
-		}
-	    }
-	    if( licenses.size() > 0 ){
-		module.setAllLicenses( (License[]) licenses.toArray( new License[0] ) );
-	    }
-	}
-	// do element local
-	ArrayList licenses = new ArrayList();
-	List licenseTags = element.getChildren( "license", NS );
-	Iterator it = licenseTags.iterator();
-	while( it.hasNext() ){
-	    Element licenseTag = (Element) it.next();
-	    licenses.add( License.findByValue(licenseTag.getTextTrim() ));
-	}
-	if( licenses.size() > 0 ){
-	    module.setLicenses( (License[]) licenses.toArray( new License[0]));
-	}
-	
-	if( module.getLicenses() != null && module.getAllLicenses() != null ){
-	    return module;
-	} else {
-	    return null;
-	}
+    public Module parse(final Element element) {
+        final CreativeCommonsImpl module = new CreativeCommonsImpl();
+        // Do channel global
+        {
+            Element root = element;
+            while (!root.getName().equals("channel") && !root.getName().equals("feed")) {
+                root = root.getParentElement();
+            }
+            final ArrayList licenses = new ArrayList();
+            List items = null;
+            if (root.getName().equals("channel")) {
+                items = root.getChildren("item");
+            } else {
+                items = root.getChildren("entry");
+            }
+
+            final Iterator iit = items.iterator();
+            while (iit.hasNext()) {
+                final Element item = (Element) iit.next();
+                final List licenseTags = item.getChildren("license", NS);
+                final Iterator lit = licenseTags.iterator();
+                while (lit.hasNext()) {
+                    final Element licenseTag = (Element) lit.next();
+                    final License license = License.findByValue(licenseTag.getTextTrim());
+                    if (!licenses.contains(license)) {
+                        ;
+                    }
+                    licenses.add(license);
+                }
+            }
+            if (licenses.size() > 0) {
+                module.setAllLicenses((License[]) licenses.toArray(new License[0]));
+            }
+        }
+        // do element local
+        final ArrayList licenses = new ArrayList();
+        final List licenseTags = element.getChildren("license", NS);
+        final Iterator it = licenseTags.iterator();
+        while (it.hasNext()) {
+            final Element licenseTag = (Element) it.next();
+            licenses.add(License.findByValue(licenseTag.getTextTrim()));
+        }
+        if (licenses.size() > 0) {
+            module.setLicenses((License[]) licenses.toArray(new License[0]));
+        }
+
+        if (module.getLicenses() != null && module.getAllLicenses() != null) {
+            return module;
+        } else {
+            return null;
+        }
     }
 
     public String getNamespaceUri() {
-	return CreativeCommonsImpl.RSS2_URI;
+        return CreativeCommonsImpl.RSS2_URI;
     }
 }

@@ -35,8 +35,6 @@
  */
 package org.rometools.feed.module.yahooweather;
 
-import com.sun.syndication.feed.CopyFrom;
-import com.sun.syndication.feed.module.ModuleImpl;
 import org.rometools.feed.module.yahooweather.types.Astronomy;
 import org.rometools.feed.module.yahooweather.types.Atmosphere;
 import org.rometools.feed.module.yahooweather.types.Condition;
@@ -45,14 +43,16 @@ import org.rometools.feed.module.yahooweather.types.Location;
 import org.rometools.feed.module.yahooweather.types.Units;
 import org.rometools.feed.module.yahooweather.types.Wind;
 
+import com.sun.syndication.feed.CopyFrom;
+import com.sun.syndication.feed.module.ModuleImpl;
 
 /**
  * A Module implementation for entry or feed level information.
+ * 
  * @version $Id: YWeatherModuleImpl.java,v 1.2 2008/01/22 14:50:06 kebernet Exp $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
-public class YWeatherModuleImpl extends ModuleImpl
-    implements YWeatherEntryModule, YWeatherFeedModule {
+public class YWeatherModuleImpl extends ModuleImpl implements YWeatherEntryModule, YWeatherFeedModule {
     private Location location;
     private Astronomy astronomy;
     private Atmosphere atmosphere;
@@ -69,31 +69,24 @@ public class YWeatherModuleImpl extends ModuleImpl
         return CopyFromInterface.class;
     }
 
-    public void copyFrom(CopyFrom o) {
-        YWeatherModuleImpl from = (YWeatherModuleImpl) o;
-        this.setAstronomy((from.getAstronomy() != null)
-            ? (Astronomy) from.getAstronomy().clone() : null);
-        this.setCondition((from.getCondition() != null)
-            ? (Condition) from.getCondition().clone() : null);
-        this.setLocation((from.getLocation() != null)
-            ? (Location) from.getLocation().clone() : null);
-        this.setUnits((from.getUnits() != null)
-            ? (Units) from.getUnits().clone() : null);
-        this.setWind((from.getWind() != null) ? (Wind) from.getWind().clone()
-                                              : null);
+    public void copyFrom(final CopyFrom o) {
+        final YWeatherModuleImpl from = (YWeatherModuleImpl) o;
+        setAstronomy(from.getAstronomy() != null ? (Astronomy) from.getAstronomy().clone() : null);
+        setCondition(from.getCondition() != null ? (Condition) from.getCondition().clone() : null);
+        setLocation(from.getLocation() != null ? (Location) from.getLocation().clone() : null);
+        setUnits(from.getUnits() != null ? (Units) from.getUnits().clone() : null);
+        setWind(from.getWind() != null ? (Wind) from.getWind().clone() : null);
 
-        this.setAtmosphere((from.getAtmosphere() != null)
-            ? (Atmosphere) from.getAtmosphere().clone() : null);
+        setAtmosphere(from.getAtmosphere() != null ? (Atmosphere) from.getAtmosphere().clone() : null);
 
-        if(from.getForecasts() != null) {
-            this.forecasts = new Forecast[from.forecasts.length];
+        if (from.getForecasts() != null) {
+            forecasts = new Forecast[from.forecasts.length];
 
-            for(int i = 0; i < from.forecasts.length; i++) {
-                this.forecasts[i] = (from.forecasts[i] != null)
-                    ? (Forecast) from.forecasts[i].clone() : null;
+            for (int i = 0; i < from.forecasts.length; i++) {
+                forecasts[i] = from.forecasts[i] != null ? (Forecast) from.forecasts[i].clone() : null;
             }
         } else {
-            this.forecasts = null;
+            forecasts = null;
         }
     }
 
@@ -101,7 +94,7 @@ public class YWeatherModuleImpl extends ModuleImpl
         return location;
     }
 
-    public void setLocation(Location location) {
+    public void setLocation(final Location location) {
         this.location = location;
     }
 
@@ -109,7 +102,7 @@ public class YWeatherModuleImpl extends ModuleImpl
         return astronomy;
     }
 
-    public void setAstronomy(Astronomy astronomy) {
+    public void setAstronomy(final Astronomy astronomy) {
         this.astronomy = astronomy;
     }
 
@@ -117,7 +110,7 @@ public class YWeatherModuleImpl extends ModuleImpl
         return units;
     }
 
-    public void setUnits(Units units) {
+    public void setUnits(final Units units) {
         this.units = units;
     }
 
@@ -125,7 +118,7 @@ public class YWeatherModuleImpl extends ModuleImpl
         return condition;
     }
 
-    public void setCondition(Condition condition) {
+    public void setCondition(final Condition condition) {
         this.condition = condition;
     }
 
@@ -133,7 +126,7 @@ public class YWeatherModuleImpl extends ModuleImpl
         return forecasts;
     }
 
-    public void setForecasts(Forecast[] forecasts) {
+    public void setForecasts(final Forecast[] forecasts) {
         this.forecasts = forecasts;
     }
 
@@ -141,7 +134,7 @@ public class YWeatherModuleImpl extends ModuleImpl
         return wind;
     }
 
-    public void setWind(Wind wind) {
+    public void setWind(final Wind wind) {
         this.wind = wind;
     }
 
@@ -149,11 +142,10 @@ public class YWeatherModuleImpl extends ModuleImpl
         return atmosphere;
     }
 
-    public void setAtmosphere(Atmosphere atmosphere) {
+    public void setAtmosphere(final Atmosphere atmosphere) {
         this.atmosphere = atmosphere;
     }
 
-    public static interface CopyFromInterface extends YWeatherFeedModule,
-        YWeatherEntryModule {
+    public static interface CopyFromInterface extends YWeatherFeedModule, YWeatherEntryModule {
     }
 }

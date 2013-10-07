@@ -40,6 +40,7 @@
  */
 
 package org.rometools.feed.module.slash;
+
 import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.impl.EqualsBean;
 
@@ -48,15 +49,15 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class SlashImpl implements Slash {
-    
+
     private String section;
-    
+
     private String department;
-    
+
     private Integer comments;
-    
+
     private Integer[] hitParade;
-    
+
     /** Creates a new instance of SlashImpl */
     public SlashImpl() {
     }
@@ -65,7 +66,7 @@ public class SlashImpl implements Slash {
         return section;
     }
 
-    public void setSection(String section) {
+    public void setSection(final String section) {
         this.section = section;
     }
 
@@ -73,7 +74,7 @@ public class SlashImpl implements Slash {
         return department;
     }
 
-    public void setDepartment(String department) {
+    public void setDepartment(final String department) {
         this.department = department;
     }
 
@@ -81,7 +82,7 @@ public class SlashImpl implements Slash {
         return comments;
     }
 
-    public void setComments(Integer comments) {
+    public void setComments(final Integer comments) {
         this.comments = comments;
     }
 
@@ -89,38 +90,36 @@ public class SlashImpl implements Slash {
         return hitParade == null ? new Integer[0] : hitParade;
     }
 
-    public void setHitParade(Integer[] hitParade) {
+    public void setHitParade(final Integer[] hitParade) {
         this.hitParade = hitParade;
     }
 
-
-    
-    public void copyFrom(CopyFrom object) {
-	Slash source =(Slash) object;
-	this.setHitParade( arrayCopy( source.getHitParade() ));
-	this.setComments( source.getComments() );
-	this.setDepartment( source.getDepartment() );
-	this.setSection( source.getSection() );	
+    public void copyFrom(final CopyFrom object) {
+        final Slash source = (Slash) object;
+        setHitParade(arrayCopy(source.getHitParade()));
+        setComments(source.getComments());
+        setDepartment(source.getDepartment());
+        setSection(source.getSection());
     }
 
+    @Override
     public Object clone() {
-	SlashImpl si = new SlashImpl();
-	si.copyFrom( this );
-	return si;
+        final SlashImpl si = new SlashImpl();
+        si.copyFrom(this);
+        return si;
     }
 
     public String getUri() {
-	return Slash.URI;
+        return Slash.URI;
     }
-    
-    
-    private Integer[] arrayCopy(Integer[] source) {
-        if(source == null) {
+
+    private Integer[] arrayCopy(final Integer[] source) {
+        if (source == null) {
             return null;
         }
 
-        Integer[] array = new Integer[ source.length ];
-        for(int i = 0; i < source.length; i++) {
+        final Integer[] array = new Integer[source.length];
+        for (int i = 0; i < source.length; i++) {
             array[i] = source[i];
         }
 
@@ -128,11 +127,12 @@ public class SlashImpl implements Slash {
     }
 
     public Class getInterface() {
-	return Slash.class;
+        return Slash.class;
     }
-    
-   public boolean equals(Object obj) {
-        EqualsBean eBean = new EqualsBean(this.getClass(),this);
+
+    @Override
+    public boolean equals(final Object obj) {
+        final EqualsBean eBean = new EqualsBean(this.getClass(), this);
 
         return eBean.beanEquals(obj);
     }

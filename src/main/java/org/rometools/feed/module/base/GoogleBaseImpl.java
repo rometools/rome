@@ -38,8 +38,9 @@
  */
 package org.rometools.feed.module.base;
 
-import com.sun.syndication.feed.CopyFrom;
-import com.sun.syndication.feed.impl.EqualsBean;
+import java.lang.reflect.Array;
+import java.net.URL;
+import java.util.Date;
 
 import org.rometools.feed.module.base.types.CloneableType;
 import org.rometools.feed.module.base.types.CurrencyEnumeration;
@@ -54,18 +55,13 @@ import org.rometools.feed.module.base.types.ShortDate;
 import org.rometools.feed.module.base.types.Size;
 import org.rometools.feed.module.base.types.YearType;
 
-import java.lang.reflect.Array;
-
-import java.net.URL;
-
-import java.util.Date;
-
+import com.sun.syndication.feed.CopyFrom;
+import com.sun.syndication.feed.impl.EqualsBean;
 
 /**
  * This is the implementation class for the GoogleBase module interface.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet"
- *         Cooper</a>
+ * 
+ * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @version $Revision: 1.2 $
  */
 public class GoogleBaseImpl implements GoogleBase {
@@ -347,10 +343,10 @@ public class GoogleBaseImpl implements GoogleBase {
 
     /**
      * DOCUMENT ME!
-     *
+     * 
      * @param actors
      */
-    public void setActors(String[] actors) {
+    public void setActors(final String[] actors) {
         this.actors = actors;
     }
 
@@ -358,7 +354,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return actors == null ? new String[0] : actors;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(final Integer age) {
         this.age = age;
     }
 
@@ -366,7 +362,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return age;
     }
 
-    public void setAgents(String[] agents) {
+    public void setAgents(final String[] agents) {
         this.agents = agents == null ? new String[0] : agents;
     }
 
@@ -374,7 +370,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return agents;
     }
 
-    public void setApparelType(String apparelType) {
+    public void setApparelType(final String apparelType) {
         this.apparelType = apparelType;
     }
 
@@ -382,7 +378,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return apparelType;
     }
 
-    public void setArea(IntUnit area) {
+    public void setArea(final IntUnit area) {
         this.area = area;
     }
 
@@ -390,7 +386,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return area;
     }
 
-    public void setArtists(String[] artists) {
+    public void setArtists(final String[] artists) {
         this.artists = artists;
     }
 
@@ -398,7 +394,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return artists == null ? new String[0] : artists;
     }
 
-    public void setAuthors(String[] authors) {
+    public void setAuthors(final String[] authors) {
         this.authors = authors;
     }
 
@@ -406,7 +402,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return authors == null ? new String[0] : authors;
     }
 
-    public void setBathrooms(Float bathrooms) {
+    public void setBathrooms(final Float bathrooms) {
         this.bathrooms = bathrooms;
     }
 
@@ -414,7 +410,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return bathrooms;
     }
 
-    public void setBedrooms(Integer bedrooms) {
+    public void setBedrooms(final Integer bedrooms) {
         this.bedrooms = bedrooms;
     }
 
@@ -422,7 +418,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return bedrooms;
     }
 
-    public void setBrand(String brand) {
+    public void setBrand(final String brand) {
         this.brand = brand;
     }
 
@@ -430,7 +426,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return brand;
     }
 
-    public void setColors(String[] color) {
+    public void setColors(final String[] color) {
         this.color = color;
     }
 
@@ -438,7 +434,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return color == null ? new String[0] : color;
     }
 
-    public void setCondition(String condition) {
+    public void setCondition(final String condition) {
         this.condition = condition;
     }
 
@@ -446,7 +442,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return condition;
     }
 
-    public void setCourseDateRange(DateTimeRange courseDateRange) {
+    public void setCourseDateRange(final DateTimeRange courseDateRange) {
         this.courseDateRange = courseDateRange;
     }
 
@@ -454,7 +450,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return courseDateRange;
     }
 
-    public void setCourseNumber(String courseNumber) {
+    public void setCourseNumber(final String courseNumber) {
         this.courseNumber = courseNumber;
     }
 
@@ -462,7 +458,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return courseNumber;
     }
 
-    public void setCourseTimes(String courseTimes) {
+    public void setCourseTimes(final String courseTimes) {
         this.courseTimes = courseTimes;
     }
 
@@ -470,7 +466,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return courseTimes;
     }
 
-    public void setCurrency(CurrencyEnumeration currency) {
+    public void setCurrency(final CurrencyEnumeration currency) {
         this.currency = currency;
     }
 
@@ -478,7 +474,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return currency;
     }
 
-    public void setDeliveryNotes(String deliveryNotes) {
+    public void setDeliveryNotes(final String deliveryNotes) {
         this.deliveryNotes = deliveryNotes;
     }
 
@@ -486,7 +482,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return deliveryNotes;
     }
 
-    public void setDeliveryRadius(FloatUnit deliveryRadius) {
+    public void setDeliveryRadius(final FloatUnit deliveryRadius) {
         this.deliveryRadius = deliveryRadius;
     }
 
@@ -494,7 +490,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return deliveryRadius;
     }
 
-    public void setEducation(String education) {
+    public void setEducation(final String education) {
         this.education = education;
     }
 
@@ -502,7 +498,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return education;
     }
 
-    public void setEmployer(String employer) {
+    public void setEmployer(final String employer) {
         this.employer = employer;
     }
 
@@ -510,7 +506,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return employer;
     }
 
-    public void setEthnicities(String[] ethnicities) {
+    public void setEthnicities(final String[] ethnicities) {
         this.ethnicities = ethnicities;
     }
 
@@ -518,7 +514,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return ethnicities == null ? new String[0] : ethnicities;
     }
 
-    public void setEventDateRange(DateTimeRange eventDateRange) {
+    public void setEventDateRange(final DateTimeRange eventDateRange) {
         this.eventDateRange = eventDateRange;
     }
 
@@ -526,8 +522,8 @@ public class GoogleBaseImpl implements GoogleBase {
         return eventDateRange;
     }
 
-    public void setExpirationDate(Date expirationDate) {
-        if((expirationDate != null)&&!(expirationDate instanceof ShortDate)) {
+    public void setExpirationDate(final Date expirationDate) {
+        if (expirationDate != null && !(expirationDate instanceof ShortDate)) {
             this.expirationDate = new ShortDate(expirationDate);
         } else {
             this.expirationDate = null;
@@ -538,7 +534,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return expirationDate;
     }
 
-    public void setExpirationDateTime(Date expirationDateTime) {
+    public void setExpirationDateTime(final Date expirationDateTime) {
         this.expirationDateTime = expirationDateTime;
     }
 
@@ -546,7 +542,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return expirationDateTime;
     }
 
-    public void setFormat(String[] format) {
+    public void setFormat(final String[] format) {
         this.format = format;
     }
 
@@ -554,7 +550,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return format == null ? new String[0] : format;
     }
 
-    public void setFromLocation(String fromLocation) {
+    public void setFromLocation(final String fromLocation) {
         this.fromLocation = fromLocation;
     }
 
@@ -562,7 +558,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return fromLocation;
     }
 
-    public void setGender(GenderEnumeration gender) {
+    public void setGender(final GenderEnumeration gender) {
         this.gender = gender;
     }
 
@@ -570,7 +566,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return gender;
     }
 
-    public void setHoaDues(Float hoaDues) {
+    public void setHoaDues(final Float hoaDues) {
         this.hoaDues = hoaDues;
     }
 
@@ -578,7 +574,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return hoaDues;
     }
 
-    public void setId(String id) {
+    public void setId(final String id) {
         this.id = id;
     }
 
@@ -586,7 +582,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return id;
     }
 
-    public void setImageLinks(URL[] imageLinks) {
+    public void setImageLinks(final URL[] imageLinks) {
         this.imageLinks = imageLinks;
     }
 
@@ -594,7 +590,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return imageLinks == null ? new URL[0] : imageLinks;
     }
 
-    public void setImmigrationStatus(String immigrationStatus) {
+    public void setImmigrationStatus(final String immigrationStatus) {
         this.immigrationStatus = immigrationStatus;
     }
 
@@ -602,7 +598,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return immigrationStatus;
     }
 
-    public void setInterestedIn(String[] interestedIn) {
+    public void setInterestedIn(final String[] interestedIn) {
         this.interestedIn = interestedIn;
     }
 
@@ -614,7 +610,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return GoogleBase.class;
     }
 
-    public void setIsbn(String isbn) {
+    public void setIsbn(final String isbn) {
         this.isbn = isbn;
     }
 
@@ -622,7 +618,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return isbn;
     }
 
-    public void setJobFunctions(String[] jobFunctions) {
+    public void setJobFunctions(final String[] jobFunctions) {
         this.jobFunctions = jobFunctions;
     }
 
@@ -630,7 +626,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return jobFunctions == null ? new String[0] : jobFunctions;
     }
 
-    public void setJobIndustries(String[] jobIndustries) {
+    public void setJobIndustries(final String[] jobIndustries) {
         this.jobIndustries = jobIndustries;
     }
 
@@ -638,7 +634,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return jobIndustries == null ? new String[0] : jobIndustries;
     }
 
-    public void setJobTypes(String[] jobTypes) {
+    public void setJobTypes(final String[] jobTypes) {
         this.jobTypes = jobTypes;
     }
 
@@ -646,7 +642,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return jobTypes == null ? new String[0] : jobTypes;
     }
 
-    public void setLabels(String[] labels) {
+    public void setLabels(final String[] labels) {
         this.labels = labels;
     }
 
@@ -654,7 +650,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return labels == null ? new String[0] : labels;
     }
 
-    public void setLicenses(String[] licenses) {
+    public void setLicenses(final String[] licenses) {
         this.licenses = licenses;
     }
 
@@ -662,7 +658,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return licenses == null ? new String[0] : licenses;
     }
 
-    public void setListingType(Boolean listingType) {
+    public void setListingType(final Boolean listingType) {
         this.listingType = listingType;
     }
 
@@ -670,7 +666,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return listingType;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(final String location) {
         this.location = location;
     }
 
@@ -678,7 +674,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return location;
     }
 
-    public void setMake(String make) {
+    public void setMake(final String make) {
         this.make = make;
     }
 
@@ -686,7 +682,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return make;
     }
 
-    public void setManufacturer(String manufacturer) {
+    public void setManufacturer(final String manufacturer) {
         this.manufacturer = manufacturer;
     }
 
@@ -694,7 +690,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return manufacturer;
     }
 
-    public void setManufacturerId(String manufacturerId) {
+    public void setManufacturerId(final String manufacturerId) {
         this.manufacturerId = manufacturerId;
     }
 
@@ -702,7 +698,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return manufacturerId;
     }
 
-    public void setMaritalStatus(String maritalStatus) {
+    public void setMaritalStatus(final String maritalStatus) {
         this.maritalStatus = maritalStatus;
     }
 
@@ -710,7 +706,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return maritalStatus;
     }
 
-    public void setMegapixels(FloatUnit megapixels) {
+    public void setMegapixels(final FloatUnit megapixels) {
         this.megapixels = megapixels;
     }
 
@@ -718,7 +714,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return megapixels;
     }
 
-    public void setMemory(FloatUnit memory) {
+    public void setMemory(final FloatUnit memory) {
         this.memory = memory;
     }
 
@@ -726,7 +722,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return memory;
     }
 
-    public void setMileage(Integer mileage) {
+    public void setMileage(final Integer mileage) {
         this.mileage = mileage;
     }
 
@@ -734,7 +730,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return mileage;
     }
 
-    public void setModel(String model) {
+    public void setModel(final String model) {
         this.model = model;
     }
 
@@ -742,7 +738,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return model;
     }
 
-    public void setModelNumber(String modelNumber) {
+    public void setModelNumber(final String modelNumber) {
         this.modelNumber = modelNumber;
     }
 
@@ -750,7 +746,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return modelNumber;
     }
 
-    public void setNameOfItemBeingReviewed(String nameOfItemBeingReviewed) {
+    public void setNameOfItemBeingReviewed(final String nameOfItemBeingReviewed) {
         this.nameOfItemBeingReviewed = nameOfItemBeingReviewed;
     }
 
@@ -758,7 +754,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return nameOfItemBeingReviewed;
     }
 
-    public void setNewsSource(String newsSource) {
+    public void setNewsSource(final String newsSource) {
         this.newsSource = newsSource;
     }
 
@@ -766,7 +762,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return newsSource;
     }
 
-    public void setOccupation(String occupation) {
+    public void setOccupation(final String occupation) {
         this.occupation = occupation;
     }
 
@@ -774,7 +770,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return occupation;
     }
 
-    public void setOperatingSystems(String operatingSystems) {
+    public void setOperatingSystems(final String operatingSystems) {
         this.operatingSystems = operatingSystems;
     }
 
@@ -782,7 +778,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return operatingSystems;
     }
 
-    public void setPages(Integer pages) {
+    public void setPages(final Integer pages) {
         this.pages = pages;
     }
 
@@ -790,7 +786,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return pages;
     }
 
-    public void setPaymentAccepted(PaymentTypeEnumeration[] paymentAccepted) {
+    public void setPaymentAccepted(final PaymentTypeEnumeration[] paymentAccepted) {
         this.paymentAccepted = paymentAccepted;
     }
 
@@ -798,7 +794,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return paymentAccepted == null ? new PaymentTypeEnumeration[0] : paymentAccepted;
     }
 
-    public void setPaymentNotes(String paymentNotes) {
+    public void setPaymentNotes(final String paymentNotes) {
         this.paymentNotes = paymentNotes;
     }
 
@@ -806,7 +802,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return paymentNotes;
     }
 
-    public void setPickup(Boolean pickup) {
+    public void setPickup(final Boolean pickup) {
         this.pickup = pickup;
     }
 
@@ -814,7 +810,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return pickup;
     }
 
-    public void setPrice(FloatUnit price) {
+    public void setPrice(final FloatUnit price) {
         this.price = price;
     }
 
@@ -822,7 +818,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return price;
     }
 
-    public void setPriceType(PriceTypeEnumeration priceType) {
+    public void setPriceType(final PriceTypeEnumeration priceType) {
         this.priceType = priceType;
     }
 
@@ -830,7 +826,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return priceType;
     }
 
-    public void setProcessorSpeed(FloatUnit processorSpeed) {
+    public void setProcessorSpeed(final FloatUnit processorSpeed) {
         this.processorSpeed = processorSpeed;
     }
 
@@ -838,7 +834,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return processorSpeed;
     }
 
-    public void setProductTypes(String[] productTypes) {
+    public void setProductTypes(final String[] productTypes) {
         this.productTypes = productTypes;
     }
 
@@ -846,7 +842,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return productTypes == null ? new String[0] : productTypes;
     }
 
-    public void setProgrammingLanguages(String[] programmingLanguages) {
+    public void setProgrammingLanguages(final String[] programmingLanguages) {
         this.programmingLanguages = programmingLanguages;
     }
 
@@ -854,7 +850,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return programmingLanguages == null ? new String[0] : programmingLanguages;
     }
 
-    public void setPropertyTypes(String[] propertyTypes) {
+    public void setPropertyTypes(final String[] propertyTypes) {
         this.propertyTypes = propertyTypes;
     }
 
@@ -862,7 +858,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return propertyTypes == null ? new String[0] : propertyTypes;
     }
 
-    public void setPublicationName(String publicationName) {
+    public void setPublicationName(final String publicationName) {
         this.publicationName = publicationName;
     }
 
@@ -870,7 +866,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return publicationName;
     }
 
-    public void setPublicationVolume(String publicationVolume) {
+    public void setPublicationVolume(final String publicationVolume) {
         this.publicationVolume = publicationVolume;
     }
 
@@ -878,8 +874,8 @@ public class GoogleBaseImpl implements GoogleBase {
         return publicationVolume;
     }
 
-    public void setPublishDate(Date publishDate) {
-        if((publishDate != null)&&!(publishDate instanceof ShortDate)) {
+    public void setPublishDate(final Date publishDate) {
+        if (publishDate != null && !(publishDate instanceof ShortDate)) {
             this.publishDate = new ShortDate(publishDate);
         } else {
             this.publishDate = null;
@@ -890,7 +886,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return publishDate;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(final Integer quantity) {
         this.quantity = quantity;
     }
 
@@ -898,7 +894,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return quantity;
     }
 
-    public void setRating(Float rating) {
+    public void setRating(final Float rating) {
         this.rating = rating;
     }
 
@@ -906,7 +902,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return rating;
     }
 
-    public void setRelatedLinks(URL[] relatedLinks) {
+    public void setRelatedLinks(final URL[] relatedLinks) {
         this.relatedLinks = relatedLinks;
     }
 
@@ -914,7 +910,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return relatedLinks == null ? new URL[0] : relatedLinks;
     }
 
-    public void setReviewType(String reviewType) {
+    public void setReviewType(final String reviewType) {
         this.reviewType = reviewType;
     }
 
@@ -922,7 +918,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return reviewType;
     }
 
-    public void setReviewerType(String reviewerType) {
+    public void setReviewerType(final String reviewerType) {
         this.reviewerType = reviewerType;
     }
 
@@ -930,7 +926,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return reviewerType;
     }
 
-    public void setSalary(Float salary) {
+    public void setSalary(final Float salary) {
         this.salary = salary;
     }
 
@@ -938,7 +934,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return salary;
     }
 
-    public void setSalaryType(PriceTypeEnumeration salaryType) {
+    public void setSalaryType(final PriceTypeEnumeration salaryType) {
         this.salaryType = salaryType;
     }
 
@@ -946,7 +942,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return salaryType;
     }
 
-    public void setSchoolDistrict(String schoolDistrict) {
+    public void setSchoolDistrict(final String schoolDistrict) {
         this.schoolDistrict = schoolDistrict;
     }
 
@@ -954,7 +950,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return schoolDistrict;
     }
 
-    public void setServiceType(String serviceType) {
+    public void setServiceType(final String serviceType) {
         this.serviceType = serviceType;
     }
 
@@ -962,7 +958,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return serviceType;
     }
 
-    public void setSexualOrientation(String SexualOrientation) {
+    public void setSexualOrientation(final String SexualOrientation) {
         this.SexualOrientation = SexualOrientation;
     }
 
@@ -970,7 +966,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return SexualOrientation;
     }
 
-    public void setShipping(ShippingType[] shipping) {
+    public void setShipping(final ShippingType[] shipping) {
         this.shipping = shipping;
     }
 
@@ -978,7 +974,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return shipping == null ? new ShippingType[0] : shipping;
     }
 
-    public void setSize(Size size) {
+    public void setSize(final Size size) {
         this.size = size;
     }
 
@@ -986,7 +982,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return size;
     }
 
-    public void setSquareFootages(IntUnit[] squareFootages) {
+    public void setSquareFootages(final IntUnit[] squareFootages) {
         this.squareFootages = squareFootages;
     }
 
@@ -994,7 +990,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return squareFootages == null ? new IntUnit[0] : squareFootages;
     }
 
-    public void setSubjectAreas(String[] subjectAreas) {
+    public void setSubjectAreas(final String[] subjectAreas) {
         this.subjectAreas = subjectAreas;
     }
 
@@ -1002,7 +998,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return subjectAreas == null ? new String[0] : subjectAreas;
     }
 
-    public void setSubjects(String[] subjects) {
+    public void setSubjects(final String[] subjects) {
         this.subjects = subjects;
     }
 
@@ -1010,7 +1006,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return subjects == null ? new String[0] : subjects;
     }
 
-    public void setTaxPercent(Float taxPercent) {
+    public void setTaxPercent(final Float taxPercent) {
         this.taxPercent = taxPercent;
     }
 
@@ -1018,7 +1014,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return taxPercent;
     }
 
-    public void setTaxRegion(String taxRegion) {
+    public void setTaxRegion(final String taxRegion) {
         this.taxRegion = taxRegion;
     }
 
@@ -1026,7 +1022,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return taxRegion;
     }
 
-    public void setToLocation(String toLocation) {
+    public void setToLocation(final String toLocation) {
         this.toLocation = toLocation;
     }
 
@@ -1034,7 +1030,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return toLocation;
     }
 
-    public void setTravelDateRange(DateTimeRange travelDateRange) {
+    public void setTravelDateRange(final DateTimeRange travelDateRange) {
         this.travelDateRange = travelDateRange;
     }
 
@@ -1042,7 +1038,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return travelDateRange;
     }
 
-    public void setUniversity(String university) {
+    public void setUniversity(final String university) {
         this.university = university;
     }
 
@@ -1050,7 +1046,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return university;
     }
 
-    public void setUpc(String upc) {
+    public void setUpc(final String upc) {
         this.upc = upc;
     }
 
@@ -1062,7 +1058,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return GoogleBase.URI;
     }
 
-    public void setUrlOfItemBeingReviewed(URL urlOfItemBeingReviewed) {
+    public void setUrlOfItemBeingReviewed(final URL urlOfItemBeingReviewed) {
         this.urlOfItemBeingReviewed = urlOfItemBeingReviewed;
     }
 
@@ -1070,7 +1066,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return urlOfItemBeingReviewed;
     }
 
-    public void setVehicleType(String vehicleType) {
+    public void setVehicleType(final String vehicleType) {
         this.vehicleType = vehicleType;
     }
 
@@ -1078,7 +1074,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return vehicleType;
     }
 
-    public void setVin(String vin) {
+    public void setVin(final String vin) {
         this.vin = vin;
     }
 
@@ -1086,7 +1082,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return vin;
     }
 
-    public void setWeight(FloatUnit weight) {
+    public void setWeight(final FloatUnit weight) {
         this.weight = weight;
     }
 
@@ -1094,7 +1090,7 @@ public class GoogleBaseImpl implements GoogleBase {
         return weight;
     }
 
-    public void setYear(YearType year) {
+    public void setYear(final YearType year) {
         this.year = year;
     }
 
@@ -1102,151 +1098,152 @@ public class GoogleBaseImpl implements GoogleBase {
         return year;
     }
 
-    //TODO: Finish
+    // TODO: Finish
     @Override
     public Object clone() throws CloneNotSupportedException {
         try {
-            GoogleBaseImpl gbi = new GoogleBaseImpl();
+            final GoogleBaseImpl gbi = new GoogleBaseImpl();
             gbi.copyFrom(this);
 
             return gbi;
-        } catch(Exception e) {
+        } catch (final Exception e) {
             e.printStackTrace();
             throw new CloneNotSupportedException();
         }
     }
 
-    public void copyFrom(CopyFrom obj) {
-        if(!(obj instanceof GoogleBase)) {
+    public void copyFrom(final CopyFrom obj) {
+        if (!(obj instanceof GoogleBase)) {
             return;
         }
 
-        GoogleBase source = (GoogleBase)obj;
+        final GoogleBase source = (GoogleBase) obj;
 
-        this.setActors((String[])arrayCopy(source.getActors()));
-        this.setAge(source.getAge());
-        this.setAgents((String[])arrayCopy(source.getAgents()));
-        this.setApparelType(source.getApparelType());
-        this.setArea(source.getArea());
-        this.setArtists((String[])arrayCopy(source.getArtists()));
-        this.setAuthors((String[])arrayCopy(source.getAuthors()));
-        this.setBathrooms(source.getBathrooms());
-        this.setBedrooms(source.getBedrooms());
-        this.setBrand(source.getBrand());
-        this.setColors((String[])arrayCopy(source.getColors()));
-        this.setCondition(source.getCondition());
-        this.setCourseDateRange((DateTimeRange)cloneOrNull(source.getCourseDateRange()));
-        this.setCourseNumber(source.getCourseNumber());
-        this.setCourseTimes(source.getCourseTimes());
-        this.setDeliveryNotes(source.getDeliveryNotes());
-        this.setDeliveryRadius(source.getDeliveryRadius());
-        this.setEducation(source.getEducation());
-        this.setEmployer(source.getEmployer());
-        this.setEthnicities((String[])arrayCopy(source.getEthnicities()));
-        this.setEventDateRange((DateTimeRange)cloneOrNull(source.getEventDateRange()));
-        this.setExpirationDate(dateOrNull(source.getExpirationDate()));
-        this.setExpirationDateTime(dateOrNull(source.getExpirationDateTime()));
-        this.setFormat(source.getFormat());
-        this.setFromLocation(source.getFromLocation());
-        this.setGender(source.getGender());
-        this.setHoaDues(source.getHoaDues());
-        this.setId(source.getId());
-        this.setImageLinks((URL[])arrayCopy(source.getImageLinks()));
-        this.setImmigrationStatus(source.getImmigrationStatus());
-        this.setInterestedIn(source.getInterestedIn());
-        this.setIsbn(source.getIsbn());
-        this.setJobFunctions((String[])arrayCopy(source.getJobFunctions()));
-        this.setJobIndustries((String[])arrayCopy(source.getJobIndustries()));
-        this.setJobTypes((String[])arrayCopy(source.getJobTypes()));
-        this.setLabels((String[])arrayCopy(source.getLabels()));
-        this.setListingType(source.getListingType());
-        this.setLocation(source.getLocation());
-        this.setMake(source.getMake());
-        this.setManufacturer(source.getManufacturer());
-        this.setManufacturerId(source.getManufacturerId());
-        this.setMaritalStatus(source.getMaritalStatus());
-        this.setMegapixels(source.getMegapixels());
-        this.setMemory(source.getMemory());
-        this.setMileage(source.getMileage());
-        this.setModel(source.getModel());
-        this.setModelNumber(source.getModelNumber());
-        this.setNameOfItemBeingReviewed(source.getNameOfItemBeingReviewed());
-        this.setNewsSource(source.getNewsSource());
-        this.setOccupation(source.getOccupation());
-        this.setPages(source.getPages());
-        this.setPaymentAccepted((PaymentTypeEnumeration[])arrayCopy(source.getPaymentAccepted()));
-        this.setPaymentNotes(source.getPaymentNotes());
-        this.setPickup(source.getPickup());
-        this.setPrice(source.getPrice());
-        this.setPriceType(source.getPriceType());
-        this.setProcessorSpeed(source.getProcessorSpeed());
-        this.setProductTypes((String[])arrayCopy(source.getProductTypes()));
-        this.setPropertyTypes((String[])arrayCopy(source.getPropertyTypes()));
-        this.setPublicationName(source.getPublicationName());
-        this.setPublicationVolume(source.getPublicationVolume());
-        this.setPublishDate(dateOrNull(source.getPublishDate()));
-        this.setQuantity(source.getQuantity());
-        this.setRating(source.getRating());
-        this.setReviewType(source.getReviewType());
-        this.setReviewerType(source.getReviewerType());
-        this.setSalary(source.getSalary());
-        this.setSalaryType(source.getSalaryType());
-        this.setServiceType(source.getServiceType());
-        this.setSexualOrientation(source.getSexualOrientation());
-        this.setShipping((ShippingType[])arrayCopy(source.getShipping()));
-        this.setSize(source.getSize());
-        this.setSubjects((String[])arrayCopy(source.getSubjects()));
-        this.setTaxPercent(source.getTaxPercent());
-        this.setTaxRegion(source.getTaxRegion());
-        this.setToLocation(source.getToLocation());
-        this.setTravelDateRange((DateTimeRange)cloneOrNull(source.getTravelDateRange()));
-        this.setUpc(source.getUpc());
-        this.setUrlOfItemBeingReviewed(source.getUrlOfItemBeingReviewed());
-        this.setVehicleType(source.getVehicleType());
-        this.setVin(source.getVin());
-        this.setYear(source.getYear());
-        this.setLicenses((String[])arrayCopy(source.getLicenses()));
-        this.setRelatedLinks((URL[])arrayCopy(source.getRelatedLinks()));
-        this.setSubjectAreas((String[])arrayCopy(source.getSubjectAreas()));
-        this.setProgrammingLanguages((String[])arrayCopy(source.getProgrammingLanguages()));
-        this.setSquareFootages(((IntUnit[])arrayCopy(source.getSquareFootages())));
-        this.setCurrency(source.getCurrency());
-        this.setSchoolDistrict(source.getSchoolDistrict());
-        this.setUniversity(source.getUniversity());
-        this.setWeight(source.getWeight());
-        this.setOperatingSystems(source.getOperatingSystems());
+        setActors((String[]) arrayCopy(source.getActors()));
+        setAge(source.getAge());
+        setAgents((String[]) arrayCopy(source.getAgents()));
+        setApparelType(source.getApparelType());
+        setArea(source.getArea());
+        setArtists((String[]) arrayCopy(source.getArtists()));
+        setAuthors((String[]) arrayCopy(source.getAuthors()));
+        setBathrooms(source.getBathrooms());
+        setBedrooms(source.getBedrooms());
+        setBrand(source.getBrand());
+        setColors((String[]) arrayCopy(source.getColors()));
+        setCondition(source.getCondition());
+        setCourseDateRange((DateTimeRange) cloneOrNull(source.getCourseDateRange()));
+        setCourseNumber(source.getCourseNumber());
+        setCourseTimes(source.getCourseTimes());
+        setDeliveryNotes(source.getDeliveryNotes());
+        setDeliveryRadius(source.getDeliveryRadius());
+        setEducation(source.getEducation());
+        setEmployer(source.getEmployer());
+        setEthnicities((String[]) arrayCopy(source.getEthnicities()));
+        setEventDateRange((DateTimeRange) cloneOrNull(source.getEventDateRange()));
+        setExpirationDate(dateOrNull(source.getExpirationDate()));
+        setExpirationDateTime(dateOrNull(source.getExpirationDateTime()));
+        setFormat(source.getFormat());
+        setFromLocation(source.getFromLocation());
+        setGender(source.getGender());
+        setHoaDues(source.getHoaDues());
+        setId(source.getId());
+        setImageLinks((URL[]) arrayCopy(source.getImageLinks()));
+        setImmigrationStatus(source.getImmigrationStatus());
+        setInterestedIn(source.getInterestedIn());
+        setIsbn(source.getIsbn());
+        setJobFunctions((String[]) arrayCopy(source.getJobFunctions()));
+        setJobIndustries((String[]) arrayCopy(source.getJobIndustries()));
+        setJobTypes((String[]) arrayCopy(source.getJobTypes()));
+        setLabels((String[]) arrayCopy(source.getLabels()));
+        setListingType(source.getListingType());
+        setLocation(source.getLocation());
+        setMake(source.getMake());
+        setManufacturer(source.getManufacturer());
+        setManufacturerId(source.getManufacturerId());
+        setMaritalStatus(source.getMaritalStatus());
+        setMegapixels(source.getMegapixels());
+        setMemory(source.getMemory());
+        setMileage(source.getMileage());
+        setModel(source.getModel());
+        setModelNumber(source.getModelNumber());
+        setNameOfItemBeingReviewed(source.getNameOfItemBeingReviewed());
+        setNewsSource(source.getNewsSource());
+        setOccupation(source.getOccupation());
+        setPages(source.getPages());
+        setPaymentAccepted((PaymentTypeEnumeration[]) arrayCopy(source.getPaymentAccepted()));
+        setPaymentNotes(source.getPaymentNotes());
+        setPickup(source.getPickup());
+        setPrice(source.getPrice());
+        setPriceType(source.getPriceType());
+        setProcessorSpeed(source.getProcessorSpeed());
+        setProductTypes((String[]) arrayCopy(source.getProductTypes()));
+        setPropertyTypes((String[]) arrayCopy(source.getPropertyTypes()));
+        setPublicationName(source.getPublicationName());
+        setPublicationVolume(source.getPublicationVolume());
+        setPublishDate(dateOrNull(source.getPublishDate()));
+        setQuantity(source.getQuantity());
+        setRating(source.getRating());
+        setReviewType(source.getReviewType());
+        setReviewerType(source.getReviewerType());
+        setSalary(source.getSalary());
+        setSalaryType(source.getSalaryType());
+        setServiceType(source.getServiceType());
+        setSexualOrientation(source.getSexualOrientation());
+        setShipping((ShippingType[]) arrayCopy(source.getShipping()));
+        setSize(source.getSize());
+        setSubjects((String[]) arrayCopy(source.getSubjects()));
+        setTaxPercent(source.getTaxPercent());
+        setTaxRegion(source.getTaxRegion());
+        setToLocation(source.getToLocation());
+        setTravelDateRange((DateTimeRange) cloneOrNull(source.getTravelDateRange()));
+        setUpc(source.getUpc());
+        setUrlOfItemBeingReviewed(source.getUrlOfItemBeingReviewed());
+        setVehicleType(source.getVehicleType());
+        setVin(source.getVin());
+        setYear(source.getYear());
+        setLicenses((String[]) arrayCopy(source.getLicenses()));
+        setRelatedLinks((URL[]) arrayCopy(source.getRelatedLinks()));
+        setSubjectAreas((String[]) arrayCopy(source.getSubjectAreas()));
+        setProgrammingLanguages((String[]) arrayCopy(source.getProgrammingLanguages()));
+        setSquareFootages((IntUnit[]) arrayCopy(source.getSquareFootages()));
+        setCurrency(source.getCurrency());
+        setSchoolDistrict(source.getSchoolDistrict());
+        setUniversity(source.getUniversity());
+        setWeight(source.getWeight());
+        setOperatingSystems(source.getOperatingSystems());
     }
 
-    public boolean equals(Object obj) {
-        EqualsBean eBean = new EqualsBean(this.getClass(),this);
+    @Override
+    public boolean equals(final Object obj) {
+        final EqualsBean eBean = new EqualsBean(this.getClass(), this);
 
         return eBean.beanEquals(obj);
     }
 
-    private Object arrayCopy(Object[] source) {
-        if(source == null) {
+    private Object arrayCopy(final Object[] source) {
+        if (source == null) {
             return null;
         }
 
-        Object[] array = (Object[])Array.newInstance(source.getClass().getComponentType(),source.length);
+        final Object[] array = (Object[]) Array.newInstance(source.getClass().getComponentType(), source.length);
 
-        for(int i = 0; i < source.length; i++) {
+        for (int i = 0; i < source.length; i++) {
             array[i] = source[i];
         }
 
         return array;
     }
 
-    private Object cloneOrNull(CloneableType o) {
-        if(o == null) {
+    private Object cloneOrNull(final CloneableType o) {
+        if (o == null) {
             return null;
         } else {
             return o.clone();
         }
     }
 
-    private Date dateOrNull(Date date) {
-        if(date == null) {
+    private Date dateOrNull(final Date date) {
+        if (date == null) {
             return null;
         } else {
             return new Date(date.getTime());

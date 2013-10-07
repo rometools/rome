@@ -18,7 +18,7 @@
 package org.rometools.feed.module.portablecontacts.types;
 
 /**
- *
+ * 
  * @author robert.cooper
  */
 public class Address {

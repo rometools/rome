@@ -1,12 +1,23 @@
 package org.rometools.feed.module.sse.modules;
 
-import com.sun.syndication.feed.CopyFrom;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.sun.syndication.feed.CopyFrom;
+
 /**
- * <pre><sx:history></pre>Element within <pre><sx:sync></pre>.
+ * <pre>
+ * <sx:history>
+ * </pre>
+ * 
+ * Element within
+ * 
+ * <pre>
+ * <sx:sync>
+ * </pre>
+ * 
+ * .
  */
 public class History extends SSEModule {
     // A date-time attribute.
@@ -25,8 +36,9 @@ public class History extends SSEModule {
     public History() {
     }
 
-    public void copyFrom(CopyFrom other) {
-        History otherHistory = (History)other;
+    @Override
+    public void copyFrom(final CopyFrom other) {
+        final History otherHistory = (History) other;
         when = otherHistory.when == null ? null : (Date) otherHistory.when.clone();
         // dont copy immutable
         by = otherHistory.by;
@@ -40,10 +52,10 @@ public class History extends SSEModule {
     /**
      * Get the date-time when the most recent modification took place.
      * <p/>
-     * This is the date-time when the most recent modification took place. If this attribute is omitted the value
-     * defaults to the earliest time representable in RFC 822.
-     *
-     * @return the date-time when the most recent modification took place. 
+     * This is the date-time when the most recent modification took place. If this attribute is omitted the value defaults to the earliest time representable in
+     * RFC 822.
+     * 
+     * @return the date-time when the most recent modification took place.
      */
     public Date getWhen() {
         // TODO: convert to the earliest time in RFC 822 (which is what?)
@@ -54,24 +66,22 @@ public class History extends SSEModule {
      * Set the date-time when the most recent modification took place.
      * <p/>
      * Either or both of the when or by attributes MUST be present; it is invalid to have neither.
-     *
+     * 
      * @param when the date-time when the most recent modification took place.
      */
-    public void setWhen(Date when) {
+    public void setWhen(final Date when) {
         this.when = when;
     }
 
     /**
-     * Provides access to a text attribute identifying the unique endpoint that made the most recent modification. This
-     * SHOULD be some combination of user and device (so that a given user can edit a feed on multiple devices). This
-     * attribute is used programmatically to break ties in case two changes happened at the same time (within the same
-     * second).
+     * Provides access to a text attribute identifying the unique endpoint that made the most recent modification. This SHOULD be some combination of user and
+     * device (so that a given user can edit a feed on multiple devices). This attribute is used programmatically to break ties in case two changes happened at
+     * the same time (within the same second).
      * <p/>
      * Either or both of the when or by must be present; it is invalid to have neither.
      * <p/>
-     * If this attribute is omitted the value defaults to the empty string (which must be less than all other values for
-     * purposes of collation).
-     *
+     * If this attribute is omitted the value defaults to the empty string (which must be less than all other values for purposes of collation).
+     * 
      * @return A text attribute identifying the unique endpoint that made the most recent modification.
      */
     public String getBy() {
@@ -82,19 +92,19 @@ public class History extends SSEModule {
      * Sets the endpoint that made the most recent modification.
      * <p/>
      * Either or both of the when or by attributes MUST be present; it is invalid to have neither.
-     *
+     * 
      * @param by the endpoint that made the most recent modification.
      */
-    public void setBy(String by) {
+    public void setBy(final String by) {
         this.by = by;
     }
 
     /**
      * Add an update to this history
-     *
+     * 
      * @param update an update to add to the list of updates for this history.
      */
-    public void addUpdate(Update update) {
+    public void addUpdate(final Update update) {
         if (updates == null) {
             updates = new ArrayList();
         }
@@ -103,7 +113,7 @@ public class History extends SSEModule {
 
     /**
      * Return the list of updates for this history.
-     *
+     * 
      * @return the list of updates for this history.
      */
     public List getUpdates() {

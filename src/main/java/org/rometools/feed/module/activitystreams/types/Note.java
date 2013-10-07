@@ -18,35 +18,31 @@
 package org.rometools.feed.module.activitystreams.types;
 
 /**
- *<p>The "note" Object type represents short-form text messages. This
- *          Object type is intended for use in "micro-blogging" and in systems
- *          where users are invited to publish short, often plain-text messages
- *          whose useful lifespan is generally shorter than that of an article
- *          or weblog entry.
- *</p>
- *<p>A note is similar in structure to an article, but it does not
- *          have a title and its body tends to be shorter. Applications will
- *          often display the entire content of a note in an activity stream UI,
- *          whereas they MAY display only the title or the title and summary for
- *          a weblog entry.
- *</p>
- *<p>The "note" Object type is identified by the URI <tt>http://activitystrea.ms/schema/1.0/note</tt>.
- *</p>
- *<p>A note has the following additional components:
- *</p>
- *<p></p>
- *<blockquote class="text"><dl>
- *<dt>Content</dt>
- *<dd>The content of the comment. Represented in
- *              JSON as a property called <tt>content</tt>
- *              whose value is a JSON string containing a fragment of HTML that
- *              represents the content. Publishers SHOULD include any markup
- *              necessary to achieve a similar presentation to that on the
- *              publisher's own HTML pages, including any links that the service
- *              automatically adds. Processors MAY remove all HTML markup and
- *              consider the comment to be plain text.
- *</dd>
- *</dl></blockquote>
+ * <p>
+ * The "note" Object type represents short-form text messages. This Object type is intended for use in "micro-blogging" and in systems where users are invited
+ * to publish short, often plain-text messages whose useful lifespan is generally shorter than that of an article or weblog entry.
+ * </p>
+ * <p>
+ * A note is similar in structure to an article, but it does not have a title and its body tends to be shorter. Applications will often display the entire
+ * content of a note in an activity stream UI, whereas they MAY display only the title or the title and summary for a weblog entry.
+ * </p>
+ * <p>
+ * The "note" Object type is identified by the URI <tt>http://activitystrea.ms/schema/1.0/note</tt>.
+ * </p>
+ * <p>
+ * A note has the following additional components:
+ * </p>
+ * <p>
+ * </p>
+ * <blockquote class="text">
+ * <dl>
+ * <dt>Content</dt>
+ * <dd>The content of the comment. Represented in JSON as a property called <tt>content</tt> whose value is a JSON string containing a fragment of HTML that
+ * represents the content. Publishers SHOULD include any markup necessary to achieve a similar presentation to that on the publisher's own HTML pages, including
+ * any links that the service automatically adds. Processors MAY remove all HTML markup and consider the comment to be plain text.</dd>
+ * </dl>
+ * </blockquote>
+ * 
  * @author robert.cooper
  */
 public class Note extends ActivityObject {

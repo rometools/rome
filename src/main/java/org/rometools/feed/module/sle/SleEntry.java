@@ -17,17 +17,17 @@
  */
 package org.rometools.feed.module.sle;
 
-import com.sun.syndication.feed.module.Module;
-import org.rometools.feed.module.sle.io.*;
+import org.rometools.feed.module.sle.io.ModuleParser;
 import org.rometools.feed.module.sle.types.EntryValue;
 import org.rometools.feed.module.sle.types.Group;
 import org.rometools.feed.module.sle.types.Sort;
 
+import com.sun.syndication.feed.module.Module;
 
-/** This is a <b>parse only</b> module that holds the values of enternal fields declared in the SLE module.
- * These will <b>not</b> be persisted on an output() call, <b>nor</b> will changing a value here change a
- * value in another module or a foreign markup tag.
- *
+/**
+ * This is a <b>parse only</b> module that holds the values of enternal fields declared in the SLE module. These will <b>not</b> be persisted on an output()
+ * call, <b>nor</b> will changing a value here change a value in another module or a foreign markup tag.
+ * 
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public interface SleEntry extends Module {
@@ -38,6 +38,7 @@ public interface SleEntry extends Module {
 
     /**
      * Returns an EntryValue for the given element name.
+     * 
      * @param element element name to look for
      * @return Returns an EntryValue for the given element name.
      */
@@ -45,12 +46,14 @@ public interface SleEntry extends Module {
 
     /**
      * An array of EntryValue objects that correspond to the grouping for the feed.
+     * 
      * @return An array of EntryValue objects that correspond to the grouping for the feed.
      */
     public EntryValue[] getGroupValues();
 
     /**
      * Returns an EntryValue for the given element name.
+     * 
      * @param element element name
      * @return Returns an EntryValue for the given element name.
      */
@@ -59,10 +62,10 @@ public interface SleEntry extends Module {
     /**
      * Returns an array of EntryValues for the fields declared in the heading.
      * 
-     * <b>NB:</b><br /> 
-     * Right now the parser will take any default=true field and change it to an 
-     * integer value representing the default order in the field. You should not
-     * rely on these values data display to a user!
+     * <b>NB:</b><br />
+     * Right now the parser will take any default=true field and change it to an integer value representing the default order in the field. You should not rely
+     * on these values data display to a user!
+     * 
      * @return Array of EntryValue implementations from this entry.
      */
     public EntryValue[] getSortValues();

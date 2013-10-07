@@ -3,7 +3,7 @@
  *
  * Created on March 30, 2006, 5:53 PM
  *
-  *
+ *
  * This library is provided under dual licenses.
  * You may choose the terms of the Lesser General Public License or the Apache
  * License at your discretion.
@@ -45,60 +45,63 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * This is a specialized Date class for working with the apple PhotoDate format.
- * It provides a constructor taking a dobule value representing the fractional 
+ * This is a specialized Date class for working with the apple PhotoDate format. It provides a constructor taking a dobule value representing the fractional
  * number of days since 00:00:00 01/01/00.
+ * 
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
-public class PhotoDate extends Date{
-    
-    private static final long Y2K =  946616400531l;
+public class PhotoDate extends Date {
+
+    private static final long Y2K = 946616400531l;
     private static final double DAY = 24 * 60 * 60 * 1000;
+
     /** Creates a new instance of PhotoDate */
     public PhotoDate() {
         super();
     }
-    
+
     /**
      * Creates a new instance of PhotoDate with the timestamp provided.
+     * 
      * @param time milliseconds time
      */
-    public PhotoDate( long time ){
-        super( time );
+    public PhotoDate(final long time) {
+        super(time);
     }
-    
+
     /**
-     * Creates a new instance of PhotoDate with the fractional 
-     * number of days since 00:00:00 01/01/00.
+     * Creates a new instance of PhotoDate with the fractional number of days since 00:00:00 01/01/00.
+     * 
      * @param photoDateValue fractional number of days since 00:00:00 01/01/00
      */
-    public PhotoDate( double photoDateValue ){
+    public PhotoDate(final double photoDateValue) {
         BigDecimal d = new BigDecimal(photoDateValue);
-        d = d.multiply( new BigDecimal( DAY ) );
-        d = d.add( new BigDecimal( Y2K) );
-        this.setTime( d.longValue() );
+        d = d.multiply(new BigDecimal(DAY));
+        d = d.add(new BigDecimal(Y2K));
+        setTime(d.longValue());
     }
-    
+
     /**
-     * Returns a string representing the fractional 
-     * number of days since 00:00:00 01/01/00.
-     * @return Returns a string representing the fractional 
-     * number of days since 00:00:00 01/01/00.
+     * Returns a string representing the fractional number of days since 00:00:00 01/01/00.
+     * 
+     * @return Returns a string representing the fractional number of days since 00:00:00 01/01/00.
      */
-    public String toString(){
-        BigDecimal d = new BigDecimal( this.getTime() );  
-        d = d.subtract( new BigDecimal( Y2K) );     
-        d = d.multiply( new BigDecimal( 1000000 ) );
-        d = d.divide( new BigDecimal(DAY) , BigDecimal.ROUND_HALF_UP);
-        return d.divide( new BigDecimal(1000000), 7, BigDecimal.ROUND_HALF_UP).toString();
+    @Override
+    public String toString() {
+        BigDecimal d = new BigDecimal(getTime());
+        d = d.subtract(new BigDecimal(Y2K));
+        d = d.multiply(new BigDecimal(1000000));
+        d = d.divide(new BigDecimal(DAY), BigDecimal.ROUND_HALF_UP);
+        return d.divide(new BigDecimal(1000000), 7, BigDecimal.ROUND_HALF_UP).toString();
     }
-    
-    public boolean equals( Object o ){
-        if( o instanceof Date || ((Date)o).getTime()/1000 == this.getTime()/1000 )
+
+    @Override
+    public boolean equals(final Object o) {
+        if (o instanceof Date || ((Date) o).getTime() / 1000 == getTime() / 1000) {
             return true;
-        else
+        } else {
             return false;
+        }
     }
-   
-    
+
 }

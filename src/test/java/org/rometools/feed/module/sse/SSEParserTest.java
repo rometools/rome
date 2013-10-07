@@ -6,26 +6,6 @@
  */
 package org.rometools.feed.module.sse;
 
-import org.rometools.feed.module.sse.SSE091Generator;
-import org.rometools.feed.module.AbstractTestCase;
-import org.rometools.feed.module.sse.modules.Conflict;
-import org.rometools.feed.module.sse.modules.History;
-import org.rometools.feed.module.sse.modules.SSEModule;
-import org.rometools.feed.module.sse.modules.Sync;
-import com.sun.syndication.feed.rss.Item;
-import com.sun.syndication.feed.synd.SyndEntry;
-import com.sun.syndication.feed.synd.SyndFeed;
-import com.sun.syndication.io.SyndFeedInput;
-import com.sun.syndication.io.SyndFeedOutput;
-import com.sun.syndication.io.XmlReader;
-import com.sun.syndication.io.impl.DateParser;
-import junit.framework.Test;
-import junit.framework.TestSuite;
-import org.jdom.Attribute;
-import org.jdom.Document;
-import org.jdom.Element;
-import org.jdom.input.SAXBuilder;
-
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
@@ -33,17 +13,40 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import junit.framework.Test;
+import junit.framework.TestSuite;
+
+import org.jdom2.Attribute;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.input.SAXBuilder;
+import org.rometools.feed.module.AbstractTestCase;
+import org.rometools.feed.module.sse.modules.Conflict;
+import org.rometools.feed.module.sse.modules.History;
+import org.rometools.feed.module.sse.modules.SSEModule;
+import org.rometools.feed.module.sse.modules.Sync;
+
+import com.sun.syndication.feed.rss.Item;
+import com.sun.syndication.feed.synd.SyndEntry;
+import com.sun.syndication.feed.synd.SyndFeed;
+import com.sun.syndication.io.SyndFeedInput;
+import com.sun.syndication.io.SyndFeedOutput;
+import com.sun.syndication.io.XmlReader;
+import com.sun.syndication.io.impl.DateParser;
+
 /**
  * Test to verify correctness of SSE subproject.
  */
 public class SSEParserTest extends AbstractTestCase {
-    public SSEParserTest(String testName) {
+    public SSEParserTest(final String testName) {
         super(testName);
     }
 
+    @Override
     protected void setUp() throws Exception {
     }
 
+    @Override
     protected void tearDown() throws Exception {
     }
 
@@ -59,33 +62,33 @@ public class SSEParserTest extends AbstractTestCase {
     }
 
     public void xtestParseGenerateV5() throws Exception {
-        URL feedURL = new File(getTestFile("xml/v/v5.xml")).toURL();
+        final URL feedURL = new File(getTestFile("xml/v/v5.xml")).toURL();
         // parse the document for comparison
-        SAXBuilder builder = new SAXBuilder();
-        Document directlyBuilt = builder.build(feedURL);
+        final SAXBuilder builder = new SAXBuilder();
+        final Document directlyBuilt = builder.build(feedURL);
 
         // generate the feed back into a document
-        SyndFeedInput input = new SyndFeedInput();
-        SyndFeed inputFeed = input.build(new XmlReader(feedURL));
-                                
-        SyndFeedOutput output = new SyndFeedOutput();
-        Document parsedAndGenerated = output.outputJDom(inputFeed);
+        final SyndFeedInput input = new SyndFeedInput();
+        final SyndFeed inputFeed = input.build(new XmlReader(feedURL));
 
-//        XMLOutputter outputter = new XMLOutputter();
-//        outputter.setFormat(Format.getPrettyFormat());
-//        outputter.output(directlyBuilt, new FileOutputStream("c:\\cygwin\\tmp\\sync-direct.xml"));
-//        outputter.output(parsedAndGenerated, new FileOutputStream("c:\\cygwin\\tmp\\sync-pg.xml"));
+        final SyndFeedOutput output = new SyndFeedOutput();
+        final Document parsedAndGenerated = output.outputJDom(inputFeed);
+
+        // XMLOutputter outputter = new XMLOutputter();
+        // outputter.setFormat(Format.getPrettyFormat());
+        // outputter.output(directlyBuilt, new FileOutputStream("c:\\cygwin\\tmp\\sync-direct.xml"));
+        // outputter.output(parsedAndGenerated, new FileOutputStream("c:\\cygwin\\tmp\\sync-pg.xml"));
 
         assertDocumentsEqual(directlyBuilt, parsedAndGenerated);
     }
 
     // TODO: probably should rip this out and use xunit instead
-    private void assertDocumentsEqual(Document one, Document two) {
+    private void assertDocumentsEqual(final Document one, final Document two) {
         assertEqualElements(one.getRootElement(), two.getRootElement());
     }
 
-    private void assertEqualElements(Element one, Element two) {
-        if ((one == two) || bothNull(one, two)) {
+    private void assertEqualElements(final Element one, final Element two) {
+        if (one == two || bothNull(one, two)) {
             return;
         }
 
@@ -94,26 +97,25 @@ public class SSEParserTest extends AbstractTestCase {
         asserEqualContent(one, two);
     }
 
-    private void assertNullEqual(String mesg, Object one, Object two) {
+    private void assertNullEqual(final String mesg, final Object one, final Object two) {
         assertTrue(mesg, nullEqual(one, two));
     }
 
-    private boolean nullEqual(Object one, Object two) {
-        return ((one == null) && (two == null)) ||
-                ((one != null) && (two != null));
+    private boolean nullEqual(final Object one, final Object two) {
+        return one == null && two == null || one != null && two != null;
     }
 
-    private boolean bothNull(Object one, Object two) {
+    private boolean bothNull(final Object one, final Object two) {
         return one == null && two == null;
     }
 
-    private void assertEqualAttributes(Element one, Element two) {
+    private void assertEqualAttributes(final Element one, final Element two) {
         assertTrue(equalAttributes(one, two, true));
     }
 
-    private boolean equalAttributes(Element one, Element two, boolean doAssert) {
-        List attrs1 = one.getAttributes();
-        List attrs2 = two.getAttributes();
+    private boolean equalAttributes(final Element one, final Element two, final boolean doAssert) {
+        final List attrs1 = one.getAttributes();
+        final List attrs2 = two.getAttributes();
 
         boolean equal = nullEqual(attrs1, attrs2);
         if (doAssert) {
@@ -125,16 +127,15 @@ public class SSEParserTest extends AbstractTestCase {
         }
 
         if (equal) {
-            for (Iterator oneIter = attrs1.iterator(); oneIter.hasNext();) {
+            for (final Iterator oneIter = attrs1.iterator(); oneIter.hasNext();) {
                 // compare the attributes in an order insensitive way
-                Attribute a1 = (Attribute) oneIter.next();
-                Attribute a2 = findAttribute(a1.getName(), attrs2);
+                final Attribute a1 = (Attribute) oneIter.next();
+                final Attribute a2 = findAttribute(a1.getName(), attrs2);
 
                 equal = a2 != null;
                 if (!equal) {
                     if (doAssert) {
-                        assertNotNull("no matching attribute for: " +
-                                one.getName() + "." + a1.getName() + "=" + a1.getValue(), a2);
+                        assertNotNull("no matching attribute for: " + one.getName() + "." + a1.getName() + "=" + a1.getValue(), a2);
                     }
                     break;
                 }
@@ -144,33 +145,28 @@ public class SSEParserTest extends AbstractTestCase {
 
                 equal = nullEqual(av1, av2);
                 if (!equal && doAssert) {
-                    assertNullEqual("attribute values not null equal: " +
-                            av1 + " != " + av2, av1, av2);
+                    assertNullEqual("attribute values not null equal: " + av1 + " != " + av2, av1, av2);
                 }
 
                 if (!bothNull(av1, av2)) {
-                    String a1Name = a1.getName();
+                    final String a1Name = a1.getName();
 
                     // this test is brittle, but its comprehensive
-                    if ("until".equals(a1Name) ||
-                            "since".equals(a1Name) ||
-                            "when".equals(a1Name)) {
-                        av1 = DateParser.parseRFC822((String)av1);
-                        av2 = DateParser.parseRFC822((String)av2);
+                    if ("until".equals(a1Name) || "since".equals(a1Name) || "when".equals(a1Name)) {
+                        av1 = DateParser.parseRFC822((String) av1);
+                        av2 = DateParser.parseRFC822((String) av2);
                     }
 
-                    assertTrue("unequal attributes:" +
-                            one.getName() + "." + a1.getName() + ": " +
-                            av1 + " != " + av2, av1.equals(av2));
+                    assertTrue("unequal attributes:" + one.getName() + "." + a1.getName() + ": " + av1 + " != " + av2, av1.equals(av2));
                 }
             }
         }
         return equal;
     }
 
-    private Attribute findAttribute(String name, List attrs) {
-        for (Iterator attrIter = attrs.iterator(); attrIter.hasNext();) {
-            Attribute a = (Attribute) attrIter.next();
+    private Attribute findAttribute(final String name, final List attrs) {
+        for (final Iterator attrIter = attrs.iterator(); attrIter.hasNext();) {
+            final Attribute a = (Attribute) attrIter.next();
             if (a.getName().equalsIgnoreCase(name)) {
                 return a;
             }
@@ -178,9 +174,9 @@ public class SSEParserTest extends AbstractTestCase {
         return null;
     }
 
-    private void asserEqualContent(Element one, Element two) {
-        List oneContent = one.getContent();
-        List twoContent = two.getContent();
+    private void asserEqualContent(final Element one, final Element two) {
+        final List oneContent = one.getContent();
+        final List twoContent = two.getContent();
         if (bothNull(oneContent, twoContent)) {
             return;
         }
@@ -189,40 +185,38 @@ public class SSEParserTest extends AbstractTestCase {
         assertEqualAttributes(one, two);
 
         // scan through the content to make sure each element is equal
-        for (Iterator oneIter = oneContent.iterator(); oneIter.hasNext();) {
-            Object content1 = oneIter.next();
+        for (final Iterator oneIter = oneContent.iterator(); oneIter.hasNext();) {
+            final Object content1 = oneIter.next();
             if (content1 instanceof Element) {
-                Element e1 = (Element)content1;
+                final Element e1 = (Element) content1;
 
                 boolean foundEqual = false;
-                List messages = new ArrayList();
-                for (Iterator twoIter = twoContent.iterator(); twoIter.hasNext();) {
-                    Object o = twoIter.next();
+                final List messages = new ArrayList();
+                for (final Iterator twoIter = twoContent.iterator(); twoIter.hasNext();) {
+                    final Object o = twoIter.next();
                     if (o instanceof Element) {
-                        Element e2 = (Element)o;
+                        final Element e2 = (Element) o;
 
                         try {
                             // have to check all elements to be order insensitive
-                            if (e1.getName().equals(e2.getName())
-                                    && equalAttributes(e1, e2, false))
-                            {
+                            if (e1.getName().equals(e2.getName()) && equalAttributes(e1, e2, false)) {
                                 assertEqualElements(e1, e2);
                                 foundEqual = true;
                                 messages.clear();
                                 break;
                             }
-                        } catch (Error e) {
+                        } catch (final Error e) {
                             messages.add(e.getMessage());
                         }
                     }
                 }
 
-//                if (!foundEqual) {
-//                    // show accumulated error messages
-//                    for (Iterator mesgIter = messages.iterator(); mesgIter.hasNext();) {
-//                        System.out.println((String) mesgIter.next());
-//                        }
-//                }
+                // if (!foundEqual) {
+                // // show accumulated error messages
+                // for (Iterator mesgIter = messages.iterator(); mesgIter.hasNext();) {
+                // System.out.println((String) mesgIter.next());
+                // }
+                // }
 
                 // look for the content in the other tree
                 assertTrue("could not find matching element for: " + one.getName(), foundEqual);
@@ -232,43 +226,44 @@ public class SSEParserTest extends AbstractTestCase {
 
     /**
      * Assure v5 file parsed correctly.
+     * 
      * @throws Exception
      */
     public void xtestV5() throws Exception {
-        File feed = new File(getTestFile("xml/v/v5.xml"));
-        SyndFeedInput input = new SyndFeedInput();
-        SyndFeed syndfeed = input.build(new XmlReader(feed.toURL()));
+        final File feed = new File(getTestFile("xml/v/v5.xml"));
+        final SyndFeedInput input = new SyndFeedInput();
+        final SyndFeed syndfeed = input.build(new XmlReader(feed.toURL()));
 
-        List entries = syndfeed.getEntries();
-        Iterator it = entries.iterator();
+        final List entries = syndfeed.getEntries();
+        final Iterator it = entries.iterator();
 
         for (int id = 101; it.hasNext() && id <= 113; id++) {
-            SyndEntry entry = (SyndEntry) it.next();
-            Sync sync = (Sync) entry.getModule(SSEModule.SSE_SCHEMA_URI);
+            final SyndEntry entry = (SyndEntry) it.next();
+            final Sync sync = (Sync) entry.getModule(SSEModule.SSE_SCHEMA_URI);
             assertEquals(String.valueOf(id), sync.getId());
 
-            History history = sync.getHistory();
+            final History history = sync.getHistory();
             assertNotNull(history);
 
-            Date when = history.getWhen();
+            final Date when = history.getWhen();
             assertNotNull(when);
-            Date testDate = DateParser.parseRFC822("Fri, 6 Jan 2006 19:24:09 GMT");
+            final Date testDate = DateParser.parseRFC822("Fri, 6 Jan 2006 19:24:09 GMT");
             assertEquals(testDate, when);
         }
 
         for (int ep = 1; ep <= 2; ep++) {
             for (int i = 100; i < 102; i++) {
-                SyndEntry entry = (SyndEntry) it.next();
-                Sync sync = (Sync) entry.getModule(SSEModule.SSE_SCHEMA_URI);
-                String id = sync.getId();
+                final SyndEntry entry = (SyndEntry) it.next();
+                final Sync sync = (Sync) entry.getModule(SSEModule.SSE_SCHEMA_URI);
+                final String id = sync.getId();
                 assertEquals("ep" + ep + "." + i, id);
 
                 if (id.equals("ep1.100")) {
-                    List conflicts = sync.getConflicts();
+                    final List conflicts = sync.getConflicts();
                     assertNotNull(conflicts);
 
-                    Conflict conflict = (Conflict) conflicts.get(0);
-                    Item conflictItem = conflict.getItem();
+                    final Conflict conflict = (Conflict) conflicts.get(0);
+                    final Item conflictItem = conflict.getItem();
 
                     assertEquals(conflictItem.getTitle(), "Phish - Coventry Live (the last *good* concert)");
                     assertEquals(conflictItem.getDescription().getValue(), "All songs");

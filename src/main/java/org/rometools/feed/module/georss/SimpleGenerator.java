@@ -20,11 +20,19 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.jdom.Element;
+import org.jdom2.Element;
+import org.rometools.feed.module.georss.geometries.AbstractGeometry;
+import org.rometools.feed.module.georss.geometries.AbstractRing;
+import org.rometools.feed.module.georss.geometries.Envelope;
+import org.rometools.feed.module.georss.geometries.LineString;
+import org.rometools.feed.module.georss.geometries.LinearRing;
+import org.rometools.feed.module.georss.geometries.Point;
+import org.rometools.feed.module.georss.geometries.Polygon;
+import org.rometools.feed.module.georss.geometries.Position;
+import org.rometools.feed.module.georss.geometries.PositionList;
 
 import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.ModuleGenerator;
-import org.rometools.feed.module.georss.geometries.*;
 
 /**
  * SimpleGenerator produces georss elements in georss simple format.
@@ -37,19 +45,19 @@ public class SimpleGenerator implements ModuleGenerator {
 
     private static final Set NAMESPACES;
     static {
-        Set nss = new HashSet();
+        final Set nss = new HashSet();
         nss.add(GeoRSSModule.SIMPLE_NS);
         NAMESPACES = Collections.unmodifiableSet(nss);
     }
 
-    private String posListToString(PositionList posList) {
-        StringBuffer sb = new StringBuffer();
-        for (int i=0; i<posList.size(); ++i) 
+    private String posListToString(final PositionList posList) {
+        final StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < posList.size(); ++i) {
             sb.append(posList.getLatitude(i)).append(" ").append(posList.getLongitude(i)).append(" ");
+        }
         return sb.toString();
     }
-            
-    
+
     /*
      * (non-Javadoc)
      * 
@@ -71,10 +79,9 @@ public class SimpleGenerator implements ModuleGenerator {
     /*
      * (non-Javadoc)
      * 
-     * @see com.sun.syndication.io.ModuleGenerator#generate(com.sun.syndication.feed.module.Module,
-     *      org.jdom.Element)
+     * @see com.sun.syndication.io.ModuleGenerator#generate(com.sun.syndication.feed.module.Module, org.jdom2.Element)
      */
-    public void generate(Module module, Element element) {
+    public void generate(final Module module, final Element element) {
         // this is not necessary, it is done to avoid the namespace definition
         // in every item.
         Element root = element;
@@ -83,49 +90,43 @@ public class SimpleGenerator implements ModuleGenerator {
         }
         root.addNamespaceDeclaration(GeoRSSModule.SIMPLE_NS);
 
-        GeoRSSModule geoRSSModule = (GeoRSSModule) module;
+        final GeoRSSModule geoRSSModule = (GeoRSSModule) module;
 
-        AbstractGeometry geometry = geoRSSModule.getGeometry();
+        final AbstractGeometry geometry = geoRSSModule.getGeometry();
         if (geometry instanceof Point) {
-            Position pos = ((Point) geometry).getPosition();
+            final Position pos = ((Point) geometry).getPosition();
 
-            Element pointElement = new Element("point", GeoRSSModule.SIMPLE_NS);
-            pointElement.addContent(pos.getLatitude() + " "
-                    + pos.getLongitude());
+            final Element pointElement = new Element("point", GeoRSSModule.SIMPLE_NS);
+            pointElement.addContent(pos.getLatitude() + " " + pos.getLongitude());
             element.addContent(pointElement);
-        }
-        else if (geometry instanceof LineString) {
-            PositionList posList = ((LineString) geometry).getPositionList();
+        } else if (geometry instanceof LineString) {
+            final PositionList posList = ((LineString) geometry).getPositionList();
 
-            Element lineElement = new Element("line", GeoRSSModule.SIMPLE_NS);
-            
+            final Element lineElement = new Element("line", GeoRSSModule.SIMPLE_NS);
+
             lineElement.addContent(posListToString(posList));
             element.addContent(lineElement);
-        }
-        else if (geometry instanceof Polygon) {
-            AbstractRing ring = ((Polygon) geometry).getExterior();
+        } else if (geometry instanceof Polygon) {
+            final AbstractRing ring = ((Polygon) geometry).getExterior();
             if (ring instanceof LinearRing) {
-                PositionList posList = ((LinearRing) ring).getPositionList();
-                Element polygonElement = new Element("polygon", GeoRSSModule.SIMPLE_NS);
-            
+                final PositionList posList = ((LinearRing) ring).getPositionList();
+                final Element polygonElement = new Element("polygon", GeoRSSModule.SIMPLE_NS);
+
                 polygonElement.addContent(posListToString(posList));
                 element.addContent(polygonElement);
-            }
-            else {
+            } else {
                 System.err.println("GeoRSS simple format can't handle rings of type: " + ring.getClass().getName());
             }
             if (((Polygon) geometry).getInterior() != null || !((Polygon) geometry).getInterior().isEmpty()) {
                 System.err.println("GeoRSS simple format can't handle interior rings (ignored)");
             }
-        }
-        else if (geometry instanceof Envelope) {
-            Envelope envelope = (Envelope)geometry;
-            Element boxElement = new Element("box", GeoRSSModule.SIMPLE_NS);
-            boxElement.addContent(envelope.getMinLatitude() + " " + envelope.getMinLongitude() + " " + 
-                                  envelope.getMaxLatitude() + " " + envelope.getMaxLongitude());
+        } else if (geometry instanceof Envelope) {
+            final Envelope envelope = (Envelope) geometry;
+            final Element boxElement = new Element("box", GeoRSSModule.SIMPLE_NS);
+            boxElement.addContent(envelope.getMinLatitude() + " " + envelope.getMinLongitude() + " " + envelope.getMaxLatitude() + " "
+                    + envelope.getMaxLongitude());
             element.addContent(boxElement);
-        }
-        else {
+        } else {
             System.err.println("GeoRSS simple format can't handle geometries of type: " + geometry.getClass().getName());
         }
     }

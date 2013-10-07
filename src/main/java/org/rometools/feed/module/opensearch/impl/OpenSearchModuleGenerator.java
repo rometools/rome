@@ -21,24 +21,23 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import org.jdom.Attribute;
-import org.jdom.Element;
-import org.jdom.Namespace;
-
-import com.sun.syndication.feed.atom.Link;
-import com.sun.syndication.feed.module.Module;
+import org.jdom2.Attribute;
+import org.jdom2.Element;
+import org.jdom2.Namespace;
 import org.rometools.feed.module.opensearch.OpenSearchModule;
 import org.rometools.feed.module.opensearch.RequiredAttributeMissingException;
 import org.rometools.feed.module.opensearch.entity.OSQuery;
+
+import com.sun.syndication.feed.atom.Link;
+import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.ModuleGenerator;
 
 /**
- * @author Michael W. Nassif (enrouteinc@gmail.com)
- * OpenSearch implementation of ModuleGenerator
+ * @author Michael W. Nassif (enrouteinc@gmail.com) OpenSearch implementation of ModuleGenerator
  */
-public class OpenSearchModuleGenerator  implements ModuleGenerator {
-	
-	private static final Namespace OS_NS  = Namespace.getNamespace("opensearch", OpenSearchModule.URI);
+public class OpenSearchModuleGenerator implements ModuleGenerator {
+
+    private static final Namespace OS_NS = Namespace.getNamespace("opensearch", OpenSearchModule.URI);
 
     public String getNamespaceUri() {
         return OpenSearchModule.URI;
@@ -47,7 +46,7 @@ public class OpenSearchModuleGenerator  implements ModuleGenerator {
     private static final Set NAMESPACES;
 
     static {
-        Set nss = new HashSet();
+        final Set nss = new HashSet();
         nss.add(OS_NS);
         NAMESPACES = Collections.unmodifiableSet(nss);
     }
@@ -55,115 +54,114 @@ public class OpenSearchModuleGenerator  implements ModuleGenerator {
     /**
      * Returns a set with all the URIs (JDOM Namespace elements) this module generator uses.
      * <p/>
-     * It is used by the the feed generators to add their namespace definition in
-     * the root element of the generated document (forward-missing of Java 5.0 Generics).
+     * It is used by the the feed generators to add their namespace definition in the root element of the generated document (forward-missing of Java 5.0
+     * Generics).
      * <p/>
-     *
+     * 
      * @return a set with all the URIs (JDOM Namespace elements) this module generator uses.
      */
     public Set getNamespaces() {
         return NAMESPACES;
     }
 
-    public void generate(Module module, Element element) {
+    public void generate(final Module module, final Element element) {
 
-        OpenSearchModule osm = (OpenSearchModule)module;
+        final OpenSearchModule osm = (OpenSearchModule) module;
 
-        if(osm.getItemsPerPage() > -1){
-        	element.addContent(generateSimpleElement("itemsPerPage", Integer.toString(osm.getItemsPerPage())));
+        if (osm.getItemsPerPage() > -1) {
+            element.addContent(generateSimpleElement("itemsPerPage", Integer.toString(osm.getItemsPerPage())));
         }
 
-        if(osm.getTotalResults() > -1){
+        if (osm.getTotalResults() > -1) {
             element.addContent(generateSimpleElement("totalResults", Integer.toString(osm.getTotalResults())));
         }
-            
-        int startIndex = (osm.getStartIndex() > 0)?osm.getStartIndex():1;
-        element.addContent(generateSimpleElement("startIndex",Integer.toString(startIndex)));
 
-        if(osm.getQueries() != null){
-        	
-        	List queries = osm.getQueries();
-        	
-        	for (Iterator iter = queries.iterator(); iter.hasNext();) {
-				OSQuery query = (OSQuery) iter.next();
-				if(query != null){
-  				    element.addContent(generateQueryElement(query));
-				}
-			}
-        }        	
-        
-        if(osm.getLink() != null){
-        	element.addContent(generateLinkElement(osm.getLink()));
+        final int startIndex = osm.getStartIndex() > 0 ? osm.getStartIndex() : 1;
+        element.addContent(generateSimpleElement("startIndex", Integer.toString(startIndex)));
+
+        if (osm.getQueries() != null) {
+
+            final List queries = osm.getQueries();
+
+            for (final Iterator iter = queries.iterator(); iter.hasNext();) {
+                final OSQuery query = (OSQuery) iter.next();
+                if (query != null) {
+                    element.addContent(generateQueryElement(query));
+                }
+            }
+        }
+
+        if (osm.getLink() != null) {
+            element.addContent(generateLinkElement(osm.getLink()));
         }
     }
 
-    protected Element generateQueryElement(OSQuery query) {
-    	
-        Element qElement = new Element("Query", OS_NS);
-        
+    protected Element generateQueryElement(final OSQuery query) {
+
+        final Element qElement = new Element("Query", OS_NS);
+
         if (query.getRole() != null) {
-            Attribute roleAttribute = new Attribute("role", query.getRole());
+            final Attribute roleAttribute = new Attribute("role", query.getRole());
             qElement.setAttribute(roleAttribute);
-        }
-        else{
-        	throw new RequiredAttributeMissingException("If declaring a Query element, the field 'role' must be be specified");
+        } else {
+            throw new RequiredAttributeMissingException("If declaring a Query element, the field 'role' must be be specified");
         }
 
-        if(query.getOsd() != null){
-        	Attribute osd = new Attribute("osd", query.getOsd());
+        if (query.getOsd() != null) {
+            final Attribute osd = new Attribute("osd", query.getOsd());
             qElement.setAttribute(osd);
         }
-        
-        if(query.getSearchTerms() != null){
-        	Attribute searchTerms = new Attribute("searchTerms", query.getSearchTerms());
+
+        if (query.getSearchTerms() != null) {
+            final Attribute searchTerms = new Attribute("searchTerms", query.getSearchTerms());
             qElement.setAttribute(searchTerms);
         }
-        
-        if(query.getStartPage() > -1){
-        	int startPage = (query.getStartPage() != 0)?query.getStartPage():1;
-        	Attribute sp = new Attribute("startPage", Integer.toString(startPage));
+
+        if (query.getStartPage() > -1) {
+            final int startPage = query.getStartPage() != 0 ? query.getStartPage() : 1;
+            final Attribute sp = new Attribute("startPage", Integer.toString(startPage));
             qElement.setAttribute(sp);
         }
-        
-        if(query.getTitle() != null){
-        	qElement.setAttribute(new Attribute("title", query.getTitle()));
+
+        if (query.getTitle() != null) {
+            qElement.setAttribute(new Attribute("title", query.getTitle()));
         }
- 
-        if(query.getTotalResults() > -1){
-        	qElement.setAttribute(new Attribute("totalResults", Integer.toString(query.getTotalResults())));
+
+        if (query.getTotalResults() > -1) {
+            qElement.setAttribute(new Attribute("totalResults", Integer.toString(query.getTotalResults())));
         }
-        
+
         return qElement;
     }
-    
-    protected Element generateLinkElement(Link link) {
-        Element linkElement = new Element("link", OS_NS);
+
+    protected Element generateLinkElement(final Link link) {
+        final Element linkElement = new Element("link", OS_NS);
 
         if (link.getRel() != null) {
-            Attribute relAttribute = new Attribute("rel", "search");
+            final Attribute relAttribute = new Attribute("rel", "search");
             linkElement.setAttribute(relAttribute);
         }
 
         if (link.getType() != null) {
-            Attribute typeAttribute = new Attribute("type", link.getType());
+            final Attribute typeAttribute = new Attribute("type", link.getType());
             linkElement.setAttribute(typeAttribute);
         }
 
         if (link.getHref() != null) {
-            Attribute hrefAttribute = new Attribute("href", link.getHref());
+            final Attribute hrefAttribute = new Attribute("href", link.getHref());
             linkElement.setAttribute(hrefAttribute);
         }
-        
+
         if (link.getHreflang() != null) {
-            Attribute hreflangAttribute = new Attribute("hreflang", link.getHreflang());
+            final Attribute hreflangAttribute = new Attribute("hreflang", link.getHreflang());
             linkElement.setAttribute(hreflangAttribute);
         }
         return linkElement;
     }
 
-    protected Element generateSimpleElement(String name, String value)  {
+    protected Element generateSimpleElement(final String name, final String value) {
 
-        Element element = new Element(name, OS_NS);
+        final Element element = new Element(name, OS_NS);
         element.addContent(value);
 
         return element;

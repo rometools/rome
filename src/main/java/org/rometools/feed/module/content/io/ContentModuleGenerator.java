@@ -41,23 +41,23 @@
  */
 package org.rometools.feed.module.content.io;
 
-import org.rometools.feed.module.content.ContentItem;
-import org.rometools.feed.module.content.ContentModule;
-import org.jdom.Attribute;
-import org.jdom.CDATA;
-import org.jdom.Content;
-import org.jdom.Element;
-import org.jdom.Namespace;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.jdom2.Attribute;
+import org.jdom2.CDATA;
+import org.jdom2.Content;
+import org.jdom2.Element;
+import org.jdom2.Namespace;
+import org.rometools.feed.module.content.ContentItem;
+import org.rometools.feed.module.content.ContentModule;
+
 /**
  * @version $Revision: 1.2 $
- * @author  <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
+ * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class ContentModuleGenerator implements com.sun.syndication.io.ModuleGenerator {
     private static final Namespace CONTENT_NS = Namespace.getNamespace("content", ContentModule.URI);
@@ -65,7 +65,7 @@ public class ContentModuleGenerator implements com.sun.syndication.io.ModuleGene
     private static final Set NAMESPACES;
 
     static {
-        Set nss = new HashSet();
+        final Set nss = new HashSet();
         nss.add(CONTENT_NS);
         NAMESPACES = Collections.unmodifiableSet(nss);
     }
@@ -74,11 +74,11 @@ public class ContentModuleGenerator implements com.sun.syndication.io.ModuleGene
     public ContentModuleGenerator() {
     }
 
-    public void generate(com.sun.syndication.feed.module.Module module, org.jdom.Element element) {
+    public void generate(final com.sun.syndication.feed.module.Module module, final org.jdom2.Element element) {
         // this is not necessary, it is done to avoid the namespace definition in every item.
         Element root = element;
 
-        while ((root.getParent() != null) && root.getParent() instanceof Element) {
+        while (root.getParent() != null && root.getParent() instanceof Element) {
             root = (Element) root.getParent();
         }
 
@@ -88,10 +88,10 @@ public class ContentModuleGenerator implements com.sun.syndication.io.ModuleGene
             return;
         }
 
-        ContentModule cm = (ContentModule) module;
+        final ContentModule cm = (ContentModule) module;
 
-        List encodeds = cm.getEncodeds();
-        
+        final List encodeds = cm.getEncodeds();
+
         //
         if (encodeds != null) {
             System.out.println(cm.getEncodeds().size());
@@ -100,61 +100,60 @@ public class ContentModuleGenerator implements com.sun.syndication.io.ModuleGene
             }
         }
 
-        List contentItems = cm.getContentItems();
+        final List contentItems = cm.getContentItems();
 
-        if ((contentItems != null) && (contentItems.size() > 0)) {
-            Element items = new Element("items", CONTENT_NS);
-            Element bag = new Element("Bag", RDF_NS);
+        if (contentItems != null && contentItems.size() > 0) {
+            final Element items = new Element("items", CONTENT_NS);
+            final Element bag = new Element("Bag", RDF_NS);
             items.addContent(bag);
 
             for (int i = 0; i < contentItems.size(); i++) {
-                ContentItem contentItem = (ContentItem) contentItems.get(i);
-                Element li = new Element("li", RDF_NS);
-                Element item = new Element("item", CONTENT_NS);
+                final ContentItem contentItem = (ContentItem) contentItems.get(i);
+                final Element li = new Element("li", RDF_NS);
+                final Element item = new Element("item", CONTENT_NS);
 
                 if (contentItem.getContentAbout() != null) {
-                    Attribute about = new Attribute("about", contentItem.getContentAbout(), RDF_NS);
+                    final Attribute about = new Attribute("about", contentItem.getContentAbout(), RDF_NS);
                     item.setAttribute(about);
                 }
 
                 if (contentItem.getContentFormat() != null) {
-                    //System.out.println( "Format");
-                    Element format = new Element("format", CONTENT_NS);
-                    Attribute formatResource = new Attribute("resource", contentItem.getContentFormat(), RDF_NS);
+                    // System.out.println( "Format");
+                    final Element format = new Element("format", CONTENT_NS);
+                    final Attribute formatResource = new Attribute("resource", contentItem.getContentFormat(), RDF_NS);
                     format.setAttribute(formatResource);
 
                     item.addContent(format);
                 }
 
                 if (contentItem.getContentEncoding() != null) {
-                    //System.out.println( "Encoding");
-                    Element encoding = new Element("encoding", CONTENT_NS);
-                    Attribute encodingResource = new Attribute("resource", contentItem.getContentEncoding(), RDF_NS);
+                    // System.out.println( "Encoding");
+                    final Element encoding = new Element("encoding", CONTENT_NS);
+                    final Attribute encodingResource = new Attribute("resource", contentItem.getContentEncoding(), RDF_NS);
                     encoding.setAttribute(encodingResource);
                     item.addContent(encoding);
                 }
 
                 if (contentItem.getContentValue() != null) {
-                    Element value = new Element("value", RDF_NS);
+                    final Element value = new Element("value", RDF_NS);
 
                     if (contentItem.getContentValueParseType() != null) {
-                        Attribute parseType = new Attribute("parseType", contentItem.getContentValueParseType(), RDF_NS);
+                        final Attribute parseType = new Attribute("parseType", contentItem.getContentValueParseType(), RDF_NS);
                         value.setAttribute(parseType);
                     }
 
                     if (contentItem.getContentValueNamespaces() != null) {
-                        List namespaces = contentItem.getContentValueNamespaces();
+                        final List namespaces = contentItem.getContentValueNamespaces();
 
                         for (int ni = 0; ni < namespaces.size(); ni++) {
                             value.addNamespaceDeclaration((Namespace) namespaces.get(ni));
                         }
                     }
 
-                    List detached = new ArrayList();
+                    final List detached = new ArrayList();
 
-                    for (int c = 0;
-                            c < contentItem.getContentValueDOM().size(); c++) {
-                        detached.add(((Content) ((Content) contentItem.getContentValueDOM().get(c)).clone()).detach());
+                    for (int c = 0; c < contentItem.getContentValueDOM().size(); c++) {
+                        detached.add(((Content) contentItem.getContentValueDOM().get(c)).clone().detach());
                     }
 
                     value.setContent(detached);
@@ -163,22 +162,22 @@ public class ContentModuleGenerator implements com.sun.syndication.io.ModuleGene
 
                 li.addContent(item);
                 bag.addContent(li);
-            } //end contentItems loop
+            } // end contentItems loop
 
             element.addContent(items);
         }
     }
 
-    protected Element generateSimpleElement(String name, String value) {
-        Element element = new Element(name, CONTENT_NS);
+    protected Element generateSimpleElement(final String name, final String value) {
+        final Element element = new Element(name, CONTENT_NS);
         element.addContent(value);
 
         return element;
     }
 
-    protected Element generateCDATAElement(String name, String value) {
-        Element element = new Element(name, CONTENT_NS);
-        CDATA cdata = new CDATA(value);
+    protected Element generateCDATAElement(final String name, final String value) {
+        final Element element = new Element(name, CONTENT_NS);
+        final CDATA cdata = new CDATA(value);
         element.addContent(cdata);
 
         return element;
