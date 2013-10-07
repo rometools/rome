@@ -14,12 +14,11 @@ import org.rometools.feed.opml.Outline;
 import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.impl.DateParser;
 
-import org.jdom.Document;
-import org.jdom.Element;
-
+import org.jdom2.Document;
+import org.jdom2.Element;
 
 /**
- *
+ * 
  * @author cooper
  */
 public class OPML20Generator extends OPML10Generator {
@@ -30,11 +29,12 @@ public class OPML20Generator extends OPML10Generator {
     /**
      * Returns the type of feed the generator creates.
      * <p>
-     *
+     * 
      * @return the type of feed the generator creates.
      * @see WireFeed for details on the format of this string.
-     * <p>
+     *      <p>
      */
+    @Override
     public String getType() {
         return "opml_2.0";
     }
@@ -42,13 +42,13 @@ public class OPML20Generator extends OPML10Generator {
     /**
      * Creates an XML document (JDOM) for the given feed bean.
      * <p>
-     *
+     * 
      * @param feed the feed bean to generate the XML document from.
      * @return the generated XML document (JDOM).
-     * @throws IllegalArgumentException thrown if the type of the given feed bean does not
-     *         match with the type of the WireFeedGenerator.
+     * @throws IllegalArgumentException thrown if the type of the given feed bean does not match with the type of the WireFeedGenerator.
      * @throws FeedException thrown if the XML Document could not be created.
      */
+    @Override
     public Document generate(WireFeed feed) throws IllegalArgumentException, FeedException {
         Document retValue;
 
@@ -58,6 +58,7 @@ public class OPML20Generator extends OPML10Generator {
         return retValue;
     }
 
+    @Override
     protected Element generateHead(Opml opml) {
         Element retValue;
 
@@ -69,6 +70,7 @@ public class OPML20Generator extends OPML10Generator {
         return retValue;
     }
 
+    @Override
     protected Element generateOutline(Outline outline) {
         Element retValue;
 

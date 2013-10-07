@@ -24,16 +24,13 @@ import org.rometools.feed.opml.Outline;
 import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.impl.DateParser;
 
-import org.jdom.Document;
-import org.jdom.Element;
+import org.jdom2.Document;
+import org.jdom2.Element;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.StringTokenizer;
-
 
 /**
- *
+ * 
  * @author cooper
  */
 public class OPML20Parser extends OPML10Parser {
@@ -47,14 +44,18 @@ public class OPML20Parser extends OPML10Parser {
      * <p>
      * It checks if the given document if the type of feeds the parser understands.
      * <p>
-     *
+     * 
      * @param document XML Document (JDOM) to check if it can be parsed by this parser.
      * @return <b>true</b> if the parser know how to parser this feed, <b>false</b> otherwise.
      */
+    @Override
     public boolean isMyType(Document document) {
         Element e = document.getRootElement();
 
-        if (e.getName().equals("opml") && (((e.getChild("head") != null) && (e.getChild("head").getChild("docs") != null)) || ((e.getAttributeValue("version") != null) && e.getAttributeValue("version").equals("2.0")) || ((e.getChild("head") != null) && (e.getChild("head").getChild("ownerId") != null)))) {
+        if (e.getName().equals("opml")
+                && (((e.getChild("head") != null) && (e.getChild("head").getChild("docs") != null))
+                        || ((e.getAttributeValue("version") != null) && e.getAttributeValue("version").equals("2.0")) || ((e.getChild("head") != null) && (e
+                        .getChild("head").getChild("ownerId") != null)))) {
             return true;
         }
 
@@ -64,13 +65,14 @@ public class OPML20Parser extends OPML10Parser {
     /**
      * Parses an XML document (JDOM Document) into a feed bean.
      * <p>
-     *
+     * 
      * @param document XML document (JDOM) to parse.
      * @param validate indicates if the feed should be strictly validated (NOT YET IMPLEMENTED).
      * @return the resulting feed bean.
      * @throws IllegalArgumentException thrown if the parser cannot handle the given feed type.
      * @throws FeedException thrown if a feed bean cannot be created out of the XML document (JDOM).
      */
+    @Override
     public WireFeed parse(Document document, boolean validate) throws IllegalArgumentException, FeedException {
         Opml opml;
         opml = (Opml) super.parse(document, validate);
@@ -91,6 +93,7 @@ public class OPML20Parser extends OPML10Parser {
         return opml;
     }
 
+    @Override
     protected Outline parseOutline(Element e, boolean validate) throws FeedException {
         Outline retValue;
 

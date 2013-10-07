@@ -13,22 +13,23 @@ import com.sun.syndication.feed.synd.SyndCategory;
 import com.sun.syndication.feed.synd.SyndCategoryImpl;
 
 /**
- *
+ * 
  * @author cooper
  */
 public class TreeCategoryImpl extends SyndCategoryImpl {
-    
+
     /** Creates a new instance of TreeCategoryImpl */
     public TreeCategoryImpl() {
         super();
     }
-    
+
+    @Override
     public boolean equals(Object o) {
         SyndCategory c = (SyndCategory) o;
-        if( c.getTaxonomyUri() != null && c.getTaxonomyUri().equals( this.getTaxonomyUri() ) )
+        if (c.getTaxonomyUri() != null && c.getTaxonomyUri().equals(this.getTaxonomyUri()))
             return true;
         else
             return false;
     }
-    
+
 }

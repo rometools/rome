@@ -26,16 +26,15 @@ import com.sun.syndication.io.WireFeedGenerator;
 import com.sun.syndication.io.impl.BaseWireFeedGenerator;
 import com.sun.syndication.io.impl.DateParser;
 
-import org.jdom.Document;
-import org.jdom.Element;
+import org.jdom2.Document;
+import org.jdom2.Element;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-
 /**
- *
+ * 
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class OPML10Generator extends BaseWireFeedGenerator implements WireFeedGenerator {
@@ -51,13 +50,13 @@ public class OPML10Generator extends BaseWireFeedGenerator implements WireFeedGe
     /**
      * Creates an XML document (JDOM) for the given feed bean.
      * <p>
-     *
+     * 
      * @param feed the feed bean to generate the XML document from.
      * @return the generated XML document (JDOM).
-     * @throws IllegalArgumentException thrown if the type of the given feed bean does not
-     *         match with the type of the WireFeedGenerator.
+     * @throws IllegalArgumentException thrown if the type of the given feed bean does not match with the type of the WireFeedGenerator.
      * @throws FeedException thrown if the XML Document could not be created.
      */
+    @Override
     public Document generate(WireFeed feed) throws IllegalArgumentException, FeedException {
         if (!(feed instanceof Opml)) {
             throw new IllegalArgumentException("Not an OPML file");

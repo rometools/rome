@@ -22,10 +22,9 @@ import com.sun.syndication.feed.impl.ToStringBean;
 
 import java.io.Serializable;
 
-
 /**
  * This is a simple name-value pair attribute for outlines.
- *
+ * 
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Attribute implements Cloneable, Serializable {
@@ -39,6 +38,7 @@ public class Attribute implements Cloneable, Serializable {
 
     /**
      * Creates a new instance of Attribute.
+     * 
      * @param name name of the attribute.
      * @param value value of the attribute.
      */
@@ -53,6 +53,7 @@ public class Attribute implements Cloneable, Serializable {
 
     /**
      * name of the attribute.
+     * 
      * @param name name of the attribute.
      */
     public void setName(String name) {
@@ -61,6 +62,7 @@ public class Attribute implements Cloneable, Serializable {
 
     /**
      * name of the attribute.
+     * 
      * @return name of the attribute.
      */
     public String getName() {
@@ -69,6 +71,7 @@ public class Attribute implements Cloneable, Serializable {
 
     /**
      * value of the attribute.
+     * 
      * @param value value of the attribute.
      */
     public void setValue(String value) {
@@ -77,28 +80,33 @@ public class Attribute implements Cloneable, Serializable {
 
     /**
      * value of the attribute.
+     * 
      * @return value of the attribute.
      */
     public String getValue() {
         return _value;
     }
 
+    @Override
     public Object clone() {
         return new Attribute(this._name, this._value);
     }
 
+    @Override
     public boolean equals(Object obj) {
         EqualsBean eBean = new EqualsBean(Attribute.class, this);
 
         return eBean.beanEquals(obj);
     }
 
+    @Override
     public int hashCode() {
         EqualsBean equals = new EqualsBean(Attribute.class, this);
 
         return equals.beanHashCode();
     }
 
+    @Override
     public String toString() {
         ToStringBean tsBean = new ToStringBean(Attribute.class, this);
 

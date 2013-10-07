@@ -26,8 +26,8 @@ import com.sun.syndication.io.WireFeedParser;
 import com.sun.syndication.io.impl.BaseWireFeedParser;
 import com.sun.syndication.io.impl.DateParser;
 
-import org.jdom.Document;
-import org.jdom.Element;
+import org.jdom2.Document;
+import org.jdom2.Element;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,9 +35,8 @@ import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 /**
- *
+ * 
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
@@ -57,16 +56,16 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
      * <p>
      * It checks if the given document if the type of feeds the parser understands.
      * <p>
-     *
+     * 
      * @param document XML Document (JDOM) to check if it can be parsed by this parser.
      * @return <b>true</b> if the parser know how to parser this feed, <b>false</b> otherwise.
      */
+    @Override
     public boolean isMyType(Document document) {
         Element e = document.getRootElement();
 
-        if (e.getName().equals("opml") 
-            && ( e.getChild("head") == null || e.getChild("head").getChild("docs") == null) 
-            &&  (e.getAttributeValue("version") == null || e.getAttributeValue("version").equals("1.0"))) {
+        if (e.getName().equals("opml") && (e.getChild("head") == null || e.getChild("head").getChild("docs") == null)
+                && (e.getAttributeValue("version") == null || e.getAttributeValue("version").equals("1.0"))) {
             return true;
         }
 
@@ -76,13 +75,14 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
     /**
      * Parses an XML document (JDOM Document) into a feed bean.
      * <p>
-     *
+     * 
      * @param document XML document (JDOM) to parse.
      * @param validate indicates if the feed should be strictly validated (NOT YET IMPLEMENTED).
      * @return the resulting feed bean.
      * @throws IllegalArgumentException thrown if the parser cannot handle the given feed type.
      * @throws FeedException thrown if a feed bean cannot be created out of the XML document (JDOM).
      */
+    @Override
     public WireFeed parse(Document document, boolean validate) throws IllegalArgumentException, FeedException {
         Opml opml = new Opml();
         opml.setFeedType("opml_1.0");
@@ -182,9 +182,10 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
         ArrayList attributes = new ArrayList();
 
         for (int i = 0; i < jAttributes.size(); i++) {
-            org.jdom.Attribute a = (org.jdom.Attribute) jAttributes.get(i);
+            org.jdom2.Attribute a = (org.jdom2.Attribute) jAttributes.get(i);
 
-            if (!a.getName().equals("isBreakpoint") && !a.getName().equals("isComment") && !a.getName().equals("title") && !a.getName().equals("text") && !a.getName().equals("type")) {
+            if (!a.getName().equals("isBreakpoint") && !a.getName().equals("isComment") && !a.getName().equals("title") && !a.getName().equals("text")
+                    && !a.getName().equals("type")) {
                 attributes.add(new Attribute(a.getName(), a.getValue()));
             }
         }

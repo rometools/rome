@@ -11,9 +11,8 @@ package org.rometools.feed.synd.impl;
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.synd.SyndFeed;
 
-
 /**
- *
+ * 
  * @author cooper
  */
 public class ConverterForOPML20 extends ConverterForOPML10 {
@@ -25,11 +24,12 @@ public class ConverterForOPML20 extends ConverterForOPML10 {
     /**
      * Returns the type (version) of the real feed this converter handles.
      * <p>
-     *
+     * 
      * @return the real feed type.
      * @see WireFeed for details on the format of this string.
-     * <p>
+     *      <p>
      */
+    @Override
     public String getType() {
         return "opml_2.0";
     }
@@ -39,10 +39,11 @@ public class ConverterForOPML20 extends ConverterForOPML10 {
      * <p>
      * It assumes the given SyndFeedImpl has no properties set.
      * <p>
-     *
+     * 
      * @param feed real feed to copy/convert.
      * @param syndFeed the SyndFeedImpl that will contain the copied/converted values of the real feed.
      */
+    @Override
     public void copyInto(WireFeed feed, SyndFeed syndFeed) {
         super.copyInto(feed, syndFeed);
     }
@@ -50,10 +51,11 @@ public class ConverterForOPML20 extends ConverterForOPML10 {
     /**
      * Creates real feed with a deep copy/conversion of the values of a SyndFeedImpl.
      * <p>
-     *
+     * 
      * @param syndFeed SyndFeedImpl to copy/convert value from.
      * @return a real feed with copied/converted values of the SyndFeedImpl.
      */
+    @Override
     public WireFeed createRealFeed(SyndFeed syndFeed) {
         WireFeed retValue;
 
