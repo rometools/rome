@@ -422,6 +422,23 @@ public interface SyndEntry extends Cloneable, CopyFrom<SyndEntry>, Extendable {
     public void setForeignMarkup(List<Element> foreignMarkup);
 
     /**
+     * URL of a page for comments relating to the item.
+     * 
+     * @since 2.0.0
+     * @return comments URL or {@code null}.
+     * 
+     */
+    String getComments();
+
+    /**
+     * URL of a page for comments relating to the item.
+     * 
+     * @since 2.0.0
+     * @param comments URL
+     */
+    void setComments(String comments);
+
+    /**
      * Creates a deep clone of the object.
      * <p>
      * 

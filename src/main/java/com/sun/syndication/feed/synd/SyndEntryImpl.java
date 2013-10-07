@@ -51,6 +51,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
     private final ObjectBean objBean;
     private String uri;
     private String link;
+    private String comments;
     private Date updatedDate;
     private SyndContent title;
     private SyndContent description;
@@ -689,6 +690,22 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
     @Override
     public void setForeignMarkup(final List<Element> foreignMarkup) {
         this.foreignMarkup = foreignMarkup;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getComments() {
+        return comments;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setComments(String comments) {
+        this.comments = comments;
     }
 
     @Override

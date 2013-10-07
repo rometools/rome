@@ -53,6 +53,10 @@ public class ConverterForRSS091Userland extends ConverterForRSS090 {
         super.copyInto(channel, syndFeed);
         syndFeed.setLanguage(channel.getLanguage()); // c
         syndFeed.setCopyright(channel.getCopyright()); // c
+        syndFeed.setDocs(channel.getDocs());
+        syndFeed.setManagingEditor(channel.getManagingEditor());
+        syndFeed.setWebMaster(channel.getWebMaster());
+        syndFeed.setGenerator(channel.getGenerator());
 
         final Date pubDate = channel.getPubDate();
 
@@ -101,7 +105,7 @@ public class ConverterForRSS091Userland extends ConverterForRSS090 {
     @Override
     protected Item createRSSItem(final SyndEntry sEntry) {
         final Item item = super.createRSSItem(sEntry);
-
+        item.setComments(sEntry.getComments());
         final SyndContent sContent = sEntry.getDescription();
 
         if (sContent != null) {
@@ -127,6 +131,10 @@ public class ConverterForRSS091Userland extends ConverterForRSS090 {
         channel.setLanguage(syndFeed.getLanguage()); // c
         channel.setCopyright(syndFeed.getCopyright()); // c
         channel.setPubDate(syndFeed.getPublishedDate()); // c
+        channel.setDocs(syndFeed.getDocs());
+        channel.setManagingEditor(syndFeed.getManagingEditor());
+        channel.setWebMaster(syndFeed.getWebMaster());
+        channel.setGenerator(syndFeed.getGenerator());
 
         if (syndFeed.getAuthors() != null && syndFeed.getAuthors().size() > 0) {
             final SyndPerson author = syndFeed.getAuthors().get(0);
@@ -143,6 +151,7 @@ public class ConverterForRSS091Userland extends ConverterForRSS090 {
     protected SyndEntry createSyndEntry(final Item item, final boolean preserveWireItem) {
         final SyndEntry syndEntry = super.createSyndEntry(item, preserveWireItem);
         final Description desc = item.getDescription();
+        syndEntry.setComments(item.getComments());
 
         if (desc != null) {
             final SyndContent descContent = new SyndContentImpl();

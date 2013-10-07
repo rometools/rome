@@ -573,6 +573,76 @@ public interface SyndFeed extends Cloneable, CopyFrom<SyndFeed>, Extendable {
     public void setForeignMarkup(List<Element> foreignMarkup);
 
     /**
+     * This tag should contain a URL that references a description of the
+     * channel.
+     * 
+     * @since 2.0.0
+     * @return channel description URL or {@code null}
+     */
+    String getDocs();
+
+    /**
+     * This tag should contain a URL that references a description of the
+     * channel.
+     * 
+     * @since 2.0.0
+     * @param channel description URL
+     */
+    public void setDocs(String docs);
+
+    /**
+     * A string indicating the program used to generate the channel.
+     * 
+     * @since 2.0.0
+     * @return string indicating the program or {@code null}
+     */
+    String getGenerator();
+
+    /**
+     * A string indicating the program used to generate the channel.
+     * 
+     * @since 2.0.0
+     * @param string indicating the program
+     */
+    public void setGenerator(String generator);
+
+    /**
+     * The email address of the managing editor of the site, the person to
+     * contact for editorial inquiries.
+     * 
+     * @since 2.0.0
+     * @return email address of the managing editor or {@code null}
+     */
+    String getManagingEditor();
+
+    /**
+     * The email address of the managing editor of the site, the person to
+     * contact for editorial inquiries.
+     * 
+     * @since 2.0.0
+     * @param managingEditor email address of the managing editor
+     */
+    public void setManagingEditor(String managingEditor);
+
+    /**
+     * The email address of the webmaster for the site, the person to contact if
+     * there are technical problems with the channel.
+     * 
+     * @since 2.0.0
+     * @return email address of the webmaster or {@code null}
+     */
+    String getWebMaster();
+
+    /**
+     * The email address of the webmaster for the site, the person to contact if
+     * there are technical problems with the channel.
+     * 
+     * @since 2.0.0
+     * @param webMaster email address of the webmaster
+     */
+    void setWebMaster(String webMaster);
+
+    /**
      * Creates a deep clone of the object.
      * <p>
      * 

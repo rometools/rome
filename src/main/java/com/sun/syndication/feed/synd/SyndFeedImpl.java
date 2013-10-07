@@ -62,6 +62,10 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     private SyndContent description;
     private String feedType;
     private String link;
+    private String webMaster;
+    private String managingEditor;
+    private String docs;
+    private String generator;
     private List<SyndLink> links;
     private SyndImage image;
     private List<SyndEntry> entries;
@@ -928,5 +932,69 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     @Override
     public boolean isPreservingWireFeed() {
         return preserveWireFeed;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getDocs() {
+        return docs;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setDocs(String docs) {
+        this.docs = docs;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getGenerator() {
+        return generator;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setGenerator(String generator) {
+        this.generator = generator;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getManagingEditor() {
+        return managingEditor;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setManagingEditor(String managingEditor) {
+        this.managingEditor = managingEditor;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getWebMaster() {
+        return webMaster;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setWebMaster(String webMaster) {
+        this.webMaster = webMaster;
     }
 }

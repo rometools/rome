@@ -115,9 +115,9 @@ public class RSS091UserlandParser extends RSS090Parser {
         if (e != null) {
             channel.setDocs(e.getText());
         }
-        e = eChannel.getChild("docs", getRSSNamespace());
+        e = eChannel.getChild("generator", getRSSNamespace());
         if (e != null) {
-            channel.setDocs(e.getText());
+            channel.setGenerator(e.getText());
         }
         e = eChannel.getChild("managingEditor", getRSSNamespace());
         if (e != null) {
