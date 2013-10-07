@@ -1,4 +1,4 @@
-package org.rometools.unittest;
+package com.sun.syndication;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;

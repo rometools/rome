@@ -6,11 +6,11 @@
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.
  */
-package org.rometools.io.impl;
+package com.sun.syndication.io.impl;
 
 import com.sun.syndication.feed.WireFeed;
-import org.rometools.feed.opml.Opml;
-import org.rometools.feed.opml.Outline;
+import com.sun.syndication.feed.opml.Opml;
+import com.sun.syndication.feed.opml.Outline;
 import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.impl.DateParser;
 

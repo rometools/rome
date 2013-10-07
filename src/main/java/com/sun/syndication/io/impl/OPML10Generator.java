@@ -15,12 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.rometools.io.impl;
+package com.sun.syndication.io.impl;
 
 import com.sun.syndication.feed.WireFeed;
-import org.rometools.feed.opml.Attribute;
-import org.rometools.feed.opml.Opml;
-import org.rometools.feed.opml.Outline;
+import com.sun.syndication.feed.opml.Attribute;
+import com.sun.syndication.feed.opml.Opml;
+import com.sun.syndication.feed.opml.Outline;
 import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.WireFeedGenerator;
 import com.sun.syndication.io.impl.BaseWireFeedGenerator;

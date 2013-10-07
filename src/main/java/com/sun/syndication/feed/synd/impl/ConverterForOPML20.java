@@ -6,7 +6,7 @@
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.
  */
-package org.rometools.feed.synd.impl;
+package com.sun.syndication.feed.synd.impl;
 
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.synd.SyndFeed;

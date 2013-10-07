@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package org.rometools.unittest;
+package com.sun.syndication;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

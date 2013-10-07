@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.rometools.feed.synd.impl;
+package com.sun.syndication.feed.synd.impl;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,9 +25,9 @@ import java.util.Stack;
 import java.util.logging.Logger;
 
 import com.sun.syndication.feed.WireFeed;
-import org.rometools.feed.opml.Attribute;
-import org.rometools.feed.opml.Opml;
-import org.rometools.feed.opml.Outline;
+import com.sun.syndication.feed.opml.Attribute;
+import com.sun.syndication.feed.opml.Opml;
+import com.sun.syndication.feed.opml.Outline;
 import com.sun.syndication.feed.synd.Converter;
 import com.sun.syndication.feed.synd.SyndCategory;
 import com.sun.syndication.feed.synd.SyndCategoryImpl;

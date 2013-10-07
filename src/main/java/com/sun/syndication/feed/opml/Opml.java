@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.rometools.feed.opml;
+package com.sun.syndication.feed.opml;
 
 import com.sun.syndication.feed.WireFeed;
 

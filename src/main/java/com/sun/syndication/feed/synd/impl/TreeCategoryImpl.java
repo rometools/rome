@@ -7,7 +7,7 @@
  * and open the template in the editor.
  */
 
-package org.rometools.feed.synd.impl;
+package com.sun.syndication.feed.synd.impl;
 
 import com.sun.syndication.feed.synd.SyndCategory;
 import com.sun.syndication.feed.synd.SyndCategoryImpl;

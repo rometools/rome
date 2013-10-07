@@ -7,11 +7,13 @@
  * and open the template in the editor.
  */
 
-package org.rometools.unittest;
+package com.sun.syndication;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
+
+import test.NullWriter;
+import test.TestUtil;
 
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.synd.SyndFeed;
@@ -48,7 +50,7 @@ public class TestOpsOPML10links extends FeedOpsTest {
 
     public void testTemp() throws Exception {
         final WireFeedInput input = new WireFeedInput();
-        final WireFeed wf = input.build(new File(System.getProperty("basedir") + "/src/test/resources/opml_1.0_links.xml"));
+        final WireFeed wf = input.build(TestUtil.loadFile("/opml_1.0_links.xml"));
         final WireFeedOutput output = new WireFeedOutput();
 
         final SyndFeedImpl sf = new SyndFeedImpl(wf);
@@ -56,7 +58,7 @@ public class TestOpsOPML10links extends FeedOpsTest {
         sf.setDescription("");
         sf.setLink("http://foo.com");
         sf.setFeedType("opml_1.0");
-        output.output(sf.createWireFeed(), new File(System.getProperty("basedir") + "/target/test-reports/1.xml"));
+        output.output(sf.createWireFeed(), new NullWriter());
     }
 
 }
