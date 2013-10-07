@@ -16,8 +16,6 @@
  */
 package com.sun.syndication.io.impl;
 
-import java.util.List;
-
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.Namespace;
@@ -47,9 +45,9 @@ public class RSS10Parser extends RSS090Parser {
      * Indicates if a JDom document is an RSS instance that can be parsed with
      * the parser.
      * <p/>
-     * It checks for RDF ("http://www.w3.org/1999/02/22-rdf-syntax-ns#") and RSS
-     * ("http://purl.org/rss/1.0/") namespaces being defined in the root
-     * element.
+     * It checks for RDF ("http://www.w3.org/1999/02/22-rdf-syntax-ns#")
+     * namespace being defined in the root element and for the RSS 1.0
+     * ("http://purl.org/rss/1.0/") namespace in the channel element.
      * 
      * @param document document to check if it can be parsed with this parser
      *            implementation.
@@ -61,17 +59,14 @@ public class RSS10Parser extends RSS090Parser {
 
         final Element rssRoot = document.getRootElement();
         final Namespace defaultNS = rssRoot.getNamespace();
-        final List<Namespace> additionalNSs = rssRoot.getAdditionalNamespaces();
 
         ok = defaultNS != null && defaultNS.equals(getRDFNamespace());
         if (ok) {
-            if (additionalNSs == null) {
+            // now also test if the channel element exists with the right
+            // namespace
+            final Element channel = rssRoot.getChild("channel", getRSSNamespace());
+            if (channel == null) {
                 ok = false;
-            } else {
-                ok = false;
-                for (int i = 0; !ok && i < additionalNSs.size(); i++) {
-                    ok = getRSSNamespace().equals(additionalNSs.get(i));
-                }
             }
         }
         return ok;
