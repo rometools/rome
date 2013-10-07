@@ -1,9 +1,0 @@
-ROME Modules
-
-Build Instructions
--------------------------------------------------------------------------------
-
-To build with Maven 2+:
-
-> mvn package
-
