@@ -10,9 +10,9 @@ import com.sun.syndication.unittest.TestSyndFeedRSS20;
  * @author Martin Kurz
  *
  */
-public class Isseue161Test extends TestSyndFeedRSS20 {
+public class Issue161Test extends TestSyndFeedRSS20 {
 
-    public Isseue161Test() {
+    public Issue161Test() {
         super("rss_2.0");
     }
 
