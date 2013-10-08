@@ -113,6 +113,7 @@ public class Atom10Parser extends BaseWireFeedParser {
         }
 
         final Feed feed = parseFeedMetadata(baseURI, eFeed);
+        feed.setStyleSheet(getStyleSheet(eFeed.getDocument()));
 
         final String xmlBase = eFeed.getAttributeValue("base", Namespace.XML_NAMESPACE);
         if (xmlBase != null) {

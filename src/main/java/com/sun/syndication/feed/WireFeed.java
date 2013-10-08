@@ -47,6 +47,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
     private final ObjectBean objBean;
     private String feedType;
     private String encoding;
+    private String styleSheet;
     private List<Module> modules;
     private List<Element> foreignMarkup;
 
@@ -250,5 +251,25 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      */
     public void setForeignMarkup(final List<Element> foreignMarkup) {
         this.foreignMarkup = foreignMarkup;
+    }
+
+    /**
+     * URL of XSL-Stylesheet.
+     * 
+     * @since 2.0.0
+     * @return styleSheet URL or {@code null}
+     */
+    public String getStyleSheet() {
+        return styleSheet;
+    }
+
+    /**
+     * URL of XSL-Stylesheet.
+     * 
+     * @since 2.0.0
+     * @param styleSheet URL or {@code null}
+     */
+    public void setStyleSheet(String styleSheet) {
+        this.styleSheet = styleSheet;
     }
 }

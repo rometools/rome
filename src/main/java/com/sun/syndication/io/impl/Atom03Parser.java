@@ -28,6 +28,7 @@ import org.jdom2.output.XMLOutputter;
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.atom.Content;
 import com.sun.syndication.feed.atom.Entry;
+import com.sun.syndication.feed.atom.Feed;
 import com.sun.syndication.feed.atom.Generator;
 import com.sun.syndication.feed.atom.Link;
 import com.sun.syndication.feed.atom.Person;
@@ -80,7 +81,8 @@ public class Atom03Parser extends BaseWireFeedParser {
 
     protected WireFeed parseFeed(final Element eFeed) {
 
-        final com.sun.syndication.feed.atom.Feed feed = new com.sun.syndication.feed.atom.Feed(getType());
+        final Feed feed = new Feed(getType());
+        feed.setStyleSheet(getStyleSheet(eFeed.getDocument()));
 
         Element e = eFeed.getChild("title", getAtomNamespace());
         if (e != null) {

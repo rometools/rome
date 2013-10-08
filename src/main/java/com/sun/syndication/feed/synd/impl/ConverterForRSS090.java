@@ -57,6 +57,7 @@ public class ConverterForRSS090 implements Converter {
         if (feed.getForeignMarkup().size() > 0) {
             syndFeed.setForeignMarkup(feed.getForeignMarkup());
         }
+        syndFeed.setStyleSheet(feed.getStyleSheet());
         syndFeed.setEncoding(feed.getEncoding());
         final Channel channel = (Channel) feed;
         syndFeed.setTitle(channel.getTitle());
@@ -129,7 +130,7 @@ public class ConverterForRSS090 implements Converter {
     protected WireFeed createRealFeed(final String type, final SyndFeed syndFeed) {
         final Channel channel = new Channel(type);
         channel.setModules(ModuleUtils.cloneModules(syndFeed.getModules()));
-
+        channel.setStyleSheet(syndFeed.getStyleSheet());
         channel.setEncoding(syndFeed.getEncoding());
 
         channel.setTitle(syndFeed.getTitle());

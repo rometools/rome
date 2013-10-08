@@ -5,8 +5,12 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.jdom2.Attribute;
+import org.jdom2.Content;
+import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.Namespace;
+import org.jdom2.ProcessingInstruction;
+import org.jdom2.filter.ContentFilter;
 
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.module.Extendable;
@@ -117,4 +121,15 @@ public abstract class BaseWireFeedParser implements WireFeedParser {
         }
     }
 
+    protected String getStyleSheet(final Document doc) {
+        String styleSheet = null;
+        for (final Content c : doc.getContent(new ContentFilter(ContentFilter.PI))) {
+            final ProcessingInstruction pi = (ProcessingInstruction) c;
+            if ("text/xsl".equals(pi.getPseudoAttributeValue("type"))) {
+                styleSheet = pi.getPseudoAttributeValue("href");
+                break;
+            }
+        }
+        return styleSheet;
+    }
 }

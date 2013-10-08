@@ -150,6 +150,7 @@ public class RSS090Parser extends BaseWireFeedParser {
         final Element eChannel = rssRoot.getChild("channel", getRSSNamespace());
 
         final Channel channel = new Channel(getType());
+        channel.setStyleSheet(getStyleSheet(rssRoot.getDocument()));
 
         Element e = eChannel.getChild("title", getRSSNamespace());
         if (e != null) {

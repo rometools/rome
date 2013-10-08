@@ -72,6 +72,7 @@ public class ConverterForAtom10 implements Converter {
         }
 
         syndFeed.setEncoding(aFeed.getEncoding());
+        syndFeed.setStyleSheet(aFeed.getStyleSheet());
 
         syndFeed.setUri(aFeed.getId());
 
@@ -314,6 +315,7 @@ public class ConverterForAtom10 implements Converter {
         aFeed.setModules(ModuleUtils.cloneModules(syndFeed.getModules()));
 
         aFeed.setEncoding(syndFeed.getEncoding());
+        aFeed.setStyleSheet(syndFeed.getStyleSheet());
 
         aFeed.setId(syndFeed.getUri());
 

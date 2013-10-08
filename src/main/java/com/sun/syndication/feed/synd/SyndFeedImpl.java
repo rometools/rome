@@ -66,6 +66,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     private String managingEditor;
     private String docs;
     private String generator;
+    private String styleSheet;
     private List<SyndLink> links;
     private SyndImage image;
     private List<SyndEntry> entries;
@@ -996,5 +997,21 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     @Override
     public void setWebMaster(String webMaster) {
         this.webMaster = webMaster;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getStyleSheet() {
+        return styleSheet;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setStyleSheet(String styleSheet) {
+        this.styleSheet = styleSheet;
     }
 }

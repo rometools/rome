@@ -643,6 +643,22 @@ public interface SyndFeed extends Cloneable, CopyFrom<SyndFeed>, Extendable {
     void setWebMaster(String webMaster);
 
     /**
+     * URL of XSL-Stylesheet.
+     * 
+     * @since 2.0.0
+     * @return styleSheet URL or {@code null}
+     */
+    String getStyleSheet();
+
+    /**
+     * URL of XSL-Stylesheet.
+     * 
+     * @since 2.0.0
+     * @param styleSheet URL or {@code null}
+     */
+    void setStyleSheet(String styleSheet);
+
+    /**
      * Creates a deep clone of the object.
      * <p>
      * 
