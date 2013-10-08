@@ -18,7 +18,7 @@ package com.sun.syndication.feed.synd.impl;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -72,7 +72,7 @@ public class ConverterForRSS091Userland extends ConverterForRSS090 {
             final List<String> creators = ((DCModule) syndFeed.getModule(DCModule.URI)).getCreators();
 
             if (!creators.contains(author)) {
-                final Set<String> s = new HashSet<String>(); // using a set to
+                final Set<String> s = new LinkedHashSet<String>(); // using a set to
                                                              // remove
                 // duplicates
                 s.addAll(creators); // DC creators

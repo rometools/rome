@@ -25,6 +25,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -148,7 +149,7 @@ public class CopyFromHelper {
         // expecting SETs or LISTs only, going default implementation of them
         final Collection<T> newColl;
         if (collection instanceof Set) {
-            newColl = new HashSet<T>();
+            newColl = new LinkedHashSet<T>();
         } else {
             newColl = new ArrayList<T>();
         }
