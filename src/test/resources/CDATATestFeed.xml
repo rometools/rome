@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
+	<channel>
+		<title>test</title>
+		<link>test</link>
+		<description>test</description>
+		<language>de</language>
+		<copyright>no</copyright>
+		<pubDate>Tue, 04 Aug 2009 11:25:23 +0200</pubDate>
+		<ttl>15</ttl>	
+		<image>
+			<url>https://rome.dev.java.net/branding/images/header_jnet_new.jpg</url>
+			<title>java.net</title>
+			<link>https://rome.dev.java.net/</link>
+			<description>no thanks</description>
+		</image>
+		<item>
+			<title>item1</title>
+			<description>Some Description</description>
+			<link>http://rtl-now.rtl.de/awz.php?container_id=26908&amp;paytype=ppv&amp;productdetail=1&amp;na=1</link>
+			<guid><![CDATA[http://rtl-now.rtl.de/awz.php?container_id=26908&paytype=ppv&productdetail=1&na=1]]></guid>
+			<pubDate>Wed, 05 Aug 2009 07:30:00 +0200</pubDate>
+		</item>
+		<item>
+			<title>item2</title>
+			<description>Some Description</description>
+			<link><![CDATA[http://rtl-now.rtl.de/awz.php?container_id=26908&paytype=ppv&productdetail=1&na=1]]></link>
+			<guid><![CDATA[http://rtl-now.rtl.de/awz.php?container_id=26908&paytype=ppv&productdetail=1&na=1]]></guid>
+			<pubDate>Wed, 05 Aug 2009 07:30:00 +0200</pubDate>
+		</item>
+	</channel>
+</rss>

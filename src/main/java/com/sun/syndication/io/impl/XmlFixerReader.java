@@ -38,6 +38,7 @@ public class XmlFixerReader extends Reader {
     }
 
     private boolean trimmed;
+    private boolean cdata = false;
     private final StringBuffer buffer;
     private int bufferPos;
     private int state = 0;
@@ -197,7 +198,18 @@ public class XmlFixerReader extends Reader {
                             buffer.setLength(0);
                             bufferPos = 0;
                             buffer.append((char) c);
-                            state = 1;
+                            loop = true;
+                        } else if (c == '<') {
+                            state = 4;
+                            buffer.setLength(0);
+                            bufferPos = 0;
+                            buffer.append((char) c);
+                            loop = true;
+                        } else if (c == ']' && cdata) {
+                            state = 5;
+                            buffer.setLength(0);
+                            bufferPos = 0;
+                            buffer.append((char) c);
                             loop = true;
                         } else {
                             loop = false;
@@ -219,7 +231,9 @@ public class XmlFixerReader extends Reader {
                         } else {
                             // no ';' to match the '&' lets just make the '&'
                             // a legal xml character entity '&amp;'
-                            buffer.insert(1, "amp;");
+                            if (!cdata) {
+                                buffer.insert(1, "amp;");
+                            }
                             buffer.append((char) c);
                             state = 3;
                             loop = true;
@@ -227,7 +241,9 @@ public class XmlFixerReader extends Reader {
                     } else {
                         // no ';' to match the '&' lets just make the '&'
                         // a legal xml character entity '&amp;'
-                        buffer.insert(1, "amp;");
+                        if (!cdata) {
+                            buffer.insert(1, "amp;");
+                        }
                         state = 3;
                         loop = true;
                     }
@@ -251,6 +267,58 @@ public class XmlFixerReader extends Reader {
                         c = 0;
                         state = 0;
                         loop = true;
+                    }
+                    break;
+                case 4: // checking for CDATA
+                    c = in.read();
+                    loop = true;
+                    state = 3;
+                    switch (c) {
+                        case -1:
+                            // end of stream
+                            break;
+                        case ' ':
+                        case '>':
+                        case '/':
+                            // tag end or something like this
+                            buffer.append((char) c);
+                            break;
+                        case '[':
+                            buffer.append((char) c);
+                            final String actBufferContent = buffer.toString();
+                            if ("<![CDATA[".equals(actBufferContent)) {
+                                cdata = true;
+                            } else {
+                                state = 4;
+                            }
+                            break;
+                        default:
+                            state = 4;
+                            buffer.append((char) c);
+                    }
+                    break;
+                case 5: // checking end of CDATA
+                    c = in.read();
+                    loop = true;
+                    state = 3;
+                    switch (c) {
+                        case -1:
+                            // end of stream
+                            break;
+                        case ']':
+                            buffer.append((char) c);
+                            state = 5;
+                            break;
+                        case '>':
+                            buffer.append((char) c);
+                            final String actBufferContent = buffer.toString();
+                            if ("]]>".equals(actBufferContent)) {
+                                cdata = false;
+                            }
+                            break;
+                        default:
+                            buffer.append((char) c);
+                            break;
                     }
                     break;
                 default:
