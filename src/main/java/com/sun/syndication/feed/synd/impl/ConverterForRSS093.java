@@ -37,7 +37,7 @@ public class ConverterForRSS093 extends ConverterForRSS092 {
     protected SyndEntry createSyndEntry(final Item item, final boolean preserveWireItem) {
         final SyndEntry syndEntry = super.createSyndEntry(item, preserveWireItem);
         final Date pubDate = item.getPubDate();
-        if (pubDate != null) {
+        if (pubDate != null && syndEntry.getPublishedDate() == null) {
             syndEntry.setPublishedDate(pubDate); // c
         }
         return syndEntry;
