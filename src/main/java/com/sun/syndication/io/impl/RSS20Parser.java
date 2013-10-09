@@ -47,8 +47,6 @@ public class RSS20Parser extends RSS094Parser {
     @Override
     protected Description parseItemDescription(final Element rssRoot, final Element eDesc) {
         final Description desc = super.parseItemDescription(rssRoot, eDesc);
-        desc.setType("text/html"); // change as per
-                                   // https://rome.dev.java.net/issues/show_bug.cgi?id=26
         return desc;
     }
 

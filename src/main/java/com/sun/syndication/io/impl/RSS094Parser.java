@@ -98,16 +98,4 @@ public class RSS094Parser extends RSS093Parser {
         return item;
     }
 
-    @Override
-    protected Description parseItemDescription(final Element rssRoot, final Element eDesc) {
-        final Description desc = super.parseItemDescription(rssRoot, eDesc);
-        String att = eDesc.getAttributeValue("type");// getRSSNamespace()); DONT
-                                                     // KNOW WHY DOESN'T WORK
-        if (att == null) {
-            att = "text/html";
-        }
-        desc.setType(att);
-        return desc;
-    }
-
 }

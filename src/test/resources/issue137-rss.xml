@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="/~d/styles/rss2full.xsl"?><?xml-stylesheet type
+="text/css" media="screen" href="http://feeds.feedburner.com/~d/styles/itemcontent.css"?><rss xmlns:feedburner
+="http://rssnamespace.org/feedburner/ext/1.0" version="2.0">
+    <channel>
+        <title>Spotlight</title>
+        <link>http://www.moe.gov.sg/media/spotlight/</link>
+        <description />
+        <language>en</language>
+        <copyright>Copyright 2009</copyright>
+        <lastBuildDate>Fri, 25 Sep 2009 10:00:00 +0800</lastBuildDate>
+        <docs>http://www.rssboard.org/rss-specification</docs>
+        
+        <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" href="http://feeds.feedburner
+.com/singapore-education/spotlight" type="application/rss+xml" /><atom10:link xmlns:atom10="http://www
+.w3.org/2005/Atom" rel="hub" href="http://pubsubhubbub.appspot.com" /><item>
+            <title>Single-Session Primary Schools</title>
+            <description><img src="http://www.moe.gov.sg/media/spotlight/assets_c/2009/09/spotlight-single-session-thumb-120x80-282.jpg" alt="Teacher and his students tossing frisbees into the air" /><![CDATA[<p>MOE will be <a href
+="http://www.moe.gov.sg/media/press/2009/09/moe-to-build-new-primary-schoo.php">building 11 new primary
+ schools and upgrading another 28 existing schools from November 2009</a>. This is the first phase of
+ MOE's plans to enhance primary school infrastructure to facilitate the transition of all primary schools
+ to a single-session model to support a higher quality primary education.</p>]]></description>
+            <link>http://feedproxy.google.com/~r/singapore-education/spotlight/~3/vnNsA4Hdk6U/</link
+>
+            <guid isPermaLink="false">http://www.moe.gov.sg/media/spotlight/</guid>
+            
+            
+            <pubDate>Fri, 25 Sep 2009 10:00:00 +0800</pubDate>
+        <feedburner:origLink>http://www.moe.gov.sg/media/spotlight/</feedburner:origLink></item>
+        
+        <item>
+            <title>Work Plan Seminar 2009</title>
+            <description><![CDATA[<img src="http://www.moe.gov.sg/media/spotlight/assets_c/2009/09/spotlight-wps-thumb-120x80-280
+.jpg" alt="Minister speaking at WPS 2009" />]]><![CDATA[<p>At the Work Plan Seminar 2009, Minister for Education
+ Dr Ng Eng Hen <a href="http://www.moe.gov.sg/media/speeches/2009/09/17/work-plan-seminar.php">talked
+ about the importance of language &amp; communication skills and growing a world-class education service
+</a>. He spoke of <a href="http://www.moe.gov.sg/media/press/2009/09/teachers-the-heart-of-quality.php"
+>strengthening the teaching track and of a teacher-driven culture of professional excellence</a>.</p
+>]]></description>
+            <link>http://feedproxy.google.com/~r/singapore-education/spotlight/~3/vnNsA4Hdk6U/</link
+>
+            <guid isPermaLink="false">http://www.moe.gov.sg/media/spotlight/</guid>
+            
+            
+            <pubDate>Thu, 17 Sep 2009 15:33:15 +0800</pubDate>
+        <feedburner:origLink>http://www.moe.gov.sg/media/spotlight/</feedburner:origLink></item>
+        
+        <item>
+            <title>Recognising School Achievements in 2009</title>
+            <description>&lt;img src="http://www.moe.gov.sg/media/spotlight/assets_c/2009/09/spotlight-moa-2009-thumb-120x80-278.jpg" alt="Students at a podcast session" />
+ <![CDATA[<p>A total of 275 schools will <a href="http://www.moe.gov.sg/media/press/2009/09/recognising-school-achievement.php">receive 580 Special and Level
+ Two Awards this year under the MOE Masterplan of Awards</a>. These awards will be presented at the 2009
+ MOE Work Plan Seminar on 17 Sep 09 by the Minister for Education, Dr Ng Eng Hen.</p>]]></description
+>
+            <link>http://feedproxy.google.com/~r/singapore-education/spotlight/~3/vnNsA4Hdk6U/</link
+>
+            <guid isPermaLink="false">http://www.moe.gov.sg/media/spotlight/</guid>
+            
+            
+            <pubDate>Thu, 10 Sep 2009 17:00:00 +0800</pubDate>
+        <feedburner:origLink>http://www.moe.gov.sg/media/spotlight/</feedburner:origLink></item>
+        
+        <item>
+            <title>New Programmes in Special Assistance Plan (SAP) Schools</title>
+            <description><img src="http://www.moe.gov.sg/media/spotlight/assets_c/2009/09/spotlight-sap-thumb-120x80-257
+.jpg" alt="Students engaged in discussion" /><![CDATA[<p>At the Special Assistance Plan (SAP) Seminar
+ 2009 on 4 Sep 09, Ms Grace Fu,
+Senior Minister of State for Education, shared on the <a href="http://www.moe.gov.sg/media/press/2009
+/09/new-programmes-in-special-assistance-plan-sap-schools.php">new initiatives
+rolled out in <abbr title="Special Assistance Plan">SAP</abbr> schools</a>.</p>]]></description>
+            <link>http://feedproxy.google.com/~r/singapore-education/spotlight/~3/vnNsA4Hdk6U/</link
+>
+            <guid isPermaLink="false">http://www.moe.gov.sg/media/spotlight/</guid>
+            
+            
+            <pubDate>Fri, 04 Sep 2009 09:30:00 +0800</pubDate>
+        <feedburner:origLink>http://www.moe.gov.sg/media/spotlight/</feedburner:origLink></item>
+        
+    </channel>
+</rss>

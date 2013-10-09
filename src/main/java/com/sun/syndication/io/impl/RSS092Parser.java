@@ -19,7 +19,9 @@ package com.sun.syndication.io.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jdom2.Content;
 import org.jdom2.Element;
+import org.jdom2.output.XMLOutputter;
 
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.rss.Category;
@@ -166,8 +168,33 @@ public class RSS092Parser extends RSS091UserlandParser {
 
     @Override
     protected Description parseItemDescription(final Element rssRoot, final Element eDesc) {
-        final Description desc = super.parseItemDescription(rssRoot, eDesc);
-        desc.setType("text/html");
+        final Description desc = new Description();
+        final StringBuilder sb = new StringBuilder();
+        final XMLOutputter xmlOut = new XMLOutputter();
+        for (final Content c : eDesc.getContent()) {
+            switch (c.getCType()) {
+                case Text:
+                case CDATA:
+                    sb.append(c.getValue());
+                    break;
+                case EntityRef:
+                    System.out.println("entity: " + c.getValue());
+                    sb.append(c.getValue());
+                    break;
+                case Element:
+                    sb.append(xmlOut.outputString((Element) c));
+                    break;
+                default:
+                    // ignore
+                    break;
+            }
+        }
+        desc.setValue(sb.toString());
+        String att = eDesc.getAttributeValue("type");
+        if (att == null) {
+            att = "text/html";
+        }
+        desc.setType(att);
         return desc;
     }
 
