@@ -201,7 +201,7 @@ public class CloneableBean implements Serializable, Cloneable {
         if (value != null) {
             final Class<?> vClass = value.getClass();
             if (vClass.isArray()) {
-                value = (T) cloneArray((T[]) value);
+                value = (T) cloneArray((T) value);
             } else if (value instanceof Collection) {
                 value = (T) cloneCollection((Collection<Object>) value);
             } else if (value instanceof Map) {
@@ -222,11 +222,11 @@ public class CloneableBean implements Serializable, Cloneable {
         return value;
     }
 
-    private <T> T[] cloneArray(final T[] array) throws Exception {
+    private <T> T cloneArray(final T array) throws Exception {
         final Class<?> elementClass = array.getClass().getComponentType();
         final int length = Array.getLength(array);
         @SuppressWarnings("unchecked")
-        final T[] newArray = (T[]) Array.newInstance(elementClass, length);
+        final T newArray = (T) Array.newInstance(elementClass, length);
         for (int i = 0; i < length; i++) {
             Array.set(newArray, i, doClone(Array.get(array, i)));
         }
