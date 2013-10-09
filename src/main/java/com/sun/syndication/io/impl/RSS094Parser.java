@@ -22,7 +22,6 @@ import org.jdom2.Element;
 
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.rss.Channel;
-import com.sun.syndication.feed.rss.Description;
 import com.sun.syndication.feed.rss.Guid;
 import com.sun.syndication.feed.rss.Item;
 
