@@ -812,10 +812,12 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
         basePropInterfaceMap.put("image", SyndImage.class);
         basePropInterfaceMap.put("entries", SyndEntry.class);
         basePropInterfaceMap.put("modules", Module.class);
+        basePropInterfaceMap.put("categories", SyndCategory.class);
 
         final Map<Class<? extends CopyFrom<?>>, Class<?>> basePropClassImplMap = new HashMap<Class<? extends CopyFrom<?>>, Class<?>>();
         basePropClassImplMap.put(SyndEntry.class, SyndEntryImpl.class);
         basePropClassImplMap.put(SyndImage.class, SyndImageImpl.class);
+        basePropClassImplMap.put(SyndCategory.class, SyndCategoryImpl.class);
         basePropClassImplMap.put(DCModule.class, DCModuleImpl.class);
         basePropClassImplMap.put(SyModule.class, SyModuleImpl.class);
 

@@ -512,10 +512,12 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
         basePropInterfaceMap.put("contents", SyndContent.class);
         basePropInterfaceMap.put("enclosures", SyndEnclosure.class);
         basePropInterfaceMap.put("modules", Module.class);
+        basePropInterfaceMap.put("categories", SyndCategory.class);
 
         final Map<Class<? extends CopyFrom<?>>, Class<?>> basePropClassImplMap = new HashMap<Class<? extends CopyFrom<?>>, Class<?>>();
         basePropClassImplMap.put(SyndContent.class, SyndContentImpl.class);
         basePropClassImplMap.put(SyndEnclosure.class, SyndEnclosureImpl.class);
+        basePropClassImplMap.put(SyndCategory.class, SyndCategoryImpl.class);
         basePropClassImplMap.put(DCModule.class, DCModuleImpl.class);
         basePropClassImplMap.put(SyModule.class, SyModuleImpl.class);
 

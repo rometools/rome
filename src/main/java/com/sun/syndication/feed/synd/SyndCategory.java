@@ -17,6 +17,8 @@
  */
 package com.sun.syndication.feed.synd;
 
+import com.sun.syndication.feed.CopyFrom;
+
 /**
  * Bean interface for categories of SyndFeedImpl feeds and entries.
  * <p>
@@ -24,7 +26,7 @@ package com.sun.syndication.feed.synd;
  * @author Alejandro Abdelnur
  * 
  */
-public interface SyndCategory extends Cloneable {
+public interface SyndCategory extends Cloneable, CopyFrom<SyndCategory> {
     /**
      * Returns the category name.
      * <p>

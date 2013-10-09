@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<rss version="2.0">
+  <channel>
+    <title>Testing</title>
+    <link>http://feeds.somewhere.org/</link>
+    <description>A dumb test feed file</description>
+    <language>en-us</language>
+    <copyright>Copyright (c) 200xx by nobody</copyright>
+    <pubDate>Wed, 03 Sep 2008 00:00:00 EST</pubDate>
+    <lastBuildDate>Wed, 03 Sep 2008 17:07:40 EST</lastBuildDate>
+    <image>
+      <title>Test Image</title>
+      <url>http://feeds.somewhere.org/feedImg.gif</url>
+      <link>http://feeds.somewhere.org</link>
+      <width>125</width>
+      <height>45</height>
+      <description>Test Feed Image</description>
+    </image>
+    <category domain="http://somewhere.org/taxonomy">Channel Category 1</category>
+    <category domain="http://somewhere.org/taxonomy">Channel Category 2</category>
+    <item>
+      <title>Entry 1</title>
+      <category domain="http://somewhere.org/taxonomy">Entry Category 1</category>
+      <category domain="http://somewhere.org/taxonomy">Entry Category 2</category>
+      <link>http://feeds.somewhere.org/index.jsp?id=2043</link>
+      <description>Entry 1 Description</description>
+      <pubDate>Wed, 03 Sep 2008 17:03:03 EST</pubDate>
+    </item>
+  </channel>
+</rss>

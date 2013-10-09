@@ -20,8 +20,13 @@ package com.sun.syndication.feed.synd;
 import java.io.Serializable;
 import java.util.AbstractList;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import com.sun.syndication.feed.CopyFrom;
+import com.sun.syndication.feed.impl.CopyFromHelper;
 import com.sun.syndication.feed.impl.ObjectBean;
 import com.sun.syndication.feed.module.DCSubject;
 import com.sun.syndication.feed.module.DCSubjectImpl;
@@ -173,6 +178,26 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
     @Override
     public void setTaxonomyUri(final String taxonomyUri) {
         subject.setTaxonomyUri(taxonomyUri);
+    }
+
+    @Override
+    public Class<? extends CopyFrom<SyndCategory>> getInterface() {
+        return SyndCategory.class;
+    }
+
+    @Override
+    public void copyFrom(final CopyFrom<? extends SyndCategory> obj) {
+        COPY_FROM_HELPER.copy(this, obj);
+    }
+
+    private static final CopyFromHelper COPY_FROM_HELPER;
+
+    static {
+        final Map<String, Class<?>> basePropInterfaceMap = new HashMap<String, Class<?>>();
+        basePropInterfaceMap.put("name", String.class);
+        basePropInterfaceMap.put("taxonomyUri", String.class);
+        final Map<Class<? extends CopyFrom<?>>, Class<?>> basePropClassImplMap = Collections.emptyMap();
+        COPY_FROM_HELPER = new CopyFromHelper(SyndCategory.class, basePropInterfaceMap, basePropClassImplMap);
     }
 
 }
