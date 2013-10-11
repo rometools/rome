@@ -23,17 +23,20 @@ import org.rometools.feed.module.opensearch.entity.OSQuery;
 
 import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.atom.Link;
+import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.feed.module.ModuleImpl;
 
 /**
- * @author Michael W. Nassif (enrouteinc@gmail.com) OpenSearch Module implementation
+ * @author Michael W. Nassif (enrouteinc@gmail.com) OpenSearch Module
+ *         implementation
  */
 public class OpenSearchModuleImpl extends ModuleImpl implements OpenSearchModule, Serializable {
+    private static final long serialVersionUID = -5257107642509731500L;
     private int totalResults = -1;
     private int startIndex = 1;
     private int itemsPerPage = -1;
     private Link link;
-    private List queries;
+    private List<OSQuery> queries;
 
     public OpenSearchModuleImpl() {
         super(OpenSearchModuleImpl.class, OpenSearchModule.URI);
@@ -42,6 +45,7 @@ public class OpenSearchModuleImpl extends ModuleImpl implements OpenSearchModule
     /**
      * @return Returns the itemsPerPage.
      */
+    @Override
     public int getItemsPerPage() {
         return itemsPerPage;
     }
@@ -49,6 +53,7 @@ public class OpenSearchModuleImpl extends ModuleImpl implements OpenSearchModule
     /**
      * @param itemsPerPage The itemsPerPage to set.
      */
+    @Override
     public void setItemsPerPage(final int itemsPerPage) {
         this.itemsPerPage = itemsPerPage;
     }
@@ -56,6 +61,7 @@ public class OpenSearchModuleImpl extends ModuleImpl implements OpenSearchModule
     /**
      * @return Returns the link.
      */
+    @Override
     public Link getLink() {
         return link;
     }
@@ -63,6 +69,7 @@ public class OpenSearchModuleImpl extends ModuleImpl implements OpenSearchModule
     /**
      * @param link The link to set.
      */
+    @Override
     public void setLink(final Link link) {
         this.link = link;
     }
@@ -70,31 +77,31 @@ public class OpenSearchModuleImpl extends ModuleImpl implements OpenSearchModule
     /**
      * @return Returns the queries.
      */
-    public List getQueries() {
-        queries = queries == null ? new LinkedList() : queries;
-
+    @Override
+    public List<OSQuery> getQueries() {
+        if (queries == null) {
+            queries = new LinkedList<OSQuery>();
+        }
         return queries;
     }
 
     /**
      * @param queries The queries to set.
      */
-    public void setQueries(final List queries) {
+    @Override
+    public void setQueries(final List<OSQuery> queries) {
         this.queries = queries;
     }
 
+    @Override
     public void addQuery(final OSQuery query) {
-        if (queries != null) {
-            queries.add(query);
-        } else {
-            queries = new LinkedList();
-            queries.add(query);
-        }
+        getQueries().add(query);
     }
 
     /**
      * @return Returns the startIndex.
      */
+    @Override
     public int getStartIndex() {
         return startIndex;
     }
@@ -102,6 +109,7 @@ public class OpenSearchModuleImpl extends ModuleImpl implements OpenSearchModule
     /**
      * @param startIndex The startIndex to set.
      */
+    @Override
     public void setStartIndex(final int startIndex) {
         this.startIndex = startIndex;
     }
@@ -109,6 +117,7 @@ public class OpenSearchModuleImpl extends ModuleImpl implements OpenSearchModule
     /**
      * @return Returns the totalResults.
      */
+    @Override
     public int getTotalResults() {
         return totalResults;
     }
@@ -116,33 +125,37 @@ public class OpenSearchModuleImpl extends ModuleImpl implements OpenSearchModule
     /**
      * @param totalResults The totalResults to set.
      */
+    @Override
     public void setTotalResults(final int totalResults) {
         this.totalResults = totalResults;
     }
 
     /*
      * (non-Javadoc)
-     * 
      * @see com.sun.syndication.feed.CopyFrom#copyFrom(java.lang.Object)
      */
-    public void copyFrom(final CopyFrom obj) {
-        final OpenSearchModule osm = (OpenSearchModuleImpl) obj;
-
+    @Override
+    public void copyFrom(final CopyFrom<? extends Module> obj) {
+        final OpenSearchModule osm = (OpenSearchModule) obj;
         setTotalResults(osm.getTotalResults());
         setItemsPerPage(osm.getItemsPerPage());
         setStartIndex(osm.getStartIndex());
         setLink(osm.getLink());
-
-        // setQueries(osm.getQueries());
+        for (final OSQuery q : osm.getQueries()) {
+            try {
+                getQueries().add((OSQuery) q.clone());
+            } catch (final CloneNotSupportedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /*
      * (non-Javadoc)
-     * 
      * @see com.sun.syndication.feed.CopyFrom#getInterface()
      */
-    public Class getInterface() {
-        // TODO Auto-generated method stub
+    @Override
+    public Class<OpenSearchModule> getInterface() {
         return OpenSearchModule.class;
     }
 }

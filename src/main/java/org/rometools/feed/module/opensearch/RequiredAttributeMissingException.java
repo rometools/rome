@@ -19,20 +19,18 @@ package org.rometools.feed.module.opensearch;
  * @author Michael W. Nassif (enrouteinc@gmail.com)
  */
 public class RequiredAttributeMissingException extends RuntimeException {
+    private static final long serialVersionUID = -7678987346283611492L;
 
     public RequiredAttributeMissingException(final String arg0, final Throwable arg1) {
         super(arg0, arg1);
-        // TODO Auto-generated constructor stub
     }
 
     public RequiredAttributeMissingException(final String arg0) {
         super(arg0);
-        // TODO Auto-generated constructor stub
     }
 
     public RequiredAttributeMissingException(final Throwable arg0) {
         super(arg0);
-        // TODO Auto-generated constructor stub
     }
 
 }

@@ -29,20 +29,24 @@ import com.sun.syndication.feed.atom.Link;
 public interface OpenSearchResponse {
 
     /**
-     * # totalResults – the maximum number of results available for these search terms
+     * # totalResults – the maximum number of results available for these search
+     * terms
      * 
-     * * Restrictions: An integer greater than or equal to 0. * Default: The number of items that were returned in this set of results. * Requirements: May
-     * appear zero or one time.
+     * * Restrictions: An integer greater than or equal to 0. * Default: The
+     * number of items that were returned in this set of results. *
+     * Requirements: May appear zero or one time.
      * 
      * @param totalResults A positive integer value.
      */
     public void setTotalResults(int totalResults);
 
     /**
-     * # totalResults – the maximum number of results available for these search terms
+     * # totalResults – the maximum number of results available for these search
+     * terms
      * 
-     * * Restrictions: An integer greater than or equal to 0. * Default: The number of items that were returned in this set of results. * Requirements: May
-     * appear zero or one time.
+     * * Restrictions: An integer greater than or equal to 0. * Default: The
+     * number of items that were returned in this set of results. *
+     * Requirements: May appear zero or one time.
      * 
      * @return a positive integer value.
      */
@@ -51,7 +55,8 @@ public interface OpenSearchResponse {
     /**
      * # startIndex – the index of the first item returned in the result.
      * 
-     * * Restrictions: An integer greater than or equal to 1. * Note: The first result is 1. * Default: 1 * Requirements: May appear zero or one time.
+     * * Restrictions: An integer greater than or equal to 1. * Note: The first
+     * result is 1. * Default: 1 * Requirements: May appear zero or one time.
      * 
      * @param startIndex int value >= 1.
      */
@@ -60,27 +65,32 @@ public interface OpenSearchResponse {
     /**
      * # startIndex – the index of the first item returned in the result.
      * 
-     * * Restrictions: An integer greater than or equal to 1. * Note: The first result is 1. * Default: 1 * Requirements: May appear zero or one time.
+     * * Restrictions: An integer greater than or equal to 1. * Note: The first
+     * result is 1. * Default: 1 * Requirements: May appear zero or one time.
      * 
      * @return int value >= 1.
      */
     public int getStartIndex();
 
     /**
-     * # itemsPerPage – the maximum number of items that can appear in one page of results.
+     * # itemsPerPage – the maximum number of items that can appear in one page
+     * of results.
      * 
-     * * Restrictions: An integer greater than or equal to 1. * Default: The number of items that were returned in this set of results. * Requirements: May
-     * appear zero or one time.
+     * * Restrictions: An integer greater than or equal to 1. * Default: The
+     * number of items that were returned in this set of results. *
+     * Requirements: May appear zero or one time.
      * 
      * @param itemsPerPage int value >= 1.
      */
     public void setItemsPerPage(int itemsPerPage);
 
     /**
-     * # itemsPerPage – the maximum number of items that can appear in one page of results.
+     * # itemsPerPage – the maximum number of items that can appear in one page
+     * of results.
      * 
-     * * Restrictions: An integer greater than or equal to 1. * Default: The number of items that were returned in this set of results. * Requirements: May
-     * appear zero or one time.
+     * * Restrictions: An integer greater than or equal to 1. * Default: The
+     * number of items that were returned in this set of results. *
+     * Requirements: May appear zero or one time.
      * 
      * @return int value >= 1
      */
@@ -89,8 +99,10 @@ public interface OpenSearchResponse {
     /**
      * # link – a reference back to the OpenSearch Description file
      * 
-     * * Attributes: This is a clone of the link element in Atom, including href, hreflang, rel, and type attributes. * Restrictions: The rel attribute must
-     * equal search. * Note: New in version 1.1. * Requirements: May appear zero or one time.
+     * * Attributes: This is a clone of the link element in Atom, including
+     * href, hreflang, rel, and type attributes. * Restrictions: The rel
+     * attribute must equal search. * Note: New in version 1.1. * Requirements:
+     * May appear zero or one time.
      * 
      * @param link link to the open search spec.
      */
@@ -99,8 +111,10 @@ public interface OpenSearchResponse {
     /**
      * # link – a reference back to the OpenSearch Description file
      * 
-     * * Attributes: This is a clone of the link element in Atom, including href, hreflang, rel, and type attributes. * Restrictions: The rel attribute must
-     * equal search. * Note: New in version 1.1. * Requirements: May appear zero or one time.
+     * * Attributes: This is a clone of the link element in Atom, including
+     * href, hreflang, rel, and type attributes. * Restrictions: The rel
+     * attribute must equal search. * Note: New in version 1.1. * Requirements:
+     * May appear zero or one time.
      * 
      * @return link to the opensearch spec.
      */
@@ -108,26 +122,30 @@ public interface OpenSearchResponse {
 
     // list of OSResponseQuery interfaces
     /**
-     * <code>Query</code> – in an OpenSearch Response, can be used both to echo back the original query and to suggest new searches. Please see the <a
+     * <code>Query</code> – in an OpenSearch Response, can be used both to echo
+     * back the original query and to suggest new searches. Please see the <a
      * href="../query/">OpenSearch Query specification</a> for more information.
      * <ul>
      * <li>Note: <em>New in version 1.1.</em></li>
-     * <li>Requirements: May appear zero or more times. Note that the “Q” is capitalized.</li>
+     * <li>Requirements: May appear zero or more times. Note that the “Q” is
+     * capitalized.</li>
      * 
      * @param query List of OSQuery objects.
      */
-    public void setQueries(List query);
+    public void setQueries(List<OSQuery> query);
 
     /**
-     * <code>Query</code> – in an OpenSearch Response, can be used both to echo back the original query and to suggest new searches. Please see the <a
+     * <code>Query</code> – in an OpenSearch Response, can be used both to echo
+     * back the original query and to suggest new searches. Please see the <a
      * href="../query/">OpenSearch Query specification</a> for more information.
      * <ul>
      * <li>Note: <em>New in version 1.1.</em></li>
-     * <li>Requirements: May appear zero or more times. Note that the “Q” is capitalized.</li>
+     * <li>Requirements: May appear zero or more times. Note that the “Q” is
+     * capitalized.</li>
      * 
      * @return A list of OSQuery objects.
      */
-    public List getQueries();
+    public List<OSQuery> getQueries();
 
     // convenience method
     /**

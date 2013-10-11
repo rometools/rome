@@ -33,16 +33,19 @@ import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.ModuleParser;
 
 /**
- * @author Michael W. Nassif (enrouteinc@gmail.com) OpenSearch implementation of the ModuleParser class
+ * @author Michael W. Nassif (enrouteinc@gmail.com) OpenSearch implementation of
+ *         the ModuleParser class
  */
 public class OpenSearchModuleParser implements ModuleParser {
 
     private static final Namespace OS_NS = Namespace.getNamespace("opensearch", OpenSearchModule.URI);
 
+    @Override
     public String getNamespaceUri() {
         return OpenSearchModule.URI;
     }
 
+    @Override
     public Module parse(final Element dcRoot) {
 
         final URL baseURI = findBaseURI(dcRoot);
@@ -53,11 +56,9 @@ public class OpenSearchModuleParser implements ModuleParser {
         Element e = dcRoot.getChild("totalResults", OS_NS);
 
         if (e != null) {
-
-            foundSomething = true;
-
             try {
                 osm.setTotalResults(Integer.parseInt(e.getText()));
+                foundSomething = true;
             } catch (final NumberFormatException ex) {
                 // Ignore setting the field and post a warning
                 System.err.println("Warning: The element totalResults must be an integer value: " + ex.getMessage());
@@ -65,32 +66,36 @@ public class OpenSearchModuleParser implements ModuleParser {
         }
 
         e = dcRoot.getChild("itemsPerPage", OS_NS);
-
-        try {
-            osm.setItemsPerPage(Integer.parseInt(e.getText()));
-        } catch (final NumberFormatException ex) {
-            // Ignore setting the field and post a warning
-            System.err.println("Warning: The element itemsPerPage must be an integer value: " + ex.getMessage());
+        if (e != null) {
+            try {
+                osm.setItemsPerPage(Integer.parseInt(e.getText()));
+                foundSomething = true;
+            } catch (final NumberFormatException ex) {
+                // Ignore setting the field and post a warning
+                System.err.println("Warning: The element itemsPerPage must be an integer value: " + ex.getMessage());
+            }
         }
 
         e = dcRoot.getChild("startIndex", OS_NS);
-
-        try {
-            osm.setStartIndex(Integer.parseInt(e.getText()));
-        } catch (final NumberFormatException ex) {
-            // Ignore setting the field and post a warning
-            System.err.println("Warning: The element startIndex must be an integer value: " + ex.getMessage());
+        if (e != null) {
+            try {
+                osm.setStartIndex(Integer.parseInt(e.getText()));
+                foundSomething = true;
+            } catch (final NumberFormatException ex) {
+                // Ignore setting the field and post a warning
+                System.err.println("Warning: The element startIndex must be an integer value: " + ex.getMessage());
+            }
         }
 
-        final List queries = dcRoot.getChildren("Query", OS_NS);
+        final List<Element> queries = dcRoot.getChildren("Query", OS_NS);
 
         if (queries != null && queries.size() > 0) {
 
             // Create the OSQuery list
-            final List osqList = new LinkedList();
+            final List<OSQuery> osqList = new LinkedList<OSQuery>();
 
-            for (final Iterator iter = queries.iterator(); iter.hasNext();) {
-                e = (Element) iter.next();
+            for (final Iterator<Element> iter = queries.iterator(); iter.hasNext();) {
+                e = iter.next();
                 osqList.add(parseQuery(e));
             }
 
@@ -124,7 +129,8 @@ public class OpenSearchModuleParser implements ModuleParser {
 
         try {
 
-            // someones mistake should not cause the parser to fail, since these are only optional attributes
+            // someones mistake should not cause the parser to fail, since these
+            // are only optional attributes
 
             att = e.getAttributeValue("totalResults");
             if (att != null) {
@@ -147,19 +153,22 @@ public class OpenSearchModuleParser implements ModuleParser {
 
         final Link link = new Link();
 
-        String att = e.getAttributeValue("rel");// getAtomNamespace()); DONT KNOW WHY DOESN'T WORK
+        String att = e.getAttributeValue("rel");// getAtomNamespace()); DONT
+                                                // KNOW WHY DOESN'T WORK
 
         if (att != null) {
             link.setRel(att);
         }
 
-        att = e.getAttributeValue("type");// getAtomNamespace()); DONT KNOW WHY DOESN'T WORK
+        att = e.getAttributeValue("type");// getAtomNamespace()); DONT KNOW WHY
+                                          // DOESN'T WORK
 
         if (att != null) {
             link.setType(att);
         }
 
-        att = e.getAttributeValue("href");// getAtomNamespace()); DONT KNOW WHY DOESN'T WORK
+        att = e.getAttributeValue("href");// getAtomNamespace()); DONT KNOW WHY
+                                          // DOESN'T WORK
 
         if (att != null) {
 
@@ -170,13 +179,15 @@ public class OpenSearchModuleParser implements ModuleParser {
             }
         }
 
-        att = e.getAttributeValue("hreflang");// getAtomNamespace()); DONT KNOW WHY DOESN'T WORK
+        att = e.getAttributeValue("hreflang");// getAtomNamespace()); DONT KNOW
+                                              // WHY DOESN'T WORK
 
         if (att != null) {
             link.setHreflang(att);
         }
 
-        att = e.getAttributeValue("length");// getAtomNamespace()); DONT KNOW WHY DOESN'T WORK
+        att = e.getAttributeValue("length");// getAtomNamespace()); DONT KNOW
+                                            // WHY DOESN'T WORK
 
         return link;
     }
@@ -188,7 +199,9 @@ public class OpenSearchModuleParser implements ModuleParser {
         return true;
     }
 
-    /** Use xml:base attributes at feed and entry level to resolve relative links */
+    /**
+     * Use xml:base attributes at feed and entry level to resolve relative links
+     */
     private static String resolveURI(final URL baseURI, final Parent parent, String url) {
         url = url.equals(".") || url.equals("./") ? "" : url;
         if (isRelativeURI(url) && parent != null && parent instanceof Element) {
@@ -213,10 +226,10 @@ public class OpenSearchModuleParser implements ModuleParser {
     /** Use feed links and/or xml:base attribute to determine baseURI of feed */
     private static URL findBaseURI(final Element root) {
         URL baseURI = null;
-        final List linksList = root.getChildren("link", OS_NS);
+        final List<Element> linksList = root.getChildren("link", OS_NS);
         if (linksList != null) {
-            for (final Iterator links = linksList.iterator(); links.hasNext();) {
-                final Element link = (Element) links.next();
+            for (final Element element : linksList) {
+                final Element link = element;
                 if (!root.equals(link.getParent())) {
                     break;
                 }

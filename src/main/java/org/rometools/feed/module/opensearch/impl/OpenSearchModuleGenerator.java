@@ -17,7 +17,6 @@ package org.rometools.feed.module.opensearch.impl;
 
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -33,37 +32,44 @@ import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.ModuleGenerator;
 
 /**
- * @author Michael W. Nassif (enrouteinc@gmail.com) OpenSearch implementation of ModuleGenerator
+ * @author Michael W. Nassif (enrouteinc@gmail.com) OpenSearch implementation of
+ *         ModuleGenerator
  */
 public class OpenSearchModuleGenerator implements ModuleGenerator {
 
     private static final Namespace OS_NS = Namespace.getNamespace("opensearch", OpenSearchModule.URI);
 
+    @Override
     public String getNamespaceUri() {
         return OpenSearchModule.URI;
     }
 
-    private static final Set NAMESPACES;
+    private static final Set<Namespace> NAMESPACES;
 
     static {
-        final Set nss = new HashSet();
+        final Set<Namespace> nss = new HashSet<Namespace>();
         nss.add(OS_NS);
         NAMESPACES = Collections.unmodifiableSet(nss);
     }
 
     /**
-     * Returns a set with all the URIs (JDOM Namespace elements) this module generator uses.
+     * Returns a set with all the URIs (JDOM Namespace elements) this module
+     * generator uses.
      * <p/>
-     * It is used by the the feed generators to add their namespace definition in the root element of the generated document (forward-missing of Java 5.0
-     * Generics).
+     * It is used by the the feed generators to add their namespace definition
+     * in the root element of the generated document (forward-missing of Java
+     * 5.0 Generics).
      * <p/>
      * 
-     * @return a set with all the URIs (JDOM Namespace elements) this module generator uses.
+     * @return a set with all the URIs (JDOM Namespace elements) this module
+     *         generator uses.
      */
-    public Set getNamespaces() {
+    @Override
+    public Set<Namespace> getNamespaces() {
         return NAMESPACES;
     }
 
+    @Override
     public void generate(final Module module, final Element element) {
 
         final OpenSearchModule osm = (OpenSearchModule) module;
@@ -81,10 +87,9 @@ public class OpenSearchModuleGenerator implements ModuleGenerator {
 
         if (osm.getQueries() != null) {
 
-            final List queries = osm.getQueries();
+            final List<OSQuery> queries = osm.getQueries();
 
-            for (final Iterator iter = queries.iterator(); iter.hasNext();) {
-                final OSQuery query = (OSQuery) iter.next();
+            for (OSQuery query : queries) {
                 if (query != null) {
                     element.addContent(generateQueryElement(query));
                 }
