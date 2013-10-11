@@ -17,23 +17,21 @@
  */
 package com.sun.syndication.io.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import org.jdom2.Document;
+import org.jdom2.Element;
+
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.opml.Attribute;
 import com.sun.syndication.feed.opml.Opml;
 import com.sun.syndication.feed.opml.Outline;
 import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.WireFeedParser;
-import com.sun.syndication.io.impl.BaseWireFeedParser;
-import com.sun.syndication.io.impl.DateParser;
-
-import org.jdom2.Document;
-import org.jdom2.Element;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.StringTokenizer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * 
@@ -47,7 +45,7 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
         super("opml_1.0", null);
     }
 
-    public OPML10Parser(String type) {
+    public OPML10Parser(final String type) {
         super(type, null);
     }
 
@@ -61,8 +59,8 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
      * @return <b>true</b> if the parser know how to parser this feed, <b>false</b> otherwise.
      */
     @Override
-    public boolean isMyType(Document document) {
-        Element e = document.getRootElement();
+    public boolean isMyType(final Document document) {
+        final Element e = document.getRootElement();
 
         if (e.getName().equals("opml") && (e.getChild("head") == null || e.getChild("head").getChild("docs") == null)
                 && (e.getAttributeValue("version") == null || e.getAttributeValue("version").equals("1.0"))) {
@@ -83,12 +81,12 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
      * @throws FeedException thrown if a feed bean cannot be created out of the XML document (JDOM).
      */
     @Override
-    public WireFeed parse(Document document, boolean validate) throws IllegalArgumentException, FeedException {
-        Opml opml = new Opml();
+    public WireFeed parse(final Document document, final boolean validate) throws IllegalArgumentException, FeedException {
+        final Opml opml = new Opml();
         opml.setFeedType("opml_1.0");
 
-        Element root = document.getRootElement();
-        Element head = root.getChild("head");
+        final Element root = document.getRootElement();
+        final Element head = root.getChild("head");
 
         if (head != null) {
             opml.setTitle(head.getChildText("title"));
@@ -108,7 +106,7 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
 
         try {
             opml.setWindowBottom(readInteger(head.getChildText("windowBottom")));
-        } catch (NumberFormatException nfe) {
+        } catch (final NumberFormatException nfe) {
             LOG.log(Level.WARNING, "Unable to parse windowBottom", nfe);
 
             if (validate) {
@@ -118,13 +116,13 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
 
         try {
             opml.setWindowLeft(readInteger(head.getChildText("windowLeft")));
-        } catch (NumberFormatException nfe) {
+        } catch (final NumberFormatException nfe) {
             LOG.log(Level.WARNING, "Unable to parse windowLeft", nfe);
         }
 
         try {
             opml.setWindowRight(readInteger(head.getChildText("windowRight")));
-        } catch (NumberFormatException nfe) {
+        } catch (final NumberFormatException nfe) {
             LOG.log(Level.WARNING, "Unable to parse windowRight", nfe);
 
             if (validate) {
@@ -134,7 +132,7 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
 
         try {
             opml.setWindowLeft(readInteger(head.getChildText("windowLeft")));
-        } catch (NumberFormatException nfe) {
+        } catch (final NumberFormatException nfe) {
             LOG.log(Level.WARNING, "Unable to parse windowLeft", nfe);
 
             if (validate) {
@@ -144,7 +142,7 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
 
         try {
             opml.setWindowTop(readInteger(head.getChildText("windowTop")));
-        } catch (NumberFormatException nfe) {
+        } catch (final NumberFormatException nfe) {
             LOG.log(Level.WARNING, "Unable to parse windowTop", nfe);
 
             if (validate) {
@@ -154,7 +152,7 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
 
         try {
             opml.setExpansionState(readIntArray(head.getChildText("expansionState")));
-        } catch (NumberFormatException nfe) {
+        } catch (final NumberFormatException nfe) {
             LOG.log(Level.WARNING, "Unable to parse expansionState", nfe);
 
             if (validate) {
@@ -163,26 +161,26 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
         }
 
         opml.setOutlines(parseOutlines(root.getChild("body").getChildren("outline"), validate));
-        opml.setModules(this.parseFeedModules(root));
+        opml.setModules(parseFeedModules(root));
 
         return opml;
     }
 
-    protected Outline parseOutline(Element e, boolean validate) throws FeedException {
+    protected Outline parseOutline(final Element e, final boolean validate) throws FeedException {
         if (!e.getName().equals("outline")) {
             throw new RuntimeException("Not an outline element.");
         }
 
-        Outline outline = new Outline();
+        final Outline outline = new Outline();
         outline.setText(e.getAttributeValue("text"));
         outline.setType(e.getAttributeValue("type"));
         outline.setTitle(e.getAttributeValue("title"));
 
-        List jAttributes = e.getAttributes();
-        ArrayList attributes = new ArrayList();
+        final List jAttributes = e.getAttributes();
+        final ArrayList attributes = new ArrayList();
 
         for (int i = 0; i < jAttributes.size(); i++) {
-            org.jdom2.Attribute a = (org.jdom2.Attribute) jAttributes.get(i);
+            final org.jdom2.Attribute a = (org.jdom2.Attribute) jAttributes.get(i);
 
             if (!a.getName().equals("isBreakpoint") && !a.getName().equals("isComment") && !a.getName().equals("title") && !a.getName().equals("text")
                     && !a.getName().equals("type")) {
@@ -194,7 +192,7 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
 
         try {
             outline.setBreakpoint(readBoolean(e.getAttributeValue("isBreakpoint")));
-        } catch (Exception ex) {
+        } catch (final Exception ex) {
             LOG.log(Level.WARNING, "Unable to parse isBreakpoint value", ex);
 
             if (validate) {
@@ -204,7 +202,7 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
 
         try {
             outline.setComment(readBoolean(e.getAttributeValue("isComment")));
-        } catch (Exception ex) {
+        } catch (final Exception ex) {
             LOG.log(Level.WARNING, "Unable to parse isComment value", ex);
 
             if (validate) {
@@ -212,15 +210,15 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
             }
         }
 
-        List children = e.getChildren("outline");
-        outline.setModules(this.parseItemModules(e));
+        final List children = e.getChildren("outline");
+        outline.setModules(parseItemModules(e));
         outline.setChildren(parseOutlines(children, validate));
 
         return outline;
     }
 
-    protected List parseOutlines(List elements, boolean validate) throws FeedException {
-        ArrayList results = new ArrayList();
+    protected List parseOutlines(final List elements, final boolean validate) throws FeedException {
+        final ArrayList results = new ArrayList();
 
         for (int i = 0; i < elements.size(); i++) {
             results.add(parseOutline((Element) elements.get(i), validate));
@@ -229,7 +227,7 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
         return results;
     }
 
-    protected boolean readBoolean(String value) {
+    protected boolean readBoolean(final String value) {
         if (value == null) {
             return false;
         } else {
@@ -237,12 +235,12 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
         }
     }
 
-    protected int[] readIntArray(String value) {
+    protected int[] readIntArray(final String value) {
         if (value == null) {
             return null;
         } else {
-            StringTokenizer tok = new StringTokenizer(value, ",");
-            int[] result = new int[tok.countTokens()];
+            final StringTokenizer tok = new StringTokenizer(value, ",");
+            final int[] result = new int[tok.countTokens()];
             int count = 0;
 
             while (tok.hasMoreElements()) {
@@ -254,7 +252,7 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
         }
     }
 
-    protected Integer readInteger(String value) {
+    protected Integer readInteger(final String value) {
         if (value != null) {
             return new Integer(value);
         } else {

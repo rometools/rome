@@ -44,7 +44,7 @@ public class ConverterForOPML20 extends ConverterForOPML10 {
      * @param syndFeed the SyndFeedImpl that will contain the copied/converted values of the real feed.
      */
     @Override
-    public void copyInto(WireFeed feed, SyndFeed syndFeed) {
+    public void copyInto(final WireFeed feed, final SyndFeed syndFeed) {
         super.copyInto(feed, syndFeed);
     }
 
@@ -56,7 +56,7 @@ public class ConverterForOPML20 extends ConverterForOPML10 {
      * @return a real feed with copied/converted values of the SyndFeedImpl.
      */
     @Override
-    public WireFeed createRealFeed(SyndFeed syndFeed) {
+    public WireFeed createRealFeed(final SyndFeed syndFeed) {
         WireFeed retValue;
 
         retValue = super.createRealFeed(syndFeed);

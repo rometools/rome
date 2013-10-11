@@ -17,21 +17,19 @@
  */
 package com.sun.syndication.io.impl;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import org.jdom2.Document;
+import org.jdom2.Element;
+
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.opml.Attribute;
 import com.sun.syndication.feed.opml.Opml;
 import com.sun.syndication.feed.opml.Outline;
 import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.WireFeedGenerator;
-import com.sun.syndication.io.impl.BaseWireFeedGenerator;
-import com.sun.syndication.io.impl.DateParser;
-
-import org.jdom2.Document;
-import org.jdom2.Element;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * 
@@ -43,7 +41,7 @@ public class OPML10Generator extends BaseWireFeedGenerator implements WireFeedGe
         super("opml_1.0");
     }
 
-    public OPML10Generator(String type) {
+    public OPML10Generator(final String type) {
         super(type);
     }
 
@@ -57,23 +55,23 @@ public class OPML10Generator extends BaseWireFeedGenerator implements WireFeedGe
      * @throws FeedException thrown if the XML Document could not be created.
      */
     @Override
-    public Document generate(WireFeed feed) throws IllegalArgumentException, FeedException {
+    public Document generate(final WireFeed feed) throws IllegalArgumentException, FeedException {
         if (!(feed instanceof Opml)) {
             throw new IllegalArgumentException("Not an OPML file");
         }
 
-        Opml opml = (Opml) feed;
-        Document doc = new Document();
-        Element root = new Element("opml");
+        final Opml opml = (Opml) feed;
+        final Document doc = new Document();
+        final Element root = new Element("opml");
         doc.addContent(root);
 
-        Element head = generateHead(opml);
+        final Element head = generateHead(opml);
 
         if (head != null) {
             root.addContent(head);
         }
 
-        Element body = new Element("body");
+        final Element body = new Element("body");
         root.addContent(body);
         super.generateFeedModules(opml.getModules(), root);
         body.addContent(generateOutlines(opml.getOutlines()));
@@ -81,8 +79,8 @@ public class OPML10Generator extends BaseWireFeedGenerator implements WireFeedGe
         return doc;
     }
 
-    protected boolean addNotNullAttribute(Element target, String name, Object value) {
-        if ((target == null) || (name == null) || (value == null)) {
+    protected boolean addNotNullAttribute(final Element target, final String name, final Object value) {
+        if (target == null || name == null || value == null) {
             return false;
         }
 
@@ -91,20 +89,20 @@ public class OPML10Generator extends BaseWireFeedGenerator implements WireFeedGe
         return true;
     }
 
-    protected boolean addNotNullSimpleElement(Element target, String name, Object value) {
-        if ((target == null) || (name == null) || (value == null)) {
+    protected boolean addNotNullSimpleElement(final Element target, final String name, final Object value) {
+        if (target == null || name == null || value == null) {
             return false;
         }
 
-        Element e = new Element(name);
+        final Element e = new Element(name);
         e.addContent(value.toString());
         target.addContent(e);
 
         return true;
     }
 
-    protected Element generateHead(Opml opml) {
-        Element head = new Element("head");
+    protected Element generateHead(final Opml opml) {
+        final Element head = new Element("head");
         boolean hasHead = false;
 
         if (opml.getCreated() != null) {
@@ -133,8 +131,8 @@ public class OPML10Generator extends BaseWireFeedGenerator implements WireFeedGe
         }
     }
 
-    protected Element generateOutline(Outline outline) {
-        Element e = new Element("outline");
+    protected Element generateOutline(final Outline outline) {
+        final Element e = new Element("outline");
         addNotNullAttribute(e, "text", outline.getText());
         addNotNullAttribute(e, "type", outline.getType());
         addNotNullAttribute(e, "title", outline.getTitle());
@@ -147,10 +145,10 @@ public class OPML10Generator extends BaseWireFeedGenerator implements WireFeedGe
             addNotNullAttribute(e, "isComment", "true");
         }
 
-        List atts = Collections.synchronizedList(outline.getAttributes());
+        final List atts = Collections.synchronizedList(outline.getAttributes());
 
         for (int i = 0; i < atts.size(); i++) {
-            Attribute att = (Attribute) atts.get(i);
+            final Attribute att = (Attribute) atts.get(i);
             addNotNullAttribute(e, att.getName(), att.getValue());
         }
 
@@ -160,22 +158,22 @@ public class OPML10Generator extends BaseWireFeedGenerator implements WireFeedGe
         return e;
     }
 
-    protected List generateOutlines(List outlines) {
-        ArrayList elements = new ArrayList();
+    protected List generateOutlines(final List outlines) {
+        final ArrayList elements = new ArrayList();
 
-        for (int i = 0; (outlines != null) && (i < outlines.size()); i++) {
+        for (int i = 0; outlines != null && i < outlines.size(); i++) {
             elements.add(generateOutline((Outline) outlines.get(i)));
         }
 
         return elements;
     }
 
-    protected String intArrayToCsvString(int[] value) {
-        if ((value == null) || (value.length == 0)) {
+    protected String intArrayToCsvString(final int[] value) {
+        if (value == null || value.length == 0) {
             return null;
         }
 
-        StringBuffer sb = new StringBuffer();
+        final StringBuffer sb = new StringBuffer();
         sb.append(value[0]);
 
         for (int i = 1; i < value.length; i++) {

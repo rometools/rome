@@ -24,12 +24,13 @@ public class TreeCategoryImpl extends SyndCategoryImpl {
     }
 
     @Override
-    public boolean equals(Object o) {
-        SyndCategory c = (SyndCategory) o;
-        if (c.getTaxonomyUri() != null && c.getTaxonomyUri().equals(this.getTaxonomyUri()))
+    public boolean equals(final Object o) {
+        final SyndCategory c = (SyndCategory) o;
+        if (c.getTaxonomyUri() != null && c.getTaxonomyUri().equals(getTaxonomyUri())) {
             return true;
-        else
+        } else {
             return false;
+        }
     }
 
 }

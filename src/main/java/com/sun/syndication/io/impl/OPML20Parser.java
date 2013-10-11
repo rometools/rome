@@ -17,17 +17,16 @@
  */
 package com.sun.syndication.io.impl;
 
+import java.util.List;
+
+import org.jdom2.Document;
+import org.jdom2.Element;
+
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.opml.Attribute;
 import com.sun.syndication.feed.opml.Opml;
 import com.sun.syndication.feed.opml.Outline;
 import com.sun.syndication.io.FeedException;
-import com.sun.syndication.io.impl.DateParser;
-
-import org.jdom2.Document;
-import org.jdom2.Element;
-
-import java.util.List;
 
 /**
  * 
@@ -49,13 +48,12 @@ public class OPML20Parser extends OPML10Parser {
      * @return <b>true</b> if the parser know how to parser this feed, <b>false</b> otherwise.
      */
     @Override
-    public boolean isMyType(Document document) {
-        Element e = document.getRootElement();
+    public boolean isMyType(final Document document) {
+        final Element e = document.getRootElement();
 
         if (e.getName().equals("opml")
-                && (((e.getChild("head") != null) && (e.getChild("head").getChild("docs") != null))
-                        || ((e.getAttributeValue("version") != null) && e.getAttributeValue("version").equals("2.0")) || ((e.getChild("head") != null) && (e
-                        .getChild("head").getChild("ownerId") != null)))) {
+                && (e.getChild("head") != null && e.getChild("head").getChild("docs") != null || e.getAttributeValue("version") != null
+                        && e.getAttributeValue("version").equals("2.0") || e.getChild("head") != null && e.getChild("head").getChild("ownerId") != null)) {
             return true;
         }
 
@@ -73,11 +71,11 @@ public class OPML20Parser extends OPML10Parser {
      * @throws FeedException thrown if a feed bean cannot be created out of the XML document (JDOM).
      */
     @Override
-    public WireFeed parse(Document document, boolean validate) throws IllegalArgumentException, FeedException {
+    public WireFeed parse(final Document document, final boolean validate) throws IllegalArgumentException, FeedException {
         Opml opml;
         opml = (Opml) super.parse(document, validate);
 
-        Element head = document.getRootElement().getChild("head");
+        final Element head = document.getRootElement().getChild("head");
 
         if (head != null) {
             opml.setOwnerId(head.getChildTextTrim("ownerId"));
@@ -94,7 +92,7 @@ public class OPML20Parser extends OPML10Parser {
     }
 
     @Override
-    protected Outline parseOutline(Element e, boolean validate) throws FeedException {
+    protected Outline parseOutline(final Element e, final boolean validate) throws FeedException {
         Outline retValue;
 
         retValue = super.parseOutline(e, validate);
@@ -103,10 +101,10 @@ public class OPML20Parser extends OPML10Parser {
             retValue.setCreated(DateParser.parseRFC822(e.getAttributeValue("created")));
         }
 
-        List atts = retValue.getAttributes();
+        final List atts = retValue.getAttributes();
 
         for (int i = 0; i < atts.size(); i++) {
-            Attribute a = (Attribute) atts.get(i);
+            final Attribute a = (Attribute) atts.get(i);
 
             if (a.getName().equals("created")) {
                 retValue.getAttributes().remove(a);

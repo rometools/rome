@@ -17,11 +17,11 @@
  */
 package com.sun.syndication.feed.opml;
 
-import com.sun.syndication.feed.WireFeed;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import com.sun.syndication.feed.WireFeed;
 
 /**
  * This class represents the root of an OPML 1/2 feed and contains the elements that may appear in the &lt;head&gt; tag of the feed.
@@ -54,8 +54,8 @@ public class Opml extends WireFeed {
      * 
      * @param created date-time, indicating when the document was created.
      */
-    public void setCreated(Date created) {
-        this._created = created;
+    public void setCreated(final Date created) {
+        _created = created;
     }
 
     /**
@@ -73,8 +73,8 @@ public class Opml extends WireFeed {
      * 
      * @param docs http address of documentation for the format used
      */
-    public void setDocs(String docs) {
-        this._docs = docs;
+    public void setDocs(final String docs) {
+        _docs = docs;
     }
 
     /**
@@ -94,8 +94,8 @@ public class Opml extends WireFeed {
      * 
      * @param expansionState int array containing expanded elements.
      */
-    public void setExpansionState(int[] expansionState) {
-        this._expansionState = expansionState;
+    public void setExpansionState(final int[] expansionState) {
+        _expansionState = expansionState;
     }
 
     /**
@@ -114,8 +114,8 @@ public class Opml extends WireFeed {
      * 
      * @param modified date-time, indicating when the document was last modified.
      */
-    public void setModified(Date modified) {
-        this._modified = modified;
+    public void setModified(final Date modified) {
+        _modified = modified;
     }
 
     /**
@@ -132,8 +132,8 @@ public class Opml extends WireFeed {
      * 
      * @param outlines Root level Outline object that should appear in the &lt;body&gt;
      */
-    public void setOutlines(List outlines) {
-        this._outlines = outlines;
+    public void setOutlines(final List outlines) {
+        _outlines = outlines;
     }
 
     /**
@@ -154,8 +154,8 @@ public class Opml extends WireFeed {
      * 
      * @param ownerEmail the email address of the owner of the document.
      */
-    public void setOwnerEmail(String ownerEmail) {
-        this._ownerEmail = ownerEmail;
+    public void setOwnerEmail(final String ownerEmail) {
+        _ownerEmail = ownerEmail;
     }
 
     /**
@@ -174,8 +174,8 @@ public class Opml extends WireFeed {
      * @param ownerId http address of a web page that contains <strike>an HTML</strike> a form that allows a human reader to communicate with the author of the
      *            document via email or other means.
      */
-    public void setOwnerId(String ownerId) {
-        this._ownerId = ownerId;
+    public void setOwnerId(final String ownerId) {
+        _ownerId = ownerId;
     }
 
     /**
@@ -194,8 +194,8 @@ public class Opml extends WireFeed {
      * 
      * @param ownerName the owner of the document.
      */
-    public void setOwnerName(String ownerName) {
-        this._ownerName = ownerName;
+    public void setOwnerName(final String ownerName) {
+        _ownerName = ownerName;
     }
 
     /**
@@ -212,8 +212,8 @@ public class Opml extends WireFeed {
      * 
      * @param title title of the document.
      */
-    public void setTitle(String title) {
-        this._title = title;
+    public void setTitle(final String title) {
+        _title = title;
     }
 
     /**
@@ -231,8 +231,8 @@ public class Opml extends WireFeed {
      * 
      * @param verticalScrollState which line of the outline is displayed on the top line of the window.
      */
-    public void setVerticalScrollState(Integer verticalScrollState) {
-        this._verticalScrollState = verticalScrollState;
+    public void setVerticalScrollState(final Integer verticalScrollState) {
+        _verticalScrollState = verticalScrollState;
     }
 
     /**
@@ -250,8 +250,8 @@ public class Opml extends WireFeed {
      * 
      * @param windowBottom the pixel location of the bottom edge of the window.
      */
-    public void setWindowBottom(Integer windowBottom) {
-        this._windowBottom = windowBottom;
+    public void setWindowBottom(final Integer windowBottom) {
+        _windowBottom = windowBottom;
     }
 
     /**
@@ -268,8 +268,8 @@ public class Opml extends WireFeed {
      * 
      * @param windowLeft the pixel location of the left edge of the window.
      */
-    public void setWindowLeft(Integer windowLeft) {
-        this._windowLeft = windowLeft;
+    public void setWindowLeft(final Integer windowLeft) {
+        _windowLeft = windowLeft;
     }
 
     /**
@@ -286,8 +286,8 @@ public class Opml extends WireFeed {
      * 
      * @param windowRight the pixel location of the right edge of the window.
      */
-    public void setWindowRight(Integer windowRight) {
-        this._windowRight = windowRight;
+    public void setWindowRight(final Integer windowRight) {
+        _windowRight = windowRight;
     }
 
     /**
@@ -304,8 +304,8 @@ public class Opml extends WireFeed {
      * 
      * @param windowTop the pixel location of the top edge of the window.
      */
-    public void setWindowTop(Integer windowTop) {
-        this._windowTop = windowTop;
+    public void setWindowTop(final Integer windowTop) {
+        _windowTop = windowTop;
     }
 
     /**

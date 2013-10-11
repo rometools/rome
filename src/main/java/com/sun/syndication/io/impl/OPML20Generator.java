@@ -8,14 +8,13 @@
  */
 package com.sun.syndication.io.impl;
 
+import org.jdom2.Document;
+import org.jdom2.Element;
+
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.opml.Opml;
 import com.sun.syndication.feed.opml.Outline;
 import com.sun.syndication.io.FeedException;
-import com.sun.syndication.io.impl.DateParser;
-
-import org.jdom2.Document;
-import org.jdom2.Element;
 
 /**
  * 
@@ -49,7 +48,7 @@ public class OPML20Generator extends OPML10Generator {
      * @throws FeedException thrown if the XML Document could not be created.
      */
     @Override
-    public Document generate(WireFeed feed) throws IllegalArgumentException, FeedException {
+    public Document generate(final WireFeed feed) throws IllegalArgumentException, FeedException {
         Document retValue;
 
         retValue = super.generate(feed);
@@ -59,19 +58,19 @@ public class OPML20Generator extends OPML10Generator {
     }
 
     @Override
-    protected Element generateHead(Opml opml) {
+    protected Element generateHead(final Opml opml) {
         Element retValue;
 
         retValue = super.generateHead(opml);
 
-        Element docs = new Element("docs", opml.getDocs());
+        final Element docs = new Element("docs", opml.getDocs());
         retValue.addContent(docs);
 
         return retValue;
     }
 
     @Override
-    protected Element generateOutline(Outline outline) {
+    protected Element generateOutline(final Outline outline) {
         Element retValue;
 
         retValue = super.generateOutline(outline);

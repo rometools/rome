@@ -13,11 +13,11 @@ package com.sun.syndication;
 public abstract class SyndFeedTest extends FeedTest {
     private String _prefix = null;
 
-    protected SyndFeedTest(String feedType) {
+    protected SyndFeedTest(final String feedType) {
         this(feedType, feedType + ".xml");
     }
 
-    protected SyndFeedTest(String feedType, String feedFileName) {
+    protected SyndFeedTest(final String feedType, final String feedFileName) {
         super(feedFileName);
         _prefix = feedType;
     }
@@ -26,7 +26,7 @@ public abstract class SyndFeedTest extends FeedTest {
         return _prefix;
     }
 
-    protected void assertProperty(String property, String value) {
+    protected void assertProperty(final String property, final String value) {
         assertEquals(property, getPrefix() + "." + value);
     }
 

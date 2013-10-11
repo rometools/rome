@@ -55,10 +55,10 @@ public class ConverterForOPML10 implements Converter {
         super();
     }
 
-    protected void addOwner(Opml opml, SyndFeed syndFeed) {
-        if ((opml.getOwnerEmail() != null) || (opml.getOwnerName() != null)) {
-            List authors = new ArrayList();
-            SyndPerson person = new SyndPersonImpl();
+    protected void addOwner(final Opml opml, final SyndFeed syndFeed) {
+        if (opml.getOwnerEmail() != null || opml.getOwnerName() != null) {
+            final List authors = new ArrayList();
+            final SyndPerson person = new SyndPersonImpl();
             person.setEmail(opml.getOwnerEmail());
             person.setName(opml.getOwnerName());
             authors.add(person);
@@ -76,38 +76,38 @@ public class ConverterForOPML10 implements Converter {
      * @param syndFeed the SyndFeedImpl that will contain the copied/converted values of the real feed.
      */
     @Override
-    public void copyInto(WireFeed feed, SyndFeed syndFeed) {
-        Opml opml = (Opml) feed;
+    public void copyInto(final WireFeed feed, final SyndFeed syndFeed) {
+        final Opml opml = (Opml) feed;
         syndFeed.setTitle(opml.getTitle());
         addOwner(opml, syndFeed);
-        syndFeed.setPublishedDate((opml.getModified() != null) ? opml.getModified() : opml.getCreated());
+        syndFeed.setPublishedDate(opml.getModified() != null ? opml.getModified() : opml.getCreated());
         syndFeed.setFeedType(opml.getFeedType());
         syndFeed.setModules(opml.getModules());
-        syndFeed.setFeedType(this.getType());
+        syndFeed.setFeedType(getType());
 
-        ArrayList entries = new ArrayList();
+        final ArrayList entries = new ArrayList();
         createEntries(new TreeContext(), syndFeed.getEntries(), opml.getOutlines());
     }
 
-    protected void createEntries(TreeContext context, List allEntries, List outlines) {
-        List so = Collections.synchronizedList(outlines);
+    protected void createEntries(final TreeContext context, final List allEntries, final List outlines) {
+        final List so = Collections.synchronizedList(outlines);
 
         for (int i = 0; i < so.size(); i++) {
             createEntry(context, allEntries, (Outline) so.get(i));
         }
     }
 
-    protected SyndEntry createEntry(TreeContext context, List allEntries, Outline outline) {
-        SyndEntry entry = new SyndEntryImpl();
+    protected SyndEntry createEntry(final TreeContext context, final List allEntries, final Outline outline) {
+        final SyndEntry entry = new SyndEntryImpl();
 
-        if ((outline.getType() != null) && outline.getType().equals("rss")) {
-            entry.setLink((outline.getHtmlUrl() != null) ? outline.getHtmlUrl() : outline.getXmlUrl());
-        } else if ((outline.getType() != null) && outline.getType().equals("link")) {
+        if (outline.getType() != null && outline.getType().equals("rss")) {
+            entry.setLink(outline.getHtmlUrl() != null ? outline.getHtmlUrl() : outline.getXmlUrl());
+        } else if (outline.getType() != null && outline.getType().equals("link")) {
             entry.setLink(outline.getUrl());
         }
 
         if (outline.getHtmlUrl() != null) {
-            SyndLink link = new SyndLinkImpl();
+            final SyndLink link = new SyndLinkImpl();
             link.setRel("alternate");
             link.setType("text/html");
             link.setHref(outline.getHtmlUrl());
@@ -115,8 +115,8 @@ public class ConverterForOPML10 implements Converter {
             entry.setLink(outline.getHtmlUrl());
         }
 
-        if ((outline.getXmlUrl() != null) && (outline.getType() != null) && outline.getType().equalsIgnoreCase("rss")) {
-            SyndLink link = new SyndLinkImpl();
+        if (outline.getXmlUrl() != null && outline.getType() != null && outline.getType().equalsIgnoreCase("rss")) {
+            final SyndLink link = new SyndLinkImpl();
             link.setRel("alternate");
             link.setType("application/rss+xml");
             link.setHref(outline.getXmlUrl());
@@ -127,8 +127,8 @@ public class ConverterForOPML10 implements Converter {
             }
         }
 
-        if ((outline.getXmlUrl() != null) && (outline.getType() != null) && outline.getType().equalsIgnoreCase("atom")) {
-            SyndLink link = new SyndLinkImpl();
+        if (outline.getXmlUrl() != null && outline.getType() != null && outline.getType().equalsIgnoreCase("atom")) {
+            final SyndLink link = new SyndLinkImpl();
             link.setRel("alternate");
             link.setType("application/atom+xml");
             link.setHref(outline.getXmlUrl());
@@ -139,40 +139,40 @@ public class ConverterForOPML10 implements Converter {
             }
         }
 
-        if ((outline.getType() != null) && outline.getType().equals("rss")) {
+        if (outline.getType() != null && outline.getType().equals("rss")) {
             entry.setTitle(outline.getTitle());
         } else {
             entry.setTitle(outline.getText());
         }
 
-        if ((outline.getText() == null) && (entry.getTitle() != null)) {
-            SyndContent c = new SyndContentImpl();
+        if (outline.getText() == null && entry.getTitle() != null) {
+            final SyndContent c = new SyndContentImpl();
             c.setValue(outline.getText());
             entry.setDescription(c);
         }
 
         entry.setPublishedDate(outline.getCreated());
 
-        String nodeName = "node." + outline.hashCode();
+        final String nodeName = "node." + outline.hashCode();
 
-        SyndCategory cat = new TreeCategoryImpl();
+        final SyndCategory cat = new TreeCategoryImpl();
         cat.setTaxonomyUri(URI_TREE);
         cat.setName(nodeName);
         entry.getCategories().add(cat);
 
         if (context.size() > 0) {
-            Integer parent = (Integer) context.peek();
-            SyndCategory pcat = new TreeCategoryImpl();
+            final Integer parent = (Integer) context.peek();
+            final SyndCategory pcat = new TreeCategoryImpl();
             pcat.setTaxonomyUri(URI_TREE);
             pcat.setName("parent." + parent);
             entry.getCategories().add(pcat);
         }
 
-        List attributes = Collections.synchronizedList(outline.getAttributes());
+        final List attributes = Collections.synchronizedList(outline.getAttributes());
 
         for (int i = 0; i < attributes.size(); i++) {
-            Attribute a = (Attribute) attributes.get(i);
-            SyndCategory acat = new SyndCategoryImpl();
+            final Attribute a = (Attribute) attributes.get(i);
+            final SyndCategory acat = new SyndCategoryImpl();
             acat.setName(a.getValue());
             acat.setTaxonomyUri(URI_ATTRIBUTE + a.getName());
             entry.getCategories().add(acat);
@@ -196,33 +196,33 @@ public class ConverterForOPML10 implements Converter {
      * 
      */
     @Override
-    public WireFeed createRealFeed(SyndFeed syndFeed) {
-        List entries = Collections.synchronizedList(syndFeed.getEntries());
+    public WireFeed createRealFeed(final SyndFeed syndFeed) {
+        final List entries = Collections.synchronizedList(syndFeed.getEntries());
 
-        HashMap entriesByNode = new HashMap();
-        ArrayList doAfterPass = new ArrayList(); // this will hold entries that we can't parent the first time.
-        ArrayList root = new ArrayList(); // this holds root level outlines;
+        final HashMap entriesByNode = new HashMap();
+        final ArrayList doAfterPass = new ArrayList(); // this will hold entries that we can't parent the first time.
+        final ArrayList root = new ArrayList(); // this holds root level outlines;
 
         for (int i = 0; i < entries.size(); i++) {
-            SyndEntry entry = (SyndEntry) entries.get(i);
-            Outline o = new Outline();
+            final SyndEntry entry = (SyndEntry) entries.get(i);
+            final Outline o = new Outline();
 
-            List cats = Collections.synchronizedList(entry.getCategories());
+            final List cats = Collections.synchronizedList(entry.getCategories());
             boolean parentFound = false;
-            StringBuffer category = new StringBuffer();
+            final StringBuffer category = new StringBuffer();
 
             for (int j = 0; j < cats.size(); j++) {
-                SyndCategory cat = (SyndCategory) cats.get(j);
+                final SyndCategory cat = (SyndCategory) cats.get(j);
 
-                if ((cat.getTaxonomyUri() != null) && cat.getTaxonomyUri().equals(URI_TREE)) {
-                    String nodeVal = cat.getName().substring(cat.getName().lastIndexOf("."), cat.getName().length());
+                if (cat.getTaxonomyUri() != null && cat.getTaxonomyUri().equals(URI_TREE)) {
+                    final String nodeVal = cat.getName().substring(cat.getName().lastIndexOf("."), cat.getName().length());
 
                     if (cat.getName().startsWith("node.")) {
                         entriesByNode.put(nodeVal, o);
                     } else if (cat.getName().startsWith("parent.")) {
                         parentFound = true;
 
-                        Outline parent = (Outline) entriesByNode.get(nodeVal);
+                        final Outline parent = (Outline) entriesByNode.get(nodeVal);
 
                         if (parent != null) {
                             parent.getChildren().add(o);
@@ -230,8 +230,8 @@ public class ConverterForOPML10 implements Converter {
                             doAfterPass.add(new OutlineHolder(o, nodeVal));
                         }
                     }
-                } else if ((cat.getTaxonomyUri() != null) && cat.getTaxonomyUri().startsWith(URI_ATTRIBUTE)) {
-                    String name = cat.getTaxonomyUri().substring(cat.getTaxonomyUri().indexOf("#") + 1, cat.getTaxonomyUri().length());
+                } else if (cat.getTaxonomyUri() != null && cat.getTaxonomyUri().startsWith(URI_ATTRIBUTE)) {
+                    final String name = cat.getTaxonomyUri().substring(cat.getTaxonomyUri().indexOf("#") + 1, cat.getTaxonomyUri().length());
                     o.getAttributes().add(new Attribute(name, cat.getName()));
                 } else {
                     if (category.length() > 0) {
@@ -250,21 +250,21 @@ public class ConverterForOPML10 implements Converter {
                 o.getAttributes().add(new Attribute("category", category.toString()));
             }
 
-            List links = Collections.synchronizedList(entry.getLinks());
-            String entryLink = entry.getLink();
+            final List links = Collections.synchronizedList(entry.getLinks());
+            final String entryLink = entry.getLink();
 
             for (int j = 0; j < links.size(); j++) {
-                SyndLink link = (SyndLink) links.get(j);
+                final SyndLink link = (SyndLink) links.get(j);
 
                 // if(link.getHref().equals(entryLink)) {
-                if (((link.getType() != null) && (link.getRel() != null) && link.getRel().equals("alternate"))
+                if (link.getType() != null && link.getRel() != null && link.getRel().equals("alternate")
                         && (link.getType().equals("application/rss+xml") || link.getType().equals("application/atom+xml"))) {
                     o.setType("rss");
 
                     if (o.getXmlUrl() == null) {
                         o.getAttributes().add(new Attribute("xmlUrl", link.getHref()));
                     }
-                } else if ((link.getType() != null) && (link.getType().equals("text/html"))) {
+                } else if (link.getType() != null && link.getType().equals("text/html")) {
                     if (o.getHtmlUrl() == null) {
                         o.getAttributes().add(new Attribute("htmlUrl", link.getHref()));
                     }
@@ -275,22 +275,22 @@ public class ConverterForOPML10 implements Converter {
                 // }
             }
 
-            if ((o.getType() == null) || o.getType().equals("link")) {
+            if (o.getType() == null || o.getType().equals("link")) {
                 o.setText(entry.getTitle());
 
             } else {
                 o.setTitle(entry.getTitle());
             }
 
-            if ((o.getText() == null) && (entry.getDescription() != null)) {
+            if (o.getText() == null && entry.getDescription() != null) {
                 o.setText(entry.getDescription().getValue());
             }
         }
 
         // Do back and parenting for things we missed.
         for (int i = 0; i < doAfterPass.size(); i++) {
-            OutlineHolder o = (OutlineHolder) doAfterPass.get(i);
-            Outline parent = (Outline) entriesByNode.get(o.parent);
+            final OutlineHolder o = (OutlineHolder) doAfterPass.get(i);
+            final Outline parent = (Outline) entriesByNode.get(o.parent);
 
             if (parent == null) {
                 root.add(o.outline);
@@ -300,17 +300,17 @@ public class ConverterForOPML10 implements Converter {
             }
         }
 
-        Opml opml = new Opml();
-        opml.setFeedType(this.getType());
+        final Opml opml = new Opml();
+        opml.setFeedType(getType());
         opml.setCreated(syndFeed.getPublishedDate());
         opml.setTitle(syndFeed.getTitle());
 
-        List authors = Collections.synchronizedList(syndFeed.getAuthors());
+        final List authors = Collections.synchronizedList(syndFeed.getAuthors());
 
         for (int i = 0; i < authors.size(); i++) {
-            SyndPerson p = (SyndPerson) authors.get(i);
+            final SyndPerson p = (SyndPerson) authors.get(i);
 
-            if ((syndFeed.getAuthor() == null) || syndFeed.getAuthor().equals(p.getName())) {
+            if (syndFeed.getAuthor() == null || syndFeed.getAuthor().equals(p.getName())) {
                 opml.setOwnerName(p.getName());
                 opml.setOwnerEmail(p.getEmail());
                 opml.setOwnerId(p.getUri());
@@ -339,7 +339,7 @@ public class ConverterForOPML10 implements Converter {
         Outline outline;
         String parent;
 
-        public OutlineHolder(Outline outline, String parent) {
+        public OutlineHolder(final Outline outline, final String parent) {
             this.outline = outline;
             this.parent = parent;
         }

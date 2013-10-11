@@ -17,10 +17,10 @@
  */
 package com.sun.syndication.feed.opml;
 
+import java.io.Serializable;
+
 import com.sun.syndication.feed.impl.EqualsBean;
 import com.sun.syndication.feed.impl.ToStringBean;
-
-import java.io.Serializable;
 
 /**
  * This is a simple name-value pair attribute for outlines.
@@ -42,13 +42,12 @@ public class Attribute implements Cloneable, Serializable {
      * @param name name of the attribute.
      * @param value value of the attribute.
      */
-    public Attribute(String name, String value) {
-        if ((name == null) || (value == null)) {
+    public Attribute(final String name, final String value) {
+        if (name == null || value == null) {
             throw new NullPointerException("Name and value are required.");
         }
-
-        this.setName(name);
-        this.setValue(value);
+        setName(name);
+        setValue(value);
     }
 
     /**
@@ -56,8 +55,8 @@ public class Attribute implements Cloneable, Serializable {
      * 
      * @param name name of the attribute.
      */
-    public void setName(String name) {
-        this._name = name;
+    public void setName(final String name) {
+        _name = name;
     }
 
     /**
@@ -74,8 +73,8 @@ public class Attribute implements Cloneable, Serializable {
      * 
      * @param value value of the attribute.
      */
-    public void setValue(String value) {
-        this._value = value;
+    public void setValue(final String value) {
+        _value = value;
     }
 
     /**
@@ -89,27 +88,24 @@ public class Attribute implements Cloneable, Serializable {
 
     @Override
     public Object clone() {
-        return new Attribute(this._name, this._value);
+        return new Attribute(_name, _value);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        EqualsBean eBean = new EqualsBean(Attribute.class, this);
-
+    public boolean equals(final Object obj) {
+        final EqualsBean eBean = new EqualsBean(Attribute.class, this);
         return eBean.beanEquals(obj);
     }
 
     @Override
     public int hashCode() {
-        EqualsBean equals = new EqualsBean(Attribute.class, this);
-
+        final EqualsBean equals = new EqualsBean(Attribute.class, this);
         return equals.beanHashCode();
     }
 
     @Override
     public String toString() {
-        ToStringBean tsBean = new ToStringBean(Attribute.class, this);
-
+        final ToStringBean tsBean = new ToStringBean(Attribute.class, this);
         return tsBean.toString();
     }
 }
