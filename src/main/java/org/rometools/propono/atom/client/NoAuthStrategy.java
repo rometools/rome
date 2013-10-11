@@ -15,16 +15,17 @@
  */
 package org.rometools.propono.atom.client;
 
-import org.rometools.propono.utils.ProponoException;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpMethodBase;
+import org.rometools.propono.utils.ProponoException;
 
 /**
  * No authentication
  */
 public class NoAuthStrategy implements AuthStrategy {
 
-    public void addAuthentication(HttpClient httpClient, HttpMethodBase method) throws ProponoException {
+    @Override
+    public void addAuthentication(final HttpClient httpClient, final HttpMethodBase method) throws ProponoException {
         // no-op
     }
 

@@ -12,181 +12,200 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */ 
+ */
 package org.rometools.propono.blogclient;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/** 
+/**
  * Base implementation of a blog entry.
  */
 public abstract class BaseBlogEntry implements BlogEntry {
-    protected String  id = null;
-    protected Person  author = null;
+    protected String id = null;
+    protected Person author = null;
     protected Content content = null;
-    protected String  title = null;
-    protected String  permalink = null;
-    protected String  summary = null;
-    protected Date    modificationDate = null;
-    protected Date    publicationDate = null;
-    protected List    categories = new ArrayList();
+    protected String title = null;
+    protected String permalink = null;
+    protected String summary = null;
+    protected Date modificationDate = null;
+    protected Date publicationDate = null;
+    protected List categories = new ArrayList();
     protected boolean draft = false;
-    private Blog      blog = null;
-    
+    private Blog blog = null;
+
     /**
      * Contruct abstract blog entry.
      */
-    public BaseBlogEntry(Blog blog) {
+    public BaseBlogEntry(final Blog blog) {
         this.blog = blog;
-    }   
+    }
 
-    
     /**
      * {@inheritDoc}
      */
+    @Override
     public String getId() {
         return id;
-    }    
-    
+    }
+
     /**
      * {@inheritDoc}
      */
+    @Override
     public String getPermalink() {
         return permalink;
-    }      
-    
-    void setPermalink(String permalink) {
+    }
+
+    void setPermalink(final String permalink) {
         this.permalink = permalink;
-    }      
-    
+    }
+
     /**
      * {@inheritDoc}
      */
+    @Override
     public Person getAuthor() {
         return author;
     }
-    
+
     /**
      * {@inheritDoc}
      */
-    public void setAuthor(Person author) {
+    @Override
+    public void setAuthor(final Person author) {
         this.author = author;
     }
-    
+
     /**
      * {@inheritDoc}
      */
+    @Override
     public Content getContent() {
         return content;
     }
-    
+
     /**
      * {@inheritDoc}
      */
-    public void setContent(Content content) {
+    @Override
+    public void setContent(final Content content) {
         this.content = content;
-    }    
-    
+    }
+
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean getDraft() {
         return draft;
     }
-    
+
     /**
      * {@inheritDoc}
      */
-    public void setDraft(boolean draft) {
+    @Override
+    public void setDraft(final boolean draft) {
         this.draft = draft;
-    }    
-    
+    }
+
     /**
      * {@inheritDoc}
      */
+    @Override
     public Date getPublicationDate() {
         return publicationDate;
-    }    
-    
-    /**
-     * {@inheritDoc}
-     */
-    public void setPublicationDate(Date pubDate) {
-        this.publicationDate = pubDate;
     }
-    
+
     /**
      * {@inheritDoc}
      */
+    @Override
+    public void setPublicationDate(final Date pubDate) {
+        publicationDate = pubDate;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public Date getModificationDate() {
         return modificationDate;
     }
-    
+
     /**
      * {@inheritDoc}
      */
-    public void setModificationDate(Date date) {
+    @Override
+    public void setModificationDate(final Date date) {
         modificationDate = date;
-    }        
-    
+    }
+
     /**
      * {@inheritDoc}
      */
+    @Override
     public String getTitle() {
         return title;
-    }    
-    
+    }
+
     /**
      * {@inheritDoc}
      */
-    public void setTitle(String title) {
+    @Override
+    public void setTitle(final String title) {
         this.title = title;
-    }   
-    
+    }
+
     /**
      * {@inheritDoc}
      */
+    @Override
     public String getSummary() {
         return summary;
-    }    
-    
+    }
+
     /**
      * {@inheritDoc}
      */
-    public void setSummary(String summary) {
+    @Override
+    public void setSummary(final String summary) {
         this.summary = summary;
-    }    
-    
+    }
+
     /**
      * {@inheritDoc}
      */
+    @Override
     public List getCategories() {
         return categories;
-    }   
-    
+    }
+
     /**
      * {@inheritDoc}
      */
-    public void setCategories(List categories) {
+    @Override
+    public void setCategories(final List categories) {
         this.categories = categories;
     }
-    
+
     /**
      * {@inheritDoc}
      */
+    @Override
     public Blog getBlog() {
         return blog;
     }
-    
-    void setBlog(Blog blog) {
+
+    void setBlog(final Blog blog) {
         this.blog = blog;
     }
-    
+
     /**
-     * String representation, returns id. 
+     * String representation, returns id.
      */
+    @Override
     public String toString() {
         return id;
     }

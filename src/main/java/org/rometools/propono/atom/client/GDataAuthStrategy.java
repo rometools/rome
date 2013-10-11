@@ -15,20 +15,19 @@
  */
 package org.rometools.propono.atom.client;
 
-import org.rometools.propono.utils.ProponoException;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpMethodBase;
 import org.apache.commons.httpclient.NameValuePair;
 import org.apache.commons.httpclient.methods.PostMethod;
-
+import org.rometools.propono.utils.ProponoException;
 
 public class GDataAuthStrategy implements AuthStrategy {
-    private String email;
-    private String password;
-    private String service;
+    private final String email;
+    private final String password;
+    private final String service;
     private String authToken;
 
-    public GDataAuthStrategy(String email, String password, String service) throws ProponoException {
+    public GDataAuthStrategy(final String email, final String password, final String service) throws ProponoException {
         this.email = email;
         this.password = password;
         this.service = service;
@@ -37,30 +36,27 @@ public class GDataAuthStrategy implements AuthStrategy {
 
     private void init() throws ProponoException {
         try {
-            HttpClient httpClient = new HttpClient();
-            PostMethod method = new PostMethod("https://www.google.com/accounts/ClientLogin");
-            NameValuePair[] data = {
-              new NameValuePair("Email", email),
-              new NameValuePair("Passwd", password),
-              new NameValuePair("accountType", "GOOGLE"),
-              new NameValuePair("service", service),
-              new NameValuePair("source", "ROME Propono Atompub Client")
-            };
+            final HttpClient httpClient = new HttpClient();
+            final PostMethod method = new PostMethod("https://www.google.com/accounts/ClientLogin");
+            final NameValuePair[] data = { new NameValuePair("Email", email), new NameValuePair("Passwd", password),
+                    new NameValuePair("accountType", "GOOGLE"), new NameValuePair("service", service),
+                    new NameValuePair("source", "ROME Propono Atompub Client") };
             method.setRequestBody(data);
             httpClient.executeMethod(method);
 
-            String responseBody = method.getResponseBodyAsString();
-            int authIndex = responseBody.indexOf("Auth=");
+            final String responseBody = method.getResponseBodyAsString();
+            final int authIndex = responseBody.indexOf("Auth=");
 
             authToken = "GoogleLogin auth=" + responseBody.trim().substring(authIndex + 5);
 
-        } catch (Throwable t) {
+        } catch (final Throwable t) {
             t.printStackTrace();
             throw new ProponoException("ERROR obtaining Google authentication string", t);
         }
     }
 
-    public void addAuthentication(HttpClient httpClient, HttpMethodBase method) throws ProponoException {
+    @Override
+    public void addAuthentication(final HttpClient httpClient, final HttpMethodBase method) throws ProponoException {
         httpClient.getParams().setAuthenticationPreemptive(true);
         method.setRequestHeader("Authorization", authToken);
     }

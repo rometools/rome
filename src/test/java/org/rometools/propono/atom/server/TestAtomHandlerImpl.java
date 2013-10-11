@@ -16,16 +16,18 @@
  */
 package org.rometools.propono.atom.server;
 
-import org.rometools.propono.atom.server.impl.FileBasedAtomHandler;
 import javax.servlet.http.HttpServletRequest;
 
+import org.rometools.propono.atom.server.impl.FileBasedAtomHandler;
+
 public class TestAtomHandlerImpl extends FileBasedAtomHandler {
-       
-    public TestAtomHandlerImpl(HttpServletRequest req, String uploaddir) {
+
+    public TestAtomHandlerImpl(final HttpServletRequest req, final String uploaddir) {
         super(req, uploaddir);
     }
-    public boolean validateUser( String loginId, String password ) {        
-        return AtomClientServerTest.USERNAME.equals(loginId) 
-            && AtomClientServerTest.PASSWORD.equals(password); 
-    }    
+
+    @Override
+    public boolean validateUser(final String loginId, final String password) {
+        return AtomClientServerTest.USERNAME.equals(loginId) && AtomClientServerTest.PASSWORD.equals(password);
+    }
 }

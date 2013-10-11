@@ -12,24 +12,22 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */ 
+ */
 package org.rometools.propono.blogclient.metaweblog;
 
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.HashMap;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import org.rometools.propono.blogclient.BlogConnection;
-import org.rometools.propono.blogclient.Blog;
-import org.rometools.propono.blogclient.BlogClientException;
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
+import org.rometools.propono.blogclient.Blog;
+import org.rometools.propono.blogclient.BlogClientException;
+import org.rometools.propono.blogclient.BlogConnection;
 
 /**
  * BlogClient implementation that uses a mix of Blogger and MetaWeblog API methods.
@@ -40,66 +38,66 @@ public class MetaWeblogConnection implements BlogConnection {
     private String password = null;
     private String appkey = "null";
     private Map blogs = null;
-    
+
     private XmlRpcClient xmlRpcClient = null;
-        
-    public MetaWeblogConnection(String url, String userName, String password) 
-            throws BlogClientException {
+
+    public MetaWeblogConnection(final String url, final String userName, final String password) throws BlogClientException {
         this.userName = userName;
         this.password = password;
         try {
             this.url = new URL(url);
             blogs = createBlogMap();
-        } catch (Throwable t) {
+        } catch (final Throwable t) {
             throw new BlogClientException("ERROR connecting to server", t);
         }
     }
-    
-    private XmlRpcClient getXmlRpcClient() {         
+
+    private XmlRpcClient getXmlRpcClient() {
         if (xmlRpcClient == null) {
-            XmlRpcClientConfigImpl xmlrpcConfig = new XmlRpcClientConfigImpl();
+            final XmlRpcClientConfigImpl xmlrpcConfig = new XmlRpcClientConfigImpl();
             xmlrpcConfig.setServerURL(url);
             xmlRpcClient = new XmlRpcClient();
             xmlRpcClient.setConfig(xmlrpcConfig);
         }
-        return xmlRpcClient; 
+        return xmlRpcClient;
     }
-    
+
     /**
      * {@inheritDoc}
      */
+    @Override
     public List getBlogs() {
         return new ArrayList(blogs.values());
     }
-    
+
     /**
      * {@inheritDoc}
      */
     private Map createBlogMap() throws XmlRpcException, IOException {
-        Map blogMap = new HashMap();
-        Object[] results = (Object[])getXmlRpcClient().execute("blogger.getUsersBlogs", 
-            new Object[] {appkey, userName, password});
-        for (int i = 0; i < results.length; i++) {
-            Map blog = (Map)results[i];
-            String blogid = (String)blog.get("blogid");
-            String name = (String)blog.get("blogName");
+        final Map blogMap = new HashMap();
+        final Object[] results = (Object[]) getXmlRpcClient().execute("blogger.getUsersBlogs", new Object[] { appkey, userName, password });
+        for (final Object result : results) {
+            final Map blog = (Map) result;
+            final String blogid = (String) blog.get("blogid");
+            final String name = (String) blog.get("blogName");
             blogMap.put(blogid, new MetaWeblogBlog(blogid, name, url, userName, password));
         }
         return blogMap;
     }
-    
-     /**
-     * {@inheritDoc}
-     */
-    public Blog getBlog(String token) {
-        return (Blog)blogs.get(token);
-    }
-    
+
     /**
      * {@inheritDoc}
      */
-    public void setAppkey(String appkey) {
+    @Override
+    public Blog getBlog(final String token) {
+        return (Blog) blogs.get(token);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setAppkey(final String appkey) {
         this.appkey = appkey;
     }
 }
-

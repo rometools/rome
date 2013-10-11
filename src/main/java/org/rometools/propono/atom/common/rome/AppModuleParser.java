@@ -19,20 +19,20 @@
  */
 package org.rometools.propono.atom.common.rome;
 
-import com.sun.syndication.io.impl.DateParser;
 import org.jdom2.Element;
 import org.jdom2.Namespace;
 
 import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.ModuleParser;
+import com.sun.syndication.io.impl.DateParser;
 
 /**
- * Parses APP module information from a JDOM element and into 
- * <code>AppModule</code> form.
+ * Parses APP module information from a JDOM element and into <code>AppModule</code> form.
  */
 public class AppModuleParser implements ModuleParser {
 
     /** Get URI of module namespace */
+    @Override
     public String getNamespaceUri() {
         return AppModule.URI;
     }
@@ -41,26 +41,31 @@ public class AppModuleParser implements ModuleParser {
     public Namespace getContentNamespace() {
         return Namespace.getNamespace(AppModule.URI);
     }
-    
+
     /** Parse JDOM element into module */
-    public Module parse(Element elem) {
-        boolean foundSomething = false;
-        AppModule m = new AppModuleImpl();
-        Element control = elem.getChild("control", getContentNamespace());
+    @Override
+    public Module parse(final Element elem) {
+        final boolean foundSomething = false;
+        final AppModule m = new AppModuleImpl();
+        final Element control = elem.getChild("control", getContentNamespace());
         if (control != null) {
-            Element draftElem = control.getChild("draft", getContentNamespace());
+            final Element draftElem = control.getChild("draft", getContentNamespace());
             if (draftElem != null) {
-                if ("yes".equals(draftElem.getText())) m.setDraft(Boolean.TRUE); 
-                if ("no".equals(draftElem.getText())) m.setDraft(Boolean.FALSE);                
+                if ("yes".equals(draftElem.getText())) {
+                    m.setDraft(Boolean.TRUE);
+                }
+                if ("no".equals(draftElem.getText())) {
+                    m.setDraft(Boolean.FALSE);
+                }
             }
         }
-        Element edited = elem.getChild("edited", getContentNamespace());
+        final Element edited = elem.getChild("edited", getContentNamespace());
         if (edited != null) {
             try {
                 m.setEdited(DateParser.parseW3CDateTime(edited.getTextTrim()));
-            } catch (Exception ignored) {}
+            } catch (final Exception ignored) {
+            }
         }
         return m;
     }
 }
-

@@ -17,20 +17,19 @@
 package org.rometools.propono.atom.server;
 
 import java.util.logging.ConsoleHandler;
-import java.util.logging.Level; 
+import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import junit.framework.Test;
 import junit.framework.TestSuite;
+
 import org.mortbay.http.HttpContext;
 import org.mortbay.http.HttpServer;
 import org.mortbay.http.SocketListener;
 import org.mortbay.jetty.servlet.ServletHandler;
- 
 
 /**
- * Test Propono Atom Client against Atom Server via Jetty. Extends 
- * <code>AtomClientTest</code> to start Jetty server, run tests and then stop
- * the Jetty server.
+ * Test Propono Atom Client against Atom Server via Jetty. Extends <code>AtomClientTest</code> to start Jetty server, run tests and then stop the Jetty server.
  */
 public class AtomClientServerTest { // extends AtomClientTest {
 
@@ -40,8 +39,8 @@ public class AtomClientServerTest { // extends AtomClientTest {
     public static final String USERNAME = "admin";
     public static final String PASSWORD = "admin";
 
-    public AtomClientServerTest(String s) {
-        //super(s);
+    public AtomClientServerTest(final String s) {
+        // super(s);
     }
 
     public String getEndpoint() {
@@ -57,7 +56,7 @@ public class AtomClientServerTest { // extends AtomClientTest {
     }
 
     public static Test suite() {
-        TestSuite suite = new TestSuite(AtomClientServerTest.class);
+        final TestSuite suite = new TestSuite(AtomClientServerTest.class);
         return suite;
     }
 
@@ -66,14 +65,14 @@ public class AtomClientServerTest { // extends AtomClientTest {
     }
 
     protected void setUp() throws Exception {
-        ConsoleHandler handler = new ConsoleHandler();
-        Logger logger = Logger.getLogger("com.sun.syndication.propono");
+        final ConsoleHandler handler = new ConsoleHandler();
+        final Logger logger = Logger.getLogger("com.sun.syndication.propono");
         logger.setLevel(Level.FINEST);
         logger.addHandler(handler);
 
         setupServer();
-        HttpContext context = createContext();
-        ServletHandler servlets = createServletHandler();
+        final HttpContext context = createContext();
+        final ServletHandler servlets = createServletHandler();
         context.addHandler(servlets);
         server.addContext(context);
         server.start();
@@ -88,24 +87,20 @@ public class AtomClientServerTest { // extends AtomClientTest {
         server = new HttpServer();
 
         // Create a port listener
-        SocketListener listener = new SocketListener();
+        final SocketListener listener = new SocketListener();
         listener.setPort(TESTPORT);
         server.addListener(listener);
     }
 
     private ServletHandler createServletHandler() {
-        System.setProperty(
-                "com.sun.syndication.propono.atom.server.AtomHandlerFactory",
-                "com.sun.syndication.propono.atom.server.TestAtomHandlerFactory");
-        ServletHandler servlets = new ServletHandler();
-        servlets.addServlet(
-                "app", "/app/*",
-                "com.sun.syndication.propono.atom.server.AtomServlet");
+        System.setProperty("com.sun.syndication.propono.atom.server.AtomHandlerFactory", "com.sun.syndication.propono.atom.server.TestAtomHandlerFactory");
+        final ServletHandler servlets = new ServletHandler();
+        servlets.addServlet("app", "/app/*", "com.sun.syndication.propono.atom.server.AtomServlet");
         return servlets;
     }
 
     private HttpContext createContext() {
-        HttpContext context = new HttpContext();
+        final HttpContext context = new HttpContext();
         context.setContextPath("/rome/*");
         return context;
     }
@@ -118,5 +113,3 @@ public class AtomClientServerTest { // extends AtomClientTest {
         }
     }
 }
-
-

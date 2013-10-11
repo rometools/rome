@@ -12,80 +12,73 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */ 
+ */
 package org.rometools.propono.atom.client;
 
-import org.rometools.propono.atom.client.ClientCollection;
-import org.rometools.propono.atom.client.ClientAtomService;
-import org.rometools.propono.atom.client.AtomClientFactory;
-import org.rometools.propono.atom.client.GDataAuthStrategy;
-import org.rometools.propono.atom.client.ClientEntry;
-import com.sun.syndication.feed.atom.Content;
 import java.util.Iterator;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+
+import com.sun.syndication.feed.atom.Content;
 
 /**
  * Simple APP test designed to run against Blogger.com.
  */
 public class BloggerDotComTest extends TestCase {
-    
-    private String collectionURI = "http://www.blogger.com/feeds/BLOGID/posts/default";
-    private String atomServiceURI= "http://www.blogger.com/feeds/default/blogs?alt=atom-service";
-    private String email         = "EMAIL";
-    private String password      = "PASSWORD";
-    
-    public BloggerDotComTest(String testName) {
+
+    private final String collectionURI = "http://www.blogger.com/feeds/BLOGID/posts/default";
+    private final String atomServiceURI = "http://www.blogger.com/feeds/default/blogs?alt=atom-service";
+    private final String email = "EMAIL";
+    private final String password = "PASSWORD";
+
+    public BloggerDotComTest(final String testName) {
         super(testName);
     }
 
+    @Override
     protected void setUp() throws Exception {
     }
 
+    @Override
     protected void tearDown() throws Exception {
     }
 
     public static Test suite() {
-        TestSuite suite = new TestSuite(BloggerDotComTest.class);        
+        final TestSuite suite = new TestSuite(BloggerDotComTest.class);
         return suite;
     }
 
     /**
      * Verify that server returns service document containing workspaces containing collections.
      */
-    public void testGetEntries() throws Exception {  
-                
+    public void testGetEntries() throws Exception {
+
         // no auth necessary for iterating through entries
-        ClientCollection col = AtomClientFactory.getCollection(collectionURI, 
-            new GDataAuthStrategy(email, password, "blogger"));
+        ClientCollection col = AtomClientFactory.getCollection(collectionURI, new GDataAuthStrategy(email, password, "blogger"));
         assertNotNull(col);
         int count = 0;
-        for (Iterator it = col.getEntries(); it.hasNext();) {
-            ClientEntry entry = (ClientEntry) it.next();
+        for (final Iterator it = col.getEntries(); it.hasNext();) {
+            final ClientEntry entry = (ClientEntry) it.next();
             assertNotNull(entry);
             count++;
         }
         assertTrue(count > 0);
 
-        col = AtomClientFactory.getCollection(collectionURI, 
-            new GDataAuthStrategy(email, password, "blogger"));
-        ClientEntry p1 = col.createEntry();
+        col = AtomClientFactory.getCollection(collectionURI, new GDataAuthStrategy(email, password, "blogger"));
+        final ClientEntry p1 = col.createEntry();
         p1.setTitle("Propono post");
-        Content c = new Content();
+        final Content c = new Content();
         c.setValue("This is content from ROME Propono");
         p1.setContent(c);
         col.addEntry(p1);
-        
-        ClientEntry p2 = col.getEntry(p1.getEditURI());
+
+        final ClientEntry p2 = col.getEntry(p1.getEditURI());
         assertNotNull(p2);
-        
-        
-        ClientAtomService atomService = AtomClientFactory.getAtomService(
-            collectionURI, new GDataAuthStrategy(email, password, "blogger"));
+
+        final ClientAtomService atomService = AtomClientFactory.getAtomService(collectionURI, new GDataAuthStrategy(email, password, "blogger"));
         assertNotNull(atomService);
-        
+
     }
 }
-
-

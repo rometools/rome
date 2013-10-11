@@ -12,23 +12,22 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */ 
+ */
 package org.rometools.propono.blogclient;
 
 import java.util.List;
 
 /**
- * A BlogConnection is a single-user connection to a blog server where the user 
- * has access to multiple blogs, which are each represented by a Blog interface.
+ * A BlogConnection is a single-user connection to a blog server where the user has access to multiple blogs, which are each represented by a Blog interface.
  */
 public interface BlogConnection {
-    
+
     /** Returns collection of blogs available from this connection */
     public abstract List getBlogs();
-    
+
     /** Get blog by token */
     public abstract Blog getBlog(String token);
-    
+
     /** Set appkey (optional, needed by some blog servers) */
     public void setAppkey(String appkey);
 }

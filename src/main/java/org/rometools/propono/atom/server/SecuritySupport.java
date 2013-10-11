@@ -12,60 +12,62 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */ 
+ */
 package org.rometools.propono.atom.server;
 
-import java.security.*;
-import java.net.*;
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
+import java.security.PrivilegedActionException;
+import java.security.PrivilegedExceptionAction;
 
 /**
- * This class is duplicated for each subpackage, it is package private and 
- * therefore is not exposed as part of the public API.
+ * This class is duplicated for each subpackage, it is package private and therefore is not exposed as part of the public API.
  */
-class SecuritySupport  {
-        
+class SecuritySupport {
+
     ClassLoader getContextClassLoader() {
-        return (ClassLoader)
-        AccessController.doPrivileged(new PrivilegedAction() {
+        return (ClassLoader) AccessController.doPrivileged(new PrivilegedAction() {
+            @Override
             public Object run() {
                 ClassLoader cl = null;
                 try {
                     cl = Thread.currentThread().getContextClassLoader();
-                } catch (SecurityException ex) { }
+                } catch (final SecurityException ex) {
+                }
                 return cl;
             }
         });
     }
-    
+
     String getSystemProperty(final String propName) {
-        return (String)
-        AccessController.doPrivileged(new PrivilegedAction() {
+        return (String) AccessController.doPrivileged(new PrivilegedAction() {
+            @Override
             public Object run() {
                 return System.getProperty(propName);
             }
         });
     }
-    
-    FileInputStream getFileInputStream(final File file)
-    throws FileNotFoundException {
+
+    FileInputStream getFileInputStream(final File file) throws FileNotFoundException {
         try {
-            return (FileInputStream)
-            AccessController.doPrivileged(new PrivilegedExceptionAction() {
+            return (FileInputStream) AccessController.doPrivileged(new PrivilegedExceptionAction() {
+                @Override
                 public Object run() throws FileNotFoundException {
                     return new FileInputStream(file);
                 }
             });
-        } catch (PrivilegedActionException e) {
-            throw (FileNotFoundException)e.getException();
+        } catch (final PrivilegedActionException e) {
+            throw (FileNotFoundException) e.getException();
         }
     }
-    
-    InputStream getResourceAsStream(final ClassLoader cl,
-            final String name) {
-        return (InputStream)
-        AccessController.doPrivileged(new PrivilegedAction() {
+
+    InputStream getResourceAsStream(final ClassLoader cl, final String name) {
+        return (InputStream) AccessController.doPrivileged(new PrivilegedAction() {
+            @Override
             public Object run() {
                 InputStream ris;
                 if (cl == null) {
@@ -77,14 +79,14 @@ class SecuritySupport  {
             }
         });
     }
-    
+
     boolean doesFileExist(final File f) {
-        return ((Boolean)
-        AccessController.doPrivileged(new PrivilegedAction() {
+        return ((Boolean) AccessController.doPrivileged(new PrivilegedAction() {
+            @Override
             public Object run() {
                 return new Boolean(f.exists());
             }
         })).booleanValue();
     }
-    
+
 }

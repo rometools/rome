@@ -12,7 +12,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */ 
+ */
 package org.rometools.propono.atom.server.impl;
 
 import org.rometools.propono.atom.common.Workspace;
@@ -23,12 +23,12 @@ import org.rometools.propono.atom.common.Workspace;
 public class FileBasedWorkspace extends Workspace {
     private String baseDir = null;
     private String handle = null;
-    
+
     /** Creates a new instance of FileBasedWorkspace */
-    public FileBasedWorkspace(String handle, String baseDir) {
+    public FileBasedWorkspace(final String handle, final String baseDir) {
         super(handle, "text");
         this.handle = handle;
         this.baseDir = baseDir;
     }
-    
+
 }

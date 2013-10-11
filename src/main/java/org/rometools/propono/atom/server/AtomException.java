@@ -21,28 +21,30 @@ package org.rometools.propono.atom.server;
 
 import javax.servlet.http.HttpServletResponse;
 
-
 /**
- * Exception thrown by {@link com.sun.syndication.propono.atom.server.AtomHandler} 
- * and extended by other Propono Atom exception classes.
+ * Exception thrown by {@link com.sun.syndication.propono.atom.server.AtomHandler} and extended by other Propono Atom exception classes.
  */
 public class AtomException extends Exception {
     /** Construct new exception */
     public AtomException() {
         super();
     }
+
     /** Construct new exception with message */
-    public AtomException(String msg) {
+    public AtomException(final String msg) {
         super(msg);
     }
+
     /** Contruct new exception with message and wrapping existing exception */
-    public AtomException(String msg, Throwable t) {
+    public AtomException(final String msg, final Throwable t) {
         super(msg, t);
     }
+
     /** Construct new exception to wrap existing one. */
-    public AtomException(Throwable t) {
+    public AtomException(final Throwable t) {
         super(t);
     }
+
     /* Get HTTP status code associated with exception (HTTP 500 server error) */
     /**
      * Get HTTP status associated with exception.

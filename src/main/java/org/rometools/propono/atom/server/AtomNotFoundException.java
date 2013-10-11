@@ -29,19 +29,24 @@ public class AtomNotFoundException extends AtomException {
     public AtomNotFoundException() {
         super();
     }
+
     /** Construct new exception with message */
-    public AtomNotFoundException(String msg) {
+    public AtomNotFoundException(final String msg) {
         super(msg);
     }
+
     /** Construct new exception with message and root cause */
-    public AtomNotFoundException(String msg, Throwable t) {
+    public AtomNotFoundException(final String msg, final Throwable t) {
         super(msg, t);
     }
+
     /** Construct new exception with root cause */
-    public AtomNotFoundException(Throwable t) {
+    public AtomNotFoundException(final Throwable t) {
         super(t);
     }
+
     /** Get HTTP status code associated with exception (404 not found) */
+    @Override
     public int getStatus() {
         return HttpServletResponse.SC_NOT_FOUND;
     }

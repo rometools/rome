@@ -12,29 +12,30 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */ 
+ */
 package org.rometools.propono.blogclient;
 
 /**
- * Represents a Blog Client exception, the library throws these instead of 
- * implementation specific exceptions.
+ * Represents a Blog Client exception, the library throws these instead of implementation specific exceptions.
  */
 public class BlogClientException extends Exception {
-    
-    /** 
-     * Construct a new exception 
+
+    /**
+     * Construct a new exception
+     * 
      * @param msg Text message that explains exception
      */
-    public BlogClientException(String msg) {
+    public BlogClientException(final String msg) {
         super(msg);
     }
-    
-    /** 
+
+    /**
      * Construct a new exception which wraps a throwable.
+     * 
      * @param msg Text message that explains exception
-     * @param t   Throwable to be wrapped by exception
+     * @param t Throwable to be wrapped by exception
      */
-    public BlogClientException(String msg, Throwable t) {
+    public BlogClientException(final String msg, final Throwable t) {
         super(msg, t);
     }
 }

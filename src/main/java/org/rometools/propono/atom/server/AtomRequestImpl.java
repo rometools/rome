@@ -24,6 +24,7 @@ import java.io.InputStream;
 import java.security.Principal;
 import java.util.Enumeration;
 import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -31,84 +32,103 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class AtomRequestImpl implements AtomRequest {
     private HttpServletRequest wrapped = null;
-            
-    public AtomRequestImpl(HttpServletRequest wrapped) {
+
+    public AtomRequestImpl(final HttpServletRequest wrapped) {
         this.wrapped = wrapped;
     }
 
+    @Override
     public String getPathInfo() {
         return wrapped.getPathInfo() != null ? wrapped.getPathInfo() : "";
     }
 
+    @Override
     public String getQueryString() {
         return wrapped.getQueryString();
     }
 
+    @Override
     public String getRemoteUser() {
         return wrapped.getRemoteUser();
     }
 
-    public boolean isUserInRole(String arg0) {
+    @Override
+    public boolean isUserInRole(final String arg0) {
         return wrapped.isUserInRole(arg0);
     }
 
+    @Override
     public Principal getUserPrincipal() {
         return wrapped.getUserPrincipal();
     }
 
+    @Override
     public String getRequestURI() {
         return wrapped.getRequestURI();
     }
 
+    @Override
     public StringBuffer getRequestURL() {
         return wrapped.getRequestURL();
     }
 
+    @Override
     public int getContentLength() {
         return wrapped.getContentLength();
     }
 
+    @Override
     public String getContentType() {
         return wrapped.getContentType();
     }
 
-    public String getParameter(String arg0) {
+    @Override
+    public String getParameter(final String arg0) {
         return wrapped.getParameter(arg0);
     }
 
+    @Override
     public Enumeration getParameterNames() {
         return wrapped.getParameterNames();
     }
 
-    public String[] getParameterValues(String arg0) {
+    @Override
+    public String[] getParameterValues(final String arg0) {
         return wrapped.getParameterValues(arg0);
     }
 
+    @Override
     public Map getParameterMap() {
         return wrapped.getParameterMap();
     }
-    
-    public InputStream getInputStream() throws IOException { 
-        return wrapped.getInputStream();
-    }    
 
-    public long getDateHeader(String arg0) {
+    @Override
+    public InputStream getInputStream() throws IOException {
+        return wrapped.getInputStream();
+    }
+
+    @Override
+    public long getDateHeader(final String arg0) {
         return wrapped.getDateHeader(arg0);
     }
 
-    public String getHeader(String arg0) {
+    @Override
+    public String getHeader(final String arg0) {
         return wrapped.getHeader(arg0);
     }
 
-    public Enumeration getHeaders(String arg0) {
+    @Override
+    public Enumeration getHeaders(final String arg0) {
         return wrapped.getHeaders(arg0);
     }
 
+    @Override
     public Enumeration getHeaderNames() {
         return wrapped.getHeaderNames();
     }
 
-    public int getIntHeader(String arg0) {
+    @Override
+    public int getIntHeader(final String arg0) {
         return wrapped.getIntHeader(arg0);
     }
 }

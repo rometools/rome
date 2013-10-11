@@ -15,27 +15,28 @@
  */
 package org.rometools.propono.atom.client;
 
-import com.sun.syndication.io.impl.Base64;
-import org.rometools.propono.utils.ProponoException;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpMethodBase;
+import org.rometools.propono.utils.ProponoException;
 
+import com.sun.syndication.io.impl.Base64;
 
 public class BasicAuthStrategy implements AuthStrategy {
-    private String credentials;
+    private final String credentials;
 
-    public BasicAuthStrategy(String username, String password) {
-        this.credentials =
-            new String(new Base64().encode((username + ":" + password).getBytes()));
+    public BasicAuthStrategy(final String username, final String password) {
+        new Base64();
+        credentials = new String(Base64.encode((username + ":" + password).getBytes()));
     }
 
     public void init() throws ProponoException {
         // op-op
     }
 
-    public void addAuthentication(HttpClient httpClient, HttpMethodBase method) throws ProponoException {
+    @Override
+    public void addAuthentication(final HttpClient httpClient, final HttpMethodBase method) throws ProponoException {
         httpClient.getParams().setAuthenticationPreemptive(true);
-        String header = "Basic " + credentials;
+        final String header = "Basic " + credentials;
         method.setRequestHeader("Authorization", header);
     }
 }

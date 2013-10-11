@@ -12,26 +12,26 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */ 
+ */
 package org.rometools.propono.atom.server.impl;
 
-import org.rometools.propono.atom.server.AtomHandlerFactory;
-import org.rometools.propono.atom.server.AtomHandler;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.rometools.propono.atom.server.AtomHandler;
+import org.rometools.propono.atom.server.AtomHandlerFactory;
+
 /**
- * Extends {@link com.sun.syndication.propono.atom.server.AtomHandlerFactory} to create and return 
+ * Extends {@link com.sun.syndication.propono.atom.server.AtomHandlerFactory} to create and return
  * {@link com.sun.syndication.propono.atom.server.impl.FileBasedAtomHandler}.
  */
 public class FileBasedAtomHandlerFactory extends AtomHandlerFactory {
-    
+
     /**
      * Create new AtomHandler.
      */
-    public AtomHandler newAtomHandler( 
-            HttpServletRequest req, HttpServletResponse res ) {
+    @Override
+    public AtomHandler newAtomHandler(final HttpServletRequest req, final HttpServletResponse res) {
         return new FileBasedAtomHandler(req);
-    }    
+    }
 }
-      

@@ -12,21 +12,22 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */ 
+ */
 package org.rometools.propono.blogclient.atomprotocol;
 
 import java.io.InputStream;
+import java.util.Iterator;
+import java.util.List;
 
-import org.rometools.propono.blogclient.BlogClientException;
-import org.rometools.propono.blogclient.BlogEntry;
-import org.rometools.propono.blogclient.BlogResource;
-import com.sun.syndication.feed.atom.Link;
 import org.rometools.propono.atom.client.ClientAtomService;
 import org.rometools.propono.atom.client.ClientCollection;
 import org.rometools.propono.atom.client.ClientEntry;
 import org.rometools.propono.atom.client.ClientMediaEntry;
-import java.util.Iterator;
-import java.util.List;
+import org.rometools.propono.blogclient.BlogClientException;
+import org.rometools.propono.blogclient.BlogEntry;
+import org.rometools.propono.blogclient.BlogResource;
+
+import com.sun.syndication.feed.atom.Link;
 
 /**
  * Atom protocol implementation of BlogResource.
@@ -35,100 +36,100 @@ public class AtomResource extends AtomEntry implements BlogResource {
     private AtomCollection collection;
     private byte[] bytes;
 
-    AtomResource(AtomCollection collection, String name, String contentType, byte[] bytes) 
-            throws BlogClientException {
-        super((AtomBlog)collection.getBlog(), collection);             
+    AtomResource(final AtomCollection collection, final String name, final String contentType, final byte[] bytes) throws BlogClientException {
+        super((AtomBlog) collection.getBlog(), collection);
         this.collection = collection;
         this.bytes = bytes;
-        BlogEntry.Content rcontent = new BlogEntry.Content();
+        final BlogEntry.Content rcontent = new BlogEntry.Content();
         rcontent.setType(contentType);
         setContent(rcontent);
-    } 
-    
-    AtomResource(AtomCollection collection, ClientMediaEntry entry) 
-            throws BlogClientException {
+    }
+
+    AtomResource(final AtomCollection collection, final ClientMediaEntry entry) throws BlogClientException {
         super(collection, entry);
-    }  
-    
-    AtomResource(AtomBlog blog, ClientMediaEntry entry)  throws BlogClientException {   
+    }
+
+    AtomResource(final AtomBlog blog, final ClientMediaEntry entry) throws BlogClientException {
         super(blog, entry);
     }
 
     /**
      * {@inheritDoc}
      */
+    @Override
     public String getName() {
         return getTitle();
     }
-    
+
     byte[] getBytes() {
         return bytes;
     }
-    
+
     /**
      * {@inheritDoc}
      */
+    @Override
     public InputStream getAsStream() throws BlogClientException {
         try {
-            return null; //((ClientMediaEntry)clientEntry).getAsStream();
-        } catch (Exception e) {
+            return null; // ((ClientMediaEntry)clientEntry).getAsStream();
+        } catch (final Exception e) {
             throw new BlogClientException("Error creating entry", e);
         }
     }
-        
+
     /**
      * {@inheritDoc}
      */
+    @Override
     public void save() throws BlogClientException {
         try {
             if (getToken() == null) {
-                ClientAtomService clientService = ((AtomBlog)getBlog()).getService();
-                ClientCollection clientCollection = collection.getClientCollection();
-                
-                ClientMediaEntry clientEntry = 
-                    new ClientMediaEntry(clientService, clientCollection, getTitle(), 
-                        "", getContent().getType(), getBytes());
-                
+                final ClientAtomService clientService = ((AtomBlog) getBlog()).getService();
+                final ClientCollection clientCollection = collection.getClientCollection();
+
+                final ClientMediaEntry clientEntry = new ClientMediaEntry(clientService, clientCollection, getTitle(), "", getContent().getType(), getBytes());
+
                 copyToRomeEntry(clientEntry);
-                collection.getClientCollection().addEntry(clientEntry); 
-                this.editURI = clientEntry.getEditURI();
-                
+                collection.getClientCollection().addEntry(clientEntry);
+                editURI = clientEntry.getEditURI();
+
             } else {
-                ClientAtomService clientService = ((AtomBlog)getBlog()).getService();
-                ClientMediaEntry clientEntry = (ClientMediaEntry)clientService.getEntry(editURI);
-                clientEntry.update(); 
+                final ClientAtomService clientService = ((AtomBlog) getBlog()).getService();
+                final ClientMediaEntry clientEntry = (ClientMediaEntry) clientService.getEntry(editURI);
+                clientEntry.update();
             }
-        } catch (Exception e) {
+        } catch (final Exception e) {
             throw new BlogClientException("Error creating entry", e);
         }
     }
-    
+
     /**
      * {@inheritDoc}
      */
-    public void update(byte[] newBytes) throws BlogClientException {
+    @Override
+    public void update(final byte[] newBytes) throws BlogClientException {
         try {
-            //((ClientMediaEntry)clientEntry).setBytes(newBytes);
-            //clientEntry.update();
-        } catch (Exception e) {
+            // ((ClientMediaEntry)clientEntry).setBytes(newBytes);
+            // clientEntry.update();
+        } catch (final Exception e) {
             throw new BlogClientException("Error creating entry", e);
         }
     }
-        
-    void copyFromRomeEntry(ClientEntry entry) {
+
+    @Override
+    void copyFromRomeEntry(final ClientEntry entry) {
         super.copyFromRomeEntry(entry);
-        
-        List links = entry.getOtherLinks();
+
+        final List links = entry.getOtherLinks();
         if (links != null) {
-            for (Iterator iter = links.iterator(); iter.hasNext();) {
-                Link link = (Link)iter.next();
+            for (final Iterator iter = links.iterator(); iter.hasNext();) {
+                final Link link = (Link) iter.next();
                 if ("edit-media".equals(link.getRel())) {
                     id = link.getHrefResolved();
                     break;
                 }
             }
         }
-        
-        
+
     }
 }

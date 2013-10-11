@@ -16,14 +16,13 @@
  */
 package org.rometools.propono.atom.server;
 
-import org.rometools.propono.atom.server.AtomHandlerFactory;
-import org.rometools.propono.atom.server.AtomHandler;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class TestAtomHandlerFactory extends AtomHandlerFactory {
-    
-    public AtomHandler newAtomHandler(HttpServletRequest req, HttpServletResponse res) {
+
+    @Override
+    public AtomHandler newAtomHandler(final HttpServletRequest req, final HttpServletResponse res) {
         return new TestAtomHandlerImpl(req, "build/testuploaddir");
     }
 }

@@ -20,9 +20,10 @@
  */
 package org.rometools.propono.atom.common.rome;
 
+import java.util.Date;
+
 import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.module.ModuleImpl;
-import java.util.Date;
 
 /**
  * Bean representation of APP module.
@@ -30,39 +31,45 @@ import java.util.Date;
 public class AppModuleImpl extends ModuleImpl implements AppModule {
     private boolean draft = false;
     private Date edited = null;
-    
+
     public AppModuleImpl() {
         super(AppModule.class, AppModule.URI);
     }
-    
+
     /** True if entry is draft */
+    @Override
     public Boolean getDraft() {
         return draft ? Boolean.TRUE : Boolean.FALSE;
     }
-    
+
     /** Set to true if entry is draft */
-    public void setDraft(Boolean draft) {
+    @Override
+    public void setDraft(final Boolean draft) {
         this.draft = draft.booleanValue();
     }
-    
+
     /** Time of last edit */
+    @Override
     public Date getEdited() {
         return edited;
     }
 
     /** Set time of last edit */
-    public void setEdited(Date edited) {
+    @Override
+    public void setEdited(final Date edited) {
         this.edited = edited;
     }
-    
+
     /** Get interface class of module */
+    @Override
     public Class getInterface() {
         return AppModule.class;
     }
-    
+
     /** Copy from other module */
-    public void copyFrom(CopyFrom obj) {
-        AppModule m = (AppModule)obj;
+    @Override
+    public void copyFrom(final CopyFrom obj) {
+        final AppModule m = (AppModule) obj;
         setDraft(m.getDraft());
         setEdited(m.getEdited());
     }

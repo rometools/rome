@@ -12,64 +12,69 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */ 
+ */
 package org.rometools.propono.blogclient.metaweblog;
 
-import org.rometools.propono.blogclient.BlogClientException;
-import java.io.InputStream; 
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.methods.GetMethod;
-import org.rometools.propono.blogclient.BlogResource;
+import java.io.InputStream;
 import java.util.HashMap;
 
-/** 
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.methods.GetMethod;
+import org.rometools.propono.blogclient.BlogClientException;
+import org.rometools.propono.blogclient.BlogResource;
+
+/**
  * MetaWeblog API implementation of an resource entry.
  */
 public class MetaWeblogResource extends MetaWeblogEntry implements BlogResource {
-    private MetaWeblogBlog blog;
-    private String name;
-    private String contentType;
+    private final MetaWeblogBlog blog;
+    private final String name;
+    private final String contentType;
     private byte[] bytes;
 
-    MetaWeblogResource(MetaWeblogBlog blog, 
-        String name, String contentType, byte[] bytes) {
+    MetaWeblogResource(final MetaWeblogBlog blog, final String name, final String contentType, final byte[] bytes) {
         super(blog, new HashMap());
         this.blog = blog;
         this.name = name;
         this.contentType = contentType;
         this.bytes = bytes;
-        this.content = new Content();
-        this.content.setType(contentType);
+        content = new Content();
+        content.setType(contentType);
     }
 
     /**
      * {@inheritDoc}
      */
+    @Override
     public String getName() {
         return name;
     }
-    
+
     /**
      * {@inheritDoc}
      */
+    @Override
     public String getToken() {
         return null;
     }
+
     /**
      * Get content-type of associated media resource.
      */
     public String getContentType() {
         return contentType;
     }
+
     /**
      * Get media resource as input stream.
      */
+    @Override
     public InputStream getAsStream() throws BlogClientException {
-        HttpClient httpClient = new HttpClient();
-        GetMethod method = new GetMethod(permalink);
+        final HttpClient httpClient = new HttpClient();
+        final GetMethod method = new GetMethod(permalink);
         try {
             httpClient.executeMethod(method);
-        } catch (Exception e) {
+        } catch (final Exception e) {
             throw new BlogClientException("ERROR: error reading file", e);
         }
         if (method.getStatusCode() != 200) {
@@ -77,14 +82,15 @@ public class MetaWeblogResource extends MetaWeblogEntry implements BlogResource 
         }
         try {
             return method.getResponseBodyAsStream();
-        } catch (Exception e) {
+        } catch (final Exception e) {
             throw new BlogClientException("ERROR: error reading file", e);
         }
-    }  
-    
+    }
+
     /**
      * {@inheritDoc}
      */
+    @Override
     public void save() throws BlogClientException {
         blog.saveResource(this);
     }
@@ -92,7 +98,8 @@ public class MetaWeblogResource extends MetaWeblogEntry implements BlogResource 
     /**
      * {@inheritDoc}
      */
-    public void update(byte[] bytes) throws BlogClientException {
+    @Override
+    public void update(final byte[] bytes) throws BlogClientException {
         this.bytes = bytes;
         save();
     }
@@ -103,10 +110,11 @@ public class MetaWeblogResource extends MetaWeblogEntry implements BlogResource 
     public byte[] getBytes() {
         return bytes;
     }
-    
+
     /**
      * Not supported by MetaWeblog API
      */
+    @Override
     public void delete() throws BlogClientException {
     }
 }

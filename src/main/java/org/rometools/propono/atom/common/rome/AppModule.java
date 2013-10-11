@@ -19,24 +19,25 @@
  */
 package org.rometools.propono.atom.common.rome;
 
-import com.sun.syndication.feed.module.Module;
 import java.util.Date;
+
+import com.sun.syndication.feed.module.Module;
 
 /**
  * ROME Extension Module to Atom protocol extensions to Atom format.
  */
 public interface AppModule extends Module {
     public static final String URI = "http://www.w3.org/2007/app";
-    
+
     /** True if entry is a draft */
     public Boolean getDraft();
-    
+
     /** Set to true if entry is a draft */
     public void setDraft(Boolean draft);
-    
+
     /** Time of last edit */
     public Date getEdited();
-    
+
     /** Set time of last edit */
     public void setEdited(Date edited);
 }

@@ -12,90 +12,94 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */ 
+ */
 package org.rometools.propono.blogclient.metaweblog;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import org.rometools.propono.blogclient.BlogClientException;
-import org.rometools.propono.blogclient.BaseBlogEntry;
-import org.rometools.propono.blogclient.BlogEntry;
 import java.util.Map;
 
+import org.rometools.propono.blogclient.BaseBlogEntry;
+import org.rometools.propono.blogclient.BlogClientException;
+import org.rometools.propono.blogclient.BlogEntry;
 
-/** 
+/**
  * MetaWeblog API implementation of an entry.
  */
 public class MetaWeblogEntry extends BaseBlogEntry {
-    
-    MetaWeblogEntry(MetaWeblogBlog blog, Map entryMap) {
+
+    MetaWeblogEntry(final MetaWeblogBlog blog, final Map entryMap) {
         super(blog);
-        id = (String)entryMap.get("postid");
-        
-        content = new Content((String)entryMap.get("description"));
-        
+        id = (String) entryMap.get("postid");
+
+        content = new Content((String) entryMap.get("description"));
+
         // let's pretend MetaWeblog API has a content-type
         content.setType("application/metaweblog+xml");
-        
+
         // no way to tell if entry is draft or not
         draft = false;
 
-        title = (String)entryMap.get("title");
-        publicationDate = (Date)entryMap.get("dateCreated");        
-        permalink = (String)entryMap.get("permaLink");
+        title = (String) entryMap.get("title");
+        publicationDate = (Date) entryMap.get("dateCreated");
+        permalink = (String) entryMap.get("permaLink");
 
         // AlexisMP: fix to get the author value populated.
-        author.setName( (String)entryMap.get("userid") );
-        author.setEmail( (String)entryMap.get("author") );
+        author.setName((String) entryMap.get("userid"));
+        author.setEmail((String) entryMap.get("author"));
 
         categories = new ArrayList();
-        Object[] catArray = (Object[])entryMap.get("categories");
+        final Object[] catArray = (Object[]) entryMap.get("categories");
         if (catArray != null) {
-            for (int i=0; i<catArray.length; i++) {
-                Category cat = new Category((String)catArray[i]);
+            for (final Object element : catArray) {
+                final Category cat = new Category((String) element);
                 categories.add(cat);
             }
         }
     }
-    
+
     /**
      * {@inheritDoc}
      */
+    @Override
     public String getToken() {
         return id;
     }
-    
+
     /**
      * True if tokens are equal
      */
-    public boolean equals(Object o) {
+    @Override
+    public boolean equals(final Object o) {
         if (o instanceof MetaWeblogEntry) {
-            MetaWeblogEntry other = (MetaWeblogEntry)o;
+            final MetaWeblogEntry other = (MetaWeblogEntry) o;
             if (other.id != null && id != null) {
                 return other.id.equals(id);
             }
         }
         return false;
     }
-        
+
     /**
      * {@inheritDoc}
      */
+    @Override
     public void save() throws BlogClientException {
-        id = ((MetaWeblogBlog)getBlog()).saveEntry(this);
+        id = ((MetaWeblogBlog) getBlog()).saveEntry(this);
     }
 
     /**
      * {@inheritDoc}
      */
+    @Override
     public void delete() throws BlogClientException {
-        ((MetaWeblogBlog)getBlog()).deleteEntry(id);
+        ((MetaWeblogBlog) getBlog()).deleteEntry(id);
     }
 
     HashMap toPostStructure() {
-        HashMap struct = new HashMap();       
+        final HashMap struct = new HashMap();
         if (getTitle() != null) {
             struct.put("title", getTitle());
         }
@@ -103,10 +107,10 @@ public class MetaWeblogEntry extends BaseBlogEntry {
             struct.put("description", getContent().getValue());
         }
         if (getCategories() != null && getCategories().size() > 0) {
-            List catArray = new ArrayList();
-            List cats = getCategories();
-            for (int i=0; i<cats.size(); i++) {
-                BlogEntry.Category cat = (BlogEntry.Category)cats.get(i);
+            final List catArray = new ArrayList();
+            final List cats = getCategories();
+            for (int i = 0; i < cats.size(); i++) {
+                final BlogEntry.Category cat = (BlogEntry.Category) cats.get(i);
                 catArray.add(cat.getName());
             }
             struct.put("categories", catArray);
@@ -115,7 +119,7 @@ public class MetaWeblogEntry extends BaseBlogEntry {
             struct.put("dateCreated", getPublicationDate());
         }
         if (getId() != null) {
-            struct.put("postid", getId());                        
+            struct.put("postid", getId());
         }
         return struct;
     }

@@ -12,154 +12,158 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */ 
+ */
 package org.rometools.propono.blogclient.atomprotocol;
 
-import org.rometools.propono.utils.ProponoException;
-import org.rometools.propono.atom.common.rome.AppModule;
-import org.rometools.propono.atom.common.rome.AppModuleImpl;
-import org.rometools.propono.blogclient.BlogClientException;
-import org.rometools.propono.blogclient.BlogEntry;
-import org.rometools.propono.blogclient.BaseBlogEntry;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import com.sun.syndication.feed.atom.Entry;
-import com.sun.syndication.feed.atom.Link;
-import org.rometools.propono.atom.client.ClientEntry;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.rometools.propono.blogclient.BlogEntry.Person;
+import org.rometools.propono.atom.client.ClientEntry;
+import org.rometools.propono.atom.common.rome.AppModule;
+import org.rometools.propono.atom.common.rome.AppModuleImpl;
+import org.rometools.propono.blogclient.BaseBlogEntry;
+import org.rometools.propono.blogclient.BlogClientException;
+import org.rometools.propono.blogclient.BlogEntry;
+import org.rometools.propono.utils.ProponoException;
+
+import com.sun.syndication.feed.atom.Entry;
+import com.sun.syndication.feed.atom.Link;
 
 /**
  * Atom protocol implementation of BlogEntry.
  */
 public class AtomEntry extends BaseBlogEntry implements BlogEntry {
     static final Log logger = LogFactory.getLog(AtomCollection.class);
-    
+
     String editURI = null;
     AtomCollection collection = null;
-            
-    AtomEntry(AtomBlog blog, AtomCollection collection) throws BlogClientException {
+
+    AtomEntry(final AtomBlog blog, final AtomCollection collection) throws BlogClientException {
         super(blog);
         this.collection = collection;
     }
-    
-    AtomEntry(AtomCollection collection, ClientEntry entry)  throws BlogClientException {   
-        this((AtomBlog)collection.getBlog(), collection);
-        //clientEntry = entry;
+
+    AtomEntry(final AtomCollection collection, final ClientEntry entry) throws BlogClientException {
+        this((AtomBlog) collection.getBlog(), collection);
+        // clientEntry = entry;
         copyFromRomeEntry(entry);
     }
-    
-    AtomEntry(AtomBlog blog, ClientEntry entry)  throws BlogClientException {   
+
+    AtomEntry(final AtomBlog blog, final ClientEntry entry) throws BlogClientException {
         super(blog);
-        //clientEntry = entry;
+        // clientEntry = entry;
         copyFromRomeEntry(entry);
     }
-    
+
     /**
      * {@inheritDoc}
      */
+    @Override
     public String getToken() {
         return editURI;
     }
-    
+
     AtomCollection getCollection() {
         return collection;
     }
 
-    void setCollection(AtomCollection collection) {
+    void setCollection(final AtomCollection collection) {
         this.collection = collection;
     }
 
     /**
      * True if entry's token's are equal.
      */
-    public boolean equals(Object o) {
+    @Override
+    public boolean equals(final Object o) {
         if (o instanceof AtomEntry) {
-            AtomEntry other = (AtomEntry)o;
+            final AtomEntry other = (AtomEntry) o;
             if (other.getToken() != null && getToken() != null) {
                 return other.getToken().equals(getToken());
             }
         }
         return false;
     }
-    
+
     /**
      * {@inheritDoc}
      */
+    @Override
     public void save() throws BlogClientException {
-        boolean create = (getToken() == null);
+        final boolean create = getToken() == null;
         if (create && getCollection() == null) {
             throw new BlogClientException("Cannot save entry, no collection");
         } else if (create) {
             try {
-                ClientEntry clientEntry = collection.getClientCollection().createEntry();
+                final ClientEntry clientEntry = collection.getClientCollection().createEntry();
                 copyToRomeEntry(clientEntry);
                 collection.getClientCollection().addEntry(clientEntry);
                 copyFromRomeEntry(clientEntry);
-            } catch (ProponoException ex) {
-                 throw new BlogClientException("Error saving entry", ex);
+            } catch (final ProponoException ex) {
+                throw new BlogClientException("Error saving entry", ex);
             }
         } else {
             try {
-                ClientEntry clientEntry = ((AtomBlog)getBlog()).getService().getEntry(getToken());
+                final ClientEntry clientEntry = ((AtomBlog) getBlog()).getService().getEntry(getToken());
                 copyToRomeEntry(clientEntry);
                 clientEntry.update();
                 copyFromRomeEntry(clientEntry);
-            } catch (ProponoException ex) {
-                 throw new BlogClientException("Error updating entry", ex);
+            } catch (final ProponoException ex) {
+                throw new BlogClientException("Error updating entry", ex);
             }
-        }   
+        }
     }
-    
+
     /**
      * {@inheritDoc}
      */
+    @Override
     public void delete() throws BlogClientException {
         if (getToken() == null) {
             throw new BlogClientException("Cannot delete unsaved entry");
         }
         try {
-            ClientEntry clientEntry = ((AtomBlog)getBlog()).getService().getEntry(editURI);
+            final ClientEntry clientEntry = ((AtomBlog) getBlog()).getService().getEntry(editURI);
             clientEntry.remove();
-        } catch (ProponoException ex) {
-             throw new BlogClientException("Error removing entry", ex);
+        } catch (final ProponoException ex) {
+            throw new BlogClientException("Error removing entry", ex);
         }
     }
-        
-    void copyFromRomeEntry(ClientEntry entry) {
+
+    void copyFromRomeEntry(final ClientEntry entry) {
         id = entry.getId();
-        title = entry.getTitle();   
+        title = entry.getTitle();
         editURI = entry.getEditURI();
-        List altlinks = entry.getAlternateLinks();
+        final List altlinks = entry.getAlternateLinks();
         if (altlinks != null) {
-            for (Iterator iter = altlinks.iterator(); iter.hasNext();) {
-                Link link = (Link)iter.next();
-                if ("alternate".equals(link.getRel()) || link.getRel()==null) {
+            for (final Iterator iter = altlinks.iterator(); iter.hasNext();) {
+                final Link link = (Link) iter.next();
+                if ("alternate".equals(link.getRel()) || link.getRel() == null) {
                     permalink = link.getHrefResolved();
                     break;
                 }
             }
         }
-        List contents = entry.getContents();
+        final List contents = entry.getContents();
         com.sun.syndication.feed.atom.Content romeContent = null;
         if (contents != null && contents.size() > 0) {
-            romeContent = (com.sun.syndication.feed.atom.Content)contents.get(0);
+            romeContent = (com.sun.syndication.feed.atom.Content) contents.get(0);
         }
         if (romeContent != null) {
             content = new BlogEntry.Content(romeContent.getValue());
             content.setType(romeContent.getType());
             content.setSrc(romeContent.getSrc());
-        }  
+        }
         if (entry.getCategories() != null) {
-            List cats = new ArrayList();
-            List romeCats = entry.getCategories();
-            for (Iterator iter=romeCats.iterator(); iter.hasNext();) {
-                com.sun.syndication.feed.atom.Category romeCat = 
-                    (com.sun.syndication.feed.atom.Category)iter.next();
-                BlogEntry.Category cat = new BlogEntry.Category();
+            final List cats = new ArrayList();
+            final List romeCats = entry.getCategories();
+            for (final Iterator iter = romeCats.iterator(); iter.hasNext();) {
+                final com.sun.syndication.feed.atom.Category romeCat = (com.sun.syndication.feed.atom.Category) iter.next();
+                final BlogEntry.Category cat = new BlogEntry.Category();
                 cat.setId(romeCat.getTerm());
                 cat.setUrl(romeCat.getScheme());
                 cat.setName(romeCat.getLabel());
@@ -167,57 +171,54 @@ public class AtomEntry extends BaseBlogEntry implements BlogEntry {
             }
             categories = cats;
         }
-        List authors = entry.getAuthors();
-        if (authors!=null && authors.size() > 0) {
-            com.sun.syndication.feed.atom.Person romeAuthor = 
-                (com.sun.syndication.feed.atom.Person)authors.get(0);
+        final List authors = entry.getAuthors();
+        if (authors != null && authors.size() > 0) {
+            final com.sun.syndication.feed.atom.Person romeAuthor = (com.sun.syndication.feed.atom.Person) authors.get(0);
             if (romeAuthor != null) {
                 author = new Person();
                 author.setName(romeAuthor.getName());
                 author.setEmail(romeAuthor.getEmail());
                 author.setUrl(romeAuthor.getUrl());
-            }    
-        }    
+            }
+        }
         publicationDate = entry.getPublished();
         modificationDate = entry.getModified();
-        
-        AppModule control = (AppModule)entry.getModule(AppModule.URI);
-        if (control != null && control.getDraft() != null) { 
-            draft = control.getDraft().booleanValue(); 
+
+        final AppModule control = (AppModule) entry.getModule(AppModule.URI);
+        if (control != null && control.getDraft() != null) {
+            draft = control.getDraft().booleanValue();
         } else {
             draft = false;
         }
     }
-    Entry copyToRomeEntry(ClientEntry entry) {
+
+    Entry copyToRomeEntry(final ClientEntry entry) {
         if (id != null) {
             entry.setId(id);
         }
-        entry.setTitle(title);        
+        entry.setTitle(title);
         if (author != null) {
-            com.sun.syndication.feed.atom.Person person = 
-                new com.sun.syndication.feed.atom.Person();
+            final com.sun.syndication.feed.atom.Person person = new com.sun.syndication.feed.atom.Person();
             person.setName(author.getName());
             person.setEmail(author.getEmail());
             person.setUrl(author.getUrl());
-            List authors = new ArrayList();
+            final List authors = new ArrayList();
             authors.add(person);
             entry.setAuthors(authors);
         }
         if (content != null) {
-            com.sun.syndication.feed.atom.Content romeContent = 
-                new com.sun.syndication.feed.atom.Content();
+            final com.sun.syndication.feed.atom.Content romeContent = new com.sun.syndication.feed.atom.Content();
             romeContent.setValue(content.getValue());
             romeContent.setType(content.getType());
-            List contents = new ArrayList();
+            final List contents = new ArrayList();
             contents.add(romeContent);
             entry.setContents(contents);
         }
         if (categories != null) {
-            List romeCats = new ArrayList();
-            for (Iterator iter=categories.iterator(); iter.hasNext();) {
-                BlogEntry.Category cat = (BlogEntry.Category)iter.next();
-                com.sun.syndication.feed.atom.Category romeCategory =
-                    new com.sun.syndication.feed.atom.Category();
+            final List romeCats = new ArrayList();
+            for (final Iterator iter = categories.iterator(); iter.hasNext();) {
+                final BlogEntry.Category cat = (BlogEntry.Category) iter.next();
+                final com.sun.syndication.feed.atom.Category romeCategory = new com.sun.syndication.feed.atom.Category();
                 romeCategory.setTerm(cat.getId());
                 romeCategory.setScheme(cat.getUrl());
                 romeCategory.setLabel(cat.getName());
@@ -225,15 +226,15 @@ public class AtomEntry extends BaseBlogEntry implements BlogEntry {
             }
             entry.setCategories(romeCats);
         }
-        entry.setPublished((publicationDate == null) ? new Date() : publicationDate);
-        entry.setModified((modificationDate == null) ? new Date() : modificationDate);
-        
-        List modules = new ArrayList();
-        AppModule control = new AppModuleImpl();
+        entry.setPublished(publicationDate == null ? new Date() : publicationDate);
+        entry.setModified(modificationDate == null ? new Date() : modificationDate);
+
+        final List modules = new ArrayList();
+        final AppModule control = new AppModuleImpl();
         control.setDraft(new Boolean(draft));
         modules.add(control);
         entry.setModules(modules);
-        
+
         return entry;
     }
 

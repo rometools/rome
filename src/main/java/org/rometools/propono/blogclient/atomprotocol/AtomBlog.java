@@ -12,170 +12,195 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */ 
+ */
 package org.rometools.propono.blogclient.atomprotocol;
 
-import org.rometools.propono.utils.ProponoException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
-import org.rometools.propono.blogclient.Blog;
-import org.rometools.propono.blogclient.BlogClientException;
-import org.rometools.propono.blogclient.BlogEntry;
-import org.rometools.propono.blogclient.BlogResource;
 import org.rometools.propono.atom.client.ClientAtomService;
 import org.rometools.propono.atom.client.ClientCollection;
 import org.rometools.propono.atom.client.ClientEntry;
 import org.rometools.propono.atom.client.ClientMediaEntry;
 import org.rometools.propono.atom.client.ClientWorkspace;
-import java.util.Map;
-import java.util.TreeMap;
+import org.rometools.propono.blogclient.Blog;
+import org.rometools.propono.blogclient.BlogClientException;
+import org.rometools.propono.blogclient.BlogEntry;
+import org.rometools.propono.blogclient.BlogResource;
+import org.rometools.propono.utils.ProponoException;
 
 /**
  * Atom protocol implementation of the BlogClient Blog interface.
  */
 public class AtomBlog implements Blog {
     static final Log logger = LogFactory.getLog(AtomBlog.class);
-    private HttpClient        httpClient = null;
-    private String            name = null;
+    private final HttpClient httpClient = null;
+    private String name = null;
     private ClientAtomService service;
-    private ClientWorkspace   workspace = null;
-    private AtomCollection    entriesCollection = null;
-    private AtomCollection    resourcesCollection = null;
-    private Map               collections = new TreeMap();
-    
+    private ClientWorkspace workspace = null;
+    private AtomCollection entriesCollection = null;
+    private AtomCollection resourcesCollection = null;
+    private final Map collections = new TreeMap();
+
     /**
-     * Create AtomBlog using specified HTTPClient, user account and workspace, 
-     * called by AtomConnection. Fetches Atom Service document and creates 
-     * an AtomCollection object for each collection found. The first entry 
-     * collection is considered the primary entry collection. And the first 
-     * resource collection is considered the primary resource collection.
+     * Create AtomBlog using specified HTTPClient, user account and workspace, called by AtomConnection. Fetches Atom Service document and creates an
+     * AtomCollection object for each collection found. The first entry collection is considered the primary entry collection. And the first resource collection
+     * is considered the primary resource collection.
      */
-    AtomBlog(ClientAtomService service, ClientWorkspace workspace) {
-        this.setService(service);
-        this.setWorkspace(workspace);
-        this.name = workspace.getTitle();
-        Iterator members = workspace.getCollections().iterator();
-        
+    AtomBlog(final ClientAtomService service, final ClientWorkspace workspace) {
+        setService(service);
+        setWorkspace(workspace);
+        name = workspace.getTitle();
+        final Iterator members = workspace.getCollections().iterator();
+
         while (members.hasNext()) {
-            ClientCollection col = (ClientCollection) members.next();
+            final ClientCollection col = (ClientCollection) members.next();
             if (col.accepts("entry") && entriesCollection == null) {
-                // first entry collection is primary entry collection 
+                // first entry collection is primary entry collection
                 entriesCollection = new AtomCollection(this, col);
-            }
-            else if (!col.accepts("entry") && resourcesCollection == null) {
+            } else if (!col.accepts("entry") && resourcesCollection == null) {
                 // first non-entry collection is primary resource collection
                 resourcesCollection = new AtomCollection(this, col);
-            } 
+            }
             collections.put(col.getHrefResolved(), new AtomCollection(this, col));
-        }    
-    }  
-    
+        }
+    }
+
     /**
-     * {@inheritDoc} 
+     * {@inheritDoc}
      */
-    public String getName() { return name; }
+    @Override
+    public String getName() {
+        return name;
+    }
 
     /**
      * String display of blog, returns name.
      */
-    public String toString() { return getName(); }
-    
-    /**
-     * {@inheritDoc} 
-     */
-    public String getToken() { return entriesCollection.getToken(); }
+    @Override
+    public String toString() {
+        return getName();
+    }
 
-    /**
-     * {@inheritDoc} 
-     */
-    public BlogEntry newEntry() throws BlogClientException { 
-        if (entriesCollection == null) throw new BlogClientException("No entry collection");
-        return entriesCollection.newEntry(); 
-    }  
-    
     /**
      * {@inheritDoc}
      */
-    public BlogEntry getEntry(String token) throws BlogClientException {      
+    @Override
+    public String getToken() {
+        return entriesCollection.getToken();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public BlogEntry newEntry() throws BlogClientException {
+        if (entriesCollection == null) {
+            throw new BlogClientException("No entry collection");
+        }
+        return entriesCollection.newEntry();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public BlogEntry getEntry(final String token) throws BlogClientException {
         ClientEntry clientEntry = null;
-        AtomEntry atomEntry = null;
+        final AtomEntry atomEntry = null;
         try {
-            clientEntry = getService().getEntry(token);         
-        } catch (ProponoException ex) {
+            clientEntry = getService().getEntry(token);
+        } catch (final ProponoException ex) {
             throw new BlogClientException("ERROR: fetching entry", ex);
         }
         if (clientEntry != null && clientEntry instanceof ClientMediaEntry) {
-            return new AtomResource(this, (ClientMediaEntry)clientEntry);
+            return new AtomResource(this, (ClientMediaEntry) clientEntry);
         } else if (clientEntry != null && clientEntry instanceof ClientEntry) {
             return new AtomEntry(this, clientEntry);
         } else {
             throw new BlogClientException("ERROR: unknown object type returned");
         }
     }
-    
+
     /**
-     * {@inheritDoc} 
+     * {@inheritDoc}
      */
+    @Override
     public Iterator getEntries() throws BlogClientException {
-        if (entriesCollection == null) throw new BlogClientException("No primary entry collection");
+        if (entriesCollection == null) {
+            throw new BlogClientException("No primary entry collection");
+        }
         return new AtomEntryIterator(entriesCollection);
-    }   
-    
-    /**
-     * {@inheritDoc} 
-     */
-    public Iterator getResources() throws BlogClientException {
-        if (resourcesCollection == null) throw new BlogClientException("No primary entry collection");
-        return new AtomEntryIterator(resourcesCollection);
-    }   
-    
-    String saveEntry(BlogEntry entry) throws BlogClientException {
-        if (entriesCollection == null) throw new BlogClientException("No primary entry collection");
-        return entriesCollection.saveEntry(entry);
-    } 
-    
-    void deleteEntry(BlogEntry entry) throws BlogClientException {
-        if (entriesCollection == null) throw new BlogClientException("No primary entry collection");
-        entriesCollection.deleteEntry(entry);        
     }
 
     /**
      * {@inheritDoc}
      */
-    public List getCategories() throws BlogClientException {
-        if (entriesCollection == null) throw new BlogClientException("No primary entry collection");
-        return entriesCollection.getCategories();
+    @Override
+    public Iterator getResources() throws BlogClientException {
+        if (resourcesCollection == null) {
+            throw new BlogClientException("No primary entry collection");
+        }
+        return new AtomEntryIterator(resourcesCollection);
     }
-    
+
+    String saveEntry(final BlogEntry entry) throws BlogClientException {
+        if (entriesCollection == null) {
+            throw new BlogClientException("No primary entry collection");
+        }
+        return entriesCollection.saveEntry(entry);
+    }
+
+    void deleteEntry(final BlogEntry entry) throws BlogClientException {
+        if (entriesCollection == null) {
+            throw new BlogClientException("No primary entry collection");
+        }
+        entriesCollection.deleteEntry(entry);
+    }
+
     /**
      * {@inheritDoc}
      */
-    public BlogResource newResource(
-        String name, String contentType, byte[] bytes) throws BlogClientException {
-        if (resourcesCollection == null) { 
+    @Override
+    public List getCategories() throws BlogClientException {
+        if (entriesCollection == null) {
+            throw new BlogClientException("No primary entry collection");
+        }
+        return entriesCollection.getCategories();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public BlogResource newResource(final String name, final String contentType, final byte[] bytes) throws BlogClientException {
+        if (resourcesCollection == null) {
             throw new BlogClientException("No resource collection");
         }
         return resourcesCollection.newResource(name, contentType, bytes);
     }
 
-
-    String saveResource(BlogResource res) throws BlogClientException {
-        if (resourcesCollection == null) throw new BlogClientException("No primary resource collection");
+    String saveResource(final BlogResource res) throws BlogClientException {
+        if (resourcesCollection == null) {
+            throw new BlogClientException("No primary resource collection");
+        }
         return resourcesCollection.saveResource(res);
     }
-         
-    void deleteResource(BlogResource resource) throws BlogClientException {
-        deleteEntry((BlogEntry)resource);
-    }   
-    
+
+    void deleteResource(final BlogResource resource) throws BlogClientException {
+        deleteEntry(resource);
+    }
+
     /**
      * {@inheritDoc}
      */
+    @Override
     public List getCollections() throws BlogClientException {
         return new ArrayList(collections.values());
     }
@@ -183,15 +208,16 @@ public class AtomBlog implements Blog {
     /**
      * {@inheritDoc}
      */
-    public Blog.Collection getCollection(String token) throws BlogClientException {
-        return (Blog.Collection)collections.get(token);
-    } 
-    
+    @Override
+    public Blog.Collection getCollection(final String token) throws BlogClientException {
+        return (Blog.Collection) collections.get(token);
+    }
+
     ClientAtomService getService() {
         return service;
     }
 
-    void setService(ClientAtomService service) {
+    void setService(final ClientAtomService service) {
         this.service = service;
     }
 
@@ -199,7 +225,7 @@ public class AtomBlog implements Blog {
         return workspace;
     }
 
-    void setWorkspace(ClientWorkspace workspace) {
+    void setWorkspace(final ClientWorkspace workspace) {
         this.workspace = workspace;
     }
 

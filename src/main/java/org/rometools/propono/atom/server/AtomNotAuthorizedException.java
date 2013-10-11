@@ -22,27 +22,31 @@ package org.rometools.propono.atom.server;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Exception to be thrown by <code>AtomHandler</code> implementations in the 
- * case that a user is not authorized to access a resource.
+ * Exception to be thrown by <code>AtomHandler</code> implementations in the case that a user is not authorized to access a resource.
  */
 public class AtomNotAuthorizedException extends AtomException {
     /** Construct new exception */
     public AtomNotAuthorizedException() {
         super();
     }
+
     /** Construct new exception with message */
-    public AtomNotAuthorizedException(String msg) {
+    public AtomNotAuthorizedException(final String msg) {
         super(msg);
     }
+
     /** Construct new exception with message and root cause */
-    public AtomNotAuthorizedException(String msg, Throwable t) {
+    public AtomNotAuthorizedException(final String msg, final Throwable t) {
         super(msg, t);
     }
-    /** Construct new exception to wrap root cause*/
-    public AtomNotAuthorizedException(Throwable t) {
+
+    /** Construct new exception to wrap root cause */
+    public AtomNotAuthorizedException(final Throwable t) {
         super(t);
     }
+
     /** Get HTTP status code of exception (HTTP 403 unauthorized) */
+    @Override
     public int getStatus() {
         return HttpServletResponse.SC_UNAUTHORIZED;
     }

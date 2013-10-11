@@ -15,16 +15,14 @@
  */
 package org.rometools.propono.atom.client;
 
-import org.rometools.propono.utils.ProponoException;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpMethodBase;
-
+import org.rometools.propono.utils.ProponoException;
 
 public interface AuthStrategy {
 
     /**
      * Add authentication credenticals, tokens, etc. to HTTP method
      */
-    void addAuthentication(HttpClient httpClient, HttpMethodBase method) 
-            throws ProponoException;
+    void addAuthentication(HttpClient httpClient, HttpMethodBase method) throws ProponoException;
 }

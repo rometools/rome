@@ -12,39 +12,42 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */ 
+ */
 package org.rometools.propono.atom.common;
 
-import org.rometools.propono.atom.common.Workspace;
-import org.rometools.propono.atom.common.AtomService;
-import org.rometools.propono.atom.common.Categories;
-import org.rometools.propono.atom.common.Collection;
-import com.sun.syndication.feed.atom.Category;
 import java.io.FileInputStream;
 import java.util.Iterator;
-import junit.framework.*;
+
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.input.SAXBuilder;
+
+import com.sun.syndication.feed.atom.Category;
 
 /**
  * Tests reading and writing of service document, no server needed.
  */
 public class AtomServiceTest extends TestCase {
-    
-    public AtomServiceTest(String testName) {
+
+    public AtomServiceTest(final String testName) {
         super(testName);
     }
 
+    @Override
     protected void setUp() throws Exception {
     }
 
+    @Override
     protected void tearDown() throws Exception {
     }
 
     public static Test suite() {
-        TestSuite suite = new TestSuite(AtomServiceTest.class);
-        
+        final TestSuite suite = new TestSuite(AtomServiceTest.class);
+
         return suite;
     }
 
@@ -54,31 +57,31 @@ public class AtomServiceTest extends TestCase {
     public void testDocumentToService() {
         try {
             // Load service document from disk
-            SAXBuilder builder = new SAXBuilder();
-            Document document = builder.build(new FileInputStream("test/testdata/servicedoc1.xml"));
+            final SAXBuilder builder = new SAXBuilder();
+            final Document document = builder.build(new FileInputStream("test/testdata/servicedoc1.xml"));
             assertNotNull(document);
-            AtomService service = AtomService.documentToService(document); 
-            
+            final AtomService service = AtomService.documentToService(document);
+
             int workspaceCount = 0;
-            
+
             // Verify that service contains expected workspaces, collections and categories
-            for (Iterator it = service.getWorkspaces().iterator(); it.hasNext();) {
-                Workspace space = (Workspace)it.next();
+            for (final Iterator it = service.getWorkspaces().iterator(); it.hasNext();) {
+                final Workspace space = (Workspace) it.next();
                 assertNotNull(space.getTitle());
                 workspaceCount++;
                 int collectionCount = 0;
 
-                for (Iterator colit = space.getCollections().iterator(); colit.hasNext();) {
-                    Collection col = (Collection)colit.next();
+                for (final Iterator colit = space.getCollections().iterator(); colit.hasNext();) {
+                    final Collection col = (Collection) colit.next();
                     assertNotNull(col.getTitle());
                     assertNotNull(col.getHrefResolved());
                     collectionCount++;
                     int catCount = 0;
                     if (col.getCategories().size() > 0) {
-                        for (Iterator catsit = col.getCategories().iterator(); catsit.hasNext();) {
-                            Categories cats = (Categories) catsit.next();
-                            for (Iterator catit = cats.getCategories().iterator(); catit.hasNext();) {
-                                Category cat = (Category) catit.next();
+                        for (final Iterator catsit = col.getCategories().iterator(); catsit.hasNext();) {
+                            final Categories cats = (Categories) catsit.next();
+                            for (final Iterator catit = cats.getCategories().iterator(); catit.hasNext();) {
+                                final Category cat = (Category) catit.next();
                                 catCount++;
                             }
                             assertTrue(catCount > 0);
@@ -86,75 +89,71 @@ public class AtomServiceTest extends TestCase {
                     }
                 }
             }
-            
+
             assertTrue(workspaceCount > 0);
-            
-        } catch (Exception e) {
+
+        } catch (final Exception e) {
             e.printStackTrace();
             fail();
         }
-    }  
-    
+    }
+
     /**
      * Test of documentToService method, of class AtomService.
      */
     public void testServiceToDocument() {
         try {
             // Create service with workspace and collections
-            AtomService service = new AtomService();
-            
-            Workspace workspace1 = new Workspace("workspace1", null);
-            Workspace workspace2 = new Workspace("workspace1", null);
+            final AtomService service = new AtomService();
+
+            final Workspace workspace1 = new Workspace("workspace1", null);
+            final Workspace workspace2 = new Workspace("workspace1", null);
             service.addWorkspace(workspace1);
             service.addWorkspace(workspace2);
-            
-            Collection collection11 = 
-                new Collection("collection11", null, "http://example.com/app/col11");            
-            Collection collection12 = 
-                new Collection("collection12", null, "http://example.com/app/col12");
+
+            final Collection collection11 = new Collection("collection11", null, "http://example.com/app/col11");
+            final Collection collection12 = new Collection("collection12", null, "http://example.com/app/col12");
             workspace1.addCollection(collection11);
             workspace1.addCollection(collection12);
-            
-            Collection collection21 = 
-                new Collection("collection21", null, "http://example.com/app/col21");            
-            Collection collection22 = 
-                new Collection("collection22", null, "http://example.com/app/col22");
+
+            final Collection collection21 = new Collection("collection21", null, "http://example.com/app/col21");
+            final Collection collection22 = new Collection("collection22", null, "http://example.com/app/col22");
             workspace2.addCollection(collection21);
             workspace2.addCollection(collection22);
-            
+
             // TODO: add categories at collection level
-            
+
             // Convert to JDOM document
-            Document document = service.serviceToDocument();
+            final Document document = service.serviceToDocument();
 
             // verify that JDOM document contains service, workspace and collection
             assertEquals("service", document.getRootElement().getName());
             int workspaceCount = 0;
-            for (Iterator spaceit = document.getRootElement().getChildren().iterator(); spaceit.hasNext();) {
-                Element elem = (Element) spaceit.next();            
-                if ("workspace".equals(elem.getName())) { 
+            for (final Object element : document.getRootElement().getChildren()) {
+                final Element elem = (Element) element;
+                if ("workspace".equals(elem.getName())) {
                     workspaceCount++;
                 }
                 boolean workspaceTitle = false;
                 int collectionCount = 0;
-                for (Iterator colit = elem.getChildren().iterator(); colit.hasNext();) {
-                    Element colelem = (Element) colit.next();
-                    if ("title".equals(colelem.getName())) { 
+                for (final Object element2 : elem.getChildren()) {
+                    final Element colelem = (Element) element2;
+                    if ("title".equals(colelem.getName())) {
                         workspaceTitle = true;
-                    } else if ("collection".equals(colelem.getName())){
-                        collectionCount++;             
+                    } else if ("collection".equals(colelem.getName())) {
+                        collectionCount++;
                     }
-                    
+
                     // TODO: test for categories at the collection level
                 }
                 assertTrue(workspaceTitle);
                 assertTrue(collectionCount > 0);
             }
             assertTrue(workspaceCount > 0);
-            
-        } catch (Exception e) {
+
+        } catch (final Exception e) {
             e.printStackTrace();
             fail();
         }
-    }  
+    }
 }

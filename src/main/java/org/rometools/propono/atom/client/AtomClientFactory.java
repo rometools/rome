@@ -12,36 +12,33 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */ 
+ */
 package org.rometools.propono.atom.client;
 
 import org.rometools.propono.utils.ProponoException;
+
 import com.sun.syndication.io.impl.Atom10Parser;
 
-
 /**
- * Creates AtomService or ClientCollection based on username, password and 
- * end-point URI of Atom protocol service.
+ * Creates AtomService or ClientCollection based on username, password and end-point URI of Atom protocol service.
  */
 public class AtomClientFactory {
-    
+
     static {
         Atom10Parser.setResolveURIs(true);
     }
-    
+
     /**
      * Create AtomService by reading service doc from Atom Server.
      */
-    public static ClientAtomService getAtomService(
-            String uri, AuthStrategy authStrategy) throws ProponoException {
+    public static ClientAtomService getAtomService(final String uri, final AuthStrategy authStrategy) throws ProponoException {
         return new ClientAtomService(uri, authStrategy);
     }
 
     /**
      * Create ClientCollection bound to URI.
      */
-    public static ClientCollection getCollection(
-            String uri, AuthStrategy authStrategy) throws ProponoException {
+    public static ClientCollection getCollection(final String uri, final AuthStrategy authStrategy) throws ProponoException {
         return new ClientCollection(uri, authStrategy);
     }
 }

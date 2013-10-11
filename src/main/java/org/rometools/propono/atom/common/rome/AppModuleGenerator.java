@@ -19,27 +19,26 @@
  */
 package org.rometools.propono.atom.common.rome;
 
-import com.sun.syndication.io.impl.DateParser;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
+import java.util.TimeZone;
 
 import org.jdom2.Element;
 import org.jdom2.Namespace;
 
 import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.ModuleGenerator;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
-import java.util.TimeZone;
 
 /**
  * Creates JDOM representation for APP Extension Module.
  */
 public class AppModuleGenerator implements ModuleGenerator {
-    private static final Namespace APP_NS  = 
-        Namespace.getNamespace("app", AppModule.URI);
+    private static final Namespace APP_NS = Namespace.getNamespace("app", AppModule.URI);
 
+    @Override
     public String getNamespaceUri() {
         return AppModule.URI;
     }
@@ -47,38 +46,40 @@ public class AppModuleGenerator implements ModuleGenerator {
     private static final Set NAMESPACES;
 
     static {
-        Set nss = new HashSet();
+        final Set nss = new HashSet();
         nss.add(APP_NS);
         NAMESPACES = Collections.unmodifiableSet(nss);
     }
-    
+
     /** Get namespaces associated with this module */
+    @Override
     public Set getNamespaces() {
         return NAMESPACES;
     }
 
     /** Generate JDOM element for module and add it to parent element */
-    public void generate(Module module, Element parent) {
-        AppModule m = (AppModule)module;
-        
+    @Override
+    public void generate(final Module module, final Element parent) {
+        final AppModule m = (AppModule) module;
+
         if (m.getDraft() != null) {
-            String draft = m.getDraft().booleanValue() ? "yes" : "no";
-            Element control = new Element("control", APP_NS);
+            final String draft = m.getDraft().booleanValue() ? "yes" : "no";
+            final Element control = new Element("control", APP_NS);
             control.addContent(generateSimpleElement("draft", draft));
             parent.addContent(control);
         }
         if (m.getEdited() != null) {
-            Element edited = new Element("edited", APP_NS);
+            final Element edited = new Element("edited", APP_NS);
             // Inclulde millis in date/time
-            SimpleDateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US);
+            final SimpleDateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US);
             dateFormater.setTimeZone(TimeZone.getTimeZone("GMT"));
             edited.addContent(dateFormater.format(m.getEdited()));
             parent.addContent(edited);
         }
     }
 
-    private Element generateSimpleElement(String name, String value)  {
-        Element element = new Element(name, APP_NS);
+    private Element generateSimpleElement(final String name, final String value) {
+        final Element element = new Element(name, APP_NS);
         element.addContent(value);
         return element;
     }
