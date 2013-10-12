@@ -37,15 +37,18 @@ public class CustomTagsImpl implements CustomTags {
     public CustomTagsImpl() {
     }
 
+    @Override
     public List getValues() {
         values = values == null ? new ArrayList() : values;
         return values;
     }
 
+    @Override
     public void setValues(final List values) {
         this.values = values;
     }
 
+    @Override
     public void copyFrom(final CopyFrom object) {
         final CustomTags ct = (CustomTags) object;
         values = new ArrayList(ct.getValues());
@@ -58,10 +61,12 @@ public class CustomTagsImpl implements CustomTags {
         return cti;
     }
 
+    @Override
     public Class getInterface() {
         return CustomTags.class;
     }
 
+    @Override
     public String getUri() {
         return CustomTags.URI;
     }

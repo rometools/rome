@@ -34,6 +34,7 @@ public class W3CGeoModuleImpl extends GeoRSSModule {
      * 
      * @see com.sun.syndication.feed.CopyFrom#getInterface()
      */
+    @Override
     public Class getInterface() {
         return GeoRSSModule.class;
     }

@@ -65,6 +65,7 @@ public class WeatherModuleGenerator implements ModuleGenerator {
     public WeatherModuleGenerator() {
     }
 
+    @Override
     public void generate(final Module module, final Element element) {
         if (!(module instanceof YWeatherModuleImpl)) {
             return;
@@ -201,6 +202,7 @@ public class WeatherModuleGenerator implements ModuleGenerator {
         return element;
     }
 
+    @Override
     public java.util.Set getNamespaces() {
         final HashSet set = new HashSet();
         set.add(WeatherModuleGenerator.NS);
@@ -208,6 +210,7 @@ public class WeatherModuleGenerator implements ModuleGenerator {
         return set;
     }
 
+    @Override
     public String getNamespaceUri() {
         return YWeatherModule.URI;
     }

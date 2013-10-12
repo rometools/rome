@@ -37,6 +37,7 @@ public class W3CGeoParser implements ModuleParser {
      * 
      * @see com.sun.syndication.io.ModuleParser#getNamespaceUri()
      */
+    @Override
     public String getNamespaceUri() {
         return GeoRSSModule.GEORSS_W3CGEO_URI;
     }
@@ -71,6 +72,7 @@ public class W3CGeoParser implements ModuleParser {
      * 
      * @see com.sun.syndication.io.ModuleParser#parse(org.jdom2.Element)
      */
+    @Override
     public Module parse(final Element element) {
         final Module geoRssModule = parseW3C(element);
         return geoRssModule;

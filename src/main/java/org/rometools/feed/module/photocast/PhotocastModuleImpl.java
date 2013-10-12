@@ -65,46 +65,57 @@ public class PhotocastModuleImpl implements PhotocastModule {
     public PhotocastModuleImpl() {
     }
 
+    @Override
     public Date getPhotoDate() {
         return photoDate;
     }
 
+    @Override
     public void setPhotoDate(final Date photoDate) {
         this.photoDate = photoDate;
     }
 
+    @Override
     public Date getCropDate() {
         return cropDate;
     }
 
+    @Override
     public void setCropDate(final Date cropDate) {
         this.cropDate = cropDate;
     }
 
+    @Override
     public URL getImageUrl() {
         return imageUrl;
     }
 
+    @Override
     public void setImageUrl(final URL imageUrl) {
         this.imageUrl = imageUrl;
     }
 
+    @Override
     public URL getThumbnailUrl() {
         return thumbnailUrl;
     }
 
+    @Override
     public void setThumbnailUrl(final URL thumbnailUrl) {
         this.thumbnailUrl = thumbnailUrl;
     }
 
+    @Override
     public Metadata getMetadata() {
         return metadata;
     }
 
+    @Override
     public void setMetadata(final Metadata metadata) {
         this.metadata = metadata;
     }
 
+    @Override
     public void copyFrom(final CopyFrom obj) {
         final PhotocastModule pm = (PhotocastModule) obj;
         setPhotoDate(pm.getPhotoDate() == null ? null : (Date) pm.getPhotoDate().clone());
@@ -126,10 +137,12 @@ public class PhotocastModuleImpl implements PhotocastModule {
         return pm;
     }
 
+    @Override
     public String getUri() {
         return PhotocastModule.URI;
     }
 
+    @Override
     public Class getInterface() {
         return PhotocastModule.class;
     }

@@ -43,6 +43,7 @@ public class SleEntryImpl implements SleEntry {
         super();
     }
 
+    @Override
     public EntryValue getGroupByElement(final Group element) {
         final EntryValue[] values = getGroupValues();
         final LabelNamespaceElement compare = new LabelNamespaceElement(element.getLabel(), element.getNamespace(), element.getElement());
@@ -59,6 +60,7 @@ public class SleEntryImpl implements SleEntry {
         this.groupValues = groupValues == null ? EMPTY_VALUES : groupValues;
     }
 
+    @Override
     public EntryValue[] getGroupValues() {
         return groupValues;
     }
@@ -71,10 +73,12 @@ public class SleEntryImpl implements SleEntry {
      * 
      * @return the interface the copyFrom works on.
      */
+    @Override
     public Class getInterface() {
         return SleEntry.class;
     }
 
+    @Override
     public EntryValue getSortByElement(final Sort element) {
         System.out.println("Looking for value for " + element.getLabel() + " from " + sortValues.length);
         final EntryValue[] values = getSortValues();
@@ -94,6 +98,7 @@ public class SleEntryImpl implements SleEntry {
         this.sortValues = sortValues;
     }
 
+    @Override
     public EntryValue[] getSortValues() {
         return sortValues;
     }
@@ -104,6 +109,7 @@ public class SleEntryImpl implements SleEntry {
      * 
      * @return URI of the module.
      */
+    @Override
     public String getUri() {
         return ModuleParser.TEMP.getURI();
     }
@@ -124,6 +130,7 @@ public class SleEntryImpl implements SleEntry {
      * 
      * @param obj the instance to copy properties from.
      */
+    @Override
     public void copyFrom(final CopyFrom obj) {
         final SleEntry entry = (SleEntry) obj;
         setGroupValues(entry.getGroupValues().clone());

@@ -64,12 +64,12 @@ public class MediaModuleTest extends AbstractTestCase {
             final SyndFeed feed2 = getSyndFeed(new File("target/" + j + ".xml"));
             for (int i = 0; i < entries.size(); i++) {
                 BufferedWriter b = new BufferedWriter(new FileWriter("target/" + j + "a.txt"));
-                b.write("" + ((SyndEntry) entries.get(i)).getModule(MediaModule.URI));
+                b.write("" + entries.get(i).getModule(MediaModule.URI));
                 b.close();
                 b = new BufferedWriter(new FileWriter("target/" + j + "b.txt"));
                 b.write("" + feed2.getEntries().get(i).getModule(MediaModule.URI));
                 b.close();
-                assertEquals(((SyndEntry) entries.get(i)).getModule(MediaModule.URI), feed2.getEntries().get(i).getModule(MediaModule.URI));
+                assertEquals(entries.get(i).getModule(MediaModule.URI), feed2.getEntries().get(i).getModule(MediaModule.URI));
             }
         }
     }

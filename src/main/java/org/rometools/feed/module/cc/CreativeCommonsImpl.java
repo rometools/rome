@@ -75,18 +75,22 @@ public class CreativeCommonsImpl implements CreativeCommons {
         return array;
     }
 
+    @Override
     public License[] getAllLicenses() {
         return allLicenses;
     }
 
+    @Override
     public void setAllLicenses(final License[] allLicenses) {
         this.allLicenses = allLicenses;
     }
 
+    @Override
     public Class getInterface() {
         return CreativeCommons.class;
     }
 
+    @Override
     public String getUri() {
         return CreativeCommons.URI;
     }
@@ -98,6 +102,7 @@ public class CreativeCommonsImpl implements CreativeCommons {
         return clone;
     }
 
+    @Override
     public void copyFrom(final CopyFrom object) {
         final CreativeCommons source = (CreativeCommons) object;
         setAllLicenses((License[]) arrayCopy(source.getAllLicenses()));
@@ -111,10 +116,12 @@ public class CreativeCommonsImpl implements CreativeCommons {
         return eBean.beanEquals(obj);
     }
 
+    @Override
     public License[] getLicenses() {
         return licenses;
     }
 
+    @Override
     public void setLicenses(final License[] licenses) {
         this.licenses = licenses;
     }

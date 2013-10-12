@@ -65,15 +65,18 @@ public class ContentModuleImpl extends com.sun.syndication.feed.module.ModuleImp
         super(beanClass, uri);
     }
 
+    @Override
     public List getEncodeds() {
         encodeds = encodeds == null ? new ArrayList() : encodeds;
         return encodeds;
     }
 
+    @Override
     public void setEncodeds(final List encodeds) {
         this.encodeds = encodeds;
     }
 
+    @Override
     public void copyFrom(final CopyFrom obj) {
         final ContentModule cm = (ContentModule) obj;
         setEncodeds(cm.getEncodeds());
@@ -81,28 +84,34 @@ public class ContentModuleImpl extends com.sun.syndication.feed.module.ModuleImp
         setContents(cm.getContents());
     }
 
+    @Override
     public Class getInterface() {
         return ContentModule.class;
     }
 
+    @Override
     public List getContentItems() {
         contentItems = contentItems == null ? new ArrayList() : contentItems;
         return contentItems;
     }
 
+    @Override
     public void setContentItems(final List list) {
         contentItems = list;
     }
 
+    @Override
     public List getContents() {
         contents = contents == null ? new ArrayList() : contents;
         return contents;
     }
 
+    @Override
     public void setContents(final List contents) {
         this.contents = contents;
     }
 
+    @Override
     public String toString(final String str) {
         return contentItems.toString();
     }

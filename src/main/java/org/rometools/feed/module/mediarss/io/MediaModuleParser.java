@@ -69,6 +69,7 @@ public class MediaModuleParser implements ModuleParser {
      * 
      * @see com.sun.syndication.io.ModuleParser#getNamespaceUri()
      */
+    @Override
     public String getNamespaceUri() {
         // TODO Auto-generated method stub
         return MediaModule.URI;
@@ -79,6 +80,7 @@ public class MediaModuleParser implements ModuleParser {
      * 
      * @see com.sun.syndication.io.ModuleParser#parse(org.jdom2.Element)
      */
+    @Override
     public Module parse(final Element mmRoot) {
         MediaModuleImpl mod = null;
 

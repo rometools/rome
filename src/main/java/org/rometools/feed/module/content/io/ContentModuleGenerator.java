@@ -74,6 +74,7 @@ public class ContentModuleGenerator implements com.sun.syndication.io.ModuleGene
     public ContentModuleGenerator() {
     }
 
+    @Override
     public void generate(final com.sun.syndication.feed.module.Module module, final org.jdom2.Element element) {
         // this is not necessary, it is done to avoid the namespace definition in every item.
         Element root = element;
@@ -183,10 +184,12 @@ public class ContentModuleGenerator implements com.sun.syndication.io.ModuleGene
         return element;
     }
 
+    @Override
     public String getNamespaceUri() {
         return ContentModule.URI;
     }
 
+    @Override
     public java.util.Set getNamespaces() {
         return NAMESPACES;
     }

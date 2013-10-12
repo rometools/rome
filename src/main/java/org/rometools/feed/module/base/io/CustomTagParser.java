@@ -55,6 +55,7 @@ public class CustomTagParser implements ModuleParser {
     public CustomTagParser() {
     }
 
+    @Override
     public Module parse(final Element element) {
         final CustomTags module = new CustomTagsImpl();
         final ArrayList tags = new ArrayList();
@@ -119,6 +120,7 @@ public class CustomTagParser implements ModuleParser {
         return module;
     }
 
+    @Override
     public String getNamespaceUri() {
         return CustomTags.URI;
     }

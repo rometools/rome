@@ -52,6 +52,7 @@ public class DateValue implements EntryValue {
      * 
      * @return
      */
+    @Override
     public String getElement() {
         return element;
     }
@@ -68,6 +69,7 @@ public class DateValue implements EntryValue {
      * 
      * @return
      */
+    @Override
     public String getLabel() {
         return label;
     }
@@ -84,6 +86,7 @@ public class DateValue implements EntryValue {
      * 
      * @return
      */
+    @Override
     public Comparable getValue() {
         return value;
     }
@@ -113,6 +116,7 @@ public class DateValue implements EntryValue {
         return "[Namespace: " + namespace + " Element:" + element + " Label:" + label + " Value:" + value + "]";
     }
 
+    @Override
     public Namespace getNamespace() {
         return namespace;
     }

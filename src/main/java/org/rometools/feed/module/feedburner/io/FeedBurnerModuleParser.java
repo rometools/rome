@@ -34,10 +34,12 @@ import com.sun.syndication.io.ModuleParser;
 public class FeedBurnerModuleParser implements ModuleParser {
     private static final Namespace NS = Namespace.getNamespace(FeedBurner.URI);
 
+    @Override
     public String getNamespaceUri() {
         return FeedBurner.URI;
     }
 
+    @Override
     public Module parse(final Element element) {
         final FeedBurnerImpl fbi = new FeedBurnerImpl();
         boolean returnObj = false;

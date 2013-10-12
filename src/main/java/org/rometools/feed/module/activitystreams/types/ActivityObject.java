@@ -30,18 +30,22 @@ public abstract class ActivityObject extends Entry implements HasLocation {
 
     public abstract String getTypeIRI();
 
+    @Override
     public GeoRSSModule getLocation() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    @Override
     public void setLocation(final GeoRSSModule location) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    @Override
     public ContactModule getAddress() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    @Override
     public void setAddress(final ContactModule address) {
         throw new UnsupportedOperationException("Not supported yet.");
     }

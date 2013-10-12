@@ -72,6 +72,7 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
      * 
      * @return The parent categories for this feed
      */
+    @Override
     public List getCategories() {
         return categories == null ? (categories = new ArrayList()) : categories;
     }
@@ -81,6 +82,7 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
      * 
      * @param categories The parent categories for this feed
      */
+    @Override
     public void setCategories(final List categories) {
         this.categories = categories;
     }
@@ -90,6 +92,7 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
      * 
      * @return Returns the owner name for the feed
      */
+    @Override
     public String getOwnerName() {
         return ownerName;
     }
@@ -99,6 +102,7 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
      * 
      * @param ownerName Sets the owner name for the feed
      */
+    @Override
     public void setOwnerName(final String ownerName) {
         this.ownerName = ownerName;
     }
@@ -108,6 +112,7 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
      * 
      * @return Returns the owner email address for the feed.
      */
+    @Override
     public String getOwnerEmailAddress() {
         return ownerEmailAddress;
     }
@@ -117,6 +122,7 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
      * 
      * @param ownerEmailAddress Sets the owner email address for the feed.
      */
+    @Override
     public void setOwnerEmailAddress(final String ownerEmailAddress) {
         this.ownerEmailAddress = ownerEmailAddress;
     }
@@ -128,6 +134,7 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
      * 
      * @return Returns the URL for the image.
      */
+    @Override
     public URL getImage() {
         return image;
     }
@@ -139,6 +146,7 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
      * 
      * @param image Sets the URL for the image.
      */
+    @Override
     public void setImage(final URL image) {
         this.image = image;
     }

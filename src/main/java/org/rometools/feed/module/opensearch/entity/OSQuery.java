@@ -20,8 +20,7 @@ import java.io.Serializable;
 import com.sun.syndication.feed.impl.ObjectBean;
 
 /**
- * @author Michael W. Nassif (enrouteinc@gmail.com) Class representation of the
- *         Query object (Response portion so far)
+ * @author Michael W. Nassif (enrouteinc@gmail.com) Class representation of the Query object (Response portion so far)
  */
 public class OSQuery implements Cloneable, Serializable {
     private static final long serialVersionUID = 3818092699440612477L;
@@ -49,8 +48,7 @@ public class OSQuery implements Cloneable, Serializable {
      * <p>
      * 
      * @return a clone of the object.
-     * @throws CloneNotSupportedException thrown if an element of the object
-     *             cannot be cloned.
+     * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
      * 
      */
     @Override
@@ -59,8 +57,7 @@ public class OSQuery implements Cloneable, Serializable {
     }
 
     /**
-     * Indicates whether some other object is "equal to" this one as defined by
-     * the Object equals() method.
+     * Indicates whether some other object is "equal to" this one as defined by the Object equals() method.
      * <p>
      * 
      * @param other he reference object with which to compare.

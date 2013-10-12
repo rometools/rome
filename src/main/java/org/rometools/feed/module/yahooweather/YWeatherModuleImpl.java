@@ -65,10 +65,12 @@ public class YWeatherModuleImpl extends ModuleImpl implements YWeatherEntryModul
         super(YWeatherModuleImpl.class, YWeatherModule.URI);
     }
 
+    @Override
     public Class getInterface() {
         return CopyFromInterface.class;
     }
 
+    @Override
     public void copyFrom(final CopyFrom o) {
         final YWeatherModuleImpl from = (YWeatherModuleImpl) o;
         setAstronomy(from.getAstronomy() != null ? (Astronomy) from.getAstronomy().clone() : null);
@@ -90,58 +92,72 @@ public class YWeatherModuleImpl extends ModuleImpl implements YWeatherEntryModul
         }
     }
 
+    @Override
     public Location getLocation() {
         return location;
     }
 
+    @Override
     public void setLocation(final Location location) {
         this.location = location;
     }
 
+    @Override
     public Astronomy getAstronomy() {
         return astronomy;
     }
 
+    @Override
     public void setAstronomy(final Astronomy astronomy) {
         this.astronomy = astronomy;
     }
 
+    @Override
     public Units getUnits() {
         return units;
     }
 
+    @Override
     public void setUnits(final Units units) {
         this.units = units;
     }
 
+    @Override
     public Condition getCondition() {
         return condition;
     }
 
+    @Override
     public void setCondition(final Condition condition) {
         this.condition = condition;
     }
 
+    @Override
     public Forecast[] getForecasts() {
         return forecasts;
     }
 
+    @Override
     public void setForecasts(final Forecast[] forecasts) {
         this.forecasts = forecasts;
     }
 
+    @Override
     public Wind getWind() {
         return wind;
     }
 
+    @Override
     public void setWind(final Wind wind) {
         this.wind = wind;
     }
 
+    @Override
     public Atmosphere getAtmosphere() {
         return atmosphere;
     }
 
+    @Override
     public void setAtmosphere(final Atmosphere atmosphere) {
         this.atmosphere = atmosphere;
     }

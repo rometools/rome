@@ -69,6 +69,7 @@ public class Generator implements ModuleGenerator {
         super();
     }
 
+    @Override
     public void generate(final Module module, final Element element) {
         if (!(module instanceof PhotocastModule)) {
             return;
@@ -92,10 +93,12 @@ public class Generator implements ModuleGenerator {
         element.addContent(e);
     }
 
+    @Override
     public Set getNamespaces() {
         return Generator.NAMESPACES;
     }
 
+    @Override
     public String getNamespaceUri() {
         return PhotocastModule.URI;
     }

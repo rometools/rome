@@ -41,6 +41,7 @@ public class StringValue implements EntryValue {
         this.element = element;
     }
 
+    @Override
     public String getElement() {
         return element;
     }
@@ -49,6 +50,7 @@ public class StringValue implements EntryValue {
         this.label = label;
     }
 
+    @Override
     public String getLabel() {
         return label;
     }
@@ -57,6 +59,7 @@ public class StringValue implements EntryValue {
         this.value = value;
     }
 
+    @Override
     public Comparable getValue() {
         return value;
     }
@@ -87,6 +90,7 @@ public class StringValue implements EntryValue {
         return "[Namespace: " + namespace + " Element:" + element + " Label:" + label + " Value:" + value + "]";
     }
 
+    @Override
     public Namespace getNamespace() {
         return namespace;
     }

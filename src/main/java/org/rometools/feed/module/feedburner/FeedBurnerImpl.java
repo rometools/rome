@@ -34,34 +34,42 @@ public class FeedBurnerImpl implements FeedBurner {
     private String origLink;
     private String origEnclosureLink;
 
+    @Override
     public String getAwareness() {
         return awareness;
     }
 
+    @Override
     public void setAwareness(final String awareness) {
         this.awareness = awareness;
     }
 
+    @Override
     public String getOrigLink() {
         return origLink;
     }
 
+    @Override
     public void setOrigLink(final String origLink) {
         this.origLink = origLink;
     }
 
+    @Override
     public String getOrigEnclosureLink() {
         return origEnclosureLink;
     }
 
+    @Override
     public void setOrigEnclosureLink(final String origEnclosureLink) {
         this.origEnclosureLink = origEnclosureLink;
     }
 
+    @Override
     public String getUri() {
         return FeedBurner.URI;
     }
 
+    @Override
     public void copyFrom(final CopyFrom object) {
         final FeedBurner source = (FeedBurner) object;
         setAwareness(source.getAwareness());
@@ -69,6 +77,7 @@ public class FeedBurnerImpl implements FeedBurner {
         setOrigEnclosureLink(source.getOrigEnclosureLink());
     }
 
+    @Override
     public Class getInterface() {
         return FeedBurner.class;
     }

@@ -34,10 +34,12 @@ public class SSE091Generator implements DelegatingModuleGenerator {
     public SSE091Generator() {
     }
 
+    @Override
     public void setFeedGenerator(final WireFeedGenerator feedGenerator) {
         parentGenerator = (RSS20Generator) feedGenerator;
     }
 
+    @Override
     public String getNamespaceUri() {
         return SSEModule.SSE_SCHEMA_URI;
     }
@@ -51,10 +53,12 @@ public class SSE091Generator implements DelegatingModuleGenerator {
      * 
      * @return a set with all the URIs (JDOM Namespace elements) this module generator uses.
      */
+    @Override
     public Set getNamespaces() {
         return SSEModule.NAMESPACES;
     }
 
+    @Override
     public void generate(final Module module, final Element element) {
         if (!(module instanceof SSEModule)) {
             return;

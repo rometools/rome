@@ -41,14 +41,17 @@ public class SSE091Parser implements DelegatingModuleParser {
     public SSE091Parser() {
     }
 
+    @Override
     public void setFeedParser(final WireFeedParser feedParser) {
         rssParser = (RSS20Parser) feedParser;
     }
 
+    @Override
     public String getNamespaceUri() {
         return SSEModule.SSE_SCHEMA_URI;
     }
 
+    @Override
     public Module parse(final org.jdom2.Element element) {
         SSEModule sseModule = null;
         final String name = element.getName();
@@ -239,6 +242,7 @@ public class SSE091Parser implements DelegatingModuleParser {
             this.name = name;
         }
 
+        @Override
         public Object filter(final Object object) {
             return object instanceof Element && name.equals(((Element) object).getName());
         }

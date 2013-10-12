@@ -48,6 +48,7 @@ public class ModuleParser implements com.sun.syndication.io.ModuleParser {
      * 
      * @return the namespace URI.
      */
+    @Override
     public String getNamespaceUri() {
         return SimpleListExtension.URI;
     }
@@ -59,6 +60,7 @@ public class ModuleParser implements com.sun.syndication.io.ModuleParser {
      * @param element the XML node (JDOM element) to extract module information from.
      * @return a module instance, <b>null</b> if the element did not have module information.
      */
+    @Override
     public Module parse(final Element element) {
         if (element.getChild("treatAs", NS) == null) {
             return null;

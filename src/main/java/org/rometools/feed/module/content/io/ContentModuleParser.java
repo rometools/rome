@@ -66,10 +66,12 @@ public class ContentModuleParser implements com.sun.syndication.io.ModuleParser 
     public ContentModuleParser() {
     }
 
+    @Override
     public String getNamespaceUri() {
         return ContentModule.URI;
     }
 
+    @Override
     public com.sun.syndication.feed.module.Module parse(final org.jdom2.Element element) {
         boolean foundSomething = false;
         final ContentModule cm = new ContentModuleImpl();

@@ -33,8 +33,7 @@ import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.ModuleParser;
 
 /**
- * @author Michael W. Nassif (enrouteinc@gmail.com) OpenSearch implementation of
- *         the ModuleParser class
+ * @author Michael W. Nassif (enrouteinc@gmail.com) OpenSearch implementation of the ModuleParser class
  */
 public class OpenSearchModuleParser implements ModuleParser {
 

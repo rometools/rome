@@ -76,6 +76,7 @@ public class CCModuleGenerator implements ModuleGenerator {
         super();
     }
 
+    @Override
     public void generate(final Module module, final Element element) {
         Element root = element;
         while (root.getParentElement() != null) {
@@ -88,10 +89,12 @@ public class CCModuleGenerator implements ModuleGenerator {
         }
     }
 
+    @Override
     public Set getNamespaces() {
         return NAMESPACES;
     }
 
+    @Override
     public String getNamespaceUri() {
         return CreativeCommons.URI;
     }

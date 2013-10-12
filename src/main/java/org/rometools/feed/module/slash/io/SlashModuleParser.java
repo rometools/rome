@@ -65,10 +65,12 @@ public class SlashModuleParser implements ModuleParser {
         super();
     }
 
+    @Override
     public String getNamespaceUri() {
         return Slash.URI;
     }
 
+    @Override
     public Module parse(final Element element) {
         final SlashImpl si = new SlashImpl();
         Element tag = element.getChild("hit_parade", SlashModuleParser.NS);

@@ -75,6 +75,7 @@ public class Parser implements ModuleParser {
     public Parser() {
     }
 
+    @Override
     public Module parse(final Element element) {
         if (element.getName().equals("channel") || element.getName().equals("feed")) {
             return new PhotocastModuleImpl();
@@ -132,6 +133,7 @@ public class Parser implements ModuleParser {
         return pm;
     }
 
+    @Override
     public String getNamespaceUri() {
         return PhotocastModule.URI;
     }

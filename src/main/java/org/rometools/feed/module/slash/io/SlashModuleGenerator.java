@@ -63,6 +63,7 @@ public class SlashModuleGenerator implements ModuleGenerator {
     public SlashModuleGenerator() {
     }
 
+    @Override
     public void generate(final Module module, final Element element) {
         if (!(module instanceof Slash)) {
             return;
@@ -97,12 +98,14 @@ public class SlashModuleGenerator implements ModuleGenerator {
         return element;
     }
 
+    @Override
     public java.util.Set getNamespaces() {
         final HashSet set = new HashSet();
         set.add(SlashModuleGenerator.NS);
         return set;
     }
 
+    @Override
     public String getNamespaceUri() {
         return Slash.URI;
     }

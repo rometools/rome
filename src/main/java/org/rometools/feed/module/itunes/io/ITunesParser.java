@@ -75,10 +75,12 @@ public class ITunesParser implements ModuleParser {
     public void setParser(final WireFeedParser feedParser) {
     }
 
+    @Override
     public String getNamespaceUri() {
         return AbstractITunesObject.URI;
     }
 
+    @Override
     public com.sun.syndication.feed.module.Module parse(final org.jdom2.Element element) {
         AbstractITunesObject module = null;
 

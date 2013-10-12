@@ -27,10 +27,12 @@ public abstract class SSEModule implements Module {
         NAMESPACES = Collections.unmodifiableSet(nss);
     }
 
+    @Override
     public String getUri() {
         return SSE_SCHEMA_URI;
     }
 
+    @Override
     public Class getInterface() {
         return getClass();
     }
@@ -51,5 +53,6 @@ public abstract class SSEModule implements Module {
         return clone;
     }
 
+    @Override
     public abstract void copyFrom(CopyFrom obj);
 }

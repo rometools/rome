@@ -69,6 +69,7 @@ public class ITunesGenerator implements ModuleGenerator {
     public ITunesGenerator() {
     }
 
+    @Override
     public void generate(final Module module, final Element element) {
         Element root = element;
 
@@ -164,6 +165,7 @@ public class ITunesGenerator implements ModuleGenerator {
      * 
      * @return set of Namespace objects.
      */
+    @Override
     public java.util.Set getNamespaces() {
         return SET;
     }
@@ -173,6 +175,7 @@ public class ITunesGenerator implements ModuleGenerator {
      * 
      * @return Returns the namespace URI this module handles.
      */
+    @Override
     public String getNamespaceUri() {
         return AbstractITunesObject.URI;
     }

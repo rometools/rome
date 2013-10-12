@@ -124,10 +124,12 @@ public class CustomTagImpl implements CustomTag {
         this.value = value;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public Object getValue() {
         return value;
     }

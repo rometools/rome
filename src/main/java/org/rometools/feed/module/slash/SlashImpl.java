@@ -62,38 +62,47 @@ public class SlashImpl implements Slash {
     public SlashImpl() {
     }
 
+    @Override
     public String getSection() {
         return section;
     }
 
+    @Override
     public void setSection(final String section) {
         this.section = section;
     }
 
+    @Override
     public String getDepartment() {
         return department;
     }
 
+    @Override
     public void setDepartment(final String department) {
         this.department = department;
     }
 
+    @Override
     public Integer getComments() {
         return comments;
     }
 
+    @Override
     public void setComments(final Integer comments) {
         this.comments = comments;
     }
 
+    @Override
     public Integer[] getHitParade() {
         return hitParade == null ? new Integer[0] : hitParade;
     }
 
+    @Override
     public void setHitParade(final Integer[] hitParade) {
         this.hitParade = hitParade;
     }
 
+    @Override
     public void copyFrom(final CopyFrom object) {
         final Slash source = (Slash) object;
         setHitParade(arrayCopy(source.getHitParade()));
@@ -109,6 +118,7 @@ public class SlashImpl implements Slash {
         return si;
     }
 
+    @Override
     public String getUri() {
         return Slash.URI;
     }
@@ -126,6 +136,7 @@ public class SlashImpl implements Slash {
         return array;
     }
 
+    @Override
     public Class getInterface() {
         return Slash.class;
     }

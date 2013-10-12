@@ -52,14 +52,17 @@ public class MediaModuleGenerator implements ModuleGenerator {
         NAMESPACES.add(NS);
     }
 
+    @Override
     public String getNamespaceUri() {
         return MediaModule.URI;
     }
 
+    @Override
     public Set getNamespaces() {
         return NAMESPACES;
     }
 
+    @Override
     public void generate(final Module module, final Element element) {
         if (module instanceof MediaModule) {
             final MediaModule m = (MediaModule) module;

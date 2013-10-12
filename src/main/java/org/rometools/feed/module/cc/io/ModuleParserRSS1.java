@@ -67,6 +67,7 @@ public class ModuleParserRSS1 implements ModuleParser {
     public ModuleParserRSS1() {
     }
 
+    @Override
     public Module parse(final Element element) {
         final CreativeCommonsImpl module = new CreativeCommonsImpl();
         {
@@ -128,6 +129,7 @@ public class ModuleParserRSS1 implements ModuleParser {
         }
     }
 
+    @Override
     public String getNamespaceUri() {
         return CreativeCommonsImpl.RSS1_URI;
     }

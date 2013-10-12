@@ -117,6 +117,7 @@ public abstract class GeoRSSModule extends ModuleImpl implements Cloneable {
      * 
      * @see com.sun.syndication.feed.CopyFrom#copyFrom(java.lang.Object)
      */
+    @Override
     public void copyFrom(final CopyFrom obj) {
         final GeoRSSModule geoRSSModule = (GeoRSSModule) obj;
         geometry = geoRSSModule.getGeometry();

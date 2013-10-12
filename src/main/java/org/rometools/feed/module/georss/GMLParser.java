@@ -45,6 +45,7 @@ public class GMLParser implements ModuleParser {
      * 
      * @see com.sun.syndication.io.ModuleParser#getNamespaceUri()
      */
+    @Override
     public String getNamespaceUri() {
         return GeoRSSModule.GEORSS_GEORSS_URI;
     }
@@ -54,6 +55,7 @@ public class GMLParser implements ModuleParser {
      * 
      * @see com.sun.syndication.io.ModuleParser#parse(org.jdom2.Element)
      */
+    @Override
     public Module parse(final Element element) {
         final Module geoRssModule = parseGML(element);
         return geoRssModule;

@@ -57,6 +57,7 @@ public class MediaModuleImpl extends ModuleImpl implements MediaModule, Serializ
         super(clazz, uri);
     }
 
+    @Override
     public Class getInterface() {
         return MediaModule.class;
     }
@@ -75,6 +76,7 @@ public class MediaModuleImpl extends ModuleImpl implements MediaModule, Serializ
      * 
      * @return Metadata for a feed.
      */
+    @Override
     public Metadata getMetadata() {
         return metadata;
     }
@@ -93,6 +95,7 @@ public class MediaModuleImpl extends ModuleImpl implements MediaModule, Serializ
      * 
      * @return Player for a feed.
      */
+    @Override
     public PlayerReference getPlayer() {
         return player;
     }
@@ -111,6 +114,7 @@ public class MediaModuleImpl extends ModuleImpl implements MediaModule, Serializ
         return m;
     }
 
+    @Override
     public void copyFrom(final CopyFrom obj) {
         final MediaModule m = (MediaModule) obj;
         metadata = (Metadata) m.getMetadata().clone();

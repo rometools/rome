@@ -64,6 +64,7 @@ public class EntryInformationImpl extends AbstractITunesObject implements EntryI
      * 
      * @return Returns the Duration object for this Item
      */
+    @Override
     public Duration getDuration() {
         return duration;
     }
@@ -73,6 +74,7 @@ public class EntryInformationImpl extends AbstractITunesObject implements EntryI
      * 
      * @param duration Sets the Duration object for this Item
      */
+    @Override
     public void setDuration(final Duration duration) {
         this.duration = duration;
     }

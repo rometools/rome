@@ -56,6 +56,7 @@ public class W3CGeoGenerator implements ModuleGenerator {
      * 
      * @see com.sun.syndication.io.ModuleGenerator#getNamespaceUri()
      */
+    @Override
     public String getNamespaceUri() {
         return GeoRSSModule.GEORSS_W3CGEO_URI;
     }
@@ -65,6 +66,7 @@ public class W3CGeoGenerator implements ModuleGenerator {
      * 
      * @see com.sun.syndication.io.ModuleGenerator#getNamespaces()
      */
+    @Override
     public Set getNamespaces() {
         return NAMESPACES;
     }
@@ -74,6 +76,7 @@ public class W3CGeoGenerator implements ModuleGenerator {
      * 
      * @see com.sun.syndication.io.ModuleGenerator#generate(com.sun.syndication.feed.module.Module, org.jdom2.Element)
      */
+    @Override
     public void generate(final Module module, final Element element) {
         // this is not necessary, it is done to avoid the namespace definition
         // in every item.

@@ -27,8 +27,7 @@ import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.feed.module.ModuleImpl;
 
 /**
- * @author Michael W. Nassif (enrouteinc@gmail.com) OpenSearch Module
- *         implementation
+ * @author Michael W. Nassif (enrouteinc@gmail.com) OpenSearch Module implementation
  */
 public class OpenSearchModuleImpl extends ModuleImpl implements OpenSearchModule, Serializable {
     private static final long serialVersionUID = -5257107642509731500L;
@@ -132,6 +131,7 @@ public class OpenSearchModuleImpl extends ModuleImpl implements OpenSearchModule
 
     /*
      * (non-Javadoc)
+     * 
      * @see com.sun.syndication.feed.CopyFrom#copyFrom(java.lang.Object)
      */
     @Override
@@ -152,6 +152,7 @@ public class OpenSearchModuleImpl extends ModuleImpl implements OpenSearchModule
 
     /*
      * (non-Javadoc)
+     * 
      * @see com.sun.syndication.feed.CopyFrom#getInterface()
      */
     @Override

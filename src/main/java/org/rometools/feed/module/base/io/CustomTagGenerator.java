@@ -52,14 +52,17 @@ public class CustomTagGenerator implements ModuleGenerator {
     public CustomTagGenerator() {
     }
 
+    @Override
     public String getNamespaceUri() {
         return CustomTags.URI;
     }
 
+    @Override
     public java.util.Set getNamespaces() {
         return NAMESPACES;
     }
 
+    @Override
     public void generate(final Module module, final Element element) {
         if (!(module instanceof CustomTags)) {
             return;

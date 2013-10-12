@@ -43,6 +43,7 @@ public class NumberValue implements EntryValue {
         this.element = element;
     }
 
+    @Override
     public String getElement() {
         return element;
     }
@@ -51,6 +52,7 @@ public class NumberValue implements EntryValue {
         this.label = label;
     }
 
+    @Override
     public String getLabel() {
         return label;
     }
@@ -59,6 +61,7 @@ public class NumberValue implements EntryValue {
         this.value = value;
     }
 
+    @Override
     public Comparable getValue() {
         return value;
     }
@@ -89,6 +92,7 @@ public class NumberValue implements EntryValue {
         return "[Element:" + element + " Label:" + label + " Value:" + value + "]";
     }
 
+    @Override
     public Namespace getNamespace() {
         return namespace;
     }

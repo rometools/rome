@@ -33,6 +33,7 @@ public class ActivityStreamModuleImpl implements ActivityStreamModule {
      * 
      * @param newobject new value of object
      */
+    @Override
     public void setObject(final ActivityObject newobject) {
         object = newobject;
     }
@@ -42,6 +43,7 @@ public class ActivityStreamModuleImpl implements ActivityStreamModule {
      * 
      * @return the value of object
      */
+    @Override
     public ActivityObject getObject() {
         return object;
     }
@@ -51,6 +53,7 @@ public class ActivityStreamModuleImpl implements ActivityStreamModule {
      * 
      * @param newverb new value of verb
      */
+    @Override
     public void setVerb(final Verb newverb) {
         verb = newverb;
     }
@@ -60,22 +63,27 @@ public class ActivityStreamModuleImpl implements ActivityStreamModule {
      * 
      * @return the value of verb
      */
+    @Override
     public Verb getVerb() {
         return verb;
     }
 
+    @Override
     public ActivityObject getTarget() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    @Override
     public void setTarget(final ActivityObject object) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    @Override
     public Mood getMood() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    @Override
     public void setMood(final Mood mood) {
         throw new UnsupportedOperationException("Not supported yet.");
     }

@@ -77,10 +77,12 @@ public class WeatherModuleParser implements ModuleParser {
         super();
     }
 
+    @Override
     public String getNamespaceUri() {
         return YWeatherModule.URI;
     }
 
+    @Override
     public Module parse(final Element element) {
         final YWeatherModuleImpl module = new YWeatherModuleImpl();
         final Element location = element.getChild("location", WeatherModuleParser.NS);

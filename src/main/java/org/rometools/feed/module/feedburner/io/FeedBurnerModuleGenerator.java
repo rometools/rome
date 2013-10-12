@@ -36,10 +36,12 @@ import com.sun.syndication.io.ModuleGenerator;
 public class FeedBurnerModuleGenerator implements ModuleGenerator {
     private static final Namespace NS = Namespace.getNamespace("feedburner", FeedBurner.URI);
 
+    @Override
     public String getNamespaceUri() {
         return FeedBurner.URI;
     }
 
+    @Override
     public Set getNamespaces() {
         final HashSet set = new HashSet();
         set.add(FeedBurnerModuleGenerator.NS);
@@ -47,6 +49,7 @@ public class FeedBurnerModuleGenerator implements ModuleGenerator {
         return set;
     }
 
+    @Override
     public void generate(final Module module, final Element element) {
         if (!(module instanceof FeedBurner)) {
             return;

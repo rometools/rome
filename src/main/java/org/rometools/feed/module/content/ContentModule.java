@@ -66,6 +66,7 @@ public interface ContentModule extends Module {
      */
     public void setEncodeds(List encodeds);
 
+    @Override
     public String getUri();
 
     public String toString(String str);

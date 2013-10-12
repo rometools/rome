@@ -66,6 +66,7 @@ public class MediaEntryModuleImpl extends MediaModuleImpl implements MediaEntryM
      * 
      * @return MediaContent items for the entry
      */
+    @Override
     public MediaContent[] getMediaContents() {
         return mediaContents;
     }
@@ -84,6 +85,7 @@ public class MediaEntryModuleImpl extends MediaModuleImpl implements MediaEntryM
      * 
      * @return MediaGroups for the entry
      */
+    @Override
     public MediaGroup[] getMediaGroups() {
         return mediaGroups;
     }

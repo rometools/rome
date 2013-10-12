@@ -108,6 +108,7 @@ public class GoogleBaseParser implements ModuleParser {
         super();
     }
 
+    @Override
     public Module parse(final Element element) {
         final HashMap tag2pd = new HashMap();
         final GoogleBaseImpl module = new GoogleBaseImpl();
@@ -163,6 +164,7 @@ public class GoogleBaseParser implements ModuleParser {
         return newString.toString();
     }
 
+    @Override
     public String getNamespaceUri() {
         return GoogleBase.URI;
     }

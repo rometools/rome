@@ -121,6 +121,7 @@ public class SleUtility {
     }
 
     private static class GroupStrategy implements ValueStrategy {
+        @Override
         public Comparable getValue(final Extendable o, final Object value) {
             Comparable oc = null;
 
@@ -135,6 +136,7 @@ public class SleUtility {
     }
 
     private static class SortStrategy implements ValueStrategy {
+        @Override
         public Comparable getValue(final Extendable o, final Object value) {
             Comparable oc = null;
             try {

@@ -79,6 +79,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
      * 
      * @param obj Object to copy from
      */
+    @Override
     public abstract void copyFrom(CopyFrom obj);
 
     /**
@@ -86,6 +87,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
      * 
      * @return Class of the Interface for this module.
      */
+    @Override
     public Class getInterface() {
         return getClass();
     }
@@ -95,6 +97,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
      * 
      * @return "http://www.itunes.com/dtds/podcast-1.0.dtd"
      */
+    @Override
     public String getUri() {
         return AbstractITunesObject.URI;
     }
@@ -112,6 +115,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
      * 
      * @return Returns the author string for this feed or entry
      */
+    @Override
     public String getAuthor() {
         return author;
     }
@@ -121,6 +125,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
      * 
      * @param author Sets the author string for this feed or entry
      */
+    @Override
     public void setAuthor(final String author) {
         this.author = author;
     }
@@ -130,6 +135,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
      * 
      * @return Boolean as to whether to block this feed or entry
      */
+    @Override
     public boolean getBlock() {
         return block;
     }
@@ -139,6 +145,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
      * 
      * @param block Boolean as to whether to block this feed or entry
      */
+    @Override
     public void setBlock(final boolean block) {
         this.block = block;
     }
@@ -148,6 +155,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
      * 
      * @return Boolean as to whether this feed or entry contains adult content
      */
+    @Override
     public boolean getExplicit() {
         return explicit;
     }
@@ -157,6 +165,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
      * 
      * @param explicit Boolean as to whether this feed or entry contains adult content
      */
+    @Override
     public void setExplicit(final boolean explicit) {
         this.explicit = explicit;
     }
@@ -168,6 +177,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
      * 
      * @return A list of keywords for this feed or entry
      */
+    @Override
     public String[] getKeywords() {
         return keywords == null ? new String[0] : keywords;
     }
@@ -179,6 +189,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
      * 
      * @param keywords A list of keywords for this feed or enty
      */
+    @Override
     public void setKeywords(final String[] keywords) {
         this.keywords = keywords;
     }
@@ -188,6 +199,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
      * 
      * @return A subtitle for this feed or entry
      */
+    @Override
     public String getSubtitle() {
         return subtitle;
     }
@@ -197,6 +209,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
      * 
      * @param subtitle A subtitle for this feed or entry
      */
+    @Override
     public void setSubtitle(final String subtitle) {
         this.subtitle = subtitle;
     }
@@ -206,6 +219,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
      * 
      * @return A subtitle for this feed or entry
      */
+    @Override
     public String getSummary() {
         return summary;
     }
@@ -215,6 +229,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
      * 
      * @param summary A subtitle for this feed or entry
      */
+    @Override
     public void setSummary(final String summary) {
         this.summary = summary;
     }

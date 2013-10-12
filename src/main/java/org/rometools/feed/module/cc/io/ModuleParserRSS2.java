@@ -65,6 +65,7 @@ public class ModuleParserRSS2 implements ModuleParser {
     public ModuleParserRSS2() {
     }
 
+    @Override
     public Module parse(final Element element) {
         final CreativeCommonsImpl module = new CreativeCommonsImpl();
         // Do channel global
@@ -118,6 +119,7 @@ public class ModuleParserRSS2 implements ModuleParser {
         }
     }
 
+    @Override
     public String getNamespaceUri() {
         return CreativeCommonsImpl.RSS2_URI;
     }

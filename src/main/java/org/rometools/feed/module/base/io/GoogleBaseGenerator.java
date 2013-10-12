@@ -78,10 +78,12 @@ public class GoogleBaseGenerator implements ModuleGenerator {
         super();
     }
 
+    @Override
     public String getNamespaceUri() {
         return GoogleBase.URI;
     }
 
+    @Override
     public Set getNamespaces() {
         final HashSet set = new HashSet();
         set.add(GoogleBaseGenerator.NS);
@@ -89,6 +91,7 @@ public class GoogleBaseGenerator implements ModuleGenerator {
         return set;
     }
 
+    @Override
     public void generate(final Module module, final Element element) {
         final GoogleBaseImpl mod = (GoogleBaseImpl) module;
         final HashMap props2tags = new HashMap(GoogleBaseParser.PROPS2TAGS);

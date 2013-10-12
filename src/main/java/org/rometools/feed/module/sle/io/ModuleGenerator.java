@@ -41,6 +41,7 @@ public class ModuleGenerator implements com.sun.syndication.io.ModuleGenerator {
      * 
      * @return the namespace URI.
      */
+    @Override
     public String getNamespaceUri() {
         return SimpleListExtension.URI;
     }
@@ -54,6 +55,7 @@ public class ModuleGenerator implements com.sun.syndication.io.ModuleGenerator {
      * 
      * @return a set with all the URIs (JDOM Namespace elements) this module generator uses.
      */
+    @Override
     public Set getNamespaces() {
         return NAMESPACES;
     }
@@ -65,6 +67,7 @@ public class ModuleGenerator implements com.sun.syndication.io.ModuleGenerator {
      * @param module the module to inject into the XML node (JDOM element).
      * @param element the XML node to inject the module metadata to.
      */
+    @Override
     public void generate(final Module module, final Element element) {
         if (!(module instanceof SimpleListExtension)) {
             return;
