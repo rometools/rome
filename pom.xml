@@ -13,9 +13,9 @@
     <description>A PubSubHubub implementation for Java based on ROME</description>
 
     <scm>
-        <connection>scm:svn:https://rometools.jira.com/svn/INCUBATOR/trunk/pubsubhubub/certiorem/</connection>
-        <developerConnection>scm:svn:https://rometools.jira.com/svn/INCUBATOR/trunk/pubsubhubub/certiorem/</developerConnection>
-        <url>https://rometools.jira.com/svn/INCUBATOR/trunk/pubsubhubub/certiorem/</url>
+        <connection>scm:git:git@github.com:rometools/rome-certiorem.git</connection>
+        <developerConnection>scm:git:git@github.com:rometools/rome-certiorem.git</developerConnection>
+        <url>https://github.com/rometools/rome-certiorem/</url>
     </scm>
 
     <licenses>
@@ -99,6 +99,25 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <port>9000</port>
+                    <tempWebappDirectory>${basedir}/target/site/tempdir</tempWebappDirectory>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-scm-publish-plugin</artifactId>
+                <version>1.0-beta-2</version>
+                <configuration>
+                    <scmBranch>gh-pages</scmBranch>
+                    <pubScmUrl>scm:git:git@github.com:rometools/rome-certiorem.git</pubScmUrl>
+                    <content>${project.build.directory}/site</content>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -141,5 +160,35 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>2.7</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>javadoc</report>
+                            <report>test-javadoc</report>
+                        </reports>
+                    </reportSet>
+                    <reportSet>
+                        <id>aggregate</id>
+                        <inherited>false</inherited>
+                        <reports>
+                            <report>aggregate</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        </plugins>
+    </reporting>
 
 </project>
