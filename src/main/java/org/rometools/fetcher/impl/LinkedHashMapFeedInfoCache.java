@@ -18,7 +18,9 @@ import java.util.Map;
  * 
  */
 public class LinkedHashMapFeedInfoCache extends HashMapFeedInfoCache {
-    private final class CacheImpl extends LinkedHashMap {
+
+    private final class CacheImpl extends LinkedHashMap<String, SyndFeedInfo> {
+
         private static final long serialVersionUID = -6977191330127794920L;
 
         public CacheImpl() {
@@ -26,18 +28,17 @@ public class LinkedHashMapFeedInfoCache extends HashMapFeedInfoCache {
         }
 
         @Override
-        protected boolean removeEldestEntry(final Map.Entry eldest) {
+        protected boolean removeEldestEntry(final Map.Entry<String, SyndFeedInfo> eldest) {
             return size() > getMaxEntries();
         }
+
     }
 
     private static final int DEFAULT_MAX_ENTRIES = 20;
-
     private static final long serialVersionUID = 1694228973357997417L;
+    private static final LinkedHashMapFeedInfoCache _instance = new LinkedHashMapFeedInfoCache();
 
     private int maxEntries = DEFAULT_MAX_ENTRIES;
-
-    private final static LinkedHashMapFeedInfoCache _instance = new LinkedHashMapFeedInfoCache();
 
     /**
      * Get the global instance of the cache
@@ -64,7 +65,7 @@ public class LinkedHashMapFeedInfoCache extends HashMapFeedInfoCache {
     }
 
     @Override
-    protected Map createInfoCache() {
+    protected Map<String, SyndFeedInfo> createInfoCache() {
         return Collections.synchronizedMap(new CacheImpl());
     }
 

@@ -34,13 +34,13 @@ import org.rometools.fetcher.FetcherListener;
 import com.sun.syndication.feed.synd.SyndFeed;
 
 public abstract class AbstractFeedFetcher implements FeedFetcher {
-    private final Set fetcherEventListeners;
+    private final Set<FetcherListener> fetcherEventListeners;
     private String userAgent;
     private boolean usingDeltaEncoding;
     private boolean preserveWireFeed;
 
     public AbstractFeedFetcher() {
-        fetcherEventListeners = Collections.synchronizedSet(new HashSet());
+        fetcherEventListeners = Collections.synchronizedSet(new HashSet<FetcherListener>());
 
         final Properties props = new Properties(System.getProperties());
         final String resourceName = "fetcher.properties";
@@ -114,9 +114,9 @@ public abstract class AbstractFeedFetcher implements FeedFetcher {
     protected void fireEvent(final String eventType, final String urlStr, final SyndFeed feed) {
         final FetcherEvent fetcherEvent = new FetcherEvent(this, urlStr, eventType, feed);
         synchronized (fetcherEventListeners) {
-            final Iterator iter = fetcherEventListeners.iterator();
+            final Iterator<FetcherListener> iter = fetcherEventListeners.iterator();
             while (iter.hasNext()) {
-                final FetcherListener fetcherEventListener = (FetcherListener) iter.next();
+                final FetcherListener fetcherEventListener = iter.next();
                 fetcherEventListener.fetcherEvent(fetcherEvent);
             }
         }

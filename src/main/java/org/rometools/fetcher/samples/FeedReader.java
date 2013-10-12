@@ -61,7 +61,7 @@ public class FeedReader {
                 // and the server supports conditional gets, we will get a "Feed
                 // Unchanged" event after the Feed Polled event
                 System.err.println("Polling " + feedUrl + " again to test conditional get support.");
-                final SyndFeed feed2 = fetcher.retrieveFeed(feedUrl);
+                fetcher.retrieveFeed(feedUrl);
                 System.err.println("If a \"Feed Unchanged\" event fired then the server supports conditional gets.");
 
                 ok = true;

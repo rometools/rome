@@ -42,13 +42,13 @@ import com.sun.syndication.io.XmlReader;
  * @author Nick Lothian
  */
 public class HttpClientFeedFetcher extends AbstractFeedFetcher {
+
     private CredentialSupplier credentialSupplier;
     private FeedFetcherCache feedInfoCache;
     private volatile HttpClientMethodCallbackIntf httpClientMethodCallback;
     private volatile HttpClientParams httpClientParams;
 
     public HttpClientFeedFetcher() {
-        super();
         setHttpClientParams(new HttpClientParams());
     }
 

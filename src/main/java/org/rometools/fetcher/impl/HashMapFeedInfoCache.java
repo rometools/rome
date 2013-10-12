@@ -40,7 +40,7 @@ public class HashMapFeedInfoCache implements FeedFetcherCache, Serializable {
 
     static HashMapFeedInfoCache _instance;
 
-    private Map infoCache;
+    private Map<String, SyndFeedInfo> infoCache;
 
     /**
      * <p>
@@ -68,8 +68,8 @@ public class HashMapFeedInfoCache implements FeedFetcherCache, Serializable {
         return _instance;
     }
 
-    protected Map createInfoCache() {
-        return Collections.synchronizedMap(new HashMap());
+    protected Map<String, SyndFeedInfo> createInfoCache() {
+        return Collections.synchronizedMap(new HashMap<String, SyndFeedInfo>());
     }
 
     protected Object get(final Object key) {
@@ -84,7 +84,7 @@ public class HashMapFeedInfoCache implements FeedFetcherCache, Serializable {
         return (SyndFeedInfo) get(feedUrl.toString());
     }
 
-    protected void put(final Object key, final Object value) {
+    protected void put(final String key, final SyndFeedInfo value) {
         getInfoCache().put(key, value);
     }
 
@@ -96,7 +96,7 @@ public class HashMapFeedInfoCache implements FeedFetcherCache, Serializable {
         put(feedUrl.toString(), syndFeedInfo);
     }
 
-    protected synchronized final Map getInfoCache() {
+    protected synchronized final Map<String, SyndFeedInfo> getInfoCache() {
         return infoCache;
     }
 
@@ -105,7 +105,7 @@ public class HashMapFeedInfoCache implements FeedFetcherCache, Serializable {
      * 
      * @param map the map to use as the info cache.
      */
-    protected synchronized final void setInfoCache(final Map map) {
+    protected synchronized final void setInfoCache(final Map<String, SyndFeedInfo> map) {
         infoCache = map;
     }
 
@@ -128,7 +128,7 @@ public class HashMapFeedInfoCache implements FeedFetcherCache, Serializable {
             return null;
         }
 
-        return (SyndFeedInfo) infoCache.remove(url.toString());
+        return infoCache.remove(url.toString());
     }
 
 }

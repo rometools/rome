@@ -236,7 +236,7 @@ public abstract class AbstractJettyTest extends TestCase {
     public void testErrorHandling() {
         final FeedFetcher feedFetcher = getFeedFetcher();
         try {
-            final SyndFeed feed = feedFetcher.retrieveFeed(new URL("http://localhost:" + testPort + "/rome/FetcherTestServlet?error=404"));
+            feedFetcher.retrieveFeed(new URL("http://localhost:" + testPort + "/rome/FetcherTestServlet?error=404"));
             fail("4xx error handling did not work correctly");
         } catch (final FetcherException e) {
             // expect this exception
@@ -247,7 +247,7 @@ public abstract class AbstractJettyTest extends TestCase {
         }
 
         try {
-            final SyndFeed feed = feedFetcher.retrieveFeed(new URL("http://localhost:" + testPort + "/rome/FetcherTestServlet?error=500"));
+            feedFetcher.retrieveFeed(new URL("http://localhost:" + testPort + "/rome/FetcherTestServlet?error=500"));
             fail("5xx error handling did not work correctly");
         } catch (final FetcherException e) {
             // expect this exception

@@ -39,20 +39,33 @@ public class DiskFeedInfoCache implements FeedFetcherCache {
     public SyndFeedInfo getFeedInfo(final URL url) {
         SyndFeedInfo info = null;
         final String fileName = cachePath + File.separator + "feed_" + replaceNonAlphanumeric(url.toString(), '_').trim();
-        FileInputStream fis;
+        FileInputStream fis = null;
+        ObjectInputStream ois = null;
         try {
             fis = new FileInputStream(fileName);
-            final ObjectInputStream ois = new ObjectInputStream(fis);
+            ois = new ObjectInputStream(fis);
             info = (SyndFeedInfo) ois.readObject();
-            fis.close();
-        } catch (final FileNotFoundException fnfe) {
+        } catch (final FileNotFoundException e) {
             // That's OK, we'l return null
-        } catch (final ClassNotFoundException cnfe) {
+        } catch (final ClassNotFoundException e) {
             // Error writing to cache is fatal
-            throw new RuntimeException("Attempting to read from cache", cnfe);
-        } catch (final IOException fnfe) {
+            throw new RuntimeException("Attempting to read from cache", e);
+        } catch (final IOException e) {
             // Error writing to cache is fatal
-            throw new RuntimeException("Attempting to read from cache", fnfe);
+            throw new RuntimeException("Attempting to read from cache", e);
+        } finally {
+            if (fis != null) {
+                try {
+                    fis.close();
+                } catch (final IOException e) {
+                }
+            }
+            if (ois != null) {
+                try {
+                    ois.close();
+                } catch (final IOException e) {
+                }
+            }
         }
         return info;
     }
@@ -110,12 +123,12 @@ public class DiskFeedInfoCache implements FeedFetcherCache {
     public SyndFeedInfo remove(final URL url) {
         SyndFeedInfo info = null;
         final String fileName = cachePath + File.separator + "feed_" + replaceNonAlphanumeric(url.toString(), '_').trim();
-        FileInputStream fis;
+        FileInputStream fis = null;
+        ObjectInputStream ois = null;
         try {
             fis = new FileInputStream(fileName);
-            final ObjectInputStream ois = new ObjectInputStream(fis);
+            ois = new ObjectInputStream(fis);
             info = (SyndFeedInfo) ois.readObject();
-            fis.close();
 
             final File file = new File(fileName);
             if (file.exists()) {
@@ -129,6 +142,19 @@ public class DiskFeedInfoCache implements FeedFetcherCache {
         } catch (final IOException fnfe) {
             // Error writing to cahce is fatal
             throw new RuntimeException("Attempting to read from cache", fnfe);
+        } finally {
+            if (fis != null) {
+                try {
+                    fis.close();
+                } catch (final IOException e) {
+                }
+            }
+            if (ois != null) {
+                try {
+                    ois.close();
+                } catch (final IOException e) {
+                }
+            }
         }
         return info;
     }

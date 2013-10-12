@@ -177,7 +177,7 @@ public class FetcherTestServlet extends HttpServlet {
             feed.setLink("http://rome.dev.java.net");
             feed.setDescription("This tests using rfc3229 delta encoding.");
 
-            final List entries = new ArrayList();
+            final List<SyndEntry> entries = new ArrayList<SyndEntry>();
             SyndEntry entry;
             SyndContent description;
 
