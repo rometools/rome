@@ -99,14 +99,6 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.9.1</version>
-                <configuration>
-                    <excludePackageNames>com.sun.syndication.propono.atom.server.impl</excludePackageNames>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
                 <version>2.2.1</version>
                 <executions>
@@ -121,6 +113,9 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>2.9.1</version>
+                <configuration>
+                    <excludePackageNames>com.sun.syndication.propono.atom.server.impl</excludePackageNames>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>
@@ -133,10 +128,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
                 <version>3.3</version>
-                <configuration>
-                    <port>9000</port>
-                    <tempWebappDirectory>${basedir}/target/site/tempdir</tempWebappDirectory>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
