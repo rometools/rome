@@ -18,34 +18,34 @@ package org.rometools.fetcher;
 
 /**
  * @author Nick Lothian
- *
+ * 
  */
 public class FetcherException extends Exception {
-	private static final long serialVersionUID = -7479645796948092380L;
+    private static final long serialVersionUID = -7479645796948092380L;
 
-	int responseCode;
-	
-	public FetcherException(Throwable cause) {
-		super();
-		initCause(cause);
-	}
-	
-	public FetcherException(String message, Throwable cause) {
-		super(message);
-		initCause(cause);
-	}
-	
-	public FetcherException(String message) {
-		super(message);
-	}
-	
-	public FetcherException(int responseCode, String message) {
-		this(message);		
-		this.responseCode = responseCode;
-	}
+    int responseCode;
 
-	public int getResponseCode() {
-		return responseCode;
-	}
+    public FetcherException(final Throwable cause) {
+        super();
+        initCause(cause);
+    }
+
+    public FetcherException(final String message, final Throwable cause) {
+        super(message);
+        initCause(cause);
+    }
+
+    public FetcherException(final String message) {
+        super(message);
+    }
+
+    public FetcherException(final int responseCode, final String message) {
+        this(message);
+        this.responseCode = responseCode;
+    }
+
+    public int getResponseCode() {
+        return responseCode;
+    }
 
 }

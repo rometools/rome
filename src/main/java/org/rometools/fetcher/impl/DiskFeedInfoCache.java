@@ -23,112 +23,113 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URL;
-import javax.swing.text.Utilities;
-
 
 /**
  * Disk based cache.
  */
 public class DiskFeedInfoCache implements FeedFetcherCache {
-    
+
     protected String cachePath = null;
-    public DiskFeedInfoCache(String cachePath) {
+
+    public DiskFeedInfoCache(final String cachePath) {
         this.cachePath = cachePath;
     }
-    public SyndFeedInfo getFeedInfo(URL url) {
+
+    @Override
+    public SyndFeedInfo getFeedInfo(final URL url) {
         SyndFeedInfo info = null;
-        String fileName = cachePath + File.separator + "feed_"
-                + replaceNonAlphanumeric(url.toString(),'_').trim();
+        final String fileName = cachePath + File.separator + "feed_" + replaceNonAlphanumeric(url.toString(), '_').trim();
         FileInputStream fis;
         try {
             fis = new FileInputStream(fileName);
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            info = (SyndFeedInfo)ois.readObject();
+            final ObjectInputStream ois = new ObjectInputStream(fis);
+            info = (SyndFeedInfo) ois.readObject();
             fis.close();
-        } catch (FileNotFoundException fnfe) {
+        } catch (final FileNotFoundException fnfe) {
             // That's OK, we'l return null
-        } catch (ClassNotFoundException cnfe) {
+        } catch (final ClassNotFoundException cnfe) {
             // Error writing to cache is fatal
             throw new RuntimeException("Attempting to read from cache", cnfe);
-        } catch (IOException fnfe) {
+        } catch (final IOException fnfe) {
             // Error writing to cache is fatal
             throw new RuntimeException("Attempting to read from cache", fnfe);
         }
         return info;
     }
-    
-    public void setFeedInfo(URL url, SyndFeedInfo feedInfo) {
-        String fileName = cachePath + File.separator + "feed_"
-                + replaceNonAlphanumeric(url.toString(),'_').trim();
+
+    @Override
+    public void setFeedInfo(final URL url, final SyndFeedInfo feedInfo) {
+        final String fileName = cachePath + File.separator + "feed_" + replaceNonAlphanumeric(url.toString(), '_').trim();
         FileOutputStream fos;
         try {
             fos = new FileOutputStream(fileName);
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            final ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(feedInfo);
             fos.flush();
             fos.close();
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // Error writing to cache is fatal
             throw new RuntimeException("Attempting to write to cache", e);
         }
     }
-    
-    public static String replaceNonAlphanumeric(String str, char subst) {
-        StringBuffer ret = new StringBuffer(str.length());
-        char[] testChars = str.toCharArray();
-        for (int i = 0; i < testChars.length; i++) {
-            if (Character.isLetterOrDigit(testChars[i])) {
-                ret.append(testChars[i]);
+
+    public static String replaceNonAlphanumeric(final String str, final char subst) {
+        final StringBuffer ret = new StringBuffer(str.length());
+        final char[] testChars = str.toCharArray();
+        for (final char testChar : testChars) {
+            if (Character.isLetterOrDigit(testChar)) {
+                ret.append(testChar);
             } else {
-                ret.append( subst );
+                ret.append(subst);
             }
         }
         return ret.toString();
     }
-    
+
     /**
-     * Clear the cache. 
+     * Clear the cache.
      */
+    @Override
     public synchronized void clear() {
-    	final File file = new File(this.cachePath);
-    	//only do the delete if the directory exists
-    	if( file.exists() && file.canWrite() ) {
-    		//make the directory empty
-    		final String[] files = file.list();
-    		final int len = files.length;
-    		for( int i=0; i<len; i++ ) {
-    			File deleteMe = new File(this.cachePath + File.separator + files[i]);
-    			deleteMe.delete();
-    		}
-    		
-    		//don't delete the cache directory
-    	}
+        final File file = new File(cachePath);
+        // only do the delete if the directory exists
+        if (file.exists() && file.canWrite()) {
+            // make the directory empty
+            final String[] files = file.list();
+            final int len = files.length;
+            for (int i = 0; i < len; i++) {
+                final File deleteMe = new File(cachePath + File.separator + files[i]);
+                deleteMe.delete();
+            }
+
+            // don't delete the cache directory
+        }
     }
-    
-    public SyndFeedInfo remove( URL url ) {
+
+    @Override
+    public SyndFeedInfo remove(final URL url) {
         SyndFeedInfo info = null;
-        String fileName = cachePath + File.separator + "feed_"
-                + replaceNonAlphanumeric(url.toString(),'_').trim();
+        final String fileName = cachePath + File.separator + "feed_" + replaceNonAlphanumeric(url.toString(), '_').trim();
         FileInputStream fis;
         try {
             fis = new FileInputStream(fileName);
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            info = (SyndFeedInfo)ois.readObject();
+            final ObjectInputStream ois = new ObjectInputStream(fis);
+            info = (SyndFeedInfo) ois.readObject();
             fis.close();
-            
-            File file = new File( fileName );
-            if( file.exists() ) { 
-            	file.delete();
+
+            final File file = new File(fileName);
+            if (file.exists()) {
+                file.delete();
             }
-        } catch (FileNotFoundException fnfe) {
+        } catch (final FileNotFoundException fnfe) {
             // That's OK, we'l return null
-        } catch (ClassNotFoundException cnfe) {
+        } catch (final ClassNotFoundException cnfe) {
             // Error writing to cahce is fatal
             throw new RuntimeException("Attempting to read from cache", cnfe);
-        } catch (IOException fnfe) {
+        } catch (final IOException fnfe) {
             // Error writing to cahce is fatal
             throw new RuntimeException("Attempting to read from cache", fnfe);
         }
-        return info;   	
+        return info;
     }
 }

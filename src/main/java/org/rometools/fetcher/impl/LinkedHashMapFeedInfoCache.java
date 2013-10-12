@@ -5,66 +5,75 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * <p>An implementation of the {@link org.rometools.fetcher.impl.FeedFetcherCache} interface.</p>
+ * <p>
+ * An implementation of the {@link org.rometools.fetcher.impl.FeedFetcherCache} interface.
+ * </p>
  * 
- * <p>Unlike the HashMapFeedInfoCache this implementation will not grow unbound</p>
+ * <p>
+ * Unlike the HashMapFeedInfoCache this implementation will not grow unbound
+ * </p>
  * 
  * @author Javier Kohen
  * @author Nick Lothian
- *
+ * 
  */
 public class LinkedHashMapFeedInfoCache extends HashMapFeedInfoCache {
-	private final class CacheImpl extends LinkedHashMap {
-		private static final long serialVersionUID = -6977191330127794920L;
+    private final class CacheImpl extends LinkedHashMap {
+        private static final long serialVersionUID = -6977191330127794920L;
 
-		public CacheImpl() {
-			super(16, 0.75F, true);
-		}
-		
-		protected boolean removeEldestEntry(Map.Entry eldest) {
-			return size() > getMaxEntries();
-		}
-	}
-	
-	private static final int DEFAULT_MAX_ENTRIES = 20;
+        public CacheImpl() {
+            super(16, 0.75F, true);
+        }
 
-	private static final long serialVersionUID = 1694228973357997417L;
+        @Override
+        protected boolean removeEldestEntry(final Map.Entry eldest) {
+            return size() > getMaxEntries();
+        }
+    }
 
-	private int maxEntries = DEFAULT_MAX_ENTRIES;
+    private static final int DEFAULT_MAX_ENTRIES = 20;
 
-	private final static LinkedHashMapFeedInfoCache _instance = new LinkedHashMapFeedInfoCache();	
-	
-	
-	/**
-	 * Get the global instance of the cache
-	 * @return an implementation of FeedFetcherCache
-	 */
-	public static final FeedFetcherCache getInstance() {
-		return _instance;
-	}
+    private static final long serialVersionUID = 1694228973357997417L;
 
-	/**
-	 * <p>Constructor for HashMapFeedInfoCache</p>
-	 * 
-	 * <p>Only use this if you want multiple instances of the cache. 
-	 * Usually {@link #getInstance()} is more appropriate.</p>
-	 *
-	 * @see #getInstance()
-	 */
-	public LinkedHashMapFeedInfoCache() {
-		super();
-	}
+    private int maxEntries = DEFAULT_MAX_ENTRIES;
 
-	protected Map createInfoCache() {
-		return Collections.synchronizedMap(new CacheImpl());
-	}
+    private final static LinkedHashMapFeedInfoCache _instance = new LinkedHashMapFeedInfoCache();
 
-	public synchronized final int getMaxEntries() {
-		return maxEntries;
-	}
+    /**
+     * Get the global instance of the cache
+     * 
+     * @return an implementation of FeedFetcherCache
+     */
+    public static final FeedFetcherCache getInstance() {
+        return _instance;
+    }
 
-	public synchronized final void setMaxEntries(int maxEntries) {
-		this.maxEntries = maxEntries;
-	}	
-	
+    /**
+     * <p>
+     * Constructor for HashMapFeedInfoCache
+     * </p>
+     * 
+     * <p>
+     * Only use this if you want multiple instances of the cache. Usually {@link #getInstance()} is more appropriate.
+     * </p>
+     * 
+     * @see #getInstance()
+     */
+    public LinkedHashMapFeedInfoCache() {
+        super();
+    }
+
+    @Override
+    protected Map createInfoCache() {
+        return Collections.synchronizedMap(new CacheImpl());
+    }
+
+    public synchronized final int getMaxEntries() {
+        return maxEntries;
+    }
+
+    public synchronized final void setMaxEntries(final int maxEntries) {
+        this.maxEntries = maxEntries;
+    }
+
 }

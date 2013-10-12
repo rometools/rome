@@ -27,6 +27,7 @@ public class TestBasicAuthenticator extends Authenticator {
     /**
      * @see java.net.Authenticator#getPasswordAuthentication()
      */
+    @Override
     protected PasswordAuthentication getPasswordAuthentication() {
         if ("localhost".equals(getRequestingHost())) {
             return new PasswordAuthentication("username", "password".toCharArray());

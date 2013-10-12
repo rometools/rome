@@ -21,33 +21,37 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sun.syndication.feed.synd.SyndFeedImpl;
-import com.sun.syndication.feed.synd.SyndFeed;
 import org.rometools.fetcher.FeedFetcher;
 import org.rometools.fetcher.impl.FeedFetcherCache;
 import org.rometools.fetcher.impl.HashMapFeedInfoCache;
 import org.rometools.fetcher.impl.HttpURLFeedFetcher;
+
+import com.sun.syndication.feed.synd.SyndFeed;
+import com.sun.syndication.feed.synd.SyndFeedImpl;
 import com.sun.syndication.io.SyndFeedOutput;
 
 /**
- * <p>It aggregates a list of RSS/Atom feeds (they can be of different types)
- * into a single feed of the specified type.</p>
- *
- * <p>Converted from the original FeedAggregator sample</p>
- *
+ * <p>
+ * It aggregates a list of RSS/Atom feeds (they can be of different types) into a single feed of the specified type.
+ * </p>
+ * 
+ * <p>
+ * Converted from the original FeedAggregator sample
+ * </p>
+ * 
  * @author Alejandro Abdelnur
  * @author Nick Lothian
- *
+ * 
  */
 public class FeedAggregator {
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         boolean ok = false;
-        if (args.length>=2) {
+        if (args.length >= 2) {
             try {
-                String outputType = args[0];
+                final String outputType = args[0];
 
-                SyndFeed feed = new SyndFeedImpl();
+                final SyndFeed feed = new SyndFeedImpl();
                 feed.setFeedType(outputType);
 
                 feed.setTitle("Aggregated Feed");
@@ -55,25 +59,24 @@ public class FeedAggregator {
                 feed.setAuthor("anonymous");
                 feed.setLink("http://www.anonymous.com");
 
-                List entries = new ArrayList();
+                final List entries = new ArrayList();
                 feed.setEntries(entries);
 
-				FeedFetcherCache feedInfoCache = HashMapFeedInfoCache.getInstance();
-				FeedFetcher feedFetcher = new HttpURLFeedFetcher(feedInfoCache);
+                final FeedFetcherCache feedInfoCache = HashMapFeedInfoCache.getInstance();
+                final FeedFetcher feedFetcher = new HttpURLFeedFetcher(feedInfoCache);
 
-                for (int i=1;i<args.length;i++) {
-                    URL inputUrl = new URL(args[i]);
-					SyndFeed inFeed = feedFetcher.retrieveFeed(inputUrl);
+                for (int i = 1; i < args.length; i++) {
+                    final URL inputUrl = new URL(args[i]);
+                    final SyndFeed inFeed = feedFetcher.retrieveFeed(inputUrl);
                     entries.addAll(inFeed.getEntries());
                 }
 
-                SyndFeedOutput output = new SyndFeedOutput();
-				output.output(feed, new PrintWriter(System.out));
+                final SyndFeedOutput output = new SyndFeedOutput();
+                output.output(feed, new PrintWriter(System.out));
 
                 ok = true;
-            }
-            catch (Exception ex) {
-                System.out.println("ERROR: "+ex.getMessage());
+            } catch (final Exception ex) {
+                System.out.println("ERROR: " + ex.getMessage());
                 ex.printStackTrace();
             }
         }

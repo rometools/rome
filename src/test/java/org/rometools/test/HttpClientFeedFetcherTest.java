@@ -16,45 +16,48 @@
  */
 package org.rometools.test;
 
-import org.rometools.fetcher.impl.HttpClientFeedFetcher;
-import org.rometools.fetcher.impl.FeedFetcherCache;
 import org.apache.commons.httpclient.Credentials;
 import org.apache.commons.httpclient.UsernamePasswordCredentials;
-
 import org.rometools.fetcher.FeedFetcher;
+import org.rometools.fetcher.impl.FeedFetcherCache;
+import org.rometools.fetcher.impl.HttpClientFeedFetcher;
 
 /**
  * @author Nick Lothian
  */
 public class HttpClientFeedFetcherTest extends AbstractJettyTest {
 
-	public HttpClientFeedFetcherTest(String s) {
-		super(s);
-	}
-	
-	/**
-	 * @see com.sun.syndication.fetcher.impl.AbstractJettyTest#getFeedFetcher()
-	 */
-	protected FeedFetcher getFeedFetcher() {		
-		return new HttpClientFeedFetcher();
-	}
-	
-	protected FeedFetcher getFeedFetcher(FeedFetcherCache cache) {
-		return new HttpClientFeedFetcher(cache);
-	}
+    public HttpClientFeedFetcherTest(final String s) {
+        super(s);
+    }
+
+    /**
+     * @see com.sun.syndication.fetcher.impl.AbstractJettyTest#getFeedFetcher()
+     */
+    @Override
+    protected FeedFetcher getFeedFetcher() {
+        return new HttpClientFeedFetcher();
+    }
+
+    @Override
+    protected FeedFetcher getFeedFetcher(final FeedFetcherCache cache) {
+        return new HttpClientFeedFetcher(cache);
+    }
 
     /**
      * @see com.sun.syndication.fetcher.impl.AbstractJettyTest#getAuthenticatedFeedFetcher()
      */
+    @Override
     public FeedFetcher getAuthenticatedFeedFetcher() {
         return new HttpClientFeedFetcher(null, new HttpClientFeedFetcher.CredentialSupplier() {
-            public Credentials getCredentials(String realm, String host) {
+            @Override
+            public Credentials getCredentials(final String realm, final String host) {
                 if ("localhost".equals(host)) {
-                	return new UsernamePasswordCredentials("username", "password");
+                    return new UsernamePasswordCredentials("username", "password");
                 } else {
                     return null;
-                }                
-            }            
-        }); 
+                }
+            }
+        });
     }
 }

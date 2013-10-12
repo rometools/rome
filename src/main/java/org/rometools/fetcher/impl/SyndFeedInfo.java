@@ -23,35 +23,39 @@ import com.sun.syndication.feed.impl.ObjectBean;
 import com.sun.syndication.feed.synd.SyndFeed;
 
 /**
- * <p>A class to represent a {@link com.sun.syndication.feed.synd.SyndFeed}
- * and some useful information about it.</p>
+ * <p>
+ * A class to represent a {@link com.sun.syndication.feed.synd.SyndFeed} and some useful information about it.
+ * </p>
  * 
- * <p>This class is thread safe, as expected by the different feed fetcher
- * implementations.</p>
- *
+ * <p>
+ * This class is thread safe, as expected by the different feed fetcher implementations.
+ * </p>
+ * 
  * @author Nick Lothian
  */
 public class SyndFeedInfo implements Cloneable, Serializable {
-	private static final long serialVersionUID = -1874786860901426015L;
-	
-	private final ObjectBean _objBean;
-	private String id;
-	private URL url;
-	private Object lastModified;
-	private String eTag;
-	private SyndFeed syndFeed;
+    private static final long serialVersionUID = -1874786860901426015L;
+
+    private final ObjectBean _objBean;
+    private String id;
+    private URL url;
+    private Object lastModified;
+    private String eTag;
+    private SyndFeed syndFeed;
 
     public SyndFeedInfo() {
-        _objBean = new ObjectBean(this.getClass(),this);
+        _objBean = new ObjectBean(this.getClass(), this);
     }
 
     /**
      * Creates a deep 'bean' clone of the object.
      * <p>
+     * 
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     *
+     * 
      */
+    @Override
     public Object clone() throws CloneNotSupportedException {
         return _objBean.clone();
     }
@@ -59,11 +63,13 @@ public class SyndFeedInfo implements Cloneable, Serializable {
     /**
      * Indicates whether some other object is "equal to" this one as defined by the Object equals() method.
      * <p>
+     * 
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     *
+     * 
      */
-    public boolean equals(Object other) {
+    @Override
+    public boolean equals(final Object other) {
         return _objBean.equals(other);
     }
 
@@ -72,9 +78,11 @@ public class SyndFeedInfo implements Cloneable, Serializable {
      * <p>
      * It follows the contract defined by the Object hashCode() method.
      * <p>
+     * 
      * @return the hashcode of the bean object.
-     *
+     * 
      */
+    @Override
     public int hashCode() {
         return _objBean.hashCode();
     }
@@ -82,68 +90,68 @@ public class SyndFeedInfo implements Cloneable, Serializable {
     /**
      * Returns the String representation for the object.
      * <p>
+     * 
      * @return String representation for the object.
-     *
+     * 
      */
+    @Override
     public String toString() {
         return _objBean.toString();
     }
 
+    /**
+     * @return the ETag the feed was last retrieved with
+     */
+    public synchronized String getETag() {
+        return eTag;
+    }
 
-	/**
-	 * @return the ETag the feed was last retrieved with
-	 */
-	public synchronized String getETag() {
-		return eTag;
-	}
+    /**
+     * @return the last modified date for the feed
+     */
+    public synchronized Object getLastModified() {
+        return lastModified;
+    }
 
-	/**
-	 * @return the last modified date for the feed
-	 */
-	public synchronized Object getLastModified() {
-		return lastModified;
-	}
+    /**
+     * @return the URL the feed was served from
+     */
+    public synchronized URL getUrl() {
+        return url;
+    }
 
-	/**
-	 * @return the URL the feed was served from
-	 */
-	public synchronized URL getUrl() {
-		return url;
-	}
+    public synchronized void setETag(final String string) {
+        eTag = string;
+    }
 
-	public synchronized void setETag(String string) {
-		eTag = string;
-	}
+    public synchronized void setLastModified(final Object o) {
+        lastModified = o;
+    }
 
-	public synchronized void setLastModified(Object o) {
-		lastModified = o;
-	}
+    public synchronized void setUrl(final URL url) {
+        this.url = url;
+    }
 
-	public synchronized void setUrl(URL url) {
-		this.url = url;
-	}
+    public synchronized SyndFeed getSyndFeed() {
+        return syndFeed;
+    }
 
-	public synchronized SyndFeed getSyndFeed() {
-		return syndFeed;
-	}
+    public synchronized void setSyndFeed(final SyndFeed feed) {
+        syndFeed = feed;
+    }
 
-	public synchronized void setSyndFeed(SyndFeed feed) {
-		syndFeed = feed;
-	}
+    /**
+     * @return A unique ID to identify the feed
+     */
+    public synchronized String getId() {
+        return id;
+    }
 
-	/**
-	 * @return A unique ID to identify the feed
-	 */
-	public synchronized String getId() {
-		return id;
-	}
-
-	/**
-	 * @param string A unique ID to identify the feed. Note that if the URL of the feed
-	 * changes this will remain the same
-	 */
-	public synchronized void setId(String string) {
-		id = string;
-	}
+    /**
+     * @param string A unique ID to identify the feed. Note that if the URL of the feed changes this will remain the same
+     */
+    public synchronized void setId(final String string) {
+        id = string;
+    }
 
 }

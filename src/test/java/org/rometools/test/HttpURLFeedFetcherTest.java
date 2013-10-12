@@ -16,40 +16,40 @@
  */
 package org.rometools.test;
 
-import org.rometools.fetcher.impl.HttpURLFeedFetcher;
-import org.rometools.fetcher.impl.FeedFetcherCache;
 import org.rometools.fetcher.FeedFetcher;
-
+import org.rometools.fetcher.impl.FeedFetcherCache;
+import org.rometools.fetcher.impl.HttpURLFeedFetcher;
 
 public class HttpURLFeedFetcherTest extends AbstractJettyTest {
-	
-	public HttpURLFeedFetcherTest(String s) {
-		super(s);
-	}
 
-	/**
-	 * @see com.sun.syndication.fetcher.impl.AbstractJettyTest#getFeedFetcher()
-	 */
-	protected FeedFetcher getFeedFetcher() {
-		return new HttpURLFeedFetcher();
-	}		
-	
-	protected FeedFetcher getFeedFetcher(FeedFetcherCache cache) {
-		return new HttpURLFeedFetcher(cache);
-	}
+    public HttpURLFeedFetcherTest(final String s) {
+        super(s);
+    }
+
+    /**
+     * @see com.sun.syndication.fetcher.impl.AbstractJettyTest#getFeedFetcher()
+     */
+    @Override
+    protected FeedFetcher getFeedFetcher() {
+        return new HttpURLFeedFetcher();
+    }
+
+    @Override
+    protected FeedFetcher getFeedFetcher(final FeedFetcherCache cache) {
+        return new HttpURLFeedFetcher(cache);
+    }
 
     /**
      * @see com.sun.syndication.fetcher.impl.AbstractJettyTest#getAuthenticatedFeedFetcher()
      */
+    @Override
     public FeedFetcher getAuthenticatedFeedFetcher() {
         // setup the authenticator
         java.net.Authenticator.setDefault(new TestBasicAuthenticator());
-        
-        FeedFetcher feedFetcher = getFeedFetcher();	
-        
+
+        final FeedFetcher feedFetcher = getFeedFetcher();
+
         return feedFetcher;
     }
-	
-
 
 }

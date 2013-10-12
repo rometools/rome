@@ -19,38 +19,40 @@ package org.rometools.fetcher.impl;
 import java.net.URL;
 
 /**
- * <p>An interface to allow caching of feed details. Implementing this allows the
- * {@link org.rometools.fetcher.io.HttpURLFeedFetcher} class to
- * enable conditional gets</p> 
+ * <p>
+ * An interface to allow caching of feed details. Implementing this allows the {@link org.rometools.fetcher.io.HttpURLFeedFetcher} class to enable conditional
+ * gets
+ * </p>
  * 
  * @author Nick Lothian
- *
+ * 
  */
 public interface FeedFetcherCache {
-	/**
-	 * Get a SyndFeedInfo object from the cache.
-	 * 
-	 * @param feedUrl The url of the feed
-	 * @return A SyndFeedInfo or null if it is not in the cache
-	 */
-	public SyndFeedInfo getFeedInfo(URL feedUrl);
-	
-	/**
-	 * Add a SyndFeedInfo object to the cache
-	 * 
-	 * @param feedUrl  The url of the feed
-	 * @param syndFeedInfo A SyndFeedInfo for the feed
-	 */
-	public void setFeedInfo(URL feedUrl, SyndFeedInfo syndFeedInfo);
-	
-	/**
-	 * Removes all items from the cache.
-	 */
-	public void clear();
-	
-	/**
-	 * Removes the SyndFeedInfo identified by the url from the cache.
-	 * @return The removed SyndFeedInfo
-	 */
-	public SyndFeedInfo remove( URL feedUrl );
+    /**
+     * Get a SyndFeedInfo object from the cache.
+     * 
+     * @param feedUrl The url of the feed
+     * @return A SyndFeedInfo or null if it is not in the cache
+     */
+    public SyndFeedInfo getFeedInfo(URL feedUrl);
+
+    /**
+     * Add a SyndFeedInfo object to the cache
+     * 
+     * @param feedUrl The url of the feed
+     * @param syndFeedInfo A SyndFeedInfo for the feed
+     */
+    public void setFeedInfo(URL feedUrl, SyndFeedInfo syndFeedInfo);
+
+    /**
+     * Removes all items from the cache.
+     */
+    public void clear();
+
+    /**
+     * Removes the SyndFeedInfo identified by the url from the cache.
+     * 
+     * @return The removed SyndFeedInfo
+     */
+    public SyndFeedInfo remove(URL feedUrl);
 }

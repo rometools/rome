@@ -22,104 +22,113 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-
 /**
- * <p>A very simple implementation of the {@link org.rometools.fetcher.impl.FeedFetcherCache} interface.</p>
+ * <p>
+ * A very simple implementation of the {@link org.rometools.fetcher.impl.FeedFetcherCache} interface.
+ * </p>
  * 
- * <p>This implementation uses a HashMap to cache retrieved feeds. This implementation is
- * most suitible for sort term (client aggregator?) use, as the memory usage will increase
- * over time as the number of feeds in the cache increases.</p>
+ * <p>
+ * This implementation uses a HashMap to cache retrieved feeds. This implementation is most suitible for sort term (client aggregator?) use, as the memory usage
+ * will increase over time as the number of feeds in the cache increases.
+ * </p>
  * 
  * @author Nick Lothian
- *
+ * 
  */
 public class HashMapFeedInfoCache implements FeedFetcherCache, Serializable {
-	private static final long serialVersionUID = -1594665619950916222L;
+    private static final long serialVersionUID = -1594665619950916222L;
 
-	static HashMapFeedInfoCache _instance;
-	
-	private Map infoCache;
-	
-	/**
-	 * <p>Constructor for HashMapFeedInfoCache</p>
-	 * 
-	 * <p>Only use this if you want multiple instances of the cache. 
-	 * Usually getInstance() is more appropriate.</p>
-	 *
-	 */
-	public HashMapFeedInfoCache() {
-		setInfoCache(createInfoCache());
-	}
+    static HashMapFeedInfoCache _instance;
 
-	/**
-	 * Get the global instance of the cache
-	 * @return an implementation of FeedFetcherCache
-	 */
-	public static synchronized FeedFetcherCache getInstance() {
-		if (_instance == null) {
-			_instance = new HashMapFeedInfoCache();			
-		}
-		return _instance;
-	}
+    private Map infoCache;
 
-	protected Map createInfoCache() {
- 		return (Collections.synchronizedMap(new HashMap()));
- 	}
+    /**
+     * <p>
+     * Constructor for HashMapFeedInfoCache
+     * </p>
+     * 
+     * <p>
+     * Only use this if you want multiple instances of the cache. Usually getInstance() is more appropriate.
+     * </p>
+     * 
+     */
+    public HashMapFeedInfoCache() {
+        setInfoCache(createInfoCache());
+    }
 
-	
-	protected Object get(Object key) {
-		return getInfoCache().get(key);
-	}
+    /**
+     * Get the global instance of the cache
+     * 
+     * @return an implementation of FeedFetcherCache
+     */
+    public static synchronized FeedFetcherCache getInstance() {
+        if (_instance == null) {
+            _instance = new HashMapFeedInfoCache();
+        }
+        return _instance;
+    }
 
-	/**
-	 * @see extensions.io.FeedFetcherCache#getFeedInfo(java.net.URL)
-	 */
-	public SyndFeedInfo getFeedInfo(URL feedUrl) {
-		return (SyndFeedInfo) get(feedUrl.toString());
-	}
+    protected Map createInfoCache() {
+        return Collections.synchronizedMap(new HashMap());
+    }
 
-	protected void put(Object key, Object value) {
-		getInfoCache().put(key, value);
-	}
+    protected Object get(final Object key) {
+        return getInfoCache().get(key);
+    }
 
-	/**
-	 * @see extensions.io.FeedFetcherCache#setFeedInfo(java.net.URL, extensions.io.SyndFeedInfo)
-	 */
-	public void setFeedInfo(URL feedUrl, SyndFeedInfo syndFeedInfo) {
-		put(feedUrl.toString(), syndFeedInfo);		
-	}
+    /**
+     * @see extensions.io.FeedFetcherCache#getFeedInfo(java.net.URL)
+     */
+    @Override
+    public SyndFeedInfo getFeedInfo(final URL feedUrl) {
+        return (SyndFeedInfo) get(feedUrl.toString());
+    }
 
-	protected synchronized final Map getInfoCache() {
-		return infoCache;
-	}
+    protected void put(final Object key, final Object value) {
+        getInfoCache().put(key, value);
+    }
 
-	/**
-	 * The API of this class indicates that map must thread safe. In other
-	 * words, be sure to wrap it in a synchronized map unless you know
-	 * what you are doing.
-	 * 
-	 * @param map the map to use as the info cache.
-	 */
-	protected synchronized final void setInfoCache(Map map) {
-		infoCache = map;
-	}
-	
-	/**
-	 * @see com.sun.syndication.fetcher.impl.FeedFetcherCache#clear()
-	 */
-	public void clear() {
-		synchronized( infoCache ) {
-			infoCache.clear();
-		}
-	}
-	
-	/**
-	 * @see com.sun.syndication.fetcher.impl.FeedFetcherCache#remove(java.net.URL)
-	 */
-	public SyndFeedInfo remove( final URL url ) {
-		if( url == null ) return null;
-		
-		return (SyndFeedInfo) infoCache.remove( url.toString() );
-	}
+    /**
+     * @see extensions.io.FeedFetcherCache#setFeedInfo(java.net.URL, extensions.io.SyndFeedInfo)
+     */
+    @Override
+    public void setFeedInfo(final URL feedUrl, final SyndFeedInfo syndFeedInfo) {
+        put(feedUrl.toString(), syndFeedInfo);
+    }
+
+    protected synchronized final Map getInfoCache() {
+        return infoCache;
+    }
+
+    /**
+     * The API of this class indicates that map must thread safe. In other words, be sure to wrap it in a synchronized map unless you know what you are doing.
+     * 
+     * @param map the map to use as the info cache.
+     */
+    protected synchronized final void setInfoCache(final Map map) {
+        infoCache = map;
+    }
+
+    /**
+     * @see com.sun.syndication.fetcher.impl.FeedFetcherCache#clear()
+     */
+    @Override
+    public void clear() {
+        synchronized (infoCache) {
+            infoCache.clear();
+        }
+    }
+
+    /**
+     * @see com.sun.syndication.fetcher.impl.FeedFetcherCache#remove(java.net.URL)
+     */
+    @Override
+    public SyndFeedInfo remove(final URL url) {
+        if (url == null) {
+            return null;
+        }
+
+        return (SyndFeedInfo) infoCache.remove(url.toString());
+    }
 
 }

@@ -16,27 +16,27 @@
  */
 package org.rometools.test;
 
-import org.rometools.fetcher.impl.ResponseHandler;
-
 import junit.framework.TestCase;
+
+import org.rometools.fetcher.impl.ResponseHandler;
 
 public class ResponseHandlerTest extends TestCase {
 
-	/**
-	 * Constructor for ResponseHandlerTest.
-	 */
-	public ResponseHandlerTest(String arg0) {
-		super(arg0);
-	}
+    /**
+     * Constructor for ResponseHandlerTest.
+     */
+    public ResponseHandlerTest(final String arg0) {
+        super(arg0);
+    }
 
-	public void testGetCharacterEncodingString() {
-		assertEquals(ResponseHandler.defaultCharacterEncoding, ResponseHandler.getCharacterEncoding((String)null));
-		assertEquals(ResponseHandler.defaultCharacterEncoding, ResponseHandler.getCharacterEncoding("text/xml"));
-		assertEquals(ResponseHandler.defaultCharacterEncoding, ResponseHandler.getCharacterEncoding("text/xml;"));
-		assertEquals("ISO-8859-4", ResponseHandler.getCharacterEncoding("text/xml; charset=ISO-8859-4"));
-		assertEquals("ISO-8859-4", ResponseHandler.getCharacterEncoding("text/xml;charset=ISO-8859-4"));
-		assertEquals("ISO-8859-4", ResponseHandler.getCharacterEncoding("text/xml;charset=ISO-8859-4;something"));
-		assertEquals(ResponseHandler.defaultCharacterEncoding, ResponseHandler.getCharacterEncoding("text/xml;something"));
-	}
+    public void testGetCharacterEncodingString() {
+        assertEquals(ResponseHandler.defaultCharacterEncoding, ResponseHandler.getCharacterEncoding((String) null));
+        assertEquals(ResponseHandler.defaultCharacterEncoding, ResponseHandler.getCharacterEncoding("text/xml"));
+        assertEquals(ResponseHandler.defaultCharacterEncoding, ResponseHandler.getCharacterEncoding("text/xml;"));
+        assertEquals("ISO-8859-4", ResponseHandler.getCharacterEncoding("text/xml; charset=ISO-8859-4"));
+        assertEquals("ISO-8859-4", ResponseHandler.getCharacterEncoding("text/xml;charset=ISO-8859-4"));
+        assertEquals("ISO-8859-4", ResponseHandler.getCharacterEncoding("text/xml;charset=ISO-8859-4;something"));
+        assertEquals(ResponseHandler.defaultCharacterEncoding, ResponseHandler.getCharacterEncoding("text/xml;something"));
+    }
 
 }
