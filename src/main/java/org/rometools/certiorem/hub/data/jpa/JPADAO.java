@@ -16,11 +16,7 @@
  *  limitations under the License.
  */
 
- 
 package org.rometools.certiorem.hub.data.jpa;
-
-import org.rometools.certiorem.hub.data.HubDAO;
-import org.rometools.certiorem.hub.data.Subscriber;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -31,10 +27,13 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
+
+import org.rometools.certiorem.hub.data.HubDAO;
+import org.rometools.certiorem.hub.data.Subscriber;
 import org.rometools.certiorem.hub.data.SubscriptionSummary;
 
 /**
- *
+ * 
  * @author robert.cooper
  */
 public class JPADAO implements HubDAO {
@@ -48,40 +47,38 @@ public class JPADAO implements HubDAO {
     }
 
     @Override
-    public List<? extends Subscriber> subscribersForTopic(String topic) {
-        LinkedList<JPASubscriber> result = new LinkedList<JPASubscriber>();
-        EntityManager em = factory.createEntityManager();
-        EntityTransaction tx = em.getTransaction();
+    public List<? extends Subscriber> subscribersForTopic(final String topic) {
+        final LinkedList<JPASubscriber> result = new LinkedList<JPASubscriber>();
+        final EntityManager em = factory.createEntityManager();
+        final EntityTransaction tx = em.getTransaction();
         tx.begin();
 
-        Query query = em.createNamedQuery("Subcriber.forTopic");
+        final Query query = em.createNamedQuery("Subcriber.forTopic");
         query.setParameter("topic", topic);
 
         try {
-            for (JPASubscriber subscriber : (List<JPASubscriber>) query.getResultList()) {
+            for (final JPASubscriber subscriber : (List<JPASubscriber>) query.getResultList()) {
                 if (subscriber.getLeaseSeconds() == -1) {
                     result.add(subscriber);
                     continue;
                 }
 
-                if (subscriber.getSubscribedAt().getTime() < (System.currentTimeMillis() - (1000 * subscriber.getLeaseSeconds()))) {
+                if (subscriber.getSubscribedAt().getTime() < System.currentTimeMillis() - 1000 * subscriber.getLeaseSeconds()) {
                     subscriber.setExpired(true);
                 } else {
                     result.add(subscriber);
                 }
 
-                if (subscriber.isExpired() && this.purgeExpired) {
+                if (subscriber.isExpired() && purgeExpired) {
                     em.remove(subscriber);
                 }
             }
-        } catch (NoResultException e) {
+        } catch (final NoResultException e) {
             tx.rollback();
             em.close();
 
             return result;
         }
-
-
 
         if (!tx.getRollbackOnly()) {
             tx.commit();
@@ -95,12 +92,12 @@ public class JPADAO implements HubDAO {
     }
 
     @Override
-    public Subscriber addSubscriber(Subscriber subscriber) {
+    public Subscriber addSubscriber(final Subscriber subscriber) {
         assert subscriber != null : "Attempt to store a null subscriber";
-        EntityManager em = factory.createEntityManager();
-        EntityTransaction tx = em.getTransaction();
+        final EntityManager em = factory.createEntityManager();
+        final EntityTransaction tx = em.getTransaction();
         tx.begin();
-        JPASubscriber data = new JPASubscriber();
+        final JPASubscriber data = new JPASubscriber();
         data.copyFrom(subscriber);
         data.setId(UUID.randomUUID().toString());
         em.persist(data);
@@ -110,22 +107,22 @@ public class JPADAO implements HubDAO {
     }
 
     @Override
-    public Subscriber findSubscriber(String topic, String callbackUrl) {
+    public Subscriber findSubscriber(final String topic, final String callbackUrl) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void handleSummary(String topic, SubscriptionSummary summary) {
+    public void handleSummary(final String topic, final SubscriptionSummary summary) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public List<? extends SubscriptionSummary> summariesForTopic(String topic) {
+    public List<? extends SubscriptionSummary> summariesForTopic(final String topic) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-     public void removeSubscriber(String topic, String callback) {
+    public void removeSubscriber(final String topic, final String callback) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }

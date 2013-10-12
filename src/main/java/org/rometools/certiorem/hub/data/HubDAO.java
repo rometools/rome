@@ -16,13 +16,12 @@
  *  limitations under the License.
  */
 
-
 package org.rometools.certiorem.hub.data;
 
 import java.util.List;
 
 /**
- *
+ * 
  * @author robert.cooper
  */
 public interface HubDAO {

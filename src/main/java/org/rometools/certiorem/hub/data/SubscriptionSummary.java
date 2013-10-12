@@ -20,9 +20,8 @@ package org.rometools.certiorem.hub.data;
 
 import java.io.Serializable;
 
-
 /**
- *
+ * 
  * @author robert.cooper
  */
 public class SubscriptionSummary implements Serializable {
@@ -32,55 +31,55 @@ public class SubscriptionSummary implements Serializable {
 
     /**
      * Set the value of host
-     *
+     * 
      * @param newhost new value of host
      */
-    public void setHost(String newhost) {
-        this.host = newhost;
+    public void setHost(final String newhost) {
+        host = newhost;
     }
 
     /**
      * Get the value of host
-     *
+     * 
      * @return the value of host
      */
     public String getHost() {
-        return this.host;
+        return host;
     }
 
     /**
      * Set the value of lastPublishSuccessful
-     *
+     * 
      * @param newlastPublishSuccessful new value of lastPublishSuccessful
      */
-    public void setLastPublishSuccessful(boolean newlastPublishSuccessful) {
-        this.lastPublishSuccessful = newlastPublishSuccessful;
+    public void setLastPublishSuccessful(final boolean newlastPublishSuccessful) {
+        lastPublishSuccessful = newlastPublishSuccessful;
     }
 
     /**
      * Get the value of lastPublishSuccessful
-     *
+     * 
      * @return the value of lastPublishSuccessful
      */
     public boolean isLastPublishSuccessful() {
-        return this.lastPublishSuccessful;
+        return lastPublishSuccessful;
     }
 
     /**
      * Set the value of subscribers
-     *
+     * 
      * @param newsubscribers new value of subscribers
      */
-    public void setSubscribers(int newsubscribers) {
-        this.subscribers = newsubscribers;
+    public void setSubscribers(final int newsubscribers) {
+        subscribers = newsubscribers;
     }
 
     /**
      * Get the value of subscribers
-     *
+     * 
      * @return the value of subscribers
      */
     public int getSubscribers() {
-        return this.subscribers;
+        return subscribers;
     }
 }

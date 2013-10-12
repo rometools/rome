@@ -18,104 +18,95 @@
 
 package org.rometools.certiorem.sub;
 
-import com.sun.syndication.feed.synd.SyndFeed;
-import com.sun.syndication.feed.synd.SyndLink;
-import com.sun.syndication.io.FeedException;
-import com.sun.syndication.io.SyndFeedInput;
-
-import org.rometools.certiorem.HttpStatusCodeException;
-import org.rometools.certiorem.sub.Requester.RequestCallback;
-import org.rometools.certiorem.sub.data.SubDAO;
-import org.rometools.certiorem.sub.data.Subscription;
-
-import org.rometools.fetcher.impl.FeedFetcherCache;
-import org.rometools.fetcher.impl.SyndFeedInfo;
-
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
-
-import java.util.List;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.rometools.certiorem.sub.data.SubscriptionCallback;
 
+import org.rometools.certiorem.HttpStatusCodeException;
+import org.rometools.certiorem.sub.Requester.RequestCallback;
+import org.rometools.certiorem.sub.data.SubDAO;
+import org.rometools.certiorem.sub.data.Subscription;
+import org.rometools.certiorem.sub.data.SubscriptionCallback;
+import org.rometools.fetcher.impl.FeedFetcherCache;
+import org.rometools.fetcher.impl.SyndFeedInfo;
+
+import com.sun.syndication.feed.synd.SyndFeed;
+import com.sun.syndication.feed.synd.SyndLink;
+import com.sun.syndication.io.FeedException;
+import com.sun.syndication.io.SyndFeedInput;
 
 /**
- *
+ * 
  * @author robert.cooper
  */
 public class Subscriptions {
-    //TODO unsubscribe.
+    // TODO unsubscribe.
     private FeedFetcherCache cache;
     private Requester requester;
     private String callbackPrefix;
     private SubDAO dao;
 
-    public Subscriptions() {        
+    public Subscriptions() {
     }
-    
-    public Subscriptions(final FeedFetcherCache cache, final Requester requester, final String callbackPrefix,
-        final SubDAO dao) {
+
+    public Subscriptions(final FeedFetcherCache cache, final Requester requester, final String callbackPrefix, final SubDAO dao) {
         this.cache = cache;
         this.requester = requester;
         this.callbackPrefix = callbackPrefix;
         this.dao = dao;
     }
 
-    public void callback(String callbackPath, String feed) {
+    public void callback(final String callbackPath, final String feed) {
         try {
             this.callback(callbackPath, feed.getBytes("UTF-8"));
-        } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(Subscriptions.class.getName())
-                  .log(Level.SEVERE, null, ex);
+        } catch (final UnsupportedEncodingException ex) {
+            Logger.getLogger(Subscriptions.class.getName()).log(Level.SEVERE, null, ex);
             throw new HttpStatusCodeException(400, "Unable to parse feed.", ex);
         }
     }
 
-    public void callback(String callbackPath, InputStream feed) {
-        SyndFeedInput input = new SyndFeedInput();
+    public void callback(final String callbackPath, final InputStream feed) {
+        final SyndFeedInput input = new SyndFeedInput();
 
         try {
             this.callback(callbackPath, input.build(new InputStreamReader(feed)));
-        } catch (IllegalArgumentException ex) {
-            Logger.getLogger(Subscriptions.class.getName())
-                  .log(Level.SEVERE, null, ex);
+        } catch (final IllegalArgumentException ex) {
+            Logger.getLogger(Subscriptions.class.getName()).log(Level.SEVERE, null, ex);
             throw new HttpStatusCodeException(500, "Unable to parse feed.", ex);
-        } catch (FeedException ex) {
-            Logger.getLogger(Subscriptions.class.getName())
-                  .log(Level.SEVERE, null, ex);
+        } catch (final FeedException ex) {
+            Logger.getLogger(Subscriptions.class.getName()).log(Level.SEVERE, null, ex);
             throw new HttpStatusCodeException(400, "Unable to parse feed.", ex);
         }
     }
 
-    public void callback(String callbackPath, byte[] feed) {
+    public void callback(final String callbackPath, final byte[] feed) {
         this.callback(callbackPath, new ByteArrayInputStream(feed));
     }
 
-    public void callback(String callbackPath, SyndFeed feed) {
+    public void callback(final String callbackPath, final SyndFeed feed) {
 
         if (!callbackPath.startsWith(callbackPrefix)) {
-            throw new HttpStatusCodeException(404, "Not a valid callback prefix.", new Exception(callbackPath+" doesnt start with "+callbackPrefix));
+            throw new HttpStatusCodeException(404, "Not a valid callback prefix.", new Exception(callbackPath + " doesnt start with " + callbackPrefix));
         }
 
-        String id = callbackPath.substring(callbackPrefix.length());
+        final String id = callbackPath.substring(callbackPrefix.length());
         Logger.getLogger(Subscriptions.class.getName()).log(Level.FINE, "Got callback for {0}", id);
-        Subscription s = dao.findById(id);
+        final Subscription s = dao.findById(id);
 
         if (s == null) {
             throw new HttpStatusCodeException(404, "Not a valid callback.", null);
         }
 
-        this.validateLink(feed, s.getSourceUrl());
+        validateLink(feed, s.getSourceUrl());
 
         SyndFeedInfo info = null;
         URL url = null;
@@ -123,9 +114,8 @@ public class Subscriptions {
         try {
             url = new URL(s.getSourceUrl());
             info = cache.getFeedInfo(url);
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(Subscriptions.class.getName())
-                  .log(Level.SEVERE, null, ex);
+        } catch (final MalformedURLException ex) {
+            Logger.getLogger(Subscriptions.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         if (info == null) {
@@ -141,58 +131,53 @@ public class Subscriptions {
         s.getCallback().onNotify(s, info);
     }
 
-    public void unsubscribe(final Subscription subscription, String hubUrl, boolean sync, String secret,
-        final SubscriptionCallback callback) {                        
+    public void unsubscribe(final Subscription subscription, final String hubUrl, final boolean sync, final String secret, final SubscriptionCallback callback) {
 
         subscription.setUnsubscribed(true);
-        this.requester.sendUnsubscribeRequest(hubUrl, subscription, (sync ? "sync" : "async"), secret,
-            this.callbackPrefix + subscription.getId(),
-            new RequestCallback() {
-                @Override
-                public void onSuccess() {                    
-                    callback.onUnsubscribe(subscription);
-                }
+        requester.sendUnsubscribeRequest(hubUrl, subscription, sync ? "sync" : "async", secret, callbackPrefix + subscription.getId(), new RequestCallback() {
+            @Override
+            public void onSuccess() {
+                callback.onUnsubscribe(subscription);
+            }
 
-                @Override
-                public void onFailure(Exception e) {
-                    callback.onFailure(e);
-                }
-            });
+            @Override
+            public void onFailure(final Exception e) {
+                callback.onFailure(e);
+            }
+        });
     }
-    
-    public void subscribe(String hubUrl, String topic, boolean sync, long leaseSeconds, String secret,
-        final SubscriptionCallback callback) {
-        Subscription s = new Subscription();
+
+    public void subscribe(final String hubUrl, final String topic, final boolean sync, final long leaseSeconds, final String secret,
+            final SubscriptionCallback callback) {
+        final Subscription s = new Subscription();
         s.setId(UUID.randomUUID().toString());
         s.setVerifyToken(UUID.randomUUID().toString());
         s.setSourceUrl(topic);
         s.setCallback(callback);
         if (leaseSeconds > 0) {
-            s.setExpirationTime(System.currentTimeMillis() + (leaseSeconds * 1000));
+            s.setExpirationTime(System.currentTimeMillis() + leaseSeconds * 1000);
         }
 
-        final Subscription stored = this.dao.addSubscription(s);
+        final Subscription stored = dao.addSubscription(s);
 
-        this.requester.sendSubscribeRequest(hubUrl, stored, (sync ? "sync" : "async"), leaseSeconds, secret,
-            this.callbackPrefix + stored.getId(),
-            new RequestCallback() {
-                @Override
-                public void onSuccess() {
-                    callback.onSubscribe(stored);
-                }
+        requester.sendSubscribeRequest(hubUrl, stored, sync ? "sync" : "async", leaseSeconds, secret, callbackPrefix + stored.getId(), new RequestCallback() {
+            @Override
+            public void onSuccess() {
+                callback.onSubscribe(stored);
+            }
 
-                @Override
-                public void onFailure(Exception e) {
-                    callback.onFailure(e);
-                }
-            });
+            @Override
+            public void onFailure(final Exception e) {
+                callback.onFailure(e);
+            }
+        });
     }
 
-    public void subscribe(String topic, boolean sync, long leaseSeconds, String secret,
-        final SubscriptionCallback callback) throws IllegalArgumentException, IOException, FeedException {
-        SyndFeedInput input = new SyndFeedInput();
-        SyndFeed feed = input.build(new InputStreamReader(new URL(topic).openStream()));
-        String hubUrl = this.findHubUrl(feed);
+    public void subscribe(final String topic, final boolean sync, final long leaseSeconds, final String secret, final SubscriptionCallback callback)
+            throws IllegalArgumentException, IOException, FeedException {
+        final SyndFeedInput input = new SyndFeedInput();
+        final SyndFeed feed = input.build(new InputStreamReader(new URL(topic).openStream()));
+        final String hubUrl = findHubUrl(feed);
 
         if (hubUrl == null) {
             throw new FeedException("No hub link");
@@ -201,20 +186,19 @@ public class Subscriptions {
         this.subscribe(hubUrl, topic, sync, leaseSeconds, secret, callback);
     }
 
-    public String validate(String callbackPath, String topic, String mode, String challenge, String leaseSeconds,
-        String verifyToken) {
+    public String validate(final String callbackPath, final String topic, final String mode, final String challenge, final String leaseSeconds,
+            final String verifyToken) {
         if (!callbackPath.startsWith(callbackPrefix)) {
-            throw new HttpStatusCodeException(404, "Not a valid callback prefix.", new Exception(callbackPath+" doesnt start with "+callbackPrefix));
+            throw new HttpStatusCodeException(404, "Not a valid callback prefix.", new Exception(callbackPath + " doesnt start with " + callbackPrefix));
         }
 
-        String id = callbackPath.substring(callbackPrefix.length());
+        final String id = callbackPath.substring(callbackPrefix.length());
         Logger.getLogger(Subscriptions.class.getName()).log(Level.FINE, "Handling validation request for id {0}", id);
-        Subscription s = dao.findById(id);
-        if(s == null){
+        final Subscription s = dao.findById(id);
+        if (s == null) {
             throw new HttpStatusCodeException(404, "Not a valid subscription id", null);
         }
-        if (!s.getVerifyToken()
-                  .equals(verifyToken)) {
+        if (!s.getVerifyToken().equals(verifyToken)) {
             throw new HttpStatusCodeException(403, "Verification Token Mismatch.", null);
         }
 
@@ -238,8 +222,8 @@ public class Subscriptions {
         return challenge;
     }
 
-    private String findHubUrl(SyndFeed feed) {
-        for (SyndLink l : (List<SyndLink>) feed.getLinks()) {
+    private String findHubUrl(final SyndFeed feed) {
+        for (final SyndLink l : feed.getLinks()) {
             if ("hub".equals(l.getRel())) {
                 return l.getHref();
             }
@@ -248,21 +232,20 @@ public class Subscriptions {
         return null;
     }
 
-    private void validateLink(SyndFeed feed, String source) {
-        for (SyndLink l : (List<SyndLink>) feed.getLinks()) {
+    private void validateLink(final SyndFeed feed, final String source) {
+        for (final SyndLink l : feed.getLinks()) {
             if ("self".equalsIgnoreCase(l.getRel())) {
                 try {
-                    URI u = new URI(l.getHref());
-                    URI t = new URI(source);
+                    final URI u = new URI(l.getHref());
+                    final URI t = new URI(source);
 
                     if (!u.equals(t)) {
                         throw new HttpStatusCodeException(400, "Feed self link does not match the subscribed URI.", null);
                     }
 
                     break;
-                } catch (URISyntaxException ex) {
-                    Logger.getLogger(Subscriptions.class.getName())
-                          .log(Level.SEVERE, null, ex);
+                } catch (final URISyntaxException ex) {
+                    Logger.getLogger(Subscriptions.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -271,28 +254,28 @@ public class Subscriptions {
     /**
      * @param cache the cache to set
      */
-    public void setCache(FeedFetcherCache cache) {
+    public void setCache(final FeedFetcherCache cache) {
         this.cache = cache;
     }
 
     /**
      * @param requester the requester to set
      */
-    public void setRequester(Requester requester) {
+    public void setRequester(final Requester requester) {
         this.requester = requester;
     }
 
     /**
      * @param callbackPrefix the callbackPrefix to set
      */
-    public void setCallbackPrefix(String callbackPrefix) {
+    public void setCallbackPrefix(final String callbackPrefix) {
         this.callbackPrefix = callbackPrefix;
     }
 
     /**
      * @param dao the dao to set
      */
-    public void setDao(SubDAO dao) {
+    public void setDao(final SubDAO dao) {
         this.dao = dao;
     }
 }

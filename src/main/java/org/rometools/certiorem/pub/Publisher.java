@@ -16,28 +16,24 @@
  *  limitations under the License.
  */
 
- 
 package org.rometools.certiorem.pub;
-
-import com.sun.syndication.feed.synd.SyndFeed;
-import com.sun.syndication.feed.synd.SyndLink;
 
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
-
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-
-import java.util.List;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.sun.syndication.feed.synd.SyndFeed;
+import com.sun.syndication.feed.synd.SyndLink;
 
 /**
  * A class for sending update notifications to a hub.
+ * 
  * @author robert.cooper
  */
 public class Publisher {
@@ -52,61 +48,57 @@ public class Publisher {
     /**
      * Constructs a new publisher with an optional ThreadPoolExector for sending updates.
      */
-    public Publisher(ThreadPoolExecutor executor) {
+    public Publisher(final ThreadPoolExecutor executor) {
         this.executor = executor;
     }
 
     /**
      * Sends the HUB url a notification of a change in topic
+     * 
      * @param hub URL of the hub to notify.
-     * @param topic The Topic that has changed 
+     * @param topic The Topic that has changed
      * @throws NotificationException Any failure
      */
-    public void sendUpdateNotification(String hub, String topic)
-        throws NotificationException {
+    public void sendUpdateNotification(final String hub, final String topic) throws NotificationException {
         try {
-            StringBuilder sb = new StringBuilder("hub.mode=publish&hub.url=").append(URLEncoder.encode(topic, "UTF-8"));
-            URL hubUrl = new URL(hub);
-            HttpURLConnection connection = (HttpURLConnection) hubUrl.openConnection();
-//            connection.setRequestProperty("Host", hubUrl.getHost());
+            final StringBuilder sb = new StringBuilder("hub.mode=publish&hub.url=").append(URLEncoder.encode(topic, "UTF-8"));
+            final URL hubUrl = new URL(hub);
+            final HttpURLConnection connection = (HttpURLConnection) hubUrl.openConnection();
+            // connection.setRequestProperty("Host", hubUrl.getHost());
             connection.setRequestProperty("User-Agent", "ROME-Certiorem");
             connection.setRequestProperty("ContentType", "application/x-www-form-urlencoded");
             connection.setDoOutput(true);
             connection.connect();
 
-            OutputStream os = connection.getOutputStream();
+            final OutputStream os = connection.getOutputStream();
             os.write(sb.toString().getBytes("UTF-8"));
             os.close();
 
-            int rc = connection.getResponseCode();
+            final int rc = connection.getResponseCode();
             connection.disconnect();
-            
+
             if (rc != 204) {
-                throw new NotificationException("Server returned an unexcepted response code: " + rc + " " +
-                    connection.getResponseMessage());
+                throw new NotificationException("Server returned an unexcepted response code: " + rc + " " + connection.getResponseMessage());
             }
 
-            
-        } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(Publisher.class.getName())
-                  .log(Level.SEVERE, null, ex);
+        } catch (final UnsupportedEncodingException ex) {
+            Logger.getLogger(Publisher.class.getName()).log(Level.SEVERE, null, ex);
             throw new NotificationException("Could not encode URL", ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Publisher.class.getName())
-                  .log(Level.SEVERE, null, ex);
+        } catch (final IOException ex) {
+            Logger.getLogger(Publisher.class.getName()).log(Level.SEVERE, null, ex);
             throw new NotificationException("Unable to communicate with " + hub, ex);
         }
     }
 
     /**
      * Sends a notification for a feed located at "topic". The feed MUST contain rel="hub".
+     * 
      * @param topic URL for the feed
      * @param feed The feed itself
      * @throws NotificationException Any failure
      */
-    public void sendUpdateNotification(String topic, SyndFeed feed)
-        throws NotificationException {
-        for (SyndLink link : (List<SyndLink>) feed.getLinks()) {
+    public void sendUpdateNotification(final String topic, final SyndFeed feed) throws NotificationException {
+        for (final SyndLink link : feed.getLinks()) {
             if ("hub".equals(link.getRel())) {
                 sendUpdateNotification(link.getRel(), topic);
 
@@ -118,14 +110,15 @@ public class Publisher {
 
     /**
      * Sends a notification for a feed. The feed MUST contain rel="hub" and rel="self" links.
+     * 
      * @param feed The feed to notify
      * @throws NotificationException Any failure
      */
-    public void sendUpdateNotification(SyndFeed feed) throws NotificationException {
+    public void sendUpdateNotification(final SyndFeed feed) throws NotificationException {
         SyndLink hub = null;
         SyndLink self = null;
 
-        for (SyndLink link : (List<SyndLink>) feed.getLinks()) {
+        for (final SyndLink link : feed.getLinks()) {
             if ("hub".equals(link.getRel())) {
                 hub = link;
             }
@@ -134,7 +127,7 @@ public class Publisher {
                 self = link;
             }
 
-            if ((hub != null) && (self != null)) {
+            if (hub != null && self != null) {
                 break;
             }
         }
@@ -152,27 +145,27 @@ public class Publisher {
 
     /**
      * Sends the HUB url a notification of a change in topic asynchronously
+     * 
      * @param hub URL of the hub to notify.
-     * @param topic The Topic that has changed 
-     * @param callback  A callback invoked when the notification completes.
+     * @param topic The Topic that has changed
+     * @param callback A callback invoked when the notification completes.
      * @throws NotificationException Any failure
      */
-    public void sendUpdateNotificationAsyncronously(final String hub, final String topic,
-        final AsyncNotificationCallback callback) {
-        Runnable r = new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        sendUpdateNotification(hub, topic);
-                        callback.onSuccess();
-                    } catch (Throwable t) {
-                        callback.onFailure(t);
-                    }
+    public void sendUpdateNotificationAsyncronously(final String hub, final String topic, final AsyncNotificationCallback callback) {
+        final Runnable r = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    sendUpdateNotification(hub, topic);
+                    callback.onSuccess();
+                } catch (final Throwable t) {
+                    callback.onFailure(t);
                 }
-            };
+            }
+        };
 
-        if (this.executor != null) {
-            this.executor.execute(r);
+        if (executor != null) {
+            executor.execute(r);
         } else {
             new Thread(r).start();
         }
@@ -180,66 +173,70 @@ public class Publisher {
 
     /**
      * Asynchronously sends a notification for a feed located at "topic". The feed MUST contain rel="hub".
+     * 
      * @param topic URL for the feed
      * @param feed The feed itself
-     * @param callback  A callback invoked when the notification completes.
+     * @param callback A callback invoked when the notification completes.
      * @throws NotificationException Any failure
      */
-    public void sendUpdateNotificationAsyncronously(final String topic, final SyndFeed feed,
-        final AsyncNotificationCallback callback) {
-        Runnable r = new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        sendUpdateNotification(topic, feed);
-                        callback.onSuccess();
-                    } catch (Throwable t) {
-                        callback.onFailure(t);
-                    }
+    public void sendUpdateNotificationAsyncronously(final String topic, final SyndFeed feed, final AsyncNotificationCallback callback) {
+        final Runnable r = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    sendUpdateNotification(topic, feed);
+                    callback.onSuccess();
+                } catch (final Throwable t) {
+                    callback.onFailure(t);
                 }
-            };
+            }
+        };
 
-        if (this.executor != null) {
-            this.executor.execute(r);
+        if (executor != null) {
+            executor.execute(r);
         } else {
             new Thread(r).start();
         }
     }
 
     /**
-     * Asyncronously sends  a notification for a feed. The feed MUST contain rel="hub" and rel="self" links.
+     * Asyncronously sends a notification for a feed. The feed MUST contain rel="hub" and rel="self" links.
+     * 
      * @param feed The feed to notify
-     * @param callback  A callback invoked when the notification completes.
+     * @param callback A callback invoked when the notification completes.
      * @throws NotificationException Any failure
      */
     public void sendUpdateNotificationAsyncronously(final SyndFeed feed, final AsyncNotificationCallback callback) {
-        Runnable r = new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        sendUpdateNotification(feed);
-                        callback.onSuccess();
-                    } catch (Throwable t) {
-                        callback.onFailure(t);
-                    }
+        final Runnable r = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    sendUpdateNotification(feed);
+                    callback.onSuccess();
+                } catch (final Throwable t) {
+                    callback.onFailure(t);
                 }
-            };
+            }
+        };
 
-        if (this.executor != null) {
-            this.executor.execute(r);
+        if (executor != null) {
+            executor.execute(r);
         } else {
             new Thread(r).start();
         }
     }
+
     /**
      * A callback interface for asynchronous notifications.
      */
     public static interface AsyncNotificationCallback {
         /**
          * Called when a notification fails
+         * 
          * @param thrown Whatever was thrown during the failure
          */
         public void onFailure(Throwable thrown);
+
         /**
          * Invoked with the asyncronous notification completes successfully.
          */

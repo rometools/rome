@@ -16,53 +16,51 @@
  *  limitations under the License.
  */
 
- 
 package org.rometools.certiorem.hub.verify.standard;
-
-import org.rometools.certiorem.hub.data.Subscriber;
 
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+import org.rometools.certiorem.hub.data.Subscriber;
 
 /**
  * Uses a ThreadPoolExecutor to do async verifications.
+ * 
  * @author robert.cooper
  */
 public class ThreadPoolVerifier extends AbstractVerifier {
     protected final ThreadPoolExecutor exeuctor;
 
-    protected ThreadPoolVerifier(final ThreadPoolExecutor executor){
-        this.exeuctor = executor;
+    protected ThreadPoolVerifier(final ThreadPoolExecutor executor) {
+        exeuctor = executor;
     }
-   
+
     public ThreadPoolVerifier() {
         this(2, 5, 5);
     }
 
-    public ThreadPoolVerifier(int startPoolSize, int maxPoolSize, int queueSize) {
-        this.exeuctor = new ThreadPoolExecutor(startPoolSize, maxPoolSize, 300, TimeUnit.SECONDS,
-                new LinkedBlockingQueue<Runnable>(queueSize));
+    public ThreadPoolVerifier(final int startPoolSize, final int maxPoolSize, final int queueSize) {
+        exeuctor = new ThreadPoolExecutor(startPoolSize, maxPoolSize, 300, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>(queueSize));
     }
 
     @Override
     public void verifySubscribeAsyncronously(final Subscriber subscriber, final VerificationCallback callback) {
-        this.exeuctor.execute(new Runnable() {
-                @Override
-                public void run() {
-                    callback.onVerify(verifySubcribeSyncronously(subscriber));
-                }
-            });
+        exeuctor.execute(new Runnable() {
+            @Override
+            public void run() {
+                callback.onVerify(verifySubcribeSyncronously(subscriber));
+            }
+        });
     }
 
     @Override
     public void verifyUnsubscribeAsyncronously(final Subscriber subscriber, final VerificationCallback callback) {
-        this.exeuctor.execute(new Runnable() {
-                @Override
-                public void run() {
-                    callback.onVerify(verifyUnsubcribeSyncronously(subscriber));
-                }
-            });
+        exeuctor.execute(new Runnable() {
+            @Override
+            public void run() {
+                callback.onVerify(verifyUnsubcribeSyncronously(subscriber));
+            }
+        });
     }
 }

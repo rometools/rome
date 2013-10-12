@@ -20,9 +20,8 @@ package org.rometools.certiorem.sub.data;
 
 import java.io.Serializable;
 
-
 /**
- *
+ * 
  * @author robert.cooper
  */
 public class Subscription implements Serializable {
@@ -36,110 +35,110 @@ public class Subscription implements Serializable {
 
     /**
      * Set the value of expirationTime
-     *
+     * 
      * @param newexpirationTime new value of expirationTime
      */
-    public void setExpirationTime(long newexpirationTime) {
-        this.expirationTime = newexpirationTime;
+    public void setExpirationTime(final long newexpirationTime) {
+        expirationTime = newexpirationTime;
     }
 
     /**
      * Get the value of expirationTime
-     *
+     * 
      * @return the value of expirationTime
      */
     public long getExpirationTime() {
-        return this.expirationTime;
+        return expirationTime;
     }
 
     /**
      * Set the value of id
-     *
+     * 
      * @param newid new value of id
      */
-    public void setId(String newid) {
-        this.id = newid;
+    public void setId(final String newid) {
+        id = newid;
     }
 
     /**
      * Get the value of id
-     *
+     * 
      * @return the value of id
      */
     public String getId() {
-        return this.id;
+        return id;
     }
 
     /**
      * Set the value of sourceUrl
-     *
+     * 
      * @param newsourceUrl new value of sourceUrl
      */
-    public void setSourceUrl(String newsourceUrl) {
-        this.sourceUrl = newsourceUrl;
+    public void setSourceUrl(final String newsourceUrl) {
+        sourceUrl = newsourceUrl;
     }
 
     /**
      * Get the value of sourceUrl
-     *
+     * 
      * @return the value of sourceUrl
      */
     public String getSourceUrl() {
-        return this.sourceUrl;
+        return sourceUrl;
     }
 
     /**
      * Set the value of unsubscribed
-     *
+     * 
      * @param newunsubscribed new value of unsubscribed
      */
-    public void setUnsubscribed(boolean newunsubscribed) {
-        this.unsubscribed = newunsubscribed;
+    public void setUnsubscribed(final boolean newunsubscribed) {
+        unsubscribed = newunsubscribed;
     }
 
     /**
      * Get the value of unsubscribed
-     *
+     * 
      * @return the value of unsubscribed
      */
     public boolean isUnsubscribed() {
-        return this.unsubscribed;
+        return unsubscribed;
     }
 
     /**
      * Set the value of validated
-     *
+     * 
      * @param newvalidated new value of validated
      */
-    public void setValidated(boolean newvalidated) {
-        this.validated = newvalidated;
+    public void setValidated(final boolean newvalidated) {
+        validated = newvalidated;
     }
 
     /**
      * Get the value of validated
-     *
+     * 
      * @return the value of validated
      */
     public boolean isValidated() {
-        return this.validated;
+        return validated;
     }
 
     /**
      * Set the value of verifyToken
-     *
+     * 
      * @param newverifyToken new value of verifyToken
      */
-    public void setVerifyToken(String newverifyToken) {
-        this.verifyToken = newverifyToken;
+    public void setVerifyToken(final String newverifyToken) {
+        verifyToken = newverifyToken;
     }
 
     /**
      * Get the value of verifyToken
-     *
+     * 
      * @return the value of verifyToken
      */
     public String getVerifyToken() {
-        return this.verifyToken;
+        return verifyToken;
     }
 
     /**
@@ -152,7 +151,7 @@ public class Subscription implements Serializable {
     /**
      * @param callback the callback to set
      */
-    public void setCallback(SubscriptionCallback callback) {
+    public void setCallback(final SubscriptionCallback callback) {
         this.callback = callback;
     }
 }

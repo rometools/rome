@@ -16,24 +16,23 @@
  *  limitations under the License.
  */
 
-
 package org.rometools.certiorem;
 
 /**
- *
+ * 
  * @author robert.cooper
  */
 public class HttpStatusCodeException extends RuntimeException {
 
     private final int status;
 
-    public HttpStatusCodeException(int status, String message, Throwable cause){
+    public HttpStatusCodeException(final int status, final String message, final Throwable cause) {
         super(message, cause);
         this.status = status;
     }
 
-    public int getStatus(){
-        return this.status;
+    public int getStatus() {
+        return status;
     }
 
 }

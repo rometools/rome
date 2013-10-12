@@ -22,46 +22,42 @@
  */
 package org.rometools.certiorem.sub.request;
 
-import org.rometools.certiorem.sub.data.Subscription;
-
 import java.io.IOException;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.rometools.certiorem.sub.data.Subscription;
 
 /**
  * A simple requester implementation that always makes requests as Async.
+ * 
  * @author Farrukh Najmi
  */
 public class SyncRequester extends AbstractRequester {
     @Override
-    public void sendSubscribeRequest(final String hubUrl, final Subscription subscription, final String verifySync,
-        final long leaseSeconds, final String secret, final String callbackUrl, final RequestCallback callback) {
-        Logger.getLogger(SyncRequester.class.getName()).log(Level.INFO, "Sending subscribe request to {0} for {1} to {2}", new Object[]{hubUrl, subscription.getSourceUrl(), callbackUrl});
+    public void sendSubscribeRequest(final String hubUrl, final Subscription subscription, final String verifySync, final long leaseSeconds,
+            final String secret, final String callbackUrl, final RequestCallback callback) {
+        Logger.getLogger(SyncRequester.class.getName()).log(Level.INFO, "Sending subscribe request to {0} for {1} to {2}",
+                new Object[] { hubUrl, subscription.getSourceUrl(), callbackUrl });
         try {
-            sendRequest(hubUrl, "subscribe", subscription, verifySync, leaseSeconds, secret, callbackUrl,
-                callback);
+            sendRequest(hubUrl, "subscribe", subscription, verifySync, leaseSeconds, secret, callbackUrl, callback);
             callback.onSuccess();
-        } catch (Exception ex) {
-            Logger.getLogger(SyncRequester.class.getName())
-                  .log(Level.SEVERE, null, ex);
+        } catch (final Exception ex) {
+            Logger.getLogger(SyncRequester.class.getName()).log(Level.SEVERE, null, ex);
             callback.onFailure(ex);
         }
     }
 
     @Override
-    public void sendUnsubscribeRequest(final String hubUrl, final Subscription subscription, final String verifySync,
-            final String secret,
-        final String callbackUrl, final RequestCallback callback) {
-        Logger.getLogger(SyncRequester.class.getName()).log(Level.INFO, "Sending unsubscribe request to {0} for {1} to {2}", new Object[]{hubUrl, subscription.getSourceUrl(), callbackUrl});
+    public void sendUnsubscribeRequest(final String hubUrl, final Subscription subscription, final String verifySync, final String secret,
+            final String callbackUrl, final RequestCallback callback) {
+        Logger.getLogger(SyncRequester.class.getName()).log(Level.INFO, "Sending unsubscribe request to {0} for {1} to {2}",
+                new Object[] { hubUrl, subscription.getSourceUrl(), callbackUrl });
         try {
-            sendRequest(hubUrl, "unsubscribe", subscription, verifySync, -1, secret, callbackUrl,
-                callback);
+            sendRequest(hubUrl, "unsubscribe", subscription, verifySync, -1, secret, callbackUrl, callback);
             callback.onSuccess();
-        } catch (IOException ex) {
-            Logger.getLogger(SyncRequester.class.getName())
-                  .log(Level.SEVERE, null, ex);
+        } catch (final IOException ex) {
+            Logger.getLogger(SyncRequester.class.getName()).log(Level.SEVERE, null, ex);
             callback.onFailure(ex);
         }
     }

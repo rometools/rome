@@ -16,14 +16,9 @@
  *  limitations under the License.
  */
 
-
 package org.rometools.certiorem.web;
 
-import org.rometools.certiorem.HttpStatusCodeException;
-import org.rometools.certiorem.hub.Hub;
-
 import java.io.IOException;
-
 import java.util.Arrays;
 
 import javax.servlet.ServletException;
@@ -31,9 +26,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.rometools.certiorem.HttpStatusCodeException;
+import org.rometools.certiorem.hub.Hub;
 
 /**
- *
+ * 
  * @author robert.cooper
  */
 public abstract class AbstractHubServlet extends HttpServlet {
@@ -46,37 +43,34 @@ public abstract class AbstractHubServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-        throws ServletException, IOException {
+    protected void doPost(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
         try {
             if ("publish".equals(req.getParameter(HUBMODE))) {
                 hub.sendNotification(req.getServerName(), req.getParameter("hub.url"));
             } else {
-                String callback = req.getParameter("hub.callback");
-                String topic = req.getParameter("hub.topic");
-                String[] verifies = req.getParameterValues("hub.verify");
-                String leaseString = req.getParameter("hub.lease_seconds");
-                String secret = req.getParameter("hub.secret");
-                String verifyToken = req.getParameter("hub.verify_token");
-                String verifyMode = Arrays.asList(verifies)
-                                          .contains("async") ? "async" : "sync";
+                final String callback = req.getParameter("hub.callback");
+                final String topic = req.getParameter("hub.topic");
+                final String[] verifies = req.getParameterValues("hub.verify");
+                final String leaseString = req.getParameter("hub.lease_seconds");
+                final String secret = req.getParameter("hub.secret");
+                final String verifyToken = req.getParameter("hub.verify_token");
+                final String verifyMode = Arrays.asList(verifies).contains("async") ? "async" : "sync";
                 Boolean result = null;
 
                 if ("subscribe".equals(req.getParameter(HUBMODE))) {
-                    long leaseSeconds = (leaseString != null) ? Long.parseLong(leaseString) : (-1);
+                    final long leaseSeconds = leaseString != null ? Long.parseLong(leaseString) : -1;
                     result = hub.subscribe(callback, topic, verifyMode, leaseSeconds, secret, verifyToken);
                 } else if ("unsubscribe".equals(req.getParameter(HUBMODE))) {
                     result = hub.unsubscribe(callback, topic, verifyMode, secret, verifyToken);
                 }
 
-                if ((result != null) && !result) {
+                if (result != null && !result) {
                     throw new HttpStatusCodeException(500, "Operation failed.", null);
                 }
             }
-        } catch (HttpStatusCodeException sc) {
+        } catch (final HttpStatusCodeException sc) {
             resp.setStatus(sc.getStatus());
-            resp.getWriter()
-                .println(sc.getMessage());
+            resp.getWriter().println(sc.getMessage());
 
             return;
         }

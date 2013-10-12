@@ -27,25 +27,27 @@ import java.util.Date;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.rometools.certiorem.sub.data.SubDAO;
 import org.rometools.certiorem.sub.data.Subscription;
 
 /**
- *
+ * 
  * @author robert.cooper
  */
 public class InMemorySubDAO implements SubDAO {
 
-    private ConcurrentHashMap<String, Subscription> subscriptions = new ConcurrentHashMap<String, Subscription>();
+    private final ConcurrentHashMap<String, Subscription> subscriptions = new ConcurrentHashMap<String, Subscription>();
 
     @Override
-    public Subscription findById(String id) {
-        Subscription s  =  subscriptions.get(id);
-        if(s == null){
+    public Subscription findById(final String id) {
+        final Subscription s = subscriptions.get(id);
+        if (s == null) {
             return null;
         }
-        if(s.getExpirationTime() > 0 && s.getExpirationTime() <= System.currentTimeMillis()){
-            Logger.getLogger(InMemorySubDAO.class.getName()).log(Level.FINE, "Subscription {0} expired at {1}", new Object[]{s.getSourceUrl(), new Date(s.getExpirationTime())});
+        if (s.getExpirationTime() > 0 && s.getExpirationTime() <= System.currentTimeMillis()) {
+            Logger.getLogger(InMemorySubDAO.class.getName()).log(Level.FINE, "Subscription {0} expired at {1}",
+                    new Object[] { s.getSourceUrl(), new Date(s.getExpirationTime()) });
             subscriptions.remove(id);
 
             return null;
@@ -54,20 +56,20 @@ public class InMemorySubDAO implements SubDAO {
     }
 
     @Override
-    public Subscription addSubscription(Subscription s) {
+    public Subscription addSubscription(final Subscription s) {
         subscriptions.put(s.getId(), s);
-        Logger.getLogger(InMemorySubDAO.class.getName()).log(Level.FINE, "Stored subscription {0} {1}", new Object[]{s.getSourceUrl(), s.getId()});
+        Logger.getLogger(InMemorySubDAO.class.getName()).log(Level.FINE, "Stored subscription {0} {1}", new Object[] { s.getSourceUrl(), s.getId() });
         return s;
     }
 
     @Override
-    public Subscription updateSubscription(Subscription s) {
+    public Subscription updateSubscription(final Subscription s) {
         subscriptions.put(s.getId(), s);
         return s;
     }
 
     @Override
-    public void removeSubscription(Subscription s) {
+    public void removeSubscription(final Subscription s) {
         subscriptions.remove(s.getId());
     }
 

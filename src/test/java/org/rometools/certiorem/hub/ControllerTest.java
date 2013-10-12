@@ -18,25 +18,25 @@
 
 package org.rometools.certiorem.hub;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
 import java.util.logging.Logger;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
 import org.rometools.certiorem.HttpStatusCodeException;
+import org.rometools.certiorem.hub.data.HubDAO;
+import org.rometools.certiorem.hub.data.ram.InMemoryHubDAO;
 import org.rometools.fetcher.FeedFetcher;
 import org.rometools.fetcher.impl.HashMapFeedInfoCache;
 import org.rometools.fetcher.impl.HttpURLFeedFetcher;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import static org.junit.Assert.*;
-
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
-import org.rometools.certiorem.hub.data.HubDAO;
-import org.rometools.certiorem.hub.data.ram.InMemoryHubDAO;
-
 /**
- *
+ * 
  * @author robert.cooper
  */
 public class ControllerTest {
@@ -66,14 +66,14 @@ public class ControllerTest {
     public void testSubscribe() {
         Logger.getLogger(ControllerTest.class.getName()).info("subscribe");
 
-        String callback = "http://localhost/doNothing";
-        String topic = "http://feeds.feedburner.com/screaming-penguin";
-        long lease_seconds = -1;
-        String secret = null;
-        String verify_token = "MyVoiceIsMyPassport";
-        HubDAO dao = new InMemoryHubDAO();
-        Notifier notifier = null;
-        FeedFetcher fetcher = new HttpURLFeedFetcher(HashMapFeedInfoCache.getInstance());
+        final String callback = "http://localhost/doNothing";
+        final String topic = "http://feeds.feedburner.com/screaming-penguin";
+        final long lease_seconds = -1;
+        final String secret = null;
+        final String verify_token = "MyVoiceIsMyPassport";
+        final HubDAO dao = new InMemoryHubDAO();
+        final Notifier notifier = null;
+        final FeedFetcher fetcher = new HttpURLFeedFetcher(HashMapFeedInfoCache.getInstance());
         Hub instance = new Hub(dao, new AlwaysVerifier(), notifier, fetcher);
 
         Boolean result = instance.subscribe(callback, topic, "sync", lease_seconds, secret, verify_token);
@@ -90,7 +90,7 @@ public class ControllerTest {
         try {
             instance.subscribe(null, topic, "async", lease_seconds, secret, verify_token);
             fail();
-        } catch (HttpStatusCodeException e) {
+        } catch (final HttpStatusCodeException e) {
             assertEquals(400, e.getStatus());
             Logger.getLogger(ControllerTest.class.getName()).info(e.getMessage());
         }
@@ -98,7 +98,7 @@ public class ControllerTest {
         try {
             instance.subscribe(callback, null, "async", lease_seconds, secret, verify_token);
             fail();
-        } catch (HttpStatusCodeException e) {
+        } catch (final HttpStatusCodeException e) {
             assertEquals(400, e.getStatus());
             Logger.getLogger(ControllerTest.class.getName()).info(e.getMessage());
         }
@@ -106,7 +106,7 @@ public class ControllerTest {
         try {
             instance.subscribe(callback, topic, "foo", lease_seconds, secret, verify_token);
             fail();
-        } catch (HttpStatusCodeException e) {
+        } catch (final HttpStatusCodeException e) {
             assertEquals(400, e.getStatus());
             Logger.getLogger(ControllerTest.class.getName()).info(e.getMessage());
         }
@@ -117,7 +117,7 @@ public class ControllerTest {
         try {
             result = instance.subscribe(callback, topic, "sync", lease_seconds, secret, verify_token);
             fail();
-        } catch (HttpStatusCodeException e) {
+        } catch (final HttpStatusCodeException e) {
             assertEquals(500, e.getStatus());
         }
     }

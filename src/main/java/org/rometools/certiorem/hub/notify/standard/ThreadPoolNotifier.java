@@ -16,10 +16,7 @@
  *  limitations under the License.
  */
 
- 
 package org.rometools.certiorem.hub.notify.standard;
-
-import org.rometools.certiorem.hub.data.SubscriptionSummary;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -28,11 +25,11 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+import org.rometools.certiorem.hub.data.SubscriptionSummary;
 
 /**
- * A notifier implementation that uses a thread pool to deliver notifications to
- * subscribers
- *
+ * A notifier implementation that uses a thread pool to deliver notifications to subscribers
+ * 
  * @author robert.cooper
  */
 public class ThreadPoolNotifier extends AbstractNotifier {
@@ -45,47 +42,47 @@ public class ThreadPoolNotifier extends AbstractNotifier {
         this(2, 5, 5);
     }
 
-    public ThreadPoolNotifier(int startPoolSize, int maxPoolSize, int queueSize) {
-        this.exeuctor = new ThreadPoolExecutor(startPoolSize, maxPoolSize, 300, TimeUnit.SECONDS,
-                new LinkedBlockingQueue<Runnable>(queueSize));
+    public ThreadPoolNotifier(final int startPoolSize, final int maxPoolSize, final int queueSize) {
+        exeuctor = new ThreadPoolExecutor(startPoolSize, maxPoolSize, 300, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>(queueSize));
     }
 
     protected ThreadPoolNotifier(final ThreadPoolExecutor executor) {
-        this.exeuctor = executor;
+        exeuctor = executor;
     }
 
     /**
-     * Enqueues a notification to run. If the notification fails, it will be
-     * retried every two minutes until 5 attempts are completed. Notifications
-     * to the same callback should be delivered successfully in order.
+     * Enqueues a notification to run. If the notification fails, it will be retried every two minutes until 5 attempts are completed. Notifications to the same
+     * callback should be delivered successfully in order.
+     * 
      * @param not
      */
     @Override
     protected void enqueueNotification(final Notification not) {
-        Runnable r = new Runnable() {
-                @Override
-                public void run() {
-                    not.lastRun = System.currentTimeMillis();
+        final Runnable r = new Runnable() {
+            @Override
+            public void run() {
+                not.lastRun = System.currentTimeMillis();
 
-                    SubscriptionSummary summary = postNotification(not.subscriber, not.mimeType, not.payload);
+                final SubscriptionSummary summary = postNotification(not.subscriber, not.mimeType, not.payload);
 
-                    if (!summary.isLastPublishSuccessful()) {
-                        not.retryCount++;
+                if (!summary.isLastPublishSuccessful()) {
+                    not.retryCount++;
 
-                        if (not.retryCount <= 5) {
-                            retry(not);
-                        }
+                    if (not.retryCount <= 5) {
+                        retry(not);
                     }
-
-                    not.callback.onSummaryInfo(summary);
                 }
-            };
 
-        this.exeuctor.execute(r);
+                not.callback.onSummaryInfo(summary);
+            }
+        };
+
+        exeuctor.execute(r);
     }
 
     /**
      * Schedules a notification to retry in two minutes.
+     * 
      * @param not Notification to retry
      */
     protected void retry(final Notification not) {
@@ -94,21 +91,21 @@ public class ThreadPoolNotifier extends AbstractNotifier {
             // will schedule the retry
             pendings.add(not.subscriber.getCallback());
             timer.schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        pendings.remove(not.subscriber.getCallback());
-                        enqueueNotification(not);
-                    }
-                }, TWO_MINUTES);
+                @Override
+                public void run() {
+                    pendings.remove(not.subscriber.getCallback());
+                    enqueueNotification(not);
+                }
+            }, TWO_MINUTES);
         } else {
             // There is a retry in front of this one, so we will just schedule
             // it to retry again in a bit
             timer.schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        retry(not);
-                    }
-                }, TWO_MINUTES);
+                @Override
+                public void run() {
+                    retry(not);
+                }
+            }, TWO_MINUTES);
         }
     }
 }

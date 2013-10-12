@@ -21,10 +21,11 @@ package org.rometools.certiorem.hub.data;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.junit.Test;
 
 /**
- *
+ * 
  * @author robert.cooper
  */
 public abstract class AbstractDAOTest {
@@ -33,40 +34,40 @@ public abstract class AbstractDAOTest {
 
     @Test
     public void testSubscribe() {
-        HubDAO instance = get();
+        final HubDAO instance = get();
         Logger.getLogger(AbstractDAOTest.class.getName()).log(Level.INFO, "{0} testSubscribe", instance.getClass().getName());
-        Subscriber subscriber = new Subscriber();
+        final Subscriber subscriber = new Subscriber();
         subscriber.setCallback("http://localhost:9797/noop");
         subscriber.setTopic("http://feeds.feedburner.com/screaming-penguin");
         subscriber.setLeaseSeconds(-1);
         subscriber.setVerify("VerifyMe");
 
-        Subscriber result = instance.addSubscriber(subscriber);
+        final Subscriber result = instance.addSubscriber(subscriber);
 
         assert result.equals(subscriber) : "Subscriber not equal.";
 
-        List<Subscriber> subscribers = (List<Subscriber>) instance.subscribersForTopic(subscriber.getTopic());
+        final List<Subscriber> subscribers = (List<Subscriber>) instance.subscribersForTopic(subscriber.getTopic());
 
         assert subscribers.contains(result) : "Subscriber not in result.";
     }
 
     @Test
     public void testLeaseExpire() throws InterruptedException {
-        HubDAO instance = get();
+        final HubDAO instance = get();
         Logger.getLogger(AbstractDAOTest.class.getName()).log(Level.INFO, "{0} testLeaseExpire", instance.getClass().getName());
-        Subscriber subscriber = new Subscriber();
+        final Subscriber subscriber = new Subscriber();
         subscriber.setCallback("http://localhost:9797/noop");
         subscriber.setTopic("http://feeds.feedburner.com/screaming-penguin");
         subscriber.setLeaseSeconds(1);
         subscriber.setVerify("VerifyMe");
 
-        Subscriber result = instance.addSubscriber(subscriber);
+        final Subscriber result = instance.addSubscriber(subscriber);
 
         assert subscriber.equals(result) : "Subscriber not equal.";
-        //quick test for store.
+        // quick test for store.
         List<Subscriber> subscribers = (List<Subscriber>) instance.subscribersForTopic(subscriber.getTopic());
         assert subscribers.contains(result) : "Subscriber not in result.";
-        //sleep past expiration
+        // sleep past expiration
         Thread.sleep(1100);
         subscribers = (List<Subscriber>) instance.subscribersForTopic(subscriber.getTopic());
         assert !subscribers.contains(result) : "Subscriber should have expired";
@@ -74,15 +75,15 @@ public abstract class AbstractDAOTest {
 
     @Test
     public void testUnsubscribe() throws InterruptedException {
-        HubDAO instance = get();
+        final HubDAO instance = get();
         Logger.getLogger(AbstractDAOTest.class.getName()).log(Level.INFO, "{0} testUnsubscribe", instance.getClass().getName());
-        Subscriber subscriber = new Subscriber();
+        final Subscriber subscriber = new Subscriber();
         subscriber.setCallback("http://localhost:9797/noop");
         subscriber.setTopic("http://feeds.feedburner.com/screaming-penguin");
         subscriber.setLeaseSeconds(1);
         subscriber.setVerify("VerifyMe");
 
-        Subscriber result = instance.addSubscriber(subscriber);
+        final Subscriber result = instance.addSubscriber(subscriber);
         // TODO
 
     }

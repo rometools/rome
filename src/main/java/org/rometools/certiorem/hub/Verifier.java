@@ -20,9 +20,9 @@ package org.rometools.certiorem.hub;
 
 import org.rometools.certiorem.hub.data.Subscriber;
 
-
 /**
  * A strategy interface for verification of subscriptions.
+ * 
  * @author robert.cooper
  */
 public interface Verifier {
@@ -38,6 +38,7 @@ public interface Verifier {
 
     /**
      * Verifies a subscriber (possibly) asyncronously
+     * 
      * @param subscriber the Subscriber to verify
      * @param callback a callback with the result of the verification.
      */
@@ -45,32 +46,34 @@ public interface Verifier {
 
     /**
      * Verifies a subscriber syncronously
-     * @param  subscriber The subscriber data
+     * 
+     * @param subscriber The subscriber data
      * @return boolean result;
      */
     public boolean verifySubcribeSyncronously(Subscriber subscriber);
 
     /**
      * Verifies am unsubscribe (possibly) asyncronously
+     * 
      * @param subscriber The subscriber data
      * @param callback result
      */
     public void verifyUnsubscribeAsyncronously(Subscriber subscriber, VerificationCallback callback);
 
-     /**
+    /**
      * Verifies an unsubscribe syncronously
-     * @param  subscriber The subscriber data
+     * 
+     * @param subscriber The subscriber data
      * @return boolean result;
      */
     public boolean verifyUnsubcribeSyncronously(Subscriber subscriber);
-
 
     /**
      * An interface for capturing the result of a verification (subscribe or unsubscribe)
      */
     public static interface VerificationCallback {
         /**
-         *
+         * 
          * @param verified success state of the verification
          */
         public void onVerify(boolean verified);

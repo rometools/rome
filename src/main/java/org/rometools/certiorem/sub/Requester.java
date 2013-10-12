@@ -20,17 +20,15 @@ package org.rometools.certiorem.sub;
 
 import org.rometools.certiorem.sub.data.Subscription;
 
-
 /**
- *
+ * 
  * @author robert.cooper
  */
 public interface Requester {
-    public void sendSubscribeRequest(String hubUrl, Subscription subscription, String verifySync, long leaseSeconds,
-        String secret, String callbackUrl, RequestCallback callback);
+    public void sendSubscribeRequest(String hubUrl, Subscription subscription, String verifySync, long leaseSeconds, String secret, String callbackUrl,
+            RequestCallback callback);
 
-    public void sendUnsubscribeRequest(String hubUrl, Subscription subscription, String verifySync, String secret,
-        String callbackUrl, RequestCallback callback);
+    public void sendUnsubscribeRequest(String hubUrl, Subscription subscription, String verifySync, String secret, String callbackUrl, RequestCallback callback);
 
     public static interface RequestCallback {
         public void onFailure(Exception e);

@@ -16,152 +16,140 @@
  *  limitations under the License.
  */
 
- 
 package org.rometools.certiorem.hub.notify.standard;
-
-import com.sun.syndication.feed.synd.SyndFeed;
-import com.sun.syndication.io.FeedException;
-import com.sun.syndication.io.SyndFeedOutput;
-
-import org.rometools.certiorem.hub.Notifier;
-import org.rometools.certiorem.hub.data.Subscriber;
-import org.rometools.certiorem.hub.data.SubscriptionSummary;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.rometools.certiorem.sub.data.ram.InMemorySubDAO;
 
+import org.rometools.certiorem.hub.Notifier;
+import org.rometools.certiorem.hub.data.Subscriber;
+import org.rometools.certiorem.hub.data.SubscriptionSummary;
+
+import com.sun.syndication.feed.synd.SyndFeed;
+import com.sun.syndication.io.FeedException;
+import com.sun.syndication.io.SyndFeedOutput;
 
 /**
- *
+ * 
  * @author robert.cooper
  */
 public abstract class AbstractNotifier implements Notifier {
     /**
-     * This method will serialize the synd feed and build Notifications for the
-     * implementation class to handle.
-     * @see  enqueueNotification
-     *
+     * This method will serialize the synd feed and build Notifications for the implementation class to handle.
+     * 
+     * @see enqueueNotification
+     * 
      * @param subscribers List of subscribers to notify
      * @param value The SyndFeed object to send
      * @param callback A callback that will be invoked each time a subscriber is notified.
-     *
+     * 
      */
     @Override
-    public void notifySubscribers(List<Subscriber> subscribers, SyndFeed value, SubscriptionSummaryCallback callback) {
+    public void notifySubscribers(final List<Subscriber> subscribers, final SyndFeed value, final SubscriptionSummaryCallback callback) {
         String mimeType = null;
 
-        if (value.getFeedType()
-                     .startsWith("rss")) {
+        if (value.getFeedType().startsWith("rss")) {
             mimeType = "application/rss+xml";
         } else {
             mimeType = "application/atom+xml";
         }
 
-        SyndFeedOutput output = new SyndFeedOutput();
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        final SyndFeedOutput output = new SyndFeedOutput();
+        final ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
         try {
             output.output(value, new OutputStreamWriter(baos));
             baos.close();
-        } catch (IOException ex) {
-            Logger.getLogger(AbstractNotifier.class.getName())
-                  .log(Level.SEVERE, null, ex);
+        } catch (final IOException ex) {
+            Logger.getLogger(AbstractNotifier.class.getName()).log(Level.SEVERE, null, ex);
             throw new RuntimeException("Unable to output the feed.", ex);
-        } catch (FeedException ex) {
-            Logger.getLogger(AbstractNotifier.class.getName())
-                  .log(Level.SEVERE, null, ex);
+        } catch (final FeedException ex) {
+            Logger.getLogger(AbstractNotifier.class.getName()).log(Level.SEVERE, null, ex);
             throw new RuntimeException("Unable to output the feed.", ex);
         }
 
-        byte[] payload = baos.toByteArray();
+        final byte[] payload = baos.toByteArray();
 
-        for (Subscriber s : subscribers) {
-            Notification not = new Notification();
+        for (final Subscriber s : subscribers) {
+            final Notification not = new Notification();
             not.callback = callback;
             not.lastRun = 0;
             not.mimeType = mimeType;
             not.payload = payload;
             not.retryCount = 0;
             not.subscriber = s;
-            this.enqueueNotification(not);
+            enqueueNotification(not);
         }
     }
-    /** Implementation method that queues/sends a notification
-     *
+
+    /**
+     * Implementation method that queues/sends a notification
+     * 
      * @param not notification to send.
      */
     protected abstract void enqueueNotification(Notification not);
 
     /**
-     * POSTs the payload to the subscriber's callback and returns a
-     * SubscriptionSummary with subscriber counts (where possible) and the
-     * success state of the notification.
+     * POSTs the payload to the subscriber's callback and returns a SubscriptionSummary with subscriber counts (where possible) and the success state of the
+     * notification.
+     * 
      * @param subscriber subscriber data.
      * @param mimeType MIME type for the request
      * @param payload payload of the feed to send
      * @return SubscriptionSummary with the returned data.
      */
-    protected SubscriptionSummary postNotification(Subscriber subscriber, String mimeType, byte[] payload) {
-        SubscriptionSummary result = new SubscriptionSummary();
+    protected SubscriptionSummary postNotification(final Subscriber subscriber, final String mimeType, final byte[] payload) {
+        final SubscriptionSummary result = new SubscriptionSummary();
 
         try {
-            URL target = new URL(subscriber.getCallback());
+            final URL target = new URL(subscriber.getCallback());
             Logger.getLogger(AbstractNotifier.class.getName()).log(Level.INFO, "Posting notification to subscriber {0}", subscriber.getCallback());
             result.setHost(target.getHost());
 
-            HttpURLConnection connection = (HttpURLConnection) target.openConnection();
+            final HttpURLConnection connection = (HttpURLConnection) target.openConnection();
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Content-Type", mimeType);
             connection.setDoOutput(true);
             connection.connect();
 
-            OutputStream os = connection.getOutputStream();
+            final OutputStream os = connection.getOutputStream();
             os.write(payload);
             os.close();
 
-            int responseCode = connection.getResponseCode();
-            String subscribers = connection.getHeaderField("X-Hub-On-Behalf-Of");
+            final int responseCode = connection.getResponseCode();
+            final String subscribers = connection.getHeaderField("X-Hub-On-Behalf-Of");
             connection.disconnect();
-            
+
             if (responseCode != 200) {
-                Logger.getLogger(AbstractNotifier.class.getName())
-                      .log(Level.WARNING, "Got code " + responseCode + " from " + target);
+                Logger.getLogger(AbstractNotifier.class.getName()).log(Level.WARNING, "Got code " + responseCode + " from " + target);
                 result.setLastPublishSuccessful(false);
 
                 return result;
             }
 
-            
-
             if (subscribers != null) {
                 try {
                     result.setSubscribers(Integer.parseInt(subscribers));
-                } catch (NumberFormatException nfe) {
-                    Logger.getLogger(AbstractNotifier.class.getName())
-                          .log(Level.WARNING, "Invalid subscriber value " + subscribers + " " + target, nfe);
+                } catch (final NumberFormatException nfe) {
+                    Logger.getLogger(AbstractNotifier.class.getName()).log(Level.WARNING, "Invalid subscriber value " + subscribers + " " + target, nfe);
                     result.setSubscribers(-1);
                 }
             } else {
                 result.setSubscribers(-1);
             }
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(AbstractNotifier.class.getName())
-                  .log(Level.WARNING, null, ex);
+        } catch (final MalformedURLException ex) {
+            Logger.getLogger(AbstractNotifier.class.getName()).log(Level.WARNING, null, ex);
             result.setLastPublishSuccessful(false);
-        } catch (IOException ex) {
-            Logger.getLogger(AbstractNotifier.class.getName())
-                  .log(Level.SEVERE, null, ex);
+        } catch (final IOException ex) {
+            Logger.getLogger(AbstractNotifier.class.getName()).log(Level.SEVERE, null, ex);
             result.setLastPublishSuccessful(false);
         }
 

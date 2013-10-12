@@ -16,45 +16,46 @@
  *  limitations under the License.
  */
 
-
 package org.rometools.certiorem.web;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpUtils;
+
 import org.rometools.certiorem.HttpStatusCodeException;
 import org.rometools.certiorem.sub.Subscriptions;
 
 /**
- *
+ * 
  * @author robert.cooper
  */
 public class AbstractSubServlet extends HttpServlet {
 
     private final Subscriptions subscriptions;
-    
-    protected AbstractSubServlet(final Subscriptions subscriptions){
+
+    protected AbstractSubServlet(final Subscriptions subscriptions) {
         super();
         this.subscriptions = subscriptions;
-      
+
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String mode = req.getParameter("hub.mode");
-        String topic = req.getParameter("hub.topic");
-        String challenge = req.getParameter("hub.challenge");
-        String leaseString = req.getParameter("hub.lease_seconds");
-        String verifyToken = req.getParameter("hub.verify_token");
-        try{
-            String result = subscriptions.validate(HttpUtils.getRequestURL(req).toString(), topic, mode, challenge, leaseString, verifyToken);
+    protected void doGet(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
+        final String mode = req.getParameter("hub.mode");
+        final String topic = req.getParameter("hub.topic");
+        final String challenge = req.getParameter("hub.challenge");
+        final String leaseString = req.getParameter("hub.lease_seconds");
+        final String verifyToken = req.getParameter("hub.verify_token");
+        try {
+            final String result = subscriptions.validate(HttpUtils.getRequestURL(req).toString(), topic, mode, challenge, leaseString, verifyToken);
             resp.setStatus(200);
             resp.getWriter().print(result);
             return;
-        } catch(HttpStatusCodeException e){
+        } catch (final HttpStatusCodeException e) {
             e.printStackTrace();
             resp.setStatus(e.getStatus());
             resp.getWriter().print(e.getMessage());
@@ -63,17 +64,15 @@ public class AbstractSubServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try{
-            this.subscriptions.callback(HttpUtils.getRequestURL(req).toString(), req.getInputStream());
+    protected void doPost(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
+        try {
+            subscriptions.callback(HttpUtils.getRequestURL(req).toString(), req.getInputStream());
             return;
-        } catch(HttpStatusCodeException e){
+        } catch (final HttpStatusCodeException e) {
             e.printStackTrace();
             resp.setStatus(e.getStatus());
             resp.getWriter().println(e.getMessage());
         }
     }
-
-
 
 }

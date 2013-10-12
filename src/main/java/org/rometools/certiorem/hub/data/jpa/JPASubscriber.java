@@ -16,13 +16,9 @@
  *  limitations under the License.
  */
 
- 
 package org.rometools.certiorem.hub.data.jpa;
 
-import org.rometools.certiorem.hub.data.Subscriber;
-
 import java.io.Serializable;
-
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -32,14 +28,14 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.rometools.certiorem.hub.data.Subscriber;
 
 /**
- *
+ * 
  * @author robert.cooper
  */
 @Entity
-@NamedQueries({@NamedQuery(name = "Subcriber.forTopic", query = "SELECT o FROM JPASubscriber o WHERE o.topic = :topic AND o.expired = false ORDER BY o.subscribedAt")
-})
+@NamedQueries({ @NamedQuery(name = "Subcriber.forTopic", query = "SELECT o FROM JPASubscriber o WHERE o.topic = :topic AND o.expired = false ORDER BY o.subscribedAt") })
 public class JPASubscriber extends Subscriber implements Serializable {
     private Date subscribedAt = new Date();
     private String id;
@@ -47,65 +43,65 @@ public class JPASubscriber extends Subscriber implements Serializable {
 
     /**
      * Set the value of expired
-     *
+     * 
      * @param newexpired new value of expired
      */
-    public void setExpired(boolean newexpired) {
-        this.expired = newexpired;
+    public void setExpired(final boolean newexpired) {
+        expired = newexpired;
     }
 
     /**
      * Get the value of expired
-     *
+     * 
      * @return the value of expired
      */
     public boolean isExpired() {
-        return this.expired;
+        return expired;
     }
 
     /**
      * Set the value of id
-     *
+     * 
      * @param newid new value of id
      */
-    public void setId(String newid) {
-        this.id = newid;
+    public void setId(final String newid) {
+        id = newid;
     }
 
     /**
      * Get the value of id
-     *
+     * 
      * @return the value of id
      */
     @Id
     public String getId() {
-        return this.id;
+        return id;
     }
 
     /**
      * Set the value of subscribedAt
-     *
+     * 
      * @param newsubscribedAt new value of subscribedAt
      */
-    public void setSubscribedAt(Date newsubscribedAt) {
-        this.subscribedAt = newsubscribedAt;
+    public void setSubscribedAt(final Date newsubscribedAt) {
+        subscribedAt = newsubscribedAt;
     }
 
     /**
      * Get the value of subscribedAt
-     *
+     * 
      * @return the value of subscribedAt
      */
     @Temporal(TemporalType.TIMESTAMP)
     public Date getSubscribedAt() {
-        return this.subscribedAt;
+        return subscribedAt;
     }
 
-    public void copyFrom(Subscriber source) {
-        this.setLeaseSeconds(source.getLeaseSeconds());
-        this.setSecret(source.getSecret());
-        this.setTopic(source.getTopic());
-        this.setVerify(source.getVerify());
-        this.setVertifyToken(source.getVertifyToken());
+    public void copyFrom(final Subscriber source) {
+        setLeaseSeconds(source.getLeaseSeconds());
+        setSecret(source.getSecret());
+        setTopic(source.getTopic());
+        setVerify(source.getVerify());
+        setVertifyToken(source.getVertifyToken());
     }
 }

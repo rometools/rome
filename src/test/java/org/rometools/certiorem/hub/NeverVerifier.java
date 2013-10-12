@@ -16,34 +16,33 @@
  *  limitations under the License.
  */
 
- 
 package org.rometools.certiorem.hub;
 
 import org.rometools.certiorem.hub.data.Subscriber;
 
 /**
- *
+ * 
  * @author robert.cooper
  */
-public class NeverVerifier implements Verifier{
+public class NeverVerifier implements Verifier {
 
     @Override
-    public void verifySubscribeAsyncronously(Subscriber subscriber, VerificationCallback callback) {
+    public void verifySubscribeAsyncronously(final Subscriber subscriber, final VerificationCallback callback) {
         callback.onVerify(false);
     }
 
     @Override
-    public boolean verifySubcribeSyncronously(Subscriber subscriber) {
+    public boolean verifySubcribeSyncronously(final Subscriber subscriber) {
         return false;
     }
 
     @Override
-    public void verifyUnsubscribeAsyncronously(Subscriber subscriber, VerificationCallback callback) {
+    public void verifyUnsubscribeAsyncronously(final Subscriber subscriber, final VerificationCallback callback) {
         callback.onVerify(false);
     }
 
     @Override
-    public boolean verifyUnsubcribeSyncronously(Subscriber subscriber) {
+    public boolean verifyUnsubcribeSyncronously(final Subscriber subscriber) {
         return false;
     }
 

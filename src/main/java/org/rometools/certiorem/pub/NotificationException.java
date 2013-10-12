@@ -16,20 +16,19 @@
  *  limitations under the License.
  */
 
- 
 package org.rometools.certiorem.pub;
 
 /**
- *
+ * 
  * @author robert.cooper
  */
 public class NotificationException extends Exception {
 
-    public NotificationException(String message){
+    public NotificationException(final String message) {
         super(message);
     }
 
-    public NotificationException(String message, Throwable cause){
+    public NotificationException(final String message, final Throwable cause) {
         super(message, cause);
     }
 

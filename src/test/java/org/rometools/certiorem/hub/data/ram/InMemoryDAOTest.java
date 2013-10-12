@@ -16,18 +16,17 @@
  *  limitations under the License.
  */
 
- 
 package org.rometools.certiorem.hub.data.ram;
 
 import org.rometools.certiorem.hub.data.AbstractDAOTest;
 import org.rometools.certiorem.hub.data.HubDAO;
 
 /**
- *
+ * 
  * @author robert.cooper
  */
-public class InMemoryDAOTest extends AbstractDAOTest{
-    private InMemoryHubDAO dao = new InMemoryHubDAO();
+public class InMemoryDAOTest extends AbstractDAOTest {
+    private final InMemoryHubDAO dao = new InMemoryHubDAO();
 
     public InMemoryDAOTest() {
     }
@@ -36,9 +35,5 @@ public class InMemoryDAOTest extends AbstractDAOTest{
     protected HubDAO get() {
         return dao;
     }
-
-
-    
-
 
 }

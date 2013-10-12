@@ -16,25 +16,24 @@
  *  limitations under the License.
  */
 
- 
-
 package org.rometools.certiorem.hub.verify.standard;
 
 import org.rometools.certiorem.hub.data.Subscriber;
 
 /**
  * A verifier that does not use threads. Suitable for Google App Engine.
+ * 
  * @author robert.cooper
  */
-public class UnthreadedVerifier extends AbstractVerifier{
+public class UnthreadedVerifier extends AbstractVerifier {
 
     @Override
-    public void verifySubscribeAsyncronously(Subscriber subscriber, VerificationCallback callback) {
+    public void verifySubscribeAsyncronously(final Subscriber subscriber, final VerificationCallback callback) {
         callback.onVerify(verifySubcribeSyncronously(subscriber));
     }
 
     @Override
-    public void verifyUnsubscribeAsyncronously(Subscriber subscriber, VerificationCallback callback) {
+    public void verifyUnsubscribeAsyncronously(final Subscriber subscriber, final VerificationCallback callback) {
         callback.onVerify(verifyUnsubcribeSyncronously(subscriber));
     }
 

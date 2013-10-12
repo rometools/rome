@@ -16,64 +16,51 @@
  *  limitations under the License.
  */
 
-
 package org.rometools.certiorem.sub.request;
 
-import org.rometools.certiorem.sub.Requester;
-import org.rometools.certiorem.sub.data.Subscription;
-
 import java.io.IOException;
-
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
+import org.rometools.certiorem.sub.Requester;
+import org.rometools.certiorem.sub.data.Subscription;
 
 /**
- *
+ * 
  * @author robert.cooper
  */
 public abstract class AbstractRequester implements Requester {
-    
-    protected boolean sendRequest(String hubUrl, String mode, Subscription subscription, String verifySync,
-        long leaseSeconds, String secret, String callbackUrl, RequestCallback callback)
-        throws IOException {
-        StringBuilder sb = new StringBuilder("hub.callback=").append(URLEncoder.encode(callbackUrl, "UTF-8"))
-                                                             .append("&hub.topic=")
-                                                             .append(URLEncoder.encode(subscription.getSourceUrl(),
-                    "UTF-8"))
-                                                             .append("&hub.verify=")
-                                                             .append(URLEncoder.encode(verifySync, "UTF-8"))
-                                                             .append("&hub.mode=")
-                                                             .append(URLEncoder.encode(mode, "UTF-8"));
+
+    protected boolean sendRequest(final String hubUrl, final String mode, final Subscription subscription, final String verifySync, final long leaseSeconds,
+            final String secret, final String callbackUrl, final RequestCallback callback) throws IOException {
+        final StringBuilder sb = new StringBuilder("hub.callback=").append(URLEncoder.encode(callbackUrl, "UTF-8")).append("&hub.topic=")
+                .append(URLEncoder.encode(subscription.getSourceUrl(), "UTF-8")).append("&hub.verify=").append(URLEncoder.encode(verifySync, "UTF-8"))
+                .append("&hub.mode=").append(URLEncoder.encode(mode, "UTF-8"));
 
         if (leaseSeconds > 0) {
-            sb.append("&hub.lease_seconds=")
-              .append(Long.toString(leaseSeconds));
+            sb.append("&hub.lease_seconds=").append(Long.toString(leaseSeconds));
         }
 
         if (secret != null) {
-            sb.append("&hub.secret=")
-              .append(URLEncoder.encode(secret, "UTF-8"));
+            sb.append("&hub.secret=").append(URLEncoder.encode(secret, "UTF-8"));
         }
 
         if (subscription.getVerifyToken() != null) {
-            sb.append("&hub.verify_token=")
-              .append(URLEncoder.encode(subscription.getVerifyToken(), "UTF-8"));
+            sb.append("&hub.verify_token=").append(URLEncoder.encode(subscription.getVerifyToken(), "UTF-8"));
         }
 
-        URL url = new URL(hubUrl);
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        final URL url = new URL(hubUrl);
+        final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("POST");
         connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
         connection.setDoOutput(true);
-//        connection.setRequestProperty("Host", url.getHost());
+        // connection.setRequestProperty("Host", url.getHost());
         connection.setRequestProperty("User-Agent", "ROME-Certiorem");
         connection.connect();
-        connection.getOutputStream()
-                  .write(sb.toString().getBytes("UTF-8"));
+        connection.getOutputStream().write(sb.toString().getBytes("UTF-8"));
 
-        int rc = connection.getResponseCode();
+        final int rc = connection.getResponseCode();
         connection.disconnect();
 
         if (rc != 204) {

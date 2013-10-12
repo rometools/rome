@@ -16,11 +16,10 @@
  *  limitations under the License.
  */
 
- 
 package org.rometools.certiorem.sub.data;
 
 /**
- *
+ * 
  * @author robert.cooper
  */
 public interface SubDAO {
