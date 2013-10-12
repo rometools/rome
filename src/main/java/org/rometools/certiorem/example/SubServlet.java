@@ -5,21 +5,21 @@
 
 package org.rometools.certiorem.example;
 
-import com.google.inject.Inject;
-import com.google.inject.Singleton;
-import com.google.inject.name.Named;
 import org.rometools.certiorem.sub.Subscriptions;
 import org.rometools.certiorem.web.AbstractSubServlet;
 
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
+
 /**
- *
+ * 
  * @author robert.cooper
  */
 @Singleton
 public class SubServlet extends AbstractSubServlet {
 
     @Inject
-    public SubServlet(final Subscriptions subscriptions){
+    public SubServlet(final Subscriptions subscriptions) {
         super(subscriptions);
     }
 
