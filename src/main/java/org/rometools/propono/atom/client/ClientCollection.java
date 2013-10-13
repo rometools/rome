@@ -20,6 +20,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpMethodBase;
@@ -103,7 +104,7 @@ public class ClientCollection extends Collection {
             if (method.getStatusCode() != 200) {
                 throw new ProponoException("ERROR HTTP status code=" + method.getStatusCode());
             }
-            final Entry romeEntry = Atom10Parser.parseEntry(new InputStreamReader(method.getResponseBodyAsStream()), uri);
+            final Entry romeEntry = Atom10Parser.parseEntry(new InputStreamReader(method.getResponseBodyAsStream()), uri, Locale.US);
             if (!romeEntry.isMediaEntry()) {
                 return new ClientEntry(service, this, romeEntry, false);
             } else {

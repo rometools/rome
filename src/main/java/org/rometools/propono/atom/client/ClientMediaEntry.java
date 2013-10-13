@@ -23,6 +23,7 @@ import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.httpclient.Header;
@@ -254,7 +255,7 @@ public class ClientMediaEntry extends ClientEntry {
             }
             final InputStream is = method.getResponseBodyAsStream();
             if (method.getStatusCode() == 200 || method.getStatusCode() == 201) {
-                final Entry romeEntry = Atom10Parser.parseEntry(new InputStreamReader(is), col.getHrefResolved());
+                final Entry romeEntry = Atom10Parser.parseEntry(new InputStreamReader(is), col.getHrefResolved(), Locale.US);
                 BeanUtils.copyProperties(this, romeEntry);
 
             } else {

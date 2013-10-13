@@ -30,6 +30,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.StringTokenizer;
 
 import javax.activation.FileTypeMap;
@@ -509,7 +510,7 @@ public class FileBasedCollection extends Collection {
 
     private Entry loadAtomResourceEntry(final InputStream in, final File file) {
         try {
-            final Entry entry = Atom10Parser.parseEntry(new BufferedReader(new InputStreamReader(in)), null);
+            final Entry entry = Atom10Parser.parseEntry(new BufferedReader(new InputStreamReader(in)), null, Locale.US);
             updateMediaEntryAppLinks(entry, file.getName(), true);
             return entry;
 
@@ -615,7 +616,7 @@ public class FileBasedCollection extends Collection {
      */
     private Entry loadAtomEntry(final InputStream in) {
         try {
-            return Atom10Parser.parseEntry(new BufferedReader(new InputStreamReader(in, "UTF-8")), null);
+            return Atom10Parser.parseEntry(new BufferedReader(new InputStreamReader(in, "UTF-8")), null, Locale.US);
         } catch (final Exception e) {
             e.printStackTrace();
             return null;

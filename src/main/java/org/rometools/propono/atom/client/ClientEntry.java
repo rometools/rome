@@ -21,6 +21,7 @@ import java.io.InputStreamReader;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.httpclient.Header;
@@ -209,7 +210,7 @@ public class ClientEntry extends Entry {
             if (code != 200 && code != 201) {
                 throw new ProponoException("ERROR HTTP status=" + code + " : " + Utilities.streamToString(is));
             }
-            final Entry romeEntry = Atom10Parser.parseEntry(new InputStreamReader(is), getCollection().getHrefResolved());
+            final Entry romeEntry = Atom10Parser.parseEntry(new InputStreamReader(is), getCollection().getHrefResolved(), Locale.US);
             BeanUtils.copyProperties(this, romeEntry);
 
         } catch (final Exception e) {

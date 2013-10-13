@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Writer;
 import java.util.Collections;
+import java.util.Locale;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -174,7 +175,7 @@ public class AtomServlet extends HttpServlet {
                     if (req.getContentType().startsWith("application/atom+xml")) {
 
                         // parse incoming entry
-                        final Entry entry = Atom10Parser.parseEntry(new BufferedReader(new InputStreamReader(req.getInputStream(), "UTF-8")), null);
+                        final Entry entry = Atom10Parser.parseEntry(new BufferedReader(new InputStreamReader(req.getInputStream(), "UTF-8")), null, Locale.US);
 
                         // call handler to post it
                         final Entry newEntry = handler.postEntry(areq, entry);
@@ -277,7 +278,7 @@ public class AtomServlet extends HttpServlet {
                 if (handler.isEntryURI(areq)) {
 
                     // parse incoming entry
-                    final Entry unsavedEntry = Atom10Parser.parseEntry(new BufferedReader(new InputStreamReader(req.getInputStream(), "UTF-8")), null);
+                    final Entry unsavedEntry = Atom10Parser.parseEntry(new BufferedReader(new InputStreamReader(req.getInputStream(), "UTF-8")), null, Locale.US);
 
                     // call handler to put entry
                     handler.putEntry(areq, unsavedEntry);

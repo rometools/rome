@@ -19,6 +19,8 @@
  */
 package org.rometools.propono.atom.common.rome;
 
+import java.util.Locale;
+
 import org.jdom2.Element;
 import org.jdom2.Namespace;
 
@@ -44,8 +46,7 @@ public class AppModuleParser implements ModuleParser {
 
     /** Parse JDOM element into module */
     @Override
-    public Module parse(final Element elem) {
-        final boolean foundSomething = false;
+    public Module parse(final Element elem, final Locale locale) {
         final AppModule m = new AppModuleImpl();
         final Element control = elem.getChild("control", getContentNamespace());
         if (control != null) {
@@ -62,7 +63,7 @@ public class AppModuleParser implements ModuleParser {
         final Element edited = elem.getChild("edited", getContentNamespace());
         if (edited != null) {
             try {
-                m.setEdited(DateParser.parseW3CDateTime(edited.getTextTrim()));
+                m.setEdited(DateParser.parseW3CDateTime(edited.getTextTrim(), locale));
             } catch (final Exception ignored) {
             }
         }
