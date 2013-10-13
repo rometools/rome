@@ -16,6 +16,8 @@
  */
 package com.sun.syndication.io;
 
+import java.util.Locale;
+
 import org.jdom2.Document;
 
 import com.sun.syndication.feed.WireFeed;
@@ -73,6 +75,6 @@ public interface WireFeedParser {
      *             XML document (JDOM).
      * 
      */
-    public WireFeed parse(Document document, boolean validate) throws IllegalArgumentException, FeedException;
+    public WireFeed parse(Document document, boolean validate, final Locale locale) throws IllegalArgumentException, FeedException;
 
 }

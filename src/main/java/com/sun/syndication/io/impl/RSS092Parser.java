@@ -18,6 +18,7 @@ package com.sun.syndication.io.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import org.jdom2.Content;
 import org.jdom2.Element;
@@ -50,8 +51,8 @@ public class RSS092Parser extends RSS091UserlandParser {
     }
 
     @Override
-    protected WireFeed parseChannel(final Element rssRoot) {
-        final Channel channel = (Channel) super.parseChannel(rssRoot);
+    protected WireFeed parseChannel(final Element rssRoot, final Locale locale) {
+        final Channel channel = (Channel) super.parseChannel(rssRoot, locale);
 
         final Element eChannel = rssRoot.getChild("channel", getRSSNamespace());
         final Element eCloud = eChannel.getChild("cloud", getRSSNamespace());
@@ -91,8 +92,8 @@ public class RSS092Parser extends RSS091UserlandParser {
     }
 
     @Override
-    protected Item parseItem(final Element rssRoot, final Element eItem) {
-        final Item item = super.parseItem(rssRoot, eItem);
+    protected Item parseItem(final Element rssRoot, final Element eItem, final Locale locale) {
+        final Item item = super.parseItem(rssRoot, eItem, locale);
 
         Element e = eItem.getChild("source", getRSSNamespace());
         if (e != null) {

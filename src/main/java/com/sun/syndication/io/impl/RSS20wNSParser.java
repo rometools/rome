@@ -16,6 +16,8 @@
  */
 package com.sun.syndication.io.impl;
 
+import java.util.Locale;
+
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.Namespace;
@@ -68,8 +70,8 @@ public class RSS20wNSParser extends RSS20Parser {
      * 
      */
     @Override
-    protected WireFeed parseChannel(final Element rssRoot) {
-        final WireFeed wFeed = super.parseChannel(rssRoot);
+    protected WireFeed parseChannel(final Element rssRoot, final Locale locale) {
+        final WireFeed wFeed = super.parseChannel(rssRoot, locale);
         wFeed.setFeedType("rss_2.0");
         return wFeed;
     }

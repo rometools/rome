@@ -3,6 +3,7 @@ package com.sun.syndication.io.impl;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 
 import org.jdom2.Attribute;
 import org.jdom2.Content;
@@ -67,16 +68,16 @@ public abstract class BaseWireFeedParser implements WireFeedParser {
         return type;
     }
 
-    protected List<Module> parseFeedModules(final Element feedElement) {
-        return feedModuleParsers.parseModules(feedElement);
+    protected List<Module> parseFeedModules(final Element feedElement, final Locale locale) {
+        return feedModuleParsers.parseModules(feedElement, locale);
     }
 
-    protected List<Module> parseItemModules(final Element itemElement) {
-        return itemModuleParsers.parseModules(itemElement);
+    protected List<Module> parseItemModules(final Element itemElement, final Locale locale) {
+        return itemModuleParsers.parseModules(itemElement, locale);
     }
 
-    protected List<Module> parsePersonModules(final Element itemElement) {
-        return personModuleParsers.parseModules(itemElement);
+    protected List<Module> parsePersonModules(final Element itemElement, final Locale locale) {
+        return personModuleParsers.parseModules(itemElement, locale);
     }
 
     protected List<Element> extractForeignMarkup(final Element e, final Extendable ext, final Namespace basens) {

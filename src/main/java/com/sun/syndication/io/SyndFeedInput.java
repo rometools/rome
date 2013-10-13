@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.Locale;
 
 import org.jdom2.Document;
 import org.xml.sax.InputSource;
@@ -47,7 +48,7 @@ public class SyndFeedInput {
      * 
      */
     public SyndFeedInput() {
-        this(false);
+        this(false, Locale.US);
     }
 
     /**
@@ -58,8 +59,8 @@ public class SyndFeedInput {
      *            IMPLEMENTED YET (validation does not happen)
      * 
      */
-    public SyndFeedInput(final boolean validate) {
-        feedInput = new WireFeedInput(validate);
+    public SyndFeedInput(final boolean validate, final Locale locale) {
+        feedInput = new WireFeedInput(validate, locale);
     }
 
     /**

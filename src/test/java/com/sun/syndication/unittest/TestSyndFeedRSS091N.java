@@ -6,6 +6,7 @@ package com.sun.syndication.unittest;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.io.impl.DateParser;
@@ -39,7 +40,7 @@ public class TestSyndFeedRSS091N extends SyndFeedTest {
 
     @Override
     public void testPublishedDate() throws Exception {
-        final Date d = DateParser.parseRFC822("Mon, 01 Jan 2001 00:00:00 GMT");
+        final Date d = DateParser.parseRFC822("Mon, 01 Jan 2001 00:00:00 GMT", Locale.US);
         assertEquals(this.getCachedSyndFeed().getPublishedDate(), d);
     }
 

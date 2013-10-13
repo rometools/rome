@@ -19,6 +19,7 @@ package com.sun.syndication.unittest;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 import java.util.TimeZone;
 
 import junit.framework.TestCase;
@@ -39,7 +40,7 @@ public class TestDateParser extends TestCase {
 
         // four-digit year
         String sDate = "Tue, 19 Jul 2005 23:00:51 GMT";
-        cal.setTime(DateParser.parseRFC822(sDate));
+        cal.setTime(DateParser.parseRFC822(sDate, Locale.US));
 
         assertEquals(2005, cal.get(Calendar.YEAR));
         assertEquals(6, cal.get(Calendar.MONTH)); // month is zero-indexed
@@ -51,7 +52,7 @@ public class TestDateParser extends TestCase {
 
         // two-digit year
         sDate = "Tue, 19 Jul 05 23:00:51 GMT";
-        cal.setTime(DateParser.parseRFC822(sDate));
+        cal.setTime(DateParser.parseRFC822(sDate, Locale.US));
 
         assertEquals(2005, cal.get(Calendar.YEAR));
         assertEquals(6, cal.get(Calendar.MONTH)); // month is zero-indexed
@@ -63,7 +64,7 @@ public class TestDateParser extends TestCase {
 
         // four-digit year
         sDate = "Tue, 19 Jul 2005 23:00:51 UT";
-        cal.setTime(DateParser.parseRFC822(sDate));
+        cal.setTime(DateParser.parseRFC822(sDate, Locale.US));
 
         assertEquals(2005, cal.get(Calendar.YEAR));
         assertEquals(6, cal.get(Calendar.MONTH)); // month is zero-indexed
@@ -75,7 +76,7 @@ public class TestDateParser extends TestCase {
 
         // two-digit year
         sDate = "Tue, 19 Jul 05 23:00:51 UT";
-        cal.setTime(DateParser.parseRFC822(sDate));
+        cal.setTime(DateParser.parseRFC822(sDate, Locale.US));
 
         assertEquals(2005, cal.get(Calendar.YEAR));
         assertEquals(6, cal.get(Calendar.MONTH)); // month is zero-indexed
@@ -87,11 +88,11 @@ public class TestDateParser extends TestCase {
 
         // RFC822
         sDate = "Tue, 19 Jul 2005 23:00:51 GMT";
-        assertNotNull(DateParser.parseDate(sDate));
+        assertNotNull(DateParser.parseDate(sDate, Locale.US));
 
         // RFC822
         sDate = "Tue, 19 Jul 05 23:00:51 GMT";
-        assertNotNull(DateParser.parseDate(sDate));
+        assertNotNull(DateParser.parseDate(sDate, Locale.US));
 
         final Calendar c = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
         c.set(2000, Calendar.JANUARY, 01, 0, 0, 0);
@@ -99,31 +100,31 @@ public class TestDateParser extends TestCase {
 
         // W3C
         sDate = "2000-01-01T00:00:00Z";
-        assertEquals(expectedDate.getTime() / 1000, DateParser.parseDate(sDate).getTime() / 1000);
+        assertEquals(expectedDate.getTime() / 1000, DateParser.parseDate(sDate, Locale.US).getTime() / 1000);
 
         // W3C
         sDate = "2000-01-01T00:00Z";
-        assertEquals(expectedDate.getTime() / 1000, DateParser.parseDate(sDate).getTime() / 1000);
+        assertEquals(expectedDate.getTime() / 1000, DateParser.parseDate(sDate, Locale.US).getTime() / 1000);
 
         // W3C
         sDate = "2000-01-01";
-        assertEquals(expectedDate.getTime() / 1000, DateParser.parseDate(sDate).getTime() / 1000);
+        assertEquals(expectedDate.getTime() / 1000, DateParser.parseDate(sDate, Locale.US).getTime() / 1000);
 
         // W3C
         sDate = "2000-01";
-        assertEquals(expectedDate.getTime() / 1000, DateParser.parseDate(sDate).getTime() / 1000);
+        assertEquals(expectedDate.getTime() / 1000, DateParser.parseDate(sDate, Locale.US).getTime() / 1000);
 
         // W3C
         sDate = "2000";
-        assertEquals(expectedDate.getTime() / 1000, DateParser.parseDate(sDate).getTime() / 1000);
+        assertEquals(expectedDate.getTime() / 1000, DateParser.parseDate(sDate, Locale.US).getTime() / 1000);
 
         // EXTRA
         sDate = "18:10 2000/10/10";
-        assertNotNull(DateParser.parseDate(sDate));
+        assertNotNull(DateParser.parseDate(sDate, Locale.US));
 
         // INVALID
         sDate = "X20:10 2000-10-10";
-        assertNull(DateParser.parseDate(sDate));
+        assertNull(DateParser.parseDate(sDate, Locale.US));
 
     }
 }

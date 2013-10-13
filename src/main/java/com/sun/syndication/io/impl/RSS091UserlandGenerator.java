@@ -18,6 +18,7 @@ package com.sun.syndication.io.impl;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import org.jdom2.Attribute;
 import org.jdom2.Document;
@@ -201,13 +202,13 @@ public class RSS091UserlandGenerator extends RSS090Generator {
         final Date pubDate = channel.getPubDate();
 
         if (pubDate != null) {
-            eChannel.addContent(generateSimpleElement("pubDate", DateParser.formatRFC822(pubDate)));
+            eChannel.addContent(generateSimpleElement("pubDate", DateParser.formatRFC822(pubDate, Locale.US)));
         }
 
         final Date lastBuildDate = channel.getLastBuildDate();
 
         if (lastBuildDate != null) {
-            eChannel.addContent(generateSimpleElement("lastBuildDate", DateParser.formatRFC822(lastBuildDate)));
+            eChannel.addContent(generateSimpleElement("lastBuildDate", DateParser.formatRFC822(lastBuildDate, Locale.US)));
         }
 
         final String docs = channel.getDocs();

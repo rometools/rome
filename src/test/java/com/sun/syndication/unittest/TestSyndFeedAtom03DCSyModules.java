@@ -8,6 +8,7 @@ package com.sun.syndication.unittest;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import com.sun.syndication.feed.module.DCModule;
 import com.sun.syndication.feed.module.SyModule;
@@ -67,7 +68,7 @@ public class TestSyndFeedAtom03DCSyModules extends TestSyndFeedAtom03 {
         assertProperty(dc.getPublisher(), prefix + "dc:publisher");
         assertProperty(dc.getContributors().get(0), prefix + "dc:contributor[0]");
         assertProperty(dc.getContributors().get(1), prefix + "dc:contributor[1]");
-        final Date date = DateParser.parseW3CDateTime("2000-0" + (index + 1) + "-01T00:00:00Z");
+        final Date date = DateParser.parseW3CDateTime("2000-0" + (index + 1) + "-01T00:00:00Z", Locale.US);
         assertEquals(dc.getDate(), date);
         assertProperty(dc.getType(), prefix + "dc:type");
         assertProperty(dc.getFormat(), prefix + "dc:format");
@@ -93,7 +94,7 @@ public class TestSyndFeedAtom03DCSyModules extends TestSyndFeedAtom03 {
         assertNotNull(sy);
         assertEquals(sy.getUpdatePeriod(), SyModule.HOURLY);
         assertEquals(sy.getUpdateFrequency(), 100);
-        final Date date = DateParser.parseW3CDateTime("2001-01-01T01:00+00:00");
+        final Date date = DateParser.parseW3CDateTime("2001-01-01T01:00+00:00", Locale.US);
         assertEquals(sy.getUpdateBase(), date);
     }
 

@@ -21,6 +21,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 
 import org.jdom2.Attribute;
@@ -124,7 +125,7 @@ public class DCModuleGenerator implements ModuleGenerator {
         }
         if (dcModule.getDate() != null) {
             for (final Date date : dcModule.getDates()) {
-                element.addContent(generateSimpleElement("date", DateParser.formatW3CDateTime(date)));
+                element.addContent(generateSimpleElement("date", DateParser.formatW3CDateTime(date, Locale.US)));
             }
         }
         if (dcModule.getType() != null) {

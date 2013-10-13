@@ -8,6 +8,7 @@ package com.sun.syndication.unittest;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndImage;
@@ -77,7 +78,7 @@ public abstract class SyndFeedTest extends FeedTest {
      */
 
     public void testPublishedDate() throws Exception {
-        assertEquals(DateParser.parseRFC822("Mon, 01 Jan 2001 00:00:00 GMT"), this.getCachedSyndFeed().getPublishedDate());
+        assertEquals(DateParser.parseRFC822("Mon, 01 Jan 2001 00:00:00 GMT", Locale.US), this.getCachedSyndFeed().getPublishedDate());
     }
 
     // how do i get height and width?

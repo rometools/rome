@@ -19,6 +19,7 @@ package com.sun.syndication.io.impl;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import org.jdom2.Attribute;
 import org.jdom2.Element;
@@ -65,10 +66,11 @@ public class DCModuleParser implements ModuleParser {
      * <p>
      * 
      * @param dcRoot the root element containing the module elements.
+     * @param locale for date/time parsing
      * @return the module parsed from the element tree, <i>null</i> if none.
      */
     @Override
-    public Module parse(final Element dcRoot) {
+    public Module parse(final Element dcRoot, final Locale locale) {
         boolean foundSomething = false;
         final DCModule dcm = new DCModuleImpl();
 
@@ -105,7 +107,7 @@ public class DCModuleParser implements ModuleParser {
         eList = dcRoot.getChildren("date", getDCNamespace());
         if (eList.size() > 0) {
             foundSomething = true;
-            dcm.setDates(parseElementListDate(eList));
+            dcm.setDates(parseElementListDate(eList, locale));
         }
         eList = dcRoot.getChildren("type", getDCNamespace());
         if (eList.size() > 0) {
@@ -229,11 +231,11 @@ public class DCModuleParser implements ModuleParser {
      * @param eList the list of elements to parse.
      * @return the list of dates.
      */
-    protected final List<Date> parseElementListDate(final List<Element> eList) {
+    protected final List<Date> parseElementListDate(final List<Element> eList, final Locale locale) {
         final List<Date> values = new ArrayList<Date>();
         for (final Element element : eList) {
             final Element e = element;
-            values.add(DateParser.parseDate(e.getText()));
+            values.add(DateParser.parseDate(e.getText(), locale));
         }
 
         return values;

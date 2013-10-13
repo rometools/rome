@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -76,12 +77,12 @@ public class RSS090Parser extends BaseWireFeedParser {
     }
 
     @Override
-    public WireFeed parse(final Document document, final boolean validate) throws IllegalArgumentException, FeedException {
+    public WireFeed parse(final Document document, final boolean validate, final Locale locale) throws IllegalArgumentException, FeedException {
         if (validate) {
             validateFeed(document);
         }
         final Element rssRoot = document.getRootElement();
-        return parseChannel(rssRoot);
+        return parseChannel(rssRoot, locale);
     }
 
     protected void validateFeed(final Document document) throws FeedException {
@@ -146,7 +147,7 @@ public class RSS090Parser extends BaseWireFeedParser {
      * @param rssRoot the root element of the RSS document to parse.
      * @return the parsed Channel bean.
      */
-    protected WireFeed parseChannel(final Element rssRoot) {
+    protected WireFeed parseChannel(final Element rssRoot, final Locale locale) {
         final Element eChannel = rssRoot.getChild("channel", getRSSNamespace());
 
         final Channel channel = new Channel(getType());
@@ -174,8 +175,8 @@ public class RSS090Parser extends BaseWireFeedParser {
         // and not inside the channel itself. So we also need to look for
         // channel modules from the root RSS element.
         final List<Module> allFeedModules = new ArrayList<Module>();
-        final List<Module> rootModules = parseFeedModules(rssRoot);
-        final List<Module> channelModules = parseFeedModules(eChannel);
+        final List<Module> rootModules = parseFeedModules(rssRoot, locale);
+        final List<Module> channelModules = parseFeedModules(eChannel, locale);
         if (rootModules != null) {
             allFeedModules.addAll(rootModules);
         }
@@ -183,7 +184,7 @@ public class RSS090Parser extends BaseWireFeedParser {
             allFeedModules.addAll(channelModules);
         }
         channel.setModules(allFeedModules);
-        channel.setItems(parseItems(rssRoot));
+        channel.setItems(parseItems(rssRoot, locale));
 
         final List<Element> foreignMarkup = extractForeignMarkup(eChannel, channel, getRSSNamespace());
         if (foreignMarkup.size() > 0) {
@@ -267,13 +268,13 @@ public class RSS090Parser extends BaseWireFeedParser {
      *            items information.
      * @return a list with all the parsed RSSItem beans.
      */
-    protected List<Item> parseItems(final Element rssRoot) {
+    protected List<Item> parseItems(final Element rssRoot, final Locale locale) {
         final Collection<Element> eItems = getItems(rssRoot);
 
         final List<Item> items = new ArrayList<Item>();
         for (final Element element : eItems) {
             final Element eItem = element;
-            items.add(parseItem(rssRoot, eItem));
+            items.add(parseItem(rssRoot, eItem, locale));
         }
         return items;
     }
@@ -289,7 +290,7 @@ public class RSS090Parser extends BaseWireFeedParser {
      * @param eItem the item element to parse.
      * @return the parsed RSSItem bean.
      */
-    protected Item parseItem(final Element rssRoot, final Element eItem) {
+    protected Item parseItem(final Element rssRoot, final Element eItem, final Locale locale) {
         final Item item = new Item();
         Element e = eItem.getChild("title", getRSSNamespace());
         if (e != null) {
@@ -301,7 +302,7 @@ public class RSS090Parser extends BaseWireFeedParser {
             item.setUri(e.getText());
         }
 
-        item.setModules(parseItemModules(eItem));
+        item.setModules(parseItemModules(eItem, locale));
 
         final List<Element> foreignMarkup = extractForeignMarkup(eItem, item, getRSSNamespace());
         // content:encoded elements are treated special, without a module, they

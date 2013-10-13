@@ -23,6 +23,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.WeakHashMap;
 
@@ -86,6 +87,7 @@ public class WireFeedInput {
     private final boolean validate;
 
     private boolean xmlHealerOn;
+    private final Locale locale;
 
     /**
      * Returns the list of supported input feed types.
@@ -106,7 +108,7 @@ public class WireFeedInput {
      * 
      */
     public WireFeedInput() {
-        this(false);
+        this(false, Locale.US);
     }
 
     /**
@@ -117,9 +119,10 @@ public class WireFeedInput {
      *            IMPLEMENTED YET (validation does not happen)
      * 
      */
-    public WireFeedInput(final boolean validate) {
+    public WireFeedInput(final boolean validate, final Locale locale) {
         this.validate = false; // TODO FIX THIS THINGY
         xmlHealerOn = true;
+        this.locale = locale;
     }
 
     /**
@@ -297,7 +300,7 @@ public class WireFeedInput {
         if (parser == null) {
             throw new IllegalArgumentException("Invalid document");
         }
-        return parser.parse(document, validate);
+        return parser.parse(document, validate, locale);
     }
 
     /**

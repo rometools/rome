@@ -16,6 +16,8 @@
  */
 package com.sun.syndication.io.impl;
 
+import java.util.Locale;
+
 import org.jdom2.Element;
 
 import com.sun.syndication.feed.rss.Item;
@@ -38,15 +40,15 @@ public class RSS093Parser extends RSS092Parser {
     }
 
     @Override
-    protected Item parseItem(final Element rssRoot, final Element eItem) {
-        final Item item = super.parseItem(rssRoot, eItem);
+    protected Item parseItem(final Element rssRoot, final Element eItem, final Locale locale) {
+        final Item item = super.parseItem(rssRoot, eItem, locale);
         Element e = eItem.getChild("pubDate", getRSSNamespace());
         if (e != null) {
-            item.setPubDate(DateParser.parseDate(e.getText()));
+            item.setPubDate(DateParser.parseDate(e.getText(), locale));
         }
         e = eItem.getChild("expirationDate", getRSSNamespace());
         if (e != null) {
-            item.setExpirationDate(DateParser.parseDate(e.getText()));
+            item.setExpirationDate(DateParser.parseDate(e.getText(), locale));
         }
         e = eItem.getChild("description", getRSSNamespace());
         if (e != null) {

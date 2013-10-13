@@ -21,6 +21,7 @@ import java.io.StringReader;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import org.jdom2.Attribute;
 import org.jdom2.Document;
@@ -203,7 +204,7 @@ public class Atom10Generator extends BaseWireFeedGenerator {
 
         if (feed.getUpdated() != null) {
             final Element updatedElement = new Element("updated", getFeedNamespace());
-            updatedElement.addContent(DateParser.formatW3CDateTime(feed.getUpdated()));
+            updatedElement.addContent(DateParser.formatW3CDateTime(feed.getUpdated(), Locale.US));
             eFeed.addContent(updatedElement);
         }
     }
@@ -257,13 +258,13 @@ public class Atom10Generator extends BaseWireFeedGenerator {
 
         if (entry.getUpdated() != null) {
             final Element updatedElement = new Element("updated", getFeedNamespace());
-            updatedElement.addContent(DateParser.formatW3CDateTime(entry.getUpdated()));
+            updatedElement.addContent(DateParser.formatW3CDateTime(entry.getUpdated(), Locale.US));
             eEntry.addContent(updatedElement);
         }
 
         if (entry.getPublished() != null) {
             final Element publishedElement = new Element("published", getFeedNamespace());
-            publishedElement.addContent(DateParser.formatW3CDateTime(entry.getPublished()));
+            publishedElement.addContent(DateParser.formatW3CDateTime(entry.getPublished(), Locale.US));
             eEntry.addContent(publishedElement);
         }
 

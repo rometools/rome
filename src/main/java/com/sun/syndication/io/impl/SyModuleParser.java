@@ -16,6 +16,8 @@
  */
 package com.sun.syndication.io.impl;
 
+import java.util.Locale;
+
 import org.jdom2.Element;
 import org.jdom2.Namespace;
 
@@ -37,7 +39,7 @@ public class SyModuleParser implements ModuleParser {
     }
 
     @Override
-    public Module parse(final Element syndRoot) {
+    public Module parse(final Element syndRoot, final Locale locale) {
         boolean foundSomething = false;
         final SyModule sm = new SyModuleImpl();
 
@@ -54,7 +56,7 @@ public class SyModuleParser implements ModuleParser {
         e = syndRoot.getChild("updateBase", getDCNamespace());
         if (e != null) {
             foundSomething = true;
-            sm.setUpdateBase(DateParser.parseDate(e.getText()));
+            sm.setUpdateBase(DateParser.parseDate(e.getText(), locale));
         }
         if (foundSomething) {
             return sm;

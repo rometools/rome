@@ -18,6 +18,7 @@ package com.sun.syndication.io.impl;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import org.jdom2.Element;
 
@@ -47,12 +48,12 @@ public class RSS093Generator extends RSS092Generator {
 
         final Date pubDate = item.getPubDate();
         if (pubDate != null) {
-            eItem.addContent(generateSimpleElement("pubDate", DateParser.formatRFC822(pubDate)));
+            eItem.addContent(generateSimpleElement("pubDate", DateParser.formatRFC822(pubDate, Locale.US)));
         }
 
         final Date expirationDate = item.getExpirationDate();
         if (expirationDate != null) {
-            eItem.addContent(generateSimpleElement("expirationDate", DateParser.formatRFC822(expirationDate)));
+            eItem.addContent(generateSimpleElement("expirationDate", DateParser.formatRFC822(expirationDate, Locale.US)));
         }
     }
 

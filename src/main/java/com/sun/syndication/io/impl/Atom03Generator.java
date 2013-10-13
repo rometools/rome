@@ -18,6 +18,7 @@ package com.sun.syndication.io.impl;
 
 import java.io.StringReader;
 import java.util.List;
+import java.util.Locale;
 
 import org.jdom2.Attribute;
 import org.jdom2.Document;
@@ -171,7 +172,7 @@ public class Atom03Generator extends BaseWireFeedGenerator {
 
         if (feed.getModified() != null) {
             final Element modifiedElement = new Element("modified", getFeedNamespace());
-            modifiedElement.addContent(DateParser.formatW3CDateTime(feed.getModified()));
+            modifiedElement.addContent(DateParser.formatW3CDateTime(feed.getModified(), Locale.US));
             eFeed.addContent(modifiedElement);
         }
     }
@@ -210,19 +211,19 @@ public class Atom03Generator extends BaseWireFeedGenerator {
 
         if (entry.getModified() != null) {
             final Element modifiedElement = new Element("modified", getFeedNamespace());
-            modifiedElement.addContent(DateParser.formatW3CDateTime(entry.getModified()));
+            modifiedElement.addContent(DateParser.formatW3CDateTime(entry.getModified(), Locale.US));
             eEntry.addContent(modifiedElement);
         }
 
         if (entry.getIssued() != null) {
             final Element issuedElement = new Element("issued", getFeedNamespace());
-            issuedElement.addContent(DateParser.formatW3CDateTime(entry.getIssued()));
+            issuedElement.addContent(DateParser.formatW3CDateTime(entry.getIssued(), Locale.US));
             eEntry.addContent(issuedElement);
         }
 
         if (entry.getCreated() != null) {
             final Element createdElement = new Element("created", getFeedNamespace());
-            createdElement.addContent(DateParser.formatW3CDateTime(entry.getCreated()));
+            createdElement.addContent(DateParser.formatW3CDateTime(entry.getCreated(), Locale.US));
             eEntry.addContent(createdElement);
         }
 

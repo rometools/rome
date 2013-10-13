@@ -16,6 +16,8 @@
  */
 package com.sun.syndication.io.impl;
 
+import java.util.Locale;
+
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.Namespace;
@@ -96,8 +98,8 @@ public class RSS10Parser extends RSS090Parser {
      * @return the parsed RSSItem bean.
      */
     @Override
-    protected Item parseItem(final Element rssRoot, final Element eItem) {
-        final Item item = super.parseItem(rssRoot, eItem);
+    protected Item parseItem(final Element rssRoot, final Element eItem, final Locale locale) {
+        final Item item = super.parseItem(rssRoot, eItem, locale);
         final Element e = eItem.getChild("description", getRSSNamespace());
         if (e != null) {
             item.setDescription(parseItemDescription(rssRoot, e));
@@ -119,8 +121,8 @@ public class RSS10Parser extends RSS090Parser {
     }
 
     @Override
-    protected WireFeed parseChannel(final Element rssRoot) {
-        final Channel channel = (Channel) super.parseChannel(rssRoot);
+    protected WireFeed parseChannel(final Element rssRoot, final Locale locale) {
+        final Channel channel = (Channel) super.parseChannel(rssRoot, locale);
 
         final Element eChannel = rssRoot.getChild("channel", getRSSNamespace());
         final String uri = eChannel.getAttributeValue("about", getRDFNamespace());

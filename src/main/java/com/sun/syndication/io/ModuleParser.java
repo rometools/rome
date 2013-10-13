@@ -16,6 +16,8 @@
  */
 package com.sun.syndication.io;
 
+import java.util.Locale;
+
 import org.jdom2.Element;
 
 import com.sun.syndication.feed.module.Module;
@@ -52,5 +54,5 @@ public interface ModuleParser {
      *         information.
      * 
      */
-    public Module parse(Element element);
+    public Module parse(Element element, Locale locale);
 }

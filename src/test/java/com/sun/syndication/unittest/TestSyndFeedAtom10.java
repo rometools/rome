@@ -6,6 +6,7 @@ package com.sun.syndication.unittest;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import com.sun.syndication.feed.atom.Entry;
 import com.sun.syndication.feed.synd.SyndEntry;
@@ -68,7 +69,7 @@ public class TestSyndFeedAtom10 extends TestSyndFeedAtom03 {
 
     @Override
     public void testPublishedDate() throws Exception {
-        final Date d = DateParser.parseW3CDateTime("2000-01-01T00:00:00Z");
+        final Date d = DateParser.parseW3CDateTime("2000-01-01T00:00:00Z", Locale.US);
         assertEquals(this.getCachedSyndFeed().getPublishedDate(), d);
     }
 
@@ -84,7 +85,7 @@ public class TestSyndFeedAtom10 extends TestSyndFeedAtom03 {
         assertEquals("http://example.com/blog/entry" + (i + 1), entry.getLink());
         assertEquals(entry.getEnclosures().get(0).getUrl(), "http://example.com/blog/enclosure" + (i + 1) + ".gif");
         assertProperty(entry.getAuthor(), "feed.entry[" + i + "].author.name");
-        final Date d = DateParser.parseW3CDateTime("2000-0" + (i + 1) + "-01T01:00:00Z");
+        final Date d = DateParser.parseW3CDateTime("2000-0" + (i + 1) + "-01T01:00:00Z", Locale.US);
         assertEquals(entry.getPublishedDate(), d);
         assertProperty(entry.getDescription().getValue(), "feed.entry[" + i + "].summary");
         assertProperty(entry.getContents().get(0).getValue(), "feed.entry[" + i + "].content[0]");

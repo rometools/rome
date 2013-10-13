@@ -18,6 +18,7 @@ package com.sun.syndication.io.impl;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 
 import org.jdom2.Element;
@@ -87,7 +88,7 @@ public class SyModuleGenerator implements ModuleGenerator {
 
         if (syModule.getUpdateBase() != null) {
             final Element updateBaseElement = new Element("updateBase", SY_NS);
-            updateBaseElement.addContent(DateParser.formatW3CDateTime(syModule.getUpdateBase()));
+            updateBaseElement.addContent(DateParser.formatW3CDateTime(syModule.getUpdateBase(), Locale.US));
             element.addContent(updateBaseElement);
         }
     }

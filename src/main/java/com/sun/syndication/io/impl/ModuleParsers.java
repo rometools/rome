@@ -18,6 +18,7 @@ package com.sun.syndication.io.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import org.jdom2.Element;
 import org.jdom2.Namespace;
@@ -42,7 +43,7 @@ public class ModuleParsers extends PluginManager<ModuleParser> {
         return getKeys();
     }
 
-    public List<Module> parseModules(final Element root) {
+    public List<Module> parseModules(final Element root, final Locale locale) {
         final List<ModuleParser> parsers = getPlugins();
         List<Module> modules = null;
         for (int i = 0; i < parsers.size(); i++) {
@@ -50,7 +51,7 @@ public class ModuleParsers extends PluginManager<ModuleParser> {
             final String namespaceUri = parser.getNamespaceUri();
             final Namespace namespace = Namespace.getNamespace(namespaceUri);
             if (hasElementsFrom(root, namespace)) {
-                final Module module = parser.parse(root);
+                final Module module = parser.parse(root, locale);
                 if (module != null) {
                     if (modules == null) {
                         modules = new ArrayList<Module>();

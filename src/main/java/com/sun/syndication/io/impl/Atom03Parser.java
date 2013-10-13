@@ -19,6 +19,7 @@ package com.sun.syndication.io.impl;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -61,12 +62,12 @@ public class Atom03Parser extends BaseWireFeedParser {
     }
 
     @Override
-    public WireFeed parse(final Document document, final boolean validate) throws IllegalArgumentException, FeedException {
+    public WireFeed parse(final Document document, final boolean validate, final Locale locale) throws IllegalArgumentException, FeedException {
         if (validate) {
             validateFeed(document);
         }
         final Element rssRoot = document.getRootElement();
-        return parseFeed(rssRoot);
+        return parseFeed(rssRoot, locale);
     }
 
     protected void validateFeed(final Document document) throws FeedException {
@@ -79,7 +80,7 @@ public class Atom03Parser extends BaseWireFeedParser {
         // otherwise will have to check the document elements by hand.
     }
 
-    protected WireFeed parseFeed(final Element eFeed) {
+    protected WireFeed parseFeed(final Element eFeed, final Locale locale) {
 
         final Feed feed = new Feed(getType());
         feed.setStyleSheet(getStyleSheet(eFeed.getDocument()));
@@ -142,14 +143,14 @@ public class Atom03Parser extends BaseWireFeedParser {
 
         e = eFeed.getChild("modified", getAtomNamespace());
         if (e != null) {
-            feed.setModified(DateParser.parseDate(e.getText()));
+            feed.setModified(DateParser.parseDate(e.getText(), locale));
         }
 
-        feed.setModules(parseFeedModules(eFeed));
+        feed.setModules(parseFeedModules(eFeed, locale));
 
         eList = eFeed.getChildren("entry", getAtomNamespace());
         if (eList.size() > 0) {
-            feed.setEntries(parseEntries(eList));
+            feed.setEntries(parseEntries(eList, locale));
         }
 
         final List<Element> foreignMarkup = extractForeignMarkup(eFeed, feed, getAtomNamespace());
@@ -278,10 +279,10 @@ public class Atom03Parser extends BaseWireFeedParser {
     }
 
     // List(Elements) -> List(Entries)
-    private List<Entry> parseEntries(final List<Element> eEntries) {
+    private List<Entry> parseEntries(final List<Element> eEntries, final Locale locale) {
         final List<Entry> entries = new ArrayList<Entry>();
         for (int i = 0; i < eEntries.size(); i++) {
-            entries.add(parseEntry(eEntries.get(i)));
+            entries.add(parseEntry(eEntries.get(i), locale));
         }
         if (entries.size() > 0) {
             return entries;
@@ -290,7 +291,7 @@ public class Atom03Parser extends BaseWireFeedParser {
         }
     }
 
-    private Entry parseEntry(final Element eEntry) {
+    private Entry parseEntry(final Element eEntry, final Locale locale) {
         final Entry entry = new Entry();
 
         Element e = eEntry.getChild("title", getAtomNamespace());
@@ -321,17 +322,17 @@ public class Atom03Parser extends BaseWireFeedParser {
 
         e = eEntry.getChild("modified", getAtomNamespace());
         if (e != null) {
-            entry.setModified(DateParser.parseDate(e.getText()));
+            entry.setModified(DateParser.parseDate(e.getText(), locale));
         }
 
         e = eEntry.getChild("issued", getAtomNamespace());
         if (e != null) {
-            entry.setIssued(DateParser.parseDate(e.getText()));
+            entry.setIssued(DateParser.parseDate(e.getText(), locale));
         }
 
         e = eEntry.getChild("created", getAtomNamespace());
         if (e != null) {
-            entry.setCreated(DateParser.parseDate(e.getText()));
+            entry.setCreated(DateParser.parseDate(e.getText(), locale));
         }
 
         e = eEntry.getChild("summary", getAtomNamespace());
@@ -348,7 +349,7 @@ public class Atom03Parser extends BaseWireFeedParser {
             entry.setContents(content);
         }
 
-        entry.setModules(parseItemModules(eEntry));
+        entry.setModules(parseItemModules(eEntry, locale));
 
         final List<Element> foreignMarkup = extractForeignMarkup(eEntry, entry, getAtomNamespace());
         if (foreignMarkup.size() > 0) {
