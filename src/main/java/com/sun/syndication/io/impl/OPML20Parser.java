@@ -18,6 +18,7 @@
 package com.sun.syndication.io.impl;
 
 import java.util.List;
+import java.util.Locale;
 
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -71,9 +72,9 @@ public class OPML20Parser extends OPML10Parser {
      * @throws FeedException thrown if a feed bean cannot be created out of the XML document (JDOM).
      */
     @Override
-    public WireFeed parse(final Document document, final boolean validate) throws IllegalArgumentException, FeedException {
+    public WireFeed parse(final Document document, final boolean validate, final Locale locale) throws IllegalArgumentException, FeedException {
         Opml opml;
-        opml = (Opml) super.parse(document, validate);
+        opml = (Opml) super.parse(document, validate, locale);
 
         final Element head = document.getRootElement().getChild("head");
 
@@ -92,13 +93,13 @@ public class OPML20Parser extends OPML10Parser {
     }
 
     @Override
-    protected Outline parseOutline(final Element e, final boolean validate) throws FeedException {
+    protected Outline parseOutline(final Element e, final boolean validate, final Locale locale) throws FeedException {
         Outline retValue;
 
-        retValue = super.parseOutline(e, validate);
+        retValue = super.parseOutline(e, validate, locale);
 
         if (e.getAttributeValue("created") != null) {
-            retValue.setCreated(DateParser.parseRFC822(e.getAttributeValue("created")));
+            retValue.setCreated(DateParser.parseRFC822(e.getAttributeValue("created"), locale));
         }
 
         final List atts = retValue.getAttributes();

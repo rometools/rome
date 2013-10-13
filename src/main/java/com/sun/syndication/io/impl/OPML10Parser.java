@@ -19,6 +19,7 @@ package com.sun.syndication.io.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -81,7 +82,7 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
      * @throws FeedException thrown if a feed bean cannot be created out of the XML document (JDOM).
      */
     @Override
-    public WireFeed parse(final Document document, final boolean validate) throws IllegalArgumentException, FeedException {
+    public WireFeed parse(final Document document, final boolean validate, final Locale locale) throws IllegalArgumentException, FeedException {
         final Opml opml = new Opml();
         opml.setFeedType("opml_1.0");
 
@@ -92,11 +93,11 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
             opml.setTitle(head.getChildText("title"));
 
             if (head.getChildText("dateCreated") != null) {
-                opml.setCreated(DateParser.parseRFC822(head.getChildText("dateCreated")));
+                opml.setCreated(DateParser.parseRFC822(head.getChildText("dateCreated"), Locale.US));
             }
 
             if (head.getChildText("dateModified") != null) {
-                opml.setModified(DateParser.parseRFC822(head.getChildText("dateModified")));
+                opml.setModified(DateParser.parseRFC822(head.getChildText("dateModified"), Locale.US));
             }
 
             opml.setOwnerName(head.getChildTextTrim("ownerName"));
@@ -160,13 +161,13 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
             }
         }
 
-        opml.setOutlines(parseOutlines(root.getChild("body").getChildren("outline"), validate));
-        opml.setModules(parseFeedModules(root));
+        opml.setOutlines(parseOutlines(root.getChild("body").getChildren("outline"), validate, locale));
+        opml.setModules(parseFeedModules(root, locale));
 
         return opml;
     }
 
-    protected Outline parseOutline(final Element e, final boolean validate) throws FeedException {
+    protected Outline parseOutline(final Element e, final boolean validate, final Locale locale) throws FeedException {
         if (!e.getName().equals("outline")) {
             throw new RuntimeException("Not an outline element.");
         }
@@ -211,17 +212,17 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
         }
 
         final List children = e.getChildren("outline");
-        outline.setModules(parseItemModules(e));
-        outline.setChildren(parseOutlines(children, validate));
+        outline.setModules(parseItemModules(e, locale));
+        outline.setChildren(parseOutlines(children, validate, locale));
 
         return outline;
     }
 
-    protected List parseOutlines(final List elements, final boolean validate) throws FeedException {
+    protected List parseOutlines(final List elements, final boolean validate, final Locale locale) throws FeedException {
         final ArrayList results = new ArrayList();
 
         for (int i = 0; i < elements.size(); i++) {
-            results.add(parseOutline((Element) elements.get(i), validate));
+            results.add(parseOutline((Element) elements.get(i), validate, locale));
         }
 
         return results;

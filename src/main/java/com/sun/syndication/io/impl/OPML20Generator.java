@@ -8,6 +8,8 @@
  */
 package com.sun.syndication.io.impl;
 
+import java.util.Locale;
+
 import org.jdom2.Document;
 import org.jdom2.Element;
 
@@ -76,7 +78,7 @@ public class OPML20Generator extends OPML10Generator {
         retValue = super.generateOutline(outline);
 
         if (outline.getCreated() != null) {
-            retValue.setAttribute("created", DateParser.formatRFC822(outline.getCreated()));
+            retValue.setAttribute("created", DateParser.formatRFC822(outline.getCreated(), Locale.US));
         }
 
         return retValue;

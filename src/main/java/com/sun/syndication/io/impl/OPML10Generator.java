@@ -20,6 +20,7 @@ package com.sun.syndication.io.impl;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -106,13 +107,13 @@ public class OPML10Generator extends BaseWireFeedGenerator implements WireFeedGe
         boolean hasHead = false;
 
         if (opml.getCreated() != null) {
-            hasHead = addNotNullSimpleElement(head, "dateCreated", DateParser.formatRFC822(opml.getCreated()));
+            hasHead = addNotNullSimpleElement(head, "dateCreated", DateParser.formatRFC822(opml.getCreated(), Locale.US));
         }
 
         hasHead = addNotNullSimpleElement(head, "expansionState", intArrayToCsvString(opml.getExpansionState()));
 
         if (opml.getModified() != null) {
-            hasHead = addNotNullSimpleElement(head, "dateModified", DateParser.formatRFC822(opml.getModified()));
+            hasHead = addNotNullSimpleElement(head, "dateModified", DateParser.formatRFC822(opml.getModified(), Locale.US));
         }
 
         hasHead = addNotNullSimpleElement(head, "ownerEmail", opml.getOwnerEmail());
