@@ -27,9 +27,9 @@ public class BlogConnectionFactory {
     // 2) privide contructor that accepts three strings args: url, username and password.
 
     // TODO: make implementations configurable
-    private static String ATOMPROTOCOL_IMPL_CLASS = "com.sun.syndication.propono.blogclient.atomprotocol.AtomConnection";
+    private static String ATOMPROTOCOL_IMPL_CLASS = "org.rometools.propono.blogclient.atomprotocol.AtomConnection";
 
-    private static String METAWEBLOG_IMPL_CLASS = "com.sun.syndication.propono.blogclient.metaweblog.MetaWeblogConnection";
+    private static String METAWEBLOG_IMPL_CLASS = "org.rometools.propono.blogclient.metaweblog.MetaWeblogConnection";
 
     /**
      * Create a connection to a blog server.

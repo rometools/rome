@@ -66,7 +66,7 @@ public class AtomClientServerTest { // extends AtomClientTest {
 
     protected void setUp() throws Exception {
         final ConsoleHandler handler = new ConsoleHandler();
-        final Logger logger = Logger.getLogger("com.sun.syndication.propono");
+        final Logger logger = Logger.getLogger("org.rometools.propono");
         logger.setLevel(Level.FINEST);
         logger.addHandler(handler);
 
@@ -93,9 +93,11 @@ public class AtomClientServerTest { // extends AtomClientTest {
     }
 
     private ServletHandler createServletHandler() {
-        System.setProperty("com.sun.syndication.propono.atom.server.AtomHandlerFactory", "com.sun.syndication.propono.atom.server.TestAtomHandlerFactory");
+        System.setProperty(
+			"org.rometools.propono.atom.server.AtomHandlerFactory", 
+			"org.rometools.propono.atom.server.TestAtomHandlerFactory");
         final ServletHandler servlets = new ServletHandler();
-        servlets.addServlet("app", "/app/*", "com.sun.syndication.propono.atom.server.AtomServlet");
+        servlets.addServlet("app", "/app/*", "org.rometools.propono.atom.server.AtomServlet");
         return servlets;
     }
 
