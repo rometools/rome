@@ -13,16 +13,18 @@ import com.sun.syndication.feed.module.Module;
  * The base module for SSE data synchronization. Defines a namespace, uri, and basic copying operations.
  */
 public abstract class SSEModule implements Module {
+    private static final long serialVersionUID = -7487775381662291314L;
+
     public static final String SSE_SCHEMA_URI = "http://www.microsoft.com/schemas/rss/sse";
 
     // a default prefix to use for sse tags
     public static final String PREFIX = "sx";
     public static final Namespace SSE_NS = Namespace.getNamespace(PREFIX, SSE_SCHEMA_URI);
 
-    public static final Set NAMESPACES;
+    public static final Set<Namespace> NAMESPACES;
 
     static {
-        final Set nss = new HashSet();
+        final Set<Namespace> nss = new HashSet<Namespace>();
         nss.add(SSEModule.SSE_NS);
         NAMESPACES = Collections.unmodifiableSet(nss);
     }
@@ -33,7 +35,7 @@ public abstract class SSEModule implements Module {
     }
 
     @Override
-    public Class getInterface() {
+    public Class<? extends Module> getInterface() {
         return getClass();
     }
 
@@ -54,5 +56,5 @@ public abstract class SSEModule implements Module {
     }
 
     @Override
-    public abstract void copyFrom(CopyFrom obj);
+    public abstract void copyFrom(CopyFrom<? extends Module> obj);
 }

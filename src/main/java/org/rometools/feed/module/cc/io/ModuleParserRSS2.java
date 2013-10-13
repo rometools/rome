@@ -43,6 +43,7 @@ package org.rometools.feed.module.cc.io;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 
 import org.jdom2.Element;
 import org.jdom2.Namespace;
@@ -66,7 +67,7 @@ public class ModuleParserRSS2 implements ModuleParser {
     }
 
     @Override
-    public Module parse(final Element element) {
+    public Module parse(final Element element, final Locale locale) {
         final CreativeCommonsImpl module = new CreativeCommonsImpl();
         // Do channel global
         {

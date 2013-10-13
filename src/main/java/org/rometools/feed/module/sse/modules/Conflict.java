@@ -3,12 +3,15 @@ package org.rometools.feed.module.sse.modules;
 import java.util.Date;
 
 import com.sun.syndication.feed.CopyFrom;
+import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.feed.rss.Item;
 
 /**
  * <sx:conflict> element within <sx:conflicts>
  */
 public class Conflict extends SSEModule {
+    private static final long serialVersionUID = -6923108346241653067L;
+
     public static final String CONFLICTS_NAME = "conflicts";
 
     public static final String NAME = "conflict";
@@ -39,7 +42,7 @@ public class Conflict extends SSEModule {
     private Item conflictItem;
 
     @Override
-    public void copyFrom(final CopyFrom obj) {
+    public void copyFrom(final CopyFrom<? extends Module> obj) {
         final Conflict conflict = (Conflict) obj;
         conflict.when = when == null ? null : (Date) when.clone();
         conflict.by = by;

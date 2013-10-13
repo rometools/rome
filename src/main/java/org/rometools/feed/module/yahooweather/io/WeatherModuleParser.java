@@ -42,6 +42,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.logging.Logger;
 
 import org.jdom2.Element;
@@ -83,7 +84,7 @@ public class WeatherModuleParser implements ModuleParser {
     }
 
     @Override
-    public Module parse(final Element element) {
+    public Module parse(final Element element, final Locale locale) {
         final YWeatherModuleImpl module = new YWeatherModuleImpl();
         final Element location = element.getChild("location", WeatherModuleParser.NS);
 
@@ -152,14 +153,14 @@ public class WeatherModuleParser implements ModuleParser {
             }
         }
 
-        final List forecasts = element.getChildren("forecast", WeatherModuleParser.NS);
+        final List<Element> forecasts = element.getChildren("forecast", WeatherModuleParser.NS);
 
         if (forecasts != null) {
             final Forecast[] f = new Forecast[forecasts.size()];
             int i = 0;
 
-            for (final Iterator it = forecasts.iterator(); it.hasNext(); i++) {
-                final Element forecast = (Element) it.next();
+            for (final Iterator<Element> it = forecasts.iterator(); it.hasNext(); i++) {
+                final Element forecast = it.next();
 
                 try {
                     f[i] = new Forecast(forecast.getAttributeValue("day"), SHORT_DATE.parse(forecast.getAttributeValue("date")), Integer.parseInt(forecast

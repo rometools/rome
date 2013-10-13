@@ -46,7 +46,7 @@ public interface EntryValue extends Serializable, Cloneable {
      * 
      * @return Returns the value of the element.
      */
-    public Comparable getValue();
+    public Comparable<?> getValue();
 
     /**
      * Returns the namespace of the element.

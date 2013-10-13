@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -153,8 +154,8 @@ public class SSEParserTest extends AbstractTestCase {
 
                     // this test is brittle, but its comprehensive
                     if ("until".equals(a1Name) || "since".equals(a1Name) || "when".equals(a1Name)) {
-                        av1 = DateParser.parseRFC822((String) av1);
-                        av2 = DateParser.parseRFC822((String) av2);
+                        av1 = DateParser.parseRFC822((String) av1, Locale.US);
+                        av2 = DateParser.parseRFC822((String) av2, Locale.US);
                     }
 
                     assertTrue("unequal attributes:" + one.getName() + "." + a1.getName() + ": " + av1 + " != " + av2, av1.equals(av2));
@@ -247,7 +248,7 @@ public class SSEParserTest extends AbstractTestCase {
 
             final Date when = history.getWhen();
             assertNotNull(when);
-            final Date testDate = DateParser.parseRFC822("Fri, 6 Jan 2006 19:24:09 GMT");
+            final Date testDate = DateParser.parseRFC822("Fri, 6 Jan 2006 19:24:09 GMT", Locale.US);
             assertEquals(testDate, when);
         }
 

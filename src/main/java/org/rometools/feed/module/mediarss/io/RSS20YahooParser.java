@@ -22,6 +22,7 @@
 package org.rometools.feed.module.mediarss.io;
 
 import java.util.List;
+import java.util.Locale;
 
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -85,8 +86,8 @@ public class RSS20YahooParser extends RSS20Parser {
      * 
      */
     @Override
-    protected WireFeed parseChannel(final Element rssRoot) {
-        final WireFeed wFeed = super.parseChannel(rssRoot);
+    protected WireFeed parseChannel(final Element rssRoot, final Locale locale) {
+        final WireFeed wFeed = super.parseChannel(rssRoot, locale);
         wFeed.setFeedType("rss_2.0");
 
         return wFeed;

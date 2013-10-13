@@ -27,6 +27,7 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class StringValue implements EntryValue {
+    private static final long serialVersionUID = -8384073300710802173L;
     private final ObjectBean obj = new ObjectBean(StringValue.class, this);
     private String element;
     private String label;
@@ -60,7 +61,7 @@ public class StringValue implements EntryValue {
     }
 
     @Override
-    public Comparable getValue() {
+    public Comparable<String> getValue() {
         return value;
     }
 

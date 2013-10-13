@@ -26,6 +26,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -56,7 +57,7 @@ public class CustomTagParser implements ModuleParser {
     }
 
     @Override
-    public Module parse(final Element element) {
+    public Module parse(final Element element, final Locale locale) {
         final CustomTags module = new CustomTagsImpl();
         final ArrayList tags = new ArrayList();
         final List elements = element.getChildren();

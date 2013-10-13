@@ -21,6 +21,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import org.jdom2.Element;
 import org.jdom2.Namespace;
@@ -63,13 +64,12 @@ public class ItemParser implements com.sun.syndication.io.ModuleParser {
      * @return a module instance, <b>null</b> if the element did not have module information.
      */
     @Override
-    public Module parse(final Element element) {
+    public Module parse(final Element element, final Locale locale) {
         final SleEntryImpl sle = new SleEntryImpl();
-        ArrayList values = new ArrayList();
-        final List groups = element.getChildren("group", ModuleParser.TEMP);
+        ArrayList<EntryValue> values = new ArrayList<EntryValue>();
+        final List<Element> groups = element.getChildren("group", ModuleParser.TEMP);
 
-        for (int i = 0; groups != null && i < groups.size(); i++) {
-            final Element group = (Element) groups.get(i);
+        for (final Element group : groups) {
             final StringValue value = new StringValue();
             value.setElement(group.getAttributeValue("element"));
             value.setLabel(group.getAttributeValue("label"));
@@ -84,12 +84,11 @@ public class ItemParser implements com.sun.syndication.io.ModuleParser {
         }
 
         sle.setGroupValues((EntryValue[]) values.toArray(new EntryValue[values.size()]));
-        values = values.size() == 0 ? values : new ArrayList();
+        values = values.size() == 0 ? values : new ArrayList<EntryValue>();
 
-        final List sorts = new ArrayList(element.getChildren("sort", ModuleParser.TEMP));
+        final List<Element> sorts = new ArrayList<Element>(element.getChildren("sort", ModuleParser.TEMP));
         // System.out.println("]]] sorts on element"+sorts.size());
-        for (int i = 0; sorts != null && i < sorts.size(); i++) {
-            final Element sort = (Element) sorts.get(i);
+        for (final Element sort : sorts) {
             final String dataType = sort.getAttributeValue("data-type");
             // System.out.println("Doing datatype "+dataType +" :: "+sorts.size());
             if (dataType == null || dataType.equals(Sort.TEXT_TYPE)) {
@@ -118,8 +117,10 @@ public class ItemParser implements com.sun.syndication.io.ModuleParser {
                 Date dateValue = null;
 
                 try {
-                    dateValue = DateParser.parseRFC822(sort.getAttributeValue("value"));
-                    dateValue = dateValue == null ? DateParser.parseW3CDateTime(sort.getAttributeValue("value")) : dateValue;
+                    dateValue = DateParser.parseRFC822(sort.getAttributeValue("value"), locale);
+                    if (dateValue == null) {
+                        dateValue = DateParser.parseW3CDateTime(sort.getAttributeValue("value"), locale);
+                    }
                 } catch (final Exception e) {
                     ; // ignore parse exceptions
                 }

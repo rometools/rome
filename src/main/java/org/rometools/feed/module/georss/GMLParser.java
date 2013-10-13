@@ -18,6 +18,7 @@ package org.rometools.feed.module.georss;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 
 import org.jdom2.Element;
 import org.rometools.feed.module.georss.geometries.Envelope;
@@ -56,7 +57,7 @@ public class GMLParser implements ModuleParser {
      * @see com.sun.syndication.io.ModuleParser#parse(org.jdom2.Element)
      */
     @Override
-    public Module parse(final Element element) {
+    public Module parse(final Element element, final Locale locale) {
         final Module geoRssModule = parseGML(element);
         return geoRssModule;
     }

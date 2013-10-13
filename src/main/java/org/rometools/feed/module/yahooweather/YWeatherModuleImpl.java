@@ -44,6 +44,7 @@ import org.rometools.feed.module.yahooweather.types.Units;
 import org.rometools.feed.module.yahooweather.types.Wind;
 
 import com.sun.syndication.feed.CopyFrom;
+import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.feed.module.ModuleImpl;
 
 /**
@@ -53,6 +54,7 @@ import com.sun.syndication.feed.module.ModuleImpl;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class YWeatherModuleImpl extends ModuleImpl implements YWeatherEntryModule, YWeatherFeedModule {
+    private static final long serialVersionUID = -4753704339578661020L;
     private Location location;
     private Astronomy astronomy;
     private Atmosphere atmosphere;
@@ -66,12 +68,12 @@ public class YWeatherModuleImpl extends ModuleImpl implements YWeatherEntryModul
     }
 
     @Override
-    public Class getInterface() {
+    public Class<? extends Module> getInterface() {
         return CopyFromInterface.class;
     }
 
     @Override
-    public void copyFrom(final CopyFrom o) {
+    public void copyFrom(final CopyFrom<? extends Module> o) {
         final YWeatherModuleImpl from = (YWeatherModuleImpl) o;
         setAstronomy(from.getAstronomy() != null ? (Astronomy) from.getAstronomy().clone() : null);
         setCondition(from.getCondition() != null ? (Condition) from.getCondition().clone() : null);

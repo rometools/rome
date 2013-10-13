@@ -16,6 +16,8 @@
  */
 package org.rometools.feed.module.feedburner.io;
 
+import java.util.Locale;
+
 import org.jdom2.Element;
 import org.jdom2.Namespace;
 import org.rometools.feed.module.feedburner.FeedBurner;
@@ -40,7 +42,7 @@ public class FeedBurnerModuleParser implements ModuleParser {
     }
 
     @Override
-    public Module parse(final Element element) {
+    public Module parse(final Element element, final Locale locale) {
         final FeedBurnerImpl fbi = new FeedBurnerImpl();
         boolean returnObj = false;
         Element tag = element.getChild("awareness", FeedBurnerModuleParser.NS);

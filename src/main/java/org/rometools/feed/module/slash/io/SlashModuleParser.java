@@ -40,6 +40,7 @@
 
 package org.rometools.feed.module.slash.io;
 
+import java.util.Locale;
 import java.util.StringTokenizer;
 
 import org.jdom2.Element;
@@ -71,7 +72,7 @@ public class SlashModuleParser implements ModuleParser {
     }
 
     @Override
-    public Module parse(final Element element) {
+    public Module parse(final Element element, final Locale locale) {
         final SlashImpl si = new SlashImpl();
         Element tag = element.getChild("hit_parade", SlashModuleParser.NS);
         if (tag != null) {

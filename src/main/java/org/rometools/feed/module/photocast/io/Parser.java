@@ -46,6 +46,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.logging.Logger;
 
 import org.jdom2.Element;
@@ -76,7 +77,7 @@ public class Parser implements ModuleParser {
     }
 
     @Override
-    public Module parse(final Element element) {
+    public Module parse(final Element element, final Locale locale) {
         if (element.getName().equals("channel") || element.getName().equals("feed")) {
             return new PhotocastModuleImpl();
         } else if (element.getChild("metadata", Parser.NS) == null && element.getChild("image", Parser.NS) == null) {

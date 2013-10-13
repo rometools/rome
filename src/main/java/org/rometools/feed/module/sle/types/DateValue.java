@@ -29,6 +29,7 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class DateValue implements EntryValue {
+    private static final long serialVersionUID = 8864338943592633517L;
     private Date value;
     private final ObjectBean obj = new ObjectBean(DateValue.class, this);
     private String element;
@@ -87,7 +88,7 @@ public class DateValue implements EntryValue {
      * @return
      */
     @Override
-    public Comparable getValue() {
+    public Comparable<Date> getValue() {
         return value;
     }
 

@@ -20,6 +20,7 @@ import java.net.URL;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 
 import org.jdom2.Attribute;
 import org.jdom2.Element;
@@ -45,7 +46,7 @@ public class OpenSearchModuleParser implements ModuleParser {
     }
 
     @Override
-    public Module parse(final Element dcRoot) {
+    public Module parse(final Element dcRoot, final Locale locale) {
 
         final URL baseURI = findBaseURI(dcRoot);
 

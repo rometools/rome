@@ -3,6 +3,7 @@ package org.rometools.feed.module.sse.modules;
 import java.util.Date;
 
 import com.sun.syndication.feed.CopyFrom;
+import com.sun.syndication.feed.module.Module;
 
 /**
  * <pre>
@@ -18,6 +19,7 @@ import com.sun.syndication.feed.CopyFrom;
  * .
  */
 public class Update extends SSEModule {
+    private static final long serialVersionUID = 4806771926023433667L;
     public static final String NAME = "update";
     public static final String BY_ATTRIBUTE = "by";
     public static final String WHEN_ATTRIBUTE = "when";
@@ -26,7 +28,7 @@ public class Update extends SSEModule {
     private String by;
 
     @Override
-    public void copyFrom(final CopyFrom other) {
+    public void copyFrom(final CopyFrom<? extends Module> other) {
         final Update otherUpdate = (Update) other;
         otherUpdate.when = when == null ? null : (Date) when.clone();
         // dont copy immutable

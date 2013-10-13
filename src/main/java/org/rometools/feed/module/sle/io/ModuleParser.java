@@ -19,6 +19,7 @@ package org.rometools.feed.module.sle.io;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import org.jdom2.Element;
 import org.jdom2.Namespace;
@@ -61,7 +62,7 @@ public class ModuleParser implements com.sun.syndication.io.ModuleParser {
      * @return a module instance, <b>null</b> if the element did not have module information.
      */
     @Override
-    public Module parse(final Element element) {
+    public Module parse(final Element element, final Locale locale) {
         if (element.getChild("treatAs", NS) == null) {
             return null;
         }
@@ -70,11 +71,8 @@ public class ModuleParser implements com.sun.syndication.io.ModuleParser {
         sle.setTreatAs(element.getChildText("treatAs", NS));
 
         final Element listInfo = element.getChild("listinfo", NS);
-        final List groups = listInfo.getChildren("group", NS);
-        ArrayList values = new ArrayList();
-
-        for (int i = 0; groups != null && i < groups.size(); i++) {
-            final Element ge = (Element) groups.get(i);
+        ArrayList<Object> values = new ArrayList<Object>();
+        for (final Element ge : listInfo.getChildren("group", NS)) {
             final Namespace ns = ge.getAttribute("ns") == null ? element.getNamespace() : Namespace.getNamespace(ge.getAttributeValue("ns"));
             final String elementName = ge.getAttributeValue("element");
             final String label = ge.getAttributeValue("label");
@@ -82,12 +80,9 @@ public class ModuleParser implements com.sun.syndication.io.ModuleParser {
         }
 
         sle.setGroupFields((Group[]) values.toArray(new Group[values.size()]));
-        values = values.size() == 0 ? values : new ArrayList();
+        values = values.size() == 0 ? values : new ArrayList<Object>();
 
-        final List sorts = listInfo.getChildren("sort", NS);
-
-        for (int i = 0; sorts != null && i < sorts.size(); i++) {
-            final Element se = (Element) sorts.get(i);
+        for (final Element se : listInfo.getChildren("sort", NS)) {
             System.out.println("Parse cf:sort " + se.getAttributeValue("element") + se.getAttributeValue("data-type"));
             final Namespace ns = se.getAttributeValue("ns") == null ? element.getNamespace() : Namespace.getNamespace(se.getAttributeValue("ns"));
             final String elementName = se.getAttributeValue("element");
@@ -111,9 +106,9 @@ public class ModuleParser implements com.sun.syndication.io.ModuleParser {
         }
     }
 
-    public void insertValues(final SimpleListExtension sle, final List elements) {
+    public void insertValues(final SimpleListExtension sle, final List<Element> elements) {
         for (int i = 0; elements != null && i < elements.size(); i++) {
-            final Element e = (Element) elements.get(i);
+            final Element e = elements.get(i);
             final Group[] groups = sle.getGroupFields();
 
             for (final Group group2 : groups) {

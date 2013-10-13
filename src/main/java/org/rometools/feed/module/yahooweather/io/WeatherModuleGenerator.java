@@ -39,6 +39,7 @@ package org.rometools.feed.module.yahooweather.io;
 
 import java.text.SimpleDateFormat;
 import java.util.HashSet;
+import java.util.Set;
 
 import org.jdom2.Element;
 import org.jdom2.Namespace;
@@ -203,10 +204,9 @@ public class WeatherModuleGenerator implements ModuleGenerator {
     }
 
     @Override
-    public java.util.Set getNamespaces() {
-        final HashSet set = new HashSet();
+    public Set<Namespace> getNamespaces() {
+        final Set<Namespace> set = new HashSet<Namespace>();
         set.add(WeatherModuleGenerator.NS);
-
         return set;
     }
 

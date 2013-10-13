@@ -29,6 +29,7 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class NumberValue implements EntryValue {
+    private static final long serialVersionUID = 8043418996659222922L;
     private BigDecimal value;
     private final ObjectBean obj = new ObjectBean(NumberValue.class, this);
     private String element;
@@ -62,7 +63,7 @@ public class NumberValue implements EntryValue {
     }
 
     @Override
-    public Comparable getValue() {
+    public Comparable<BigDecimal> getValue() {
         return value;
     }
 

@@ -3,6 +3,7 @@ package org.rometools.feed.module.sse.modules;
 import java.util.Date;
 
 import com.sun.syndication.feed.CopyFrom;
+import com.sun.syndication.feed.module.Module;
 
 /**
  * <pre>
@@ -24,6 +25,8 @@ import com.sun.syndication.feed.CopyFrom;
  * .
  */
 public class Sharing extends SSEModule {
+    private static final long serialVersionUID = 8626705992778126861L;
+
     public static final String NAME = "sharing";
 
     public static final String UNTIL_ATTRIBUTE = "until";
@@ -49,7 +52,7 @@ public class Sharing extends SSEModule {
     private Related related;
 
     @Override
-    public void copyFrom(final CopyFrom obj) {
+    public void copyFrom(final CopyFrom<? extends Module> obj) {
         final Sharing sharing = (Sharing) obj;
         ordered = sharing.ordered;
         since = sharing.since == null ? null : (Date) sharing.since.clone();

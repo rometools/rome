@@ -52,6 +52,7 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Group implements Serializable, Cloneable {
+    private static final long serialVersionUID = -7054101150858658108L;
     private Namespace namespace = Namespace.XML_NAMESPACE;
     private final ObjectBean obj = new ObjectBean(Group.class, this);
     private final String element;

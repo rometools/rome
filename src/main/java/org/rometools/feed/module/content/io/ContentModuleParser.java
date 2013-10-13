@@ -45,6 +45,7 @@ package org.rometools.feed.module.content.io;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import org.jdom2.Attribute;
 import org.jdom2.Element;
@@ -72,7 +73,7 @@ public class ContentModuleParser implements com.sun.syndication.io.ModuleParser 
     }
 
     @Override
-    public com.sun.syndication.feed.module.Module parse(final org.jdom2.Element element) {
+    public com.sun.syndication.feed.module.Module parse(final Element element, final Locale locale) {
         boolean foundSomething = false;
         final ContentModule cm = new ContentModuleImpl();
         final List encodeds = element.getChildren("encoded", CONTENT_NS);

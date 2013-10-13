@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.logging.Logger;
 
 import org.jdom2.Attribute;
@@ -52,19 +53,19 @@ public class SSE091Parser implements DelegatingModuleParser {
     }
 
     @Override
-    public Module parse(final org.jdom2.Element element) {
+    public Module parse(final Element element, final Locale locale) {
         SSEModule sseModule = null;
         final String name = element.getName();
 
         if (name.equals("rss")) {
-            sseModule = parseSharing(element);
+            sseModule = parseSharing(element, locale);
         } else if (name.equals("item")) {
-            sseModule = parseSync(element);
+            sseModule = parseSync(element, locale);
         }
         return sseModule;
     }
 
-    private Sharing parseSharing(final Element element) {
+    private Sharing parseSharing(final Element element, final Locale locale) {
         final Element root = getRoot(element);
 
         Sharing sharing = null;
@@ -72,32 +73,32 @@ public class SSE091Parser implements DelegatingModuleParser {
         if (sharingChild != null) {
             sharing = new Sharing();
             sharing.setOrdered(parseBooleanAttr(sharingChild, Sharing.ORDERED_ATTRIBUTE));
-            sharing.setSince(parseDateAttribute(sharingChild, Sharing.SINCE_ATTRIBUTE));
-            sharing.setUntil(parseDateAttribute(sharingChild, Sharing.UNTIL_ATTRIBUTE));
+            sharing.setSince(parseDateAttribute(sharingChild, Sharing.SINCE_ATTRIBUTE, locale));
+            sharing.setUntil(parseDateAttribute(sharingChild, Sharing.UNTIL_ATTRIBUTE, locale));
             sharing.setWindow(parseIntegerAttribute(sharingChild, Sharing.WINDOW_ATTRIBUTE));
             sharing.setVersion(parseStringAttribute(sharingChild, Sharing.VERSION_ATTRIBUTE));
-            parseRelated(root, sharing);
+            parseRelated(root, sharing, locale);
         }
 
         return sharing;
     }
 
-    private void parseRelated(final Element root, final Sharing sharing) {
+    private void parseRelated(final Element root, final Sharing sharing, final Locale locale) {
         Related related;
         final Element relatedChild = root.getChild(Related.NAME, SSEModule.SSE_NS);
         if (relatedChild != null) {
             related = new Related();
             // TODO; is this an attribute?
             related.setLink(parseStringAttribute(relatedChild, Related.LINK_ATTRIBUTE));
-            related.setSince(parseDateAttribute(relatedChild, Related.SINCE_ATTRIBUTE));
+            related.setSince(parseDateAttribute(relatedChild, Related.SINCE_ATTRIBUTE, locale));
             related.setTitle(parseStringAttribute(relatedChild, Related.TITLE_ATTRIBUTE));
             related.setType(parseIntegerAttribute(relatedChild, Related.TYPE_ATTRIBUTE));
-            related.setUntil(parseDateAttribute(relatedChild, Related.UNTIL_ATTRIBUTE));
+            related.setUntil(parseDateAttribute(relatedChild, Related.UNTIL_ATTRIBUTE, locale));
             sharing.setRelated(related);
         }
     }
 
-    private Sync parseSync(final Element element) {
+    private Sync parseSync(final Element element, final Locale locale) {
         // Now I am going to get the item specific tags
         final Element syncChild = element.getChild(Sync.NAME, SSEModule.SSE_NS);
         Sync sync = null;
@@ -108,37 +109,37 @@ public class SSE091Parser implements DelegatingModuleParser {
             sync.setVersion(parseIntegerAttribute(syncChild, Sync.VERSION_ATTRIBUTE));
             sync.setDeleted(parseBooleanAttr(syncChild, Sync.DELETED_ATTRIBUTE));
             sync.setConflict(parseBooleanAttr(syncChild, Sync.CONFLICT_ATTRIBUTE));
-            sync.setHistory(parseHistory(syncChild));
-            sync.setConflicts(parseConflicts(syncChild));
+            sync.setHistory(parseHistory(syncChild, locale));
+            sync.setConflicts(parseConflicts(syncChild, locale));
         }
         return sync;
     }
 
-    private List parseConflicts(final Element syncElement) {
-        List conflicts = null;
+    private List<Conflict> parseConflicts(final Element syncElement, final Locale locale) {
+        List<Conflict> conflicts = null;
 
-        final List conflictsContent = syncElement.getContent(new ContentFilter(Conflicts.NAME));
-        for (final Iterator conflictsIter = conflictsContent.iterator(); conflictsIter.hasNext();) {
-            final Element conflictsElement = (Element) conflictsIter.next();
+        final List<Element> conflictsContent = syncElement.getContent(new ContentFilter(Conflicts.NAME));
+        for (final Iterator<Element> conflictsIter = conflictsContent.iterator(); conflictsIter.hasNext();) {
+            final Element conflictsElement = conflictsIter.next();
 
-            final List conflictContent = conflictsElement.getContent(new ContentFilter(Conflict.NAME));
-            for (final Iterator conflictIter = conflictContent.iterator(); conflictIter.hasNext();) {
+            final List<Element> conflictContent = conflictsElement.getContent(new ContentFilter(Conflict.NAME));
+            for (final Iterator<Element> conflictIter = conflictContent.iterator(); conflictIter.hasNext();) {
                 final Element conflictElement = (Element) conflictIter.next();
 
                 final Conflict conflict = new Conflict();
                 conflict.setBy(parseStringAttribute(conflictElement, Conflict.BY_ATTRIBUTE));
-                conflict.setWhen(parseDateAttribute(conflictElement, Conflict.WHEN_ATTRIBUTE));
+                conflict.setWhen(parseDateAttribute(conflictElement, Conflict.WHEN_ATTRIBUTE, locale));
                 conflict.setVersion(parseIntegerAttribute(conflictElement, Conflict.VERSION_ATTRIBUTE));
 
-                final List conflictItemContent = conflictElement.getContent(new ContentFilter("item"));
-                for (final Iterator conflictItemIter = conflictItemContent.iterator(); conflictItemIter.hasNext();) {
+                final List<Element> conflictItemContent = conflictElement.getContent(new ContentFilter("item"));
+                for (final Iterator<Element> conflictItemIter = conflictItemContent.iterator(); conflictItemIter.hasNext();) {
                     final Element conflictItemElement = (Element) conflictItemIter.next();
                     final Element root = getRoot(conflictItemElement);
-                    final Item conflictItem = rssParser.parseItem(root, conflictItemElement);
+                    final Item conflictItem = rssParser.parseItem(root, conflictItemElement, locale);
                     conflict.setItem(conflictItem);
 
                     if (conflicts == null) {
-                        conflicts = new ArrayList();
+                        conflicts = new ArrayList<Conflict>();
                     }
                     conflicts.add(conflict);
                 }
@@ -158,21 +159,21 @@ public class SSE091Parser implements DelegatingModuleParser {
         return root;
     }
 
-    private History parseHistory(final Element historyElement) {
+    private History parseHistory(final Element historyElement, final Locale locale) {
         final Element historyContent = getFirstContent(historyElement, History.NAME);
 
         History history = null;
         if (historyContent != null) {
             history = new History();
             history.setBy(parseStringAttribute(historyContent, History.BY_ATTRIBUTE));
-            history.setWhen(parseDateAttribute(historyContent, History.WHEN_ATTRIBUTE));
-            parseUpdates(historyContent, history);
+            history.setWhen(parseDateAttribute(historyContent, History.WHEN_ATTRIBUTE, locale));
+            parseUpdates(historyContent, history, locale);
         }
         return history;
     }
 
     private Element getFirstContent(final Element element, final String name) {
-        final List filterList = element.getContent(new ContentFilter(name));
+        final List<Element> filterList = element.getContent(new ContentFilter(name));
         Element firstContent = null;
         if (filterList != null && filterList.size() > 0) {
             firstContent = (Element) filterList.get(0);
@@ -180,13 +181,13 @@ public class SSE091Parser implements DelegatingModuleParser {
         return firstContent;
     }
 
-    private void parseUpdates(final Element historyChild, final History history) {
-        final List updatedChildren = historyChild.getContent(new ContentFilter(Update.NAME));
-        for (final Iterator childIter = updatedChildren.iterator(); childIter.hasNext();) {
-            final Element updateChild = (Element) childIter.next();
+    private void parseUpdates(final Element historyChild, final History history, final Locale locale) {
+        final List<Element> updatedChildren = historyChild.getContent(new ContentFilter(Update.NAME));
+        for (final Iterator<Element> childIter = updatedChildren.iterator(); childIter.hasNext();) {
+            final Element updateChild = childIter.next();
             final Update update = new Update();
             update.setBy(parseStringAttribute(updateChild, Update.BY_ATTRIBUTE));
-            update.setWhen(parseDateAttribute(updateChild, Update.WHEN_ATTRIBUTE));
+            update.setWhen(parseDateAttribute(updateChild, Update.WHEN_ATTRIBUTE, locale));
             history.addUpdate(update);
         }
     }
@@ -222,20 +223,20 @@ public class SSE091Parser implements DelegatingModuleParser {
         return attrValue;
     }
 
-    private Date parseDateAttribute(final Element childElement, final String attrName) {
+    private Date parseDateAttribute(final Element childElement, final String attrName, final Locale locale) {
         final Attribute dateAttribute = childElement.getAttribute(attrName);
         final Date date = null;
         if (dateAttribute != null) {
             // SSE spec requires the timezone to be 'GMT'
             // admittedly, this is a bit heavy-handed
             final String dateAttr = dateAttribute.getValue().trim();
-            return DateParser.parseRFC822(dateAttr);
+            return DateParser.parseRFC822(dateAttr, locale);
         }
         return date;
     }
 
-    private static class ContentFilter extends AbstractFilter {
-
+    private static class ContentFilter extends AbstractFilter<Element> {
+        private static final long serialVersionUID = 9087423853758730810L;
         private final String name;
 
         private ContentFilter(final String name) {
@@ -243,8 +244,14 @@ public class SSE091Parser implements DelegatingModuleParser {
         }
 
         @Override
-        public Object filter(final Object object) {
-            return object instanceof Element && name.equals(((Element) object).getName());
+        public Element filter(final Object content) {
+            final Element returnValue;
+            if (content instanceof Element && name.equals(((Element) content).getName())) {
+                returnValue = (Element) content;
+            } else {
+                returnValue = null;
+            }
+            return returnValue;
         }
 
     }

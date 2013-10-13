@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.sun.syndication.feed.CopyFrom;
+import com.sun.syndication.feed.module.Module;
 
 /**
  * <pre>
@@ -25,6 +26,8 @@ import com.sun.syndication.feed.CopyFrom;
  * .
  */
 public class Sync extends SSEModule {
+    private static final long serialVersionUID = 3071686432594143174L;
+
     public static final String NAME = "sync";
 
     public static final String ID_ATTRIBUTE = "id";
@@ -42,10 +45,10 @@ public class Sync extends SSEModule {
     private Boolean conflict;
 
     private History history;
-    private List conflicts;
+    private List<Conflict> conflicts;
 
     @Override
-    public void copyFrom(final CopyFrom obj) {
+    public void copyFrom(final CopyFrom<? extends Module> obj) {
         final Sync sync = (Sync) obj;
         deleted = sync.deleted;
         version = sync.version;
@@ -53,7 +56,7 @@ public class Sync extends SSEModule {
         id = sync.id;
         history = sync.history == null ? null : (History) sync.history.clone();
         if (sync.conflicts != null) {
-            conflicts = new ArrayList();
+            conflicts = new ArrayList<Conflict>();
             conflicts.addAll(sync.conflicts);
         }
     }
@@ -155,16 +158,16 @@ public class Sync extends SSEModule {
 
     public void addConflict(final Conflict conflict) {
         if (conflicts == null) {
-            conflicts = new ArrayList();
+            conflicts = new ArrayList<Conflict>();
         }
         conflicts.add(conflict);
     }
 
-    public List getConflicts() {
+    public List<Conflict> getConflicts() {
         return conflicts;
     }
 
-    public void setConflicts(final List conflicts) {
+    public void setConflicts(final List<Conflict> conflicts) {
         this.conflicts = conflicts;
     }
 }

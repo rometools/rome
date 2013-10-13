@@ -24,6 +24,7 @@ package org.rometools.feed.module.mediarss.io;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -81,7 +82,7 @@ public class MediaModuleParser implements ModuleParser {
      * @see com.sun.syndication.io.ModuleParser#parse(org.jdom2.Element)
      */
     @Override
-    public Module parse(final Element mmRoot) {
+    public Module parse(final Element mmRoot, final Locale locale) {
         MediaModuleImpl mod = null;
 
         if (mmRoot.getName().equals("channel") || mmRoot.getName().equals("feed")) {

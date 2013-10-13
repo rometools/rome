@@ -44,6 +44,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.StringTokenizer;
 import java.util.logging.Logger;
 
@@ -81,7 +82,7 @@ public class ITunesParser implements ModuleParser {
     }
 
     @Override
-    public com.sun.syndication.feed.module.Module parse(final org.jdom2.Element element) {
+    public com.sun.syndication.feed.module.Module parse(final Element element, final Locale locale) {
         AbstractITunesObject module = null;
 
         if (element.getName().equals("channel")) {

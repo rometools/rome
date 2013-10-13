@@ -16,6 +16,8 @@
  */
 package org.rometools.feed.module.georss;
 
+import java.util.Locale;
+
 import org.jdom2.Element;
 import org.rometools.feed.module.georss.geometries.Envelope;
 import org.rometools.feed.module.georss.geometries.LineString;
@@ -63,7 +65,7 @@ public class SimpleParser implements ModuleParser {
      * @see com.sun.syndication.io.ModuleParser#parse(org.jdom2.Element)
      */
     @Override
-    public Module parse(final Element element) {
+    public Module parse(final Element element, final Locale locale) {
         final Module geoRssModule = parseSimple(element);
         return geoRssModule;
     }

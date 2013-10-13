@@ -3,9 +3,11 @@ package org.rometools.feed.module.sse;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 
 import org.jdom2.Element;
+import org.jdom2.Namespace;
 import org.rometools.feed.module.sse.modules.Conflict;
 import org.rometools.feed.module.sse.modules.Conflicts;
 import org.rometools.feed.module.sse.modules.History;
@@ -54,7 +56,7 @@ public class SSE091Generator implements DelegatingModuleGenerator {
      * @return a set with all the URIs (JDOM Namespace elements) this module generator uses.
      */
     @Override
-    public Set getNamespaces() {
+    public Set<Namespace> getNamespaces() {
         return SSEModule.NAMESPACES;
     }
 
@@ -119,10 +121,10 @@ public class SSE091Generator implements DelegatingModuleGenerator {
         parent.addContent(syncElement);
     }
 
-    private void generateConflicts(final Element syncElement, final List conflicts) {
+    private void generateConflicts(final Element syncElement, final List<Conflict> conflicts) {
         if (conflicts != null) {
             final Element conflictsElement = new Element(Conflicts.NAME, SSEModule.SSE_NS);
-            for (final Iterator confictIter = conflicts.iterator(); confictIter.hasNext();) {
+            for (final Iterator<Conflict> confictIter = conflicts.iterator(); confictIter.hasNext();) {
                 final Element conflictElement = new Element(Conflict.NAME, SSEModule.SSE_NS);
                 final Conflict conflict = (Conflict) confictIter.next();
                 generateAttribute(conflictElement, Conflict.BY_ATTRIBUTE, conflict.getBy());
@@ -154,11 +156,11 @@ public class SSE091Generator implements DelegatingModuleGenerator {
         }
     }
 
-    private void generateUpdates(final Element historyElement, final List updates) {
+    private void generateUpdates(final Element historyElement, final List<Update> updates) {
         if (updates != null) {
-            for (final Iterator updateIter = updates.iterator(); updateIter.hasNext();) {
+            for (final Iterator<Update> updateIter = updates.iterator(); updateIter.hasNext();) {
                 final Element updateElement = new Element(Update.NAME, SSEModule.SSE_NS);
-                final Update update = (Update) updateIter.next();
+                final Update update = updateIter.next();
                 generateAttribute(updateElement, Update.BY_ATTRIBUTE, update.getBy());
                 generateAttribute(updateElement, Update.WHEN_ATTRIBUTE, update.getWhen());
                 historyElement.addContent(updateElement);
@@ -175,7 +177,7 @@ public class SSE091Generator implements DelegatingModuleGenerator {
     private String toString(final Object o) {
         if (o != null) {
             if (o instanceof Date) {
-                return DateParser.formatRFC822((Date) o);
+                return DateParser.formatRFC822((Date) o, Locale.US);
             } else {
                 return o.toString();
             }
