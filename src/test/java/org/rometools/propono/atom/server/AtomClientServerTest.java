@@ -22,16 +22,19 @@ import java.util.logging.Logger;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import org.junit.Ignore;
 
 import org.mortbay.http.HttpContext;
 import org.mortbay.http.HttpServer;
 import org.mortbay.http.SocketListener;
 import org.mortbay.jetty.servlet.ServletHandler;
+import org.rometools.propono.atom.client.AtomClientTest;
 
 /**
  * Test Propono Atom Client against Atom Server via Jetty. Extends <code>AtomClientTest</code> to start Jetty server, run tests and then stop the Jetty server.
  */
-public class AtomClientServerTest { // extends AtomClientTest {
+@Ignore
+public class AtomClientServerTest extends AtomClientTest {
 
     private HttpServer server;
     public static final int TESTPORT = 8283;
@@ -40,17 +43,20 @@ public class AtomClientServerTest { // extends AtomClientTest {
     public static final String PASSWORD = "admin";
 
     public AtomClientServerTest(final String s) {
-        // super(s);
+        super(s);
     }
 
+    @Override
     public String getEndpoint() {
         return ENDPOINT;
     }
 
+    @Override
     public String getUsername() {
         return USERNAME;
     }
 
+    @Override
     public String getPassword() {
         return PASSWORD;
     }

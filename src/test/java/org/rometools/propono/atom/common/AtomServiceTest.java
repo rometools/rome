@@ -58,7 +58,7 @@ public class AtomServiceTest extends TestCase {
         try {
             // Load service document from disk
             final SAXBuilder builder = new SAXBuilder();
-            final Document document = builder.build(new FileInputStream("./servicedoc1.xml"));
+            final Document document = builder.build(this.getClass().getResourceAsStream("/servicedoc1.xml"));
             assertNotNull(document);
             final AtomService service = AtomService.documentToService(document);
 

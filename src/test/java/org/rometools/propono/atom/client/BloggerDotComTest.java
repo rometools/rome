@@ -22,10 +22,12 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import com.sun.syndication.feed.atom.Content;
+import org.junit.Ignore;
 
 /**
  * Simple APP test designed to run against Blogger.com.
  */
+@Ignore
 public class BloggerDotComTest extends TestCase {
 
     private final String collectionURI = "http://www.blogger.com/feeds/BLOGID/posts/default";

@@ -25,10 +25,12 @@ import junit.framework.TestSuite;
 import org.rometools.propono.utils.Utilities;
 
 import com.sun.syndication.io.impl.Atom10Parser;
+import org.junit.Ignore;
 
 /**
  * Tests Atom and MetaWeblog API CRUD via BlogClient. Exclude this from automated tests because it requires a live blog server.
  */
+@Ignore
 public class SimpleBlogClientTest extends TestCase {
 
     private final String metaweblogEndpoint = "http://localhost:8080/roller/roller-services/xmlrpc";

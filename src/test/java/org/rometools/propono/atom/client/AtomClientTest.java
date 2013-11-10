@@ -32,10 +32,12 @@ import org.rometools.propono.utils.ProponoException;
 
 import com.sun.syndication.feed.atom.Category;
 import com.sun.syndication.feed.atom.Content;
+import org.junit.Ignore;
 
 /**
  * Simple APP test designed to run against a live Atom server.
  */
+@Ignore
 public class AtomClientTest extends TestCase {
 
     private static Log log = LogFactory.getFactory().getInstance(AtomClientTest.class);
