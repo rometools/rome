@@ -30,6 +30,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Provides deep <b>Bean</b> clonning support.
  * <p>
@@ -42,7 +45,10 @@ import java.util.Set;
  * 
  */
 public class CloneableBean implements Serializable, Cloneable {
+	
     private static final long serialVersionUID = -6520053043831187823L;
+    private static final Logger LOG = LoggerFactory.getLogger(CloneableBean.class);
+    
     private static final Class<?>[] NO_PARAMS_DEF = new Class[0];
     private static final Object[] NO_PARAMS = new Object[0];
 
@@ -186,11 +192,11 @@ public class CloneableBean implements Serializable, Cloneable {
                     }
                 }
             }
-        } catch (final CloneNotSupportedException cnsEx) {
-            throw cnsEx;
-        } catch (final Exception ex) {
-            System.out.println(ex);
-            ex.printStackTrace(System.out);
+        } catch (final CloneNotSupportedException e) {
+        	LOG.error("Error while cloning bean", e);
+            throw e;
+        } catch (final Exception e) {
+        	LOG.error("Error while cloning bean", e);
             throw new CloneNotSupportedException("Cannot clone a " + obj.getClass() + " object");
         }
         return clonedBean;

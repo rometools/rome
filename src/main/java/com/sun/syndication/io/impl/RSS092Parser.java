@@ -23,6 +23,8 @@ import java.util.Locale;
 import org.jdom2.Content;
 import org.jdom2.Element;
 import org.jdom2.output.XMLOutputter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.rss.Category;
@@ -36,6 +38,8 @@ import com.sun.syndication.feed.rss.Source;
 /**
  */
 public class RSS092Parser extends RSS091UserlandParser {
+	
+	private static final Logger LOG = LoggerFactory.getLogger(RSS092Parser.class);
 
     public RSS092Parser() {
         this("rss_0.92");
@@ -179,7 +183,7 @@ public class RSS092Parser extends RSS091UserlandParser {
                     sb.append(c.getValue());
                     break;
                 case EntityRef:
-                    System.out.println("entity: " + c.getValue());
+                	LOG.debug("Entity: {}", c.getValue());
                     sb.append(c.getValue());
                     break;
                 case Element:
