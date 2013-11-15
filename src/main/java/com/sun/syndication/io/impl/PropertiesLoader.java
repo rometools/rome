@@ -12,15 +12,12 @@ import java.util.StringTokenizer;
 import java.util.WeakHashMap;
 
 /**
- * Properties loader that aggregates a master properties file and several extra
- * properties files, all from the current classpath.
+ * Properties loader that aggregates a master properties file and several extra properties files, all from the current classpath.
  * <P>
- * The master properties file has to be in a distinct location than the extra
- * properties files. First the master properties file is loaded, then all the
- * extra properties files in their order of appearance in the classpath.
+ * The master properties file has to be in a distinct location than the extra properties files. First the master properties file is loaded, then all the extra
+ * properties files in their order of appearance in the classpath.
  * <P>
- * Current use cases (plugin manager for parsers/converters/generators for feeds
- * and modules and date formats) assume properties are list of tokens, that why
+ * Current use cases (plugin manager for parsers/converters/generators for feeds and modules and date formats) assume properties are list of tokens, that why
  * the only method to get property values is the getTokenizedProperty().
  * <p>
  * 
@@ -35,19 +32,19 @@ public class PropertiesLoader {
     private static Map<ClassLoader, PropertiesLoader> clMap = new WeakHashMap<ClassLoader, PropertiesLoader>();
 
     /**
-     * Returns the PropertiesLoader singleton used by ROME to load plugin
-     * components.
+     * Returns the PropertiesLoader singleton used by ROME to load plugin components.
      * 
      * @return PropertiesLoader singleton.
      * 
      */
     public static PropertiesLoader getPropertiesLoader() {
         synchronized (PropertiesLoader.class) {
-            PropertiesLoader loader = clMap.get(Thread.currentThread().getContextClassLoader());
+            final ClassLoader classLoader = PropertiesLoader.class.getClassLoader();
+            PropertiesLoader loader = clMap.get(classLoader);
             if (loader == null) {
                 try {
                     loader = new PropertiesLoader(MASTER_PLUGIN_FILE, EXTRA_PLUGIN_FILE);
-                    clMap.put(Thread.currentThread().getContextClassLoader(), loader);
+                    clMap.put(classLoader, loader);
                 } catch (final IOException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -64,13 +61,12 @@ public class PropertiesLoader {
      * 
      * @param masterFileLocation master file location, there must be only one.
      * @param extraFileLocation extra file location, there may be many.
-     * @throws IOException thrown if one of the properties file could not be
-     *             read.
+     * @throws IOException thrown if one of the properties file could not be read.
      * 
      */
     private PropertiesLoader(final String masterFileLocation, final String extraFileLocation) throws IOException {
         final List<Properties> propertiesList = new ArrayList<Properties>();
-        final ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        final ClassLoader classLoader = PropertiesLoader.class.getClassLoader();
 
         try {
             final InputStream is = classLoader.getResourceAsStream(masterFileLocation);
@@ -105,16 +101,13 @@ public class PropertiesLoader {
     }
 
     /**
-     * Returns an array of tokenized values stored under a property key in all
-     * properties files. If the master file has this property its tokens will be
-     * the first ones in the array.
+     * Returns an array of tokenized values stored under a property key in all properties files. If the master file has this property its tokens will be the
+     * first ones in the array.
      * <p>
      * 
      * @param key property key to retrieve values
-     * @param separator String with all separator characters to tokenize from
-     *            the values in all properties files.
-     * @return all the tokens for the given property key from all the properties
-     *         files.
+     * @param separator String with all separator characters to tokenize from the values in all properties files.
+     * @return all the tokens for the given property key from all the properties files.
      * 
      */
     public String[] getTokenizedProperty(final String key, final String separator) {
@@ -135,14 +128,12 @@ public class PropertiesLoader {
     }
 
     /**
-     * Returns an array of values stored under a property key in all properties
-     * files. If the master file has this property it will be the first ones in
-     * the array.
+     * Returns an array of values stored under a property key in all properties files. If the master file has this property it will be the first ones in the
+     * array.
      * <p>
      * 
      * @param key property key to retrieve values
-     * @return all the values for the given property key from all the properties
-     *         files.
+     * @return all the values for the given property key from all the properties files.
      * 
      */
     public String[] getProperty(final String key) {

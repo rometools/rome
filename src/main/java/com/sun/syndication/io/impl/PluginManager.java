@@ -126,23 +126,18 @@ public abstract class PluginManager<T> {
     }
 
     /**
-     * Loads and returns the classes defined in the properties files. If the
-     * system property "rome.pluginmanager.useloadclass" is set to true then
-     * classLoader.loadClass will be used to load classes (instead of
-     * Class.forName). This is designed to improve OSGi compatibility. Further
-     * information can be found in
-     * https://rome.dev.java.net/issues/show_bug.cgi?id=118
+     * Loads and returns the classes defined in the properties files. If the system property "rome.pluginmanager.useloadclass" is set to true then
+     * classLoader.loadClass will be used to load classes (instead of Class.forName). This is designed to improve OSGi compatibility. Further information can be
+     * found in https://rome.dev.java.net/issues/show_bug.cgi?id=118
      * <p>
      * 
      * @return array containing the classes defined in the properties files.
-     * @throws java.lang.ClassNotFoundException thrown if one of the classes
-     *             defined in the properties file cannot be loaded and hard
-     *             failure is ON.
+     * @throws java.lang.ClassNotFoundException thrown if one of the classes defined in the properties file cannot be loaded and hard failure is ON.
      * 
      */
     @SuppressWarnings("unchecked")
     private Class<T>[] getClasses() throws ClassNotFoundException {
-        final ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        final ClassLoader classLoader = PluginManager.class.getClassLoader();
         final List<Class<T>> classes = new ArrayList<Class<T>>();
         final boolean useLoadClass = Boolean.valueOf(System.getProperty("rome.pluginmanager.useloadclass", "false")).booleanValue();
         for (final String propertyValue : propertyValues) {

@@ -43,11 +43,9 @@ import com.sun.syndication.io.impl.FeedParsers;
 import com.sun.syndication.io.impl.XmlFixerReader;
 
 /**
- * Parses an XML document (File, InputStream, Reader, W3C SAX InputSource, W3C
- * DOM Document or JDom DOcument) into an WireFeed (RSS/Atom).
+ * Parses an XML document (File, InputStream, Reader, W3C SAX InputSource, W3C DOM Document or JDom DOcument) into an WireFeed (RSS/Atom).
  * <p>
- * It accepts all flavors of RSS (0.90, 0.91, 0.92, 0.93, 0.94, 1.0 and 2.0) and
- * Atom 0.3 feeds. Parsers are plugable (they must implement the WireFeedParser
+ * It accepts all flavors of RSS (0.90, 0.91, 0.92, 0.93, 0.94, 1.0 and 2.0) and Atom 0.3 feeds. Parsers are plugable (they must implement the WireFeedParser
  * interface).
  * <p>
  * The WireFeedInput useds liberal parsers.
@@ -62,10 +60,11 @@ public class WireFeedInput {
 
     private static FeedParsers getFeedParsers() {
         synchronized (WireFeedInput.class) {
-            FeedParsers parsers = clMap.get(Thread.currentThread().getContextClassLoader());
+            final ClassLoader classLoader = WireFeedInput.class.getClassLoader();
+            FeedParsers parsers = clMap.get(classLoader);
             if (parsers == null) {
                 parsers = new FeedParsers();
-                clMap.put(Thread.currentThread().getContextClassLoader(), parsers);
+                clMap.put(classLoader, parsers);
             }
             return parsers;
         }
@@ -115,8 +114,7 @@ public class WireFeedInput {
      * Creates a WireFeedInput instance.
      * <p>
      * 
-     * @param validate indicates if the input should be validated. NOT
-     *            IMPLEMENTED YET (validation does not happen)
+     * @param validate indicates if the input should be validated. NOT IMPLEMENTED YET (validation does not happen)
      * 
      */
     public WireFeedInput(final boolean validate, final Locale locale) {
@@ -128,14 +126,11 @@ public class WireFeedInput {
     /**
      * Enables XML healing in the WiredFeedInput instance.
      * <p>
-     * Healing trims leading chars from the stream (empty spaces and comments)
-     * until the XML prolog.
+     * Healing trims leading chars from the stream (empty spaces and comments) until the XML prolog.
      * <p>
-     * Healing resolves HTML entities (from literal to code number) in the
-     * reader.
+     * Healing resolves HTML entities (from literal to code number) in the reader.
      * <p>
-     * The healing is done only with the build(File) and build(Reader)
-     * signatures.
+     * The healing is done only with the build(File) and build(Reader) signatures.
      * <p>
      * By default is TRUE.
      * <p>
@@ -148,17 +143,13 @@ public class WireFeedInput {
     }
 
     /**
-     * Indicates if the WiredFeedInput instance will XML heal (if necessary) the
-     * character stream.
+     * Indicates if the WiredFeedInput instance will XML heal (if necessary) the character stream.
      * <p>
-     * Healing trims leading chars from the stream (empty spaces and comments)
-     * until the XML prolog.
+     * Healing trims leading chars from the stream (empty spaces and comments) until the XML prolog.
      * <p>
-     * Healing resolves HTML entities (from literal to code number) in the
-     * reader.
+     * Healing resolves HTML entities (from literal to code number) in the reader.
      * <p>
-     * The healing is done only with the build(File) and build(Reader)
-     * signatures.
+     * The healing is done only with the build(File) and build(Reader) signatures.
      * <p>
      * By default is TRUE.
      * <p>
@@ -173,16 +164,14 @@ public class WireFeedInput {
     /**
      * Builds an WireFeed (RSS or Atom) from a file.
      * <p>
-     * NOTE: This method delages to the 'AsbtractFeed
-     * WireFeedInput#build(org.jdom2.Document)'.
+     * NOTE: This method delages to the 'AsbtractFeed WireFeedInput#build(org.jdom2.Document)'.
      * <p>
      * 
      * @param file file to read to create the WireFeed.
      * @return the WireFeed read from the file.
      * @throws FileNotFoundException thrown if the file could not be found.
      * @throws IOException thrown if there is problem reading the file.
-     * @throws IllegalArgumentException thrown if feed type could not be
-     *             understood by any of the underlying parsers.
+     * @throws IllegalArgumentException thrown if feed type could not be understood by any of the underlying parsers.
      * @throws FeedException if the feed could not be parsed
      * 
      */
@@ -200,14 +189,12 @@ public class WireFeedInput {
     /**
      * Builds an WireFeed (RSS or Atom) from an Reader.
      * <p>
-     * NOTE: This method delages to the 'AsbtractFeed
-     * WireFeedInput#build(org.jdom2.Document)'.
+     * NOTE: This method delages to the 'AsbtractFeed WireFeedInput#build(org.jdom2.Document)'.
      * <p>
      * 
      * @param reader Reader to read to create the WireFeed.
      * @return the WireFeed read from the Reader.
-     * @throws IllegalArgumentException thrown if feed type could not be
-     *             understood by any of the underlying parsers.
+     * @throws IllegalArgumentException thrown if feed type could not be understood by any of the underlying parsers.
      * @throws FeedException if the feed could not be parsed
      * 
      */
@@ -231,14 +218,12 @@ public class WireFeedInput {
     /**
      * Builds an WireFeed (RSS or Atom) from an W3C SAX InputSource.
      * <p>
-     * NOTE: This method delages to the 'AsbtractFeed
-     * WireFeedInput#build(org.jdom2.Document)'.
+     * NOTE: This method delages to the 'AsbtractFeed WireFeedInput#build(org.jdom2.Document)'.
      * <p>
      * 
      * @param is W3C SAX InputSource to read to create the WireFeed.
      * @return the WireFeed read from the W3C SAX InputSource.
-     * @throws IllegalArgumentException thrown if feed type could not be
-     *             understood by any of the underlying parsers.
+     * @throws IllegalArgumentException thrown if feed type could not be understood by any of the underlying parsers.
      * @throws FeedException if the feed could not be parsed
      * 
      */
@@ -259,14 +244,12 @@ public class WireFeedInput {
     /**
      * Builds an WireFeed (RSS or Atom) from an W3C DOM document.
      * <p>
-     * NOTE: This method delages to the 'AsbtractFeed
-     * WireFeedInput#build(org.jdom2.Document)'.
+     * NOTE: This method delages to the 'AsbtractFeed WireFeedInput#build(org.jdom2.Document)'.
      * <p>
      * 
      * @param document W3C DOM document to read to create the WireFeed.
      * @return the WireFeed read from the W3C DOM document.
-     * @throws IllegalArgumentException thrown if feed type could not be
-     *             understood by any of the underlying parsers.
+     * @throws IllegalArgumentException thrown if feed type could not be understood by any of the underlying parsers.
      * @throws FeedException if the feed could not be parsed
      * 
      */
@@ -290,8 +273,7 @@ public class WireFeedInput {
      * 
      * @param document JDOM document to read to create the WireFeed.
      * @return the WireFeed read from the JDOM document.
-     * @throws IllegalArgumentException thrown if feed type could not be
-     *             understood by any of the underlying parsers.
+     * @throws IllegalArgumentException thrown if feed type could not be understood by any of the underlying parsers.
      * @throws FeedException if the feed could not be parsed
      * 
      */

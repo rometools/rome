@@ -36,7 +36,7 @@ public abstract class FeedTest extends TestCase {
     }
 
     protected Reader getFeedReader() throws Exception {
-        final InputStream resource = Thread.currentThread().getContextClassLoader().getResourceAsStream(getFeedFileName());
+        final InputStream resource = FeedTest.class.getClassLoader().getResourceAsStream(getFeedFileName());
         assertNotNull("Could not find resource " + getFeedFileName(), resource);
         return new InputStreamReader(resource);
     }
