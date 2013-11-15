@@ -31,6 +31,7 @@ import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
 import com.sun.syndication.feed.WireFeed;
+import com.sun.syndication.feed.impl.ConfigurableClassLoader;
 import com.sun.syndication.io.impl.FeedGenerators;
 
 /**
@@ -48,7 +49,7 @@ public class WireFeedOutput {
 
     private static FeedGenerators getFeedGenerators() {
         synchronized (WireFeedOutput.class) {
-            final ClassLoader classLoader = WireFeedOutput.class.getClassLoader();
+            final ClassLoader classLoader = ConfigurableClassLoader.INSTANCE.getClassLoader();
             FeedGenerators generators = clMap.get(classLoader);
             if (generators == null) {
                 generators = new FeedGenerators();

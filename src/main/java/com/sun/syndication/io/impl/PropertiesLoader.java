@@ -11,6 +11,8 @@ import java.util.Properties;
 import java.util.StringTokenizer;
 import java.util.WeakHashMap;
 
+import com.sun.syndication.feed.impl.ConfigurableClassLoader;
+
 /**
  * Properties loader that aggregates a master properties file and several extra properties files, all from the current classpath.
  * <P>
@@ -39,7 +41,7 @@ public class PropertiesLoader {
      */
     public static PropertiesLoader getPropertiesLoader() {
         synchronized (PropertiesLoader.class) {
-            final ClassLoader classLoader = PropertiesLoader.class.getClassLoader();
+            final ClassLoader classLoader = ConfigurableClassLoader.INSTANCE.getClassLoader();
             PropertiesLoader loader = clMap.get(classLoader);
             if (loader == null) {
                 try {
@@ -66,7 +68,7 @@ public class PropertiesLoader {
      */
     private PropertiesLoader(final String masterFileLocation, final String extraFileLocation) throws IOException {
         final List<Properties> propertiesList = new ArrayList<Properties>();
-        final ClassLoader classLoader = PropertiesLoader.class.getClassLoader();
+        final ClassLoader classLoader = ConfigurableClassLoader.INSTANCE.getClassLoader();
 
         try {
             final InputStream is = classLoader.getResourceAsStream(masterFileLocation);

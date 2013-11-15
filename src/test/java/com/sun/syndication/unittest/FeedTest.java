@@ -11,6 +11,7 @@ import org.jdom2.input.SAXBuilder;
 import org.jdom2.input.sax.XMLReaders;
 
 import com.sun.syndication.feed.WireFeed;
+import com.sun.syndication.feed.impl.ConfigurableClassLoader;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.WireFeedInput;
@@ -36,7 +37,8 @@ public abstract class FeedTest extends TestCase {
     }
 
     protected Reader getFeedReader() throws Exception {
-        final InputStream resource = FeedTest.class.getClassLoader().getResourceAsStream(getFeedFileName());
+        final ClassLoader ClassLoader = ConfigurableClassLoader.INSTANCE.getClassLoader();
+        final InputStream resource = ClassLoader.getResourceAsStream(getFeedFileName());
         assertNotNull("Could not find resource " + getFeedFileName(), resource);
         return new InputStreamReader(resource);
     }

@@ -23,6 +23,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import com.sun.syndication.feed.impl.ConfigurableClassLoader;
 import com.sun.syndication.io.DelegatingModuleGenerator;
 import com.sun.syndication.io.DelegatingModuleParser;
 import com.sun.syndication.io.WireFeedGenerator;
@@ -137,7 +138,7 @@ public abstract class PluginManager<T> {
      */
     @SuppressWarnings("unchecked")
     private Class<T>[] getClasses() throws ClassNotFoundException {
-        final ClassLoader classLoader = PluginManager.class.getClassLoader();
+        final ClassLoader classLoader = ConfigurableClassLoader.INSTANCE.getClassLoader();
         final List<Class<T>> classes = new ArrayList<Class<T>>();
         final boolean useLoadClass = Boolean.valueOf(System.getProperty("rome.pluginmanager.useloadclass", "false")).booleanValue();
         for (final String propertyValue : propertyValues) {

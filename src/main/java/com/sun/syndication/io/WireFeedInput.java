@@ -39,6 +39,7 @@ import org.xml.sax.SAXNotSupportedException;
 import org.xml.sax.XMLReader;
 
 import com.sun.syndication.feed.WireFeed;
+import com.sun.syndication.feed.impl.ConfigurableClassLoader;
 import com.sun.syndication.io.impl.FeedParsers;
 import com.sun.syndication.io.impl.XmlFixerReader;
 
@@ -60,7 +61,7 @@ public class WireFeedInput {
 
     private static FeedParsers getFeedParsers() {
         synchronized (WireFeedInput.class) {
-            final ClassLoader classLoader = WireFeedInput.class.getClassLoader();
+            final ClassLoader classLoader = ConfigurableClassLoader.INSTANCE.getClassLoader();
             FeedParsers parsers = clMap.get(classLoader);
             if (parsers == null) {
                 parsers = new FeedParsers();
