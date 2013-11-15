@@ -19,11 +19,16 @@ package com.sun.syndication.feed.module.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.sun.syndication.feed.module.Module;
 
 /**
  */
 public class ModuleUtils {
+
+    private static final Logger LOG = LoggerFactory.getLogger(ModuleUtils.class);
 
     public static List<Module> cloneModules(final List<Module> modules) {
         List<Module> cModules = null;
@@ -33,8 +38,10 @@ public class ModuleUtils {
                 try {
                     final Module c = (Module) module.clone();
                     cModules.add(c);
-                } catch (final Exception ex) {
-                    throw new RuntimeException("Cloning modules " + module.getUri(), ex);
+                } catch (final Exception e) {
+                    final String moduleUri = module.getUri();
+                    LOG.error("Error while cloning module " + moduleUri, e);
+                    throw new RuntimeException("Cloning modules " + moduleUri, e);
                 }
             }
         }
@@ -51,14 +58,16 @@ public class ModuleUtils {
      * @return
      */
     public static Module getModule(final List<Module> modules, final String uri) {
-        Module module = null;
-        for (int i = 0; modules != null && i < modules.size(); i++) {
-            module = modules.get(i);
-            if (module.getUri().equals(uri)) {
-                return module;
+        Module searchedModule = null;
+        if (modules != null) {
+            for (final Module module : modules) {
+                if (module.getUri().equals(uri)) {
+                    searchedModule = module;
+                    break;
+                }
             }
         }
-        return null;
+        return searchedModule;
     }
 
 }
