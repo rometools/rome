@@ -23,7 +23,6 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
@@ -36,24 +35,36 @@ import org.slf4j.LoggerFactory;
 /**
  * Provides deep <b>Bean</b> clonning support.
  * <p>
- * It works on all read/write properties, recursively. It support all primitive
- * types, Strings, Collections, Cloneable objects and multi-dimensional arrays
- * of any of them.
+ * It works on all read/write properties, recursively. It support all primitive types, Strings, Collections, Cloneable objects and multi-dimensional arrays of
+ * any of them.
  * <p>
  * 
  * @author Alejandro Abdelnur
  * 
  */
 public class CloneableBean implements Serializable, Cloneable {
-	
+
     private static final long serialVersionUID = -6520053043831187823L;
     private static final Logger LOG = LoggerFactory.getLogger(CloneableBean.class);
-    
+
+    private static final Set<Class<?>> BASIC_TYPES = new HashSet<Class<?>>();
     private static final Class<?>[] NO_PARAMS_DEF = new Class[0];
     private static final Object[] NO_PARAMS = new Object[0];
 
     private final Object obj;
     private Set<String> ignoreProperties;
+
+    static {
+        BASIC_TYPES.add(Boolean.class);
+        BASIC_TYPES.add(Byte.class);
+        BASIC_TYPES.add(Character.class);
+        BASIC_TYPES.add(Double.class);
+        BASIC_TYPES.add(Float.class);
+        BASIC_TYPES.add(Integer.class);
+        BASIC_TYPES.add(Long.class);
+        BASIC_TYPES.add(Short.class);
+        BASIC_TYPES.add(String.class);
+    }
 
     /**
      * Default constructor.
@@ -97,13 +108,9 @@ public class CloneableBean implements Serializable, Cloneable {
     /**
      * Creates a CloneableBean to be used in a delegation pattern.
      * <p>
-     * The property names in the ignoreProperties Set will not be copied into
-     * the cloned instance. This is useful for cases where the Bean has
-     * convenience properties (properties that are actually references to other
-     * properties or properties of properties). For example SyndFeed and
-     * SyndEntry beans have convenience properties, publishedDate, author,
-     * copyright and categories all of them mapped to properties in the DC
-     * Module.
+     * The property names in the ignoreProperties Set will not be copied into the cloned instance. This is useful for cases where the Bean has convenience
+     * properties (properties that are actually references to other properties or properties of properties). For example SyndFeed and SyndEntry beans have
+     * convenience properties, publishedDate, author, copyright and categories all of them mapped to properties in the DC Module.
      * <p>
      * 
      * @param obj object bean to clone.
@@ -122,15 +129,13 @@ public class CloneableBean implements Serializable, Cloneable {
     /**
      * Makes a deep bean clone of the object.
      * <p>
-     * To be used by classes extending CloneableBean. Although it works also for
-     * classes using CloneableBean in a delegation pattern, for correctness
-     * those classes should use the
+     * To be used by classes extending CloneableBean. Although it works also for classes using CloneableBean in a delegation pattern, for correctness those
+     * classes should use the
      * 
      * @see #beanClone() beanClone method.
      *      <p>
      * @return a clone of the object bean.
-     * @throws CloneNotSupportedException thrown if the object bean could not be
-     *             cloned.
+     * @throws CloneNotSupportedException thrown if the object bean could not be cloned.
      * 
      */
     @Override
@@ -146,8 +151,7 @@ public class CloneableBean implements Serializable, Cloneable {
      * @see #CloneableBean(Object) constructor.
      * 
      * @return a clone of the object bean.
-     * @throws CloneNotSupportedException thrown if the object bean could not be
-     *             cloned.
+     * @throws CloneNotSupportedException thrown if the object bean could not be cloned.
      * 
      */
     public Object beanClone() throws CloneNotSupportedException {
@@ -193,10 +197,10 @@ public class CloneableBean implements Serializable, Cloneable {
                 }
             }
         } catch (final CloneNotSupportedException e) {
-        	LOG.error("Error while cloning bean", e);
+            LOG.error("Error while cloning bean", e);
             throw e;
         } catch (final Exception e) {
-        	LOG.error("Error while cloning bean", e);
+            LOG.error("Error while cloning bean", e);
             throw new CloneNotSupportedException("Cannot clone a " + obj.getClass() + " object");
         }
         return clonedBean;
@@ -207,7 +211,7 @@ public class CloneableBean implements Serializable, Cloneable {
         if (value != null) {
             final Class<?> vClass = value.getClass();
             if (vClass.isArray()) {
-                value = (T) cloneArray((T) value);
+                value = cloneArray(value);
             } else if (value instanceof Collection) {
                 value = (T) cloneCollection((Collection<Object>) value);
             } else if (value instanceof Map) {
@@ -262,45 +266,8 @@ public class CloneableBean implements Serializable, Cloneable {
         return newMap;
     }
 
-    private static final Set<Class<?>> BASIC_TYPES = new HashSet<Class<?>>();
-
-    static {
-        BASIC_TYPES.add(Boolean.class);
-        BASIC_TYPES.add(Byte.class);
-        BASIC_TYPES.add(Character.class);
-        BASIC_TYPES.add(Double.class);
-        BASIC_TYPES.add(Float.class);
-        BASIC_TYPES.add(Integer.class);
-        BASIC_TYPES.add(Long.class);
-        BASIC_TYPES.add(Short.class);
-        BASIC_TYPES.add(String.class);
-    }
-
-    private static final Map<Class<?>, Class<?>[]> CONSTRUCTOR_BASIC_TYPES = new HashMap<Class<?>, Class<?>[]>();
-
-    static {
-        CONSTRUCTOR_BASIC_TYPES.put(Boolean.class, new Class[] { Boolean.TYPE });
-        CONSTRUCTOR_BASIC_TYPES.put(Byte.class, new Class[] { Byte.TYPE });
-        CONSTRUCTOR_BASIC_TYPES.put(Character.class, new Class[] { Character.TYPE });
-        CONSTRUCTOR_BASIC_TYPES.put(Double.class, new Class[] { Double.TYPE });
-        CONSTRUCTOR_BASIC_TYPES.put(Float.class, new Class[] { Float.TYPE });
-        CONSTRUCTOR_BASIC_TYPES.put(Integer.class, new Class[] { Integer.TYPE });
-        CONSTRUCTOR_BASIC_TYPES.put(Long.class, new Class[] { Long.TYPE });
-        CONSTRUCTOR_BASIC_TYPES.put(Short.class, new Class[] { Short.TYPE });
-        CONSTRUCTOR_BASIC_TYPES.put(String.class, new Class[] { String.class });
-    }
-
     private boolean isBasicType(final Class<?> vClass) {
         return BASIC_TYPES.contains(vClass);
     }
-
-    // THIS IS NOT NEEDED, BASIC TYPES ARE INMUTABLE, TUCU 20040710
-    /**
-     * private Object cloneBasicType(Object value) throws Exception { Class
-     * pClass = value.getClass(); Class[] defType = (Class[])
-     * CONSTRUCTOR_BASIC_TYPES.get(pClass); Constructor cons =
-     * pClass.getDeclaredConstructor(defType); value = cons.newInstance(new
-     * Object[]{value}); return value; }
-     **/
 
 }
