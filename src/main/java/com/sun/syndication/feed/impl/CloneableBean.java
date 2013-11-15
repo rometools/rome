@@ -155,55 +155,53 @@ public class CloneableBean implements Serializable, Cloneable {
      * 
      */
     public Object beanClone() throws CloneNotSupportedException {
-        Object clonedBean;
+
+        final Class<? extends Object> clazz = obj.getClass();
+
         try {
-            clonedBean = obj.getClass().newInstance();
-            final PropertyDescriptor[] pds = BeanIntrospector.getPropertyDescriptors(obj.getClass());
-            if (pds != null) {
-                for (int i = 0; i < pds.length; i++) {
-                    final Method pReadMethod = pds[i].getReadMethod();
-                    final Method pWriteMethod = pds[i].getWriteMethod();
-                    if (pReadMethod != null && pWriteMethod != null && // ensure
-                                                                       // it has
-                                                                       // getter
-                                                                       // and
-                                                                       // setter
-                                                                       // methods
-                            !ignoreProperties.contains(pds[i].getName()) && // is
-                            // not
-                            // in
-                            // the
-                            // list
-                            // of
-                            // properties
-                            // to
-                            // ignore
-                            pReadMethod.getDeclaringClass() != Object.class && // filter
-                                                                               // Object.class
-                                                                               // getter
-                                                                               // methods
-                            pReadMethod.getParameterTypes().length == 0) { // filter
-                                                                           // getter
-                                                                           // methods
-                                                                           // that
-                                                                           // take
-                                                                           // parameters
-                        Object value = pReadMethod.invoke(obj, NO_PARAMS);
-                        if (value != null) {
-                            value = doClone(value);
-                            pWriteMethod.invoke(clonedBean, new Object[] { value });
+
+            final Object clonedBean = clazz.newInstance();
+
+            final PropertyDescriptor[] propertyDescriptors = BeanIntrospector.getPropertyDescriptors(clazz);
+            if (propertyDescriptors != null) {
+                for (final PropertyDescriptor propertyDescriptor : propertyDescriptors) {
+
+                    final Method getter = propertyDescriptor.getReadMethod();
+                    final Method setter = propertyDescriptor.getWriteMethod();
+                    final String propertyName = propertyDescriptor.getName();
+
+                    final boolean getterExists = getter != null;
+                    final boolean setterExists = setter != null;
+                    final boolean ignoredProperty = ignoreProperties.contains(propertyName);
+
+                    if (getterExists && setterExists && !ignoredProperty) {
+
+                        final boolean getterFromObject = getter.getDeclaringClass() == Object.class;
+                        final boolean getterWithoutParams = getter.getParameterTypes().length == 0;
+
+                        if (!getterFromObject && getterWithoutParams) {
+                            Object value = getter.invoke(obj, NO_PARAMS);
+                            if (value != null) {
+                                value = doClone(value);
+                                setter.invoke(clonedBean, new Object[] { value });
+                            }
                         }
+
                     }
+
                 }
             }
+
+            return clonedBean;
+
         } catch (final CloneNotSupportedException e) {
             LOG.error("Error while cloning bean", e);
             throw e;
         } catch (final Exception e) {
             LOG.error("Error while cloning bean", e);
-            throw new CloneNotSupportedException("Cannot clone a " + obj.getClass() + " object");
+            throw new CloneNotSupportedException("Cannot clone a " + clazz + " object");
         }
-        return clonedBean;
+
     }
 
     @SuppressWarnings("unchecked")
