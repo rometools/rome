@@ -20,23 +20,22 @@ import java.beans.PropertyDescriptor;
 import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.lang.reflect.Method;
+import java.util.List;
 
 /**
- * Provides deep <b>Bean</b> equals() and hashCode() functionality for Java
- * Beans.
+ * Provides deep <b>Bean</b> equals() and hashCode() functionality for Java Beans.
  * <p>
- * It works on all read/write properties, recursively. It support all primitive
- * types, Strings, Collections, bean-like objects and multi-dimensional arrays
- * of any of them.
+ * It works on all read/write properties, recursively. It support all primitive types, Strings, Collections, bean-like objects and multi-dimensional arrays of
+ * any of them.
  * <p>
- * The hashcode is calculated by getting the hashcode of the Bean String
- * representation.
+ * The hashcode is calculated by getting the hashcode of the Bean String representation.
  * <p>
  * 
  * @author Alejandro Abdelnur
  * 
  */
 public class EqualsBean implements Serializable {
+
     private static final long serialVersionUID = 9120107899175152601L;
 
     private static final Object[] NO_PARAMS = new Object[0];
@@ -96,12 +95,10 @@ public class EqualsBean implements Serializable {
     }
 
     /**
-     * Indicates whether some other object is "equal to" this object as defined
-     * by the Object equals() method.
+     * Indicates whether some other object is "equal to" this object as defined by the Object equals() method.
      * <p>
-     * To be used by classes extending EqualsBean. Although it works also for
-     * classes using EqualsBean in a delegation pattern, for correctness those
-     * classes should use the
+     * To be used by classes extending EqualsBean. Although it works also for classes using EqualsBean in a delegation pattern, for correctness those classes
+     * should use the
      * 
      * @see #beanEquals(Object) beanEquals method.
      *      <p>
@@ -115,58 +112,53 @@ public class EqualsBean implements Serializable {
     }
 
     /**
-     * Indicates whether some other object is "equal to" the object passed in
-     * the constructor, as defined by the Object equals() method.
+     * Indicates whether some other object is "equal to" the object passed in the constructor, as defined by the Object equals() method.
      * <p>
      * To be used by classes using EqualsBean in a delegation pattern,
      * 
      * @see #EqualsBean(Class,Object) constructor.
      *      <p>
      * @param obj he reference object with which to compare.
-     * @return <b>true</b> if the object passed in the constructor is equal to
-     *         the 'obj' object.
+     * @return <b>true</b> if the object passed in the constructor is equal to the 'obj' object.
      * 
      */
     public boolean beanEquals(final Object obj) {
+
         final Object bean1 = this.obj;
         final Object bean2 = obj;
+
         boolean eq;
-        if (bean1 == null && bean2 == null) {
+
+        if (bean1 == null && bean2 == null) { // both are null
             eq = true;
-        } else if (bean1 == null || bean2 == null) {
+        } else if (bean1 == null || bean2 == null) { // one of the objects is null
+            eq = false;
+        } else if (!beanClass.isInstance(bean2)) { // not of the same type
             eq = false;
         } else {
-            if (!beanClass.isInstance(bean2)) {
-                eq = false;
-            } else {
-                eq = true;
-                try {
-                    final PropertyDescriptor[] pds = BeanIntrospector.getPropertyDescriptors(beanClass);
-                    if (pds != null) {
-                        for (int i = 0; eq && i < pds.length; i++) {
-                            final Method pReadMethod = pds[i].getReadMethod();
-                            if (pReadMethod != null && // ensure it has a getter
-                                                       // method
-                                    pReadMethod.getDeclaringClass() != Object.class && // filter
-                                                                                       // Object.class
-                                                                                       // getter
-                                                                                       // methods
-                                    pReadMethod.getParameterTypes().length == 0) { // filter
-                                                                                   // getter
-                                                                                   // methods
-                                                                                   // that
-                                                                                   // take
-                                                                                   // parameters
-                                final Object value1 = pReadMethod.invoke(bean1, NO_PARAMS);
-                                final Object value2 = pReadMethod.invoke(bean2, NO_PARAMS);
-                                eq = doEquals(value1, value2);
-                            }
-                        }
+            eq = true;
+            try {
+
+                final List<PropertyDescriptor> propertyDescriptors = BeanIntrospector.getPropertyDescriptorsWithGetters(beanClass);
+                for (final PropertyDescriptor propertyDescriptor : propertyDescriptors) {
+
+                    final Method getter = propertyDescriptor.getReadMethod();
+
+                    final Object value1 = getter.invoke(bean1, NO_PARAMS);
+                    final Object value2 = getter.invoke(bean2, NO_PARAMS);
+
+                    eq = doEquals(value1, value2);
+
+                    if (!eq) {
+                        break;
                     }
-                } catch (final Exception ex) {
-                    throw new RuntimeException("Could not execute equals()", ex);
+
                 }
+
+            } catch (final Exception ex) {
+                throw new RuntimeException("Could not execute equals()", ex);
             }
+
         }
         return eq;
     }
@@ -176,12 +168,10 @@ public class EqualsBean implements Serializable {
      * <p>
      * It follows the contract defined by the Object hashCode() method.
      * <p>
-     * The hashcode is calculated by getting the hashcode of the Bean String
-     * representation.
+     * The hashcode is calculated by getting the hashcode of the Bean String representation.
      * <p>
-     * To be used by classes extending EqualsBean. Although it works also for
-     * classes using EqualsBean in a delegation pattern, for correctness those
-     * classes should use the
+     * To be used by classes extending EqualsBean. Although it works also for classes using EqualsBean in a delegation pattern, for correctness those classes
+     * should use the
      * 
      * @see #beanHashCode() beanHashCode method.
      *      <p>
@@ -198,8 +188,7 @@ public class EqualsBean implements Serializable {
      * <p>
      * It follows the contract defined by the Object hashCode() method.
      * <p>
-     * The hashcode is calculated by getting the hashcode of the Bean String
-     * representation.
+     * The hashcode is calculated by getting the hashcode of the Bean String representation.
      * <p>
      * To be used by classes using EqualsBean in a delegation pattern,
      * 

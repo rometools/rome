@@ -25,6 +25,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -162,34 +163,26 @@ public class CloneableBean implements Serializable, Cloneable {
 
             final Object clonedBean = clazz.newInstance();
 
-            final PropertyDescriptor[] propertyDescriptors = BeanIntrospector.getPropertyDescriptors(clazz);
-            if (propertyDescriptors != null) {
-                for (final PropertyDescriptor propertyDescriptor : propertyDescriptors) {
+            final List<PropertyDescriptor> propertyDescriptors = BeanIntrospector.getPropertyDescriptorsWithGettersAndSetters(clazz);
+            for (final PropertyDescriptor propertyDescriptor : propertyDescriptors) {
+
+                final String propertyName = propertyDescriptor.getName();
+
+                final boolean ignoredProperty = ignoreProperties.contains(propertyName);
+
+                if (!ignoredProperty) {
 
                     final Method getter = propertyDescriptor.getReadMethod();
                     final Method setter = propertyDescriptor.getWriteMethod();
-                    final String propertyName = propertyDescriptor.getName();
 
-                    final boolean getterExists = getter != null;
-                    final boolean setterExists = setter != null;
-                    final boolean ignoredProperty = ignoreProperties.contains(propertyName);
-
-                    if (getterExists && setterExists && !ignoredProperty) {
-
-                        final boolean getterFromObject = getter.getDeclaringClass() == Object.class;
-                        final boolean getterWithoutParams = getter.getParameterTypes().length == 0;
-
-                        if (!getterFromObject && getterWithoutParams) {
-                            Object value = getter.invoke(obj, NO_PARAMS);
-                            if (value != null) {
-                                value = doClone(value);
-                                setter.invoke(clonedBean, new Object[] { value });
-                            }
-                        }
-
+                    Object value = getter.invoke(obj, NO_PARAMS);
+                    if (value != null) {
+                        value = doClone(value);
+                        setter.invoke(clonedBean, new Object[] { value });
                     }
 
                 }
+
             }
 
             return clonedBean;

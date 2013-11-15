@@ -22,15 +22,18 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Stack;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Provides deep <b>Bean</b> toString support.
  * <p>
- * It works on all read/write properties, recursively. It support all primitive
- * types, Strings, Collections, ToString objects and multi-dimensional arrays of
+ * It works on all read/write properties, recursively. It support all primitive types, Strings, Collections, ToString objects and multi-dimensional arrays of
  * any of them.
  * <p>
  * 
@@ -38,7 +41,9 @@ import java.util.Stack;
  * 
  */
 public class ToStringBean implements Serializable {
+
     private static final long serialVersionUID = -5850496718959612854L;
+    private static final Logger LOG = LoggerFactory.getLogger(ToStringBean.class);
 
     private static final ThreadLocal<Stack<String[]>> PREFIX_TL = new ThreadLocal<Stack<String[]>>() {
         @Override
@@ -63,8 +68,7 @@ public class ToStringBean implements Serializable {
      * To be used by classes extending ToStringBean only.
      * <p>
      * 
-     * @param beanClass indicates the class to scan for properties, normally an
-     *            interface class.
+     * @param beanClass indicates the class to scan for properties, normally an interface class.
      * 
      */
     protected ToStringBean(final Class<?> beanClass) {
@@ -93,8 +97,7 @@ public class ToStringBean implements Serializable {
      * </code>
      * <p>
      * 
-     * @param beanClass indicates the class to scan for properties, normally an
-     *            interface class.
+     * @param beanClass indicates the class to scan for properties, normally an interface class.
      * @param obj object bean to create String representation.
      * 
      */
@@ -141,32 +144,29 @@ public class ToStringBean implements Serializable {
      * 
      */
     private String toString(final String prefix) {
+
         final StringBuffer sb = new StringBuffer(128);
+
         try {
-            final PropertyDescriptor[] pds = BeanIntrospector.getPropertyDescriptors(beanClass);
-            if (pds != null) {
-                for (final PropertyDescriptor pd : pds) {
-                    final String pName = pd.getName();
-                    final Method pReadMethod = pd.getReadMethod();
-                    if (pReadMethod != null && // ensure it has a getter method
-                            pReadMethod.getDeclaringClass() != Object.class && // filter
-                                                                               // Object.class
-                                                                               // getter
-                                                                               // methods
-                            pReadMethod.getParameterTypes().length == 0) { // filter
-                                                                           // getter
-                                                                           // methods
-                                                                           // that
-                                                                           // take
-                                                                           // parameters
-                        final Object value = pReadMethod.invoke(obj, NO_PARAMS);
-                        printProperty(sb, prefix + "." + pName, value);
-                    }
-                }
+
+            final List<PropertyDescriptor> propertyDescriptors = BeanIntrospector.getPropertyDescriptorsWithGetters(beanClass);
+            for (final PropertyDescriptor propertyDescriptor : propertyDescriptors) {
+
+                final String propertyName = propertyDescriptor.getName();
+                final Method getter = propertyDescriptor.getReadMethod();
+
+                final Object value = getter.invoke(obj, NO_PARAMS);
+                printProperty(sb, prefix + "." + propertyName, value);
+
             }
-        } catch (final Exception ex) {
-            sb.append("\n\nEXCEPTION: Could not complete " + obj.getClass() + ".toString(): " + ex.getMessage() + "\n");
+
+        } catch (final Exception e) {
+            LOG.error("Error while generating toString", e);
+            final Class<? extends Object> clazz = obj.getClass();
+            final String errorMessage = e.getMessage();
+            sb.append(String.format("\n\nEXCEPTION: Could not complete %s.toString(): %s\n", clazz, errorMessage));
         }
+
         return sb.toString();
     }
 

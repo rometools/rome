@@ -26,9 +26,13 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.CopyFrom;
 
@@ -36,11 +40,28 @@ import com.sun.syndication.feed.CopyFrom;
  * @author Alejandro Abdelnur
  */
 public class CopyFromHelper {
+
+    private static final Logger LOG = LoggerFactory.getLogger(CopyFromHelper.class);
+
+    private static final Set<Class<?>> BASIC_TYPES = new HashSet<Class<?>>();
     private static final Object[] NO_PARAMS = new Object[0];
 
     private final Class<? extends CopyFrom<?>> beanInterfaceClass;
     private final Map<String, Class<?>> baseInterfaceMap; // ENTRIES(propertyName,interface.class)
     private final Map<Class<? extends CopyFrom<?>>, Class<?>> baseImplMap; // ENTRIES(interface.class,implementation.class)
+
+    static {
+        BASIC_TYPES.add(Boolean.class);
+        BASIC_TYPES.add(Byte.class);
+        BASIC_TYPES.add(Character.class);
+        BASIC_TYPES.add(Double.class);
+        BASIC_TYPES.add(Float.class);
+        BASIC_TYPES.add(Integer.class);
+        BASIC_TYPES.add(Long.class);
+        BASIC_TYPES.add(Short.class);
+        BASIC_TYPES.add(String.class);
+        BASIC_TYPES.add(Date.class);
+    }
 
     public CopyFromHelper(final Class<? extends CopyFrom<?>> beanInterfaceClass, final Map<String, Class<?>> basePropInterfaceMap,
             final Map<Class<? extends CopyFrom<?>>, Class<?>> basePropClassImplMap) {
@@ -50,47 +71,37 @@ public class CopyFromHelper {
     }
 
     public void copy(final Object target, final Object source) {
+
         try {
-            final PropertyDescriptor[] pds = BeanIntrospector.getPropertyDescriptors(beanInterfaceClass);
-            if (pds != null) {
-                for (final PropertyDescriptor pd : pds) {
-                    final String propertyName = pd.getName();
-                    final Method pReadMethod = pd.getReadMethod();
-                    final Method pWriteMethod = pd.getWriteMethod();
-                    if (pReadMethod != null && pWriteMethod != null && // ensure
-                                                                       // it has
-                                                                       // getter
-                                                                       // and
-                                                                       // setter
-                                                                       // methods
-                            pReadMethod.getDeclaringClass() != Object.class && // filter
-                                                                               // Object.class
-                                                                               // getter
-                                                                               // methods
-                            pReadMethod.getParameterTypes().length == 0 && // filter
-                                                                           // getter
-                                                                           // methods
-                                                                           // that
-                                                                           // take
-                                                                           // parameters
-                            baseInterfaceMap.containsKey(propertyName)) { // only
-                        // copies
-                        // properties
-                        // defined
-                        // as
-                        // copyFrom-able
-                        Object value = pReadMethod.invoke(source, NO_PARAMS);
-                        if (value != null) {
-                            final Class<?> baseInterface = baseInterfaceMap.get(propertyName);
-                            value = doCopy(value, baseInterface);
-                            pWriteMethod.invoke(target, new Object[] { value });
-                        }
+
+            final List<PropertyDescriptor> propertyDescriptors = BeanIntrospector.getPropertyDescriptorsWithGettersAndSetters(beanInterfaceClass);
+            for (final PropertyDescriptor propertyDescriptor : propertyDescriptors) {
+
+                final String propertyName = propertyDescriptor.getName();
+
+                if (baseInterfaceMap.containsKey(propertyName)) {
+
+                    final Method getter = propertyDescriptor.getReadMethod();
+
+                    // only copies properties defined as copyFrom-able
+                    Object value = getter.invoke(source, NO_PARAMS);
+                    if (value != null) {
+
+                        final Method setter = propertyDescriptor.getWriteMethod();
+
+                        final Class<?> baseInterface = baseInterfaceMap.get(propertyName);
+                        value = doCopy(value, baseInterface);
+                        setter.invoke(target, new Object[] { value });
                     }
                 }
+
             }
-        } catch (final Exception ex) {
-            throw new RuntimeException("Could not do a copyFrom " + ex, ex);
+
+        } catch (final Exception e) {
+            LOG.error("Error while copying object", e);
+            throw new RuntimeException("Could not do a copyFrom " + e, e);
         }
+
     }
 
     private CopyFrom<?> createInstance(final Class<? extends CopyFrom<?>> interfaceClass) throws Exception {
@@ -168,21 +179,6 @@ public class CopyFromHelper {
             newMap.put(entry.getKey(), doCopy(entry.getValue(), baseInterface));
         }
         return newMap;
-    }
-
-    private static final Set<Class<?>> BASIC_TYPES = new HashSet<Class<?>>();
-
-    static {
-        BASIC_TYPES.add(Boolean.class);
-        BASIC_TYPES.add(Byte.class);
-        BASIC_TYPES.add(Character.class);
-        BASIC_TYPES.add(Double.class);
-        BASIC_TYPES.add(Float.class);
-        BASIC_TYPES.add(Integer.class);
-        BASIC_TYPES.add(Long.class);
-        BASIC_TYPES.add(Short.class);
-        BASIC_TYPES.add(String.class);
-        BASIC_TYPES.add(Date.class);
     }
 
     private boolean isBasicType(final Class<?> vClass) {

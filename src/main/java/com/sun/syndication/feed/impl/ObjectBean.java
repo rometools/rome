@@ -20,21 +20,17 @@ import java.io.Serializable;
 import java.util.Set;
 
 /**
- * Convenience class providing clone(), toString(), equals() and hashCode()
- * functionality for Java Beans.
+ * Convenience class providing clone(), toString(), equals() and hashCode() functionality for Java Beans.
  * <p>
  * It works on all read/write properties, recursively.
  * <p>
- * It uses the CloneableBean, EqualsBean and ToStringBean classes in a
- * delegation pattern.
+ * It uses the CloneableBean, EqualsBean and ToStringBean classes in a delegation pattern.
  * <p>
  * <h3>ObjectBean programming conventions</h3>
  * <P>
- * All ObjectBean subclasses having properties that return collections they
- * should never return null if the property has been set to <b>null</b> or if a
- * collection has not been set. They should create and return an empty
- * collection, this empty collection instance should also be set to the
- * corresponding property.
+ * All ObjectBean subclasses having properties that return collections they should never return null if the property has been set to <b>null</b> or if a
+ * collection has not been set. They should create and return an empty collection, this empty collection instance should also be set to the corresponding
+ * property.
  * <P>
  * All ObjectBean subclasses properties should be live references.
  * <p>
@@ -43,7 +39,9 @@ import java.util.Set;
  * 
  */
 public class ObjectBean implements Serializable, Cloneable {
+
     private static final long serialVersionUID = -8784981605711980095L;
+
     private final EqualsBean equalsBean;
     private final ToStringBean toStringBean;
     private final CloneableBean cloneableBean;
@@ -62,13 +60,9 @@ public class ObjectBean implements Serializable, Cloneable {
     /**
      * Constructor.
      * <p>
-     * The property names in the ignoreProperties Set will not be copied into
-     * the cloned instance. This is useful for cases where the Bean has
-     * convenience properties (properties that are actually references to other
-     * properties or properties of properties). For example SyndFeed and
-     * SyndEntry beans have convenience properties, publishedDate, author,
-     * copyright and categories all of them mapped to properties in the DC
-     * Module.
+     * The property names in the ignoreProperties Set will not be copied into the cloned instance. This is useful for cases where the Bean has convenience
+     * properties (properties that are actually references to other properties or properties of properties). For example SyndFeed and SyndEntry beans have
+     * convenience properties, publishedDate, author, copyright and categories all of them mapped to properties in the DC Module.
      * <p>
      * 
      * @param beanClass the class/interface to be used for property scanning.
@@ -86,8 +80,7 @@ public class ObjectBean implements Serializable, Cloneable {
      * <p>
      * 
      * @return a clone of the object.
-     * @throws CloneNotSupportedException thrown if an element of the object
-     *             cannot be cloned.
+     * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
      * 
      */
     @Override
@@ -96,8 +89,7 @@ public class ObjectBean implements Serializable, Cloneable {
     }
 
     /**
-     * Indicates whether some other object is "equal to" this one as defined by
-     * the Object equals() method.
+     * Indicates whether some other object is "equal to" this one as defined by the Object equals() method.
      * <p>
      * 
      * @param other he reference object with which to compare.
