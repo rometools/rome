@@ -21,10 +21,10 @@ import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.lang.reflect.Method;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.Stack;
 
 import org.slf4j.Logger;
@@ -171,21 +171,33 @@ public class ToStringBean implements Serializable {
     }
 
     private void printProperty(final StringBuffer sb, final String prefix, final Object value) {
+
         if (value == null) {
+
             sb.append(prefix).append("=null\n");
+
         } else if (value.getClass().isArray()) {
+
             printArrayProperty(sb, prefix, value);
+
         } else if (value instanceof Map) {
+
             @SuppressWarnings("unchecked")
             final Map<Object, Object> map = (Map<Object, Object>) value;
-            final Iterator<Entry<Object, Object>> i = map.entrySet().iterator();
-            if (i.hasNext()) {
-                while (i.hasNext()) {
-                    final Map.Entry<Object, Object> me = i.next();
-                    final String ePrefix = prefix + "[" + me.getKey() + "]";
-                    final Object eValue = me.getValue();
+            final Set<Entry<Object, Object>> entries = map.entrySet();
 
-                    // NEW
+            if (entries.isEmpty()) {
+
+                sb.append(prefix).append("=[]\n");
+
+            } else {
+
+                for (final Entry<Object, Object> entry : entries) {
+
+                    final Object eKey = entry.getKey();
+                    final Object eValue = entry.getValue();
+                    final String ePrefix = String.format("%s[%s]", prefix, eKey);
+
                     final String[] tsInfo = new String[2];
                     tsInfo[0] = ePrefix;
                     final Stack<String[]> stack = PREFIX_TL.get();
@@ -202,21 +214,27 @@ public class ToStringBean implements Serializable {
                     } else {
                         sb.append(s);
                     }
+
                 }
-            } else {
-                sb.append(prefix).append("=[]\n");
+
             }
+
         } else if (value instanceof Collection) {
+
             @SuppressWarnings("unchecked")
             final Collection<Object> collection = (Collection<Object>) value;
-            final Iterator<Object> i = collection.iterator();
-            if (i.hasNext()) {
-                int c = 0;
-                while (i.hasNext()) {
-                    final String cPrefix = prefix + "[" + c++ + "]";
-                    final Object cValue = i.next();
+            if (collection.isEmpty()) {
 
-                    // NEW
+                sb.append(prefix).append("=[]\n");
+
+            } else {
+
+                int c = 0;
+
+                for (final Object cValue : collection) {
+
+                    final String cPrefix = String.format("%s[%s]", prefix, c++);
+
                     final String[] tsInfo = new String[2];
                     tsInfo[0] = cPrefix;
                     final Stack<String[]> stack = PREFIX_TL.get();
@@ -234,10 +252,10 @@ public class ToStringBean implements Serializable {
                         sb.append(s);
                     }
                 }
-            } else {
-                sb.append(prefix).append("=[]\n");
             }
+
         } else {
+
             final String[] tsInfo = new String[2];
             tsInfo[0] = prefix;
             final Stack<String[]> stack = PREFIX_TL.get();
@@ -249,6 +267,7 @@ public class ToStringBean implements Serializable {
             } else {
                 sb.append(s);
             }
+
         }
     }
 
@@ -256,7 +275,7 @@ public class ToStringBean implements Serializable {
         final int length = Array.getLength(array);
         for (int i = 0; i < length; i++) {
             final Object obj = Array.get(array, i);
-            printProperty(sb, prefix + "[" + i + "]", obj);
+            printProperty(sb, String.format("%s[%s]", prefix, i), obj);
         }
     }
 
