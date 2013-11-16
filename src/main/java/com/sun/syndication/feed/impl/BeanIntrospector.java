@@ -134,31 +134,45 @@ public class BeanIntrospector {
     }
 
     private static Map<String, PropertyDescriptor> getPDs(final Method[] methods, final boolean setters) throws IntrospectionException {
+
         final Map<String, PropertyDescriptor> pds = new HashMap<String, PropertyDescriptor>();
+
         for (final Method method : methods) {
-            String pName = null;
-            PropertyDescriptor pDescriptor = null;
-            if ((method.getModifiers() & Modifier.PUBLIC) != 0) {
+
+            String propertyName = null;
+            PropertyDescriptor propertyDescriptor = null;
+
+            final int modifiers = method.getModifiers();
+            if ((modifiers & Modifier.PUBLIC) != 0) {
+
+                final String methodName = method.getName();
+                final Class<?> returnType = method.getReturnType();
+                final int nrOfParameters = method.getParameterTypes().length;
+
                 if (setters) {
-                    if (method.getName().startsWith(SETTER) && method.getReturnType() == void.class && method.getParameterTypes().length == 1) {
-                        pName = Introspector.decapitalize(method.getName().substring(3));
-                        pDescriptor = new PropertyDescriptor(pName, null, method);
+                    if (methodName.startsWith(SETTER) && returnType == void.class && nrOfParameters == 1) {
+                        propertyName = Introspector.decapitalize(methodName.substring(3));
+                        propertyDescriptor = new PropertyDescriptor(propertyName, null, method);
                     }
                 } else {
-                    if (method.getName().startsWith(GETTER) && method.getReturnType() != void.class && method.getParameterTypes().length == 0) {
-                        pName = Introspector.decapitalize(method.getName().substring(3));
-                        pDescriptor = new PropertyDescriptor(pName, method, null);
-                    } else if (method.getName().startsWith(BOOLEAN_GETTER) && method.getReturnType() == boolean.class && method.getParameterTypes().length == 0) {
-                        pName = Introspector.decapitalize(method.getName().substring(2));
-                        pDescriptor = new PropertyDescriptor(pName, method, null);
+                    if (methodName.startsWith(GETTER) && returnType != void.class && nrOfParameters == 0) {
+                        propertyName = Introspector.decapitalize(methodName.substring(3));
+                        propertyDescriptor = new PropertyDescriptor(propertyName, method, null);
+                    } else if (methodName.startsWith(BOOLEAN_GETTER) && returnType == boolean.class && nrOfParameters == 0) {
+                        propertyName = Introspector.decapitalize(methodName.substring(2));
+                        propertyDescriptor = new PropertyDescriptor(propertyName, method, null);
                     }
                 }
             }
-            if (pName != null) {
-                pds.put(pName, pDescriptor);
+
+            if (propertyName != null) {
+                pds.put(propertyName, propertyDescriptor);
             }
+
         }
+
         return pds;
+
     }
 
     private static List<PropertyDescriptor> merge(final Map<String, PropertyDescriptor> getters, final Map<String, PropertyDescriptor> setters)
