@@ -48,10 +48,8 @@ public interface ModuleParser {
      * Parses the XML node (JDOM element) extracting module information.
      * <p>
      * 
-     * @param element the XML node (JDOM element) to extract module information
-     *            from.
-     * @return a module instance, <b>null</b> if the element did not have module
-     *         information.
+     * @param element the XML node (JDOM element) to extract module information from.
+     * @return a module instance, <b>null</b> if the element did not have module information.
      * 
      */
     public Module parse(Element element, Locale locale);

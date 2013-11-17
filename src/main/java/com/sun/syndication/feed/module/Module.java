@@ -21,8 +21,8 @@ import java.io.Serializable;
 import com.sun.syndication.feed.CopyFrom;
 
 /**
- * Base class for modules describing Metadata of feeds. Examples of such modules
- * are the Dublin Core and Syndication modules.
+ * Base class for modules describing Metadata of feeds. Examples of such modules are the Dublin Core
+ * and Syndication modules.
  * <p>
  * 
  * @author Alejandro Abdelnur
@@ -44,8 +44,7 @@ public interface Module extends Cloneable, CopyFrom<Module>, Serializable {
      * <p>
      * 
      * @return a clone of the object.
-     * @throws CloneNotSupportedException thrown if an element of the object
-     *             cannot be cloned.
+     * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
      * 
      */
     public Object clone() throws CloneNotSupportedException;

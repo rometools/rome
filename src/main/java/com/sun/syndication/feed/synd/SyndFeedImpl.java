@@ -44,8 +44,8 @@ import com.sun.syndication.feed.synd.impl.URINormalizer;
 /**
  * Bean for all types of feeds.
  * <p>
- * It handles all RSS versions, Atom 0.3 and Atom 1.0, it normalizes all info,
- * it may lose information.
+ * It handles all RSS versions, Atom 0.3 and Atom 1.0, it normalizes all info, it may lose
+ * information.
  * <p>
  * 
  * @author Alejandro Abdelnur
@@ -85,9 +85,8 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Unmodifiable Set containing the convenience properties of this class.
      * <p>
-     * Convenience properties are mapped to Modules, for cloning the convenience
-     * properties can be ignored as the will be copied as part of the module
-     * cloning.
+     * Convenience properties are mapped to Modules, for cloning the convenience properties can be
+     * ignored as the will be copied as part of the module cloning.
      */
 
     public static final Set<String> CONVENIENCE_PROPERTIES = Collections.unmodifiableSet(IGNORE_PROPERTIES);
@@ -101,8 +100,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     }
 
     /**
-     * Returns the real feed types the SyndFeedImpl supports when converting
-     * from and to.
+     * Returns the real feed types the SyndFeedImpl supports when converting from and to.
      * <p>
      * 
      * @return the real feed type supported.
@@ -113,14 +111,13 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     }
 
     /**
-     * For implementations extending SyndFeedImpl to be able to use the
-     * ObjectBean functionality with extended interfaces.
+     * For implementations extending SyndFeedImpl to be able to use the ObjectBean functionality
+     * with extended interfaces.
      * <p>
      * 
      * @param beanClass
-     * @param convenienceProperties set containing the convenience properties of
-     *            the SyndEntryImpl (the are ignored during cloning, check
-     *            CloneableBean for details).
+     * @param convenienceProperties set containing the convenience properties of the SyndEntryImpl
+     *            (the are ignored during cloning, check CloneableBean for details).
      * 
      */
     protected SyndFeedImpl(final Class<?> beanClass, final Set<String> convenienceProperties) {
@@ -137,12 +134,11 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     }
 
     /**
-     * Creates a SyndFeedImpl and populates all its properties out of the given
-     * RSS Channel or Atom Feed properties.
+     * Creates a SyndFeedImpl and populates all its properties out of the given RSS Channel or Atom
+     * Feed properties.
      * <p>
      * 
-     * @param feed the RSS Channel or the Atom Feed to populate the properties
-     *            from.
+     * @param feed the RSS Channel or the Atom Feed to populate the properties from.
      * 
      */
     public SyndFeedImpl(final WireFeed feed) {
@@ -150,9 +146,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     }
 
     /**
-     * Creates a SyndFeedImpl and populates all its properties out of the given
-     * RSS Channel or Atom Feed properties, while optionally preserving the
-     * WireFeed for access via the orignalWireFeed() method.
+     * Creates a SyndFeedImpl and populates all its properties out of the given RSS Channel or Atom
+     * Feed properties, while optionally preserving the WireFeed for access via the
+     * orignalWireFeed() method.
      * 
      * @param feed
      * @param preserveWireFeed
@@ -181,8 +177,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * <p>
      * 
      * @return a clone of the object.
-     * @throws CloneNotSupportedException thrown if an element of the object
-     *             cannot be cloned.
+     * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
      * 
      */
     @Override
@@ -191,8 +186,8 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     }
 
     /**
-     * Indicates whether some other object is "equal to" this one as defined by
-     * the Object equals() method.
+     * Indicates whether some other object is "equal to" this one as defined by the Object equals()
+     * method.
      * <p>
      * 
      * @param other he reference object with which to compare.
@@ -241,8 +236,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Creates a real feed containing the information of the SyndFeedImpl.
      * <p>
-     * The feed type of the created WireFeed is taken from the SyndFeedImpl
-     * feedType property.
+     * The feed type of the created WireFeed is taken from the SyndFeedImpl feedType property.
      * <p>
      * 
      * @return the real feed.
@@ -274,13 +268,11 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     }
 
     /**
-     * Returns the WireFeed this SyndFeed was created from. Will return null if
-     * the original feed is not stored or if this SyndFeed was not created from
-     * a WireFeed. <br />
-     * Note: The wire feed returned here will NOT contain any modifications done
-     * on this SyndFeed since it was created. That is in contrast to the
-     * createWireFeed method, which will reflect the current state of the
-     * SyndFeed
+     * Returns the WireFeed this SyndFeed was created from. Will return null if the original feed is
+     * not stored or if this SyndFeed was not created from a WireFeed. <br />
+     * Note: The wire feed returned here will NOT contain any modifications done on this SyndFeed
+     * since it was created. That is in contrast to the createWireFeed method, which will reflect
+     * the current state of the SyndFeed
      * 
      * @return The WireFeed this was created from, or null
      * 
@@ -291,8 +283,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     }
 
     /**
-     * Returns the wire feed type the feed had/will-have when coverted from/to a
-     * WireFeed.
+     * Returns the wire feed type the feed had/will-have when coverted from/to a WireFeed.
      * <p>
      * 
      * @return the feed type, <b>null</b> if none.
@@ -316,8 +307,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     }
 
     /**
-     * Returns the charset encoding of a the feed. This is not set by Rome
-     * parsers.
+     * Returns the charset encoding of a the feed. This is not set by Rome parsers.
      * <p>
      * 
      * @return the charset encoding of the feed.
@@ -343,25 +333,22 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Returns the feed URI.
      * <p>
-     * How the feed URI maps to a concrete feed type (RSS or Atom) depends on
-     * the concrete feed type. This is explained in detail in Rome
-     * documentation, <a
-     * href="http://wiki.java.net/bin/edit/Javawsxml/Rome04URIMapping">Feed and
-     * entry URI mapping</a>.
+     * How the feed URI maps to a concrete feed type (RSS or Atom) depends on the concrete feed
+     * type. This is explained in detail in Rome documentation, <a
+     * href="http://wiki.java.net/bin/edit/Javawsxml/Rome04URIMapping">Feed and entry URI
+     * mapping</a>.
      * <p>
      * The returned URI is a normalized URI as specified in RFC 2396bis.
      * <p>
-     * Note: The URI is the unique identifier, in the RSS 2.0/atom case this is
-     * the GUID, for RSS 1.0 this is the URI attribute of the item. The Link is
-     * the URL that the item is accessible under, the URI is the permanent
-     * identifier which the aggregator should use to reference this item. Often
-     * the URI will use some standardized identifier scheme such as DOI's so
-     * that items can be identified even if they appear in multiple feeds with
-     * different "links" (they might be on different hosting platforms but be
-     * the same item). Also, though rare, there could be multiple items with the
-     * same link but a different URI and associated metadata which need to be
-     * treated as distinct entities. In the RSS 1.0 case the URI must be a valid
-     * RDF URI reference.
+     * Note: The URI is the unique identifier, in the RSS 2.0/atom case this is the GUID, for RSS
+     * 1.0 this is the URI attribute of the item. The Link is the URL that the item is accessible
+     * under, the URI is the permanent identifier which the aggregator should use to reference this
+     * item. Often the URI will use some standardized identifier scheme such as DOI's so that items
+     * can be identified even if they appear in multiple feeds with different "links" (they might be
+     * on different hosting platforms but be the same item). Also, though rare, there could be
+     * multiple items with the same link but a different URI and associated metadata which need to
+     * be treated as distinct entities. In the RSS 1.0 case the URI must be a valid RDF URI
+     * reference.
      * <p>
      * 
      * @return the feed URI, <b>null</b> if none.
@@ -375,23 +362,20 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Sets the feed URI.
      * <p>
-     * How the feed URI maps to a concrete feed type (RSS or Atom) depends on
-     * the concrete feed type. This is explained in detail in Rome
-     * documentation, <a
-     * href="http://wiki.java.net/bin/edit/Javawsxml/Rome04URIMapping">Feed and
-     * entry URI mapping</a>.
+     * How the feed URI maps to a concrete feed type (RSS or Atom) depends on the concrete feed
+     * type. This is explained in detail in Rome documentation, <a
+     * href="http://wiki.java.net/bin/edit/Javawsxml/Rome04URIMapping">Feed and entry URI
+     * mapping</a>.
      * <p>
-     * Note: The URI is the unique identifier, in the RSS 2.0/atom case this is
-     * the GUID, for RSS 1.0 this is the URI attribute of the item. The Link is
-     * the URL that the item is accessible under, the URI is the permanent
-     * identifier which the aggregator should use to reference this item. Often
-     * the URI will use some standardized identifier scheme such as DOI's so
-     * that items can be identified even if they appear in multiple feeds with
-     * different "links" (they might be on different hosting platforms but be
-     * the same item). Also, though rare, there could be multiple items with the
-     * same link but a different URI and associated metadata which need to be
-     * treated as distinct entities. In the RSS 1.0 case the URI must be a valid
-     * RDF URI reference.
+     * Note: The URI is the unique identifier, in the RSS 2.0/atom case this is the GUID, for RSS
+     * 1.0 this is the URI attribute of the item. The Link is the URL that the item is accessible
+     * under, the URI is the permanent identifier which the aggregator should use to reference this
+     * item. Often the URI will use some standardized identifier scheme such as DOI's so that items
+     * can be identified even if they appear in multiple feeds with different "links" (they might be
+     * on different hosting platforms but be the same item). Also, though rare, there could be
+     * multiple items with the same link but a different URI and associated metadata which need to
+     * be treated as distinct entities. In the RSS 1.0 case the URI must be a valid RDF URI
+     * reference.
      * <p>
      * 
      * @param uri the feed URI to set, <b>null</b> if none.
@@ -459,17 +443,15 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Returns the feed link.
      * <p>
-     * Note: The URI is the unique identifier, in the RSS 2.0/atom case this is
-     * the GUID, for RSS 1.0 this is the URI attribute of the item. The Link is
-     * the URL that the item is accessible under, the URI is the permanent
-     * identifier which the aggregator should use to reference this item. Often
-     * the URI will use some standardized identifier scheme such as DOI's so
-     * that items can be identified even if they appear in multiple feeds with
-     * different "links" (they might be on different hosting platforms but be
-     * the same item). Also, though rare, there could be multiple items with the
-     * same link but a different URI and associated metadata which need to be
-     * treated as distinct entities. In the RSS 1.0 case the URI must be a valid
-     * RDF URI reference.
+     * Note: The URI is the unique identifier, in the RSS 2.0/atom case this is the GUID, for RSS
+     * 1.0 this is the URI attribute of the item. The Link is the URL that the item is accessible
+     * under, the URI is the permanent identifier which the aggregator should use to reference this
+     * item. Often the URI will use some standardized identifier scheme such as DOI's so that items
+     * can be identified even if they appear in multiple feeds with different "links" (they might be
+     * on different hosting platforms but be the same item). Also, though rare, there could be
+     * multiple items with the same link but a different URI and associated metadata which need to
+     * be treated as distinct entities. In the RSS 1.0 case the URI must be a valid RDF URI
+     * reference.
      * <p>
      * 
      * @return the feed link, <b>null</b> if none.
@@ -483,17 +465,15 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Sets the feed link.
      * <p>
-     * Note: The URI is the unique identifier, in the RSS 2.0/atom case this is
-     * the GUID, for RSS 1.0 this is the URI attribute of the item. The Link is
-     * the URL that the item is accessible under, the URI is the permanent
-     * identifier which the aggregator should use to reference this item. Often
-     * the URI will use some standardized identifier scheme such as DOI's so
-     * that items can be identified even if they appear in multiple feeds with
-     * different "links" (they might be on different hosting platforms but be
-     * the same item). Also, though rare, there could be multiple items with the
-     * same link but a different URI and associated metadata which need to be
-     * treated as distinct entities. In the RSS 1.0 case the URI must be a valid
-     * RDF URI reference.
+     * Note: The URI is the unique identifier, in the RSS 2.0/atom case this is the GUID, for RSS
+     * 1.0 this is the URI attribute of the item. The Link is the URL that the item is accessible
+     * under, the URI is the permanent identifier which the aggregator should use to reference this
+     * item. Often the URI will use some standardized identifier scheme such as DOI's so that items
+     * can be identified even if they appear in multiple feeds with different "links" (they might be
+     * on different hosting platforms but be the same item). Also, though rare, there could be
+     * multiple items with the same link but a different URI and associated metadata which need to
+     * be treated as distinct entities. In the RSS 1.0 case the URI must be a valid RDF URI
+     * reference.
      * <p>
      * 
      * @param link the feed link to set, <b>null</b> if none.
@@ -561,8 +541,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Returns the feed published date.
      * <p>
-     * This method is a convenience method, it maps to the Dublin Core module
-     * date.
+     * This method is a convenience method, it maps to the Dublin Core module date.
      * <p>
      * 
      * @return the feed published date, <b>null</b> if none.
@@ -576,8 +555,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Sets the feed published date.
      * <p>
-     * This method is a convenience method, it maps to the Dublin Core module
-     * date.
+     * This method is a convenience method, it maps to the Dublin Core module date.
      * <p>
      * 
      * @param publishedDate the feed published date to set, <b>null</b> if none.
@@ -591,8 +569,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Returns the feed copyright.
      * <p>
-     * This method is a convenience method, it maps to the Dublin Core module
-     * rights.
+     * This method is a convenience method, it maps to the Dublin Core module rights.
      * <p>
      * 
      * @return the feed copyright, <b>null</b> if none.
@@ -606,8 +583,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Sets the feed copyright.
      * <p>
-     * This method is a convenience method, it maps to the Dublin Core module
-     * rights.
+     * This method is a convenience method, it maps to the Dublin Core module rights.
      * <p>
      * 
      * @param copyright the feed copyright to set, <b>null</b> if none.
@@ -645,12 +621,10 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Returns the feed categories.
      * <p>
-     * This method is a convenience method, it maps to the Dublin Core module
-     * subjects.
+     * This method is a convenience method, it maps to the Dublin Core module subjects.
      * <p>
      * 
-     * @return a list of SyndCategoryImpl elements with the feed categories, an
-     *         empty list if none.
+     * @return a list of SyndCategoryImpl elements with the feed categories, an empty list if none.
      * 
      */
     @Override
@@ -661,12 +635,11 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Sets the feed categories.
      * <p>
-     * This method is a convenience method, it maps to the Dublin Core module
-     * subjects.
+     * This method is a convenience method, it maps to the Dublin Core module subjects.
      * <p>
      * 
-     * @param categories the list of SyndCategoryImpl elements with the feed
-     *            categories to set, an empty list or <b>null</b> if none.
+     * @param categories the list of SyndCategoryImpl elements with the feed categories to set, an
+     *            empty list or <b>null</b> if none.
      * 
      */
     @Override
@@ -678,8 +651,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * Returns the feed entries.
      * <p>
      * 
-     * @return a list of SyndEntryImpl elements with the feed entries, an empty
-     *         list if none.
+     * @return a list of SyndEntryImpl elements with the feed entries, an empty list if none.
      * 
      */
     @Override
@@ -694,8 +666,8 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * Sets the feed entries.
      * <p>
      * 
-     * @param entries the list of SyndEntryImpl elements with the feed entries
-     *            to set, an empty list or <b>null</b> if none.
+     * @param entries the list of SyndEntryImpl elements with the feed entries to set, an empty list
+     *            or <b>null</b> if none.
      * 
      */
     @Override
@@ -706,8 +678,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Returns the feed language.
      * <p>
-     * This method is a convenience method, it maps to the Dublin Core module
-     * language.
+     * This method is a convenience method, it maps to the Dublin Core module language.
      * <p>
      * 
      * @return the feed language, <b>null</b> if none.
@@ -721,8 +692,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Sets the feed language.
      * <p>
-     * This method is a convenience method, it maps to the Dublin Core module
-     * language.
+     * This method is a convenience method, it maps to the Dublin Core module language.
      * <p>
      * 
      * @param language the feed language to set, <b>null</b> if none.
@@ -737,8 +707,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * Returns the feed modules.
      * <p>
      * 
-     * @return a list of ModuleImpl elements with the feed modules, an empty
-     *         list if none.
+     * @return a list of ModuleImpl elements with the feed modules, an empty list if none.
      * 
      */
     @Override
@@ -756,8 +725,8 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * Sets the feed modules.
      * <p>
      * 
-     * @param modules the list of ModuleImpl elements with the feed modules to
-     *            set, an empty list or <b>null</b> if none.
+     * @param modules the list of ModuleImpl elements with the feed modules to set, an empty list or
+     *            <b>null</b> if none.
      * 
      */
     @Override
@@ -865,8 +834,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Returns the feed author.
      * <p>
-     * This method is a convenience method, it maps to the Dublin Core module
-     * creator.
+     * This method is a convenience method, it maps to the Dublin Core module creator.
      * <p>
      * 
      * @return the feed author, <b>null</b> if none.
@@ -880,8 +848,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Sets the feed author.
      * <p>
-     * This method is a convenience method, it maps to the Dublin Core module
-     * creator.
+     * This method is a convenience method, it maps to the Dublin Core module creator.
      * <p>
      * 
      * @param author the feed author to set, <b>null</b> if none.
@@ -949,7 +916,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * {@inheritDoc}
      */
     @Override
-    public void setDocs(String docs) {
+    public void setDocs(final String docs) {
         this.docs = docs;
     }
 
@@ -965,7 +932,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * {@inheritDoc}
      */
     @Override
-    public void setGenerator(String generator) {
+    public void setGenerator(final String generator) {
         this.generator = generator;
     }
 
@@ -981,7 +948,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * {@inheritDoc}
      */
     @Override
-    public void setManagingEditor(String managingEditor) {
+    public void setManagingEditor(final String managingEditor) {
         this.managingEditor = managingEditor;
     }
 
@@ -997,7 +964,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * {@inheritDoc}
      */
     @Override
-    public void setWebMaster(String webMaster) {
+    public void setWebMaster(final String webMaster) {
         this.webMaster = webMaster;
     }
 
@@ -1013,7 +980,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * {@inheritDoc}
      */
     @Override
-    public void setStyleSheet(String styleSheet) {
+    public void setStyleSheet(final String styleSheet) {
         this.styleSheet = styleSheet;
     }
 }

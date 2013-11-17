@@ -13,8 +13,8 @@ public class URINormalizer {
      * <p>
      * 
      * @param uri to normalize.
-     * @return the normalized value of the given URI, or <b>null</b> if the
-     *         given URI was <b>null</b>.
+     * @return the normalized value of the given URI, or <b>null</b> if the given URI was
+     *         <b>null</b>.
      */
     public static String normalize(final String uri) {
         String normalizedUri = null;

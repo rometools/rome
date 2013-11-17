@@ -53,7 +53,7 @@ public class ConverterForRSS094 extends ConverterForRSS093 {
         final List<Category> cats = channel.getCategories(); // c
         if (cats.size() > 0) {
             final Set<SyndCategory> s = new LinkedHashSet<SyndCategory>(); // using a
-                                                                     // set to
+            // set to
             // remove
             // duplicates
             s.addAll(createSyndCategories(cats)); // feed native categories
@@ -74,7 +74,7 @@ public class ConverterForRSS094 extends ConverterForRSS093 {
             final List<String> creators = ((DCModule) syndEntry.getModule(DCModule.URI)).getCreators();
             if (!creators.contains(author)) {
                 final Set<String> s = new LinkedHashSet<String>(); // using a set to
-                                                             // remove
+                // remove
                 // duplicates
                 s.addAll(creators); // DC creators
                 s.add(author); // feed native author

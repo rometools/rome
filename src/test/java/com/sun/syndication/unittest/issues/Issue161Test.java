@@ -7,8 +7,9 @@ import com.sun.syndication.unittest.TestSyndFeedRSS20;
 
 /**
  * Test for #161: No source element in RSS 2.0 items.
+ * 
  * @author Martin Kurz
- *
+ * 
  */
 public class Issue161Test extends TestSyndFeedRSS20 {
 

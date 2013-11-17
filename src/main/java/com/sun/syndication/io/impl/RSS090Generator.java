@@ -104,8 +104,8 @@ public class RSS090Generator extends BaseWireFeedGenerator {
     }
 
     /**
-     * Populates the given channel with parsed data from the ROME element that
-     * holds the channel data.
+     * Populates the given channel with parsed data from the ROME element that holds the channel
+     * data.
      * 
      * @param channel the channel into which parsed data will be added.
      * @param eChannel the XML element that holds the data for the channel.

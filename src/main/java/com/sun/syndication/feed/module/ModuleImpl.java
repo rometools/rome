@@ -21,8 +21,8 @@ import java.io.Serializable;
 import com.sun.syndication.feed.impl.ObjectBean;
 
 /**
- * Base class for modules describing Metadata of feeds, default implementations.
- * Examples of such modules are the Dublin Core and Syndication modules.
+ * Base class for modules describing Metadata of feeds, default implementations. Examples of such
+ * modules are the Dublin Core and Syndication modules.
  * <p>
  * 
  * @author Alejandro Abdelnur
@@ -50,8 +50,7 @@ public abstract class ModuleImpl implements Cloneable, Serializable, Module {
      * <p>
      * 
      * @return a clone of the object.
-     * @throws CloneNotSupportedException thrown if an element of the object
-     *             cannot be cloned.
+     * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
      * 
      */
     @Override
@@ -60,8 +59,8 @@ public abstract class ModuleImpl implements Cloneable, Serializable, Module {
     }
 
     /**
-     * Indicates whether some other object is "equal to" this one as defined by
-     * the Object equals() method.
+     * Indicates whether some other object is "equal to" this one as defined by the Object equals()
+     * method.
      * <p>
      * 
      * @param other he reference object with which to compare.

@@ -38,8 +38,7 @@ public class TestSyndFeedRSS20 extends TestSyndFeedRSS094 {
     }
 
     /**
-     * Test we can get to RSS attributes which aren't exposed in the SyndEntry
-     * object
+     * Test we can get to RSS attributes which aren't exposed in the SyndEntry object
      * 
      * @throws Exception
      */

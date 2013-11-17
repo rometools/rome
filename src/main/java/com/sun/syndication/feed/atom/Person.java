@@ -59,8 +59,7 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
      * <p>
      * 
      * @return a clone of the object.
-     * @throws CloneNotSupportedException thrown if an element of the object
-     *             cannot be cloned.
+     * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
      * 
      */
     @Override
@@ -69,8 +68,8 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
     }
 
     /**
-     * Indicates whether some other object is "equal to" this one as defined by
-     * the Object equals() method.
+     * Indicates whether some other object is "equal to" this one as defined by the Object equals()
+     * method.
      * <p>
      * 
      * @param other he reference object with which to compare.
@@ -216,8 +215,7 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
      * Returns the entry modules.
      * <p>
      * 
-     * @return a list of ModuleImpl elements with the entry modules, an emtpy
-     *         list if none.
+     * @return a list of ModuleImpl elements with the entry modules, an emtpy list if none.
      * 
      */
     @Override
@@ -232,8 +230,8 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
      * Sets the entry modules.
      * <p>
      * 
-     * @param modules the list of ModuleImpl elements with the entry modules to
-     *            set, an empty list or <b>null</b> if none.
+     * @param modules the list of ModuleImpl elements with the entry modules to set, an empty list
+     *            or <b>null</b> if none.
      * 
      */
     @Override

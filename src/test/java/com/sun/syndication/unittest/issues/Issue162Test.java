@@ -10,8 +10,9 @@ import com.sun.syndication.unittest.TestSyndFeedRSS20;
 
 /**
  * Test for #161: No source element in RSS 2.0 items.
+ * 
  * @author Martin Kurz
- *
+ * 
  */
 public class Issue162Test extends TestSyndFeedRSS20 {
 
@@ -20,7 +21,7 @@ public class Issue162Test extends TestSyndFeedRSS20 {
     }
 
     public void testWireFeed() throws Exception {
-        final Channel channel = ((Channel) this.getCachedWireFeed());
+        final Channel channel = (Channel) getCachedWireFeed();
         assertProperty(channel.getDocs(), "channel.docs");
         assertProperty(channel.getGenerator(), "channel.generator");
         assertProperty(channel.getManagingEditor(), "channel.managingEditor");
@@ -28,14 +29,14 @@ public class Issue162Test extends TestSyndFeedRSS20 {
     }
 
     public void testWireFeedItems() throws Exception {
-        final int count = ((Channel) this.getCachedWireFeed()).getItems().size();
+        final int count = ((Channel) getCachedWireFeed()).getItems().size();
         for (int i = 0; i < count; i++) {
             testItem(i);
         }
     }
 
     protected void testWireFeedItem(final int i) throws Exception {
-        final List<Item> items = ((Channel) this.getCachedWireFeed()).getItems();
+        final List<Item> items = ((Channel) getCachedWireFeed()).getItems();
         final Item entry = items.get(i);
         assertProperty(entry.getComments(), "channel.item[" + i + "].comments");
     }

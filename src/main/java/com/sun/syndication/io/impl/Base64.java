@@ -27,8 +27,7 @@ package com.sun.syndication.io.impl;
 public class Base64 {
 
     /**
-     * Encodes a String into a base 64 String. The resulting encoding is chunked
-     * at 76 bytes.
+     * Encodes a String into a base 64 String. The resulting encoding is chunked at 76 bytes.
      * <p>
      * 
      * @param s String to encode.
@@ -48,8 +47,8 @@ public class Base64 {
      * 
      * @param s String to decode.
      * @return encoded string.
-     * @throws java.lang.IllegalArgumentException thrown if the given byte array
-     *             was not valid com.sun.syndication.io.impl.Base64 encoding.
+     * @throws java.lang.IllegalArgumentException thrown if the given byte array was not valid
+     *             com.sun.syndication.io.impl.Base64 encoding.
      * 
      */
     public static String decode(String s) throws IllegalArgumentException {
@@ -146,8 +145,8 @@ public class Base64 {
      * 
      * @param eData byte array to decode.
      * @return decoded byte array.
-     * @throws java.lang.IllegalArgumentException thrown if the given byte array
-     *             was not valid com.sun.syndication.io.impl.Base64 encoding.
+     * @throws java.lang.IllegalArgumentException thrown if the given byte array was not valid
+     *             com.sun.syndication.io.impl.Base64 encoding.
      * 
      */
     public static byte[] decode(final byte[] eData) {

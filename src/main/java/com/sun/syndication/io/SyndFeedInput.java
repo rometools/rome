@@ -29,8 +29,8 @@ import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.feed.synd.SyndFeedImpl;
 
 /**
- * Parses an XML document (File, InputStream, Reader, W3C SAX InputSource, W3C
- * DOM Document or JDom DOcument) into an SyndFeedImpl.
+ * Parses an XML document (File, InputStream, Reader, W3C SAX InputSource, W3C DOM Document or JDom
+ * DOcument) into an SyndFeedImpl.
  * <p>
  * It delegates to a WireFeedInput to handle all feed types.
  * <p>
@@ -55,8 +55,8 @@ public class SyndFeedInput {
      * Creates a SyndFeedInput instance.
      * <p>
      * 
-     * @param validate indicates if the input should be validated. NOT
-     *            IMPLEMENTED YET (validation does not happen)
+     * @param validate indicates if the input should be validated. NOT IMPLEMENTED YET (validation
+     *            does not happen)
      * 
      */
     public SyndFeedInput(final boolean validate, final Locale locale) {
@@ -66,14 +66,11 @@ public class SyndFeedInput {
     /**
      * Enables XML healing in the WiredFeedInput instance.
      * <p>
-     * Healing trims leading chars from the stream (empty spaces and comments)
-     * until the XML prolog.
+     * Healing trims leading chars from the stream (empty spaces and comments) until the XML prolog.
      * <p>
-     * Healing resolves HTML entities (from literal to code number) in the
-     * reader.
+     * Healing resolves HTML entities (from literal to code number) in the reader.
      * <p>
-     * The healing is done only with the build(File) and build(Reader)
-     * signatures.
+     * The healing is done only with the build(File) and build(Reader) signatures.
      * <p>
      * By default is TRUE.
      * <p>
@@ -86,17 +83,13 @@ public class SyndFeedInput {
     }
 
     /**
-     * Indicates if the WiredFeedInput instance will XML heal (if necessary) the
-     * character stream.
+     * Indicates if the WiredFeedInput instance will XML heal (if necessary) the character stream.
      * <p>
-     * Healing trims leading chars from the stream (empty spaces and comments)
-     * until the XML prolog.
+     * Healing trims leading chars from the stream (empty spaces and comments) until the XML prolog.
      * <p>
-     * Healing resolves HTML entities (from literal to code number) in the
-     * reader.
+     * Healing resolves HTML entities (from literal to code number) in the reader.
      * <p>
-     * The healing is done only with the build(File) and build(Reader)
-     * signatures.
+     * The healing is done only with the build(File) and build(Reader) signatures.
      * <p>
      * By default is TRUE.
      * <p>
@@ -116,8 +109,8 @@ public class SyndFeedInput {
      * @return the SyndFeedImpl read from the file.
      * @throws FileNotFoundException thrown if the file could not be found.
      * @throws IOException thrown if there is problem reading the file.
-     * @throws IllegalArgumentException thrown if feed type could not be
-     *             understood by any of the underlying parsers.
+     * @throws IllegalArgumentException thrown if feed type could not be understood by any of the
+     *             underlying parsers.
      * @throws FeedException if the feed could not be parsed
      * 
      */
@@ -131,8 +124,8 @@ public class SyndFeedInput {
      * 
      * @param reader Reader to read to create the SyndFeedImpl.
      * @return the SyndFeedImpl read from the Reader.
-     * @throws IllegalArgumentException thrown if feed type could not be
-     *             understood by any of the underlying parsers.
+     * @throws IllegalArgumentException thrown if feed type could not be understood by any of the
+     *             underlying parsers.
      * @throws FeedException if the feed could not be parsed
      * 
      */
@@ -146,8 +139,8 @@ public class SyndFeedInput {
      * 
      * @param is W3C SAX InputSource to read to create the SyndFeedImpl.
      * @return the SyndFeedImpl read from the W3C SAX InputSource.
-     * @throws IllegalArgumentException thrown if feed type could not be
-     *             understood by any of the underlying parsers.
+     * @throws IllegalArgumentException thrown if feed type could not be understood by any of the
+     *             underlying parsers.
      * @throws FeedException if the feed could not be parsed
      * 
      */
@@ -161,8 +154,8 @@ public class SyndFeedInput {
      * 
      * @param document W3C DOM document to read to create the SyndFeedImpl.
      * @return the SyndFeedImpl read from the W3C DOM document.
-     * @throws IllegalArgumentException thrown if feed type could not be
-     *             understood by any of the underlying parsers.
+     * @throws IllegalArgumentException thrown if feed type could not be understood by any of the
+     *             underlying parsers.
      * @throws FeedException if the feed could not be parsed
      * 
      */
@@ -176,8 +169,8 @@ public class SyndFeedInput {
      * 
      * @param document JDOM document to read to create the SyndFeedImpl.
      * @return the SyndFeedImpl read from the JDOM document.
-     * @throws IllegalArgumentException thrown if feed type could not be
-     *             understood by any of the underlying parsers.
+     * @throws IllegalArgumentException thrown if feed type could not be understood by any of the
+     *             underlying parsers.
      * @throws FeedException if the feed could not be parsed
      * 
      */
@@ -187,8 +180,7 @@ public class SyndFeedInput {
 
     /**
      * 
-     * @return true if the WireFeed is made available in the SyndFeed. False by
-     *         default.
+     * @return true if the WireFeed is made available in the SyndFeed. False by default.
      */
     public boolean isPreserveWireFeed() {
         return preserveWireFeed;
@@ -196,8 +188,8 @@ public class SyndFeedInput {
 
     /**
      * 
-     * @param preserveWireFeed set to true to make the WireFeed is made
-     *            available in the SyndFeed. False by default.
+     * @param preserveWireFeed set to true to make the WireFeed is made available in the SyndFeed.
+     *            False by default.
      */
     public void setPreserveWireFeed(final boolean preserveWireFeed) {
         this.preserveWireFeed = preserveWireFeed;

@@ -17,8 +17,8 @@
 package com.sun.syndication.io;
 
 /**
- * Exception thrown by WireFeedInput, WireFeedOutput, WireFeedParser and
- * WireFeedGenerator instances if they can not parse or generate a feed.
+ * Exception thrown by WireFeedInput, WireFeedOutput, WireFeedParser and WireFeedGenerator instances
+ * if they can not parse or generate a feed.
  * <p>
  * 
  * @author Alejandro Abdelnur

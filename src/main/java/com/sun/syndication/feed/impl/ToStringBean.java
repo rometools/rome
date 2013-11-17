@@ -33,8 +33,8 @@ import org.slf4j.LoggerFactory;
 /**
  * Provides deep <b>Bean</b> toString support.
  * <p>
- * It works on all read/write properties, recursively. It support all primitive types, Strings, Collections, ToString objects and multi-dimensional arrays of
- * any of them.
+ * It works on all read/write properties, recursively. It support all primitive types, Strings,
+ * Collections, ToString objects and multi-dimensional arrays of any of them.
  * <p>
  * 
  * @author Alejandro Abdelnur

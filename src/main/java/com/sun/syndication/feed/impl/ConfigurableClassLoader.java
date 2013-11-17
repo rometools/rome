@@ -1,9 +1,10 @@
 package com.sun.syndication.feed.impl;
 
 /**
- * This class addresses some ClassLoader problems in OSGi environments. If you have ClassLoader problems, simply override the default ClassLoader by calling the
- * {@link #setClassLoader(ClassLoader)} method before calling any ROME code. Unfortunately I don't know whether this works because I have absolutely no
- * experience with OSGi.
+ * This class addresses some ClassLoader problems in OSGi environments. If you have ClassLoader
+ * problems, simply override the default ClassLoader by calling the
+ * {@link #setClassLoader(ClassLoader)} method before calling any ROME code. Unfortunately I don't
+ * know whether this works because I have absolutely no experience with OSGi.
  * 
  * @author Patrick Gotthard
  * 
@@ -17,7 +18,8 @@ public enum ConfigurableClassLoader {
     /**
      * Get the configured ClassLoader. Returns
      * 
-     * @return The configured ClassLoader. Returns the ClassLoader of this enum when the ClassLoader was not overridden.
+     * @return The configured ClassLoader. Returns the ClassLoader of this enum when the ClassLoader
+     *         was not overridden.
      */
     public ClassLoader getClassLoader() {
         if (classLoader == null) {

@@ -22,17 +22,14 @@ import java.util.Date;
  * Syndication ModuleImpl.
  * <p>
  * 
- * @see <a
- *      href="http://web.resource.org/rss/1.0/modules/syndication/">Syndication
- *      module</a>.
+ * @see <a href="http://web.resource.org/rss/1.0/modules/syndication/">Syndication module</a>.
  * @author Alejandro Abdelnur
  * 
  */
 public interface SyModule extends Module {
 
     /**
-     * URI of the Syndication ModuleImpl
-     * (http://purl.org/rss/1.0/modules/syndication/).
+     * URI of the Syndication ModuleImpl (http://purl.org/rss/1.0/modules/syndication/).
      * 
      */
     static final String URI = "http://purl.org/rss/1.0/modules/syndication/";
@@ -56,8 +53,7 @@ public interface SyModule extends Module {
      * Sets the Syndication module update period.
      * <p>
      * 
-     * @param updatePeriod the Syndication module update period to set,
-     *            <b>null</b> if none.
+     * @param updatePeriod the Syndication module update period to set, <b>null</b> if none.
      * 
      */
     void setUpdatePeriod(String updatePeriod);
@@ -75,8 +71,7 @@ public interface SyModule extends Module {
      * Sets the Syndication module update frequency.
      * <p>
      * 
-     * @param updateFrequency the Syndication module update frequency to set,
-     *            <b>null</b> if none.
+     * @param updateFrequency the Syndication module update frequency to set, <b>null</b> if none.
      * 
      */
     void setUpdateFrequency(int updateFrequency);
@@ -94,8 +89,7 @@ public interface SyModule extends Module {
      * Sets the Syndication module update base date.
      * <p>
      * 
-     * @param updateBase the Syndication module update base date to set,
-     *            <b>null</b> if none.
+     * @param updateBase the Syndication module update base date to set, <b>null</b> if none.
      * 
      */
     void setUpdateBase(Date updateBase);

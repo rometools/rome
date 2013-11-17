@@ -104,8 +104,7 @@ public interface SyndImage extends Cloneable, CopyFrom<SyndImage> {
      * <p>
      * 
      * @return a clone of the object.
-     * @throws CloneNotSupportedException thrown if an element of the object
-     *             cannot be cloned.
+     * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
      * 
      */
     public Object clone() throws CloneNotSupportedException;

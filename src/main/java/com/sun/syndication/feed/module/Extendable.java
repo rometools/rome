@@ -39,8 +39,7 @@ public interface Extendable {
      * Returns the entry modules.
      * <p>
      * 
-     * @return a list of ModuleImpl elements with the entry modules, an empty
-     *         list if none.
+     * @return a list of ModuleImpl elements with the entry modules, an empty list if none.
      * 
      */
     List<Module> getModules();
@@ -49,8 +48,8 @@ public interface Extendable {
      * Sets the entry modules.
      * <p>
      * 
-     * @param modules the list of ModuleImpl elements with the entry modules to
-     *            set, an empty list or <b>null</b> if none.
+     * @param modules the list of ModuleImpl elements with the entry modules to set, an empty list
+     *            or <b>null</b> if none.
      * 
      */
     void setModules(List<Module> modules);

@@ -45,11 +45,14 @@ public class BeanIntrospector {
     private static final String BOOLEAN_GETTER = "is";
 
     /**
-     * Extract all {@link PropertyDescriptor}s for properties with getters and setters for the given class.
+     * Extract all {@link PropertyDescriptor}s for properties with getters and setters for the given
+     * class.
      * 
      * @param clazz The class to extract the desired {@link PropertyDescriptor}s from
-     * @return All {@link PropertyDescriptor} for properties with getters and setters for the given class.
-     * @throws IntrospectionException When the extraction of the desired {@link PropertyDescriptor}s failed
+     * @return All {@link PropertyDescriptor} for properties with getters and setters for the given
+     *         class.
+     * @throws IntrospectionException When the extraction of the desired {@link PropertyDescriptor}s
+     *             failed
      */
     private static synchronized PropertyDescriptor[] getPropertyDescriptors(final Class<?> clazz) throws IntrospectionException {
         PropertyDescriptor[] descriptors = introspected.get(clazz);
@@ -61,11 +64,14 @@ public class BeanIntrospector {
     }
 
     /**
-     * Extract all {@link PropertyDescriptor}s for properties with a getter that does not come from {@link Object} and does not accept parameters.
+     * Extract all {@link PropertyDescriptor}s for properties with a getter that does not come from
+     * {@link Object} and does not accept parameters.
      * 
      * @param clazz The class to extract the desired {@link PropertyDescriptor}s from
-     * @return All {@link PropertyDescriptor}s for properties with a getter that does not come from {@link Object} and does not accept parameters.
-     * @throws IntrospectionException When the extraction of the desired {@link PropertyDescriptor}s failed
+     * @return All {@link PropertyDescriptor}s for properties with a getter that does not come from
+     *         {@link Object} and does not accept parameters.
+     * @throws IntrospectionException When the extraction of the desired {@link PropertyDescriptor}s
+     *             failed
      */
     public static List<PropertyDescriptor> getPropertyDescriptorsWithGetters(final Class<?> clazz) throws IntrospectionException {
 
@@ -97,13 +103,14 @@ public class BeanIntrospector {
     }
 
     /**
-     * Extract all {@link PropertyDescriptor}s for properties with a getter (that does not come from {@link Object} and does not accept parameters) and a
-     * setter.
+     * Extract all {@link PropertyDescriptor}s for properties with a getter (that does not come from
+     * {@link Object} and does not accept parameters) and a setter.
      * 
      * @param clazz The class to extract the desired {@link PropertyDescriptor}s from
-     * @return All {@link PropertyDescriptor}s for properties with a getter (that does not come from {@link Object} and does not accept parameters) and a
-     *         setter.
-     * @throws IntrospectionException When the extraction of the desired {@link PropertyDescriptor}s failed
+     * @return All {@link PropertyDescriptor}s for properties with a getter (that does not come from
+     *         {@link Object} and does not accept parameters) and a setter.
+     * @throws IntrospectionException When the extraction of the desired {@link PropertyDescriptor}s
+     *             failed
      */
     public static List<PropertyDescriptor> getPropertyDescriptorsWithGettersAndSetters(final Class<?> clazz) throws IntrospectionException {
 

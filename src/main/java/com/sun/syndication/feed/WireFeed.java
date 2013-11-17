@@ -31,12 +31,12 @@ import com.sun.syndication.feed.module.impl.ModuleUtils;
 /**
  * Parent class of the RSS (Channel) and Atom (Feed) feed beans.
  * <p>
- * NOTE: We don't like this class at this package level but the alternative
- * would have been a proliferation of packages (one more level to hold atom and
- * rss package with this class just in that package).
+ * NOTE: We don't like this class at this package level but the alternative would have been a
+ * proliferation of packages (one more level to hold atom and rss package with this class just in
+ * that package).
  * <p>
- * The format of the 'type' property must be [FEEDNAME]_[FEEDVERSION] with the
- * FEEDNAME in lower case, for example: rss_0.9, rss_0.93, atom_0.3
+ * The format of the 'type' property must be [FEEDNAME]_[FEEDVERSION] with the FEEDNAME in lower
+ * case, for example: rss_0.9, rss_0.93, atom_0.3
  * <p>
  * 
  * @author Alejandro Abdelnur
@@ -77,8 +77,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      * <p>
      * 
      * @return a clone of the object.
-     * @throws CloneNotSupportedException thrown if an element of the object
-     *             cannot be cloned.
+     * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
      * 
      */
     @Override
@@ -87,8 +86,8 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
     }
 
     /**
-     * Indicates whether some other object is "equal to" this one as defined by
-     * the Object equals() method.
+     * Indicates whether some other object is "equal to" this one as defined by the Object equals()
+     * method.
      * <p>
      * 
      * @param other he reference object with which to compare.
@@ -139,8 +138,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
     }
 
     /**
-     * Sets the feedType of a the feed. <b>Do not use</b>, for bean cloning
-     * purposes only.
+     * Sets the feedType of a the feed. <b>Do not use</b>, for bean cloning purposes only.
      * <p>
      * 
      * @param feedType the feedType of the feed.
@@ -162,8 +160,8 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
     /**
      * Returns the charset encoding of a the feed.
      * <p>
-     * This property is not set by feed parsers. But it is used by feed
-     * generators to set the encoding in the XML prolog.
+     * This property is not set by feed parsers. But it is used by feed generators to set the
+     * encoding in the XML prolog.
      * <p>
      * 
      * @return the charset encoding of the feed.
@@ -176,8 +174,8 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
     /**
      * Sets the charset encoding of a the feed.
      * <p>
-     * This property is not set by feed parsers. But it is used by feed
-     * generators to set the encoding in the XML prolog.
+     * This property is not set by feed parsers. But it is used by feed generators to set the
+     * encoding in the XML prolog.
      * <p>
      * 
      * @param encoding the charset encoding of the feed.
@@ -191,8 +189,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      * Returns the channel modules.
      * <p>
      * 
-     * @return a list of ModuleImpl elements with the channel modules, an empty
-     *         list if none.
+     * @return a list of ModuleImpl elements with the channel modules, an empty list if none.
      * 
      */
     @Override
@@ -207,8 +204,8 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      * Sets the channel modules.
      * <p>
      * 
-     * @param modules the list of ModuleImpl elements with the channel modules
-     *            to set, an empty list or <b>null</b> if none.
+     * @param modules the list of ModuleImpl elements with the channel modules to set, an empty list
+     *            or <b>null</b> if none.
      * 
      */
     @Override
@@ -269,7 +266,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      * @since 2.0.0
      * @param styleSheet URL or {@code null}
      */
-    public void setStyleSheet(String styleSheet) {
+    public void setStyleSheet(final String styleSheet) {
         this.styleSheet = styleSheet;
     }
 }

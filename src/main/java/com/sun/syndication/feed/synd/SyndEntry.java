@@ -37,11 +37,10 @@ public interface SyndEntry extends Cloneable, CopyFrom<SyndEntry>, Extendable {
     /**
      * Returns the entry URI.
      * <p>
-     * How the entry URI maps to a concrete feed type (RSS or Atom) depends on
-     * the concrete feed type. This is explained in detail in Rome
-     * documentation, <a
-     * href="http://wiki.java.net/bin/edit/Javawsxml/Rome04URIMapping">Feed and
-     * entry URI mapping</a>.
+     * How the entry URI maps to a concrete feed type (RSS or Atom) depends on the concrete feed
+     * type. This is explained in detail in Rome documentation, <a
+     * href="http://wiki.java.net/bin/edit/Javawsxml/Rome04URIMapping">Feed and entry URI
+     * mapping</a>.
      * <p>
      * The returned URI is a normalized URI as specified in RFC 2396bis.
      * <p>
@@ -54,11 +53,10 @@ public interface SyndEntry extends Cloneable, CopyFrom<SyndEntry>, Extendable {
     /**
      * Sets the entry URI.
      * <p>
-     * How the entry URI maps to a concrete feed type (RSS or Atom) depends on
-     * the concrete feed type. This is explained in detail in Rome
-     * documentation, <a
-     * href="http://wiki.java.net/bin/edit/Javawsxml/Rome04URIMapping">Feed and
-     * entry URI mapping</a>.
+     * How the entry URI maps to a concrete feed type (RSS or Atom) depends on the concrete feed
+     * type. This is explained in detail in Rome documentation, <a
+     * href="http://wiki.java.net/bin/edit/Javawsxml/Rome04URIMapping">Feed and entry URI
+     * mapping</a>.
      * <p>
      * 
      * @param uri the entry URI to set, <b>null</b> if none.
@@ -160,8 +158,7 @@ public interface SyndEntry extends Cloneable, CopyFrom<SyndEntry>, Extendable {
      * Returns the entry contents.
      * <p>
      * 
-     * @return a list of SyndContentImpl elements with the entry contents, an
-     *         empty list if none.
+     * @return a list of SyndContentImpl elements with the entry contents, an empty list if none.
      * 
      */
     List<SyndContent> getContents();
@@ -170,8 +167,8 @@ public interface SyndEntry extends Cloneable, CopyFrom<SyndEntry>, Extendable {
      * Sets the entry contents.
      * <p>
      * 
-     * @param contents the list of SyndContentImpl elements with the entry
-     *            contents to set, an empty list or <b>null</b> if none.
+     * @param contents the list of SyndContentImpl elements with the entry contents to set, an empty
+     *            list or <b>null</b> if none.
      * 
      */
     void setContents(List<SyndContent> contents);
@@ -180,8 +177,7 @@ public interface SyndEntry extends Cloneable, CopyFrom<SyndEntry>, Extendable {
      * Returns the entry enclosures.
      * <p>
      * 
-     * @return a list of SyndEnclosure elements with the entry enclosures, an
-     *         empty list if none.
+     * @return a list of SyndEnclosure elements with the entry enclosures, an empty list if none.
      * 
      */
     public List<SyndEnclosure> getEnclosures();
@@ -190,8 +186,8 @@ public interface SyndEntry extends Cloneable, CopyFrom<SyndEntry>, Extendable {
      * Sets the entry enclosures.
      * <p>
      * 
-     * @param enclosures the list of SyndEnclosure elements with the entry
-     *            enclosures to set, an empty list or <b>null</b> if none.
+     * @param enclosures the list of SyndEnclosure elements with the entry enclosures to set, an
+     *            empty list or <b>null</b> if none.
      * 
      */
     public void setEnclosures(List<SyndEnclosure> enclosures);
@@ -199,8 +195,7 @@ public interface SyndEntry extends Cloneable, CopyFrom<SyndEntry>, Extendable {
     /**
      * Returns the entry published date.
      * <p>
-     * This method is a convenience method, it maps to the Dublin Core module
-     * date.
+     * This method is a convenience method, it maps to the Dublin Core module date.
      * <p>
      * 
      * @return the entry published date, <b>null</b> if none.
@@ -211,12 +206,10 @@ public interface SyndEntry extends Cloneable, CopyFrom<SyndEntry>, Extendable {
     /**
      * Sets the entry published date.
      * <p>
-     * This method is a convenience method, it maps to the Dublin Core module
-     * date.
+     * This method is a convenience method, it maps to the Dublin Core module date.
      * <p>
      * 
-     * @param publishedDate the entry published date to set, <b>null</b> if
-     *            none.
+     * @param publishedDate the entry published date to set, <b>null</b> if none.
      * 
      */
     void setPublishedDate(Date publishedDate);
@@ -242,9 +235,8 @@ public interface SyndEntry extends Cloneable, CopyFrom<SyndEntry>, Extendable {
     /**
      * Returns the entry authors.
      * <p>
-     * For Atom feeds, this returns the authors as a list of SyndPerson objects,
-     * for RSS feeds this method is a convenience method, it maps to the Dublin
-     * Core module creator.
+     * For Atom feeds, this returns the authors as a list of SyndPerson objects, for RSS feeds this
+     * method is a convenience method, it maps to the Dublin Core module creator.
      * <p>
      * 
      * @return the feed author, <b>null</b> if none.
@@ -255,9 +247,8 @@ public interface SyndEntry extends Cloneable, CopyFrom<SyndEntry>, Extendable {
     /**
      * Sets the entry author.
      * <p>
-     * For Atom feeds, this sets the authors as a list of SyndPerson objects,
-     * for RSS feeds this method is a convenience method, it maps to the Dublin
-     * Core module creator.
+     * For Atom feeds, this sets the authors as a list of SyndPerson objects, for RSS feeds this
+     * method is a convenience method, it maps to the Dublin Core module creator.
      * <p>
      * 
      * @param authors the feed author to set, <b>null</b> if none.
@@ -268,9 +259,8 @@ public interface SyndEntry extends Cloneable, CopyFrom<SyndEntry>, Extendable {
     /**
      * Returns the name of the first entry author in the collection of authors.
      * <p>
-     * For Atom feeds, this returns the authors as a list of SyndPerson objects,
-     * for RSS feeds this method is a convenience method, it maps to the Dublin
-     * Core module creator.
+     * For Atom feeds, this returns the authors as a list of SyndPerson objects, for RSS feeds this
+     * method is a convenience method, it maps to the Dublin Core module creator.
      * <p>
      * 
      * @return the feed author, <b>null</b> if none.
@@ -281,9 +271,8 @@ public interface SyndEntry extends Cloneable, CopyFrom<SyndEntry>, Extendable {
     /**
      * Sets the entry author.
      * <p>
-     * For Atom feeds, this sets the feed author's name, for RSS feeds this
-     * method is a convenience method, it maps to the Dublin Core module
-     * creator.
+     * For Atom feeds, this sets the feed author's name, for RSS feeds this method is a convenience
+     * method, it maps to the Dublin Core module creator.
      * <p>
      * 
      * @param author the feed author to set, <b>null</b> if none.
@@ -293,8 +282,7 @@ public interface SyndEntry extends Cloneable, CopyFrom<SyndEntry>, Extendable {
     /**
      * Returns the feed author.
      * <p>
-     * For Atom feeds, this returns the contributors as a list of SyndPerson
-     * objects
+     * For Atom feeds, this returns the contributors as a list of SyndPerson objects
      * <p>
      * 
      * @return the feed author, <b>null</b> if none.
@@ -316,12 +304,10 @@ public interface SyndEntry extends Cloneable, CopyFrom<SyndEntry>, Extendable {
     /**
      * Returns the entry categories.
      * <p>
-     * This method is a convenience method, it maps to the Dublin Core module
-     * subjects.
+     * This method is a convenience method, it maps to the Dublin Core module subjects.
      * <p>
      * 
-     * @return a list of SyndCategoryImpl elements with the entry categories, an
-     *         empty list if none.
+     * @return a list of SyndCategoryImpl elements with the entry categories, an empty list if none.
      * 
      */
     List<SyndCategory> getCategories();
@@ -329,12 +315,11 @@ public interface SyndEntry extends Cloneable, CopyFrom<SyndEntry>, Extendable {
     /**
      * Sets the entry categories.
      * <p>
-     * This method is a convenience method, it maps to the Dublin Core module
-     * subjects.
+     * This method is a convenience method, it maps to the Dublin Core module subjects.
      * <p>
      * 
-     * @param categories the list of SyndCategoryImpl elements with the entry
-     *            categories to set, an empty list or <b>null</b> if none.
+     * @param categories the list of SyndCategoryImpl elements with the entry categories to set, an
+     *            empty list or <b>null</b> if none.
      * 
      */
     void setCategories(List<SyndCategory> categories);
@@ -360,12 +345,11 @@ public interface SyndEntry extends Cloneable, CopyFrom<SyndEntry>, Extendable {
     void setSource(SyndFeed source);
 
     /**
-     * Return the original item this SyndEntry is generated from. The type of
-     * the object returned depends on the original type of the feed. Atom
-     * 0.3/1.0 will return com.sun.syndication.feed.atom.Entry, while RSS will
-     * return com.sun.syndication.feed.rss.Item.java. If this entry was not
-     * generated from a WireFeed, or the SyndFeed was not set to preserve the
-     * WireFeed then it will return null
+     * Return the original item this SyndEntry is generated from. The type of the object returned
+     * depends on the original type of the feed. Atom 0.3/1.0 will return
+     * com.sun.syndication.feed.atom.Entry, while RSS will return
+     * com.sun.syndication.feed.rss.Item.java. If this entry was not generated from a WireFeed, or
+     * the SyndFeed was not set to preserve the WireFeed then it will return null
      * 
      * @return the WireFeed Item or Entry this Entry is generated from, or null
      */
@@ -385,8 +369,7 @@ public interface SyndEntry extends Cloneable, CopyFrom<SyndEntry>, Extendable {
      * Returns the entry modules.
      * <p>
      * 
-     * @return a list of ModuleImpl elements with the entry modules, an empty
-     *         list if none.
+     * @return a list of ModuleImpl elements with the entry modules, an empty list if none.
      * 
      */
     @Override
@@ -396,8 +379,8 @@ public interface SyndEntry extends Cloneable, CopyFrom<SyndEntry>, Extendable {
      * Sets the entry modules.
      * <p>
      * 
-     * @param modules the list of ModuleImpl elements with the entry modules to
-     *            set, an empty list or <b>null</b> if none.
+     * @param modules the list of ModuleImpl elements with the entry modules to set, an empty list
+     *            or <b>null</b> if none.
      * 
      */
     @Override
@@ -443,15 +426,13 @@ public interface SyndEntry extends Cloneable, CopyFrom<SyndEntry>, Extendable {
      * <p>
      * 
      * @return a clone of the object.
-     * @throws CloneNotSupportedException thrown if an element of the object
-     *             cannot be cloned.
+     * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
      * 
      */
     public Object clone() throws CloneNotSupportedException;
 
     /**
-     * Returns the first instance of a SyndLink with the specified relation, or
-     * null
+     * Returns the first instance of a SyndLink with the specified relation, or null
      * 
      */
     public SyndLink findRelatedLink(String relation);

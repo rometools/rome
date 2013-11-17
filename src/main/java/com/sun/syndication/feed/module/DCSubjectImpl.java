@@ -29,8 +29,7 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * Subject of the Dublin Core ModuleImpl, default implementation.
  * <p>
  * 
- * @see <a href="http://web.resource.org/rss/1.0/modules/dc/">Dublin Core
- *      module</a>.
+ * @see <a href="http://web.resource.org/rss/1.0/modules/dc/">Dublin Core module</a>.
  * @author Alejandro Abdelnur
  * 
  */
@@ -54,8 +53,7 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
      * <p>
      * 
      * @return a clone of the object.
-     * @throws CloneNotSupportedException thrown if an element of the object
-     *             cannot be cloned.
+     * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
      * 
      */
     @Override
@@ -64,8 +62,8 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
     }
 
     /**
-     * Indicates whether some other object is "equal to" this one as defined by
-     * the Object equals() method.
+     * Indicates whether some other object is "equal to" this one as defined by the Object equals()
+     * method.
      * <p>
      * 
      * @param other he reference object with which to compare.
@@ -122,8 +120,7 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
      * Sets the DublinCore subject taxonomy URI.
      * <p>
      * 
-     * @param taxonomyUri the DublinCore subject taxonomy URI to set,
-     *            <b>null</b> if none.
+     * @param taxonomyUri the DublinCore subject taxonomy URI to set, <b>null</b> if none.
      * 
      */
     @Override

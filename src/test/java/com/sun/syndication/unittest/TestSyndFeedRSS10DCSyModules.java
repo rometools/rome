@@ -1,9 +1,3 @@
-/*
- * Created on Jun 25, 2004
- *
- * TODO To change the template for this generated file go to
- * Window - Preferences - Java - Code Generation - Code and Comments
- */
 package com.sun.syndication.unittest;
 
 import java.util.Date;
@@ -17,9 +11,6 @@ import com.sun.syndication.io.impl.DateParser;
 
 /**
  * @author pat
- * 
- *         TODO To change the template for this generated type comment go to
- *         Window - Preferences - Java - Code Generation - Code and Comments
  */
 public class TestSyndFeedRSS10DCSyModules extends TestSyndFeedRSS10 {
 

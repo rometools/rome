@@ -4,8 +4,9 @@ import com.sun.syndication.unittest.FeedTest;
 
 /**
  * Test for #134: Incorrect handling of CDATA sections.
+ * 
  * @author Martin Kurz
- *
+ * 
  */
 public class Issue88Test extends FeedTest {
 
@@ -15,7 +16,7 @@ public class Issue88Test extends FeedTest {
 
     public void testStyleSheet() throws Exception {
         assertEquals("stylesheet in syndfeed missing", "http://test.example/test.xslt", this.getCachedSyndFeed().getStyleSheet());
-        assertEquals("stylesheet in wirefeed missing", "http://test.example/test.xslt", this.getCachedWireFeed().getStyleSheet());
+        assertEquals("stylesheet in wirefeed missing", "http://test.example/test.xslt", getCachedWireFeed().getStyleSheet());
     }
 
 }

@@ -73,7 +73,7 @@ public class ConverterForRSS091Userland extends ConverterForRSS090 {
 
             if (!creators.contains(author)) {
                 final Set<String> s = new LinkedHashSet<String>(); // using a set to
-                                                             // remove
+                // remove
                 // duplicates
                 s.addAll(creators); // DC creators
                 s.add(author); // feed native author

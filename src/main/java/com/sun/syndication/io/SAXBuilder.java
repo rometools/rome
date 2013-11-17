@@ -17,14 +17,15 @@ import org.xml.sax.XMLReader;
  * 
  */
 public class SAXBuilder extends org.jdom2.input.SAXBuilder {
+
     public SAXBuilder(final XMLReaderJDOMFactory factory) {
         super(factory);
     }
 
     /**
      * 
-     * @deprecated use SAXBuilder(XMLReaderJDOMFactory) with either
-     *             XMLReaders.DTDVALIDATING or XMLReaders.NONVALIDATING
+     * @deprecated use SAXBuilder(XMLReaderJDOMFactory) with either XMLReaders.DTDVALIDATING or
+     *             XMLReaders.NONVALIDATING
      * @param validate
      */
     @Deprecated

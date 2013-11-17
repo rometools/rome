@@ -38,8 +38,8 @@ import com.sun.syndication.feed.rss.Source;
 /**
  */
 public class RSS092Parser extends RSS091UserlandParser {
-	
-	private static final Logger LOG = LoggerFactory.getLogger(RSS092Parser.class);
+
+    private static final Logger LOG = LoggerFactory.getLogger(RSS092Parser.class);
 
     public RSS092Parser() {
         this("rss_0.92");
@@ -183,7 +183,7 @@ public class RSS092Parser extends RSS091UserlandParser {
                     sb.append(c.getValue());
                     break;
                 case EntityRef:
-                	LOG.debug("Entity: {}", c.getValue());
+                    LOG.debug("Entity: {}", c.getValue());
                     sb.append(c.getValue());
                     break;
                 case Element:

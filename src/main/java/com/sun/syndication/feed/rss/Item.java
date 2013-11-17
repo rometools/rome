@@ -34,8 +34,8 @@ import com.sun.syndication.feed.module.impl.ModuleUtils;
  * <p>
  * It handles all RSS versions without loosing information.
  * <p>
- * For RSS1.0 it supports Dublin Core and Syndication modules. Note that those
- * modules currently support simple syntax format only.
+ * For RSS1.0 it supports Dublin Core and Syndication modules. Note that those modules currently
+ * support simple syntax format only.
  * <p>
  * 
  * @author Alejandro Abdelnur
@@ -74,8 +74,7 @@ public class Item implements Cloneable, Serializable, Extendable {
      * <p>
      * 
      * @return a clone of the object.
-     * @throws CloneNotSupportedException thrown if an element of the object
-     *             cannot be cloned.
+     * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
      * 
      */
     @Override
@@ -84,8 +83,8 @@ public class Item implements Cloneable, Serializable, Extendable {
     }
 
     /**
-     * Indicates whether some other object is "equal to" this one as defined by
-     * the Object equals() method.
+     * Indicates whether some other object is "equal to" this one as defined by the Object equals()
+     * method.
      * <p>
      * 
      * @param other he reference object with which to compare.
@@ -266,8 +265,7 @@ public class Item implements Cloneable, Serializable, Extendable {
      * Returns the item enclosures.
      * <p>
      * 
-     * @return a list of Enclosure elements with the item enclosures, an empty
-     *         list if none.
+     * @return a list of Enclosure elements with the item enclosures, an empty list if none.
      * 
      */
     public List<Enclosure> getEnclosures() {
@@ -281,8 +279,8 @@ public class Item implements Cloneable, Serializable, Extendable {
      * Sets the item enclosures.
      * <p>
      * 
-     * @param enclosures the list of Enclosure elements with the item enclosures
-     *            to set, an empty list or <b>null</b> if none.
+     * @param enclosures the list of Enclosure elements with the item enclosures to set, an empty
+     *            list or <b>null</b> if none.
      * 
      */
     public void setEnclosures(final List<Enclosure> enclosures) {
@@ -293,8 +291,7 @@ public class Item implements Cloneable, Serializable, Extendable {
      * Returns the item categories.
      * <p>
      * 
-     * @return a list of Category elements with the item categories, an empty
-     *         list if none.
+     * @return a list of Category elements with the item categories, an empty list if none.
      * 
      */
     public List<Category> getCategories() {
@@ -308,8 +305,8 @@ public class Item implements Cloneable, Serializable, Extendable {
      * Sets the item categories.
      * <p>
      * 
-     * @param categories the list of Categories elements with the item
-     *            categories to set, an empty list or <b>null</b> if none.
+     * @param categories the list of Categories elements with the item categories to set, an empty
+     *            list or <b>null</b> if none.
      * 
      */
     public void setCategories(final List<Category> categories) {
@@ -386,8 +383,7 @@ public class Item implements Cloneable, Serializable, Extendable {
      * Returns the item modules.
      * <p>
      * 
-     * @return a list of ModuleImpl elements with the item modules, an empty
-     *         list if none.
+     * @return a list of ModuleImpl elements with the item modules, an empty list if none.
      * 
      */
     @Override
@@ -402,8 +398,8 @@ public class Item implements Cloneable, Serializable, Extendable {
      * Sets the item modules.
      * <p>
      * 
-     * @param modules the list of ModuleImpl elements with the item modules to
-     *            set, an empty list or <b>null</b> if none.
+     * @param modules the list of ModuleImpl elements with the item modules to set, an empty list or
+     *            <b>null</b> if none.
      * 
      */
     @Override
@@ -472,8 +468,7 @@ public class Item implements Cloneable, Serializable, Extendable {
      * Sets the item expiration date.
      * <p>
      * 
-     * @param expirationDate the item expiration date to set, <b>null</b> if
-     *            none.
+     * @param expirationDate the item expiration date to set, <b>null</b> if none.
      * 
      */
     public void setExpirationDate(final Date expirationDate) {

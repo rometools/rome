@@ -53,14 +53,12 @@ public class ParsingFeedException extends FeedException {
     }
 
     /**
-     * Returns the line number of the end of the text where the parse error
-     * occurred.
+     * Returns the line number of the end of the text where the parse error occurred.
      * <p>
      * The first line in the document is line 1.
      * </p>
      * 
-     * @return an integer representing the line number, or -1 if the information
-     *         is not available.
+     * @return an integer representing the line number, or -1 if the information is not available.
      */
     public int getLineNumber() {
         if (getCause() instanceof JDOMParseException) {
@@ -71,14 +69,12 @@ public class ParsingFeedException extends FeedException {
     }
 
     /**
-     * Returns the column number of the end of the text where the parse error
-     * occurred.
+     * Returns the column number of the end of the text where the parse error occurred.
      * <p>
      * The first column in a line is position 1.
      * </p>
      * 
-     * @return an integer representing the column number, or -1 if the
-     *         information is not available.
+     * @return an integer representing the column number, or -1 if the information is not available.
      */
     public int getColumnNumber() {
         if (getCause() instanceof JDOMParseException) {

@@ -65,8 +65,7 @@ public class Feed extends WireFeed {
     }
 
     /**
-     * Feed Constructor. All properties, except the type, are set to
-     * <b>null</b>.
+     * Feed Constructor. All properties, except the type, are set to <b>null</b>.
      * <p>
      * 
      * @param type the type of the Atom feed.
@@ -152,8 +151,7 @@ public class Feed extends WireFeed {
      * Returns the feed alternate links.
      * <p>
      * 
-     * @return a list of Link elements with the feed alternate links, an empty
-     *         list if none.
+     * @return a list of Link elements with the feed alternate links, an empty list if none.
      */
     public List<Link> getAlternateLinks() {
         if (alternateLinks == null) {
@@ -166,8 +164,8 @@ public class Feed extends WireFeed {
      * Sets the feed alternate links.
      * <p>
      * 
-     * @param alternateLinks the list of Link elements with the feed alternate
-     *            links to set, an empty list or <b>null</b> if none.
+     * @param alternateLinks the list of Link elements with the feed alternate links to set, an
+     *            empty list or <b>null</b> if none.
      */
     public void setAlternateLinks(final List<Link> alternateLinks) {
         this.alternateLinks = alternateLinks;
@@ -177,8 +175,8 @@ public class Feed extends WireFeed {
      * Returns the feed other links (non-alternate ones).
      * <p>
      * 
-     * @return a list of Link elements with the feed other links (non-alternate
-     *         ones), an empty list if none.
+     * @return a list of Link elements with the feed other links (non-alternate ones), an empty list
+     *         if none.
      */
     public List<Link> getOtherLinks() {
         if (otherLinks == null) {
@@ -191,9 +189,8 @@ public class Feed extends WireFeed {
      * Sets the feed other links (non-alternate ones).
      * <p>
      * 
-     * @param otherLinks the list of Link elements with the feed other links
-     *            (non-alternate ones) to set, an empty list or <b>null</b> if
-     *            none.
+     * @param otherLinks the list of Link elements with the feed other links (non-alternate ones) to
+     *            set, an empty list or <b>null</b> if none.
      */
     public void setOtherLinks(final List<Link> otherLinks) {
         this.otherLinks = otherLinks;
@@ -228,8 +225,7 @@ public class Feed extends WireFeed {
      * Returns the feed contributors.
      * <p>
      * 
-     * @return a list of Person elements with the feed contributors, an empty
-     *         list if none.
+     * @return a list of Person elements with the feed contributors, an empty list if none.
      * 
      */
     public List<SyndPerson> getContributors() {
@@ -243,8 +239,8 @@ public class Feed extends WireFeed {
      * Sets the feed contributors.
      * <p>
      * 
-     * @param contributors the list of Person elements with the feed
-     *            contributors to set, an empty list or <b>null</b> if none.
+     * @param contributors the list of Person elements with the feed contributors to set, an empty
+     *            list or <b>null</b> if none.
      * 
      */
     public void setContributors(final List<SyndPerson> contributors) {
@@ -327,8 +323,7 @@ public class Feed extends WireFeed {
     }
 
     /**
-     * Sets the feed copyright (Atom 0.3, maps to
-     * {@link #setRights(java.lang.String)}).
+     * Sets the feed copyright (Atom 0.3, maps to {@link #setRights(java.lang.String)}).
      * <p>
      * 
      * @param copyright the feed copyright to set, <b>null</b> if none.
@@ -368,8 +363,7 @@ public class Feed extends WireFeed {
     }
 
     /**
-     * Sets the feed modified date (Atom 0.3, maps to
-     * {@link #setUpdated(java.util.Date)}).
+     * Sets the feed modified date (Atom 0.3, maps to {@link #setUpdated(java.util.Date)}).
      * <p>
      * 
      * @param modified the feed modified date to set, <b>null</b> if none.
@@ -382,8 +376,7 @@ public class Feed extends WireFeed {
      * Returns the feed entries.
      * <p>
      * 
-     * @return a list of Entry elements with the feed entries, an empty list if
-     *         none.
+     * @return a list of Entry elements with the feed entries, an empty list if none.
      * 
      */
     public List<Entry> getEntries() {
@@ -397,8 +390,8 @@ public class Feed extends WireFeed {
      * Sets the feed entries.
      * <p>
      * 
-     * @param entries the list of Entry elements with the feed entries to set,
-     *            an empty list or <b>null</b> if none.
+     * @param entries the list of Entry elements with the feed entries to set, an empty list or
+     *            <b>null</b> if none.
      * 
      */
     public void setEntries(final List<Entry> entries) {
@@ -409,8 +402,7 @@ public class Feed extends WireFeed {
      * Returns the feed modules.
      * <p>
      * 
-     * @return a list of ModuleImpl elements with the feed modules, an empty
-     *         list if none.
+     * @return a list of ModuleImpl elements with the feed modules, an empty list if none.
      * 
      */
     @Override
@@ -425,8 +417,8 @@ public class Feed extends WireFeed {
      * Sets the feed moduless.
      * <p>
      * 
-     * @param modules the list of ModuleImpl elements with the feed moduless to
-     *            set, an empty list or <b>null</b> if none.
+     * @param modules the list of ModuleImpl elements with the feed moduless to set, an empty list
+     *            or <b>null</b> if none.
      * 
      */
     @Override

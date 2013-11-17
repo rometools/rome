@@ -44,10 +44,11 @@ import com.sun.syndication.io.impl.FeedParsers;
 import com.sun.syndication.io.impl.XmlFixerReader;
 
 /**
- * Parses an XML document (File, InputStream, Reader, W3C SAX InputSource, W3C DOM Document or JDom DOcument) into an WireFeed (RSS/Atom).
+ * Parses an XML document (File, InputStream, Reader, W3C SAX InputSource, W3C DOM Document or JDom
+ * DOcument) into an WireFeed (RSS/Atom).
  * <p>
- * It accepts all flavors of RSS (0.90, 0.91, 0.92, 0.93, 0.94, 1.0 and 2.0) and Atom 0.3 feeds. Parsers are plugable (they must implement the WireFeedParser
- * interface).
+ * It accepts all flavors of RSS (0.90, 0.91, 0.92, 0.93, 0.94, 1.0 and 2.0) and Atom 0.3 feeds.
+ * Parsers are plugable (they must implement the WireFeedParser interface).
  * <p>
  * The WireFeedInput useds liberal parsers.
  * <p>
@@ -115,7 +116,8 @@ public class WireFeedInput {
      * Creates a WireFeedInput instance.
      * <p>
      * 
-     * @param validate indicates if the input should be validated. NOT IMPLEMENTED YET (validation does not happen)
+     * @param validate indicates if the input should be validated. NOT IMPLEMENTED YET (validation
+     *            does not happen)
      * 
      */
     public WireFeedInput(final boolean validate, final Locale locale) {
@@ -172,7 +174,8 @@ public class WireFeedInput {
      * @return the WireFeed read from the file.
      * @throws FileNotFoundException thrown if the file could not be found.
      * @throws IOException thrown if there is problem reading the file.
-     * @throws IllegalArgumentException thrown if feed type could not be understood by any of the underlying parsers.
+     * @throws IllegalArgumentException thrown if feed type could not be understood by any of the
+     *             underlying parsers.
      * @throws FeedException if the feed could not be parsed
      * 
      */
@@ -195,7 +198,8 @@ public class WireFeedInput {
      * 
      * @param reader Reader to read to create the WireFeed.
      * @return the WireFeed read from the Reader.
-     * @throws IllegalArgumentException thrown if feed type could not be understood by any of the underlying parsers.
+     * @throws IllegalArgumentException thrown if feed type could not be understood by any of the
+     *             underlying parsers.
      * @throws FeedException if the feed could not be parsed
      * 
      */
@@ -224,7 +228,8 @@ public class WireFeedInput {
      * 
      * @param is W3C SAX InputSource to read to create the WireFeed.
      * @return the WireFeed read from the W3C SAX InputSource.
-     * @throws IllegalArgumentException thrown if feed type could not be understood by any of the underlying parsers.
+     * @throws IllegalArgumentException thrown if feed type could not be understood by any of the
+     *             underlying parsers.
      * @throws FeedException if the feed could not be parsed
      * 
      */
@@ -250,7 +255,8 @@ public class WireFeedInput {
      * 
      * @param document W3C DOM document to read to create the WireFeed.
      * @return the WireFeed read from the W3C DOM document.
-     * @throws IllegalArgumentException thrown if feed type could not be understood by any of the underlying parsers.
+     * @throws IllegalArgumentException thrown if feed type could not be understood by any of the
+     *             underlying parsers.
      * @throws FeedException if the feed could not be parsed
      * 
      */
@@ -274,7 +280,8 @@ public class WireFeedInput {
      * 
      * @param document JDOM document to read to create the WireFeed.
      * @return the WireFeed read from the JDOM document.
-     * @throws IllegalArgumentException thrown if feed type could not be understood by any of the underlying parsers.
+     * @throws IllegalArgumentException thrown if feed type could not be understood by any of the
+     *             underlying parsers.
      * @throws FeedException if the feed could not be parsed
      * 
      */

@@ -501,8 +501,8 @@ public class Atom10Parser extends BaseWireFeedParser {
     }
 
     /**
-     * Resolve URI via base URL and parent element. Resolve URI based
-     * considering xml:base and baseURI.
+     * Resolve URI via base URL and parent element. Resolve URI based considering xml:base and
+     * baseURI.
      * 
      * @param baseURI Base URI used to fetch the XML document
      * @param parent Parent element from which to consider xml:base
@@ -587,8 +587,8 @@ public class Atom10Parser extends BaseWireFeedParser {
     }
 
     /**
-     * Return URL string of Atom link element under parent element. Link with no
-     * rel attribute is considered to be rel="alternate"
+     * Return URL string of Atom link element under parent element. Link with no rel attribute is
+     * considered to be rel="alternate"
      * 
      * @param parent Consider only children of this parent element
      * @param rel Consider only links with this relationship
@@ -611,8 +611,8 @@ public class Atom10Parser extends BaseWireFeedParser {
     }
 
     /**
-     * Form URI by combining base with append portion and giving special
-     * consideration to append portions that begin with ".."
+     * Form URI by combining base with append portion and giving special consideration to append
+     * portions that begin with ".."
      * 
      * @param base Base of URI, may end with trailing slash
      * @param append String to append, may begin with slash or ".."
@@ -660,7 +660,8 @@ public class Atom10Parser extends BaseWireFeedParser {
     /**
      * Parse entry from reader.
      */
-    public static Entry parseEntry(final Reader rd, final String baseURI, final Locale locale) throws JDOMException, IOException, IllegalArgumentException, FeedException {
+    public static Entry parseEntry(final Reader rd, final String baseURI, final Locale locale) throws JDOMException, IOException, IllegalArgumentException,
+            FeedException {
         // Parse entry into JDOM tree
         final SAXBuilder builder = new SAXBuilder();
         final Document entryDoc = builder.build(rd);

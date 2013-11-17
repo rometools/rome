@@ -22,8 +22,8 @@ import com.sun.syndication.feed.synd.Converter;
 import com.sun.syndication.io.impl.PluginManager;
 
 /**
- * Created by IntelliJ IDEA. User: tucu Date: May 21, 2004 Time: 5:26:04 PM To
- * change this template use Options | File Templates.
+ * Created by IntelliJ IDEA. User: tucu Date: May 21, 2004 Time: 5:26:04 PM To change this template
+ * use Options | File Templates.
  */
 public class Converters extends PluginManager<Converter> {
 

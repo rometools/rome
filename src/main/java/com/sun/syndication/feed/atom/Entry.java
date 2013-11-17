@@ -70,8 +70,8 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * Sets the entry alternate links.
      * <p>
      * 
-     * @param alternateLinks the list of Link elements with the entry alternate
-     *            links to set, an empty list or <b>null</b> if none.
+     * @param alternateLinks the list of Link elements with the entry alternate links to set, an
+     *            empty list or <b>null</b> if none.
      */
     public void setAlternateLinks(final List<Link> alternateLinks) {
         this.alternateLinks = alternateLinks;
@@ -81,8 +81,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * Returns the entry alternate links.
      * <p>
      * 
-     * @return a list of Link elements with the entry alternate links, an empty
-     *         list if none.
+     * @return a list of Link elements with the entry alternate links, an empty list if none.
      */
     public List<Link> getAlternateLinks() {
         if (alternateLinks == null) {
@@ -145,8 +144,8 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * Sets the entry contents.
      * <p>
      * 
-     * @param contents the list of Content elements with the entry contents to
-     *            set, an empty list or <b>null</b> if none.
+     * @param contents the list of Content elements with the entry contents to set, an empty list or
+     *            <b>null</b> if none.
      */
     public void setContents(final List<Content> contents) {
         this.contents = contents;
@@ -156,8 +155,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * Returns the entry contents.
      * <p>
      * 
-     * @return a list of Content elements with the entry contents, an empty list
-     *         if none.
+     * @return a list of Content elements with the entry contents, an empty list if none.
      */
     public List<Content> getContents() {
         if (contents == null) {
@@ -170,8 +168,8 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * Sets the entry contributors.
      * <p>
      * 
-     * @param contributors the list of Person elements with the entry
-     *            contributors to set, an empty list or <b>null</b> if none.
+     * @param contributors the list of Person elements with the entry contributors to set, an empty
+     *            list or <b>null</b> if none.
      * 
      */
     public void setContributors(final List<SyndPerson> contributors) {
@@ -182,8 +180,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * Returns the entry contributors.
      * <p>
      * 
-     * @return a list of Person elements with the entry contributors, an empty
-     *         list if none.
+     * @return a list of Person elements with the entry contributors, an empty list if none.
      * 
      */
     public List<SyndPerson> getContributors() {
@@ -265,8 +262,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
     }
 
     /**
-     * Sets the entry issued date (Atom 0.3, maps to
-     * {@link #setPublished(java.util.Date)}).
+     * Sets the entry issued date (Atom 0.3, maps to {@link #setPublished(java.util.Date)}).
      * <p>
      * 
      * @param issued the entry issued date, <b>null</b> if none.
@@ -280,8 +276,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
     }
 
     /**
-     * Returns the entry issued date (Atom 0.3, maps to {@link #getPublished()}
-     * ).
+     * Returns the entry issued date (Atom 0.3, maps to {@link #getPublished()} ).
      * <p>
      * 
      * @return the entry issued date, <b>null</b> if none.
@@ -315,8 +310,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
     }
 
     /**
-     * Sets the entry modified date (Atom 0.3, maps to
-     * {@link #setUpdated(java.util.Date)}).
+     * Sets the entry modified date (Atom 0.3, maps to {@link #setUpdated(java.util.Date)}).
      * <p>
      * 
      * @param modified the entry modified date, <b>null</b> if none.
@@ -330,8 +324,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
     }
 
     /**
-     * Returns the entry modified date (Atom 0.3, maps to {@link #getUpdated()}
-     * ).
+     * Returns the entry modified date (Atom 0.3, maps to {@link #getUpdated()} ).
      * <p>
      * 
      * @return the entry modified date, <b>null</b> if none.
@@ -360,8 +353,8 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * Sets the entry modules.
      * <p>
      * 
-     * @param modules the list of ModuleImpl elements with the entry modules to
-     *            set, an empty list or <b>null</b> if none.
+     * @param modules the list of ModuleImpl elements with the entry modules to set, an empty list
+     *            or <b>null</b> if none.
      * 
      */
     @Override
@@ -373,8 +366,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * Returns the entry modules.
      * <p>
      * 
-     * @return a list of ModuleImpl elements with the entry modules, an emtpy
-     *         list if none.
+     * @return a list of ModuleImpl elements with the entry modules, an emtpy list if none.
      * 
      */
     @Override
@@ -389,8 +381,8 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * Sets the entry non-alternate links.
      * <p>
      * 
-     * @param otherLinks the list Link elements with the entry non-alternate
-     *            links to set, an empty list or <b>null</b> if none.
+     * @param otherLinks the list Link elements with the entry non-alternate links to set, an empty
+     *            list or <b>null</b> if none.
      */
     public void setOtherLinks(final List<Link> otherLinks) {
         this.otherLinks = otherLinks;
@@ -400,8 +392,8 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * Returns the entry non-alternate links.
      * <p>
      * 
-     * @return the list of Link elements with the entry non-alternate links to
-     *         set, an empty list if none.
+     * @return the list of Link elements with the entry non-alternate links to set, an empty list if
+     *         none.
      */
     public List<Link> getOtherLinks() {
         if (otherLinks == null) {
@@ -613,8 +605,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * <p>
      * 
      * @return a clone of the object.
-     * @throws CloneNotSupportedException thrown if an element of the object
-     *             cannot be cloned.
+     * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
      * 
      */
     @Override
@@ -623,8 +614,8 @@ public class Entry implements Cloneable, Serializable, Extendable {
     }
 
     /**
-     * Indicates whether some other object is "equal to" this one as defined by
-     * the Object equals() method.
+     * Indicates whether some other object is "equal to" this one as defined by the Object equals()
+     * method.
      * <p>
      * 
      * @param other he reference object with which to compare.

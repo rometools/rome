@@ -25,16 +25,14 @@ import com.sun.syndication.io.WireFeedParser;
 /**
  * Parses an XML document (JDOM Document) into a Feed.
  * <p>
- * It accepts all flavors of RSS (0.90, 0.91, 0.92, 0.93, 0.94, 1.0 and 2.0) and
- * Atom 0.3 feeds.
+ * It accepts all flavors of RSS (0.90, 0.91, 0.92, 0.93, 0.94, 1.0 and 2.0) and Atom 0.3 feeds.
  * <p>
  * The WireFeedParser is a liberal parser.
  * <p>
  * WireFeedParser instances are thread safe.
  * <p>
- * Parsers for a specific type must extend this class and register in the parser
- * list. (Right now registration is hardcoded in the WireFeedParser
- * constructor).
+ * Parsers for a specific type must extend this class and register in the parser list. (Right now
+ * registration is hardcoded in the WireFeedParser constructor).
  * <p>
  * 
  * @author Alejandro Abdelnur
@@ -66,8 +64,8 @@ public class FeedParsers extends PluginManager<WireFeedParser> {
      * <p>
      * 
      * @param document document feed to find the parser for.
-     * @return the parser for the given document or <b>null</b> if there is no
-     *         parser for that document.
+     * @return the parser for the given document or <b>null</b> if there is no parser for that
+     *         document.
      * 
      */
     public WireFeedParser getParserFor(final Document document) {

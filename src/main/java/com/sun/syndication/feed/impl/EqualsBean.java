@@ -25,8 +25,8 @@ import java.util.List;
 /**
  * Provides deep <b>Bean</b> equals() and hashCode() functionality for Java Beans.
  * <p>
- * It works on all read/write properties, recursively. It support all primitive types, Strings, Collections, bean-like objects and multi-dimensional arrays of
- * any of them.
+ * It works on all read/write properties, recursively. It support all primitive types, Strings,
+ * Collections, bean-like objects and multi-dimensional arrays of any of them.
  * <p>
  * The hashcode is calculated by getting the hashcode of the Bean String representation.
  * <p>
@@ -95,10 +95,11 @@ public class EqualsBean implements Serializable {
     }
 
     /**
-     * Indicates whether some other object is "equal to" this object as defined by the Object equals() method.
+     * Indicates whether some other object is "equal to" this object as defined by the Object
+     * equals() method.
      * <p>
-     * To be used by classes extending EqualsBean. Although it works also for classes using EqualsBean in a delegation pattern, for correctness those classes
-     * should use the
+     * To be used by classes extending EqualsBean. Although it works also for classes using
+     * EqualsBean in a delegation pattern, for correctness those classes should use the
      * 
      * @see #beanEquals(Object) beanEquals method.
      *      <p>
@@ -112,7 +113,8 @@ public class EqualsBean implements Serializable {
     }
 
     /**
-     * Indicates whether some other object is "equal to" the object passed in the constructor, as defined by the Object equals() method.
+     * Indicates whether some other object is "equal to" the object passed in the constructor, as
+     * defined by the Object equals() method.
      * <p>
      * To be used by classes using EqualsBean in a delegation pattern,
      * 
@@ -170,8 +172,8 @@ public class EqualsBean implements Serializable {
      * <p>
      * The hashcode is calculated by getting the hashcode of the Bean String representation.
      * <p>
-     * To be used by classes extending EqualsBean. Although it works also for classes using EqualsBean in a delegation pattern, for correctness those classes
-     * should use the
+     * To be used by classes extending EqualsBean. Although it works also for classes using
+     * EqualsBean in a delegation pattern, for correctness those classes should use the
      * 
      * @see #beanHashCode() beanHashCode method.
      *      <p>

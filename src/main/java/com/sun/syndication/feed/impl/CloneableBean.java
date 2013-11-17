@@ -36,8 +36,8 @@ import org.slf4j.LoggerFactory;
 /**
  * Provides deep <b>Bean</b> clonning support.
  * <p>
- * It works on all read/write properties, recursively. It support all primitive types, Strings, Collections, Cloneable objects and multi-dimensional arrays of
- * any of them.
+ * It works on all read/write properties, recursively. It support all primitive types, Strings,
+ * Collections, Cloneable objects and multi-dimensional arrays of any of them.
  * <p>
  * 
  * @author Alejandro Abdelnur
@@ -109,9 +109,11 @@ public class CloneableBean implements Serializable, Cloneable {
     /**
      * Creates a CloneableBean to be used in a delegation pattern.
      * <p>
-     * The property names in the ignoreProperties Set will not be copied into the cloned instance. This is useful for cases where the Bean has convenience
-     * properties (properties that are actually references to other properties or properties of properties). For example SyndFeed and SyndEntry beans have
-     * convenience properties, publishedDate, author, copyright and categories all of them mapped to properties in the DC Module.
+     * The property names in the ignoreProperties Set will not be copied into the cloned instance.
+     * This is useful for cases where the Bean has convenience properties (properties that are
+     * actually references to other properties or properties of properties). For example SyndFeed
+     * and SyndEntry beans have convenience properties, publishedDate, author, copyright and
+     * categories all of them mapped to properties in the DC Module.
      * <p>
      * 
      * @param obj object bean to clone.
@@ -130,8 +132,8 @@ public class CloneableBean implements Serializable, Cloneable {
     /**
      * Makes a deep bean clone of the object.
      * <p>
-     * To be used by classes extending CloneableBean. Although it works also for classes using CloneableBean in a delegation pattern, for correctness those
-     * classes should use the
+     * To be used by classes extending CloneableBean. Although it works also for classes using
+     * CloneableBean in a delegation pattern, for correctness those classes should use the
      * 
      * @see #beanClone() beanClone method.
      *      <p>

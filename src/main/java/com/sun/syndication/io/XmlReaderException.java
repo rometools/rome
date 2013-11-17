@@ -4,14 +4,12 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * The XmlReaderException is thrown by the XmlReader constructors if the charset
- * encoding can not be determined according to the XML 1.0 specification and RFC
- * 3023.
+ * The XmlReaderException is thrown by the XmlReader constructors if the charset encoding can not be
+ * determined according to the XML 1.0 specification and RFC 3023.
  * <p>
- * The exception returns the unconsumed InputStream to allow the application to
- * do an alternate processing with the stream. Note that the original
- * InputStream given to the XmlReader cannot be used as that one has been
- * already read.
+ * The exception returns the unconsumed InputStream to allow the application to do an alternate
+ * processing with the stream. Note that the original InputStream given to the XmlReader cannot be
+ * used as that one has been already read.
  * <p>
  * 
  * @author Alejandro Abdelnur
@@ -27,8 +25,7 @@ public class XmlReaderException extends IOException {
     private final InputStream is;
 
     /**
-     * Creates an exception instance if the charset encoding could not be
-     * determined.
+     * Creates an exception instance if the charset encoding could not be determined.
      * <p>
      * Instances of this exception are thrown by the XmlReader.
      * <p>
@@ -45,8 +42,7 @@ public class XmlReaderException extends IOException {
     }
 
     /**
-     * Creates an exception instance if the charset encoding could not be
-     * determined.
+     * Creates an exception instance if the charset encoding could not be determined.
      * <p>
      * Instances of this exception are thrown by the XmlReader.
      * <p>
@@ -105,12 +101,11 @@ public class XmlReaderException extends IOException {
     }
 
     /**
-     * Returns the MIME type in the content-type used to attempt determining the
-     * encoding.
+     * Returns the MIME type in the content-type used to attempt determining the encoding.
      * <p>
      * 
-     * @return the MIME type in the content-type, null if there was not
-     *         content-type or the encoding detection did not involve HTTP.
+     * @return the MIME type in the content-type, null if there was not content-type or the encoding
+     *         detection did not involve HTTP.
      * 
      */
     public String getContentTypeMime() {
@@ -118,13 +113,11 @@ public class XmlReaderException extends IOException {
     }
 
     /**
-     * Returns the encoding in the content-type used to attempt determining the
-     * encoding.
+     * Returns the encoding in the content-type used to attempt determining the encoding.
      * <p>
      * 
-     * @return the encoding in the content-type, null if there was not
-     *         content-type, no encoding in it or the encoding detection did not
-     *         involve HTTP.
+     * @return the encoding in the content-type, null if there was not content-type, no encoding in
+     *         it or the encoding detection did not involve HTTP.
      * 
      */
     public String getContentTypeEncoding() {
@@ -132,8 +125,8 @@ public class XmlReaderException extends IOException {
     }
 
     /**
-     * Returns the unconsumed InputStream to allow the application to do an
-     * alternate encoding detection on the InputStream.
+     * Returns the unconsumed InputStream to allow the application to do an alternate encoding
+     * detection on the InputStream.
      * <p>
      * 
      * @return the unconsumed InputStream.

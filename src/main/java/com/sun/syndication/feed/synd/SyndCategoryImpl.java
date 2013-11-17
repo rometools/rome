@@ -44,8 +44,8 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
     private final DCSubject subject;
 
     /**
-     * For implementations extending SyndContentImpl to be able to use the
-     * ObjectBean functionality with extended interfaces.
+     * For implementations extending SyndContentImpl to be able to use the ObjectBean functionality
+     * with extended interfaces.
      * <p>
      * 
      * @param subject the DC subject to wrap.
@@ -60,8 +60,7 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
      * <p>
      * 
      * @return a clone of the object.
-     * @throws CloneNotSupportedException thrown if an element of the object
-     *             cannot be cloned.
+     * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
      * 
      */
     @Override
@@ -70,8 +69,8 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
     }
 
     /**
-     * Indicates whether some other object is "equal to" this one as defined by
-     * the Object equals() method.
+     * Indicates whether some other object is "equal to" this one as defined by the Object equals()
+     * method.
      * <p>
      * 
      * @param other he reference object with which to compare.
@@ -203,18 +202,17 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
 }
 
 /**
- * List implementation for SyndCategoryImpl elements. To be directly used by the
- * SyndFeedImpl and SyndEntryImpl classes only.
+ * List implementation for SyndCategoryImpl elements. To be directly used by the SyndFeedImpl and
+ * SyndEntryImpl classes only.
  * <p>
- * It acts as a facade on top of the DCSubjectImpl elements of the underlying
- * list and remains in synch with it. It is possible to work on either list, the
- * categories one or the subjects one and they remain in synch.
+ * It acts as a facade on top of the DCSubjectImpl elements of the underlying list and remains in
+ * synch with it. It is possible to work on either list, the categories one or the subjects one and
+ * they remain in synch.
  * <p>
- * This is necessary because the SyndFeedImpl categories are just a convenience
- * to access the DublinCore subjects.
+ * This is necessary because the SyndFeedImpl categories are just a convenience to access the
+ * DublinCore subjects.
  * <P>
- * All this mess to avoid making DCSubjectImpl implement SyndCategory (which it
- * would be odd).
+ * All this mess to avoid making DCSubjectImpl implement SyndCategory (which it would be odd).
  * <p>
  * 
  * @author Alejandro Abdelnur
@@ -272,8 +270,7 @@ class SyndCategoryListFacade extends AbstractList<SyndCategory> {
      * 
      * @param index position to set the category.
      * @param obj the SyndCategoryImpl object to set.
-     * @return the SyndCategoryImpl object that is being replaced, <b>null</b>
-     *         if none.
+     * @return the SyndCategoryImpl object that is being replaced, <b>null</b> if none.
      * 
      */
     @Override
@@ -318,8 +315,7 @@ class SyndCategoryListFacade extends AbstractList<SyndCategory> {
      * <p>
      * 
      * @param index position to remove the category from.
-     * @return the SyndCategoryImpl being removed from position index,
-     *         <b>null</b> if none.
+     * @return the SyndCategoryImpl being removed from position index, <b>null</b> if none.
      * 
      */
     @Override
@@ -333,14 +329,12 @@ class SyndCategoryListFacade extends AbstractList<SyndCategory> {
     }
 
     /**
-     * Returns a list with the DCSubject elements of the SyndCategoryImpl list
-     * facade. To be used by the SyndFeedImpl class only.
+     * Returns a list with the DCSubject elements of the SyndCategoryImpl list facade. To be used by
+     * the SyndFeedImpl class only.
      * <p>
      * 
-     * @param cList the list with SyndCategoryImpl elements to convert to
-     *            subject list.
-     * @return a list with DCSubject elements corresponding to the categories in
-     *         the given list.
+     * @param cList the list with SyndCategoryImpl elements to convert to subject list.
+     * @return a list with DCSubject elements corresponding to the categories in the given list.
      * 
      */
     public static List<DCSubject> convertElementsSyndCategoryToSubject(final List<SyndCategory> cList) {

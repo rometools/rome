@@ -20,7 +20,7 @@ public class TestDublinCore extends FeedTest {
 
     public void testDublinCoreDateIsPreferredWhenAvailableRatherThanRss20PubDate() throws Exception {
         final SyndFeed feed = this.getCachedSyndFeed();
-        final SyndEntry entry = (SyndEntry) feed.getEntries().get(0);
+        final SyndEntry entry = feed.getEntries().get(0);
         final DCModule dc = (DCModule) entry.getModule(DCModule.URI);
         final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.ENGLISH);
         sdf.setTimeZone(TimeZone.getTimeZone("UTC"));

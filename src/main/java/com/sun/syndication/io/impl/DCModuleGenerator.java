@@ -78,12 +78,10 @@ public class DCModuleGenerator implements ModuleGenerator {
     }
 
     /**
-     * Returns a set with all the URIs (JDOM Namespace elements) this module
-     * generator uses.
+     * Returns a set with all the URIs (JDOM Namespace elements) this module generator uses.
      * <p/>
-     * It is used by the the feed generators to add their namespace definition
-     * in the root element of the generated document (forward-missing of Java
-     * 5.0 Generics).
+     * It is used by the the feed generators to add their namespace definition in the root element
+     * of the generated document (forward-missing of Java 5.0 Generics).
      * <p/>
      * 
      * @return a set with all the URIs this module generator uses.

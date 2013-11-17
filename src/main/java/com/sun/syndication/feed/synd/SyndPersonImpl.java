@@ -41,8 +41,8 @@ public class SyndPersonImpl implements Serializable, SyndPerson {
     private List<Module> modules;
 
     /**
-     * For implementations extending SyndContentImpl to be able to use the
-     * ObjectBean functionality with extended interfaces.
+     * For implementations extending SyndContentImpl to be able to use the ObjectBean functionality
+     * with extended interfaces.
      */
     public SyndPersonImpl() {
         objBean = new ObjectBean(SyndPerson.class, this);
@@ -53,8 +53,7 @@ public class SyndPersonImpl implements Serializable, SyndPerson {
      * <p>
      * 
      * @return a clone of the object.
-     * @throws CloneNotSupportedException thrown if an element of the object
-     *             cannot be cloned.
+     * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
      * 
      */
     @Override
@@ -63,8 +62,8 @@ public class SyndPersonImpl implements Serializable, SyndPerson {
     }
 
     /**
-     * Indicates whether some other object is "equal to" this one as defined by
-     * the Object equals() method.
+     * Indicates whether some other object is "equal to" this one as defined by the Object equals()
+     * method.
      * <p>
      * 
      * @param other he reference object with which to compare.
@@ -181,8 +180,7 @@ public class SyndPersonImpl implements Serializable, SyndPerson {
      * Returns the person modules.
      * <p>
      * 
-     * @return a list of ModuleImpl elements with the person modules, an empty
-     *         list if none.
+     * @return a list of ModuleImpl elements with the person modules, an empty list if none.
      */
     @Override
     public List<Module> getModules() {
@@ -196,8 +194,8 @@ public class SyndPersonImpl implements Serializable, SyndPerson {
      * Sets the person modules.
      * <p>
      * 
-     * @param modules the list of ModuleImpl elements with the person modules to
-     *            set, an empty list or <b>null</b> if none.
+     * @param modules the list of ModuleImpl elements with the person modules to set, an empty list
+     *            or <b>null</b> if none.
      * 
      */
     @Override

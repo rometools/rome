@@ -31,8 +31,8 @@ import com.sun.syndication.feed.module.impl.ModuleUtils;
 /**
  * Bean for RSS feeds.
  * <p>
- * It handles all RSS versions (0.9, 0.91, 0.92, 0.93, 0.94, 1.0 and 2.0)
- * without losing information.
+ * It handles all RSS versions (0.9, 0.91, 0.92, 0.93, 0.94, 1.0 and 2.0) without losing
+ * information.
  * <p>
  * 
  * @author Alejandro Abdelnur
@@ -93,8 +93,7 @@ public class Channel extends WireFeed {
     }
 
     /**
-     * Channel Constructor. All properties, except the type, are set to
-     * <b>null</b>.
+     * Channel Constructor. All properties, except the type, are set to <b>null</b>.
      * <p>
      * 
      * @param type the type of the RSS feed.
@@ -216,8 +215,7 @@ public class Channel extends WireFeed {
      * Returns the channel items.
      * <p>
      * 
-     * @return a list of Item elements with the channel items, an empty list if
-     *         none.
+     * @return a list of Item elements with the channel items, an empty list if none.
      * 
      */
     public List<Item> getItems() {
@@ -231,8 +229,8 @@ public class Channel extends WireFeed {
      * Sets the channel items.
      * <p>
      * 
-     * @param items the list of Item elements with the channel items to set, an
-     *            empty list or <b>null</b> if none.
+     * @param items the list of Item elements with the channel items to set, an empty list or
+     *            <b>null</b> if none.
      * 
      */
     public void setItems(final List<Item> items) {
@@ -376,8 +374,7 @@ public class Channel extends WireFeed {
      * Sets the channel last build date.
      * <p>
      * 
-     * @param lastBuildDate the channel last build date to set, <b>null</b> if
-     *            none.
+     * @param lastBuildDate the channel last build date to set, <b>null</b> if none.
      * 
      */
     public void setLastBuildDate(final Date lastBuildDate) {
@@ -425,8 +422,7 @@ public class Channel extends WireFeed {
      * Sets the channel managing editor.
      * <p>
      * 
-     * @param managingEditor the channel managing editor to set, <b>null</b> if
-     *            none.
+     * @param managingEditor the channel managing editor to set, <b>null</b> if none.
      * 
      */
     public void setManagingEditor(final String managingEditor) {
@@ -459,8 +455,7 @@ public class Channel extends WireFeed {
      * Returns the channel skip hours.
      * <p>
      * 
-     * @return a list of Integer elements with the channel skip hours, an empty
-     *         list if none.
+     * @return a list of Integer elements with the channel skip hours, an empty list if none.
      * 
      */
     public List<Integer> getSkipHours() {
@@ -475,8 +470,8 @@ public class Channel extends WireFeed {
      * Sets the channel skip hours.
      * <p>
      * 
-     * @param skipHours the list of Integer elements with the channel skip hours
-     *            to set, an empty list or <b>null</b> if none.
+     * @param skipHours the list of Integer elements with the channel skip hours to set, an empty
+     *            list or <b>null</b> if none.
      * 
      */
     public void setSkipHours(final List<Integer> skipHours) {
@@ -500,8 +495,7 @@ public class Channel extends WireFeed {
      * Returns the channel skip days.
      * <p>
      * 
-     * @return a list of Day elements with the channel skip days, an empty list
-     *         if none.
+     * @return a list of Day elements with the channel skip days, an empty list if none.
      * 
      */
     public List<String> getSkipDays() {
@@ -516,8 +510,8 @@ public class Channel extends WireFeed {
      * Sets the channel skip days.
      * <p>
      * 
-     * @param skipDays the list of Day elements with the channel skip days to
-     *            set, an empty list or <b>null</b> if none.
+     * @param skipDays the list of Day elements with the channel skip days to set, an empty list or
+     *            <b>null</b> if none.
      * 
      */
     public void setSkipDays(final List<String> skipDays) {
@@ -564,8 +558,7 @@ public class Channel extends WireFeed {
      * Returns the channel categories.
      * <p>
      * 
-     * @return a list of Category elements with the channel categories, an empty
-     *         list if none.
+     * @return a list of Category elements with the channel categories, an empty list if none.
      * 
      */
     public List<Category> getCategories() {
@@ -579,8 +572,8 @@ public class Channel extends WireFeed {
      * Sets the channel categories.
      * <p>
      * 
-     * @param categories the list of Category elements with the channel
-     *            categories to set, an empty list or <b>null</b> if none.
+     * @param categories the list of Category elements with the channel categories to set, an empty
+     *            list or <b>null</b> if none.
      * 
      */
     public void setCategories(final List<Category> categories) {
@@ -635,8 +628,7 @@ public class Channel extends WireFeed {
      * Returns the channel modules.
      * <p>
      * 
-     * @return a list of ModuleImpl elements with the channel modules, an empty
-     *         list if none.
+     * @return a list of ModuleImpl elements with the channel modules, an empty list if none.
      * 
      */
     @Override
@@ -651,8 +643,8 @@ public class Channel extends WireFeed {
      * Sets the channel modules.
      * <p>
      * 
-     * @param modules the list of ModuleImpl elements with the channel modules
-     *            to set, an empty list or <b>null</b> if none.
+     * @param modules the list of ModuleImpl elements with the channel modules to set, an empty list
+     *            or <b>null</b> if none.
      * 
      */
     @Override

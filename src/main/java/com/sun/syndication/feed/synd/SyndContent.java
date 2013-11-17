@@ -29,8 +29,7 @@ public interface SyndContent extends Cloneable, CopyFrom<SyndContent> {
     /**
      * Returns the content type.
      * <p>
-     * When used for the description of an entry, if <b>null</b> 'text/plain'
-     * must be assumed.
+     * When used for the description of an entry, if <b>null</b> 'text/plain' must be assumed.
      * <p>
      * 
      * @return the content type, <b>null</b> if none.
@@ -41,8 +40,7 @@ public interface SyndContent extends Cloneable, CopyFrom<SyndContent> {
     /**
      * Sets the content type.
      * <p>
-     * When used for the description of an entry, if <b>null</b> 'text/plain'
-     * must be assumed.
+     * When used for the description of an entry, if <b>null</b> 'text/plain' must be assumed.
      * <p>
      * 
      * @param type the content type to set, <b>null</b> if none.
@@ -89,8 +87,7 @@ public interface SyndContent extends Cloneable, CopyFrom<SyndContent> {
      * <p>
      * 
      * @return a clone of the object.
-     * @throws CloneNotSupportedException thrown if an element of the object
-     *             cannot be cloned.
+     * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
      * 
      */
     public Object clone() throws CloneNotSupportedException;

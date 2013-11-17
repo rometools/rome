@@ -35,10 +35,11 @@ import com.sun.syndication.feed.impl.ConfigurableClassLoader;
 import com.sun.syndication.io.impl.FeedGenerators;
 
 /**
- * Generates an XML document (String, File, OutputStream, Writer, W3C DOM document or JDOM document) out of an WireFeed (RSS/Atom).
+ * Generates an XML document (String, File, OutputStream, Writer, W3C DOM document or JDOM document)
+ * out of an WireFeed (RSS/Atom).
  * <p>
- * It generates all flavors of RSS (0.90, 0.91, 0.92, 0.93, 0.94, 1.0 and 2.0) and Atom 0.3 feeds. Generators are plugable (they must implement the ModuleParser
- * interface).
+ * It generates all flavors of RSS (0.90, 0.91, 0.92, 0.93, 0.94, 1.0 and 2.0) and Atom 0.3 feeds.
+ * Generators are plugable (they must implement the ModuleParser interface).
  * <p>
  * 
  * @author Alejandro Abdelnur
@@ -83,15 +84,18 @@ public class WireFeedOutput {
     /**
      * Creates a String with the XML representation for the given WireFeed.
      * <p>
-     * If the feed encoding is not NULL, it will be used in the XML prolog encoding attribute. It is the responsibility of the developer to ensure that if the
-     * String is written to a character stream the stream charset is the same as the feed encoding property.
+     * If the feed encoding is not NULL, it will be used in the XML prolog encoding attribute. It is
+     * the responsibility of the developer to ensure that if the String is written to a character
+     * stream the stream charset is the same as the feed encoding property.
      * <p>
      * NOTE: This method delages to the 'Document WireFeedOutput#outputJDom(WireFeed)'.
      * <p>
      * 
-     * @param feed Abstract feed to create XML representation from. The type of the WireFeed must match the type given to the FeedOuptut constructor.
+     * @param feed Abstract feed to create XML representation from. The type of the WireFeed must
+     *            match the type given to the FeedOuptut constructor.
      * @return a String with the XML representation for the given WireFeed.
-     * @throws IllegalArgumentException thrown if the feed type of the WireFeedOutput and WireFeed don't match.
+     * @throws IllegalArgumentException thrown if the feed type of the WireFeedOutput and WireFeed
+     *             don't match.
      * @throws FeedException thrown if the XML representation for the feed could not be created.
      * 
      */
@@ -102,16 +106,19 @@ public class WireFeedOutput {
     /**
      * Creates a String with the XML representation for the given WireFeed.
      * <p>
-     * If the feed encoding is not NULL, it will be used in the XML prolog encoding attribute. It is the responsibility of the developer to ensure that if the
-     * String is written to a character stream the stream charset is the same as the feed encoding property.
+     * If the feed encoding is not NULL, it will be used in the XML prolog encoding attribute. It is
+     * the responsibility of the developer to ensure that if the String is written to a character
+     * stream the stream charset is the same as the feed encoding property.
      * <p>
      * NOTE: This method delages to the 'Document WireFeedOutput#outputJDom(WireFeed)'.
      * <p>
      * 
-     * @param feed Abstract feed to create XML representation from. The type of the WireFeed must match the type given to the FeedOuptut constructor.
+     * @param feed Abstract feed to create XML representation from. The type of the WireFeed must
+     *            match the type given to the FeedOuptut constructor.
      * @param prettyPrint pretty-print XML (true) oder collapsed
      * @return a String with the XML representation for the given WireFeed.
-     * @throws IllegalArgumentException thrown if the feed type of the WireFeedOutput and WireFeed don't match.
+     * @throws IllegalArgumentException thrown if the feed type of the WireFeedOutput and WireFeed
+     *             don't match.
      * @throws FeedException thrown if the XML representation for the feed could not be created.
      * 
      */
@@ -134,15 +141,19 @@ public class WireFeedOutput {
     /**
      * Creates a File containing with the XML representation for the given WireFeed.
      * <p>
-     * If the feed encoding is not NULL, it will be used in the XML prolog encoding attribute. The platform default charset encoding is used to write the feed
-     * to the file. It is the responsibility of the developer to ensure the feed encoding is set to the platform charset encoding.
+     * If the feed encoding is not NULL, it will be used in the XML prolog encoding attribute. The
+     * platform default charset encoding is used to write the feed to the file. It is the
+     * responsibility of the developer to ensure the feed encoding is set to the platform charset
+     * encoding.
      * <p>
      * NOTE: This method delages to the 'Document WireFeedOutput#outputJDom(WireFeed)'.
      * <p>
      * 
-     * @param feed Abstract feed to create XML representation from. The type of the WireFeed must match the type given to the FeedOuptut constructor.
+     * @param feed Abstract feed to create XML representation from. The type of the WireFeed must
+     *            match the type given to the FeedOuptut constructor.
      * @param file the file where to write the XML representation for the given WireFeed.
-     * @throws IllegalArgumentException thrown if the feed type of the WireFeedOutput and WireFeed don't match.
+     * @throws IllegalArgumentException thrown if the feed type of the WireFeedOutput and WireFeed
+     *             don't match.
      * @throws IOException thrown if there was some problem writing to the File.
      * @throws FeedException thrown if the XML representation for the feed could not be created.
      * 
@@ -154,16 +165,20 @@ public class WireFeedOutput {
     /**
      * Creates a File containing with the XML representation for the given WireFeed.
      * <p>
-     * If the feed encoding is not NULL, it will be used in the XML prolog encoding attribute. The platform default charset encoding is used to write the feed
-     * to the file. It is the responsibility of the developer to ensure the feed encoding is set to the platform charset encoding.
+     * If the feed encoding is not NULL, it will be used in the XML prolog encoding attribute. The
+     * platform default charset encoding is used to write the feed to the file. It is the
+     * responsibility of the developer to ensure the feed encoding is set to the platform charset
+     * encoding.
      * <p>
      * NOTE: This method delages to the 'Document WireFeedOutput#outputJDom(WireFeed)'.
      * <p>
      * 
-     * @param feed Abstract feed to create XML representation from. The type of the WireFeed must match the type given to the FeedOuptut constructor.
+     * @param feed Abstract feed to create XML representation from. The type of the WireFeed must
+     *            match the type given to the FeedOuptut constructor.
      * @param file the file where to write the XML representation for the given WireFeed.
      * @param prettyPrint pretty-print XML (true) oder collapsed
-     * @throws IllegalArgumentException thrown if the feed type of the WireFeedOutput and WireFeed don't match.
+     * @throws IllegalArgumentException thrown if the feed type of the WireFeedOutput and WireFeed
+     *             don't match.
      * @throws IOException thrown if there was some problem writing to the File.
      * @throws FeedException thrown if the XML representation for the feed could not be created.
      * 
@@ -177,15 +192,18 @@ public class WireFeedOutput {
     /**
      * Writes to an Writer the XML representation for the given WireFeed.
      * <p>
-     * If the feed encoding is not NULL, it will be used in the XML prolog encoding attribute. It is the responsibility of the developer to ensure the Writer
-     * instance is using the same charset encoding.
+     * If the feed encoding is not NULL, it will be used in the XML prolog encoding attribute. It is
+     * the responsibility of the developer to ensure the Writer instance is using the same charset
+     * encoding.
      * <p>
      * NOTE: This method delages to the 'Document WireFeedOutput#outputJDom(WireFeed)'.
      * <p>
      * 
-     * @param feed Abstract feed to create XML representation from. The type of the WireFeed must match the type given to the FeedOuptut constructor.
+     * @param feed Abstract feed to create XML representation from. The type of the WireFeed must
+     *            match the type given to the FeedOuptut constructor.
      * @param writer Writer to write the XML representation for the given WireFeed.
-     * @throws IllegalArgumentException thrown if the feed type of the WireFeedOutput and WireFeed don't match.
+     * @throws IllegalArgumentException thrown if the feed type of the WireFeedOutput and WireFeed
+     *             don't match.
      * @throws IOException thrown if there was some problem writing to the Writer.
      * @throws FeedException thrown if the XML representation for the feed could not be created.
      * 
@@ -197,16 +215,19 @@ public class WireFeedOutput {
     /**
      * Writes to an Writer the XML representation for the given WireFeed.
      * <p>
-     * If the feed encoding is not NULL, it will be used in the XML prolog encoding attribute. It is the responsibility of the developer to ensure the Writer
-     * instance is using the same charset encoding.
+     * If the feed encoding is not NULL, it will be used in the XML prolog encoding attribute. It is
+     * the responsibility of the developer to ensure the Writer instance is using the same charset
+     * encoding.
      * <p>
      * NOTE: This method delages to the 'Document WireFeedOutput#outputJDom(WireFeed)'.
      * <p>
      * 
-     * @param feed Abstract feed to create XML representation from. The type of the WireFeed must match the type given to the FeedOuptut constructor.
+     * @param feed Abstract feed to create XML representation from. The type of the WireFeed must
+     *            match the type given to the FeedOuptut constructor.
      * @param writer Writer to write the XML representation for the given WireFeed.
      * @param prettyPrint pretty-print XML (true) oder collapsed
-     * @throws IllegalArgumentException thrown if the feed type of the WireFeedOutput and WireFeed don't match.
+     * @throws IllegalArgumentException thrown if the feed type of the WireFeedOutput and WireFeed
+     *             don't match.
      * @throws IOException thrown if there was some problem writing to the Writer.
      * @throws FeedException thrown if the XML representation for the feed could not be created.
      * 
@@ -235,9 +256,11 @@ public class WireFeedOutput {
      * NOTE: This method delages to the 'Document WireFeedOutput#outputJDom(WireFeed)'.
      * <p>
      * 
-     * @param feed Abstract feed to create W3C DOM document from. The type of the WireFeed must match the type given to the FeedOuptut constructor.
+     * @param feed Abstract feed to create W3C DOM document from. The type of the WireFeed must
+     *            match the type given to the FeedOuptut constructor.
      * @return the W3C DOM document for the given WireFeed.
-     * @throws IllegalArgumentException thrown if the feed type of the WireFeedOutput and WireFeed don't match.
+     * @throws IllegalArgumentException thrown if the feed type of the WireFeedOutput and WireFeed
+     *             don't match.
      * @throws FeedException thrown if the W3C DOM document for the feed could not be created.
      * 
      */
@@ -259,9 +282,11 @@ public class WireFeedOutput {
      * NOTE: All other output methods delegate to this method.
      * <p>
      * 
-     * @param feed Abstract feed to create JDOM document from. The type of the WireFeed must match the type given to the FeedOuptut constructor.
+     * @param feed Abstract feed to create JDOM document from. The type of the WireFeed must match
+     *            the type given to the FeedOuptut constructor.
      * @return the JDOM document for the given WireFeed.
-     * @throws IllegalArgumentException thrown if the feed type of the WireFeedOutput and WireFeed don't match.
+     * @throws IllegalArgumentException thrown if the feed type of the WireFeedOutput and WireFeed
+     *             don't match.
      * @throws FeedException thrown if the JDOM document for the feed could not be created.
      * 
      */
