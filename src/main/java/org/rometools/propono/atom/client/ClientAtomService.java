@@ -103,6 +103,8 @@ public class ClientAtomService extends AtomService {
             httpClient.executeMethod(method);
 
             final SAXBuilder builder = new SAXBuilder();
+            String doc = method.getResponseBodyAsString();
+            logger.debug(doc);
             return builder.build(method.getResponseBodyAsStream());
 
         } catch (final Throwable t) {

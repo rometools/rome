@@ -23,6 +23,6 @@ public class TestAtomHandlerFactory extends AtomHandlerFactory {
 
     @Override
     public AtomHandler newAtomHandler(final HttpServletRequest req, final HttpServletResponse res) {
-        return new TestAtomHandlerImpl(req, "build/testuploaddir");
+        return new TestAtomHandlerImpl(req, "target/testuploaddir");
     }
 }

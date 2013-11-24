@@ -34,9 +34,9 @@ public abstract class AtomHandlerFactory {
 
     private static Log log = LogFactory.getFactory().getInstance(AtomHandlerFactory.class);
 
-    private static final String DEFAULT_PROPERTY_NAME = "com.sun.syndication.propono.atom.server.AtomHandlerFactory";
+    private static final String DEFAULT_PROPERTY_NAME = "org.rometools.propono.atom.server.AtomHandlerFactory";
 
-    private static final String FALLBACK_IMPL_NAME = "com.sun.syndication.propono.atom.server.impl.FileBasedAtomHandlerFactory";
+    private static final String FALLBACK_IMPL_NAME = "org.rometools.propono.atom.server.impl.FileBasedAtomHandlerFactory";
 
     /*
      * <p>Protected constructor to prevent instantiation. Use {@link #newInstance()}.</p>

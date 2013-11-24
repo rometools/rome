@@ -777,7 +777,7 @@ public class FileBasedCollection extends Collection {
     }
 
     private String getCategoriesURI() {
-        if (relativeURIs) {
+        if (!relativeURIs) {
             return contextURI + servletPath + "/" + handle + "/" + singular + "/categories";
         } else {
             return servletPath + "/" + handle + "/" + singular + "/categories";

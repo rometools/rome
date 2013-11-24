@@ -16,61 +16,78 @@
  */
 package org.rometools.propono.atom.server;
 
+import com.sun.syndication.feed.atom.Category;
+import com.sun.syndication.feed.atom.Content;
+import java.io.FileInputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
-import org.junit.Ignore;
+import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertTrue;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 import org.mortbay.http.HttpContext;
 import org.mortbay.http.HttpServer;
 import org.mortbay.http.SocketListener;
 import org.mortbay.jetty.servlet.ServletHandler;
-import org.rometools.propono.atom.client.AtomClientTest;
+import org.rometools.propono.atom.client.AtomClientFactory;
+import org.rometools.propono.atom.client.BasicAuthStrategy;
+import org.rometools.propono.atom.client.ClientAtomService;
+import org.rometools.propono.atom.client.ClientCollection;
+import org.rometools.propono.atom.client.ClientEntry;
+import org.rometools.propono.atom.client.ClientMediaEntry;
+import org.rometools.propono.atom.client.ClientWorkspace;
+import org.rometools.propono.atom.common.Categories;
+import org.rometools.propono.atom.common.Collection;
+import org.rometools.propono.utils.ProponoException;
 
 /**
- * Test Propono Atom Client against Atom Server via Jetty. Extends <code>AtomClientTest</code> to start Jetty server, run tests and then stop the Jetty server.
+ * Test Propono Atom Client against Atom Server via Jetty. Extends <code>AtomClientTest</code> to
+ * start Jetty server, run tests and then stop the Jetty server.
  */
-@Ignore
-public class AtomClientServerTest extends AtomClientTest {
+public class AtomClientServerTest {
 
-    private HttpServer server;
+    private static final Log log = LogFactory.getFactory().getInstance(AtomClientServerTest.class);
+
+    private HttpServer server = null;
     public static final int TESTPORT = 8283;
     public static final String ENDPOINT = "http://localhost:" + TESTPORT + "/rome/app";
     public static final String USERNAME = "admin";
     public static final String PASSWORD = "admin";
 
-    public AtomClientServerTest(final String s) {
-        super(s);
-    }
+    private static ClientAtomService service = null;
 
-    @Override
     public String getEndpoint() {
         return ENDPOINT;
     }
 
-    @Override
     public String getUsername() {
         return USERNAME;
     }
 
-    @Override
     public String getPassword() {
         return PASSWORD;
-    }
-
-    public static Test suite() {
-        final TestSuite suite = new TestSuite(AtomClientServerTest.class);
-        return suite;
     }
 
     protected HttpServer getServer() {
         return server;
     }
 
-    protected void setUp() throws Exception {
+    @Before
+    public void setUpClass() throws Exception {
+        log.info("---------------------------------------------");
+        log.info("Starting Jetty");
+        log.info("---------------------------------------------");
+
         final ConsoleHandler handler = new ConsoleHandler();
         final Logger logger = Logger.getLogger("org.rometools.propono");
         logger.setLevel(Level.FINEST);
@@ -82,6 +99,19 @@ public class AtomClientServerTest extends AtomClientTest {
         context.addHandler(servlets);
         server.addContext(context);
         server.start();
+
+        service = AtomClientFactory.getAtomService(getEndpoint(),
+                new BasicAuthStrategy(getUsername(), getPassword()));
+    }
+
+    @After
+    public void tearDownClass() throws Exception {
+        if (server != null) {
+            log.info("Stoping Jetty");
+            server.stop();
+            server.destroy();
+            server = null;
+        }
     }
 
     private void setupServer() throws InterruptedException {
@@ -100,8 +130,8 @@ public class AtomClientServerTest extends AtomClientTest {
 
     private ServletHandler createServletHandler() {
         System.setProperty(
-			"org.rometools.propono.atom.server.AtomHandlerFactory", 
-			"org.rometools.propono.atom.server.TestAtomHandlerFactory");
+                "org.rometools.propono.atom.server.AtomHandlerFactory",
+                "org.rometools.propono.atom.server.TestAtomHandlerFactory");
         final ServletHandler servlets = new ServletHandler();
         servlets.addServlet("app", "/app/*", "org.rometools.propono.atom.server.AtomServlet");
         return servlets;
@@ -113,11 +143,295 @@ public class AtomClientServerTest extends AtomClientTest {
         return context;
     }
 
-    protected void tearDown() throws Exception {
-        if (server != null) {
-            server.stop();
-            server.destroy();
-            server = null;
+    /**
+     * Tests that server has introspection doc with at least one workspace.
+     */
+    @Test
+    public void testGetAtomService() throws Exception {
+        assertNotNull(service);
+        assertTrue(service.getWorkspaces().size() > 0);
+        for (final Iterator it = service.getWorkspaces().iterator(); it.hasNext();) {
+            final ClientWorkspace space = (ClientWorkspace) it.next();
+            assertNotNull(space.getTitle());
+            log.debug("Workspace: " + space.getTitle());
+            for (final Iterator colit = space.getCollections().iterator(); colit.hasNext();) {
+                final ClientCollection col = (ClientCollection) colit.next();
+                log.debug("   Collection: " + col.getTitle() + " Accepts: " + col.getAccepts());
+                log.debug("      href: " + col.getHrefResolved());
+                assertNotNull(col.getTitle());
+            }
         }
     }
+
+    /**
+     * Tests that entries can be posted and removed in all collections that accept entries. Fails if
+     * no collections found that accept entries.
+     */
+    @Test
+    public void testSimpleEntryPostAndRemove() throws Exception {
+        assertNotNull(service);
+        assertTrue(service.getWorkspaces().size() > 0);
+        int count = 0;
+        for (final Iterator it = service.getWorkspaces().iterator(); it.hasNext();) {
+            final ClientWorkspace space = (ClientWorkspace) it.next();
+            assertNotNull(space.getTitle());
+
+            for (final Iterator colit = space.getCollections().iterator(); colit.hasNext();) {
+                final ClientCollection col = (ClientCollection) colit.next();
+                if (col.accepts(Collection.ENTRY_TYPE)) {
+
+                    // we found a collection that accepts entries, so post one
+                    final ClientEntry m1 = col.createEntry();
+                    m1.setTitle("Test post");
+                    final Content c = new Content();
+                    c.setValue("This is a test post");
+                    c.setType("html");
+                    m1.setContent(c);
+
+                    col.addEntry(m1);
+
+                    // entry should now exist on server
+                    final ClientEntry m2 = col.getEntry(m1.getEditURI());
+                    assertNotNull(m2);
+
+                    // remove entry
+                    m2.remove();
+
+                    // fetching entry now should result in exception
+                    boolean failed = false;
+                    try {
+                        col.getEntry(m1.getEditURI());
+                    } catch (final ProponoException e) {
+                        failed = true;
+                    }
+                    assertTrue(failed);
+                    count++;
+                }
+            }
+        }
+        assertTrue(count > 0);
+    }
+
+    /**
+     * Tests that entries can be posted, updated and removed in all collections that accept entries.
+     * Fails if no collections found that accept entries.
+     */
+    @Test
+    public void testSimpleEntryPostUpdateAndRemove() throws Exception {
+        assertNotNull(service);
+        assertTrue(service.getWorkspaces().size() > 0);
+        int count = 0;
+        for (final Iterator it = service.getWorkspaces().iterator(); it.hasNext();) {
+            final ClientWorkspace space = (ClientWorkspace) it.next();
+            assertNotNull(space.getTitle());
+
+            for (final Iterator colit = space.getCollections().iterator(); colit.hasNext();) {
+                final ClientCollection col = (ClientCollection) colit.next();
+                if (col.accepts(Collection.ENTRY_TYPE)) {
+
+                    // we found a collection that accepts entries, so post one
+                    final ClientEntry m1 = col.createEntry();
+                    m1.setTitle(col.getTitle() + ": Test post");
+                    final Content c = new Content();
+                    c.setValue("This is a test post");
+                    c.setType("html");
+                    m1.setContent(c);
+
+                    col.addEntry(m1);
+
+                    // entry should now exist on server
+                    final ClientEntry m2 = col.getEntry(m1.getEditURI());
+                    assertNotNull(m2);
+
+                    m2.setTitle(col.getTitle() + ": Updated title");
+                    m2.update();
+
+                    // entry should now be updated on server
+                    final ClientEntry m3 = col.getEntry(m1.getEditURI());
+                    assertEquals(col.getTitle() + ": Updated title", m3.getTitle());
+
+                    // remove entry
+                    m3.remove();
+
+                    // fetching entry now should result in exception
+                    boolean failed = false;
+                    try {
+                        col.getEntry(m1.getEditURI());
+                    } catch (final ProponoException e) {
+                        failed = true;
+                    }
+                    assertTrue(failed);
+                    count++;
+                }
+            }
+        }
+        assertTrue(count > 0);
+    }
+
+    @Test
+    public void testFindWorkspace() throws Exception {
+        assertNotNull(service);
+        final ClientWorkspace ws = (ClientWorkspace) service.findWorkspace("adminblog");
+        if (ws != null) {
+            final ClientCollection col = (ClientCollection) ws.findCollection(null, "entry");
+            final ClientEntry entry = col.createEntry();
+            entry.setTitle("NPE on submitting order query");
+            entry.setContent("This is a <b>bad</b> one!", Content.HTML);
+            col.addEntry(entry);
+
+            // entry should now exist on server
+            final ClientEntry saved = col.getEntry(entry.getEditURI());
+            assertNotNull(saved);
+
+            // remove entry
+            saved.remove();
+
+            // fetching entry now should result in exception
+            boolean failed = false;
+            try {
+                col.getEntry(saved.getEditURI());
+            } catch (final ProponoException e) {
+                failed = true;
+            }
+            assertTrue(failed);
+        }
+    }
+
+    /**
+     * Test posting an entry to every available collection with a fixed and an unfixed category if
+     * server support allows, then cleanup.
+     */
+    @Test
+    public void testEntryPostWithCategories() throws Exception {
+        assertNotNull(service);
+        assertTrue(service.getWorkspaces().size() > 0);
+        int count = 0;
+        for (final Iterator it = service.getWorkspaces().iterator(); it.hasNext();) {
+            final ClientWorkspace space = (ClientWorkspace) it.next();
+            assertNotNull(space.getTitle());
+
+            for (final Iterator colit = space.getCollections().iterator(); colit.hasNext();) {
+                final ClientCollection col = (ClientCollection) colit.next();
+                if (col.accepts(Collection.ENTRY_TYPE)) {
+
+                    // we found a collection that accepts GIF, so post one
+                    final ClientEntry m1 = col.createEntry();
+                    m1.setTitle("Test post");
+                    final Content c = new Content();
+                    c.setValue("This is a test post");
+                    c.setType("html");
+                    m1.setContent(c);
+
+                    // if possible, pick one fixed an un unfixed category
+                    Category fixedCat = null;
+                    Category unfixedCat = null;
+                    final List entryCats = new ArrayList();
+                    for (int i = 0; i < col.getCategories().size(); i++) {
+                        final Categories cats = (Categories) col.getCategories().get(i);
+                        if (cats.isFixed() && fixedCat == null) {
+                            final String scheme = cats.getScheme();
+                            fixedCat = (Category) cats.getCategories().get(0);
+                            if (fixedCat.getScheme() == null) {
+                                fixedCat.setScheme(scheme);
+                            }
+                            entryCats.add(fixedCat);
+                        } else if (!cats.isFixed() && unfixedCat == null) {
+                            final String scheme = cats.getScheme();
+                            unfixedCat = new Category();
+                            unfixedCat.setScheme(scheme);
+                            unfixedCat.setTerm("tagster");
+                            entryCats.add(unfixedCat);
+                        }
+                    }
+                    m1.setCategories(entryCats);
+                    col.addEntry(m1);
+
+                    // entry should now exist on server
+                    final ClientEntry m2 = col.getEntry(m1.getEditURI());
+                    assertNotNull(m2);
+
+                    if (fixedCat != null) {
+                        // we added a fixed category, let's make sure it's there
+                        boolean foundCat = false;
+                        for (final Object element : m2.getCategories()) {
+                            final Category cat = (Category) element;
+                            if (cat.getTerm().equals(fixedCat.getTerm())) {
+                                foundCat = true;
+                            }
+                        }
+                        assertTrue(foundCat);
+                    }
+
+                    if (unfixedCat != null) {
+                        // we added an unfixed category, let's make sure it's there
+                        boolean foundCat = false;
+                        for (final Object element : m2.getCategories()) {
+                            final Category cat = (Category) element;
+                            if (cat.getTerm().equals(unfixedCat.getTerm())) {
+                                foundCat = true;
+                            }
+                        }
+                        assertTrue(foundCat);
+                    }
+
+                    // remove entry
+                    m2.remove();
+
+                    // fetching entry now should result in exception
+                    boolean failed = false;
+                    try {
+                        col.getEntry(m1.getEditURI());
+                    } catch (final ProponoException e) {
+                        failed = true;
+                    }
+                    assertTrue(failed);
+                    count++;
+                }
+            }
+        }
+        assertTrue(count > 0);
+    }
+
+    /**
+     * Post media entry to every media colletion avialable on server, then cleanup.
+     */
+    public void testMediaPost() throws Exception {
+        assertNotNull(service);
+        assertTrue(service.getWorkspaces().size() > 0);
+        int count = 0;
+        for (final Iterator it = service.getWorkspaces().iterator(); it.hasNext();) {
+            final ClientWorkspace space = (ClientWorkspace) it.next();
+            assertNotNull(space.getTitle());
+
+            for (final Iterator colit = space.getCollections().iterator(); colit.hasNext();) {
+                final ClientCollection col = (ClientCollection) colit.next();
+                if (col.accepts("image/gif")) {
+
+                    // we found a collection that accepts GIF, so post one
+                    final ClientMediaEntry m1 = col.createMediaEntry("duke" + count, "duke" + count, "image/gif", new FileInputStream(
+                            "test/testdata/duke-wave-shadow.gif"));
+                    col.addEntry(m1);
+
+                    // entry should now exist on server
+                    final ClientMediaEntry m2 = (ClientMediaEntry) col.getEntry(m1.getEditURI());
+                    assertNotNull(m2);
+
+                    // remove entry
+                    m2.remove();
+
+                    // fetching entry now should result in exception
+                    boolean failed = false;
+                    try {
+                        col.getEntry(m1.getEditURI());
+                    } catch (final ProponoException e) {
+                        failed = true;
+                    }
+                    assertTrue(failed);
+                    count++;
+                }
+            }
+        }
+        assertTrue(count > 0);
+    }
+
 }

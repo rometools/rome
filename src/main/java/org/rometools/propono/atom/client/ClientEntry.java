@@ -42,6 +42,7 @@ import com.sun.syndication.feed.atom.Entry;
 import com.sun.syndication.feed.atom.Link;
 import com.sun.syndication.io.impl.Atom10Generator;
 import com.sun.syndication.io.impl.Atom10Parser;
+import java.util.Date;
 
 /**
  * Client implementation of Atom entry, extends ROME Entry to add methods for easily getting/setting content, updating and removing the entry from the server.
@@ -250,4 +251,11 @@ public class ClientEntry extends Entry {
         return null;
     }
 
+    @Override
+    public void setCreated(Date d) {
+        // protected against null created property (an old Atom 0.3 property)
+        if (d != null) {
+            super.setCreated(d);
+        }
+    }
 }
