@@ -20,7 +20,7 @@ public class LicenseTest {
         License.clear();
     }
 
-    @Test(timeout = 500)
+    @Test(timeout = 1000)
     public void testConcurrent() throws InterruptedException {
         final AtomicBoolean run = new AtomicBoolean(true);
         final AtomicLong type = new AtomicLong(0);
@@ -58,12 +58,12 @@ public class LicenseTest {
         addNew.start();
         getExisting.start();
         // Let them do some stuff.
-        Thread.sleep(100);
+        Thread.sleep(400);
         // Get them to both stop.
         run.set(false);
         // Allow them a little time to stop.
-        addNew.join(20);
-        getExisting.join(20);
+        addNew.join(50);
+        getExisting.join(50);
         // Check we didn't have any problems and they have both stopped.
         assertFalse(hadProblem.get());
         assertFalse(addNew.isAlive());
