@@ -128,6 +128,13 @@ public class License {
         return found;
     }
 
+    /**
+     * This is just useful for testing to allow clearing of the looked up licenses.
+     */
+    static void clear() {
+        lookupLicense.clear();
+    }
+
     public Behaviour[] getPermits() {
         return permits;
     }
