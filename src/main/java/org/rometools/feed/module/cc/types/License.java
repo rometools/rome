@@ -105,8 +105,8 @@ public class License {
         if (found == null && uri.startsWith("http://") && uri.toLowerCase().indexOf("creativecommons.org") != -1) {
             final Iterator it = License.lookupLicense.keySet().iterator();
             while (it.hasNext() && found == null) {
+                final String key = (String) it.next();
                 try {
-                    final String key = (String) it.next();
                     if (key.startsWith(CC_START)) {
                         final String licensePath = key.substring(CC_START.length(), key.length());
                         final StringTokenizer tok = new StringTokenizer(licensePath, "/");

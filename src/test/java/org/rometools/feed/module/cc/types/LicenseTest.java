@@ -24,18 +24,24 @@ public class LicenseTest {
     public void testConcurrent() throws InterruptedException {
         final AtomicBoolean run = new AtomicBoolean(true);
         final AtomicLong type = new AtomicLong(0);
+        // Tracking any problems.
         final AtomicBoolean hadProblem = new AtomicBoolean(false);
+        final AtomicBoolean hadException = new AtomicBoolean(false);
 
         // This thread keeps on adding new licenses (not very realistic but shows the bug)
         Thread addNew = new Thread(){
             @Override
             public void run() {
-                while(run.get()) {
-                    License license = License.findByValue("http://creativecommons.org/licenses/"+
-                            type.incrementAndGet()+ "/1");
-                    if (license == null) {
-                        hadProblem.set(true);
+                try {
+                    while(run.get()) {
+                        License license = License.findByValue("http://creativecommons.org/licenses/"+
+                                type.incrementAndGet()+ "/1");
+                        if (license == null) {
+                            hadProblem.set(true);
+                        }
                     }
+                } catch (Exception e) {
+                    hadException.set(true);
                 }
             }
         };
@@ -45,12 +51,16 @@ public class LicenseTest {
             @Override
             public void run() {
                 Random rnd = new Random();
-                while(run.get()) {
-                    License license = License.findByValue("http://creativecommons.org/licenses/"+
-                            rnd.nextInt(type.intValue())+"/1");
-                    if (license == null) {
-                        hadProblem.set(true);
+                try {
+                    while(run.get()) {
+                        License license = License.findByValue("http://creativecommons.org/licenses/"+
+                                rnd.nextInt(type.intValue())+"/1");
+                        if (license == null) {
+                            hadProblem.set(true);
+                        }
                     }
+                } catch (Exception e) {
+                    hadException.set(true);
                 }
             }
         };
@@ -66,6 +76,7 @@ public class LicenseTest {
         getExisting.join(50);
         // Check we didn't have any problems and they have both stopped.
         assertFalse(hadProblem.get());
+        assertFalse(hadException.get());
         assertFalse(addNew.isAlive());
         assertFalse(getExisting.isAlive());
     }
