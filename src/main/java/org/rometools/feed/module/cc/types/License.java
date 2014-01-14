@@ -43,6 +43,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.StringTokenizer;
+import java.util.concurrent.ConcurrentHashMap;
 
 import com.sun.syndication.feed.impl.EqualsBean;
 import com.sun.syndication.feed.impl.ToStringBean;
@@ -53,7 +54,7 @@ import com.sun.syndication.feed.impl.ToStringBean;
  */
 public class License {
     private static final String CC_START = "http://creativecommons.org/licenses/";
-    private static final Map lookupLicense = new HashMap();
+    private static final Map lookupLicense = new ConcurrentHashMap();
     public static final License NO_DERIVS = new License("http://creativecommons.org/licenses/nd/1.0/", new Behaviour[0], new Behaviour[] {
             Behaviour.DISTRIBUTION, Behaviour.REPRODUCTION });
     public static final License NO_DERIVS_NONCOMMERCIAL = new License("http://creativecommons.org/licenses/nd-nc/1.0/",
