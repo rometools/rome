@@ -41,7 +41,9 @@ package org.rometools.feed.module.cc.types;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.StringTokenizer;
+import java.util.concurrent.ConcurrentHashMap;
 
 import com.sun.syndication.feed.impl.EqualsBean;
 import com.sun.syndication.feed.impl.ToStringBean;
@@ -52,7 +54,7 @@ import com.sun.syndication.feed.impl.ToStringBean;
  */
 public class License {
     private static final String CC_START = "http://creativecommons.org/licenses/";
-    private static final HashMap lookupLicense = new HashMap();
+    private static final Map lookupLicense = new ConcurrentHashMap();
     public static final License NO_DERIVS = new License("http://creativecommons.org/licenses/nd/1.0/", new Behaviour[0], new Behaviour[] {
             Behaviour.DISTRIBUTION, Behaviour.REPRODUCTION });
     public static final License NO_DERIVS_NONCOMMERCIAL = new License("http://creativecommons.org/licenses/nd-nc/1.0/",
@@ -104,8 +106,8 @@ public class License {
         if (found == null && uri.startsWith("http://") && uri.toLowerCase().indexOf("creativecommons.org") != -1) {
             final Iterator it = License.lookupLicense.keySet().iterator();
             while (it.hasNext() && found == null) {
+                final String key = (String) it.next();
                 try {
-                    final String key = (String) it.next();
                     if (key.startsWith(CC_START)) {
                         final String licensePath = key.substring(CC_START.length(), key.length());
                         final StringTokenizer tok = new StringTokenizer(licensePath, "/");
@@ -126,6 +128,13 @@ public class License {
             found = new License(uri, null, null);
         }
         return found;
+    }
+
+    /**
+     * This is just useful for testing to allow clearing of the looked up licenses.
+     */
+    static void clear() {
+        lookupLicense.clear();
     }
 
     public Behaviour[] getPermits() {
@@ -160,7 +169,7 @@ public class License {
     }
 
     public static class Behaviour {
-        private static final HashMap lookup = new HashMap();
+        private static final Map lookup = new HashMap();
         public static final Behaviour REPRODUCTION = new Behaviour("http://web.resource.org/cc/Reproduction");
         public static final Behaviour DISTRIBUTION = new Behaviour("http://web.resource.org/cc/Distribution");
         public static final Behaviour DERIVATIVE = new Behaviour("http://web.resource.org/cc/DerivativeWorks");
