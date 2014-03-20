@@ -36,6 +36,8 @@ import com.sun.syndication.feed.synd.SyndEnclosureImpl;
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndEntryImpl;
 import com.sun.syndication.feed.synd.SyndFeed;
+import com.sun.syndication.feed.synd.SyndImage;
+import com.sun.syndication.feed.synd.SyndImageImpl;
 import com.sun.syndication.feed.synd.SyndLink;
 import com.sun.syndication.feed.synd.SyndLinkImpl;
 import com.sun.syndication.feed.synd.SyndPerson;
@@ -71,6 +73,16 @@ public class ConverterForAtom03 implements Converter {
 
         syndFeed.setEncoding(aFeed.getEncoding());
         syndFeed.setStyleSheet(aFeed.getStyleSheet());
+        
+        if (aFeed.getLogo() != null) {
+            SyndImage image = new SyndImageImpl();
+            image.setUrl(aFeed.getLogo());
+            syndFeed.setImage(image);
+        } else if (aFeed.getIcon() != null) {
+            SyndImage image = new SyndImageImpl();
+            image.setUrl(aFeed.getIcon());
+            syndFeed.setImage(image);
+        }
 
         syndFeed.setUri(aFeed.getId());
 
