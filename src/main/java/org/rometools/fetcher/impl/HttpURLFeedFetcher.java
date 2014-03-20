@@ -67,6 +67,7 @@ import com.sun.syndication.io.XmlReader;
  * @author Nick Lothian
  */
 public class HttpURLFeedFetcher extends AbstractFeedFetcher {
+    private int connectTimeout = -1;
     static final int POLL_EVENT = 1;
     static final int RETRIEVE_EVENT = 2;
     static final int UNCHANGED_EVENT = 3;
@@ -117,6 +118,9 @@ public class HttpURLFeedFetcher extends AbstractFeedFetcher {
             throw new IllegalArgumentException(feedUrl.toExternalForm() + " is not a valid HTTP Url");
         }
         final HttpURLConnection httpConnection = (HttpURLConnection) connection;
+        if (connectTimeout >= 0) {
+            httpConnection.setConnectTimeout(connectTimeout);
+        }
         // httpConnection.setInstanceFollowRedirects(true); // this is true by default, but can be changed on a claswide basis
 
         final FeedFetcherCache cache = getFeedInfoCache();
@@ -312,4 +316,11 @@ public class HttpURLFeedFetcher extends AbstractFeedFetcher {
     public synchronized void setFeedInfoCache(final FeedFetcherCache cache) {
         feedInfoCache = cache;
     }
+
+    /**
+     * @param timeout see java.net.URLConnection.setConnectTimeout(int timeout)
+     */
+    public synchronized void setConnectTimeout(final int timeout) {
+        connectTimeout = timeout;
+    }    
 }
