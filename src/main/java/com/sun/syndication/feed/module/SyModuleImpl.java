@@ -119,7 +119,7 @@ public class SyModuleImpl extends ModuleImpl implements SyModule {
      */
     @Override
     public Date getUpdateBase() {
-        return new Date(updateBase.getTime());
+        return updateBase != null ? new Date(updateBase.getTime()) : null;
     }
 
     /**
