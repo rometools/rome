@@ -26,6 +26,7 @@ import java.util.List;
 
 import com.sun.syndication.feed.impl.EqualsBean;
 import com.sun.syndication.feed.impl.ToStringBean;
+import com.sun.syndication.feed.module.Module;
 
 /**
  * This class represents an OPML outline element.
@@ -33,14 +34,14 @@ import com.sun.syndication.feed.impl.ToStringBean;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Outline implements Cloneable, Serializable {
-    
+
     private static final long serialVersionUID = 1L;
-    
+
     private Date _created;
-    private List _attributes;
-    private List _categories;
-    private List _children;
-    private List _modules;
+    private List<Attribute> _attributes;
+    private List<String> _categories;
+    private List<Outline> _children;
+    private List<Module> _modules;
     private String _text;
     private String _title;
     private String _type;
@@ -75,7 +76,7 @@ public class Outline implements Cloneable, Serializable {
         super();
         setType("rss");
         setTitle(title);
-        setAttributes(new ArrayList());
+        setAttributes(new ArrayList<Attribute>());
 
         if (xmlUrl != null) {
             getAttributes().add(new Attribute("xmlUrl", xmlUrl.toString()));
@@ -91,7 +92,7 @@ public class Outline implements Cloneable, Serializable {
      *
      * @param attributes List of attributes on this outline.
      */
-    public void setAttributes(final List attributes) {
+    public void setAttributes(final List<Attribute> attributes) {
         _attributes = attributes;
     }
 
@@ -100,9 +101,9 @@ public class Outline implements Cloneable, Serializable {
      *
      * @return List of attributes on this outline.
      */
-    public List getAttributes() {
+    public List<Attribute> getAttributes() {
         if (_attributes == null) {
-            _attributes = new ArrayList();
+            _attributes = new ArrayList<Attribute>();
         }
 
         return _attributes;
@@ -133,7 +134,7 @@ public class Outline implements Cloneable, Serializable {
      *
      * @param categories (OPML 2) A List of Strings indicating values in the category attribute.
      */
-    public void setCategories(final List categories) {
+    public void setCategories(final List<String> categories) {
         _categories = categories;
     }
 
@@ -142,9 +143,9 @@ public class Outline implements Cloneable, Serializable {
      *
      * @return (OPML 2) A List of Strings indicating values in the category attribute.
      */
-    public List getCategories() {
+    public List<String> getCategories() {
         if (_categories == null) {
-            _categories = new ArrayList();
+            _categories = new ArrayList<String>();
         }
 
         return _categories;
@@ -155,7 +156,7 @@ public class Outline implements Cloneable, Serializable {
      *
      * @param children A list of sub-outlines for this entry.
      */
-    public void setChildren(final List children) {
+    public void setChildren(final List<Outline> children) {
         _children = children;
     }
 
@@ -164,9 +165,9 @@ public class Outline implements Cloneable, Serializable {
      *
      * @return A list of sub-outlines for this entry.
      */
-    public List getChildren() {
+    public List<Outline> getChildren() {
         if (_children == null) {
-            _children = new ArrayList();
+            _children = new ArrayList<Outline>();
         }
 
         return _children;
@@ -228,13 +229,13 @@ public class Outline implements Cloneable, Serializable {
         return getAttributeValue("htmlUrl");
     }
 
-    public void setModules(final List modules) {
+    public void setModules(final List<Module> modules) {
         _modules = modules;
     }
 
-    public List getModules() {
+    public List<Module> getModules() {
         if (_modules == null) {
-            _modules = new ArrayList();
+            _modules = new ArrayList<Module>();
         }
 
         return _modules;
@@ -309,45 +310,40 @@ public class Outline implements Cloneable, Serializable {
      * @param name name of the attribute.
      */
     public String getAttributeValue(final String name) {
-        final List attributes = Collections.synchronizedList(getAttributes());
-
+        final List<Attribute> attributes = Collections.synchronizedList(getAttributes());
         for (int i = 0; i < attributes.size(); i++) {
-            final Attribute a = (Attribute) attributes.get(i);
+            final Attribute a = attributes.get(i);
 
             if (a.getName() != null && a.getName().equals(name)) {
                 return a.getValue();
             }
         }
-
         return null;
     }
 
     @Override
     public Object clone() {
+
         final Outline o = new Outline();
         o.setBreakpoint(isBreakpoint());
-        o.setCategories(new ArrayList(getCategories()));
+        o.setCategories(new ArrayList<String>(getCategories()));
         o.setComment(isComment());
         o.setCreated(_created != null ? (Date) _created.clone() : null);
-        o.setModules(new ArrayList(getModules()));
+        o.setModules(new ArrayList<Module>(getModules()));
         o.setText(getText());
         o.setTitle(getTitle());
         o.setType(getType());
 
-        final ArrayList children = new ArrayList();
-
+        final ArrayList<Outline> children = new ArrayList<Outline>();
         for (int i = 0; i < getChildren().size(); i++) {
-            children.add(((Outline) _children.get(i)).clone());
+            children.add((Outline) _children.get(i).clone());
         }
-
         o.setChildren(children);
 
-        final ArrayList attributes = new ArrayList();
-
+        final ArrayList<Attribute> attributes = new ArrayList<Attribute>();
         for (int i = 0; i < getAttributes().size(); i++) {
-            attributes.add(((Attribute) _attributes.get(i)).clone());
+            attributes.add((Attribute) _attributes.get(i).clone());
         }
-
         o.setAttributes(attributes);
 
         return o;

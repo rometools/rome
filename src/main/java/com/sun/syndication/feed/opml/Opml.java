@@ -29,9 +29,9 @@ import com.sun.syndication.feed.WireFeed;
  * @author <a href="mailto:cooper@screaming-penguin.com"> Robert "kebernet" Cooper</a>
  */
 public class Opml extends WireFeed {
-    
+
     private static final long serialVersionUID = 1L;
-    
+
     private Date _created;
     private Date _modified;
     private Integer _verticalScrollState;
@@ -39,7 +39,7 @@ public class Opml extends WireFeed {
     private Integer _windowLeft;
     private Integer _windowRight;
     private Integer _windowTop;
-    private List _outlines;
+    private List<Outline> _outlines;
     private String _docs;
     private String _ownerEmail;
     private String _ownerId;
@@ -135,7 +135,7 @@ public class Opml extends WireFeed {
      *
      * @param outlines Root level Outline object that should appear in the &lt;body&gt;
      */
-    public void setOutlines(final List outlines) {
+    public void setOutlines(final List<Outline> outlines) {
         _outlines = outlines;
     }
 
@@ -144,9 +144,9 @@ public class Opml extends WireFeed {
      *
      * @return Root level Outline object that should appear in the &lt;body&gt;
      */
-    public List getOutlines() {
+    public List<Outline> getOutlines() {
         if (_outlines == null) {
-            _outlines = new ArrayList();
+            _outlines = new ArrayList<Outline>();
         }
 
         return _outlines;

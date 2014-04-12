@@ -30,7 +30,7 @@ import com.sun.syndication.feed.opml.Outline;
 import com.sun.syndication.io.FeedException;
 
 /**
- * 
+ *
  * @author cooper
  */
 public class OPML20Parser extends OPML10Parser {
@@ -44,7 +44,7 @@ public class OPML20Parser extends OPML10Parser {
      * <p>
      * It checks if the given document if the type of feeds the parser understands.
      * <p>
-     * 
+     *
      * @param document XML Document (JDOM) to check if it can be parsed by this parser.
      * @return <b>true</b> if the parser know how to parser this feed, <b>false</b> otherwise.
      */
@@ -54,7 +54,7 @@ public class OPML20Parser extends OPML10Parser {
 
         if (e.getName().equals("opml")
                 && (e.getChild("head") != null && e.getChild("head").getChild("docs") != null || e.getAttributeValue("version") != null
-                        && e.getAttributeValue("version").equals("2.0") || e.getChild("head") != null && e.getChild("head").getChild("ownerId") != null)) {
+                && e.getAttributeValue("version").equals("2.0") || e.getChild("head") != null && e.getChild("head").getChild("ownerId") != null)) {
             return true;
         }
 
@@ -64,7 +64,7 @@ public class OPML20Parser extends OPML10Parser {
     /**
      * Parses an XML document (JDOM Document) into a feed bean.
      * <p>
-     * 
+     *
      * @param document XML document (JDOM) to parse.
      * @param validate indicates if the feed should be strictly validated (NOT YET IMPLEMENTED).
      * @return the resulting feed bean.
@@ -102,10 +102,10 @@ public class OPML20Parser extends OPML10Parser {
             retValue.setCreated(DateParser.parseRFC822(e.getAttributeValue("created"), locale));
         }
 
-        final List atts = retValue.getAttributes();
+        final List<Attribute> atts = retValue.getAttributes();
 
         for (int i = 0; i < atts.size(); i++) {
-            final Attribute a = (Attribute) atts.get(i);
+            final Attribute a = atts.get(i);
 
             if (a.getName().equals("created")) {
                 retValue.getAttributes().remove(a);

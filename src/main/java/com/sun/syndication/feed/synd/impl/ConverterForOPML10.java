@@ -57,7 +57,7 @@ public class ConverterForOPML10 implements Converter {
 
     protected void addOwner(final Opml opml, final SyndFeed syndFeed) {
         if (opml.getOwnerEmail() != null || opml.getOwnerName() != null) {
-            final List authors = new ArrayList();
+            final List<SyndPerson> authors = new ArrayList<SyndPerson>();
             final SyndPerson person = new SyndPersonImpl();
             person.setEmail(opml.getOwnerEmail());
             person.setName(opml.getOwnerName());
@@ -85,19 +85,18 @@ public class ConverterForOPML10 implements Converter {
         syndFeed.setModules(opml.getModules());
         syndFeed.setFeedType(getType());
 
-        final ArrayList entries = new ArrayList();
         createEntries(new TreeContext(), syndFeed.getEntries(), opml.getOutlines());
     }
 
-    protected void createEntries(final TreeContext context, final List allEntries, final List outlines) {
-        final List so = Collections.synchronizedList(outlines);
+    protected void createEntries(final TreeContext context, final List<SyndEntry> allEntries, final List<Outline> outlines) {
+        final List<Outline> so = Collections.synchronizedList(outlines);
 
         for (int i = 0; i < so.size(); i++) {
-            createEntry(context, allEntries, (Outline) so.get(i));
+            createEntry(context, allEntries, so.get(i));
         }
     }
 
-    protected SyndEntry createEntry(final TreeContext context, final List allEntries, final Outline outline) {
+    protected SyndEntry createEntry(final TreeContext context, final List<SyndEntry> allEntries, final Outline outline) {
         final SyndEntry entry = new SyndEntryImpl();
 
         if (outline.getType() != null && outline.getType().equals("rss")) {
@@ -161,17 +160,17 @@ public class ConverterForOPML10 implements Converter {
         entry.getCategories().add(cat);
 
         if (context.size() > 0) {
-            final Integer parent = (Integer) context.peek();
+            final Integer parent = context.peek();
             final SyndCategory pcat = new TreeCategoryImpl();
             pcat.setTaxonomyUri(URI_TREE);
             pcat.setName("parent." + parent);
             entry.getCategories().add(pcat);
         }
 
-        final List attributes = Collections.synchronizedList(outline.getAttributes());
+        final List<Attribute> attributes = Collections.synchronizedList(outline.getAttributes());
 
         for (int i = 0; i < attributes.size(); i++) {
-            final Attribute a = (Attribute) attributes.get(i);
+            final Attribute a = attributes.get(i);
             final SyndCategory acat = new SyndCategoryImpl();
             acat.setName(a.getValue());
             acat.setTaxonomyUri(URI_ATTRIBUTE + a.getName());
@@ -197,22 +196,23 @@ public class ConverterForOPML10 implements Converter {
      */
     @Override
     public WireFeed createRealFeed(final SyndFeed syndFeed) {
-        final List entries = Collections.synchronizedList(syndFeed.getEntries());
 
-        final HashMap entriesByNode = new HashMap();
-        final ArrayList doAfterPass = new ArrayList(); // this will hold entries that we can't parent the first time.
-        final ArrayList root = new ArrayList(); // this holds root level outlines;
+        final List<SyndEntry> entries = Collections.synchronizedList(syndFeed.getEntries());
+
+        final HashMap<String, Outline> entriesByNode = new HashMap<String, Outline>();
+        final ArrayList<OutlineHolder> doAfterPass = new ArrayList<OutlineHolder>(); // this will hold entries that we can't parent the first time.
+        final ArrayList<Outline> root = new ArrayList<Outline>(); // this holds root level outlines;
 
         for (int i = 0; i < entries.size(); i++) {
-            final SyndEntry entry = (SyndEntry) entries.get(i);
+            final SyndEntry entry = entries.get(i);
             final Outline o = new Outline();
 
-            final List cats = Collections.synchronizedList(entry.getCategories());
+            final List<SyndCategory> cats = Collections.synchronizedList(entry.getCategories());
             boolean parentFound = false;
             final StringBuffer category = new StringBuffer();
 
             for (int j = 0; j < cats.size(); j++) {
-                final SyndCategory cat = (SyndCategory) cats.get(j);
+                final SyndCategory cat = cats.get(j);
 
                 if (cat.getTaxonomyUri() != null && cat.getTaxonomyUri().equals(URI_TREE)) {
                     final String nodeVal = cat.getName().substring(cat.getName().lastIndexOf("."), cat.getName().length());
@@ -222,7 +222,7 @@ public class ConverterForOPML10 implements Converter {
                     } else if (cat.getName().startsWith("parent.")) {
                         parentFound = true;
 
-                        final Outline parent = (Outline) entriesByNode.get(nodeVal);
+                        final Outline parent = entriesByNode.get(nodeVal);
 
                         if (parent != null) {
                             parent.getChildren().add(o);
@@ -250,11 +250,11 @@ public class ConverterForOPML10 implements Converter {
                 o.getAttributes().add(new Attribute("category", category.toString()));
             }
 
-            final List links = Collections.synchronizedList(entry.getLinks());
-            final String entryLink = entry.getLink();
+            final List<SyndLink> links = Collections.synchronizedList(entry.getLinks());
+            // final String entryLink = entry.getLink();
 
             for (int j = 0; j < links.size(); j++) {
-                final SyndLink link = (SyndLink) links.get(j);
+                final SyndLink link = links.get(j);
 
                 // if(link.getHref().equals(entryLink)) {
                 if (link.getType() != null && link.getRel() != null && link.getRel().equals("alternate")
@@ -289,8 +289,8 @@ public class ConverterForOPML10 implements Converter {
 
         // Do back and parenting for things we missed.
         for (int i = 0; i < doAfterPass.size(); i++) {
-            final OutlineHolder o = (OutlineHolder) doAfterPass.get(i);
-            final Outline parent = (Outline) entriesByNode.get(o.parent);
+            final OutlineHolder o = doAfterPass.get(i);
+            final Outline parent = entriesByNode.get(o.parent);
 
             if (parent == null) {
                 root.add(o.outline);
@@ -305,10 +305,10 @@ public class ConverterForOPML10 implements Converter {
         opml.setCreated(syndFeed.getPublishedDate());
         opml.setTitle(syndFeed.getTitle());
 
-        final List authors = Collections.synchronizedList(syndFeed.getAuthors());
+        final List<SyndPerson> authors = Collections.synchronizedList(syndFeed.getAuthors());
 
         for (int i = 0; i < authors.size(); i++) {
-            final SyndPerson p = (SyndPerson) authors.get(i);
+            final SyndPerson p = authors.get(i);
 
             if (syndFeed.getAuthor() == null || syndFeed.getAuthor().equals(p.getName())) {
                 opml.setOwnerName(p.getName());
@@ -345,8 +345,8 @@ public class ConverterForOPML10 implements Converter {
         }
     }
 
-    private static class TreeContext extends Stack {
-        
+    private static class TreeContext extends Stack<Integer> {
+
         private static final long serialVersionUID = 1L;
 
         TreeContext() {

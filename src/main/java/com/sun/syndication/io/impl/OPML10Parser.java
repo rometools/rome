@@ -35,7 +35,7 @@ import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.WireFeedParser;
 
 /**
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
@@ -55,7 +55,7 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
      * <p>
      * It checks if the given document if the type of feeds the parser understands.
      * <p>
-     * 
+     *
      * @param document XML Document (JDOM) to check if it can be parsed by this parser.
      * @return <b>true</b> if the parser know how to parser this feed, <b>false</b> otherwise.
      */
@@ -74,7 +74,7 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
     /**
      * Parses an XML document (JDOM Document) into a feed bean.
      * <p>
-     * 
+     *
      * @param document XML document (JDOM) to parse.
      * @param validate indicates if the feed should be strictly validated (NOT YET IMPLEMENTED).
      * @return the resulting feed bean.
@@ -177,11 +177,11 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
         outline.setType(e.getAttributeValue("type"));
         outline.setTitle(e.getAttributeValue("title"));
 
-        final List jAttributes = e.getAttributes();
-        final ArrayList attributes = new ArrayList();
+        final List<org.jdom2.Attribute> jAttributes = e.getAttributes();
+        final ArrayList<Attribute> attributes = new ArrayList<Attribute>();
 
         for (int i = 0; i < jAttributes.size(); i++) {
-            final org.jdom2.Attribute a = (org.jdom2.Attribute) jAttributes.get(i);
+            final org.jdom2.Attribute a = jAttributes.get(i);
 
             if (!a.getName().equals("isBreakpoint") && !a.getName().equals("isComment") && !a.getName().equals("title") && !a.getName().equals("text")
                     && !a.getName().equals("type")) {
@@ -211,20 +211,18 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
             }
         }
 
-        final List children = e.getChildren("outline");
+        final List<Element> children = e.getChildren("outline");
         outline.setModules(parseItemModules(e, locale));
         outline.setChildren(parseOutlines(children, validate, locale));
 
         return outline;
     }
 
-    protected List parseOutlines(final List elements, final boolean validate, final Locale locale) throws FeedException {
-        final ArrayList results = new ArrayList();
-
+    protected List<Outline> parseOutlines(final List<Element> elements, final boolean validate, final Locale locale) throws FeedException {
+        final ArrayList<Outline> results = new ArrayList<Outline>();
         for (int i = 0; i < elements.size(); i++) {
-            results.add(parseOutline((Element) elements.get(i), validate, locale));
+            results.add(parseOutline(elements.get(i), validate, locale));
         }
-
         return results;
     }
 

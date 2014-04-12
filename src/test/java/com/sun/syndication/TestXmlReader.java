@@ -32,7 +32,7 @@ import com.sun.syndication.io.XmlReader;
 
 /**
  * @author pat, tucu
- * 
+ *
  */
 public class TestXmlReader extends TestCase {
 
@@ -44,17 +44,22 @@ public class TestXmlReader extends TestCase {
     }
 
     protected void _testRawNoBomValid(final String encoding) throws Exception {
+
         InputStream is = getXmlStream("no-bom", "xml", encoding, encoding);
-        XmlReader xmlReader = new XmlReader(is, false);
+        final XmlReader xmlReader = new XmlReader(is, false);
         assertEquals(xmlReader.getEncoding(), "UTF-8");
+        xmlReader.close();
 
         is = getXmlStream("no-bom", "xml-prolog", encoding, encoding);
-        xmlReader = new XmlReader(is);
+        final XmlReader xmlReader2 = new XmlReader(is);
         assertEquals(xmlReader.getEncoding(), "UTF-8");
+        xmlReader2.close();
 
         is = getXmlStream("no-bom", "xml-prolog-encoding", encoding, encoding);
-        xmlReader = new XmlReader(is);
+        final XmlReader xmlReader3 = new XmlReader(is);
         assertEquals(xmlReader.getEncoding(), encoding);
+        xmlReader3.close();
+
     }
 
     protected void _testRawNoBomInvalid(final String encoding) throws Exception {
@@ -62,6 +67,7 @@ public class TestXmlReader extends TestCase {
         try {
             final XmlReader xmlReader = new XmlReader(is, false);
             fail("It should have failed");
+            xmlReader.close();
         } catch (final IOException ex) {
             assertTrue(ex.getMessage().indexOf("Invalid encoding,") > -1);
         }
@@ -81,6 +87,7 @@ public class TestXmlReader extends TestCase {
         } else {
             assertEquals(xmlReader.getEncoding().substring(0, encoding.length()), encoding);
         }
+        xmlReader.close();
     }
 
     protected void _testRawBomInvalid(final String bomEnc, final String streamEnc, final String prologEnc) throws Exception {
@@ -88,6 +95,7 @@ public class TestXmlReader extends TestCase {
         try {
             final XmlReader xmlReader = new XmlReader(is, false);
             fail("It should have failed for BOM " + bomEnc + ", streamEnc " + streamEnc + " and prologEnc " + prologEnc);
+            xmlReader.close();
         } catch (final IOException ex) {
             assertTrue(ex.getMessage().indexOf("Invalid encoding,") > -1);
         }
@@ -169,6 +177,7 @@ public class TestXmlReader extends TestCase {
         } else {
             assertEquals(xmlReader.getEncoding().substring(0, streamEnc.length()), streamEnc);
         }
+        xmlReader.close();
     }
 
     protected void _testHttpInvalid(final String cT, final String bomEnc, final String streamEnc, final String prologEnc) throws Exception {
@@ -176,6 +185,7 @@ public class TestXmlReader extends TestCase {
         try {
             final XmlReader xmlReader = new XmlReader(is, cT, false);
             fail("It should have failed for HTTP Content-type " + cT + ", BOM " + bomEnc + ", streamEnc " + streamEnc + " and prologEnc " + prologEnc);
+            xmlReader.close();
         } catch (final IOException ex) {
             assertTrue(ex.getMessage().indexOf("Invalid encoding,") > -1);
         }
@@ -186,6 +196,7 @@ public class TestXmlReader extends TestCase {
         final InputStream is = getXmlStream(bomEnc, prologEnc == null ? "xml-prolog" : "xml-prolog-encoding", streamEnc, prologEnc);
         final XmlReader xmlReader = new XmlReader(is, cT, true);
         assertEquals(xmlReader.getEncoding(), shouldbe);
+        xmlReader.close();
     }
 
     // XML Stream generator
@@ -195,7 +206,7 @@ public class TestXmlReader extends TestCase {
     private static final int[] UTF_16LE_BOM_BYTES = { 0xFF, 0XFE };
     private static final int[] UTF_8_BOM_BYTES = { 0xEF, 0xBB, 0xBF };
 
-    private static final Map BOMs = new HashMap();
+    private static final Map<String, int[]> BOMs = new HashMap<String, int[]>();
 
     static {
         BOMs.put("no-bom", NO_BOM_BYTES);
@@ -211,7 +222,7 @@ public class TestXmlReader extends TestCase {
 
     private static final MessageFormat INFO = new MessageFormat("\nBOM : {0}\nDoc : {1}\nStream Enc : {2}\nProlog Enc : {3}\n");
 
-    private static final Map XMLs = new HashMap();
+    private static final Map<String, MessageFormat> XMLs = new HashMap<String, MessageFormat>();
 
     static {
         XMLs.put("xml", XML);
@@ -220,18 +231,18 @@ public class TestXmlReader extends TestCase {
     }
 
     /**
-     * 
+     *
      * @param bomType no-bom, UTF-16BE-bom, UTF-16LE-bom, UTF-8-bom
      * @param xmlType xml, xml-prolog, xml-prolog-charset
      * @return XML stream
      */
     protected InputStream getXmlStream(final String bomType, final String xmlType, final String streamEnc, final String prologEnc) throws IOException {
         final ByteArrayOutputStream baos = new ByteArrayOutputStream(1024);
-        int[] bom = (int[]) BOMs.get(bomType);
+        int[] bom = BOMs.get(bomType);
         if (bom == null) {
             bom = new int[0];
         }
-        final MessageFormat xml = (MessageFormat) XMLs.get(xmlType);
+        final MessageFormat xml = XMLs.get(xmlType);
         for (final int element : bom) {
             baos.write(element);
         }

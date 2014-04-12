@@ -33,7 +33,7 @@ import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.WireFeedGenerator;
 
 /**
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class OPML10Generator extends BaseWireFeedGenerator implements WireFeedGenerator {
@@ -49,7 +49,7 @@ public class OPML10Generator extends BaseWireFeedGenerator implements WireFeedGe
     /**
      * Creates an XML document (JDOM) for the given feed bean.
      * <p>
-     * 
+     *
      * @param feed the feed bean to generate the XML document from.
      * @return the generated XML document (JDOM).
      * @throws IllegalArgumentException thrown if the type of the given feed bean does not match with the type of the WireFeedGenerator.
@@ -146,10 +146,10 @@ public class OPML10Generator extends BaseWireFeedGenerator implements WireFeedGe
             addNotNullAttribute(e, "isComment", "true");
         }
 
-        final List atts = Collections.synchronizedList(outline.getAttributes());
+        final List<Attribute> atts = Collections.synchronizedList(outline.getAttributes());
 
         for (int i = 0; i < atts.size(); i++) {
-            final Attribute att = (Attribute) atts.get(i);
+            final Attribute att = atts.get(i);
             addNotNullAttribute(e, att.getName(), att.getValue());
         }
 
@@ -159,13 +159,11 @@ public class OPML10Generator extends BaseWireFeedGenerator implements WireFeedGe
         return e;
     }
 
-    protected List generateOutlines(final List outlines) {
-        final ArrayList elements = new ArrayList();
-
+    protected List<Element> generateOutlines(final List<Outline> outlines) {
+        final ArrayList<Element> elements = new ArrayList<Element>();
         for (int i = 0; outlines != null && i < outlines.size(); i++) {
-            elements.add(generateOutline((Outline) outlines.get(i)));
+            elements.add(generateOutline(outlines.get(i)));
         }
-
         return elements;
     }
 
