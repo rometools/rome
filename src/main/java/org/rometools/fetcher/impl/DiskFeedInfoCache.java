@@ -121,27 +121,28 @@ public class DiskFeedInfoCache implements FeedFetcherCache {
 
     @Override
     public SyndFeedInfo remove(final URL url) {
+
         SyndFeedInfo info = null;
         final String fileName = cachePath + File.separator + "feed_" + replaceNonAlphanumeric(url.toString(), '_').trim();
         FileInputStream fis = null;
         ObjectInputStream ois = null;
+        boolean consumed = false;
+
         try {
+
             fis = new FileInputStream(fileName);
             ois = new ObjectInputStream(fis);
             info = (SyndFeedInfo) ois.readObject();
+            consumed = true;
 
-            final File file = new File(fileName);
-            if (file.exists()) {
-                file.delete();
-            }
-        } catch (final FileNotFoundException fnfe) {
+        } catch (final FileNotFoundException e) {
             // That's OK, we'l return null
-        } catch (final ClassNotFoundException cnfe) {
-            // Error writing to cahce is fatal
-            throw new RuntimeException("Attempting to read from cache", cnfe);
-        } catch (final IOException fnfe) {
-            // Error writing to cahce is fatal
-            throw new RuntimeException("Attempting to read from cache", fnfe);
+        } catch (final ClassNotFoundException e) {
+            // Error writing to cache is fatal
+            throw new RuntimeException("Attempting to read from cache", e);
+        } catch (final IOException e) {
+            // Error writing to cache is fatal
+            throw new RuntimeException("Attempting to read from cache", e);
         } finally {
             if (fis != null) {
                 try {
@@ -155,7 +156,15 @@ public class DiskFeedInfoCache implements FeedFetcherCache {
                 } catch (final IOException e) {
                 }
             }
+            if (consumed) {
+                final File file = new File(fileName);
+                if (file.exists()) {
+                    file.delete();
+                }
+            }
         }
+
         return info;
+
     }
 }
