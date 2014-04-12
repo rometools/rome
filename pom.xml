@@ -63,16 +63,8 @@
 			<artifactId>rome-fetcher</artifactId>
 			<exclusions>
 				<exclusion>
-					<groupId>commons-httpclient</groupId>
 					<artifactId>commons-httpclient</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>commons-logging</groupId>
-					<artifactId>commons-logging-api</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>commons-logging</groupId>
-					<artifactId>commons-logging</artifactId>
+					<groupId>commons-httpclient</groupId>
 				</exclusion>
 			</exclusions>
 		</dependency>
