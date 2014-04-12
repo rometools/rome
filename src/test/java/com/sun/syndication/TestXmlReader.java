@@ -46,19 +46,16 @@ public class TestXmlReader extends TestCase {
     protected void _testRawNoBomValid(final String encoding) throws Exception {
 
         InputStream is = getXmlStream("no-bom", "xml", encoding, encoding);
-        final XmlReader xmlReader = new XmlReader(is, false);
+        XmlReader xmlReader = new XmlReader(is, false);
         assertEquals(xmlReader.getEncoding(), "UTF-8");
-        xmlReader.close();
 
         is = getXmlStream("no-bom", "xml-prolog", encoding, encoding);
-        final XmlReader xmlReader2 = new XmlReader(is);
+        xmlReader = new XmlReader(is);
         assertEquals(xmlReader.getEncoding(), "UTF-8");
-        xmlReader2.close();
 
         is = getXmlStream("no-bom", "xml-prolog-encoding", encoding, encoding);
-        final XmlReader xmlReader3 = new XmlReader(is);
+        xmlReader = new XmlReader(is);
         assertEquals(xmlReader.getEncoding(), encoding);
-        xmlReader3.close();
 
     }
 
