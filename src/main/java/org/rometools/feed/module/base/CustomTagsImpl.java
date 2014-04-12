@@ -31,15 +31,9 @@ import com.sun.syndication.feed.CopyFrom;
  */
 public class CustomTagsImpl implements CustomTags {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
-    private List<CustomTag> values;
 
-    /** Creates a new instance of CustomTagsImpl */
-    public CustomTagsImpl() {
-    }
+    private List<CustomTag> values;
 
     @Override
     public List<CustomTag> getValues() {
@@ -66,7 +60,7 @@ public class CustomTagsImpl implements CustomTags {
     }
 
     @Override
-    public Class getInterface() {
+    public Class<CustomTags> getInterface() {
         return CustomTags.class;
     }
 

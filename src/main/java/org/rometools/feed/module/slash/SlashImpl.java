@@ -50,22 +50,12 @@ import com.sun.syndication.feed.impl.EqualsBean;
  */
 public class SlashImpl implements Slash {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
     private String section;
-
     private String department;
-
     private Integer comments;
-
     private Integer[] hitParade;
-
-    /** Creates a new instance of SlashImpl */
-    public SlashImpl() {
-    }
 
     @Override
     public String getSection() {
@@ -142,7 +132,7 @@ public class SlashImpl implements Slash {
     }
 
     @Override
-    public Class getInterface() {
+    public Class<Slash> getInterface() {
         return Slash.class;
     }
 
@@ -151,4 +141,5 @@ public class SlashImpl implements Slash {
         final EqualsBean eBean = new EqualsBean(this.getClass(), this);
         return eBean.beanEquals(obj);
     }
+
 }

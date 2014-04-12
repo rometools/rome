@@ -54,13 +54,14 @@ public class SimpleListExtensionImpl extends ModuleImpl implements SimpleListExt
     /**
      * Returns the interface the copyFrom works on.
      * <p>
-     * This is useful when dealing with properties that may have multiple implementations. For example, Module.
+     * This is useful when dealing with properties that may have multiple implementations. For
+     * example, Module.
      * <p>
      *
      * @return the interface the copyFrom works on.
      */
     @Override
-    public Class getInterface() {
+    public Class<SimpleListExtension> getInterface() {
         return SimpleListExtension.class;
     }
 
@@ -100,8 +101,8 @@ public class SimpleListExtensionImpl extends ModuleImpl implements SimpleListExt
      * <p>
      * Any existing properties in this bean are lost.
      * <p>
-     * This method is useful for moving from one implementation of a bean interface to another. For example from the default SyndFeed bean implementation to a
-     * Hibernate ready implementation.
+     * This method is useful for moving from one implementation of a bean interface to another. For
+     * example from the default SyndFeed bean implementation to a Hibernate ready implementation.
      * <p>
      *
      * @param obj the instance to copy properties from.

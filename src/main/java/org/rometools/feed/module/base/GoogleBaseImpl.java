@@ -676,7 +676,7 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public Class getInterface() {
+    public Class<GoogleBase> getInterface() {
         return GoogleBase.class;
     }
 

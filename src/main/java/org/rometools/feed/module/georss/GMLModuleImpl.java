@@ -17,7 +17,8 @@
 package org.rometools.feed.module.georss;
 
 /**
- * GMLModuleImpl is the implementation of the {@link GeoRSSModule} Interface for the gml GeoRSS format.
+ * GMLModuleImpl is the implementation of the {@link GeoRSSModule} Interface for the gml GeoRSS
+ * format.
  *
  * @author Marc Wick
  * @version $Id: GMLModuleImpl.java,v 1.1 2007/04/18 09:59:29 marcwick Exp $
@@ -25,21 +26,15 @@ package org.rometools.feed.module.georss;
  */
 public class GMLModuleImpl extends GeoRSSModule {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
     public GMLModuleImpl() {
         super(GeoRSSModule.class, GeoRSSModule.GEORSS_GML_URI);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.sun.syndication.feed.CopyFrom#getInterface()
-     */
     @Override
-    public Class getInterface() {
+    public Class<GeoRSSModule> getInterface() {
         return GeoRSSModule.class;
     }
+
 }

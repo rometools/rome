@@ -65,7 +65,7 @@ public class ContentModuleImpl extends ModuleImpl implements ContentModule {
         super(ContentModuleImpl.class, URI);
     }
 
-    protected ContentModuleImpl(final Class beanClass, final java.lang.String uri) {
+    protected ContentModuleImpl(final Class<ContentModuleImpl> beanClass, final java.lang.String uri) {
         super(beanClass, uri);
     }
 
@@ -89,7 +89,7 @@ public class ContentModuleImpl extends ModuleImpl implements ContentModule {
     }
 
     @Override
-    public Class getInterface() {
+    public Class<ContentModule> getInterface() {
         return ContentModule.class;
     }
 

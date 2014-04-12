@@ -40,8 +40,6 @@
  */
 package org.rometools.feed.module.itunes;
 
-import com.sun.syndication.feed.CopyFrom;
-
 /**
  * This is an abstract object that implements the attributes common across Feeds or Items in an
  * iTunes compatible RSS feed.
@@ -81,20 +79,12 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
     private String summary;
 
     /**
-     * Defined by the ROME module API
-     *
-     * @param obj Object to copy from
-     */
-    @Override
-    public abstract void copyFrom(CopyFrom obj);
-
-    /**
      * Defined by the ROME API
      *
      * @return Class of the Interface for this module.
      */
     @Override
-    public Class getInterface() {
+    public Class<? extends AbstractITunesObject> getInterface() {
         return getClass();
     }
 

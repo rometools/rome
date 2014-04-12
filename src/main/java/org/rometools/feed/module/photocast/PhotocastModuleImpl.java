@@ -147,7 +147,7 @@ public class PhotocastModuleImpl implements PhotocastModule {
     }
 
     @Override
-    public Class getInterface() {
+    public Class<PhotocastModule> getInterface() {
         return PhotocastModule.class;
     }
 

@@ -78,7 +78,7 @@ public class FeedBurnerImpl implements FeedBurner {
     }
 
     @Override
-    public Class getInterface() {
+    public Class<FeedBurner> getInterface() {
         return FeedBurner.class;
     }
 

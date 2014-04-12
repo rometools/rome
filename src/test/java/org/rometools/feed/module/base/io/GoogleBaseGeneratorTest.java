@@ -104,13 +104,6 @@ public class GoogleBaseGeneratorTest extends AbstractTestCase {
         product.setCondition("New");
         product.setDeliveryNotes("Insight");
 
-        // FIXME
-        final List modules = new ArrayList();
-        modules.add(vehicle);
-        modules.add(product);
-
-        entry.setModules(modules);
-
         entries.add(entry);
 
         feed.setEntries(entries);

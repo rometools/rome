@@ -53,12 +53,12 @@ public class MediaModuleImpl extends ModuleImpl implements MediaModule, Serializ
      * @param clazz
      * @param uri
      */
-    public MediaModuleImpl(final Class clazz, final String uri) {
+    public MediaModuleImpl(final Class<? extends MediaModule> clazz, final String uri) {
         super(clazz, uri);
     }
 
     @Override
-    public Class getInterface() {
+    public Class<MediaModule> getInterface() {
         return MediaModule.class;
     }
 
