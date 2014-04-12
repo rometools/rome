@@ -12,14 +12,17 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
 /**
- * 
+ *
  * @author robert.cooper
  */
 @Singleton
 public class HubServlet extends AbstractHubServlet {
 
+    private static final long serialVersionUID = 1L;
+
     @Inject
     public HubServlet(final Hub hub) {
         super(hub);
     }
+
 }

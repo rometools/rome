@@ -19,11 +19,13 @@ import org.rometools.certiorem.pub.Publisher;
 import com.google.inject.Singleton;
 
 /**
- * 
+ *
  * @author robert.cooper
  */
 @Singleton
 public class NotifyTest extends HttpServlet {
+
+    private static final long serialVersionUID = 1L;
 
     @Override
     public void doGet(final HttpServletRequest request, final HttpServletResponse response) throws ServletException {
@@ -35,4 +37,5 @@ public class NotifyTest extends HttpServlet {
             throw new ServletException(ex);
         }
     }
+
 }

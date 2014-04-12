@@ -12,11 +12,13 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
 /**
- * 
+ *
  * @author robert.cooper
  */
 @Singleton
 public class SubServlet extends AbstractSubServlet {
+
+    private static final long serialVersionUID = 1L;
 
     @Inject
     public SubServlet(final Subscriptions subscriptions) {
