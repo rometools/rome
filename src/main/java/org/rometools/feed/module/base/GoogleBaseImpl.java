@@ -60,11 +60,16 @@ import com.sun.syndication.feed.impl.EqualsBean;
 
 /**
  * This is the implementation class for the GoogleBase module interface.
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @version $Revision: 1.2 $
  */
 public class GoogleBaseImpl implements GoogleBase {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
     /** boolean:listing_type */
     private Boolean listingType;
 
@@ -343,7 +348,7 @@ public class GoogleBaseImpl implements GoogleBase {
 
     /**
      * DOCUMENT ME!
-     * 
+     *
      * @param actors
      */
     @Override

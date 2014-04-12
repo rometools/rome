@@ -162,7 +162,7 @@ public class ITunesGenerator implements ModuleGenerator {
 
     /**
      * Returns the list of namespaces this module uses.
-     * 
+     *
      * @return set of Namespace objects.
      */
     @Override
@@ -172,7 +172,7 @@ public class ITunesGenerator implements ModuleGenerator {
 
     /**
      * Returns the namespace URI this module handles.
-     * 
+     *
      * @return Returns the namespace URI this module handles.
      */
     @Override

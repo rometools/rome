@@ -43,7 +43,7 @@ import java.util.StringTokenizer;
 
 /**
  * Represents the size on an item in 2 or 3 dimensions.
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @version $Revision: 1.2 $
  */
@@ -63,7 +63,7 @@ public class Size implements CloneableType {
 
     /**
      * Creates a new Size object parsing a string value.
-     * 
+     *
      * @param source String value to parse
      */
     public Size(final String source) {
@@ -78,7 +78,7 @@ public class Size implements CloneableType {
 
     /**
      * Creates a new instance of Size
-     * 
+     *
      * @param length lenght value
      * @param width width value
      */
@@ -89,7 +89,7 @@ public class Size implements CloneableType {
 
     /**
      * Creates a new instance of Size.
-     * 
+     *
      * @param length Length value.
      * @param width Width value.
      * @param height Height value.
@@ -102,7 +102,7 @@ public class Size implements CloneableType {
 
     /**
      * Height value.
-     * 
+     *
      * @return Height value.
      */
     public FloatUnit getHeight() {
@@ -111,7 +111,7 @@ public class Size implements CloneableType {
 
     /**
      * Length value.
-     * 
+     *
      * @return Length value.
      */
     public FloatUnit getLength() {
@@ -120,7 +120,7 @@ public class Size implements CloneableType {
 
     /**
      * Width value.
-     * 
+     *
      * @return Width value.
      */
     public FloatUnit getWidth() {
@@ -129,7 +129,7 @@ public class Size implements CloneableType {
 
     /**
      * Duplicates this object.
-     * 
+     *
      * @return A duplicate Size object.
      */
     @Override
@@ -143,7 +143,7 @@ public class Size implements CloneableType {
 
     /**
      * Returns a string representation of this object.
-     * 
+     *
      * @return A string representation of this object.
      */
     @Override

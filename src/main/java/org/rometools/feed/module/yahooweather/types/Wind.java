@@ -53,11 +53,15 @@ import com.sun.syndication.feed.impl.ToStringBean;
  * Note that the default RSS feed uses Fahrenheit degree units and English units for all other attributes (miles, pounds per square inch, miles per hour). If
  * Celsius has been specified as the degree units for the feed (using the u request parameter), all the units are in metric format (Celsius, kilometers,
  * millibars, kilometers per hour).
- * 
+ *
  * @version $Id: Wind.java,v 1.2 2008/01/22 14:50:05 kebernet Exp $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Wind implements Serializable, Cloneable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private transient ToStringBean toString = new ToStringBean(Wind.class, this);
     private transient EqualsBean equals = new EqualsBean(Wind.class, this);
     private int chill;
@@ -73,7 +77,7 @@ public class Wind implements Serializable, Cloneable {
 
     /**
      * Constructs a new Wind object
-     * 
+     *
      * @param chill wind chill adjusted temperature
      * @param direction direction of wind in degrees
      * @param speed speed of wind
@@ -102,7 +106,7 @@ public class Wind implements Serializable, Cloneable {
 
     /**
      * Wind chill adjusted temperature.
-     * 
+     *
      * @return int temperature value
      * @see Units
      */
@@ -112,7 +116,7 @@ public class Wind implements Serializable, Cloneable {
 
     /**
      * Wind chill adjusted temperature.
-     * 
+     *
      * @param chill int temperature value
      * @see Units
      */
@@ -122,7 +126,7 @@ public class Wind implements Serializable, Cloneable {
 
     /**
      * Direction of wind in degrees
-     * 
+     *
      * @return int direction of wind.
      */
     public int getDirection() {
@@ -131,7 +135,7 @@ public class Wind implements Serializable, Cloneable {
 
     /**
      * Direction of wind in degrees
-     * 
+     *
      * @param direction int direction of wind.
      */
     public void setDirection(final int direction) {
@@ -140,7 +144,7 @@ public class Wind implements Serializable, Cloneable {
 
     /**
      * Speed of wind
-     * 
+     *
      * @return int speed of wind
      * @see Units
      */
@@ -150,7 +154,7 @@ public class Wind implements Serializable, Cloneable {
 
     /**
      * Speed of wind
-     * 
+     *
      * @param speed int speed of wind
      * @see Units
      */

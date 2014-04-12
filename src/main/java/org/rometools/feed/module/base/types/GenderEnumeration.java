@@ -41,7 +41,7 @@ package org.rometools.feed.module.base.types;
 
 /**
  * Simple enumeration for Genders.
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @version $Revision: 1.1 $
  */

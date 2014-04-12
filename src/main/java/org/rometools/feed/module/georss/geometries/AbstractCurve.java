@@ -11,10 +11,15 @@ package org.rometools.feed.module.georss.geometries;
 
 /**
  * Abstract base class for Curves (linear objects)
- * 
+ *
  * @author runaas
  */
 public abstract class AbstractCurve extends AbstractGeometricPrimitive {
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
     /** Creates a new instance of Curve */
     public AbstractCurve() {

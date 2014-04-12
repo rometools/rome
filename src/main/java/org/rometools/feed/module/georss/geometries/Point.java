@@ -11,10 +11,14 @@ package org.rometools.feed.module.georss.geometries;
 
 /**
  * Point object, contains a position
- * 
+ *
  * @author runaas
  */
 public final class Point extends AbstractGeometricPrimitive {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private Position pos;
 
     /** Creates a new instance of Point */
@@ -48,7 +52,7 @@ public final class Point extends AbstractGeometricPrimitive {
 
     /**
      * Get the position
-     * 
+     *
      * @return the position
      */
     public Position getPosition() {
@@ -60,7 +64,7 @@ public final class Point extends AbstractGeometricPrimitive {
 
     /**
      * Set the position
-     * 
+     *
      * @param pos the new position
      */
     public void setPosition(final Position pos) {

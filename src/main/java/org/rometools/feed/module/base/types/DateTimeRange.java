@@ -43,7 +43,7 @@ import java.util.Date;
 
 /**
  * Represents a time range.
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @version $Revision: 1.2 $
  */
@@ -59,7 +59,7 @@ public class DateTimeRange implements CloneableType {
 
     /**
      * Creates a new instance of DateTimeRange
-     * 
+     *
      * @param start Beginning of the timeframe.
      * @param end End of the Timeframe.
      */
@@ -70,7 +70,7 @@ public class DateTimeRange implements CloneableType {
 
     /**
      * The end of the timeframe.
-     * 
+     *
      * @return The end of the timeframe.
      */
     public Date getEnd() {
@@ -79,7 +79,7 @@ public class DateTimeRange implements CloneableType {
 
     /**
      * The beginning of the timeframe.
-     * 
+     *
      * @return The beginning of the timeframe.
      */
     public Date getStart() {
@@ -88,7 +88,7 @@ public class DateTimeRange implements CloneableType {
 
     /**
      * Clones the object
-     * 
+     *
      * @return Duplicate of this object.
      */
     @Override
@@ -108,7 +108,7 @@ public class DateTimeRange implements CloneableType {
 
     /**
      * String representation of the object.
-     * 
+     *
      * @return String representation of the object.
      */
     @Override

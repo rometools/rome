@@ -13,7 +13,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 /**
- * 
+ *
  * @author cooper
  */
 public class TimeTest extends TestCase {

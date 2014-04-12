@@ -21,7 +21,7 @@ import org.rometools.feed.module.activitystreams.types.Mood;
 import org.rometools.feed.module.activitystreams.types.Verb;
 
 /**
- * 
+ *
  * @author robert.cooper
  */
 public class ActivityStreamModuleImpl implements ActivityStreamModule {
@@ -30,7 +30,7 @@ public class ActivityStreamModuleImpl implements ActivityStreamModule {
 
     /**
      * Set the value of object
-     * 
+     *
      * @param newobject new value of object
      */
     @Override
@@ -40,7 +40,7 @@ public class ActivityStreamModuleImpl implements ActivityStreamModule {
 
     /**
      * Get the value of object
-     * 
+     *
      * @return the value of object
      */
     @Override
@@ -50,7 +50,7 @@ public class ActivityStreamModuleImpl implements ActivityStreamModule {
 
     /**
      * Set the value of verb
-     * 
+     *
      * @param newverb new value of verb
      */
     @Override
@@ -60,7 +60,7 @@ public class ActivityStreamModuleImpl implements ActivityStreamModule {
 
     /**
      * Get the value of verb
-     * 
+     *
      * @return the value of verb
      */
     @Override

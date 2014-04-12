@@ -42,7 +42,7 @@ import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.SyndFeedInput;
 
 /**
- * 
+ *
  * @author rcooper
  */
 public class GoogleBaseParserTest extends AbstractTestCase {

@@ -46,7 +46,7 @@ import com.sun.syndication.feed.impl.ToStringBean;
 
 /**
  * This is an immutable class representing the apple-wallpapers:metadata tag in the photocast module.
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Metadata {
@@ -56,7 +56,7 @@ public class Metadata {
 
     /**
      * Creates a new instance of Metadata with a set photoDate and comments value.
-     * 
+     *
      * @param photoDate PhotoDate value to use
      * @param comments comments about this photo.
      */
@@ -67,7 +67,7 @@ public class Metadata {
 
     /**
      * Returns the PhotoDate value.
-     * 
+     *
      * @return Returns the PhotoDate value.
      */
     public PhotoDate getPhotoDate() {
@@ -76,7 +76,7 @@ public class Metadata {
 
     /**
      * Returns comments about the photo.
-     * 
+     *
      * @return Returns comments about the photo.
      */
     public String getComments() {
@@ -85,7 +85,7 @@ public class Metadata {
 
     /**
      * Returns a String representation of the metadata object.
-     * 
+     *
      * @return Returns a String representation of the metadata object.
      */
     @Override

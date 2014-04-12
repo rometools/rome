@@ -29,10 +29,14 @@ import com.sun.syndication.feed.impl.ObjectBean;
 /**
  * This is a <b>parse only</b> module that holds the values of enternal fields declared in the SLE module. These will <b>not</b> be persisted on an output()
  * call, <b>nor</b> will changing a value here change a value in another module or a foreign markup tag.
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class SleEntryImpl implements SleEntry {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private static final EntryValue[] EMPTY_VALUES = new EntryValue[0];
     private final ObjectBean obj = new ObjectBean(SleEntryImpl.class, this);
     private EntryValue[] groupValues = EMPTY_VALUES;
@@ -70,7 +74,7 @@ public class SleEntryImpl implements SleEntry {
      * <p>
      * This is useful when dealing with properties that may have multiple implementations. For example, Module.
      * <p>
-     * 
+     *
      * @return the interface the copyFrom works on.
      */
     @Override
@@ -106,7 +110,7 @@ public class SleEntryImpl implements SleEntry {
     /**
      * Returns the URI of the module.
      * <p>
-     * 
+     *
      * @return URI of the module.
      */
     @Override
@@ -127,7 +131,7 @@ public class SleEntryImpl implements SleEntry {
      * This method is useful for moving from one implementation of a bean interface to another. For example from the default SyndFeed bean implementation to a
      * Hibernate ready implementation.
      * <p>
-     * 
+     *
      * @param obj the instance to copy properties from.
      */
     @Override

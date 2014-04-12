@@ -24,7 +24,7 @@ import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.XmlReader;
 
 /**
- * 
+ *
  * @author cooper
  */
 public class ITunesParserTest extends AbstractTestCase {

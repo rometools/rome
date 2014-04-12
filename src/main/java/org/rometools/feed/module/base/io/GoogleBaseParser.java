@@ -75,7 +75,7 @@ import com.sun.syndication.io.ModuleParser;
 
 /**
  * DOCUMENT ME!
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @version $Revision: 1.3 $
  */

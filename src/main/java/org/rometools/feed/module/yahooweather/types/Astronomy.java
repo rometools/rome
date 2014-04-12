@@ -49,11 +49,15 @@ import com.sun.syndication.feed.impl.ToStringBean;
  * <li>sunrise: today's sunrise time. The time is a string in a local time format of "h:mm am/pm", for example "7:02 am" (string)</li>
  * <li>sunset today's sunset time. The time is a string in a local time format of "h:mm am/pm", for example "4:51 pm" (string)</li>
  * </ul>
- * 
+ *
  * @version $Id: Astronomy.java,v 1.2 2008/01/22 14:50:05 kebernet Exp $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Astronomy implements Serializable, Cloneable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private final EqualsBean equals = new EqualsBean(Astronomy.class, this);
     private final ToStringBean toString = new ToStringBean(Astronomy.class, this);
     private Date sunrise;
@@ -68,7 +72,7 @@ public class Astronomy implements Serializable, Cloneable {
 
     /**
      * Constructs a new Astronomy object
-     * 
+     *
      * @param sunrise time of sunrise (from 0ms)
      * @param sunset time of sunset (from 0ms)
      */
@@ -99,7 +103,7 @@ public class Astronomy implements Serializable, Cloneable {
 
     /**
      * Time of sunrise
-     * 
+     *
      * @return ime of sunrise (from 0ms)
      */
     public Date getSunrise() {
@@ -108,7 +112,7 @@ public class Astronomy implements Serializable, Cloneable {
 
     /**
      * Time of sunrise
-     * 
+     *
      * @param sunrise ime of sunrise (from 0ms)
      */
     public void setSunrise(final Date sunrise) {
@@ -117,7 +121,7 @@ public class Astronomy implements Serializable, Cloneable {
 
     /**
      * Time of sunset
-     * 
+     *
      * @return time of sunset (from 0ms)
      */
     public Date getSunset() {
@@ -126,7 +130,7 @@ public class Astronomy implements Serializable, Cloneable {
 
     /**
      * Time of sunset
-     * 
+     *
      * @param sunset time of sunset (from 0ms)
      */
     public void setSunset(final Date sunset) {

@@ -23,34 +23,34 @@ import org.jdom2.Namespace;
 
 /**
  * An interface that parents data types for sorting and grouping.
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public interface EntryValue extends Serializable, Cloneable {
     /**
      * Returns the name of the element.
-     * 
+     *
      * @return Returns the name of the element.
      */
     public String getElement();
 
     /**
      * Returns a label for the element.
-     * 
+     *
      * @return Returns a label for the element.
      */
     public String getLabel();
 
     /**
      * Returns the value of the element.
-     * 
+     *
      * @return Returns the value of the element.
      */
     public Comparable<?> getValue();
 
     /**
      * Returns the namespace of the element.
-     * 
+     *
      * @return Returns the namespace of the element.
      */
     public Namespace getNamespace();

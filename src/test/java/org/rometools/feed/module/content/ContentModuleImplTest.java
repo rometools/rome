@@ -13,7 +13,7 @@ import java.util.List;
 import junit.framework.TestCase;
 
 /**
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert Cooper</a>
  */
 public class ContentModuleImplTest extends TestCase {

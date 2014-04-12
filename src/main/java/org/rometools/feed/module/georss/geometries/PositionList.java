@@ -13,10 +13,14 @@ import java.io.Serializable;
 
 /**
  * A list of geographic positions, latitude, longitude decimal degrees WGS84
- * 
+ *
  * @author runaas
  */
 public class PositionList implements Cloneable, Serializable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private double[] latitude;
     private double[] longitude;
     private int size;
@@ -106,7 +110,7 @@ public class PositionList implements Cloneable, Serializable {
 
     /**
      * Add a position at the end of the list
-     * 
+     *
      * @param latitude
      * @param longitude
      */
@@ -119,7 +123,7 @@ public class PositionList implements Cloneable, Serializable {
 
     /**
      * Add a position at a given index in the list. The rest of the list is shifted one place to the "right"
-     * 
+     *
      * @param pos position index
      * @param latitude
      * @param longitude
@@ -135,7 +139,7 @@ public class PositionList implements Cloneable, Serializable {
 
     /**
      * Replace the position at the index with new values
-     * 
+     *
      * @param pos position index
      * @param latitude
      * @param longitude
@@ -147,7 +151,7 @@ public class PositionList implements Cloneable, Serializable {
 
     /**
      * Remove the position at the index, the rest of the list is shifted one place to the "left"
-     * 
+     *
      * @param pos position index
      */
     public void remove(final int pos) {

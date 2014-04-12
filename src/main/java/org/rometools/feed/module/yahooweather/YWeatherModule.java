@@ -39,7 +39,7 @@ import com.sun.syndication.feed.module.Module;
 
 /**
  * A simple parent interface that defines the feed URI
- * 
+ *
  * @version $Id: YWeatherModule.java,v 1.2 2008/01/22 14:50:06 kebernet Exp $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */

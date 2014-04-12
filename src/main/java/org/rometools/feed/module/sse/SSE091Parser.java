@@ -2,7 +2,6 @@ package org.rometools.feed.module.sse;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.logging.Logger;
@@ -29,7 +28,7 @@ import com.sun.syndication.io.impl.RSS20Parser;
 
 /**
  * Parses embedded SSE content from RSS channel and item content.
- * 
+ *
  * @author <a href="mailto:ldornin@dev.java.net">ldornin</a>
  */
 public class SSE091Parser implements DelegatingModuleParser {
@@ -119,12 +118,10 @@ public class SSE091Parser implements DelegatingModuleParser {
         List<Conflict> conflicts = null;
 
         final List<Element> conflictsContent = syncElement.getContent(new ContentFilter(Conflicts.NAME));
-        for (final Iterator<Element> conflictsIter = conflictsContent.iterator(); conflictsIter.hasNext();) {
-            final Element conflictsElement = conflictsIter.next();
-
+        for (final Element conflictsElement : conflictsContent) {
             final List<Element> conflictContent = conflictsElement.getContent(new ContentFilter(Conflict.NAME));
-            for (final Iterator<Element> conflictIter = conflictContent.iterator(); conflictIter.hasNext();) {
-                final Element conflictElement = (Element) conflictIter.next();
+            for (final Element element : conflictContent) {
+                final Element conflictElement = element;
 
                 final Conflict conflict = new Conflict();
                 conflict.setBy(parseStringAttribute(conflictElement, Conflict.BY_ATTRIBUTE));
@@ -132,8 +129,8 @@ public class SSE091Parser implements DelegatingModuleParser {
                 conflict.setVersion(parseIntegerAttribute(conflictElement, Conflict.VERSION_ATTRIBUTE));
 
                 final List<Element> conflictItemContent = conflictElement.getContent(new ContentFilter("item"));
-                for (final Iterator<Element> conflictItemIter = conflictItemContent.iterator(); conflictItemIter.hasNext();) {
-                    final Element conflictItemElement = (Element) conflictItemIter.next();
+                for (final Element element2 : conflictItemContent) {
+                    final Element conflictItemElement = element2;
                     final Element root = getRoot(conflictItemElement);
                     final Item conflictItem = rssParser.parseItem(root, conflictItemElement, locale);
                     conflict.setItem(conflictItem);
@@ -176,15 +173,14 @@ public class SSE091Parser implements DelegatingModuleParser {
         final List<Element> filterList = element.getContent(new ContentFilter(name));
         Element firstContent = null;
         if (filterList != null && filterList.size() > 0) {
-            firstContent = (Element) filterList.get(0);
+            firstContent = filterList.get(0);
         }
         return firstContent;
     }
 
     private void parseUpdates(final Element historyChild, final History history, final Locale locale) {
         final List<Element> updatedChildren = historyChild.getContent(new ContentFilter(Update.NAME));
-        for (final Iterator<Element> childIter = updatedChildren.iterator(); childIter.hasNext();) {
-            final Element updateChild = childIter.next();
+        for (final Element updateChild : updatedChildren) {
             final Update update = new Update();
             update.setBy(parseStringAttribute(updateChild, Update.BY_ATTRIBUTE));
             update.setWhen(parseDateAttribute(updateChild, Update.WHEN_ATTRIBUTE, locale));

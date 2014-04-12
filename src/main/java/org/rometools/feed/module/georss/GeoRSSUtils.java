@@ -21,10 +21,10 @@ import com.sun.syndication.feed.synd.SyndFeed;
 
 /**
  * static utility methods for georss.
- * 
+ *
  * @author Marc Wick
  * @version $Id: GeoRSSUtils.java,v 1.4 2007/04/18 09:59:29 marcwick Exp $
- * 
+ *
  */
 public class GeoRSSUtils {
 
@@ -54,7 +54,7 @@ public class GeoRSSUtils {
 
     /**
      * This convenience method checks whether there is any geoRss Element and will return it (georss simple or W3GGeo).
-     * 
+     *
      * @param entry the element in the feed which might have a georss element
      * @return a georssmodule or null if none is present
      */
@@ -76,15 +76,13 @@ public class GeoRSSUtils {
         /*
          * if (geoRSSModule == null && w3cGeo != null) { geoRSSModule = w3cGeo; } else if (geoRSSModule == null && gml != null) { geoRSSModule = gml; } else if
          * (geoRSSModule != null && w3cGeo != null) { // sanity check if (!geoRSSModule.getGeometry().equals(w3cGeo.getGeometry())) { throw new
-         * Error("geometry of simple and w3c do not match"); } }
-         * 
-         * return geoRSSModule;
+         * Error("geometry of simple and w3c do not match"); } } return geoRSSModule;
          */
     }
 
     /**
      * This convenience method checks whether there is any geoRss Element and will return it (georss simple or W3GGeo).
-     * 
+     *
      * @param feed the element in the feed which might have a georss element
      * @return a georssmodule or null if none is present
      */
@@ -107,9 +105,7 @@ public class GeoRSSUtils {
         /*
          * if (geoRSSModule == null && w3cGeo != null) { geoRSSModule = w3cGeo; } else if (geoRSSModule == null && gml != null) { geoRSSModule = gml; } else if
          * (geoRSSModule != null && w3cGeo != null) { // sanity check if (!geoRSSModule.getGeometry().equals(w3cGeo.getGeometry())) { throw new
-         * Error("geometry of simple and w3c do not match"); } }
-         * 
-         * return geoRSSModule;
+         * Error("geometry of simple and w3c do not match"); } } return geoRSSModule;
          */
     }
 }

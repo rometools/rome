@@ -11,7 +11,7 @@ import junit.framework.TestCase;
 
 /**
  * Abstract base class for test cases.
- * 
+ *
  * @author <a href="jason@zenplex.com">Jason van Zyl</a>
  */
 public abstract class AbstractTestCase extends TestCase {
@@ -29,7 +29,7 @@ public abstract class AbstractTestCase extends TestCase {
 
     /**
      * Get test input file.
-     * 
+     *
      * @param path Path to test input file.
      */
     public String getTestFile(final String path) {
@@ -42,7 +42,7 @@ public abstract class AbstractTestCase extends TestCase {
 
     /**
      * This method takes a JavaBean and generates a standard toString() type result for it.
-     * 
+     *
      * @param o JavaBean object to stringinate
      * @return STRINGIATION! Stringingating the countryside. Stringinating all the peasants.
      */

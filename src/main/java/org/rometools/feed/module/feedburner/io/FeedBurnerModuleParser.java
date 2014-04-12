@@ -28,10 +28,10 @@ import com.sun.syndication.io.ModuleParser;
 
 /**
  * ModuleParser implementation for the FeedBurner RSS extension.
- * 
+ *
  * @version 1.0
  * @author Georg Schmidl <georg.schmidl@scandio.de>
- * 
+ *
  */
 public class FeedBurnerModuleParser implements ModuleParser {
     private static final Namespace NS = Namespace.getNamespace(FeedBurner.URI);

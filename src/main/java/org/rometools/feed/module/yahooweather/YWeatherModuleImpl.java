@@ -49,7 +49,7 @@ import com.sun.syndication.feed.module.ModuleImpl;
 
 /**
  * A Module implementation for entry or feed level information.
- * 
+ *
  * @version $Id: YWeatherModuleImpl.java,v 1.2 2008/01/22 14:50:06 kebernet Exp $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */

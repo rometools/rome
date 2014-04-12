@@ -1,7 +1,6 @@
 package org.rometools.feed.module.sse;
 
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
@@ -27,7 +26,7 @@ import com.sun.syndication.io.impl.RSS20Generator;
 /**
  * Generator for the SSE Module.
  * <p>
- * 
+ *
  * @author <a href="mailto:ldornin@gmail.com">Laird Dornin</a>
  */
 public class SSE091Generator implements DelegatingModuleGenerator {
@@ -52,7 +51,7 @@ public class SSE091Generator implements DelegatingModuleGenerator {
      * It is used by the the feed generators to add their namespace definition in the root element of the generated document (forward-missing of Java 5.0
      * Generics).
      * <p/>
-     * 
+     *
      * @return a set with all the URIs (JDOM Namespace elements) this module generator uses.
      */
     @Override
@@ -124,9 +123,9 @@ public class SSE091Generator implements DelegatingModuleGenerator {
     private void generateConflicts(final Element syncElement, final List<Conflict> conflicts) {
         if (conflicts != null) {
             final Element conflictsElement = new Element(Conflicts.NAME, SSEModule.SSE_NS);
-            for (final Iterator<Conflict> confictIter = conflicts.iterator(); confictIter.hasNext();) {
+            for (final Conflict conflict2 : conflicts) {
                 final Element conflictElement = new Element(Conflict.NAME, SSEModule.SSE_NS);
-                final Conflict conflict = (Conflict) confictIter.next();
+                final Conflict conflict = conflict2;
                 generateAttribute(conflictElement, Conflict.BY_ATTRIBUTE, conflict.getBy());
                 generateAttribute(conflictElement, Conflict.VERSION_ATTRIBUTE, conflict.getVersion());
                 generateAttribute(conflictElement, Conflict.WHEN_ATTRIBUTE, conflict.getWhen());
@@ -158,9 +157,8 @@ public class SSE091Generator implements DelegatingModuleGenerator {
 
     private void generateUpdates(final Element historyElement, final List<Update> updates) {
         if (updates != null) {
-            for (final Iterator<Update> updateIter = updates.iterator(); updateIter.hasNext();) {
+            for (final Update update : updates) {
                 final Element updateElement = new Element(Update.NAME, SSEModule.SSE_NS);
-                final Update update = updateIter.next();
                 generateAttribute(updateElement, Update.BY_ATTRIBUTE, update.getBy());
                 generateAttribute(updateElement, Update.WHEN_ATTRIBUTE, update.getWhen());
                 historyElement.addContent(updateElement);

@@ -35,11 +35,11 @@ import com.sun.syndication.io.impl.ModuleGenerators;
 
 /**
  * This is a utiltiy class for grouping and sorting lists of entries based on the SLE.
- * 
+ *
  * <p>
  * Note, this class can <b>ONLY</b> be used on parsed feeds, unless you manually add the appropriate SleEntry objects on the items.
  * </p>
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @see SleEntry
  */
@@ -53,7 +53,7 @@ public class SleUtility {
 
     /**
      * Groups values by the groups from the SLE.
-     * 
+     *
      * @param values List of Extendable implementations to group.
      * @param groups Group fields (from the SimpleListExtension module)
      * @return Grouped list of entries.
@@ -71,7 +71,7 @@ public class SleUtility {
 
     /**
      * Sorts a list of values based on a given sort field using a selection sort.
-     * 
+     *
      * @param values List of values (implements Extendable) to sort.
      * @param sort The sort field to sort on.
      * @param ascending Sort ascending/descending.
@@ -86,7 +86,7 @@ public class SleUtility {
 
     /**
      * Sorts and groups a set of entries.
-     * 
+     *
      * @param values List of Extendable implementations.
      * @param groups Group items to group by.
      * @param sort Field to sort on.
@@ -150,6 +150,11 @@ public class SleUtility {
     }
 
     private static class SortableList extends ArrayList {
+        /**
+         *
+         */
+        private static final long serialVersionUID = 1L;
+
         public SortableList(final Collection c) {
             super(c);
         }

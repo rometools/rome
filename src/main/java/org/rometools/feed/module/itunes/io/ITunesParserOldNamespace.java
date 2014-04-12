@@ -24,7 +24,7 @@ package org.rometools.feed.module.itunes.io;
 import org.jdom2.Namespace;
 
 /**
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class ITunesParserOldNamespace extends ITunesParser {

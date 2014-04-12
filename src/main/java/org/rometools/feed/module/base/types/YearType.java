@@ -44,7 +44,7 @@ import java.util.Date;
 
 /**
  * This class represents a simple 4 digit year.
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @version $Revision: 1.1 $
  */
@@ -56,7 +56,7 @@ public class YearType implements CloneableType {
 
     /**
      * Creates a new year from a string value.
-     * 
+     *
      * @param year String to parse.
      */
     public YearType(final String year) {
@@ -65,7 +65,7 @@ public class YearType implements CloneableType {
 
     /**
      * Creates a new instance of YearType
-     * 
+     *
      * @param date Date to get the year from.
      */
     public YearType(final Date date) {
@@ -76,7 +76,7 @@ public class YearType implements CloneableType {
 
     /**
      * Duplicates this object.
-     * 
+     *
      * @return Cloned Year.
      */
     @Override
@@ -86,7 +86,7 @@ public class YearType implements CloneableType {
 
     /**
      * Returns a String representation of this object.
-     * 
+     *
      * @return Returns a String representation of this object.
      */
     @Override

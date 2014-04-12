@@ -1,12 +1,12 @@
 /*
  *  Copyright 2011 robert.cooper.
- * 
+ *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
  *  You may obtain a copy of the License at
- * 
+ *
  *       http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  *  Unless required by applicable law or agreed to in writing, software
  *  distributed under the License is distributed on an "AS IS" BASIS,
  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -38,7 +38,7 @@ import org.rometools.feed.module.portablecontacts.ContactModule;
  * <a name="location-poco"></a>
  * </p>
  * <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'>
- * 
+ *
  * <pre>
  * &lt;entry&gt;
  *   &lt;id&gt;tag:world:activity:1212121212121&lt;/id&gt;
@@ -72,7 +72,7 @@ import org.rometools.feed.module.portablecontacts.ContactModule;
  *   &lt;activity:verb&gt;http://activitystrea.ms/schema/1.0/like&lt;/activity:verb&gt;
  * &lt;/entry&gt;
  * </pre>
- * 
+ *
  * </div>
  * <p>
  * <table border="0" cellpadding="0" cellspacing="2" align="center">
@@ -82,9 +82,9 @@ import org.rometools.feed.module.portablecontacts.ContactModule;
  * </tr>
  * </table>
  * <hr class="insert" />
- * 
+ *
  * </p>
- * 
+ *
  * @author robert.cooper
  */
 public interface HasLocation {

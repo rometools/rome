@@ -29,17 +29,17 @@ import com.sun.syndication.feed.impl.ToStringBean;
 
 /**
  * <strong>&lt;media:thumbnail&gt;</strong></p>
- * 
- * 
+ *
+ *
  * <p>
  * Allows particular images to be used as representative images for the media object. If multiple thumbnails are included, and time coding is not at play, it is
  * assumed that the images are in order of importance. It has 1 required attribute and 3 optional attributes.
  * </p>
- * 
- * 
- * 
- * 
- * 
+ *
+ *
+ *
+ *
+ *
  * <pre>
  * &lt;media:thumbnail url="http://www.foo.com/keyframe.jpg" width="75" height="50" time="12:05:01.123" /&gt;
  * </pre>
@@ -52,8 +52,8 @@ import com.sun.syndication.feed.impl.ToStringBean;
  * <p>
  * <em>width</em> specifies the width of the thumbnail. It is an optional attribute.
  * </p>
- * 
- * 
+ *
+ *
  * <p>
  * <em>time</em> specifies the time offset in relation to the media object. Typically this is used when creating multiple keyframes within a single video. The
  * format for this attribute should be in the DSM-CC's Normal Play Time (NTP) as used in RTSP [<a href="http://www.ietf.org/rfc/rfc2326.txt">RFC 2326 3.6 Normal
@@ -70,7 +70,7 @@ public class Thumbnail implements Cloneable, Serializable {
 
     /**
      * Creates a new thumbnail
-     * 
+     *
      * @param url URL to thumbnail
      * @param width width in pixels
      * @param height height in pixels
@@ -85,7 +85,7 @@ public class Thumbnail implements Cloneable, Serializable {
 
     /**
      * Creates a new thumbnail
-     * 
+     *
      * @param url URL
      * @param width width
      * @param height height
@@ -96,7 +96,7 @@ public class Thumbnail implements Cloneable, Serializable {
 
     /**
      * Creates a new thumbnail
-     * 
+     *
      * @param url URL
      */
     public Thumbnail(final URI url) {
@@ -104,9 +104,9 @@ public class Thumbnail implements Cloneable, Serializable {
     }
 
     /**
-     * 
+     *
      * Returns the thumbHeight.
-     * 
+     *
      * @return Returns the thumbHeight.
      */
     public Integer getHeight() {
@@ -115,7 +115,7 @@ public class Thumbnail implements Cloneable, Serializable {
 
     /**
      * returns the time that the thumbnail was captured from its source
-     * 
+     *
      * @return returns the time that the thumbnail was captured from its source
      */
     public Time getTime() {
@@ -123,9 +123,9 @@ public class Thumbnail implements Cloneable, Serializable {
     }
 
     /**
-     * 
+     *
      * Retursn the URL
-     * 
+     *
      * @return Returns the thumbUrl.
      */
     public URI getUrl() {
@@ -133,9 +133,9 @@ public class Thumbnail implements Cloneable, Serializable {
     }
 
     /**
-     * 
+     *
      * Returns width.
-     * 
+     *
      * @return Returns the thumbWidth.
      */
     public Integer getWidth() {

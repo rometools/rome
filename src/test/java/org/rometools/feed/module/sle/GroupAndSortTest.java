@@ -20,7 +20,7 @@ import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.SyndFeedInput;
 
 /**
- * 
+ *
  * @author cooper
  */
 public class GroupAndSortTest extends AbstractTestCase {

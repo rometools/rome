@@ -51,16 +51,20 @@ import com.sun.syndication.feed.impl.ToStringBean;
  * <li>low: the forecasted low temperature for this day, in the units specified by the yweather:units element (integer)</li>
  * <li>high: the forecasted high temperature for this day, in the units specified by the yweather:units element (integer)</li>
  * <li>text: a textual description of conditions, for example, "Partly Cloudy" (string)</li>
- * 
+ *
  * <li>code: the condition code for this forecast. You could use this code to choose a text description or image for the forecast. The possible values for this
  * element are described in Condition Codes (integer)</li>
  * </ul>
- * 
+ *
  * @see ConditionCode
  * @version $Id: Forecast.java,v 1.2 2008/01/22 14:50:05 kebernet Exp $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Forecast implements Serializable, Cloneable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private transient ToStringBean toString = new ToStringBean(Forecast.class, this);
     private transient EqualsBean equals = new EqualsBean(Forecast.class, this);
     private String day;
@@ -79,7 +83,7 @@ public class Forecast implements Serializable, Cloneable {
 
     /**
      * Constructs a new Forecast object.
-     * 
+     *
      * @param day day of the week to which this forecast applies. Possible values are Mon Tue Wed Thu Fri Sat Sun (string)
      * @param date the date to which this forecast applies
      * @param low the forecasted low temperature for this day
@@ -99,7 +103,7 @@ public class Forecast implements Serializable, Cloneable {
 
     /**
      * Day of week
-     * 
+     *
      * @return day of the week to which this forecast applies. Possible values are Mon Tue Wed Thu Fri Sat Sun (string)
      */
     public String getDay() {
@@ -108,7 +112,7 @@ public class Forecast implements Serializable, Cloneable {
 
     /**
      * Day of week
-     * 
+     *
      * @param day day of the week to which this forecast applies. Possible values are Mon Tue Wed Thu Fri Sat Sun (string)
      */
     public void setDay(final String day) {
@@ -117,7 +121,7 @@ public class Forecast implements Serializable, Cloneable {
 
     /**
      * For date.
-     * 
+     *
      * @return the date to which this forecast applies
      */
     public Date getDate() {
@@ -126,7 +130,7 @@ public class Forecast implements Serializable, Cloneable {
 
     /**
      * For date.
-     * 
+     *
      * @param date the date to which this forecast applies
      */
     public void setDate(final Date date) {
@@ -135,7 +139,7 @@ public class Forecast implements Serializable, Cloneable {
 
     /**
      * Low temperature.
-     * 
+     *
      * @return the forecasted low temperature for this day
      * @see Units
      */
@@ -145,7 +149,7 @@ public class Forecast implements Serializable, Cloneable {
 
     /**
      * Low temperature
-     * 
+     *
      * @param low the forecasted low temperature for this day
      * @see Units
      */
@@ -155,7 +159,7 @@ public class Forecast implements Serializable, Cloneable {
 
     /**
      * High temperature
-     * 
+     *
      * @return the forecasted high temperature for this day
      * @see Units
      */
@@ -165,7 +169,7 @@ public class Forecast implements Serializable, Cloneable {
 
     /**
      * High temperature
-     * 
+     *
      * @param high the forecasted high temperature for this day
      * @see Units
      */
@@ -175,7 +179,7 @@ public class Forecast implements Serializable, Cloneable {
 
     /**
      * Text summary
-     * 
+     *
      * @return a textual description of conditions, for example, "Partly Cloudy"
      */
     public String getText() {
@@ -184,7 +188,7 @@ public class Forecast implements Serializable, Cloneable {
 
     /**
      * Text summary
-     * 
+     *
      * @param text a textual description of conditions, for example, "Partly Cloudy"
      */
     public void setText(final String text) {
@@ -193,7 +197,7 @@ public class Forecast implements Serializable, Cloneable {
 
     /**
      * Condition code
-     * 
+     *
      * @return the condition code for this forecast
      */
     public ConditionCode getCode() {
@@ -202,7 +206,7 @@ public class Forecast implements Serializable, Cloneable {
 
     /**
      * Condition code
-     * 
+     *
      * @param code the condition code for this forecast
      */
     public void setCode(final ConditionCode code) {

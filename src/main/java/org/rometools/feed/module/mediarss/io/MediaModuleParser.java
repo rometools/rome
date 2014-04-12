@@ -55,7 +55,7 @@ import com.sun.syndication.io.impl.NumberParser;
 
 /**
  * @author Nathanial X. Freitas
- * 
+ *
  */
 public class MediaModuleParser implements ModuleParser {
     private static final Logger LOG = Logger.getLogger(MediaModuleParser.class.getName());
@@ -67,7 +67,6 @@ public class MediaModuleParser implements ModuleParser {
 
     /*
      * (non-Javadoc)
-     * 
      * @see com.sun.syndication.io.ModuleParser#getNamespaceUri()
      */
     @Override
@@ -78,7 +77,6 @@ public class MediaModuleParser implements ModuleParser {
 
     /*
      * (non-Javadoc)
-     * 
      * @see com.sun.syndication.io.ModuleParser#parse(org.jdom2.Element)
      */
     @Override

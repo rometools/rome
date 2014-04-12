@@ -17,7 +17,7 @@
 package org.rometools.feed.module.activitystreams.types;
 
 /**
- * 
+ *
  * <p>
  * Mood describes the mood of the user when the activity was performed. This is usually collected via an extra field in the user interface used to perform the
  * activity. For the purpose of this schema, a mood is a freeform, short mood keyword or phrase along with an optional mood icon image.
@@ -32,7 +32,7 @@ package org.rometools.feed.module.activitystreams.types;
  * The mood element may have an optional <tt>icon</tt> attribute which contains the URL of a mood icon image. The mood icon image SHOULD be small and
  * appropriate to be displayed alongside the mood keyword at a normal text size.
  * </p>
- * 
+ *
  * @author robert.cooper
  */
 public class Mood {
@@ -41,7 +41,7 @@ public class Mood {
 
     /**
      * Set the value of iconUrl
-     * 
+     *
      * @param newiconUrl new value of iconUrl
      */
     public void setIconUrl(final String newiconUrl) {
@@ -50,7 +50,7 @@ public class Mood {
 
     /**
      * Get the value of iconUrl
-     * 
+     *
      * @return the value of iconUrl
      */
     public String getIconUrl() {
@@ -59,7 +59,7 @@ public class Mood {
 
     /**
      * Set the value of text
-     * 
+     *
      * @param newtext new value of text
      */
     public void setText(final String newtext) {
@@ -68,7 +68,7 @@ public class Mood {
 
     /**
      * Get the value of text
-     * 
+     *
      * @return the value of text
      */
     public String getText() {

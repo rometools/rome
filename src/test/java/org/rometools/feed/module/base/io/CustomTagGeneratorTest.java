@@ -25,7 +25,7 @@ import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.SyndFeedOutput;
 
 /**
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class CustomTagGeneratorTest extends AbstractTestCase {

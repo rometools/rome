@@ -44,11 +44,15 @@ import java.io.Serializable;
 
 /**
  * This class represents a Subcategor of a Category.
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @version $Revision: 1.2 $
  */
 public class Subcategory implements Serializable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private String name;
 
     /** Creates a new instance of SubCategory */
@@ -57,7 +61,7 @@ public class Subcategory implements Serializable {
 
     /**
      * Creates a new instance of Category with a given name.
-     * 
+     *
      * @param name Name of the category.
      */
     public Subcategory(final String name) {
@@ -66,7 +70,7 @@ public class Subcategory implements Serializable {
 
     /**
      * Returns the name of the subcategory.
-     * 
+     *
      * @return Returns the name of the subcategory.
      */
     public String getName() {
@@ -75,7 +79,7 @@ public class Subcategory implements Serializable {
 
     /**
      * Set the name of the subcategory.
-     * 
+     *
      * @param name Set the name of the subcategory.
      */
     public void setName(final String name) {
@@ -84,7 +88,7 @@ public class Subcategory implements Serializable {
 
     /**
      * Clones the object.
-     * 
+     *
      * @return Clone of the object.
      */
     @Override
@@ -97,7 +101,7 @@ public class Subcategory implements Serializable {
 
     /**
      * String representation of the object.
-     * 
+     *
      * @return String representation of the object.
      */
     @Override

@@ -95,7 +95,7 @@ public class CustomTagParser implements ModuleParser {
                         try {
                             tags.add(new CustomTagImpl(child.getName(), new DateTimeRange(GoogleBaseParser.LONG_DT_FMT.parse(child
                                     .getChild("start", CustomTagParser.NS).getText().trim()), GoogleBaseParser.LONG_DT_FMT.parse(child
-                                    .getChild("end", CustomTagParser.NS).getText().trim()))));
+                                            .getChild("end", CustomTagParser.NS).getText().trim()))));
                         } catch (final Exception e) {
                             log.log(Level.WARNING, "Unable to parse date type on " + child.getName(), e);
                         }

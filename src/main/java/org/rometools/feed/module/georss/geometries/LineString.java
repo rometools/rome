@@ -11,10 +11,14 @@ package org.rometools.feed.module.georss.geometries;
 
 /**
  * Linear object constructed by linear interpolation between points
- * 
+ *
  * @author runaas
  */
 public final class LineString extends AbstractCurve {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private PositionList posList;
 
     /** Creates a new instance of LineString */
@@ -51,7 +55,7 @@ public final class LineString extends AbstractCurve {
 
     /**
      * Get the position list
-     * 
+     *
      * @return the positionlist
      */
     public PositionList getPositionList() {
@@ -63,7 +67,7 @@ public final class LineString extends AbstractCurve {
 
     /**
      * Set the position list
-     * 
+     *
      * @param posList the new position list
      */
     public void setPositionList(final PositionList posList) {

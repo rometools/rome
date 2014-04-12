@@ -51,7 +51,7 @@ import com.sun.syndication.io.ModuleGenerator;
 
 /**
  * The ModuleGenerator implementation for the Slash plug in.
- * 
+ *
  * @version $Revision: 1.1 $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */

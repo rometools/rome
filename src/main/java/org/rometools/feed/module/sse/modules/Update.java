@@ -9,13 +9,13 @@ import com.sun.syndication.feed.module.Module;
  * <pre>
  * <sx:update>
  * </pre>
- * 
+ *
  * Element within
- * 
+ *
  * <pre>
  * <sx:history>
  * </pre>
- * 
+ *
  * .
  */
 public class Update extends SSEModule {
@@ -45,7 +45,7 @@ public class Update extends SSEModule {
 
     /**
      * Set the date-time when the modification took place.
-     * 
+     *
      * @param when the date-time when the modification took place.
      */
     public void setWhen(final Date when) {
@@ -56,7 +56,7 @@ public class Update extends SSEModule {
      * Provides access to a text attribute identifying the unique endpoint that made a modification. This SHOULD be some combination of user and device (so that
      * a given user can edit a feed on multiple devices). This attribute is used programmatically to break ties in case two changes happened at the same time
      * (within the same second). Either or both of the when or by must be present; it is invalid to have neither.
-     * 
+     *
      * @return access to a text attribute identifying the unique endpoint that made a modification.
      */
     public String getBy() {
@@ -65,7 +65,7 @@ public class Update extends SSEModule {
 
     /**
      * Sets a text attribute identifying the unique endpoint that made a modification.
-     * 
+     *
      * @param by a text attribute identifying the unique endpoint that made a modification.
      */
     public void setBy(final String by) {

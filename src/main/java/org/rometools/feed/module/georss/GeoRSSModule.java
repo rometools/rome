@@ -26,11 +26,16 @@ import com.sun.syndication.feed.module.ModuleImpl;
 
 /**
  * GeoRSSModule is the main georss interface defining the methods to produce and consume georss elements.
- * 
+ *
  * @author Marc Wick
  * @version $Id: GeoRSSModule.java,v 1.8 2007/06/06 09:47:32 marcwick Exp $
  */
 public abstract class GeoRSSModule extends ModuleImpl implements Cloneable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
     protected AbstractGeometry geometry;
 
     public static final String version = "0.9.8";
@@ -56,13 +61,13 @@ public abstract class GeoRSSModule extends ModuleImpl implements Cloneable {
     public static final Namespace SIMPLE_NS = Namespace.getNamespace("georss", GeoRSSModule.GEORSS_GEORSS_URI);
 
     /**
-     * 
+     *
      * Namespace for w3c georss : <i>xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"</i>
      */
     public static final Namespace W3CGEO_NS = Namespace.getNamespace("geo", GeoRSSModule.GEORSS_W3CGEO_URI);
 
     /**
-     * 
+     *
      * Namespace for gml georss : <i>xmlns:gml="http://www.opengis.net/gml"</i>
      */
     public static final Namespace GML_NS = Namespace.getNamespace("gml", GeoRSSModule.GEORSS_GML_URI);
@@ -73,7 +78,7 @@ public abstract class GeoRSSModule extends ModuleImpl implements Cloneable {
 
     /**
      * Set geometry of georss element
-     * 
+     *
      * @param geometry geometry
      */
     public void setGeometry(final AbstractGeometry geometry) {
@@ -82,7 +87,7 @@ public abstract class GeoRSSModule extends ModuleImpl implements Cloneable {
 
     /**
      * returns the geometry
-     * 
+     *
      * @return geometry
      */
     public AbstractGeometry getGeometry() {
@@ -91,7 +96,7 @@ public abstract class GeoRSSModule extends ModuleImpl implements Cloneable {
 
     /**
      * Convenience method to return point geometry. Returns null if the geometry is non-point.
-     * 
+     *
      * @return geometry
      */
     public Position getPosition() {
@@ -103,7 +108,7 @@ public abstract class GeoRSSModule extends ModuleImpl implements Cloneable {
 
     /**
      * Convenience method to set point geometry.
-     * 
+     *
      * @return geometry
      */
     public void setPosition(final Position pos) {
@@ -114,7 +119,6 @@ public abstract class GeoRSSModule extends ModuleImpl implements Cloneable {
 
     /*
      * (non-Javadoc)
-     * 
      * @see com.sun.syndication.feed.CopyFrom#copyFrom(java.lang.Object)
      */
     @Override

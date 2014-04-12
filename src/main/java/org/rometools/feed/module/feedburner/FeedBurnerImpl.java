@@ -21,10 +21,10 @@ import com.sun.syndication.feed.CopyFrom;
 
 /**
  * Implementation of the FeedBurner RSS extension.
- * 
+ *
  * @version 1.0
  * @author Georg Schmidl <georg.schmidl@scandio.de>
- * 
+ *
  */
 public class FeedBurnerImpl implements FeedBurner {
 

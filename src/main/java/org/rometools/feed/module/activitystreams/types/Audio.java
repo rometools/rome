@@ -37,16 +37,20 @@ package org.rometools.feed.module.activitystreams.types;
  * <dd>An HTML fragment that, when embedded in an HTML page, will provide an interactive player UI for the audio stream. Represented in JSON as a property
  * called <tt>embedCode</tt> whose value is a JSON string containing the fragment of HTML.</dd>
  * </dl>
- * 
+ *
  * @author robert.cooper
  */
 public class Audio extends ActivityObject {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private String embedCode;
     private String streamLink;
 
     /**
      * Set the value of embedCode
-     * 
+     *
      * @param newembedCode new value of embedCode
      */
     public void setEmbedCode(final String newembedCode) {
@@ -55,7 +59,7 @@ public class Audio extends ActivityObject {
 
     /**
      * Get the value of embedCode
-     * 
+     *
      * @return the value of embedCode
      */
     public String getEmbedCode() {
@@ -64,7 +68,7 @@ public class Audio extends ActivityObject {
 
     /**
      * Set the value of streamLink
-     * 
+     *
      * @param newstreamLink new value of streamLink
      */
     public void setStreamLink(final String newstreamLink) {
@@ -73,7 +77,7 @@ public class Audio extends ActivityObject {
 
     /**
      * Get the value of streamLink
-     * 
+     *
      * @return the value of streamLink
      */
     public String getStreamLink() {

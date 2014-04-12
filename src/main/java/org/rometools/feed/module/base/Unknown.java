@@ -45,7 +45,7 @@ import org.rometools.feed.module.base.types.IntUnit;
 
 /**
  * This interface contains all the other schema elements that the document doesn't associate with a particular type.
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public interface Unknown extends GlobalInterface {

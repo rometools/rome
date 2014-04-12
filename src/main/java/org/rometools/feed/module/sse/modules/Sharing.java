@@ -9,19 +9,19 @@ import com.sun.syndication.feed.module.Module;
  * <pre>
  * <sx:sharing>
  * </pre>
- * 
+ *
  * Element within RSS
- * 
+ *
  * <pre>
  * <channel>
  * </pre>
- * 
+ *
  * or OPML
- * 
+ *
  * <pre>
  * <head>
  * </pre>
- * 
+ *
  * .
  */
 public class Sharing extends SSEModule {
@@ -64,7 +64,7 @@ public class Sharing extends SSEModule {
     /**
      * ordered An optional, Boolean attribute. If present and its value is "true" (lower-case), subscribers MUST treat the item list as an ordered set (see
      * section 3.2). If this attribute is omitted or blank, it is assumed that this is an unordered feed.
-     * 
+     *
      * @return a Boolean indicating if subscribers must treat the item list as an ordered set.
      */
     public Boolean getOrdered() {
@@ -73,7 +73,7 @@ public class Sharing extends SSEModule {
 
     /**
      * Set whether subscribers MUST tread the item list as an ordered set.
-     * 
+     *
      * @param ordered whether subscribers MUST tread the item list as an ordered set.
      */
     public void setOrdered(final Boolean ordered) {
@@ -83,7 +83,7 @@ public class Sharing extends SSEModule {
     /**
      * Provides an Integer that expresses the size of the window of change history kept by the publisher. Subscribers MAY use this value to determine the
      * frequency with which they must read a feed.
-     * 
+     *
      * @return an Integer that expresses the size of the window of change history kept by the publisher.
      */
     public Integer getWindow() {
@@ -92,7 +92,7 @@ public class Sharing extends SSEModule {
 
     /**
      * Set an Integer that expresses the size of the window of change history kept by the publisher.
-     * 
+     *
      * @param window an Integer that expresses the size of the window of change history kept by the publisher.
      */
     public void setWindow(final Integer window) {
@@ -102,7 +102,7 @@ public class Sharing extends SSEModule {
     /**
      * since An optional date-time attribute. All items updated on or after this date-time are included in the feed. If not present or null, the
      * "beginning of time" is assumed and the feed contains the node's complete item set as of the until date-time.
-     * 
+     *
      * @return An optional date-time attribute.
      */
     public Date getSince() {
@@ -111,7 +111,7 @@ public class Sharing extends SSEModule {
 
     /**
      * Sets the optional date-time attribute where all items updated on or after this date-time are included in the feed.
-     * 
+     *
      * @param since An optional date-time attribute.
      */
     public void setSince(final Date since) {
@@ -122,7 +122,7 @@ public class Sharing extends SSEModule {
      * until An optional date-time attribute. Items updated after this date are not included in the feed. The publisher must guarantee that the value of until
      * will increase if any items in the feed are updated. If this attribute is omitted or blank, the subscriber cannot make assumptions about when the feed was
      * updated.
-     * 
+     *
      * @return the date where items updated after this date are not included in the feed.
      */
     public Date getUntil() {
@@ -131,7 +131,7 @@ public class Sharing extends SSEModule {
 
     /**
      * Set the date where items updated after this date are not included in the feed.
-     * 
+     *
      * @param until the date where items updated after this date are not included in the feed.
      */
     public void setUntil(final Date until) {

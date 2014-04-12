@@ -52,7 +52,7 @@ import com.sun.syndication.io.ModuleGenerator;
 
 /**
  * The ModuleGenerator implementation for the Yahoo Weather plug in.
- * 
+ *
  * @version $Revision: 1.3 $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */

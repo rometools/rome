@@ -31,7 +31,7 @@ import org.rometools.feed.module.sle.types.Sort;
 import com.sun.syndication.feed.module.Module;
 
 /**
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class ModuleParser implements com.sun.syndication.io.ModuleParser {
@@ -46,7 +46,7 @@ public class ModuleParser implements com.sun.syndication.io.ModuleParser {
     /**
      * Returns the namespace URI this parser handles.
      * <p>
-     * 
+     *
      * @return the namespace URI.
      */
     @Override
@@ -57,7 +57,7 @@ public class ModuleParser implements com.sun.syndication.io.ModuleParser {
     /**
      * Parses the XML node (JDOM element) extracting module information.
      * <p>
-     * 
+     *
      * @param element the XML node (JDOM element) to extract module information from.
      * @return a module instance, <b>null</b> if the element did not have module information.
      */
@@ -79,7 +79,7 @@ public class ModuleParser implements com.sun.syndication.io.ModuleParser {
             values.add(new Group(ns, elementName, label));
         }
 
-        sle.setGroupFields((Group[]) values.toArray(new Group[values.size()]));
+        sle.setGroupFields(values.toArray(new Group[values.size()]));
         values = values.size() == 0 ? values : new ArrayList<Object>();
 
         for (final Element se : listInfo.getChildren("sort", NS)) {
@@ -92,7 +92,7 @@ public class ModuleParser implements com.sun.syndication.io.ModuleParser {
             values.add(new Sort(ns, elementName, dataType, label, defaultOrder));
         }
 
-        sle.setSortFields((Sort[]) values.toArray(new Sort[values.size()]));
+        sle.setSortFields(values.toArray(new Sort[values.size()]));
         insertValues(sle, element.getChildren());
 
         return sle;

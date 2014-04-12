@@ -46,11 +46,15 @@ import com.sun.syndication.feed.CopyFrom;
 
 /**
  * This class contains information for iTunes podcast feeds that exist at the Item level.
- * 
+ *
  * @version $Revision: 1.2 $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class EntryInformationImpl extends AbstractITunesObject implements EntryInformation {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private Duration duration;
 
     /**
@@ -61,7 +65,7 @@ public class EntryInformationImpl extends AbstractITunesObject implements EntryI
 
     /**
      * Returns the Duration object for this Item
-     * 
+     *
      * @return Returns the Duration object for this Item
      */
     @Override
@@ -71,7 +75,7 @@ public class EntryInformationImpl extends AbstractITunesObject implements EntryI
 
     /**
      * Sets the Duration object for this Item
-     * 
+     *
      * @param duration Sets the Duration object for this Item
      */
     @Override
@@ -81,7 +85,7 @@ public class EntryInformationImpl extends AbstractITunesObject implements EntryI
 
     /**
      * Defined by the ROME module API
-     * 
+     *
      * @param obj Object to copy from
      */
     @Override
@@ -106,7 +110,7 @@ public class EntryInformationImpl extends AbstractITunesObject implements EntryI
 
     /**
      * Required by the ROME API
-     * 
+     *
      * @return A clone of this module object
      */
     @Override

@@ -1,12 +1,12 @@
 /*
  *  Copyright 2011 robert.cooper.
- * 
+ *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
  *  You may obtain a copy of the License at
- * 
+ *
  *       http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  *  Unless required by applicable law or agreed to in writing, software
  *  distributed under the License is distributed on an "AS IS" BASIS,
  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -39,10 +39,15 @@ package org.rometools.feed.module.activitystreams.types;
  * <tt>fullImage</tt> whose value is a JSON object with properties as defined in [TODO: xref the JSON serialization of a Media Link Construct].</dd>
  * </dl>
  * </blockquote>
- * 
+ *
  * @author robert.cooper
  */
 public class Product extends ActivityObject {
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
     @Override
     public String getTypeIRI() {

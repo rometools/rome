@@ -30,10 +30,10 @@ import com.sun.syndication.io.ModuleGenerator;
 
 /**
  * W3CGeoGenerator produces georss elements in georss W3C geo format.
- * 
+ *
  * @author Marc Wick
  * @version $Id: W3CGeoGenerator.java,v 1.3 2007/04/18 09:59:30 marcwick Exp $
- * 
+ *
  */
 public class W3CGeoGenerator implements ModuleGenerator {
 
@@ -53,7 +53,6 @@ public class W3CGeoGenerator implements ModuleGenerator {
 
     /*
      * (non-Javadoc)
-     * 
      * @see com.sun.syndication.io.ModuleGenerator#getNamespaceUri()
      */
     @Override
@@ -63,7 +62,6 @@ public class W3CGeoGenerator implements ModuleGenerator {
 
     /*
      * (non-Javadoc)
-     * 
      * @see com.sun.syndication.io.ModuleGenerator#getNamespaces()
      */
     @Override
@@ -73,7 +71,6 @@ public class W3CGeoGenerator implements ModuleGenerator {
 
     /*
      * (non-Javadoc)
-     * 
      * @see com.sun.syndication.io.ModuleGenerator#generate(com.sun.syndication.feed.module.Module, org.jdom2.Element)
      */
     @Override

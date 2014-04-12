@@ -45,7 +45,7 @@ import com.sun.syndication.feed.impl.EqualsBean;
 
 /**
  * <h3>Condition Codes<a name="codes"></a></h3>
- * 
+ *
  * <p>
  * Condition codes are used in the yweather:forecast element to describe the current conditions.
  * </p>
@@ -56,7 +56,7 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * <th>Description</th>
  * </tr>
  * <tr>
- * 
+ *
  * <td style="background-color: rgb(255, 255, 255);">0</td>
  * <td style="background-color: rgb(255, 255, 255);">tornado</td>
  * </tr>
@@ -64,7 +64,7 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * <td style="background-color: rgb(236, 245, 250);">1</td>
  * <td style="background-color: rgb(236, 245, 250);">tropical storm</td>
  * </tr>
- * 
+ *
  * <tr>
  * <td style="background-color: rgb(255, 255, 255);">2</td>
  * <td style="background-color: rgb(255, 255, 255);">hurricane</td>
@@ -72,7 +72,7 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * <tr>
  * <td style="background-color: rgb(236, 245, 250);">3</td>
  * <td style="background-color: rgb(236, 245, 250);">severe thunderstorms</td>
- * 
+ *
  * </tr>
  * <tr>
  * <td style="background-color: rgb(255, 255, 255);">4</td>
@@ -80,7 +80,7 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * </tr>
  * <tr>
  * <td style="background-color: rgb(236, 245, 250);">5</td>
- * 
+ *
  * <td style="background-color: rgb(236, 245, 250);">mixed rain and snow</td>
  * </tr>
  * <tr>
@@ -88,7 +88,7 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * <td style="background-color: rgb(255, 255, 255);">mixed rain and sleet</td>
  * </tr>
  * <tr>
- * 
+ *
  * <td style="background-color: rgb(236, 245, 250);">7</td>
  * <td style="background-color: rgb(236, 245, 250);">mixed snow and sleet</td>
  * </tr>
@@ -96,7 +96,7 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * <td style="background-color: rgb(255, 255, 255);">8</td>
  * <td style="background-color: rgb(255, 255, 255);">freezing drizzle</td>
  * </tr>
- * 
+ *
  * <tr>
  * <td style="background-color: rgb(236, 245, 250);">9</td>
  * <td style="background-color: rgb(236, 245, 250);">drizzle</td>
@@ -104,7 +104,7 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * <tr>
  * <td style="background-color: rgb(255, 255, 255);">10</td>
  * <td style="background-color: rgb(255, 255, 255);">freezing rain</td>
- * 
+ *
  * </tr>
  * <tr>
  * <td style="background-color: rgb(236, 245, 250);">11</td>
@@ -112,7 +112,7 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * </tr>
  * <tr>
  * <td style="background-color: rgb(255, 255, 255);">12</td>
- * 
+ *
  * <td style="background-color: rgb(255, 255, 255);">showers</td>
  * </tr>
  * <tr>
@@ -120,7 +120,7 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * <td style="background-color: rgb(236, 245, 250);">snow flurries</td>
  * </tr>
  * <tr>
- * 
+ *
  * <td style="background-color: rgb(255, 255, 255);">14</td>
  * <td style="background-color: rgb(255, 255, 255);">light snow showers</td>
  * </tr>
@@ -128,7 +128,7 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * <td style="background-color: rgb(236, 245, 250);">15</td>
  * <td style="background-color: rgb(236, 245, 250);">blowing snow</td>
  * </tr>
- * 
+ *
  * <tr>
  * <td style="background-color: rgb(255, 255, 255);">16</td>
  * <td style="background-color: rgb(255, 255, 255);">snow</td>
@@ -136,7 +136,7 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * <tr>
  * <td style="background-color: rgb(236, 245, 250);">17</td>
  * <td style="background-color: rgb(236, 245, 250);">hail</td>
- * 
+ *
  * </tr>
  * <tr>
  * <td style="background-color: rgb(255, 255, 255);">18</td>
@@ -144,7 +144,7 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * </tr>
  * <tr>
  * <td style="background-color: rgb(236, 245, 250);">19</td>
- * 
+ *
  * <td style="background-color: rgb(236, 245, 250);">dust</td>
  * </tr>
  * <tr>
@@ -152,7 +152,7 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * <td style="background-color: rgb(255, 255, 255);">foggy</td>
  * </tr>
  * <tr>
- * 
+ *
  * <td style="background-color: rgb(236, 245, 250);">21</td>
  * <td style="background-color: rgb(236, 245, 250);">haze</td>
  * </tr>
@@ -160,7 +160,7 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * <td style="background-color: rgb(255, 255, 255);">22</td>
  * <td style="background-color: rgb(255, 255, 255);">smoky</td>
  * </tr>
- * 
+ *
  * <tr>
  * <td style="background-color: rgb(236, 245, 250);">23</td>
  * <td style="background-color: rgb(236, 245, 250);">blustery</td>
@@ -168,7 +168,7 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * <tr>
  * <td style="background-color: rgb(255, 255, 255);">24</td>
  * <td style="background-color: rgb(255, 255, 255);">windy</td>
- * 
+ *
  * </tr>
  * <tr>
  * <td style="background-color: rgb(236, 245, 250);">25</td>
@@ -176,7 +176,7 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * </tr>
  * <tr>
  * <td style="background-color: rgb(255, 255, 255);">26</td>
- * 
+ *
  * <td style="background-color: rgb(255, 255, 255);">cloudy</td>
  * </tr>
  * <tr>
@@ -184,7 +184,7 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * <td style="background-color: rgb(236, 245, 250);">mostly cloudy (night)</td>
  * </tr>
  * <tr>
- * 
+ *
  * <td style="background-color: rgb(255, 255, 255);">28</td>
  * <td style="background-color: rgb(255, 255, 255);">mostly cloudy (day)</td>
  * </tr>
@@ -192,7 +192,7 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * <td style="background-color: rgb(236, 245, 250);">29</td>
  * <td style="background-color: rgb(236, 245, 250);">partly cloudy (night)</td>
  * </tr>
- * 
+ *
  * <tr>
  * <td style="background-color: rgb(255, 255, 255);">30</td>
  * <td style="background-color: rgb(255, 255, 255);">partly cloudy (day)</td>
@@ -200,7 +200,7 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * <tr>
  * <td style="background-color: rgb(236, 245, 250);">31</td>
  * <td style="background-color: rgb(236, 245, 250);">clear (night)</td>
- * 
+ *
  * </tr>
  * <tr>
  * <td style="background-color: rgb(255, 255, 255);">32</td>
@@ -208,7 +208,7 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * </tr>
  * <tr>
  * <td style="background-color: rgb(236, 245, 250);">33</td>
- * 
+ *
  * <td style="background-color: rgb(236, 245, 250);">fair (night)</td>
  * </tr>
  * <tr>
@@ -216,7 +216,7 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * <td style="background-color: rgb(255, 255, 255);">fair (day)</td>
  * </tr>
  * <tr>
- * 
+ *
  * <td style="background-color: rgb(236, 245, 250);">35</td>
  * <td style="background-color: rgb(236, 245, 250);">mixed rain and hail</td>
  * </tr>
@@ -224,7 +224,7 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * <td style="background-color: rgb(255, 255, 255);">36</td>
  * <td style="background-color: rgb(255, 255, 255);">hot</td>
  * </tr>
- * 
+ *
  * <tr>
  * <td style="background-color: rgb(236, 245, 250);">37</td>
  * <td style="background-color: rgb(236, 245, 250);">isolated thunderstorms</td>
@@ -232,7 +232,7 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * <tr>
  * <td style="background-color: rgb(255, 255, 255);">38</td>
  * <td style="background-color: rgb(255, 255, 255);">scattered thunderstorms</td>
- * 
+ *
  * </tr>
  * <tr>
  * <td style="background-color: rgb(236, 245, 250);">39</td>
@@ -240,7 +240,7 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * </tr>
  * <tr>
  * <td style="background-color: rgb(255, 255, 255);">40</td>
- * 
+ *
  * <td style="background-color: rgb(255, 255, 255);">scattered showers</td>
  * </tr>
  * <tr>
@@ -248,7 +248,7 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * <td style="background-color: rgb(236, 245, 250);">heavy snow</td>
  * </tr>
  * <tr>
- * 
+ *
  * <td style="background-color: rgb(255, 255, 255);">42</td>
  * <td style="background-color: rgb(255, 255, 255);">scattered snow showers</td>
  * </tr>
@@ -256,7 +256,7 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * <td style="background-color: rgb(236, 245, 250);">43</td>
  * <td style="background-color: rgb(236, 245, 250);">heavy snow</td>
  * </tr>
- * 
+ *
  * <tr>
  * <td style="background-color: rgb(255, 255, 255);">44</td>
  * <td style="background-color: rgb(255, 255, 255);">partly cloudy</td>
@@ -264,7 +264,7 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * <tr>
  * <td style="background-color: rgb(236, 245, 250);">45</td>
  * <td style="background-color: rgb(236, 245, 250);">thundershowers</td>
- * 
+ *
  * </tr>
  * <tr>
  * <td style="background-color: rgb(255, 255, 255);">46</td>
@@ -272,7 +272,7 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * </tr>
  * <tr>
  * <td style="background-color: rgb(236, 245, 250);">47</td>
- * 
+ *
  * <td style="background-color: rgb(236, 245, 250);">isolated thundershowers</td>
  * </tr>
  * <tr>
@@ -281,11 +281,15 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * </tr>
  * </tbody>
  * </table>
- * 
+ *
  * @version $Id: ConditionCode.java,v 1.2 2008/01/22 14:50:05 kebernet Exp $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class ConditionCode implements Serializable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private transient static Map LOOKUP = new HashMap(); /* <Integer, Condition> */
     public static final ConditionCode TORNADO = new ConditionCode(0, "tornado");
     public static final ConditionCode TROPICAL_STORM = new ConditionCode(1, "tropical storm");
@@ -353,7 +357,7 @@ public class ConditionCode implements Serializable {
 
     /**
      * The integer code for this condition
-     * 
+     *
      * @return int code value
      */
     public int getCode() {
@@ -362,7 +366,7 @@ public class ConditionCode implements Serializable {
 
     /**
      * Text description of condition (from the table at top of class)
-     * 
+     *
      * @return
      */
     public String getDescription() {
@@ -371,7 +375,7 @@ public class ConditionCode implements Serializable {
 
     /**
      * Returns a condition code instance for a given integer
-     * 
+     *
      * @param code integer code to search for
      * @return a ConditionCode instance or null
      */

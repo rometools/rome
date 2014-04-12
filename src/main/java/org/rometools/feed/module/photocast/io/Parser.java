@@ -60,7 +60,7 @@ import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.ModuleParser;
 
 /**
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Parser implements ModuleParser {

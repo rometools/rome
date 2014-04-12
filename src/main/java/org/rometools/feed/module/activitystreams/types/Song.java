@@ -32,15 +32,19 @@ package org.rometools.feed.module.activitystreams.types;
  * <p>
  * A song has no additional components.
  * </p>
- * 
+ *
  * @author robert.cooper
  */
 public class Song extends ActivityObject {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private Audio audio;
 
     /**
      * Set the value of audio
-     * 
+     *
      * @param newaudio new value of audio
      */
     public void setAudio(final Audio newaudio) {
@@ -49,7 +53,7 @@ public class Song extends ActivityObject {
 
     /**
      * Get the value of audio
-     * 
+     *
      * @return the value of audio
      */
     public Audio getAudio() {

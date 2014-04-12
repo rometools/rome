@@ -45,7 +45,7 @@ import java.util.List;
 
 /**
  * This class contains information for iTunes podcast feeds that exist at the Channel level.
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @version $Revision: 1.2 $
  */
@@ -53,60 +53,60 @@ public interface FeedInformation extends ITunes {
 
     /**
      * The parent categories for this feed
-     * 
+     *
      * @return The parent categories for this feed
      */
     public List getCategories();
 
     /**
      * The parent categories for this feed
-     * 
+     *
      * @param categories The parent categories for this feed
      */
     public void setCategories(List categories);
 
     /**
      * Sets the URL for the image.
-     * 
+     *
      * NOTE: To specification images should be in PNG or JPEG format.
-     * 
+     *
      * @param image Sets the URL for the image.
      */
     public void setImage(URL image);
 
     /**
      * Returns the URL for the image.
-     * 
+     *
      * NOTE: To specification images should be in PNG or JPEG format.
-     * 
+     *
      * @return Returns the URL for the image.
      */
     public URL getImage();
 
     /**
      * Sets the owner email address for the feed.
-     * 
+     *
      * @param ownerEmailAddress Sets the owner email address for the feed.
      */
     public void setOwnerEmailAddress(String ownerEmailAddress);
 
     /**
      * Returns the owner email address for the feed.
-     * 
+     *
      * @return Returns the owner email address for the feed.
      */
     public String getOwnerEmailAddress();
 
     /**
      * Sets the owner name for the feed
-     * 
+     *
      * @param ownerName Sets the owner name for the feed
      */
     public void setOwnerName(String ownerName);
 
     /**
      * Returns the owner name for the feed
-     * 
+     *
      * @return Returns the owner name for the feed
      */
     public String getOwnerName();

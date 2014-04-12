@@ -63,7 +63,7 @@ import com.sun.syndication.io.ModuleParser;
 
 /**
  * ModuleParser implementation for Slash RSS.
- * 
+ *
  * @version $Revision: 1.2 $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
@@ -144,7 +144,7 @@ public class WeatherModuleParser implements ModuleParser {
             try {
                 final Condition c = new Condition(condition.getAttributeValue("text"), ConditionCode.fromCode(Integer.parseInt(condition
                         .getAttributeValue("code"))), Integer.parseInt(condition.getAttributeValue("temp")), LONG_DATE.parse(condition
-                        .getAttributeValue("date").replaceAll("pm", "PM").replaceAll("am", "AM")));
+                                .getAttributeValue("date").replaceAll("pm", "PM").replaceAll("am", "AM")));
                 module.setCondition(c);
             } catch (final NumberFormatException nfe) {
                 Logger.getAnonymousLogger().warning("NumberFormatException processing <condition> tag.");

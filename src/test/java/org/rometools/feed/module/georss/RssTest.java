@@ -47,7 +47,7 @@ public class RssTest extends TestCase {
 
     /**
      * compares expected lat/lng values with acutal values read from feed
-     * 
+     *
      * @param fileName a file in the src/data directory
      * @param expectedLat array of expected latitude values
      * @param expectedLng array of expected longitude values

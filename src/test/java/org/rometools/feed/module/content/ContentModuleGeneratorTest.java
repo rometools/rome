@@ -17,7 +17,7 @@ import com.sun.syndication.io.SyndFeedOutput;
 import com.sun.syndication.io.XmlReader;
 
 /**
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert Cooper</a>
  */
 public class ContentModuleGeneratorTest extends AbstractTestCase {

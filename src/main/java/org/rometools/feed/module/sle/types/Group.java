@@ -25,17 +25,17 @@ import com.sun.syndication.feed.impl.ObjectBean;
 
 /**
  * The <code>cf:group</code> element is intended to inform the client that the&nbsp;property to which it
- * 
+ *
  * refers is one that is “groupable” – that is, that the client should provide a user interface that
- * 
+ *
  * allows the user to group or filter on the values of that property. Groupable&nbsp;properties should contain
- * 
+ *
  * a small set of discrete values (e.g. book genres are perfect for groups). </p>
- * 
+ *
  * <p>
  * The <code>cf:group</code> element contains the following attributes:
  * </p>
- * 
+ *
  * <ul>
  * <li><b>ns </b>- this attribute is the full namespace used in the property element. If the attribute value is an empty string, it is assumed that
  * the&nbsp;property does not live in a namespace. If the ns attribute is omitted, the default value is the empty string. In the example above, the ns attribute
@@ -43,12 +43,12 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * <li><b>element</b> - this attribute is the name of the property (without any namespace). In the example above, the element attribute would contain
  * "firstedition" If this attribute is omitted, it is assumed that the label attribute is included and that this <code>cf:group</code> element refers to the
  * default sort order.</li>
- * 
+ *
  * <li><b>label</b> - this attribute contains a human-readable name for the property to which this <code>cf:group</code> element refers. If it is omitted, the
  * client should use the value of the "element" attribute as the human-readable name. The "label" attribute is required if the "element" attribute is
  * omitted.&nbsp;&nbsp;</li>
  * </ul>
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Group implements Serializable, Cloneable {
@@ -60,7 +60,7 @@ public class Group implements Serializable, Cloneable {
 
     /**
      * Creates a new instance of Group
-     * 
+     *
      * @param namespace Namespace of the element
      * @param element Name of the element
      * @param label Label for the grouping.
@@ -73,7 +73,7 @@ public class Group implements Serializable, Cloneable {
 
     /**
      * Returns the name of the element.
-     * 
+     *
      * @return Returns the name of the element.
      */
     public String getElement() {
@@ -82,7 +82,7 @@ public class Group implements Serializable, Cloneable {
 
     /**
      * Returns the label of the element.
-     * 
+     *
      * @return Returns the label of the element.
      */
     public String getLabel() {
@@ -91,7 +91,7 @@ public class Group implements Serializable, Cloneable {
 
     /**
      * Returns the namespace of the element.
-     * 
+     *
      * @return Returns the namespace of the element.
      */
     public Namespace getNamespace() {

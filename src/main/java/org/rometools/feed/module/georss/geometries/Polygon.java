@@ -15,10 +15,14 @@ import java.util.List;
 
 /**
  * Polygon, a surface object bounded by one external ring and zero or more internal rings
- * 
+ *
  * @author runaas
  */
 public final class Polygon extends AbstractSurface implements Cloneable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private AbstractRing exterior;
     private List interior;
 
@@ -79,7 +83,7 @@ public final class Polygon extends AbstractSurface implements Cloneable {
 
     /**
      * Retrieve the outer border
-     * 
+     *
      * @return the border ring
      */
     public AbstractRing getExterior() {
@@ -88,7 +92,7 @@ public final class Polygon extends AbstractSurface implements Cloneable {
 
     /**
      * Retrieve the inner border
-     * 
+     *
      * @return the list of border rings
      */
     public List getInterior() {
@@ -100,7 +104,7 @@ public final class Polygon extends AbstractSurface implements Cloneable {
 
     /**
      * Set the outer border
-     * 
+     *
      * @param exterior the outer ring
      */
     public void setExterior(final AbstractRing exterior) {
@@ -109,7 +113,7 @@ public final class Polygon extends AbstractSurface implements Cloneable {
 
     /**
      * Set the list of inner borders (holes)
-     * 
+     *
      * @param interior the list of inner rings
      */
     public void setInterior(final List interior) {

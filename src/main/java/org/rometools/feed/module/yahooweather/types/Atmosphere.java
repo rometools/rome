@@ -52,11 +52,15 @@ import com.sun.syndication.feed.impl.ToStringBean;
  * <li>pressure: barometric pressure, in the units specified by the pressure attribute of the yweather:units element (in or mb). (float).</li>
  * <li>rising: state of the barometric pressure: steady (0), rising (1), or falling (2). (integer: 0, 1, 2)</li>
  * </ul>
- * 
+ *
  * @version $Id: Atmosphere.java,v 1.2 2008/01/22 14:50:05 kebernet Exp $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Atmosphere implements Serializable, Cloneable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private final EqualsBean equals = new EqualsBean(Atmosphere.class, this);
     private final ToStringBean toString = new ToStringBean(Atmosphere.class, this);
     private int humidity;
@@ -73,7 +77,7 @@ public class Atmosphere implements Serializable, Cloneable {
 
     /**
      * Constructs a new Atmosphere object
-     * 
+     *
      * @param humidity humidity, in percent
      * @param visibility visibility distance (value beyond 1/100ths of a unit will be truncated)
      * @param pressure barometric pressure
@@ -104,7 +108,7 @@ public class Atmosphere implements Serializable, Cloneable {
 
     /**
      * Relative humidity
-     * 
+     *
      * @return humidity, in percent
      */
     public int getHumidity() {
@@ -113,7 +117,7 @@ public class Atmosphere implements Serializable, Cloneable {
 
     /**
      * Relative humidity
-     * 
+     *
      * @param humidity humidity, in percent
      */
     public void setHumidity(final int humidity) {
@@ -122,7 +126,7 @@ public class Atmosphere implements Serializable, Cloneable {
 
     /**
      * Visibility distance
-     * 
+     *
      * @return distance
      */
     public double getVisibility() {
@@ -131,7 +135,7 @@ public class Atmosphere implements Serializable, Cloneable {
 
     /**
      * Visibility distance
-     * 
+     *
      * @param visibility distance (value beyond 1/100ths of a unit will be truncated)
      */
     public void setVisibility(final double visibility) {
@@ -140,7 +144,7 @@ public class Atmosphere implements Serializable, Cloneable {
 
     /**
      * Barometric pressure
-     * 
+     *
      * @return pressure
      */
     public double getPressure() {
@@ -149,7 +153,7 @@ public class Atmosphere implements Serializable, Cloneable {
 
     /**
      * Barometric pressure
-     * 
+     *
      * @param pressure pressure
      */
     public void setPressure(final double pressure) {
@@ -158,7 +162,7 @@ public class Atmosphere implements Serializable, Cloneable {
 
     /**
      * Change in pressure
-     * 
+     *
      * @return Atmosphere.PressureChange object
      */
     public PressureChange getChange() {
@@ -167,7 +171,7 @@ public class Atmosphere implements Serializable, Cloneable {
 
     /**
      * Change in pressure
-     * 
+     *
      * @param change PressureChange object
      */
     public void setChange(final PressureChange change) {
@@ -180,6 +184,10 @@ public class Atmosphere implements Serializable, Cloneable {
     }
 
     public static class PressureChange implements Serializable {
+        /**
+         *
+         */
+        private static final long serialVersionUID = 1L;
         public static final PressureChange RISING = new PressureChange(1, "rising");
         public static final PressureChange STEADY = new PressureChange(0, "steady");
         public static final PressureChange FALLING = new PressureChange(2, "falling");
@@ -198,7 +206,7 @@ public class Atmosphere implements Serializable, Cloneable {
 
         /**
          * The integer code for this chage state
-         * 
+         *
          * @return int code
          */
         public int getCode() {
@@ -207,24 +215,24 @@ public class Atmosphere implements Serializable, Cloneable {
 
         /**
          * Gets a PressureChange instance for this int code.
-         * 
+         *
          * @param code int code value
          * @return PressureChange instance
          * @throws RuntimeException if no 0, 1, or 2.
          */
         public static PressureChange fromCode(final int code) {
             switch (code) {
-            case 0:
-                return STEADY;
+                case 0:
+                    return STEADY;
 
-            case 1:
-                return RISING;
+                case 1:
+                    return RISING;
 
-            case 2:
-                return FALLING;
+                case 2:
+                    return FALLING;
 
-            default:
-                throw new RuntimeException("Invalid pressure change code.");
+                default:
+                    throw new RuntimeException("Invalid pressure change code.");
             }
         }
     }

@@ -44,13 +44,18 @@ import java.util.Date;
 /**
  * This is a simple wrapper for java.util.Date that indicates it should be formatted without time of day for Google Base. It should be transparent to module
  * developers.
- * 
+ *
  * Move along. Nothing to see here.
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @version $Revision: 1.1 $
  */
 public class ShortDate extends Date implements CloneableType {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
     /** Creates a new instance of ShortDate */
     public ShortDate() {
         super();
@@ -58,7 +63,7 @@ public class ShortDate extends Date implements CloneableType {
 
     /**
      * Creates a new Short Date based on a Date value.
-     * 
+     *
      * @param date Date value to read from.
      */
     public ShortDate(final Date date) {
@@ -67,7 +72,7 @@ public class ShortDate extends Date implements CloneableType {
 
     /**
      * Creates a new ShortDate based on a millisecond time.
-     * 
+     *
      * @param time Millisecond time to start with.
      */
     public ShortDate(final long time) {
@@ -76,7 +81,7 @@ public class ShortDate extends Date implements CloneableType {
 
     /**
      * Returns a duplicate of this object.
-     * 
+     *
      * @return Duplicate of the object.
      */
     @Override

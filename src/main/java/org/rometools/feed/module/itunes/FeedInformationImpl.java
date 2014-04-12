@@ -51,11 +51,15 @@ import com.sun.syndication.feed.CopyFrom;
 
 /**
  * This class contains information for iTunes podcast feeds that exist at the Channel level.
- * 
+ *
  * @version $Revision: 1.2 $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class FeedInformationImpl extends AbstractITunesObject implements FeedInformation {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private String ownerName;
     private String ownerEmailAddress;
     private URL image;
@@ -69,7 +73,7 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
 
     /**
      * The parent categories for this feed
-     * 
+     *
      * @return The parent categories for this feed
      */
     @Override
@@ -79,7 +83,7 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
 
     /**
      * The parent categories for this feed
-     * 
+     *
      * @param categories The parent categories for this feed
      */
     @Override
@@ -89,7 +93,7 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
 
     /**
      * Returns the owner name for the feed
-     * 
+     *
      * @return Returns the owner name for the feed
      */
     @Override
@@ -99,7 +103,7 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
 
     /**
      * Sets the owner name for the feed
-     * 
+     *
      * @param ownerName Sets the owner name for the feed
      */
     @Override
@@ -109,7 +113,7 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
 
     /**
      * Returns the owner email address for the feed.
-     * 
+     *
      * @return Returns the owner email address for the feed.
      */
     @Override
@@ -119,7 +123,7 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
 
     /**
      * Sets the owner email address for the feed.
-     * 
+     *
      * @param ownerEmailAddress Sets the owner email address for the feed.
      */
     @Override
@@ -129,9 +133,9 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
 
     /**
      * Returns the URL for the image.
-     * 
+     *
      * NOTE: To specification images should be in PNG or JPEG format.
-     * 
+     *
      * @return Returns the URL for the image.
      */
     @Override
@@ -141,9 +145,9 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
 
     /**
      * Sets the URL for the image.
-     * 
+     *
      * NOTE: To specification images should be in PNG or JPEG format.
-     * 
+     *
      * @param image Sets the URL for the image.
      */
     @Override
@@ -153,7 +157,7 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
 
     /**
      * Required by the ROME API
-     * 
+     *
      * @param obj object to copy property values from
      */
     @Override
@@ -189,7 +193,7 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
 
     /**
      * Returns a copy of this FeedInformationImpl object
-     * 
+     *
      * @return Returns a copy of this FeedInformationImpl object
      */
     @Override

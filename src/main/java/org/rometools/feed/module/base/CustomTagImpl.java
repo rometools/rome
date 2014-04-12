@@ -148,23 +148,23 @@ public class CustomTagImpl implements CustomTag {
     /**
      * Creates and returns a copy of this object. The precise meaning of "copy" may depend on the class of the object. The general intent is that, for any
      * object <tt>x</tt>, the expression: <blockquote>
-     * 
+     *
      * <pre>
      * x.clone() != x
      * </pre>
-     * 
+     *
      * </blockquote> will be true, and that the expression: <blockquote>
-     * 
+     *
      * <pre>
      * x.clone().getClass() == x.getClass()
      * </pre>
-     * 
+     *
      * </blockquote> will be <tt>true</tt>, but these are not absolute requirements. While it is typically the case that: <blockquote>
-     * 
+     *
      * <pre>
      * x.clone().equals(x)
      * </pre>
-     * 
+     *
      * </blockquote> will be <tt>true</tt>, this is not an absolute requirement.
      * <p>
      * By convention, the returned object should be obtained by calling <tt>super.clone</tt>. If a class and all of its superclasses (except <tt>Object</tt>)
@@ -184,7 +184,7 @@ public class CustomTagImpl implements CustomTag {
      * <p>
      * The class <tt>Object</tt> does not itself implement the interface <tt>Cloneable</tt>, so calling the <tt>clone</tt> method on an object whose class is
      * <tt>Object</tt> will result in throwing an exception at run time.
-     * 
+     *
      * @return a clone of this instance.
      * @exception CloneNotSupportedException if the object's class does not support the <code>Cloneable</code> interface. Subclasses that override the
      *                <code>clone</code> method can also throw this exception to indicate that an instance cannot be cloned.

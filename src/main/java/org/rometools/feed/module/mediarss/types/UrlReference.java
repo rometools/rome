@@ -31,7 +31,7 @@ import com.sun.syndication.feed.impl.EqualsBean;
 
 /**
  * Used to indicate a URL primary reference for a MediaContent object.
- * 
+ *
  * @author cooper
  */
 public class UrlReference implements Reference, Serializable {
@@ -41,7 +41,7 @@ public class UrlReference implements Reference, Serializable {
 
     /**
      * Creates a new UrlReference.
-     * 
+     *
      * @param url URL to the media source
      */
     public UrlReference(final URI url) {
@@ -54,7 +54,7 @@ public class UrlReference implements Reference, Serializable {
 
     /**
      * Creates a new instance of UrlReference
-     * 
+     *
      * @param url String value of a URL
      * @throws java.net.MalformedURLException thrown on bad URLs
      */
@@ -70,7 +70,7 @@ public class UrlReference implements Reference, Serializable {
 
     /**
      * Returns the URL value
-     * 
+     *
      * @return Returns the URL value
      */
     public URI getUrl() {

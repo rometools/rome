@@ -53,6 +53,10 @@ import com.sun.syndication.feed.CopyFrom;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class ContentModuleImpl extends com.sun.syndication.feed.module.ModuleImpl implements ContentModule {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private List encodeds;
     private List contents;
     private List contentItems;

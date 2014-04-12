@@ -27,16 +27,15 @@ import com.sun.syndication.io.ModuleParser;
 
 /**
  * W3CGeoParser is a parser for the W3C geo format.
- * 
+ *
  * @author Marc Wick
  * @version $Id: W3CGeoParser.java,v 1.4 2007/04/18 09:59:29 marcwick Exp $
- * 
+ *
  */
 public class W3CGeoParser implements ModuleParser {
 
     /*
      * (non-Javadoc)
-     * 
      * @see com.sun.syndication.io.ModuleParser#getNamespaceUri()
      */
     @Override
@@ -71,7 +70,6 @@ public class W3CGeoParser implements ModuleParser {
 
     /*
      * (non-Javadoc)
-     * 
      * @see com.sun.syndication.io.ModuleParser#parse(org.jdom2.Element)
      */
     @Override

@@ -24,10 +24,14 @@ import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.module.ModuleImpl;
 
 /**
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class SimpleListExtensionImpl extends ModuleImpl implements SimpleListExtension {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private String treatAs = "list";
     private Group[] groupFields;
     private Sort[] sortFields;
@@ -52,7 +56,7 @@ public class SimpleListExtensionImpl extends ModuleImpl implements SimpleListExt
      * <p>
      * This is useful when dealing with properties that may have multiple implementations. For example, Module.
      * <p>
-     * 
+     *
      * @return the interface the copyFrom works on.
      */
     @Override
@@ -83,7 +87,7 @@ public class SimpleListExtensionImpl extends ModuleImpl implements SimpleListExt
     /**
      * Returns the URI of the module.
      * <p>
-     * 
+     *
      * @return URI of the module.
      */
     @Override
@@ -99,7 +103,7 @@ public class SimpleListExtensionImpl extends ModuleImpl implements SimpleListExt
      * This method is useful for moving from one implementation of a bean interface to another. For example from the default SyndFeed bean implementation to a
      * Hibernate ready implementation.
      * <p>
-     * 
+     *
      * @param obj the instance to copy properties from.
      */
     @Override

@@ -43,7 +43,7 @@ import java.util.HashMap;
 
 /**
  * This class represents a specific shipping option for an item.
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @version $Revision: 1.1 $
  */
@@ -63,7 +63,7 @@ public class ShippingType implements CloneableType {
 
     /**
      * Creates a new instance of ShippingType
-     * 
+     *
      * @param price The price of the shipping option
      * @param service Shipping service used.
      * @param country Country shipped to.
@@ -76,7 +76,7 @@ public class ShippingType implements CloneableType {
 
     /**
      * Returns the destination country.
-     * 
+     *
      * @return Returns the destination country.
      */
     public String getCountry() {
@@ -85,7 +85,7 @@ public class ShippingType implements CloneableType {
 
     /**
      * Returns the price of this shipping option.
-     * 
+     *
      * @return Returns the price of this shipping option.
      */
     public FloatUnit getPrice() {
@@ -94,7 +94,7 @@ public class ShippingType implements CloneableType {
 
     /**
      * Returns the ServiceEnumeration instance for the shipping service used.
-     * 
+     *
      * @return Returns the ServiceEnumeration instance for the shipping service used.
      */
     public ServiceEnumeration getService() {
@@ -103,7 +103,7 @@ public class ShippingType implements CloneableType {
 
     /**
      * Clones this object.
-     * 
+     *
      * @return Duplicate ShippingType object.
      */
     @Override
@@ -113,7 +113,7 @@ public class ShippingType implements CloneableType {
 
     /**
      * Returns a String representation of this object.
-     * 
+     *
      * @return String representation of this object.
      */
     @Override
@@ -160,7 +160,7 @@ public class ShippingType implements CloneableType {
 
         /**
          * Creates a new instance of ServiceEnumeration.
-         * 
+         *
          * @param value String value to encapsulate.
          */
         private ServiceEnumeration(final String value) {
@@ -170,7 +170,7 @@ public class ShippingType implements CloneableType {
 
         /**
          * String value of this Service.
-         * 
+         *
          * @return String value of this Service.
          */
         public String getValue() {
@@ -179,7 +179,7 @@ public class ShippingType implements CloneableType {
 
         /**
          * Looks up a ServiceEnumeration based on the string value.
-         * 
+         *
          * @param value String value to search for.
          * @return ServiceEnumeration or null.
          */
@@ -189,7 +189,7 @@ public class ShippingType implements CloneableType {
 
         /**
          * String value of this Service.
-         * 
+         *
          * @return String value of this Service.
          */
         @Override

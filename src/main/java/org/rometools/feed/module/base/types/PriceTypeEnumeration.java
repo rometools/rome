@@ -41,7 +41,7 @@ package org.rometools.feed.module.base.types;
 
 /**
  * Enumeration of values suitable for "price_type" or "salary_type".
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @version $Revision: 1.1 $
  */
@@ -61,7 +61,7 @@ public class PriceTypeEnumeration implements CloneableType {
 
     /**
      * Creates a new instance of PriceTypeEnumeration
-     * 
+     *
      * @param value Value to encapsulate
      */
     private PriceTypeEnumeration(final String value) {
@@ -70,7 +70,7 @@ public class PriceTypeEnumeration implements CloneableType {
 
     /**
      * Returns the string value of this instance.
-     * 
+     *
      * @return Returns the string value of this instance.
      */
     public String getValue() {
@@ -79,7 +79,7 @@ public class PriceTypeEnumeration implements CloneableType {
 
     /**
      * Returns a PriceTypeEnumeration based on the String value or null.
-     * 
+     *
      * @param value Value to search for.
      * @return PriceTypeEnumeration or null.
      */
@@ -93,7 +93,7 @@ public class PriceTypeEnumeration implements CloneableType {
 
     /**
      * Returns a duplicate of this instance
-     * 
+     *
      * @return The same instance.
      */
     @Override
@@ -103,7 +103,7 @@ public class PriceTypeEnumeration implements CloneableType {
 
     /**
      * Returns the string value of this instance.
-     * 
+     *
      * @return Returns the string value of this instance.
      */
     @Override

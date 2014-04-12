@@ -29,7 +29,7 @@ import com.sun.syndication.feed.impl.ToStringBean;
 
 /**
  * <strong>&lt;media:restriction&gt; </strong></p>
- * 
+ *
  * <p>
  * Allows restrictions to be placed on the aggregator rendering the media in the feed. Currently, restrictions are based on distributor (uri) and country codes.
  * This element is purely informational and no obligation can be assumed or implied. Only one &lt;media:restriction&gt; element of the same <em>type</em> can be
@@ -37,16 +37,16 @@ import com.sun.syndication.feed.impl.ToStringBean;
  * his/her intentions, two literals are reserved: 'all', 'none'. These literals can only be used once. This element has 1 required attribute, and 1 optional
  * attribute (with strict requirements for its exclusion).
  * </p>
- * 
+ *
  * <pre>
  * &lt;media:restriction relationship="allow" type="country"&gt;au us&lt;/media:restriction&gt;
  * </pre>
- * 
+ *
  * <p>
  * <em>relationship</em> indicates the type of relationship that the restriction represents (allow | deny). In the example above, the media object should only
  * be syndicated in Australia and the United States. It is a required attribute.
  * </p>
- * 
+ *
  * <p>
  * <strong>Note:</strong> If the "allow" element is empty and the type is relationship is "allow", it is assumed that the empty list means "allow nobody" and
  * the media should not be syndicated.
@@ -54,22 +54,22 @@ import com.sun.syndication.feed.impl.ToStringBean;
  * <p>
  * A more explicit method would be:
  * </p>
- * 
+ *
  * <pre>
  * &lt;media:restriction relationship="allow" type="country"&gt;au us&lt;/media:restriction&gt;
  * </pre>
- * 
+ *
  * <p>
  * <em>type</em> specifies the type of restriction (country | uri) that the media can be syndicated. It is an optional attribute; however can only be excluded
  * when using one of the literal values "all" or "none".
  * </p>
- * 
+ *
  * <p>
  * "country" allows restrictions to be placed based on country code. [<a href="http://www.iso.org/iso/en/prods-services/iso3166ma/index.html">ISO 3166</a>]
  * </p>
  * <p>
  * "uri" allows restrictions based on URI. Examples: urn:apple, http://images.google.com, urn:yahoo, etc.
- * 
+ *
  * @author cooper
  */
 public class Restriction implements Serializable {
@@ -81,7 +81,7 @@ public class Restriction implements Serializable {
 
     /**
      * Creates a new instance of Restriction
-     * 
+     *
      * @param relationship a Restriction.Relationship object
      * @param type A Restriction.Type object
      * @param value a value for the restriction.

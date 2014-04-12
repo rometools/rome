@@ -66,7 +66,7 @@ import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.ModuleGenerator;
 
 /**
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper
  * @version $Revision: 1.1 $
  */

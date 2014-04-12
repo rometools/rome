@@ -20,7 +20,7 @@ import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.SyndFeedOutput;
 
 /**
- * 
+ *
  * @author cooper
  */
 public class OpenSearchModuleTest extends AbstractTestCase {

@@ -25,7 +25,7 @@ import com.sun.syndication.feed.impl.ObjectBean;
 
 /**
  * An EntryValue implementation for "number" data-type values.
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class NumberValue implements EntryValue {

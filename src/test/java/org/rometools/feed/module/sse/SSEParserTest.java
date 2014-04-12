@@ -227,7 +227,7 @@ public class SSEParserTest extends AbstractTestCase {
 
     /**
      * Assure v5 file parsed correctly.
-     * 
+     *
      * @throws Exception
      */
     public void xtestV5() throws Exception {

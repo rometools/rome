@@ -44,7 +44,7 @@ import com.sun.syndication.feed.module.Module;
 
 /**
  * This interface contains the methods common to all iTunes module points.
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @version $Revision: 1.3 $
  */
@@ -54,88 +54,88 @@ public interface ITunes extends Module {
 
     /**
      * Returns the author string for this feed or entry
-     * 
+     *
      * @return Returns the author string for this feed or entry
      */
     public String getAuthor();
 
     /**
      * Sets the author string for this feed or entry
-     * 
+     *
      * @param author Sets the author string for this feed or entry
      */
     public void setAuthor(String author);
 
     /**
      * Boolean as to whether to block this feed or entry
-     * 
+     *
      * @return Boolean as to whether to block this feed or entry
      */
     public boolean getBlock();
 
     /**
      * Boolean as to whether to block this feed or entry
-     * 
+     *
      * @param block Boolean as to whether to block this feed or entry
      */
     public void setBlock(boolean block);
 
     /**
      * Boolean as to whether this feed or entry contains adult content
-     * 
+     *
      * @return Boolean as to whether this feed or entry contains adult content
      */
     public boolean getExplicit();
 
     /**
      * Boolean as to whether this feed or entry contains adult content
-     * 
+     *
      * @param explicit Boolean as to whether this feed or entry contains adult content
      */
     public void setExplicit(boolean explicit);
 
     /**
      * A list of keywords for this feed or entry
-     * 
+     *
      * Must not contain spaces
-     * 
+     *
      * @return A list of keywords for this feed or entry
      */
     public String[] getKeywords();
 
     /**
      * A list of keywords for this feed or entry
-     * 
+     *
      * Must not contain spaces
-     * 
+     *
      * @param keywords A list of keywords for this feed or enty
      */
     public void setKeywords(String[] keywords);
 
     /**
      * A subtitle for this feed or entry
-     * 
+     *
      * @return A subtitle for this feed or entry
      */
     public String getSubtitle();
 
     /**
      * A subtitle for this feed or entry
-     * 
+     *
      * @param subtitle A subtitle for this feed or entry
      */
     public void setSubtitle(String subtitle);
 
     /**
      * A subtitle for this feed or entry
-     * 
+     *
      * @return A subtitle for this feed or entry
      */
     public String getSummary();
 
     /**
      * A subtitle for this feed or entry
-     * 
+     *
      * @param summary A subtitle for this feed or entry
      */
     public void setSummary(String summary);

@@ -23,7 +23,7 @@ import com.sun.syndication.feed.impl.ObjectBean;
 
 /**
  * An EntryValue implementation for "text" data-types.
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class StringValue implements EntryValue {

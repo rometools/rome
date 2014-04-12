@@ -31,9 +31,9 @@ import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.module.ModuleImpl;
 
 /**
- * 
+ *
  * This class represents feed/channel level elements for MediaRSS
- * 
+ *
  * @author cooper
  */
 public class MediaModuleImpl extends ModuleImpl implements MediaModule, Serializable {
@@ -49,7 +49,7 @@ public class MediaModuleImpl extends ModuleImpl implements MediaModule, Serializ
 
     /**
      * constructor that passes values up to ModuleImpl.
-     * 
+     *
      * @param clazz
      * @param uri
      */
@@ -64,7 +64,7 @@ public class MediaModuleImpl extends ModuleImpl implements MediaModule, Serializ
 
     /**
      * Metadata for a feed.
-     * 
+     *
      * @param metadata Metadata for a feed.
      */
     public void setMetadata(final Metadata metadata) {
@@ -73,7 +73,7 @@ public class MediaModuleImpl extends ModuleImpl implements MediaModule, Serializ
 
     /**
      * Metadata for a feed.
-     * 
+     *
      * @return Metadata for a feed.
      */
     @Override
@@ -83,7 +83,7 @@ public class MediaModuleImpl extends ModuleImpl implements MediaModule, Serializ
 
     /**
      * Player for a feed.
-     * 
+     *
      * @param player Player for a feed.
      */
     public void setPlayer(final PlayerReference player) {
@@ -92,7 +92,7 @@ public class MediaModuleImpl extends ModuleImpl implements MediaModule, Serializ
 
     /**
      * Player for a feed.
-     * 
+     *
      * @return Player for a feed.
      */
     @Override

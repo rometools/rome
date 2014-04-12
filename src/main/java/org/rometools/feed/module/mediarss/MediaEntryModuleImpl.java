@@ -33,7 +33,7 @@ import com.sun.syndication.feed.impl.ToStringBean;
 
 /**
  * Represents information for an Entry/Item level.
- * 
+ *
  * @author Nathanial X. Freitas
  */
 public class MediaEntryModuleImpl extends MediaModuleImpl implements MediaEntryModule, Cloneable, Serializable {
@@ -54,7 +54,7 @@ public class MediaEntryModuleImpl extends MediaModuleImpl implements MediaEntryM
 
     /**
      * MediaContent items for the entry
-     * 
+     *
      * @param mediaContents MediaContent items for the entry
      */
     public void setMediaContents(final MediaContent[] mediaContents) {
@@ -63,7 +63,7 @@ public class MediaEntryModuleImpl extends MediaModuleImpl implements MediaEntryM
 
     /**
      * MediaContent items for the entry
-     * 
+     *
      * @return MediaContent items for the entry
      */
     @Override
@@ -73,7 +73,7 @@ public class MediaEntryModuleImpl extends MediaModuleImpl implements MediaEntryM
 
     /**
      * MediaGroups for the entry
-     * 
+     *
      * @param mediaGroups MediaGroups for the entry
      */
     public void setMediaGroups(final MediaGroup[] mediaGroups) {
@@ -82,7 +82,7 @@ public class MediaEntryModuleImpl extends MediaModuleImpl implements MediaEntryM
 
     /**
      * MediaGroups for the entry
-     * 
+     *
      * @return MediaGroups for the entry
      */
     @Override

@@ -30,7 +30,7 @@ import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.SyndFeedOutput;
 
 /**
- * 
+ *
  * @author rcooper
  */
 public class GoogleBaseGeneratorTest extends AbstractTestCase {

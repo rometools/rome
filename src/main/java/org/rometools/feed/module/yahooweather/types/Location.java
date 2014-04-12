@@ -49,11 +49,15 @@ import com.sun.syndication.feed.impl.ToStringBean;
  * <li>region: state, territory, or region, if given (string)</li>
  * <li>country: two-character country code. (string)</li>
  * </ul>
- * 
+ *
  * @version $Id: Location.java,v 1.2 2008/01/22 14:50:05 kebernet Exp $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Location implements Serializable, Cloneable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private transient ToStringBean toString = new ToStringBean(Location.class, this);
     private transient EqualsBean equals = new EqualsBean(Location.class, this);
     private String city;
@@ -69,7 +73,7 @@ public class Location implements Serializable, Cloneable {
 
     /**
      * Constructs a new Location object.
-     * 
+     *
      * @param city city name
      * @param region state, territory, or region, if given
      * @param country two-character country code.
@@ -83,7 +87,7 @@ public class Location implements Serializable, Cloneable {
 
     /**
      * City name
-     * 
+     *
      * @return city name.
      */
     public String getCity() {
@@ -92,7 +96,7 @@ public class Location implements Serializable, Cloneable {
 
     /**
      * City name
-     * 
+     *
      * @param city city name
      */
     public void setCity(final String city) {
@@ -101,7 +105,7 @@ public class Location implements Serializable, Cloneable {
 
     /**
      * state, territory, or region, if given
-     * 
+     *
      * @return state, territory, or region, if given
      */
     public String getRegion() {
@@ -110,7 +114,7 @@ public class Location implements Serializable, Cloneable {
 
     /**
      * state, territory, or region, if given
-     * 
+     *
      * @param region state, territory, or region, if given
      */
     public void setRegion(final String region) {
@@ -119,7 +123,7 @@ public class Location implements Serializable, Cloneable {
 
     /**
      * country two-character country code.
-     * 
+     *
      * @return country two-character country code.
      */
     public String getCountry() {
@@ -128,7 +132,7 @@ public class Location implements Serializable, Cloneable {
 
     /**
      * country two-character country code.
-     * 
+     *
      * @param country country two-character country code.
      */
     public void setCountry(final String country) {

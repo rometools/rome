@@ -44,11 +44,16 @@ import com.sun.syndication.feed.CopyFrom;
 
 /**
  * This is an abstract object that implements the attributes common across Feeds or Items in an iTunes compatible RSS feed.
- * 
+ *
  * @version $Revision: 1.4 $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
     /**
      * The URI that iTunes used for its custom tags.
      * <p>
@@ -76,7 +81,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
 
     /**
      * Defined by the ROME module API
-     * 
+     *
      * @param obj Object to copy from
      */
     @Override
@@ -84,7 +89,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
 
     /**
      * Defined by the ROME API
-     * 
+     *
      * @return Class of the Interface for this module.
      */
     @Override
@@ -94,7 +99,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
 
     /**
      * The URI this module implements
-     * 
+     *
      * @return "http://www.itunes.com/dtds/podcast-1.0.dtd"
      */
     @Override
@@ -104,7 +109,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
 
     /**
      * Required by the ROME API
-     * 
+     *
      * @return A clone of this module object
      */
     @Override
@@ -112,7 +117,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
 
     /**
      * Returns the author string for this feed or entry
-     * 
+     *
      * @return Returns the author string for this feed or entry
      */
     @Override
@@ -122,7 +127,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
 
     /**
      * Sets the author string for this feed or entry
-     * 
+     *
      * @param author Sets the author string for this feed or entry
      */
     @Override
@@ -132,7 +137,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
 
     /**
      * Boolean as to whether to block this feed or entry
-     * 
+     *
      * @return Boolean as to whether to block this feed or entry
      */
     @Override
@@ -142,7 +147,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
 
     /**
      * Boolean as to whether to block this feed or entry
-     * 
+     *
      * @param block Boolean as to whether to block this feed or entry
      */
     @Override
@@ -152,7 +157,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
 
     /**
      * Boolean as to whether this feed or entry contains adult content
-     * 
+     *
      * @return Boolean as to whether this feed or entry contains adult content
      */
     @Override
@@ -162,7 +167,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
 
     /**
      * Boolean as to whether this feed or entry contains adult content
-     * 
+     *
      * @param explicit Boolean as to whether this feed or entry contains adult content
      */
     @Override
@@ -172,9 +177,9 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
 
     /**
      * A list of keywords for this feed or entry
-     * 
+     *
      * Must not contain spaces
-     * 
+     *
      * @return A list of keywords for this feed or entry
      */
     @Override
@@ -184,9 +189,9 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
 
     /**
      * A list of keywords for this feed or entry
-     * 
+     *
      * Must not contain spaces
-     * 
+     *
      * @param keywords A list of keywords for this feed or enty
      */
     @Override
@@ -196,7 +201,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
 
     /**
      * A subtitle for this feed or entry
-     * 
+     *
      * @return A subtitle for this feed or entry
      */
     @Override
@@ -206,7 +211,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
 
     /**
      * A subtitle for this feed or entry
-     * 
+     *
      * @param subtitle A subtitle for this feed or entry
      */
     @Override
@@ -216,7 +221,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
 
     /**
      * A subtitle for this feed or entry
-     * 
+     *
      * @return A subtitle for this feed or entry
      */
     @Override
@@ -226,7 +231,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
 
     /**
      * A subtitle for this feed or entry
-     * 
+     *
      * @param summary A subtitle for this feed or entry
      */
     @Override

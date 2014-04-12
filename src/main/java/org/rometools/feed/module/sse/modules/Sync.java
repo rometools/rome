@@ -10,19 +10,19 @@ import com.sun.syndication.feed.module.Module;
  * <pre>
  * <sx:sync>
  * </pre>
- * 
+ *
  * Element within RSS
- * 
+ *
  * <pre>
  * <item>
  * </pre>
- * 
+ *
  * or OPML
- * 
+ *
  * <pre>
  * <outline>
  * </pre>
- * 
+ *
  * .
  */
 public class Sync extends SSEModule {
@@ -74,7 +74,7 @@ public class Sync extends SSEModule {
     /**
      * Set the identifier for the item. The ID MUST be globally unique within the feed and it MUST be identical across feeds if an item is being shared or
      * replicated as part of multiple distinct independent feeds.
-     * 
+     *
      * @param id the identifier for the item.
      */
     public void setId(final String id) {
@@ -91,7 +91,7 @@ public class Sync extends SSEModule {
 
     /**
      * Set the modification sequence number of the item.
-     * 
+     *
      * @param version the modification sequence number of the item.
      */
     public void setVersion(final Integer version) {
@@ -108,7 +108,7 @@ public class Sync extends SSEModule {
 
     /**
      * Set an indication of whether this item has been deleted and is a tombstone.
-     * 
+     *
      * @param deleted an indication of whether this item has been deleted and is a tombstone.
      */
     public void setDeleted(final Boolean deleted) {
@@ -119,7 +119,7 @@ public class Sync extends SSEModule {
      * Provides access to an optional, Boolean conflict attribute. If present and its value is "true" (lower-case), it indicates there was an update conflict
      * detected when processing an update of this item, and it should potentially be examined by the user. If not present, or present with value of "false" or
      * "", Then no conflict has been detected. All other values are invalid.
-     * 
+     *
      * @return indicates there was an update conflict detected when processing an update of this item.
      */
     public Boolean isConflict() {
@@ -128,7 +128,7 @@ public class Sync extends SSEModule {
 
     /**
      * Set an indication of whether there was an update conflict detected when processing an update of this item.
-     * 
+     *
      * @param conflict an indication of whether there was an update conflict detected when processing an update of this item.
      */
     public void setConflict(final Boolean conflict) {
@@ -140,7 +140,7 @@ public class Sync extends SSEModule {
 
     /**
      * The history history for this sync object
-     * 
+     *
      * @param history the history for this sync object.
      */
     public void setHistory(final History history) {
@@ -149,7 +149,7 @@ public class Sync extends SSEModule {
 
     /**
      * Get the history for this sync object
-     * 
+     *
      * @return get the history for this sync object.
      */
     public History getHistory() {

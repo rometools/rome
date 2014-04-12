@@ -27,7 +27,7 @@ import java.io.Serializable;
 
 /**
  * Simple data bean parent for scheme-value type entities.
- * 
+ *
  * @author cooper
  */
 public abstract class AbstractSchemeValue implements Serializable {

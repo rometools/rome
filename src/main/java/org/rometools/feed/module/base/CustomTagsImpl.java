@@ -31,6 +31,10 @@ import com.sun.syndication.feed.CopyFrom;
  */
 public class CustomTagsImpl implements CustomTags {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private List values;
 
     /** Creates a new instance of CustomTagsImpl */

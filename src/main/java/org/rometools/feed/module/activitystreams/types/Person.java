@@ -1,12 +1,12 @@
 /*
  *  Copyright 2011 robert.cooper.
- * 
+ *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
  *  You may obtain a copy of the License at
- * 
+ *
  *       http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  *  Unless required by applicable law or agreed to in writing, software
  *  distributed under the License is distributed on an "AS IS" BASIS,
  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -41,10 +41,15 @@ import com.sun.syndication.feed.atom.Link;
  * <dd>A link to an "avatar" or "userpic" image for the user. Represented by the Representative Image component of the base Object Construct.</dd>
  * </dl>
  * </blockquote>
- * 
+ *
  * @author robert.cooper
  */
 public class Person extends ActivityObject {
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
     @Override
     public String getTypeIRI() {
@@ -53,7 +58,7 @@ public class Person extends ActivityObject {
 
     /**
      * Get the value of avatar
-     * 
+     *
      * @return the value of avatar
      */
     public Link getAvatar() {
@@ -66,7 +71,7 @@ public class Person extends ActivityObject {
 
     /**
      * Set the value of avatar
-     * 
+     *
      * @param newavatar new value of avatar
      */
     public void setAvatar(final Link newavatar) {

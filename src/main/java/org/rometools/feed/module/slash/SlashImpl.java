@@ -3,7 +3,7 @@
  *
  * Created on November 19, 2005, 8:53 PM
  *
- * 
+ *
  * This library is provided under dual licenses.
  * You may choose the terms of the Lesser General Public License or the Apache
  * License at your discretion.
@@ -49,6 +49,11 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class SlashImpl implements Slash {
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
     private String section;
 

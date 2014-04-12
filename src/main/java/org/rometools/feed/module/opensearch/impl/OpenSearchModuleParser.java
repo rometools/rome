@@ -154,21 +154,21 @@ public class OpenSearchModuleParser implements ModuleParser {
         final Link link = new Link();
 
         String att = e.getAttributeValue("rel");// getAtomNamespace()); DONT
-                                                // KNOW WHY DOESN'T WORK
+        // KNOW WHY DOESN'T WORK
 
         if (att != null) {
             link.setRel(att);
         }
 
         att = e.getAttributeValue("type");// getAtomNamespace()); DONT KNOW WHY
-                                          // DOESN'T WORK
+        // DOESN'T WORK
 
         if (att != null) {
             link.setType(att);
         }
 
         att = e.getAttributeValue("href");// getAtomNamespace()); DONT KNOW WHY
-                                          // DOESN'T WORK
+        // DOESN'T WORK
 
         if (att != null) {
 
@@ -180,14 +180,14 @@ public class OpenSearchModuleParser implements ModuleParser {
         }
 
         att = e.getAttributeValue("hreflang");// getAtomNamespace()); DONT KNOW
-                                              // WHY DOESN'T WORK
+        // WHY DOESN'T WORK
 
         if (att != null) {
             link.setHreflang(att);
         }
 
         att = e.getAttributeValue("length");// getAtomNamespace()); DONT KNOW
-                                            // WHY DOESN'T WORK
+        // WHY DOESN'T WORK
 
         return link;
     }

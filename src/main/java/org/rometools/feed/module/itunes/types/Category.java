@@ -44,11 +44,15 @@ import java.io.Serializable;
 
 /**
  * This Category information. Basically a name and an optional Subcategory. Categories are defined by Apple. See ITMS for a view.
- * 
+ *
  * @version $Revision: 1.2 $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Category implements Serializable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private String name;
     private Subcategory subcategory;
 
@@ -58,7 +62,7 @@ public class Category implements Serializable {
 
     /**
      * Creates a new instance of Category with a given name.
-     * 
+     *
      * @param name Name of the category.
      */
     public Category(final String name) {
@@ -67,7 +71,7 @@ public class Category implements Serializable {
 
     /**
      * Returns the name of the category
-     * 
+     *
      * @return Returns the name of the category
      */
     public String getName() {
@@ -76,7 +80,7 @@ public class Category implements Serializable {
 
     /**
      * Sets the name of the category
-     * 
+     *
      * @param name Sets the name of the category
      */
     public void setName(final String name) {
@@ -85,7 +89,7 @@ public class Category implements Serializable {
 
     /**
      * Returns the Subcategory object for this category
-     * 
+     *
      * @return Returns the Subcategory object for this category
      */
     public Subcategory getSubcategory() {
@@ -94,7 +98,7 @@ public class Category implements Serializable {
 
     /**
      * Sets the Subcategory object for this category
-     * 
+     *
      * @param subcategory Sets the Subcategory object for this category
      */
     public void setSubcategory(final Subcategory subcategory) {
@@ -103,7 +107,7 @@ public class Category implements Serializable {
 
     /**
      * Returns a copy of this category.
-     * 
+     *
      * @return Returns a copy of this category.
      */
     @Override

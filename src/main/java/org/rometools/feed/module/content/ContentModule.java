@@ -54,14 +54,14 @@ public interface ContentModule extends Module {
 
     /**
      * Returns a List of Strings containing the New Syntax Encoded values are in the element.
-     * 
+     *
      * @return List of content Strings
      */
     public List getEncodeds();
 
     /**
      * Sets a List of Strings containing the New Syntax Encoded values are in the element.
-     * 
+     *
      * @return List of content Strings
      */
     public void setEncodeds(List encodeds);
@@ -73,7 +73,7 @@ public interface ContentModule extends Module {
 
     /**
      * Contains a list of ContentItems that represent the "Original Syntax" set.
-     * 
+     *
      * @see com.totsp.xml.syndication.content.ContentItem
      * @return List of ContentItems.
      */
@@ -81,7 +81,7 @@ public interface ContentModule extends Module {
 
     /**
      * Contains a list of ContentItems that represent the "Original Syntax" set.
-     * 
+     *
      * @see com.totsp.xml.syndication.content.ContentItem
      * @param List of ContentItems.
      */
@@ -89,14 +89,14 @@ public interface ContentModule extends Module {
 
     /**
      * Returns a List of Strings containing whatever new or original syntax items are in the element.
-     * 
+     *
      * @return List of content Strings
      */
     public List getContents();
 
     /**
      * Sets a List of Strings containing whatever new or original syntax items are in the element.
-     * 
+     *
      * @return List of content Strings
      */
     public void setContents(List contents);

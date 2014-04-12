@@ -1,12 +1,12 @@
 /*
  *  Copyright 2011 robert.cooper.
- * 
+ *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
  *  You may obtain a copy of the License at
- * 
+ *
  *       http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  *  Unless required by applicable law or agreed to in writing, software
  *  distributed under the License is distributed on an "AS IS" BASIS,
  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -61,10 +61,15 @@ import com.sun.syndication.feed.atom.Link;
  * ignore thumbnails that are of an inappropriate size for their user interface.</dd>
  * </dl>
  * </blockquote>
- * 
+ *
  * @author robert.cooper
  */
 public class Bookmark extends ActivityObject {
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
     @Override
     public String getTypeIRI() {
@@ -73,7 +78,7 @@ public class Bookmark extends ActivityObject {
 
     /**
      * Get the value of thumbnail
-     * 
+     *
      * @return the value of thumbnail
      */
     public Link getThumbnail() {
@@ -82,7 +87,7 @@ public class Bookmark extends ActivityObject {
 
     /**
      * Set the value of thumbnail
-     * 
+     *
      * @param newthumbnail new value of thumbnail
      */
     public void setThumbnail(final Link newthumbnail) {

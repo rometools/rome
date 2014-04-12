@@ -9,13 +9,13 @@ import com.sun.syndication.feed.module.Module;
  * <pre>
  * <sx:related>
  * </pre>
- * 
+ *
  * Element within
- * 
+ *
  * <pre>
  * <sx:sharing>
  * </pre>
- * 
+ *
  * .
  */
 public class Related extends SSEModule {
@@ -62,7 +62,7 @@ public class Related extends SSEModule {
 
     /**
      * link A required, URL attribute. The URL for related feeds.
-     * 
+     *
      * @return the URL for related feeds
      */
     // TODO: use a java.net.URL?
@@ -72,7 +72,7 @@ public class Related extends SSEModule {
 
     /**
      * Set the URL for related feeds.
-     * 
+     *
      * @param link the URL for related feeds.
      */
     public void setLink(final String link) {
@@ -81,7 +81,7 @@ public class Related extends SSEModule {
 
     /**
      * title An optional, string attribute. The name or description of the related feed.
-     * 
+     *
      * @return The name or description of the related feed.
      */
     public String getTitle() {
@@ -90,7 +90,7 @@ public class Related extends SSEModule {
 
     /**
      * Set the name or description of the related feed.
-     * 
+     *
      * @param title the name or description of the related feed.
      */
     public void setTitle(final String title) {
@@ -103,7 +103,7 @@ public class Related extends SSEModule {
      * "complete" if the link points to file containing the complete collection of items for this feed.
      * <p>
      * "aggregated" if the link points to a feed whose contents are being incorporated into this feed by the publisher.
-     * 
+     *
      * @return the type of the releated feed.
      */
     public Integer getType() {
@@ -112,7 +112,7 @@ public class Related extends SSEModule {
 
     /**
      * Set the type of relationship, complete or aggregated.
-     * 
+     *
      * @param type the type of relationship, complete or aggregated.
      */
     public void setType(final Integer type) {
@@ -122,7 +122,7 @@ public class Related extends SSEModule {
     /**
      * An optional, date-time attribute. This is the starting point of the related feed. If this attribute is omitted or blank, it is assumed that this is a
      * complete feed.
-     * 
+     *
      * @return the starting point of the related feed.
      */
     public Date getSince() {
@@ -131,7 +131,7 @@ public class Related extends SSEModule {
 
     /**
      * Set the starting point of the related feed.
-     * 
+     *
      * @param since the starting point of the related feed.
      */
     public void setSince(final Date since) {
@@ -140,7 +140,7 @@ public class Related extends SSEModule {
 
     /**
      * An optional, date-time attribute. This is the ending point of a feed.
-     * 
+     *
      * @return the ending point of the feed, until.
      */
     public Date getUntil() {
@@ -149,7 +149,7 @@ public class Related extends SSEModule {
 
     /**
      * Set the ending point of the feed, until. An optional, date-time attribute.
-     * 
+     *
      * @param until the ending point of the feed.
      */
     public void setUntil(final Date until) {

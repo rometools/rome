@@ -36,7 +36,7 @@ import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.impl.DateParser;
 
 /**
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class ItemParser implements com.sun.syndication.io.ModuleParser {
@@ -48,7 +48,7 @@ public class ItemParser implements com.sun.syndication.io.ModuleParser {
     /**
      * Returns the namespace URI this parser handles.
      * <p>
-     * 
+     *
      * @return the namespace URI.
      */
     @Override
@@ -59,7 +59,7 @@ public class ItemParser implements com.sun.syndication.io.ModuleParser {
     /**
      * Parses the XML node (JDOM element) extracting module information.
      * <p>
-     * 
+     *
      * @param element the XML node (JDOM element) to extract module information from.
      * @return a module instance, <b>null</b> if the element did not have module information.
      */
@@ -83,7 +83,7 @@ public class ItemParser implements com.sun.syndication.io.ModuleParser {
             element.removeContent(group);
         }
 
-        sle.setGroupValues((EntryValue[]) values.toArray(new EntryValue[values.size()]));
+        sle.setGroupValues(values.toArray(new EntryValue[values.size()]));
         values = values.size() == 0 ? values : new ArrayList<EntryValue>();
 
         final List<Element> sorts = new ArrayList<Element>(element.getChildren("sort", ModuleParser.TEMP));
@@ -150,7 +150,7 @@ public class ItemParser implements com.sun.syndication.io.ModuleParser {
             }
         }
         // System.out.println("Values created "+values.size()+" from sorts" +sorts.size());
-        sle.setSortValues((EntryValue[]) values.toArray(new EntryValue[values.size()]));
+        sle.setSortValues(values.toArray(new EntryValue[values.size()]));
 
         return sle;
     }

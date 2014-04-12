@@ -33,8 +33,8 @@ import com.sun.syndication.io.impl.RSS20Parser;
 
 /**
  * @author Nathanial X. Freitas
- * 
- * 
+ *
+ *
  */
 public class RSS20YahooParser extends RSS20Parser {
     // the Yahoo Namespace URI they sometimes use in the returns for video.search.yahoo.com RSS feed
@@ -53,7 +53,7 @@ public class RSS20YahooParser extends RSS20Parser {
      * Indicates if a JDom document is an RSS instance that can be parsed with the parser.
      * <p/>
      * It checks for RDF ("http://www.w3.org/1999/02/22-rdf-syntax-ns#") and RSS ("http://purl.org/rss/1.0/") namespaces being defined in the root element.
-     * 
+     *
      * @param document document to check if it can be parsed with this parser implementation.
      * @return <b>true</b> if the document is RSS1., <b>false</b> otherwise.
      */
@@ -73,7 +73,7 @@ public class RSS20YahooParser extends RSS20Parser {
     /**
      * Returns the namespace used by RSS elements in document of the RSS 1.0
      * <P>
-     * 
+     *
      * @return returns "http://purl.org/rss/1.0/".
      */
     @Override
@@ -83,7 +83,7 @@ public class RSS20YahooParser extends RSS20Parser {
 
     /**
      * After we parse the feed we put "rss_2.0" in it (so converters and generators work) this parser is a phantom.
-     * 
+     *
      */
     @Override
     protected WireFeed parseChannel(final Element rssRoot, final Locale locale) {

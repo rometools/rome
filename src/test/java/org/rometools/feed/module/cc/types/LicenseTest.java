@@ -1,13 +1,13 @@
 package org.rometools.feed.module.cc.types;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.Assert.assertFalse;
 
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 
-import static org.junit.Assert.assertFalse;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * @author Matthew Buckett
@@ -29,37 +29,35 @@ public class LicenseTest {
         final AtomicBoolean hadException = new AtomicBoolean(false);
 
         // This thread keeps on adding new licenses (not very realistic but shows the bug)
-        Thread addNew = new Thread(){
+        final Thread addNew = new Thread() {
             @Override
             public void run() {
                 try {
-                    while(run.get()) {
-                        License license = License.findByValue("http://creativecommons.org/licenses/"+
-                                type.incrementAndGet()+ "/1");
+                    while (run.get()) {
+                        final License license = License.findByValue("http://creativecommons.org/licenses/" + type.incrementAndGet() + "/1");
                         if (license == null) {
                             hadProblem.set(true);
                         }
                     }
-                } catch (Exception e) {
+                } catch (final Exception e) {
                     hadException.set(true);
                 }
             }
         };
 
         // This thread attempts to get ones we know have already been put in.
-        Thread getExisting = new Thread() {
+        final Thread getExisting = new Thread() {
             @Override
             public void run() {
-                Random rnd = new Random();
+                final Random rnd = new Random();
                 try {
-                    while(run.get()) {
-                        License license = License.findByValue("http://creativecommons.org/licenses/"+
-                                rnd.nextInt(type.intValue())+"/1");
+                    while (run.get()) {
+                        final License license = License.findByValue("http://creativecommons.org/licenses/" + rnd.nextInt(type.intValue()) + "/1");
                         if (license == null) {
                             hadProblem.set(true);
                         }
                     }
-                } catch (Exception e) {
+                } catch (final Exception e) {
                     hadException.set(true);
                 }
             }

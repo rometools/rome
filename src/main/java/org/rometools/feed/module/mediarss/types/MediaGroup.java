@@ -35,7 +35,7 @@ import com.sun.syndication.feed.impl.ToStringBean;
  * different representations.&nbsp;For instance: the same song recorded in both the WAV and MP3 format. It's an optional element that must only be used for this
  * purpose.
  * </p>
- * 
+ *
  * @author cooper
  */
 public class MediaGroup implements Cloneable, Serializable {
@@ -47,7 +47,7 @@ public class MediaGroup implements Cloneable, Serializable {
 
     /**
      * Creates a new instance of MediaGroup
-     * 
+     *
      * @param contents Contents of the group.
      */
     public MediaGroup(final MediaContent[] contents) {
@@ -56,7 +56,7 @@ public class MediaGroup implements Cloneable, Serializable {
 
     /**
      * Creates a new instance of MediaGroup
-     * 
+     *
      * @param contents contents of the group
      * @param defaultContentIndex index of the default content value.
      */
@@ -67,7 +67,7 @@ public class MediaGroup implements Cloneable, Serializable {
 
     /**
      * Creates a new instance of MediaGroup
-     * 
+     *
      * @param contents contents of the group
      * @param defaultContentIndex index of the default content item.
      * @param metadata metadata for the group.
@@ -80,7 +80,7 @@ public class MediaGroup implements Cloneable, Serializable {
 
     /**
      * MediaContents for the group
-     * 
+     *
      * @param contents MediaContents for the group
      */
     public void setContents(final MediaContent[] contents) {
@@ -89,7 +89,7 @@ public class MediaGroup implements Cloneable, Serializable {
 
     /**
      * MediaContents for the group
-     * 
+     *
      * @return MediaContents for the group
      */
     public MediaContent[] getContents() {
@@ -98,7 +98,7 @@ public class MediaGroup implements Cloneable, Serializable {
 
     /**
      * Default content index MediaContent.
-     * 
+     *
      * @param defaultContentIndex Default content index MediaContent.
      */
     public void setDefaultContentIndex(final Integer defaultContentIndex) {
@@ -115,7 +115,7 @@ public class MediaGroup implements Cloneable, Serializable {
 
     /**
      * Default content index MediaContent.
-     * 
+     *
      * @return Default content index MediaContent.
      */
     public Integer getDefaultContentIndex() {
@@ -124,7 +124,7 @@ public class MediaGroup implements Cloneable, Serializable {
 
     /**
      * Metadata for the group
-     * 
+     *
      * @param metadata Metadata for the group
      */
     public void setMetadata(final Metadata metadata) {
@@ -133,7 +133,7 @@ public class MediaGroup implements Cloneable, Serializable {
 
     /**
      * Metadata for the group
-     * 
+     *
      * @return Metadata for the group
      */
     public Metadata getMetadata() {

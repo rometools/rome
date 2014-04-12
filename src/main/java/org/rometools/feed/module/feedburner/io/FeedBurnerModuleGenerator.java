@@ -28,10 +28,10 @@ import com.sun.syndication.io.ModuleGenerator;
 
 /**
  * ModuleGenerator implementation for the FeedBurner RSS extension.
- * 
+ *
  * @version 1.0
  * @author Georg Schmidl <georg.schmidl@scandio.de>
- * 
+ *
  */
 public class FeedBurnerModuleGenerator implements ModuleGenerator {
     private static final Namespace NS = Namespace.getNamespace("feedburner", FeedBurner.URI);

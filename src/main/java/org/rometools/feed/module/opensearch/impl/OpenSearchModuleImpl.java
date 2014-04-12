@@ -131,7 +131,6 @@ public class OpenSearchModuleImpl extends ModuleImpl implements OpenSearchModule
 
     /*
      * (non-Javadoc)
-     * 
      * @see com.sun.syndication.feed.CopyFrom#copyFrom(java.lang.Object)
      */
     @Override
@@ -152,7 +151,6 @@ public class OpenSearchModuleImpl extends ModuleImpl implements OpenSearchModule
 
     /*
      * (non-Javadoc)
-     * 
      * @see com.sun.syndication.feed.CopyFrom#getInterface()
      */
     @Override

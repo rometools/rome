@@ -42,7 +42,7 @@ package org.rometools.feed.module.base.types;
 import org.rometools.feed.module.base.io.GoogleBaseParser;
 
 /**
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @version $Revision: 1.1 $
  */

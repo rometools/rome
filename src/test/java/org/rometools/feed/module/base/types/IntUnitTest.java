@@ -12,7 +12,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 /**
- * 
+ *
  * @author rcooper
  */
 public class IntUnitTest extends TestCase {

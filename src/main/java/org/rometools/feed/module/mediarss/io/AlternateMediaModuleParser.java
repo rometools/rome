@@ -12,7 +12,7 @@ package org.rometools.feed.module.mediarss.io;
 import org.jdom2.Namespace;
 
 /**
- * 
+ *
  * @author cooper
  */
 public class AlternateMediaModuleParser extends MediaModuleParser {

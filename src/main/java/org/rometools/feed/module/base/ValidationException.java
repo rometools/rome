@@ -22,11 +22,16 @@ package org.rometools.feed.module.base;
 
 /**
  * This is an unchecked exception that is thrown when a data value violates the Google Schema limits.
- * 
+ *
  * @version $Revision: 1.1 $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class ValidationException extends RuntimeException {
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
     /** Creates a new instance of ValidationException */
     public ValidationException(final String message) {

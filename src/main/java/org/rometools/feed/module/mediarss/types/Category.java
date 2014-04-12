@@ -28,33 +28,33 @@ import com.sun.syndication.feed.impl.EqualsBean;
 import com.sun.syndication.feed.impl.ToStringBean;
 
 /**
- * 
+ *
  * <strong>&lt;media:category&gt;</strong></p>
  * <p>
  * Allows a taxonomy to be set that gives an indication of the type of media content, and its particular contents. It has 2 optional attributes.
  * </p>
- * 
+ *
  * <pre>
  * &lt;media:category scheme="http://search.yahoo.com/mrss/category_
  *        schema"&gt;music/artist/album/song&lt;/media:category&gt;
- * 
+ *
  *        &lt;media:category scheme="http://dmoz.org" label="Ace Ventura - Pet
  *        Detective"&gt;Arts/Movies/Titles/A/Ace_Ventura_Series/Ace_Ventura_
  *        -_Pet_Detective&lt;/media:category&gt;
- * 
+ *
  *        &lt;media:category scheme="urn:flickr:tags"&gt;ycantpark
  *        mobile&lt;/media:category&gt;
  * </pre>
- * 
+ *
  * <p>
  * <em>scheme</em> is the URI that identifies the categorization scheme. It is an optional attribute. If this attribute is not included, the default scheme is
  * 'http://search.yahoo.com/mrss/category_schema'.
  * </p>
- * 
+ *
  * <p>
  * <em>label</em> is the human readable label that can be displayed in end user applications. It is an optional attribute.
  * </p>
- * 
+ *
  * @author cooper
  */
 public class Category implements Serializable {
@@ -69,7 +69,7 @@ public class Category implements Serializable {
 
     /**
      * Creates a new instance of Category
-     * 
+     *
      * @param scheme scheme used
      * @param label label for the category
      * @param value value of the category item
@@ -82,7 +82,7 @@ public class Category implements Serializable {
 
     /**
      * Creates a new Category.
-     * 
+     *
      * @param value value of the category.
      */
     public Category(final String value) {
@@ -91,7 +91,7 @@ public class Category implements Serializable {
 
     /**
      * label is the human readable label that can be displayed in end user applications. It is an optional attribute.
-     * 
+     *
      * @return label is the human readable label that can be displayed in end user applications. It is an optional attribute.
      */
     public String getLabel() {
@@ -101,7 +101,7 @@ public class Category implements Serializable {
     /**
      * scheme is the URI that identifies the categorization scheme. It is an optional attribute. If this attribute is not included, the default scheme is
      * 'http://search.yahoo.com/mrss/category_schema'.
-     * 
+     *
      * @return scheme is the URI that identifies the categorization scheme. It is an optional attribute. If this attribute is not included, the default scheme
      *         is 'http://search.yahoo.com/mrss/category_schema'.
      */
@@ -111,7 +111,7 @@ public class Category implements Serializable {
 
     /**
      * value of the category
-     * 
+     *
      * @return value of the category
      */
     public String getValue() {

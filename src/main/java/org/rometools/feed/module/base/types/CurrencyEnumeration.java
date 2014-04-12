@@ -43,7 +43,7 @@ import java.util.HashMap;
 
 /**
  * An Enumeration of valid currency types.
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @version $Revision: 1.1 $
  */
@@ -572,7 +572,7 @@ public class CurrencyEnumeration {
 
     /**
      * Creates a new instance of CurrencyEnumeration
-     * 
+     *
      * @param value DOCUMENT ME!
      */
     private CurrencyEnumeration(final String value) {

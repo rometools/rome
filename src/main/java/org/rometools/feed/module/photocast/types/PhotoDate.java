@@ -47,11 +47,15 @@ import java.util.Date;
 /**
  * This is a specialized Date class for working with the apple PhotoDate format. It provides a constructor taking a dobule value representing the fractional
  * number of days since 00:00:00 01/01/00.
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class PhotoDate extends Date {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private static final long Y2K = 946616400531l;
     private static final double DAY = 24 * 60 * 60 * 1000;
 
@@ -62,7 +66,7 @@ public class PhotoDate extends Date {
 
     /**
      * Creates a new instance of PhotoDate with the timestamp provided.
-     * 
+     *
      * @param time milliseconds time
      */
     public PhotoDate(final long time) {
@@ -71,7 +75,7 @@ public class PhotoDate extends Date {
 
     /**
      * Creates a new instance of PhotoDate with the fractional number of days since 00:00:00 01/01/00.
-     * 
+     *
      * @param photoDateValue fractional number of days since 00:00:00 01/01/00
      */
     public PhotoDate(final double photoDateValue) {
@@ -83,7 +87,7 @@ public class PhotoDate extends Date {
 
     /**
      * Returns a string representing the fractional number of days since 00:00:00 01/01/00.
-     * 
+     *
      * @return Returns a string representing the fractional number of days since 00:00:00 01/01/00.
      */
     @Override

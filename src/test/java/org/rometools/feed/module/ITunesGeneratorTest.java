@@ -21,7 +21,7 @@ import com.sun.syndication.io.SyndFeedOutput;
 import com.sun.syndication.io.XmlReader;
 
 /**
- * 
+ *
  * @author cooper
  */
 public class ITunesGeneratorTest extends AbstractTestCase {

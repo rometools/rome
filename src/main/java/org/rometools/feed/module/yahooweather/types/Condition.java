@@ -53,11 +53,15 @@ import com.sun.syndication.feed.impl.ToStringBean;
  * <li>date: the current date and time for which this forecast applies. [<em>I believe this should be the time this condition information was captured</em>] The
  * date is in <a href="http://www.rfc-editor.org/rfc/rfc822.txt">RFC822 Section 5</a> format, for example "Wed, 30 Nov 2005 1:56 pm PST" (string)</li>
  * </ul>
- * 
+ *
  * @version $Id: Condition.java,v 1.2 2008/01/22 14:50:05 kebernet Exp $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Condition implements Serializable, Cloneable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private final EqualsBean equals = new EqualsBean(Condition.class, this);
     private final ToStringBean toString = new ToStringBean(Condition.class, this);
     private String text;
@@ -74,7 +78,7 @@ public class Condition implements Serializable, Cloneable {
 
     /**
      * Constructs a new Condition.
-     * 
+     *
      * @param text a textual description of conditions, for example, "Partly Cloudy"
      * @param code the condition code for this forecast.
      * @param temperature the current temperature
@@ -90,7 +94,7 @@ public class Condition implements Serializable, Cloneable {
 
     /**
      * Description of condition
-     * 
+     *
      * @return a textual description of conditions, for example, "Partly Cloudy"
      */
     public String getText() {
@@ -99,7 +103,7 @@ public class Condition implements Serializable, Cloneable {
 
     /**
      * Description of condition
-     * 
+     *
      * @param text a textual description of conditions, for example, "Partly Cloudy"
      */
     public void setText(final String text) {
@@ -108,7 +112,7 @@ public class Condition implements Serializable, Cloneable {
 
     /**
      * Condition code
-     * 
+     *
      * @return condition code
      */
     public ConditionCode getCode() {
@@ -117,7 +121,7 @@ public class Condition implements Serializable, Cloneable {
 
     /**
      * Condition code
-     * 
+     *
      * @param code Condition code
      */
     public void setCode(final ConditionCode code) {
@@ -126,7 +130,7 @@ public class Condition implements Serializable, Cloneable {
 
     /**
      * Current Temperature
-     * 
+     *
      * @return the current temperature
      * @see Units
      */
@@ -136,7 +140,7 @@ public class Condition implements Serializable, Cloneable {
 
     /**
      * Current Temperature
-     * 
+     *
      * @param temperature the current temperature
      * @see Units
      */
@@ -146,7 +150,7 @@ public class Condition implements Serializable, Cloneable {
 
     /**
      * Date recorded
-     * 
+     *
      * @return the current date and time
      */
     public Date getDate() {
@@ -155,7 +159,7 @@ public class Condition implements Serializable, Cloneable {
 
     /**
      * Date recorded
-     * 
+     *
      * @param date the current date and time
      */
     public void setDate(final Date date) {

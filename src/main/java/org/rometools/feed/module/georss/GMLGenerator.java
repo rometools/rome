@@ -38,10 +38,10 @@ import com.sun.syndication.io.ModuleGenerator;
 
 /**
  * GMLGenerator produces georss elements in georss GML format.
- * 
+ *
  * @author Marc Wick
  * @version $Id: GMLGenerator.java,v 1.1 2007/04/18 09:59:29 marcwick Exp $
- * 
+ *
  */
 public class GMLGenerator implements ModuleGenerator {
 
@@ -66,7 +66,6 @@ public class GMLGenerator implements ModuleGenerator {
 
     /*
      * (non-Javadoc)
-     * 
      * @see com.sun.syndication.io.ModuleGenerator#getNamespaceUri()
      */
     @Override
@@ -76,7 +75,6 @@ public class GMLGenerator implements ModuleGenerator {
 
     /*
      * (non-Javadoc)
-     * 
      * @see com.sun.syndication.io.ModuleGenerator#getNamespaces()
      */
     @Override
@@ -86,7 +84,6 @@ public class GMLGenerator implements ModuleGenerator {
 
     /*
      * (non-Javadoc)
-     * 
      * @see com.sun.syndication.io.ModuleGenerator#generate(com.sun.syndication.feed.module.Module, org.jdom2.Element)
      */
     @Override

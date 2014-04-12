@@ -26,7 +26,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 /**
- * 
+ *
  * @author cooper
  */
 public class DurationTest extends TestCase {

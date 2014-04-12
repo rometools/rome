@@ -27,29 +27,29 @@ import com.sun.syndication.feed.impl.ToStringBean;
 
 /**
  * <strong>&lt;media:rating&gt;</strong></p>
- * 
- * 
+ *
+ *
  * <p>
  * This allows the permissible audience to be declared. If this element is not included, it assumes that no restrictions are necessary. It has one optional
  * attribute.
  * </p>
- * 
+ *
  * <pre>
  * &lt;media:rating scheme="urn:simple"&gt;adult&lt;/media:rating&gt;
  *               &lt;media:rating scheme="urn:icra"&gt;r (cz 1 lz 1 nz 1 oz 1 vz 1)&lt;/media:rating&gt;
  *               &lt;media:rating scheme="urn:mpaa"&gt;pg&lt;/media:rating&gt;
- * 
+ *
  *               &lt;media:rating scheme="urn:v-chip"&gt;tv-y7-fv&lt;/media:rating&gt;
  * </pre>
- * 
- * 
+ *
+ *
  * <p>
  * <em>scheme</em> is the URI that identifies the rating scheme. It is an optional attribute. If this attribute is not included, the default scheme is
  * urn:simple (adult | nonadult).
  * </p>
- * 
+ *
  * For compatibility, a medai:adult tag will appear in the ratings as a urn:simple equiv.
- * 
+ *
  * @author cooper
  */
 public class Rating extends AbstractSchemeValue {
@@ -67,7 +67,7 @@ public class Rating extends AbstractSchemeValue {
 
     /**
      * Constructs a new Rating object.
-     * 
+     *
      * @param scheme scheme used for the rating
      * @param value value of the rating.
      */
@@ -76,7 +76,7 @@ public class Rating extends AbstractSchemeValue {
     }
 
     /**
-     * 
+     *
      * @param obj
      * @return
      */
@@ -88,7 +88,7 @@ public class Rating extends AbstractSchemeValue {
     }
 
     /**
-     * 
+     *
      * @return
      */
     @Override
@@ -99,7 +99,7 @@ public class Rating extends AbstractSchemeValue {
     }
 
     /**
-     * 
+     *
      * @return
      */
     @Override

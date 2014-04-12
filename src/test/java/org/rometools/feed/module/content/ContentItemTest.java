@@ -11,7 +11,7 @@ import junit.framework.TestCase;
 
 /**
  * This is all standard property storage testing.
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert Cooper</a>
  */
 public class ContentItemTest extends TestCase {
@@ -114,7 +114,7 @@ public class ContentItemTest extends TestCase {
 
     /**
      * this is a stupid test.
-     * 
+     *
      * @todo make better Test of ContentResource method, of class com.totsp.xml.syndication.content.ContentItem.
      */
     public void testEquals() {

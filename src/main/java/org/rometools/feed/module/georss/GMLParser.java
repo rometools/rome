@@ -34,16 +34,15 @@ import com.sun.syndication.io.ModuleParser;
 
 /**
  * GMLParser is a parser for the GML georss format.
- * 
+ *
  * @author Marc Wick
  * @version $Id: GMLParser.java,v 1.2 2007/06/05 20:44:53 marcwick Exp $
- * 
+ *
  */
 public class GMLParser implements ModuleParser {
 
     /*
      * (non-Javadoc)
-     * 
      * @see com.sun.syndication.io.ModuleParser#getNamespaceUri()
      */
     @Override
@@ -53,7 +52,6 @@ public class GMLParser implements ModuleParser {
 
     /*
      * (non-Javadoc)
-     * 
      * @see com.sun.syndication.io.ModuleParser#parse(org.jdom2.Element)
      */
     @Override

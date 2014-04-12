@@ -36,10 +36,10 @@ import com.sun.syndication.io.ModuleGenerator;
 
 /**
  * SimpleGenerator produces georss elements in georss simple format.
- * 
+ *
  * @author Marc Wick
  * @version $Id: SimpleGenerator.java,v 1.4 2007/04/18 09:59:29 marcwick Exp $
- * 
+ *
  */
 public class SimpleGenerator implements ModuleGenerator {
 
@@ -60,7 +60,6 @@ public class SimpleGenerator implements ModuleGenerator {
 
     /*
      * (non-Javadoc)
-     * 
      * @see com.sun.syndication.io.ModuleGenerator#getNamespaceUri()
      */
     @Override
@@ -70,7 +69,6 @@ public class SimpleGenerator implements ModuleGenerator {
 
     /*
      * (non-Javadoc)
-     * 
      * @see com.sun.syndication.io.ModuleGenerator#getNamespaces()
      */
     @Override
@@ -80,7 +78,6 @@ public class SimpleGenerator implements ModuleGenerator {
 
     /*
      * (non-Javadoc)
-     * 
      * @see com.sun.syndication.io.ModuleGenerator#generate(com.sun.syndication.feed.module.Module, org.jdom2.Element)
      */
     @Override
