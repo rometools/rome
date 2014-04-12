@@ -45,6 +45,8 @@ import com.sun.syndication.io.SyndFeedOutput;
 
 public class FetcherTestServlet extends HttpServlet {
 
+    private static final long serialVersionUID = 1L;
+
     public static final String ETAG_1 = "ETAG-1";
     public static final String ETAG_2 = "ETAG-2";
 
