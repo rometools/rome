@@ -15,15 +15,15 @@
 	<packaging>pom</packaging>
 
 	<!-- Just for testing the build locally -->
-	<modules>
-		<module>../rome</module>
-		<module>../rome-certiorem</module>
-		<module>../rome-certiorem-webapp</module>
-		<module>../rome-fetcher</module>
-		<module>../rome-modules</module>
-		<module>../rome-opml</module>
-		<module>../rome-propono</module>
-	</modules>
+	<!-- <modules> -->
+	<!-- <module>../rome</module> -->
+	<!-- <module>../rome-certiorem</module> -->
+	<!-- <module>../rome-certiorem-webapp</module> -->
+	<!-- <module>../rome-fetcher</module> -->
+	<!-- <module>../rome-modules</module> -->
+	<!-- <module>../rome-opml</module> -->
+	<!-- <module>../rome-propono</module> -->
+	<!-- </modules> -->
 
 	<name>rome-parent</name>
 
@@ -158,7 +158,6 @@
 				<artifactId>guice-servlet</artifactId>
 				<version>2.0</version>
 			</dependency>
-			<!-- Xerces -->
 			<!-- Apache Commons -->
 			<dependency>
 				<groupId>commons-httpclient</groupId>
@@ -166,9 +165,9 @@
 				<version>3.1</version>
 			</dependency>
 			<dependency>
-				<groupId>commons-lang</groupId>
-				<artifactId>commons-lang</artifactId>
-				<version>2.6</version>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>3.3.1</version>
 			</dependency>
 			<dependency>
 				<groupId>commons-beanutils</groupId>
