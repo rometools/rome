@@ -21,6 +21,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.jdom2.Element;
+import org.jdom2.Namespace;
 import org.rometools.feed.module.georss.geometries.AbstractGeometry;
 import org.rometools.feed.module.georss.geometries.Point;
 import org.rometools.feed.module.georss.geometries.Position;
@@ -39,10 +40,10 @@ public class W3CGeoGenerator implements ModuleGenerator {
 
     private static boolean isShort = true;
 
-    private static final Set NAMESPACES;
+    private static final Set<Namespace> NAMESPACES;
 
     static {
-        final Set nss = new HashSet();
+        final Set<Namespace> nss = new HashSet<Namespace>();
         nss.add(GeoRSSModule.W3CGEO_NS);
         NAMESPACES = Collections.unmodifiableSet(nss);
     }
@@ -65,13 +66,14 @@ public class W3CGeoGenerator implements ModuleGenerator {
      * @see com.sun.syndication.io.ModuleGenerator#getNamespaces()
      */
     @Override
-    public Set getNamespaces() {
+    public Set<Namespace> getNamespaces() {
         return NAMESPACES;
     }
 
     /*
      * (non-Javadoc)
-     * @see com.sun.syndication.io.ModuleGenerator#generate(com.sun.syndication.feed.module.Module, org.jdom2.Element)
+     * @see com.sun.syndication.io.ModuleGenerator#generate(com.sun.syndication.feed.module.Module,
+     * org.jdom2.Element)
      */
     @Override
     public void generate(final Module module, final Element element) {

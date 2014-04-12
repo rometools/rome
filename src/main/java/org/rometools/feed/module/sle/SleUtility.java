@@ -37,7 +37,8 @@ import com.sun.syndication.io.impl.ModuleGenerators;
  * This is a utiltiy class for grouping and sorting lists of entries based on the SLE.
  *
  * <p>
- * Note, this class can <b>ONLY</b> be used on parsed feeds, unless you manually add the appropriate SleEntry objects on the items.
+ * Note, this class can <b>ONLY</b> be used on parsed feeds, unless you manually add the appropriate
+ * SleEntry objects on the items.
  * </p>
  *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
@@ -101,9 +102,10 @@ public class SleUtility {
     }
 
     /**
-     * This method will take a SyndFeed object with a SimpleListExtension on it and populate the entries with current SleEntry values for sorting and grouping.
-     * <b>NB</b>: This basically does this by re-generating the XML for all the entries then re-parsing them into the SLE data structures. It is a very heavy
-     * operation and should not be called frequently!
+     * This method will take a SyndFeed object with a SimpleListExtension on it and populate the
+     * entries with current SleEntry values for sorting and grouping. <b>NB</b>: This basically does
+     * this by re-generating the XML for all the entries then re-parsing them into the SLE data
+     * structures. It is a very heavy operation and should not be called frequently!
      */
     public static void initializeForSorting(final SyndFeed feed) throws FeedException {
         final List syndEntries = feed.getEntries();
@@ -163,7 +165,6 @@ public class SleUtility {
          * performs a selection sort on all the beans in the List
          */
         public synchronized void sortOnProperty(final Object value, final boolean ascending, final ValueStrategy strat) {
-            final Extendable temp = null;
 
             for (int i = 0; i < size() - 1; i++) {
                 for (int j = i + 1; j < size(); j++) {

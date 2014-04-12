@@ -44,29 +44,30 @@ public class GeneratorTest extends AbstractTestCase {
         final SyndFeedInput input = new SyndFeedInput();
 
         final SyndFeed feed = input.build(new File(super.getTestFile("index.rss")));
-        final List entries = feed.getEntries();
+        final List<SyndEntry> entries = feed.getEntries();
         for (int i = 0; i < entries.size(); i++) {
-            System.out.println(((SyndEntry) entries.get(i)).getModule(PhotocastModule.URI));
+            System.out.println(entries.get(i).getModule(PhotocastModule.URI));
         }
         final SyndFeedOutput output = new SyndFeedOutput();
         output.output(feed, new File("target/index.rss"));
         final SyndFeed feed2 = input.build(new File("target/index.rss"));
-        final List entries2 = feed2.getEntries();
+        final List<SyndEntry> entries2 = feed2.getEntries();
         for (int i = 0; i < entries.size(); i++) {
-            assertEquals("Module test", ((SyndEntry) entries.get(i)).getModule(PhotocastModule.URI),
-                    ((SyndEntry) entries2.get(i)).getModule(PhotocastModule.URI));
+            assertEquals("Module test", entries.get(i).getModule(PhotocastModule.URI), entries2.get(i).getModule(PhotocastModule.URI));
         }
     }
 
     /**
-     * Test of getNamespaces method, of class com.sun.syndication.feed.module.photocast.io.Generator.
+     * Test of getNamespaces method, of class
+     * com.sun.syndication.feed.module.photocast.io.Generator.
      */
     public void testGetNamespaces() {
         // TODO add your test code.
     }
 
     /**
-     * Test of getNamespaceUri method, of class com.sun.syndication.feed.module.photocast.io.Generator.
+     * Test of getNamespaceUri method, of class
+     * com.sun.syndication.feed.module.photocast.io.Generator.
      */
     public void testGetNamespaceUri() {
         // TODO add your test code.

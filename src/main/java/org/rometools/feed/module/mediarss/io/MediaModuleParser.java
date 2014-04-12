@@ -102,12 +102,13 @@ public class MediaModuleParser implements ModuleParser {
     }
 
     private MediaContent[] parseContent(final Element e) {
-        final List contents = e.getChildren("content", getNS());
-        final ArrayList values = new ArrayList();
+
+        final List<Element> contents = e.getChildren("content", getNS());
+        final ArrayList<MediaContent> values = new ArrayList<MediaContent>();
 
         try {
             for (int i = 0; contents != null && i < contents.size(); i++) {
-                final Element content = (Element) contents.get(i);
+                final Element content = contents.get(i);
                 MediaContent mc = null;
 
                 if (content.getAttributeValue("url") != null) {
@@ -194,15 +195,15 @@ public class MediaModuleParser implements ModuleParser {
             LOG.log(Level.WARNING, "Exception parsing content tag.", ex);
         }
 
-        return (MediaContent[]) values.toArray(new MediaContent[values.size()]);
+        return values.toArray(new MediaContent[values.size()]);
     }
 
     private MediaGroup[] parseGroup(final Element e) {
-        final List groups = e.getChildren("group", getNS());
-        final ArrayList values = new ArrayList();
+        final List<Element> groups = e.getChildren("group", getNS());
+        final ArrayList<MediaGroup> values = new ArrayList<MediaGroup>();
 
         for (int i = 0; groups != null && i < groups.size(); i++) {
-            final Element group = (Element) groups.get(i);
+            final Element group = groups.get(i);
             final MediaGroup g = new MediaGroup(parseContent(group));
 
             for (int j = 0; j < g.getContents().length; j++) {
@@ -217,26 +218,26 @@ public class MediaModuleParser implements ModuleParser {
             values.add(g);
         }
 
-        return (MediaGroup[]) values.toArray(new MediaGroup[values.size()]);
+        return values.toArray(new MediaGroup[values.size()]);
     }
 
     private Metadata parseMetadata(final Element e) {
         final Metadata md = new Metadata();
         // categories
         {
-            final List categories = e.getChildren("category", getNS());
-            final ArrayList values = new ArrayList();
+            final List<Element> categories = e.getChildren("category", getNS());
+            final ArrayList<Category> values = new ArrayList<Category>();
 
             for (int i = 0; categories != null && i < categories.size(); i++) {
                 try {
-                    final Element cat = (Element) categories.get(i);
+                    final Element cat = categories.get(i);
                     values.add(new Category(cat.getAttributeValue("scheme"), cat.getAttributeValue("label"), cat.getText()));
                 } catch (final Exception ex) {
                     LOG.log(Level.WARNING, "Exception parsing category tag.", ex);
                 }
             }
 
-            md.setCategories((Category[]) values.toArray(new Category[values.size()]));
+            md.setCategories(values.toArray(new Category[values.size()]));
         }
 
         // copyright
@@ -252,14 +253,14 @@ public class MediaModuleParser implements ModuleParser {
         }
         // credits
         {
-            final List credits = e.getChildren("credit", getNS());
-            final ArrayList values = new ArrayList();
+            final List<Element> credits = e.getChildren("credit", getNS());
+            final ArrayList<Credit> values = new ArrayList<Credit>();
 
             for (int i = 0; credits != null && i < credits.size(); i++) {
                 try {
-                    final Element cred = (Element) credits.get(i);
+                    final Element cred = credits.get(i);
                     values.add(new Credit(cred.getAttributeValue("scheme"), cred.getAttributeValue("role"), cred.getText()));
-                    md.setCredits((Credit[]) values.toArray(new Credit[values.size()]));
+                    md.setCredits(values.toArray(new Credit[values.size()]));
                 } catch (final Exception ex) {
                     LOG.log(Level.WARNING, "Exception parsing credit tag.", ex);
                 }
@@ -305,28 +306,28 @@ public class MediaModuleParser implements ModuleParser {
         }
         // ratings
         {
-            final List ratings = e.getChildren("rating", getNS());
-            final ArrayList values = new ArrayList();
+            final List<Element> ratings = e.getChildren("rating", getNS());
+            final ArrayList<Rating> values = new ArrayList<Rating>();
 
             for (int i = 0; ratings != null && i < ratings.size(); i++) {
                 try {
-                    final Element rat = (Element) ratings.get(i);
+                    final Element rat = ratings.get(i);
                     values.add(new Rating(rat.getAttributeValue("scheme"), rat.getText()));
                 } catch (final Exception ex) {
                     LOG.log(Level.WARNING, "Exception parsing rating tag.", ex);
                 }
             }
 
-            md.setRatings((Rating[]) values.toArray(new Rating[values.size()]));
+            md.setRatings(values.toArray(new Rating[values.size()]));
         }
         // text
         {
-            final List texts = e.getChildren("text", getNS());
-            final ArrayList values = new ArrayList();
+            final List<Element> texts = e.getChildren("text", getNS());
+            final ArrayList<Text> values = new ArrayList<Text>();
 
             for (int i = 0; texts != null && i < texts.size(); i++) {
                 try {
-                    final Element text = (Element) texts.get(i);
+                    final Element text = texts.get(i);
                     final Time start = text.getAttributeValue("start") == null ? null : new Time(text.getAttributeValue("start"));
                     final Time end = text.getAttributeValue("end") == null ? null : new Time(text.getAttributeValue("end"));
                     values.add(new Text(text.getAttributeValue("type"), text.getTextTrim(), start, end));
@@ -335,16 +336,16 @@ public class MediaModuleParser implements ModuleParser {
                 }
             }
 
-            md.setText((Text[]) values.toArray(new Text[values.size()]));
+            md.setText(values.toArray(new Text[values.size()]));
         }
         // thumbnails
         {
-            final List thumbnails = e.getChildren("thumbnail", getNS());
-            final ArrayList values = new ArrayList();
+            final List<Element> thumbnails = e.getChildren("thumbnail", getNS());
+            final ArrayList<Thumbnail> values = new ArrayList<Thumbnail>();
 
             for (int i = 0; thumbnails != null && i < thumbnails.size(); i++) {
                 try {
-                    final Element thumb = (Element) thumbnails.get(i);
+                    final Element thumb = thumbnails.get(i);
                     final Time t = thumb.getAttributeValue("time") == null ? null : new Time(thumb.getAttributeValue("time"));
                     final Integer width = thumb.getAttributeValue("width") == null ? null : new Integer(thumb.getAttributeValue("width"));
                     final Integer height = thumb.getAttributeValue("height") == null ? null : new Integer(thumb.getAttributeValue("height"));
@@ -354,7 +355,7 @@ public class MediaModuleParser implements ModuleParser {
                 }
             }
 
-            md.setThumbnail((Thumbnail[]) values.toArray(new Thumbnail[values.size()]));
+            md.setThumbnail(values.toArray(new Thumbnail[values.size()]));
         }
         // title
         {
@@ -367,11 +368,11 @@ public class MediaModuleParser implements ModuleParser {
         }
         // restrictions
         {
-            final List restrictions = e.getChildren("restriction", getNS());
-            final ArrayList values = new ArrayList();
+            final List<Element> restrictions = e.getChildren("restriction", getNS());
+            final ArrayList<Restriction> values = new ArrayList<Restriction>();
 
             for (int i = 0; i < restrictions.size(); i++) {
-                final Element r = (Element) restrictions.get(i);
+                final Element r = restrictions.get(i);
                 Restriction.Type type = null;
 
                 if (r.getAttributeValue("type").equalsIgnoreCase("uri")) {
@@ -392,7 +393,7 @@ public class MediaModuleParser implements ModuleParser {
                 values.add(value);
             }
 
-            md.setRestrictions((Restriction[]) values.toArray(new Restriction[values.size()]));
+            md.setRestrictions(values.toArray(new Restriction[values.size()]));
         }
         // handle adult
         {

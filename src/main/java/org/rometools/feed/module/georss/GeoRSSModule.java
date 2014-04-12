@@ -25,7 +25,8 @@ import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.module.ModuleImpl;
 
 /**
- * GeoRSSModule is the main georss interface defining the methods to produce and consume georss elements.
+ * GeoRSSModule is the main georss interface defining the methods to produce and consume georss
+ * elements.
  *
  * @author Marc Wick
  * @version $Id: GeoRSSModule.java,v 1.8 2007/06/06 09:47:32 marcwick Exp $
@@ -72,7 +73,7 @@ public abstract class GeoRSSModule extends ModuleImpl implements Cloneable {
      */
     public static final Namespace GML_NS = Namespace.getNamespace("gml", GeoRSSModule.GEORSS_GML_URI);
 
-    protected GeoRSSModule(final java.lang.Class beanClass, final java.lang.String uri) {
+    protected GeoRSSModule(final Class beanClass, final java.lang.String uri) {
         super(beanClass, uri);
     }
 

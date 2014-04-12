@@ -58,7 +58,7 @@ import com.sun.syndication.io.ModuleGenerator;
 public class Generator implements ModuleGenerator {
 
     private static final Namespace NS = Namespace.getNamespace("apple-wallpapers", PhotocastModule.URI);
-    private static final HashSet NAMESPACES = new HashSet();
+    private static final HashSet<Namespace> NAMESPACES = new HashSet<Namespace>();
     private static final String FEED_VERSION = "0.9";
     static {
         NAMESPACES.add(NS);
@@ -94,7 +94,7 @@ public class Generator implements ModuleGenerator {
     }
 
     @Override
-    public Set getNamespaces() {
+    public Set<Namespace> getNamespaces() {
         return Generator.NAMESPACES;
     }
 

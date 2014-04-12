@@ -53,8 +53,9 @@ import com.sun.syndication.feed.impl.ToStringBean;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class License {
+
     private static final String CC_START = "http://creativecommons.org/licenses/";
-    private static final Map lookupLicense = new ConcurrentHashMap();
+    private static final Map<String, License> lookupLicense = new ConcurrentHashMap<String, License>();
     public static final License NO_DERIVS = new License("http://creativecommons.org/licenses/nd/1.0/", new Behaviour[0], new Behaviour[] {
             Behaviour.DISTRIBUTION, Behaviour.REPRODUCTION });
     public static final License NO_DERIVS_NONCOMMERCIAL = new License("http://creativecommons.org/licenses/nd-nc/1.0/",
@@ -98,23 +99,23 @@ public class License {
     }
 
     public static License findByValue(final String uri) {
-        License found = (License) License.lookupLicense.get(uri);
+        License found = License.lookupLicense.get(uri);
 
         // No I am going to try an guess about unknown licenses
         // This is try and match known CC licenses of other versions or various URLs to
         // current licenses, then make a new one with the same permissions.
         if (found == null && uri.startsWith("http://") && uri.toLowerCase().indexOf("creativecommons.org") != -1) {
-            final Iterator it = License.lookupLicense.keySet().iterator();
+            final Iterator<String> it = License.lookupLicense.keySet().iterator();
             while (it.hasNext() && found == null) {
-                final String key = (String) it.next();
+                final String key = it.next();
                 try {
                     if (key.startsWith(CC_START)) {
                         final String licensePath = key.substring(CC_START.length(), key.length());
                         final StringTokenizer tok = new StringTokenizer(licensePath, "/");
                         final String license = tok.nextToken();
-                        final String version = tok.nextToken();
+                        // final String version = tok.nextToken();
                         if (uri.toLowerCase().indexOf("creativecommons.org/licenses/" + license) != -1) {
-                            final License current = (License) lookupLicense.get(key);
+                            final License current = lookupLicense.get(key);
                             found = new License(uri, current.getRequires(), current.getPermits());
                         }
                     }
@@ -123,7 +124,8 @@ public class License {
                 }
             }
         }
-        // OK, we got here. If we haven't found a match, return a new License with unknown permissions.
+        // OK, we got here. If we haven't found a match, return a new License with unknown
+        // permissions.
         if (found == null) {
             found = new License(uri, null, null);
         }
@@ -169,7 +171,7 @@ public class License {
     }
 
     public static class Behaviour {
-        private static final Map lookup = new HashMap();
+        private static final Map<String, Behaviour> lookup = new HashMap<String, Behaviour>();
         public static final Behaviour REPRODUCTION = new Behaviour("http://web.resource.org/cc/Reproduction");
         public static final Behaviour DISTRIBUTION = new Behaviour("http://web.resource.org/cc/Distribution");
         public static final Behaviour DERIVATIVE = new Behaviour("http://web.resource.org/cc/DerivativeWorks");
@@ -185,7 +187,7 @@ public class License {
         }
 
         public static Behaviour findByValue(final String uri) {
-            return (Behaviour) Behaviour.lookup.get(uri);
+            return Behaviour.lookup.get(uri);
         }
 
         @Override

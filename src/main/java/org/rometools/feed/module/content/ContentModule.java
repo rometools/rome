@@ -49,6 +49,7 @@ import com.sun.syndication.feed.module.Module;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public interface ContentModule extends Module {
+
     public static final String URI = "http://purl.org/rss/1.0/modules/content/";
     public static final String RDF_URI = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
 
@@ -57,14 +58,14 @@ public interface ContentModule extends Module {
      *
      * @return List of content Strings
      */
-    public List getEncodeds();
+    public List<String> getEncodeds();
 
     /**
      * Sets a List of Strings containing the New Syntax Encoded values are in the element.
      *
      * @return List of content Strings
      */
-    public void setEncodeds(List encodeds);
+    public void setEncodeds(List<String> encodeds);
 
     @Override
     public String getUri();
@@ -77,7 +78,7 @@ public interface ContentModule extends Module {
      * @see com.totsp.xml.syndication.content.ContentItem
      * @return List of ContentItems.
      */
-    public List getContentItems();
+    public List<ContentItem> getContentItems();
 
     /**
      * Contains a list of ContentItems that represent the "Original Syntax" set.
@@ -85,19 +86,21 @@ public interface ContentModule extends Module {
      * @see com.totsp.xml.syndication.content.ContentItem
      * @param List of ContentItems.
      */
-    public void setContentItems(List list);
+    public void setContentItems(List<ContentItem> list);
 
     /**
-     * Returns a List of Strings containing whatever new or original syntax items are in the element.
+     * Returns a List of Strings containing whatever new or original syntax items are in the
+     * element.
      *
      * @return List of content Strings
      */
-    public List getContents();
+    public List<String> getContents();
 
     /**
      * Sets a List of Strings containing whatever new or original syntax items are in the element.
      *
      * @return List of content Strings
      */
-    public void setContents(List contents);
+    public void setContents(List<String> contents);
+
 }

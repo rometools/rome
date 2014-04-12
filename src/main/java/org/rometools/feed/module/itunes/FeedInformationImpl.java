@@ -47,6 +47,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.rometools.feed.module.itunes.types.Category;
+
 import com.sun.syndication.feed.CopyFrom;
 
 /**
@@ -63,7 +65,7 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
     private String ownerName;
     private String ownerEmailAddress;
     private URL image;
-    private List categories;
+    private List<Category> categories;
 
     /**
      * Creates a new instance of FeedInformationImpl
@@ -77,8 +79,8 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
      * @return The parent categories for this feed
      */
     @Override
-    public List getCategories() {
-        return categories == null ? (categories = new ArrayList()) : categories;
+    public List<Category> getCategories() {
+        return categories == null ? (categories = new ArrayList<Category>()) : categories;
     }
 
     /**
@@ -87,7 +89,7 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
      * @param categories The parent categories for this feed
      */
     @Override
-    public void setCategories(final List categories) {
+    public void setCategories(final List<Category> categories) {
         this.categories = categories;
     }
 

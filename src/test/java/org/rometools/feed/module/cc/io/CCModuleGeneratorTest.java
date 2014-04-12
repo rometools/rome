@@ -57,13 +57,18 @@ public class CCModuleGeneratorTest extends AbstractTestCase {
                 output.output(feed, new File("target/" + testFiles[h].getName()));
                 final SyndFeed feed2 = input.build(new File("target/" + testFiles[h].getName()));
                 for (int i = 0; i < feed.getEntries().size(); i++) {
-                    final SyndEntry entry = feed.getEntries().get(i);
+                    // FIXME
+                    // final SyndEntry entry = feed.getEntries().get(i);
                     final SyndEntry entry2 = feed2.getEntries().get(i);
-                    final CreativeCommons base = (CreativeCommons) entry.getModule(CreativeCommons.URI);
+                    // / FIXME
+                    // final CreativeCommons base = (CreativeCommons)
+                    // entry.getModule(CreativeCommons.URI);
                     final CreativeCommons base2 = (CreativeCommons) entry2.getModule(CreativeCommons.URI);
                     System.out.println(base2);
+                    // FIXME
                     // if( base != null)
-                    // this.assertEquals( testFiles[h].getName(), base.getLicenses(), base2.getLicenses() );
+                    // this.assertEquals( testFiles[h].getName(), base.getLicenses(),
+                    // base2.getLicenses() );
                 }
             }
         }

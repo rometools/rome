@@ -41,6 +41,7 @@
 package org.rometools.feed.module.slash.io;
 
 import java.util.HashSet;
+import java.util.Set;
 
 import org.jdom2.Element;
 import org.jdom2.Namespace;
@@ -57,7 +58,7 @@ import com.sun.syndication.io.ModuleGenerator;
  */
 public class SlashModuleGenerator implements ModuleGenerator {
 
-    private static final Namespace NS = Namespace.getNamespace("slash", Slash.URI);
+    private static final Namespace NAMESPACE = Namespace.getNamespace("slash", Slash.URI);
 
     /** Creates a new instance of SlashModuleGenerator */
     public SlashModuleGenerator() {
@@ -93,15 +94,15 @@ public class SlashModuleGenerator implements ModuleGenerator {
     }
 
     protected Element generateSimpleElement(final String name, final String value) {
-        final Element element = new Element(name, SlashModuleGenerator.NS);
+        final Element element = new Element(name, SlashModuleGenerator.NAMESPACE);
         element.addContent(value);
         return element;
     }
 
     @Override
-    public java.util.Set getNamespaces() {
-        final HashSet set = new HashSet();
-        set.add(SlashModuleGenerator.NS);
+    public Set<Namespace> getNamespaces() {
+        final HashSet<Namespace> set = new HashSet<Namespace>();
+        set.add(SlashModuleGenerator.NAMESPACE);
         return set;
     }
 

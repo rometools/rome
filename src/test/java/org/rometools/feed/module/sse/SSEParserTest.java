@@ -18,6 +18,7 @@ import junit.framework.Test;
 import junit.framework.TestSuite;
 
 import org.jdom2.Attribute;
+import org.jdom2.Content;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.input.SAXBuilder;
@@ -63,7 +64,7 @@ public class SSEParserTest extends AbstractTestCase {
     }
 
     public void xtestParseGenerateV5() throws Exception {
-        final URL feedURL = new File(getTestFile("xml/v/v5.xml")).toURL();
+        final URL feedURL = new File(getTestFile("xml/v/v5.xml")).toURI().toURL();
         // parse the document for comparison
         final SAXBuilder builder = new SAXBuilder();
         final Document directlyBuilt = builder.build(feedURL);
@@ -77,8 +78,10 @@ public class SSEParserTest extends AbstractTestCase {
 
         // XMLOutputter outputter = new XMLOutputter();
         // outputter.setFormat(Format.getPrettyFormat());
-        // outputter.output(directlyBuilt, new FileOutputStream("c:\\cygwin\\tmp\\sync-direct.xml"));
-        // outputter.output(parsedAndGenerated, new FileOutputStream("c:\\cygwin\\tmp\\sync-pg.xml"));
+        // outputter.output(directlyBuilt, new
+        // FileOutputStream("c:\\cygwin\\tmp\\sync-direct.xml"));
+        // outputter.output(parsedAndGenerated, new
+        // FileOutputStream("c:\\cygwin\\tmp\\sync-pg.xml"));
 
         assertDocumentsEqual(directlyBuilt, parsedAndGenerated);
     }
@@ -115,8 +118,8 @@ public class SSEParserTest extends AbstractTestCase {
     }
 
     private boolean equalAttributes(final Element one, final Element two, final boolean doAssert) {
-        final List attrs1 = one.getAttributes();
-        final List attrs2 = two.getAttributes();
+        final List<Attribute> attrs1 = one.getAttributes();
+        final List<Attribute> attrs2 = two.getAttributes();
 
         boolean equal = nullEqual(attrs1, attrs2);
         if (doAssert) {
@@ -128,9 +131,9 @@ public class SSEParserTest extends AbstractTestCase {
         }
 
         if (equal) {
-            for (final Iterator oneIter = attrs1.iterator(); oneIter.hasNext();) {
+            for (final Object element : attrs1) {
                 // compare the attributes in an order insensitive way
-                final Attribute a1 = (Attribute) oneIter.next();
+                final Attribute a1 = (Attribute) element;
                 final Attribute a2 = findAttribute(a1.getName(), attrs2);
 
                 equal = a2 != null;
@@ -165,9 +168,8 @@ public class SSEParserTest extends AbstractTestCase {
         return equal;
     }
 
-    private Attribute findAttribute(final String name, final List attrs) {
-        for (final Iterator attrIter = attrs.iterator(); attrIter.hasNext();) {
-            final Attribute a = (Attribute) attrIter.next();
+    private Attribute findAttribute(final String name, final List<Attribute> attrs) {
+        for (final Attribute a : attrs) {
             if (a.getName().equalsIgnoreCase(name)) {
                 return a;
             }
@@ -176,8 +178,8 @@ public class SSEParserTest extends AbstractTestCase {
     }
 
     private void asserEqualContent(final Element one, final Element two) {
-        final List oneContent = one.getContent();
-        final List twoContent = two.getContent();
+        final List<Content> oneContent = one.getContent();
+        final List<Content> twoContent = two.getContent();
         if (bothNull(oneContent, twoContent)) {
             return;
         }
@@ -186,15 +188,13 @@ public class SSEParserTest extends AbstractTestCase {
         assertEqualAttributes(one, two);
 
         // scan through the content to make sure each element is equal
-        for (final Iterator oneIter = oneContent.iterator(); oneIter.hasNext();) {
-            final Object content1 = oneIter.next();
+        for (final Object content1 : oneContent) {
             if (content1 instanceof Element) {
                 final Element e1 = (Element) content1;
 
                 boolean foundEqual = false;
-                final List messages = new ArrayList();
-                for (final Iterator twoIter = twoContent.iterator(); twoIter.hasNext();) {
-                    final Object o = twoIter.next();
+                final ArrayList<String> messages = new ArrayList<String>();
+                for (final Object o : twoContent) {
                     if (o instanceof Element) {
                         final Element e2 = (Element) o;
 
@@ -233,13 +233,13 @@ public class SSEParserTest extends AbstractTestCase {
     public void xtestV5() throws Exception {
         final File feed = new File(getTestFile("xml/v/v5.xml"));
         final SyndFeedInput input = new SyndFeedInput();
-        final SyndFeed syndfeed = input.build(new XmlReader(feed.toURL()));
+        final SyndFeed syndfeed = input.build(new XmlReader(feed.toURI().toURL()));
 
-        final List entries = syndfeed.getEntries();
-        final Iterator it = entries.iterator();
+        final List<SyndEntry> entries = syndfeed.getEntries();
+        final Iterator<SyndEntry> it = entries.iterator();
 
         for (int id = 101; it.hasNext() && id <= 113; id++) {
-            final SyndEntry entry = (SyndEntry) it.next();
+            final SyndEntry entry = it.next();
             final Sync sync = (Sync) entry.getModule(SSEModule.SSE_SCHEMA_URI);
             assertEquals(String.valueOf(id), sync.getId());
 
@@ -254,16 +254,16 @@ public class SSEParserTest extends AbstractTestCase {
 
         for (int ep = 1; ep <= 2; ep++) {
             for (int i = 100; i < 102; i++) {
-                final SyndEntry entry = (SyndEntry) it.next();
+                final SyndEntry entry = it.next();
                 final Sync sync = (Sync) entry.getModule(SSEModule.SSE_SCHEMA_URI);
                 final String id = sync.getId();
                 assertEquals("ep" + ep + "." + i, id);
 
                 if (id.equals("ep1.100")) {
-                    final List conflicts = sync.getConflicts();
+                    final List<Conflict> conflicts = sync.getConflicts();
                     assertNotNull(conflicts);
 
-                    final Conflict conflict = (Conflict) conflicts.get(0);
+                    final Conflict conflict = conflicts.get(0);
                     final Item conflictItem = conflict.getItem();
 
                     assertEquals(conflictItem.getTitle(), "Phish - Coventry Live (the last *good* concert)");

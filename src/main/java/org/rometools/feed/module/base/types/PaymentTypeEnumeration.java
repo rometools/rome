@@ -47,7 +47,9 @@ import java.util.HashMap;
  * @version $Revision: 1.1 $
  */
 public class PaymentTypeEnumeration {
-    private static final HashMap lookup = new HashMap();
+
+    private static final HashMap<String, PaymentTypeEnumeration> lookup = new HashMap<String, PaymentTypeEnumeration>();
+
     public static final PaymentTypeEnumeration CASH = new PaymentTypeEnumeration("Cash");
     public static final PaymentTypeEnumeration CHECK = new PaymentTypeEnumeration("Check");
     public static final PaymentTypeEnumeration TRAVELERS_CHECK = new PaymentTypeEnumeration("Traveler�s Check");
@@ -70,7 +72,7 @@ public class PaymentTypeEnumeration {
     }
 
     public static PaymentTypeEnumeration findByValue(final String value) {
-        return (PaymentTypeEnumeration) lookup.get(value.toUpperCase());
+        return lookup.get(value.toUpperCase());
     }
 
     @Override

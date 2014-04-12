@@ -10,10 +10,10 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.Assert;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
+import org.junit.Assert;
 import org.rometools.feed.module.AbstractTestCase;
 import org.rometools.feed.module.base.GoogleBase;
 import org.rometools.feed.module.base.GoogleBaseImpl;
@@ -85,7 +85,7 @@ public class GoogleBaseGeneratorTest extends AbstractTestCase {
         feed.setLink("http://rome.dev.java.net");
         feed.setDescription("This feed has been created using Rome (Java syndication utilities");
 
-        final List entries = new ArrayList();
+        final List<SyndEntry> entries = new ArrayList<SyndEntry>();
         SyndEntry entry;
         SyndContent description;
 
@@ -104,6 +104,7 @@ public class GoogleBaseGeneratorTest extends AbstractTestCase {
         product.setCondition("New");
         product.setDeliveryNotes("Insight");
 
+        // FIXME
         final List modules = new ArrayList();
         modules.add(vehicle);
         modules.add(product);

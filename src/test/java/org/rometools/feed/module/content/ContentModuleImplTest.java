@@ -19,7 +19,8 @@ import junit.framework.TestCase;
 public class ContentModuleImplTest extends TestCase {
 
     private final ContentModuleImpl module = new ContentModuleImpl();
-    public static ArrayList contentItems = new ArrayList();
+    public static ArrayList<ContentItem> contentItems = new ArrayList<ContentItem>();
+
     static {
         ContentItem item = new ContentItem();
         item.setContentFormat("http://www.w3.org/1999/xhtml");
@@ -73,12 +74,12 @@ public class ContentModuleImplTest extends TestCase {
      * Test of getEncodeds method, of class com.totsp.xml.syndication.content.ContentModuleImpl.
      */
     public void testEncodeds() {
-        final ArrayList encodeds = new ArrayList();
+        final ArrayList<String> encodeds = new ArrayList<String>();
         encodeds.add("Foo");
         encodeds.add("Bar");
         encodeds.add("Baz");
         module.setEncodeds(encodeds);
-        final List check = module.getEncodeds();
+        final List<String> check = module.getEncodeds();
         assertTrue(check.equals(encodeds));
 
     }
@@ -105,12 +106,12 @@ public class ContentModuleImplTest extends TestCase {
      */
     public void testContents() {
         System.out.println("testContents");
-        final ArrayList contents = new ArrayList();
+        final ArrayList<String> contents = new ArrayList<String>();
         contents.add("Foo");
         contents.add("Bar");
         contents.add("Baz");
         module.setContents(contents);
-        final List check = module.getContents();
+        final List<String> check = module.getContents();
         assertTrue(check.equals(contents));
     }
 

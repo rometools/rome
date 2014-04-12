@@ -111,7 +111,7 @@ public class GoogleBaseParser implements ModuleParser {
 
     @Override
     public Module parse(final Element element, final Locale locale) {
-        final HashMap tag2pd = new HashMap();
+        final HashMap<String, PropertyDescriptor> tag2pd = new HashMap<String, PropertyDescriptor>();
         final GoogleBaseImpl module = new GoogleBaseImpl();
 
         try {
@@ -128,14 +128,14 @@ public class GoogleBaseParser implements ModuleParser {
             throw new RuntimeException("Exception building tag to property mapping. ", e);
         }
 
-        final List children = element.getChildren();
-        final Iterator it = children.iterator();
+        final List<Element> children = element.getChildren();
+        final Iterator<Element> it = children.iterator();
 
         while (it.hasNext()) {
-            final Element child = (Element) it.next();
+            final Element child = it.next();
 
             if (child.getNamespace().equals(GoogleBaseParser.NS)) {
-                final PropertyDescriptor pd = (PropertyDescriptor) tag2pd.get(child.getName());
+                final PropertyDescriptor pd = tag2pd.get(child.getName());
 
                 if (pd != null) {
                     try {

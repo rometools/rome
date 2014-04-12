@@ -75,21 +75,21 @@ public class ModuleParserRSS2 implements ModuleParser {
             while (!root.getName().equals("channel") && !root.getName().equals("feed")) {
                 root = root.getParentElement();
             }
-            final ArrayList licenses = new ArrayList();
-            List items = null;
+            final ArrayList<License> licenses = new ArrayList<License>();
+            List<Element> items = null;
             if (root.getName().equals("channel")) {
                 items = root.getChildren("item");
             } else {
                 items = root.getChildren("entry");
             }
 
-            final Iterator iit = items.iterator();
+            final Iterator<Element> iit = items.iterator();
             while (iit.hasNext()) {
-                final Element item = (Element) iit.next();
-                final List licenseTags = item.getChildren("license", NS);
-                final Iterator lit = licenseTags.iterator();
+                final Element item = iit.next();
+                final List<Element> licenseTags = item.getChildren("license", NS);
+                final Iterator<Element> lit = licenseTags.iterator();
                 while (lit.hasNext()) {
-                    final Element licenseTag = (Element) lit.next();
+                    final Element licenseTag = lit.next();
                     final License license = License.findByValue(licenseTag.getTextTrim());
                     if (!licenses.contains(license)) {
                         ;
@@ -98,19 +98,19 @@ public class ModuleParserRSS2 implements ModuleParser {
                 }
             }
             if (licenses.size() > 0) {
-                module.setAllLicenses((License[]) licenses.toArray(new License[0]));
+                module.setAllLicenses(licenses.toArray(new License[0]));
             }
         }
         // do element local
-        final ArrayList licenses = new ArrayList();
-        final List licenseTags = element.getChildren("license", NS);
-        final Iterator it = licenseTags.iterator();
+        final ArrayList<License> licenses = new ArrayList<License>();
+        final List<Element> licenseTags = element.getChildren("license", NS);
+        final Iterator<Element> it = licenseTags.iterator();
         while (it.hasNext()) {
-            final Element licenseTag = (Element) it.next();
+            final Element licenseTag = it.next();
             licenses.add(License.findByValue(licenseTag.getTextTrim()));
         }
         if (licenses.size() > 0) {
-            module.setLicenses((License[]) licenses.toArray(new License[0]));
+            module.setLicenses(licenses.toArray(new License[0]));
         }
 
         if (module.getLicenses() != null && module.getAllLicenses() != null) {

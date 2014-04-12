@@ -55,9 +55,9 @@ public class WeatherModuleParserTest extends AbstractTestCase {
             }
 
             final SyndFeed feed = input.build(testFiles[h]);
-            final List entries = feed.getEntries();
+            final List<SyndEntry> entries = feed.getEntries();
             for (int i = 0; i < entries.size(); i++) {
-                final SyndEntry entry = (SyndEntry) entries.get(i);
+                final SyndEntry entry = entries.get(i);
                 System.out.println(entry.getModules().size());
                 for (int j = 0; j < entry.getModules().size(); j++) {
                     System.out.println(entry.getModules().get(j).getClass());

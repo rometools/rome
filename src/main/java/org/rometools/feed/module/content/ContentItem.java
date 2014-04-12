@@ -43,8 +43,11 @@ package org.rometools.feed.module.content;
 
 import java.util.List;
 
+import org.jdom2.Namespace;
+
 /**
- * This class represents a content item per the "Original Syntax". http://purl.org/rss/1.0/modules/content/
+ * This class represents a content item per the "Original Syntax".
+ * http://purl.org/rss/1.0/modules/content/
  *
  * @version $Revision: 1.1 $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
@@ -56,7 +59,7 @@ public class ContentItem implements Cloneable {
     private List contentValueDOM;
     private String contentAbout;
     private String contentValueParseType;
-    private List contentValueNamespace;
+    private List<Namespace> contentValueNamespace;
     private String contentResource;
 
     /** Creates a new instance of ContentItem */
@@ -111,11 +114,11 @@ public class ContentItem implements Cloneable {
         this.contentValueParseType = contentValueParseType;
     }
 
-    public List getContentValueNamespaces() {
+    public List<Namespace> getContentValueNamespaces() {
         return contentValueNamespace;
     }
 
-    public void setContentValueNamespaces(final List contentValueNamespace) {
+    public void setContentValueNamespaces(final List<Namespace> contentValueNamespace) {
         this.contentValueNamespace = contentValueNamespace;
     }
 

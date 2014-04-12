@@ -139,7 +139,7 @@ public class ShippingType implements CloneableType {
         /**
          * Looks up a ServiceEnumeration based on the string value.
          */
-        private static final HashMap lookup = new HashMap();
+        private static final HashMap<String, ServiceEnumeration> lookup = new HashMap<String, ServiceEnumeration>();
         /**
          * Standard
          */
@@ -184,7 +184,7 @@ public class ShippingType implements CloneableType {
          * @return ServiceEnumeration or null.
          */
         public static ServiceEnumeration findByValue(final String value) {
-            return (ServiceEnumeration) lookup.get(value.toUpperCase());
+            return lookup.get(value.toUpperCase());
         }
 
         /**

@@ -60,12 +60,13 @@ import org.rometools.feed.module.content.ContentModule;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class ContentModuleGenerator implements com.sun.syndication.io.ModuleGenerator {
+
     private static final Namespace CONTENT_NS = Namespace.getNamespace("content", ContentModule.URI);
     private static final Namespace RDF_NS = Namespace.getNamespace("rdf", ContentModule.RDF_URI);
-    private static final Set NAMESPACES;
+    private static final Set<Namespace> NAMESPACES;
 
     static {
-        final Set nss = new HashSet();
+        final Set<Namespace> nss = new HashSet<Namespace>();
         nss.add(CONTENT_NS);
         NAMESPACES = Collections.unmodifiableSet(nss);
     }
@@ -91,9 +92,8 @@ public class ContentModuleGenerator implements com.sun.syndication.io.ModuleGene
 
         final ContentModule cm = (ContentModule) module;
 
-        final List encodeds = cm.getEncodeds();
+        final List<String> encodeds = cm.getEncodeds();
 
-        //
         if (encodeds != null) {
             System.out.println(cm.getEncodeds().size());
             for (int i = 0; i < encodeds.size(); i++) {
@@ -101,7 +101,7 @@ public class ContentModuleGenerator implements com.sun.syndication.io.ModuleGene
             }
         }
 
-        final List contentItems = cm.getContentItems();
+        final List<ContentItem> contentItems = cm.getContentItems();
 
         if (contentItems != null && contentItems.size() > 0) {
             final Element items = new Element("items", CONTENT_NS);
@@ -109,7 +109,7 @@ public class ContentModuleGenerator implements com.sun.syndication.io.ModuleGene
             items.addContent(bag);
 
             for (int i = 0; i < contentItems.size(); i++) {
-                final ContentItem contentItem = (ContentItem) contentItems.get(i);
+                final ContentItem contentItem = contentItems.get(i);
                 final Element li = new Element("li", RDF_NS);
                 final Element item = new Element("item", CONTENT_NS);
 
@@ -144,14 +144,14 @@ public class ContentModuleGenerator implements com.sun.syndication.io.ModuleGene
                     }
 
                     if (contentItem.getContentValueNamespaces() != null) {
-                        final List namespaces = contentItem.getContentValueNamespaces();
+                        final List<Namespace> namespaces = contentItem.getContentValueNamespaces();
 
                         for (int ni = 0; ni < namespaces.size(); ni++) {
-                            value.addNamespaceDeclaration((Namespace) namespaces.get(ni));
+                            value.addNamespaceDeclaration(namespaces.get(ni));
                         }
                     }
 
-                    final List detached = new ArrayList();
+                    final List<Content> detached = new ArrayList<Content>();
 
                     for (int c = 0; c < contentItem.getContentValueDOM().size(); c++) {
                         detached.add(((Content) contentItem.getContentValueDOM().get(c)).clone().detach());
@@ -190,7 +190,7 @@ public class ContentModuleGenerator implements com.sun.syndication.io.ModuleGene
     }
 
     @Override
-    public java.util.Set getNamespaces() {
+    public Set<Namespace> getNamespaces() {
         return NAMESPACES;
     }
 }

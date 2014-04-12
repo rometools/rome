@@ -51,11 +51,11 @@ public class ModuleParserTest extends AbstractTestCase {
             }
             System.out.println(testFiles[h].getName());
             final SyndFeed feed = input.build(testFiles[h]);
-            final List entries = feed.getEntries();
+            final List<SyndEntry> entries = feed.getEntries();
             final CreativeCommons fMod = (CreativeCommons) feed.getModule(CreativeCommons.URI);
             System.out.println(fMod);
             for (int i = 0; i < entries.size(); i++) {
-                final SyndEntry entry = (SyndEntry) entries.get(i);
+                final SyndEntry entry = entries.get(i);
                 final CreativeCommons eMod = (CreativeCommons) entry.getModule(CreativeCommons.URI);
                 System.out.println("\nEntry:");
                 System.out.println(eMod);

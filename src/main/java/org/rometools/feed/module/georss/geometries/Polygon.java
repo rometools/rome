@@ -24,7 +24,7 @@ public final class Polygon extends AbstractSurface implements Cloneable {
      */
     private static final long serialVersionUID = 1L;
     private AbstractRing exterior;
-    private List interior;
+    private List<AbstractRing> interior;
 
     /** Creates a new instance of Polygon */
     public Polygon() {
@@ -38,11 +38,11 @@ public final class Polygon extends AbstractSurface implements Cloneable {
             retval.exterior = (AbstractRing) exterior.clone();
         }
         if (interior != null) {
-            retval.interior = new ArrayList();
-            final Iterator it = interior.iterator();
+            retval.interior = new ArrayList<AbstractRing>();
+            final Iterator<AbstractRing> it = interior.iterator();
             while (it.hasNext()) {
-                final AbstractRing r = (AbstractRing) it.next();
-                retval.interior.add(r.clone());
+                final AbstractRing r = it.next();
+                retval.interior.add((AbstractRing) r.clone());
             }
         }
         return retval;
@@ -66,7 +66,7 @@ public final class Polygon extends AbstractSurface implements Cloneable {
         }
 
         // Not efficient.... (but the number of internal ringr is usually small).
-        Iterator it = interior.iterator();
+        Iterator<AbstractRing> it = interior.iterator();
         while (it.hasNext()) {
             if (!pol.interior.contains(it.next())) {
                 return false;
@@ -95,9 +95,9 @@ public final class Polygon extends AbstractSurface implements Cloneable {
      *
      * @return the list of border rings
      */
-    public List getInterior() {
+    public List<AbstractRing> getInterior() {
         if (interior == null) {
-            interior = new ArrayList();
+            interior = new ArrayList<AbstractRing>();
         }
         return interior;
     }
@@ -116,7 +116,7 @@ public final class Polygon extends AbstractSurface implements Cloneable {
      *
      * @param interior the list of inner rings
      */
-    public void setInterior(final List interior) {
+    public void setInterior(final List<AbstractRing> interior) {
         this.interior = interior;
     }
 }

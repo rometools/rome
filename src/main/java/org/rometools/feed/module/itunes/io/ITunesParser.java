@@ -42,12 +42,12 @@ package org.rometools.feed.module.itunes.io;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.StringTokenizer;
 import java.util.logging.Logger;
 
+import org.jdom2.Content;
 import org.jdom2.Element;
 import org.jdom2.Namespace;
 import org.jdom2.output.XMLOutputter;
@@ -117,9 +117,9 @@ public class ITunesParser implements ModuleParser {
                 }
             }
 
-            final List categories = element.getChildren("category", ns);
-            for (final Iterator it = categories.iterator(); it.hasNext();) {
-                final Element category = (Element) it.next();
+            final List<Element> categories = element.getChildren("category", ns);
+            for (final Element element2 : categories) {
+                final Element category = element2;
                 if (category != null && category.getAttribute("text") != null) {
                     final Category cat = new Category();
                     cat.setName(category.getAttribute("text").getValue().trim());
@@ -201,9 +201,8 @@ public class ITunesParser implements ModuleParser {
     protected String getXmlInnerText(final Element e) {
         final StringBuffer sb = new StringBuffer();
         final XMLOutputter xo = new XMLOutputter();
-        final List children = e.getContent();
+        final List<Content> children = e.getContent();
         sb.append(xo.outputString(children));
-
         return sb.toString();
     }
 }

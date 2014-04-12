@@ -48,6 +48,7 @@ import java.util.List;
 import java.util.Locale;
 
 import org.jdom2.Attribute;
+import org.jdom2.Content;
 import org.jdom2.Element;
 import org.jdom2.Namespace;
 import org.jdom2.output.XMLOutputter;
@@ -76,31 +77,31 @@ public class ContentModuleParser implements com.sun.syndication.io.ModuleParser 
     public com.sun.syndication.feed.module.Module parse(final Element element, final Locale locale) {
         boolean foundSomething = false;
         final ContentModule cm = new ContentModuleImpl();
-        final List encodeds = element.getChildren("encoded", CONTENT_NS);
-        final ArrayList contentStrings = new ArrayList();
-        final ArrayList encodedStrings = new ArrayList();
+        final List<Element> encodeds = element.getChildren("encoded", CONTENT_NS);
+        final ArrayList<String> contentStrings = new ArrayList<String>();
+        final ArrayList<String> encodedStrings = new ArrayList<String>();
 
         if (encodeds.size() > 0) {
             foundSomething = true;
 
             for (int i = 0; i < encodeds.size(); i++) {
-                final Element encodedElement = (Element) encodeds.get(i);
+                final Element encodedElement = encodeds.get(i);
                 encodedStrings.add(encodedElement.getText());
                 contentStrings.add(encodedElement.getText());
             }
         }
 
-        final ArrayList contentItems = new ArrayList();
-        final List items = element.getChildren("items", CONTENT_NS);
+        final ArrayList<ContentItem> contentItems = new ArrayList<ContentItem>();
+        final List<Element> items = element.getChildren("items", CONTENT_NS);
 
         for (int i = 0; i < items.size(); i++) {
             foundSomething = true;
 
-            final List lis = ((Element) items.get(i)).getChild("Bag", RDF_NS).getChildren("li", RDF_NS);
+            final List<Element> lis = items.get(i).getChild("Bag", RDF_NS).getChildren("li", RDF_NS);
 
             for (int j = 0; j < lis.size(); j++) {
                 final ContentItem ci = new ContentItem();
-                final Element li = (Element) lis.get(j);
+                final Element li = lis.get(j);
                 final Element item = li.getChild("item", CONTENT_NS);
                 final Element format = item.getChild("format", CONTENT_NS);
                 final Element encoding = item.getChild("encoding", CONTENT_NS);
@@ -153,7 +154,7 @@ public class ContentModuleParser implements com.sun.syndication.io.ModuleParser 
     protected String getXmlInnerText(final Element e) {
         final StringBuffer sb = new StringBuffer();
         final XMLOutputter xo = new XMLOutputter();
-        final List children = e.getContent();
+        final List<Content> children = e.getContent();
         sb.append(xo.outputString(children));
 
         return sb.toString();

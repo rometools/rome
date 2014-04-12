@@ -35,33 +35,33 @@ public class CustomTagsImpl implements CustomTags {
      *
      */
     private static final long serialVersionUID = 1L;
-    private List values;
+    private List<CustomTag> values;
 
     /** Creates a new instance of CustomTagsImpl */
     public CustomTagsImpl() {
     }
 
     @Override
-    public List getValues() {
-        values = values == null ? new ArrayList() : values;
+    public List<CustomTag> getValues() {
+        values = values == null ? new ArrayList<CustomTag>() : values;
         return values;
     }
 
     @Override
-    public void setValues(final List values) {
+    public void setValues(final List<CustomTag> values) {
         this.values = values;
     }
 
     @Override
     public void copyFrom(final CopyFrom object) {
         final CustomTags ct = (CustomTags) object;
-        values = new ArrayList(ct.getValues());
+        values = new ArrayList<CustomTag>(ct.getValues());
     }
 
     @Override
     public Object clone() {
         final CustomTagsImpl cti = new CustomTagsImpl();
-        cti.values = new ArrayList(values);
+        cti.values = new ArrayList<CustomTag>(values);
         return cti;
     }
 

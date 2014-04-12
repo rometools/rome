@@ -41,7 +41,8 @@
 package org.rometools.feed.module.itunes.io;
 
 import java.util.HashSet;
-import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 import org.jdom2.Element;
 import org.jdom2.Namespace;
@@ -58,11 +59,12 @@ import com.sun.syndication.io.ModuleGenerator;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class ITunesGenerator implements ModuleGenerator {
-    private static final HashSet SET = new HashSet();
-    private static final Namespace NS = Namespace.getNamespace(AbstractITunesObject.PREFIX, AbstractITunesObject.URI);
+
+    private static final HashSet<Namespace> NAMESPACES = new HashSet<Namespace>();
+    private static final Namespace NAMESPACE = Namespace.getNamespace(AbstractITunesObject.PREFIX, AbstractITunesObject.URI);
 
     static {
-        SET.add(NS);
+        NAMESPACES.add(NAMESPACE);
     }
 
     /** Creates a new instance of ITunesGenerator */
@@ -77,7 +79,7 @@ public class ITunesGenerator implements ModuleGenerator {
             root = (Element) root.getParent();
         }
 
-        root.addNamespaceDeclaration(NS);
+        root.addNamespaceDeclaration(NAMESPACE);
 
         if (!(module instanceof AbstractITunesObject)) {
             return;
@@ -102,8 +104,9 @@ public class ITunesGenerator implements ModuleGenerator {
                 element.addContent(image);
             }
 
-            for (final Iterator it = info.getCategories().iterator(); it.hasNext();) {
-                final Category cat = (Category) it.next();
+            final List<Category> categories = info.getCategories();
+            for (final Category cat : categories) {
+
                 final Element category = generateSimpleElement("category", "");
                 category.setAttribute("text", cat.getName());
 
@@ -166,8 +169,8 @@ public class ITunesGenerator implements ModuleGenerator {
      * @return set of Namespace objects.
      */
     @Override
-    public java.util.Set getNamespaces() {
-        return SET;
+    public Set<Namespace> getNamespaces() {
+        return NAMESPACES;
     }
 
     /**
@@ -181,7 +184,7 @@ public class ITunesGenerator implements ModuleGenerator {
     }
 
     protected Element generateSimpleElement(final String name, final String value) {
-        final Element element = new Element(name, NS);
+        final Element element = new Element(name, NAMESPACE);
         element.addContent(value);
 
         return element;

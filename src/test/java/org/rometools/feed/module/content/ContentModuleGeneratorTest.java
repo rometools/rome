@@ -46,9 +46,9 @@ public class ContentModuleGeneratorTest extends AbstractTestCase {
         System.out.println("testGenerate");
 
         final SyndFeedInput input = new SyndFeedInput();
-        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("xml/test-rdf.xml")).toURL()));
+        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("xml/test-rdf.xml")).toURI().toURL()));
         final SyndEntry entry = feed.getEntries().get(0);
-        final ContentModule module = (ContentModule) entry.getModule(ContentModule.URI);
+        entry.getModule(ContentModule.URI);
         final SyndFeedOutput output = new SyndFeedOutput();
         output.output(feed, new java.io.PrintWriter(System.out));
     }

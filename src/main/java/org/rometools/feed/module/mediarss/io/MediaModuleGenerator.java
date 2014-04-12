@@ -45,8 +45,9 @@ import com.sun.syndication.io.ModuleGenerator;
 
 //this class TBI
 public class MediaModuleGenerator implements ModuleGenerator {
+
     private static final Namespace NS = Namespace.getNamespace("media", MediaModule.URI);
-    private static final Set NAMESPACES = new HashSet();
+    private static final Set<Namespace> NAMESPACES = new HashSet<Namespace>();
 
     static {
         NAMESPACES.add(NS);
@@ -58,7 +59,7 @@ public class MediaModuleGenerator implements ModuleGenerator {
     }
 
     @Override
-    public Set getNamespaces() {
+    public Set<Namespace> getNamespaces() {
         return NAMESPACES;
     }
 

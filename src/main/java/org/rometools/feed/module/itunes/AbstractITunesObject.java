@@ -43,7 +43,8 @@ package org.rometools.feed.module.itunes;
 import com.sun.syndication.feed.CopyFrom;
 
 /**
- * This is an abstract object that implements the attributes common across Feeds or Items in an iTunes compatible RSS feed.
+ * This is an abstract object that implements the attributes common across Feeds or Items in an
+ * iTunes compatible RSS feed.
  *
  * @version $Revision: 1.4 $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>

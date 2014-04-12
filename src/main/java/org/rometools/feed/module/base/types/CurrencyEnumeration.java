@@ -48,7 +48,8 @@ import java.util.HashMap;
  * @version $Revision: 1.1 $
  */
 public class CurrencyEnumeration {
-    private static final HashMap lookup = new HashMap();
+
+    private static final HashMap<String, CurrencyEnumeration> lookup = new HashMap<String, CurrencyEnumeration>();
 
     // <xs:restriction base="xs:string">
     // <xs:enumeration value="AED"/>
@@ -590,7 +591,7 @@ public class CurrencyEnumeration {
     }
 
     public static CurrencyEnumeration findByValue(final String value) {
-        return (CurrencyEnumeration) lookup.get(value.trim().toUpperCase());
+        return lookup.get(value.trim().toUpperCase());
     }
 
     @Override

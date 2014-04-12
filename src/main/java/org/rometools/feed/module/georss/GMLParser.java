@@ -111,10 +111,10 @@ public class GMLParser implements ModuleParser {
             }
 
             // The internal rings (holes)
-            final List interiorElementList = polygonElement.getChildren("interior", GeoRSSModule.GML_NS);
-            final Iterator it = interiorElementList.iterator();
+            final List<Element> interiorElementList = polygonElement.getChildren("interior", GeoRSSModule.GML_NS);
+            final Iterator<Element> it = interiorElementList.iterator();
             while (it.hasNext()) {
-                final Element interiorElement = (Element) it.next();
+                final Element interiorElement = it.next();
                 if (interiorElement != null) {
                     final Element linearRingElement = interiorElement.getChild("LinearRing", GeoRSSModule.GML_NS);
                     if (linearRingElement != null) {

@@ -9,10 +9,10 @@ package org.rometools.feed.module.yahooweather.io;
 
 import java.io.File;
 
-import junit.framework.Assert;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
+import org.junit.Assert;
 import org.rometools.feed.module.AbstractTestCase;
 import org.rometools.feed.module.yahooweather.YWeatherModule;
 

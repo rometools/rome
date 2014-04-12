@@ -14,10 +14,10 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-import junit.framework.Assert;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
+import org.junit.Assert;
 import org.rometools.feed.module.AbstractTestCase;
 import org.rometools.feed.module.base.CustomTag;
 import org.rometools.feed.module.base.CustomTagImpl;
@@ -50,12 +50,12 @@ public class CustomTagParserTest extends AbstractTestCase {
         final SyndFeedInput input = new SyndFeedInput();
 
         final SyndFeed feed = input.build(new File(super.getTestFile("xml/custom-tags-example.xml")));
-        final List entries = feed.getEntries();
-        final SyndEntry entry = (SyndEntry) entries.get(0);
+        final List<SyndEntry> entries = feed.getEntries();
+        final SyndEntry entry = entries.get(0);
         final CustomTags customTags = (CustomTags) entry.getModule(CustomTags.URI);
-        final Iterator it = customTags.getValues().iterator();
+        final Iterator<CustomTag> it = customTags.getValues().iterator();
         while (it.hasNext()) {
-            final CustomTag tag = (CustomTag) it.next();
+            final CustomTag tag = it.next();
             System.out.println(tag);
             if (tag.getName().equals("language_skills")) {
                 Assert.assertEquals("Fluent in English and German", tag.getValue());

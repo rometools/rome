@@ -11,10 +11,10 @@ import java.net.URL;
 import java.util.Calendar;
 import java.util.List;
 
-import junit.framework.Assert;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
+import org.junit.Assert;
 import org.rometools.feed.module.AbstractTestCase;
 import org.rometools.feed.module.base.Article;
 import org.rometools.feed.module.base.Course;
@@ -76,9 +76,9 @@ public class GoogleBaseParserTest extends AbstractTestCase {
                 } catch (final Exception e) {
                     throw new RuntimeException(testFiles[h].getAbsolutePath(), e);
                 }
-                final List entries = feed.getEntries();
+                final List<SyndEntry> entries = feed.getEntries();
                 for (int i = 0; i < entries.size(); i++) {
-                    final SyndEntry entry = (SyndEntry) entries.get(i);
+                    final SyndEntry entry = entries.get(i);
                     System.out.println(entry.getModules().size());
                     for (int j = 0; j < entry.getModules().size(); j++) {
                         System.out.println(entry.getModules().get(j).getClass());
@@ -104,8 +104,8 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         final SyndFeedInput input = new SyndFeedInput();
 
         final SyndFeed feed = input.build(new File(super.getTestFile("xml/courses2.xml")));
-        final List entries = feed.getEntries();
-        SyndEntry entry = (SyndEntry) entries.get(0);
+        final List<SyndEntry> entries = feed.getEntries();
+        SyndEntry entry = entries.get(0);
         Course course = (Course) entry.getModule(GoogleBase.URI);
         Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", course.getImageLinks()[0].toString());
         Calendar cal = Calendar.getInstance();
@@ -123,7 +123,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         this.assertEquals("Subject", new String[] { "computer science" }, course.getSubjects());
         Assert.assertEquals("University", "Johnson State", course.getUniversity());
 
-        entry = (SyndEntry) entries.get(1);
+        entry = entries.get(1);
         course = (Course) entry.getModule(GoogleBase.URI);
         Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", course.getImageLinks()[0].toString());
         cal = Calendar.getInstance();
@@ -150,8 +150,8 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         final SyndFeedInput input = new SyndFeedInput();
 
         final SyndFeed feed = input.build(new File(super.getTestFile("xml/events2.xml")));
-        final List entries = feed.getEntries();
-        SyndEntry entry = (SyndEntry) entries.get(0);
+        final List<SyndEntry> entries = feed.getEntries();
+        SyndEntry entry = entries.get(0);
         Event event = (Event) entry.getModule(GoogleBase.URI);
         Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", event.getImageLinks()[0].toString());
         final Calendar cal = Calendar.getInstance();
@@ -167,7 +167,8 @@ public class GoogleBaseParserTest extends AbstractTestCase {
                 PaymentTypeEnumeration.VISA }, event.getPaymentAccepted());
         Assert.assertEquals("Payment Notes", "Cash only for local orders", event.getPaymentNotes());
         /*
-         * <g:event_date_range> <g:start>2005-07-04T20:00:00</g:start> <g:end>2005-07-04T23:00:00</g:end> </g:event_date_range>
+         * <g:event_date_range> <g:start>2005-07-04T20:00:00</g:start>
+         * <g:end>2005-07-04T23:00:00</g:end> </g:event_date_range>
          */
         cal.set(2005, 06, 04, 20, 00, 00);
         Assert.assertEquals("Start Time", cal.getTime(), event.getEventDateRange().getStart());
@@ -180,7 +181,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         Assert.assertEquals("Tax Region", "California", event.getTaxRegion());
         Assert.assertEquals("Tax Percentage", new Float(8.25), event.getTaxPercent());
 
-        entry = (SyndEntry) entries.get(1);
+        entry = entries.get(1);
         event = (Event) entry.getModule(GoogleBase.URI);
         Assert.assertEquals("Image Link", "http://www.providers-website.com/image2.jpg", event.getImageLinks()[0].toString());
         cal.setTimeInMillis(0);
@@ -195,7 +196,8 @@ public class GoogleBaseParserTest extends AbstractTestCase {
                 PaymentTypeEnumeration.VISA }, event.getPaymentAccepted());
         Assert.assertEquals("Payment Notes", "Cash only for local orders", event.getPaymentNotes());
         /*
-         * <g:event_date_range> <g:start>2005-08-23T20:00:00</g:start> <g:end>2005-08-23T23:00:00</g:end> </g:event_date_range>
+         * <g:event_date_range> <g:start>2005-08-23T20:00:00</g:start>
+         * <g:end>2005-08-23T23:00:00</g:end> </g:event_date_range>
          */
         cal.set(2005, 07, 23, 20, 00, 00);
         Assert.assertEquals("Start Time", cal.getTime(), event.getEventDateRange().getStart());
@@ -219,8 +221,8 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         final Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(0);
         final SyndFeed feed = input.build(new File(super.getTestFile("xml/housing2.xml")));
-        final List entries = feed.getEntries();
-        SyndEntry entry = (SyndEntry) entries.get(0);
+        final List<SyndEntry> entries = feed.getEntries();
+        SyndEntry entry = entries.get(0);
         Housing module = (Housing) entry.getModule(GoogleBase.URI);
         Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", module.getImageLinks()[0].toString());
         cal.set(2007, 11, 20, 0, 0, 0);
@@ -247,7 +249,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         Assert.assertEquals("Tax Region", "California", module.getTaxRegion());
         Assert.assertEquals("Tax Percentage", new Float(8.25), module.getTaxPercent());
 
-        entry = (SyndEntry) entries.get(1);
+        entry = entries.get(1);
         module = (Housing) entry.getModule(GoogleBase.URI);
         Assert.assertEquals("Image Link", "http://www.providers-website.com/image2.jpg", module.getImageLinks()[0].toString());
         cal.set(2008, 11, 20, 0, 0, 0);
@@ -283,8 +285,8 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         final Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(0);
         final SyndFeed feed = input.build(new File(super.getTestFile("xml/jobs2.xml")));
-        final List entries = feed.getEntries();
-        final SyndEntry entry = (SyndEntry) entries.get(0);
+        final List<SyndEntry> entries = feed.getEntries();
+        final SyndEntry entry = entries.get(0);
         final Job module = (Job) entry.getModule(GoogleBase.URI);
         Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", module.getImageLinks()[0].toString());
         cal.set(2005, 11, 20, 0, 0, 0);
@@ -313,8 +315,8 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         final Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(0);
         final SyndFeed feed = input.build(new File(super.getTestFile("xml/news2.xml")));
-        final List entries = feed.getEntries();
-        final SyndEntry entry = (SyndEntry) entries.get(0);
+        final List<SyndEntry> entries = feed.getEntries();
+        final SyndEntry entry = entries.get(0);
         final Article module = (Article) entry.getModule(GoogleBase.URI);
         Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", module.getImageLinks()[0].toString());
         cal.set(2007, 2, 20, 0, 0, 0);
@@ -337,8 +339,8 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         final Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(0);
         final SyndFeed feed = input.build(new File(super.getTestFile("xml/travel2.xml")));
-        final List entries = feed.getEntries();
-        final SyndEntry entry = (SyndEntry) entries.get(0);
+        final List<SyndEntry> entries = feed.getEntries();
+        final SyndEntry entry = entries.get(0);
         final Travel module = (Travel) entry.getModule(GoogleBase.URI);
         Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", module.getImageLinks()[0].toString());
         cal.set(2005, 11, 20, 0, 0, 0);
@@ -375,8 +377,8 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         final Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(0);
         final SyndFeed feed = input.build(new File(super.getTestFile("xml/personals2.xml")));
-        final List entries = feed.getEntries();
-        final SyndEntry entry = (SyndEntry) entries.get(0);
+        final List<SyndEntry> entries = feed.getEntries();
+        final SyndEntry entry = entries.get(0);
         final Person module = (Person) entry.getModule(GoogleBase.URI);
         Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", module.getImageLinks()[0].toString());
         cal.set(2005, 11, 20, 0, 0, 0);
@@ -403,8 +405,8 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         final Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(0);
         final SyndFeed feed = input.build(new File(super.getTestFile("xml/products2.xml")));
-        final List entries = feed.getEntries();
-        final SyndEntry entry = (SyndEntry) entries.get(0);
+        final List<SyndEntry> entries = feed.getEntries();
+        final SyndEntry entry = entries.get(0);
         final Product module = (Product) entry.getModule(GoogleBase.URI);
         Assert.assertEquals("Image Link", "http://www.googlestore.com/appliance/images/products/GO0144E.jpg", module.getImageLinks()[0].toString());
         cal.set(2005, 11, 20, 0, 0, 0);
@@ -442,8 +444,8 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         final Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(0);
         final SyndFeed feed = input.build(new File(super.getTestFile("xml/research2.xml")));
-        final List entries = feed.getEntries();
-        final SyndEntry entry = (SyndEntry) entries.get(0);
+        final List<SyndEntry> entries = feed.getEntries();
+        final SyndEntry entry = entries.get(0);
         final ScholarlyArticle module = (ScholarlyArticle) entry.getModule(GoogleBase.URI);
         Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", module.getImageLinks()[0].toString());
         cal.set(2005, 11, 20, 0, 0, 0);
@@ -466,8 +468,8 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         final Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(0);
         final SyndFeed feed = input.build(new File(super.getTestFile("xml/reviews2.xml")));
-        final List entries = feed.getEntries();
-        final SyndEntry entry = (SyndEntry) entries.get(0);
+        final List<SyndEntry> entries = feed.getEntries();
+        final SyndEntry entry = entries.get(0);
         final Review module = (Review) entry.getModule(GoogleBase.URI);
         Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", module.getImageLinks()[0].toString());
         cal.set(2005, 11, 20, 0, 0, 0);
@@ -493,8 +495,8 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         final Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(0);
         final SyndFeed feed = input.build(new File(super.getTestFile("xml/services2.xml")));
-        final List entries = feed.getEntries();
-        final SyndEntry entry = (SyndEntry) entries.get(0);
+        final List<SyndEntry> entries = feed.getEntries();
+        final SyndEntry entry = entries.get(0);
         final Service module = (Service) entry.getModule(GoogleBase.URI);
         Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", module.getImageLinks()[0].toString());
         cal.set(2005, 11, 20, 0, 0, 0);
@@ -523,8 +525,8 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         final Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(0);
         final SyndFeed feed = input.build(new File(super.getTestFile("xml/vehicles2.xml")));
-        final List entries = feed.getEntries();
-        final SyndEntry entry = (SyndEntry) entries.get(0);
+        final List<SyndEntry> entries = feed.getEntries();
+        final SyndEntry entry = entries.get(0);
         final Vehicle module = (Vehicle) entry.getModule(GoogleBase.URI);
         Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", module.getImageLinks()[0].toString());
         cal.set(2005, 11, 20, 0, 0, 0);
@@ -557,8 +559,8 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         final Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(0);
         final SyndFeed feed = input.build(new File(super.getTestFile("xml/wanted2.xml")));
-        final List entries = feed.getEntries();
-        final SyndEntry entry = (SyndEntry) entries.get(0);
+        final List<SyndEntry> entries = feed.getEntries();
+        final SyndEntry entry = entries.get(0);
         final Wanted module = (Wanted) entry.getModule(GoogleBase.URI);
         Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", module.getImageLinks()[0].toString());
         cal.set(2005, 11, 20, 0, 0, 0);

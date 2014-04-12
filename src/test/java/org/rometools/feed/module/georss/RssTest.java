@@ -62,9 +62,9 @@ public class RssTest extends TestCase {
 
         final SyndFeed feed = input.build(new XmlReader(in));
 
-        final List entries = feed.getEntries();
+        final List<SyndEntry> entries = feed.getEntries();
         for (int i = 0; i < entries.size(); i++) {
-            final SyndEntry entry = (SyndEntry) entries.get(i);
+            final SyndEntry entry = entries.get(i);
             final GeoRSSModule geoRSSModule = GeoRSSUtils.getGeoRSS(entry);
             final Position position = geoRSSModule.getPosition();
             assertEquals("lat " + i, expectedLat[i], position.getLatitude(), DELTA);
@@ -80,7 +80,7 @@ public class RssTest extends TestCase {
         feed.setLink("http://rome.dev.java.net");
         feed.setDescription("This feed has been created using ROME (Java syndication utilities");
 
-        final List entries = new ArrayList();
+        final List<SyndEntry> entries = new ArrayList<SyndEntry>();
         SyndEntry entry;
         SyndContent description;
 
@@ -197,9 +197,9 @@ public class RssTest extends TestCase {
 
         feed = input.build(new XmlReader(in));
 
-        final List entries = feed.getEntries();
+        final List<SyndEntry> entries = feed.getEntries();
         for (int i = 0; i < entries.size(); i++) {
-            entry = (SyndEntry) entries.get(i);
+            entry = entries.get(i);
             geoRSSModule = (SimpleModuleImpl) GeoRSSUtils.getGeoRSS(entry);
             final LineString lineString = (LineString) geoRSSModule.getGeometry();
             positionList = lineString.getPositionList();

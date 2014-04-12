@@ -24,8 +24,10 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.jdom2.Element;
+import org.jdom2.Namespace;
 import org.rometools.feed.module.base.CustomTag;
 import org.rometools.feed.module.base.CustomTagImpl;
 import org.rometools.feed.module.base.CustomTags;
@@ -42,7 +44,8 @@ import com.sun.syndication.io.ModuleGenerator;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class CustomTagGenerator implements ModuleGenerator {
-    static final HashSet NAMESPACES = new HashSet();
+
+    static final HashSet<Namespace> NAMESPACES = new HashSet<Namespace>();
 
     static {
         NAMESPACES.add(CustomTagParser.NS);
@@ -58,7 +61,7 @@ public class CustomTagGenerator implements ModuleGenerator {
     }
 
     @Override
-    public java.util.Set getNamespaces() {
+    public Set<Namespace> getNamespaces() {
         return NAMESPACES;
     }
 
@@ -68,11 +71,11 @@ public class CustomTagGenerator implements ModuleGenerator {
             return;
         }
 
-        final List tags = ((CustomTags) module).getValues();
-        final Iterator it = tags.iterator();
+        final List<CustomTag> tags = ((CustomTags) module).getValues();
+        final Iterator<CustomTag> it = tags.iterator();
 
         while (it.hasNext()) {
-            final CustomTag tag = (CustomTag) it.next();
+            final CustomTag tag = it.next();
 
             if (tag.getValue() instanceof DateTimeRange) {
                 final DateTimeRange dtr = (DateTimeRange) tag.getValue();

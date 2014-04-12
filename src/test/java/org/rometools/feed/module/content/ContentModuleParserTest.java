@@ -40,20 +40,23 @@ public class ContentModuleParserTest extends AbstractTestCase {
     }
 
     /**
-     * Test of parse method, of class com.sun.syndication.feed.module.content.ContentModuleParser. It will test through the whole ROME framework.
+     * Test of parse method, of class com.sun.syndication.feed.module.content.ContentModuleParser.
+     * It will test through the whole ROME framework.
      */
     public void testParse() throws Exception {
+
         final SyndFeedInput input = new SyndFeedInput();
-        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("xml/test-rdf.xml")).toURL()));
+        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("xml/test-rdf.xml")).toURI().toURL()));
         final SyndEntry entry = feed.getEntries().get(0);
         final ContentModule module = (ContentModule) entry.getModule(ContentModule.URI);
-        final List items = module.getContentItems();
+        final List<ContentItem> items = module.getContentItems();
 
         for (int i = 0; i < items.size(); i++) {
-            final ContentItem item = (ContentItem) ContentModuleImplTest.contentItems.get(i);
-            // TODO fix this.
+            // FIXME
+            // final ContentItem item = ContentModuleImplTest.contentItems.get(i);
             // assertEquals (item , items.get(i));
         }
+
     }
 
 }

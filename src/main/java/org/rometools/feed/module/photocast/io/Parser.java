@@ -84,10 +84,10 @@ public class Parser implements ModuleParser {
             return null;
         }
         final PhotocastModule pm = new PhotocastModuleImpl();
-        final List children = element.getChildren();
-        final Iterator it = children.iterator();
+        final List<Element> children = element.getChildren();
+        final Iterator<Element> it = children.iterator();
         while (it.hasNext()) {
-            final Element e = (Element) it.next();
+            final Element e = it.next();
             if (!e.getNamespace().equals(Parser.NS)) {
                 continue;
             }

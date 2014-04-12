@@ -54,22 +54,22 @@ public class ITunesGeneratorTest extends AbstractTestCase {
     private void testFile(final String filename) throws Exception {
         final File feed = new File(getTestFile(filename));
         final SyndFeedInput input = new SyndFeedInput();
-        final SyndFeed syndfeed = input.build(new XmlReader(feed.toURL()));
+        final SyndFeed syndfeed = input.build(new XmlReader(feed.toURI().toURL()));
 
         final SyndFeedOutput output = new SyndFeedOutput();
         final File outfeed = new File(feed.getAbsolutePath() + ".output");
         output.output(syndfeed, outfeed);
 
-        final SyndFeed syndCheck = input.build(new XmlReader(outfeed.toURL()));
+        final SyndFeed syndCheck = input.build(new XmlReader(outfeed.toURI().toURL()));
         System.out.println(syndCheck.getModule(AbstractITunesObject.URI).toString());
         assertEquals("Feed Level: ", syndfeed.getModule(AbstractITunesObject.URI).toString(), syndCheck.getModule(AbstractITunesObject.URI).toString());
 
-        final List syndEntries = syndfeed.getEntries();
-        final List syndChecks = syndCheck.getEntries();
+        final List<SyndEntry> syndEntries = syndfeed.getEntries();
+        final List<SyndEntry> syndChecks = syndCheck.getEntries();
 
         for (int i = 0; i < syndEntries.size(); i++) {
-            final SyndEntry entry = (SyndEntry) syndEntries.get(i);
-            final SyndEntry check = (SyndEntry) syndChecks.get(i);
+            final SyndEntry entry = syndEntries.get(i);
+            final SyndEntry check = syndChecks.get(i);
             System.out.println("Original: " + entry.getModule(AbstractITunesObject.URI));
             System.out.println("Check:    " + check.getModule(AbstractITunesObject.URI));
             System.out.println(entry.getModule(AbstractITunesObject.URI).toString());

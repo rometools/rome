@@ -84,17 +84,16 @@ public class GoogleBaseGenerator implements ModuleGenerator {
     }
 
     @Override
-    public Set getNamespaces() {
-        final HashSet set = new HashSet();
+    public Set<Namespace> getNamespaces() {
+        final HashSet<Namespace> set = new HashSet<Namespace>();
         set.add(GoogleBaseGenerator.NS);
-
         return set;
     }
 
     @Override
     public void generate(final Module module, final Element element) {
         final GoogleBaseImpl mod = (GoogleBaseImpl) module;
-        final HashMap props2tags = new HashMap(GoogleBaseParser.PROPS2TAGS);
+        final HashMap<Object, Object> props2tags = new HashMap<Object, Object>(GoogleBaseParser.PROPS2TAGS);
         final PropertyDescriptor[] pds = GoogleBaseParser.pds;
 
         for (final PropertyDescriptor pd : pds) {

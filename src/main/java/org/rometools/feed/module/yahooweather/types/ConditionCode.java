@@ -286,11 +286,10 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class ConditionCode implements Serializable {
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
-    private transient static Map LOOKUP = new HashMap(); /* <Integer, Condition> */
+
+    private transient static Map<Integer, ConditionCode> LOOKUP = new HashMap<Integer, ConditionCode>();
     public static final ConditionCode TORNADO = new ConditionCode(0, "tornado");
     public static final ConditionCode TROPICAL_STORM = new ConditionCode(1, "tropical storm");
     public static final ConditionCode HURRICANE = new ConditionCode(2, "hurricane");
@@ -380,7 +379,7 @@ public class ConditionCode implements Serializable {
      * @return a ConditionCode instance or null
      */
     public static ConditionCode fromCode(final int code) {
-        return (ConditionCode) ConditionCode.LOOKUP.get(new Integer(code));
+        return ConditionCode.LOOKUP.get(new Integer(code));
     }
 
     @Override

@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.jdom2.Element;
+import org.jdom2.Namespace;
 import org.rometools.feed.module.georss.geometries.AbstractGeometry;
 import org.rometools.feed.module.georss.geometries.AbstractRing;
 import org.rometools.feed.module.georss.geometries.Envelope;
@@ -45,10 +46,10 @@ import com.sun.syndication.io.ModuleGenerator;
  */
 public class GMLGenerator implements ModuleGenerator {
 
-    private static final Set NAMESPACES;
+    private static final Set<Namespace> NAMESPACES;
 
     static {
-        final Set nss = new HashSet();
+        final Set<Namespace> nss = new HashSet<Namespace>();
         nss.add(GeoRSSModule.GML_NS);
         NAMESPACES = Collections.unmodifiableSet(nss);
     }
@@ -78,13 +79,14 @@ public class GMLGenerator implements ModuleGenerator {
      * @see com.sun.syndication.io.ModuleGenerator#getNamespaces()
      */
     @Override
-    public Set getNamespaces() {
+    public Set<Namespace> getNamespaces() {
         return NAMESPACES;
     }
 
     /*
      * (non-Javadoc)
-     * @see com.sun.syndication.io.ModuleGenerator#generate(com.sun.syndication.feed.module.Module, org.jdom2.Element)
+     * @see com.sun.syndication.io.ModuleGenerator#generate(com.sun.syndication.feed.module.Module,
+     * org.jdom2.Element)
      */
     @Override
     public void generate(final Module module, final Element element) {
@@ -135,10 +137,10 @@ public class GMLGenerator implements ModuleGenerator {
                     System.err.println("GeoRSS GML format can't handle rings of type: " + ring.getClass().getName());
                 }
             }
-            final List interiorList = ((Polygon) geometry).getInterior();
-            final Iterator it = interiorList.iterator();
+            final List<AbstractRing> interiorList = ((Polygon) geometry).getInterior();
+            final Iterator<AbstractRing> it = interiorList.iterator();
             while (it.hasNext()) {
-                final AbstractRing ring = (AbstractRing) it.next();
+                final AbstractRing ring = it.next();
                 if (ring instanceof LinearRing) {
                     final Element interiorElement = new Element("interior", GeoRSSModule.GML_NS);
                     polygonElement.addContent(interiorElement);

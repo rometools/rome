@@ -32,8 +32,8 @@ public interface CustomTags extends Module {
 
     public static final String URI = "http://base.google.com/cns/1.0";
 
-    public List getValues();
+    public List<CustomTag> getValues();
 
-    public void setValues(List values);
+    public void setValues(List<CustomTag> values);
 
 }

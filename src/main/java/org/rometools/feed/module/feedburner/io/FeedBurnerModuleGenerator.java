@@ -42,10 +42,9 @@ public class FeedBurnerModuleGenerator implements ModuleGenerator {
     }
 
     @Override
-    public Set getNamespaces() {
-        final HashSet set = new HashSet();
+    public Set<Namespace> getNamespaces() {
+        final HashSet<Namespace> set = new HashSet<Namespace>();
         set.add(FeedBurnerModuleGenerator.NS);
-
         return set;
     }
 

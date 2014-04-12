@@ -43,6 +43,8 @@ package org.rometools.feed.module.itunes;
 import java.net.URL;
 import java.util.List;
 
+import org.rometools.feed.module.itunes.types.Category;
+
 /**
  * This class contains information for iTunes podcast feeds that exist at the Channel level.
  *
@@ -56,14 +58,14 @@ public interface FeedInformation extends ITunes {
      *
      * @return The parent categories for this feed
      */
-    public List getCategories();
+    public List<Category> getCategories();
 
     /**
      * The parent categories for this feed
      *
      * @param categories The parent categories for this feed
      */
-    public void setCategories(List categories);
+    public void setCategories(List<Category> categories);
 
     /**
      * Sets the URL for the image.

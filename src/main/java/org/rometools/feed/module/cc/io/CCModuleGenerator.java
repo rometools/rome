@@ -62,7 +62,7 @@ public class CCModuleGenerator implements ModuleGenerator {
     private static final Namespace RSS2 = Namespace.getNamespace("creativeCommons", CreativeCommonsImpl.RSS2_URI);
     private static final Namespace RSS = Namespace.getNamespace("http://purl.org/rss/1.0/");
     private static final Namespace RDF = Namespace.getNamespace("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#");
-    private static final HashSet NAMESPACES = new HashSet();
+    private static final HashSet<Namespace> NAMESPACES = new HashSet<Namespace>();
     static {
         NAMESPACES.add(RSS1);
         NAMESPACES.add(RSS2);
@@ -90,7 +90,7 @@ public class CCModuleGenerator implements ModuleGenerator {
     }
 
     @Override
-    public Set getNamespaces() {
+    public Set<Namespace> getNamespaces() {
         return NAMESPACES;
     }
 

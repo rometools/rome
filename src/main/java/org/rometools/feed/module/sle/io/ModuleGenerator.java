@@ -24,7 +24,8 @@ import com.sun.syndication.feed.module.Module;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class ModuleGenerator implements com.sun.syndication.io.ModuleGenerator {
-    private static final Set NAMESPACES = new HashSet();
+
+    private static final Set<Namespace> NAMESPACES = new HashSet<Namespace>();
 
     static {
         NAMESPACES.add(ModuleParser.NS);
@@ -49,14 +50,14 @@ public class ModuleGenerator implements com.sun.syndication.io.ModuleGenerator {
     /**
      * Returns a set with all the URIs (JDOM Namespace elements) this module generator uses.
      * <p/>
-     * It is used by the the feed generators to add their namespace definition in the root element of the generated document (forward-missing of Java 5.0
-     * Generics).
+     * It is used by the the feed generators to add their namespace definition in the root element
+     * of the generated document (forward-missing of Java 5.0 Generics).
      * <p/>
      *
      * @return a set with all the URIs (JDOM Namespace elements) this module generator uses.
      */
     @Override
-    public Set getNamespaces() {
+    public Set<Namespace> getNamespaces() {
         return NAMESPACES;
     }
 

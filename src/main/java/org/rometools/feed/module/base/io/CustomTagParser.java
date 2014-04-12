@@ -32,6 +32,7 @@ import java.util.logging.Logger;
 
 import org.jdom2.Element;
 import org.jdom2.Namespace;
+import org.rometools.feed.module.base.CustomTag;
 import org.rometools.feed.module.base.CustomTagImpl;
 import org.rometools.feed.module.base.CustomTags;
 import org.rometools.feed.module.base.CustomTagsImpl;
@@ -59,11 +60,11 @@ public class CustomTagParser implements ModuleParser {
     @Override
     public Module parse(final Element element, final Locale locale) {
         final CustomTags module = new CustomTagsImpl();
-        final ArrayList tags = new ArrayList();
-        final List elements = element.getChildren();
-        final Iterator it = elements.iterator();
+        final ArrayList<CustomTag> tags = new ArrayList<CustomTag>();
+        final List<Element> elements = element.getChildren();
+        final Iterator<Element> it = elements.iterator();
         while (it.hasNext()) {
-            final Element child = (Element) it.next();
+            final Element child = it.next();
             if (child.getNamespace().equals(NS)) {
                 final String type = child.getAttributeValue("type");
                 try {
@@ -95,7 +96,7 @@ public class CustomTagParser implements ModuleParser {
                         try {
                             tags.add(new CustomTagImpl(child.getName(), new DateTimeRange(GoogleBaseParser.LONG_DT_FMT.parse(child
                                     .getChild("start", CustomTagParser.NS).getText().trim()), GoogleBaseParser.LONG_DT_FMT.parse(child
-                                            .getChild("end", CustomTagParser.NS).getText().trim()))));
+                                    .getChild("end", CustomTagParser.NS).getText().trim()))));
                         } catch (final Exception e) {
                             log.log(Level.WARNING, "Unable to parse date type on " + child.getName(), e);
                         }
