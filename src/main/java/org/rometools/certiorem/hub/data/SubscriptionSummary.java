@@ -21,17 +21,21 @@ package org.rometools.certiorem.hub.data;
 import java.io.Serializable;
 
 /**
- * 
+ *
  * @author robert.cooper
  */
 public class SubscriptionSummary implements Serializable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private String host;
     private boolean lastPublishSuccessful = true;
     private int subscribers = 0;
 
     /**
      * Set the value of host
-     * 
+     *
      * @param newhost new value of host
      */
     public void setHost(final String newhost) {
@@ -40,7 +44,7 @@ public class SubscriptionSummary implements Serializable {
 
     /**
      * Get the value of host
-     * 
+     *
      * @return the value of host
      */
     public String getHost() {
@@ -49,7 +53,7 @@ public class SubscriptionSummary implements Serializable {
 
     /**
      * Set the value of lastPublishSuccessful
-     * 
+     *
      * @param newlastPublishSuccessful new value of lastPublishSuccessful
      */
     public void setLastPublishSuccessful(final boolean newlastPublishSuccessful) {
@@ -58,7 +62,7 @@ public class SubscriptionSummary implements Serializable {
 
     /**
      * Get the value of lastPublishSuccessful
-     * 
+     *
      * @return the value of lastPublishSuccessful
      */
     public boolean isLastPublishSuccessful() {
@@ -67,7 +71,7 @@ public class SubscriptionSummary implements Serializable {
 
     /**
      * Set the value of subscribers
-     * 
+     *
      * @param newsubscribers new value of subscribers
      */
     public void setSubscribers(final int newsubscribers) {
@@ -76,7 +80,7 @@ public class SubscriptionSummary implements Serializable {
 
     /**
      * Get the value of subscribers
-     * 
+     *
      * @return the value of subscribers
      */
     public int getSubscribers() {

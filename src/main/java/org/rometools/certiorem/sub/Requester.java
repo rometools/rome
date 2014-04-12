@@ -21,7 +21,7 @@ package org.rometools.certiorem.sub;
 import org.rometools.certiorem.sub.data.Subscription;
 
 /**
- * 
+ *
  * @author robert.cooper
  */
 public interface Requester {

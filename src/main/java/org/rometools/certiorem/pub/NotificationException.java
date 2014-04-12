@@ -19,10 +19,15 @@
 package org.rometools.certiorem.pub;
 
 /**
- * 
+ *
  * @author robert.cooper
  */
 public class NotificationException extends Exception {
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
     public NotificationException(final String message) {
         super(message);

@@ -39,9 +39,10 @@ import org.rometools.fetcher.FeedFetcher;
 import com.sun.syndication.feed.synd.SyndFeed;
 
 /**
- * The basic business logic controller for the Hub implementation. It is intended to be usable under a very thin servlet wrapper, or other, non-HTTP
+ * The basic business logic controller for the Hub implementation. It is
+ * intended to be usable under a very thin servlet wrapper, or other, non-HTTP
  * notification methods you might want to use.
- * 
+ *
  * @author robert.cooper
  */
 public class Hub {
@@ -62,7 +63,7 @@ public class Hub {
 
     /**
      * Constructs a new Hub instance
-     * 
+     *
      * @param dao The persistence HubDAO to use
      * @param verifier The verification strategy to use.
      */
@@ -72,18 +73,21 @@ public class Hub {
         this.notifier = notifier;
         this.fetcher = fetcher;
         validSchemes = STANDARD_SCHEMES;
-        validPorts = Collections.EMPTY_SET;
-        validTopics = Collections.EMPTY_SET;
+        validPorts = Collections.emptySet();
+        validTopics = Collections.emptySet();
     }
 
     /**
      * Constructs a new Hub instance.
-     * 
+     *
      * @param dao The persistence HubDAO to use
      * @param verifier The verification strategy to use
-     * @param validSchemes A list of valid URI schemes for callbacks (default: http, https)
-     * @param validPorts A list of valid port numbers for callbacks (default: any)
-     * @param validTopics A set of valid topic URIs which can be subscribed to (default: any)
+     * @param validSchemes A list of valid URI schemes for callbacks (default:
+     *            http, https)
+     * @param validPorts A list of valid port numbers for callbacks (default:
+     *            any)
+     * @param validTopics A set of valid topic URIs which can be subscribed to
+     *            (default: any)
      */
     public Hub(final HubDAO dao, final Verifier verifier, final Notifier notifier, final FeedFetcher fetcher, final Set<String> validSchemes,
             final Set<Integer> validPorts, final Set<String> validTopics) {
@@ -96,18 +100,29 @@ public class Hub {
         this.validSchemes = readOnlySchemes == null ? STANDARD_SCHEMES : readOnlySchemes;
 
         final Set<Integer> readOnlyPorts = Collections.unmodifiableSet(validPorts);
-        this.validPorts = readOnlyPorts == null ? Collections.EMPTY_SET : readOnlyPorts;
+        if (readOnlyPorts == null) {
+            this.validPorts = Collections.emptySet();
+        } else {
+            this.validPorts = readOnlyPorts;
+        }
 
         final Set<String> readOnlyTopics = Collections.unmodifiableSet(validTopics);
-        this.validTopics = readOnlyTopics == null ? Collections.EMPTY_SET : readOnlyTopics;
+        if (validTopics == null) {
+            this.validTopics = Collections.emptySet();
+        } else {
+            this.validTopics = readOnlyTopics;
+        }
+
     }
 
     /**
      * Sends a notification to the subscribers
-     * 
-     * @param requestHost the host name the hub is running on. (Used for the user agent)
+     *
+     * @param requestHost the host name the hub is running on. (Used for the
+     *            user agent)
      * @param topic the URL of the topic that was updated.
-     * @throws HttpStatusCodeException a wrapper exception with a recommended status code for the request.
+     * @throws HttpStatusCodeException a wrapper exception with a recommended
+     *             status code for the request.
      */
     public void sendNotification(final String requestHost, final String topic) {
         assert validTopics.isEmpty() || validTopics.contains(topic) : "That topic is not supported by this hub. " + topic;
@@ -120,7 +135,7 @@ public class Hub {
                 return;
             }
 
-            final List<SubscriptionSummary> summaries = (List<SubscriptionSummary>) dao.summariesForTopic(topic);
+            final List<? extends SubscriptionSummary> summaries = dao.summariesForTopic(topic);
             int total = 0;
             final StringBuilder hosts = new StringBuilder();
 
@@ -135,7 +150,7 @@ public class Hub {
                     .append(" subscribers)").append(hosts);
             final SyndFeed feed = fetcher.retrieveFeed(userAgent.toString(), new URL(topic));
             Logger.getLogger(Hub.class.getName()).log(Level.FINE, "Got feed for {0}  Sending to {1} subscribers.", new Object[] { topic, subscribers.size() });
-            notifier.notifySubscribers((List<Subscriber>) subscribers, feed, new SubscriptionSummaryCallback() {
+            notifier.notifySubscribers(subscribers, feed, new SubscriptionSummaryCallback() {
                 @Override
                 public void onSummaryInfo(final SubscriptionSummary summary) {
                     dao.handleSummary(topic, summary);
@@ -149,16 +164,18 @@ public class Hub {
 
     /**
      * Subscribes to a topic.
-     * 
+     *
      * @param callback Callback URI
      * @param topic Topic URI
      * @param verify Verification Type
      * @param lease_seconds Duration of the lease
      * @param secret Secret value
      * @param verify_token verify_token;
-     * @return Boolean.TRUE if the subscription succeeded synchronously, Boolean.FALSE if the subscription failed synchronously, or null if the request is
-     *         asynchronous.
-     * @throws HttpStatusCodeException a wrapper exception with a recommended status code for the request.
+     * @return Boolean.TRUE if the subscription succeeded synchronously,
+     *         Boolean.FALSE if the subscription failed synchronously, or null
+     *         if the request is asynchronous.
+     * @throws HttpStatusCodeException a wrapper exception with a recommended
+     *             status code for the request.
      */
     public Boolean subscribe(final String callback, final String topic, final String verify, final long lease_seconds, final String secret,
             final String verify_token) {

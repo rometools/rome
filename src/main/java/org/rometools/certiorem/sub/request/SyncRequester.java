@@ -30,7 +30,7 @@ import org.rometools.certiorem.sub.data.Subscription;
 
 /**
  * A simple requester implementation that always makes requests as Async.
- * 
+ *
  * @author Farrukh Najmi
  */
 public class SyncRequester extends AbstractRequester {

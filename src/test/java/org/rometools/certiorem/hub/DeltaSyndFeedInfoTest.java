@@ -19,7 +19,7 @@ import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
 
 /**
- * 
+ *
  * @author najmi
  */
 public class DeltaSyndFeedInfoTest {
@@ -44,7 +44,8 @@ public class DeltaSyndFeedInfoTest {
         List<SyndEntry> entries = feed.getEntries();
         assertTrue(!entries.isEmpty());
 
-        // Fetch again and this time the entries should be empty as none have changed.
+        // Fetch again and this time the entries should be empty as none have
+        // changed.
         feed = feedFetcher.retrieveFeed(getFeedUrl());
         entries = feed.getEntries();
         assertTrue(entries.isEmpty());
@@ -52,7 +53,8 @@ public class DeltaSyndFeedInfoTest {
 
     private URL getFeedUrl() throws IOException {
         final URL feedUrl = new URL("http://news.google.com/news?pz=1&cf=all&ned=us&hl=en&output=rss");
-        // URL feedUrl = new URL("http://newsrss.bbc.co.uk/rss/newsonline_world_edition/front_page/rss.xml");
+        // URL feedUrl = new
+        // URL("http://newsrss.bbc.co.uk/rss/newsonline_world_edition/front_page/rss.xml");
         return feedUrl;
     }
 

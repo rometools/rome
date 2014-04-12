@@ -28,8 +28,9 @@ import java.util.concurrent.TimeUnit;
 import org.rometools.certiorem.hub.data.SubscriptionSummary;
 
 /**
- * A notifier implementation that uses a thread pool to deliver notifications to subscribers
- * 
+ * A notifier implementation that uses a thread pool to deliver notifications to
+ * subscribers
+ *
  * @author robert.cooper
  */
 public class ThreadPoolNotifier extends AbstractNotifier {
@@ -51,9 +52,10 @@ public class ThreadPoolNotifier extends AbstractNotifier {
     }
 
     /**
-     * Enqueues a notification to run. If the notification fails, it will be retried every two minutes until 5 attempts are completed. Notifications to the same
-     * callback should be delivered successfully in order.
-     * 
+     * Enqueues a notification to run. If the notification fails, it will be
+     * retried every two minutes until 5 attempts are completed. Notifications
+     * to the same callback should be delivered successfully in order.
+     *
      * @param not
      */
     @Override
@@ -82,7 +84,7 @@ public class ThreadPoolNotifier extends AbstractNotifier {
 
     /**
      * Schedules a notification to retry in two minutes.
-     * 
+     *
      * @param not Notification to retry
      */
     protected void retry(final Notification not) {

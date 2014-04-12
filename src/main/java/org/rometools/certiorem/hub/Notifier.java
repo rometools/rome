@@ -26,25 +26,27 @@ import org.rometools.certiorem.hub.data.SubscriptionSummary;
 import com.sun.syndication.feed.synd.SyndFeed;
 
 /**
- * 
+ *
  * @author robert.cooper
  */
 public interface Notifier {
     /**
-     * Instructs the notifier to begin sending notifications to the list of subscribers
-     * 
+     * Instructs the notifier to begin sending notifications to the list of
+     * subscribers
+     *
      * @param subscribers Subscribers to notify
      * @param value The SyndFeed to send them
-     * @param callback A callback that is invoked each time a subscriber is notified.
+     * @param callback A callback that is invoked each time a subscriber is
+     *            notified.
      */
-    public void notifySubscribers(List<Subscriber> subscribers, SyndFeed value, SubscriptionSummaryCallback callback);
+    public void notifySubscribers(List<? extends Subscriber> subscribers, SyndFeed value, SubscriptionSummaryCallback callback);
 
     /**
      * A callback that is invoked each time a subscriber is notified.
      */
     public static interface SubscriptionSummaryCallback {
         /**
-         * 
+         *
          * @param summary A summary of the data received from the subscriber
          */
         public void onSummaryInfo(SubscriptionSummary summary);

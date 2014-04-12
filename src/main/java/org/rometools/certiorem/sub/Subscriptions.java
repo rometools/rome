@@ -45,7 +45,7 @@ import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.SyndFeedInput;
 
 /**
- * 
+ *
  * @author robert.cooper
  */
 public class Subscriptions {

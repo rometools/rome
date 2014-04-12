@@ -26,7 +26,7 @@ import org.rometools.certiorem.hub.data.Subscriber;
 
 /**
  * Uses a ThreadPoolExecutor to do async verifications.
- * 
+ *
  * @author robert.cooper
  */
 public class ThreadPoolVerifier extends AbstractVerifier {

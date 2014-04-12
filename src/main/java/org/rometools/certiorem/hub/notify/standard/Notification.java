@@ -22,7 +22,7 @@ import org.rometools.certiorem.hub.Notifier.SubscriptionSummaryCallback;
 import org.rometools.certiorem.hub.data.Subscriber;
 
 /**
- * 
+ *
  * @author robert.cooper
  */
 public class Notification {

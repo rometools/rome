@@ -30,11 +30,15 @@ import org.rometools.certiorem.HttpStatusCodeException;
 import org.rometools.certiorem.sub.Subscriptions;
 
 /**
- * 
+ *
  * @author robert.cooper
  */
 public class AbstractSubServlet extends HttpServlet {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private final Subscriptions subscriptions;
 
     protected AbstractSubServlet(final Subscriptions subscriptions) {

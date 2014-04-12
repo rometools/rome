@@ -30,10 +30,14 @@ import org.rometools.certiorem.HttpStatusCodeException;
 import org.rometools.certiorem.hub.Hub;
 
 /**
- * 
+ *
  * @author robert.cooper
  */
 public abstract class AbstractHubServlet extends HttpServlet {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     public static final String HUBMODE = "hub.mode";
     private final Hub hub;
 

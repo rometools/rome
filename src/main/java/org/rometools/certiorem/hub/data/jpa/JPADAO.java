@@ -33,7 +33,7 @@ import org.rometools.certiorem.hub.data.Subscriber;
 import org.rometools.certiorem.hub.data.SubscriptionSummary;
 
 /**
- * 
+ *
  * @author robert.cooper
  */
 public class JPADAO implements HubDAO {
@@ -57,7 +57,9 @@ public class JPADAO implements HubDAO {
         query.setParameter("topic", topic);
 
         try {
-            for (final JPASubscriber subscriber : (List<JPASubscriber>) query.getResultList()) {
+            @SuppressWarnings("unchecked")
+            final List<JPASubscriber> subscribers = query.getResultList();
+            for (final JPASubscriber subscriber : subscribers) {
                 if (subscriber.getLeaseSeconds() == -1) {
                     result.add(subscriber);
                     continue;

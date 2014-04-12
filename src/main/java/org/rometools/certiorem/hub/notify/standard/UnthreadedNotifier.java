@@ -18,30 +18,27 @@
 
 package org.rometools.certiorem.hub.notify.standard;
 
-import java.util.concurrent.ConcurrentSkipListSet;
-
 import org.rometools.certiorem.hub.data.SubscriptionSummary;
 
 /**
  * A notifier that does not use threads. All calls are blocking and synchronous.
- * 
+ *
  * @author robert.cooper
  */
 public class UnthreadedNotifier extends AbstractNotifier {
-    private final ConcurrentSkipListSet<Notification> retries = new ConcurrentSkipListSet<Notification>();
 
     /**
-     * A blocking call that performs a notification. If there are pending retries that are older than two minutes old, they will be retried before the method
-     * returns.
-     * 
+     * A blocking call that performs a notification. If there are pending
+     * retries that are older than two minutes old, they will be retried before
+     * the method returns.
+     *
      * @param not
      */
     @Override
     protected void enqueueNotification(final Notification not) {
         not.lastRun = System.currentTimeMillis();
-
         final SubscriptionSummary summary = postNotification(not.subscriber, not.mimeType, not.payload);
-
         not.callback.onSummaryInfo(summary);
     }
+
 }

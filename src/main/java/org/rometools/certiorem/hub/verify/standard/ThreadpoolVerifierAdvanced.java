@@ -21,7 +21,7 @@ package org.rometools.certiorem.hub.verify.standard;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
- * 
+ *
  * @author robert.cooper
  */
 public class ThreadpoolVerifierAdvanced extends ThreadPoolVerifier {

@@ -21,10 +21,14 @@ package org.rometools.certiorem.hub.data;
 import java.io.Serializable;
 
 /**
- * 
+ *
  * @author robert.cooper
  */
 public class Subscriber implements Serializable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     public static final String VERIFY_SYNC = "sync";
     public static final String VERIFY_ASYNC = "async";
     private String callback;
@@ -37,7 +41,7 @@ public class Subscriber implements Serializable {
 
     /**
      * Set the value of callback
-     * 
+     *
      * @param newcallback new value of callback
      */
     public void setCallback(final String newcallback) {
@@ -46,7 +50,7 @@ public class Subscriber implements Serializable {
 
     /**
      * Get the value of callback
-     * 
+     *
      * @return the value of callback
      */
     public String getCallback() {
@@ -55,7 +59,7 @@ public class Subscriber implements Serializable {
 
     /**
      * Set the value of creationTime
-     * 
+     *
      * @param newcreationTime new value of creationTime
      */
     public void setCreationTime(final long newcreationTime) {
@@ -64,7 +68,7 @@ public class Subscriber implements Serializable {
 
     /**
      * Get the value of creationTime
-     * 
+     *
      * @return the value of creationTime
      */
     public long getCreationTime() {
@@ -73,7 +77,7 @@ public class Subscriber implements Serializable {
 
     /**
      * Set the value of leaseSeconds
-     * 
+     *
      * @param newleaseSeconds new value of leaseSeconds
      */
     public void setLeaseSeconds(final long newleaseSeconds) {
@@ -82,7 +86,7 @@ public class Subscriber implements Serializable {
 
     /**
      * Get the value of leaseSeconds
-     * 
+     *
      * @return the value of leaseSeconds
      */
     public long getLeaseSeconds() {
@@ -91,7 +95,7 @@ public class Subscriber implements Serializable {
 
     /**
      * Set the value of secret
-     * 
+     *
      * @param newsecret new value of secret
      */
     public void setSecret(final String newsecret) {
@@ -100,7 +104,7 @@ public class Subscriber implements Serializable {
 
     /**
      * Get the value of secret
-     * 
+     *
      * @return the value of secret
      */
     public String getSecret() {
@@ -109,7 +113,7 @@ public class Subscriber implements Serializable {
 
     /**
      * Set the value of topic
-     * 
+     *
      * @param newtopic new value of topic
      */
     public void setTopic(final String newtopic) {
@@ -118,7 +122,7 @@ public class Subscriber implements Serializable {
 
     /**
      * Get the value of topic
-     * 
+     *
      * @return the value of topic
      */
     public String getTopic() {
@@ -127,7 +131,7 @@ public class Subscriber implements Serializable {
 
     /**
      * Set the value of verify
-     * 
+     *
      * @param newverify new value of verify
      */
     public void setVerify(final String newverify) {
@@ -136,7 +140,7 @@ public class Subscriber implements Serializable {
 
     /**
      * Get the value of verify
-     * 
+     *
      * @return the value of verify
      */
     public String getVerify() {
@@ -145,7 +149,7 @@ public class Subscriber implements Serializable {
 
     /**
      * Set the value of vertifyToken
-     * 
+     *
      * @param newvertifyToken new value of vertifyToken
      */
     public void setVertifyToken(final String newvertifyToken) {
@@ -154,7 +158,7 @@ public class Subscriber implements Serializable {
 
     /**
      * Get the value of vertifyToken
-     * 
+     *
      * @return the value of vertifyToken
      */
     public String getVertifyToken() {

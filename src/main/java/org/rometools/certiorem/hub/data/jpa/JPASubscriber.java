@@ -31,19 +31,23 @@ import javax.persistence.TemporalType;
 import org.rometools.certiorem.hub.data.Subscriber;
 
 /**
- * 
+ *
  * @author robert.cooper
  */
 @Entity
 @NamedQueries({ @NamedQuery(name = "Subcriber.forTopic", query = "SELECT o FROM JPASubscriber o WHERE o.topic = :topic AND o.expired = false ORDER BY o.subscribedAt") })
 public class JPASubscriber extends Subscriber implements Serializable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private Date subscribedAt = new Date();
     private String id;
     private boolean expired = false;
 
     /**
      * Set the value of expired
-     * 
+     *
      * @param newexpired new value of expired
      */
     public void setExpired(final boolean newexpired) {
@@ -52,7 +56,7 @@ public class JPASubscriber extends Subscriber implements Serializable {
 
     /**
      * Get the value of expired
-     * 
+     *
      * @return the value of expired
      */
     public boolean isExpired() {
@@ -61,7 +65,7 @@ public class JPASubscriber extends Subscriber implements Serializable {
 
     /**
      * Set the value of id
-     * 
+     *
      * @param newid new value of id
      */
     public void setId(final String newid) {
@@ -70,7 +74,7 @@ public class JPASubscriber extends Subscriber implements Serializable {
 
     /**
      * Get the value of id
-     * 
+     *
      * @return the value of id
      */
     @Id
@@ -80,7 +84,7 @@ public class JPASubscriber extends Subscriber implements Serializable {
 
     /**
      * Set the value of subscribedAt
-     * 
+     *
      * @param newsubscribedAt new value of subscribedAt
      */
     public void setSubscribedAt(final Date newsubscribedAt) {
@@ -89,7 +93,7 @@ public class JPASubscriber extends Subscriber implements Serializable {
 
     /**
      * Get the value of subscribedAt
-     * 
+     *
      * @return the value of subscribedAt
      */
     @Temporal(TemporalType.TIMESTAMP)

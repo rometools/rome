@@ -18,17 +18,20 @@ import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
 
 /**
- * Extends SyndFeedInfo to also track etags for individual entries. This may be used with DeltaFeedInfoCache to only return feed with a subset of entries that
- * have changed since last fetch.
- * 
+ * Extends SyndFeedInfo to also track etags for individual entries. This may be
+ * used with DeltaFeedInfoCache to only return feed with a subset of entries
+ * that have changed since last fetch.
+ *
  * @author najmi
  */
 public class DeltaSyndFeedInfo extends SyndFeedInfo {
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     Map<String, String> entryTagsMap = new HashMap<String, String>();
     Map<String, Boolean> changedMap = new HashMap<String, Boolean>();
-
-    private DeltaSyndFeedInfo() {
-    }
 
     public DeltaSyndFeedInfo(final SyndFeedInfo backingFeedInfo) {
         setETag(backingFeedInfo.getETag());
@@ -38,8 +41,9 @@ public class DeltaSyndFeedInfo extends SyndFeedInfo {
     }
 
     /**
-     * Gets a filtered version of the SyndFeed that only has entries that were changed in the last setSyndFeed() call.
-     * 
+     * Gets a filtered version of the SyndFeed that only has entries that were
+     * changed in the last setSyndFeed() call.
+     *
      * @return
      */
     @Override
@@ -65,8 +69,9 @@ public class DeltaSyndFeedInfo extends SyndFeedInfo {
     }
 
     /**
-     * Overrides super class method to update changedMap and entryTagsMap for tracking changed entries.
-     * 
+     * Overrides super class method to update changedMap and entryTagsMap for
+     * tracking changed entries.
+     *
      * @param feed
      */
     @Override
@@ -89,9 +94,12 @@ public class DeltaSyndFeedInfo extends SyndFeedInfo {
 
     private String computeEntryTag(final SyndEntry entry) {
 
-        // Following hash algorithm suggested by Robert Cooper needs to be evaluated in future.
-        // int hash = ( entry.getUri() != null ? entry.getUri().hashCode() : entry.getLink().hashCode() ) ^
-        // (entry.getUpdatedDate() != null ? entry.getUpdatedDate().hashCode() : entry.getPublishedDate().hashCode()) ^
+        // Following hash algorithm suggested by Robert Cooper needs to be
+        // evaluated in future.
+        // int hash = ( entry.getUri() != null ? entry.getUri().hashCode() :
+        // entry.getLink().hashCode() ) ^
+        // (entry.getUpdatedDate() != null ? entry.getUpdatedDate().hashCode() :
+        // entry.getPublishedDate().hashCode()) ^
         // entry.getTitle().hashCode() ^
         // entry.getDescription().hashCode();
 
@@ -102,7 +110,9 @@ public class DeltaSyndFeedInfo extends SyndFeedInfo {
             if (publishedDate != null) {
                 updateDate = publishedDate;
             } else {
-                // For misbehaving feeds that do not set updateDate or publishedDate we use current tiem which pretty mucg assures that it will be viewed as
+                // For misbehaving feeds that do not set updateDate or
+                // publishedDate we use current tiem which pretty mucg assures
+                // that it will be viewed as
                 // changed even when it is not
                 updateDate = new Date();
             }

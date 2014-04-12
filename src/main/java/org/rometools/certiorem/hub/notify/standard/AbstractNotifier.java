@@ -38,22 +38,24 @@ import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.SyndFeedOutput;
 
 /**
- * 
+ *
  * @author robert.cooper
  */
 public abstract class AbstractNotifier implements Notifier {
     /**
-     * This method will serialize the synd feed and build Notifications for the implementation class to handle.
-     * 
+     * This method will serialize the synd feed and build Notifications for the
+     * implementation class to handle.
+     *
      * @see enqueueNotification
-     * 
+     *
      * @param subscribers List of subscribers to notify
      * @param value The SyndFeed object to send
-     * @param callback A callback that will be invoked each time a subscriber is notified.
-     * 
+     * @param callback A callback that will be invoked each time a subscriber is
+     *            notified.
+     *
      */
     @Override
-    public void notifySubscribers(final List<Subscriber> subscribers, final SyndFeed value, final SubscriptionSummaryCallback callback) {
+    public void notifySubscribers(final List<? extends Subscriber> subscribers, final SyndFeed value, final SubscriptionSummaryCallback callback) {
         String mimeType = null;
 
         if (value.getFeedType().startsWith("rss")) {
@@ -92,15 +94,16 @@ public abstract class AbstractNotifier implements Notifier {
 
     /**
      * Implementation method that queues/sends a notification
-     * 
+     *
      * @param not notification to send.
      */
     protected abstract void enqueueNotification(Notification not);
 
     /**
-     * POSTs the payload to the subscriber's callback and returns a SubscriptionSummary with subscriber counts (where possible) and the success state of the
-     * notification.
-     * 
+     * POSTs the payload to the subscriber's callback and returns a
+     * SubscriptionSummary with subscriber counts (where possible) and the
+     * success state of the notification.
+     *
      * @param subscriber subscriber data.
      * @param mimeType MIME type for the request
      * @param payload payload of the feed to send

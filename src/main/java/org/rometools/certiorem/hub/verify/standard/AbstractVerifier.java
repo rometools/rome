@@ -34,8 +34,9 @@ import org.rometools.certiorem.hub.Verifier;
 import org.rometools.certiorem.hub.data.Subscriber;
 
 /**
- * An abstract verifier based on the java.net HTTP classes. This implements only synchronous operations, and expects a child class to do Async ops.
- * 
+ * An abstract verifier based on the java.net HTTP classes. This implements only
+ * synchronous operations, and expects a child class to do Async ops.
+ *
  * @author robert.cooper
  */
 public abstract class AbstractVerifier implements Verifier {
@@ -68,7 +69,8 @@ public abstract class AbstractVerifier implements Verifier {
             final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setDoInput(true);
             // connection.setRequestProperty("Host", url.getHost());
-            // connection.setRequestProperty("Port", Integer.toString(url.getPort()));
+            // connection.setRequestProperty("Port",
+            // Integer.toString(url.getPort()));
             connection.setRequestProperty("User-Agent", "ROME-Certiorem");
             connection.connect();
             final int rc = connection.getResponseCode();

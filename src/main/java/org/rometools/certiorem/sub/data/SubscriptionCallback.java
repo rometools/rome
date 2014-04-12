@@ -8,7 +8,7 @@ package org.rometools.certiorem.sub.data;
 import org.rometools.fetcher.impl.SyndFeedInfo;
 
 /**
- * 
+ *
  * @author najmi
  */
 public interface SubscriptionCallback {

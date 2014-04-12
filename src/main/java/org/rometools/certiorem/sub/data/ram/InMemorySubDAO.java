@@ -32,7 +32,7 @@ import org.rometools.certiorem.sub.data.SubDAO;
 import org.rometools.certiorem.sub.data.Subscription;
 
 /**
- * 
+ *
  * @author robert.cooper
  */
 public class InMemorySubDAO implements SubDAO {

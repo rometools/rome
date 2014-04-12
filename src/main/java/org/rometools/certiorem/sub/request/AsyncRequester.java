@@ -26,7 +26,7 @@ import org.rometools.certiorem.sub.data.Subscription;
 
 /**
  * A simple requester implementation that always makes requests as Async.
- * 
+ *
  * @author robert.cooper
  */
 public class AsyncRequester extends AbstractRequester {

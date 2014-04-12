@@ -33,20 +33,22 @@ import com.sun.syndication.feed.synd.SyndLink;
 
 /**
  * A class for sending update notifications to a hub.
- * 
+ *
  * @author robert.cooper
  */
 public class Publisher {
     private ThreadPoolExecutor executor;
 
     /**
-     * Constructs a new publisher. This publisher will spawn a new thread for each async send.
+     * Constructs a new publisher. This publisher will spawn a new thread for
+     * each async send.
      */
     public Publisher() {
     }
 
     /**
-     * Constructs a new publisher with an optional ThreadPoolExector for sending updates.
+     * Constructs a new publisher with an optional ThreadPoolExector for sending
+     * updates.
      */
     public Publisher(final ThreadPoolExecutor executor) {
         this.executor = executor;
@@ -54,7 +56,7 @@ public class Publisher {
 
     /**
      * Sends the HUB url a notification of a change in topic
-     * 
+     *
      * @param hub URL of the hub to notify.
      * @param topic The Topic that has changed
      * @throws NotificationException Any failure
@@ -91,8 +93,9 @@ public class Publisher {
     }
 
     /**
-     * Sends a notification for a feed located at "topic". The feed MUST contain rel="hub".
-     * 
+     * Sends a notification for a feed located at "topic". The feed MUST contain
+     * rel="hub".
+     *
      * @param topic URL for the feed
      * @param feed The feed itself
      * @throws NotificationException Any failure
@@ -109,8 +112,9 @@ public class Publisher {
     }
 
     /**
-     * Sends a notification for a feed. The feed MUST contain rel="hub" and rel="self" links.
-     * 
+     * Sends a notification for a feed. The feed MUST contain rel="hub" and
+     * rel="self" links.
+     *
      * @param feed The feed to notify
      * @throws NotificationException Any failure
      */
@@ -145,7 +149,7 @@ public class Publisher {
 
     /**
      * Sends the HUB url a notification of a change in topic asynchronously
-     * 
+     *
      * @param hub URL of the hub to notify.
      * @param topic The Topic that has changed
      * @param callback A callback invoked when the notification completes.
@@ -172,8 +176,9 @@ public class Publisher {
     }
 
     /**
-     * Asynchronously sends a notification for a feed located at "topic". The feed MUST contain rel="hub".
-     * 
+     * Asynchronously sends a notification for a feed located at "topic". The
+     * feed MUST contain rel="hub".
+     *
      * @param topic URL for the feed
      * @param feed The feed itself
      * @param callback A callback invoked when the notification completes.
@@ -200,8 +205,9 @@ public class Publisher {
     }
 
     /**
-     * Asyncronously sends a notification for a feed. The feed MUST contain rel="hub" and rel="self" links.
-     * 
+     * Asyncronously sends a notification for a feed. The feed MUST contain
+     * rel="hub" and rel="self" links.
+     *
      * @param feed The feed to notify
      * @param callback A callback invoked when the notification completes.
      * @throws NotificationException Any failure
@@ -232,7 +238,7 @@ public class Publisher {
     public static interface AsyncNotificationCallback {
         /**
          * Called when a notification fails
-         * 
+         *
          * @param thrown Whatever was thrown during the failure
          */
         public void onFailure(Throwable thrown);

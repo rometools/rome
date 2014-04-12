@@ -10,9 +10,10 @@ import org.rometools.fetcher.impl.FeedFetcherCache;
 import org.rometools.fetcher.impl.SyndFeedInfo;
 
 /**
- * Wrapper FeedFetcherCache that wraps a backing FeedFetcherCache and makes sure that any SyndFeedInfo used within it are replaced with a DeltaSyndFeedInfo
+ * Wrapper FeedFetcherCache that wraps a backing FeedFetcherCache and makes sure
+ * that any SyndFeedInfo used within it are replaced with a DeltaSyndFeedInfo
  * which is capable of tracking changes to entries in the underlying feed.
- * 
+ *
  * @author najmi
  */
 public class DeltaFeedInfoCache implements FeedFetcherCache {

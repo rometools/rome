@@ -21,7 +21,7 @@ package org.rometools.certiorem.hub;
 import org.rometools.certiorem.hub.data.Subscriber;
 
 /**
- * 
+ *
  * @author robert.cooper
  */
 public class ExceptionVerifier implements Verifier {

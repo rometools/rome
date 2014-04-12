@@ -22,7 +22,7 @@ import org.rometools.certiorem.hub.data.AbstractDAOTest;
 import org.rometools.certiorem.hub.data.HubDAO;
 
 /**
- * 
+ *
  * @author robert.cooper
  */
 public class InMemoryDAOTest extends AbstractDAOTest {

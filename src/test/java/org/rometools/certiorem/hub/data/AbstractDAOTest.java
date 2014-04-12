@@ -25,7 +25,7 @@ import java.util.logging.Logger;
 import org.junit.Test;
 
 /**
- * 
+ *
  * @author robert.cooper
  */
 public abstract class AbstractDAOTest {
@@ -46,7 +46,7 @@ public abstract class AbstractDAOTest {
 
         assert result.equals(subscriber) : "Subscriber not equal.";
 
-        final List<Subscriber> subscribers = (List<Subscriber>) instance.subscribersForTopic(subscriber.getTopic());
+        final List<? extends Subscriber> subscribers = instance.subscribersForTopic(subscriber.getTopic());
 
         assert subscribers.contains(result) : "Subscriber not in result.";
     }
@@ -65,11 +65,11 @@ public abstract class AbstractDAOTest {
 
         assert subscriber.equals(result) : "Subscriber not equal.";
         // quick test for store.
-        List<Subscriber> subscribers = (List<Subscriber>) instance.subscribersForTopic(subscriber.getTopic());
+        List<? extends Subscriber> subscribers = instance.subscribersForTopic(subscriber.getTopic());
         assert subscribers.contains(result) : "Subscriber not in result.";
         // sleep past expiration
         Thread.sleep(1100);
-        subscribers = (List<Subscriber>) instance.subscribersForTopic(subscriber.getTopic());
+        subscribers = instance.subscribersForTopic(subscriber.getTopic());
         assert !subscribers.contains(result) : "Subscriber should have expired";
     }
 
@@ -83,8 +83,8 @@ public abstract class AbstractDAOTest {
         subscriber.setLeaseSeconds(1);
         subscriber.setVerify("VerifyMe");
 
-        final Subscriber result = instance.addSubscriber(subscriber);
         // TODO
+        // final Subscriber result = instance.addSubscriber(subscriber);
 
     }
 }

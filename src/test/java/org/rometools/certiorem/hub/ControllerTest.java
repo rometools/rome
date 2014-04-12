@@ -36,7 +36,7 @@ import org.rometools.fetcher.impl.HashMapFeedInfoCache;
 import org.rometools.fetcher.impl.HttpURLFeedFetcher;
 
 /**
- * 
+ *
  * @author robert.cooper
  */
 public class ControllerTest {

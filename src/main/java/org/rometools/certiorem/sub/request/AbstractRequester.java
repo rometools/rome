@@ -27,7 +27,7 @@ import org.rometools.certiorem.sub.Requester;
 import org.rometools.certiorem.sub.data.Subscription;
 
 /**
- * 
+ *
  * @author robert.cooper
  */
 public abstract class AbstractRequester implements Requester {

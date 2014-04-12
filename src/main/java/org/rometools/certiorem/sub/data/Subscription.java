@@ -21,10 +21,14 @@ package org.rometools.certiorem.sub.data;
 import java.io.Serializable;
 
 /**
- * 
+ *
  * @author robert.cooper
  */
 public class Subscription implements Serializable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private String id;
     private String sourceUrl;
     private String verifyToken;
@@ -35,7 +39,7 @@ public class Subscription implements Serializable {
 
     /**
      * Set the value of expirationTime
-     * 
+     *
      * @param newexpirationTime new value of expirationTime
      */
     public void setExpirationTime(final long newexpirationTime) {
@@ -44,7 +48,7 @@ public class Subscription implements Serializable {
 
     /**
      * Get the value of expirationTime
-     * 
+     *
      * @return the value of expirationTime
      */
     public long getExpirationTime() {
@@ -53,7 +57,7 @@ public class Subscription implements Serializable {
 
     /**
      * Set the value of id
-     * 
+     *
      * @param newid new value of id
      */
     public void setId(final String newid) {
@@ -62,7 +66,7 @@ public class Subscription implements Serializable {
 
     /**
      * Get the value of id
-     * 
+     *
      * @return the value of id
      */
     public String getId() {
@@ -71,7 +75,7 @@ public class Subscription implements Serializable {
 
     /**
      * Set the value of sourceUrl
-     * 
+     *
      * @param newsourceUrl new value of sourceUrl
      */
     public void setSourceUrl(final String newsourceUrl) {
@@ -80,7 +84,7 @@ public class Subscription implements Serializable {
 
     /**
      * Get the value of sourceUrl
-     * 
+     *
      * @return the value of sourceUrl
      */
     public String getSourceUrl() {
@@ -89,7 +93,7 @@ public class Subscription implements Serializable {
 
     /**
      * Set the value of unsubscribed
-     * 
+     *
      * @param newunsubscribed new value of unsubscribed
      */
     public void setUnsubscribed(final boolean newunsubscribed) {
@@ -98,7 +102,7 @@ public class Subscription implements Serializable {
 
     /**
      * Get the value of unsubscribed
-     * 
+     *
      * @return the value of unsubscribed
      */
     public boolean isUnsubscribed() {
@@ -107,7 +111,7 @@ public class Subscription implements Serializable {
 
     /**
      * Set the value of validated
-     * 
+     *
      * @param newvalidated new value of validated
      */
     public void setValidated(final boolean newvalidated) {
@@ -116,7 +120,7 @@ public class Subscription implements Serializable {
 
     /**
      * Get the value of validated
-     * 
+     *
      * @return the value of validated
      */
     public boolean isValidated() {
@@ -125,7 +129,7 @@ public class Subscription implements Serializable {
 
     /**
      * Set the value of verifyToken
-     * 
+     *
      * @param newverifyToken new value of verifyToken
      */
     public void setVerifyToken(final String newverifyToken) {
@@ -134,7 +138,7 @@ public class Subscription implements Serializable {
 
     /**
      * Get the value of verifyToken
-     * 
+     *
      * @return the value of verifyToken
      */
     public String getVerifyToken() {

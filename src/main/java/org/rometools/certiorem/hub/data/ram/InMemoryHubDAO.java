@@ -30,7 +30,7 @@ import org.rometools.certiorem.hub.data.SubscriptionSummary;
 
 /**
  * A Simple In-Memory HubDAO for subscribers.
- * 
+ *
  * @author robert.cooper
  */
 public class InMemoryHubDAO implements HubDAO {
@@ -89,7 +89,7 @@ public class InMemoryHubDAO implements HubDAO {
 
             return result;
         } else {
-            return Collections.EMPTY_LIST;
+            return Collections.emptyList();
         }
     }
 

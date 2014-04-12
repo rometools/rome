@@ -22,7 +22,7 @@ import org.rometools.certiorem.hub.data.Subscriber;
 
 /**
  * A verifier that does not use threads. Suitable for Google App Engine.
- * 
+ *
  * @author robert.cooper
  */
 public class UnthreadedVerifier extends AbstractVerifier {
