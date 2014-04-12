@@ -8,6 +8,7 @@ import junit.framework.TestCase;
 
 import org.jdom2.Document;
 import org.jdom2.input.SAXBuilder;
+import org.jdom2.input.sax.XMLReaders;
 
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.synd.SyndFeed;
@@ -16,20 +17,21 @@ import com.sun.syndication.io.WireFeedInput;
 
 /**
  * @author pat, tucu
- * 
+ *
  */
 public abstract class FeedTest extends TestCase {
-    private final String _feedFileName;
-    private Document _jDomDoc = null;
-    private WireFeed _wireFeed = null;
-    private SyndFeed _syndFeed = null;
+
+    private final String fileName;
+    private Document jDomDoc = null;
+    private WireFeed wireFeed = null;
+    private SyndFeed syndFeed = null;
 
     protected FeedTest(final String feedFileName) {
-        _feedFileName = feedFileName;
+        fileName = feedFileName;
     }
 
     protected String getFeedFileName() {
-        return _feedFileName;
+        return fileName;
     }
 
     protected Reader getFeedReader() throws Exception {
@@ -39,7 +41,7 @@ public abstract class FeedTest extends TestCase {
     }
 
     protected Document getJDomDoc() throws Exception {
-        final SAXBuilder saxBuilder = new SAXBuilder(false);
+        final SAXBuilder saxBuilder = new SAXBuilder(XMLReaders.NONVALIDATING);
         return saxBuilder.build(getFeedReader());
     }
 
@@ -54,24 +56,24 @@ public abstract class FeedTest extends TestCase {
     }
 
     protected Document getCachedJDomDoc() throws Exception {
-        if (_jDomDoc == null) {
-            _jDomDoc = getJDomDoc();
+        if (jDomDoc == null) {
+            jDomDoc = getJDomDoc();
         }
-        return _jDomDoc;
+        return jDomDoc;
     }
 
     protected WireFeed getCachedWireFeed() throws Exception {
-        if (_wireFeed == null) {
-            _wireFeed = getWireFeed();
+        if (wireFeed == null) {
+            wireFeed = getWireFeed();
         }
-        return _wireFeed;
+        return wireFeed;
     }
 
     protected SyndFeed getCachedSyndFeed() throws Exception {
-        if (_syndFeed == null) {
-            _syndFeed = getSyndFeed();
+        if (syndFeed == null) {
+            syndFeed = getSyndFeed();
         }
-        return _syndFeed;
+        return syndFeed;
     }
 
 }

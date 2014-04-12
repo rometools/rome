@@ -45,6 +45,8 @@ public class TestXmlReader extends TestCase {
 
     protected void _testRawNoBomValid(final String encoding) throws Exception {
 
+        // TODO review this test
+
         InputStream is = getXmlStream("no-bom", "xml", encoding, encoding);
         XmlReader xmlReader = new XmlReader(is, false);
         assertEquals(xmlReader.getEncoding(), "UTF-8");
@@ -170,7 +172,8 @@ public class TestXmlReader extends TestCase {
         final InputStream is = getXmlStream(bomEnc, prologEnc == null ? "xml" : "xml-prolog-encoding", streamEnc, prologEnc);
         final XmlReader xmlReader = new XmlReader(is, cT, false);
         if (!streamEnc.equals("UTF-16")) {
-            // we can not assert things here becuase UTF-8, US-ASCII and ISO-8859-1 look alike for the chars used for detection
+            // we can not assert things here becuase UTF-8, US-ASCII and ISO-8859-1 look alike for
+            // the chars used for detection
         } else {
             assertEquals(xmlReader.getEncoding().substring(0, streamEnc.length()), streamEnc);
         }
