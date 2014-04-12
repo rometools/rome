@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-    <modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>9</version>
-    </parent>
+	<parent>
+		<groupId>com.rometools</groupId>
+		<artifactId>rome-parent</artifactId>
+		<version>1.5.0-SNAPSHOT</version>
+	</parent>
 
-    <groupId>com.rometools</groupId>
-    <artifactId>rome</artifactId>
-    <version>1.5.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+	<artifactId>rome</artifactId>
+	<packaging>jar</packaging>
 
-    <name>ROME, RSS and atOM utilitiEs for Java</name>
+	<name>rome</name>
 
-    <description>All Roads Lead to ROME. ROME is a set of Atom/RSS Java utilities that make it
+	<description>All Roads Lead to ROME. ROME is a set of Atom/RSS Java utilities that make it
         easy to work in Java with most syndication formats. Today it accepts all flavors of RSS
         (0.90, 0.91, 0.92, 0.93, 0.94, 1.0 and 2.0), Atom 0.3 and Atom 1.0 feeds. Rome includes
         a set of parsers and generators for the various flavors of feeds, as well as converters
@@ -26,134 +25,96 @@
         underlying format.
     </description>
 
-    <url>http://rometools.github.io/rome/</url>
+	<url>http://rometools.github.io/rome/</url>
 
-    <licenses>
-        <license>
-            <name>The Apache Software License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
+	<scm>
+		<connection>scm:git:git@github.com:rometools/rome.git</connection>
+		<developerConnection>scm:git:git@github.com:rometools/rome.git</developerConnection>
+		<url>https://github.com/rometools/rome</url>
+	</scm>
 
-    <scm>
-        <connection>scm:git:git@github.com:rometools/rome.git</connection>
-        <developerConnection>scm:git:git@github.com:rometools/rome.git</developerConnection>
-        <url>https://github.com/rometools/rome</url>
-    </scm>
+	<developers>
+		<developer>
+			<name>Alejandro Abdelnur</name>
+			<url>http://blog.sun.com/roller/page/tucu</url>
+			<timezone>0</timezone>
+		</developer>
+		<developer>
+			<name>Dave Johnson</name>
+			<url>http://rollerweblogger.org/roller</url>
+			<timezone>-5</timezone>
+		</developer>
+		<developer>
+			<name>Elaine Chien</name>
+			<timezone>0</timezone>
+		</developer>
+		<developer>
+			<name>Patrick Chanezon</name>
+			<url>http://www.chanezon.com/pat/weblog</url>
+			<timezone>-9</timezone>
+		</developer>
+		<developer>
+			<name>Patrick Gotthard</name>
+			<url>http://www.patrick-gotthard.de</url>
+			<timezone>+1</timezone>
+		</developer>
+		<developer>
+			<name>Robert Cooper</name>
+			<email>kebernet@gmail.com</email>
+			<url>http://www.screaming-penguin.com</url>
+			<timezone>-4</timezone>
+		</developer>
+	</developers>
 
-    <developers>
-        <developer>
-            <name>Alejandro Abdelnur</name>
-            <url>http://blog.sun.com/roller/page/tucu</url>
-            <timezone>0</timezone>
-        </developer>
-        <developer>
-            <name>Dave Johnson</name>
-            <url>http://rollerweblogger.org/roller</url>
-            <timezone>-5</timezone>
-        </developer>
-        <developer>
-            <name>Elaine Chien</name>
-            <timezone>0</timezone>
-        </developer>
-        <developer>
-            <name>Patrick Chanezon</name>
-            <url>http://www.chanezon.com/pat/weblog</url>
-            <timezone>-9</timezone>
-        </developer>
-        <developer>
-            <name>Patrick Gotthard</name>
-            <url>http://www.patrick-gotthard.de</url>
-            <timezone>+1</timezone>
-        </developer>
-        <developer>
-            <name>Robert Cooper</name>
-            <email>kebernet@gmail.com</email>
-            <url>http://www.screaming-penguin.com</url>
-            <timezone>-4</timezone>
-        </developer>
-    </developers>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.doxia</groupId>
+						<artifactId>doxia-module-markdown</artifactId>
+						<version>1.5</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.maven.doxia</groupId>
+						<artifactId>doxia-module-confluence</artifactId>
+						<version>1.5</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-scm-publish-plugin</artifactId>
+				<configuration>
+					<scmBranch>gh-pages</scmBranch>
+					<pubScmUrl>${project.scm.developerConnection}</pubScmUrl>
+					<content>${project.build.directory}/site</content>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    </properties>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <version>3.3</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.apache.maven.doxia</groupId>
-                        <artifactId>doxia-module-markdown</artifactId>
-                        <version>1.5</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.apache.maven.doxia</groupId>
-                        <artifactId>doxia-module-confluence</artifactId>
-                        <version>1.5</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-scm-publish-plugin</artifactId>
-                <version>1.0</version>
-                <configuration>
-                    <scmBranch>gh-pages</scmBranch>
-                    <pubScmUrl>${project.scm.developerConnection}</pubScmUrl>
-                    <content>${project.build.directory}/site</content>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>2.7</version>
-            </plugin>
-        </plugins>
-    </reporting>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.jdom</groupId>
-            <artifactId>jdom</artifactId>
-            <version>2.0.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.5</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>1.7.5</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+	<dependencies>
+		<dependency>
+			<groupId>org.jdom</groupId>
+			<artifactId>jdom</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 
 </project>
