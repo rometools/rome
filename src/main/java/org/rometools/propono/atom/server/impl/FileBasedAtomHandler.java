@@ -1,10 +1,10 @@
-/*   
+/*
  * Copyright 2007 Sun Microsystems, Inc.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -21,7 +21,7 @@ import java.util.StringTokenizer;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.rometools.propono.atom.common.AtomService;
@@ -36,7 +36,9 @@ import com.sun.syndication.feed.atom.Entry;
 import com.sun.syndication.feed.atom.Feed;
 
 /**
- * File-based {@link com.sun.syndication.propono.atom.server.AtomHandler} implementation that stores entries and media-entries to disk. Implemented using
+ * File-based {@link com.sun.syndication.propono.atom.server.AtomHandler}
+ * implementation that stores entries and media-entries to disk. Implemented
+ * using
  * {@link com.sun.syndication.propono.atom.server.impl.FileBasedAtomService}.
  */
 public class FileBasedAtomHandler implements AtomHandler {
@@ -54,7 +56,7 @@ public class FileBasedAtomHandler implements AtomHandler {
 
     /**
      * Construct handler to handle one request.
-     * 
+     *
      * @param req Request to be handled.
      */
     public FileBasedAtomHandler(final HttpServletRequest req) {
@@ -63,7 +65,7 @@ public class FileBasedAtomHandler implements AtomHandler {
 
     /**
      * Contruct handler for one request, using specified file storage directory.
-     * 
+     *
      * @param req Request to be handled.
      * @param uploaddir File storage upload dir.
      */
@@ -84,9 +86,10 @@ public class FileBasedAtomHandler implements AtomHandler {
     }
 
     /**
-     * Method used for validating user. Developers can overwrite this method and use credentials stored in Database or LDAP to confirm if the user is allowed to
-     * access this service.
-     * 
+     * Method used for validating user. Developers can overwrite this method and
+     * use credentials stored in Database or LDAP to confirm if the user is
+     * allowed to access this service.
+     *
      * @param login user submitted login id
      * @param password user submitted password
      */
@@ -96,7 +99,7 @@ public class FileBasedAtomHandler implements AtomHandler {
 
     /**
      * Get username of authenticated user
-     * 
+     *
      * @return User name.
      */
     @Override
@@ -107,7 +110,7 @@ public class FileBasedAtomHandler implements AtomHandler {
 
     /**
      * Get base URI of Atom protocol implementation.
-     * 
+     *
      * @return Base URI of Atom protocol implemenation.
      */
     public String getAtomProtocolURL() {
@@ -120,8 +123,9 @@ public class FileBasedAtomHandler implements AtomHandler {
 
     /**
      * Return introspection document
-     * 
-     * @throws com.sun.syndication.propono.atom.server.AtomException Unexpected exception.
+     *
+     * @throws com.sun.syndication.propono.atom.server.AtomException Unexpected
+     *             exception.
      * @return AtomService object with workspaces and collections.
      */
     @Override
@@ -131,8 +135,9 @@ public class FileBasedAtomHandler implements AtomHandler {
 
     /**
      * Returns null because we use in-line categories.
-     * 
-     * @throws com.sun.syndication.propono.atom.server.AtomException Unexpected exception.
+     *
+     * @throws com.sun.syndication.propono.atom.server.AtomException Unexpected
+     *             exception.
      * @return Categories object
      */
     @Override
@@ -147,10 +152,11 @@ public class FileBasedAtomHandler implements AtomHandler {
 
     /**
      * Get collection specified by pathinfo.
-     * 
+     *
      * @param areq Details of HTTP request
      * @return ROME feed representing collection.
-     * @throws com.sun.syndication.propono.atom.server.AtomException Invalid collection or other exception.
+     * @throws com.sun.syndication.propono.atom.server.AtomException Invalid
+     *             collection or other exception.
      */
     @Override
     public Feed getCollection(final AtomRequest areq) throws AtomException {
@@ -163,11 +169,14 @@ public class FileBasedAtomHandler implements AtomHandler {
     }
 
     /**
-     * Create a new entry specified by pathInfo and posted entry. We save the submitted Atom entry verbatim, but we do set the id and reset the update time.
-     * 
+     * Create a new entry specified by pathInfo and posted entry. We save the
+     * submitted Atom entry verbatim, but we do set the id and reset the update
+     * time.
+     *
      * @param entry Entry to be added to collection.
      * @param areq Details of HTTP request
-     * @throws com.sun.syndication.propono.atom.server.AtomException On invalid collection or other error.
+     * @throws com.sun.syndication.propono.atom.server.AtomException On invalid
+     *             collection or other error.
      * @return Entry as represented on server.
      */
     @Override
@@ -189,9 +198,10 @@ public class FileBasedAtomHandler implements AtomHandler {
 
     /**
      * Get entry specified by pathInfo.
-     * 
+     *
      * @param areq Details of HTTP request
-     * @throws com.sun.syndication.propono.atom.server.AtomException On invalid pathinfo or other error.
+     * @throws com.sun.syndication.propono.atom.server.AtomException On invalid
+     *             pathinfo or other error.
      * @return ROME Entry object.
      */
     @Override
@@ -215,7 +225,7 @@ public class FileBasedAtomHandler implements AtomHandler {
 
     /**
      * Update entry specified by pathInfo and posted entry.
-     * 
+     *
      * @param entry
      * @param areq Details of HTTP request
      * @throws com.sun.syndication.propono.atom.server.AtomException
@@ -238,7 +248,7 @@ public class FileBasedAtomHandler implements AtomHandler {
 
     /**
      * Delete entry specified by pathInfo.
-     * 
+     *
      * @param areq Details of HTTP request
      */
     @Override
@@ -260,9 +270,10 @@ public class FileBasedAtomHandler implements AtomHandler {
     }
 
     /**
-     * Store media data in collection specified by pathInfo, create an Atom media-link entry to store metadata for the new media file and return that entry to
-     * the caller.
-     * 
+     * Store media data in collection specified by pathInfo, create an Atom
+     * media-link entry to store metadata for the new media file and return that
+     * entry to the caller.
+     *
      * @param areq Details of HTTP request
      * @param entry New entry initialzied with only title and content type
      * @return Location URL of new media entry
@@ -305,8 +316,9 @@ public class FileBasedAtomHandler implements AtomHandler {
 
     /**
      * Update the media file part of a media-link entry.
-     * 
-     * @param areq Details of HTTP request Assuming pathInfo of form /user-name/resource/name
+     *
+     * @param areq Details of HTTP request Assuming pathInfo of form
+     *            /user-name/resource/name
      */
     @Override
     public void putMedia(final AtomRequest areq) throws AtomException {
@@ -412,13 +424,14 @@ public class FileBasedAtomHandler implements AtomHandler {
     public boolean isMediaEditURI(final AtomRequest areq) {
         log.debug("isMediaEditURI");
         // workspace/collection-singular/fsid/media/fsid
-        // if length is 4, points to a valid collection and fsid is mentioned twice then YES
+        // if length is 4, points to a valid collection and fsid is mentioned
+        // twice then YES
         final String[] pathInfo = StringUtils.split(areq.getPathInfo(), "/");
         if (pathInfo.length == 4) {
             final String handle = pathInfo[0];
             final String collection = pathInfo[1];
             final String media = pathInfo[2];
-            final String fsid = pathInfo[3];
+            // final String fsid = pathInfo[3];
             if (service.findCollectionByHandle(handle, collection) != null && media.equals("media")) {
                 return true;
             }
