@@ -14,6 +14,17 @@
 	<version>1.5.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
+	<!-- Just for testing the build locally -->
+	<!-- <modules> -->
+	<!-- <module>../rome</module> -->
+	<!-- <module>../rome-certiorem</module> -->
+	<!-- <module>../rome-certiorem-webapp</module> -->
+	<!-- <module>../rome-fetcher</module> -->
+	<!-- <module>../rome-modules</module> -->
+	<!-- <module>../rome-opml</module> -->
+	<!-- <module>../rome-propono</module> -->
+	<!-- </modules> -->
+
 	<name>rome-parent</name>
 
 	<description>Parent for all ROME projects</description>
@@ -143,46 +154,16 @@
 			</dependency>
 			<!-- Guice -->
 			<dependency>
-				<groupId>com.google.inject</groupId>
-				<artifactId>guice</artifactId>
-				<version>2.0</version>
-			</dependency>
-			<dependency>
 				<groupId>com.google.inject.extensions</groupId>
 				<artifactId>guice-servlet</artifactId>
 				<version>2.0</version>
 			</dependency>
-			<dependency>
-				<groupId>javax.activation</groupId>
-				<artifactId>activation</artifactId>
-				<version>1.1</version>
-			</dependency>
 			<!-- Xerces -->
-			<dependency>
-				<groupId>xerces</groupId>
-				<artifactId>xercesImpl</artifactId>
-				<version>2.11.0</version>
-			</dependency>
 			<!-- Apache Commons -->
 			<dependency>
 				<groupId>commons-httpclient</groupId>
 				<artifactId>commons-httpclient</artifactId>
 				<version>3.1</version>
-			</dependency>
-			<dependency>
-				<groupId>commons-logging</groupId>
-				<artifactId>commons-logging-api</artifactId>
-				<version>1.1</version>
-			</dependency>
-			<dependency>
-				<groupId>commons-logging</groupId>
-				<artifactId>commons-logging</artifactId>
-				<version>1.1.3</version>
-			</dependency>
-			<dependency>
-				<groupId>commons-codec</groupId>
-				<artifactId>commons-codec</artifactId>
-				<version>1.3</version>
 			</dependency>
 			<dependency>
 				<groupId>commons-lang</groupId>
@@ -193,11 +174,6 @@
 				<groupId>commons-beanutils</groupId>
 				<artifactId>commons-beanutils</artifactId>
 				<version>1.6</version>
-			</dependency>
-			<dependency>
-				<groupId>ws-commons-util</groupId>
-				<artifactId>ws-commons-util</artifactId>
-				<version>1.0.1</version>
 			</dependency>
 			<!-- Jetty -->
 			<dependency>
@@ -211,20 +187,10 @@
 				<artifactId>xmlrpc-client</artifactId>
 				<version>3.0</version>
 			</dependency>
-			<dependency>
-				<groupId>xmlrpc</groupId>
-				<artifactId>xmlrpc-common</artifactId>
-				<version>3.0</version>
-			</dependency>
 			<!-- OAuth -->
 			<dependency>
 				<groupId>net.oauth.core</groupId>
 				<artifactId>oauth</artifactId>
-				<version>20100527</version>
-			</dependency>
-			<dependency>
-				<groupId>net.oauth.core</groupId>
-				<artifactId>oauth-provider</artifactId>
 				<version>20100527</version>
 			</dependency>
 		</dependencies>
