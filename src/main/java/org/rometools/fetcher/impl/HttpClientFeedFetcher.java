@@ -28,6 +28,7 @@ import org.apache.commons.httpclient.Header;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.HttpMethod;
+import org.apache.commons.httpclient.auth.AuthScope;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.params.HttpClientParams;
 import org.rometools.fetcher.FetcherEvent;
@@ -68,7 +69,7 @@ public class HttpClientFeedFetcher extends AbstractFeedFetcher {
     /**
      * @param timeout Sets the connect timeout for the HttpClient but using the URLConnection method name. Uses the HttpClientParams method
      *            setConnectionManagerTimeout instead of setConnectTimeout
-     * 
+     *
      */
     public synchronized void setConnectTimeout(final int timeout) {
         httpClientParams.setConnectionManagerTimeout(timeout);
@@ -77,7 +78,7 @@ public class HttpClientFeedFetcher extends AbstractFeedFetcher {
     /**
      * @return The currently used connect timeout for the HttpClient but using the URLConnection method name. Uses the HttpClientParams method
      *         getConnectionManagerTimeout instead of getConnectTimeout
-     * 
+     *
      */
     public int getConnectTimeout() {
         return (int) getHttpClientParams().getConnectionManagerTimeout();
@@ -157,23 +158,24 @@ public class HttpClientFeedFetcher extends AbstractFeedFetcher {
      */
     @Override
     public SyndFeed retrieveFeed(final String userAgent, final URL feedUrl) throws IllegalArgumentException, IOException, FeedException, FetcherException {
+
         if (feedUrl == null) {
             throw new IllegalArgumentException("null is not a valid URL");
         }
 
-        // TODO Fix this
-        // System.setProperty("org.apache.commons.logging.Log", "org.apache.commons.logging.impl.SimpleLog");
         final HttpClient client = new HttpClient(httpClientParams);
 
         if (getCredentialSupplier() != null) {
-            client.getState().setAuthenticationPreemptive(true);
 
-            // TODO what should realm be here?
-            final Credentials credentials = getCredentialSupplier().getCredentials(null, feedUrl.getHost());
+            client.getParams().setAuthenticationPreemptive(true);
 
+            final String host = feedUrl.getHost();
+            final Credentials credentials = getCredentialSupplier().getCredentials(null, host);
             if (credentials != null) {
-                client.getState().setCredentials(null, feedUrl.getHost(), credentials);
+                final AuthScope authScope = new AuthScope(host, -1);
+                client.getState().setCredentials(authScope, credentials);
             }
+
         }
 
         System.setProperty("httpclient.useragent", userAgent);
@@ -229,7 +231,6 @@ public class HttpClientFeedFetcher extends AbstractFeedFetcher {
                 return feed;
             } finally {
                 method.releaseConnection();
-                method.recycle();
             }
         } else {
             // cache is not in use
@@ -241,16 +242,15 @@ public class HttpClientFeedFetcher extends AbstractFeedFetcher {
                 return getFeed(null, urlStr, method, statusCode);
             } finally {
                 method.releaseConnection();
-                method.recycle();
             }
         }
     }
 
     private SyndFeed getFeed(final SyndFeedInfo syndFeedInfo, final String urlStr, final HttpMethod method, final int statusCode) throws IOException,
             HttpException, FetcherException, FeedException {
+
         if (statusCode == HttpURLConnection.HTTP_NOT_MODIFIED && syndFeedInfo != null) {
             fireEvent(FetcherEvent.EVENT_TYPE_FEED_UNCHANGED, urlStr);
-
             return syndFeedInfo.getSyndFeed();
         }
 
@@ -270,6 +270,7 @@ public class HttpClientFeedFetcher extends AbstractFeedFetcher {
      */
     private SyndFeedInfo buildSyndFeedInfo(final URL feedUrl, final String urlStr, final HttpMethod method, SyndFeed feed, final int statusCode)
             throws MalformedURLException {
+
         SyndFeedInfo syndFeedInfo;
         syndFeedInfo = new SyndFeedInfo();
 
@@ -324,6 +325,7 @@ public class HttpClientFeedFetcher extends AbstractFeedFetcher {
      * @throws FeedException
      */
     private SyndFeed retrieveFeed(final String urlStr, final HttpMethod method) throws IOException, HttpException, FetcherException, FeedException {
+
         InputStream stream = null;
 
         if (method.getResponseHeader("Content-Encoding") != null && "gzip".equalsIgnoreCase(method.getResponseHeader("Content-Encoding").getValue())) {
@@ -360,9 +362,10 @@ public class HttpClientFeedFetcher extends AbstractFeedFetcher {
         /**
          * Allows access to the underlying HttpClient HttpMethod object. Note that in most cases, method.setRequestHeader(String, String) is what you want to do
          * (rather than method.addRequestHeader(String, String))
-         * 
+         *
          * @param method
          */
         public void afterHttpClientMethodCreate(HttpMethod method);
     }
+
 }
