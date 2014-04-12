@@ -57,22 +57,8 @@
 			<artifactId>rome</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>xerces</groupId>
-			<artifactId>xercesImpl</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>commons-httpclient</groupId>
 			<artifactId>commons-httpclient</artifactId>
-			<optional />
-		</dependency>
-		<dependency>
-			<groupId>commons-logging</groupId>
-			<artifactId>commons-logging</artifactId>
-			<optional />
-		</dependency>
-		<dependency>
-			<groupId>commons-logging</groupId>
-			<artifactId>commons-logging-api</artifactId>
 			<optional />
 		</dependency>
 		<dependency>
