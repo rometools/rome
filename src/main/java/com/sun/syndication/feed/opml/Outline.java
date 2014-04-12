@@ -29,10 +29,13 @@ import com.sun.syndication.feed.impl.ToStringBean;
 
 /**
  * This class represents an OPML outline element.
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Outline implements Cloneable, Serializable {
+    
+    private static final long serialVersionUID = 1L;
+    
     private Date _created;
     private List _attributes;
     private List _categories;
@@ -51,7 +54,7 @@ public class Outline implements Cloneable, Serializable {
 
     /**
      * Creates a new outline with the specified type and text values.
-     * 
+     *
      * @param type type attribute value/
      * @param text text attribute value
      */
@@ -63,7 +66,7 @@ public class Outline implements Cloneable, Serializable {
 
     /**
      * Creates an outline with the given title, xmlUrl and htmlUrl. This is traditionally used for aggregator feed lists and will get a type of "rss".
-     * 
+     *
      * @param title Title of the entry.
      * @param xmlUrl link to XML file.
      * @param htmlUrl link to html page.
@@ -85,7 +88,7 @@ public class Outline implements Cloneable, Serializable {
 
     /**
      * List of attributes on this outline excluding the "common types" for the specification.
-     * 
+     *
      * @param attributes List of attributes on this outline.
      */
     public void setAttributes(final List attributes) {
@@ -94,7 +97,7 @@ public class Outline implements Cloneable, Serializable {
 
     /**
      * List of attributes on this outline excluding the "common types" for the specification.
-     * 
+     *
      * @return List of attributes on this outline.
      */
     public List getAttributes() {
@@ -108,7 +111,7 @@ public class Outline implements Cloneable, Serializable {
     /**
      * isBreakpoint is a string, either "true" or "false", indicating whether a breakpoint is set on this outline. This attribute is mainly necessary for
      * outlines used to edit scripts. If it's not present, the value is false.
-     * 
+     *
      * @param breakpoint whether a breakpoint is set on this outline.
      */
     public void setBreakpoint(final boolean breakpoint) {
@@ -118,7 +121,7 @@ public class Outline implements Cloneable, Serializable {
     /**
      * isBreakpoint is a string, either "true" or "false", indicating whether a breakpoint is set on this outline. This attribute is mainly necessary for
      * outlines used to edit scripts. If it's not present, the value is false.
-     * 
+     *
      * @return whether a breakpoint is set on this outline
      */
     public boolean isBreakpoint() {
@@ -127,7 +130,7 @@ public class Outline implements Cloneable, Serializable {
 
     /**
      * (OPML 2) A List of Strings indicating values in the category attribute.
-     * 
+     *
      * @param categories (OPML 2) A List of Strings indicating values in the category attribute.
      */
     public void setCategories(final List categories) {
@@ -136,7 +139,7 @@ public class Outline implements Cloneable, Serializable {
 
     /**
      * (OPML 2) A List of Strings indicating values in the category attribute.
-     * 
+     *
      * @return (OPML 2) A List of Strings indicating values in the category attribute.
      */
     public List getCategories() {
@@ -149,7 +152,7 @@ public class Outline implements Cloneable, Serializable {
 
     /**
      * A list of sub-outlines for this entry.
-     * 
+     *
      * @param children A list of sub-outlines for this entry.
      */
     public void setChildren(final List children) {
@@ -158,7 +161,7 @@ public class Outline implements Cloneable, Serializable {
 
     /**
      * A list of sub-outlines for this entry.
-     * 
+     *
      * @return A list of sub-outlines for this entry.
      */
     public List getChildren() {
@@ -172,7 +175,7 @@ public class Outline implements Cloneable, Serializable {
     /**
      * isComment is a string, either "true" or "false", indicating whether the outline is commented or not. By convention if an outline is commented, all
      * subordinate outlines are considered to also be commented. If it's not present, the value is false.
-     * 
+     *
      * @param comment whether the outline is commented
      */
     public void setComment(final boolean comment) {
@@ -182,7 +185,7 @@ public class Outline implements Cloneable, Serializable {
     /**
      * isComment is a string, either "true" or "false", indicating whether the outline is commented or not. By convention if an outline is commented, all
      * subordinate outlines are considered to also be commented. If it's not present, the value is false.
-     * 
+     *
      * @return whether the outline is commented
      */
     public boolean isComment() {
@@ -191,7 +194,7 @@ public class Outline implements Cloneable, Serializable {
 
     /**
      * (OPML 2) created is the date-time that the outline node was created.
-     * 
+     *
      * @param created date-time that the outline node was created.
      */
     public void setCreated(final Date created) {
@@ -200,7 +203,7 @@ public class Outline implements Cloneable, Serializable {
 
     /**
      * (OPML 2) created is the date-time that the outline node was created.
-     * 
+     *
      * @return date-time that the outline node was created.
      */
     public Date getCreated() {
@@ -209,7 +212,7 @@ public class Outline implements Cloneable, Serializable {
 
     /**
      * A convenience method to return the value of the url attribute.
-     * 
+     *
      * @return value of the htmlUrl attribute.
      */
     public String getUrl() {
@@ -218,7 +221,7 @@ public class Outline implements Cloneable, Serializable {
 
     /**
      * A convenience method to return the value of the htmlUrl attribute.
-     * 
+     *
      * @return value of the htmlUrl attribute.
      */
     public String getHtmlUrl() {
@@ -239,7 +242,7 @@ public class Outline implements Cloneable, Serializable {
 
     /**
      * The "text" attribute of the outline.
-     * 
+     *
      * @param text The "text" attribute of the outline.
      */
     public void setText(final String text) {
@@ -248,7 +251,7 @@ public class Outline implements Cloneable, Serializable {
 
     /**
      * The "text" attribute of the outline.
-     * 
+     *
      * @return The "text" attribute of the outline.
      */
     public String getText() {
@@ -257,7 +260,7 @@ public class Outline implements Cloneable, Serializable {
 
     /**
      * The "title" attribute of the outline.
-     * 
+     *
      * @param title The "title" attribute of the outline.
      */
     public void setTitle(final String title) {
@@ -266,7 +269,7 @@ public class Outline implements Cloneable, Serializable {
 
     /**
      * The "title" attribute of the outline.
-     * 
+     *
      * @return The "title" attribute of the outline.
      */
     public String getTitle() {
@@ -275,7 +278,7 @@ public class Outline implements Cloneable, Serializable {
 
     /**
      * The "type" attribute of the outline.
-     * 
+     *
      * @param type The "type" attribute of the outline.
      */
     public void setType(final String type) {
@@ -284,7 +287,7 @@ public class Outline implements Cloneable, Serializable {
 
     /**
      * The "type" attribute of the outline.
-     * 
+     *
      * @return The "type" attribute of the outline.
      */
     public String getType() {
@@ -293,7 +296,7 @@ public class Outline implements Cloneable, Serializable {
 
     /**
      * A convenience method to return the value of the xmlUrl attribute.
-     * 
+     *
      * @return value of the xmlUrl attribute.
      */
     public String getXmlUrl() {
@@ -302,7 +305,7 @@ public class Outline implements Cloneable, Serializable {
 
     /**
      * Returns the value of an attribute on the outline or null.
-     * 
+     *
      * @param name name of the attribute.
      */
     public String getAttributeValue(final String name) {

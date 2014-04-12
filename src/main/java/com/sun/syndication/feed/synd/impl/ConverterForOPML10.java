@@ -42,7 +42,7 @@ import com.sun.syndication.feed.synd.SyndPerson;
 import com.sun.syndication.feed.synd.SyndPersonImpl;
 
 /**
- * 
+ *
  * @author cooper
  */
 public class ConverterForOPML10 implements Converter {
@@ -71,7 +71,7 @@ public class ConverterForOPML10 implements Converter {
      * <p>
      * It assumes the given SyndFeedImpl has no properties set.
      * <p>
-     * 
+     *
      * @param feed real feed to copy/convert.
      * @param syndFeed the SyndFeedImpl that will contain the copied/converted values of the real feed.
      */
@@ -190,10 +190,10 @@ public class ConverterForOPML10 implements Converter {
     /**
      * Creates real feed with a deep copy/conversion of the values of a SyndFeedImpl.
      * <p>
-     * 
+     *
      * @param syndFeed SyndFeedImpl to copy/convert value from.
      * @return a real feed with copied/converted values of the SyndFeedImpl.
-     * 
+     *
      */
     @Override
     public WireFeed createRealFeed(final SyndFeed syndFeed) {
@@ -325,7 +325,7 @@ public class ConverterForOPML10 implements Converter {
     /**
      * Returns the type (version) of the real feed this converter handles.
      * <p>
-     * 
+     *
      * @return the real feed type.
      * @see WireFeed for details on the format of this string.
      *      <p>
@@ -346,6 +346,9 @@ public class ConverterForOPML10 implements Converter {
     }
 
     private static class TreeContext extends Stack {
+        
+        private static final long serialVersionUID = 1L;
+
         TreeContext() {
             super();
         }

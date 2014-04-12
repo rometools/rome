@@ -25,10 +25,13 @@ import com.sun.syndication.feed.WireFeed;
 
 /**
  * This class represents the root of an OPML 1/2 feed and contains the elements that may appear in the &lt;head&gt; tag of the feed.
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com"> Robert "kebernet" Cooper</a>
  */
 public class Opml extends WireFeed {
+    
+    private static final long serialVersionUID = 1L;
+    
     private Date _created;
     private Date _modified;
     private Integer _verticalScrollState;
@@ -51,7 +54,7 @@ public class Opml extends WireFeed {
 
     /**
      * <dateCreated> is a date-time, indicating when the document was created.
-     * 
+     *
      * @param created date-time, indicating when the document was created.
      */
     public void setCreated(final Date created) {
@@ -60,7 +63,7 @@ public class Opml extends WireFeed {
 
     /**
      * &lt;dateCreated&gt; is a date-time, indicating when the document was created.
-     * 
+     *
      * @return date-time, indicating when the document was created.
      */
     public Date getCreated() {
@@ -70,7 +73,7 @@ public class Opml extends WireFeed {
     /**
      * (OPML 2) &lt;docs&gt; is the http address of documentation for the format used in the OPML file. It's probably a pointer to <a
      * href="http://www.opml.org/spec2">this page</a> for people who might stumble across the file on a web server 25 years from now and wonder what it is.
-     * 
+     *
      * @param docs http address of documentation for the format used
      */
     public void setDocs(final String docs) {
@@ -80,7 +83,7 @@ public class Opml extends WireFeed {
     /**
      * (OPML 2) &lt;docs&gt; is the http address of documentation for the format used in the OPML file. It's probably a pointer to <a
      * href="http://www.opml.org/spec2">this page</a> for people who might stumble across the file on a web server 25 years from now and wonder what it is.
-     * 
+     *
      * @return http address of documentation for the format used
      */
     public String getDocs() {
@@ -91,7 +94,7 @@ public class Opml extends WireFeed {
      * &lt;expansionState&gt;is a comma-separated list of line numbers that are expanded. The line numbers in the list tell you which headlines to expand. The
      * order is important. For each element in the list, X, starting at the first summit, navigate flatdown X times and expand. Repeat for each element in the
      * list.
-     * 
+     *
      * @param expansionState int array containing expanded elements.
      */
     public void setExpansionState(final int[] expansionState) {
@@ -102,7 +105,7 @@ public class Opml extends WireFeed {
      * &lt;expansionState&gt; is a comma-separated list of line numbers that are expanded. The line numbers in the list tell you which headlines to expand. The
      * order is important. For each element in the list, X, starting at the first summit, navigate flatdown X times and expand. Repeat for each element in the
      * list.
-     * 
+     *
      * @return int array containing expanded elements.
      */
     public int[] getExpansionState() {
@@ -111,7 +114,7 @@ public class Opml extends WireFeed {
 
     /**
      * &lt;dateModified&gt; is a date-time, indicating when the document was last modified.
-     * 
+     *
      * @param modified date-time, indicating when the document was last modified.
      */
     public void setModified(final Date modified) {
@@ -120,7 +123,7 @@ public class Opml extends WireFeed {
 
     /**
      * &lt;dateModified&gt; is a date-time, indicating when the document was last modified.
-     * 
+     *
      * @return date-time, indicating when the document was last modified.
      */
     public Date getModified() {
@@ -129,7 +132,7 @@ public class Opml extends WireFeed {
 
     /**
      * Root level Outline object that should appear in the &lt;body&gt;
-     * 
+     *
      * @param outlines Root level Outline object that should appear in the &lt;body&gt;
      */
     public void setOutlines(final List outlines) {
@@ -138,7 +141,7 @@ public class Opml extends WireFeed {
 
     /**
      * Root level Outline object that should appear in the &lt;body&gt;
-     * 
+     *
      * @return Root level Outline object that should appear in the &lt;body&gt;
      */
     public List getOutlines() {
@@ -151,7 +154,7 @@ public class Opml extends WireFeed {
 
     /**
      * &lt;ownerEmail&gt; is a string, the email address of the owner of the document.
-     * 
+     *
      * @param ownerEmail the email address of the owner of the document.
      */
     public void setOwnerEmail(final String ownerEmail) {
@@ -160,7 +163,7 @@ public class Opml extends WireFeed {
 
     /**
      * &lt;ownerEmail&gt; is a string, the email address of the owner of the document.
-     * 
+     *
      * @return the email address of the owner of the document.
      */
     public String getOwnerEmail() {
@@ -170,7 +173,7 @@ public class Opml extends WireFeed {
     /**
      * (OPML 2) &lt;ownerId&gt; is the http address of a web page that contains <strike>an HTML</strike> a form that allows a human reader to communicate with
      * the author of the document via email or other means.
-     * 
+     *
      * @param ownerId http address of a web page that contains <strike>an HTML</strike> a form that allows a human reader to communicate with the author of the
      *            document via email or other means.
      */
@@ -181,7 +184,7 @@ public class Opml extends WireFeed {
     /**
      * (OPML 2) &lt;ownerId&gt; is the http address of a web page that contains <strike>an HTML</strike> a form that allows a human reader to communicate with
      * the author of the document via email or other means.
-     * 
+     *
      * @return http address of a web page that contains <strike>an HTML</strike> a form that allows a human reader to communicate with the author of the
      *         document via email or other means.
      */
@@ -191,7 +194,7 @@ public class Opml extends WireFeed {
 
     /**
      * &lt;ownerName&gt; is a string, the owner of the document.
-     * 
+     *
      * @param ownerName the owner of the document.
      */
     public void setOwnerName(final String ownerName) {
@@ -200,7 +203,7 @@ public class Opml extends WireFeed {
 
     /**
      * &lt;ownerName&gt; is a string, the owner of the document.
-     * 
+     *
      * @return the owner of the document.
      */
     public String getOwnerName() {
@@ -209,7 +212,7 @@ public class Opml extends WireFeed {
 
     /**
      * &lt;title&gt; is the title of the document.
-     * 
+     *
      * @param title title of the document.
      */
     public void setTitle(final String title) {
@@ -218,7 +221,7 @@ public class Opml extends WireFeed {
 
     /**
      * &lt;title&gt; is the title of the document.
-     * 
+     *
      * @return title of the document.
      */
     public String getTitle() {
@@ -228,7 +231,7 @@ public class Opml extends WireFeed {
     /**
      * &lt;vertScrollState&gt; is a number, saying which line of the outline is displayed on the top line of the window. This number is calculated with the
      * expansion state already applied.
-     * 
+     *
      * @param verticalScrollState which line of the outline is displayed on the top line of the window.
      */
     public void setVerticalScrollState(final Integer verticalScrollState) {
@@ -238,7 +241,7 @@ public class Opml extends WireFeed {
     /**
      * &lt;vertScrollState&gt; is a number, saying which line of the outline is displayed on the top line of the window. This number is calculated with the
      * expansion state already applied.
-     * 
+     *
      * @return which line of the outline is displayed on the top line of the window. This number is calculated with the expansion state already applied.
      */
     public Integer getVerticalScrollState() {
@@ -247,7 +250,7 @@ public class Opml extends WireFeed {
 
     /**
      * &lt;windowBottom&gt; is a number, the pixel location of the bottom edge of the window.
-     * 
+     *
      * @param windowBottom the pixel location of the bottom edge of the window.
      */
     public void setWindowBottom(final Integer windowBottom) {
@@ -256,7 +259,7 @@ public class Opml extends WireFeed {
 
     /**
      * &lt;windowBottom&gt; is a number, the pixel location of the bottom edge of the window.
-     * 
+     *
      * @return the pixel location of the bottom edge of the window.
      */
     public Integer getWindowBottom() {
@@ -265,7 +268,7 @@ public class Opml extends WireFeed {
 
     /**
      * &lt;windowLeft&gt; is a number, the pixel location of the left edge of the window.
-     * 
+     *
      * @param windowLeft the pixel location of the left edge of the window.
      */
     public void setWindowLeft(final Integer windowLeft) {
@@ -274,7 +277,7 @@ public class Opml extends WireFeed {
 
     /**
      * &lt;windowLeft&gt; is a number, the pixel location of the left edge of the window.
-     * 
+     *
      * @return the pixel location of the left edge of the window.
      */
     public Integer getWindowLeft() {
@@ -283,7 +286,7 @@ public class Opml extends WireFeed {
 
     /**
      * &lt;windowRight&gt; is a number, the pixel location of the right edge of the window.
-     * 
+     *
      * @param windowRight the pixel location of the right edge of the window.
      */
     public void setWindowRight(final Integer windowRight) {
@@ -292,7 +295,7 @@ public class Opml extends WireFeed {
 
     /**
      * &lt;windowRight&gt; is a number, the pixel location of the right edge of the window.
-     * 
+     *
      * @return the pixel location of the right edge of the window.
      */
     public Integer getWindowRight() {
@@ -301,7 +304,7 @@ public class Opml extends WireFeed {
 
     /**
      * &lt;windowTop&gt; is a number, the pixel location of the top edge of the window.
-     * 
+     *
      * @param windowTop the pixel location of the top edge of the window.
      */
     public void setWindowTop(final Integer windowTop) {
@@ -310,7 +313,7 @@ public class Opml extends WireFeed {
 
     /**
      * &lt;windowTop&gt; is a number, the pixel location of the top edge of the window.
-     * 
+     *
      * @return the pixel location of the top edge of the window.
      */
     public Integer getWindowTop() {

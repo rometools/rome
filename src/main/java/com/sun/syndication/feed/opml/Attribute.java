@@ -24,10 +24,13 @@ import com.sun.syndication.feed.impl.ToStringBean;
 
 /**
  * This is a simple name-value pair attribute for outlines.
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Attribute implements Cloneable, Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
     private String _name;
     private String _value;
 
@@ -38,7 +41,7 @@ public class Attribute implements Cloneable, Serializable {
 
     /**
      * Creates a new instance of Attribute.
-     * 
+     *
      * @param name name of the attribute.
      * @param value value of the attribute.
      */
@@ -52,7 +55,7 @@ public class Attribute implements Cloneable, Serializable {
 
     /**
      * name of the attribute.
-     * 
+     *
      * @param name name of the attribute.
      */
     public void setName(final String name) {
@@ -61,7 +64,7 @@ public class Attribute implements Cloneable, Serializable {
 
     /**
      * name of the attribute.
-     * 
+     *
      * @return name of the attribute.
      */
     public String getName() {
@@ -70,7 +73,7 @@ public class Attribute implements Cloneable, Serializable {
 
     /**
      * value of the attribute.
-     * 
+     *
      * @param value value of the attribute.
      */
     public void setValue(final String value) {
@@ -79,7 +82,7 @@ public class Attribute implements Cloneable, Serializable {
 
     /**
      * value of the attribute.
-     * 
+     *
      * @return value of the attribute.
      */
     public String getValue() {

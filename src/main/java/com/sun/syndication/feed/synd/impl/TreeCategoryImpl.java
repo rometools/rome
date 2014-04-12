@@ -13,10 +13,12 @@ import com.sun.syndication.feed.synd.SyndCategory;
 import com.sun.syndication.feed.synd.SyndCategoryImpl;
 
 /**
- * 
+ *
  * @author cooper
  */
 public class TreeCategoryImpl extends SyndCategoryImpl {
+
+    private static final long serialVersionUID = 1L;
 
     /** Creates a new instance of TreeCategoryImpl */
     public TreeCategoryImpl() {
