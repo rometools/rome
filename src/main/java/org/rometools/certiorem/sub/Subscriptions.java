@@ -49,6 +49,9 @@ import com.sun.syndication.io.SyndFeedInput;
  * @author robert.cooper
  */
 public class Subscriptions {
+
+    private static final Logger LOGGER = Logger.getLogger(Subscriptions.class.getName());
+
     // TODO unsubscribe.
     private FeedFetcherCache cache;
     private Requester requester;
@@ -69,7 +72,7 @@ public class Subscriptions {
         try {
             this.callback(callbackPath, feed.getBytes("UTF-8"));
         } catch (final UnsupportedEncodingException ex) {
-            Logger.getLogger(Subscriptions.class.getName()).log(Level.SEVERE, null, ex);
+            LOGGER.log(Level.SEVERE, null, ex);
             throw new HttpStatusCodeException(400, "Unable to parse feed.", ex);
         }
     }
@@ -80,10 +83,10 @@ public class Subscriptions {
         try {
             this.callback(callbackPath, input.build(new InputStreamReader(feed)));
         } catch (final IllegalArgumentException ex) {
-            Logger.getLogger(Subscriptions.class.getName()).log(Level.SEVERE, null, ex);
+            LOGGER.log(Level.SEVERE, null, ex);
             throw new HttpStatusCodeException(500, "Unable to parse feed.", ex);
         } catch (final FeedException ex) {
-            Logger.getLogger(Subscriptions.class.getName()).log(Level.SEVERE, null, ex);
+            LOGGER.log(Level.SEVERE, null, ex);
             throw new HttpStatusCodeException(400, "Unable to parse feed.", ex);
         }
     }
@@ -99,7 +102,7 @@ public class Subscriptions {
         }
 
         final String id = callbackPath.substring(callbackPrefix.length());
-        Logger.getLogger(Subscriptions.class.getName()).log(Level.FINE, "Got callback for {0}", id);
+        LOGGER.log(Level.FINE, "Got callback for {0}", id);
         final Subscription s = dao.findById(id);
 
         if (s == null) {
@@ -115,7 +118,7 @@ public class Subscriptions {
             url = new URL(s.getSourceUrl());
             info = cache.getFeedInfo(url);
         } catch (final MalformedURLException ex) {
-            Logger.getLogger(Subscriptions.class.getName()).log(Level.SEVERE, null, ex);
+            LOGGER.log(Level.SEVERE, null, ex);
         }
 
         if (info == null) {
@@ -193,7 +196,7 @@ public class Subscriptions {
         }
 
         final String id = callbackPath.substring(callbackPrefix.length());
-        Logger.getLogger(Subscriptions.class.getName()).log(Level.FINE, "Handling validation request for id {0}", id);
+        LOGGER.log(Level.FINE, "Handling validation request for id {0}", id);
         final Subscription s = dao.findById(id);
         if (s == null) {
             throw new HttpStatusCodeException(404, "Not a valid subscription id", null);
@@ -218,7 +221,7 @@ public class Subscriptions {
         } else {
             throw new HttpStatusCodeException(400, "Unsupported mode " + mode, null);
         }
-        Logger.getLogger(Subscriptions.class.getName()).log(Level.FINE, "Validated. Returning {0}", challenge);
+        LOGGER.log(Level.FINE, "Validated. Returning {0}", challenge);
         return challenge;
     }
 
@@ -245,7 +248,7 @@ public class Subscriptions {
 
                     break;
                 } catch (final URISyntaxException ex) {
-                    Logger.getLogger(Subscriptions.class.getName()).log(Level.SEVERE, null, ex);
+                    LOGGER.log(Level.SEVERE, null, ex);
                 }
             }
         }

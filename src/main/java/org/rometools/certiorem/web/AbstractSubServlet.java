@@ -21,10 +21,10 @@ package org.rometools.certiorem.web;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpUtils;
 
 import org.rometools.certiorem.HttpStatusCodeException;
 import org.rometools.certiorem.sub.Subscriptions;
@@ -33,18 +33,14 @@ import org.rometools.certiorem.sub.Subscriptions;
  *
  * @author robert.cooper
  */
-public class AbstractSubServlet extends HttpServlet {
+public abstract class AbstractSubServlet extends HttpServlet {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
+
     private final Subscriptions subscriptions;
 
     protected AbstractSubServlet(final Subscriptions subscriptions) {
-        super();
         this.subscriptions = subscriptions;
-
     }
 
     @Override
@@ -55,23 +51,22 @@ public class AbstractSubServlet extends HttpServlet {
         final String leaseString = req.getParameter("hub.lease_seconds");
         final String verifyToken = req.getParameter("hub.verify_token");
         try {
-            final String result = subscriptions.validate(HttpUtils.getRequestURL(req).toString(), topic, mode, challenge, leaseString, verifyToken);
+            final String result = subscriptions.validate(req.getRequestURL().toString(), topic, mode, challenge, leaseString, verifyToken);
             resp.setStatus(200);
             resp.getWriter().print(result);
-            return;
         } catch (final HttpStatusCodeException e) {
             e.printStackTrace();
             resp.setStatus(e.getStatus());
             resp.getWriter().print(e.getMessage());
         }
-
     }
 
     @Override
     protected void doPost(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
         try {
-            subscriptions.callback(HttpUtils.getRequestURL(req).toString(), req.getInputStream());
-            return;
+            final String requestUrl = req.getRequestURL().toString();
+            final ServletInputStream inputStream = req.getInputStream();
+            subscriptions.callback(requestUrl, inputStream);
         } catch (final HttpStatusCodeException e) {
             e.printStackTrace();
             resp.setStatus(e.getStatus());
