@@ -43,6 +43,7 @@ package org.rometools.feed.module.content;
 
 import java.util.List;
 
+import org.jdom2.Content;
 import org.jdom2.Namespace;
 
 /**
@@ -53,10 +54,11 @@ import org.jdom2.Namespace;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class ContentItem implements Cloneable {
+
     private String contentFormat;
     private String contentEncoding;
     private String contentValue;
-    private List contentValueDOM;
+    private List<Content> contentValueDOM;
     private String contentAbout;
     private String contentValueParseType;
     private List<Namespace> contentValueNamespace;
@@ -90,11 +92,11 @@ public class ContentItem implements Cloneable {
         this.contentValue = contentValue;
     }
 
-    public List getContentValueDOM() {
+    public List<Content> getContentValueDOM() {
         return contentValueDOM;
     }
 
-    public void setContentValueDOM(final List contentValueDOM) {
+    public void setContentValueDOM(final List<Content> contentValueDOM) {
         this.contentValueDOM = contentValueDOM;
     }
 

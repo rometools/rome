@@ -8,6 +8,7 @@
 package org.rometools.feed.module.sle;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import junit.framework.Test;
@@ -16,6 +17,7 @@ import junit.framework.TestSuite;
 import org.rometools.feed.module.AbstractTestCase;
 import org.rometools.feed.module.sle.types.Sort;
 
+import com.sun.syndication.feed.module.Extendable;
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.SyndFeedInput;
@@ -44,10 +46,10 @@ public class GroupAndSortTest extends AbstractTestCase {
         final SyndFeed feed = input.build(new File(super.getTestFile("data/bookexample.xml")));
         final SimpleListExtension sle = (SimpleListExtension) feed.getModule(SimpleListExtension.URI);
 
-        final List<SyndEntry> entries = feed.getEntries();
+        final List<Extendable> entries = new ArrayList<Extendable>(feed.getEntries());
         final Sort[] sortFields = sle.getSortFields();
         final Sort sort = sortFields[1];
-        List sortedEntries = SleUtility.sort(entries, sort, true);
+        List<Extendable> sortedEntries = SleUtility.sort(entries, sort, true);
         SyndEntry entry = (SyndEntry) sortedEntries.get(0);
         assertEquals("Great Journeys of the Past", entry.getTitle());
         sortedEntries = SleUtility.sort(entries, sort, false);
@@ -100,7 +102,8 @@ public class GroupAndSortTest extends AbstractTestCase {
         final SyndFeed feed = input.build(new File(super.getTestFile("data/YahooTopSongs.xml")));
         final SimpleListExtension sle = (SimpleListExtension) feed.getModule(SimpleListExtension.URI);
         System.out.println("Sorting on " + sle.getSortFields()[0]);
-        final List sortedEntries = SleUtility.sort(feed.getEntries(), sle.getSortFields()[0], true);
+        final List<Extendable> entries = new ArrayList<Extendable>(feed.getEntries());
+        final List<Extendable> sortedEntries = SleUtility.sort(entries, sle.getSortFields()[0], true);
         for (int i = 0; i < sortedEntries.size(); i++) {
             final SyndEntry entry = (SyndEntry) sortedEntries.get(i);
             System.out.println(entry.getTitle());
