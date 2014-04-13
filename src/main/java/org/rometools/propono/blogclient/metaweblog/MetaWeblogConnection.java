@@ -1,10 +1,10 @@
-/*   
+/*
  *  Copyright 2007 Dave Johnson (Blogapps project)
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -33,11 +33,12 @@ import org.rometools.propono.blogclient.BlogConnection;
  * BlogClient implementation that uses a mix of Blogger and MetaWeblog API methods.
  */
 public class MetaWeblogConnection implements BlogConnection {
+
     private URL url = null;
     private String userName = null;
     private String password = null;
     private String appkey = "null";
-    private Map blogs = null;
+    private Map<String, MetaWeblogBlog> blogs = null;
 
     private XmlRpcClient xmlRpcClient = null;
 
@@ -66,20 +67,20 @@ public class MetaWeblogConnection implements BlogConnection {
      * {@inheritDoc}
      */
     @Override
-    public List getBlogs() {
-        return new ArrayList(blogs.values());
+    public List<Blog> getBlogs() {
+        return new ArrayList<Blog>(blogs.values());
     }
 
     /**
      * {@inheritDoc}
      */
-    private Map createBlogMap() throws XmlRpcException, IOException {
-        final Map blogMap = new HashMap();
+    private Map<String, MetaWeblogBlog> createBlogMap() throws XmlRpcException, IOException {
+        final Map<String, MetaWeblogBlog> blogMap = new HashMap<String, MetaWeblogBlog>();
         final Object[] results = (Object[]) getXmlRpcClient().execute("blogger.getUsersBlogs", new Object[] { appkey, userName, password });
         for (final Object result : results) {
-            final Map blog = (Map) result;
-            final String blogid = (String) blog.get("blogid");
-            final String name = (String) blog.get("blogName");
+            final Map<String, String> blog = (Map<String, String>) result;
+            final String blogid = blog.get("blogid");
+            final String name = blog.get("blogName");
             blogMap.put(blogid, new MetaWeblogBlog(blogid, name, url, userName, password));
         }
         return blogMap;
@@ -90,7 +91,7 @@ public class MetaWeblogConnection implements BlogConnection {
      */
     @Override
     public Blog getBlog(final String token) {
-        return (Blog) blogs.get(token);
+        return blogs.get(token);
     }
 
     /**

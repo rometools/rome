@@ -36,22 +36,17 @@ import com.sun.syndication.feed.atom.Entry;
 import com.sun.syndication.feed.atom.Feed;
 
 /**
- * File-based {@link com.sun.syndication.propono.atom.server.AtomHandler}
- * implementation that stores entries and media-entries to disk. Implemented
- * using
+ * File-based {@link com.sun.syndication.propono.atom.server.AtomHandler} implementation that stores
+ * entries and media-entries to disk. Implemented using
  * {@link com.sun.syndication.propono.atom.server.impl.FileBasedAtomService}.
  */
 public class FileBasedAtomHandler implements AtomHandler {
 
-    private static Log log = LogFactory.getFactory().getInstance(FileBasedAtomHandler.class);
-
-    private static String fileStoreDir = null;
+    private static final Log LOGGER = LogFactory.getFactory().getInstance(FileBasedAtomHandler.class);
 
     private String userName = null;
     private String atomProtocolURL = null;
     private String contextURI = null;
-    private final String uploadurl = null;
-
     private FileBasedAtomService service = null;
 
     /**
@@ -70,7 +65,7 @@ public class FileBasedAtomHandler implements AtomHandler {
      * @param uploaddir File storage upload dir.
      */
     public FileBasedAtomHandler(final HttpServletRequest req, final String uploaddir) {
-        log.debug("ctor");
+        LOGGER.debug("ctor");
 
         userName = authenticateBASIC(req);
 
@@ -86,9 +81,8 @@ public class FileBasedAtomHandler implements AtomHandler {
     }
 
     /**
-     * Method used for validating user. Developers can overwrite this method and
-     * use credentials stored in Database or LDAP to confirm if the user is
-     * allowed to access this service.
+     * Method used for validating user. Developers can overwrite this method and use credentials
+     * stored in Database or LDAP to confirm if the user is allowed to access this service.
      *
      * @param login user submitted login id
      * @param password user submitted password
@@ -124,8 +118,7 @@ public class FileBasedAtomHandler implements AtomHandler {
     /**
      * Return introspection document
      *
-     * @throws com.sun.syndication.propono.atom.server.AtomException Unexpected
-     *             exception.
+     * @throws com.sun.syndication.propono.atom.server.AtomException Unexpected exception.
      * @return AtomService object with workspaces and collections.
      */
     @Override
@@ -136,13 +129,12 @@ public class FileBasedAtomHandler implements AtomHandler {
     /**
      * Returns null because we use in-line categories.
      *
-     * @throws com.sun.syndication.propono.atom.server.AtomException Unexpected
-     *             exception.
+     * @throws com.sun.syndication.propono.atom.server.AtomException Unexpected exception.
      * @return Categories object
      */
     @Override
     public Categories getCategories(final AtomRequest areq) throws AtomException {
-        log.debug("getCollection");
+        LOGGER.debug("getCollection");
         final String[] pathInfo = StringUtils.split(areq.getPathInfo(), "/");
         final String handle = pathInfo[0];
         final String collection = pathInfo[1];
@@ -155,12 +147,12 @@ public class FileBasedAtomHandler implements AtomHandler {
      *
      * @param areq Details of HTTP request
      * @return ROME feed representing collection.
-     * @throws com.sun.syndication.propono.atom.server.AtomException Invalid
-     *             collection or other exception.
+     * @throws com.sun.syndication.propono.atom.server.AtomException Invalid collection or other
+     *             exception.
      */
     @Override
     public Feed getCollection(final AtomRequest areq) throws AtomException {
-        log.debug("getCollection");
+        LOGGER.debug("getCollection");
         final String[] pathInfo = StringUtils.split(areq.getPathInfo(), "/");
         final String handle = pathInfo[0];
         final String collection = pathInfo[1];
@@ -169,19 +161,18 @@ public class FileBasedAtomHandler implements AtomHandler {
     }
 
     /**
-     * Create a new entry specified by pathInfo and posted entry. We save the
-     * submitted Atom entry verbatim, but we do set the id and reset the update
-     * time.
+     * Create a new entry specified by pathInfo and posted entry. We save the submitted Atom entry
+     * verbatim, but we do set the id and reset the update time.
      *
      * @param entry Entry to be added to collection.
      * @param areq Details of HTTP request
-     * @throws com.sun.syndication.propono.atom.server.AtomException On invalid
-     *             collection or other error.
+     * @throws com.sun.syndication.propono.atom.server.AtomException On invalid collection or other
+     *             error.
      * @return Entry as represented on server.
      */
     @Override
     public Entry postEntry(final AtomRequest areq, final Entry entry) throws AtomException {
-        log.debug("postEntry");
+        LOGGER.debug("postEntry");
 
         final String[] pathInfo = StringUtils.split(areq.getPathInfo(), "/");
         final String handle = pathInfo[0];
@@ -200,13 +191,13 @@ public class FileBasedAtomHandler implements AtomHandler {
      * Get entry specified by pathInfo.
      *
      * @param areq Details of HTTP request
-     * @throws com.sun.syndication.propono.atom.server.AtomException On invalid
-     *             pathinfo or other error.
+     * @throws com.sun.syndication.propono.atom.server.AtomException On invalid pathinfo or other
+     *             error.
      * @return ROME Entry object.
      */
     @Override
     public Entry getEntry(final AtomRequest areq) throws AtomException {
-        log.debug("getEntry");
+        LOGGER.debug("getEntry");
         final String[] pathInfo = StringUtils.split(areq.getPathInfo(), "/");
         final String handle = pathInfo[0];
         final String collection = pathInfo[1];
@@ -232,7 +223,7 @@ public class FileBasedAtomHandler implements AtomHandler {
      */
     @Override
     public void putEntry(final AtomRequest areq, final Entry entry) throws AtomException {
-        log.debug("putEntry");
+        LOGGER.debug("putEntry");
         final String[] pathInfo = StringUtils.split(areq.getPathInfo(), "/");
         final String handle = pathInfo[0];
         final String collection = pathInfo[1];
@@ -253,7 +244,7 @@ public class FileBasedAtomHandler implements AtomHandler {
      */
     @Override
     public void deleteEntry(final AtomRequest areq) throws AtomException {
-        log.debug("deleteEntry");
+        LOGGER.debug("deleteEntry");
         final String[] pathInfo = StringUtils.split(areq.getPathInfo(), "/");
         final String handle = pathInfo[0];
         final String collection = pathInfo[1];
@@ -264,15 +255,14 @@ public class FileBasedAtomHandler implements AtomHandler {
 
         } catch (final Exception e) {
             final String msg = "ERROR in atom.deleteResource";
-            log.error(msg, e);
+            LOGGER.error(msg, e);
             throw new AtomException(msg);
         }
     }
 
     /**
-     * Store media data in collection specified by pathInfo, create an Atom
-     * media-link entry to store metadata for the new media file and return that
-     * entry to the caller.
+     * Store media data in collection specified by pathInfo, create an Atom media-link entry to
+     * store metadata for the new media file and return that entry to the caller.
      *
      * @param areq Details of HTTP request
      * @param entry New entry initialzied with only title and content type
@@ -284,8 +274,8 @@ public class FileBasedAtomHandler implements AtomHandler {
         // get incoming slug from HTTP header
         final String slug = areq.getHeader("Slug");
 
-        if (log.isDebugEnabled()) {
-            log.debug("postMedia - title: " + entry.getTitle() + " slug:" + slug);
+        if (LOGGER.isDebugEnabled()) {
+            LOGGER.debug("postMedia - title: " + entry.getTitle() + " slug:" + slug);
         }
 
         try {
@@ -300,7 +290,7 @@ public class FileBasedAtomHandler implements AtomHandler {
             } catch (final Exception e) {
                 e.printStackTrace();
                 final String msg = "ERROR reading posted file";
-                log.error(msg, e);
+                LOGGER.error(msg, e);
                 throw new AtomException(msg, e);
             } finally {
                 if (tempFile != null) {
@@ -317,13 +307,12 @@ public class FileBasedAtomHandler implements AtomHandler {
     /**
      * Update the media file part of a media-link entry.
      *
-     * @param areq Details of HTTP request Assuming pathInfo of form
-     *            /user-name/resource/name
+     * @param areq Details of HTTP request Assuming pathInfo of form /user-name/resource/name
      */
     @Override
     public void putMedia(final AtomRequest areq) throws AtomException {
 
-        log.debug("putMedia");
+        LOGGER.debug("putMedia");
         final String[] pathInfo = StringUtils.split(areq.getPathInfo(), "/");
         final String handle = pathInfo[0];
         final String collection = pathInfo[1];
@@ -339,7 +328,7 @@ public class FileBasedAtomHandler implements AtomHandler {
 
     @Override
     public AtomMediaResource getMediaResource(final AtomRequest areq) throws AtomException {
-        log.debug("putMedia");
+        LOGGER.debug("putMedia");
         final String[] pathInfo = StringUtils.split(areq.getPathInfo(), "/");
         final String handle = pathInfo[0];
         final String collection = pathInfo[1];
@@ -370,7 +359,7 @@ public class FileBasedAtomHandler implements AtomHandler {
      */
     @Override
     public boolean isCategoriesURI(final AtomRequest areq) {
-        log.debug("isCategoriesDocumentURI");
+        LOGGER.debug("isCategoriesDocumentURI");
         final String[] pathInfo = StringUtils.split(areq.getPathInfo(), "/");
         if (pathInfo.length == 3 && "categories".equals(pathInfo[2])) {
             return true;
@@ -383,7 +372,7 @@ public class FileBasedAtomHandler implements AtomHandler {
      */
     @Override
     public boolean isCollectionURI(final AtomRequest areq) {
-        log.debug("isCollectionURI");
+        LOGGER.debug("isCollectionURI");
         // workspace/collection-plural
         // if length is 2 and points to a valid collection then YES
         final String[] pathInfo = StringUtils.split(areq.getPathInfo(), "/");
@@ -403,7 +392,7 @@ public class FileBasedAtomHandler implements AtomHandler {
      */
     @Override
     public boolean isEntryURI(final AtomRequest areq) {
-        log.debug("isEntryURI");
+        LOGGER.debug("isEntryURI");
         // workspace/collection-singular/fsid
         // if length is 3 and points to a valid collection then YES
         final String[] pathInfo = StringUtils.split(areq.getPathInfo(), "/");
@@ -422,7 +411,7 @@ public class FileBasedAtomHandler implements AtomHandler {
      */
     @Override
     public boolean isMediaEditURI(final AtomRequest areq) {
-        log.debug("isMediaEditURI");
+        LOGGER.debug("isMediaEditURI");
         // workspace/collection-singular/fsid/media/fsid
         // if length is 4, points to a valid collection and fsid is mentioned
         // twice then YES
@@ -444,7 +433,7 @@ public class FileBasedAtomHandler implements AtomHandler {
      * BASIC authentication.
      */
     public String authenticateBASIC(final HttpServletRequest request) {
-        log.debug("authenticateBASIC");
+        LOGGER.debug("authenticateBASIC");
         boolean valid = false;
         String userID = null;
         String password = null;
@@ -469,7 +458,7 @@ public class FileBasedAtomHandler implements AtomHandler {
                 }
             }
         } catch (final Exception e) {
-            log.debug(e);
+            LOGGER.debug(e);
         }
         if (valid) {
             // For now assume userID as userName

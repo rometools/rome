@@ -1,10 +1,10 @@
-/*   
+/*
  *  Copyright 2007 Dave Johnson (Blogapps project)
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -21,9 +21,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.rometools.propono.atom.client.ClientAtomService;
 import org.rometools.propono.atom.client.ClientCollection;
 import org.rometools.propono.atom.client.ClientEntry;
@@ -39,25 +36,27 @@ import org.rometools.propono.utils.ProponoException;
  * Atom protocol implementation of the BlogClient Blog interface.
  */
 public class AtomBlog implements Blog {
-    static final Log logger = LogFactory.getLog(AtomBlog.class);
-    private final HttpClient httpClient = null;
+
     private String name = null;
     private ClientAtomService service;
     private ClientWorkspace workspace = null;
     private AtomCollection entriesCollection = null;
     private AtomCollection resourcesCollection = null;
-    private final Map collections = new TreeMap();
+    private final Map<String, AtomCollection> collections = new TreeMap<String, AtomCollection>();
 
     /**
-     * Create AtomBlog using specified HTTPClient, user account and workspace, called by AtomConnection. Fetches Atom Service document and creates an
-     * AtomCollection object for each collection found. The first entry collection is considered the primary entry collection. And the first resource collection
-     * is considered the primary resource collection.
+     * Create AtomBlog using specified HTTPClient, user account and workspace, called by
+     * AtomConnection. Fetches Atom Service document and creates an AtomCollection object for each
+     * collection found. The first entry collection is considered the primary entry collection. And
+     * the first resource collection is considered the primary resource collection.
      */
     AtomBlog(final ClientAtomService service, final ClientWorkspace workspace) {
+
         setService(service);
         setWorkspace(workspace);
         name = workspace.getTitle();
-        final Iterator members = workspace.getCollections().iterator();
+        final List<org.rometools.propono.atom.common.Collection> collect = workspace.getCollections();
+        final Iterator<org.rometools.propono.atom.common.Collection> members = collect.iterator();
 
         while (members.hasNext()) {
             final ClientCollection col = (ClientCollection) members.next();
@@ -70,6 +69,7 @@ public class AtomBlog implements Blog {
             }
             collections.put(col.getHrefResolved(), new AtomCollection(this, col));
         }
+
     }
 
     /**
@@ -113,7 +113,6 @@ public class AtomBlog implements Blog {
     @Override
     public BlogEntry getEntry(final String token) throws BlogClientException {
         ClientEntry clientEntry = null;
-        final AtomEntry atomEntry = null;
         try {
             clientEntry = getService().getEntry(token);
         } catch (final ProponoException ex) {
@@ -132,7 +131,7 @@ public class AtomBlog implements Blog {
      * {@inheritDoc}
      */
     @Override
-    public Iterator getEntries() throws BlogClientException {
+    public Iterator<BlogEntry> getEntries() throws BlogClientException {
         if (entriesCollection == null) {
             throw new BlogClientException("No primary entry collection");
         }
@@ -143,7 +142,7 @@ public class AtomBlog implements Blog {
      * {@inheritDoc}
      */
     @Override
-    public Iterator getResources() throws BlogClientException {
+    public Iterator<BlogEntry> getResources() throws BlogClientException {
         if (resourcesCollection == null) {
             throw new BlogClientException("No primary entry collection");
         }
@@ -168,7 +167,7 @@ public class AtomBlog implements Blog {
      * {@inheritDoc}
      */
     @Override
-    public List getCategories() throws BlogClientException {
+    public List<BlogEntry.Category> getCategories() throws BlogClientException {
         if (entriesCollection == null) {
             throw new BlogClientException("No primary entry collection");
         }
@@ -201,8 +200,8 @@ public class AtomBlog implements Blog {
      * {@inheritDoc}
      */
     @Override
-    public List getCollections() throws BlogClientException {
-        return new ArrayList(collections.values());
+    public List<Collection> getCollections() throws BlogClientException {
+        return new ArrayList<Collection>(collections.values());
     }
 
     /**
@@ -210,7 +209,7 @@ public class AtomBlog implements Blog {
      */
     @Override
     public Blog.Collection getCollection(final String token) throws BlogClientException {
-        return (Blog.Collection) collections.get(token);
+        return collections.get(token);
     }
 
     ClientAtomService getService() {

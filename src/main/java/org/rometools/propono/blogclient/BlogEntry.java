@@ -1,10 +1,10 @@
-/*   
+/*
  *  Copyright 2007 Dave Johnson (Blogapps project)
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -27,7 +27,8 @@ public interface BlogEntry {
     public String getToken();
 
     /**
-     * Save this entry to it's collection. If this is a new entry and does not have a collection yet, then save() will save it to the primary collection.
+     * Save this entry to it's collection. If this is a new entry and does not have a collection
+     * yet, then save() will save it to the primary collection.
      */
     public void save() throws BlogClientException;
 
@@ -41,10 +42,10 @@ public interface BlogEntry {
     public Blog getBlog();
 
     /** Get categories, a list of BlogEntry.Category objects */
-    public List getCategories();
+    public List<Category> getCategories();
 
     /** Set categories, a list of BlogEntry.Category objects */
-    public void setCategories(List categories);
+    public void setCategories(List<Category> categories);
 
     /** Get globally unique ID of this blog entry */
     public String getId();
@@ -117,14 +118,16 @@ public interface BlogEntry {
         }
 
         /**
-         * Get type of content, either "text", "html", "xhtml" or a MIME content-type. Defaults to HTML.
+         * Get type of content, either "text", "html", "xhtml" or a MIME content-type. Defaults to
+         * HTML.
          */
         public String getType() {
             return type;
         }
 
         /**
-         * Set type of content, either "text", "html", "xhtml" or a MIME content-type. Defaults to HTML.
+         * Set type of content, either "text", "html", "xhtml" or a MIME content-type. Defaults to
+         * HTML.
          */
         public void setType(final String type) {
             this.type = type;

@@ -1,10 +1,10 @@
-/*   
+/*
  * Copyright 2007 Sun Microsystems, Inc.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -34,16 +34,15 @@ import com.sun.syndication.io.WireFeedInput;
 /**
  * Enables iteration over entries in Atom protocol collection.
  */
-public class EntryIterator implements Iterator {
-    static final Log logger = LogFactory.getLog(EntryIterator.class);
+public class EntryIterator implements Iterator<ClientEntry> {
+
+    private static final Log LOGGER = LogFactory.getLog(EntryIterator.class);
     private final ClientCollection collection;
 
-    int maxEntries = 20;
-    int offset = 0;
-    Iterator members = null;
-    Feed col = null;
-    String collectionURI;
-    String nextURI;
+    private Iterator<Entry> members = null;
+    private Feed col = null;
+    private final String collectionURI;
+    private String nextURI;
 
     EntryIterator(final ClientCollection collection) throws ProponoException {
         this.collection = collection;
@@ -61,7 +60,7 @@ public class EntryIterator implements Iterator {
             try {
                 getNextEntries();
             } catch (final Exception ignored) {
-                logger.error("ERROR getting next entries", ignored);
+                LOGGER.error("ERROR getting next entries", ignored);
             }
         }
         return members.hasNext();
@@ -71,9 +70,9 @@ public class EntryIterator implements Iterator {
      * Get next entry in collection.
      */
     @Override
-    public Object next() {
+    public ClientEntry next() {
         if (hasNext()) {
-            final Entry romeEntry = (Entry) members.next();
+            final Entry romeEntry = members.next();
             try {
                 if (!romeEntry.isMediaEntry()) {
                     return new ClientEntry(null, collection, romeEntry, true);
@@ -113,18 +112,17 @@ public class EntryIterator implements Iterator {
             colGet.releaseConnection();
         }
         members = col.getEntries().iterator();
-        offset += col.getEntries().size();
+        col.getEntries().size();
 
         nextURI = null;
-        final List altLinks = col.getOtherLinks();
+        final List<Link> altLinks = col.getOtherLinks();
         if (altLinks != null) {
-            final Iterator iter = altLinks.iterator();
-            while (iter.hasNext()) {
-                final Link link = (Link) iter.next();
+            for (final Link link : altLinks) {
                 if ("next".equals(link.getRel())) {
                     nextURI = link.getHref();
                 }
             }
         }
     }
+
 }

@@ -1,10 +1,10 @@
-/*   
+/*
  *  Copyright 2007 Dave Johnson (Blogapps project)
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -32,6 +32,8 @@ import org.rometools.propono.utils.ProponoException;
 
 import com.sun.syndication.feed.atom.Entry;
 import com.sun.syndication.feed.atom.Link;
+import com.sun.syndication.feed.module.Module;
+import com.sun.syndication.feed.synd.SyndPerson;
 
 /**
  * Atom protocol implementation of BlogEntry.
@@ -138,20 +140,19 @@ public class AtomEntry extends BaseBlogEntry implements BlogEntry {
         id = entry.getId();
         title = entry.getTitle();
         editURI = entry.getEditURI();
-        final List altlinks = entry.getAlternateLinks();
+        final List<Link> altlinks = entry.getAlternateLinks();
         if (altlinks != null) {
-            for (final Iterator iter = altlinks.iterator(); iter.hasNext();) {
-                final Link link = (Link) iter.next();
+            for (final Link link : altlinks) {
                 if ("alternate".equals(link.getRel()) || link.getRel() == null) {
                     permalink = link.getHrefResolved();
                     break;
                 }
             }
         }
-        final List contents = entry.getContents();
+        final List<com.sun.syndication.feed.atom.Content> contents = entry.getContents();
         com.sun.syndication.feed.atom.Content romeContent = null;
         if (contents != null && contents.size() > 0) {
-            romeContent = (com.sun.syndication.feed.atom.Content) contents.get(0);
+            romeContent = contents.get(0);
         }
         if (romeContent != null) {
             content = new BlogEntry.Content(romeContent.getValue());
@@ -159,10 +160,9 @@ public class AtomEntry extends BaseBlogEntry implements BlogEntry {
             content.setSrc(romeContent.getSrc());
         }
         if (entry.getCategories() != null) {
-            final List cats = new ArrayList();
-            final List romeCats = entry.getCategories();
-            for (final Iterator iter = romeCats.iterator(); iter.hasNext();) {
-                final com.sun.syndication.feed.atom.Category romeCat = (com.sun.syndication.feed.atom.Category) iter.next();
+            final List<Category> cats = new ArrayList<Category>();
+            final List<com.sun.syndication.feed.atom.Category> romeCats = entry.getCategories();
+            for (final com.sun.syndication.feed.atom.Category romeCat : romeCats) {
                 final BlogEntry.Category cat = new BlogEntry.Category();
                 cat.setId(romeCat.getTerm());
                 cat.setUrl(romeCat.getScheme());
@@ -171,7 +171,7 @@ public class AtomEntry extends BaseBlogEntry implements BlogEntry {
             }
             categories = cats;
         }
-        final List authors = entry.getAuthors();
+        final List<SyndPerson> authors = entry.getAuthors();
         if (authors != null && authors.size() > 0) {
             final com.sun.syndication.feed.atom.Person romeAuthor = (com.sun.syndication.feed.atom.Person) authors.get(0);
             if (romeAuthor != null) {
@@ -202,7 +202,7 @@ public class AtomEntry extends BaseBlogEntry implements BlogEntry {
             person.setName(author.getName());
             person.setEmail(author.getEmail());
             person.setUrl(author.getUrl());
-            final List authors = new ArrayList();
+            final List<SyndPerson> authors = new ArrayList<SyndPerson>();
             authors.add(person);
             entry.setAuthors(authors);
         }
@@ -210,14 +210,14 @@ public class AtomEntry extends BaseBlogEntry implements BlogEntry {
             final com.sun.syndication.feed.atom.Content romeContent = new com.sun.syndication.feed.atom.Content();
             romeContent.setValue(content.getValue());
             romeContent.setType(content.getType());
-            final List contents = new ArrayList();
+            final List<com.sun.syndication.feed.atom.Content> contents = new ArrayList<com.sun.syndication.feed.atom.Content>();
             contents.add(romeContent);
             entry.setContents(contents);
         }
         if (categories != null) {
-            final List romeCats = new ArrayList();
-            for (final Iterator iter = categories.iterator(); iter.hasNext();) {
-                final BlogEntry.Category cat = (BlogEntry.Category) iter.next();
+            final List<com.sun.syndication.feed.atom.Category> romeCats = new ArrayList<com.sun.syndication.feed.atom.Category>();
+            for (final Iterator<Category> iter = categories.iterator(); iter.hasNext();) {
+                final BlogEntry.Category cat = iter.next();
                 final com.sun.syndication.feed.atom.Category romeCategory = new com.sun.syndication.feed.atom.Category();
                 romeCategory.setTerm(cat.getId());
                 romeCategory.setScheme(cat.getUrl());
@@ -229,7 +229,7 @@ public class AtomEntry extends BaseBlogEntry implements BlogEntry {
         entry.setPublished(publicationDate == null ? new Date() : publicationDate);
         entry.setModified(modificationDate == null ? new Date() : modificationDate);
 
-        final List modules = new ArrayList();
+        final List<Module> modules = new ArrayList<Module>();
         final AppModule control = new AppModuleImpl();
         control.setDraft(new Boolean(draft));
         modules.add(control);

@@ -18,7 +18,6 @@
 package org.rometools.propono.atom.common;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.jdom2.Element;
@@ -27,10 +26,12 @@ import com.sun.syndication.feed.atom.Category;
 import com.sun.syndication.io.impl.Atom10Parser;
 
 /**
- * Models an Atom protocol Categories element, which may contain ROME Atom {@link com.sun.syndication.feed.atom.Category} elements.
+ * Models an Atom protocol Categories element, which may contain ROME Atom
+ * {@link com.sun.syndication.feed.atom.Category} elements.
  */
 public class Categories {
-    private final List categories = new ArrayList(); // of Category objects
+
+    private final List<Category> categories = new ArrayList<Category>();
     private String baseURI = null;
     private Element categoriesElement = null;
     private String href = null;
@@ -54,10 +55,10 @@ public class Categories {
 
     /**
      * Iterate over Category objects
-     * 
+     *
      * @return List of ROME Atom {@link com.sun.syndication.feed.atom.Category}
      */
-    public List getCategories() {
+    public List<Category> getCategories() {
         return categories;
     }
 
@@ -112,8 +113,8 @@ public class Categories {
             catsElem.setAttribute("href", cats.getHref(), AtomService.ATOM_PROTOCOL);
         } else {
             // Loop to create <atom:category> elements
-            for (final Iterator catIter = cats.getCategories().iterator(); catIter.hasNext();) {
-                final Category cat = (Category) catIter.next();
+            for (final Object element : cats.getCategories()) {
+                final Category cat = (Category) element;
                 final Element catElem = new Element("category", AtomService.ATOM_FORMAT);
                 catElem.setAttribute("term", cat.getTerm(), AtomService.ATOM_FORMAT);
                 if (cat.getScheme() != null) { // optional
@@ -129,21 +130,24 @@ public class Categories {
     }
 
     protected void parseCategoriesElement(final Element catsElem) {
+
         if (catsElem.getAttribute("href", AtomService.ATOM_PROTOCOL) != null) {
             setHref(catsElem.getAttribute("href", AtomService.ATOM_PROTOCOL).getValue());
         }
+
         if (catsElem.getAttribute("fixed", AtomService.ATOM_PROTOCOL) != null) {
             if ("yes".equals(catsElem.getAttribute("fixed", AtomService.ATOM_PROTOCOL).getValue())) {
                 setFixed(true);
             }
         }
+
         if (catsElem.getAttribute("scheme", AtomService.ATOM_PROTOCOL) != null) {
             setScheme(catsElem.getAttribute("scheme", AtomService.ATOM_PROTOCOL).getValue());
         }
+
         // Loop to parse <atom:category> elemenents to Category objects
-        final List catElems = catsElem.getChildren("category", AtomService.ATOM_FORMAT);
-        for (final Iterator catIter = catElems.iterator(); catIter.hasNext();) {
-            final Element catElem = (Element) catIter.next();
+        final List<Element> catElems = catsElem.getChildren("category", AtomService.ATOM_FORMAT);
+        for (final Element catElem : catElems) {
             final Category cat = new Category();
             cat.setTerm(catElem.getAttributeValue("term", AtomService.ATOM_FORMAT));
             cat.setLabel(catElem.getAttributeValue("label", AtomService.ATOM_FORMAT));
@@ -151,4 +155,5 @@ public class Categories {
             addCategory(cat);
         }
     }
+
 }

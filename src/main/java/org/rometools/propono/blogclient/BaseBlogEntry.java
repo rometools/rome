@@ -1,10 +1,10 @@
-/*   
+/*
  *  Copyright 2007 Dave Johnson (Blogapps project)
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -31,7 +31,7 @@ public abstract class BaseBlogEntry implements BlogEntry {
     protected String summary = null;
     protected Date modificationDate = null;
     protected Date publicationDate = null;
-    protected List categories = new ArrayList();
+    protected List<Category> categories = new ArrayList<Category>();
     protected boolean draft = false;
     private Blog blog = null;
 
@@ -178,7 +178,7 @@ public abstract class BaseBlogEntry implements BlogEntry {
      * {@inheritDoc}
      */
     @Override
-    public List getCategories() {
+    public List<Category> getCategories() {
         return categories;
     }
 
@@ -186,7 +186,7 @@ public abstract class BaseBlogEntry implements BlogEntry {
      * {@inheritDoc}
      */
     @Override
-    public void setCategories(final List categories) {
+    public void setCategories(final List<Category> categories) {
         this.categories = categories;
     }
 

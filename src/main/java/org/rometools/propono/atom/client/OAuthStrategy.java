@@ -18,7 +18,6 @@ package org.rometools.propono.atom.client;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -68,8 +67,9 @@ public class OAuthStrategy implements AuthStrategy {
     private String tokenSecret = null;
 
     /**
-     * Create OAuth authentcation strategy and negotiate with services to obtain access token to be used in subsequent calls.
-     * 
+     * Create OAuth authentcation strategy and negotiate with services to obtain access token to be
+     * used in subsequent calls.
+     *
      * @param username Username to be used in authentication
      * @param key Consumer key
      * @param secret Consumer secret
@@ -112,19 +112,19 @@ public class OAuthStrategy implements AuthStrategy {
         // add OAuth name/values to request query string
 
         // wish we didn't have to parse them apart first, ugh
-        List originalqlist = null;
+        List<NameValuePair> originalqlist = null;
         if (method.getQueryString() != null) {
             String qstring = method.getQueryString().trim();
             qstring = qstring.startsWith("?") ? qstring.substring(1) : qstring;
             originalqlist = new ParameterParser().parse(qstring, '&');
         } else {
-            originalqlist = new ArrayList();
+            originalqlist = new ArrayList<NameValuePair>();
         }
 
         // put query string into hashmap form to please OAuth.net classes
-        final Map params = new HashMap();
-        for (final Iterator it = originalqlist.iterator(); it.hasNext();) {
-            final NameValuePair pair = (NameValuePair) it.next();
+        final Map<String, String> params = new HashMap<String, String>();
+        for (final Object element : originalqlist) {
+            final NameValuePair pair = (NameValuePair) element;
             params.put(pair.getName(), pair.getValue());
         }
 
@@ -165,10 +165,7 @@ public class OAuthStrategy implements AuthStrategy {
         final HttpMethodBase method;
         final String content;
 
-        Map<String, String> params = new HashMap<String, String>();
-        if (params == null) {
-            params = new HashMap<String, String>();
-        }
+        final Map<String, String> params = new HashMap<String, String>();
         params.put("oauth_version", "1.0");
         if (username != null) {
             params.put("xoauth_requestor_id", username);
@@ -259,35 +256,37 @@ public class OAuthStrategy implements AuthStrategy {
             }
         }
 
+        // TODO review switch without 'default'
+
         switch (state) {
 
-        case UNAUTHORIZED:
-            if (token != null && secret != null) {
-                requestToken = token;
-                tokenSecret = secret;
-                state = State.REQUEST_TOKEN;
-            } else {
-                throw new ProponoException("ERROR: requestToken or tokenSecret is null");
-            }
-            break;
+            case UNAUTHORIZED:
+                if (token != null && secret != null) {
+                    requestToken = token;
+                    tokenSecret = secret;
+                    state = State.REQUEST_TOKEN;
+                } else {
+                    throw new ProponoException("ERROR: requestToken or tokenSecret is null");
+                }
+                break;
 
-        case REQUEST_TOKEN:
-            if (method.getStatusCode() == 200) {
-                state = State.AUTHORIZED;
-            } else {
-                throw new ProponoException("ERROR: authorization returned code: " + method.getStatusCode());
-            }
-            break;
+            case REQUEST_TOKEN:
+                if (method.getStatusCode() == 200) {
+                    state = State.AUTHORIZED;
+                } else {
+                    throw new ProponoException("ERROR: authorization returned code: " + method.getStatusCode());
+                }
+                break;
 
-        case AUTHORIZED:
-            if (token != null && secret != null) {
-                accessToken = token;
-                tokenSecret = secret;
-                state = State.ACCESS_TOKEN;
-            } else {
-                throw new ProponoException("ERROR: accessToken or tokenSecret is null");
-            }
-            break;
+            case AUTHORIZED:
+                if (token != null && secret != null) {
+                    accessToken = token;
+                    tokenSecret = secret;
+                    state = State.ACCESS_TOKEN;
+                } else {
+                    throw new ProponoException("ERROR: accessToken or tokenSecret is null");
+                }
+                break;
         }
     }
 }

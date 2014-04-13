@@ -1,10 +1,10 @@
-/*   
+/*
  * Copyright 2007 Sun Microsystems, Inc.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -24,19 +24,20 @@ import org.rometools.propono.atom.common.AtomService;
 import org.rometools.propono.utils.Utilities;
 
 /**
- * File based Atom service. Supports one workspace per user. Collections in workspace are defined in /propono.properties, for example:
- * 
+ * File based Atom service. Supports one workspace per user. Collections in workspace are defined in
+ * /propono.properties, for example:
+ *
  * <pre>
  *    # Define list of collections to be offered
  *    propono.atomserver.filebased.collections=entries,gifimages
- * 
+ *
  *    # Defines 'entries' collection, accepts entries
  *    propono.atomserver.filebased.collection.entries.title=Entries
  *    propono.atomserver.filebased.collection.entries.singular=entry
  *    propono.atomserver.filebased.collection.entries.plural=entries
  *    propono.atomserver.filebased.collection.entries.accept=application/atom+xml;type=entry
  *    propono.atomserver.filebased.collection.entries.categories=general,category1,category2
- * 
+ *
  *    # Defines 'gifimages' collection, accepts only GIF files
  *    propono.atomserver.filebased.collection.gifimages.title=GIF Images
  *    propono.atomserver.filebased.collection.gifimages.singular=gif
@@ -44,57 +45,59 @@ import org.rometools.propono.utils.Utilities;
  *    propono.atomserver.filebased.collection.gifimages.accept=image/gif
  *    propono.atomserver.filebased.collection.gifimages.categories=general,category1,category2
  * </pre>
- * 
- * If no such properties are found, then service will fall back to two collections: 'entries' for Atom entries and 'resources' for any content-type.
- * 
- * 
+ *
+ * If no such properties are found, then service will fall back to two collections: 'entries' for
+ * Atom entries and 'resources' for any content-type.
+ *
+ *
  * <p>
  * <b>URI structure used for accessing collections and entries</b>
  * </p>
- * 
+ *
  * <p>
  * Collection feed (URI allows GET to get collection, POST to add to it)<br/>
  * <code>[servlet-context-uri]/app/[workspace-handle]/[collection-plural] </code>
  * </p>
- * 
+ *
  * <p>
  * Collection entry (URI allows GET, PUT and DELETE)<br/>
  * <code>[servlet-context-uri]/app/[workspace-handle]/[collection-singular]/[entryid] </code>
  * </p>
- * 
+ *
  * <p>
  * Collection entry media (URI allows GET, PUT and DELETE)<br/>
  * <code>[servlet-context-uri]/app/[workspace-handle]/[collection-singular]/media/[entryid]</code>
  * </p>
- * 
+ *
  * <p>
  * Categories URI if not using inline categories (URI allows GET)<br/>
  * <code>[servlet-context-uri]/app/[workspace-handle]/[collection-plural]/categories</code>
  * </p>
- * 
- * 
+ *
+ *
  * <p>
  * <b>Directory structure used to store collections and entries</b>
  * </p>
- * 
+ *
  * <p>
  * Collection feed (kept constantly up to date)<br/>
  * <code>[servlet-context-dir]/[workspace-handle]/[collection-plural]/feed.xml</code>
  * </p>
- * 
+ *
  * <p>
  * Collection entry (individual entries also stored as entry.xml files)<br/>
  * <code>[servlet-context-dir]/[workspace-handle]/[collection-plural]/id/entry.xml</code>
  * </p>
- * 
+ *
  * <p>
  * Collection entry media (media file stored under entry directory)<br/>
  * <code>[servlet-context-dir]/[workspace-handle]/[collection-plural]/id/media/id</code>
  * </p>
  */
 public class FileBasedAtomService extends AtomService {
-    private final Map workspaceMap = new TreeMap();
-    private final Map collectionMap = new TreeMap();
+
+    private final Map<String, FileBasedWorkspace> workspaceMap = new TreeMap<String, FileBasedWorkspace>();
+    private final Map<String, FileBasedCollection> collectionMap = new TreeMap<String, FileBasedCollection>();
     private static Properties cacheProps = new Properties();
     private boolean firstTime = true;
 
@@ -181,10 +184,10 @@ public class FileBasedAtomService extends AtomService {
      * Find workspace by handle, returns null of not found.
      */
     FileBasedWorkspace findWorkspaceByHandle(final String handle) {
-        return (FileBasedWorkspace) workspaceMap.get(handle);
+        return workspaceMap.get(handle);
     }
 
     FileBasedCollection findCollectionByHandle(final String handle, final String collection) {
-        return (FileBasedCollection) collectionMap.get(handle + "|" + collection);
+        return collectionMap.get(handle + "|" + collection);
     }
 }

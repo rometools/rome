@@ -1,10 +1,10 @@
-/*   
+/*
  * Copyright 2007 Sun Microsystems, Inc.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -20,6 +20,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -42,27 +43,26 @@ import com.sun.syndication.feed.atom.Entry;
 import com.sun.syndication.feed.atom.Link;
 import com.sun.syndication.io.impl.Atom10Generator;
 import com.sun.syndication.io.impl.Atom10Parser;
-import java.util.Date;
 
 /**
- * Client implementation of Atom entry, extends ROME Entry to add methods for easily getting/setting content, updating and removing the entry from the server.
+ * Client implementation of Atom entry, extends ROME Entry to add methods for easily getting/setting
+ * content, updating and removing the entry from the server.
  */
 public class ClientEntry extends Entry {
-    private static final Log logger = LogFactory.getLog(ClientEntry.class);
 
-    boolean partial = false;
+    private static final long serialVersionUID = 1L;
+    private static final Log LOGGER = LogFactory.getLog(ClientEntry.class);
 
     private ClientAtomService service = null;
     private ClientCollection collection = null;
+    protected boolean partial = false;
 
     public ClientEntry(final ClientAtomService service, final ClientCollection collection) {
-        super();
         this.service = service;
         this.collection = collection;
     }
 
     public ClientEntry(final ClientAtomService service, final ClientCollection collection, final Entry entry, final boolean partial) throws ProponoException {
-        super();
         this.service = service;
         this.collection = collection;
         this.partial = partial;
@@ -75,30 +75,33 @@ public class ClientEntry extends Entry {
 
     /**
      * Set content of entry.
-     * 
+     *
      * @param contentString content string.
-     * @param type Must be "text" for plain text, "html" for escaped HTML, "xhtml" for XHTML or a valid MIME content-type.
+     * @param type Must be "text" for plain text, "html" for escaped HTML, "xhtml" for XHTML or a
+     *            valid MIME content-type.
      */
     public void setContent(final String contentString, final String type) {
         final Content newContent = new Content();
         newContent.setType(type == null ? Content.HTML : type);
         newContent.setValue(contentString);
-        final ArrayList contents = new ArrayList();
+        final ArrayList<Content> contents = new ArrayList<Content>();
         contents.add(newContent);
         setContents(contents);
     }
 
     /**
-     * Convenience method to set first content object in content collection. Atom 1.0 allows only one content element per entry.
+     * Convenience method to set first content object in content collection. Atom 1.0 allows only
+     * one content element per entry.
      */
     public void setContent(final Content c) {
-        final ArrayList contents = new ArrayList();
+        final ArrayList<Content> contents = new ArrayList<Content>();
         contents.add(c);
         setContents(contents);
     }
 
     /**
-     * Convenience method to get first content object in content collection. Atom 1.0 allows only one content element per entry.
+     * Convenience method to get first content object in content collection. Atom 1.0 allows only
+     * one content element per entry.
      */
     public Content getContent() {
         if (getContents() != null && getContents().size() > 0) {
@@ -123,10 +126,12 @@ public class ClientEntry extends Entry {
     }
 
     /**
-     * Update entry by posting new representation of entry to server. Note that you should not attempt to update entries that you get from iterating over a
-     * collection they may be "partial" entries. If you want to update an entry, you must get it via one of the <code>getEntry()</code> methods in
-     * {@link com.sun.syndication.propono.atom.common.Collection} or {@link com.sun.syndication.propono.atom.common.AtomService}.
-     * 
+     * Update entry by posting new representation of entry to server. Note that you should not
+     * attempt to update entries that you get from iterating over a collection they may be "partial"
+     * entries. If you want to update an entry, you must get it via one of the
+     * <code>getEntry()</code> methods in {@link com.sun.syndication.propono.atom.common.Collection}
+     * or {@link com.sun.syndication.propono.atom.common.AtomService}.
+     *
      * @throws ProponoException If entry is a "partial" entry.
      */
     public void update() throws ProponoException {
@@ -149,7 +154,7 @@ public class ClientEntry extends Entry {
 
         } catch (final Exception e) {
             final String msg = "ERROR: updating entry, HTTP code: " + code;
-            logger.debug(msg, e);
+            LOGGER.debug(msg, e);
             throw new ProponoException(msg, e);
         } finally {
             method.releaseConnection();
@@ -216,16 +221,16 @@ public class ClientEntry extends Entry {
 
         } catch (final Exception e) {
             final String msg = "ERROR: saving entry, HTTP code: " + code;
-            logger.debug(msg, e);
+            LOGGER.debug(msg, e);
             throw new ProponoException(msg, e);
         } finally {
             method.releaseConnection();
         }
         final Header locationHeader = method.getResponseHeader("Location");
         if (locationHeader == null) {
-            logger.warn("WARNING added entry, but no location header returned");
+            LOGGER.warn("WARNING added entry, but no location header returned");
         } else if (getEditURI() == null) {
-            final List links = getOtherLinks();
+            final List<Link> links = getOtherLinks();
             final Link link = new Link();
             link.setHref(locationHeader.getValue());
             link.setRel("edit");
@@ -252,7 +257,7 @@ public class ClientEntry extends Entry {
     }
 
     @Override
-    public void setCreated(Date d) {
+    public void setCreated(final Date d) {
         // protected against null created property (an old Atom 0.3 property)
         if (d != null) {
             super.setCreated(d);

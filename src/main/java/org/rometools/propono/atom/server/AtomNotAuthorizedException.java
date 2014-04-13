@@ -1,6 +1,6 @@
 /*
  * Copyright 2007 Apache Software Foundation
- * 
+ *
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  The ASF licenses this file to You
  * under the Apache License, Version 2.0 (the "License"); you may not
@@ -22,9 +22,13 @@ package org.rometools.propono.atom.server;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Exception to be thrown by <code>AtomHandler</code> implementations in the case that a user is not authorized to access a resource.
+ * Exception to be thrown by <code>AtomHandler</code> implementations in the case that a user is not
+ * authorized to access a resource.
  */
 public class AtomNotAuthorizedException extends AtomException {
+
+    private static final long serialVersionUID = 1L;
+
     /** Construct new exception */
     public AtomNotAuthorizedException() {
         super();
@@ -50,4 +54,5 @@ public class AtomNotAuthorizedException extends AtomException {
     public int getStatus() {
         return HttpServletResponse.SC_UNAUTHORIZED;
     }
+
 }

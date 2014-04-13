@@ -1,10 +1,10 @@
-/*   
+/*
  *  Copyright 2007 Dave Johnson (Blogapps project)
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -16,7 +16,6 @@
 package org.rometools.propono.blogclient.atomprotocol;
 
 import java.io.InputStream;
-import java.util.Iterator;
 import java.util.List;
 
 import org.rometools.propono.atom.client.ClientAtomService;
@@ -33,6 +32,7 @@ import com.sun.syndication.feed.atom.Link;
  * Atom protocol implementation of BlogResource.
  */
 public class AtomResource extends AtomEntry implements BlogResource {
+
     private AtomCollection collection;
     private byte[] bytes;
 
@@ -119,17 +119,15 @@ public class AtomResource extends AtomEntry implements BlogResource {
     @Override
     void copyFromRomeEntry(final ClientEntry entry) {
         super.copyFromRomeEntry(entry);
-
-        final List links = entry.getOtherLinks();
+        final List<Link> links = entry.getOtherLinks();
         if (links != null) {
-            for (final Iterator iter = links.iterator(); iter.hasNext();) {
-                final Link link = (Link) iter.next();
+            for (final Link link : links) {
                 if ("edit-media".equals(link.getRel())) {
                     id = link.getHrefResolved();
                     break;
                 }
             }
         }
-
     }
+
 }

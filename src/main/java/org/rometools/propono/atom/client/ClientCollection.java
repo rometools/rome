@@ -1,10 +1,10 @@
-/*   
+/*
  * Copyright 2007 Sun Microsystems, Inc.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -17,7 +17,6 @@ package org.rometools.propono.atom.client;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
@@ -26,8 +25,6 @@ import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpMethodBase;
 import org.apache.commons.httpclient.MultiThreadedHttpConnectionManager;
 import org.apache.commons.httpclient.methods.GetMethod;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.jdom2.Element;
 import org.rometools.propono.atom.common.AtomService;
 import org.rometools.propono.atom.common.Categories;
@@ -39,16 +36,15 @@ import com.sun.syndication.feed.atom.Entry;
 import com.sun.syndication.io.impl.Atom10Parser;
 
 /**
- * Models an Atom collection, extends Collection and adds methods for adding, retrieving, updateing and deleting entries.
+ * Models an Atom collection, extends Collection and adds methods for adding, retrieving, updateing
+ * and deleting entries.
  */
 public class ClientCollection extends Collection {
-    static final Log logger = LogFactory.getLog(ClientCollection.class);
 
-    private final List categories = new ArrayList();
-    private HttpClient httpClient = null;
-    private AuthStrategy authStrategy = null;
     private final boolean writable = true;
 
+    private HttpClient httpClient = null;
+    private AuthStrategy authStrategy = null;
     private ClientWorkspace workspace = null;
     private ClientAtomService service = null;
 
@@ -85,15 +81,17 @@ public class ClientCollection extends Collection {
     }
 
     /**
-     * Get iterator over entries in this collection. Entries returned are considered to be partial entries cannot be saved/updated.
+     * Get iterator over entries in this collection. Entries returned are considered to be partial
+     * entries cannot be saved/updated.
      */
-    public Iterator getEntries() throws ProponoException {
+    public Iterator<ClientEntry> getEntries() throws ProponoException {
         return new EntryIterator(this);
     }
 
     /**
-     * Get full entry specified by entry edit URI. Note that entry may or may not be associated with this collection.
-     * 
+     * Get full entry specified by entry edit URI. Note that entry may or may not be associated with
+     * this collection.
+     *
      * @return ClientEntry or ClientMediaEntry specified by URI.
      */
     public ClientEntry getEntry(final String uri) throws ProponoException {
@@ -133,7 +131,7 @@ public class ClientCollection extends Collection {
 
     /**
      * Create new entry associated with collection, but do not save to server.
-     * 
+     *
      * @throws ProponoException if collecton is not writable.
      */
     public ClientEntry createEntry() throws ProponoException {
@@ -144,9 +142,10 @@ public class ClientCollection extends Collection {
     }
 
     /**
-     * Create new media entry assocaited with collection, but do not save. server. Depending on the Atom server, you may or may not be able to persist the
-     * properties of the entry that is returned.
-     * 
+     * Create new media entry assocaited with collection, but do not save. server. Depending on the
+     * Atom server, you may or may not be able to persist the properties of the entry that is
+     * returned.
+     *
      * @param title Title to used for uploaded file.
      * @param slug String to be used in file-name of stored file
      * @param contentType MIME content-type of file.
@@ -161,9 +160,10 @@ public class ClientCollection extends Collection {
     }
 
     /**
-     * Create new media entry assocaited with collection, but do not save. server. Depending on the Atom server, you may or may not be able to. persist the
-     * properties of the entry that is returned.
-     * 
+     * Create new media entry assocaited with collection, but do not save. server. Depending on the
+     * Atom server, you may or may not be able to. persist the properties of the entry that is
+     * returned.
+     *
      * @param title Title to used for uploaded file.
      * @param slug String to be used in file-name of stored file
      * @param contentType MIME content-type of file.
@@ -178,8 +178,9 @@ public class ClientCollection extends Collection {
     }
 
     /**
-     * Save to collection a new entry that was created by a createEntry() or createMediaEntry() and save it to the server.
-     * 
+     * Save to collection a new entry that was created by a createEntry() or createMediaEntry() and
+     * save it to the server.
+     *
      * @param entry Entry to be saved.
      * @throws ProponoException on error, if collection is not writable or if entry is partial.
      */
@@ -206,20 +207,19 @@ public class ClientCollection extends Collection {
             }
         }
 
-        final List acceptElems = element.getChildren("accept", AtomService.ATOM_PROTOCOL);
+        final List<Element> acceptElems = element.getChildren("accept", AtomService.ATOM_PROTOCOL);
         if (acceptElems != null && acceptElems.size() > 0) {
-            for (final Iterator it = acceptElems.iterator(); it.hasNext();) {
-                final Element acceptElem = (Element) it.next();
+            for (final Element acceptElem : acceptElems) {
                 addAccept(acceptElem.getTextTrim());
             }
         }
 
         // Loop to parse <app:categories> element to Categories objects
-        final List catsElems = element.getChildren("categories", AtomService.ATOM_PROTOCOL);
-        for (final Iterator catsIter = catsElems.iterator(); catsIter.hasNext();) {
-            final Element catsElem = (Element) catsIter.next();
+        final List<Element> catsElems = element.getChildren("categories", AtomService.ATOM_PROTOCOL);
+        for (final Element catsElem : catsElems) {
             final Categories cats = new ClientCategories(catsElem, this);
             addCategories(cats);
         }
     }
+
 }

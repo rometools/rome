@@ -18,7 +18,6 @@
 package org.rometools.propono.atom.common;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.jdom2.Element;
@@ -28,13 +27,14 @@ import org.rometools.propono.utils.ProponoException;
  * Models an Atom workspace.
  */
 public class Workspace {
+
     private String title = null;
     private String titleType = null; // may be TEXT, HTML, XHTML
-    private final List collections = new ArrayList();
+    private final List<Collection> collections = new ArrayList<Collection>();
 
     /**
      * Collection MUST have title.
-     * 
+     *
      * @param title Title for collection
      * @param titleType Content type of title (null for plain text)
      */
@@ -48,7 +48,7 @@ public class Workspace {
     }
 
     /** Iterate over collections in workspace */
-    public List getCollections() {
+    public List<Collection> getCollections() {
         return collections;
     }
 
@@ -87,14 +87,14 @@ public class Workspace {
 
     /**
      * Find collection by title and/or content-type.
-     * 
+     *
      * @param title Title or null to match all titles.
      * @param contentType Content-type or null to match all content-types.
      * @return First Collection that matches title and/or content-type.
      */
     public Collection findCollection(final String title, final String contentType) {
-        for (final Iterator it = collections.iterator(); it.hasNext();) {
-            final Collection col = (Collection) it.next();
+        for (final Object element : collections) {
+            final Collection col = (Collection) element;
             if (title != null && col.accepts(contentType)) {
                 return col;
             } else if (col.accepts(contentType)) {
@@ -124,11 +124,10 @@ public class Workspace {
         }
         element.addContent(titleElem);
 
-        final Iterator iter = space.getCollections().iterator();
-        while (iter.hasNext()) {
-            final Collection col = (Collection) iter.next();
+        for (final Collection col : space.getCollections()) {
             element.addContent(col.collectionToElement());
         }
+
         return element;
     }
 
@@ -139,11 +138,10 @@ public class Workspace {
         if (titleElem.getAttribute("type", AtomService.ATOM_FORMAT) != null) {
             setTitleType(titleElem.getAttribute("type", AtomService.ATOM_FORMAT).getValue());
         }
-        final List collections = element.getChildren("collection", AtomService.ATOM_PROTOCOL);
-        final Iterator iter = collections.iterator();
-        while (iter.hasNext()) {
-            final Element e = (Element) iter.next();
+        final List<Element> collections = element.getChildren("collection", AtomService.ATOM_PROTOCOL);
+        for (final Element e : collections) {
             addCollection(new Collection(e));
         }
     }
+
 }

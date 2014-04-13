@@ -22,13 +22,15 @@ import java.io.InputStreamReader;
 import java.util.Properties;
 
 /**
- * Find {@link com.sun.syndication.propono.atom.server.AtomHandlerFactory} based on properties files.
+ * Find {@link com.sun.syndication.propono.atom.server.AtomHandlerFactory} based on properties
+ * files.
  */
 class FactoryFinder {
+
     private static boolean debug = false;
-    static Properties cacheProps = new Properties();
-    static SecuritySupport ss = new SecuritySupport();
-    static boolean firstTime = true;
+    private static Properties cacheProps = new Properties();
+    private static SecuritySupport ss = new SecuritySupport();
+    private static boolean firstTime = true;
 
     private static void dPrint(final String msg) {
         if (debug) {
@@ -37,18 +39,20 @@ class FactoryFinder {
     }
 
     /**
-     * Create an instance of a class using the specified ClassLoader and optionally fall back to the current ClassLoader if not found.
-     * 
+     * Create an instance of a class using the specified ClassLoader and optionally fall back to the
+     * current ClassLoader if not found.
+     *
      * @param className Name of the concrete class corresponding to the service provider
-     * 
+     *
      * @param cl ClassLoader to use to load the class, null means to use the bootstrap ClassLoader
-     * 
-     * @param doFallback true if the current ClassLoader should be tried as a fallback if the class is not found using cl
+     *
+     * @param doFallback true if the current ClassLoader should be tried as a fallback if the class
+     *            is not found using cl
      */
     private static Object newInstance(final String className, ClassLoader cl, final boolean doFallback) throws ConfigurationError {
 
         try {
-            Class providerClass;
+            Class<?> providerClass;
             if (cl == null) {
                 // If classloader is null Use the bootstrap ClassLoader.
                 // Thus Class.forName(String) will use the current
@@ -80,12 +84,13 @@ class FactoryFinder {
 
     /**
      * Finds the implementation Class object in the specified order. Main entry point.
-     * 
+     *
      * @return Class object of factory, never null
-     * 
+     *
      * @param factoryId Name of the factory to find, same as a property name
-     * @param fallbackClassName Implementation class name, if nothing else is found. Use null to mean no fallback.
-     * 
+     * @param fallbackClassName Implementation class name, if nothing else is found. Use null to
+     *            mean no fallback.
+     *
      *            Package private so this code can be shared.
      */
     static Object find(final String factoryId, final String fallbackClassName) throws ConfigurationError {
@@ -117,7 +122,6 @@ class FactoryFinder {
 
         // try to read from /propono.properties
         try {
-            final String javah = ss.getSystemProperty("java.home");
             final String configFile = "/propono.properties";
             String factoryClassName = null;
             if (firstTime) {
@@ -162,7 +166,6 @@ class FactoryFinder {
 
     /*
      * Try to find provider using Jar Service Provider Mechanism
-     * 
      * @return instance of provider class if found or null
      */
     private static Object findJarServiceProvider(final String factoryId) throws ConfigurationError {
@@ -240,22 +243,6 @@ class FactoryFinder {
 
         // No provider found
         return null;
-    }
-
-    static class ConfigurationError extends Error {
-        private final Exception exception;
-
-        /**
-         * Construct a new instance with the specified detail string and exception.
-         */
-        ConfigurationError(final String msg, final Exception x) {
-            super(msg);
-            exception = x;
-        }
-
-        Exception getException() {
-            return exception;
-        }
     }
 
 }

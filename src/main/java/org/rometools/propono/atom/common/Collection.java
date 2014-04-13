@@ -18,7 +18,6 @@
 package org.rometools.propono.atom.common;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.jdom2.Element;
@@ -33,18 +32,18 @@ public class Collection {
 
     public static final String ENTRY_TYPE = "application/atom+xml;type=entry";
 
+    private final List<Categories> categories = new ArrayList<Categories>();
+
     private Element collectionElement = null;
     private String baseURI = null;
     private String title = null;
     private String titleType = null; // may be TEXT, HTML, XHTML
-    private List accepts = new ArrayList(); // of Strings
-    private final String listTemplate = null;
+    private List<String> accepts = new ArrayList<String>();
     private String href = null;
-    private final List categories = new ArrayList(); // of Categories objects
 
     /**
      * Collection MUST have title and href.
-     * 
+     *
      * @param title Title for collection
      * @param titleType Content type of title (null for plain text)
      * @param href Collection URI.
@@ -71,7 +70,7 @@ public class Collection {
     /**
      * List of content-type ranges accepted by collection.
      */
-    public List getAccepts() {
+    public List<String> getAccepts() {
         return accepts;
     }
 
@@ -79,7 +78,7 @@ public class Collection {
         accepts.add(accept);
     }
 
-    public void setAccepts(final List accepts) {
+    public void setAccepts(final List<String> accepts) {
         this.accepts = accepts;
     }
 
@@ -150,10 +149,10 @@ public class Collection {
 
     /**
      * Get categories allowed by collection.
-     * 
+     *
      * @return Collection of {@link com.sun.syndication.propono.atom.common.Categories} objects.
      */
-    public List getCategories() {
+    public List<Categories> getCategories() {
         return categories;
     }
 
@@ -161,8 +160,8 @@ public class Collection {
      * Returns true if contentType is accepted by collection.
      */
     public boolean accepts(final String ct) {
-        for (final Iterator it = accepts.iterator(); it.hasNext();) {
-            final String accept = (String) it.next();
+        for (final Object element : accepts) {
+            final String accept = (String) element;
             if (accept != null && accept.trim().equals("*/*")) {
                 return true;
             }
@@ -175,7 +174,7 @@ public class Collection {
             } else if (entry && entryType.equals(accept)) {
                 return true;
             } else {
-                final String[] rules = (String[]) accepts.toArray(new String[accepts.size()]);
+                final String[] rules = accepts.toArray(new String[accepts.size()]);
                 for (final String rule2 : rules) {
                     String rule = rule2.trim();
                     if (rule.equals(ct)) {
@@ -210,13 +209,13 @@ public class Collection {
         element.addContent(titleElem);
 
         // Loop to create <app:categories> elements
-        for (final Iterator it = collection.getCategories().iterator(); it.hasNext();) {
-            final Categories cats = (Categories) it.next();
+        for (final Object element2 : collection.getCategories()) {
+            final Categories cats = (Categories) element2;
             element.addContent(cats.categoriesToElement());
         }
 
-        for (final Iterator it = collection.getAccepts().iterator(); it.hasNext();) {
-            final String range = (String) it.next();
+        for (final Object element2 : collection.getAccepts()) {
+            final String range = (String) element2;
             final Element acceptElem = new Element("accept", AtomService.ATOM_PROTOCOL);
             acceptElem.setText(range);
             element.addContent(acceptElem);
@@ -241,20 +240,19 @@ public class Collection {
             }
         }
 
-        final List acceptElems = element.getChildren("accept", AtomService.ATOM_PROTOCOL);
+        final List<Element> acceptElems = element.getChildren("accept", AtomService.ATOM_PROTOCOL);
         if (acceptElems != null && acceptElems.size() > 0) {
-            for (final Iterator it = acceptElems.iterator(); it.hasNext();) {
-                final Element acceptElem = (Element) it.next();
+            for (final Element acceptElem : acceptElems) {
                 addAccept(acceptElem.getTextTrim());
             }
         }
 
         // Loop to parse <app:categories> element to Categories objects
-        final List catsElems = element.getChildren("categories", AtomService.ATOM_PROTOCOL);
-        for (final Iterator catsIter = catsElems.iterator(); catsIter.hasNext();) {
-            final Element catsElem = (Element) catsIter.next();
+        final List<Element> catsElems = element.getChildren("categories", AtomService.ATOM_PROTOCOL);
+        for (final Element catsElem : catsElems) {
             final Categories cats = new Categories(catsElem, baseURI);
             addCategories(cats);
         }
     }
+
 }

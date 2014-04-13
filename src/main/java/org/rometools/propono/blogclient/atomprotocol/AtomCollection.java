@@ -1,10 +1,10 @@
-/*   
+/*
  *  Copyright 2007 Dave Johnson (Blogapps project)
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -19,8 +19,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.rometools.propono.atom.client.ClientAtomService;
 import org.rometools.propono.atom.client.ClientCollection;
 import org.rometools.propono.atom.client.ClientEntry;
@@ -36,20 +34,19 @@ import com.sun.syndication.feed.atom.Category;
  * Atom protocol implementation of BlogClient Blog.Collection.
  */
 public class AtomCollection implements Blog.Collection {
-    static final Log logger = LogFactory.getLog(AtomCollection.class);
 
     private Blog blog = null;
-    private List categories = new ArrayList();
+    private List<BlogEntry.Category> categories = new ArrayList<BlogEntry.Category>();
 
     private ClientCollection clientCollection = null;
 
     AtomCollection(final AtomBlog blog, final ClientCollection col) {
         this.blog = blog;
         clientCollection = col;
-        for (final Iterator catsIter = col.getCategories().iterator(); catsIter.hasNext();) {
-            final Categories cats = (Categories) catsIter.next();
-            for (final Iterator catIter = cats.getCategories().iterator(); catIter.hasNext();) {
-                final Category cat = (Category) catIter.next();
+        for (final Object element : col.getCategories()) {
+            final Categories cats = (Categories) element;
+            for (final Object element2 : cats.getCategories()) {
+                final Category cat = (Category) element2;
                 final BlogEntry.Category blogCat = new BlogEntry.Category(cat.getTerm());
                 blogCat.setName(cat.getLabel());
                 blogCat.setUrl(cat.getScheme());
@@ -78,7 +75,7 @@ public class AtomCollection implements Blog.Collection {
      * {@inheritDoc}
      */
     @Override
-    public List getAccepts() {
+    public List<String> getAccepts() {
         return getClientCollection().getAccepts();
     }
 
@@ -94,7 +91,7 @@ public class AtomCollection implements Blog.Collection {
      * {@inheritDoc}
      */
     @Override
-    public Iterator getEntries() throws BlogClientException {
+    public Iterator<BlogEntry> getEntries() throws BlogClientException {
         return new AtomEntryIterator(this);
     }
 
@@ -163,11 +160,11 @@ public class AtomCollection implements Blog.Collection {
      * {@inheritDoc}
      */
     @Override
-    public List getCategories() {
+    public List<BlogEntry.Category> getCategories() {
         return categories;
     }
 
-    void setCategories(final List categories) {
+    void setCategories(final List<BlogEntry.Category> categories) {
         this.categories = categories;
     }
 

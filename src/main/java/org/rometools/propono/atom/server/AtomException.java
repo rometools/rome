@@ -1,6 +1,6 @@
 /*
  * Copyright 2007 Apache Software Foundation
- * 
+ *
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  The ASF licenses this file to You
  * under the Apache License, Version 2.0 (the "License"); you may not
@@ -22,9 +22,13 @@ package org.rometools.propono.atom.server;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Exception thrown by {@link com.sun.syndication.propono.atom.server.AtomHandler} and extended by other Propono Atom exception classes.
+ * Exception thrown by {@link com.sun.syndication.propono.atom.server.AtomHandler} and extended by
+ * other Propono Atom exception classes.
  */
 public class AtomException extends Exception {
+
+    private static final long serialVersionUID = 1L;
+
     /** Construct new exception */
     public AtomException() {
         super();

@@ -18,7 +18,6 @@
 package org.rometools.propono.atom.common;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.jdom2.Document;
@@ -27,12 +26,12 @@ import org.jdom2.Namespace;
 import org.rometools.propono.utils.ProponoException;
 
 /**
- * Models an Atom Publishing Protocol Service Document. Is able to read a Service document from a JDOM Document and to write Service document out as a JDOM
- * Document.
+ * Models an Atom Publishing Protocol Service Document. Is able to read a Service document from a
+ * JDOM Document and to write Service document out as a JDOM Document.
  */
 public class AtomService {
 
-    private List workspaces = new ArrayList();
+    private List<Workspace> workspaces = new ArrayList<Workspace>();
 
     /** Namespace for Atom Syndication Format */
     public static Namespace ATOM_FORMAT = Namespace.getNamespace("atom", "http://www.w3.org/2005/Atom");
@@ -56,26 +55,26 @@ public class AtomService {
     /**
      * Get Workspaces available from service.
      */
-    public List getWorkspaces() {
+    public List<Workspace> getWorkspaces() {
         return workspaces;
     }
 
     /**
      * Set Workspaces of service.
      */
-    public void setWorkspaces(final List workspaces) {
+    public void setWorkspaces(final List<Workspace> workspaces) {
         this.workspaces = workspaces;
     }
 
     /**
      * Find workspace by title.
-     * 
+     *
      * @param title Match this title
      * @return Matching Workspace or null if none found.
      */
     public Workspace findWorkspace(final String title) {
-        for (final Iterator it = workspaces.iterator(); it.hasNext();) {
-            final Workspace ws = (Workspace) it.next();
+        for (final Object element : workspaces) {
+            final Workspace ws = (Workspace) element;
             if (title.equals(ws.getTitle())) {
                 return ws;
             }
@@ -89,10 +88,8 @@ public class AtomService {
     public static AtomService documentToService(final Document document) throws ProponoException {
         final AtomService service = new AtomService();
         final Element root = document.getRootElement();
-        final List spaces = root.getChildren("workspace", ATOM_PROTOCOL);
-        final Iterator iter = spaces.iterator();
-        while (iter.hasNext()) {
-            final Element e = (Element) iter.next();
+        final List<Element> spaces = root.getChildren("workspace", ATOM_PROTOCOL);
+        for (final Element e : spaces) {
             service.addWorkspace(Workspace.elementToWorkspace(e));
         }
         return service;
@@ -107,9 +104,8 @@ public class AtomService {
         final Document doc = new Document();
         final Element root = new Element("service", ATOM_PROTOCOL);
         doc.setRootElement(root);
-        final Iterator iter = service.getWorkspaces().iterator();
-        while (iter.hasNext()) {
-            final Workspace space = (Workspace) iter.next();
+        final List<Workspace> spaces = service.getWorkspaces();
+        for (final Workspace space : spaces) {
             root.addContent(space.workspaceToElement());
         }
         return doc;

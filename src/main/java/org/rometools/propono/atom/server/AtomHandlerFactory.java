@@ -73,7 +73,7 @@ public abstract class AtomHandlerFactory {
     public static AtomHandlerFactory newInstance() {
         try {
             return (AtomHandlerFactory) FactoryFinder.find(DEFAULT_PROPERTY_NAME, FALLBACK_IMPL_NAME);
-        } catch (final FactoryFinder.ConfigurationError e) {
+        } catch (final ConfigurationError e) {
             log.error("ERROR: finding factory", e);
             throw new FactoryConfigurationError(e.getException(), e.getMessage());
         }

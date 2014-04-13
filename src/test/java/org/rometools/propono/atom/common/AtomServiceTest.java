@@ -1,10 +1,10 @@
-/*   
+/*
  * Copyright 2007 Sun Microsystems, Inc.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -15,9 +15,6 @@
  */
 package org.rometools.propono.atom.common;
 
-import java.io.FileInputStream;
-import java.util.Iterator;
-
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -25,8 +22,6 @@ import junit.framework.TestSuite;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.input.SAXBuilder;
-
-import com.sun.syndication.feed.atom.Category;
 
 /**
  * Tests reading and writing of service document, no server needed.
@@ -65,25 +60,19 @@ public class AtomServiceTest extends TestCase {
             int workspaceCount = 0;
 
             // Verify that service contains expected workspaces, collections and categories
-            for (final Iterator it = service.getWorkspaces().iterator(); it.hasNext();) {
-                final Workspace space = (Workspace) it.next();
+            for (final Object element : service.getWorkspaces()) {
+                final Workspace space = (Workspace) element;
                 assertNotNull(space.getTitle());
                 workspaceCount++;
-                int collectionCount = 0;
-
-                for (final Iterator colit = space.getCollections().iterator(); colit.hasNext();) {
-                    final Collection col = (Collection) colit.next();
+                for (final Object element2 : space.getCollections()) {
+                    final Collection col = (Collection) element2;
                     assertNotNull(col.getTitle());
                     assertNotNull(col.getHrefResolved());
-                    collectionCount++;
                     int catCount = 0;
                     if (col.getCategories().size() > 0) {
-                        for (final Iterator catsit = col.getCategories().iterator(); catsit.hasNext();) {
-                            final Categories cats = (Categories) catsit.next();
-                            for (final Iterator catit = cats.getCategories().iterator(); catit.hasNext();) {
-                                final Category cat = (Category) catit.next();
-                                catCount++;
-                            }
+                        for (final Object element3 : col.getCategories()) {
+                            final Categories cats = (Categories) element3;
+                            catCount += cats.getCategories().size();
                             assertTrue(catCount > 0);
                         }
                     }

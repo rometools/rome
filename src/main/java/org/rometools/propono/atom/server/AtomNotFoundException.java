@@ -1,6 +1,6 @@
 /*
  * Copyright 2007 Apache Software Foundation
- * 
+ *
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  The ASF licenses this file to You
  * under the Apache License, Version 2.0 (the "License"); you may not
@@ -25,6 +25,9 @@ import javax.servlet.http.HttpServletResponse;
  * Exception thrown by AtomHandler in that case a resource is not found.
  */
 public class AtomNotFoundException extends AtomException {
+
+    private static final long serialVersionUID = 1L;
+
     /** Construct new exception */
     public AtomNotFoundException() {
         super();

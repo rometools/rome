@@ -1,10 +1,10 @@
-/*   
+/*
  * Copyright 2007 Sun Microsystems, Inc.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -16,7 +16,6 @@
 package org.rometools.propono.atom.client;
 
 import java.io.InputStreamReader;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
@@ -36,19 +35,22 @@ import com.sun.syndication.feed.atom.Entry;
 import com.sun.syndication.io.impl.Atom10Parser;
 
 /**
- * This class models an Atom Publising Protocol Service Document. It extends the common {@link com.sun.syndication.propono.atom.common.Collection} class to add
- * a <code>getEntry()</code> method and to return {@link com.sun.syndication.propono.atom.client.ClientWorkspace} objects instead of common
- * {@link com.sun.syndication.propono.atom.common.Workspace}s.
+ * This class models an Atom Publising Protocol Service Document. It extends the common
+ * {@link com.sun.syndication.propono.atom.common.Collection} class to add a <code>getEntry()</code>
+ * method and to return {@link com.sun.syndication.propono.atom.client.ClientWorkspace} objects
+ * instead of common {@link com.sun.syndication.propono.atom.common.Workspace}s.
  */
 public class ClientAtomService extends AtomService {
-    private static Log logger = LogFactory.getLog(ClientAtomService.class);
+
+    private static final Log LOGGER = LogFactory.getLog(ClientAtomService.class);
+
     private String uri = null;
     private HttpClient httpClient = null;
     private AuthStrategy authStrategy = null;
 
     /**
      * Create Atom blog service instance for specified URL and user account.
-     * 
+     *
      * @param url End-point URL of Atom service
      */
     ClientAtomService(final String uri, final AuthStrategy authStrategy) throws ProponoException {
@@ -103,13 +105,13 @@ public class ClientAtomService extends AtomService {
             httpClient.executeMethod(method);
 
             final SAXBuilder builder = new SAXBuilder();
-            String doc = method.getResponseBodyAsString();
-            logger.debug(doc);
+            final String doc = method.getResponseBodyAsString();
+            LOGGER.debug(doc);
             return builder.build(method.getResponseBodyAsStream());
 
         } catch (final Throwable t) {
             final String msg = "ERROR retrieving Atom Service Document, code: " + code;
-            logger.debug(msg, t);
+            LOGGER.debug(msg, t);
             throw new ProponoException(msg, t);
         } finally {
             if (method != null) {
@@ -121,10 +123,8 @@ public class ClientAtomService extends AtomService {
     /** Deserialize an Atom service XML document into an object */
     private void parseAtomServiceDocument(final Document document) throws ProponoException {
         final Element root = document.getRootElement();
-        final List spaces = root.getChildren("workspace", AtomService.ATOM_PROTOCOL);
-        final Iterator iter = spaces.iterator();
-        while (iter.hasNext()) {
-            final Element e = (Element) iter.next();
+        final List<Element> spaces = root.getChildren("workspace", AtomService.ATOM_PROTOCOL);
+        for (final Element e : spaces) {
             addWorkspace(new ClientWorkspace(e, this, uri));
         }
     }
@@ -135,4 +135,5 @@ public class ClientAtomService extends AtomService {
     HttpClient getHttpClient() {
         return httpClient;
     }
+
 }

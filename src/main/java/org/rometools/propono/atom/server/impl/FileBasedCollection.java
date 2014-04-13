@@ -1,10 +1,10 @@
-/*   
+/*
  * Copyright 2007 Sun Microsystems, Inc.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -28,7 +28,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.StringTokenizer;
@@ -36,8 +35,6 @@ import java.util.StringTokenizer;
 import javax.activation.FileTypeMap;
 import javax.activation.MimetypesFileTypeMap;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.jdom2.Document;
 import org.jdom2.output.XMLOutputter;
 import org.rometools.propono.atom.common.Categories;
@@ -55,6 +52,7 @@ import com.sun.syndication.feed.atom.Content;
 import com.sun.syndication.feed.atom.Entry;
 import com.sun.syndication.feed.atom.Feed;
 import com.sun.syndication.feed.atom.Link;
+import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.WireFeedInput;
 import com.sun.syndication.io.WireFeedOutput;
@@ -62,11 +60,11 @@ import com.sun.syndication.io.impl.Atom10Generator;
 import com.sun.syndication.io.impl.Atom10Parser;
 
 /**
- * File based Atom collection implementation. This is the heart of the file-based Atom service implementation. It provides methods for adding, getting updating
- * and deleting Atom entries and media entries.
+ * File based Atom collection implementation. This is the heart of the file-based Atom service
+ * implementation. It provides methods for adding, getting updating and deleting Atom entries and
+ * media entries.
  */
 public class FileBasedCollection extends Collection {
-    private static Log log = LogFactory.getFactory().getInstance(FileBasedCollection.class);
 
     private String handle = null;
     private String singular = null;
@@ -77,16 +75,17 @@ public class FileBasedCollection extends Collection {
 
     private boolean relativeURIs = false;
     private String contextURI = null;
-    private String contextPath = null;
     private String servletPath = null;
     private String baseDir = null;
 
     private static final String FEED_TYPE = "atom_1.0";
 
     /**
-     * Construct by providing title (plain text, no HTML), a workspace handle, a plural collection name (e.g. entries), a singular collection name (e.g. entry),
-     * the base directory for file storage, the content-type range accepted by the collection and the root Atom protocol URI for the service.
-     * 
+     * Construct by providing title (plain text, no HTML), a workspace handle, a plural collection
+     * name (e.g. entries), a singular collection name (e.g. entry), the base directory for file
+     * storage, the content-type range accepted by the collection and the root Atom protocol URI for
+     * the service.
+     *
      * @param title Title of collection (plain text, no HTML)
      * @param handle Workspace handle
      * @param collection Collection handle, plural
@@ -114,7 +113,6 @@ public class FileBasedCollection extends Collection {
         this.baseDir = baseDir;
         this.relativeURIs = relativeURIs;
         this.contextURI = contextURI;
-        this.contextPath = contextPath;
         this.servletPath = servletPath;
 
         addAccept(accept);
@@ -122,7 +120,7 @@ public class FileBasedCollection extends Collection {
 
     /**
      * Get feed document representing collection.
-     * 
+     *
      * @throws com.sun.syndication.propono.atom.server.AtomException On error retrieving feed file.
      * @return Atom Feed representing collection.
      */
@@ -145,11 +143,11 @@ public class FileBasedCollection extends Collection {
 
     /**
      * Get list of one Categories object containing categories allowed by collection.
-     * 
-     * @param inline True if Categories object should contain collection of in-line Categories objects or false if it should set the Href for out-of-line
-     *            categories.
+     *
+     * @param inline True if Categories object should contain collection of in-line Categories
+     *            objects or false if it should set the Href for out-of-line categories.
      */
-    public List getCategories(final boolean inline) {
+    public List<Categories> getCategories(final boolean inline) {
         final Categories cats = new Categories();
         cats.setFixed(true);
         cats.setScheme(contextURI + "/" + handle + "/" + singular);
@@ -166,18 +164,21 @@ public class FileBasedCollection extends Collection {
     }
 
     /**
-     * Get list of one Categories object containing categories allowed by collection, returns in-line categories if collection set to use in-line categories.
+     * Get list of one Categories object containing categories allowed by collection, returns
+     * in-line categories if collection set to use in-line categories.
      */
     @Override
-    public List getCategories() {
+    public List<Categories> getCategories() {
         return getCategories(inlineCats);
     }
 
     /**
      * Add entry to collection.
-     * 
-     * @param entry Entry to be added to collection. Entry will be saved to disk in a directory under the collection's directory and the path will follow the
-     *            pattern [collection-plural]/[entryid]/entry.xml. The entry will be added to the collection's feed in [collection-plural]/feed.xml.
+     *
+     * @param entry Entry to be added to collection. Entry will be saved to disk in a directory
+     *            under the collection's directory and the path will follow the pattern
+     *            [collection-plural]/[entryid]/entry.xml. The entry will be added to the
+     *            collection's feed in [collection-plural]/feed.xml.
      * @throws java.lang.Exception On error.
      * @return Entry as it exists on the server.
      */
@@ -206,11 +207,13 @@ public class FileBasedCollection extends Collection {
     }
 
     /**
-     * Add media entry to collection. Accepts a media file to be added to collection. The file will be saved to disk in a directory under the collection's
-     * directory and the path will follow the pattern <code>[collection-plural]/[entryid]/media/[entryid]</code>. An Atom entry will be created to store
-     * metadata for the entry and it will exist at the path <code>[collection-plural]/[entryid]/entry.xml</code>. The entry will be added to the collection's
-     * feed in [collection-plural]/feed.xml.
-     * 
+     * Add media entry to collection. Accepts a media file to be added to collection. The file will
+     * be saved to disk in a directory under the collection's directory and the path will follow the
+     * pattern <code>[collection-plural]/[entryid]/media/[entryid]</code>. An Atom entry will be
+     * created to store metadata for the entry and it will exist at the path
+     * <code>[collection-plural]/[entryid]/entry.xml</code>. The entry will be added to the
+     * collection's feed in [collection-plural]/feed.xml.
+     *
      * @param entry Entry object
      * @param slug String to be used in file-name
      * @param is Source of media data
@@ -259,7 +262,7 @@ public class FileBasedCollection extends Collection {
 
     /**
      * Get an entry from the collection.
-     * 
+     *
      * @param fsid Internal ID of entry to be returned
      * @throws java.lang.Exception On error
      * @return Entry specified by fileName/ID
@@ -275,7 +278,6 @@ public class FileBasedCollection extends Collection {
         final InputStream in = FileStore.getFileStore().getFileInputStream(entryPath);
 
         final Entry entry;
-        final String filePath = getEntryMediaPath(fsid);
         final File resource = new File(fsid);
         if (resource.exists()) {
             entry = loadAtomResourceEntry(in, resource);
@@ -298,7 +300,7 @@ public class FileBasedCollection extends Collection {
 
     /**
      * Update an entry in the collection.
-     * 
+     *
      * @param entry Updated entry to be stored
      * @param fsid Internal ID of entry
      * @throws java.lang.Exception On error
@@ -328,7 +330,7 @@ public class FileBasedCollection extends Collection {
 
     /**
      * Update media associated with a media-link entry.
-     * 
+     *
      * @param fileName Internal ID of entry being updated
      * @param contentType Content type of data
      * @param is Source of updated data
@@ -374,7 +376,7 @@ public class FileBasedCollection extends Collection {
 
     /**
      * Delete an entry and any associated media file.
-     * 
+     *
      * @param fsid Internal ID of entry
      * @throws java.lang.Exception On error
      */
@@ -448,15 +450,12 @@ public class FileBasedCollection extends Collection {
         updateFeedDocument(f);
     }
 
-    private Entry findEntry(final String id, final Feed f) {
-        final List l = f.getEntries();
-        for (final Iterator it = l.iterator(); it.hasNext();) {
-            final Entry e = (Entry) it.next();
-            if (id.equals(e.getId())) {
-                return e;
+    private Entry findEntry(final String id, final Feed feed) {
+        for (final Entry entry : feed.getEntries()) {
+            if (id.equals(entry.getId())) {
+                return entry;
             }
         }
-
         return null;
     }
 
@@ -526,10 +525,9 @@ public class FileBasedCollection extends Collection {
 
         // Look for existing alt links and the alt link
         Link altLink = null;
-        List altLinks = entry.getAlternateLinks();
+        List<Link> altLinks = entry.getAlternateLinks();
         if (altLinks != null) {
-            for (final Iterator it = altLinks.iterator(); it.hasNext();) {
-                final Link link = (Link) it.next();
+            for (final Link link : altLinks) {
                 if (link.getRel() == null || "alternate".equals(link.getRel())) {
                     altLink = link;
                     break;
@@ -537,7 +535,7 @@ public class FileBasedCollection extends Collection {
             }
         } else {
             // No alt links found, so add them now
-            altLinks = new ArrayList();
+            altLinks = new ArrayList<Link>();
             entry.setAlternateLinks(altLinks);
         }
         // The alt link not found, so add it now
@@ -551,10 +549,9 @@ public class FileBasedCollection extends Collection {
 
         // Look for existing other links and the edit link
         Link editLink = null;
-        List otherLinks = entry.getOtherLinks();
+        List<Link> otherLinks = entry.getOtherLinks();
         if (otherLinks != null) {
-            for (final Iterator it = otherLinks.iterator(); it.hasNext();) {
-                final Link link = (Link) it.next();
+            for (final Link link : otherLinks) {
                 if ("edit".equals(link.getRel())) {
                     editLink = link;
                     break;
@@ -562,7 +559,7 @@ public class FileBasedCollection extends Collection {
             }
         } else {
             // No other links found, so add them now
-            otherLinks = new ArrayList();
+            otherLinks = new ArrayList<Link>();
             entry.setOtherLinks(otherLinks);
         }
         // The edit link not found, so add it now
@@ -585,13 +582,11 @@ public class FileBasedCollection extends Collection {
             } catch (final Exception ignored) {
             }
         }
-        final String contentType = map.getContentType(fileName);
-
         entry.setId(getEntryMediaViewURI(fileName));
         entry.setTitle(fileName);
         entry.setUpdated(new Date());
 
-        final List otherlinks = new ArrayList();
+        final List<Link> otherlinks = new ArrayList<Link>();
         entry.setOtherLinks(otherlinks);
 
         final Link editlink = new Link();
@@ -606,13 +601,14 @@ public class FileBasedCollection extends Collection {
 
         final Content content = entry.getContents().get(0);
         content.setSrc(getEntryMediaViewURI(fileName));
-        final List contents = new ArrayList();
+        final List<Content> contents = new ArrayList<Content>();
         contents.add(content);
         entry.setContents(contents);
     }
 
     /**
-     * Create a Rome Atom entry based on a Roller entry. Content is escaped. Link is stored as rel=alternate link.
+     * Create a Rome Atom entry based on a Roller entry. Content is escaped. Link is stored as
+     * rel=alternate link.
      */
     private Entry loadAtomEntry(final InputStream in) {
         try {
@@ -633,7 +629,7 @@ public class FileBasedCollection extends Collection {
         AppModule appModule = (AppModule) entry.getModule(AppModule.URI);
         if (appModule == null) {
             appModule = new AppModuleImpl();
-            final List modules = entry.getModules() == null ? new ArrayList() : entry.getModules();
+            final List<Module> modules = entry.getModules() == null ? new ArrayList<Module>() : entry.getModules();
             modules.add(appModule);
             entry.setModules(modules);
         }
@@ -642,7 +638,7 @@ public class FileBasedCollection extends Collection {
 
     /**
      * Save file to website's resource directory.
-     * 
+     *
      * @param handle Weblog handle to save to
      * @param name Name of file to save
      * @param size Size of file to be saved
@@ -677,21 +673,25 @@ public class FileBasedCollection extends Collection {
 
     /**
      * Creates a file name for a file based on a weblog handle, title string and a content-type.
-     * 
+     *
      * @param handle Weblog handle
      * @param title Title to be used as basis for file name (or null)
      * @param contentType Content type of file (must not be null)
-     * 
-     *            If a title is specified, the method will apply the same create-anchor logic we use for weblog entries to create a file name based on the
-     *            title.
-     * 
-     *            If title is null, the base file name will be the weblog handle plus a YYYYMMDDHHSS timestamp.
-     * 
-     *            The extension will be formed by using the part of content type that comes after he slash.
-     * 
-     *            For example: weblog.handle = "daveblog" title = "Port Antonio" content-type = "image/jpg" Would result in port_antonio.jpg
-     * 
-     *            Another example: weblog.handle = "daveblog" title = null content-type = "image/jpg" Might result in daveblog-200608201034.jpg
+     *
+     *            If a title is specified, the method will apply the same create-anchor logic we use
+     *            for weblog entries to create a file name based on the title.
+     *
+     *            If title is null, the base file name will be the weblog handle plus a YYYYMMDDHHSS
+     *            timestamp.
+     *
+     *            The extension will be formed by using the part of content type that comes after he
+     *            slash.
+     *
+     *            For example: weblog.handle = "daveblog" title = "Port Antonio" content-type =
+     *            "image/jpg" Would result in port_antonio.jpg
+     *
+     *            Another example: weblog.handle = "daveblog" title = null content-type =
+     *            "image/jpg" Might result in daveblog-200608201034.jpg
      */
     private String createFileName(final String title, final String contentType) {
 

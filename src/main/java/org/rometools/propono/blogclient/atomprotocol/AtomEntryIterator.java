@@ -1,10 +1,10 @@
-/*   
+/*
  *  Copyright 2007 Dave Johnson (Blogapps project)
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -22,13 +22,15 @@ import org.apache.commons.logging.LogFactory;
 import org.rometools.propono.atom.client.ClientEntry;
 import org.rometools.propono.atom.client.ClientMediaEntry;
 import org.rometools.propono.blogclient.BlogClientException;
+import org.rometools.propono.blogclient.BlogEntry;
 
 /**
  * Atom protocol implementation of BlogClient entry iterator.
  */
-public class AtomEntryIterator implements Iterator {
-    static final Log logger = LogFactory.getLog(AtomEntryIterator.class);
-    private Iterator iterator = null;
+public class AtomEntryIterator implements Iterator<BlogEntry> {
+
+    private static final Log logger = LogFactory.getLog(AtomEntryIterator.class);
+    private Iterator<ClientEntry> iterator = null;
     private AtomCollection collection = null;
 
     AtomEntryIterator(final AtomCollection collection) throws BlogClientException {
@@ -52,9 +54,9 @@ public class AtomEntryIterator implements Iterator {
      * Get next entry.
      */
     @Override
-    public Object next() {
+    public BlogEntry next() {
         try {
-            final ClientEntry entry = (ClientEntry) iterator.next();
+            final ClientEntry entry = iterator.next();
             if (entry instanceof ClientMediaEntry) {
                 return new AtomResource(collection, (ClientMediaEntry) entry);
             } else {

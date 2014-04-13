@@ -1,10 +1,10 @@
-/*   
+/*
  *  Copyright 2007 Dave Johnson (Blogapps project)
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -33,7 +33,7 @@ public class BlogConnectionFactory {
 
     /**
      * Create a connection to a blog server.
-     * 
+     *
      * @param type Connection type, must be "atom" or "metaweblog"
      * @param url End-point URL to connect to
      * @param username Username for login to blog server
@@ -54,14 +54,15 @@ public class BlogConnectionFactory {
 
     private static BlogConnection createBlogConnection(final String className, final String url, final String username, final String password)
             throws BlogClientException {
-        Class conClass;
+
+        Class<?> conClass;
         try {
             conClass = Class.forName(className);
         } catch (final ClassNotFoundException ex) {
             throw new BlogClientException("BlogConnection impl. class not found: " + className, ex);
         }
-        final Class[] args = new Class[] { String.class, String.class, String.class };
-        Constructor ctor;
+        final Class<?>[] args = new Class[] { String.class, String.class, String.class };
+        Constructor<?> ctor;
         try {
             ctor = conClass.getConstructor(args);
             return (BlogConnection) ctor.newInstance(new Object[] { url, username, password });
@@ -69,4 +70,5 @@ public class BlogConnectionFactory {
             throw new BlogClientException("ERROR instantiating BlogConnection impl.", t);
         }
     }
+
 }

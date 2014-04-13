@@ -1,6 +1,6 @@
 /*
  * Copyright 2007 Apache Software Foundation
- * 
+ *
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  The ASF licenses this file to You
  * under the Apache License, Version 2.0 (the "License"); you may not
@@ -36,6 +36,7 @@ import com.sun.syndication.io.ModuleGenerator;
  * Creates JDOM representation for APP Extension Module.
  */
 public class AppModuleGenerator implements ModuleGenerator {
+
     private static final Namespace APP_NS = Namespace.getNamespace("app", AppModule.URI);
 
     @Override
@@ -43,17 +44,17 @@ public class AppModuleGenerator implements ModuleGenerator {
         return AppModule.URI;
     }
 
-    private static final Set NAMESPACES;
+    private static final Set<Namespace> NAMESPACES;
 
     static {
-        final Set nss = new HashSet();
+        final Set<Namespace> nss = new HashSet<Namespace>();
         nss.add(APP_NS);
         NAMESPACES = Collections.unmodifiableSet(nss);
     }
 
     /** Get namespaces associated with this module */
     @Override
-    public Set getNamespaces() {
+    public Set<Namespace> getNamespaces() {
         return NAMESPACES;
     }
 

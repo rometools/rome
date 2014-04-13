@@ -1,10 +1,10 @@
-/*   
+/*
  * Copyright 2007 Sun Microsystems, Inc.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -21,8 +21,9 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-import com.sun.syndication.feed.atom.Content;
 import org.junit.Ignore;
+
+import com.sun.syndication.feed.atom.Content;
 
 /**
  * Simple APP test designed to run against Blogger.com.
@@ -31,7 +32,8 @@ import org.junit.Ignore;
 public class BloggerDotComTest extends TestCase {
 
     private final String collectionURI = "http://www.blogger.com/feeds/BLOGID/posts/default";
-    private final String atomServiceURI = "http://www.blogger.com/feeds/default/blogs?alt=atom-service";
+    // private final String atomServiceURI =
+    // "http://www.blogger.com/feeds/default/blogs?alt=atom-service";
     private final String email = "EMAIL";
     private final String password = "PASSWORD";
 
@@ -61,8 +63,8 @@ public class BloggerDotComTest extends TestCase {
         ClientCollection col = AtomClientFactory.getCollection(collectionURI, new GDataAuthStrategy(email, password, "blogger"));
         assertNotNull(col);
         int count = 0;
-        for (final Iterator it = col.getEntries(); it.hasNext();) {
-            final ClientEntry entry = (ClientEntry) it.next();
+        for (final Iterator<ClientEntry> it = col.getEntries(); it.hasNext();) {
+            final ClientEntry entry = it.next();
             assertNotNull(entry);
             count++;
         }

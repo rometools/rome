@@ -1,10 +1,10 @@
-/*   
+/*
  * Copyright 2007 Sun Microsystems, Inc.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -16,10 +16,14 @@
 package org.rometools.propono.atom.server;
 
 /**
- * Thrown when a problem with configuration with the {@link com.sun.syndication.propono.atom.server.AtomHandlerFactory} exists. This error will typically be
- * thrown when the class of a parser factory specified in the system properties cannot be found or instantiated.
+ * Thrown when a problem with configuration with the
+ * {@link com.sun.syndication.propono.atom.server.AtomHandlerFactory} exists. This error will
+ * typically be thrown when the class of a parser factory specified in the system properties cannot
+ * be found or instantiated.
  */
 public class FactoryConfigurationError extends Error {
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * <code>Exception</code> that represents the error.
@@ -35,8 +39,9 @@ public class FactoryConfigurationError extends Error {
     }
 
     /**
-     * Create a new <code>FactoryConfigurationError</code> with the <code>String </code> specified as an error message.
-     * 
+     * Create a new <code>FactoryConfigurationError</code> with the <code>String </code> specified
+     * as an error message.
+     *
      * @param msg The error message for the exception.
      */
     public FactoryConfigurationError(final String msg) {
@@ -45,8 +50,9 @@ public class FactoryConfigurationError extends Error {
     }
 
     /**
-     * Create a new <code>FactoryConfigurationError</code> with a given <code>Exception</code> base cause of the error.
-     * 
+     * Create a new <code>FactoryConfigurationError</code> with a given <code>Exception</code> base
+     * cause of the error.
+     *
      * @param e The exception to be encapsulated in a FactoryConfigurationError.
      */
     public FactoryConfigurationError(final Exception e) {
@@ -55,8 +61,9 @@ public class FactoryConfigurationError extends Error {
     }
 
     /**
-     * Create a new <code>FactoryConfigurationError</code> with the given <code>Exception</code> base cause and detail message.
-     * 
+     * Create a new <code>FactoryConfigurationError</code> with the given <code>Exception</code>
+     * base cause and detail message.
+     *
      * @param e The exception to be encapsulated in a FactoryConfigurationError
      * @param msg The detail message.
      */
@@ -66,9 +73,10 @@ public class FactoryConfigurationError extends Error {
     }
 
     /**
-     * Return the message (if any) for this error . If there is no message for the exception and there is an encapsulated exception then the message of that
-     * exception, if it exists will be returned. Else the name of the encapsulated exception will be returned.
-     * 
+     * Return the message (if any) for this error . If there is no message for the exception and
+     * there is an encapsulated exception then the message of that exception, if it exists will be
+     * returned. Else the name of the encapsulated exception will be returned.
+     *
      * @return The error message.
      */
     @Override
@@ -84,7 +92,7 @@ public class FactoryConfigurationError extends Error {
 
     /**
      * Return the actual exception (if any) that caused this exception to be raised.
-     * 
+     *
      * @return The encapsulated exception, or null if there is none.
      */
     public Exception getException() {

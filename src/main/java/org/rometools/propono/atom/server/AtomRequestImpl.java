@@ -1,6 +1,6 @@
 /*
  * Copyright 2007 Sun Microsystems, Inc.
- * 
+ *
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  The ASF licenses this file to You
  * under the Apache License, Version 2.0 (the "License"); you may not
@@ -31,6 +31,7 @@ import javax.servlet.http.HttpServletRequest;
  * Default request implementation.
  */
 public class AtomRequestImpl implements AtomRequest {
+
     private HttpServletRequest wrapped = null;
 
     public AtomRequestImpl(final HttpServletRequest wrapped) {

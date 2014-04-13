@@ -1,10 +1,10 @@
-/*   
+/*
  * Copyright 2007 Sun Microsystems, Inc.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -23,8 +23,8 @@ import java.io.PrintWriter;
  */
 public class ProponoException extends Exception {
 
+    private static final long serialVersionUID = 1L;
     private Throwable mRootCause = null;
-    private String longMessage = null;
 
     /**
      * Construct emtpy exception object.
@@ -35,7 +35,7 @@ public class ProponoException extends Exception {
 
     /**
      * Construct ProponoException with message string.
-     * 
+     *
      * @param s Error message string.
      */
     public ProponoException(final String s) {
@@ -44,17 +44,16 @@ public class ProponoException extends Exception {
 
     /**
      * Construct ProponoException with message string.
-     * 
+     *
      * @param s Error message string.
      */
     public ProponoException(final String s, final String longMessage) {
         super(s);
-        this.longMessage = longMessage;
     }
 
     /**
      * Construct ProponoException, wrapping existing throwable.
-     * 
+     *
      * @param s Error message
      * @param t Existing connection to wrap.
      */
@@ -65,19 +64,18 @@ public class ProponoException extends Exception {
 
     /**
      * Construct ProponoException, wrapping existing throwable.
-     * 
+     *
      * @param s Error message
      * @param t Existing connection to wrap.
      */
-    public ProponoException(final String s, final String longMessge, final Throwable t) {
+    public ProponoException(final String s, final String longMessage, final Throwable t) {
         super(s);
         mRootCause = t;
-        longMessage = longMessage;
     }
 
     /**
      * Construct ProponoException, wrapping existing throwable.
-     * 
+     *
      * @param t Existing exception to be wrapped.
      */
     public ProponoException(final Throwable t) {
@@ -86,7 +84,7 @@ public class ProponoException extends Exception {
 
     /**
      * Get root cause object, or null if none.
-     * 
+     *
      * @return Root cause or null if none.
      */
     public Throwable getRootCause() {
@@ -95,7 +93,7 @@ public class ProponoException extends Exception {
 
     /**
      * Get root cause message.
-     * 
+     *
      * @return Root cause message.
      */
     public String getRootCauseMessage() {
@@ -113,7 +111,7 @@ public class ProponoException extends Exception {
 
     /**
      * Print stack trace for exception and for root cause exception if htere is one.
-     * 
+     *
      * @see java.lang.Throwable#printStackTrace()
      */
     @Override
@@ -127,7 +125,7 @@ public class ProponoException extends Exception {
 
     /**
      * Print stack trace for exception and for root cause exception if htere is one.
-     * 
+     *
      * @param s Stream to print to.
      */
     @Override
@@ -141,7 +139,7 @@ public class ProponoException extends Exception {
 
     /**
      * Print stack trace for exception and for root cause exception if htere is one.
-     * 
+     *
      * @param s Writer to write to.
      */
     @Override

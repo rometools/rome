@@ -1,10 +1,10 @@
-/*   
+/*
  * Copyright 2007 Sun Microsystems, Inc.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -25,14 +25,15 @@ import java.security.PrivilegedActionException;
 import java.security.PrivilegedExceptionAction;
 
 /**
- * This class is duplicated for each subpackage, it is package private and therefore is not exposed as part of the public API.
+ * This class is duplicated for each subpackage, it is package private and therefore is not exposed
+ * as part of the public API.
  */
 class SecuritySupport {
 
     ClassLoader getContextClassLoader() {
-        return (ClassLoader) AccessController.doPrivileged(new PrivilegedAction() {
+        final PrivilegedAction<ClassLoader> action = new PrivilegedAction<ClassLoader>() {
             @Override
-            public Object run() {
+            public ClassLoader run() {
                 ClassLoader cl = null;
                 try {
                     cl = Thread.currentThread().getContextClassLoader();
@@ -40,35 +41,38 @@ class SecuritySupport {
                 }
                 return cl;
             }
-        });
+        };
+        return AccessController.doPrivileged(action);
     }
 
     String getSystemProperty(final String propName) {
-        return (String) AccessController.doPrivileged(new PrivilegedAction() {
+        final PrivilegedAction<String> action = new PrivilegedAction<String>() {
             @Override
-            public Object run() {
+            public String run() {
                 return System.getProperty(propName);
             }
-        });
+        };
+        return AccessController.doPrivileged(action);
     }
 
     FileInputStream getFileInputStream(final File file) throws FileNotFoundException {
         try {
-            return (FileInputStream) AccessController.doPrivileged(new PrivilegedExceptionAction() {
+            final PrivilegedExceptionAction<FileInputStream> action = new PrivilegedExceptionAction<FileInputStream>() {
                 @Override
-                public Object run() throws FileNotFoundException {
+                public FileInputStream run() throws FileNotFoundException {
                     return new FileInputStream(file);
                 }
-            });
+            };
+            return AccessController.doPrivileged(action);
         } catch (final PrivilegedActionException e) {
             throw (FileNotFoundException) e.getException();
         }
     }
 
     InputStream getResourceAsStream(final ClassLoader cl, final String name) {
-        return (InputStream) AccessController.doPrivileged(new PrivilegedAction() {
+        final PrivilegedAction<InputStream> action = new PrivilegedAction<InputStream>() {
             @Override
-            public Object run() {
+            public InputStream run() {
                 InputStream ris;
                 if (cl == null) {
                     ris = ClassLoader.getSystemResourceAsStream(name);
@@ -77,16 +81,18 @@ class SecuritySupport {
                 }
                 return ris;
             }
-        });
+        };
+        return AccessController.doPrivileged(action);
     }
 
     boolean doesFileExist(final File f) {
-        return ((Boolean) AccessController.doPrivileged(new PrivilegedAction() {
+        final PrivilegedAction<Boolean> action = new PrivilegedAction<Boolean>() {
             @Override
-            public Object run() {
-                return new Boolean(f.exists());
+            public Boolean run() {
+                return f.exists();
             }
-        })).booleanValue();
+        };
+        return AccessController.doPrivileged(action).booleanValue();
     }
 
 }

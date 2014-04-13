@@ -1,10 +1,10 @@
-/*   
+/*
  * Copyright 2007 Sun Microsystems, Inc.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -22,13 +22,15 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import org.junit.Ignore;
+import org.rometools.propono.blogclient.Blog.Collection;
 import org.rometools.propono.utils.Utilities;
 
 import com.sun.syndication.io.impl.Atom10Parser;
-import org.junit.Ignore;
 
 /**
- * Tests Atom and MetaWeblog API CRUD via BlogClient. Exclude this from automated tests because it requires a live blog server.
+ * Tests Atom and MetaWeblog API CRUD via BlogClient. Exclude this from automated tests because it
+ * requires a live blog server.
  */
 @Ignore
 public class SimpleBlogClientTest extends TestCase {
@@ -37,7 +39,7 @@ public class SimpleBlogClientTest extends TestCase {
     // private String atomEndpoint = "http://localhost:8080/roller/roller-services/app";
     private final String atomEndpoint = "http://localhost:8080/sample-atomserver/app";
 
-    private final String endpoint = "http://localhost:8080/atom-fileserver/app";
+    // private final String endpoint = "http://localhost:8080/atom-fileserver/app";
     private final String username = "admin";
     private final String password = "admin";
 
@@ -65,8 +67,7 @@ public class SimpleBlogClientTest extends TestCase {
         final BlogConnection conn = BlogConnectionFactory.getBlogConnection(type, endpoint, username, password);
 
         int blogCount = 0;
-        for (final Iterator it = conn.getBlogs().iterator(); it.hasNext();) {
-            final Blog blog = (Blog) it.next();
+        for (final Blog blog : conn.getBlogs()) {
             System.out.println(blog.getName());
             blogCount++;
         }
@@ -96,7 +97,7 @@ public class SimpleBlogClientTest extends TestCase {
         final String title1 = "Test content";
         final String content1 = "Test content";
 
-        final Blog blog = (Blog) conn.getBlogs().get(0);
+        final Blog blog = conn.getBlogs().get(0);
         BlogEntry entry = blog.newEntry();
         entry.setTitle(title1);
         entry.setContent(new BlogEntry.Content(content1));
@@ -131,12 +132,12 @@ public class SimpleBlogClientTest extends TestCase {
 
         assertTrue(conn.getBlogs().size() > 0);
         int count = 0;
-        for (final Iterator it = conn.getBlogs().iterator(); it.hasNext();) {
-            final Blog blog = (Blog) it.next();
+        for (final Blog blog2 : conn.getBlogs()) {
+            final Blog blog = blog2;
             assertNotNull(blog.getName());
 
-            for (final Iterator colit = blog.getCollections().iterator(); colit.hasNext();) {
-                final Blog.Collection col = (Blog.Collection) colit.next();
+            for (final Collection collection : blog.getCollections()) {
+                final Blog.Collection col = collection;
                 if (col.accepts("image/gif")) {
 
                     // we found a collection that accepts GIF, so post one
@@ -184,7 +185,7 @@ public class SimpleBlogClientTest extends TestCase {
         final String title1 = "Test content";
         final String content1 = "Test content";
 
-        final Blog blog = (Blog) conn.getBlogs().get(0);
+        final Blog blog = conn.getBlogs().get(0);
 
         for (int i = 0; i < 10; i++) {
             final BlogEntry entry = blog.newEntry();

@@ -1,10 +1,10 @@
-/*   
+/*
  * Copyright 2007 Sun Microsystems, Inc.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -15,7 +15,6 @@
  */
 package org.rometools.propono.atom.client;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.jdom2.Element;
@@ -24,10 +23,13 @@ import org.rometools.propono.atom.common.Workspace;
 import org.rometools.propono.utils.ProponoException;
 
 /**
- * Represents Atom protocol workspace on client-side. It extends the common {@link com.sun.syndication.propono.atom.common.Workspace} to return
- * {@link com.sun.syndication.propono.atom.client.ClientCollection} objects instead of common {@link com.sun.syndication.propono.atom.common.Collection}s.
+ * Represents Atom protocol workspace on client-side. It extends the common
+ * {@link com.sun.syndication.propono.atom.common.Workspace} to return
+ * {@link com.sun.syndication.propono.atom.client.ClientCollection} objects instead of common
+ * {@link com.sun.syndication.propono.atom.common.Collection}s.
  */
 public class ClientWorkspace extends Workspace {
+
     private ClientAtomService atomService = null;
 
     ClientWorkspace(final Element e, final ClientAtomService atomService, final String baseURI) throws ProponoException {
@@ -50,11 +52,10 @@ public class ClientWorkspace extends Workspace {
         if (titleElem.getAttribute("type", AtomService.ATOM_FORMAT) != null) {
             setTitleType(titleElem.getAttribute("type", AtomService.ATOM_FORMAT).getValue());
         }
-        final List collections = element.getChildren("collection", AtomService.ATOM_PROTOCOL);
-        final Iterator iter = collections.iterator();
-        while (iter.hasNext()) {
-            final Element e = (Element) iter.next();
+        final List<Element> collections = element.getChildren("collection", AtomService.ATOM_PROTOCOL);
+        for (final Element e : collections) {
             addCollection(new ClientCollection(e, this, baseURI));
         }
     }
+
 }

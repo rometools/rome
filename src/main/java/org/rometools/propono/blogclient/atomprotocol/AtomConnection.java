@@ -1,10 +1,10 @@
-/*   
+/*
  *  Copyright 2007 Dave Johnson (Blogapps project)
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -21,41 +21,35 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.jdom2.Document;
 import org.rometools.propono.atom.client.AtomClientFactory;
 import org.rometools.propono.atom.client.BasicAuthStrategy;
 import org.rometools.propono.atom.client.ClientAtomService;
 import org.rometools.propono.atom.client.ClientWorkspace;
+import org.rometools.propono.atom.common.Workspace;
 import org.rometools.propono.blogclient.Blog;
 import org.rometools.propono.blogclient.BlogClientException;
 import org.rometools.propono.blogclient.BlogConnection;
 
 /**
- * Atom protocol of BlogConnection. Connects to Atom server, creates AtomBlog object for each Atom workspace found and within each blog a collection for each
- * Atom collection found.
+ * Atom protocol of BlogConnection. Connects to Atom server, creates AtomBlog object for each Atom
+ * workspace found and within each blog a collection for each Atom collection found.
  */
 public class AtomConnection implements BlogConnection {
-    private static Log logger = LogFactory.getLog(AtomConnection.class);
-    private final HttpClient httpClient = null;
-    private final Map blogs = new HashMap();
+
+    private final Map<String, Blog> blogs = new HashMap<String, Blog>();
 
     /**
      * Create Atom blog client instance for specified URL and user account.
-     * 
+     *
      * @param uri End-point URL of Atom service
      * @param username Username of account
      * @param password Password of account
      */
     public AtomConnection(final String uri, final String username, final String password) throws BlogClientException {
 
-        final Document doc = null;
         try {
             final ClientAtomService service = AtomClientFactory.getAtomService(uri, new BasicAuthStrategy(username, password));
-            final Iterator iter = service.getWorkspaces().iterator();
-            final int count = 0;
+            final Iterator<Workspace> iter = service.getWorkspaces().iterator();
             while (iter.hasNext()) {
                 final ClientWorkspace workspace = (ClientWorkspace) iter.next();
                 final Blog blog = new AtomBlog(service, workspace);
@@ -70,8 +64,8 @@ public class AtomConnection implements BlogConnection {
      * {@inheritDoc}
      */
     @Override
-    public List getBlogs() {
-        return new ArrayList(blogs.values());
+    public List<Blog> getBlogs() {
+        return new ArrayList<Blog>(blogs.values());
     }
 
     /**
@@ -79,7 +73,7 @@ public class AtomConnection implements BlogConnection {
      */
     @Override
     public Blog getBlog(final String token) {
-        return (AtomBlog) blogs.get(token);
+        return blogs.get(token);
     }
 
     /**

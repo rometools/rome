@@ -34,7 +34,7 @@ import org.apache.commons.logging.LogFactory;
  */
 class FileStore {
 
-    private static Log log = LogFactory.getFactory().getInstance(FileStore.class);
+    private static final Log LOG = LogFactory.getFactory().getInstance(FileStore.class);
 
     private static final FileStore fileStore = new FileStore();
 
@@ -49,29 +49,29 @@ class FileStore {
     }
 
     public InputStream getFileInputStream(final String path) {
-        log.debug("getFileContents path: " + path);
+        LOG.debug("getFileContents path: " + path);
         try {
             return new BufferedInputStream(new FileInputStream(path));
         } catch (final FileNotFoundException e) {
-            log.debug("   File not found: " + path);
+            LOG.debug("   File not found: " + path);
             return null;
         }
     }
 
     public OutputStream getFileOutputStream(final String path) {
-        log.debug("getFileOutputStream path: " + path);
+        LOG.debug("getFileOutputStream path: " + path);
         try {
             final File f = new File(path);
             f.getParentFile().mkdirs();
             return new BufferedOutputStream(new FileOutputStream(f));
         } catch (final FileNotFoundException e) {
-            log.debug("   File not found: " + path);
+            LOG.debug("   File not found: " + path);
             return null;
         }
     }
 
     public void createOrUpdateFile(final String path, final InputStream content) throws FileNotFoundException, IOException {
-        log.debug("createOrUpdateFile path: " + path);
+        LOG.debug("createOrUpdateFile path: " + path);
         final File f = new File(path);
         f.mkdirs();
         final FileOutputStream out = new FileOutputStream(f);
@@ -81,13 +81,14 @@ class FileStore {
         while ((read = content.read(buffer)) != -1) {
             out.write(buffer, 0, read);
         }
+        out.close();
     }
 
     public void deleteFile(final String path) {
-        log.debug("deleteFile path: " + path);
+        LOG.debug("deleteFile path: " + path);
         final File f = new File(path);
         if (!f.delete()) {
-            log.debug("   Failed to delete: " + f.getAbsolutePath());
+            LOG.debug("   Failed to delete: " + f.getAbsolutePath());
         }
     }
 
@@ -100,7 +101,7 @@ class FileStore {
     }
 
     public boolean deleteDirectory(final File path) {
-        log.debug("deleteDirectory path: " + path);
+        LOG.debug("deleteDirectory path: " + path);
         if (path.exists()) {
             final File[] files = path.listFiles();
             for (final File file : files) {

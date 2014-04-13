@@ -1,7 +1,7 @@
 /*
  * Copyright 2007 Apache Software Foundation
  * Copyright 2011 The ROME Teams
- * 
+ *
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  The ASF licenses this file to You
  * under the Apache License, Version 2.0 (the "License"); you may not
@@ -29,6 +29,9 @@ import com.sun.syndication.feed.module.ModuleImpl;
  * Bean representation of APP module.
  */
 public class AppModuleImpl extends ModuleImpl implements AppModule {
+
+    private static final long serialVersionUID = 1L;
+
     private boolean draft = false;
     private Date edited = null;
 
@@ -62,7 +65,7 @@ public class AppModuleImpl extends ModuleImpl implements AppModule {
 
     /** Get interface class of module */
     @Override
-    public Class getInterface() {
+    public Class<AppModule> getInterface() {
         return AppModule.class;
     }
 
@@ -73,4 +76,5 @@ public class AppModuleImpl extends ModuleImpl implements AppModule {
         setDraft(m.getDraft());
         setEdited(m.getEdited());
     }
+
 }

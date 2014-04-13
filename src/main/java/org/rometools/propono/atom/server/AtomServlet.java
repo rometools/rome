@@ -1,6 +1,6 @@
 /*
  * Copyright 2007 Apache Software Foundation
- * 
+ *
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  The ASF licenses this file to You
  * under the Apache License, Version 2.0 (the "License"); you may not
@@ -50,11 +50,15 @@ import com.sun.syndication.io.impl.Atom10Generator;
 import com.sun.syndication.io.impl.Atom10Parser;
 
 /**
- * Atom Servlet implements Atom protocol by calling an {@link com.sun.syndication.propono.atom.server.AtomHandler} implementation. This servlet takes care of
- * parsing incoming XML into ROME Atom {@link com.sun.syndication.feed.atom.Entry} objects, passing those to the handler and serializing to the response the
- * entries and feeds returned by the handler.
+ * Atom Servlet implements Atom protocol by calling an
+ * {@link com.sun.syndication.propono.atom.server.AtomHandler} implementation. This servlet takes
+ * care of parsing incoming XML into ROME Atom {@link com.sun.syndication.feed.atom.Entry} objects,
+ * passing those to the handler and serializing to the response the entries and feeds returned by
+ * the handler.
  */
 public class AtomServlet extends HttpServlet {
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * Get feed type support by Servlet, "atom_1.0"
@@ -160,7 +164,8 @@ public class AtomServlet extends HttpServlet {
 
     // -----------------------------------------------------------------------------
     /**
-     * Handles an Atom POST by calling handler to identify URI, reading/parsing data, calling handler and writing results to response.
+     * Handles an Atom POST by calling handler to identify URI, reading/parsing data, calling
+     * handler and writing results to response.
      */
     @Override
     protected void doPost(final HttpServletRequest req, final HttpServletResponse res) throws ServletException, IOException {
@@ -265,7 +270,8 @@ public class AtomServlet extends HttpServlet {
 
     // -----------------------------------------------------------------------------
     /**
-     * Handles an Atom PUT by calling handler to identify URI, reading/parsing data, calling handler and writing results to response.
+     * Handles an Atom PUT by calling handler to identify URI, reading/parsing data, calling handler
+     * and writing results to response.
      */
     @Override
     protected void doPut(final HttpServletRequest req, final HttpServletResponse res) throws ServletException, IOException {
@@ -278,7 +284,8 @@ public class AtomServlet extends HttpServlet {
                 if (handler.isEntryURI(areq)) {
 
                     // parse incoming entry
-                    final Entry unsavedEntry = Atom10Parser.parseEntry(new BufferedReader(new InputStreamReader(req.getInputStream(), "UTF-8")), null, Locale.US);
+                    final Entry unsavedEntry = Atom10Parser.parseEntry(new BufferedReader(new InputStreamReader(req.getInputStream(), "UTF-8")), null,
+                            Locale.US);
 
                     // call handler to put entry
                     handler.putEntry(areq, unsavedEntry);

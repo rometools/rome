@@ -1,10 +1,10 @@
-/*   
+/*
  *  Copyright 2007 Dave Johnson (Blogapps project)
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -50,7 +50,7 @@ public class MetaWeblogEntry extends BaseBlogEntry {
         author.setName((String) entryMap.get("userid"));
         author.setEmail((String) entryMap.get("author"));
 
-        categories = new ArrayList();
+        categories = new ArrayList<Category>();
         final Object[] catArray = (Object[]) entryMap.get("categories");
         if (catArray != null) {
             for (final Object element : catArray) {
@@ -98,8 +98,8 @@ public class MetaWeblogEntry extends BaseBlogEntry {
         ((MetaWeblogBlog) getBlog()).deleteEntry(id);
     }
 
-    HashMap toPostStructure() {
-        final HashMap struct = new HashMap();
+    Map<String, Object> toPostStructure() {
+        final Map<String, Object> struct = new HashMap<String, Object>();
         if (getTitle() != null) {
             struct.put("title", getTitle());
         }
@@ -107,10 +107,10 @@ public class MetaWeblogEntry extends BaseBlogEntry {
             struct.put("description", getContent().getValue());
         }
         if (getCategories() != null && getCategories().size() > 0) {
-            final List catArray = new ArrayList();
-            final List cats = getCategories();
+            final List<String> catArray = new ArrayList<String>();
+            final List<Category> cats = getCategories();
             for (int i = 0; i < cats.size(); i++) {
-                final BlogEntry.Category cat = (BlogEntry.Category) cats.get(i);
+                final BlogEntry.Category cat = cats.get(i);
                 catArray.add(cat.getName());
             }
             struct.put("categories", catArray);

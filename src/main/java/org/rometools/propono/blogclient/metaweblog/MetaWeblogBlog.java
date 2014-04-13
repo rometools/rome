@@ -1,10 +1,10 @@
-/*   
+/*
  *  Copyright 2007 Dave Johnson (Blogapps project)
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -30,20 +30,22 @@ import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
 import org.rometools.propono.blogclient.Blog;
 import org.rometools.propono.blogclient.BlogClientException;
 import org.rometools.propono.blogclient.BlogEntry;
+import org.rometools.propono.blogclient.BlogEntry.Category;
 import org.rometools.propono.blogclient.BlogResource;
 
 /**
  * Blog implementation that uses a mix of Blogger and MetaWeblog API methods.
  */
 public class MetaWeblogBlog implements Blog {
+
     private final String blogid;
     private final String name;
     private final URL url;
     private final String userName;
     private final String password;
-    private String appkey = "dummy";
-    private final Map collections;
+    private final Map<String, MetaWeblogBlogCollection> collections;
 
+    private String appkey = "dummy";
     private XmlRpcClient xmlRpcClient = null;
 
     /**
@@ -87,7 +89,7 @@ public class MetaWeblogBlog implements Blog {
         this.url = url;
         this.userName = userName;
         this.password = password;
-        collections = new TreeMap();
+        collections = new TreeMap<String, MetaWeblogBlogCollection>();
         collections.put("entries", new MetaWeblogBlogCollection(this, "entries", "Entries", "entry"));
         collections.put("resources", new MetaWeblogBlogCollection(this, "resources", "Resources", "*"));
     }
@@ -106,7 +108,7 @@ public class MetaWeblogBlog implements Blog {
     }
 
     String saveEntry(final BlogEntry entry) throws BlogClientException {
-        final Blog.Collection col = (Blog.Collection) collections.get("entries");
+        final Blog.Collection col = collections.get("entries");
         return col.saveEntry(entry);
     }
 
@@ -135,7 +137,7 @@ public class MetaWeblogBlog implements Blog {
      * {@inheritDoc}
      */
     @Override
-    public Iterator getEntries() throws BlogClientException {
+    public Iterator<BlogEntry> getEntries() throws BlogClientException {
         return new EntryIterator();
     }
 
@@ -148,7 +150,7 @@ public class MetaWeblogBlog implements Blog {
     }
 
     String saveResource(final MetaWeblogResource resource) throws BlogClientException {
-        final Blog.Collection col = (Blog.Collection) collections.get("resources");
+        final Blog.Collection col = collections.get("resources");
         return col.saveResource(resource);
     }
 
@@ -160,8 +162,8 @@ public class MetaWeblogBlog implements Blog {
      * {@inheritDoc}
      */
     @Override
-    public Iterator getResources() throws BlogClientException {
-        return new NoOpIterator();
+    public NoOpIterator<BlogEntry> getResources() throws BlogClientException {
+        return new NoOpIterator<BlogEntry>();
     }
 
     void deleteResource(final BlogResource resource) throws BlogClientException {
@@ -172,14 +174,15 @@ public class MetaWeblogBlog implements Blog {
      * {@inheritDoc}
      */
     @Override
-    public List getCategories() throws BlogClientException {
+    public List<Category> getCategories() throws BlogClientException {
 
-        final ArrayList ret = new ArrayList();
+        final ArrayList<Category> ret = new ArrayList<Category>();
         try {
             final Object result = getXmlRpcClient().execute("metaWeblog.getCategories", new Object[] { blogid, userName, password });
             if (result != null && result instanceof HashMap) {
                 // Standard MetaWeblog API style: struct of struts
                 final Map catsmap = (Map) result;
+
                 final Iterator keys = catsmap.keySet().iterator();
                 while (keys.hasNext()) {
                     final String key = (String) keys.next();
@@ -208,7 +211,7 @@ public class MetaWeblogBlog implements Blog {
         return ret;
     }
 
-    private HashMap createPostStructure(final BlogEntry entry) {
+    private Map<String, Object> createPostStructure(final BlogEntry entry) {
         return ((MetaWeblogEntry) entry).toPostStructure();
     }
 
@@ -216,8 +219,8 @@ public class MetaWeblogBlog implements Blog {
      * {@inheritDoc}
      */
     @Override
-    public List getCollections() throws BlogClientException {
-        return new ArrayList(collections.values());
+    public List<Collection> getCollections() throws BlogClientException {
+        return new ArrayList<Collection>(collections.values());
     }
 
     /**
@@ -225,7 +228,7 @@ public class MetaWeblogBlog implements Blog {
      */
     @Override
     public Blog.Collection getCollection(final String token) throws BlogClientException {
-        return (Blog.Collection) collections.get(token);
+        return collections.get(token);
     }
 
     // -------------------------------------------------------------------------
@@ -269,7 +272,7 @@ public class MetaWeblogBlog implements Blog {
          * {@inheritDoc}
          */
         @Override
-        public List getAccepts() {
+        public List<String> getAccepts() {
             return Collections.singletonList(accept);
         }
 
@@ -308,8 +311,8 @@ public class MetaWeblogBlog implements Blog {
          * {@inheritDoc}
          */
         @Override
-        public Iterator getEntries() throws BlogClientException {
-            Iterator ret = null;
+        public Iterator<BlogEntry> getEntries() throws BlogClientException {
+            Iterator<BlogEntry> ret = null;
             if (accept.equals("entry")) {
                 ret = MetaWeblogBlog.this.getEntries();
             } else {
@@ -349,7 +352,7 @@ public class MetaWeblogBlog implements Blog {
         public String saveResource(final BlogResource res) throws BlogClientException {
             final MetaWeblogResource resource = (MetaWeblogResource) res;
             try {
-                final HashMap resmap = new HashMap();
+                final HashMap<String, Object> resmap = new HashMap<String, Object>();
                 resmap.put("name", resource.getName());
                 resmap.put("type", resource.getContent().getType());
                 resmap.put("bits", resource.getBytes());
@@ -366,7 +369,7 @@ public class MetaWeblogBlog implements Blog {
          * {@inheritDoc}
          */
         @Override
-        public List getCategories() throws BlogClientException {
+        public List<Category> getCategories() throws BlogClientException {
             return MetaWeblogBlog.this.getCategories();
         }
 
@@ -383,7 +386,7 @@ public class MetaWeblogBlog implements Blog {
     /**
      * Iterates over MetaWeblog API entries.
      */
-    public class EntryIterator implements Iterator {
+    public class EntryIterator implements Iterator<BlogEntry> {
         private int pos = 0;
         private boolean eod = false;
         private static final int BUFSIZE = 30;
@@ -414,7 +417,7 @@ public class MetaWeblogBlog implements Blog {
          * Get next entry.
          */
         @Override
-        public Object next() {
+        public BlogEntry next() {
             final Map entryHash = (Map) results.get(pos++);
             return new MetaWeblogEntry(MetaWeblogBlog.this, entryHash);
         }
@@ -438,35 +441,6 @@ public class MetaWeblogBlog implements Blog {
             if (results.size() < requestSize) {
                 eod = true;
             }
-        }
-    }
-
-    // -------------------------------------------------------------------------
-    /**
-     * No-op iterator.
-     */
-    public class NoOpIterator implements Iterator {
-        /**
-         * No-op
-         */
-        @Override
-        public boolean hasNext() {
-            return false;
-        }
-
-        /**
-         * No-op
-         */
-        @Override
-        public Object next() {
-            return null;
-        }
-
-        /**
-         * No-op
-         */
-        @Override
-        public void remove() {
         }
     }
 

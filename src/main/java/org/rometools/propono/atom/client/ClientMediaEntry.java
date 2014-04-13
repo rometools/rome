@@ -1,10 +1,10 @@
-/*   
+/*
  * Copyright 2007 Sun Microsystems, Inc.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -47,10 +47,13 @@ import com.sun.syndication.io.impl.Atom10Generator;
 import com.sun.syndication.io.impl.Atom10Parser;
 
 /**
- * Client implementation of Atom media-link entry, an Atom entry that provides meta-data for a media file (e.g. uploaded image or audio file).
+ * Client implementation of Atom media-link entry, an Atom entry that provides meta-data for a media
+ * file (e.g. uploaded image or audio file).
  */
 public class ClientMediaEntry extends ClientEntry {
-    private static final Log logger = LogFactory.getLog(ClientMediaEntry.class);
+
+    private static final long serialVersionUID = 1L;
+    private static final Log LOGGER = LogFactory.getLog(ClientMediaEntry.class);
 
     private String slug = null;
     private byte[] bytes;
@@ -76,7 +79,7 @@ public class ClientMediaEntry extends ClientEntry {
         setSlug(slug);
         final Content content = new Content();
         content.setType(contentType);
-        final List contents = new ArrayList();
+        final List<Content> contents = new ArrayList<Content>();
         contents.add(content);
         setContents(contents);
     }
@@ -89,14 +92,14 @@ public class ClientMediaEntry extends ClientEntry {
         setSlug(slug);
         final Content content = new Content();
         content.setType(contentType);
-        final List contents = new ArrayList();
+        final List<Content> contents = new ArrayList<Content>();
         contents.add(content);
         setContents(contents);
     }
 
     /**
      * Get bytes of media resource associated with entry.
-     * 
+     *
      * @return Bytes or null if none available or if entry uses an InputStream instead.
      */
     public byte[] getBytes() {
@@ -104,7 +107,8 @@ public class ClientMediaEntry extends ClientEntry {
     }
 
     /**
-     * Set media resource data as a byte array, don't try this if you have already set the data as an InputStream.
+     * Set media resource data as a byte array, don't try this if you have already set the data as
+     * an InputStream.
      */
     public void setBytes(final byte[] bytes) {
         if (inputStream != null) {
@@ -115,7 +119,7 @@ public class ClientMediaEntry extends ClientEntry {
 
     /**
      * Get input stream for media resource associated with this entry.
-     * 
+     *
      * @return InputStream or null if none available or if entry uses bytes instead.
      */
     public InputStream getInputStream() {
@@ -123,7 +127,8 @@ public class ClientMediaEntry extends ClientEntry {
     }
 
     /**
-     * Set media resource data as an input stream, don't try this if you have already set the data as a byte array.
+     * Set media resource data as an input stream, don't try this if you have already set the data
+     * as a byte array.
      */
     public void setInputStream(final InputStream inputStream) {
         if (bytes != null) {
@@ -133,7 +138,8 @@ public class ClientMediaEntry extends ClientEntry {
     }
 
     /**
-     * Get media link URI for editing the media resource associated with this entry via HTTP PUT or DELETE.
+     * Get media link URI for editing the media resource associated with this entry via HTTP PUT or
+     * DELETE.
      */
     public String getMediaLinkURI() {
         for (int i = 0; i < getOtherLinks().size(); i++) {
@@ -146,7 +152,8 @@ public class ClientMediaEntry extends ClientEntry {
     }
 
     /**
-     * Get media resource as an InputStream, should work regardless of whether you set the media resource data as an InputStream or as a byte array.
+     * Get media resource as an InputStream, should work regardless of whether you set the media
+     * resource data as an InputStream or as a byte array.
      */
     public InputStream getAsStream() throws ProponoException {
         if (getContents() != null && getContents().size() > 0) {
@@ -237,8 +244,6 @@ public class ClientMediaEntry extends ClientEntry {
         setCollection(col);
         final EntityEnclosingMethod method = new PostMethod(col.getHrefResolved());
         getCollection().addAuthentication(method);
-        final StringWriter sw = new StringWriter();
-        final boolean error = false;
         try {
             final Content c = getContents().get(0);
             if (inputStream != null) {
@@ -274,9 +279,9 @@ public class ClientMediaEntry extends ClientEntry {
         }
         final Header locationHeader = method.getResponseHeader("Location");
         if (locationHeader == null) {
-            logger.warn("WARNING added entry, but no location header returned");
+            LOGGER.warn("WARNING added entry, but no location header returned");
         } else if (getEditURI() == null) {
-            final List links = getOtherLinks();
+            final List<Link> links = getOtherLinks();
             final Link link = new Link();
             link.setHref(locationHeader.getValue());
             link.setRel("edit");

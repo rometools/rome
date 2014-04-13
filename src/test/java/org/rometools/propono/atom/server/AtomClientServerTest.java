@@ -16,25 +16,22 @@
  */
 package org.rometools.propono.atom.server;
 
-import com.sun.syndication.feed.atom.Category;
-import com.sun.syndication.feed.atom.Content;
+import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertTrue;
+
 import java.io.FileInputStream;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNotNull;
-import static junit.framework.TestCase.assertTrue;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import org.mortbay.http.HttpContext;
 import org.mortbay.http.HttpServer;
 import org.mortbay.http.SocketListener;
@@ -48,7 +45,11 @@ import org.rometools.propono.atom.client.ClientMediaEntry;
 import org.rometools.propono.atom.client.ClientWorkspace;
 import org.rometools.propono.atom.common.Categories;
 import org.rometools.propono.atom.common.Collection;
+import org.rometools.propono.atom.common.Workspace;
 import org.rometools.propono.utils.ProponoException;
+
+import com.sun.syndication.feed.atom.Category;
+import com.sun.syndication.feed.atom.Content;
 
 /**
  * Test Propono Atom Client against Atom Server via Jetty. Extends <code>AtomClientTest</code> to
@@ -100,8 +101,7 @@ public class AtomClientServerTest {
         server.addContext(context);
         server.start();
 
-        service = AtomClientFactory.getAtomService(getEndpoint(),
-                new BasicAuthStrategy(getUsername(), getPassword()));
+        service = AtomClientFactory.getAtomService(getEndpoint(), new BasicAuthStrategy(getUsername(), getPassword()));
     }
 
     @After
@@ -129,9 +129,7 @@ public class AtomClientServerTest {
     }
 
     private ServletHandler createServletHandler() {
-        System.setProperty(
-                "org.rometools.propono.atom.server.AtomHandlerFactory",
-                "org.rometools.propono.atom.server.TestAtomHandlerFactory");
+        System.setProperty("org.rometools.propono.atom.server.AtomHandlerFactory", "org.rometools.propono.atom.server.TestAtomHandlerFactory");
         final ServletHandler servlets = new ServletHandler();
         servlets.addServlet("app", "/app/*", "org.rometools.propono.atom.server.AtomServlet");
         return servlets;
@@ -150,12 +148,12 @@ public class AtomClientServerTest {
     public void testGetAtomService() throws Exception {
         assertNotNull(service);
         assertTrue(service.getWorkspaces().size() > 0);
-        for (final Iterator it = service.getWorkspaces().iterator(); it.hasNext();) {
-            final ClientWorkspace space = (ClientWorkspace) it.next();
+        for (final Workspace workspace : service.getWorkspaces()) {
+            final ClientWorkspace space = (ClientWorkspace) workspace;
             assertNotNull(space.getTitle());
             log.debug("Workspace: " + space.getTitle());
-            for (final Iterator colit = space.getCollections().iterator(); colit.hasNext();) {
-                final ClientCollection col = (ClientCollection) colit.next();
+            for (final Object element : space.getCollections()) {
+                final ClientCollection col = (ClientCollection) element;
                 log.debug("   Collection: " + col.getTitle() + " Accepts: " + col.getAccepts());
                 log.debug("      href: " + col.getHrefResolved());
                 assertNotNull(col.getTitle());
@@ -172,12 +170,12 @@ public class AtomClientServerTest {
         assertNotNull(service);
         assertTrue(service.getWorkspaces().size() > 0);
         int count = 0;
-        for (final Iterator it = service.getWorkspaces().iterator(); it.hasNext();) {
-            final ClientWorkspace space = (ClientWorkspace) it.next();
+        for (final Object element : service.getWorkspaces()) {
+            final ClientWorkspace space = (ClientWorkspace) element;
             assertNotNull(space.getTitle());
 
-            for (final Iterator colit = space.getCollections().iterator(); colit.hasNext();) {
-                final ClientCollection col = (ClientCollection) colit.next();
+            for (final Object element2 : space.getCollections()) {
+                final ClientCollection col = (ClientCollection) element2;
                 if (col.accepts(Collection.ENTRY_TYPE)) {
 
                     // we found a collection that accepts entries, so post one
@@ -221,12 +219,12 @@ public class AtomClientServerTest {
         assertNotNull(service);
         assertTrue(service.getWorkspaces().size() > 0);
         int count = 0;
-        for (final Iterator it = service.getWorkspaces().iterator(); it.hasNext();) {
-            final ClientWorkspace space = (ClientWorkspace) it.next();
+        for (final Object element : service.getWorkspaces()) {
+            final ClientWorkspace space = (ClientWorkspace) element;
             assertNotNull(space.getTitle());
 
-            for (final Iterator colit = space.getCollections().iterator(); colit.hasNext();) {
-                final ClientCollection col = (ClientCollection) colit.next();
+            for (final Object element2 : space.getCollections()) {
+                final ClientCollection col = (ClientCollection) element2;
                 if (col.accepts(Collection.ENTRY_TYPE)) {
 
                     // we found a collection that accepts entries, so post one
@@ -306,12 +304,12 @@ public class AtomClientServerTest {
         assertNotNull(service);
         assertTrue(service.getWorkspaces().size() > 0);
         int count = 0;
-        for (final Iterator it = service.getWorkspaces().iterator(); it.hasNext();) {
-            final ClientWorkspace space = (ClientWorkspace) it.next();
+        for (final Object element2 : service.getWorkspaces()) {
+            final ClientWorkspace space = (ClientWorkspace) element2;
             assertNotNull(space.getTitle());
 
-            for (final Iterator colit = space.getCollections().iterator(); colit.hasNext();) {
-                final ClientCollection col = (ClientCollection) colit.next();
+            for (final Object element3 : space.getCollections()) {
+                final ClientCollection col = (ClientCollection) element3;
                 if (col.accepts(Collection.ENTRY_TYPE)) {
 
                     // we found a collection that accepts GIF, so post one
@@ -325,12 +323,12 @@ public class AtomClientServerTest {
                     // if possible, pick one fixed an un unfixed category
                     Category fixedCat = null;
                     Category unfixedCat = null;
-                    final List entryCats = new ArrayList();
+                    final List<Category> entryCats = new ArrayList<Category>();
                     for (int i = 0; i < col.getCategories().size(); i++) {
-                        final Categories cats = (Categories) col.getCategories().get(i);
+                        final Categories cats = col.getCategories().get(i);
                         if (cats.isFixed() && fixedCat == null) {
                             final String scheme = cats.getScheme();
-                            fixedCat = (Category) cats.getCategories().get(0);
+                            fixedCat = cats.getCategories().get(0);
                             if (fixedCat.getScheme() == null) {
                                 fixedCat.setScheme(scheme);
                             }
@@ -399,12 +397,12 @@ public class AtomClientServerTest {
         assertNotNull(service);
         assertTrue(service.getWorkspaces().size() > 0);
         int count = 0;
-        for (final Iterator it = service.getWorkspaces().iterator(); it.hasNext();) {
-            final ClientWorkspace space = (ClientWorkspace) it.next();
+        for (final Object element : service.getWorkspaces()) {
+            final ClientWorkspace space = (ClientWorkspace) element;
             assertNotNull(space.getTitle());
 
-            for (final Iterator colit = space.getCollections().iterator(); colit.hasNext();) {
-                final ClientCollection col = (ClientCollection) colit.next();
+            for (final Object element2 : space.getCollections()) {
+                final ClientCollection col = (ClientCollection) element2;
                 if (col.accepts("image/gif")) {
 
                     // we found a collection that accepts GIF, so post one
