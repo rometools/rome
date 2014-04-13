@@ -117,7 +117,7 @@ public class RSS092Parser extends RSS091UserlandParser {
         // WHY
         // DOESN'T
         // WORK
-        if (eEnclosures.size() > 0) {
+        if (!eEnclosures.isEmpty()) {
             final List<Enclosure> enclosures = new ArrayList<Enclosure>();
             for (int i = 0; i < eEnclosures.size(); i++) {
                 e = eEnclosures.get(i);
@@ -153,7 +153,7 @@ public class RSS092Parser extends RSS091UserlandParser {
 
     protected List<Category> parseCategories(final List<Element> eCats) {
         List<Category> cats = null;
-        if (eCats.size() > 0) {
+        if (!eCats.isEmpty()) {
             cats = new ArrayList<Category>();
             for (int i = 0; i < eCats.size(); i++) {
                 final Category cat = new Category();

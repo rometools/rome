@@ -594,7 +594,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
 
         // Start out looking for one or more authors in authors. For non-Atom
         // feeds, authors may actually be null.
-        if (authors != null && authors.size() > 0) {
+        if (authors != null && !authors.isEmpty()) {
             author = authors.get(0).getName();
         } else {
             author = getDCModule().getCreator();

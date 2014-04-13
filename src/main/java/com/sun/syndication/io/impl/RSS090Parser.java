@@ -186,7 +186,7 @@ public class RSS090Parser extends BaseWireFeedParser {
         channel.setItems(parseItems(rssRoot, locale));
 
         final List<Element> foreignMarkup = extractForeignMarkup(eChannel, channel, getRSSNamespace());
-        if (foreignMarkup.size() > 0) {
+        if (!foreignMarkup.isEmpty()) {
             channel.setForeignMarkup(foreignMarkup);
         }
         return channel;

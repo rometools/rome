@@ -59,7 +59,7 @@ public class RSS10Generator extends RSS090Generator {
             eChannel.setAttribute("about", channel.getUri(), getRDFNamespace());
         }
         final List<Item> items = channel.getItems();
-        if (items.size() > 0) {
+        if (!items.isEmpty()) {
             final Element eItems = new Element("items", getFeedNamespace());
             final Element eSeq = new Element("Seq", getRDFNamespace());
             for (int i = 0; i < items.size(); i++) {

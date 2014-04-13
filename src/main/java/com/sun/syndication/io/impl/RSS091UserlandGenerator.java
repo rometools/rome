@@ -231,13 +231,13 @@ public class RSS091UserlandGenerator extends RSS090Generator {
 
         final List<Integer> skipHours = channel.getSkipHours();
 
-        if (skipHours != null && skipHours.size() > 0) {
+        if (skipHours != null && !skipHours.isEmpty()) {
             eChannel.addContent(generateSkipHoursElement(skipHours));
         }
 
         final List<String> skipDays = channel.getSkipDays();
 
-        if (skipDays != null && skipDays.size() > 0) {
+        if (skipDays != null && !skipDays.isEmpty()) {
             eChannel.addContent(generateSkipDaysElement(skipDays));
         }
     }

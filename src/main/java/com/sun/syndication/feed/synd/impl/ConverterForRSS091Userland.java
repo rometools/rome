@@ -114,7 +114,7 @@ public class ConverterForRSS091Userland extends ConverterForRSS090 {
 
         final List<SyndContent> contents = sEntry.getContents();
 
-        if (contents != null && contents.size() > 0) {
+        if (contents != null && !contents.isEmpty()) {
             final SyndContent syndContent = contents.get(0);
             final Content cont = new Content();
             cont.setValue(syndContent.getValue());
@@ -136,7 +136,7 @@ public class ConverterForRSS091Userland extends ConverterForRSS090 {
         channel.setWebMaster(syndFeed.getWebMaster());
         channel.setGenerator(syndFeed.getGenerator());
 
-        if (syndFeed.getAuthors() != null && syndFeed.getAuthors().size() > 0) {
+        if (syndFeed.getAuthors() != null && !syndFeed.getAuthors().isEmpty()) {
             final SyndPerson author = syndFeed.getAuthors().get(0);
             channel.setManagingEditor(author.getName());
         }

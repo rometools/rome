@@ -54,7 +54,7 @@ public class ConverterForRSS090 implements Converter {
     @Override
     public void copyInto(final WireFeed feed, final SyndFeed syndFeed) {
         syndFeed.setModules(ModuleUtils.cloneModules(feed.getModules()));
-        if (feed.getForeignMarkup().size() > 0) {
+        if (!feed.getForeignMarkup().isEmpty()) {
             syndFeed.setForeignMarkup(feed.getForeignMarkup());
         }
         syndFeed.setStyleSheet(feed.getStyleSheet());
@@ -99,7 +99,7 @@ public class ConverterForRSS090 implements Converter {
 
         syndEntry.setModules(ModuleUtils.cloneModules(item.getModules()));
 
-        if (item.getForeignMarkup().size() > 0) {
+        if (!item.getForeignMarkup().isEmpty()) {
             syndEntry.setForeignMarkup(item.getForeignMarkup());
         }
 
@@ -136,7 +136,7 @@ public class ConverterForRSS090 implements Converter {
         channel.setTitle(syndFeed.getTitle());
         if (syndFeed.getLink() != null) {
             channel.setLink(syndFeed.getLink());
-        } else if (syndFeed.getLinks().size() > 0) {
+        } else if (!syndFeed.getLinks().isEmpty()) {
             channel.setLink(syndFeed.getLinks().get(0).getHref());
         }
         channel.setDescription(syndFeed.getDescription());
@@ -150,7 +150,7 @@ public class ConverterForRSS090 implements Converter {
             channel.setItems(createRSSItems(sEntries));
         }
 
-        if (syndFeed.getForeignMarkup().size() > 0) {
+        if (!syndFeed.getForeignMarkup().isEmpty()) {
             channel.setForeignMarkup(syndFeed.getForeignMarkup());
         }
         return channel;
@@ -177,7 +177,7 @@ public class ConverterForRSS090 implements Converter {
         item.setModules(ModuleUtils.cloneModules(sEntry.getModules()));
         item.setTitle(sEntry.getTitle());
         item.setLink(sEntry.getLink());
-        if (sEntry.getForeignMarkup().size() > 0) {
+        if (!sEntry.getForeignMarkup().isEmpty()) {
             item.setForeignMarkup(sEntry.getForeignMarkup());
         }
 

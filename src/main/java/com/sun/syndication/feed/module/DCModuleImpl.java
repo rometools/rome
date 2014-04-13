@@ -134,7 +134,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public String getTitle() {
-        if (title != null && title.size() > 0) {
+        if (title != null && !title.isEmpty()) {
             return title.get(0);
         } else {
             return null;
@@ -192,7 +192,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public String getCreator() {
-        if (creator != null && creator.size() > 0) {
+        if (creator != null && !creator.isEmpty()) {
             return creator.get(0);
         } else {
             return null;
@@ -251,7 +251,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public DCSubject getSubject() {
-        if (subject != null && subject.size() > 0) {
+        if (subject != null && !subject.isEmpty()) {
             return subject.get(0);
         } else {
             return null;
@@ -310,7 +310,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public String getDescription() {
-        if (description != null && description.size() > 0) {
+        if (description != null && !description.isEmpty()) {
             return description.get(0);
         } else {
             return null;
@@ -369,7 +369,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public String getPublisher() {
-        if (publisher != null && publisher.size() > 0) {
+        if (publisher != null && !publisher.isEmpty()) {
             return publisher.get(0);
         } else {
             return null;
@@ -428,7 +428,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public String getContributor() {
-        if (contributors != null && contributors.size() > 0) {
+        if (contributors != null && !contributors.isEmpty()) {
             return contributors.get(0);
         } else {
             return null;
@@ -486,7 +486,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public Date getDate() {
-        if (date != null && date.size() > 0) {
+        if (date != null && !date.isEmpty()) {
             return date.get(0);
         } else {
             return null;
@@ -544,7 +544,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public String getType() {
-        if (type != null && type.size() > 0) {
+        if (type != null && !type.isEmpty()) {
             return type.get(0);
         } else {
             return null;
@@ -602,7 +602,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public String getFormat() {
-        if (format != null && format.size() > 0) {
+        if (format != null && !format.isEmpty()) {
             return format.get(0);
         } else {
             return null;
@@ -661,7 +661,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public String getIdentifier() {
-        if (identifier != null && identifier.size() > 0) {
+        if (identifier != null && !identifier.isEmpty()) {
             return identifier.get(0);
         } else {
             return null;
@@ -719,7 +719,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public String getSource() {
-        if (source != null && source.size() > 0) {
+        if (source != null && !source.isEmpty()) {
             return source.get(0);
         } else {
             return null;
@@ -777,7 +777,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public String getLanguage() {
-        if (language != null && language.size() > 0) {
+        if (language != null && !language.isEmpty()) {
             return language.get(0);
         } else {
             return null;
@@ -835,7 +835,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public String getRelation() {
-        if (relation != null && relation.size() > 0) {
+        if (relation != null && !relation.isEmpty()) {
             return relation.get(0);
         } else {
             return null;
@@ -893,7 +893,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public String getCoverage() {
-        if (coverage != null && coverage.size() > 0) {
+        if (coverage != null && !coverage.isEmpty()) {
             return coverage.get(0);
         } else {
             return null;
@@ -951,7 +951,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public String getRights() {
-        if (rights != null && rights.size() > 0) {
+        if (rights != null && !rights.isEmpty()) {
             return rights.get(0);
         } else {
             return null;

@@ -84,7 +84,7 @@ public class RSS092Generator extends RSS091UserlandGenerator {
 
     // Another one to thanks DW for
     protected int getNumberOfEnclosures(final List<Enclosure> enclosures) {
-        if (enclosures.size() > 0) {
+        if (!enclosures.isEmpty()) {
             return 1;
         } else {
             return 0;

@@ -46,7 +46,7 @@ public class ConverterForRSS092 extends ConverterForRSS091Userland {
     protected SyndEntry createSyndEntry(final Item item, final boolean preserveWireItem) {
         final SyndEntry syndEntry = super.createSyndEntry(item, preserveWireItem);
         final List<Category> cats = item.getCategories();
-        if (cats.size() > 0) {
+        if (!cats.isEmpty()) {
             final Set<SyndCategory> s = new LinkedHashSet<SyndCategory>(); // using
                                                                            // a
             // set to
@@ -68,7 +68,7 @@ public class ConverterForRSS092 extends ConverterForRSS091Userland {
             syndEntry.setCategories(new ArrayList<SyndCategory>(s)); // c
         }
         final List<Enclosure> enclosures = item.getEnclosures();
-        if (enclosures.size() > 0) {
+        if (!enclosures.isEmpty()) {
             syndEntry.setEnclosures(createSyndEnclosures(enclosures));
         }
         return syndEntry;
@@ -104,11 +104,11 @@ public class ConverterForRSS092 extends ConverterForRSS091Userland {
         final Item item = super.createRSSItem(sEntry);
 
         final List<SyndCategory> sCats = sEntry.getCategories(); // c
-        if (sCats.size() > 0) {
+        if (!sCats.isEmpty()) {
             item.setCategories(createRSSCategories(sCats));
         }
         final List<SyndEnclosure> sEnclosures = sEntry.getEnclosures();
-        if (sEnclosures.size() > 0) {
+        if (!sEnclosures.isEmpty()) {
             item.setEnclosures(createEnclosures(sEnclosures));
         }
         return item;

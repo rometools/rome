@@ -75,77 +75,77 @@ public class DCModuleParser implements ModuleParser {
         final DCModule dcm = new DCModuleImpl();
 
         List<Element> eList = dcRoot.getChildren("title", getDCNamespace());
-        if (eList.size() > 0) {
+        if (!eList.isEmpty()) {
             foundSomething = true;
             dcm.setTitles(parseElementList(eList));
         }
         eList = dcRoot.getChildren("creator", getDCNamespace());
-        if (eList.size() > 0) {
+        if (!eList.isEmpty()) {
             foundSomething = true;
             dcm.setCreators(parseElementList(eList));
         }
         eList = dcRoot.getChildren("subject", getDCNamespace());
-        if (eList.size() > 0) {
+        if (!eList.isEmpty()) {
             foundSomething = true;
             dcm.setSubjects(parseSubjects(eList));
         }
         eList = dcRoot.getChildren("description", getDCNamespace());
-        if (eList.size() > 0) {
+        if (!eList.isEmpty()) {
             foundSomething = true;
             dcm.setDescriptions(parseElementList(eList));
         }
         eList = dcRoot.getChildren("publisher", getDCNamespace());
-        if (eList.size() > 0) {
+        if (!eList.isEmpty()) {
             foundSomething = true;
             dcm.setPublishers(parseElementList(eList));
         }
         eList = dcRoot.getChildren("contributor", getDCNamespace());
-        if (eList.size() > 0) {
+        if (!eList.isEmpty()) {
             foundSomething = true;
             dcm.setContributors(parseElementList(eList));
         }
         eList = dcRoot.getChildren("date", getDCNamespace());
-        if (eList.size() > 0) {
+        if (!eList.isEmpty()) {
             foundSomething = true;
             dcm.setDates(parseElementListDate(eList, locale));
         }
         eList = dcRoot.getChildren("type", getDCNamespace());
-        if (eList.size() > 0) {
+        if (!eList.isEmpty()) {
             foundSomething = true;
             dcm.setTypes(parseElementList(eList));
         }
         eList = dcRoot.getChildren("format", getDCNamespace());
-        if (eList.size() > 0) {
+        if (!eList.isEmpty()) {
             foundSomething = true;
             dcm.setFormats(parseElementList(eList));
         }
         eList = dcRoot.getChildren("identifier", getDCNamespace());
-        if (eList.size() > 0) {
+        if (!eList.isEmpty()) {
             foundSomething = true;
             dcm.setIdentifiers(parseElementList(eList));
         }
         eList = dcRoot.getChildren("source", getDCNamespace());
-        if (eList.size() > 0) {
+        if (!eList.isEmpty()) {
             foundSomething = true;
             dcm.setSources(parseElementList(eList));
         }
         eList = dcRoot.getChildren("language", getDCNamespace());
-        if (eList.size() > 0) {
+        if (!eList.isEmpty()) {
             foundSomething = true;
             dcm.setLanguages(parseElementList(eList));
         }
         eList = dcRoot.getChildren("relation", getDCNamespace());
-        if (eList.size() > 0) {
+        if (!eList.isEmpty()) {
             foundSomething = true;
             dcm.setRelations(parseElementList(eList));
         }
         eList = dcRoot.getChildren("coverage", getDCNamespace());
-        if (eList.size() > 0) {
+        if (!eList.isEmpty()) {
             foundSomething = true;
             dcm.setCoverages(parseElementList(eList));
         }
         eList = dcRoot.getChildren("rights", getDCNamespace());
-        if (eList.size() > 0) {
+        if (!eList.isEmpty()) {
             foundSomething = true;
             dcm.setRightsList(parseElementList(eList));
         }

@@ -51,13 +51,13 @@ public class ConverterForRSS094 extends ConverterForRSS093 {
         final Channel channel = (Channel) feed;
         super.copyInto(channel, syndFeed);
         final List<Category> cats = channel.getCategories(); // c
-        if (cats.size() > 0) {
+        if (!cats.isEmpty()) {
             final Set<SyndCategory> s = new LinkedHashSet<SyndCategory>(); // using a
             // set to
             // remove
             // duplicates
             s.addAll(createSyndCategories(cats)); // feed native categories
-                                                  // (as
+            // (as
             // syndcat)
             s.addAll(syndFeed.getCategories()); // DC subjects (as syndcat)
             syndFeed.setCategories(new ArrayList<SyndCategory>(s));
@@ -105,7 +105,7 @@ public class ConverterForRSS094 extends ConverterForRSS093 {
     protected WireFeed createRealFeed(final String type, final SyndFeed syndFeed) {
         final Channel channel = (Channel) super.createRealFeed(type, syndFeed);
         final List<SyndCategory> cats = syndFeed.getCategories(); // c
-        if (cats.size() > 0) {
+        if (!cats.isEmpty()) {
             channel.setCategories(createRSSCategories(cats));
         }
         return channel;
@@ -114,7 +114,7 @@ public class ConverterForRSS094 extends ConverterForRSS093 {
     @Override
     protected Item createRSSItem(final SyndEntry sEntry) {
         final Item item = super.createRSSItem(sEntry);
-        if (sEntry.getAuthors() != null && sEntry.getAuthors().size() > 0) {
+        if (sEntry.getAuthors() != null && !sEntry.getAuthors().isEmpty()) {
             final SyndPerson author = sEntry.getAuthors().get(0);
             item.setAuthor(author.getEmail());
         }

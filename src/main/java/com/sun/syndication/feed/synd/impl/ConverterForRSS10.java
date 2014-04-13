@@ -107,7 +107,7 @@ public class ConverterForRSS10 extends ConverterForRSS090 {
             item.setDescription(createItemDescription(desc));
         }
         final List<SyndContent> contents = sEntry.getContents();
-        if (contents != null && contents.size() > 0) {
+        if (contents != null && !contents.isEmpty()) {
             item.setContent(createItemContent(contents.get(0)));
         }
 

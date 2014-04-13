@@ -69,19 +69,19 @@ public class ConverterForAtom10 implements Converter {
 
         syndFeed.setModules(ModuleUtils.cloneModules(aFeed.getModules()));
 
-        if (feed.getForeignMarkup().size() > 0) {
+        if (!feed.getForeignMarkup().isEmpty()) {
             syndFeed.setForeignMarkup(feed.getForeignMarkup());
         }
 
         syndFeed.setEncoding(aFeed.getEncoding());
         syndFeed.setStyleSheet(aFeed.getStyleSheet());
-        
+
         if (aFeed.getLogo() != null) {
-            SyndImage image = new SyndImageImpl();
+            final SyndImage image = new SyndImageImpl();
             image.setUrl(aFeed.getLogo());
             syndFeed.setImage(image);
         } else if (aFeed.getIcon() != null) {
-            SyndImage image = new SyndImageImpl();
+            final SyndImage image = new SyndImageImpl();
             image.setUrl(aFeed.getIcon());
             syndFeed.setImage(image);
         }
@@ -105,16 +105,16 @@ public class ConverterForAtom10 implements Converter {
         }
 
         // use first alternate links as THE link
-        if (aFeed.getAlternateLinks() != null && aFeed.getAlternateLinks().size() > 0) {
+        if (aFeed.getAlternateLinks() != null && !aFeed.getAlternateLinks().isEmpty()) {
             final Link theLink = aFeed.getAlternateLinks().get(0);
             syndFeed.setLink(theLink.getHrefResolved());
         }
         // lump alternate and other links together
         final List<SyndLink> syndLinks = new ArrayList<SyndLink>();
-        if (aFeed.getAlternateLinks() != null && aFeed.getAlternateLinks().size() > 0) {
+        if (aFeed.getAlternateLinks() != null && !aFeed.getAlternateLinks().isEmpty()) {
             syndLinks.addAll(createSyndLinks(aFeed.getAlternateLinks()));
         }
-        if (aFeed.getOtherLinks() != null && aFeed.getOtherLinks().size() > 0) {
+        if (aFeed.getOtherLinks() != null && !aFeed.getOtherLinks().isEmpty()) {
             syndLinks.addAll(createSyndLinks(aFeed.getOtherLinks()));
         }
         syndFeed.setLinks(syndLinks);
@@ -128,12 +128,12 @@ public class ConverterForAtom10 implements Converter {
         // over DC equivalent info.
 
         final List<SyndPerson> authors = aFeed.getAuthors();
-        if (authors != null && authors.size() > 0) {
+        if (authors != null && !authors.isEmpty()) {
             syndFeed.setAuthors(ConverterForAtom03.createSyndPersons(authors));
         }
 
         final List<SyndPerson> contributors = aFeed.getContributors();
-        if (contributors != null && contributors.size() > 0) {
+        if (contributors != null && !contributors.isEmpty()) {
             syndFeed.setContributors(ConverterForAtom03.createSyndPersons(contributors));
         }
 
@@ -174,7 +174,7 @@ public class ConverterForAtom10 implements Converter {
         }
         syndEntry.setModules(ModuleUtils.cloneModules(entry.getModules()));
 
-        if (entry.getForeignMarkup().size() > 0) {
+        if (!entry.getForeignMarkup().isEmpty()) {
             syndEntry.setForeignMarkup(entry.getForeignMarkup());
         }
 
@@ -189,7 +189,7 @@ public class ConverterForAtom10 implements Converter {
         }
 
         final List<Content> contents = entry.getContents();
-        if (contents != null && contents.size() > 0) {
+        if (contents != null && !contents.isEmpty()) {
             final List<SyndContent> sContents = new ArrayList<SyndContent>();
             for (final Content content2 : contents) {
                 final Content content = content2;
@@ -199,14 +199,14 @@ public class ConverterForAtom10 implements Converter {
         }
 
         final List<SyndPerson> authors = entry.getAuthors();
-        if (authors != null && authors.size() > 0) {
+        if (authors != null && !authors.isEmpty()) {
             syndEntry.setAuthors(ConverterForAtom03.createSyndPersons(authors));
             final SyndPerson person0 = syndEntry.getAuthors().get(0);
             syndEntry.setAuthor(person0.getName());
         }
 
         final List<SyndPerson> contributors = entry.getContributors();
-        if (contributors != null && contributors.size() > 0) {
+        if (contributors != null && !contributors.isEmpty()) {
             syndEntry.setContributors(ConverterForAtom03.createSyndPersons(contributors));
         }
 
@@ -236,14 +236,14 @@ public class ConverterForAtom10 implements Converter {
         }
 
         // use first alternate link as THE link
-        if (entry.getAlternateLinks() != null && entry.getAlternateLinks().size() > 0) {
+        if (entry.getAlternateLinks() != null && !entry.getAlternateLinks().isEmpty()) {
             final Link theLink = entry.getAlternateLinks().get(0);
             syndEntry.setLink(theLink.getHrefResolved());
         }
 
         // Create synd enclosures from enclosure links
         final List<SyndEnclosure> syndEnclosures = new ArrayList<SyndEnclosure>();
-        if (entry.getOtherLinks() != null && entry.getOtherLinks().size() > 0) {
+        if (entry.getOtherLinks() != null && !entry.getOtherLinks().isEmpty()) {
             final List<Link> oLinks = entry.getOtherLinks();
             for (final Link link : oLinks) {
                 final Link thisLink = link;
@@ -256,10 +256,10 @@ public class ConverterForAtom10 implements Converter {
 
         // lump alternate and other links together
         final List<SyndLink> syndLinks = new ArrayList<SyndLink>();
-        if (entry.getAlternateLinks() != null && entry.getAlternateLinks().size() > 0) {
+        if (entry.getAlternateLinks() != null && !entry.getAlternateLinks().isEmpty()) {
             syndLinks.addAll(createSyndLinks(entry.getAlternateLinks()));
         }
-        if (entry.getOtherLinks() != null && entry.getOtherLinks().size() > 0) {
+        if (entry.getOtherLinks() != null && !entry.getOtherLinks().isEmpty()) {
             syndLinks.addAll(createSyndLinks(entry.getOtherLinks()));
         }
         syndEntry.setLinks(syndLinks);
@@ -369,10 +369,10 @@ public class ConverterForAtom10 implements Converter {
             link.setHref(syndFeed.getLink());
             alternateLinks.add(link);
         }
-        if (alternateLinks.size() > 0) {
+        if (!alternateLinks.isEmpty()) {
             aFeed.setAlternateLinks(alternateLinks);
         }
-        if (otherLinks.size() > 0) {
+        if (!otherLinks.isEmpty()) {
             aFeed.setOtherLinks(otherLinks);
         }
 
@@ -388,17 +388,17 @@ public class ConverterForAtom10 implements Converter {
                 aCats.add(aCat);
             }
         }
-        if (aCats.size() > 0) {
+        if (!aCats.isEmpty()) {
             aFeed.setCategories(aCats);
         }
 
         final List<SyndPerson> authors = syndFeed.getAuthors();
-        if (authors != null && authors.size() > 0) {
+        if (authors != null && !authors.isEmpty()) {
             aFeed.setAuthors(ConverterForAtom03.createAtomPersons(authors));
         }
 
         final List<SyndPerson> contributors = syndFeed.getContributors();
-        if (contributors != null && contributors.size() > 0) {
+        if (contributors != null && !contributors.isEmpty()) {
             aFeed.setContributors(ConverterForAtom03.createAtomPersons(contributors));
         }
 
@@ -411,7 +411,7 @@ public class ConverterForAtom10 implements Converter {
             aFeed.setEntries(createAtomEntries(sEntries));
         }
 
-        if (syndFeed.getForeignMarkup().size() > 0) {
+        if (!syndFeed.getForeignMarkup().isEmpty()) {
             aFeed.setForeignMarkup(syndFeed.getForeignMarkup());
         }
         return aFeed;
@@ -508,10 +508,10 @@ public class ConverterForAtom10 implements Converter {
                 otherLinks.add(link);
             }
         }
-        if (alternateLinks.size() > 0) {
+        if (!alternateLinks.isEmpty()) {
             aEntry.setAlternateLinks(alternateLinks);
         }
-        if (otherLinks.size() > 0) {
+        if (!otherLinks.isEmpty()) {
             aEntry.setOtherLinks(otherLinks);
         }
 
@@ -527,7 +527,7 @@ public class ConverterForAtom10 implements Converter {
                 aCats.add(aCat);
             }
         }
-        if (aCats.size() > 0) {
+        if (!aCats.isEmpty()) {
             aEntry.setCategories(aCats);
         }
 
@@ -535,7 +535,7 @@ public class ConverterForAtom10 implements Converter {
         aEntry.setContents(createAtomContents(syndContents));
 
         List<SyndPerson> authors = sEntry.getAuthors();
-        if (authors != null && authors.size() > 0) {
+        if (authors != null && !authors.isEmpty()) {
             aEntry.setAuthors(ConverterForAtom03.createAtomPersons(authors));
         } else if (sEntry.getAuthor() != null) {
             final Person person = new Person();
@@ -546,7 +546,7 @@ public class ConverterForAtom10 implements Converter {
         }
 
         final List<SyndPerson> contributors = sEntry.getContributors();
-        if (contributors != null && contributors.size() > 0) {
+        if (contributors != null && !contributors.isEmpty()) {
             aEntry.setContributors(ConverterForAtom03.createAtomPersons(contributors));
         }
 
@@ -561,7 +561,7 @@ public class ConverterForAtom10 implements Converter {
             aEntry.setUpdated(sEntry.getPublishedDate());
         }
 
-        if (sEntry.getForeignMarkup().size() > 0) {
+        if (!sEntry.getForeignMarkup().isEmpty()) {
             aEntry.setForeignMarkup(sEntry.getForeignMarkup());
         }
 

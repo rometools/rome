@@ -38,9 +38,9 @@ import com.sun.syndication.io.FeedException;
 /**
  * Feed Generator for Atom
  * <p/>
- * 
+ *
  * @author Elaine Chien
- * 
+ *
  */
 
 public class Atom03Generator extends BaseWireFeedGenerator {
@@ -133,7 +133,7 @@ public class Atom03Generator extends BaseWireFeedGenerator {
         for (int i = 0; i < links.size(); i++) {
             eFeed.addContent(generateLinkElement(links.get(i)));
         }
-        if (feed.getAuthors() != null && feed.getAuthors().size() > 0) {
+        if (feed.getAuthors() != null && !feed.getAuthors().isEmpty()) {
             final Element authorElement = new Element("author", getFeedNamespace());
             fillPersonElement(authorElement, feed.getAuthors().get(0));
             eFeed.addContent(authorElement);
@@ -193,7 +193,7 @@ public class Atom03Generator extends BaseWireFeedGenerator {
             eEntry.addContent(generateLinkElement(links.get(i)));
         }
 
-        if (entry.getAuthors() != null && entry.getAuthors().size() > 0) {
+        if (entry.getAuthors() != null && !entry.getAuthors().isEmpty()) {
             final Element authorElement = new Element("author", getFeedNamespace());
             fillPersonElement(authorElement, entry.getAuthors().get(0));
             eEntry.addContent(authorElement);

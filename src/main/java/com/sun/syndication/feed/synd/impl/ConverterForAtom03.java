@@ -67,19 +67,19 @@ public class ConverterForAtom03 implements Converter {
 
         syndFeed.setModules(ModuleUtils.cloneModules(aFeed.getModules()));
 
-        if (feed.getForeignMarkup().size() > 0) {
+        if (!feed.getForeignMarkup().isEmpty()) {
             syndFeed.setForeignMarkup(feed.getForeignMarkup());
         }
 
         syndFeed.setEncoding(aFeed.getEncoding());
         syndFeed.setStyleSheet(aFeed.getStyleSheet());
-        
+
         if (aFeed.getLogo() != null) {
-            SyndImage image = new SyndImageImpl();
+            final SyndImage image = new SyndImageImpl();
             image.setUrl(aFeed.getLogo());
             syndFeed.setImage(image);
         } else if (aFeed.getIcon() != null) {
-            SyndImage image = new SyndImageImpl();
+            final SyndImage image = new SyndImageImpl();
             image.setUrl(aFeed.getIcon());
             syndFeed.setImage(image);
         }
@@ -89,16 +89,16 @@ public class ConverterForAtom03 implements Converter {
         syndFeed.setTitle(aFeed.getTitle());
 
         // use first alternate links as THE link
-        if (aFeed.getAlternateLinks() != null && aFeed.getAlternateLinks().size() > 0) {
+        if (aFeed.getAlternateLinks() != null && !aFeed.getAlternateLinks().isEmpty()) {
             final Link theLink = aFeed.getAlternateLinks().get(0);
             syndFeed.setLink(theLink.getHrefResolved());
         }
         // lump alternate and other links together
         final List<SyndLink> syndLinks = new ArrayList<SyndLink>();
-        if (aFeed.getAlternateLinks() != null && aFeed.getAlternateLinks().size() > 0) {
+        if (aFeed.getAlternateLinks() != null && !aFeed.getAlternateLinks().isEmpty()) {
             syndLinks.addAll(createSyndLinks(aFeed.getAlternateLinks()));
         }
-        if (aFeed.getOtherLinks() != null && aFeed.getOtherLinks().size() > 0) {
+        if (aFeed.getOtherLinks() != null && !aFeed.getOtherLinks().isEmpty()) {
             syndLinks.addAll(createSyndLinks(aFeed.getOtherLinks()));
         }
         syndFeed.setLinks(syndLinks);
@@ -122,7 +122,7 @@ public class ConverterForAtom03 implements Converter {
         }
 
         final List<SyndPerson> authors = aFeed.getAuthors();
-        if (authors != null && authors.size() > 0) {
+        if (authors != null && !authors.isEmpty()) {
             syndFeed.setAuthors(createSyndPersons(authors));
         }
 
@@ -175,7 +175,7 @@ public class ConverterForAtom03 implements Converter {
 
         syndEntry.setModules(ModuleUtils.cloneModules(entry.getModules()));
 
-        if (entry.getForeignMarkup().size() > 0) {
+        if (!entry.getForeignMarkup().isEmpty()) {
             syndEntry.setForeignMarkup(entry.getForeignMarkup());
         }
 
@@ -189,7 +189,7 @@ public class ConverterForAtom03 implements Converter {
 
         // Create synd enclosures from enclosure links
         final List<SyndEnclosure> syndEnclosures = new ArrayList<SyndEnclosure>();
-        if (entry.getOtherLinks() != null && entry.getOtherLinks().size() > 0) {
+        if (entry.getOtherLinks() != null && !entry.getOtherLinks().isEmpty()) {
             final List<Link> oLinks = entry.getOtherLinks();
             for (final Link link : oLinks) {
                 final Link thisLink = link;
@@ -202,10 +202,10 @@ public class ConverterForAtom03 implements Converter {
 
         // lump alternate and other links together
         final List<SyndLink> syndLinks = new ArrayList<SyndLink>();
-        if (entry.getAlternateLinks() != null && entry.getAlternateLinks().size() > 0) {
+        if (entry.getAlternateLinks() != null && !entry.getAlternateLinks().isEmpty()) {
             syndLinks.addAll(createSyndLinks(entry.getAlternateLinks()));
         }
-        if (entry.getOtherLinks() != null && entry.getOtherLinks().size() > 0) {
+        if (entry.getOtherLinks() != null && !entry.getOtherLinks().isEmpty()) {
             syndLinks.addAll(createSyndLinks(entry.getOtherLinks()));
         }
         syndEntry.setLinks(syndLinks);
@@ -220,7 +220,7 @@ public class ConverterForAtom03 implements Converter {
         Content content = entry.getSummary();
         if (content == null) {
             final List<Content> contents = entry.getContents();
-            if (contents != null && contents.size() > 0) {
+            if (contents != null && !contents.isEmpty()) {
                 content = contents.get(0);
             }
         }
@@ -232,7 +232,7 @@ public class ConverterForAtom03 implements Converter {
         }
 
         final List<Content> contents = entry.getContents();
-        if (contents.size() > 0) {
+        if (!contents.isEmpty()) {
             final List<SyndContent> sContents = new ArrayList<SyndContent>();
             for (int i = 0; i < contents.size(); i++) {
                 content = contents.get(i);
@@ -246,7 +246,7 @@ public class ConverterForAtom03 implements Converter {
         }
 
         final List<SyndPerson> authors = entry.getAuthors();
-        if (authors != null && authors.size() > 0) {
+        if (authors != null && !authors.isEmpty()) {
             syndEntry.setAuthors(createSyndPersons(authors));
             final SyndPerson person0 = syndEntry.getAuthors().get(0);
             syndEntry.setAuthor(person0.getName());
@@ -322,10 +322,10 @@ public class ConverterForAtom03 implements Converter {
             alternateLinks.add(link);
         }
 
-        if (alternateLinks.size() > 0) {
+        if (!alternateLinks.isEmpty()) {
             aFeed.setAlternateLinks(alternateLinks);
         }
-        if (otherLinks.size() > 0) {
+        if (!otherLinks.isEmpty()) {
             aFeed.setOtherLinks(otherLinks);
         }
 
@@ -339,7 +339,7 @@ public class ConverterForAtom03 implements Converter {
         aFeed.setLanguage(syndFeed.getLanguage());
 
         final List<SyndPerson> authors = syndFeed.getAuthors();
-        if (authors != null && authors.size() > 0) {
+        if (authors != null && !authors.isEmpty()) {
             aFeed.setAuthors(createAtomPersons(authors));
         }
 
@@ -443,10 +443,10 @@ public class ConverterForAtom03 implements Converter {
             }
         }
 
-        if (alternateLinks.size() > 0) {
+        if (!alternateLinks.isEmpty()) {
             aEntry.setAlternateLinks(alternateLinks);
         }
-        if (otherLinks.size() > 0) {
+        if (!otherLinks.isEmpty()) {
             aEntry.setOtherLinks(otherLinks);
         }
 
@@ -460,7 +460,7 @@ public class ConverterForAtom03 implements Converter {
         }
 
         final List<SyndContent> contents = sEntry.getContents();
-        if (contents.size() > 0) {
+        if (!contents.isEmpty()) {
             final List<Content> aContents = new ArrayList<Content>();
             for (int i = 0; i < contents.size(); i++) {
                 sContent = contents.get(i);
@@ -475,7 +475,7 @@ public class ConverterForAtom03 implements Converter {
         }
 
         final List<SyndPerson> sAuthors = sEntry.getAuthors();
-        if (sAuthors != null && sAuthors.size() > 0) {
+        if (sAuthors != null && !sAuthors.isEmpty()) {
             aEntry.setAuthors(createAtomPersons(sAuthors));
         } else if (sEntry.getAuthor() != null) {
             final Person person = new Person();

@@ -123,12 +123,12 @@ public class Atom10Parser extends BaseWireFeedParser {
         feed.setModules(parseFeedModules(eFeed, locale));
 
         final List<Element> eList = eFeed.getChildren("entry", getAtomNamespace());
-        if (eList.size() > 0) {
+        if (!eList.isEmpty()) {
             feed.setEntries(parseEntries(feed, baseURI, eList, locale));
         }
 
         final List<Element> foreignMarkup = extractForeignMarkup(eFeed, feed, getAtomNamespace());
-        if (foreignMarkup.size() > 0) {
+        if (!foreignMarkup.isEmpty()) {
             feed.setForeignMarkup(foreignMarkup);
         }
         return feed;
@@ -153,12 +153,12 @@ public class Atom10Parser extends BaseWireFeedParser {
         feed.setCategories(parseCategories(baseURI, cList));
 
         eList = eFeed.getChildren("author", getAtomNamespace());
-        if (eList.size() > 0) {
+        if (!eList.isEmpty()) {
             feed.setAuthors(parsePersons(baseURI, eList, locale));
         }
 
         eList = eFeed.getChildren("contributor", getAtomNamespace());
-        if (eList.size() > 0) {
+        if (!eList.isEmpty()) {
             feed.setContributors(parsePersons(baseURI, eList, locale));
         }
 
@@ -258,7 +258,7 @@ public class Atom10Parser extends BaseWireFeedParser {
                 links.add(link);
             }
         }
-        if (links.size() > 0) {
+        if (!links.isEmpty()) {
             return links;
         } else {
             return null;
@@ -274,7 +274,7 @@ public class Atom10Parser extends BaseWireFeedParser {
                 links.add(link);
             }
         }
-        if (links.size() > 0) {
+        if (!links.isEmpty()) {
             return links;
         } else {
             return null;
@@ -308,7 +308,7 @@ public class Atom10Parser extends BaseWireFeedParser {
         for (int i = 0; i < ePersons.size(); i++) {
             persons.add(parsePerson(baseURI, ePersons.get(i), locale));
         }
-        if (persons.size() > 0) {
+        if (!persons.isEmpty()) {
             return persons;
         } else {
             return null;
@@ -358,7 +358,7 @@ public class Atom10Parser extends BaseWireFeedParser {
         for (int i = 0; i < eEntries.size(); i++) {
             entries.add(this.parseEntry(feed, eEntries.get(i), baseURI, locale));
         }
-        if (entries.size() > 0) {
+        if (!entries.isEmpty()) {
             return entries;
         } else {
             return null;
@@ -386,12 +386,12 @@ public class Atom10Parser extends BaseWireFeedParser {
         entry.setOtherLinks(parseOtherLinks(feed, entry, baseURI, eList));
 
         eList = eEntry.getChildren("author", getAtomNamespace());
-        if (eList.size() > 0) {
+        if (!eList.isEmpty()) {
             entry.setAuthors(parsePersons(baseURI, eList, locale));
         }
 
         eList = eEntry.getChildren("contributor", getAtomNamespace());
-        if (eList.size() > 0) {
+        if (!eList.isEmpty()) {
             entry.setContributors(parsePersons(baseURI, eList, locale));
         }
 
@@ -439,7 +439,7 @@ public class Atom10Parser extends BaseWireFeedParser {
         entry.setModules(parseItemModules(eEntry, locale));
 
         final List<Element> foreignMarkup = extractForeignMarkup(eEntry, entry, getAtomNamespace());
-        if (foreignMarkup.size() > 0) {
+        if (!foreignMarkup.isEmpty()) {
             entry.setForeignMarkup(foreignMarkup);
         }
         return entry;
@@ -451,7 +451,7 @@ public class Atom10Parser extends BaseWireFeedParser {
             final Element eCategory = eCategories.get(i);
             cats.add(parseCategory(baseURI, eCategory));
         }
-        if (cats.size() > 0) {
+        if (!cats.isEmpty()) {
             return cats;
         } else {
             return null;

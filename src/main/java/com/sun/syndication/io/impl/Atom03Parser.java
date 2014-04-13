@@ -101,7 +101,7 @@ public class Atom03Parser extends BaseWireFeedParser {
         }
 
         eList = eFeed.getChildren("contributor", getAtomNamespace());
-        if (eList.size() > 0) {
+        if (!eList.isEmpty()) {
             feed.setContributors(parsePersons(eList));
         }
 
@@ -148,12 +148,12 @@ public class Atom03Parser extends BaseWireFeedParser {
         feed.setModules(parseFeedModules(eFeed, locale));
 
         eList = eFeed.getChildren("entry", getAtomNamespace());
-        if (eList.size() > 0) {
+        if (!eList.isEmpty()) {
             feed.setEntries(parseEntries(eList, locale));
         }
 
         final List<Element> foreignMarkup = extractForeignMarkup(eFeed, feed, getAtomNamespace());
-        if (foreignMarkup.size() > 0) {
+        if (!foreignMarkup.isEmpty()) {
             feed.setForeignMarkup(foreignMarkup);
         }
         return feed;
@@ -192,7 +192,7 @@ public class Atom03Parser extends BaseWireFeedParser {
                 }
             }
         }
-        if (links.size() > 0) {
+        if (!links.isEmpty()) {
             return links;
         } else {
             return null;
@@ -232,7 +232,7 @@ public class Atom03Parser extends BaseWireFeedParser {
         for (int i = 0; i < ePersons.size(); i++) {
             persons.add(parsePerson(ePersons.get(i)));
         }
-        if (persons.size() > 0) {
+        if (!persons.isEmpty()) {
             return persons;
         } else {
             return null;
@@ -282,7 +282,7 @@ public class Atom03Parser extends BaseWireFeedParser {
         for (int i = 0; i < eEntries.size(); i++) {
             entries.add(parseEntry(eEntries.get(i), locale));
         }
-        if (entries.size() > 0) {
+        if (!entries.isEmpty()) {
             return entries;
         } else {
             return null;
@@ -309,7 +309,7 @@ public class Atom03Parser extends BaseWireFeedParser {
         }
 
         eList = eEntry.getChildren("contributor", getAtomNamespace());
-        if (eList.size() > 0) {
+        if (!eList.isEmpty()) {
             entry.setContributors(parsePersons(eList));
         }
 
@@ -339,7 +339,7 @@ public class Atom03Parser extends BaseWireFeedParser {
         }
 
         eList = eEntry.getChildren("content", getAtomNamespace());
-        if (eList.size() > 0) {
+        if (!eList.isEmpty()) {
             final List<Content> content = new ArrayList<Content>();
             for (int i = 0; i < eList.size(); i++) {
                 content.add(parseContent(eList.get(i)));
@@ -350,7 +350,7 @@ public class Atom03Parser extends BaseWireFeedParser {
         entry.setModules(parseItemModules(eEntry, locale));
 
         final List<Element> foreignMarkup = extractForeignMarkup(eEntry, entry, getAtomNamespace());
-        if (foreignMarkup.size() > 0) {
+        if (!foreignMarkup.isEmpty()) {
             entry.setForeignMarkup(foreignMarkup);
         }
         return entry;

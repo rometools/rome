@@ -44,10 +44,10 @@ import com.sun.syndication.io.WireFeedOutput;
 /**
  * Feed Generator for Atom
  * <p/>
- * 
+ *
  * @author Elaine Chien
  * @author Dave Johnson (updated for Atom 1.0)
- * 
+ *
  */
 
 public class Atom10Generator extends BaseWireFeedGenerator {
@@ -159,7 +159,7 @@ public class Atom10Generator extends BaseWireFeedGenerator {
         }
 
         final List<SyndPerson> authors = feed.getAuthors();
-        if (authors != null && authors.size() > 0) {
+        if (authors != null && !authors.isEmpty()) {
             for (int i = 0; i < authors.size(); i++) {
                 final Element authorElement = new Element("author", getFeedNamespace());
                 fillPersonElement(authorElement, feed.getAuthors().get(i));
@@ -168,7 +168,7 @@ public class Atom10Generator extends BaseWireFeedGenerator {
         }
 
         final List<SyndPerson> contributors = feed.getContributors();
-        if (contributors != null && contributors.size() > 0) {
+        if (contributors != null && !contributors.isEmpty()) {
             for (int i = 0; i < contributors.size(); i++) {
                 final Element contributorElement = new Element("contributor", getFeedNamespace());
                 fillPersonElement(contributorElement, contributors.get(i));
@@ -236,7 +236,7 @@ public class Atom10Generator extends BaseWireFeedGenerator {
         }
 
         final List<SyndPerson> authors = entry.getAuthors();
-        if (authors != null && authors.size() > 0) {
+        if (authors != null && !authors.isEmpty()) {
             for (int i = 0; i < authors.size(); i++) {
                 final Element authorElement = new Element("author", getFeedNamespace());
                 fillPersonElement(authorElement, entry.getAuthors().get(i));
@@ -245,7 +245,7 @@ public class Atom10Generator extends BaseWireFeedGenerator {
         }
 
         final List<SyndPerson> contributors = entry.getContributors();
-        if (contributors != null && contributors.size() > 0) {
+        if (contributors != null && !contributors.isEmpty()) {
             for (int i = 0; i < contributors.size(); i++) {
                 final Element contributorElement = new Element("contributor", getFeedNamespace());
                 fillPersonElement(contributorElement, contributors.get(i));
@@ -268,7 +268,7 @@ public class Atom10Generator extends BaseWireFeedGenerator {
             eEntry.addContent(publishedElement);
         }
 
-        if (entry.getContents() != null && entry.getContents().size() > 0) {
+        if (entry.getContents() != null && !entry.getContents().isEmpty()) {
             final Element contentElement = new Element("content", getFeedNamespace());
             final Content content = entry.getContents().get(0);
             fillContentElement(contentElement, content);
