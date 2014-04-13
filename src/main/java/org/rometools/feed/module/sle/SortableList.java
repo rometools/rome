@@ -17,31 +17,39 @@ class SortableList<T extends Extendable> extends ArrayList<T> {
      * performs a selection sort on all the beans in the List
      */
     public synchronized void sortOnProperty(final Object value, final boolean ascending, final ValueStrategy strat) {
-        for (int i = 0; i < size() - 1; i++) {
-            for (int j = i + 1; j < size(); j++) {
 
-                final T o1 = get(i);
-                final Comparable oc1 = strat.getValue(o1, value);
+        final int elementCount = size();
 
-                final T o2 = get(j);
-                final Comparable oc2 = strat.getValue(o2, value);
+        for (int i = 0; i < elementCount - 1; i++) {
 
-                System.out.println(oc1 + " < " + oc2);
+            for (int j = i + 1; j < elementCount; j++) {
 
-                if (ascending) {
-                    if (oc1 != oc2 && (oc2 == null || oc1 != null && oc2 != null && oc2.compareTo(oc1) < 0)) { // swap
-                        set(i, o2);
-                        set(j, o1);
-                    }
-                } else {
-                    if (oc1 != oc2 && (oc1 == null || oc1 != null && oc2 != null && oc1.compareTo(oc2) < 0)) { // swap
+                final T entry1 = get(i);
+                final T entry2 = get(j);
 
-                        set(i, o2);
-                        set(j, o1);
+                final Comparable oc1 = strat.getValue(entry1, value);
+                final Comparable oc2 = strat.getValue(entry2, value);
+
+                if (oc1 != oc2) {
+                    final boolean bothNotNull = oc1 != null && oc2 != null;
+                    if (ascending) {
+                        if (oc2 == null || bothNotNull && oc2.compareTo(oc1) < 0) {
+                            // swap entries
+                            set(i, entry2);
+                            set(j, entry1);
+                        }
+                    } else {
+                        if (oc1 == null || bothNotNull && oc1.compareTo(oc2) < 0) {
+                            // swap entries
+                            set(i, entry2);
+                            set(j, entry1);
+                        }
                     }
                 }
             }
+
         }
+
     }
 
 }
