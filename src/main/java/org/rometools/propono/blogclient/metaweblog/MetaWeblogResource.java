@@ -1,10 +1,10 @@
-/*   
+/*
  *  Copyright 2007 Dave Johnson (Blogapps project)
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -33,7 +33,7 @@ public class MetaWeblogResource extends MetaWeblogEntry implements BlogResource 
     private byte[] bytes;
 
     MetaWeblogResource(final MetaWeblogBlog blog, final String name, final String contentType, final byte[] bytes) {
-        super(blog, new HashMap());
+        super(blog, new HashMap<String, Object>());
         this.blog = blog;
         this.name = name;
         this.contentType = contentType;

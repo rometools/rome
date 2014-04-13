@@ -31,7 +31,8 @@ import java.util.Map;
 public interface AtomRequest {
 
     /**
-     * Returns any extra path information associated with the URL the client sent when it made this request.
+     * Returns any extra path information associated with the URL the client sent when it made this
+     * request.
      */
     public String getPathInfo();
 
@@ -41,22 +42,26 @@ public interface AtomRequest {
     public String getQueryString();
 
     /**
-     * Returns the login of the user making this request, if the user has been authenticated, or null if the user has not been authenticated.
+     * Returns the login of the user making this request, if the user has been authenticated, or
+     * null if the user has not been authenticated.
      */
     public String getRemoteUser();
 
     /**
-     * Returns a boolean indicating whether the authenticated user is included in the specified logical "role".
+     * Returns a boolean indicating whether the authenticated user is included in the specified
+     * logical "role".
      */
     public boolean isUserInRole(String arg0);
 
     /**
-     * Returns a java.security.Principal object containing the name of the current authenticated user.
+     * Returns a java.security.Principal object containing the name of the current authenticated
+     * user.
      */
     public Principal getUserPrincipal();
 
     /**
-     * Returns the part of this request's URL from the protocol name up to the query string in the first line of the HTTP request.
+     * Returns the part of this request's URL from the protocol name up to the query string in the
+     * first line of the HTTP request.
      */
     public String getRequestURI();
 
@@ -66,7 +71,8 @@ public interface AtomRequest {
     public StringBuffer getRequestURL();
 
     /**
-     * Returns the length, in bytes, of the request body and made available by the input stream, or -1 if the length is not known.
+     * Returns the length, in bytes, of the request body and made available by the input stream, or
+     * -1 if the length is not known.
      */
     public int getContentLength();
 
@@ -76,24 +82,27 @@ public interface AtomRequest {
     public String getContentType();
 
     /**
-     * Returns the value of a request parameter as a String, or null if the parameter does not exist.
+     * Returns the value of a request parameter as a String, or null if the parameter does not
+     * exist.
      */
     public String getParameter(String arg0);
 
     /**
-     * Returns an Enumeration of String objects containing the names of the parameters contained in this request.
+     * Returns an Enumeration of String objects containing the names of the parameters contained in
+     * this request.
      */
     public Enumeration getParameterNames();
 
     /**
-     * Returns an array of String objects containing all of the values the given request parameter has, or null if the parameter does not exist.
+     * Returns an array of String objects containing all of the values the given request parameter
+     * has, or null if the parameter does not exist.
      */
     public String[] getParameterValues(String arg0);
 
     /**
      * Returns a java.util.Map of the parameters of this request.
      */
-    public Map getParameterMap();
+    public Map<String, Object> getParameterMap();
 
     /**
      * Retrieves the body of the request as binary data using a ServletInputStream.
@@ -101,7 +110,8 @@ public interface AtomRequest {
     public InputStream getInputStream() throws IOException;
 
     /**
-     * Returns the value of the specified request header as a long value that represents a Date object.
+     * Returns the value of the specified request header as a long value that represents a Date
+     * object.
      */
     public long getDateHeader(String arg0);
 

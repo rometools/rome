@@ -214,7 +214,7 @@ public class ClientMediaEntry extends ClientEntry {
                 method = new PutMethod(getEditURI());
                 final StringWriter sw = new StringWriter();
                 Atom10Generator.serializeEntry(this, sw);
-                method.setRequestEntity(new StringRequestEntity(sw.toString()));
+                method.setRequestEntity(new StringRequestEntity(sw.toString(), null, null));
                 method.setRequestHeader("Content-type", "application/atom+xml; charset=utf8");
             } else {
                 throw new ProponoException("ERROR: media entry has no edit URI or media-link URI");

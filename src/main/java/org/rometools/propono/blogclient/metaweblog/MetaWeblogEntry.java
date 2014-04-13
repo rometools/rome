@@ -30,7 +30,7 @@ import org.rometools.propono.blogclient.BlogEntry;
  */
 public class MetaWeblogEntry extends BaseBlogEntry {
 
-    MetaWeblogEntry(final MetaWeblogBlog blog, final Map entryMap) {
+    MetaWeblogEntry(final MetaWeblogBlog blog, final Map<String, Object> entryMap) {
         super(blog);
         id = (String) entryMap.get("postid");
 

@@ -197,15 +197,15 @@ public class SimpleBlogClientTest extends TestCase {
             assertNotNull(token);
         }
 
-        for (final Iterator it = blog.getEntries(); it.hasNext();) {
-            final BlogEntry blogEntry = (BlogEntry) it.next();
+        for (final Iterator<BlogEntry> it = blog.getEntries(); it.hasNext();) {
+            final BlogEntry blogEntry = it.next();
             assertTrue(Atom10Parser.isAbsoluteURI(blogEntry.getToken()));
             blogEntry.delete();
         }
     }
 
     public static Test suite() {
-        final TestSuite suite = new TestSuite(SimpleBlogClientTest.class);
-        return suite;
+        return new TestSuite(SimpleBlogClientTest.class);
     }
+
 }

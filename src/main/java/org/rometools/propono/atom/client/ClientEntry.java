@@ -144,7 +144,7 @@ public class ClientEntry extends Entry {
         final int code = -1;
         try {
             Atom10Generator.serializeEntry(this, sw);
-            method.setRequestEntity(new StringRequestEntity(sw.toString()));
+            method.setRequestEntity(new StringRequestEntity(sw.toString(), null, null));
             method.setRequestHeader("Content-type", "application/atom+xml; charset=utf-8");
             getHttpClient().executeMethod(method);
             final InputStream is = method.getResponseBodyAsStream();
@@ -208,7 +208,7 @@ public class ClientEntry extends Entry {
         int code = -1;
         try {
             Atom10Generator.serializeEntry(this, sw);
-            method.setRequestEntity(new StringRequestEntity(sw.toString()));
+            method.setRequestEntity(new StringRequestEntity(sw.toString(), null, null));
             method.setRequestHeader("Content-type", "application/atom+xml; charset=utf-8");
             getHttpClient().executeMethod(method);
             final InputStream is = method.getResponseBodyAsStream();

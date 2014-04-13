@@ -23,6 +23,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 
 import org.apache.xmlrpc.client.XmlRpcClient;
@@ -104,7 +105,7 @@ public class MetaWeblogBlog implements Blog {
      */
     @Override
     public BlogEntry newEntry() {
-        return new MetaWeblogEntry(this, new HashMap());
+        return new MetaWeblogEntry(this, new HashMap<String, Object>());
     }
 
     String saveEntry(final BlogEntry entry) throws BlogClientException {
@@ -118,7 +119,10 @@ public class MetaWeblogBlog implements Blog {
     @Override
     public BlogEntry getEntry(final String id) throws BlogClientException {
         try {
-            final Map result = (Map) getXmlRpcClient().execute("metaWeblog.getPost", new Object[] { id, userName, password });
+            final Object[] params = new Object[] { id, userName, password };
+            final Object response = getXmlRpcClient().execute("metaWeblog.getPost", params);
+            @SuppressWarnings("unchecked")
+            final Map<String, Object> result = (Map<String, Object>) response;
             return new MetaWeblogEntry(this, result);
         } catch (final Exception e) {
             throw new BlogClientException("ERROR: XML-RPC error getting entry", e);
@@ -177,27 +181,35 @@ public class MetaWeblogBlog implements Blog {
     public List<Category> getCategories() throws BlogClientException {
 
         final ArrayList<Category> ret = new ArrayList<Category>();
-        try {
-            final Object result = getXmlRpcClient().execute("metaWeblog.getCategories", new Object[] { blogid, userName, password });
-            if (result != null && result instanceof HashMap) {
-                // Standard MetaWeblog API style: struct of struts
-                final Map catsmap = (Map) result;
 
-                final Iterator keys = catsmap.keySet().iterator();
-                while (keys.hasNext()) {
-                    final String key = (String) keys.next();
-                    final Map catmap = (Map) catsmap.get(key);
+        try {
+
+            final Object result = getXmlRpcClient().execute("metaWeblog.getCategories", new Object[] { blogid, userName, password });
+
+            if (result != null && result instanceof HashMap) {
+
+                // Standard MetaWeblog API style: struct of struts
+                @SuppressWarnings("unchecked")
+                final Map<String, Object> catsmap = (Map<String, Object>) result;
+
+                final Set<String> keys = catsmap.keySet();
+                for (final String key : keys) {
+                    @SuppressWarnings("unchecked")
+                    final Map<String, Object> catmap = (Map<String, Object>) catsmap.get(key);
                     final BlogEntry.Category category = new BlogEntry.Category(key);
-                    category.setName((String) catmap.get("description"));
+                    final String description = (String) catmap.get("description");
+                    category.setName(description);
                     // catmap.get("htmlUrl");
                     // catmap.get("rssUrl");
                     ret.add(category);
                 }
+
             } else if (result != null && result instanceof Object[]) {
                 // Wordpress style: array of structs
-                final Object[] resultArray = (Object[]) result;
-                for (final Object element : resultArray) {
-                    final Map catmap = (Map) element;
+                final Object[] array = (Object[]) result;
+                for (final Object map : array) {
+                    @SuppressWarnings("unchecked")
+                    final Map<String, Object> catmap = (Map<String, Object>) map;
                     final String categoryId = (String) catmap.get("categoryId");
                     final String categoryName = (String) catmap.get("categoryName");
                     final BlogEntry.Category category = new BlogEntry.Category(categoryId);
@@ -208,7 +220,9 @@ public class MetaWeblogBlog implements Blog {
         } catch (final Exception e) {
             e.printStackTrace();
         }
+
         return ret;
+
     }
 
     private Map<String, Object> createPostStructure(final BlogEntry entry) {
@@ -356,7 +370,10 @@ public class MetaWeblogBlog implements Blog {
                 resmap.put("name", resource.getName());
                 resmap.put("type", resource.getContent().getType());
                 resmap.put("bits", resource.getBytes());
-                final Map result = (Map) getXmlRpcClient().execute("metaWeblog.newMediaObject", new Object[] { blogid, userName, password, resmap });
+                final Object[] params = new Object[] { blogid, userName, password, resmap };
+                final Object response = getXmlRpcClient().execute("metaWeblog.newMediaObject", params);
+                @SuppressWarnings("unchecked")
+                final Map<String, Object> result = (Map<String, Object>) response;
                 final String url = (String) result.get("url");
                 res.getContent().setSrc(url);
                 return url;
@@ -387,6 +404,7 @@ public class MetaWeblogBlog implements Blog {
      * Iterates over MetaWeblog API entries.
      */
     public class EntryIterator implements Iterator<BlogEntry> {
+
         private int pos = 0;
         private boolean eod = false;
         private static final int BUFSIZE = 30;
@@ -418,7 +436,8 @@ public class MetaWeblogBlog implements Blog {
          */
         @Override
         public BlogEntry next() {
-            final Map entryHash = (Map) results.get(pos++);
+            @SuppressWarnings("unchecked")
+            final Map<String, Object> entryHash = (Map<String, Object>) results.get(pos++);
             return new MetaWeblogEntry(MetaWeblogBlog.this, entryHash);
         }
 

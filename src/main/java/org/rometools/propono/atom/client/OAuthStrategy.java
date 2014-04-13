@@ -116,7 +116,9 @@ public class OAuthStrategy implements AuthStrategy {
         if (method.getQueryString() != null) {
             String qstring = method.getQueryString().trim();
             qstring = qstring.startsWith("?") ? qstring.substring(1) : qstring;
-            originalqlist = new ParameterParser().parse(qstring, '&');
+            @SuppressWarnings("unchecked")
+            final List<NameValuePair> parameters = new ParameterParser().parse(qstring, '&');
+            originalqlist = parameters;
         } else {
             originalqlist = new ArrayList<NameValuePair>();
         }

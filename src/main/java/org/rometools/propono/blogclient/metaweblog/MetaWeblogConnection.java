@@ -78,9 +78,10 @@ public class MetaWeblogConnection implements BlogConnection {
         final Map<String, MetaWeblogBlog> blogMap = new HashMap<String, MetaWeblogBlog>();
         final Object[] results = (Object[]) getXmlRpcClient().execute("blogger.getUsersBlogs", new Object[] { appkey, userName, password });
         for (final Object result : results) {
-            final Map<String, String> blog = (Map<String, String>) result;
-            final String blogid = blog.get("blogid");
-            final String name = blog.get("blogName");
+            @SuppressWarnings("unchecked")
+            final Map<String, Object> blog = (Map<String, Object>) result;
+            final String blogid = (String) blog.get("blogid");
+            final String name = (String) blog.get("blogName");
             blogMap.put(blogid, new MetaWeblogBlog(blogid, name, url, userName, password));
         }
         return blogMap;

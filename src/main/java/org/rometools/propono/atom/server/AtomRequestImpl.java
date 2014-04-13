@@ -99,7 +99,7 @@ public class AtomRequestImpl implements AtomRequest {
     }
 
     @Override
-    public Map getParameterMap() {
+    public Map<String, Object> getParameterMap() {
         return wrapped.getParameterMap();
     }
 
