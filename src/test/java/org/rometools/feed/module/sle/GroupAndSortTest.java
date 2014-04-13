@@ -1,10 +1,3 @@
-/*
- * GroupAndSortTest.java
- * JUnit based test
- *
- * Created on April 29, 2006, 8:56 PM
- */
-
 package org.rometools.feed.module.sle;
 
 import java.io.File;
@@ -33,63 +26,52 @@ public class GroupAndSortTest extends AbstractTestCase {
     }
 
     public static Test suite() {
-        final TestSuite suite = new TestSuite(GroupAndSortTest.class);
-
-        return suite;
+        return new TestSuite(GroupAndSortTest.class);
     }
 
     /**
      * Test of sort method, of class com.sun.syndication.feed.module.sle.GroupAndSort.
      */
     public void testSort() throws Exception {
-        final SyndFeedInput input = new SyndFeedInput();
-        final SyndFeed feed = input.build(new File(super.getTestFile("data/bookexample.xml")));
-        final SimpleListExtension sle = (SimpleListExtension) feed.getModule(SimpleListExtension.URI);
 
-        final List<Extendable> entries = new ArrayList<Extendable>(feed.getEntries());
+        final File testdata = new File(super.getTestFile("data/bookexample.xml"));
+        final SyndFeed feed = new SyndFeedInput().build(testdata);
+
+        final List<SyndEntry> feedEntries = feed.getEntries();
+        final List<Extendable> entries = new ArrayList<Extendable>(feedEntries);
+
+        final SimpleListExtension sle = (SimpleListExtension) feed.getModule(SimpleListExtension.URI);
         final Sort[] sortFields = sle.getSortFields();
-        final Sort sort = sortFields[1];
-        List<Extendable> sortedEntries = SleUtility.sort(entries, sort, true);
+
+        final Sort sortByDate = sortFields[1];
+        final Sort sortByTitle = sortFields[2];
+
+        // sort by date ascending
+        List<Extendable> sortedEntries = SleUtility.sort(entries, sortByDate, true);
         SyndEntry entry = (SyndEntry) sortedEntries.get(0);
         assertEquals("Great Journeys of the Past", entry.getTitle());
-        sortedEntries = SleUtility.sort(entries, sort, false);
+
+        // sort by date descending
+        sortedEntries = SleUtility.sort(entries, sortByDate, false);
         entry = (SyndEntry) sortedEntries.get(0);
         assertEquals("Horror Stories, vol 16", entry.getTitle());
 
-        sortedEntries = SleUtility.sort(entries, sort, true);
-        entry = (SyndEntry) sortedEntries.get(0);
+        // sort by date ascending
+        sortedEntries = SleUtility.sort(entries, sortByDate, true);
 
+        // update first entry and reinitialize
+        entry = (SyndEntry) sortedEntries.get(0);
         entry.setTitle("ZZZZZ");
         SleUtility.initializeForSorting(feed);
-        System.out.println(entries.size() + " **Sorting on " + sortFields[2]);
 
-        sortedEntries = SleUtility.sort(entries, sortFields[2], false);
-        System.out.println("Sorted: " + sortedEntries.size());
-        for (int i = 0; i < sortedEntries.size(); i++) {
-            entry = (SyndEntry) sortedEntries.get(i);
-            System.out.println(i + " -- " + entry.getTitle());
-            final SleEntry slent = (SleEntry) entry.getModule(SleEntry.URI);
-            for (int j = 0; j < slent.getSortValues().length; j++) {
-                System.out.println(slent.getSortValues()[j].getElement() + " == " + slent.getSortValues()[j].getValue());
-            }
-
-        }
+        // sort by title desc
+        sortedEntries = SleUtility.sort(entries, sortByTitle, false);
         entry = (SyndEntry) sortedEntries.get(0);
-        System.out.println(entry.getTitle());
         assertEquals("ZZZZZ", entry.getTitle());
-        entry = (SyndEntry) sortedEntries.get(1);
-        System.out.println(entry.getTitle());
 
-        sortedEntries = SleUtility.sort(entries, sortFields[2], true);
+        // sort by title asc
+        sortedEntries = SleUtility.sort(entries, sortByTitle, true);
         entry = (SyndEntry) sortedEntries.get(0);
-        System.out.println(entry.getTitle());
-        assertEquals("Horror Stories, vol 16", entry.getTitle());
-        entry = (SyndEntry) sortedEntries.get(1);
-        System.out.println(entry.getTitle());
-
-        sortedEntries = SleUtility.sortAndGroup(entries, sle.getGroupFields(), sortFields[2], true);
-        entry = (SyndEntry) sortedEntries.get(0);
-        System.out.println(entry.getTitle());
         assertEquals("Horror Stories, vol 16", entry.getTitle());
 
     }
@@ -98,16 +80,18 @@ public class GroupAndSortTest extends AbstractTestCase {
      * Test of sort method, of class com.sun.syndication.feed.module.sle.GroupAndSort.
      */
     public void testSort2() throws Exception {
+
         final SyndFeedInput input = new SyndFeedInput();
         final SyndFeed feed = input.build(new File(super.getTestFile("data/YahooTopSongs.xml")));
         final SimpleListExtension sle = (SimpleListExtension) feed.getModule(SimpleListExtension.URI);
-        System.out.println("Sorting on " + sle.getSortFields()[0]);
+
         final List<Extendable> entries = new ArrayList<Extendable>(feed.getEntries());
         final List<Extendable> sortedEntries = SleUtility.sort(entries, sle.getSortFields()[0], true);
         for (int i = 0; i < sortedEntries.size(); i++) {
             final SyndEntry entry = (SyndEntry) sortedEntries.get(i);
             System.out.println(entry.getTitle());
         }
+
     }
 
     /**
@@ -120,8 +104,23 @@ public class GroupAndSortTest extends AbstractTestCase {
     /**
      * Test of sortAndGroup method, of class com.sun.syndication.feed.module.sle.GroupAndSort.
      */
-    public void testSortAndGroup() {
-        // TODO add your test code.
+    public void testSortAndGroup() throws Exception {
+
+        final File testdata = new File(super.getTestFile("data/bookexample.xml"));
+        final SyndFeed feed = new SyndFeedInput().build(testdata);
+
+        final List<SyndEntry> feedEntries = feed.getEntries();
+        final List<Extendable> entries = new ArrayList<Extendable>(feedEntries);
+
+        final SimpleListExtension sle = (SimpleListExtension) feed.getModule(SimpleListExtension.URI);
+        final Sort[] sortFields = sle.getSortFields();
+
+        final Sort sortByTitle = sortFields[2];
+
+        final List<Extendable> sortedEntries = SleUtility.sortAndGroup(entries, sle.getGroupFields(), sortByTitle, true);
+        final SyndEntry entry = (SyndEntry) sortedEntries.get(0);
+        assertEquals("Horror Stories, vol 16", entry.getTitle());
+
     }
 
 }

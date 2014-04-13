@@ -28,10 +28,9 @@ import com.sun.syndication.feed.module.ModuleImpl;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class SimpleListExtensionImpl extends ModuleImpl implements SimpleListExtension {
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
+
     private String treatAs = "list";
     private Group[] groupFields;
     private Sort[] sortFields;
@@ -114,4 +113,5 @@ public class SimpleListExtensionImpl extends ModuleImpl implements SimpleListExt
         setSortFields(sle.getSortFields().clone());
         setTreatAs(sle.getTreatAs());
     }
+
 }

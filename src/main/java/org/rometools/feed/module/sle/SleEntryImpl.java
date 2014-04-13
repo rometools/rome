@@ -27,8 +27,9 @@ import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.impl.ObjectBean;
 
 /**
- * This is a <b>parse only</b> module that holds the values of enternal fields declared in the SLE module. These will <b>not</b> be persisted on an output()
- * call, <b>nor</b> will changing a value here change a value in another module or a foreign markup tag.
+ * This is a <b>parse only</b> module that holds the values of enternal fields declared in the SLE
+ * module. These will <b>not</b> be persisted on an output() call, <b>nor</b> will changing a value
+ * here change a value in another module or a foreign markup tag.
  *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
@@ -72,13 +73,14 @@ public class SleEntryImpl implements SleEntry {
     /**
      * Returns the interface the copyFrom works on.
      * <p>
-     * This is useful when dealing with properties that may have multiple implementations. For example, Module.
+     * This is useful when dealing with properties that may have multiple implementations. For
+     * example, Module.
      * <p>
      *
      * @return the interface the copyFrom works on.
      */
     @Override
-    public Class getInterface() {
+    public Class<SleEntry> getInterface() {
         return SleEntry.class;
     }
 
@@ -128,8 +130,8 @@ public class SleEntryImpl implements SleEntry {
      * <p>
      * Any existing properties in this bean are lost.
      * <p>
-     * This method is useful for moving from one implementation of a bean interface to another. For example from the default SyndFeed bean implementation to a
-     * Hibernate ready implementation.
+     * This method is useful for moving from one implementation of a bean interface to another. For
+     * example from the default SyndFeed bean implementation to a Hibernate ready implementation.
      * <p>
      *
      * @param obj the instance to copy properties from.

@@ -74,7 +74,12 @@ public final class SleUtility {
      * @return Sorted list of values
      */
     public static List<Extendable> sort(final List<Extendable> values, final Sort sort, final boolean ascending) {
-        final SortableList list = values instanceof SortableList ? (SortableList) values : new SortableList(values);
+        final SortableList list;
+        if (values instanceof SortableList) {
+            list = (SortableList) values;
+        } else {
+            list = new SortableList(values);
+        }
         list.sortOnProperty(sort, ascending, new SortStrategy());
         return list;
     }
@@ -104,10 +109,10 @@ public final class SleUtility {
         // TODO: the null parameter below will break delegating parsers and generators
         // final ModuleGenerators g = new ModuleGenerators(feed.getFeedType() +
         // ITEM_MODULE_GENERATORS_POSFIX_KEY, null);
-        final SyndFeedOutput o = new SyndFeedOutput();
-        final Document d = o.outputJDom(feed);
-        final SyndFeed feed2 = new SyndFeedInput().build(d);
-        feed.copyFrom(feed2);
+        final SyndFeedOutput output = new SyndFeedOutput();
+        final Document document = output.outputJDom(feed);
+        final SyndFeed copy = new SyndFeedInput().build(document);
+        feed.copyFrom(copy);
     }
 
 }
