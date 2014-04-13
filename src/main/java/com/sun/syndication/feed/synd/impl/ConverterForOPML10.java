@@ -159,7 +159,7 @@ public class ConverterForOPML10 implements Converter {
         cat.setName(nodeName);
         entry.getCategories().add(cat);
 
-        if (context.size() > 0) {
+        if (!context.isEmpty()) {
             final Integer parent = context.peek();
             final SyndCategory pcat = new TreeCategoryImpl();
             pcat.setTaxonomyUri(URI_TREE);
