@@ -22,7 +22,6 @@ import java.io.InputStream;
 import java.net.URLConnection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Properties;
 import java.util.Set;
 
@@ -114,28 +113,19 @@ public abstract class AbstractFeedFetcher implements FeedFetcher {
     protected void fireEvent(final String eventType, final String urlStr, final SyndFeed feed) {
         final FetcherEvent fetcherEvent = new FetcherEvent(this, urlStr, eventType, feed);
         synchronized (fetcherEventListeners) {
-            final Iterator<FetcherListener> iter = fetcherEventListeners.iterator();
-            while (iter.hasNext()) {
-                final FetcherListener fetcherEventListener = iter.next();
+            for (final FetcherListener fetcherEventListener : fetcherEventListeners) {
                 fetcherEventListener.fetcherEvent(fetcherEvent);
             }
         }
     }
 
-    /**
-     * @see com.sun.syndication.fetcher.FeedFetcher#addFetcherEventListener(com.sun.syndication.fetcher.FetcherListener)
-     */
     @Override
     public void addFetcherEventListener(final FetcherListener listener) {
         if (listener != null) {
             fetcherEventListeners.add(listener);
         }
-
     }
 
-    /**
-     * @see com.sun.syndication.fetcher.FeedFetcher#removeFetcherEventListener(com.sun.syndication.fetcher.FetcherListener)
-     */
     @Override
     public void removeFetcherEventListener(final FetcherListener listener) {
         if (listener != null) {
@@ -163,7 +153,7 @@ public abstract class AbstractFeedFetcher implements FeedFetcher {
      * <p>
      * Handles HTTP error codes.
      * </p>
-     * 
+     *
      * @param responseCode the HTTP response code
      * @throws FetcherException if response code is in the range 400 to 599 inclusive
      */
@@ -192,11 +182,11 @@ public abstract class AbstractFeedFetcher implements FeedFetcher {
      * <p>
      * Combine the entries in two feeds into a single feed.
      * </p>
-     * 
+     *
      * <p>
      * The returned feed will have the same data as the newFeed parameter, with the entries from originalFeed appended to the end of its entries.
      * </p>
-     * 
+     *
      * @param originalFeed
      * @param newFeed
      * @return
@@ -205,9 +195,7 @@ public abstract class AbstractFeedFetcher implements FeedFetcher {
         SyndFeed result;
         try {
             result = (SyndFeed) newFeed.clone();
-
             result.getEntries().addAll(result.getEntries().size(), originalFeed.getEntries());
-
             return result;
         } catch (final CloneNotSupportedException e) {
             final IllegalArgumentException iae = new IllegalArgumentException("Cannot clone feed");
