@@ -45,7 +45,8 @@ public class TestXmlReader extends TestCase {
 
     protected void _testRawNoBomValid(final String encoding) throws Exception {
 
-        // TODO review this test
+        // TODO review this test (XmlReader is never closed, test fails when using a new XmlReader
+        // for each Assert)
 
         InputStream is = getXmlStream("no-bom", "xml", encoding, encoding);
         XmlReader xmlReader = new XmlReader(is, false);
