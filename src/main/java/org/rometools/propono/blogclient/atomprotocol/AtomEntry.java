@@ -151,7 +151,7 @@ public class AtomEntry extends BaseBlogEntry implements BlogEntry {
         }
         final List<com.sun.syndication.feed.atom.Content> contents = entry.getContents();
         com.sun.syndication.feed.atom.Content romeContent = null;
-        if (contents != null && contents.size() > 0) {
+        if (contents != null && !contents.isEmpty()) {
             romeContent = contents.get(0);
         }
         if (romeContent != null) {
@@ -172,7 +172,7 @@ public class AtomEntry extends BaseBlogEntry implements BlogEntry {
             categories = cats;
         }
         final List<SyndPerson> authors = entry.getAuthors();
-        if (authors != null && authors.size() > 0) {
+        if (authors != null && !authors.isEmpty()) {
             final com.sun.syndication.feed.atom.Person romeAuthor = (com.sun.syndication.feed.atom.Person) authors.get(0);
             if (romeAuthor != null) {
                 author = new Person();

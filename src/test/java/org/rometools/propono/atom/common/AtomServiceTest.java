@@ -69,7 +69,7 @@ public class AtomServiceTest extends TestCase {
                     assertNotNull(col.getTitle());
                     assertNotNull(col.getHrefResolved());
                     int catCount = 0;
-                    if (col.getCategories().size() > 0) {
+                    if (!col.getCategories().isEmpty()) {
                         for (final Object element3 : col.getCategories()) {
                             final Categories cats = (Categories) element3;
                             catCount += cats.getCategories().size();

@@ -241,7 +241,7 @@ public class Collection {
         }
 
         final List<Element> acceptElems = element.getChildren("accept", AtomService.ATOM_PROTOCOL);
-        if (acceptElems != null && acceptElems.size() > 0) {
+        if (acceptElems != null && !acceptElems.isEmpty()) {
             for (final Element acceptElem : acceptElems) {
                 addAccept(acceptElem.getTextTrim());
             }

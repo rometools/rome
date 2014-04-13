@@ -106,7 +106,7 @@ public class MetaWeblogEntry extends BaseBlogEntry {
         if (getContent() != null && getContent().getValue() != null) {
             struct.put("description", getContent().getValue());
         }
-        if (getCategories() != null && getCategories().size() > 0) {
+        if (getCategories() != null && !getCategories().isEmpty()) {
             final List<String> catArray = new ArrayList<String>();
             final List<Category> cats = getCategories();
             for (int i = 0; i < cats.size(); i++) {

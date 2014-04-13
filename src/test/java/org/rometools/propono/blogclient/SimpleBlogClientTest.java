@@ -130,7 +130,7 @@ public class SimpleBlogClientTest extends TestCase {
         final BlogConnection conn = BlogConnectionFactory.getBlogConnection(type, endpoint, username, password);
         assertNotNull(conn);
 
-        assertTrue(conn.getBlogs().size() > 0);
+        assertTrue(!conn.getBlogs().isEmpty());
         int count = 0;
         for (final Blog blog2 : conn.getBlogs()) {
             final Blog blog = blog2;

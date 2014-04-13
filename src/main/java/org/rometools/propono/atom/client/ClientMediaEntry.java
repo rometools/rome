@@ -156,7 +156,7 @@ public class ClientMediaEntry extends ClientEntry {
      * resource data as an InputStream or as a byte array.
      */
     public InputStream getAsStream() throws ProponoException {
-        if (getContents() != null && getContents().size() > 0) {
+        if (getContents() != null && !getContents().isEmpty()) {
             final Content c = getContents().get(0);
             if (c.getSrc() != null) {
                 return getResourceAsStream();

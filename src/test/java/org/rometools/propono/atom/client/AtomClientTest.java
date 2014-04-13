@@ -115,7 +115,7 @@ public class AtomClientTest extends TestCase {
      */
     public void testGetAtomService() throws Exception {
         assertNotNull(service);
-        assertTrue(service.getWorkspaces().size() > 0);
+        assertTrue(!service.getWorkspaces().isEmpty());
         for (final Object element : service.getWorkspaces()) {
             final ClientWorkspace space = (ClientWorkspace) element;
             assertNotNull(space.getTitle());
@@ -135,7 +135,7 @@ public class AtomClientTest extends TestCase {
      */
     public void testSimpleEntryPostAndRemove() throws Exception {
         assertNotNull(service);
-        assertTrue(service.getWorkspaces().size() > 0);
+        assertTrue(!service.getWorkspaces().isEmpty());
         int count = 0;
         for (final Object element : service.getWorkspaces()) {
             final ClientWorkspace space = (ClientWorkspace) element;
@@ -183,7 +183,7 @@ public class AtomClientTest extends TestCase {
      */
     public void testSimpleEntryPostUpdateAndRemove() throws Exception {
         assertNotNull(service);
-        assertTrue(service.getWorkspaces().size() > 0);
+        assertTrue(!service.getWorkspaces().isEmpty());
         int count = 0;
         for (final Object element : service.getWorkspaces()) {
             final ClientWorkspace space = (ClientWorkspace) element;
@@ -266,7 +266,7 @@ public class AtomClientTest extends TestCase {
      */
     public void testEntryPostWithCategories() throws Exception {
         assertNotNull(service);
-        assertTrue(service.getWorkspaces().size() > 0);
+        assertTrue(!service.getWorkspaces().isEmpty());
         int count = 0;
         for (final Object element2 : service.getWorkspaces()) {
             final ClientWorkspace space = (ClientWorkspace) element2;
@@ -359,7 +359,7 @@ public class AtomClientTest extends TestCase {
      */
     public void testMediaPost() throws Exception {
         assertNotNull(service);
-        assertTrue(service.getWorkspaces().size() > 0);
+        assertTrue(!service.getWorkspaces().isEmpty());
         int count = 0;
         for (final Object element : service.getWorkspaces()) {
             final ClientWorkspace space = (ClientWorkspace) element;

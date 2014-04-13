@@ -104,7 +104,7 @@ public class ClientEntry extends Entry {
      * one content element per entry.
      */
     public Content getContent() {
-        if (getContents() != null && getContents().size() > 0) {
+        if (getContents() != null && !getContents().isEmpty()) {
             final Content c = getContents().get(0);
             return c;
         }
