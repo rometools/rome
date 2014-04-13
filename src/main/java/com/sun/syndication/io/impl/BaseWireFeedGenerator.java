@@ -2,7 +2,6 @@ package com.sun.syndication.io.impl;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -40,25 +39,31 @@ public abstract class BaseWireFeedGenerator implements WireFeedGenerator {
     private final Namespace[] allModuleNamespaces;
 
     protected BaseWireFeedGenerator(final String type) {
+
         this.type = type;
+
         feedModuleGenerators = new ModuleGenerators(type + FEED_MODULE_GENERATORS_POSFIX_KEY, this);
         itemModuleGenerators = new ModuleGenerators(type + ITEM_MODULE_GENERATORS_POSFIX_KEY, this);
         personModuleGenerators = new ModuleGenerators(type + PERSON_MODULE_GENERATORS_POSFIX_KEY, this);
+
         final Set<Namespace> allModuleNamespaces = new HashSet<Namespace>();
-        Iterator<Namespace> i = feedModuleGenerators.getAllNamespaces().iterator();
-        while (i.hasNext()) {
-            allModuleNamespaces.add(i.next());
+
+        for (final Namespace namespace : feedModuleGenerators.getAllNamespaces()) {
+            allModuleNamespaces.add(namespace);
         }
-        i = itemModuleGenerators.getAllNamespaces().iterator();
-        while (i.hasNext()) {
-            allModuleNamespaces.add(i.next());
+
+        for (final Namespace namespace : itemModuleGenerators.getAllNamespaces()) {
+            allModuleNamespaces.add(namespace);
         }
-        i = personModuleGenerators.getAllNamespaces().iterator();
-        while (i.hasNext()) {
-            allModuleNamespaces.add(i.next());
+
+        for (final Namespace namespace : personModuleGenerators.getAllNamespaces()) {
+            allModuleNamespaces.add(namespace);
         }
+
         this.allModuleNamespaces = new Namespace[allModuleNamespaces.size()];
+
         allModuleNamespaces.toArray(this.allModuleNamespaces);
+
     }
 
     @Override
@@ -84,16 +89,14 @@ public abstract class BaseWireFeedGenerator implements WireFeedGenerator {
         personModuleGenerators.generateModules(modules, person);
     }
 
-    protected void generateForeignMarkup(final Element e, final List<Element> foreignMarkup) {
-        if (foreignMarkup != null) {
-            final Iterator<Element> elems = foreignMarkup.iterator();
-            while (elems.hasNext()) {
-                final Element elem = elems.next();
-                final Parent parent = elem.getParent();
+    protected void generateForeignMarkup(final Element element, final List<Element> foreignElements) {
+        if (foreignElements != null) {
+            for (final Element foreignElement : foreignElements) {
+                final Parent parent = foreignElement.getParent();
                 if (parent != null) {
-                    parent.removeContent(elem);
+                    parent.removeContent(foreignElement);
                 }
-                e.addContent(elem);
+                element.addContent(foreignElement);
             }
         }
     }
@@ -109,14 +112,15 @@ public abstract class BaseWireFeedGenerator implements WireFeedGenerator {
      * at generate() time, to make sure their namespace declarations are present.
      */
     protected static void purgeUnusedNamespaceDeclarations(final Element root) {
+
         final Set<String> usedPrefixes = new HashSet<String>();
         collectUsedPrefixes(root, usedPrefixes);
 
         final List<Namespace> list = root.getAdditionalNamespaces();
         final List<Namespace> additionalNamespaces = new ArrayList<Namespace>();
         additionalNamespaces.addAll(list); // the duplication will prevent a
-                                           // ConcurrentModificationException
-                                           // below
+        // ConcurrentModificationException
+        // below
 
         for (int i = 0; i < additionalNamespaces.size(); i++) {
             final Namespace ns = additionalNamespaces.get(i);
@@ -135,7 +139,7 @@ public abstract class BaseWireFeedGenerator implements WireFeedGenerator {
         final List<Element> kids = el.getChildren();
         for (int i = 0; i < kids.size(); i++) {
             collectUsedPrefixes(kids.get(i), collector); // recursion
-                                                         // - worth it
+            // - worth it
         }
     }
 

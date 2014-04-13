@@ -20,7 +20,6 @@ import java.io.IOException;
 import java.io.Reader;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.regex.Pattern;
@@ -49,7 +48,7 @@ import com.sun.syndication.io.WireFeedOutput;
 
 /**
  * Parser for Atom 1.0
- * 
+ *
  * @author Dave Johnson
  */
 public class Atom10Parser extends BaseWireFeedParser {
@@ -336,18 +335,16 @@ public class Atom10Parser extends BaseWireFeedParser {
         if (type.equals(Content.XHTML) || type.indexOf("/xml") != -1 || type.indexOf("+xml") != -1) {
             // XHTML content needs special handling
             final XMLOutputter outputter = new XMLOutputter();
-            final List<org.jdom2.Content> eContent = e.getContent();
-            final Iterator<org.jdom2.Content> i = eContent.iterator();
-            while (i.hasNext()) {
-                final org.jdom2.Content c = i.next();
-                if (c instanceof Element) {
-                    final Element eC = (Element) c;
-                    if (eC.getNamespace().equals(getAtomNamespace())) {
-                        ((Element) c).setNamespace(Namespace.NO_NAMESPACE);
+            final List<org.jdom2.Content> contents = e.getContent();
+            for (final org.jdom2.Content content : contents) {
+                if (content instanceof Element) {
+                    final Element element = (Element) content;
+                    if (element.getNamespace().equals(getAtomNamespace())) {
+                        element.setNamespace(Namespace.NO_NAMESPACE);
                     }
                 }
             }
-            value = outputter.outputString(eContent);
+            value = outputter.outputString(contents);
         } else {
             // Everything else comes in verbatim
             value = e.getText();
@@ -503,7 +500,7 @@ public class Atom10Parser extends BaseWireFeedParser {
     /**
      * Resolve URI via base URL and parent element. Resolve URI based considering xml:base and
      * baseURI.
-     * 
+     *
      * @param baseURI Base URI used to fetch the XML document
      * @param parent Parent element from which to consider xml:base
      * @param url URL to be resolved
@@ -568,7 +565,7 @@ public class Atom10Parser extends BaseWireFeedParser {
 
     /**
      * Find base URI of feed considering relative URIs.
-     * 
+     *
      * @param root Root element of feed.
      */
     private String findBaseURI(final Element root) throws MalformedURLException {
@@ -589,7 +586,7 @@ public class Atom10Parser extends BaseWireFeedParser {
     /**
      * Return URL string of Atom link element under parent element. Link with no rel attribute is
      * considered to be rel="alternate"
-     * 
+     *
      * @param parent Consider only children of this parent element
      * @param rel Consider only links with this relationship
      */
@@ -613,7 +610,7 @@ public class Atom10Parser extends BaseWireFeedParser {
     /**
      * Form URI by combining base with append portion and giving special consideration to append
      * portions that begin with ".."
-     * 
+     *
      * @param base Base of URI, may end with trailing slash
      * @param append String to append, may begin with slash or ".."
      */

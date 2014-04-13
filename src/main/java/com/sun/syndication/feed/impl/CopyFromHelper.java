@@ -24,7 +24,6 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -130,7 +129,7 @@ public class CopyFromHelper {
             } else { // it goes CopyFrom
                 if (value instanceof CopyFrom) {
                     final CopyFrom source = (CopyFrom) value;
-                    CopyFrom target = (CopyFrom) createInstance(source.getInterface());
+                    CopyFrom target = createInstance(source.getInterface());
                     if (target == null) {
                         target = (CopyFrom) value.getClass().newInstance();
                     }
@@ -157,32 +156,40 @@ public class CopyFromHelper {
     }
 
     private <T> Collection<T> doCopyCollection(final Collection<T> collection, final Class<?> baseInterface) throws Exception {
-        // expecting SETs or LISTs only, going default implementation of them
-        final Collection<T> newColl;
+
+        // expecting a set or a list
+        final Collection<T> newCollection;
         if (collection instanceof Set) {
-            newColl = new LinkedHashSet<T>();
+            newCollection = new LinkedHashSet<T>();
         } else {
-            newColl = new ArrayList<T>();
+            newCollection = new ArrayList<T>();
         }
-        final Iterator<T> i = collection.iterator();
-        while (i.hasNext()) {
-            newColl.add(this.<T> doCopy(i.next(), baseInterface));
+
+        for (final T item : collection) {
+            final T copied = doCopy(item, baseInterface);
+            newCollection.add(copied);
         }
-        return newColl;
+
+        return newCollection;
+
     }
 
     private <S, T> Map<S, T> doCopyMap(final Map<S, T> map, final Class<?> baseInterface) throws Exception {
+
         final Map<S, T> newMap = new HashMap<S, T>();
-        final Iterator<Entry<S, T>> entries = map.entrySet().iterator();
-        while (entries.hasNext()) {
-            final Map.Entry<S, T> entry = entries.next();
-            newMap.put(entry.getKey(), doCopy(entry.getValue(), baseInterface));
+
+        for (final Entry<S, T> entry : map.entrySet()) {
+            // TODO mustn't the key be copied too?
+            final T copiedValue = doCopy(entry.getValue(), baseInterface);
+            newMap.put(entry.getKey(), copiedValue);
         }
+
         return newMap;
+
     }
 
-    private boolean isBasicType(final Class<?> vClass) {
-        return BASIC_TYPES.contains(vClass);
+    private boolean isBasicType(final Class<?> type) {
+        return BASIC_TYPES.contains(type);
     }
 
 }

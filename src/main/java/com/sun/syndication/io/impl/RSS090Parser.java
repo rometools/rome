@@ -102,7 +102,7 @@ public class RSS090Parser extends BaseWireFeedParser {
      * <P>
      * This implementation returns the EMTPY namespace.
      * <p>
-     * 
+     *
      * @return returns the EMPTY namespace.
      */
     protected Namespace getRSSNamespace() {
@@ -115,7 +115,7 @@ public class RSS090Parser extends BaseWireFeedParser {
      * <P>
      * This implementation returns the EMTPY namespace.
      * <p>
-     * 
+     *
      * @return returns the EMPTY namespace.
      */
     protected Namespace getRDFNamespace() {
@@ -127,7 +127,7 @@ public class RSS090Parser extends BaseWireFeedParser {
      * <P>
      * This implementation returns the EMTPY namespace.
      * <p>
-     * 
+     *
      * @return returns the EMPTY namespace.
      */
     protected Namespace getContentNamespace() {
@@ -142,7 +142,7 @@ public class RSS090Parser extends BaseWireFeedParser {
      * different RSS version may have this information in different parts of the XML tree (no
      * assumptions made thanks to the specs variaty)
      * <p/>
-     * 
+     *
      * @param rssRoot the root element of the RSS document to parse.
      * @return the parsed Channel bean.
      */
@@ -227,7 +227,7 @@ public class RSS090Parser extends BaseWireFeedParser {
      * <p/>
      * It reads title and url out of the 'image' element.
      * <p/>
-     * 
+     *
      * @param rssRoot the root element of the RSS document to parse for image information.
      * @return the parsed image bean.
      */
@@ -260,7 +260,7 @@ public class RSS090Parser extends BaseWireFeedParser {
      * parseItem() for each item element. The resulting RSSItem of each item element is stored in a
      * list.
      * <p/>
-     * 
+     *
      * @param rssRoot the root element of the RSS document to parse for all items information.
      * @return a list with all the parsed RSSItem beans.
      */
@@ -280,7 +280,7 @@ public class RSS090Parser extends BaseWireFeedParser {
      * <p/>
      * It reads title and link out of the 'item' element.
      * <p/>
-     * 
+     *
      * @param rssRoot the root element of the RSS document in case it's needed for context.
      * @param eItem the item element to parse.
      * @return the parsed RSSItem bean.
@@ -307,14 +307,16 @@ public class RSS090Parser extends BaseWireFeedParser {
         // used
         final Iterator<Element> iterator = foreignMarkup.iterator();
         while (iterator.hasNext()) {
-            final Element ie = iterator.next();
-            if (getContentNamespace().equals(ie.getNamespace()) && ie.getName().equals("encoded")) {
+            final Element element = iterator.next();
+            if (getContentNamespace().equals(element.getNamespace()) && element.getName().equals("encoded")) {
                 iterator.remove();
             }
         }
-        if (foreignMarkup.size() > 0) {
+
+        if (!foreignMarkup.isEmpty()) {
             item.setForeignMarkup(foreignMarkup);
         }
+
         return item;
     }
 
@@ -323,7 +325,7 @@ public class RSS090Parser extends BaseWireFeedParser {
      * <p/>
      * It reads title, description, name and link out of the 'textinput' or 'textInput' element.
      * <p/>
-     * 
+     *
      * @param rssRoot the root element of the RSS document to parse for text-input information.
      * @return the parsed RSSTextInput bean.
      */

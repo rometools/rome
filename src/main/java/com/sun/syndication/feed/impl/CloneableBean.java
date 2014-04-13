@@ -24,7 +24,6 @@ import java.lang.reflect.Modifier;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -39,9 +38,9 @@ import org.slf4j.LoggerFactory;
  * It works on all read/write properties, recursively. It support all primitive types, Strings,
  * Collections, Cloneable objects and multi-dimensional arrays of any of them.
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public class CloneableBean implements Serializable, Cloneable {
 
@@ -72,7 +71,7 @@ public class CloneableBean implements Serializable, Cloneable {
      * <p>
      * To be used by classes extending CloneableBean only.
      * <p>
-     * 
+     *
      */
     protected CloneableBean() {
         obj = this;
@@ -86,21 +85,21 @@ public class CloneableBean implements Serializable, Cloneable {
      * <code>
      *   public class Foo implements Cloneable {
      *       private CloneableBean cloneableBean;
-     * 
+     *
      *       public Foo() {
      *           cloneableBean = new CloneableBean(this);
      *       }
-     * 
+     *
      *       public Object clone() throws CloneNotSupportedException {
      *           return cloneableBean.beanClone();
      *       }
-     * 
+     *
      *   }
      * </code>
      * <p>
-     * 
+     *
      * @param obj object bean to clone.
-     * 
+     *
      */
     public CloneableBean(final Object obj) {
         this(obj, null);
@@ -115,10 +114,10 @@ public class CloneableBean implements Serializable, Cloneable {
      * and SyndEntry beans have convenience properties, publishedDate, author, copyright and
      * categories all of them mapped to properties in the DC Module.
      * <p>
-     * 
+     *
      * @param obj object bean to clone.
      * @param ignoreProperties properties to ignore when cloning.
-     * 
+     *
      */
     public CloneableBean(final Object obj, final Set<String> ignoreProperties) {
         this.obj = obj;
@@ -134,12 +133,12 @@ public class CloneableBean implements Serializable, Cloneable {
      * <p>
      * To be used by classes extending CloneableBean. Although it works also for classes using
      * CloneableBean in a delegation pattern, for correctness those classes should use the
-     * 
+     *
      * @see #beanClone() beanClone method.
      *      <p>
      * @return a clone of the object bean.
      * @throws CloneNotSupportedException thrown if the object bean could not be cloned.
-     * 
+     *
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
@@ -150,12 +149,12 @@ public class CloneableBean implements Serializable, Cloneable {
      * Makes a deep bean clone of the object passed in the constructor.
      * <p>
      * To be used by classes using CloneableBean in a delegation pattern,
-     * 
+     *
      * @see #CloneableBean(Object) constructor.
-     * 
+     *
      * @return a clone of the object bean.
      * @throws CloneNotSupportedException thrown if the object bean could not be cloned.
-     * 
+     *
      */
     public Object beanClone() throws CloneNotSupportedException {
 
@@ -238,23 +237,20 @@ public class CloneableBean implements Serializable, Cloneable {
 
     private <T> Collection<T> cloneCollection(final Collection<T> collection) throws Exception {
         @SuppressWarnings("unchecked")
-        final Class<Collection<T>> mClass = (Class<Collection<T>>) collection.getClass();
-        final Collection<T> newColl = mClass.newInstance();
-        final Iterator<T> i = collection.iterator();
-        while (i.hasNext()) {
-            newColl.add(doClone(i.next()));
+        final Collection<T> newCollection = collection.getClass().newInstance();
+        for (final T item : collection) {
+            newCollection.add(doClone(item));
         }
-        return newColl;
+        return newCollection;
     }
 
-    private <S, T> Map<S, T> cloneMap(final Map<S, T> map) throws Exception {
+    private <K, V> Map<K, V> cloneMap(final Map<K, V> map) throws Exception {
         @SuppressWarnings("unchecked")
-        final Class<Map<S, T>> mClass = (Class<Map<S, T>>) map.getClass();
-        final Map<S, T> newMap = mClass.newInstance();
-        final Iterator<Entry<S, T>> entries = map.entrySet().iterator();
-        while (entries.hasNext()) {
-            final Map.Entry<S, T> entry = entries.next();
-            newMap.put(doClone(entry.getKey()), doClone(entry.getValue()));
+        final Map<K, V> newMap = map.getClass().newInstance();
+        for (final Entry<K, V> entry : map.entrySet()) {
+            final K clonedKey = doClone(entry.getKey());
+            final V clonedValue = doClone(entry.getValue());
+            newMap.put(clonedKey, clonedValue);
         }
         return newMap;
     }

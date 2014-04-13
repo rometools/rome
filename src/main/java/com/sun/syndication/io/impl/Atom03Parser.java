@@ -17,7 +17,6 @@
 package com.sun.syndication.io.impl;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
@@ -257,18 +256,17 @@ public class Atom03Parser extends BaseWireFeedParser {
             value = Base64.decode(e.getText());
         } else if (mode.equals(Content.XML)) {
             final XMLOutputter outputter = new XMLOutputter();
-            final List<org.jdom2.Content> eContent = e.getContent();
-            final Iterator<org.jdom2.Content> i = eContent.iterator();
-            while (i.hasNext()) {
-                final org.jdom2.Content c = i.next();
-                if (c instanceof Element) {
-                    final Element eC = (Element) c;
-                    if (eC.getNamespace().equals(getAtomNamespace())) {
-                        ((Element) c).setNamespace(Namespace.NO_NAMESPACE);
+            final List<org.jdom2.Content> contents = e.getContent();
+            for (final org.jdom2.Content content : contents) {
+                if (content instanceof Element) {
+                    final Element element = (Element) content;
+                    if (element.getNamespace().equals(getAtomNamespace())) {
+                        element.setNamespace(Namespace.NO_NAMESPACE);
                     }
                 }
+
             }
-            value = outputter.outputString(eContent);
+            value = outputter.outputString(contents);
         }
 
         final Content content = new Content();

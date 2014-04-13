@@ -1,7 +1,6 @@
 package com.sun.syndication.io.impl;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
@@ -24,19 +23,19 @@ import com.sun.syndication.io.WireFeedParser;
 public abstract class BaseWireFeedParser implements WireFeedParser {
     /**
      * [TYPE].feed.ModuleParser.classes= [className] ...
-     * 
+     *
      */
     private static final String FEED_MODULE_PARSERS_POSFIX_KEY = ".feed.ModuleParser.classes";
 
     /**
      * [TYPE].item.ModuleParser.classes= [className] ...
-     * 
+     *
      */
     private static final String ITEM_MODULE_PARSERS_POSFIX_KEY = ".item.ModuleParser.classes";
 
     /**
      * [TYPE].person.ModuleParser.classes= [className] ...
-     * 
+     *
      */
     private static final String PERSON_MODULE_PARSERS_POSFIX_KEY = ".person.ModuleParser.classes";
 
@@ -57,11 +56,11 @@ public abstract class BaseWireFeedParser implements WireFeedParser {
     /**
      * Returns the type of feed the parser handles.
      * <p>
-     * 
+     *
      * @see WireFeed for details on the format of this string.
      *      <p>
      * @return the type of feed the parser handles.
-     * 
+     *
      */
     @Override
     public String getType() {
@@ -80,29 +79,25 @@ public abstract class BaseWireFeedParser implements WireFeedParser {
         return personModuleParsers.parseModules(itemElement, locale);
     }
 
-    protected List<Element> extractForeignMarkup(final Element e, final Extendable ext, final Namespace basens) {
-        final ArrayList<Element> foreignMarkup = new ArrayList<Element>();
-        final Iterator<Element> children = e.getChildren().iterator();
-        while (children.hasNext()) {
-            final Element elem = children.next();
-            if (
-            // if elemet not in the RSS namespace
-            !basens.equals(elem.getNamespace())
-            // and elem was not handled by a module
-                    && null == ext.getModule(elem.getNamespaceURI())) {
+    protected List<Element> extractForeignMarkup(final Element e, final Extendable ext, final Namespace namespace) {
 
-                // save it as foreign markup,
-                // but we can't detach it while we're iterating
-                foreignMarkup.add(elem.clone());
+        final ArrayList<Element> foreignElements = new ArrayList<Element>();
+
+        for (final Element element : e.getChildren()) {
+            if (!namespace.equals(element.getNamespace()) && ext.getModule(element.getNamespaceURI()) == null) {
+                // if element not in the RSS namespace and elem was not handled by a module save it
+                // as foreign markup but we can't detach it while we're iterating
+                foreignElements.add(element.clone());
             }
         }
-        // Now we can detach the foreign markup elements
-        final Iterator<Element> fm = foreignMarkup.iterator();
-        while (fm.hasNext()) {
-            final Element elem = fm.next();
-            elem.detach();
+
+        // now we can detach the foreign markup elements
+        for (final Element foreignElement : foreignElements) {
+            foreignElement.detach();
         }
-        return foreignMarkup;
+
+        return foreignElements;
+
     }
 
     protected Attribute getAttribute(final Element e, final String attributeName) {

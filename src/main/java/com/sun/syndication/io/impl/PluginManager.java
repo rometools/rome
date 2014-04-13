@@ -17,6 +17,7 @@
 package com.sun.syndication.io.impl;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -31,9 +32,9 @@ import com.sun.syndication.io.WireFeedParser;
 
 /**
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public abstract class PluginManager<T> {
     private final String[] propertyValues;
@@ -46,9 +47,9 @@ public abstract class PluginManager<T> {
     /**
      * Creates a PluginManager
      * <p>
-     * 
+     *
      * @param propertyKey property key defining the plugins classes
-     * 
+     *
      */
     protected PluginManager(final String propertyKey) {
         this(propertyKey, null, null);
@@ -102,28 +103,30 @@ public abstract class PluginManager<T> {
                 }
 
                 pluginsMap.put(getKey(plugin), plugin);
-                pluginsList.add(plugin); // to preserve the order of
-                                         // definition
-                // in the rome.properties files
-            }
-            Iterator<T> i = pluginsMap.values().iterator();
-            while (i.hasNext()) {
-                finalPluginsList.add(i.next()); // to remove overridden plugin
-                                                // impls
+                // to preserve the order of definition in the rome.properties files
+                pluginsList.add(plugin);
             }
 
-            i = pluginsList.iterator();
-            while (i.hasNext()) {
-                final Object plugin = i.next();
+            final Collection<T> plugins = pluginsMap.values();
+            for (final T plugin : plugins) {
+                // to remove overridden plugin impls
+                finalPluginsList.add(plugin);
+            }
+
+            final Iterator<T> iterator = pluginsList.iterator();
+            while (iterator.hasNext()) {
+                final T plugin = iterator.next();
                 if (!finalPluginsList.contains(plugin)) {
-                    i.remove();
+                    iterator.remove();
                 }
             }
+
         } catch (final Exception ex) {
             throw new RuntimeException("could not instantiate plugin " + className, ex);
         } catch (final ExceptionInInitializerError er) {
             throw new RuntimeException("could not instantiate plugin " + className, er);
         }
+
     }
 
     /**
@@ -132,11 +135,11 @@ public abstract class PluginManager<T> {
      * load classes (instead of Class.forName). This is designed to improve OSGi compatibility.
      * Further information can be found in https://rome.dev.java.net/issues/show_bug.cgi?id=118
      * <p>
-     * 
+     *
      * @return array containing the classes defined in the properties files.
      * @throws java.lang.ClassNotFoundException thrown if one of the classes defined in the
      *             properties file cannot be loaded and hard failure is ON.
-     * 
+     *
      */
     @SuppressWarnings("unchecked")
     private Class<T>[] getClasses() throws ClassNotFoundException {
