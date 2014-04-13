@@ -35,7 +35,7 @@ import com.sun.syndication.feed.module.Module;
  * @author Alejandro Abdelnur
  * 
  */
-public interface SyndFeed extends Cloneable, CopyFrom<SyndFeed>, Extendable {
+public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Returns the real feed types the SyndFeedImpl supports when converting from and to.

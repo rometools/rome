@@ -1031,7 +1031,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
     }
 
     @Override
-    public final void copyFrom(final CopyFrom<? extends Module> obj) {
+    public final void copyFrom(final CopyFrom obj) {
         COPY_FROM_HELPER.copy(this, obj);
     }
 
@@ -1055,7 +1055,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
         basePropInterfaceMap.put("coverages", String.class);
         basePropInterfaceMap.put("rightsList", String.class);
 
-        final Map<Class<? extends CopyFrom<?>>, Class<?>> basePropClassImplMap = new HashMap<Class<? extends CopyFrom<?>>, Class<?>>();
+        final Map<Class<? extends CopyFrom>, Class<?>> basePropClassImplMap = new HashMap<Class<? extends CopyFrom>, Class<?>>();
         basePropClassImplMap.put(DCSubject.class, DCSubjectImpl.class);
 
         COPY_FROM_HELPER = new CopyFromHelper(DCModule.class, basePropInterfaceMap, basePropClassImplMap);

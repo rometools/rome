@@ -140,7 +140,7 @@ public class SyModuleImpl extends ModuleImpl implements SyModule {
     }
 
     @Override
-    public void copyFrom(final CopyFrom<? extends Module> obj) {
+    public void copyFrom(final CopyFrom obj) {
         COPY_FROM_HELPER.copy(this, obj);
     }
 
@@ -152,7 +152,7 @@ public class SyModuleImpl extends ModuleImpl implements SyModule {
         basePropInterfaceMap.put("updateFrequency", Integer.TYPE);
         basePropInterfaceMap.put("updateBase", Date.class);
 
-        final Map<Class<? extends CopyFrom<?>>, Class<?>> basePropClassImplMap = Collections.<Class<? extends CopyFrom<?>>, Class<?>> emptyMap();
+        final Map<Class<? extends CopyFrom>, Class<?>> basePropClassImplMap = Collections.<Class<? extends CopyFrom>, Class<?>> emptyMap();
 
         COPY_FROM_HELPER = new CopyFromHelper(SyModule.class, basePropInterfaceMap, basePropClassImplMap);
     }

@@ -46,9 +46,9 @@ public class CopyFromHelper {
     private static final Set<Class<?>> BASIC_TYPES = new HashSet<Class<?>>();
     private static final Object[] NO_PARAMS = new Object[0];
 
-    private final Class<? extends CopyFrom<?>> beanInterfaceClass;
+    private final Class<? extends CopyFrom> beanInterfaceClass;
     private final Map<String, Class<?>> baseInterfaceMap; // ENTRIES(propertyName,interface.class)
-    private final Map<Class<? extends CopyFrom<?>>, Class<?>> baseImplMap; // ENTRIES(interface.class,implementation.class)
+    private final Map<Class<? extends CopyFrom>, Class<?>> baseImplMap; // ENTRIES(interface.class,implementation.class)
 
     static {
         BASIC_TYPES.add(Boolean.class);
@@ -63,8 +63,8 @@ public class CopyFromHelper {
         BASIC_TYPES.add(Date.class);
     }
 
-    public CopyFromHelper(final Class<? extends CopyFrom<?>> beanInterfaceClass, final Map<String, Class<?>> basePropInterfaceMap,
-            final Map<Class<? extends CopyFrom<?>>, Class<?>> basePropClassImplMap) {
+    public CopyFromHelper(final Class<? extends CopyFrom> beanInterfaceClass, final Map<String, Class<?>> basePropInterfaceMap,
+            final Map<Class<? extends CopyFrom>, Class<?>> basePropClassImplMap) {
         this.beanInterfaceClass = beanInterfaceClass;
         baseInterfaceMap = basePropInterfaceMap;
         baseImplMap = basePropClassImplMap;
@@ -104,11 +104,11 @@ public class CopyFromHelper {
 
     }
 
-    private CopyFrom<?> createInstance(final Class<? extends CopyFrom<?>> interfaceClass) throws Exception {
+    private CopyFrom createInstance(final Class<? extends CopyFrom> interfaceClass) throws Exception {
         if (baseImplMap.get(interfaceClass) == null) {
             return null;
         } else {
-            return (CopyFrom<?>) baseImplMap.get(interfaceClass).newInstance();
+            return (CopyFrom) baseImplMap.get(interfaceClass).newInstance();
         }
     }
 
@@ -128,11 +128,11 @@ public class CopyFromHelper {
                     value = (T) ((Date) value).clone();
                 }
             } else { // it goes CopyFrom
-                if (value instanceof CopyFrom<?>) {
-                    final CopyFrom<T> source = (CopyFrom<T>) value;
-                    CopyFrom<T> target = (CopyFrom<T>) createInstance(source.getInterface());
+                if (value instanceof CopyFrom) {
+                    final CopyFrom source = (CopyFrom) value;
+                    CopyFrom target = (CopyFrom) createInstance(source.getInterface());
                     if (target == null) {
-                        target = (CopyFrom<T>) value.getClass().newInstance();
+                        target = (CopyFrom) value.getClass().newInstance();
                     }
                     target.copyFrom(source);
                     value = (T) target;

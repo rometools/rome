@@ -5,7 +5,7 @@ import com.sun.syndication.feed.CopyFrom;
 /**
  * @author Alejandro Abdelnur
  */
-public interface SyndEnclosure extends Cloneable, CopyFrom<SyndEnclosure> {
+public interface SyndEnclosure extends Cloneable, CopyFrom {
     /**
      * Returns the enclosure URL.
      * <p>

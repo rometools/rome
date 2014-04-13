@@ -26,7 +26,7 @@ import com.sun.syndication.feed.CopyFrom;
  * @author Alejandro Abdelnur
  * 
  */
-public interface SyndImage extends Cloneable, CopyFrom<SyndImage> {
+public interface SyndImage extends Cloneable, CopyFrom {
     /**
      * Returns the image title.
      * <p>

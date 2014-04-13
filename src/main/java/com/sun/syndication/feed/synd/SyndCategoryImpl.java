@@ -180,12 +180,12 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
     }
 
     @Override
-    public Class<? extends CopyFrom<SyndCategory>> getInterface() {
+    public Class<? extends CopyFrom> getInterface() {
         return SyndCategory.class;
     }
 
     @Override
-    public void copyFrom(final CopyFrom<? extends SyndCategory> obj) {
+    public void copyFrom(final CopyFrom obj) {
         COPY_FROM_HELPER.copy(this, obj);
     }
 
@@ -195,7 +195,7 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
         final Map<String, Class<?>> basePropInterfaceMap = new HashMap<String, Class<?>>();
         basePropInterfaceMap.put("name", String.class);
         basePropInterfaceMap.put("taxonomyUri", String.class);
-        final Map<Class<? extends CopyFrom<?>>, Class<?>> basePropClassImplMap = Collections.emptyMap();
+        final Map<Class<? extends CopyFrom>, Class<?>> basePropClassImplMap = Collections.emptyMap();
         COPY_FROM_HELPER = new CopyFromHelper(SyndCategory.class, basePropInterfaceMap, basePropClassImplMap);
     }
 

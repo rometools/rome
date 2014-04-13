@@ -28,7 +28,7 @@ import com.sun.syndication.feed.CopyFrom;
  * @author Alejandro Abdelnur
  * 
  */
-public interface Module extends Cloneable, CopyFrom<Module>, Serializable {
+public interface Module extends Cloneable, CopyFrom, Serializable {
 
     /**
      * Returns the URI of the module.

@@ -158,7 +158,7 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
     }
 
     @Override
-    public void copyFrom(final CopyFrom<? extends DCSubject> obj) {
+    public void copyFrom(final CopyFrom obj) {
         COPY_FROM_HELPER.copy(this, obj);
     }
 
@@ -169,7 +169,7 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
         basePropInterfaceMap.put("taxonomyUri", String.class);
         basePropInterfaceMap.put("value", String.class);
 
-        final Map<Class<? extends CopyFrom<?>>, Class<?>> basePropClassImplMap = Collections.<Class<? extends CopyFrom<?>>, Class<?>> emptyMap();
+        final Map<Class<? extends CopyFrom>, Class<?>> basePropClassImplMap = Collections.<Class<? extends CopyFrom>, Class<?>> emptyMap();
 
         COPY_FROM_HELPER = new CopyFromHelper(DCSubject.class, basePropInterfaceMap, basePropClassImplMap);
     }

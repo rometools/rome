@@ -26,7 +26,7 @@ import com.sun.syndication.feed.CopyFrom;
  * @author Alejandro Abdelnur
  * 
  */
-public interface SyndCategory extends Cloneable, CopyFrom<SyndCategory> {
+public interface SyndCategory extends Cloneable, CopyFrom {
     /**
      * Returns the category name.
      * <p>

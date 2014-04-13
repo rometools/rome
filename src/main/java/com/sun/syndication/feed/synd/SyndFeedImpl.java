@@ -762,7 +762,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     }
 
     @Override
-    public void copyFrom(final CopyFrom<? extends SyndFeed> obj) {
+    public void copyFrom(final CopyFrom obj) {
         COPY_FROM_HELPER.copy(this, obj);
     }
 
@@ -783,7 +783,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
         basePropInterfaceMap.put("modules", Module.class);
         basePropInterfaceMap.put("categories", SyndCategory.class);
 
-        final Map<Class<? extends CopyFrom<?>>, Class<?>> basePropClassImplMap = new HashMap<Class<? extends CopyFrom<?>>, Class<?>>();
+        final Map<Class<? extends CopyFrom>, Class<?>> basePropClassImplMap = new HashMap<Class<? extends CopyFrom>, Class<?>>();
         basePropClassImplMap.put(SyndEntry.class, SyndEntryImpl.class);
         basePropClassImplMap.put(SyndImage.class, SyndImageImpl.class);
         basePropClassImplMap.put(SyndCategory.class, SyndCategoryImpl.class);
