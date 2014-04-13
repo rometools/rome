@@ -3,6 +3,8 @@ package org.rometools.feed.module.sle;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.rometools.feed.module.sle.types.EntryValue;
+
 import com.sun.syndication.feed.module.Extendable;
 
 class SortableList<T extends Extendable> extends ArrayList<T> {
@@ -16,7 +18,7 @@ class SortableList<T extends Extendable> extends ArrayList<T> {
     /**
      * performs a selection sort on all the beans in the List
      */
-    public synchronized void sortOnProperty(final Object value, final boolean ascending, final ValueStrategy strat) {
+    public synchronized void sortOnProperty(final Object value, final boolean ascending, final ValueStrategy strategy) {
 
         final int elementCount = size();
 
@@ -27,8 +29,8 @@ class SortableList<T extends Extendable> extends ArrayList<T> {
                 final T entry1 = get(i);
                 final T entry2 = get(j);
 
-                final Comparable oc1 = strat.getValue(entry1, value);
-                final Comparable oc2 = strat.getValue(entry2, value);
+                final EntryValue oc1 = strategy.getValue(entry1, value);
+                final EntryValue oc2 = strategy.getValue(entry2, value);
 
                 if (oc1 != oc2) {
                     final boolean bothNotNull = oc1 != null && oc2 != null;

@@ -9,18 +9,15 @@ import com.sun.syndication.feed.module.Extendable;
 class GroupStrategy implements ValueStrategy {
 
     @Override
-    public Comparable getValue(final Extendable o, final Object value) {
-        Comparable oc = null;
+    public EntryValue getValue(final Extendable extendable, final Object value) {
         try {
             final String uri = ModuleParser.TEMP.getURI();
-            final SleEntry entry = (SleEntry) o.getModule(uri);
+            final SleEntry entry = (SleEntry) extendable.getModule(uri);
             final Group group = (Group) value;
-            final EntryValue entryValue = entry.getGroupByElement(group);
-            oc = entryValue.getValue();
+            return entry.getGroupByElement(group);
         } catch (final NullPointerException npe) {
-            ; // watch it go by
+            return null;
         }
-        return oc;
     }
 
 }

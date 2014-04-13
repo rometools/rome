@@ -26,7 +26,7 @@ import org.jdom2.Namespace;
  *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
-public interface EntryValue<T extends Comparable<T>> extends Serializable, Cloneable {
+public interface EntryValue extends Serializable, Cloneable, Comparable<EntryValue> {
     /**
      * Returns the name of the element.
      *
@@ -46,7 +46,7 @@ public interface EntryValue<T extends Comparable<T>> extends Serializable, Clone
      *
      * @return Returns the value of the element.
      */
-    public T getValue();
+    public Comparable<?> getValue();
 
     /**
      * Returns the namespace of the element.
@@ -54,4 +54,5 @@ public interface EntryValue<T extends Comparable<T>> extends Serializable, Clone
      * @return Returns the namespace of the element.
      */
     public Namespace getNamespace();
+
 }

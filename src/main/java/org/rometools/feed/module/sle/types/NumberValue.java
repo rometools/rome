@@ -28,14 +28,15 @@ import com.sun.syndication.feed.impl.ObjectBean;
  *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
-public class NumberValue implements EntryValue<BigDecimal> {
+public class NumberValue implements EntryValue {
 
     private static final long serialVersionUID = 8043418996659222922L;
 
     private final ObjectBean obj = new ObjectBean(NumberValue.class, this);
-    private BigDecimal value;
+
     private String element;
     private String label;
+    private BigDecimal value;
     private Namespace namespace = Namespace.XML_NAMESPACE;
 
     public void setElement(final String element) {
@@ -66,13 +67,21 @@ public class NumberValue implements EntryValue<BigDecimal> {
     }
 
     @Override
+    public Namespace getNamespace() {
+        return namespace;
+    }
+
+    public void setNamespace(final Namespace namespace) {
+        this.namespace = namespace == null ? Namespace.XML_NAMESPACE : namespace;
+    }
+
+    @Override
     public Object clone() {
         final NumberValue clone = new NumberValue();
         clone.setElement(getElement());
         clone.setLabel(getLabel());
         clone.setValue(value);
         clone.setNamespace(namespace);
-
         return clone;
     }
 
@@ -92,11 +101,13 @@ public class NumberValue implements EntryValue<BigDecimal> {
     }
 
     @Override
-    public Namespace getNamespace() {
-        return namespace;
+    public int compareTo(final EntryValue other) {
+        final Comparable<?> otherValue = other.getValue();
+        if (otherValue instanceof BigDecimal) {
+            return value.compareTo((BigDecimal) otherValue);
+        } else {
+            throw new RuntimeException("Can't compare different EntryValue types");
+        }
     }
 
-    public void setNamespace(final Namespace namespace) {
-        this.namespace = namespace == null ? Namespace.XML_NAMESPACE : namespace;
-    }
 }

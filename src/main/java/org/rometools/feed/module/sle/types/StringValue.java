@@ -26,18 +26,19 @@ import com.sun.syndication.feed.impl.ObjectBean;
  *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
-public class StringValue implements EntryValue<String> {
+public class StringValue implements EntryValue {
 
     private static final long serialVersionUID = -8384073300710802173L;
 
     private final ObjectBean obj = new ObjectBean(StringValue.class, this);
+
     private String element;
     private String label;
     private String value;
     private Namespace namespace = Namespace.XML_NAMESPACE;
 
-    public void setElement(final String element) {
-        this.element = element;
+    public void setValue(final String value) {
+        this.value = value;
     }
 
     @Override
@@ -54,13 +55,22 @@ public class StringValue implements EntryValue<String> {
         return label;
     }
 
-    public void setValue(final String value) {
-        this.value = value;
-    }
-
     @Override
     public String getValue() {
         return value;
+    }
+
+    public void setElement(final String element) {
+        this.element = element;
+    }
+
+    @Override
+    public Namespace getNamespace() {
+        return namespace;
+    }
+
+    public void setNamespace(final Namespace namespace) {
+        this.namespace = namespace == null ? Namespace.XML_NAMESPACE : namespace;
     }
 
     @Override
@@ -70,7 +80,6 @@ public class StringValue implements EntryValue<String> {
         clone.setLabel(getLabel());
         clone.setValue(value);
         clone.setNamespace(namespace);
-
         return clone;
     }
 
@@ -90,11 +99,13 @@ public class StringValue implements EntryValue<String> {
     }
 
     @Override
-    public Namespace getNamespace() {
-        return namespace;
+    public int compareTo(final EntryValue other) {
+        final Comparable<?> otherValue = other.getValue();
+        if (otherValue instanceof String) {
+            return value.compareTo((String) otherValue);
+        } else {
+            throw new RuntimeException("Can't compare different EntryValue types");
+        }
     }
 
-    public void setNamespace(final Namespace namespace) {
-        this.namespace = namespace == null ? Namespace.XML_NAMESPACE : namespace;
-    }
 }

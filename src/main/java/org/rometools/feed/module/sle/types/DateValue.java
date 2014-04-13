@@ -28,65 +28,51 @@ import com.sun.syndication.feed.impl.ObjectBean;
  *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
-public class DateValue implements EntryValue<Date> {
+public class DateValue implements EntryValue {
 
     private static final long serialVersionUID = 8864338943592633517L;
 
     private final ObjectBean obj = new ObjectBean(DateValue.class, this);
-    private Date value;
+
     private String element;
     private String label;
+    private Date value;
     private Namespace namespace = Namespace.XML_NAMESPACE;
 
-    /**
-     *
-     * @param element
-     */
     public void setElement(final String element) {
         this.element = element;
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public String getElement() {
         return element;
     }
 
-    /**
-     *
-     * @param label
-     */
     public void setLabel(final String label) {
         this.label = label;
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public String getLabel() {
         return label;
     }
 
-    /**
-     *
-     * @param value
-     */
     public void setValue(final Date value) {
         this.value = value;
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public Date getValue() {
         return value;
+    }
+
+    @Override
+    public Namespace getNamespace() {
+        return namespace;
+    }
+
+    public void setNamespace(final Namespace namespace) {
+        this.namespace = namespace == null ? Namespace.XML_NAMESPACE : namespace;
     }
 
     @Override
@@ -115,11 +101,13 @@ public class DateValue implements EntryValue<Date> {
     }
 
     @Override
-    public Namespace getNamespace() {
-        return namespace;
+    public int compareTo(final EntryValue other) {
+        final Comparable<?> otherValue = other.getValue();
+        if (otherValue instanceof Date) {
+            return value.compareTo((Date) otherValue);
+        } else {
+            throw new RuntimeException("Can't compare different EntryValue types");
+        }
     }
 
-    public void setNamespace(final Namespace namespace) {
-        this.namespace = namespace == null ? Namespace.XML_NAMESPACE : namespace;
-    }
 }
