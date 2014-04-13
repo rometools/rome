@@ -126,7 +126,4 @@ public class ContentModuleImplTest extends TestCase {
                 & test.getEncodeds().equals(module.getEncodeds()));
     }
 
-    // TODO add test methods here. The name must begin with 'test'. For example:
-    // public void testHello() {}
-
 }

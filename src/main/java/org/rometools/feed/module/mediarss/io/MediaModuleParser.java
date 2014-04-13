@@ -58,27 +58,15 @@ import com.sun.syndication.io.impl.NumberParser;
  *
  */
 public class MediaModuleParser implements ModuleParser {
-    private static final Logger LOG = Logger.getLogger(MediaModuleParser.class.getName());
 
-    /*
-     * Namespace instance for this URI.
-     */
+    private static final Logger LOG = Logger.getLogger(MediaModuleParser.class.getName());
     private static final Namespace NS = Namespace.getNamespace(MediaModule.URI);
 
-    /*
-     * (non-Javadoc)
-     * @see com.sun.syndication.io.ModuleParser#getNamespaceUri()
-     */
     @Override
     public String getNamespaceUri() {
-        // TODO Auto-generated method stub
         return MediaModule.URI;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.sun.syndication.io.ModuleParser#parse(org.jdom2.Element)
-     */
     @Override
     public Module parse(final Element mmRoot, final Locale locale) {
         MediaModuleImpl mod = null;
@@ -436,4 +424,5 @@ public class MediaModuleParser implements ModuleParser {
     public Namespace getNS() {
         return NS;
     }
+
 }

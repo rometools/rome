@@ -115,14 +115,15 @@ public class ContentItemTest extends TestCase {
     /**
      * this is a stupid test.
      *
-     * @todo make better Test of ContentResource method, of class com.totsp.xml.syndication.content.ContentItem.
+     * @todo make better Test of ContentResource method, of class
+     *       com.totsp.xml.syndication.content.ContentItem.
      */
     public void testEquals() {
         System.out.println("testEquals");
         final String test = "http://www.w3.org/2000/svg";
 
         assertTrue(test.equals(test));
-        final ContentItem test2 = (ContentItem) ContentModuleImplTest.contentItems.get(0);
+        final ContentItem test2 = ContentModuleImplTest.contentItems.get(0);
         assertTrue(!test.equals(test2));
         final ContentItem test3 = new ContentItem();
         test3.setContentFormat(new String("http://www.w3.org/1999/xhtml"));
@@ -132,7 +133,5 @@ public class ContentItemTest extends TestCase {
         test3.setContentValue(new String("<em>This is <strong>very</strong></em> <strong>cool</strong>."));
         // assertEquals( test2, test3 );
     }
-    // TODO add test methods here. The name must begin with 'test'. For example:
-    // public void testHello() {}
 
 }
