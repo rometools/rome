@@ -91,7 +91,7 @@ public interface AtomRequest {
      * Returns an Enumeration of String objects containing the names of the parameters contained in
      * this request.
      */
-    public Enumeration getParameterNames();
+    public Enumeration<String> getParameterNames();
 
     /**
      * Returns an array of String objects containing all of the values the given request parameter
@@ -123,12 +123,12 @@ public interface AtomRequest {
     /**
      * Returns all the values of the specified request header as an Enumeration of String objects.
      */
-    public Enumeration getHeaders(String arg0);
+    public Enumeration<String> getHeaders(String arg0);
 
     /**
      * Returns an enumeration of all the header names this request contains.
      */
-    public Enumeration getHeaderNames();
+    public Enumeration<String> getHeaderNames();
 
     /**
      * Returns the value of the specified request header as an int.

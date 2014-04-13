@@ -408,7 +408,7 @@ public class MetaWeblogBlog implements Blog {
         private int pos = 0;
         private boolean eod = false;
         private static final int BUFSIZE = 30;
-        private List results = null;
+        private List<Map<String, Object>> results = null;
 
         /**
          * Iterator for looping over MetaWeblog API entries.
@@ -436,9 +436,7 @@ public class MetaWeblogBlog implements Blog {
          */
         @Override
         public BlogEntry next() {
-            @SuppressWarnings("unchecked")
-            final Map<String, Object> entryHash = (Map<String, Object>) results.get(pos++);
-            return new MetaWeblogEntry(MetaWeblogBlog.this, entryHash);
+            return new MetaWeblogEntry(MetaWeblogBlog.this, results.get(pos++));
         }
 
         /**
@@ -451,8 +449,10 @@ public class MetaWeblogBlog implements Blog {
         private void getNextEntries() throws BlogClientException {
             final int requestSize = pos + BUFSIZE;
             try {
-                final Object[] resultsArray = (Object[]) getXmlRpcClient().execute("metaWeblog.getRecentPosts",
-                        new Object[] { blogid, userName, password, new Integer(requestSize) });
+                final Object[] params = new Object[] { blogid, userName, password, new Integer(requestSize) };
+                final Object response = getXmlRpcClient().execute("metaWeblog.getRecentPosts", params);
+                @SuppressWarnings("unchecked")
+                final Map<String, Object>[] resultsArray = (Map<String, Object>[]) response;
                 results = Arrays.asList(resultsArray);
             } catch (final Exception e) {
                 throw new BlogClientException("ERROR: XML-RPC error getting entry", e);

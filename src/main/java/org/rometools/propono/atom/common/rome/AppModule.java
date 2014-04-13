@@ -1,6 +1,6 @@
 /*
  * Copyright 2007 Apache Software Foundation
- * 
+ *
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  The ASF licenses this file to You
  * under the Apache License, Version 2.0 (the "License"); you may not
@@ -27,6 +27,7 @@ import com.sun.syndication.feed.module.Module;
  * ROME Extension Module to Atom protocol extensions to Atom format.
  */
 public interface AppModule extends Module {
+
     public static final String URI = "http://www.w3.org/2007/app";
 
     /** True if entry is a draft */

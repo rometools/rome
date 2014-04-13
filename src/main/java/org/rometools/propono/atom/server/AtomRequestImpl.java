@@ -89,7 +89,8 @@ public class AtomRequestImpl implements AtomRequest {
     }
 
     @Override
-    public Enumeration getParameterNames() {
+    @SuppressWarnings("unchecked")
+    public Enumeration<String> getParameterNames() {
         return wrapped.getParameterNames();
     }
 
@@ -99,6 +100,7 @@ public class AtomRequestImpl implements AtomRequest {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Map<String, Object> getParameterMap() {
         return wrapped.getParameterMap();
     }
@@ -119,12 +121,14 @@ public class AtomRequestImpl implements AtomRequest {
     }
 
     @Override
-    public Enumeration getHeaders(final String arg0) {
+    @SuppressWarnings("unchecked")
+    public Enumeration<String> getHeaders(final String arg0) {
         return wrapped.getHeaders(arg0);
     }
 
     @Override
-    public Enumeration getHeaderNames() {
+    @SuppressWarnings("unchecked")
+    public Enumeration<String> getHeaderNames() {
         return wrapped.getHeaderNames();
     }
 
