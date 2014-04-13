@@ -5,11 +5,11 @@ import java.util.Collection;
 
 import com.sun.syndication.feed.module.Extendable;
 
-class SortableList extends ArrayList<Extendable> {
+class SortableList<T extends Extendable> extends ArrayList<T> {
 
     private static final long serialVersionUID = 1L;
 
-    public SortableList(final Collection<Extendable> c) {
+    public SortableList(final Collection<T> c) {
         super(c);
     }
 
@@ -20,10 +20,10 @@ class SortableList extends ArrayList<Extendable> {
         for (int i = 0; i < size() - 1; i++) {
             for (int j = i + 1; j < size(); j++) {
 
-                final Extendable o1 = get(i);
+                final T o1 = get(i);
                 final Comparable oc1 = strat.getValue(o1, value);
 
-                final Extendable o2 = get(j);
+                final T o2 = get(j);
                 final Comparable oc2 = strat.getValue(o2, value);
 
                 System.out.println(oc1 + " < " + oc2);

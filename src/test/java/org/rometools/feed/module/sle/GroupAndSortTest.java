@@ -37,41 +37,41 @@ public class GroupAndSortTest extends AbstractTestCase {
         final File testdata = new File(super.getTestFile("data/bookexample.xml"));
         final SyndFeed feed = new SyndFeedInput().build(testdata);
 
-        final List<SyndEntry> feedEntries = feed.getEntries();
-        final List<Extendable> entries = new ArrayList<Extendable>(feedEntries);
+        List<SyndEntry> entries = feed.getEntries();
 
-        final SimpleListExtension sle = (SimpleListExtension) feed.getModule(SimpleListExtension.URI);
-        final Sort[] sortFields = sle.getSortFields();
+        final SimpleListExtension extention = (SimpleListExtension) feed.getModule(SimpleListExtension.URI);
+        final Sort[] sortFields = extention.getSortFields();
 
         final Sort sortByDate = sortFields[1];
         final Sort sortByTitle = sortFields[2];
 
         // sort by date ascending
-        List<Extendable> sortedEntries = SleUtility.sort(entries, sortByDate, true);
-        SyndEntry entry = (SyndEntry) sortedEntries.get(0);
+        List<SyndEntry> sortedEntries = SleUtility.sort(entries, sortByDate, true);
+        SyndEntry entry = sortedEntries.get(0);
         assertEquals("Great Journeys of the Past", entry.getTitle());
 
         // sort by date descending
         sortedEntries = SleUtility.sort(entries, sortByDate, false);
-        entry = (SyndEntry) sortedEntries.get(0);
+        entry = sortedEntries.get(0);
         assertEquals("Horror Stories, vol 16", entry.getTitle());
 
         // sort by date ascending
         sortedEntries = SleUtility.sort(entries, sortByDate, true);
 
         // update first entry and reinitialize
-        entry = (SyndEntry) sortedEntries.get(0);
+        entry = sortedEntries.get(0);
         entry.setTitle("ZZZZZ");
         SleUtility.initializeForSorting(feed);
+        entries = feed.getEntries();
 
         // sort by title desc
         sortedEntries = SleUtility.sort(entries, sortByTitle, false);
-        entry = (SyndEntry) sortedEntries.get(0);
+        entry = sortedEntries.get(0);
         assertEquals("ZZZZZ", entry.getTitle());
 
         // sort by title asc
         sortedEntries = SleUtility.sort(entries, sortByTitle, true);
-        entry = (SyndEntry) sortedEntries.get(0);
+        entry = sortedEntries.get(0);
         assertEquals("Horror Stories, vol 16", entry.getTitle());
 
     }

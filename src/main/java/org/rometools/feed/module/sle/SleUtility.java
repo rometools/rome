@@ -56,11 +56,11 @@ public final class SleUtility {
      * @param groups Group fields (from the SimpleListExtension module)
      * @return Grouped list of entries.
      */
-    public static List<Extendable> group(final List<Extendable> values, final Group[] groups) {
-        final SortableList list = values instanceof SortableList ? (SortableList) values : new SortableList(values);
-        final GroupStrategy gs = new GroupStrategy();
+    public static <T extends Extendable> List<T> group(final List<T> values, final Group[] groups) {
+        final SortableList<T> list = getSortableList(values);
+        final GroupStrategy strategy = new GroupStrategy();
         for (int i = groups.length - 1; i >= 0; i--) {
-            list.sortOnProperty(groups[i], true, gs);
+            list.sortOnProperty(groups[i], true, strategy);
         }
         return list;
     }
@@ -73,13 +73,8 @@ public final class SleUtility {
      * @param ascending Sort ascending/descending.
      * @return Sorted list of values
      */
-    public static List<Extendable> sort(final List<Extendable> values, final Sort sort, final boolean ascending) {
-        final SortableList list;
-        if (values instanceof SortableList) {
-            list = (SortableList) values;
-        } else {
-            list = new SortableList(values);
-        }
+    public static <T extends Extendable> List<T> sort(final List<T> values, final Sort sort, final boolean ascending) {
+        final SortableList<T> list = getSortableList(values);
         list.sortOnProperty(sort, ascending, new SortStrategy());
         return list;
     }
@@ -93,8 +88,8 @@ public final class SleUtility {
      * @param ascending Sort ascending/descending
      * @return Grouped and sorted list of entries.
      */
-    public static List<Extendable> sortAndGroup(final List<Extendable> values, final Group[] groups, final Sort sort, final boolean ascending) {
-        List<Extendable> list = sort(values, sort, ascending);
+    public static <T extends Extendable> List<T> sortAndGroup(final List<T> values, final Group[] groups, final Sort sort, final boolean ascending) {
+        List<T> list = sort(values, sort, ascending);
         list = group(list, groups);
         return list;
     }
@@ -113,6 +108,16 @@ public final class SleUtility {
         final Document document = output.outputJDom(feed);
         final SyndFeed copy = new SyndFeedInput().build(document);
         feed.copyFrom(copy);
+    }
+
+    private static <T extends Extendable> SortableList<T> getSortableList(final List<T> list) {
+        SortableList<T> sortableList;
+        if (list instanceof SortableList) {
+            sortableList = (SortableList<T>) list;
+        } else {
+            sortableList = new SortableList<T>(list);
+        }
+        return sortableList;
     }
 
 }
