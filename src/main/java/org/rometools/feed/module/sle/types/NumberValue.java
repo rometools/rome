@@ -28,17 +28,15 @@ import com.sun.syndication.feed.impl.ObjectBean;
  *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
-public class NumberValue implements EntryValue {
+public class NumberValue implements EntryValue<BigDecimal> {
+
     private static final long serialVersionUID = 8043418996659222922L;
-    private BigDecimal value;
+
     private final ObjectBean obj = new ObjectBean(NumberValue.class, this);
+    private BigDecimal value;
     private String element;
     private String label;
     private Namespace namespace = Namespace.XML_NAMESPACE;
-
-    /** Creates a new instance of NumberValue */
-    public NumberValue() {
-    }
 
     public void setElement(final String element) {
         this.element = element;
@@ -63,7 +61,7 @@ public class NumberValue implements EntryValue {
     }
 
     @Override
-    public Comparable<BigDecimal> getValue() {
+    public BigDecimal getValue() {
         return value;
     }
 

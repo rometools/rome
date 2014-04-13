@@ -26,17 +26,15 @@ import com.sun.syndication.feed.impl.ObjectBean;
  *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
-public class StringValue implements EntryValue {
+public class StringValue implements EntryValue<String> {
+
     private static final long serialVersionUID = -8384073300710802173L;
+
     private final ObjectBean obj = new ObjectBean(StringValue.class, this);
     private String element;
     private String label;
     private String value;
     private Namespace namespace = Namespace.XML_NAMESPACE;
-
-    /** Creates a new instance of StringValue */
-    public StringValue() {
-    }
 
     public void setElement(final String element) {
         this.element = element;
@@ -61,7 +59,7 @@ public class StringValue implements EntryValue {
     }
 
     @Override
-    public Comparable<String> getValue() {
+    public String getValue() {
         return value;
     }
 
