@@ -112,7 +112,7 @@ public class ModuleGenerator implements com.sun.syndication.io.ModuleGenerator {
             listInfo.addContent(sort);
         }
 
-        if (listInfo.getChildren().size() > 0) {
+        if (!listInfo.getChildren().isEmpty()) {
             element.addContent(listInfo);
         }
     }

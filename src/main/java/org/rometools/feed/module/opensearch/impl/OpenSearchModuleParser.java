@@ -89,7 +89,7 @@ public class OpenSearchModuleParser implements ModuleParser {
 
         final List<Element> queries = dcRoot.getChildren("Query", OS_NS);
 
-        if (queries != null && queries.size() > 0) {
+        if (queries != null && !queries.isEmpty()) {
 
             // Create the OSQuery list
             final List<OSQuery> osqList = new LinkedList<OSQuery>();

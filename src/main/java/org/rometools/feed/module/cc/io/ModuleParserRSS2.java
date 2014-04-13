@@ -97,7 +97,7 @@ public class ModuleParserRSS2 implements ModuleParser {
                     licenses.add(license);
                 }
             }
-            if (licenses.size() > 0) {
+            if (!licenses.isEmpty()) {
                 module.setAllLicenses(licenses.toArray(new License[0]));
             }
         }
@@ -109,7 +109,7 @@ public class ModuleParserRSS2 implements ModuleParser {
             final Element licenseTag = it.next();
             licenses.add(License.findByValue(licenseTag.getTextTrim()));
         }
-        if (licenses.size() > 0) {
+        if (!licenses.isEmpty()) {
             module.setLicenses(licenses.toArray(new License[0]));
         }
 

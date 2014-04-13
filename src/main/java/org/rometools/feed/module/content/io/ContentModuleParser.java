@@ -81,7 +81,7 @@ public class ContentModuleParser implements com.sun.syndication.io.ModuleParser 
         final ArrayList<String> contentStrings = new ArrayList<String>();
         final ArrayList<String> encodedStrings = new ArrayList<String>();
 
-        if (encodeds.size() > 0) {
+        if (!encodeds.isEmpty()) {
             foundSomething = true;
 
             for (int i = 0; i < encodeds.size(); i++) {

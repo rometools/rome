@@ -103,7 +103,7 @@ public class ContentModuleGenerator implements com.sun.syndication.io.ModuleGene
 
         final List<ContentItem> contentItems = cm.getContentItems();
 
-        if (contentItems != null && contentItems.size() > 0) {
+        if (contentItems != null && !contentItems.isEmpty()) {
             final Element items = new Element("items", CONTENT_NS);
             final Element bag = new Element("Bag", RDF_NS);
             items.addContent(bag);

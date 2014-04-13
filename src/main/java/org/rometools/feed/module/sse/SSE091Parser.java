@@ -172,7 +172,7 @@ public class SSE091Parser implements DelegatingModuleParser {
     private Element getFirstContent(final Element element, final String name) {
         final List<Element> filterList = element.getContent(new ContentFilter(name));
         Element firstContent = null;
-        if (filterList != null && filterList.size() > 0) {
+        if (filterList != null && !filterList.isEmpty()) {
             firstContent = filterList.get(0);
         }
         return firstContent;

@@ -120,7 +120,7 @@ public class ModuleParserRSS1 implements ModuleParser {
             licenses.add(License.findByValue(licenseTag.getAttributeValue("resource", RDF)));
         }
 
-        if (licenses.size() > 0) {
+        if (!licenses.isEmpty()) {
             module.setLicenses(licenses.toArray(new License[licenses.size()]));
         }
 
