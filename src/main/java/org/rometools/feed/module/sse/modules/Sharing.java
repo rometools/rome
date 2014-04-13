@@ -3,7 +3,6 @@ package org.rometools.feed.module.sse.modules;
 import java.util.Date;
 
 import com.sun.syndication.feed.CopyFrom;
-import com.sun.syndication.feed.module.Module;
 
 /**
  * <pre>
@@ -52,7 +51,7 @@ public class Sharing extends SSEModule {
     private Related related;
 
     @Override
-    public void copyFrom(final CopyFrom<? extends Module> obj) {
+    public void copyFrom(final CopyFrom obj) {
         final Sharing sharing = (Sharing) obj;
         ordered = sharing.ordered;
         since = sharing.since == null ? null : (Date) sharing.since.clone();
@@ -62,8 +61,9 @@ public class Sharing extends SSEModule {
     }
 
     /**
-     * ordered An optional, Boolean attribute. If present and its value is "true" (lower-case), subscribers MUST treat the item list as an ordered set (see
-     * section 3.2). If this attribute is omitted or blank, it is assumed that this is an unordered feed.
+     * ordered An optional, Boolean attribute. If present and its value is "true" (lower-case),
+     * subscribers MUST treat the item list as an ordered set (see section 3.2). If this attribute
+     * is omitted or blank, it is assumed that this is an unordered feed.
      *
      * @return a Boolean indicating if subscribers must treat the item list as an ordered set.
      */
@@ -81,10 +81,12 @@ public class Sharing extends SSEModule {
     }
 
     /**
-     * Provides an Integer that expresses the size of the window of change history kept by the publisher. Subscribers MAY use this value to determine the
-     * frequency with which they must read a feed.
+     * Provides an Integer that expresses the size of the window of change history kept by the
+     * publisher. Subscribers MAY use this value to determine the frequency with which they must
+     * read a feed.
      *
-     * @return an Integer that expresses the size of the window of change history kept by the publisher.
+     * @return an Integer that expresses the size of the window of change history kept by the
+     *         publisher.
      */
     public Integer getWindow() {
         return window;
@@ -93,15 +95,17 @@ public class Sharing extends SSEModule {
     /**
      * Set an Integer that expresses the size of the window of change history kept by the publisher.
      *
-     * @param window an Integer that expresses the size of the window of change history kept by the publisher.
+     * @param window an Integer that expresses the size of the window of change history kept by the
+     *            publisher.
      */
     public void setWindow(final Integer window) {
         this.window = window;
     }
 
     /**
-     * since An optional date-time attribute. All items updated on or after this date-time are included in the feed. If not present or null, the
-     * "beginning of time" is assumed and the feed contains the node's complete item set as of the until date-time.
+     * since An optional date-time attribute. All items updated on or after this date-time are
+     * included in the feed. If not present or null, the "beginning of time" is assumed and the feed
+     * contains the node's complete item set as of the until date-time.
      *
      * @return An optional date-time attribute.
      */
@@ -110,7 +114,8 @@ public class Sharing extends SSEModule {
     }
 
     /**
-     * Sets the optional date-time attribute where all items updated on or after this date-time are included in the feed.
+     * Sets the optional date-time attribute where all items updated on or after this date-time are
+     * included in the feed.
      *
      * @param since An optional date-time attribute.
      */
@@ -119,9 +124,10 @@ public class Sharing extends SSEModule {
     }
 
     /**
-     * until An optional date-time attribute. Items updated after this date are not included in the feed. The publisher must guarantee that the value of until
-     * will increase if any items in the feed are updated. If this attribute is omitted or blank, the subscriber cannot make assumptions about when the feed was
-     * updated.
+     * until An optional date-time attribute. Items updated after this date are not included in the
+     * feed. The publisher must guarantee that the value of until will increase if any items in the
+     * feed are updated. If this attribute is omitted or blank, the subscriber cannot make
+     * assumptions about when the feed was updated.
      *
      * @return the date where items updated after this date are not included in the feed.
      */

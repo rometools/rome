@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.sun.syndication.feed.CopyFrom;
-import com.sun.syndication.feed.module.Module;
 
 /**
  * <pre>
@@ -48,7 +47,7 @@ public class Sync extends SSEModule {
     private List<Conflict> conflicts;
 
     @Override
-    public void copyFrom(final CopyFrom<? extends Module> obj) {
+    public void copyFrom(final CopyFrom obj) {
         final Sync sync = (Sync) obj;
         deleted = sync.deleted;
         version = sync.version;
@@ -62,18 +61,21 @@ public class Sync extends SSEModule {
     }
 
     /**
-     * Provides access to the sync id, a required, string attribute. This is the identifier for the item.
+     * Provides access to the sync id, a required, string attribute. This is the identifier for the
+     * item.
      * <p/>
-     * The ID is assigned by the creator of the item, and MUST NOT be changed by subsequent publishers. Applications will collate and compare these identifiers,
-     * therefore they MUST conform to the syntax for Namespace Specific Strings (the NSS portion of a URN) in RFC 2141.
+     * The ID is assigned by the creator of the item, and MUST NOT be changed by subsequent
+     * publishers. Applications will collate and compare these identifiers, therefore they MUST
+     * conform to the syntax for Namespace Specific Strings (the NSS portion of a URN) in RFC 2141.
      */
     public String getId() {
         return id;
     }
 
     /**
-     * Set the identifier for the item. The ID MUST be globally unique within the feed and it MUST be identical across feeds if an item is being shared or
-     * replicated as part of multiple distinct independent feeds.
+     * Set the identifier for the item. The ID MUST be globally unique within the feed and it MUST
+     * be identical across feeds if an item is being shared or replicated as part of multiple
+     * distinct independent feeds.
      *
      * @param id the identifier for the item.
      */
@@ -82,8 +84,8 @@ public class Sync extends SSEModule {
     }
 
     /**
-     * Provides access to a required, integer attribute. This is the modification sequence number of the item, starting at 1 and incrementing by 1 indefinitely
-     * for each subsequent modification.
+     * Provides access to a required, integer attribute. This is the modification sequence number of
+     * the item, starting at 1 and incrementing by 1 indefinitely for each subsequent modification.
      */
     public Integer getVersion() {
         return version;
@@ -99,8 +101,10 @@ public class Sync extends SSEModule {
     }
 
     /**
-     * Provide access to an optional, Boolean attribute. If present and its value is "true" (lower-case), it indicates that the item has been deleted and this
-     * is a tombstone. If not present, or if present with value of "false" or "", then the item is not deleted. All other values are invalid.
+     * Provide access to an optional, Boolean attribute. If present and its value is "true"
+     * (lower-case), it indicates that the item has been deleted and this is a tombstone. If not
+     * present, or if present with value of "false" or "", then the item is not deleted. All other
+     * values are invalid.
      */
     public Boolean isDeleted() {
         return deleted;
@@ -116,20 +120,25 @@ public class Sync extends SSEModule {
     }
 
     /**
-     * Provides access to an optional, Boolean conflict attribute. If present and its value is "true" (lower-case), it indicates there was an update conflict
-     * detected when processing an update of this item, and it should potentially be examined by the user. If not present, or present with value of "false" or
-     * "", Then no conflict has been detected. All other values are invalid.
+     * Provides access to an optional, Boolean conflict attribute. If present and its value is
+     * "true" (lower-case), it indicates there was an update conflict detected when processing an
+     * update of this item, and it should potentially be examined by the user. If not present, or
+     * present with value of "false" or "", Then no conflict has been detected. All other values are
+     * invalid.
      *
-     * @return indicates there was an update conflict detected when processing an update of this item.
+     * @return indicates there was an update conflict detected when processing an update of this
+     *         item.
      */
     public Boolean isConflict() {
         return conflict;
     }
 
     /**
-     * Set an indication of whether there was an update conflict detected when processing an update of this item.
+     * Set an indication of whether there was an update conflict detected when processing an update
+     * of this item.
      *
-     * @param conflict an indication of whether there was an update conflict detected when processing an update of this item.
+     * @param conflict an indication of whether there was an update conflict detected when
+     *            processing an update of this item.
      */
     public void setConflict(final Boolean conflict) {
         this.conflict = conflict;

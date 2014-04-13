@@ -23,7 +23,6 @@ import org.rometools.feed.module.opensearch.entity.OSQuery;
 
 import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.atom.Link;
-import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.feed.module.ModuleImpl;
 
 /**
@@ -134,7 +133,7 @@ public class OpenSearchModuleImpl extends ModuleImpl implements OpenSearchModule
      * @see com.sun.syndication.feed.CopyFrom#copyFrom(java.lang.Object)
      */
     @Override
-    public void copyFrom(final CopyFrom<? extends Module> obj) {
+    public void copyFrom(final CopyFrom obj) {
         final OpenSearchModule osm = (OpenSearchModule) obj;
         setTotalResults(osm.getTotalResults());
         setItemsPerPage(osm.getItemsPerPage());

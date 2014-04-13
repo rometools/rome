@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 
 import com.sun.syndication.feed.CopyFrom;
-import com.sun.syndication.feed.module.Module;
 
 /**
  * <pre>
@@ -40,7 +39,7 @@ public class History extends SSEModule {
     }
 
     @Override
-    public void copyFrom(final CopyFrom<? extends Module> other) {
+    public void copyFrom(final CopyFrom other) {
         final History otherHistory = (History) other;
         when = otherHistory.when == null ? null : (Date) otherHistory.when.clone();
         // dont copy immutable
@@ -55,8 +54,8 @@ public class History extends SSEModule {
     /**
      * Get the date-time when the most recent modification took place.
      * <p/>
-     * This is the date-time when the most recent modification took place. If this attribute is omitted the value defaults to the earliest time representable in
-     * RFC 822.
+     * This is the date-time when the most recent modification took place. If this attribute is
+     * omitted the value defaults to the earliest time representable in RFC 822.
      *
      * @return the date-time when the most recent modification took place.
      */
@@ -77,15 +76,18 @@ public class History extends SSEModule {
     }
 
     /**
-     * Provides access to a text attribute identifying the unique endpoint that made the most recent modification. This SHOULD be some combination of user and
-     * device (so that a given user can edit a feed on multiple devices). This attribute is used programmatically to break ties in case two changes happened at
-     * the same time (within the same second).
+     * Provides access to a text attribute identifying the unique endpoint that made the most recent
+     * modification. This SHOULD be some combination of user and device (so that a given user can
+     * edit a feed on multiple devices). This attribute is used programmatically to break ties in
+     * case two changes happened at the same time (within the same second).
      * <p/>
      * Either or both of the when or by must be present; it is invalid to have neither.
      * <p/>
-     * If this attribute is omitted the value defaults to the empty string (which must be less than all other values for purposes of collation).
+     * If this attribute is omitted the value defaults to the empty string (which must be less than
+     * all other values for purposes of collation).
      *
-     * @return A text attribute identifying the unique endpoint that made the most recent modification.
+     * @return A text attribute identifying the unique endpoint that made the most recent
+     *         modification.
      */
     public String getBy() {
         return by;

@@ -73,7 +73,7 @@ public class YWeatherModuleImpl extends ModuleImpl implements YWeatherEntryModul
     }
 
     @Override
-    public void copyFrom(final CopyFrom<? extends Module> o) {
+    public void copyFrom(final CopyFrom o) {
         final YWeatherModuleImpl from = (YWeatherModuleImpl) o;
         setAstronomy(from.getAstronomy() != null ? (Astronomy) from.getAstronomy().clone() : null);
         setCondition(from.getCondition() != null ? (Condition) from.getCondition().clone() : null);

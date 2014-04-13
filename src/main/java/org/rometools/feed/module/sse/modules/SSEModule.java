@@ -56,5 +56,5 @@ public abstract class SSEModule implements Module {
     }
 
     @Override
-    public abstract void copyFrom(CopyFrom<? extends Module> obj);
+    public abstract void copyFrom(CopyFrom obj);
 }

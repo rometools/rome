@@ -3,7 +3,6 @@ package org.rometools.feed.module.sse.modules;
 import java.util.Date;
 
 import com.sun.syndication.feed.CopyFrom;
-import com.sun.syndication.feed.module.Module;
 
 /**
  * <pre>
@@ -28,7 +27,7 @@ public class Update extends SSEModule {
     private String by;
 
     @Override
-    public void copyFrom(final CopyFrom<? extends Module> other) {
+    public void copyFrom(final CopyFrom other) {
         final Update otherUpdate = (Update) other;
         otherUpdate.when = when == null ? null : (Date) when.clone();
         // dont copy immutable
@@ -36,8 +35,9 @@ public class Update extends SSEModule {
     }
 
     /**
-     * Provides access to the date-time when the modification took place. If this attribute is omitted the value defaults to the earliest time representable in
-     * RFC 822. Either or both of the when or by attributes MUST be present; it is invalid to have neither.
+     * Provides access to the date-time when the modification took place. If this attribute is
+     * omitted the value defaults to the earliest time representable in RFC 822. Either or both of
+     * the when or by attributes MUST be present; it is invalid to have neither.
      */
     public Date getWhen() {
         return when;
@@ -53,9 +53,11 @@ public class Update extends SSEModule {
     }
 
     /**
-     * Provides access to a text attribute identifying the unique endpoint that made a modification. This SHOULD be some combination of user and device (so that
-     * a given user can edit a feed on multiple devices). This attribute is used programmatically to break ties in case two changes happened at the same time
-     * (within the same second). Either or both of the when or by must be present; it is invalid to have neither.
+     * Provides access to a text attribute identifying the unique endpoint that made a modification.
+     * This SHOULD be some combination of user and device (so that a given user can edit a feed on
+     * multiple devices). This attribute is used programmatically to break ties in case two changes
+     * happened at the same time (within the same second). Either or both of the when or by must be
+     * present; it is invalid to have neither.
      *
      * @return access to a text attribute identifying the unique endpoint that made a modification.
      */

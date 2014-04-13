@@ -3,7 +3,6 @@ package org.rometools.feed.module.sse.modules;
 import java.util.Date;
 
 import com.sun.syndication.feed.CopyFrom;
-import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.feed.rss.Item;
 
 /**
@@ -17,10 +16,12 @@ public class Conflict extends SSEModule {
     public static final String NAME = "conflict";
 
     /**
-     * An optional, string attribute. This text attribute identifies the endpoint that made the conflicting modification. It is used and compared
-     * programmatically. See sx:update for format guidance.
+     * An optional, string attribute. This text attribute identifies the endpoint that made the
+     * conflicting modification. It is used and compared programmatically. See sx:update for format
+     * guidance.
      * <p>
-     * Note: Either or both of the when or by attributes MUST be present; it is invalid to have neither.
+     * Note: Either or both of the when or by attributes MUST be present; it is invalid to have
+     * neither.
      */
     public static final String BY_ATTRIBUTE = "by";
 
@@ -30,9 +31,11 @@ public class Conflict extends SSEModule {
     public static final String VERSION_ATTRIBUTE = "version";
 
     /**
-     * An optional, date-time attribute. This is the date-time when the conflicting modification took place. See sx:update for format guidance.
+     * An optional, date-time attribute. This is the date-time when the conflicting modification
+     * took place. See sx:update for format guidance.
      * <p>
-     * Note: Either or both of the when or by attributes MUST be present; it is invalid to have neither.
+     * Note: Either or both of the when or by attributes MUST be present; it is invalid to have
+     * neither.
      */
     public static final String WHEN_ATTRIBUTE = "when";
 
@@ -42,7 +45,7 @@ public class Conflict extends SSEModule {
     private Item conflictItem;
 
     @Override
-    public void copyFrom(final CopyFrom<? extends Module> obj) {
+    public void copyFrom(final CopyFrom obj) {
         final Conflict conflict = (Conflict) obj;
         conflict.when = when == null ? null : (Date) when.clone();
         conflict.by = by;

@@ -3,7 +3,6 @@ package org.rometools.feed.module.sse.modules;
 import java.util.Date;
 
 import com.sun.syndication.feed.CopyFrom;
-import com.sun.syndication.feed.module.Module;
 
 /**
  * <pre>
@@ -24,12 +23,14 @@ public class Related extends SSEModule {
     public static final String NAME = "related";
 
     /**
-     * Indicates whether the link points to a file containing the complete collection of items for this feed.
+     * Indicates whether the link points to a file containing the complete collection of items for
+     * this feed.
      */
     public static final int COMPLETE = 0;
 
     /**
-     * Indicates whether the link points to a feed whose contents are being incorporated into this feed by the publisher.
+     * Indicates whether the link points to a feed whose contents are being incorporated into this
+     * feed by the publisher.
      */
     public static final int AGGREGATED = 1;
 
@@ -51,7 +52,7 @@ public class Related extends SSEModule {
     public static final String UNTIL_ATTRIBUTE = "until";
 
     @Override
-    public void copyFrom(final CopyFrom<? extends Module> obj) {
+    public void copyFrom(final CopyFrom obj) {
         final Related related = (Related) obj;
         related.link = link;
         related.since = since == null ? null : (Date) since.clone();
@@ -100,9 +101,11 @@ public class Related extends SSEModule {
     /**
      * type A required, string attribute. This attribute can have one of the following values:
      * <p>
-     * "complete" if the link points to file containing the complete collection of items for this feed.
+     * "complete" if the link points to file containing the complete collection of items for this
+     * feed.
      * <p>
-     * "aggregated" if the link points to a feed whose contents are being incorporated into this feed by the publisher.
+     * "aggregated" if the link points to a feed whose contents are being incorporated into this
+     * feed by the publisher.
      *
      * @return the type of the releated feed.
      */
@@ -120,8 +123,8 @@ public class Related extends SSEModule {
     }
 
     /**
-     * An optional, date-time attribute. This is the starting point of the related feed. If this attribute is omitted or blank, it is assumed that this is a
-     * complete feed.
+     * An optional, date-time attribute. This is the starting point of the related feed. If this
+     * attribute is omitted or blank, it is assumed that this is a complete feed.
      *
      * @return the starting point of the related feed.
      */
