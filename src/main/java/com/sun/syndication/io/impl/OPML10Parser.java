@@ -21,11 +21,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.StringTokenizer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.jdom2.Document;
 import org.jdom2.Element;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.opml.Attribute;
@@ -39,7 +39,8 @@ import com.sun.syndication.io.WireFeedParser;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
-    private static Logger LOG = Logger.getLogger(OPML10Parser.class.getName());
+
+    private static Logger LOG = LoggerFactory.getLogger(OPML10Parser.class);
 
     /** Creates a new instance of Opml10Parser */
     public OPML10Parser() {
@@ -108,7 +109,7 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
         try {
             opml.setWindowBottom(readInteger(head.getChildText("windowBottom")));
         } catch (final NumberFormatException nfe) {
-            LOG.log(Level.WARNING, "Unable to parse windowBottom", nfe);
+            LOG.warn("Unable to parse windowBottom", nfe);
 
             if (validate) {
                 throw new FeedException("Unable to parse windowBottom", nfe);
@@ -118,13 +119,13 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
         try {
             opml.setWindowLeft(readInteger(head.getChildText("windowLeft")));
         } catch (final NumberFormatException nfe) {
-            LOG.log(Level.WARNING, "Unable to parse windowLeft", nfe);
+            LOG.warn("Unable to parse windowLeft", nfe);
         }
 
         try {
             opml.setWindowRight(readInteger(head.getChildText("windowRight")));
         } catch (final NumberFormatException nfe) {
-            LOG.log(Level.WARNING, "Unable to parse windowRight", nfe);
+            LOG.warn("Unable to parse windowRight", nfe);
 
             if (validate) {
                 throw new FeedException("Unable to parse windowRight", nfe);
@@ -134,7 +135,7 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
         try {
             opml.setWindowLeft(readInteger(head.getChildText("windowLeft")));
         } catch (final NumberFormatException nfe) {
-            LOG.log(Level.WARNING, "Unable to parse windowLeft", nfe);
+            LOG.warn("Unable to parse windowLeft", nfe);
 
             if (validate) {
                 throw new FeedException("Unable to parse windowLeft", nfe);
@@ -144,7 +145,7 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
         try {
             opml.setWindowTop(readInteger(head.getChildText("windowTop")));
         } catch (final NumberFormatException nfe) {
-            LOG.log(Level.WARNING, "Unable to parse windowTop", nfe);
+            LOG.warn("Unable to parse windowTop", nfe);
 
             if (validate) {
                 throw new FeedException("Unable to parse windowTop", nfe);
@@ -154,7 +155,7 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
         try {
             opml.setExpansionState(readIntArray(head.getChildText("expansionState")));
         } catch (final NumberFormatException nfe) {
-            LOG.log(Level.WARNING, "Unable to parse expansionState", nfe);
+            LOG.warn("Unable to parse expansionState", nfe);
 
             if (validate) {
                 throw new FeedException("Unable to parse expansionState", nfe);
@@ -194,7 +195,7 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
         try {
             outline.setBreakpoint(readBoolean(e.getAttributeValue("isBreakpoint")));
         } catch (final Exception ex) {
-            LOG.log(Level.WARNING, "Unable to parse isBreakpoint value", ex);
+            LOG.warn("Unable to parse isBreakpoint value", ex);
 
             if (validate) {
                 throw new FeedException("Unable to parse isBreakpoint value", ex);
@@ -204,7 +205,7 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
         try {
             outline.setComment(readBoolean(e.getAttributeValue("isComment")));
         } catch (final Exception ex) {
-            LOG.log(Level.WARNING, "Unable to parse isComment value", ex);
+            LOG.warn("Unable to parse isComment value", ex);
 
             if (validate) {
                 throw new FeedException("Unable to parse isComment value", ex);

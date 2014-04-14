@@ -22,7 +22,9 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Stack;
-import java.util.logging.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.opml.Attribute;
@@ -46,7 +48,9 @@ import com.sun.syndication.feed.synd.SyndPersonImpl;
  * @author cooper
  */
 public class ConverterForOPML10 implements Converter {
-    private static final Logger LOG = Logger.getLogger(ConverterForOPML10.class.getName().toString());
+
+    private static final Logger LOG = LoggerFactory.getLogger(ConverterForOPML10.class);
+
     public static final String URI_TREE = "urn:rome.tree";
     public static final String URI_ATTRIBUTE = "urn:rome.attribute#";
 
@@ -73,7 +77,8 @@ public class ConverterForOPML10 implements Converter {
      * <p>
      *
      * @param feed real feed to copy/convert.
-     * @param syndFeed the SyndFeedImpl that will contain the copied/converted values of the real feed.
+     * @param syndFeed the SyndFeedImpl that will contain the copied/converted values of the real
+     *            feed.
      */
     @Override
     public void copyInto(final WireFeed feed, final SyndFeed syndFeed) {
@@ -200,8 +205,12 @@ public class ConverterForOPML10 implements Converter {
         final List<SyndEntry> entries = Collections.synchronizedList(syndFeed.getEntries());
 
         final HashMap<String, Outline> entriesByNode = new HashMap<String, Outline>();
-        final ArrayList<OutlineHolder> doAfterPass = new ArrayList<OutlineHolder>(); // this will hold entries that we can't parent the first time.
-        final ArrayList<Outline> root = new ArrayList<Outline>(); // this holds root level outlines;
+        
+        // this will hold entries that we can't parent the first time.
+        final ArrayList<OutlineHolder> doAfterPass = new ArrayList<OutlineHolder>(); 
+
+        // this holds root level outlines;
+        final ArrayList<Outline> root = new ArrayList<Outline>(); 
 
         for (int i = 0; i < entries.size(); i++) {
             final SyndEntry entry = entries.get(i);
@@ -294,7 +303,7 @@ public class ConverterForOPML10 implements Converter {
 
             if (parent == null) {
                 root.add(o.outline);
-                LOG.warning("Unable to find parent node :" + o.parent);
+                LOG.warn("Unable to find parent node: {}", o.parent);
             } else {
                 parent.getChildren().add(o.outline);
             }
