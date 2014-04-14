@@ -17,11 +17,8 @@ package org.rometools.propono.blogclient.atomprotocol;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.rometools.propono.atom.client.ClientEntry;
 import org.rometools.propono.atom.common.rome.AppModule;
 import org.rometools.propono.atom.common.rome.AppModuleImpl;
@@ -39,7 +36,6 @@ import com.sun.syndication.feed.synd.SyndPerson;
  * Atom protocol implementation of BlogEntry.
  */
 public class AtomEntry extends BaseBlogEntry implements BlogEntry {
-    static final Log logger = LogFactory.getLog(AtomCollection.class);
 
     String editURI = null;
     AtomCollection collection = null;
@@ -61,9 +57,6 @@ public class AtomEntry extends BaseBlogEntry implements BlogEntry {
         copyFromRomeEntry(entry);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String getToken() {
         return editURI;
@@ -91,9 +84,6 @@ public class AtomEntry extends BaseBlogEntry implements BlogEntry {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void save() throws BlogClientException {
         final boolean create = getToken() == null;
@@ -120,9 +110,6 @@ public class AtomEntry extends BaseBlogEntry implements BlogEntry {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void delete() throws BlogClientException {
         if (getToken() == null) {
@@ -216,8 +203,7 @@ public class AtomEntry extends BaseBlogEntry implements BlogEntry {
         }
         if (categories != null) {
             final List<com.sun.syndication.feed.atom.Category> romeCats = new ArrayList<com.sun.syndication.feed.atom.Category>();
-            for (final Iterator<Category> iter = categories.iterator(); iter.hasNext();) {
-                final BlogEntry.Category cat = iter.next();
+            for (final Category cat : categories) {
                 final com.sun.syndication.feed.atom.Category romeCategory = new com.sun.syndication.feed.atom.Category();
                 romeCategory.setTerm(cat.getId());
                 romeCategory.setScheme(cat.getUrl());

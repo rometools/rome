@@ -32,14 +32,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.jdom2.Document;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 import org.rometools.propono.atom.common.AtomService;
 import org.rometools.propono.atom.common.Categories;
 import org.rometools.propono.utils.Utilities;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.atom.Content;
 import com.sun.syndication.feed.atom.Entry;
@@ -66,7 +66,7 @@ public class AtomServlet extends HttpServlet {
     public static final String FEED_TYPE = "atom_1.0";
     private static String contextDirPath = null;
 
-    private static Log log = LogFactory.getFactory().getInstance(AtomServlet.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AtomServlet.class);
 
     static {
         Atom10Parser.setResolveURIs(true);
@@ -87,7 +87,7 @@ public class AtomServlet extends HttpServlet {
      */
     @Override
     protected void doGet(final HttpServletRequest req, final HttpServletResponse res) throws ServletException, IOException {
-        log.debug("Entering");
+        LOG.debug("Entering");
         final AtomHandler handler = createAtomRequestHandler(req, res);
         final String userName = handler.getAuthenticatedUsername();
         if (userName != null) {
@@ -150,16 +150,16 @@ public class AtomServlet extends HttpServlet {
                 }
             } catch (final AtomException ae) {
                 res.sendError(ae.getStatus(), ae.getMessage());
-                log.debug("ERROR processing GET", ae);
+                LOG.debug("An error occured while processing GET", ae);
             } catch (final Exception e) {
                 res.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
-                log.debug("ERROR processing GET", e);
+                LOG.debug("An error occured while processing GET", e);
             }
         } else {
             res.setHeader("WWW-Authenticate", "BASIC realm=\"AtomPub\"");
             res.sendError(HttpServletResponse.SC_UNAUTHORIZED);
         }
-        log.debug("Exiting");
+        LOG.debug("Exiting");
     }
 
     // -----------------------------------------------------------------------------
@@ -169,7 +169,7 @@ public class AtomServlet extends HttpServlet {
      */
     @Override
     protected void doPost(final HttpServletRequest req, final HttpServletResponse res) throws ServletException, IOException {
-        log.debug("Entering");
+        LOG.debug("Entering");
         final AtomHandler handler = createAtomRequestHandler(req, res);
         final String userName = handler.getAuthenticatedUsername();
         if (userName != null) {
@@ -256,16 +256,16 @@ public class AtomServlet extends HttpServlet {
                 }
             } catch (final AtomException ae) {
                 res.sendError(ae.getStatus(), ae.getMessage());
-                log.debug("ERROR processing POST", ae);
+                LOG.debug("An error occured while processing POST", ae);
             } catch (final Exception e) {
                 res.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
-                log.debug("ERROR processing POST", e);
+                LOG.debug("An error occured while processing POST", e);
             }
         } else {
             res.setHeader("WWW-Authenticate", "BASIC realm=\"AtomPub\"");
             res.sendError(HttpServletResponse.SC_UNAUTHORIZED);
         }
-        log.debug("Exiting");
+        LOG.debug("Exiting");
     }
 
     // -----------------------------------------------------------------------------
@@ -275,7 +275,7 @@ public class AtomServlet extends HttpServlet {
      */
     @Override
     protected void doPut(final HttpServletRequest req, final HttpServletResponse res) throws ServletException, IOException {
-        log.debug("Entering");
+        LOG.debug("Entering");
         final AtomHandler handler = createAtomRequestHandler(req, res);
         final String userName = handler.getAuthenticatedUsername();
         if (userName != null) {
@@ -304,10 +304,10 @@ public class AtomServlet extends HttpServlet {
                 }
             } catch (final AtomException ae) {
                 res.sendError(ae.getStatus(), ae.getMessage());
-                log.debug("ERROR processing PUT", ae);
+                LOG.debug("An error occured while processing PUT", ae);
             } catch (final Exception e) {
                 res.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
-                log.debug("ERROR processing PUT", e);
+                LOG.debug("An error occured while processing PUT", e);
             }
         } else {
             res.setHeader("WWW-Authenticate", "BASIC realm=\"AtomPub\"");
@@ -315,7 +315,7 @@ public class AtomServlet extends HttpServlet {
             // when I do that, so sticking with setStatus() for time being.
             res.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         }
-        log.debug("Exiting");
+        LOG.debug("Exiting");
     }
 
     // -----------------------------------------------------------------------------
@@ -324,7 +324,7 @@ public class AtomServlet extends HttpServlet {
      */
     @Override
     protected void doDelete(final HttpServletRequest req, final HttpServletResponse res) throws ServletException, IOException {
-        log.debug("Entering");
+        LOG.debug("Entering");
         final AtomHandler handler = createAtomRequestHandler(req, res);
         final String userName = handler.getAuthenticatedUsername();
         if (userName != null) {
@@ -338,10 +338,10 @@ public class AtomServlet extends HttpServlet {
                 }
             } catch (final AtomException ae) {
                 res.sendError(ae.getStatus(), ae.getMessage());
-                log.debug("ERROR processing DELETE", ae);
+                LOG.debug("An error occured while processing DELETE", ae);
             } catch (final Exception e) {
                 res.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
-                log.debug("ERROR processing DELETE", e);
+                LOG.debug("An error occured while processing DELETE", e);
             }
         } else {
             res.setHeader("WWW-Authenticate", "BASIC realm=\"AtomPub\"");
@@ -349,7 +349,7 @@ public class AtomServlet extends HttpServlet {
             // when I do that, so sticking with setStatus() for time being.
             res.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         }
-        log.debug("Exiting");
+        LOG.debug("Exiting");
     }
 
     /**

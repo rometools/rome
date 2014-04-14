@@ -26,15 +26,15 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Class which helps in handling File persistence related operations.
  */
 class FileStore {
 
-    private static final Log LOG = LogFactory.getFactory().getInstance(FileStore.class);
+    private static final Logger LOG = LoggerFactory.getLogger(FileStore.class);
 
     private static final FileStore fileStore = new FileStore();
 

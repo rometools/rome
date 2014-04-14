@@ -17,19 +17,20 @@ package org.rometools.propono.blogclient.atomprotocol;
 
 import java.util.Iterator;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.rometools.propono.atom.client.ClientEntry;
 import org.rometools.propono.atom.client.ClientMediaEntry;
 import org.rometools.propono.blogclient.BlogClientException;
 import org.rometools.propono.blogclient.BlogEntry;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Atom protocol implementation of BlogClient entry iterator.
  */
 public class AtomEntryIterator implements Iterator<BlogEntry> {
 
-    private static final Log logger = LogFactory.getLog(AtomEntryIterator.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AtomEntryIterator.class);
+
     private Iterator<ClientEntry> iterator = null;
     private AtomCollection collection = null;
 
@@ -63,7 +64,7 @@ public class AtomEntryIterator implements Iterator<BlogEntry> {
                 return new AtomEntry(collection, entry);
             }
         } catch (final Exception e) {
-            logger.error("ERROR fetching entry", e);
+            LOG.error("An error occured while fetching entry", e);
         }
         return null;
     }

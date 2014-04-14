@@ -23,13 +23,13 @@ import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpMethodBase;
 import org.apache.commons.httpclient.MultiThreadedHttpConnectionManager;
 import org.apache.commons.httpclient.methods.GetMethod;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.input.SAXBuilder;
 import org.rometools.propono.atom.common.AtomService;
 import org.rometools.propono.utils.ProponoException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.atom.Entry;
 import com.sun.syndication.io.impl.Atom10Parser;
@@ -42,7 +42,7 @@ import com.sun.syndication.io.impl.Atom10Parser;
  */
 public class ClientAtomService extends AtomService {
 
-    private static final Log LOGGER = LogFactory.getLog(ClientAtomService.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ClientAtomService.class);
 
     private String uri = null;
     private HttpClient httpClient = null;
@@ -106,12 +106,12 @@ public class ClientAtomService extends AtomService {
 
             final SAXBuilder builder = new SAXBuilder();
             final String doc = method.getResponseBodyAsString();
-            LOGGER.debug(doc);
+            LOG.debug(doc);
             return builder.build(method.getResponseBodyAsStream());
 
         } catch (final Throwable t) {
             final String msg = "ERROR retrieving Atom Service Document, code: " + code;
-            LOGGER.debug(msg, t);
+            LOG.debug(msg, t);
             throw new ProponoException(msg, t);
         } finally {
             if (method != null) {

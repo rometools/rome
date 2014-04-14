@@ -23,12 +23,7 @@ import static junit.framework.TestCase.assertTrue;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.ConsoleHandler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -47,6 +42,8 @@ import org.rometools.propono.atom.common.Categories;
 import org.rometools.propono.atom.common.Collection;
 import org.rometools.propono.atom.common.Workspace;
 import org.rometools.propono.utils.ProponoException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.atom.Category;
 import com.sun.syndication.feed.atom.Content;
@@ -57,7 +54,7 @@ import com.sun.syndication.feed.atom.Content;
  */
 public class AtomClientServerTest {
 
-    private static final Log log = LogFactory.getFactory().getInstance(AtomClientServerTest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AtomClientServerTest.class);
 
     private HttpServer server = null;
     public static final int TESTPORT = 8283;
@@ -85,14 +82,10 @@ public class AtomClientServerTest {
 
     @Before
     public void setUpClass() throws Exception {
-        log.info("---------------------------------------------");
-        log.info("Starting Jetty");
-        log.info("---------------------------------------------");
 
-        final ConsoleHandler handler = new ConsoleHandler();
-        final Logger logger = Logger.getLogger("org.rometools.propono");
-        logger.setLevel(Level.FINEST);
-        logger.addHandler(handler);
+        LOG.info("---------------------------------------------");
+        LOG.info("Starting Jetty");
+        LOG.info("---------------------------------------------");
 
         setupServer();
         final HttpContext context = createContext();
@@ -107,7 +100,7 @@ public class AtomClientServerTest {
     @After
     public void tearDownClass() throws Exception {
         if (server != null) {
-            log.info("Stoping Jetty");
+            LOG.info("Stoping Jetty");
             server.stop();
             server.destroy();
             server = null;
@@ -151,11 +144,11 @@ public class AtomClientServerTest {
         for (final Workspace workspace : service.getWorkspaces()) {
             final ClientWorkspace space = (ClientWorkspace) workspace;
             assertNotNull(space.getTitle());
-            log.debug("Workspace: " + space.getTitle());
+            LOG.debug("Workspace: {}", space.getTitle());
             for (final Object element : space.getCollections()) {
                 final ClientCollection col = (ClientCollection) element;
-                log.debug("   Collection: " + col.getTitle() + " Accepts: " + col.getAccepts());
-                log.debug("      href: " + col.getHrefResolved());
+                LOG.debug("   Collection: {} Accepts: {}", col.getTitle(), col.getAccepts());
+                LOG.debug("      href: {}", col.getHrefResolved());
                 assertNotNull(col.getTitle());
             }
         }

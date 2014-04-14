@@ -22,8 +22,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.rometools.propono.atom.common.AtomService;
 import org.rometools.propono.atom.common.Categories;
 import org.rometools.propono.atom.server.AtomException;
@@ -31,6 +29,8 @@ import org.rometools.propono.atom.server.AtomHandler;
 import org.rometools.propono.atom.server.AtomMediaResource;
 import org.rometools.propono.atom.server.AtomRequest;
 import org.rometools.propono.atom.server.AtomServlet;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.atom.Entry;
 import com.sun.syndication.feed.atom.Feed;
@@ -42,7 +42,7 @@ import com.sun.syndication.feed.atom.Feed;
  */
 public class FileBasedAtomHandler implements AtomHandler {
 
-    private static final Log LOGGER = LogFactory.getFactory().getInstance(FileBasedAtomHandler.class);
+    private static final Logger LOG = LoggerFactory.getLogger(FileBasedAtomHandler.class);
 
     private String userName = null;
     private String atomProtocolURL = null;
@@ -65,7 +65,7 @@ public class FileBasedAtomHandler implements AtomHandler {
      * @param uploaddir File storage upload dir.
      */
     public FileBasedAtomHandler(final HttpServletRequest req, final String uploaddir) {
-        LOGGER.debug("ctor");
+        LOG.debug("ctor");
 
         userName = authenticateBASIC(req);
 
@@ -134,12 +134,12 @@ public class FileBasedAtomHandler implements AtomHandler {
      */
     @Override
     public Categories getCategories(final AtomRequest areq) throws AtomException {
-        LOGGER.debug("getCollection");
+        LOG.debug("getCollection");
         final String[] pathInfo = StringUtils.split(areq.getPathInfo(), "/");
         final String handle = pathInfo[0];
         final String collection = pathInfo[1];
         final FileBasedCollection col = service.findCollectionByHandle(handle, collection);
-        return (Categories) col.getCategories(true).get(0);
+        return col.getCategories(true).get(0);
     }
 
     /**
@@ -152,7 +152,7 @@ public class FileBasedAtomHandler implements AtomHandler {
      */
     @Override
     public Feed getCollection(final AtomRequest areq) throws AtomException {
-        LOGGER.debug("getCollection");
+        LOG.debug("getCollection");
         final String[] pathInfo = StringUtils.split(areq.getPathInfo(), "/");
         final String handle = pathInfo[0];
         final String collection = pathInfo[1];
@@ -172,7 +172,7 @@ public class FileBasedAtomHandler implements AtomHandler {
      */
     @Override
     public Entry postEntry(final AtomRequest areq, final Entry entry) throws AtomException {
-        LOGGER.debug("postEntry");
+        LOG.debug("postEntry");
 
         final String[] pathInfo = StringUtils.split(areq.getPathInfo(), "/");
         final String handle = pathInfo[0];
@@ -197,7 +197,7 @@ public class FileBasedAtomHandler implements AtomHandler {
      */
     @Override
     public Entry getEntry(final AtomRequest areq) throws AtomException {
-        LOGGER.debug("getEntry");
+        LOG.debug("getEntry");
         final String[] pathInfo = StringUtils.split(areq.getPathInfo(), "/");
         final String handle = pathInfo[0];
         final String collection = pathInfo[1];
@@ -223,7 +223,7 @@ public class FileBasedAtomHandler implements AtomHandler {
      */
     @Override
     public void putEntry(final AtomRequest areq, final Entry entry) throws AtomException {
-        LOGGER.debug("putEntry");
+        LOG.debug("putEntry");
         final String[] pathInfo = StringUtils.split(areq.getPathInfo(), "/");
         final String handle = pathInfo[0];
         final String collection = pathInfo[1];
@@ -244,7 +244,7 @@ public class FileBasedAtomHandler implements AtomHandler {
      */
     @Override
     public void deleteEntry(final AtomRequest areq) throws AtomException {
-        LOGGER.debug("deleteEntry");
+        LOG.debug("deleteEntry");
         final String[] pathInfo = StringUtils.split(areq.getPathInfo(), "/");
         final String handle = pathInfo[0];
         final String collection = pathInfo[1];
@@ -255,7 +255,7 @@ public class FileBasedAtomHandler implements AtomHandler {
 
         } catch (final Exception e) {
             final String msg = "ERROR in atom.deleteResource";
-            LOGGER.error(msg, e);
+            LOG.error(msg, e);
             throw new AtomException(msg);
         }
     }
@@ -274,8 +274,8 @@ public class FileBasedAtomHandler implements AtomHandler {
         // get incoming slug from HTTP header
         final String slug = areq.getHeader("Slug");
 
-        if (LOGGER.isDebugEnabled()) {
-            LOGGER.debug("postMedia - title: " + entry.getTitle() + " slug:" + slug);
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("postMedia - title: " + entry.getTitle() + " slug:" + slug);
         }
 
         try {
@@ -290,7 +290,7 @@ public class FileBasedAtomHandler implements AtomHandler {
             } catch (final Exception e) {
                 e.printStackTrace();
                 final String msg = "ERROR reading posted file";
-                LOGGER.error(msg, e);
+                LOG.error(msg, e);
                 throw new AtomException(msg, e);
             } finally {
                 if (tempFile != null) {
@@ -312,7 +312,7 @@ public class FileBasedAtomHandler implements AtomHandler {
     @Override
     public void putMedia(final AtomRequest areq) throws AtomException {
 
-        LOGGER.debug("putMedia");
+        LOG.debug("putMedia");
         final String[] pathInfo = StringUtils.split(areq.getPathInfo(), "/");
         final String handle = pathInfo[0];
         final String collection = pathInfo[1];
@@ -328,7 +328,7 @@ public class FileBasedAtomHandler implements AtomHandler {
 
     @Override
     public AtomMediaResource getMediaResource(final AtomRequest areq) throws AtomException {
-        LOGGER.debug("putMedia");
+        LOG.debug("putMedia");
         final String[] pathInfo = StringUtils.split(areq.getPathInfo(), "/");
         final String handle = pathInfo[0];
         final String collection = pathInfo[1];
@@ -359,7 +359,7 @@ public class FileBasedAtomHandler implements AtomHandler {
      */
     @Override
     public boolean isCategoriesURI(final AtomRequest areq) {
-        LOGGER.debug("isCategoriesDocumentURI");
+        LOG.debug("isCategoriesDocumentURI");
         final String[] pathInfo = StringUtils.split(areq.getPathInfo(), "/");
         if (pathInfo.length == 3 && "categories".equals(pathInfo[2])) {
             return true;
@@ -372,7 +372,7 @@ public class FileBasedAtomHandler implements AtomHandler {
      */
     @Override
     public boolean isCollectionURI(final AtomRequest areq) {
-        LOGGER.debug("isCollectionURI");
+        LOG.debug("isCollectionURI");
         // workspace/collection-plural
         // if length is 2 and points to a valid collection then YES
         final String[] pathInfo = StringUtils.split(areq.getPathInfo(), "/");
@@ -392,7 +392,7 @@ public class FileBasedAtomHandler implements AtomHandler {
      */
     @Override
     public boolean isEntryURI(final AtomRequest areq) {
-        LOGGER.debug("isEntryURI");
+        LOG.debug("isEntryURI");
         // workspace/collection-singular/fsid
         // if length is 3 and points to a valid collection then YES
         final String[] pathInfo = StringUtils.split(areq.getPathInfo(), "/");
@@ -411,7 +411,7 @@ public class FileBasedAtomHandler implements AtomHandler {
      */
     @Override
     public boolean isMediaEditURI(final AtomRequest areq) {
-        LOGGER.debug("isMediaEditURI");
+        LOG.debug("isMediaEditURI");
         // workspace/collection-singular/fsid/media/fsid
         // if length is 4, points to a valid collection and fsid is mentioned
         // twice then YES
@@ -433,7 +433,7 @@ public class FileBasedAtomHandler implements AtomHandler {
      * BASIC authentication.
      */
     public String authenticateBASIC(final HttpServletRequest request) {
-        LOGGER.debug("authenticateBASIC");
+        LOG.debug("authenticateBASIC");
         boolean valid = false;
         String userID = null;
         String password = null;
@@ -458,7 +458,7 @@ public class FileBasedAtomHandler implements AtomHandler {
                 }
             }
         } catch (final Exception e) {
-            LOGGER.debug(e);
+            LOG.debug("An error occured while processing Basic authentication", e);
         }
         if (valid) {
             // For now assume userID as userName

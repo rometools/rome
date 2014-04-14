@@ -20,11 +20,11 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.apache.commons.httpclient.methods.GetMethod;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.jdom2.Document;
 import org.jdom2.input.SAXBuilder;
 import org.rometools.propono.utils.ProponoException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.atom.Entry;
 import com.sun.syndication.feed.atom.Feed;
@@ -36,7 +36,8 @@ import com.sun.syndication.io.WireFeedInput;
  */
 public class EntryIterator implements Iterator<ClientEntry> {
 
-    private static final Log LOGGER = LogFactory.getLog(EntryIterator.class);
+    private static final Logger LOG = LoggerFactory.getLogger(EntryIterator.class);
+
     private final ClientCollection collection;
 
     private Iterator<Entry> members = null;
@@ -60,7 +61,7 @@ public class EntryIterator implements Iterator<ClientEntry> {
             try {
                 getNextEntries();
             } catch (final Exception ignored) {
-                LOGGER.error("ERROR getting next entries", ignored);
+                LOG.error("An error occured while getting next entries", ignored);
             }
         }
         return members.hasNext();

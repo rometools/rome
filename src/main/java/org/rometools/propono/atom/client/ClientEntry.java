@@ -33,10 +33,10 @@ import org.apache.commons.httpclient.methods.EntityEnclosingMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.PutMethod;
 import org.apache.commons.httpclient.methods.StringRequestEntity;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.rometools.propono.utils.ProponoException;
 import org.rometools.propono.utils.Utilities;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.atom.Content;
 import com.sun.syndication.feed.atom.Entry;
@@ -51,7 +51,8 @@ import com.sun.syndication.io.impl.Atom10Parser;
 public class ClientEntry extends Entry {
 
     private static final long serialVersionUID = 1L;
-    private static final Log LOGGER = LogFactory.getLog(ClientEntry.class);
+
+    private static final Logger LOG = LoggerFactory.getLogger(ClientEntry.class);
 
     private ClientAtomService service = null;
     private ClientCollection collection = null;
@@ -154,7 +155,7 @@ public class ClientEntry extends Entry {
 
         } catch (final Exception e) {
             final String msg = "ERROR: updating entry, HTTP code: " + code;
-            LOGGER.debug(msg, e);
+            LOG.debug(msg, e);
             throw new ProponoException(msg, e);
         } finally {
             method.releaseConnection();
@@ -221,14 +222,14 @@ public class ClientEntry extends Entry {
 
         } catch (final Exception e) {
             final String msg = "ERROR: saving entry, HTTP code: " + code;
-            LOGGER.debug(msg, e);
+            LOG.debug(msg, e);
             throw new ProponoException(msg, e);
         } finally {
             method.releaseConnection();
         }
         final Header locationHeader = method.getResponseHeader("Location");
         if (locationHeader == null) {
-            LOGGER.warn("WARNING added entry, but no location header returned");
+            LOG.warn("WARNING added entry, but no location header returned");
         } else if (getEditURI() == null) {
             final List<Link> links = getOtherLinks();
             final Link link = new Link();

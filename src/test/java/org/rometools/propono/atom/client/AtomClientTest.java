@@ -23,12 +23,12 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.junit.Ignore;
 import org.rometools.propono.atom.common.Categories;
 import org.rometools.propono.atom.common.Collection;
 import org.rometools.propono.utils.ProponoException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.atom.Category;
 import com.sun.syndication.feed.atom.Content;
@@ -39,7 +39,7 @@ import com.sun.syndication.feed.atom.Content;
 @Ignore
 public class AtomClientTest extends TestCase {
 
-    private static Log log = LogFactory.getFactory().getInstance(AtomClientTest.class);
+    private static Logger log = LoggerFactory.getLogger(AtomClientTest.class);
 
     private static ClientAtomService service = null;
 

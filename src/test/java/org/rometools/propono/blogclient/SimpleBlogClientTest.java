@@ -25,6 +25,8 @@ import junit.framework.TestSuite;
 import org.junit.Ignore;
 import org.rometools.propono.blogclient.Blog.Collection;
 import org.rometools.propono.utils.Utilities;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.io.impl.Atom10Parser;
 
@@ -34,6 +36,8 @@ import com.sun.syndication.io.impl.Atom10Parser;
  */
 @Ignore
 public class SimpleBlogClientTest extends TestCase {
+
+    private static final Logger LOG = LoggerFactory.getLogger(SimpleBlogClientTest.class);
 
     private final String metaweblogEndpoint = "http://localhost:8080/roller/roller-services/xmlrpc";
     // private String atomEndpoint = "http://localhost:8080/roller/roller-services/app";
@@ -68,7 +72,7 @@ public class SimpleBlogClientTest extends TestCase {
 
         int blogCount = 0;
         for (final Blog blog : conn.getBlogs()) {
-            System.out.println(blog.getName());
+            LOG.debug(blog.getName());
             blogCount++;
         }
         assertTrue(blogCount > 0);

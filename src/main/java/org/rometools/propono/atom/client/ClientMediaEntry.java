@@ -33,11 +33,11 @@ import org.apache.commons.httpclient.methods.InputStreamRequestEntity;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.PutMethod;
 import org.apache.commons.httpclient.methods.StringRequestEntity;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.jdom2.JDOMException;
 import org.rometools.propono.utils.ProponoException;
 import org.rometools.propono.utils.Utilities;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.atom.Content;
 import com.sun.syndication.feed.atom.Entry;
@@ -53,7 +53,8 @@ import com.sun.syndication.io.impl.Atom10Parser;
 public class ClientMediaEntry extends ClientEntry {
 
     private static final long serialVersionUID = 1L;
-    private static final Log LOGGER = LogFactory.getLog(ClientMediaEntry.class);
+
+    private static final Logger LOG = LoggerFactory.getLogger(ClientMediaEntry.class);
 
     private String slug = null;
     private byte[] bytes;
@@ -279,7 +280,7 @@ public class ClientMediaEntry extends ClientEntry {
         }
         final Header locationHeader = method.getResponseHeader("Location");
         if (locationHeader == null) {
-            LOGGER.warn("WARNING added entry, but no location header returned");
+            LOG.warn("WARNING added entry, but no location header returned");
         } else if (getEditURI() == null) {
             final List<Link> links = getOtherLinks();
             final Link link = new Link();
