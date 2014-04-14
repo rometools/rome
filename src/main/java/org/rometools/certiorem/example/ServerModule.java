@@ -14,6 +14,8 @@ import org.rometools.certiorem.sub.request.AsyncRequester;
 import org.rometools.fetcher.FeedFetcher;
 import org.rometools.fetcher.impl.HashMapFeedInfoCache;
 import org.rometools.fetcher.impl.HttpURLFeedFetcher;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
@@ -24,10 +26,13 @@ import com.google.inject.servlet.GuiceServletContextListener;
 import com.google.inject.servlet.ServletModule;
 
 /**
- * 
+ *
  * @author robert.cooper
  */
 public class ServerModule extends GuiceServletContextListener {
+
+    private static final Logger LOG = LoggerFactory.getLogger(ServerModule.class);
+
     @Override
     protected Injector getInjector() {
         return Guice.createInjector(new AbstractModule() {
@@ -47,7 +52,7 @@ public class ServerModule extends GuiceServletContextListener {
             @Provides
             @Singleton
             public Subscriptions buildSubs() {
-                System.out.println("buildSubs");
+                LOG.debug("buildSubs");
                 final Subscriptions subs = new Subscriptions(new HashMapFeedInfoCache(), new AsyncRequester(), "http://localhost/webapp/subscriptions/",
                         new InMemorySubDAO());
 

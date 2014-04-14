@@ -13,6 +13,8 @@ import org.rometools.certiorem.sub.Subscriptions;
 import org.rometools.certiorem.sub.data.Subscription;
 import org.rometools.certiorem.sub.data.SubscriptionCallback;
 import org.rometools.fetcher.impl.SyndFeedInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -23,6 +25,8 @@ import com.google.inject.Singleton;
  */
 @Singleton
 public class SubTest extends HttpServlet {
+
+    private static final Logger LOG = LoggerFactory.getLogger(SubTest.class);
 
     private static final long serialVersionUID = 1L;
 
@@ -44,7 +48,7 @@ public class SubTest extends HttpServlet {
 
             @Override
             public void onSubscribe(final Subscription subscribed) {
-                System.out.println("Subscribed " + subscribed.getId() + " " + subscribed.getSourceUrl());
+                LOG.debug("Subscribed {} {}", subscribed.getId(), subscribed.getSourceUrl());
             }
 
             @Override
