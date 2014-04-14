@@ -120,9 +120,9 @@ public class DateParser {
                 if (pp.getIndex() != sDate.length()) {
                     d = null;
                 }
-                // System.out.println("pp["+pp.getIndex()+"] s["+sDate+" m["+masks[i]+"] d["+d+"]");
+                // LOG.debug("pp["+pp.getIndex()+"] s["+sDate+" m["+masks[i]+"] d["+d+"]");
             } catch (final Exception ex1) {
-                // System.out.println("s: "+sDate+" m: "+masks[i]+" d: "+null);
+                // LOG.debug("s: "+sDate+" m: "+masks[i]+" d: "+null);
             }
         }
         return d;

@@ -99,7 +99,7 @@ public class TestSyndFeedRSS090 extends SyndFeedTest {
     public void testEntryDescription() throws Exception {
         // I think this should be should work, but it can't seem to find the
         // description
-        // System.out.println(((SyndEntry)getCachedSyndFeed().getEntries().get(0)).getDescription());
+        // LOG.debug(((SyndEntry)getCachedSyndFeed().getEntries().get(0)).getDescription());
     }
 
     @Override
