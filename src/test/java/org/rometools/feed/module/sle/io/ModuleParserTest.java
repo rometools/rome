@@ -18,6 +18,8 @@ import org.rometools.feed.module.sle.SimpleListExtension;
 import org.rometools.feed.module.sle.SleEntry;
 import org.rometools.feed.module.sle.types.Group;
 import org.rometools.feed.module.sle.types.Sort;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
@@ -28,6 +30,8 @@ import com.sun.syndication.io.SyndFeedInput;
  * @author cooper
  */
 public class ModuleParserTest extends AbstractTestCase {
+
+    private static final Logger LOG = LoggerFactory.getLogger(ModuleParserTest.class);
 
     public ModuleParserTest(final String testName) {
         super(testName);
@@ -46,7 +50,7 @@ public class ModuleParserTest extends AbstractTestCase {
         final SyndFeedInput input = new SyndFeedInput();
         final SyndFeed feed = input.build(new File(super.getTestFile("data/bookexample.xml")));
         final SimpleListExtension sle = (SimpleListExtension) feed.getModule(SimpleListExtension.URI);
-        // System.out.println( sle );
+        // LOG.debug( sle );
         assertEquals("list", sle.getTreatAs());
         final Group[] groups = sle.getGroupFields();
         assertEquals("genre", groups[0].getElement());
@@ -59,11 +63,11 @@ public class ModuleParserTest extends AbstractTestCase {
         assertEquals(sorts[1].getElement(), "firstedition");
         final SyndEntry entry = feed.getEntries().get(0);
         final SleEntry sleEntry = (SleEntry) entry.getModule(SleEntry.URI);
-        System.out.println(sleEntry);
-        System.out.println("getGroupByElement");
-        System.out.println(sleEntry.getGroupByElement(groups[0]));
-        System.out.println("getSortByElement");
-        System.out.println(sleEntry.getSortByElement(sorts[0]));
+        LOG.debug("{}", sleEntry);
+        LOG.debug("getGroupByElement");
+        LOG.debug("{}", sleEntry.getGroupByElement(groups[0]));
+        LOG.debug("getSortByElement");
+        LOG.debug("{}", sleEntry.getSortByElement(sorts[0]));
     }
 
 }

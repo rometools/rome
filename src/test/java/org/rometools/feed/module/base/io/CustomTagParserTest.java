@@ -25,6 +25,8 @@ import org.rometools.feed.module.base.CustomTags;
 import org.rometools.feed.module.base.types.DateTimeRange;
 import org.rometools.feed.module.base.types.FloatUnit;
 import org.rometools.feed.module.base.types.IntUnit;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
@@ -35,6 +37,8 @@ import com.sun.syndication.io.SyndFeedInput;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class CustomTagParserTest extends AbstractTestCase {
+
+    private static final Logger LOG = LoggerFactory.getLogger(CustomTagParserTest.class);
 
     public CustomTagParserTest(final String testName) {
         super(testName);
@@ -56,7 +60,7 @@ public class CustomTagParserTest extends AbstractTestCase {
         final Iterator<CustomTag> it = customTags.getValues().iterator();
         while (it.hasNext()) {
             final CustomTag tag = it.next();
-            System.out.println(tag);
+            LOG.debug("{}", tag);
             if (tag.getName().equals("language_skills")) {
                 Assert.assertEquals("Fluent in English and German", tag.getValue());
             }

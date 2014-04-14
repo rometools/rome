@@ -36,6 +36,8 @@ import org.rometools.feed.module.base.types.GenderEnumeration;
 import org.rometools.feed.module.base.types.PaymentTypeEnumeration;
 import org.rometools.feed.module.base.types.PriceTypeEnumeration;
 import org.rometools.feed.module.base.types.ShippingType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
@@ -46,6 +48,8 @@ import com.sun.syndication.io.SyndFeedInput;
  * @author rcooper
  */
 public class GoogleBaseParserTest extends AbstractTestCase {
+
+    private static final Logger LOG = LoggerFactory.getLogger(GoogleBaseParserTest.class);
 
     public GoogleBaseParserTest(final String testName) {
         super(testName);
@@ -62,7 +66,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
      */
     public void testQuickParse() throws Exception {
         try {
-            System.out.println("testParse");
+            LOG.debug("testParse");
             final SyndFeedInput input = new SyndFeedInput();
             final File testDir = new File(super.getTestFile("xml"));
             final File[] testFiles = testDir.listFiles();
@@ -79,13 +83,13 @@ public class GoogleBaseParserTest extends AbstractTestCase {
                 final List<SyndEntry> entries = feed.getEntries();
                 for (int i = 0; i < entries.size(); i++) {
                     final SyndEntry entry = entries.get(i);
-                    System.out.println(entry.getModules().size());
+                    LOG.debug("{}", entry.getModules().size());
                     for (int j = 0; j < entry.getModules().size(); j++) {
-                        System.out.println(entry.getModules().get(j).getClass());
+                        LOG.debug("{}", entry.getModules().get(j).getClass());
                         if (entry.getModules().get(j) instanceof GoogleBase) {
                             final GoogleBase base = (GoogleBase) entry.getModules().get(j);
-                            System.out.println(testFiles[h].getName());
-                            System.out.println(super.beanToString(base, false));
+                            LOG.debug(testFiles[h].getName());
+                            LOG.debug(super.beanToString(base, false));
                         }
                     }
                 }
@@ -100,7 +104,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
      * Test of parse method, of class com.totsp.xml.syndication.base.io.GoogleBaseParser.
      */
     public void testCourse2Parse() throws Exception {
-        System.out.println("testCourse2Parse");
+        LOG.debug("testCourse2Parse");
         final SyndFeedInput input = new SyndFeedInput();
 
         final SyndFeed feed = input.build(new File(super.getTestFile("xml/courses2.xml")));
@@ -146,7 +150,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
      * Test of parse method, of class com.totsp.xml.syndication.base.io.GoogleBaseParser.
      */
     public void testEvent2Parse() throws Exception {
-        System.out.println("testEvent2Parse");
+        LOG.debug("testEvent2Parse");
         final SyndFeedInput input = new SyndFeedInput();
 
         final SyndFeed feed = input.build(new File(super.getTestFile("xml/events2.xml")));
@@ -216,7 +220,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
      * Test of parse method, of class com.totsp.xml.syndication.base.io.GoogleBaseParser.
      */
     public void testHousing2Parse() throws Exception {
-        System.out.println("testHousing2Parse");
+        LOG.debug("testHousing2Parse");
         final SyndFeedInput input = new SyndFeedInput();
         final Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(0);
@@ -280,7 +284,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
      * Test of parse method, of class com.totsp.xml.syndication.base.io.GoogleBaseParser.
      */
     public void testJobs2Parse() throws Exception {
-        System.out.println("testJobs2Parse");
+        LOG.debug("testJobs2Parse");
         final SyndFeedInput input = new SyndFeedInput();
         final Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(0);
@@ -295,7 +299,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         this.assertEquals("Industriy", new String[] { "Internet" }, module.getJobIndustries());
         Assert.assertEquals("Employer", "Google, Inc", module.getEmployer());
         this.assertEquals("Job Function", new String[] { "Google Coordinator" }, module.getJobFunctions());
-        System.out.println(module.getJobTypes());
+        LOG.debug("{}", module.getJobTypes());
         this.assertEquals("Job Type", new String[] { "full-time" }, module.getJobTypes());
         Assert.assertEquals("Currency", CurrencyEnumeration.USD, module.getCurrency());
         Assert.assertEquals("Salary", new Float(40000), module.getSalary());
@@ -310,7 +314,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
      * Test of parse method, of class com.totsp.xml.syndication.base.io.GoogleBaseParser.
      */
     public void testNews2Parse() throws Exception {
-        System.out.println("testNews2Parse");
+        LOG.debug("testNews2Parse");
         final SyndFeedInput input = new SyndFeedInput();
         final Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(0);
@@ -334,7 +338,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
      * Test of parse method, of class com.totsp.xml.syndication.base.io.GoogleBaseParser.
      */
     public void testTravel2Parse() throws Exception {
-        System.out.println("testTravel2Parse");
+        LOG.debug("testTravel2Parse");
         final SyndFeedInput input = new SyndFeedInput();
         final Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(0);
@@ -372,7 +376,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
      * Test of parse method, of class com.totsp.xml.syndication.base.io.GoogleBaseParser.
      */
     public void testPersona2Parse() throws Exception {
-        System.out.println("testPerson2Parse");
+        LOG.debug("testPerson2Parse");
         final SyndFeedInput input = new SyndFeedInput();
         final Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(0);
@@ -400,7 +404,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
      * Test of parse method, of class com.totsp.xml.syndication.base.io.GoogleBaseParser.
      */
     public void testProduct2Parse() throws Exception {
-        System.out.println("testProduct2Parse");
+        LOG.debug("testProduct2Parse");
         final SyndFeedInput input = new SyndFeedInput();
         final Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(0);
@@ -423,7 +427,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         Assert.assertEquals("Manufacturer", "Google", module.getManufacturer());
         Assert.assertEquals("ManufacturerId", "2325", module.getManufacturerId());
         Assert.assertEquals("Model number", "234", module.getModelNumber());
-        System.out.println(module.getSize());
+        LOG.debug("{}", module.getSize());
         Assert.assertEquals("Size", 10, module.getSize().getLength().getValue(), 0);
         Assert.assertEquals("Size", 50, module.getSize().getWidth().getValue(), 0);
         Assert.assertEquals("Size", 20, module.getSize().getHeight().getValue(), 0);
@@ -439,7 +443,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
      * Test of parse method, of class com.totsp.xml.syndication.base.io.GoogleBaseParser.
      */
     public void testResearch2Parse() throws Exception {
-        System.out.println("testResearch2Parse");
+        LOG.debug("testResearch2Parse");
         final SyndFeedInput input = new SyndFeedInput();
         final Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(0);
@@ -463,7 +467,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
      * Test of parse method, of class com.totsp.xml.syndication.base.io.GoogleBaseParser.
      */
     public void testReview2Parse() throws Exception {
-        System.out.println("testReview2Parse");
+        LOG.debug("testReview2Parse");
         final SyndFeedInput input = new SyndFeedInput();
         final Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(0);
@@ -490,7 +494,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
      * Test of parse method, of class com.totsp.xml.syndication.base.io.GoogleBaseParser.
      */
     public void testService2Parse() throws Exception {
-        System.out.println("testService2Parse");
+        LOG.debug("testService2Parse");
         final SyndFeedInput input = new SyndFeedInput();
         final Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(0);
@@ -520,7 +524,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
      * Test of parse method, of class com.totsp.xml.syndication.base.io.GoogleBaseParser.
      */
     public void testVehicle2Parse() throws Exception {
-        System.out.println("testVehicle2Parse");
+        LOG.debug("testVehicle2Parse");
         final SyndFeedInput input = new SyndFeedInput();
         final Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(0);
@@ -554,7 +558,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
      * Test of parse method, of class com.totsp.xml.syndication.base.io.GoogleBaseParser.
      */
     public void testWanted2Parse() throws Exception {
-        System.out.println("testVehicle2Parse");
+        LOG.debug("testVehicle2Parse");
         final SyndFeedInput input = new SyndFeedInput();
         final Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(0);
@@ -573,7 +577,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
      * Test of getNamespaceUri method, of class com.totsp.xml.syndication.base.io.GoogleBaseParser.
      */
     public void testGetNamespaceUri() {
-        System.out.println("testGetNamespaceUri");
-        System.out.println(new GoogleBaseParser().getNamespaceUri());
+        LOG.debug("testGetNamespaceUri");
+        LOG.debug(new GoogleBaseParser().getNamespaceUri());
     }
 }

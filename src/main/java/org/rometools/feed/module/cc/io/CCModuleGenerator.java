@@ -48,6 +48,8 @@ import org.jdom2.Namespace;
 import org.rometools.feed.module.cc.CreativeCommons;
 import org.rometools.feed.module.cc.CreativeCommonsImpl;
 import org.rometools.feed.module.cc.types.License;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.ModuleGenerator;
@@ -57,6 +59,8 @@ import com.sun.syndication.io.ModuleGenerator;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class CCModuleGenerator implements ModuleGenerator {
+
+    private static final Logger LOG = LoggerFactory.getLogger(CCModuleGenerator.class);
 
     private static final Namespace RSS1 = Namespace.getNamespace("cc", CreativeCommonsImpl.RSS1_URI);
     private static final Namespace RSS2 = Namespace.getNamespace("creativeCommons", CreativeCommonsImpl.RSS2_URI);
@@ -102,7 +106,7 @@ public class CCModuleGenerator implements ModuleGenerator {
     private void generateRSS1(final CreativeCommons module, final Element element) {
         // throw new RuntimeException( "Generating RSS1 Feeds not currently Supported.");
 
-        System.out.println(element.getName());
+        LOG.debug(element.getName());
         if (element.getName().equals("channel")) {
             // Do all licenses list.
             final License[] all = module.getAllLicenses();
@@ -121,7 +125,7 @@ public class CCModuleGenerator implements ModuleGenerator {
                     permit.setAttribute("resource", permits[j].toString(), RDF);
                     license.addContent(permit);
                 }
-                System.out.println("Is Root?" + element.getParentElement());
+                LOG.debug("Is Root? {}", element.getParentElement());
                 element.getParentElement().addContent(license);
             }
         }

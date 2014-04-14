@@ -11,11 +11,16 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  *
  * @author rcooper
  */
 public class FloatUnitTest extends TestCase {
+
+    private static final Logger LOG = LoggerFactory.getLogger(FloatUnitTest.class);
 
     public FloatUnitTest(final String testName) {
         super(testName);
@@ -31,7 +36,7 @@ public class FloatUnitTest extends TestCase {
      * Test of getUnits method, of class com.totsp.xml.syndication.base.types.FloatUnit.
      */
     public void testFloatUnit() {
-        System.out.println("testFloatUnit");
+        LOG.debug("testFloatUnit");
         FloatUnit fu = new FloatUnit("1.22km");
 
         assertEquals((float) 1.22, fu.getValue(), 0);

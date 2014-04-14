@@ -54,12 +54,16 @@ import org.jdom2.Element;
 import org.jdom2.Namespace;
 import org.rometools.feed.module.content.ContentItem;
 import org.rometools.feed.module.content.ContentModule;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @version $Revision: 1.2 $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class ContentModuleGenerator implements com.sun.syndication.io.ModuleGenerator {
+
+    private static final Logger LOG = LoggerFactory.getLogger(ContentModuleGenerator.class);
 
     private static final Namespace CONTENT_NS = Namespace.getNamespace("content", ContentModule.URI);
     private static final Namespace RDF_NS = Namespace.getNamespace("rdf", ContentModule.RDF_URI);
@@ -95,7 +99,7 @@ public class ContentModuleGenerator implements com.sun.syndication.io.ModuleGene
         final List<String> encodeds = cm.getEncodeds();
 
         if (encodeds != null) {
-            System.out.println(cm.getEncodeds().size());
+            LOG.debug("{}", cm.getEncodeds().size());
             for (int i = 0; i < encodeds.size(); i++) {
                 element.addContent(generateCDATAElement("encoded", encodeds.get(i).toString()));
             }
@@ -119,7 +123,7 @@ public class ContentModuleGenerator implements com.sun.syndication.io.ModuleGene
                 }
 
                 if (contentItem.getContentFormat() != null) {
-                    // System.out.println( "Format");
+                    // LOG.debug( "Format");
                     final Element format = new Element("format", CONTENT_NS);
                     final Attribute formatResource = new Attribute("resource", contentItem.getContentFormat(), RDF_NS);
                     format.setAttribute(formatResource);
@@ -128,7 +132,7 @@ public class ContentModuleGenerator implements com.sun.syndication.io.ModuleGene
                 }
 
                 if (contentItem.getContentEncoding() != null) {
-                    // System.out.println( "Encoding");
+                    // LOG.debug( "Encoding");
                     final Element encoding = new Element("encoding", CONTENT_NS);
                     final Attribute encodingResource = new Attribute("resource", contentItem.getContentEncoding(), RDF_NS);
                     encoding.setAttribute(encodingResource);
@@ -154,7 +158,7 @@ public class ContentModuleGenerator implements com.sun.syndication.io.ModuleGene
                     final List<Content> detached = new ArrayList<Content>();
 
                     for (int c = 0; c < contentItem.getContentValueDOM().size(); c++) {
-                        detached.add(((Content) contentItem.getContentValueDOM().get(c)).clone().detach());
+                        detached.add(contentItem.getContentValueDOM().get(c).clone().detach());
                     }
 
                     value.setContent(detached);

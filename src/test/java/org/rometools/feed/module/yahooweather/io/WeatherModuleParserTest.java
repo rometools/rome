@@ -14,9 +14,12 @@ import junit.framework.Test;
 import junit.framework.TestSuite;
 
 import org.rometools.feed.module.AbstractTestCase;
+import org.rometools.feed.module.cc.io.CCModuleGenerator;
 import org.rometools.feed.module.yahooweather.YWeatherEntryModule;
 import org.rometools.feed.module.yahooweather.YWeatherModule;
 import org.rometools.feed.module.yahooweather.YWeatherModuleImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
@@ -27,6 +30,8 @@ import com.sun.syndication.io.SyndFeedInput;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class WeatherModuleParserTest extends AbstractTestCase {
+
+    private static final Logger LOG = LoggerFactory.getLogger(CCModuleGenerator.class);
 
     public WeatherModuleParserTest(final String testName) {
         super(testName);
@@ -45,7 +50,7 @@ public class WeatherModuleParserTest extends AbstractTestCase {
     }
 
     public void testQuickParse() throws Exception {
-        System.out.println("testParse");
+        LOG.debug("testParse");
         final SyndFeedInput input = new SyndFeedInput();
         final File testDir = new File(super.getTestFile("xml"));
         final File[] testFiles = testDir.listFiles();
@@ -58,14 +63,14 @@ public class WeatherModuleParserTest extends AbstractTestCase {
             final List<SyndEntry> entries = feed.getEntries();
             for (int i = 0; i < entries.size(); i++) {
                 final SyndEntry entry = entries.get(i);
-                System.out.println(entry.getModules().size());
+                LOG.debug("{}", entry.getModules().size());
                 for (int j = 0; j < entry.getModules().size(); j++) {
-                    System.out.println(entry.getModules().get(j).getClass());
+                    LOG.debug("{}", entry.getModules().get(j).getClass());
                     if (entry.getModules().get(j) instanceof YWeatherModule) {
                         final YWeatherModule base = (YWeatherModule) entry.getModules().get(j);
                         assertTrue(((YWeatherEntryModule) base).getForecasts().length > 0);
-                        System.out.println(testFiles[h].getName());
-                        System.out.println(super.beanToString(base, false));
+                        LOG.debug(testFiles[h].getName());
+                        LOG.debug(super.beanToString(base, false));
 
                         final YWeatherEntryModule module2 = new YWeatherModuleImpl();
                         module2.copyFrom(base);

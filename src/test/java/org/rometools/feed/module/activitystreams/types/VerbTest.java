@@ -19,11 +19,16 @@ package org.rometools.feed.module.activitystreams.types;
 
 import junit.framework.TestCase;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  *
  * @author robert.cooper
  */
 public class VerbTest extends TestCase {
+
+    private static final Logger LOG = LoggerFactory.getLogger(VerbTest.class);
 
     public VerbTest(final String testName) {
         super(testName);
@@ -43,7 +48,7 @@ public class VerbTest extends TestCase {
      * Test of valueOf method, of class Verb.
      */
     public void testValueOf() {
-        System.out.println("valueOf");
+        LOG.debug("valueOf");
         final String fav = Verb.MARK_AS_FAVORITE.toString();
         assertEquals("http://activitystrea.ms/schema/1.0/favorite", fav);
         assertEquals(Verb.MARK_AS_FAVORITE, Verb.fromIRI(fav));

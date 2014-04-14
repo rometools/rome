@@ -25,11 +25,17 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  *
  * @author cooper
  */
 public class DurationTest extends TestCase {
+
+    private static final Logger LOG = LoggerFactory.getLogger(DurationTest.class);
+
     private final Duration duration = new Duration(2 * Duration.HOUR + 3 * Duration.MINUTE + 20 * Duration.SECOND);
     private final Duration duration2 = new Duration(12000 * Duration.HOUR + 61 * Duration.MINUTE + 61 * Duration.SECOND);
     private final Duration duration3 = new Duration("1:20:01");
@@ -60,15 +66,15 @@ public class DurationTest extends TestCase {
      * Test of toString method, of class com.totsp.xml.syndication.itunes.Duration.
      */
     public void testToString() {
-        System.out.println("testToString");
-        System.out.println(duration.toString());
+        LOG.debug("testToString");
+        LOG.debug(duration.toString());
         assertEquals("Regular time failed", "02:03:20", duration.toString());
-        System.out.println(duration2.toString());
+        LOG.debug(duration2.toString());
         assertEquals("Long time failed", "12001:02:01", duration2.toString());
     }
 
     public void testGetMilliseconds() {
-        System.out.println("testGetMilliseconds");
+        LOG.debug("testGetMilliseconds");
         assertEquals("Milliseconds from 3 string constructor", duration3ms, duration3.getMilliseconds());
         assertEquals("Milliseconds from 2 string constructor", duration4ms, duration4.getMilliseconds());
     }

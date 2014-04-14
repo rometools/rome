@@ -16,6 +16,8 @@ import junit.framework.Test;
 import junit.framework.TestSuite;
 
 import org.rometools.feed.module.mediarss.MediaModule;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
@@ -27,6 +29,8 @@ import com.sun.syndication.io.SyndFeedOutput;
  * @author cooper
  */
 public class MediaModuleTest extends AbstractTestCase {
+
+    private static final Logger LOG = LoggerFactory.getLogger(MediaModuleTest.class);
 
     public MediaModuleTest(final String testName) {
         super(testName);
@@ -49,7 +53,7 @@ public class MediaModuleTest extends AbstractTestCase {
             final SyndFeed feed = input.build(files[j]);
             final List<SyndEntry> entries = feed.getEntries();
             for (int i = 0; i < entries.size(); i++) {
-                System.out.println(entries.get(i).getModule(MediaModule.URI));
+                LOG.debug("{}", entries.get(i).getModule(MediaModule.URI));
             }
             final SyndFeedOutput output = new SyndFeedOutput();
             output.output(feed, new File("target/" + j + "media.xml"));
@@ -85,20 +89,18 @@ public class MediaModuleTest extends AbstractTestCase {
          * while (li.hasNext()) { item = (Item)li.next(); enc =
          * (Enclosure)item.getEnclosures().get(0); mModule =
          * (MediaModule)item.getModule(MediaModule.URI); List modules = item.getModules();
-         * System.out.println("title: " + item.getTitle()); System.out.println("module count: " +
-         * modules.size()); if (mModule != null) { Thumbnail[] mThumbs =
-         * mModule.getMediaThumbnails(); if (mThumbs != null) { for (int i = 0; i < mThumbs.length;
-         * i++) { String imgUrl = mThumbs[i].getUrl(); System.out.println("got MediaModule img " + i
-         * + ": " + imgUrl); } } System.out.println("MediaModule title: " + mModule.getTitle());
-         * System.out.println("MediaModule isAdult: " + mModule.isAdult()); /* if
-         * (mModule.getMediaContent() != null) { for (int i = 0; i <
+         * LOG.debug("title: " + item.getTitle()); LOG.debug("module count: " + modules.size()); if
+         * (mModule != null) { Thumbnail[] mThumbs = mModule.getMediaThumbnails(); if (mThumbs !=
+         * null) { for (int i = 0; i < mThumbs.length; i++) { String imgUrl = mThumbs[i].getUrl();
+         * LOG.debug("got MediaModule img " + i + ": " + imgUrl); } }
+         * LOG.debug("MediaModule title: " + mModule.getTitle()); LOG.debug("MediaModule isAdult: "
+         * + mModule.isAdult()); /* if (mModule.getMediaContent() != null) { for (int i = 0; i <
          * mModule.getMediaContent().length; i++) { MediaContent mc = mModule.getMediaContent()[i];
          * mThumbs = mc.getMediaThumbnails(); if (mThumbs != null) { for (int n = 0; n <
          * mThumbs.length; n++) { String imgUrl = mThumbs[n].getUrl();
-         * System.out.println("got MediaContentImage " + n + " img: " + imgUrl); } }
-         * System.out.println("MediaContent title:" + mc.getTitle());
-         * System.out.println("MediaContent text:" + mc.getText()); } } } else {
-         * System.out.println("no MediaModule!"); } }
+         * LOG.debug("got MediaContentImage " + n + " img: " + imgUrl); } }
+         * LOG.debug("MediaContent title:" + mc.getTitle()); LOG.debug("MediaContent text:" +
+         * mc.getText()); } } } else { LOG.debug("no MediaModule!"); } }
          */
     }
 }

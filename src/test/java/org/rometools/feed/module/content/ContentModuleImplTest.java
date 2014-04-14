@@ -12,11 +12,16 @@ import java.util.List;
 
 import junit.framework.TestCase;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert Cooper</a>
  */
 public class ContentModuleImplTest extends TestCase {
+
+    private static final Logger LOG = LoggerFactory.getLogger(ContentModuleImplTest.class);
 
     private final ContentModuleImpl module = new ContentModuleImpl();
     public static ArrayList<ContentItem> contentItems = new ArrayList<ContentItem>();
@@ -88,7 +93,7 @@ public class ContentModuleImplTest extends TestCase {
      * Test of getInterface method, of class com.totsp.xml.syndication.content.ContentModuleImpl.
      */
     public void testInterface() {
-        System.out.println("testInterface");
+        LOG.debug("testInterface");
         assertTrue(module.getInterface().equals(ContentModule.class));
     }
 
@@ -96,7 +101,7 @@ public class ContentModuleImplTest extends TestCase {
      * Test of getContentItems method, of class com.totsp.xml.syndication.content.ContentModuleImpl.
      */
     public void testContentItems() {
-        System.out.println("testContentItems");
+        LOG.debug("testContentItems");
         module.setContentItems(contentItems);
         assertTrue(module.getContentItems().equals(contentItems));
     }
@@ -105,7 +110,7 @@ public class ContentModuleImplTest extends TestCase {
      * Test of getContents method, of class com.totsp.xml.syndication.content.ContentModuleImpl.
      */
     public void testContents() {
-        System.out.println("testContents");
+        LOG.debug("testContents");
         final ArrayList<String> contents = new ArrayList<String>();
         contents.add("Foo");
         contents.add("Bar");
@@ -119,7 +124,7 @@ public class ContentModuleImplTest extends TestCase {
      * Test of copyFrom method, of class com.totsp.xml.syndication.content.ContentModuleImpl.
      */
     public void testCopyFrom() {
-        System.out.println("testCopyFrom");
+        LOG.debug("testCopyFrom");
         final ContentModule test = new ContentModuleImpl();
         test.copyFrom(module);
         assertTrue(test.getContentItems().equals(module.getContentItems()) & test.getContents().equals(module.getContents())

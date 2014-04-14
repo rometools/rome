@@ -15,6 +15,8 @@ import junit.framework.TestSuite;
 import org.junit.Assert;
 import org.rometools.feed.module.AbstractTestCase;
 import org.rometools.feed.module.yahooweather.YWeatherModule;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
@@ -25,23 +27,23 @@ import com.sun.syndication.io.SyndFeedOutput;
  *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
-public class WeahterGeneratorTest extends AbstractTestCase {
+public class WeatherGeneratorTest extends AbstractTestCase {
 
-    public WeahterGeneratorTest(final String testName) {
+    private static final Logger LOG = LoggerFactory.getLogger(WeatherGeneratorTest.class);
+
+    public WeatherGeneratorTest(final String testName) {
         super(testName);
     }
 
     public static Test suite() {
-        final TestSuite suite = new TestSuite(WeahterGeneratorTest.class);
-
-        return suite;
+        return new TestSuite(WeatherGeneratorTest.class);
     }
 
     /**
      * Test of generate method, of class com.totsp.xml.syndication.base.io.SlashGenerator.
      */
     public void testGenerate() throws Exception {
-        System.out.println("testGenerate");
+        LOG.debug("testGenerate");
         final SyndFeedInput input = new SyndFeedInput();
         final SyndFeedOutput output = new SyndFeedOutput();
         final File testDir = new File(super.getTestFile("xml"));
@@ -50,7 +52,7 @@ public class WeahterGeneratorTest extends AbstractTestCase {
             if (!testFiles[h].getName().endsWith(".xml")) {
                 continue;
             }
-            System.out.println("processing" + testFiles[h]);
+            LOG.debug("processing" + testFiles[h]);
             final SyndFeed feed = input.build(testFiles[h]);
             output.output(feed, new File("target/" + testFiles[h].getName()));
             final SyndFeed feed2 = input.build(new File("target/" + testFiles[h].getName()));

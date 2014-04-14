@@ -9,6 +9,8 @@ import junit.framework.TestSuite;
 
 import org.rometools.feed.module.AbstractTestCase;
 import org.rometools.feed.module.sle.types.Sort;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.module.Extendable;
 import com.sun.syndication.feed.synd.SyndEntry;
@@ -20,6 +22,8 @@ import com.sun.syndication.io.SyndFeedInput;
  * @author cooper
  */
 public class GroupAndSortTest extends AbstractTestCase {
+
+    private static final Logger LOG = LoggerFactory.getLogger(GroupAndSortTest.class);
 
     public GroupAndSortTest(final String testName) {
         super(testName);
@@ -89,7 +93,7 @@ public class GroupAndSortTest extends AbstractTestCase {
         final List<Extendable> sortedEntries = SleUtility.sort(entries, sle.getSortFields()[0], true);
         for (int i = 0; i < sortedEntries.size(); i++) {
             final SyndEntry entry = (SyndEntry) sortedEntries.get(i);
-            System.out.println(entry.getTitle());
+            LOG.debug(entry.getTitle());
         }
 
     }

@@ -27,6 +27,8 @@ import org.rometools.feed.module.sle.SimpleListExtension;
 import org.rometools.feed.module.sle.SimpleListExtensionImpl;
 import org.rometools.feed.module.sle.types.Group;
 import org.rometools.feed.module.sle.types.Sort;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.module.Module;
 
@@ -35,6 +37,9 @@ import com.sun.syndication.feed.module.Module;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class ModuleParser implements com.sun.syndication.io.ModuleParser {
+
+    private static final Logger LOG = LoggerFactory.getLogger(ModuleParser.class);
+
     static final Namespace NS = Namespace.getNamespace("cf", SimpleListExtension.URI);
     public static final Namespace TEMP = Namespace.getNamespace("rome-sle", "urn:rome:sle");
 
@@ -83,7 +88,7 @@ public class ModuleParser implements com.sun.syndication.io.ModuleParser {
         values = values.size() == 0 ? values : new ArrayList<Object>();
 
         for (final Element se : listInfo.getChildren("sort", NS)) {
-            System.out.println("Parse cf:sort " + se.getAttributeValue("element") + se.getAttributeValue("data-type"));
+            LOG.debug("Parse cf:sort {}{}", se.getAttributeValue("element"), se.getAttributeValue("data-type"));
             final Namespace ns = se.getAttributeValue("ns") == null ? element.getNamespace() : Namespace.getNamespace(se.getAttributeValue("ns"));
             final String elementName = se.getAttributeValue("element");
             final String label = se.getAttributeValue("label");
@@ -130,7 +135,7 @@ public class ModuleParser implements com.sun.syndication.io.ModuleParser {
             final Sort[] sorts = sle.getSortFields();
 
             for (final Sort sort2 : sorts) {
-                System.out.println("Inserting for " + sort2.getElement() + " " + sort2.getDataType());
+                LOG.debug("Inserting for {} {}", sort2.getElement(), sort2.getDataType());
                 final Element sort = new Element("sort", TEMP);
                 // this is the default sort order, so I am just going to ignore
                 // the actual values and add a number type. It really shouldn't
@@ -148,12 +153,12 @@ public class ModuleParser implements com.sun.syndication.io.ModuleParser {
 
                     continue;
                 }
-                // System.out.println(e.getName());
+                // LOG.debug(e.getName());
                 final Element value = e.getChild(sort2.getElement(), sort2.getNamespace());
                 if (value == null) {
-                    System.out.println("No value for " + sort2.getElement() + " : " + sort2.getNamespace());
+                    LOG.debug("No value for {} : {}", sort2.getElement(), sort2.getNamespace());
                 } else {
-                    System.out.println(sort2.getElement() + " value: " + value.getText());
+                    LOG.debug("{} value: {}", sort2.getElement(), value.getText());
                 }
                 if (value == null) {
                     continue;
@@ -165,7 +170,7 @@ public class ModuleParser implements com.sun.syndication.io.ModuleParser {
                 addNotNullAttribute(sort, "data-type", sort2.getDataType());
                 addNotNullAttribute(sort, "ns", sort2.getNamespace().getURI());
                 e.addContent(sort);
-                System.out.println("Added " + sort + " " + sort2.getLabel() + " = " + value.getText());
+                LOG.debug("Added {} {} = {}", sort, sort2.getLabel(), value.getText());
             }
         }
     }

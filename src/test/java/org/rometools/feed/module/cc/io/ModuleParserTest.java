@@ -15,6 +15,8 @@ import junit.framework.TestSuite;
 
 import org.rometools.feed.module.AbstractTestCase;
 import org.rometools.feed.module.cc.CreativeCommons;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
@@ -25,6 +27,8 @@ import com.sun.syndication.io.SyndFeedInput;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class ModuleParserTest extends AbstractTestCase {
+
+    private static final Logger LOG = LoggerFactory.getLogger(ModuleParserTest.class);
 
     public ModuleParserTest(final String testName) {
         super(testName);
@@ -49,16 +53,16 @@ public class ModuleParserTest extends AbstractTestCase {
             if (!testFiles[h].getName().endsWith(".xml")) {
                 continue;
             }
-            System.out.println(testFiles[h].getName());
+            LOG.debug(testFiles[h].getName());
             final SyndFeed feed = input.build(testFiles[h]);
             final List<SyndEntry> entries = feed.getEntries();
             final CreativeCommons fMod = (CreativeCommons) feed.getModule(CreativeCommons.URI);
-            System.out.println(fMod);
+            LOG.debug("{}", fMod);
             for (int i = 0; i < entries.size(); i++) {
                 final SyndEntry entry = entries.get(i);
                 final CreativeCommons eMod = (CreativeCommons) entry.getModule(CreativeCommons.URI);
-                System.out.println("\nEntry:");
-                System.out.println(eMod);
+                LOG.debug("\nEntry:");
+                LOG.debug("{}", eMod);
             }
         }
     }

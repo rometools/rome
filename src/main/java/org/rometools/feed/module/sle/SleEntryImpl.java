@@ -22,6 +22,8 @@ import org.rometools.feed.module.sle.io.ModuleParser;
 import org.rometools.feed.module.sle.types.EntryValue;
 import org.rometools.feed.module.sle.types.Group;
 import org.rometools.feed.module.sle.types.Sort;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.impl.ObjectBean;
@@ -34,10 +36,11 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class SleEntryImpl implements SleEntry {
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
+
+    private static final Logger LOG = LoggerFactory.getLogger(SleEntryImpl.class);
+
     private static final EntryValue[] EMPTY_VALUES = new EntryValue[0];
     private final ObjectBean obj = new ObjectBean(SleEntryImpl.class, this);
     private EntryValue[] groupValues = EMPTY_VALUES;
@@ -86,13 +89,13 @@ public class SleEntryImpl implements SleEntry {
 
     @Override
     public EntryValue getSortByElement(final Sort element) {
-        System.out.println("Looking for value for " + element.getLabel() + " from " + sortValues.length);
+        LOG.debug("Looking for value for {} from {}", element.getLabel(), sortValues.length);
         final EntryValue[] values = getSortValues();
         final LabelNamespaceElement compare = new LabelNamespaceElement(element.getLabel(), element.getNamespace(), element.getElement());
         for (final EntryValue value : values) {
-            System.out.println("Compare to value " + value.getLabel());
+            LOG.debug("Compare to value {}", value.getLabel());
             if (compare.equals(new LabelNamespaceElement(value.getLabel(), value.getNamespace(), value.getElement()))) {
-                System.out.println("Match.");
+                LOG.debug("Match.");
                 return value;
             }
         }

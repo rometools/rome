@@ -7,7 +7,7 @@
 package org.rometools.feed.module.itunes;
 
 import java.io.File;
-import java.io.OutputStreamWriter;
+import java.io.StringWriter;
 import java.util.List;
 
 import junit.framework.Test;
@@ -15,6 +15,8 @@ import junit.framework.TestSuite;
 
 import org.rometools.feed.module.AbstractTestCase;
 import org.rometools.feed.module.itunes.types.Category;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
@@ -28,6 +30,9 @@ import com.sun.syndication.io.XmlReader;
  * @author cooper
  */
 public class ITunesGeneratorTest extends AbstractTestCase {
+
+    private static final Logger LOG = LoggerFactory.getLogger(ITunesGeneratorTest.class);
+
     static final String URI = AbstractITunesObject.URI;
 
     public ITunesGeneratorTest(final String testName) {
@@ -35,18 +40,15 @@ public class ITunesGeneratorTest extends AbstractTestCase {
     }
 
     public static Test suite() {
-        final TestSuite suite = new TestSuite(ITunesGeneratorTest.class);
-
-        return suite;
+        return new TestSuite(ITunesGeneratorTest.class);
     }
 
     /**
      * Test of generate method, of class com.totsp.xml.syndication.itunes.ITunesGenerator.
      */
     public void testEndToEnd() throws Exception {
-        System.out.println("testEndToEnd");
+        LOG.debug("testEndToEnd");
         testFile("xml/leshow.xml");
-
         // testFile( "/test/xml/apple.xml" );
         testFile("xml/lr.xml");
     }
@@ -61,7 +63,7 @@ public class ITunesGeneratorTest extends AbstractTestCase {
         output.output(syndfeed, outfeed);
 
         final SyndFeed syndCheck = input.build(new XmlReader(outfeed.toURI().toURL()));
-        System.out.println(syndCheck.getModule(AbstractITunesObject.URI).toString());
+        LOG.debug(syndCheck.getModule(AbstractITunesObject.URI).toString());
         assertEquals("Feed Level: ", syndfeed.getModule(AbstractITunesObject.URI).toString(), syndCheck.getModule(AbstractITunesObject.URI).toString());
 
         final List<SyndEntry> syndEntries = syndfeed.getEntries();
@@ -70,16 +72,17 @@ public class ITunesGeneratorTest extends AbstractTestCase {
         for (int i = 0; i < syndEntries.size(); i++) {
             final SyndEntry entry = syndEntries.get(i);
             final SyndEntry check = syndChecks.get(i);
-            System.out.println("Original: " + entry.getModule(AbstractITunesObject.URI));
-            System.out.println("Check:    " + check.getModule(AbstractITunesObject.URI));
-            System.out.println(entry.getModule(AbstractITunesObject.URI).toString());
-            System.out.println("-----------------------------------------");
-            System.out.println(check.getModule(AbstractITunesObject.URI).toString());
+            LOG.debug("Original: " + entry.getModule(AbstractITunesObject.URI));
+            LOG.debug("Check:    " + check.getModule(AbstractITunesObject.URI));
+            LOG.debug(entry.getModule(AbstractITunesObject.URI).toString());
+            LOG.debug("-----------------------------------------");
+            LOG.debug(check.getModule(AbstractITunesObject.URI).toString());
             assertEquals("Entry Level: ", entry.getModule(AbstractITunesObject.URI).toString(), check.getModule(AbstractITunesObject.URI).toString());
         }
     }
 
     public void testCreate() throws Exception {
+
         final SyndFeed feed = new SyndFeedImpl();
         final String feedType = "rss_2.0";
         feed.setFeedType(feedType);
@@ -95,6 +98,9 @@ public class ITunesGeneratorTest extends AbstractTestCase {
         feed.getModules().add(fi);
 
         final SyndFeedOutput output = new SyndFeedOutput();
-        output.output(feed, new OutputStreamWriter(System.out));
+        final StringWriter writer = new StringWriter();
+        output.output(feed, writer);
+        LOG.debug("{}", writer);
+
     }
 }

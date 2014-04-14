@@ -27,8 +27,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.jdom2.Element;
 import org.jdom2.Namespace;
@@ -40,6 +38,8 @@ import org.rometools.feed.module.base.types.DateTimeRange;
 import org.rometools.feed.module.base.types.FloatUnit;
 import org.rometools.feed.module.base.types.IntUnit;
 import org.rometools.feed.module.base.types.ShortDate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.ModuleParser;
@@ -49,7 +49,8 @@ import com.sun.syndication.io.ModuleParser;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class CustomTagParser implements ModuleParser {
-    private static final Logger log = Logger.getAnonymousLogger();
+
+    private static final Logger LOG = LoggerFactory.getLogger(CustomTagParser.class);
 
     static final Namespace NS = Namespace.getNamespace("g-custom", CustomTags.URI);
 
@@ -84,13 +85,13 @@ public class CustomTagParser implements ModuleParser {
                         try {
                             tags.add(new CustomTagImpl(child.getName(), new ShortDate(GoogleBaseParser.SHORT_DT_FMT.parse(child.getTextTrim()))));
                         } catch (final ParseException e) {
-                            log.log(Level.WARNING, "Unable to parse date type on " + child.getName(), e);
+                            LOG.warn("Unable to parse date type on " + child.getName(), e);
                         }
                     } else if (type.equals("dateTime")) {
                         try {
                             tags.add(new CustomTagImpl(child.getName(), GoogleBaseParser.LONG_DT_FMT.parse(child.getTextTrim())));
                         } catch (final ParseException e) {
-                            log.log(Level.WARNING, "Unable to parse date type on " + child.getName(), e);
+                            LOG.warn("Unable to parse date type on " + child.getName(), e);
                         }
                     } else if (type.equals("dateTimeRange")) {
                         try {
@@ -98,13 +99,13 @@ public class CustomTagParser implements ModuleParser {
                                     .getChild("start", CustomTagParser.NS).getText().trim()), GoogleBaseParser.LONG_DT_FMT.parse(child
                                     .getChild("end", CustomTagParser.NS).getText().trim()))));
                         } catch (final Exception e) {
-                            log.log(Level.WARNING, "Unable to parse date type on " + child.getName(), e);
+                            LOG.warn("Unable to parse date type on " + child.getName(), e);
                         }
                     } else if (type.equals("url")) {
                         try {
                             tags.add(new CustomTagImpl(child.getName(), new URL(child.getTextTrim())));
                         } catch (final MalformedURLException e) {
-                            log.log(Level.WARNING, "Unable to parse URL type on " + child.getName(), e);
+                            LOG.warn("Unable to parse URL type on " + child.getName(), e);
                         }
                     } else if (type.equals("boolean")) {
                         tags.add(new CustomTagImpl(child.getName(), new Boolean(child.getTextTrim().toLowerCase())));
@@ -114,7 +115,7 @@ public class CustomTagParser implements ModuleParser {
                         throw new Exception("Unknown type: " + type);
                     }
                 } catch (final Exception e) {
-                    log.log(Level.WARNING, "Unable to parse type on " + child.getName(), e);
+                    LOG.warn("Unable to parse type on " + child.getName(), e);
                 }
             }
         }

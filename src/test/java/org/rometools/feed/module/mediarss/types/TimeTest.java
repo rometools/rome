@@ -12,12 +12,16 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import org.junit.Assert;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
  * @author cooper
  */
 public class TimeTest extends TestCase {
+
+    private static final Logger LOG = LoggerFactory.getLogger(TimeTest.class);
 
     public TimeTest(final String testName) {
         super(testName);
@@ -34,11 +38,11 @@ public class TimeTest extends TestCase {
      */
     public void testToString() {
         final Time t = new Time("12:05:35.3");
-        System.out.println(t);
+        LOG.debug("{}", t);
         final Time t2 = new Time(t.toString());
         Assert.assertEquals(t.toString(), t2.toString());
-        System.out.println(t2);
-        System.out.println(new Time("3:54.00001").toString());
+        LOG.debug("{}", t2);
+        LOG.debug(new Time("3:54.00001").toString());
     }
 
 }

@@ -215,7 +215,7 @@ public class SSEParserTest extends AbstractTestCase {
                 // if (!foundEqual) {
                 // // show accumulated error messages
                 // for (Iterator mesgIter = messages.iterator(); mesgIter.hasNext();) {
-                // System.out.println((String) mesgIter.next());
+                // LOG.debug((String) mesgIter.next());
                 // }
                 // }
 

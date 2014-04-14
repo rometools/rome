@@ -45,9 +45,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 import org.rometools.feed.module.itunes.types.Category;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.CopyFrom;
 
@@ -58,10 +59,11 @@ import com.sun.syndication.feed.CopyFrom;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class FeedInformationImpl extends AbstractITunesObject implements FeedInformation {
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
+
+    private static final Logger LOG = LoggerFactory.getLogger(FeedInformationImpl.class);
+
     private String ownerName;
     private String ownerEmailAddress;
     private URL image;
@@ -180,7 +182,7 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
                 setImage(new URL(info.getImage().toExternalForm()));
             }
         } catch (final MalformedURLException e) {
-            Logger.getAnonymousLogger().fine("Error copying URL:" + info.getImage());
+            LOG.debug("Error copying URL:" + info.getImage(), e);
         }
 
         if (info.getKeywords() != null) {

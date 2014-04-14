@@ -14,6 +14,8 @@ import junit.framework.TestSuite;
 
 import org.rometools.feed.module.AbstractTestCase;
 import org.rometools.feed.module.cc.CreativeCommons;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
@@ -26,6 +28,8 @@ import com.sun.syndication.io.SyndFeedOutput;
  */
 public class CCModuleGeneratorTest extends AbstractTestCase {
 
+    private static final Logger LOG = LoggerFactory.getLogger(CCModuleGeneratorTest.class);
+
     public CCModuleGeneratorTest(final String testName) {
         super(testName);
     }
@@ -37,7 +41,7 @@ public class CCModuleGeneratorTest extends AbstractTestCase {
     }
 
     public void testGenerate() throws Exception {
-        System.out.println("testGenerate");
+        LOG.debug("testGenerate");
         final SyndFeedInput input = new SyndFeedInput();
         final SyndFeedOutput output = new SyndFeedOutput();
         final File testDir = new File(super.getTestFile("xml"));
@@ -46,7 +50,7 @@ public class CCModuleGeneratorTest extends AbstractTestCase {
             if (!testFiles[h].getName().endsWith(".xml")) {
                 continue;
             }
-            System.out.println(testFiles[h].getName());
+            LOG.debug(testFiles[h].getName());
             final SyndFeed feed = input.build(testFiles[h]);
             // if( !feed.getFeedType().equals("rss_1.0"))
             {
@@ -64,7 +68,7 @@ public class CCModuleGeneratorTest extends AbstractTestCase {
                     // final CreativeCommons base = (CreativeCommons)
                     // entry.getModule(CreativeCommons.URI);
                     final CreativeCommons base2 = (CreativeCommons) entry2.getModule(CreativeCommons.URI);
-                    System.out.println(base2);
+                    LOG.debug("{}", base2);
                     // FIXME
                     // if( base != null)
                     // this.assertEquals( testFiles[h].getName(), base.getLicenses(),

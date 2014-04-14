@@ -11,11 +11,17 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import org.rometools.feed.module.cc.io.CCModuleGenerator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  *
  * @author rcooper
  */
 public class IntUnitTest extends TestCase {
+
+    private static final Logger LOG = LoggerFactory.getLogger(CCModuleGenerator.class);
 
     public IntUnitTest(final String testName) {
         super(testName);
@@ -31,7 +37,7 @@ public class IntUnitTest extends TestCase {
      * Test of getUnits method, of class com.totsp.xml.syndication.base.types.IntUnit.
      */
     public void testIntUnit() {
-        System.out.println("testIntUnit");
+        LOG.debug("testIntUnit");
         IntUnit fu = new IntUnit("1km");
 
         assertEquals(1, fu.getValue());

@@ -7,8 +7,11 @@
 package org.rometools.feed.module.content;
 
 import java.io.File;
+import java.io.StringWriter;
 
 import org.rometools.feed.module.AbstractTestCase;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
@@ -21,6 +24,9 @@ import com.sun.syndication.io.XmlReader;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert Cooper</a>
  */
 public class ContentModuleGeneratorTest extends AbstractTestCase {
+
+    private static final Logger LOG = LoggerFactory.getLogger(ContentModuleGeneratorTest.class);
+
     public ContentModuleGeneratorTest(final String testName) {
         super(testName);
     }
@@ -43,13 +49,18 @@ public class ContentModuleGeneratorTest extends AbstractTestCase {
      * Test of generate method, of class com.totsp.xml.syndication.content.ContentModuleGenerator.
      */
     public void testGenerate() throws Exception {
-        System.out.println("testGenerate");
+
+        LOG.debug("testGenerate");
 
         final SyndFeedInput input = new SyndFeedInput();
         final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("xml/test-rdf.xml")).toURI().toURL()));
         final SyndEntry entry = feed.getEntries().get(0);
         entry.getModule(ContentModule.URI);
         final SyndFeedOutput output = new SyndFeedOutput();
-        output.output(feed, new java.io.PrintWriter(System.out));
+        final StringWriter writer = new StringWriter();
+        output.output(feed, writer);
+
+        LOG.debug("{}", writer);
+
     }
 }

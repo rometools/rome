@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.logging.Logger;
 
 import org.jdom2.Attribute;
 import org.jdom2.DataConversionException;
@@ -32,7 +31,6 @@ import com.sun.syndication.io.impl.RSS20Parser;
  * @author <a href="mailto:ldornin@dev.java.net">ldornin</a>
  */
 public class SSE091Parser implements DelegatingModuleParser {
-    static Logger log = Logger.getLogger(SSE091Parser.class.getName());
 
     // root of the sharing element
     private RSS20Parser rssParser;

@@ -13,6 +13,8 @@ import junit.framework.Test;
 import junit.framework.TestSuite;
 
 import org.rometools.feed.module.itunes.AbstractITunesObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
@@ -25,6 +27,8 @@ import com.sun.syndication.io.XmlReader;
  * @author cooper
  */
 public class ITunesGeneratorTest extends AbstractTestCase {
+
+    private static final Logger LOG = LoggerFactory.getLogger(ITunesGeneratorTest.class);
 
     public ITunesGeneratorTest(final String testName) {
         super(testName);
@@ -40,7 +44,7 @@ public class ITunesGeneratorTest extends AbstractTestCase {
      * Test of generate method, of class com.totsp.xml.syndication.itunes.ITunesGenerator.
      */
     public void testEndToEnd() throws Exception {
-        System.out.println("testEndToEnd");
+        LOG.debug("testEndToEnd");
         testFile("xml/leshow.xml");
 
         // testFile( "/test/xml/apple.xml" );
@@ -57,7 +61,7 @@ public class ITunesGeneratorTest extends AbstractTestCase {
         output.output(syndfeed, outfeed);
 
         final SyndFeed syndCheck = input.build(new XmlReader(outfeed.toURI().toURL()));
-        System.out.println(syndCheck.getModule(AbstractITunesObject.URI).toString());
+        LOG.debug(syndCheck.getModule(AbstractITunesObject.URI).toString());
         assertEquals("Feed Level: ", syndfeed.getModule(AbstractITunesObject.URI).toString(), syndCheck.getModule(AbstractITunesObject.URI).toString());
 
         final List<SyndEntry> syndEntries = syndfeed.getEntries();
@@ -66,8 +70,8 @@ public class ITunesGeneratorTest extends AbstractTestCase {
         for (int i = 0; i < syndEntries.size(); i++) {
             final SyndEntry entry = syndEntries.get(i);
             final SyndEntry check = syndChecks.get(i);
-            System.out.println("Original: " + entry.getModule(AbstractITunesObject.URI));
-            System.out.println("Check:    " + check.getModule(AbstractITunesObject.URI));
+            LOG.debug("Original: {}", entry.getModule(AbstractITunesObject.URI));
+            LOG.debug("Check:    {}", check.getModule(AbstractITunesObject.URI));
             assertEquals("Entry Level: ", entry.getModule(AbstractITunesObject.URI).toString(), check.getModule(AbstractITunesObject.URI).toString());
         }
     }

@@ -15,6 +15,8 @@ import junit.framework.TestSuite;
 
 import org.rometools.feed.module.AbstractTestCase;
 import org.rometools.feed.module.photocast.PhotocastModule;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
@@ -26,6 +28,8 @@ import com.sun.syndication.io.SyndFeedOutput;
  * @author cooper
  */
 public class GeneratorTest extends AbstractTestCase {
+
+    private static final Logger LOG = LoggerFactory.getLogger(GeneratorTest.class);
 
     public GeneratorTest(final String testName) {
         super(testName);
@@ -46,7 +50,7 @@ public class GeneratorTest extends AbstractTestCase {
         final SyndFeed feed = input.build(new File(super.getTestFile("index.rss")));
         final List<SyndEntry> entries = feed.getEntries();
         for (int i = 0; i < entries.size(); i++) {
-            System.out.println(entries.get(i).getModule(PhotocastModule.URI));
+            LOG.debug("{}", entries.get(i).getModule(PhotocastModule.URI));
         }
         final SyndFeedOutput output = new SyndFeedOutput();
         output.output(feed, new File("target/index.rss"));

@@ -52,8 +52,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.jdom2.Element;
 import org.jdom2.Namespace;
@@ -69,6 +67,8 @@ import org.rometools.feed.module.base.types.PriceTypeEnumeration;
 import org.rometools.feed.module.base.types.ShippingType;
 import org.rometools.feed.module.base.types.Size;
 import org.rometools.feed.module.base.types.YearType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.ModuleParser;
@@ -80,7 +80,9 @@ import com.sun.syndication.io.ModuleParser;
  * @version $Revision: 1.3 $
  */
 public class GoogleBaseParser implements ModuleParser {
-    private static final Logger log = Logger.getAnonymousLogger();
+
+    private static final Logger LOG = LoggerFactory.getLogger(GoogleBaseParser.class);
+
     public static final char[] INTEGER_CHARS = "-1234567890".toCharArray();
     public static final char[] FLOAT_CHARS = "-1234567890.".toCharArray();
     public static final SimpleDateFormat SHORT_DT_FMT = new SimpleDateFormat("yyyy-MM-dd");
@@ -95,10 +97,10 @@ public class GoogleBaseParser implements ModuleParser {
             PROPS2TAGS.load(GoogleBaseParser.class.getResourceAsStream("/org/rometools/feed/module/base/io/tags.properties"));
         } catch (final IOException e) {
             e.printStackTrace();
-            log.log(Level.SEVERE, "Unable to read properties file for Google Base tags!", e);
+            LOG.error("Unable to read properties file for Google Base tags!", e);
         } catch (final IntrospectionException e) {
             e.printStackTrace();
-            log.log(Level.SEVERE, "Unable to get property descriptors for GoogleBaseImpl!", e);
+            LOG.error("Unable to get property descriptors for GoogleBaseImpl!", e);
         }
     }
 
@@ -119,7 +121,7 @@ public class GoogleBaseParser implements ModuleParser {
                 final String tagName = GoogleBaseParser.PROPS2TAGS.getProperty(pd.getName());
 
                 if (tagName == null) {
-                    log.log(Level.FINE, "Property: " + pd.getName() + " doesn't have a tag mapping. ");
+                    LOG.debug("Property: {} doesn't have a tag mapping.", pd.getName());
                 } else {
                     tag2pd.put(tagName, pd);
                 }
@@ -141,7 +143,7 @@ public class GoogleBaseParser implements ModuleParser {
                     try {
                         handleTag(child, pd, module);
                     } catch (final Exception e) {
-                        log.log(Level.WARNING, "Unable to handle tag: " + child.getName(), e);
+                        LOG.warn("Unable to handle tag: " + child.getName(), e);
                         e.printStackTrace();
                     }
                 }

@@ -26,8 +26,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.StringTokenizer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.jdom2.Element;
 import org.jdom2.Namespace;
@@ -48,6 +46,8 @@ import org.rometools.feed.module.mediarss.types.Text;
 import org.rometools.feed.module.mediarss.types.Thumbnail;
 import org.rometools.feed.module.mediarss.types.Time;
 import org.rometools.feed.module.mediarss.types.UrlReference;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.ModuleParser;
@@ -59,7 +59,8 @@ import com.sun.syndication.io.impl.NumberParser;
  */
 public class MediaModuleParser implements ModuleParser {
 
-    private static final Logger LOG = Logger.getLogger(MediaModuleParser.class.getName());
+    private static final Logger LOG = LoggerFactory.getLogger(MediaModuleParser.class);
+
     private static final Namespace NS = Namespace.getNamespace(MediaModule.URI);
 
     @Override
@@ -104,7 +105,7 @@ public class MediaModuleParser implements ModuleParser {
                         mc = new MediaContent(new UrlReference(new URI(content.getAttributeValue("url"))));
                         mc.setPlayer(parsePlayer(content));
                     } catch (final Exception ex) {
-                        LOG.log(Level.WARNING, "Exception parsing content tag.", ex);
+                        LOG.warn("Exception parsing content tag.", ex);
                     }
                 } else {
                     mc = new MediaContent(parsePlayer(content));
@@ -114,17 +115,17 @@ public class MediaModuleParser implements ModuleParser {
                     try {
                         mc.setAudioChannels(content.getAttributeValue("channels") == null ? null : new Integer(content.getAttributeValue("channels")));
                     } catch (final Exception ex) {
-                        LOG.log(Level.WARNING, "Exception parsing content tag.", ex);
+                        LOG.warn("Exception parsing content tag.", ex);
                     }
                     try {
                         mc.setBitrate(content.getAttributeValue("bitrate") == null ? null : new Float(content.getAttributeValue("bitrate")));
                     } catch (final Exception ex) {
-                        LOG.log(Level.WARNING, "Exception parsing content tag.", ex);
+                        LOG.warn("Exception parsing content tag.", ex);
                     }
                     try {
                         mc.setDuration(content.getAttributeValue("duration") == null ? null : new Long(content.getAttributeValue("duration")));
                     } catch (final Exception ex) {
-                        LOG.log(Level.WARNING, "Exception parsing content tag.", ex);
+                        LOG.warn("Exception parsing content tag.", ex);
                     }
 
                     mc.setMedium(content.getAttributeValue("medium"));
@@ -144,17 +145,17 @@ public class MediaModuleParser implements ModuleParser {
                     try {
                         mc.setFileSize(content.getAttributeValue("fileSize") == null ? null : NumberParser.parseLong(content.getAttributeValue("fileSize")));
                     } catch (final Exception ex) {
-                        LOG.log(Level.WARNING, "Exception parsing content tag.", ex);
+                        LOG.warn("Exception parsing content tag.", ex);
                     }
                     try {
                         mc.setFramerate(content.getAttributeValue("framerate") == null ? null : NumberParser.parseFloat(content.getAttributeValue("framerate")));
                     } catch (final Exception ex) {
-                        LOG.log(Level.WARNING, "Exception parsing content tag.", ex);
+                        LOG.warn("Exception parsing content tag.", ex);
                     }
                     try {
                         mc.setHeight(content.getAttributeValue("height") == null ? null : NumberParser.parseInt(content.getAttributeValue("height")));
                     } catch (final Exception ex) {
-                        LOG.log(Level.WARNING, "Exception parsing content tag.", ex);
+                        LOG.warn("Exception parsing content tag.", ex);
                     }
 
                     mc.setLanguage(content.getAttributeValue("lang"));
@@ -163,24 +164,24 @@ public class MediaModuleParser implements ModuleParser {
                         mc.setSamplingrate(content.getAttributeValue("samplingrate") == null ? null : NumberParser.parseFloat(content
                                 .getAttributeValue("samplingrate")));
                     } catch (final Exception ex) {
-                        LOG.log(Level.WARNING, "Exception parsing content tag.", ex);
+                        LOG.warn("Exception parsing content tag.", ex);
                     }
 
                     mc.setType(content.getAttributeValue("type"));
                     try {
                         mc.setWidth(content.getAttributeValue("width") == null ? null : NumberParser.parseInt(content.getAttributeValue("width")));
                     } catch (final Exception ex) {
-                        LOG.log(Level.WARNING, "Exception parsing content tag.", ex);
+                        LOG.warn("Exception parsing content tag.", ex);
                     }
 
                     mc.setDefaultContent(content.getAttributeValue("isDefault") == null ? false : Boolean.getBoolean(content.getAttributeValue("isDefault")));
                 } else {
-                    LOG.log(Level.WARNING, "Could not find MediaContent.");
+                    LOG.warn("Could not find MediaContent.");
                 }
 
             }
         } catch (final Exception ex) {
-            LOG.log(Level.WARNING, "Exception parsing content tag.", ex);
+            LOG.warn("Exception parsing content tag.", ex);
         }
 
         return values.toArray(new MediaContent[values.size()]);
@@ -221,7 +222,7 @@ public class MediaModuleParser implements ModuleParser {
                     final Element cat = categories.get(i);
                     values.add(new Category(cat.getAttributeValue("scheme"), cat.getAttributeValue("label"), cat.getText()));
                 } catch (final Exception ex) {
-                    LOG.log(Level.WARNING, "Exception parsing category tag.", ex);
+                    LOG.warn("Exception parsing category tag.", ex);
                 }
             }
 
@@ -237,7 +238,7 @@ public class MediaModuleParser implements ModuleParser {
                 md.setCopyrightUrl(copy.getAttributeValue("url") != null ? new URI(copy.getAttributeValue("url")) : null);
             }
         } catch (final Exception ex) {
-            LOG.log(Level.WARNING, "Exception parsing copyright tag.", ex);
+            LOG.warn("Exception parsing copyright tag.", ex);
         }
         // credits
         {
@@ -250,7 +251,7 @@ public class MediaModuleParser implements ModuleParser {
                     values.add(new Credit(cred.getAttributeValue("scheme"), cred.getAttributeValue("role"), cred.getText()));
                     md.setCredits(values.toArray(new Credit[values.size()]));
                 } catch (final Exception ex) {
-                    LOG.log(Level.WARNING, "Exception parsing credit tag.", ex);
+                    LOG.warn("Exception parsing credit tag.", ex);
                 }
             }
         }
@@ -264,7 +265,7 @@ public class MediaModuleParser implements ModuleParser {
                 md.setDescriptionType(description.getAttributeValue("type"));
             }
         } catch (final Exception ex) {
-            LOG.log(Level.WARNING, "Exception parsing description tag.", ex);
+            LOG.warn("Exception parsing description tag.", ex);
         }
 
         // hash
@@ -275,7 +276,7 @@ public class MediaModuleParser implements ModuleParser {
                 md.setHash(new Hash(hash.getAttributeValue("algo"), hash.getText()));
             }
         } catch (final Exception ex) {
-            LOG.log(Level.WARNING, "Exception parsing hash tag.", ex);
+            LOG.warn("Exception parsing hash tag.", ex);
         }
         // keywords
         {
@@ -302,7 +303,7 @@ public class MediaModuleParser implements ModuleParser {
                     final Element rat = ratings.get(i);
                     values.add(new Rating(rat.getAttributeValue("scheme"), rat.getText()));
                 } catch (final Exception ex) {
-                    LOG.log(Level.WARNING, "Exception parsing rating tag.", ex);
+                    LOG.warn("Exception parsing rating tag.", ex);
                 }
             }
 
@@ -320,7 +321,7 @@ public class MediaModuleParser implements ModuleParser {
                     final Time end = text.getAttributeValue("end") == null ? null : new Time(text.getAttributeValue("end"));
                     values.add(new Text(text.getAttributeValue("type"), text.getTextTrim(), start, end));
                 } catch (final Exception ex) {
-                    LOG.log(Level.WARNING, "Exception parsing text tag.", ex);
+                    LOG.warn("Exception parsing text tag.", ex);
                 }
             }
 
@@ -339,7 +340,7 @@ public class MediaModuleParser implements ModuleParser {
                     final Integer height = thumb.getAttributeValue("height") == null ? null : new Integer(thumb.getAttributeValue("height"));
                     values.add(new Thumbnail(new URI(thumb.getAttributeValue("url")), width, height, t));
                 } catch (final Exception ex) {
-                    LOG.log(Level.WARNING, "Exception parsing thumbnail tag.", ex);
+                    LOG.warn("Exception parsing thumbnail tag.", ex);
                 }
             }
 
@@ -414,7 +415,7 @@ public class MediaModuleParser implements ModuleParser {
             try {
                 p = new PlayerReference(new URI(player.getAttributeValue("url")), width, height);
             } catch (final Exception ex) {
-                LOG.log(Level.WARNING, "Exception parsing player tag.", ex);
+                LOG.warn("Exception parsing player tag.", ex);
             }
         }
 

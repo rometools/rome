@@ -18,6 +18,8 @@ import org.junit.Assert;
 import org.rometools.feed.module.AbstractTestCase;
 import org.rometools.feed.module.base.CustomTag;
 import org.rometools.feed.module.base.CustomTags;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
@@ -29,6 +31,8 @@ import com.sun.syndication.io.SyndFeedOutput;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class CustomTagGeneratorTest extends AbstractTestCase {
+
+    private static final Logger LOG = LoggerFactory.getLogger(CustomTagGeneratorTest.class);
 
     public CustomTagGeneratorTest(final String testName) {
         super(testName);
@@ -61,8 +65,8 @@ public class CustomTagGeneratorTest extends AbstractTestCase {
         while (it.hasNext()) {
             final CustomTag tag = it.next();
             final CustomTag tag2 = it2.next();
-            System.out.println("tag1:" + tag);
-            System.out.println("tag2:" + tag2);
+            LOG.debug("tag1: {}", tag);
+            LOG.debug("tag2: {}", tag2);
             Assert.assertEquals(tag, tag2);
         }
     }

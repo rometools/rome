@@ -45,7 +45,6 @@ import java.net.URL;
 import java.util.List;
 import java.util.Locale;
 import java.util.StringTokenizer;
-import java.util.logging.Logger;
 
 import org.jdom2.Content;
 import org.jdom2.Element;
@@ -57,6 +56,8 @@ import org.rometools.feed.module.itunes.FeedInformationImpl;
 import org.rometools.feed.module.itunes.types.Category;
 import org.rometools.feed.module.itunes.types.Duration;
 import org.rometools.feed.module.itunes.types.Subcategory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.io.ModuleParser;
 import com.sun.syndication.io.WireFeedParser;
@@ -66,7 +67,9 @@ import com.sun.syndication.io.WireFeedParser;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class ITunesParser implements ModuleParser {
-    static Logger log = Logger.getLogger(ITunesParser.class.getName());
+
+    private static final Logger LOG = LoggerFactory.getLogger(ITunesParser.class);
+
     Namespace ns = Namespace.getNamespace(AbstractITunesObject.URI);
 
     /** Creates a new instance of ITunesParser */
@@ -113,7 +116,7 @@ public class ITunesParser implements ModuleParser {
                     final URL imageURL = new URL(image.getAttributeValue("href").trim());
                     feedInfo.setImage(imageURL);
                 } catch (final MalformedURLException e) {
-                    log.finer("Malformed URL Exception reading itunes:image tag: " + image.getAttributeValue("href"));
+                    LOG.debug("Malformed URL Exception reading itunes:image tag: {}", image.getAttributeValue("href"));
                 }
             }
 

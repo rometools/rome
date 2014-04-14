@@ -9,12 +9,17 @@ package org.rometools.feed.module.content;
 
 import junit.framework.TestCase;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * This is all standard property storage testing.
  *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert Cooper</a>
  */
 public class ContentItemTest extends TestCase {
+
+    private static final Logger LOG = LoggerFactory.getLogger(ContentItemTest.class);
 
     private final ContentItem item = new ContentItem();
 
@@ -40,7 +45,7 @@ public class ContentItemTest extends TestCase {
      * Test of ContentFormat method, of class com.totsp.xml.syndication.content.ContentItem.
      */
     public void testContentFormat() {
-        System.out.println("testContentFormat");
+        LOG.debug("testContentFormat");
         final String test = "application/xhtml";
         item.setContentFormat(test);
         assertTrue(item.getContentFormat().equals(test));
@@ -50,7 +55,7 @@ public class ContentItemTest extends TestCase {
      * Test of ContentEncoding method, of class com.totsp.xml.syndication.content.ContentItem.
      */
     public void testContentEncoding() {
-        System.out.println("testContentEncoding");
+        LOG.debug("testContentEncoding");
         final String test = "http://www.w3.org/TR/REC-xml#dt-wellformed";
 
         item.setContentFormat(test);
@@ -61,7 +66,7 @@ public class ContentItemTest extends TestCase {
      * Test of ContentValue method, of class com.totsp.xml.syndication.content.ContentItem.
      */
     public void testContentValue() {
-        System.out.println("testContentValue");
+        LOG.debug("testContentValue");
         final String test = "<em>This is<strong>very</em> cool</strong>.";
 
         item.setContentFormat(test);
@@ -72,7 +77,7 @@ public class ContentItemTest extends TestCase {
      * Test of ContentAbout method, of class com.totsp.xml.syndication.content.ContentItem.
      */
     public void testContentAbout() {
-        System.out.println("testContentAbout");
+        LOG.debug("testContentAbout");
         final String test = "http://example.org/item/content.svg";
 
         item.setContentFormat(test);
@@ -83,7 +88,7 @@ public class ContentItemTest extends TestCase {
      * Test of ContentValueParseType method, of class com.totsp.xml.syndication.content.ContentItem.
      */
     public void testContentValueParseType() {
-        System.out.println("testContentValueParseType");
+        LOG.debug("testContentValueParseType");
         final String test = "Literal";
 
         item.setContentFormat(test);
@@ -94,7 +99,7 @@ public class ContentItemTest extends TestCase {
      * Test of ContentValueNamespace method, of class com.totsp.xml.syndication.content.ContentItem.
      */
     public void testContentValueNamespace() {
-        System.out.println("testContentValueNamespace");
+        LOG.debug("testContentValueNamespace");
         final String test = "http://www.w3.org/1999/xhtml";
 
         item.setContentFormat(test);
@@ -105,7 +110,7 @@ public class ContentItemTest extends TestCase {
      * Test of ContentResource method, of class com.totsp.xml.syndication.content.ContentItem.
      */
     public void testContentResource() {
-        System.out.println("testContentResource");
+        LOG.debug("testContentResource");
         final String test = "http://www.w3.org/2000/svg";
 
         item.setContentResource(test);
@@ -119,7 +124,7 @@ public class ContentItemTest extends TestCase {
      *       com.totsp.xml.syndication.content.ContentItem.
      */
     public void testEquals() {
-        System.out.println("testEquals");
+        LOG.debug("testEquals");
         final String test = "http://www.w3.org/2000/svg";
 
         assertTrue(test.equals(test));

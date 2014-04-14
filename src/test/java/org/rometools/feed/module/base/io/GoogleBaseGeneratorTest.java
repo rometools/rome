@@ -19,6 +19,8 @@ import org.rometools.feed.module.base.GoogleBase;
 import org.rometools.feed.module.base.GoogleBaseImpl;
 import org.rometools.feed.module.base.Product;
 import org.rometools.feed.module.base.Vehicle;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.synd.SyndContent;
 import com.sun.syndication.feed.synd.SyndContentImpl;
@@ -35,6 +37,8 @@ import com.sun.syndication.io.SyndFeedOutput;
  */
 public class GoogleBaseGeneratorTest extends AbstractTestCase {
 
+    private static final Logger LOG = LoggerFactory.getLogger(GoogleBaseGeneratorTest.class);
+
     public GoogleBaseGeneratorTest(final String testName) {
         super(testName);
     }
@@ -49,7 +53,7 @@ public class GoogleBaseGeneratorTest extends AbstractTestCase {
      * Test of generate method, of class com.totsp.xml.syndication.base.io.GoogleBaseGenerator.
      */
     public void testGenerate() throws Exception {
-        System.out.println("testGenerate");
+        LOG.debug("testGenerate");
         final SyndFeedInput input = new SyndFeedInput();
         final SyndFeedOutput output = new SyndFeedOutput();
         final File testDir = new File(super.getTestFile("xml"));
@@ -58,7 +62,7 @@ public class GoogleBaseGeneratorTest extends AbstractTestCase {
             if (!testFiles[h].getName().endsWith(".xml")) {
                 continue;
             }
-            System.out.println(testFiles[h].getName());
+            LOG.debug(testFiles[h].getName());
             final SyndFeed feed = input.build(testFiles[h]);
             try {
                 output.output(feed, new File("target/" + testFiles[h].getName()));
@@ -109,7 +113,7 @@ public class GoogleBaseGeneratorTest extends AbstractTestCase {
         feed.setEntries(entries);
 
         final SyndFeedOutput output = new SyndFeedOutput();
-        System.out.println(output.outputString(feed));
+        LOG.debug(output.outputString(feed));
 
     }
 }

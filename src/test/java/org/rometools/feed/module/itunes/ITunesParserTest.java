@@ -15,6 +15,8 @@ import junit.framework.TestSuite;
 
 import org.rometools.feed.module.AbstractTestCase;
 import org.rometools.feed.module.itunes.io.ITunesGenerator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.feed.synd.SyndEntry;
@@ -27,6 +29,9 @@ import com.sun.syndication.io.XmlReader;
  * @author cooper
  */
 public class ITunesParserTest extends AbstractTestCase {
+
+    private static final Logger LOG = LoggerFactory.getLogger(ITunesParserTest.class);
+
     public ITunesParserTest(final String testName) {
         super(testName);
     }
@@ -49,7 +54,7 @@ public class ITunesParserTest extends AbstractTestCase {
      * Test of getNamespaceUri method, of class com.totsp.xml.syndication.itunes.ITunesParser.
      */
     public void testGetNamespaceUri() {
-        System.out.println("testGetNamespaceUri");
+        LOG.debug("testGetNamespaceUri");
 
         assertEquals("Namespace", "http://www.itunes.com/dtds/podcast-1.0.dtd", new ITunesGenerator().getNamespaceUri());
     }
@@ -80,7 +85,7 @@ public class ITunesParserTest extends AbstractTestCase {
         while (it.hasNext()) {
             final SyndEntry entry = it.next();
             final EntryInformationImpl entryInfo = (EntryInformationImpl) entry.getModule(AbstractITunesObject.URI);
-            System.out.println(entryInfo);
+            LOG.debug("{}", entryInfo);
         }
 
         feed = new File(getTestFile("xml/rsr.xml"));
@@ -91,7 +96,8 @@ public class ITunesParserTest extends AbstractTestCase {
         while (it.hasNext()) {
             final SyndEntry entry = it.next();
             final EntryInformationImpl entryInfo = (EntryInformationImpl) entry.getModule(AbstractITunesObject.URI);
-            System.out.println(entryInfo.getDuration());
+            LOG.debug("{}", entryInfo.getDuration());
         }
     }
+
 }

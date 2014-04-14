@@ -43,7 +43,6 @@ import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
-import java.util.logging.Logger;
 
 import org.jdom2.Element;
 import org.jdom2.Namespace;
@@ -57,6 +56,8 @@ import org.rometools.feed.module.yahooweather.types.Forecast;
 import org.rometools.feed.module.yahooweather.types.Location;
 import org.rometools.feed.module.yahooweather.types.Units;
 import org.rometools.feed.module.yahooweather.types.Wind;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.ModuleParser;
@@ -68,15 +69,13 @@ import com.sun.syndication.io.ModuleParser;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class WeatherModuleParser implements ModuleParser {
+
+    private static final Logger LOG = LoggerFactory.getLogger(WeatherModuleParser.class);
+
     private static final SimpleDateFormat TIME_ONLY = new SimpleDateFormat("h:mm a");
     private static final SimpleDateFormat LONG_DATE = new SimpleDateFormat("EEE, d MMM yyyy h:mm a zzz");
     private static final SimpleDateFormat SHORT_DATE = new SimpleDateFormat("d MMM yyyy");
     private static final Namespace NS = Namespace.getNamespace(YWeatherModule.URI);
-
-    /** Creates a new instance of SlashModuleParser */
-    public WeatherModuleParser() {
-        super();
-    }
 
     @Override
     public String getNamespaceUri() {
@@ -109,7 +108,7 @@ public class WeatherModuleParser implements ModuleParser {
                         Integer.parseInt(wind.getAttributeValue("speed")));
                 module.setWind(w);
             } catch (final NumberFormatException nfe) {
-                Logger.getAnonymousLogger().warning("NumberFormatException processing <wind> tag.");
+                LOG.warn("NumberFormatException processing <wind> tag.", nfe);
             }
         }
 
@@ -122,7 +121,7 @@ public class WeatherModuleParser implements ModuleParser {
                         Atmosphere.PressureChange.fromCode(Integer.parseInt(atmosphere.getAttributeValue("rising"))));
                 module.setAtmosphere(a);
             } catch (final NumberFormatException nfe) {
-                Logger.getAnonymousLogger().warning("NumberFormatException processing <atmosphere> tag.");
+                LOG.warn("NumberFormatException processing <atmosphere> tag.", nfe);
             }
         }
 
@@ -134,7 +133,7 @@ public class WeatherModuleParser implements ModuleParser {
                         TIME_ONLY.parse(astronomy.getAttributeValue("sunset").replaceAll("am", "AM").replaceAll("pm", "PM")));
                 module.setAstronomy(a);
             } catch (final ParseException pe) {
-                Logger.getAnonymousLogger().warning("ParseException processing <astronomy> tag.");
+                LOG.warn("ParseException processing <astronomy> tag.", pe);
             }
         }
 
@@ -147,9 +146,9 @@ public class WeatherModuleParser implements ModuleParser {
                                 .getAttributeValue("date").replaceAll("pm", "PM").replaceAll("am", "AM")));
                 module.setCondition(c);
             } catch (final NumberFormatException nfe) {
-                Logger.getAnonymousLogger().warning("NumberFormatException processing <condition> tag.");
+                LOG.warn("NumberFormatException processing <condition> tag.", nfe);
             } catch (final ParseException pe) {
-                Logger.getAnonymousLogger().warning("ParseException processing <condition> tag.");
+                LOG.warn("ParseException processing <condition> tag.", pe);
             }
         }
 
@@ -167,9 +166,9 @@ public class WeatherModuleParser implements ModuleParser {
                             .getAttributeValue("low")), Integer.parseInt(forecast.getAttributeValue("high")), forecast.getAttributeValue("text"),
                             ConditionCode.fromCode(Integer.parseInt(forecast.getAttributeValue("code"))));
                 } catch (final NumberFormatException nfe) {
-                    Logger.getAnonymousLogger().warning("NumberFormatException processing <forecast> tag.");
+                    LOG.warn("NumberFormatException processing <forecast> tag.", nfe);
                 } catch (final ParseException pe) {
-                    Logger.getAnonymousLogger().warning("ParseException processing <forecast> tag.");
+                    LOG.warn("ParseException processing <forecast> tag.", pe);
                 }
             }
 
