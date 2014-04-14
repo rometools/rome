@@ -25,8 +25,6 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.rometools.certiorem.HttpStatusCodeException;
 import org.rometools.certiorem.hub.Notifier.SubscriptionSummaryCallback;
@@ -35,17 +33,21 @@ import org.rometools.certiorem.hub.data.HubDAO;
 import org.rometools.certiorem.hub.data.Subscriber;
 import org.rometools.certiorem.hub.data.SubscriptionSummary;
 import org.rometools.fetcher.FeedFetcher;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.synd.SyndFeed;
 
 /**
- * The basic business logic controller for the Hub implementation. It is
- * intended to be usable under a very thin servlet wrapper, or other, non-HTTP
- * notification methods you might want to use.
+ * The basic business logic controller for the Hub implementation. It is intended to be usable under
+ * a very thin servlet wrapper, or other, non-HTTP notification methods you might want to use.
  *
  * @author robert.cooper
  */
 public class Hub {
+
+    private static final Logger LOG = LoggerFactory.getLogger(Hub.class);
+
     private static final HashSet<String> STANDARD_SCHEMES = new HashSet<String>();
 
     static {
@@ -82,12 +84,9 @@ public class Hub {
      *
      * @param dao The persistence HubDAO to use
      * @param verifier The verification strategy to use
-     * @param validSchemes A list of valid URI schemes for callbacks (default:
-     *            http, https)
-     * @param validPorts A list of valid port numbers for callbacks (default:
-     *            any)
-     * @param validTopics A set of valid topic URIs which can be subscribed to
-     *            (default: any)
+     * @param validSchemes A list of valid URI schemes for callbacks (default: http, https)
+     * @param validPorts A list of valid port numbers for callbacks (default: any)
+     * @param validTopics A set of valid topic URIs which can be subscribed to (default: any)
      */
     public Hub(final HubDAO dao, final Verifier verifier, final Notifier notifier, final FeedFetcher fetcher, final Set<String> validSchemes,
             final Set<Integer> validPorts, final Set<String> validTopics) {
@@ -118,20 +117,19 @@ public class Hub {
     /**
      * Sends a notification to the subscribers
      *
-     * @param requestHost the host name the hub is running on. (Used for the
-     *            user agent)
+     * @param requestHost the host name the hub is running on. (Used for the user agent)
      * @param topic the URL of the topic that was updated.
-     * @throws HttpStatusCodeException a wrapper exception with a recommended
-     *             status code for the request.
+     * @throws HttpStatusCodeException a wrapper exception with a recommended status code for the
+     *             request.
      */
     public void sendNotification(final String requestHost, final String topic) {
         assert validTopics.isEmpty() || validTopics.contains(topic) : "That topic is not supported by this hub. " + topic;
-        Logger.getLogger(Hub.class.getName()).log(Level.FINE, "Sending notification for {0}", topic);
+        LOG.debug("Sending notification for {}", topic);
         try {
             final List<? extends Subscriber> subscribers = dao.subscribersForTopic(topic);
 
             if (subscribers.isEmpty()) {
-                Logger.getLogger(Hub.class.getName()).log(Level.FINE, "No subscribers to notify for {0}", topic);
+                LOG.debug("No subscribers to notify for {}", topic);
                 return;
             }
 
@@ -149,7 +147,7 @@ public class Hub {
             final StringBuilder userAgent = new StringBuilder("ROME-Certiorem (+http://").append(requestHost).append("; ").append(total)
                     .append(" subscribers)").append(hosts);
             final SyndFeed feed = fetcher.retrieveFeed(userAgent.toString(), new URL(topic));
-            Logger.getLogger(Hub.class.getName()).log(Level.FINE, "Got feed for {0}  Sending to {1} subscribers.", new Object[] { topic, subscribers.size() });
+            LOG.debug("Got feed for {}  Sending to {} subscribers.", topic, subscribers.size());
             notifier.notifySubscribers(subscribers, feed, new SubscriptionSummaryCallback() {
                 @Override
                 public void onSummaryInfo(final SubscriptionSummary summary) {
@@ -157,7 +155,7 @@ public class Hub {
                 }
             });
         } catch (final Exception ex) {
-            Logger.getLogger(Hub.class.getName()).log(Level.SEVERE, "Exception getting " + topic, ex);
+            LOG.debug("Exception getting " + topic, ex);
             throw new HttpStatusCodeException(500, ex.getMessage(), ex);
         }
     }
@@ -171,15 +169,14 @@ public class Hub {
      * @param lease_seconds Duration of the lease
      * @param secret Secret value
      * @param verify_token verify_token;
-     * @return Boolean.TRUE if the subscription succeeded synchronously,
-     *         Boolean.FALSE if the subscription failed synchronously, or null
-     *         if the request is asynchronous.
-     * @throws HttpStatusCodeException a wrapper exception with a recommended
-     *             status code for the request.
+     * @return Boolean.TRUE if the subscription succeeded synchronously, Boolean.FALSE if the
+     *         subscription failed synchronously, or null if the request is asynchronous.
+     * @throws HttpStatusCodeException a wrapper exception with a recommended status code for the
+     *             request.
      */
     public Boolean subscribe(final String callback, final String topic, final String verify, final long lease_seconds, final String secret,
             final String verify_token) {
-        Logger.getLogger(Hub.class.getName()).log(Level.FINE, "{0} wants to subscribe to {1}", new Object[] { callback, topic });
+        LOG.debug("{} wants to subscribe to {}", callback, topic);
         try {
             try {
                 assert callback != null : "Callback URL is required.";
@@ -206,8 +203,7 @@ public class Hub {
                 @Override
                 public void onVerify(final boolean verified) {
                     if (verified) {
-                        Logger.getLogger(Hub.class.getName()).log(Level.FINE, "Verified {0} subscribed to {1}",
-                                new Object[] { subscriber.getCallback(), subscriber.getTopic() });
+                        LOG.debug("Verified {} subscribed to {}", subscriber.getCallback(), subscriber.getTopic());
                         dao.addSubscriber(subscriber);
                     }
                 }
@@ -248,8 +244,7 @@ public class Hub {
 
                 @Override
                 public void onVerify(final boolean verified) {
-                    Logger.getLogger(Hub.class.getName()).log(Level.FINE, "Unsubscribe for {0} at {1} verified {2}",
-                            new Object[] { subscriber.getTopic(), subscriber.getCallback(), verified });
+                    LOG.debug("Unsubscribe for {} at {} verified {}", subscriber.getTopic(), subscriber.getCallback(), verified);
                     if (verified) {
                         dao.removeSubscriber(topic, callback);
                     }

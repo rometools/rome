@@ -27,19 +27,22 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.UUID;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.rometools.certiorem.hub.Verifier;
 import org.rometools.certiorem.hub.data.Subscriber;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
- * An abstract verifier based on the java.net HTTP classes. This implements only
- * synchronous operations, and expects a child class to do Async ops.
+ * An abstract verifier based on the java.net HTTP classes. This implements only synchronous
+ * operations, and expects a child class to do Async ops.
  *
  * @author robert.cooper
  */
 public abstract class AbstractVerifier implements Verifier {
+
+    private static final Logger LOG = LoggerFactory.getLogger(AbstractVerifier.class);
+
     @Override
     public boolean verifySubcribeSyncronously(final Subscriber subscriber) {
         return doOp(Verifier.MODE_SUBSCRIBE, subscriber);
@@ -55,7 +58,7 @@ public abstract class AbstractVerifier implements Verifier {
             final String challenge = UUID.randomUUID().toString();
             final StringBuilder queryString = new StringBuilder();
             queryString.append("hub.mode=").append(mode).append("&hub.topic=").append(URLEncoder.encode(subscriber.getTopic(), "UTF-8"))
-                    .append("&hub.challenge=").append(challenge);
+            .append("&hub.challenge=").append(challenge);
 
             if (subscriber.getLeaseSeconds() != -1) {
                 queryString.append("&hub.lease_seconds=").append(subscriber.getLeaseSeconds());
@@ -85,11 +88,10 @@ public abstract class AbstractVerifier implements Verifier {
                 return true;
             }
         } catch (final UnsupportedEncodingException ex) {
-            Logger.getLogger(AbstractVerifier.class.getName()).log(Level.SEVERE, null, ex);
+            LOG.error("Unsupported encoding", ex);
             throw new RuntimeException("Should not happen. UTF-8 threw unsupported encoding", ex);
         } catch (final IOException ex) {
-            Logger.getLogger(AbstractVerifier.class.getName()).log(Level.SEVERE, null, ex);
-
+            LOG.error("An IOException occured", ex);
             return false;
         }
     }

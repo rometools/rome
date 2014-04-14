@@ -19,10 +19,10 @@
 package org.rometools.certiorem.sub.request;
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.rometools.certiorem.sub.data.Subscription;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * A simple requester implementation that always makes requests as Async.
@@ -30,18 +30,20 @@ import org.rometools.certiorem.sub.data.Subscription;
  * @author robert.cooper
  */
 public class AsyncRequester extends AbstractRequester {
+
+    private static final Logger LOG = LoggerFactory.getLogger(AsyncRequester.class);
+
     @Override
     public void sendSubscribeRequest(final String hubUrl, final Subscription subscription, final String verifySync, final long leaseSeconds,
             final String secret, final String callbackUrl, final RequestCallback callback) {
-        Logger.getLogger(AsyncRequester.class.getName()).log(Level.FINE, "Sending subscribe request to {0} for {1} to {2}",
-                new Object[] { hubUrl, subscription.getSourceUrl(), callbackUrl });
+        LOG.debug("Sending subscribe request to {} for {} to {}", hubUrl, subscription.getSourceUrl(), callbackUrl);
         final Runnable r = new Runnable() {
             @Override
             public void run() {
                 try {
                     sendRequest(hubUrl, "subscribe", subscription, verifySync, leaseSeconds, secret, callbackUrl, callback);
                 } catch (final Exception ex) {
-                    Logger.getLogger(AsyncRequester.class.getName()).log(Level.SEVERE, null, ex);
+                    LOG.error(null, ex);
                     callback.onFailure(ex);
                 }
             }
@@ -52,15 +54,14 @@ public class AsyncRequester extends AbstractRequester {
     @Override
     public void sendUnsubscribeRequest(final String hubUrl, final Subscription subscription, final String verifySync, final String secret,
             final String callbackUrl, final RequestCallback callback) {
-        Logger.getLogger(AsyncRequester.class.getName()).log(Level.FINE, "Sending unsubscribe request to {0} for {1} to {2}",
-                new Object[] { hubUrl, subscription.getSourceUrl(), callbackUrl });
+        LOG.debug("Sending unsubscribe request to {} for {} to {}", hubUrl, subscription.getSourceUrl(), callbackUrl);
         final Runnable r = new Runnable() {
             @Override
             public void run() {
                 try {
                     sendRequest(hubUrl, "unsubscribe", subscription, verifySync, -1, secret, callbackUrl, callback);
                 } catch (final IOException ex) {
-                    Logger.getLogger(AsyncRequester.class.getName()).log(Level.SEVERE, null, ex);
+                    LOG.error(null, ex);
                     callback.onFailure(ex);
                 }
             }

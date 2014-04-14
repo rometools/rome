@@ -26,12 +26,12 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.rometools.certiorem.hub.Notifier;
 import org.rometools.certiorem.hub.data.Subscriber;
 import org.rometools.certiorem.hub.data.SubscriptionSummary;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.FeedException;
@@ -42,20 +42,23 @@ import com.sun.syndication.io.SyndFeedOutput;
  * @author robert.cooper
  */
 public abstract class AbstractNotifier implements Notifier {
+
+    private static final Logger LOG = LoggerFactory.getLogger(AbstractNotifier.class);
+
     /**
-     * This method will serialize the synd feed and build Notifications for the
-     * implementation class to handle.
+     * This method will serialize the synd feed and build Notifications for the implementation class
+     * to handle.
      *
      * @see enqueueNotification
      *
      * @param subscribers List of subscribers to notify
      * @param value The SyndFeed object to send
-     * @param callback A callback that will be invoked each time a subscriber is
-     *            notified.
+     * @param callback A callback that will be invoked each time a subscriber is notified.
      *
      */
     @Override
     public void notifySubscribers(final List<? extends Subscriber> subscribers, final SyndFeed value, final SubscriptionSummaryCallback callback) {
+
         String mimeType = null;
 
         if (value.getFeedType().startsWith("rss")) {
@@ -71,10 +74,10 @@ public abstract class AbstractNotifier implements Notifier {
             output.output(value, new OutputStreamWriter(baos));
             baos.close();
         } catch (final IOException ex) {
-            Logger.getLogger(AbstractNotifier.class.getName()).log(Level.SEVERE, null, ex);
+            LOG.error("Unable to output the feed", ex);
             throw new RuntimeException("Unable to output the feed.", ex);
         } catch (final FeedException ex) {
-            Logger.getLogger(AbstractNotifier.class.getName()).log(Level.SEVERE, null, ex);
+            LOG.error("Unable to output the feed", ex);
             throw new RuntimeException("Unable to output the feed.", ex);
         }
 
@@ -100,9 +103,8 @@ public abstract class AbstractNotifier implements Notifier {
     protected abstract void enqueueNotification(Notification not);
 
     /**
-     * POSTs the payload to the subscriber's callback and returns a
-     * SubscriptionSummary with subscriber counts (where possible) and the
-     * success state of the notification.
+     * POSTs the payload to the subscriber's callback and returns a SubscriptionSummary with
+     * subscriber counts (where possible) and the success state of the notification.
      *
      * @param subscriber subscriber data.
      * @param mimeType MIME type for the request
@@ -114,7 +116,7 @@ public abstract class AbstractNotifier implements Notifier {
 
         try {
             final URL target = new URL(subscriber.getCallback());
-            Logger.getLogger(AbstractNotifier.class.getName()).log(Level.INFO, "Posting notification to subscriber {0}", subscriber.getCallback());
+            LOG.info("Posting notification to subscriber {}", subscriber.getCallback());
             result.setHost(target.getHost());
 
             final HttpURLConnection connection = (HttpURLConnection) target.openConnection();
@@ -132,9 +134,8 @@ public abstract class AbstractNotifier implements Notifier {
             connection.disconnect();
 
             if (responseCode != 200) {
-                Logger.getLogger(AbstractNotifier.class.getName()).log(Level.WARNING, "Got code " + responseCode + " from " + target);
+                LOG.warn("Got code {} from {}", responseCode, target);
                 result.setLastPublishSuccessful(false);
-
                 return result;
             }
 
@@ -142,17 +143,17 @@ public abstract class AbstractNotifier implements Notifier {
                 try {
                     result.setSubscribers(Integer.parseInt(subscribers));
                 } catch (final NumberFormatException nfe) {
-                    Logger.getLogger(AbstractNotifier.class.getName()).log(Level.WARNING, "Invalid subscriber value " + subscribers + " " + target, nfe);
+                    LOG.warn("Invalid subscriber value " + subscribers + " " + target, nfe);
                     result.setSubscribers(-1);
                 }
             } else {
                 result.setSubscribers(-1);
             }
         } catch (final MalformedURLException ex) {
-            Logger.getLogger(AbstractNotifier.class.getName()).log(Level.WARNING, null, ex);
+            LOG.warn(null, ex);
             result.setLastPublishSuccessful(false);
         } catch (final IOException ex) {
-            Logger.getLogger(AbstractNotifier.class.getName()).log(Level.SEVERE, null, ex);
+            LOG.error(null, ex);
             result.setLastPublishSuccessful(false);
         }
 

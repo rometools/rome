@@ -25,17 +25,19 @@ package org.rometools.certiorem.sub.data.ram;
 
 import java.util.Date;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.rometools.certiorem.sub.data.SubDAO;
 import org.rometools.certiorem.sub.data.Subscription;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
  * @author robert.cooper
  */
 public class InMemorySubDAO implements SubDAO {
+
+    private static final Logger LOG = LoggerFactory.getLogger(InMemorySubDAO.class);
 
     private final ConcurrentHashMap<String, Subscription> subscriptions = new ConcurrentHashMap<String, Subscription>();
 
@@ -46,8 +48,7 @@ public class InMemorySubDAO implements SubDAO {
             return null;
         }
         if (s.getExpirationTime() > 0 && s.getExpirationTime() <= System.currentTimeMillis()) {
-            Logger.getLogger(InMemorySubDAO.class.getName()).log(Level.FINE, "Subscription {0} expired at {1}",
-                    new Object[] { s.getSourceUrl(), new Date(s.getExpirationTime()) });
+            LOG.debug("Subscription {} expired at {}", s.getSourceUrl(), new Date(s.getExpirationTime()));
             subscriptions.remove(id);
 
             return null;
@@ -58,7 +59,7 @@ public class InMemorySubDAO implements SubDAO {
     @Override
     public Subscription addSubscription(final Subscription s) {
         subscriptions.put(s.getId(), s);
-        Logger.getLogger(InMemorySubDAO.class.getName()).log(Level.FINE, "Stored subscription {0} {1}", new Object[] { s.getSourceUrl(), s.getId() });
+        LOG.debug("Stored subscription {} {}", s.getSourceUrl(), s.getId());
         return s;
     }
 

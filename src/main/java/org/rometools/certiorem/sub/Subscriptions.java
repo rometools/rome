@@ -28,8 +28,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.UUID;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.rometools.certiorem.HttpStatusCodeException;
 import org.rometools.certiorem.sub.Requester.RequestCallback;
@@ -38,6 +36,8 @@ import org.rometools.certiorem.sub.data.Subscription;
 import org.rometools.certiorem.sub.data.SubscriptionCallback;
 import org.rometools.fetcher.impl.FeedFetcherCache;
 import org.rometools.fetcher.impl.SyndFeedInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.feed.synd.SyndLink;
@@ -50,7 +50,7 @@ import com.sun.syndication.io.SyndFeedInput;
  */
 public class Subscriptions {
 
-    private static final Logger LOGGER = Logger.getLogger(Subscriptions.class.getName());
+    private static final Logger LOG = LoggerFactory.getLogger(Subscriptions.class);
 
     // TODO unsubscribe.
     private FeedFetcherCache cache;
@@ -72,7 +72,7 @@ public class Subscriptions {
         try {
             this.callback(callbackPath, feed.getBytes("UTF-8"));
         } catch (final UnsupportedEncodingException ex) {
-            LOGGER.log(Level.SEVERE, null, ex);
+            LOG.error("Unable to parse feed", ex);
             throw new HttpStatusCodeException(400, "Unable to parse feed.", ex);
         }
     }
@@ -83,10 +83,10 @@ public class Subscriptions {
         try {
             this.callback(callbackPath, input.build(new InputStreamReader(feed)));
         } catch (final IllegalArgumentException ex) {
-            LOGGER.log(Level.SEVERE, null, ex);
+            LOG.error("Unable to parse feed", ex);
             throw new HttpStatusCodeException(500, "Unable to parse feed.", ex);
         } catch (final FeedException ex) {
-            LOGGER.log(Level.SEVERE, null, ex);
+            LOG.error("Unable to parse feed", ex);
             throw new HttpStatusCodeException(400, "Unable to parse feed.", ex);
         }
     }
@@ -102,7 +102,7 @@ public class Subscriptions {
         }
 
         final String id = callbackPath.substring(callbackPrefix.length());
-        LOGGER.log(Level.FINE, "Got callback for {0}", id);
+        LOG.debug("Got callback for {}", id);
         final Subscription s = dao.findById(id);
 
         if (s == null) {
@@ -118,7 +118,7 @@ public class Subscriptions {
             url = new URL(s.getSourceUrl());
             info = cache.getFeedInfo(url);
         } catch (final MalformedURLException ex) {
-            LOGGER.log(Level.SEVERE, null, ex);
+            LOG.error("Malformed URL", ex);
         }
 
         if (info == null) {
@@ -196,7 +196,7 @@ public class Subscriptions {
         }
 
         final String id = callbackPath.substring(callbackPrefix.length());
-        LOGGER.log(Level.FINE, "Handling validation request for id {0}", id);
+        LOG.debug("Handling validation request for id {}", id);
         final Subscription s = dao.findById(id);
         if (s == null) {
             throw new HttpStatusCodeException(404, "Not a valid subscription id", null);
@@ -221,7 +221,7 @@ public class Subscriptions {
         } else {
             throw new HttpStatusCodeException(400, "Unsupported mode " + mode, null);
         }
-        LOGGER.log(Level.FINE, "Validated. Returning {0}", challenge);
+        LOG.debug("Validated. Returning {}", challenge);
         return challenge;
     }
 
@@ -248,7 +248,7 @@ public class Subscriptions {
 
                     break;
                 } catch (final URISyntaxException ex) {
-                    LOGGER.log(Level.SEVERE, null, ex);
+                    LOG.error(null, ex);
                 }
             }
         }

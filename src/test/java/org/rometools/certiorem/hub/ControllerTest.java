@@ -21,8 +21,6 @@ package org.rometools.certiorem.hub;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import java.util.logging.Logger;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -34,12 +32,17 @@ import org.rometools.certiorem.hub.data.ram.InMemoryHubDAO;
 import org.rometools.fetcher.FeedFetcher;
 import org.rometools.fetcher.impl.HashMapFeedInfoCache;
 import org.rometools.fetcher.impl.HttpURLFeedFetcher;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
  * @author robert.cooper
  */
 public class ControllerTest {
+
+    private static final Logger LOG = LoggerFactory.getLogger(ControllerTest.class);
+
     public ControllerTest() {
     }
 
@@ -64,7 +67,8 @@ public class ControllerTest {
      */
     @Test
     public void testSubscribe() {
-        Logger.getLogger(ControllerTest.class.getName()).info("subscribe");
+
+        LOG.info("subscribe");
 
         final String callback = "http://localhost/doNothing";
         final String topic = "http://feeds.feedburner.com/screaming-penguin";
@@ -92,7 +96,7 @@ public class ControllerTest {
             fail();
         } catch (final HttpStatusCodeException e) {
             assertEquals(400, e.getStatus());
-            Logger.getLogger(ControllerTest.class.getName()).info(e.getMessage());
+            LOG.info(e.getMessage());
         }
 
         try {
@@ -100,7 +104,7 @@ public class ControllerTest {
             fail();
         } catch (final HttpStatusCodeException e) {
             assertEquals(400, e.getStatus());
-            Logger.getLogger(ControllerTest.class.getName()).info(e.getMessage());
+            LOG.info(e.getMessage());
         }
 
         try {
@@ -108,7 +112,7 @@ public class ControllerTest {
             fail();
         } catch (final HttpStatusCodeException e) {
             assertEquals(400, e.getStatus());
-            Logger.getLogger(ControllerTest.class.getName()).info(e.getMessage());
+            LOG.info(e.getMessage());
         }
 
         // test general exception

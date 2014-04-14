@@ -19,10 +19,10 @@
 package org.rometools.certiorem.hub.data;
 
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -30,14 +30,14 @@ import org.junit.Test;
  */
 public abstract class AbstractDAOTest {
 
-    private static final Logger LOGGER = Logger.getLogger(AbstractDAOTest.class.getName());
+    private static final Logger LOG = LoggerFactory.getLogger(AbstractDAOTest.class);
 
     protected abstract HubDAO get();
 
     @Test
     public void testSubscribe() {
         final HubDAO instance = get();
-        LOGGER.log(Level.INFO, "{0} testSubscribe", instance.getClass().getName());
+        LOG.info("{} testSubscribe", instance.getClass().getName());
         final Subscriber subscriber = new Subscriber();
         subscriber.setCallback("http://localhost:9797/noop");
         subscriber.setTopic("http://feeds.feedburner.com/screaming-penguin");
@@ -56,7 +56,7 @@ public abstract class AbstractDAOTest {
     @Test
     public void testLeaseExpire() throws InterruptedException {
         final HubDAO instance = get();
-        LOGGER.log(Level.INFO, "{0} testLeaseExpire", instance.getClass().getName());
+        LOG.info("{} testLeaseExpire", instance.getClass().getName());
         final Subscriber subscriber = new Subscriber();
         subscriber.setCallback("http://localhost:9797/noop");
         subscriber.setTopic("http://feeds.feedburner.com/screaming-penguin");
@@ -78,7 +78,7 @@ public abstract class AbstractDAOTest {
     @Test
     public void testUnsubscribe() throws InterruptedException {
         final HubDAO instance = get();
-        LOGGER.log(Level.INFO, "{0} testUnsubscribe", instance.getClass().getName());
+        LOG.info("{} testUnsubscribe", instance.getClass().getName());
         final Subscriber subscriber = new Subscriber();
         subscriber.setCallback("http://localhost:9797/noop");
         subscriber.setTopic("http://feeds.feedburner.com/screaming-penguin");

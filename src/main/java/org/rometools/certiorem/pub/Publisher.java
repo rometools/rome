@@ -25,8 +25,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.concurrent.ThreadPoolExecutor;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.feed.synd.SyndLink;
@@ -37,18 +38,19 @@ import com.sun.syndication.feed.synd.SyndLink;
  * @author robert.cooper
  */
 public class Publisher {
+
+    private static final Logger LOG = LoggerFactory.getLogger(Publisher.class);
+
     private ThreadPoolExecutor executor;
 
     /**
-     * Constructs a new publisher. This publisher will spawn a new thread for
-     * each async send.
+     * Constructs a new publisher. This publisher will spawn a new thread for each async send.
      */
     public Publisher() {
     }
 
     /**
-     * Constructs a new publisher with an optional ThreadPoolExector for sending
-     * updates.
+     * Constructs a new publisher with an optional ThreadPoolExector for sending updates.
      */
     public Publisher(final ThreadPoolExecutor executor) {
         this.executor = executor;
@@ -84,17 +86,16 @@ public class Publisher {
             }
 
         } catch (final UnsupportedEncodingException ex) {
-            Logger.getLogger(Publisher.class.getName()).log(Level.SEVERE, null, ex);
+            LOG.error("Could not encode URL", ex);
             throw new NotificationException("Could not encode URL", ex);
         } catch (final IOException ex) {
-            Logger.getLogger(Publisher.class.getName()).log(Level.SEVERE, null, ex);
+            LOG.error("Communication error", ex);
             throw new NotificationException("Unable to communicate with " + hub, ex);
         }
     }
 
     /**
-     * Sends a notification for a feed located at "topic". The feed MUST contain
-     * rel="hub".
+     * Sends a notification for a feed located at "topic". The feed MUST contain rel="hub".
      *
      * @param topic URL for the feed
      * @param feed The feed itself
@@ -112,8 +113,7 @@ public class Publisher {
     }
 
     /**
-     * Sends a notification for a feed. The feed MUST contain rel="hub" and
-     * rel="self" links.
+     * Sends a notification for a feed. The feed MUST contain rel="hub" and rel="self" links.
      *
      * @param feed The feed to notify
      * @throws NotificationException Any failure
@@ -176,8 +176,8 @@ public class Publisher {
     }
 
     /**
-     * Asynchronously sends a notification for a feed located at "topic". The
-     * feed MUST contain rel="hub".
+     * Asynchronously sends a notification for a feed located at "topic". The feed MUST contain
+     * rel="hub".
      *
      * @param topic URL for the feed
      * @param feed The feed itself
@@ -205,8 +205,8 @@ public class Publisher {
     }
 
     /**
-     * Asyncronously sends a notification for a feed. The feed MUST contain
-     * rel="hub" and rel="self" links.
+     * Asyncronously sends a notification for a feed. The feed MUST contain rel="hub" and rel="self"
+     * links.
      *
      * @param feed The feed to notify
      * @param callback A callback invoked when the notification completes.
