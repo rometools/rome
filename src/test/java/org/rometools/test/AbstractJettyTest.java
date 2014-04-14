@@ -35,6 +35,8 @@ import org.rometools.fetcher.FetcherException;
 import org.rometools.fetcher.FetcherListener;
 import org.rometools.fetcher.impl.FeedFetcherCache;
 import org.rometools.fetcher.impl.HashMapFeedInfoCache;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.atom.Entry;
 import com.sun.syndication.feed.synd.SyndEntry;
@@ -44,6 +46,8 @@ import com.sun.syndication.feed.synd.SyndFeed;
  * @author nl
  */
 public abstract class AbstractJettyTest extends TestCase {
+
+    private static final Logger LOG = LoggerFactory.getLogger(AbstractJettyTest.class);
 
     private HttpServer server;
     private final int testPort = 8283;
@@ -84,6 +88,7 @@ public abstract class AbstractJettyTest extends TestCase {
      * @throws InterruptedException
      */
     private void setupServer() throws InterruptedException {
+
         // Create the server
         if (server != null) {
             server.stop();
@@ -146,13 +151,13 @@ public abstract class AbstractJettyTest extends TestCase {
         public void fetcherEvent(final FetcherEvent event) {
             final String eventType = event.getEventType();
             if (FetcherEvent.EVENT_TYPE_FEED_POLLED.equals(eventType)) {
-                System.err.println("\tEVENT: Feed Polled. URL = " + event.getUrlString());
+                LOG.debug("\tEVENT: Feed Polled. URL = " + event.getUrlString());
                 polled = true;
             } else if (FetcherEvent.EVENT_TYPE_FEED_RETRIEVED.equals(eventType)) {
-                System.err.println("\tEVENT: Feed Retrieved. URL = " + event.getUrlString());
+                LOG.debug("\tEVENT: Feed Retrieved. URL = " + event.getUrlString());
                 retrieved = true;
             } else if (FetcherEvent.EVENT_TYPE_FEED_UNCHANGED.equals(eventType)) {
-                System.err.println("\tEVENT: Feed Unchanged. URL = " + event.getUrlString());
+                LOG.debug("\tEVENT: Feed Unchanged. URL = " + event.getUrlString());
                 unchanged = true;
             }
         }
@@ -215,7 +220,7 @@ public abstract class AbstractJettyTest extends TestCase {
 
     /**
      * Test getting a feed via a http 301 redirect
-     * 
+     *
      */
     public void testRetrieveRedirectedFeed() {
         final FeedFetcher feedFetcher = getFeedFetcher();
@@ -231,7 +236,7 @@ public abstract class AbstractJettyTest extends TestCase {
 
     /**
      * Test error handling
-     * 
+     *
      */
     public void testErrorHandling() {
         final FeedFetcher feedFetcher = getFeedFetcher();
@@ -260,14 +265,14 @@ public abstract class AbstractJettyTest extends TestCase {
 
     public void testUserAgent() {
         final FeedFetcher feedFetcher = getFeedFetcher();
-        // System.out.println(feedFetcher.getUserAgent());
-        // System.out.println(System.getProperty("rome.fetcher.version", "UNKNOWN"));
+        // LOG.debug(feedFetcher.getUserAgent());
+        // LOG.debug(System.getProperty("rome.fetcher.version", "UNKNOWN"));
         assertEquals("Rome Client (http://tinyurl.com/64t5n) Ver: " + System.getProperty("rome.fetcher.version", "UNKNOWN"), feedFetcher.getUserAgent());
     }
 
     /**
      * Test events fired when there is no cache in use
-     * 
+     *
      */
     public void testFetchEvents() {
         final FeedFetcher feedFetcher = getFeedFetcher();
@@ -297,7 +302,7 @@ public abstract class AbstractJettyTest extends TestCase {
 
     /**
      * Test events fired when there is a cache in use
-     * 
+     *
      */
     public void testFetchEventsWithCache() {
         final FeedFetcherCache feedInfoCache = new HashMapFeedInfoCache();
@@ -336,7 +341,7 @@ public abstract class AbstractJettyTest extends TestCase {
 
     /**
      * Test handling of GZipped feed
-     * 
+     *
      */
     public void testGZippedFeed() {
         final FeedFetcher feedFetcher = getFeedFetcher();

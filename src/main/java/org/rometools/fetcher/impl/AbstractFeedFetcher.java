@@ -29,10 +29,15 @@ import org.rometools.fetcher.FeedFetcher;
 import org.rometools.fetcher.FetcherEvent;
 import org.rometools.fetcher.FetcherException;
 import org.rometools.fetcher.FetcherListener;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.synd.SyndFeed;
 
 public abstract class AbstractFeedFetcher implements FeedFetcher {
+
+    private static final Logger LOG = LoggerFactory.getLogger(AbstractFeedFetcher.class);
+
     private final Set<FetcherListener> fetcherEventListeners;
     private String userAgent;
     private boolean usingDeltaEncoding;
@@ -54,11 +59,11 @@ public abstract class AbstractFeedFetcher implements FeedFetcher {
                 System.getProperties().putAll(props);
                 inputStream.close();
             } else {
-                System.err.println("Could not find " + resourceName + " on classpath");
+                LOG.warn("Could not find {} on classpath", resourceName);
             }
         } catch (final IOException e) {
             // do nothing - we don't want to fail just because we could not find the version
-            System.err.println("Error reading " + resourceName + " from classpath: " + e.getMessage());
+            LOG.error("Error reading {} from classpath: {}", resourceName, e.getMessage());
         }
 
         setUserAgent(DEFAULT_USER_AGENT + " Ver: " + System.getProperty("rome.fetcher.version", "UNKNOWN"));
