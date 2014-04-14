@@ -20,6 +20,7 @@ package org.rometools.certiorem.hub.data;
 
 import java.util.List;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,11 +47,12 @@ public abstract class AbstractDAOTest {
 
         final Subscriber result = instance.addSubscriber(subscriber);
 
-        assert result.equals(subscriber) : "Subscriber not equal.";
+        Assert.assertTrue("Subscriber not equal", result.equals(subscriber));
 
         final List<? extends Subscriber> subscribers = instance.subscribersForTopic(subscriber.getTopic());
 
-        assert subscribers.contains(result) : "Subscriber not in result.";
+        Assert.assertTrue("Subscriber not in result", subscribers.contains(result));
+
     }
 
     @Test
@@ -65,14 +67,14 @@ public abstract class AbstractDAOTest {
 
         final Subscriber result = instance.addSubscriber(subscriber);
 
-        assert subscriber.equals(result) : "Subscriber not equal.";
+        Assert.assertEquals("Subscriber not equal", subscriber, result);
         // quick test for store.
         List<? extends Subscriber> subscribers = instance.subscribersForTopic(subscriber.getTopic());
-        assert subscribers.contains(result) : "Subscriber not in result.";
+        Assert.assertTrue("Subscriber not in result", subscribers.contains(result));
         // sleep past expiration
         Thread.sleep(1100);
         subscribers = instance.subscribersForTopic(subscriber.getTopic());
-        assert !subscribers.contains(result) : "Subscriber should have expired";
+        Assert.assertFalse("Subscriber should have expired", subscribers.contains(result));
     }
 
     @Test

@@ -39,6 +39,7 @@ public class InMemoryHubDAO implements HubDAO {
 
     @Override
     public Subscriber addSubscriber(final Subscriber subscriber) {
+        // FIXME assert should not be used for validation because it can be disabled
         assert subscriber != null : "Attempt to store a null subscriber";
 
         List<Subscriber> subList = subscribers.get(subscriber.getTopic());

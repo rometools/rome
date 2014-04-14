@@ -95,6 +95,7 @@ public class JPADAO implements HubDAO {
 
     @Override
     public Subscriber addSubscriber(final Subscriber subscriber) {
+        // FIXME assert should not be used for validation because it can be disabled
         assert subscriber != null : "Attempt to store a null subscriber";
         final EntityManager em = factory.createEntityManager();
         final EntityTransaction tx = em.getTransaction();

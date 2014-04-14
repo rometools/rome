@@ -123,6 +123,7 @@ public class Hub {
      *             request.
      */
     public void sendNotification(final String requestHost, final String topic) {
+        // FIXME assert should not be used for validation because it can be disabled
         assert validTopics.isEmpty() || validTopics.contains(topic) : "That topic is not supported by this hub. " + topic;
         LOG.debug("Sending notification for {}", topic);
         try {
@@ -179,6 +180,7 @@ public class Hub {
         LOG.debug("{} wants to subscribe to {}", callback, topic);
         try {
             try {
+                // FIXME assert should not be used for validation because it can be disabled
                 assert callback != null : "Callback URL is required.";
                 assert topic != null : "Topic URL is required.";
 
