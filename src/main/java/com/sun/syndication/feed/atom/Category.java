@@ -18,15 +18,17 @@ package com.sun.syndication.feed.atom;
 
 import java.io.Serializable;
 
+import com.rometools.utils.Alternatives;
 import com.sun.syndication.feed.impl.ObjectBean;
 
 /**
  * Bean for category elements of Atom feeds.
  * <p>
- * 
+ *
  * @author Dave Johnson (added for Atom 1.0)
  */
 public class Category implements Cloneable, Serializable {
+
     private static final long serialVersionUID = -2034251366664065410L;
 
     private final ObjectBean objBean;
@@ -39,7 +41,7 @@ public class Category implements Cloneable, Serializable {
     /**
      * Default constructor. All properties are set to <b>null</b>.
      * <p>
-     * 
+     *
      */
     public Category() {
         objBean = new ObjectBean(this.getClass(), this);
@@ -48,10 +50,10 @@ public class Category implements Cloneable, Serializable {
     /**
      * Creates a deep 'bean' clone of the object.
      * <p>
-     * 
+     *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     * 
+     *
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
@@ -62,10 +64,10 @@ public class Category implements Cloneable, Serializable {
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
      * <p>
-     * 
+     *
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     * 
+     *
      */
     @Override
     public boolean equals(final Object other) {
@@ -80,9 +82,9 @@ public class Category implements Cloneable, Serializable {
      * <p>
      * It follows the contract defined by the Object hashCode() method.
      * <p>
-     * 
+     *
      * @return the hashcode of the bean object.
-     * 
+     *
      */
     @Override
     public int hashCode() {
@@ -92,9 +94,9 @@ public class Category implements Cloneable, Serializable {
     /**
      * Returns the String representation for the object.
      * <p>
-     * 
+     *
      * @return String representation for the object.
-     * 
+     *
      */
     @Override
     public String toString() {
@@ -104,7 +106,7 @@ public class Category implements Cloneable, Serializable {
     /**
      * Get label for category.
      * <p>
-     * 
+     *
      * @return Label for category.
      */
     public String getLabel() {
@@ -114,7 +116,7 @@ public class Category implements Cloneable, Serializable {
     /**
      * Set label for category.
      * <p>
-     * 
+     *
      * @param label Label for category.
      */
     public void setLabel(final String label) {
@@ -124,7 +126,7 @@ public class Category implements Cloneable, Serializable {
     /**
      * Get Scheme URI for category.
      * <p>
-     * 
+     *
      * @return Scheme URI for category.
      */
     public String getScheme() {
@@ -134,7 +136,7 @@ public class Category implements Cloneable, Serializable {
     /**
      * Set scheme URI for category.
      * <p>
-     * 
+     *
      * @param scheme Scheme URI for category.
      */
     public void setScheme(final String scheme) {
@@ -146,17 +148,13 @@ public class Category implements Cloneable, Serializable {
     }
 
     public String getSchemeResolved() {
-        if (schemeResolved != null) {
-            return schemeResolved;
-        } else {
-            return scheme;
-        }
+        return Alternatives.firstNotNull(schemeResolved, scheme);
     }
 
     /**
      * Return term for category.
      * <p>
-     * 
+     *
      * @return Term for category.
      */
     public String getTerm() {
@@ -166,10 +164,11 @@ public class Category implements Cloneable, Serializable {
     /**
      * Set term for category.
      * <p>
-     * 
+     *
      * @param term Term for category.
      */
     public void setTerm(final String term) {
         this.term = term;
     }
+
 }

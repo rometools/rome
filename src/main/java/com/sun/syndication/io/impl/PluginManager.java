@@ -37,16 +37,17 @@ import com.sun.syndication.io.WireFeedParser;
  *
  */
 public abstract class PluginManager<T> {
+
     private final String[] propertyValues;
-    private Map<String, T> pluginsMap;
-    private List<T> pluginsList;
     private final List<String> keys;
     private final WireFeedParser parentParser;
     private final WireFeedGenerator parentGenerator;
 
+    private Map<String, T> pluginsMap;
+    private List<T> pluginsList;
+
     /**
      * Creates a PluginManager
-     * <p>
      *
      * @param propertyKey property key defining the plugins classes
      *
@@ -86,25 +87,32 @@ public abstract class PluginManager<T> {
     // PRIVATE - LOADER PART
 
     private void loadPlugins() {
+
         final List<T> finalPluginsList = new ArrayList<T>();
         pluginsList = new ArrayList<T>();
         pluginsMap = new HashMap<String, T>();
         String className = null;
+
         try {
             final Class<T>[] classes = getClasses();
-            for (final Class<T> classe : classes) {
-                className = classe.getName();
-                final T plugin = classe.newInstance();
+            for (final Class<T> clazz : classes) {
+
+                className = clazz.getName();
+                final T plugin = clazz.newInstance();
+
                 if (plugin instanceof DelegatingModuleParser) {
                     ((DelegatingModuleParser) plugin).setFeedParser(parentParser);
                 }
+
                 if (plugin instanceof DelegatingModuleGenerator) {
                     ((DelegatingModuleGenerator) plugin).setFeedGenerator(parentGenerator);
                 }
 
                 pluginsMap.put(getKey(plugin), plugin);
+
                 // to preserve the order of definition in the rome.properties files
                 pluginsList.add(plugin);
+
             }
 
             final Collection<T> plugins = pluginsMap.values();
@@ -143,9 +151,13 @@ public abstract class PluginManager<T> {
      */
     @SuppressWarnings("unchecked")
     private Class<T>[] getClasses() throws ClassNotFoundException {
+
         final ClassLoader classLoader = ConfigurableClassLoader.INSTANCE.getClassLoader();
+
         final List<Class<T>> classes = new ArrayList<Class<T>>();
+
         final boolean useLoadClass = Boolean.valueOf(System.getProperty("rome.pluginmanager.useloadclass", "false")).booleanValue();
+
         for (final String propertyValue : propertyValues) {
             final Class<T> mClass;
             if (useLoadClass) {
@@ -155,6 +167,7 @@ public abstract class PluginManager<T> {
             }
             classes.add(mClass);
         }
+
         final Class<T>[] array = new Class[classes.size()];
         classes.toArray(array);
         return array;

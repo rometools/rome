@@ -122,25 +122,28 @@ public abstract class BaseWireFeedGenerator implements WireFeedGenerator {
         // ConcurrentModificationException
         // below
 
-        for (int i = 0; i < additionalNamespaces.size(); i++) {
-            final Namespace ns = additionalNamespaces.get(i);
+        for (final Namespace ns : additionalNamespaces) {
             final String prefix = ns.getPrefix();
             if (prefix != null && prefix.length() > 0 && !usedPrefixes.contains(prefix)) {
                 root.removeNamespaceDeclaration(ns);
             }
         }
+
     }
 
     private static void collectUsedPrefixes(final Element el, final Set<String> collector) {
+
         final String prefix = el.getNamespacePrefix();
         if (prefix != null && prefix.length() > 0 && !collector.contains(prefix)) {
             collector.add(prefix);
         }
+
         final List<Element> kids = el.getChildren();
-        for (int i = 0; i < kids.size(); i++) {
-            collectUsedPrefixes(kids.get(i), collector); // recursion
-            // - worth it
+        for (final Element kid : kids) {
+            // recursion- worth it
+            collectUsedPrefixes(kid, collector);
         }
+
     }
 
 }

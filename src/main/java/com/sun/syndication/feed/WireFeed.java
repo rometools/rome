@@ -18,11 +18,11 @@
 package com.sun.syndication.feed;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.jdom2.Element;
 
+import com.rometools.utils.Lists;
 import com.sun.syndication.feed.impl.ObjectBean;
 import com.sun.syndication.feed.module.Extendable;
 import com.sun.syndication.feed.module.Module;
@@ -38,13 +38,16 @@ import com.sun.syndication.feed.module.impl.ModuleUtils;
  * The format of the 'type' property must be [FEEDNAME]_[FEEDVERSION] with the FEEDNAME in lower
  * case, for example: rss_0.9, rss_0.93, atom_0.3
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public abstract class WireFeed implements Cloneable, Serializable, Extendable {
+
     private static final long serialVersionUID = -3608120400805691829L;
+
     private final ObjectBean objBean;
+
     private String feedType;
     private String encoding;
     private String styleSheet;
@@ -53,8 +56,6 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
 
     /**
      * Default constructor, for bean cloning purposes only.
-     * <p>
-     * 
      */
     protected WireFeed() {
         objBean = new ObjectBean(this.getClass(), this);
@@ -62,10 +63,9 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
 
     /**
      * Creates a feed for a given type.
-     * <p>
-     * 
+     *
      * @param type of the feed to create.
-     * 
+     *
      */
     protected WireFeed(final String type) {
         this();
@@ -74,11 +74,10 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
 
     /**
      * Creates a deep 'bean' clone of the object.
-     * <p>
-     * 
+     *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     * 
+     *
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
@@ -88,20 +87,22 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
     /**
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
-     * <p>
-     * 
+     *
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     * 
+     *
      */
     @Override
     public boolean equals(final Object other) {
+
         if (other == null) {
             return false;
         }
+
         if (!(other instanceof WireFeed)) {
             return false;
         }
+
         // can't use foreign markup in equals, due to JDOM equals impl
         final List<Element> fm = getForeignMarkup();
         setForeignMarkup(((WireFeed) other).getForeignMarkup());
@@ -109,6 +110,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
         // restore foreign markup
         setForeignMarkup(fm);
         return ret;
+
     }
 
     /**
@@ -116,9 +118,9 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      * <p>
      * It follows the contract defined by the Object hashCode() method.
      * <p>
-     * 
+     *
      * @return the hashcode of the bean object.
-     * 
+     *
      */
     @Override
     public int hashCode() {
@@ -128,9 +130,9 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
     /**
      * Returns the String representation for the object.
      * <p>
-     * 
+     *
      * @return String representation for the object.
-     * 
+     *
      */
     @Override
     public String toString() {
@@ -140,9 +142,9 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
     /**
      * Sets the feedType of a the feed. <b>Do not use</b>, for bean cloning purposes only.
      * <p>
-     * 
+     *
      * @param feedType the feedType of the feed.
-     * 
+     *
      */
     public void setFeedType(final String feedType) {
         this.feedType = feedType;
@@ -150,7 +152,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
 
     /**
      * Returns the type of the feed.
-     * 
+     *
      * @return the type of the feed.
      */
     public String getFeedType() {
@@ -163,9 +165,9 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      * This property is not set by feed parsers. But it is used by feed generators to set the
      * encoding in the XML prolog.
      * <p>
-     * 
+     *
      * @return the charset encoding of the feed.
-     * 
+     *
      */
     public String getEncoding() {
         return encoding;
@@ -177,9 +179,9 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      * This property is not set by feed parsers. But it is used by feed generators to set the
      * encoding in the XML prolog.
      * <p>
-     * 
+     *
      * @param encoding the charset encoding of the feed.
-     * 
+     *
      */
     public void setEncoding(final String encoding) {
         this.encoding = encoding;
@@ -188,25 +190,22 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
     /**
      * Returns the channel modules.
      * <p>
-     * 
+     *
      * @return a list of ModuleImpl elements with the channel modules, an empty list if none.
-     * 
+     *
      */
     @Override
     public List<Module> getModules() {
-        if (modules == null) {
-            modules = new ArrayList<Module>();
-        }
-        return modules;
+        return modules = Lists.createWhenNull(modules);
     }
 
     /**
      * Sets the channel modules.
      * <p>
-     * 
+     *
      * @param modules the list of ModuleImpl elements with the channel modules to set, an empty list
      *            or <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setModules(final List<Module> modules) {
@@ -216,7 +215,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
     /**
      * Returns the module identified by a given URI.
      * <p>
-     * 
+     *
      * @param uri the URI of the ModuleImpl.
      * @return The module with the given URI, <b>null</b> if none.
      */
@@ -228,23 +227,20 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
     /**
      * Returns foreign markup found at channel level.
      * <p>
-     * 
+     *
      * @return Opaque object to discourage use
-     * 
+     *
      */
     public List<Element> getForeignMarkup() {
-        if (foreignMarkup == null) {
-            foreignMarkup = new ArrayList<Element>();
-        }
-        return foreignMarkup;
+        return foreignMarkup = Lists.createWhenNull(foreignMarkup);
     }
 
     /**
      * Sets foreign markup found at channel level.
      * <p>
-     * 
+     *
      * @param foreignMarkup Opaque object to discourage use
-     * 
+     *
      */
     public void setForeignMarkup(final List<Element> foreignMarkup) {
         this.foreignMarkup = foreignMarkup;
@@ -252,7 +248,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
 
     /**
      * URL of XSL-Stylesheet.
-     * 
+     *
      * @since 2.0.0
      * @return styleSheet URL or {@code null}
      */
@@ -262,11 +258,12 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
 
     /**
      * URL of XSL-Stylesheet.
-     * 
+     *
      * @since 2.0.0
      * @param styleSheet URL or {@code null}
      */
     public void setStyleSheet(final String styleSheet) {
         this.styleSheet = styleSheet;
     }
+
 }

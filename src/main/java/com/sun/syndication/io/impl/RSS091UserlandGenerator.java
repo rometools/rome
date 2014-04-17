@@ -26,6 +26,7 @@ import org.jdom2.Element;
 import org.jdom2.Namespace;
 
 import com.sun.syndication.feed.rss.Channel;
+import com.sun.syndication.feed.rss.Content;
 import com.sun.syndication.feed.rss.Description;
 import com.sun.syndication.feed.rss.Image;
 import com.sun.syndication.feed.rss.Item;
@@ -34,11 +35,12 @@ import com.sun.syndication.io.FeedException;
 /**
  * Feed Generator for RSS 0.91
  * <p/>
- * 
+ *
  * @author Elaine Chien
- * 
+ *
  */
 public class RSS091UserlandGenerator extends RSS090Generator {
+
     private final String version;
 
     public RSS091UserlandGenerator() {
@@ -68,6 +70,7 @@ public class RSS091UserlandGenerator extends RSS090Generator {
 
     @Override
     protected void addChannel(final Channel channel, final Element parent) throws FeedException {
+
         super.addChannel(channel, parent);
 
         final Element eChannel = parent.getChild("channel", getFeedNamespace());
@@ -75,15 +78,16 @@ public class RSS091UserlandGenerator extends RSS090Generator {
         addImage(channel, eChannel);
         addTextInput(channel, eChannel);
         addItems(channel, eChannel);
+
     }
 
     @Override
     protected void checkChannelConstraints(final Element eChannel) throws FeedException {
+
         checkNotNullAndLength(eChannel, "title", 1, 100);
         checkNotNullAndLength(eChannel, "description", 1, 500);
         checkNotNullAndLength(eChannel, "link", 1, 500);
         checkNotNullAndLength(eChannel, "language", 2, 5);
-
         checkLength(eChannel, "rating", 20, 500);
         checkLength(eChannel, "copyright", 1, 100);
         checkLength(eChannel, "pubDate", 1, 100);
@@ -95,10 +99,10 @@ public class RSS091UserlandGenerator extends RSS090Generator {
         final Element skipHours = eChannel.getChild("skipHours");
 
         if (skipHours != null) {
-            final List<Element> hours = skipHours.getChildren();
 
-            for (int i = 0; i < hours.size(); i++) {
-                final Element hour = hours.get(i);
+            final List<Element> hours = skipHours.getChildren();
+            for (final Element hour : hours) {
+
                 final int value = Integer.parseInt(hour.getText().trim());
 
                 if (isHourFormat24()) {
@@ -110,15 +114,17 @@ public class RSS091UserlandGenerator extends RSS090Generator {
                         throw new FeedException("Invalid hour value " + value + ", it must be between 0 and 23");
                     }
                 }
+
             }
+
         }
+
     }
 
     @Override
     protected void checkImageConstraints(final Element eImage) throws FeedException {
         checkNotNullAndLength(eImage, "title", 1, 100);
         checkNotNullAndLength(eImage, "url", 1, 500);
-
         checkLength(eImage, "link", 1, 500);
         checkLength(eImage, "width", 1, 3);
         checkLength(eImage, "width", 1, 3);
@@ -129,7 +135,6 @@ public class RSS091UserlandGenerator extends RSS090Generator {
     protected void checkItemConstraints(final Element eItem) throws FeedException {
         checkNotNullAndLength(eItem, "title", 1, 100);
         checkNotNullAndLength(eItem, "link", 1, 500);
-
         checkLength(eItem, "description", 1, 500);
     }
 
@@ -153,93 +158,80 @@ public class RSS091UserlandGenerator extends RSS090Generator {
         root.setAttribute(version);
         root.addNamespaceDeclaration(getContentNamespace());
         generateModuleNamespaceDefs(root);
-
         return root;
     }
 
     protected Element generateSkipDaysElement(final List<String> days) {
         final Element skipDaysElement = new Element("skipDays");
-
-        for (int i = 0; i < days.size(); i++) {
-            skipDaysElement.addContent(generateSimpleElement("day", days.get(i).toString()));
+        for (final String day : days) {
+            skipDaysElement.addContent(generateSimpleElement("day", day.toString()));
         }
-
         return skipDaysElement;
     }
 
     protected Element generateSkipHoursElement(final List<Integer> hours) {
         final Element skipHoursElement = new Element("skipHours", getFeedNamespace());
-
-        for (int i = 0; i < hours.size(); i++) {
-            skipHoursElement.addContent(generateSimpleElement("hour", hours.get(i).toString()));
+        for (final Integer hour : hours) {
+            skipHoursElement.addContent(generateSimpleElement("hour", hour.toString()));
         }
-
         return skipHoursElement;
     }
 
     @Override
     protected void populateChannel(final Channel channel, final Element eChannel) {
+
         super.populateChannel(channel, eChannel);
 
         final String language = channel.getLanguage();
-
         if (language != null) {
             eChannel.addContent(generateSimpleElement("language", language));
         }
 
         final String rating = channel.getRating();
-
         if (rating != null) {
             eChannel.addContent(generateSimpleElement("rating", rating));
         }
 
         final String copyright = channel.getCopyright();
-
         if (copyright != null) {
             eChannel.addContent(generateSimpleElement("copyright", copyright));
         }
 
         final Date pubDate = channel.getPubDate();
-
         if (pubDate != null) {
             eChannel.addContent(generateSimpleElement("pubDate", DateParser.formatRFC822(pubDate, Locale.US)));
         }
 
         final Date lastBuildDate = channel.getLastBuildDate();
-
         if (lastBuildDate != null) {
             eChannel.addContent(generateSimpleElement("lastBuildDate", DateParser.formatRFC822(lastBuildDate, Locale.US)));
         }
 
         final String docs = channel.getDocs();
-
         if (docs != null) {
             eChannel.addContent(generateSimpleElement("docs", docs));
         }
 
         final String managingEditor = channel.getManagingEditor();
-
         if (managingEditor != null) {
             eChannel.addContent(generateSimpleElement("managingEditor", managingEditor));
         }
 
         final String webMaster = channel.getWebMaster();
-
         if (webMaster != null) {
             eChannel.addContent(generateSimpleElement("webMaster", webMaster));
         }
 
         final List<Integer> skipHours = channel.getSkipHours();
-
         if (skipHours != null && !skipHours.isEmpty()) {
             eChannel.addContent(generateSkipHoursElement(skipHours));
         }
 
         final List<String> skipDays = channel.getSkipDays();
-
         if (skipDays != null && !skipDays.isEmpty()) {
             eChannel.addContent(generateSkipDaysElement(skipDays));
         }
+
     }
 
     @Override
@@ -249,41 +241,44 @@ public class RSS091UserlandGenerator extends RSS090Generator {
 
     @Override
     protected void populateImage(final Image image, final Element eImage) {
+
         super.populateImage(image, eImage);
 
         final Integer width = image.getWidth();
-
         if (width != null) {
             eImage.addContent(generateSimpleElement("width", String.valueOf(width)));
         }
 
         final Integer height = image.getHeight();
-
         if (height != null) {
             eImage.addContent(generateSimpleElement("height", String.valueOf(height)));
         }
 
         final String description = image.getDescription();
-
         if (description != null) {
             eImage.addContent(generateSimpleElement("description", description));
         }
+
     }
 
     @Override
     protected void populateItem(final Item item, final Element eItem, final int index) {
+
         super.populateItem(item, eItem, index);
 
         final Description description = item.getDescription();
-
         if (description != null) {
             eItem.addContent(generateSimpleElement("description", description.getValue()));
         }
 
-        if (item.getModule(getContentNamespace().getURI()) == null && item.getContent() != null) {
-            final Element elem = new Element("encoded", getContentNamespace());
-            elem.addContent(item.getContent().getValue());
+        final Namespace contentNamespace = getContentNamespace();
+        final Content content = item.getContent();
+        if (item.getModule(contentNamespace.getURI()) == null && content != null) {
+            final Element elem = new Element("encoded", contentNamespace);
+            elem.addContent(content.getValue());
             eItem.addContent(elem);
         }
+
     }
+
 }

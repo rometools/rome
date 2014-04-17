@@ -44,40 +44,38 @@ public class ConverterForRSS092 extends ConverterForRSS091Userland {
 
     @Override
     protected SyndEntry createSyndEntry(final Item item, final boolean preserveWireItem) {
+
         final SyndEntry syndEntry = super.createSyndEntry(item, preserveWireItem);
+
         final List<Category> cats = item.getCategories();
+
         if (!cats.isEmpty()) {
-            final Set<SyndCategory> s = new LinkedHashSet<SyndCategory>(); // using
-                                                                           // a
-            // set to
-            // remove
-            // duplicates
-            // and use
-            // a
-            // LinkedHashSet
-            // to try
-            // to
-            // retain
-            // the
-            // document
-            // order
-            s.addAll(createSyndCategories(cats)); // feed native categories
-                                                  // (as
-            // syndcat)
-            s.addAll(syndEntry.getCategories()); // DC subjects (as syndcat)
+
+            // using a set to remove duplicates and use a LinkedHashSet to try to retain the
+            // document order
+            final Set<SyndCategory> s = new LinkedHashSet<SyndCategory>();
+
+            // feed native categories (as syndcat)
+            s.addAll(createSyndCategories(cats));
+
+            // DC subjects (as syndcat)
+            s.addAll(syndEntry.getCategories());
+
             syndEntry.setCategories(new ArrayList<SyndCategory>(s)); // c
         }
+
         final List<Enclosure> enclosures = item.getEnclosures();
         if (!enclosures.isEmpty()) {
             syndEntry.setEnclosures(createSyndEnclosures(enclosures));
         }
+
         return syndEntry;
+
     }
 
     protected List<SyndCategory> createSyndCategories(final List<Category> rssCats) {
         final List<SyndCategory> syndCats = new ArrayList<SyndCategory>();
-        for (int i = 0; i < rssCats.size(); i++) {
-            final Category rssCat = rssCats.get(i);
+        for (final Category rssCat : rssCats) {
             final SyndCategory sCat = new SyndCategoryImpl();
             sCat.setTaxonomyUri(rssCat.getDomain());
             sCat.setName(rssCat.getValue());
@@ -88,8 +86,7 @@ public class ConverterForRSS092 extends ConverterForRSS091Userland {
 
     protected List<SyndEnclosure> createSyndEnclosures(final List<Enclosure> enclosures) {
         final List<SyndEnclosure> sEnclosures = new ArrayList<SyndEnclosure>();
-        for (int i = 0; i < enclosures.size(); i++) {
-            final Enclosure enc = enclosures.get(i);
+        for (final Enclosure enc : enclosures) {
             final SyndEnclosure sEnc = new SyndEnclosureImpl();
             sEnc.setUrl(enc.getUrl());
             sEnc.setType(enc.getType());
@@ -101,23 +98,26 @@ public class ConverterForRSS092 extends ConverterForRSS091Userland {
 
     @Override
     protected Item createRSSItem(final SyndEntry sEntry) {
+
         final Item item = super.createRSSItem(sEntry);
 
         final List<SyndCategory> sCats = sEntry.getCategories(); // c
         if (!sCats.isEmpty()) {
             item.setCategories(createRSSCategories(sCats));
         }
+
         final List<SyndEnclosure> sEnclosures = sEntry.getEnclosures();
         if (!sEnclosures.isEmpty()) {
             item.setEnclosures(createEnclosures(sEnclosures));
         }
+
         return item;
+
     }
 
     protected List<Category> createRSSCategories(final List<SyndCategory> sCats) {
         final List<Category> cats = new ArrayList<Category>();
-        for (int i = 0; i < sCats.size(); i++) {
-            final SyndCategory sCat = sCats.get(i);
+        for (final SyndCategory sCat : sCats) {
             final Category cat = new Category();
             cat.setDomain(sCat.getTaxonomyUri());
             cat.setValue(sCat.getName());
@@ -128,8 +128,7 @@ public class ConverterForRSS092 extends ConverterForRSS091Userland {
 
     protected List<Enclosure> createEnclosures(final List<SyndEnclosure> sEnclosures) {
         final List<Enclosure> enclosures = new ArrayList<Enclosure>();
-        for (int i = 0; i < sEnclosures.size(); i++) {
-            final SyndEnclosure sEnc = sEnclosures.get(i);
+        for (final SyndEnclosure sEnc : sEnclosures) {
             final Enclosure enc = new Enclosure();
             enc.setUrl(sEnc.getUrl());
             enc.setType(sEnc.getType());

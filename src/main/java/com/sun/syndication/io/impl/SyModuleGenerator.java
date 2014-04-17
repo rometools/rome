@@ -17,6 +17,7 @@
 package com.sun.syndication.io.impl;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
@@ -31,11 +32,10 @@ import com.sun.syndication.io.ModuleGenerator;
 /**
  * Feed Generator for SY ModuleImpl
  * <p/>
- * 
+ *
  * @author Elaine Chien
- * 
+ *
  */
-
 public class SyModuleGenerator implements ModuleGenerator {
 
     private static final String SY_URI = "http://purl.org/rss/1.0/modules/syndication/";
@@ -60,7 +60,7 @@ public class SyModuleGenerator implements ModuleGenerator {
      * It is used by the the feed generators to add their namespace definition in the root element
      * of the generated document (forward-missing of Java 5.0 Generics).
      * <p/>
-     * 
+     *
      * @return a set with all the URIs (JDOM Namespace elements) this module generator uses.
      */
     @Override
@@ -73,9 +73,10 @@ public class SyModuleGenerator implements ModuleGenerator {
 
         final SyModule syModule = (SyModule) module;
 
-        if (syModule.getUpdatePeriod() != null) {
+        final String updatePeriod = syModule.getUpdatePeriod();
+        if (updatePeriod != null) {
             final Element updatePeriodElement = new Element("updatePeriod", SY_NS);
-            updatePeriodElement.addContent(syModule.getUpdatePeriod());
+            updatePeriodElement.addContent(updatePeriod);
             element.addContent(updatePeriodElement);
         }
 
@@ -83,10 +84,13 @@ public class SyModuleGenerator implements ModuleGenerator {
         updateFrequencyElement.addContent(String.valueOf(syModule.getUpdateFrequency()));
         element.addContent(updateFrequencyElement);
 
-        if (syModule.getUpdateBase() != null) {
+        final Date updateBase = syModule.getUpdateBase();
+        if (updateBase != null) {
             final Element updateBaseElement = new Element("updateBase", SY_NS);
-            updateBaseElement.addContent(DateParser.formatW3CDateTime(syModule.getUpdateBase(), Locale.US));
+            updateBaseElement.addContent(DateParser.formatW3CDateTime(updateBase, Locale.US));
             element.addContent(updateBaseElement);
         }
+
     }
+
 }

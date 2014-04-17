@@ -20,16 +20,18 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.rometools.utils.Strings;
 import com.sun.syndication.feed.impl.ObjectBean;
 
 /**
  * Bean for content elements of Atom feeds.
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
  * @author Dave Johnson (updated for Atom 1.0)
  */
 public class Content implements Cloneable, Serializable {
+
     private static final long serialVersionUID = 2036205883043031310L;
 
     private final ObjectBean objBean;
@@ -67,7 +69,7 @@ public class Content implements Cloneable, Serializable {
     /**
      * Default constructor. All properties are set to <b>null</b>.
      * <p>
-     * 
+     *
      */
     public Content() {
         objBean = new ObjectBean(this.getClass(), this);
@@ -76,10 +78,10 @@ public class Content implements Cloneable, Serializable {
     /**
      * Creates a deep 'bean' clone of the object.
      * <p>
-     * 
+     *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     * 
+     *
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
@@ -90,10 +92,10 @@ public class Content implements Cloneable, Serializable {
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
      * <p>
-     * 
+     *
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     * 
+     *
      */
     @Override
     public boolean equals(final Object other) {
@@ -108,9 +110,9 @@ public class Content implements Cloneable, Serializable {
      * <p>
      * It follows the contract defined by the Object hashCode() method.
      * <p>
-     * 
+     *
      * @return the hashcode of the bean object.
-     * 
+     *
      */
     @Override
     public int hashCode() {
@@ -120,9 +122,9 @@ public class Content implements Cloneable, Serializable {
     /**
      * Returns the String representation for the object.
      * <p>
-     * 
+     *
      * @return String representation for the object.
-     * 
+     *
      */
     @Override
     public String toString() {
@@ -134,7 +136,7 @@ public class Content implements Cloneable, Serializable {
      * <p>
      * The type indicates how the value was/will-be encoded in the XML feed.
      * </p>
-     * 
+     *
      * @since Atom 1.0
      */
     public String getType() {
@@ -146,7 +148,7 @@ public class Content implements Cloneable, Serializable {
      * <p>
      * The type indicates how the value was/will-be encoded in the XML feed.
      * </p>
-     * 
+     *
      * @since Atom 1.0
      */
     public void setType(final String type) {
@@ -158,7 +160,7 @@ public class Content implements Cloneable, Serializable {
      * <p>
      * The mode indicates how the value was/will-be encoded in the XML feed.
      * <p>
-     * 
+     *
      * @return the content mode, <b>null</b> if none.
      */
     public String getMode() {
@@ -170,17 +172,14 @@ public class Content implements Cloneable, Serializable {
      * <p>
      * The mode indicates how the value was/will-be encoded in the XML feed.
      * <p>
-     * 
+     *
      * @param mode the content mode, <b>null</b> if none.
      */
-    public void setMode(String mode) {
-        if (mode != null) {
-            mode = mode.toLowerCase();
-        }
+    public void setMode(final String mode) {
+        this.mode = Strings.toLowerCase(mode);
         if (mode == null || !MODES.contains(mode)) {
             throw new IllegalArgumentException("Invalid mode [" + mode + "]");
         }
-        this.mode = mode;
     }
 
     /**
@@ -188,9 +187,9 @@ public class Content implements Cloneable, Serializable {
      * <p>
      * The return value should be decoded.
      * <p>
-     * 
+     *
      * @return the content value, <b>null</b> if none.
-     * 
+     *
      */
     public String getValue() {
         return value;
@@ -201,9 +200,9 @@ public class Content implements Cloneable, Serializable {
      * <p>
      * The value being set should be decoded.
      * <p>
-     * 
+     *
      * @param value the content value, <b>null</b> if none.
-     * 
+     *
      */
     public void setValue(final String value) {
         this.value = value;
@@ -212,7 +211,7 @@ public class Content implements Cloneable, Serializable {
     /**
      * Returns the src
      * <p>
-     * 
+     *
      * @return Returns the src.
      * @since Atom 1.0
      */
@@ -223,7 +222,7 @@ public class Content implements Cloneable, Serializable {
     /**
      * Set the src
      * <p>
-     * 
+     *
      * @param src The src to set.
      * @since Atom 1.0
      */

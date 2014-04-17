@@ -17,7 +17,6 @@
 package com.sun.syndication.feed.synd;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -28,6 +27,7 @@ import java.util.Set;
 
 import org.jdom2.Element;
 
+import com.rometools.utils.Lists;
 import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.impl.CopyFromHelper;
@@ -47,12 +47,15 @@ import com.sun.syndication.feed.synd.impl.URINormalizer;
  * It handles all RSS versions, Atom 0.3 and Atom 1.0, it normalizes all info, it may lose
  * information.
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public class SyndFeedImpl implements Serializable, SyndFeed {
+
     private static final long serialVersionUID = -2529165503200548045L;
+
+    private static final CopyFromHelper COPY_FROM_HELPER;
 
     private final ObjectBean objBean;
 
@@ -92,17 +95,40 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     public static final Set<String> CONVENIENCE_PROPERTIES = Collections.unmodifiableSet(IGNORE_PROPERTIES);
 
     static {
+
         IGNORE_PROPERTIES.add("publishedDate");
         IGNORE_PROPERTIES.add("author");
         IGNORE_PROPERTIES.add("copyright");
         IGNORE_PROPERTIES.add("categories");
         IGNORE_PROPERTIES.add("language");
+
+        final Map<String, Class<?>> basePropInterfaceMap = new HashMap<String, Class<?>>();
+        basePropInterfaceMap.put("feedType", String.class);
+        basePropInterfaceMap.put("encoding", String.class);
+        basePropInterfaceMap.put("uri", String.class);
+        basePropInterfaceMap.put("title", String.class);
+        basePropInterfaceMap.put("link", String.class);
+        basePropInterfaceMap.put("description", String.class);
+        basePropInterfaceMap.put("image", SyndImage.class);
+        basePropInterfaceMap.put("entries", SyndEntry.class);
+        basePropInterfaceMap.put("modules", Module.class);
+        basePropInterfaceMap.put("categories", SyndCategory.class);
+
+        final Map<Class<? extends CopyFrom>, Class<?>> basePropClassImplMap = new HashMap<Class<? extends CopyFrom>, Class<?>>();
+        basePropClassImplMap.put(SyndEntry.class, SyndEntryImpl.class);
+        basePropClassImplMap.put(SyndImage.class, SyndImageImpl.class);
+        basePropClassImplMap.put(SyndCategory.class, SyndCategoryImpl.class);
+        basePropClassImplMap.put(DCModule.class, DCModuleImpl.class);
+        basePropClassImplMap.put(SyModule.class, SyModuleImpl.class);
+
+        COPY_FROM_HELPER = new CopyFromHelper(SyndFeed.class, basePropInterfaceMap, basePropClassImplMap);
+
     }
 
     /**
      * Returns the real feed types the SyndFeedImpl supports when converting from and to.
      * <p>
-     * 
+     *
      * @return the real feed type supported.
      */
     @Override
@@ -114,11 +140,11 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * For implementations extending SyndFeedImpl to be able to use the ObjectBean functionality
      * with extended interfaces.
      * <p>
-     * 
+     *
      * @param beanClass
      * @param convenienceProperties set containing the convenience properties of the SyndEntryImpl
      *            (the are ignored during cloning, check CloneableBean for details).
-     * 
+     *
      */
     protected SyndFeedImpl(final Class<?> beanClass, final Set<String> convenienceProperties) {
         objBean = new ObjectBean(beanClass, this, convenienceProperties);
@@ -127,7 +153,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Default constructor. All properties are set to <b>null</b>.
      * <p>
-     * 
+     *
      */
     public SyndFeedImpl() {
         this(null);
@@ -137,9 +163,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * Creates a SyndFeedImpl and populates all its properties out of the given RSS Channel or Atom
      * Feed properties.
      * <p>
-     * 
+     *
      * @param feed the RSS Channel or the Atom Feed to populate the properties from.
-     * 
+     *
      */
     public SyndFeedImpl(final WireFeed feed) {
         this(feed, false);
@@ -149,7 +175,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * Creates a SyndFeedImpl and populates all its properties out of the given RSS Channel or Atom
      * Feed properties, while optionally preserving the WireFeed for access via the
      * orignalWireFeed() method.
-     * 
+     *
      * @param feed
      * @param preserveWireFeed
      */
@@ -175,10 +201,10 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Creates a deep 'bean' clone of the object.
      * <p>
-     * 
+     *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     * 
+     *
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
@@ -189,10 +215,10 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
      * <p>
-     * 
+     *
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     * 
+     *
      */
     @Override
     public boolean equals(final Object other) {
@@ -212,9 +238,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * <p>
      * It follows the contract defined by the Object hashCode() method.
      * <p>
-     * 
+     *
      * @return the hashcode of the bean object.
-     * 
+     *
      */
     @Override
     public int hashCode() {
@@ -224,9 +250,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Returns the String representation for the object.
      * <p>
-     * 
+     *
      * @return String representation for the object.
-     * 
+     *
      */
     @Override
     public String toString() {
@@ -238,9 +264,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * <p>
      * The feed type of the created WireFeed is taken from the SyndFeedImpl feedType property.
      * <p>
-     * 
+     *
      * @return the real feed.
-     * 
+     *
      */
     @Override
     public WireFeed createWireFeed() {
@@ -250,21 +276,25 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Creates a real feed containing the information of the SyndFeedImpl.
      * <p>
-     * 
+     *
      * @param feedType the feed type for the WireFeed to be created.
      * @return the real feed.
-     * 
+     *
      */
     @Override
     public WireFeed createWireFeed(final String feedType) {
+
         if (feedType == null) {
             throw new IllegalArgumentException("Feed type cannot be null");
         }
+
         final Converter converter = CONVERTERS.getConverter(feedType);
         if (converter == null) {
             throw new IllegalArgumentException("Invalid feed type [" + feedType + "]");
         }
+
         return converter.createRealFeed(this);
+
     }
 
     /**
@@ -273,9 +303,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * Note: The wire feed returned here will NOT contain any modifications done on this SyndFeed
      * since it was created. That is in contrast to the createWireFeed method, which will reflect
      * the current state of the SyndFeed
-     * 
+     *
      * @return The WireFeed this was created from, or null
-     * 
+     *
      */
     @Override
     public WireFeed originalWireFeed() {
@@ -285,9 +315,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Returns the wire feed type the feed had/will-have when coverted from/to a WireFeed.
      * <p>
-     * 
+     *
      * @return the feed type, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public String getFeedType() {
@@ -297,9 +327,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Sets the wire feed type the feed will-have when coverted to a WireFeed.
      * <p>
-     * 
+     *
      * @param feedType the feed type to set, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setFeedType(final String feedType) {
@@ -309,9 +339,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Returns the charset encoding of a the feed. This is not set by Rome parsers.
      * <p>
-     * 
+     *
      * @return the charset encoding of the feed.
-     * 
+     *
      */
     @Override
     public String getEncoding() {
@@ -321,9 +351,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Sets the charset encoding of a the feed. This is not set by Rome parsers.
      * <p>
-     * 
+     *
      * @param encoding the charset encoding of the feed.
-     * 
+     *
      */
     @Override
     public void setEncoding(final String encoding) {
@@ -350,9 +380,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * be treated as distinct entities. In the RSS 1.0 case the URI must be a valid RDF URI
      * reference.
      * <p>
-     * 
+     *
      * @return the feed URI, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public String getUri() {
@@ -377,9 +407,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * be treated as distinct entities. In the RSS 1.0 case the URI must be a valid RDF URI
      * reference.
      * <p>
-     * 
+     *
      * @param uri the feed URI to set, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setUri(final String uri) {
@@ -389,9 +419,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Returns the feed title.
      * <p>
-     * 
+     *
      * @return the feed title, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public String getTitle() {
@@ -404,9 +434,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Sets the feed title.
      * <p>
-     * 
+     *
      * @param title the feed title to set, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setTitle(final String title) {
@@ -419,9 +449,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Returns the feed title as a text construct.
      * <p>
-     * 
+     *
      * @return the feed title, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public SyndContent getTitleEx() {
@@ -431,9 +461,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Sets the feed title as a text construct.
      * <p>
-     * 
+     *
      * @param title the feed title to set, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setTitleEx(final SyndContent title) {
@@ -453,9 +483,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * be treated as distinct entities. In the RSS 1.0 case the URI must be a valid RDF URI
      * reference.
      * <p>
-     * 
+     *
      * @return the feed link, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public String getLink() {
@@ -475,9 +505,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * be treated as distinct entities. In the RSS 1.0 case the URI must be a valid RDF URI
      * reference.
      * <p>
-     * 
+     *
      * @param link the feed link to set, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setLink(final String link) {
@@ -487,9 +517,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Returns the feed description.
      * <p>
-     * 
+     *
      * @return the feed description, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public String getDescription() {
@@ -502,9 +532,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Sets the feed description.
      * <p>
-     * 
+     *
      * @param description the feed description to set, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setDescription(final String description) {
@@ -517,9 +547,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Returns the feed description as a text construct.
      * <p>
-     * 
+     *
      * @return the feed description, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public SyndContent getDescriptionEx() {
@@ -529,9 +559,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Sets the feed description as a text construct.
      * <p>
-     * 
+     *
      * @param description the feed description to set, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setDescriptionEx(final SyndContent description) {
@@ -543,9 +573,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * <p>
      * This method is a convenience method, it maps to the Dublin Core module date.
      * <p>
-     * 
+     *
      * @return the feed published date, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public Date getPublishedDate() {
@@ -557,9 +587,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * <p>
      * This method is a convenience method, it maps to the Dublin Core module date.
      * <p>
-     * 
+     *
      * @param publishedDate the feed published date to set, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setPublishedDate(final Date publishedDate) {
@@ -571,9 +601,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * <p>
      * This method is a convenience method, it maps to the Dublin Core module rights.
      * <p>
-     * 
+     *
      * @return the feed copyright, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public String getCopyright() {
@@ -585,9 +615,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * <p>
      * This method is a convenience method, it maps to the Dublin Core module rights.
      * <p>
-     * 
+     *
      * @param copyright the feed copyright to set, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setCopyright(final String copyright) {
@@ -597,9 +627,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Returns the feed image.
      * <p>
-     * 
+     *
      * @return the feed image, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public SyndImage getImage() {
@@ -609,9 +639,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Sets the feed image.
      * <p>
-     * 
+     *
      * @param image the feed image to set, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setImage(final SyndImage image) {
@@ -623,9 +653,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * <p>
      * This method is a convenience method, it maps to the Dublin Core module subjects.
      * <p>
-     * 
+     *
      * @return a list of SyndCategoryImpl elements with the feed categories, an empty list if none.
-     * 
+     *
      */
     @Override
     public List<SyndCategory> getCategories() {
@@ -637,10 +667,10 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * <p>
      * This method is a convenience method, it maps to the Dublin Core module subjects.
      * <p>
-     * 
+     *
      * @param categories the list of SyndCategoryImpl elements with the feed categories to set, an
      *            empty list or <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setCategories(final List<SyndCategory> categories) {
@@ -650,25 +680,22 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Returns the feed entries.
      * <p>
-     * 
+     *
      * @return a list of SyndEntryImpl elements with the feed entries, an empty list if none.
-     * 
+     *
      */
     @Override
     public List<SyndEntry> getEntries() {
-        if (entries == null) {
-            entries = new ArrayList<SyndEntry>();
-        }
-        return entries;
+        return entries = Lists.createWhenNull(entries);
     }
 
     /**
      * Sets the feed entries.
      * <p>
-     * 
+     *
      * @param entries the list of SyndEntryImpl elements with the feed entries to set, an empty list
      *            or <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setEntries(final List<SyndEntry> entries) {
@@ -680,9 +707,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * <p>
      * This method is a convenience method, it maps to the Dublin Core module language.
      * <p>
-     * 
+     *
      * @return the feed language, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public String getLanguage() {
@@ -694,9 +721,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * <p>
      * This method is a convenience method, it maps to the Dublin Core module language.
      * <p>
-     * 
+     *
      * @param language the feed language to set, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setLanguage(final String language) {
@@ -706,15 +733,13 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Returns the feed modules.
      * <p>
-     * 
+     *
      * @return a list of ModuleImpl elements with the feed modules, an empty list if none.
-     * 
+     *
      */
     @Override
     public List<Module> getModules() {
-        if (modules == null) {
-            modules = new ArrayList<Module>();
-        }
+        modules = Lists.createWhenNull(modules);
         if (ModuleUtils.getModule(modules, DCModule.URI) == null) {
             modules.add(new DCModuleImpl());
         }
@@ -724,10 +749,10 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Sets the feed modules.
      * <p>
-     * 
+     *
      * @param modules the list of ModuleImpl elements with the feed modules to set, an empty list or
      *            <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setModules(final List<Module> modules) {
@@ -737,7 +762,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Returns the module identified by a given URI.
      * <p>
-     * 
+     *
      * @param uri the URI of the ModuleImpl.
      * @return The module with the given URI, <b>null</b> if none.
      */
@@ -748,9 +773,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
 
     /**
      * Returns the Dublin Core module of the feed.
-     * 
+     *
      * @return the DC module, it's never <b>null</b>
-     * 
+     *
      */
     private DCModule getDCModule() {
         return (DCModule) getModule(DCModule.URI);
@@ -766,51 +791,21 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
         COPY_FROM_HELPER.copy(this, obj);
     }
 
-    // TODO We need to find out how to refactor this one in a nice reusable way.
-
-    private static final CopyFromHelper COPY_FROM_HELPER;
-
-    static {
-        final Map<String, Class<?>> basePropInterfaceMap = new HashMap<String, Class<?>>();
-        basePropInterfaceMap.put("feedType", String.class);
-        basePropInterfaceMap.put("encoding", String.class);
-        basePropInterfaceMap.put("uri", String.class);
-        basePropInterfaceMap.put("title", String.class);
-        basePropInterfaceMap.put("link", String.class);
-        basePropInterfaceMap.put("description", String.class);
-        basePropInterfaceMap.put("image", SyndImage.class);
-        basePropInterfaceMap.put("entries", SyndEntry.class);
-        basePropInterfaceMap.put("modules", Module.class);
-        basePropInterfaceMap.put("categories", SyndCategory.class);
-
-        final Map<Class<? extends CopyFrom>, Class<?>> basePropClassImplMap = new HashMap<Class<? extends CopyFrom>, Class<?>>();
-        basePropClassImplMap.put(SyndEntry.class, SyndEntryImpl.class);
-        basePropClassImplMap.put(SyndImage.class, SyndImageImpl.class);
-        basePropClassImplMap.put(SyndCategory.class, SyndCategoryImpl.class);
-        basePropClassImplMap.put(DCModule.class, DCModuleImpl.class);
-        basePropClassImplMap.put(SyModule.class, SyModuleImpl.class);
-
-        COPY_FROM_HELPER = new CopyFromHelper(SyndFeed.class, basePropInterfaceMap, basePropClassImplMap);
-    }
-
     /**
      * Returns the links
      * <p>
-     * 
+     *
      * @return Returns the links.
      */
     @Override
     public List<SyndLink> getLinks() {
-        if (links == null) {
-            links = new ArrayList<SyndLink>();
-        }
-        return links;
+        return links = Lists.createWhenNull(links);
     }
 
     /**
      * Set the links
      * <p>
-     * 
+     *
      * @param links The links to set.
      */
     @Override
@@ -820,10 +815,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
 
     @Override
     public List<SyndPerson> getAuthors() {
-        if (authors == null) {
-            authors = new ArrayList<SyndPerson>();
-        }
-        return authors;
+        return authors = Lists.createWhenNull(authors);
     }
 
     @Override
@@ -836,9 +828,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * <p>
      * This method is a convenience method, it maps to the Dublin Core module creator.
      * <p>
-     * 
+     *
      * @return the feed author, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public String getAuthor() {
@@ -850,9 +842,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * <p>
      * This method is a convenience method, it maps to the Dublin Core module creator.
      * <p>
-     * 
+     *
      * @param author the feed author to set, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setAuthor(final String author) {
@@ -861,10 +853,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
 
     @Override
     public List<SyndPerson> getContributors() {
-        if (contributors == null) {
-            contributors = new ArrayList<SyndPerson>();
-        }
-        return contributors;
+        return contributors = Lists.createWhenNull(contributors);
     }
 
     @Override
@@ -875,24 +864,21 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     /**
      * Returns foreign markup found at channel level.
      * <p>
-     * 
+     *
      * @return Opaque object to discourage use
-     * 
+     *
      */
     @Override
     public List<Element> getForeignMarkup() {
-        if (foreignMarkup == null) {
-            foreignMarkup = new ArrayList<Element>();
-        }
-        return foreignMarkup;
+        return foreignMarkup = Lists.createWhenNull(foreignMarkup);
     }
 
     /**
      * Sets foreign markup found at channel level.
      * <p>
-     * 
+     *
      * @param foreignMarkup Opaque object to discourage use
-     * 
+     *
      */
     @Override
     public void setForeignMarkup(final List<Element> foreignMarkup) {
@@ -904,83 +890,54 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
         return preserveWireFeed;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String getDocs() {
         return docs;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void setDocs(final String docs) {
         this.docs = docs;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String getGenerator() {
         return generator;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void setGenerator(final String generator) {
         this.generator = generator;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String getManagingEditor() {
         return managingEditor;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void setManagingEditor(final String managingEditor) {
         this.managingEditor = managingEditor;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String getWebMaster() {
         return webMaster;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void setWebMaster(final String webMaster) {
         this.webMaster = webMaster;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String getStyleSheet() {
         return styleSheet;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void setStyleSheet(final String styleSheet) {
         this.styleSheet = styleSheet;
     }
+
 }

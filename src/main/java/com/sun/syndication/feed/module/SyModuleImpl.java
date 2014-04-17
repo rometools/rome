@@ -23,37 +23,50 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import com.rometools.utils.Dates;
 import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.impl.CopyFromHelper;
 
 /**
  * Syndication ModuleImpl, default implementation.
  * <p>
- * 
+ *
  * @see <a href="http://web.resource.org/rss/1.0/modules/syndication/">Syndication module</a>.
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public class SyModuleImpl extends ModuleImpl implements SyModule {
-    private static final long serialVersionUID = -8345879299577437933L;
-    private static final Set<String> PERIODS = new HashSet<String>();
 
-    static {
-        PERIODS.add(HOURLY);
-        PERIODS.add(DAILY);
-        PERIODS.add(WEEKLY);
-        PERIODS.add(MONTHLY);
-        PERIODS.add(YEARLY);
-    }
+    private static final long serialVersionUID = -8345879299577437933L;
+
+    private static final Set<String> PERIODS = new HashSet<String>();
+    private static final CopyFromHelper COPY_FROM_HELPER;
 
     private String updatePeriod;
     private int updateFrequency;
     private Date updateBase;
 
+    static {
+
+        PERIODS.add(HOURLY);
+        PERIODS.add(DAILY);
+        PERIODS.add(WEEKLY);
+        PERIODS.add(MONTHLY);
+        PERIODS.add(YEARLY);
+
+        final Map<String, Class<?>> basePropInterfaceMap = new HashMap<String, Class<?>>();
+        basePropInterfaceMap.put("updatePeriod", String.class);
+        basePropInterfaceMap.put("updateFrequency", Integer.TYPE);
+        basePropInterfaceMap.put("updateBase", Date.class);
+        final Map<Class<? extends CopyFrom>, Class<?>> basePropClassImplMap = Collections.<Class<? extends CopyFrom>, Class<?>> emptyMap();
+        COPY_FROM_HELPER = new CopyFromHelper(SyModule.class, basePropInterfaceMap, basePropClassImplMap);
+
+    }
+
     /**
      * Default constructor. All properties are set to <b>null</b>.
      * <p>
-     * 
+     *
      */
     public SyModuleImpl() {
         super(SyModule.class, URI);
@@ -62,9 +75,9 @@ public class SyModuleImpl extends ModuleImpl implements SyModule {
     /**
      * Returns the Syndication module update period.
      * <p>
-     * 
+     *
      * @return the Syndication module update period, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public String getUpdatePeriod() {
@@ -74,9 +87,9 @@ public class SyModuleImpl extends ModuleImpl implements SyModule {
     /**
      * Sets the Syndication module update period.
      * <p>
-     * 
+     *
      * @param updatePeriod the Syndication module update period to set, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setUpdatePeriod(final String updatePeriod) {
@@ -89,9 +102,9 @@ public class SyModuleImpl extends ModuleImpl implements SyModule {
     /**
      * Returns the Syndication module update frequency.
      * <p>
-     * 
+     *
      * @return the Syndication module update frequency, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public int getUpdateFrequency() {
@@ -101,9 +114,9 @@ public class SyModuleImpl extends ModuleImpl implements SyModule {
     /**
      * Sets the Syndication module update frequency.
      * <p>
-     * 
+     *
      * @param updateFrequency the Syndication module update frequency to set, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setUpdateFrequency(final int updateFrequency) {
@@ -113,25 +126,25 @@ public class SyModuleImpl extends ModuleImpl implements SyModule {
     /**
      * Returns the Syndication module update base date.
      * <p>
-     * 
+     *
      * @return the Syndication module update base date, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public Date getUpdateBase() {
-        return updateBase != null ? new Date(updateBase.getTime()) : null;
+        return Dates.copy(updateBase);
     }
 
     /**
      * Sets the Syndication module update base date.
      * <p>
-     * 
+     *
      * @param updateBase the Syndication module update base date to set, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setUpdateBase(final Date updateBase) {
-        this.updateBase = new Date(updateBase.getTime());
+        this.updateBase = Dates.copy(updateBase);
     }
 
     @Override
@@ -142,19 +155,6 @@ public class SyModuleImpl extends ModuleImpl implements SyModule {
     @Override
     public void copyFrom(final CopyFrom obj) {
         COPY_FROM_HELPER.copy(this, obj);
-    }
-
-    private static final CopyFromHelper COPY_FROM_HELPER;
-
-    static {
-        final Map<String, Class<?>> basePropInterfaceMap = new HashMap<String, Class<?>>();
-        basePropInterfaceMap.put("updatePeriod", String.class);
-        basePropInterfaceMap.put("updateFrequency", Integer.TYPE);
-        basePropInterfaceMap.put("updateBase", Date.class);
-
-        final Map<Class<? extends CopyFrom>, Class<?>> basePropClassImplMap = Collections.<Class<? extends CopyFrom>, Class<?>> emptyMap();
-
-        COPY_FROM_HELPER = new CopyFromHelper(SyModule.class, basePropInterfaceMap, basePropClassImplMap);
     }
 
 }

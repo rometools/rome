@@ -18,12 +18,13 @@
 package com.sun.syndication.feed.rss;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.jdom2.Element;
 
+import com.rometools.utils.Dates;
+import com.rometools.utils.Lists;
 import com.sun.syndication.feed.impl.ObjectBean;
 import com.sun.syndication.feed.module.Extendable;
 import com.sun.syndication.feed.module.Module;
@@ -37,13 +38,16 @@ import com.sun.syndication.feed.module.impl.ModuleUtils;
  * For RSS1.0 it supports Dublin Core and Syndication modules. Note that those modules currently
  * support simple syntax format only.
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public class Item implements Cloneable, Serializable, Extendable {
+
     private static final long serialVersionUID = 3741763947754555947L;
+
     private final ObjectBean objBean;
+
     private String title;
     private String link;
     private String uri;
@@ -63,7 +67,7 @@ public class Item implements Cloneable, Serializable, Extendable {
     /**
      * Default constructor. All properties are set to <b>null</b>.
      * <p>
-     * 
+     *
      */
     public Item() {
         objBean = new ObjectBean(this.getClass(), this);
@@ -72,10 +76,10 @@ public class Item implements Cloneable, Serializable, Extendable {
     /**
      * Creates a deep 'bean' clone of the object.
      * <p>
-     * 
+     *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     * 
+     *
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
@@ -86,10 +90,10 @@ public class Item implements Cloneable, Serializable, Extendable {
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
      * <p>
-     * 
+     *
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     * 
+     *
      */
     @Override
     public boolean equals(final Object other) {
@@ -110,9 +114,9 @@ public class Item implements Cloneable, Serializable, Extendable {
      * <p>
      * It follows the contract defined by the Object hashCode() method.
      * <p>
-     * 
+     *
      * @return the hashcode of the bean object.
-     * 
+     *
      */
     @Override
     public int hashCode() {
@@ -122,9 +126,9 @@ public class Item implements Cloneable, Serializable, Extendable {
     /**
      * Returns the String representation for the object.
      * <p>
-     * 
+     *
      * @return String representation for the object.
-     * 
+     *
      */
     @Override
     public String toString() {
@@ -134,9 +138,9 @@ public class Item implements Cloneable, Serializable, Extendable {
     /**
      * Returns the item title.
      * <p>
-     * 
+     *
      * @return the item title, <b>null</b> if none.
-     * 
+     *
      */
     public String getTitle() {
         return title;
@@ -145,9 +149,9 @@ public class Item implements Cloneable, Serializable, Extendable {
     /**
      * Sets the item title.
      * <p>
-     * 
+     *
      * @param title the item title to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setTitle(final String title) {
         this.title = title;
@@ -156,9 +160,9 @@ public class Item implements Cloneable, Serializable, Extendable {
     /**
      * Returns the item link.
      * <p>
-     * 
+     *
      * @return the item link, <b>null</b> if none.
-     * 
+     *
      */
     public String getLink() {
         return link;
@@ -167,9 +171,9 @@ public class Item implements Cloneable, Serializable, Extendable {
     /**
      * Sets the item link.
      * <p>
-     * 
+     *
      * @param link the item link to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setLink(final String link) {
         this.link = link;
@@ -178,7 +182,7 @@ public class Item implements Cloneable, Serializable, Extendable {
     /**
      * Returns the item uri.
      * <p>
-     * 
+     *
      * @return the item uri, <b>null</b> if none.
      */
     public String getUri() {
@@ -188,7 +192,7 @@ public class Item implements Cloneable, Serializable, Extendable {
     /**
      * Sets the item uri.
      * <p>
-     * 
+     *
      * @param uri the item uri to set, <b>null</b> if none.
      */
     public void setUri(final String uri) {
@@ -198,9 +202,9 @@ public class Item implements Cloneable, Serializable, Extendable {
     /**
      * Returns the item description.
      * <p>
-     * 
+     *
      * @return the item description, <b>null</b> if none.
-     * 
+     *
      */
     public Description getDescription() {
         return description;
@@ -209,9 +213,9 @@ public class Item implements Cloneable, Serializable, Extendable {
     /**
      * Sets the item description.
      * <p>
-     * 
+     *
      * @param description the item description to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setDescription(final Description description) {
         this.description = description;
@@ -220,9 +224,9 @@ public class Item implements Cloneable, Serializable, Extendable {
     /**
      * Returns the item content.
      * <p>
-     * 
+     *
      * @return the item content, <b>null</b> if none.
-     * 
+     *
      */
     public Content getContent() {
         return content;
@@ -231,9 +235,9 @@ public class Item implements Cloneable, Serializable, Extendable {
     /**
      * Sets the item content.
      * <p>
-     * 
+     *
      * @param content the item content to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setContent(final Content content) {
         this.content = content;
@@ -242,9 +246,9 @@ public class Item implements Cloneable, Serializable, Extendable {
     /**
      * Returns the item source.
      * <p>
-     * 
+     *
      * @return the item source, <b>null</b> if none.
-     * 
+     *
      */
     public Source getSource() {
         return source;
@@ -253,9 +257,9 @@ public class Item implements Cloneable, Serializable, Extendable {
     /**
      * Sets the item source.
      * <p>
-     * 
+     *
      * @param source the item source to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setSource(final Source source) {
         this.source = source;
@@ -264,24 +268,21 @@ public class Item implements Cloneable, Serializable, Extendable {
     /**
      * Returns the item enclosures.
      * <p>
-     * 
+     *
      * @return a list of Enclosure elements with the item enclosures, an empty list if none.
-     * 
+     *
      */
     public List<Enclosure> getEnclosures() {
-        if (enclosures == null) {
-            enclosures = new ArrayList<Enclosure>();
-        }
-        return enclosures;
+        return enclosures = Lists.createWhenNull(enclosures);
     }
 
     /**
      * Sets the item enclosures.
      * <p>
-     * 
+     *
      * @param enclosures the list of Enclosure elements with the item enclosures to set, an empty
      *            list or <b>null</b> if none.
-     * 
+     *
      */
     public void setEnclosures(final List<Enclosure> enclosures) {
         this.enclosures = enclosures;
@@ -290,24 +291,21 @@ public class Item implements Cloneable, Serializable, Extendable {
     /**
      * Returns the item categories.
      * <p>
-     * 
+     *
      * @return a list of Category elements with the item categories, an empty list if none.
-     * 
+     *
      */
     public List<Category> getCategories() {
-        if (categories == null) {
-            categories = new ArrayList<Category>();
-        }
-        return categories;
+        return categories = Lists.createWhenNull(categories);
     }
 
     /**
      * Sets the item categories.
      * <p>
-     * 
+     *
      * @param categories the list of Categories elements with the item categories to set, an empty
      *            list or <b>null</b> if none.
-     * 
+     *
      */
     public void setCategories(final List<Category> categories) {
         this.categories = categories;
@@ -316,9 +314,9 @@ public class Item implements Cloneable, Serializable, Extendable {
     /**
      * Returns the item GUID.
      * <p>
-     * 
+     *
      * @return the item GUID, <b>null</b> if none.
-     * 
+     *
      */
     public Guid getGuid() {
         return guid;
@@ -327,9 +325,9 @@ public class Item implements Cloneable, Serializable, Extendable {
     /**
      * Sets the item GUID.
      * <p>
-     * 
+     *
      * @param guid the item GUID to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setGuid(final Guid guid) {
         this.guid = guid;
@@ -338,9 +336,9 @@ public class Item implements Cloneable, Serializable, Extendable {
     /**
      * Returns the item comments.
      * <p>
-     * 
+     *
      * @return the item comments, <b>null</b> if none.
-     * 
+     *
      */
     public String getComments() {
         return comments;
@@ -349,9 +347,9 @@ public class Item implements Cloneable, Serializable, Extendable {
     /**
      * Sets the item comments.
      * <p>
-     * 
+     *
      * @param comments the item comments to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setComments(final String comments) {
         this.comments = comments;
@@ -360,9 +358,9 @@ public class Item implements Cloneable, Serializable, Extendable {
     /**
      * Returns the item author.
      * <p>
-     * 
+     *
      * @return the item author, <b>null</b> if none.
-     * 
+     *
      */
     public String getAuthor() {
         return author;
@@ -371,9 +369,9 @@ public class Item implements Cloneable, Serializable, Extendable {
     /**
      * Sets the item author.
      * <p>
-     * 
+     *
      * @param author the item author to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setAuthor(final String author) {
         this.author = author;
@@ -382,25 +380,22 @@ public class Item implements Cloneable, Serializable, Extendable {
     /**
      * Returns the item modules.
      * <p>
-     * 
+     *
      * @return a list of ModuleImpl elements with the item modules, an empty list if none.
-     * 
+     *
      */
     @Override
     public List<Module> getModules() {
-        if (modules == null) {
-            modules = new ArrayList<Module>();
-        }
-        return modules;
+        return modules = Lists.createWhenNull(modules);
     }
 
     /**
      * Sets the item modules.
      * <p>
-     * 
+     *
      * @param modules the list of ModuleImpl elements with the item modules to set, an empty list or
      *            <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setModules(final List<Module> modules) {
@@ -410,7 +405,7 @@ public class Item implements Cloneable, Serializable, Extendable {
     /**
      * Returns the module identified by a given URI.
      * <p>
-     * 
+     *
      * @param uri the URI of the ModuleImpl.
      * @return The module with the given URI, <b>null</b> if none.
      */
@@ -422,83 +417,64 @@ public class Item implements Cloneable, Serializable, Extendable {
     /**
      * Returns the item publishing date.
      * <p>
-     * 
+     *
      * @return the item publishing date, <b>null</b> if none.
-     * 
+     *
      */
     public Date getPubDate() {
-        if (pubDate == null) {
-            return null;
-        } else {
-            return new Date(pubDate.getTime());
-        }
+        return Dates.copy(pubDate);
     }
 
     /**
      * Sets the item publishing date.
      * <p>
-     * 
+     *
      * @param pubDate the item publishing date to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setPubDate(final Date pubDate) {
-        if (pubDate == null) {
-            this.pubDate = null;
-        } else {
-            this.pubDate = new Date(pubDate.getTime());
-        }
+        this.pubDate = Dates.copy(pubDate);
     }
 
     /**
      * Returns the item expiration date.
      * <p>
-     * 
+     *
      * @return the item expiration date, <b>null</b> if none.
-     * 
+     *
      */
     public Date getExpirationDate() {
-        if (expirationDate == null) {
-            return null;
-        } else {
-            return new Date(expirationDate.getTime());
-        }
+        return Dates.copy(expirationDate);
     }
 
     /**
      * Sets the item expiration date.
      * <p>
-     * 
+     *
      * @param expirationDate the item expiration date to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setExpirationDate(final Date expirationDate) {
-        if (expirationDate == null) {
-            this.expirationDate = null;
-        } else {
-            this.expirationDate = new Date(expirationDate.getTime());
-        }
+        this.expirationDate = Dates.copy(expirationDate);
     }
 
     /**
      * Returns foreign markup found at item level.
      * <p>
-     * 
+     *
      * @return Opaque object to discourage use
-     * 
+     *
      */
     public List<Element> getForeignMarkup() {
-        if (foreignMarkup == null) {
-            foreignMarkup = new ArrayList<Element>();
-        }
-        return foreignMarkup;
+        return foreignMarkup = Lists.createWhenNull(foreignMarkup);
     }
 
     /**
      * Sets foreign markup found at item level.
      * <p>
-     * 
+     *
      * @param foreignMarkup Opaque object to discourage use
-     * 
+     *
      */
     public void setForeignMarkup(final List<Element> foreignMarkup) {
         this.foreignMarkup = foreignMarkup;

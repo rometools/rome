@@ -31,44 +31,34 @@ import java.util.TimeZone;
  * It uses the JDK java.text.SimpleDateFormat class attemtping the parse using a mask for each one
  * of the possible formats.
  * <p/>
- * 
+ *
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public class DateParser {
 
     private static String[] ADDITIONAL_MASKS;
 
-    static {
-        ADDITIONAL_MASKS = PropertiesLoader.getPropertiesLoader().getTokenizedProperty("datetime.extra.masks", "|");
-    }
-
-    // order is like this because the SimpleDateFormat.parse does not fail with
-    // exception
-    // if it can parse a valid date out of a substring of the full string given
-    // the mask
-    // so we have to check the most complete format first, then it fails with
-    // exception
+    // order is like this because the SimpleDateFormat.parse does not fail with exception if it can
+    // parse a valid date out of a substring of the full string given the mask so we have to check
+    // the most complete format first, then it fails with exception
     private static final String[] RFC822_MASKS = { "EEE, dd MMM yy HH:mm:ss z", "EEE, dd MMM yy HH:mm z", "dd MMM yy HH:mm:ss z", "dd MMM yy HH:mm z" };
 
-    // order is like this because the SimpleDateFormat.parse does not fail with
-    // exception
-    // if it can parse a valid date out of a substring of the full string given
-    // the mask
-    // so we have to check the most complete format first, then it fails with
-    // exception
+    // order is like this because the SimpleDateFormat.parse does not fail with exception if it can
+    // parse a valid date out of a substring of the full string given the mask so we have to check
+    // the most complete format first, then it fails with exception
     private static final String[] W3CDATETIME_MASKS = { "yyyy-MM-dd'T'HH:mm:ss.SSSz", "yyyy-MM-dd't'HH:mm:ss.SSSz", "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
-            "yyyy-MM-dd't'HH:mm:ss.SSS'z'", "yyyy-MM-dd'T'HH:mm:ssz", "yyyy-MM-dd't'HH:mm:ssz", "yyyy-MM-dd'T'HH:mm:ssZ", "yyyy-MM-dd't'HH:mm:ssZ",
-            "yyyy-MM-dd'T'HH:mm:ss'Z'", "yyyy-MM-dd't'HH:mm:ss'z'", "yyyy-MM-dd'T'HH:mmz", // together
-                                                                                           // with
-                                                                                           // logic
-                                                                                           // in
-                                                                                           // the
-                                                                                           // parseW3CDateTime
-                                                                                           // they
-            "yyyy-MM'T'HH:mmz", // handle W3C dates without time forcing them to
-                                // be GMT
-            "yyyy'T'HH:mmz", "yyyy-MM-dd't'HH:mmz", "yyyy-MM-dd'T'HH:mm'Z'", "yyyy-MM-dd't'HH:mm'z'", "yyyy-MM-dd", "yyyy-MM", "yyyy" };
+        "yyyy-MM-dd't'HH:mm:ss.SSS'z'", "yyyy-MM-dd'T'HH:mm:ssz", "yyyy-MM-dd't'HH:mm:ssz", "yyyy-MM-dd'T'HH:mm:ssZ", "yyyy-MM-dd't'HH:mm:ssZ",
+        "yyyy-MM-dd'T'HH:mm:ss'Z'", "yyyy-MM-dd't'HH:mm:ss'z'", "yyyy-MM-dd'T'HH:mmz", // together
+        // with
+        // logic
+        // in
+        // the
+        // parseW3CDateTime
+        // they
+        "yyyy-MM'T'HH:mmz", // handle W3C dates without time forcing them to
+        // be GMT
+        "yyyy'T'HH:mmz", "yyyy-MM-dd't'HH:mmz", "yyyy-MM-dd'T'HH:mm'Z'", "yyyy-MM-dd't'HH:mm'z'", "yyyy-MM-dd", "yyyy-MM", "yyyy" };
 
     /**
      * The masks used to validate and parse the input to this Atom date. These are a lot more
@@ -77,14 +67,18 @@ public class DateParser {
      */
     @SuppressWarnings("unused")
     private static final String[] masks = { "yyyy-MM-dd'T'HH:mm:ss.SSSz", "yyyy-MM-dd't'HH:mm:ss.SSSz", // invalid
-            "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", "yyyy-MM-dd't'HH:mm:ss.SSS'z'", // invalid
-            "yyyy-MM-dd'T'HH:mm:ssz", "yyyy-MM-dd't'HH:mm:ssz", // invalid
-            "yyyy-MM-dd'T'HH:mm:ss'Z'", "yyyy-MM-dd't'HH:mm:ss'z'", // invalid
-            "yyyy-MM-dd'T'HH:mmz", // invalid
-            "yyyy-MM-dd't'HH:mmz", // invalid
-            "yyyy-MM-dd'T'HH:mm'Z'", // invalid
-            "yyyy-MM-dd't'HH:mm'z'", // invalid
-            "yyyy-MM-dd", "yyyy-MM", "yyyy" };
+        "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", "yyyy-MM-dd't'HH:mm:ss.SSS'z'", // invalid
+        "yyyy-MM-dd'T'HH:mm:ssz", "yyyy-MM-dd't'HH:mm:ssz", // invalid
+        "yyyy-MM-dd'T'HH:mm:ss'Z'", "yyyy-MM-dd't'HH:mm:ss'z'", // invalid
+        "yyyy-MM-dd'T'HH:mmz", // invalid
+        "yyyy-MM-dd't'HH:mmz", // invalid
+        "yyyy-MM-dd'T'HH:mm'Z'", // invalid
+        "yyyy-MM-dd't'HH:mm'z'", // invalid
+        "yyyy-MM-dd", "yyyy-MM", "yyyy" };
+
+    static {
+        ADDITIONAL_MASKS = PropertiesLoader.getPropertiesLoader().getTokenizedProperty("datetime.extra.masks", "|");
+    }
 
     /**
      * Private constructor to avoid DateParser instances creation.
@@ -97,12 +91,12 @@ public class DateParser {
      * <p/>
      * It uses the masks in order until one of them succedes or all fail.
      * <p/>
-     * 
+     *
      * @param masks array of masks to use for parsing the string
      * @param sDate string to parse for a date.
      * @return the Date represented by the given string using one of the given masks. It returns
      *         <b>null</b> if it was not possible to parse the the string with any of the masks.
-     * 
+     *
      */
     private static Date parseUsingMask(final String[] masks, String sDate, final Locale locale) {
         if (sDate != null) {
@@ -145,11 +139,11 @@ public class DateParser {
      * <p/>
      * Refer to the java.text.SimpleDateFormat javadocs for details on the format of each element.
      * <p/>
-     * 
+     *
      * @param sDate string to parse for a date.
      * @return the Date represented by the given RFC822 string. It returns <b>null</b> if it was not
      *         possible to parse the given string into a Date.
-     * 
+     *
      */
     public static Date parseRFC822(String sDate, final Locale locale) {
         final int utIndex = sDate.indexOf(" UT");
@@ -175,16 +169,15 @@ public class DateParser {
      * <p/>
      * Refer to the java.text.SimpleDateFormat javadocs for details on the format of each element.
      * <p/>
-     * 
+     *
      * @param sDate string to parse for a date.
      * @return the Date represented by the given W3C date-time string. It returns <b>null</b> if it
      *         was not possible to parse the given string into a Date.
-     * 
+     *
      */
     public static Date parseW3CDateTime(String sDate, final Locale locale) {
-        // if sDate has time on it, it injects 'GTM' before de TZ displacement
-        // to
-        // allow the SimpleDateFormat parser to parse it properly
+        // if sDate has time on it, it injects 'GTM' before de TZ displacement to allow the
+        // SimpleDateFormat parser to parse it properly
         final int tIndex = sDate.indexOf("T");
         if (tIndex > -1) {
             if (sDate.endsWith("Z")) {
@@ -212,21 +205,21 @@ public class DateParser {
     /**
      * Parses a Date out of a String with a date in W3C date-time format or in a RFC822 format.
      * <p>
-     * 
+     *
      * @param sDate string to parse for a date.
      * @return the Date represented by the given W3C date-time string. It returns <b>null</b> if it
      *         was not possible to parse the given string into a Date.
-     * 
+     *
      * */
     public static Date parseDate(final String sDate, final Locale locale) {
-        Date d = parseW3CDateTime(sDate, locale);
-        if (d == null) {
-            d = parseRFC822(sDate, locale);
-            if (d == null && ADDITIONAL_MASKS.length > 0) {
-                d = parseUsingMask(ADDITIONAL_MASKS, sDate, locale);
+        Date date = parseW3CDateTime(sDate, locale);
+        if (date == null) {
+            date = parseRFC822(sDate, locale);
+            if (date == null && ADDITIONAL_MASKS.length > 0) {
+                date = parseUsingMask(ADDITIONAL_MASKS, sDate, locale);
             }
         }
-        return d;
+        return date;
     }
 
     /**
@@ -234,11 +227,11 @@ public class DateParser {
      * <p/>
      * Refer to the java.text.SimpleDateFormat javadocs for details on the format of each element.
      * <p/>
-     * 
+     *
      * @param date Date to parse
      * @return the RFC822 represented by the given Date It returns <b>null</b> if it was not
      *         possible to parse the date.
-     * 
+     *
      */
     public static String formatRFC822(final Date date, final Locale locale) {
         final SimpleDateFormat dateFormater = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss 'GMT'", locale);
@@ -251,11 +244,11 @@ public class DateParser {
      * <p/>
      * Refer to the java.text.SimpleDateFormat javadocs for details on the format of each element.
      * <p/>
-     * 
+     *
      * @param date Date to parse
      * @return the W3C Date Time represented by the given Date It returns <b>null</b> if it was not
      *         possible to parse the date.
-     * 
+     *
      */
     public static String formatW3CDateTime(final Date date, final Locale locale) {
         final SimpleDateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", locale);

@@ -19,6 +19,7 @@ package com.sun.syndication.feed.synd.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.rometools.utils.Lists;
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.rss.Channel;
 import com.sun.syndication.feed.rss.Content;
@@ -29,8 +30,6 @@ import com.sun.syndication.feed.synd.SyndContentImpl;
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
 
-/**
- */
 public class ConverterForRSS10 extends ConverterForRSS090 {
 
     public ConverterForRSS10() {
@@ -43,13 +42,18 @@ public class ConverterForRSS10 extends ConverterForRSS090 {
 
     @Override
     public void copyInto(final WireFeed feed, final SyndFeed syndFeed) {
+
         final Channel channel = (Channel) feed;
+
         super.copyInto(channel, syndFeed);
-        if (channel.getUri() != null) {
-            syndFeed.setUri(channel.getUri());
+
+        final String uri = channel.getUri();
+        if (uri != null) {
+            syndFeed.setUri(uri);
         } else {
             // if URI is not set use the value for link
-            syndFeed.setUri(channel.getLink());
+            final String link = channel.getLink();
+            syndFeed.setUri(link);
         }
     }
 
@@ -59,6 +63,7 @@ public class ConverterForRSS10 extends ConverterForRSS090 {
 
     @Override
     protected SyndEntry createSyndEntry(final Item item, final boolean preserveWireItem) {
+
         final SyndEntry syndEntry = super.createSyndEntry(item, preserveWireItem);
 
         final Description desc = item.getDescription();
@@ -68,27 +73,36 @@ public class ConverterForRSS10 extends ConverterForRSS090 {
             descContent.setValue(desc.getValue());
             syndEntry.setDescription(descContent);
         }
+
         final Content cont = item.getContent();
         if (cont != null) {
+
             final SyndContent contContent = new SyndContentImpl();
             contContent.setType(cont.getType());
             contContent.setValue(cont.getValue());
+
             final List<SyndContent> contents = new ArrayList<SyndContent>();
             contents.add(contContent);
             syndEntry.setContents(contents);
+
         }
 
         return syndEntry;
+
     }
 
     @Override
     protected WireFeed createRealFeed(final String type, final SyndFeed syndFeed) {
+
         final Channel channel = (Channel) super.createRealFeed(type, syndFeed);
-        if (syndFeed.getUri() != null) {
-            channel.setUri(syndFeed.getUri());
+
+        final String uri = syndFeed.getUri();
+        if (uri != null) {
+            channel.setUri(uri);
         } else {
             // if URI is not set use the value for link
-            channel.setUri(syndFeed.getLink());
+            final String link = syndFeed.getLink();
+            channel.setUri(link);
         }
 
         return channel;
@@ -100,14 +114,16 @@ public class ConverterForRSS10 extends ConverterForRSS090 {
 
     @Override
     protected Item createRSSItem(final SyndEntry sEntry) {
+
         final Item item = super.createRSSItem(sEntry);
 
         final SyndContent desc = sEntry.getDescription();
         if (desc != null) {
             item.setDescription(createItemDescription(desc));
         }
+
         final List<SyndContent> contents = sEntry.getContents();
-        if (contents != null && !contents.isEmpty()) {
+        if (Lists.isNotEmpty(contents)) {
             item.setContent(createItemContent(contents.get(0)));
         }
 

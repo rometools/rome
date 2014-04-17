@@ -56,41 +56,47 @@ public class RSS092Parser extends RSS091UserlandParser {
 
     @Override
     protected WireFeed parseChannel(final Element rssRoot, final Locale locale) {
+
         final Channel channel = (Channel) super.parseChannel(rssRoot, locale);
 
         final Element eChannel = rssRoot.getChild("channel", getRSSNamespace());
+
         final Element eCloud = eChannel.getChild("cloud", getRSSNamespace());
+
         if (eCloud != null) {
             final Cloud cloud = new Cloud();
-            String att = eCloud.getAttributeValue("domain");// getRSSNamespace());
-                                                            // DONT KNOW WHY
-                                                            // DOESN'T WORK
-            if (att != null) {
-                cloud.setDomain(att);
+
+            final String domain = eCloud.getAttributeValue("domain");
+            if (domain != null) {
+                cloud.setDomain(domain);
             }
-            att = eCloud.getAttributeValue("port");// getRSSNamespace()); DONT
-                                                   // KNOW WHY DOESN'T WORK
-            if (att != null) {
-                cloud.setPort(Integer.parseInt(att.trim()));
+
+            // getRSSNamespace()); DONT KNOW WHY DOESN'T WORK
+            final String port = eCloud.getAttributeValue("port");
+            if (port != null) {
+                cloud.setPort(Integer.parseInt(port.trim()));
             }
-            att = eCloud.getAttributeValue("path");// getRSSNamespace()); DONT
-                                                   // KNOW WHY DOESN'T WORK
-            if (att != null) {
-                cloud.setPath(att);
+
+            // getRSSNamespace()); DONT KNOW WHY DOESN'T WORK
+            final String path = eCloud.getAttributeValue("path");
+            if (path != null) {
+                cloud.setPath(path);
             }
-            att = eCloud.getAttributeValue("registerProcedure");// getRSSNamespace());
-                                                                // DONT KNOW WHY
-                                                                // DOESN'T WORK
-            if (att != null) {
-                cloud.setRegisterProcedure(att);
+
+            // getRSSNamespace()); DONT KNOW WHY DOESN'T WORK
+            final String registerProcedure = eCloud.getAttributeValue("registerProcedure");
+            if (registerProcedure != null) {
+                cloud.setRegisterProcedure(registerProcedure);
             }
-            att = eCloud.getAttributeValue("protocol");// getRSSNamespace());
-                                                       // DONT KNOW WHY DOESN'T
-                                                       // WORK
-            if (att != null) {
-                cloud.setProtocol(att);
+
+            // getRSSNamespace()); DONT KNOW WHY DOESN'T WORK
+            final String protocol = eCloud.getAttributeValue("protocol");
+            if (protocol != null) {
+                cloud.setProtocol(protocol);
             }
+
             channel.setCloud(cloud);
+
         }
         return channel;
     }
@@ -99,76 +105,83 @@ public class RSS092Parser extends RSS091UserlandParser {
     protected Item parseItem(final Element rssRoot, final Element eItem, final Locale locale) {
         final Item item = super.parseItem(rssRoot, eItem, locale);
 
-        Element e = eItem.getChild("source", getRSSNamespace());
-        if (e != null) {
+        final Element eSource = eItem.getChild("source", getRSSNamespace());
+        if (eSource != null) {
             final Source source = new Source();
-            final String url = e.getAttributeValue("url");// getRSSNamespace());
-                                                          // DONT
-            // KNOW WHY DOESN'T WORK
+            // getRSSNamespace()); DONT KNOW WHY DOESN'T WORK
+            final String url = eSource.getAttributeValue("url");
             source.setUrl(url);
-            source.setValue(e.getText());
+            source.setValue(eSource.getText());
             item.setSource(source);
         }
 
-        // 0.92 allows one enclosure occurrence, 0.93 multiple
-        // just saving to write some code.
-        final List<Element> eEnclosures = eItem.getChildren("enclosure");// getRSSNamespace());
-        // DONT KNOW
-        // WHY
-        // DOESN'T
-        // WORK
+        // 0.92 allows one enclosure occurrence, 0.93 multiple just saving to write some code.
+        // getRSSNamespace()); DONT KNOW WHY DOESN'T WORK
+        final List<Element> eEnclosures = eItem.getChildren("enclosure");
+
         if (!eEnclosures.isEmpty()) {
+
             final List<Enclosure> enclosures = new ArrayList<Enclosure>();
-            for (int i = 0; i < eEnclosures.size(); i++) {
-                e = eEnclosures.get(i);
+
+            for (final Element eEnclosure : eEnclosures) {
 
                 final Enclosure enclosure = new Enclosure();
-                String att = e.getAttributeValue("url");// getRSSNamespace());
-                                                        // DONT KNOW WHY DOESN'T
-                                                        // WORK
-                if (att != null) {
-                    enclosure.setUrl(att);
+                // getRSSNamespace()); DONT KNOW WHY DOESN'T WORK
+                final String url = eEnclosure.getAttributeValue("url");
+                if (url != null) {
+                    enclosure.setUrl(url);
                 }
-                att = e.getAttributeValue("length");// getRSSNamespace()); DONT
-                                                    // KNOW WHY DOESN'T WORK
-                enclosure.setLength(NumberParser.parseLong(att, 0L));
 
-                att = e.getAttributeValue("type");// getRSSNamespace()); DONT
-                                                  // KNOW WHY DOESN'T WORK
-                if (att != null) {
-                    enclosure.setType(att);
+                // getRSSNamespace()); DONT KNOW WHY DOESN'T WORK
+                final String length = eEnclosure.getAttributeValue("length");
+                enclosure.setLength(NumberParser.parseLong(length, 0L));
+
+                // getRSSNamespace()); DONT KNOW WHY DOESN'T WORK
+                final String type = eEnclosure.getAttributeValue("type");
+                if (type != null) {
+                    enclosure.setType(type);
                 }
+
                 enclosures.add(enclosure);
+
             }
+
             item.setEnclosures(enclosures);
         }
 
-        final List<Element> eCats = eItem.getChildren("category");// getRSSNamespace());
-        // DONT KNOW WHY
-        // DOESN'T WORK
-        item.setCategories(parseCategories(eCats));
+        // getRSSNamespace()); DONT KNOW WHY DOESN'T WORK
+        final List<Element> categories = eItem.getChildren("category");
+        item.setCategories(parseCategories(categories));
 
         return item;
     }
 
     protected List<Category> parseCategories(final List<Element> eCats) {
+
         List<Category> cats = null;
+
         if (!eCats.isEmpty()) {
+
             cats = new ArrayList<Category>();
-            for (int i = 0; i < eCats.size(); i++) {
+            for (final Element eCat : eCats) {
+
                 final Category cat = new Category();
-                final Element e = eCats.get(i);
-                final String att = e.getAttributeValue("domain");// getRSSNamespace());
-                // DONT KNOW WHY
-                // DOESN'T WORK
-                if (att != null) {
-                    cat.setDomain(att);
+
+                // getRSSNamespace()); DONT KNOW WHY DOESN'T WORK
+                final String domain = eCat.getAttributeValue("domain");
+                if (domain != null) {
+                    cat.setDomain(domain);
                 }
-                cat.setValue(e.getText());
+
+                cat.setValue(eCat.getText());
+
                 cats.add(cat);
+
             }
         }
+
         return cats;
+
     }
 
     @Override

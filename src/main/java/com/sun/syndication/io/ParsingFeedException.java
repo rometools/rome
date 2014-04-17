@@ -20,10 +20,9 @@ import org.jdom2.input.JDOMParseException;
 
 /**
  * Exception thrown by WireFeedInput instance if it can not parse a feed.
- * <p>
- * 
+ *
  * @author Elaine Chien
- * 
+ *
  */
 public class ParsingFeedException extends FeedException {
 
@@ -31,10 +30,9 @@ public class ParsingFeedException extends FeedException {
 
     /**
      * Creates a FeedException with a message.
-     * <p>
-     * 
+     *
      * @param msg exception message.
-     * 
+     *
      */
     public ParsingFeedException(final String msg) {
         super(msg);
@@ -42,11 +40,10 @@ public class ParsingFeedException extends FeedException {
 
     /**
      * Creates a FeedException with a message and a root cause exception.
-     * <p>
-     * 
+     *
      * @param msg exception message.
      * @param rootCause root cause exception.
-     * 
+     *
      */
     public ParsingFeedException(final String msg, final Throwable rootCause) {
         super(msg, rootCause);
@@ -57,7 +54,7 @@ public class ParsingFeedException extends FeedException {
      * <p>
      * The first line in the document is line 1.
      * </p>
-     * 
+     *
      * @return an integer representing the line number, or -1 if the information is not available.
      */
     public int getLineNumber() {
@@ -73,7 +70,7 @@ public class ParsingFeedException extends FeedException {
      * <p>
      * The first column in a line is position 1.
      * </p>
-     * 
+     *
      * @return an integer representing the column number, or -1 if the information is not available.
      */
     public int getColumnNumber() {

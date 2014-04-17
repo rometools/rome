@@ -17,13 +17,14 @@
  */
 package com.sun.syndication.feed.rss;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.rometools.utils.Dates;
+import com.rometools.utils.Lists;
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.feed.module.impl.ModuleUtils;
@@ -34,12 +35,14 @@ import com.sun.syndication.feed.module.impl.ModuleUtils;
  * It handles all RSS versions (0.9, 0.91, 0.92, 0.93, 0.94, 1.0 and 2.0) without losing
  * information.
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public class Channel extends WireFeed {
+
     private static final long serialVersionUID = 745207486449728472L;
+
     public static final String SUNDAY = "sunday";
     public static final String MONDAY = "monday";
     public static final String TUESDAY = "tuesday";
@@ -87,7 +90,7 @@ public class Channel extends WireFeed {
 
     /**
      * Default constructor, for bean cloning purposes only.
-     * 
+     *
      */
     public Channel() {
     }
@@ -95,9 +98,9 @@ public class Channel extends WireFeed {
     /**
      * Channel Constructor. All properties, except the type, are set to <b>null</b>.
      * <p>
-     * 
+     *
      * @param type the type of the RSS feed.
-     * 
+     *
      */
     public Channel(final String type) {
         super(type);
@@ -106,9 +109,9 @@ public class Channel extends WireFeed {
     /**
      * Returns the channel title.
      * <p>
-     * 
+     *
      * @return the channel title, <b>null</b> if none.
-     * 
+     *
      */
     public String getTitle() {
         return title;
@@ -117,9 +120,9 @@ public class Channel extends WireFeed {
     /**
      * Sets the channel title.
      * <p>
-     * 
+     *
      * @param title the channel title to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setTitle(final String title) {
         this.title = title;
@@ -128,9 +131,9 @@ public class Channel extends WireFeed {
     /**
      * Returns the channel description.
      * <p>
-     * 
+     *
      * @return the channel description, <b>null</b> if none.
-     * 
+     *
      */
     public String getDescription() {
         return description;
@@ -139,9 +142,9 @@ public class Channel extends WireFeed {
     /**
      * Sets the channel description.
      * <p>
-     * 
+     *
      * @param description the channel description to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setDescription(final String description) {
         this.description = description;
@@ -150,9 +153,9 @@ public class Channel extends WireFeed {
     /**
      * Returns the channel link.
      * <p>
-     * 
+     *
      * @return the channel link, <b>null</b> if none.
-     * 
+     *
      */
     public String getLink() {
         return link;
@@ -161,9 +164,9 @@ public class Channel extends WireFeed {
     /**
      * Sets the channel link.
      * <p>
-     * 
+     *
      * @param link the channel link to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setLink(final String link) {
         this.link = link;
@@ -172,7 +175,7 @@ public class Channel extends WireFeed {
     /**
      * Returns the channel uri.
      * <p>
-     * 
+     *
      * @return the channel uri, <b>null</b> if none.
      */
     public String getUri() {
@@ -182,7 +185,7 @@ public class Channel extends WireFeed {
     /**
      * Sets the channel uri.
      * <p>
-     * 
+     *
      * @param uri the channel uri, <b>null</b> if none.
      */
     public void setUri(final String uri) {
@@ -192,9 +195,9 @@ public class Channel extends WireFeed {
     /**
      * Returns the channel image.
      * <p>
-     * 
+     *
      * @return the channel image, <b>null</b> if none.
-     * 
+     *
      */
     public Image getImage() {
         return image;
@@ -203,9 +206,9 @@ public class Channel extends WireFeed {
     /**
      * Sets the channel image.
      * <p>
-     * 
+     *
      * @param image the channel image to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setImage(final Image image) {
         this.image = image;
@@ -214,24 +217,21 @@ public class Channel extends WireFeed {
     /**
      * Returns the channel items.
      * <p>
-     * 
+     *
      * @return a list of Item elements with the channel items, an empty list if none.
-     * 
+     *
      */
     public List<Item> getItems() {
-        if (items == null) {
-            items = new ArrayList<Item>();
-        }
-        return items;
+        return items = Lists.createWhenNull(items);
     }
 
     /**
      * Sets the channel items.
      * <p>
-     * 
+     *
      * @param items the list of Item elements with the channel items to set, an empty list or
      *            <b>null</b> if none.
-     * 
+     *
      */
     public void setItems(final List<Item> items) {
         this.items = items;
@@ -240,9 +240,9 @@ public class Channel extends WireFeed {
     /**
      * Returns the channel text input.
      * <p>
-     * 
+     *
      * @return the channel text input, <b>null</b> if none.
-     * 
+     *
      */
     public TextInput getTextInput() {
         return textInput;
@@ -251,9 +251,9 @@ public class Channel extends WireFeed {
     /**
      * Sets the channel text input.
      * <p>
-     * 
+     *
      * @param textInput the channel text input to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setTextInput(final TextInput textInput) {
         this.textInput = textInput;
@@ -262,9 +262,9 @@ public class Channel extends WireFeed {
     /**
      * Returns the channel language.
      * <p>
-     * 
+     *
      * @return the channel language, <b>null</b> if none.
-     * 
+     *
      */
     public String getLanguage() {
         return language;
@@ -273,9 +273,9 @@ public class Channel extends WireFeed {
     /**
      * Sets the channel language.
      * <p>
-     * 
+     *
      * @param language the channel language to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setLanguage(final String language) {
         this.language = language;
@@ -284,9 +284,9 @@ public class Channel extends WireFeed {
     /**
      * Returns the channel rating.
      * <p>
-     * 
+     *
      * @return the channel rating, <b>null</b> if none.
-     * 
+     *
      */
     public String getRating() {
         return rating;
@@ -295,9 +295,9 @@ public class Channel extends WireFeed {
     /**
      * Sets the channel rating.
      * <p>
-     * 
+     *
      * @param rating the channel rating to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setRating(final String rating) {
         this.rating = rating;
@@ -306,9 +306,9 @@ public class Channel extends WireFeed {
     /**
      * Returns the channel copyright.
      * <p>
-     * 
+     *
      * @return the channel copyright, <b>null</b> if none.
-     * 
+     *
      */
     public String getCopyright() {
         return copyright;
@@ -317,9 +317,9 @@ public class Channel extends WireFeed {
     /**
      * Sets the channel copyright.
      * <p>
-     * 
+     *
      * @param copyright the channel copyright to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setCopyright(final String copyright) {
         this.copyright = copyright;
@@ -328,69 +328,53 @@ public class Channel extends WireFeed {
     /**
      * Returns the channel publishing date.
      * <p>
-     * 
+     *
      * @return the channel publishing date, <b>null</b> if none.
-     * 
+     *
      */
     public Date getPubDate() {
-        if (pubDate == null) {
-            return null;
-        } else {
-            return new Date(pubDate.getTime());
-        }
+        return Dates.copy(pubDate);
     }
 
     /**
      * Sets the channel publishing date.
      * <p>
-     * 
+     *
      * @param pubDate the channel publishing date to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setPubDate(final Date pubDate) {
-        if (pubDate == null) {
-            this.pubDate = null;
-        } else {
-            this.pubDate = new Date(pubDate.getTime());
-        }
+        this.pubDate = Dates.copy(pubDate);
     }
 
     /**
      * Returns the channel last build date.
      * <p>
-     * 
+     *
      * @return the channel last build date, <b>null</b> if none.
-     * 
+     *
      */
     public Date getLastBuildDate() {
-        if (lastBuildDate == null) {
-            return null;
-        } else {
-            return new Date(lastBuildDate.getTime());
-        }
+        return Dates.copy(lastBuildDate);
     }
 
     /**
      * Sets the channel last build date.
      * <p>
-     * 
+     *
      * @param lastBuildDate the channel last build date to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setLastBuildDate(final Date lastBuildDate) {
-        if (lastBuildDate == null) {
-            this.lastBuildDate = null;
-        } else {
-            this.lastBuildDate = new Date(lastBuildDate.getTime());
-        }
+        this.lastBuildDate = Dates.copy(lastBuildDate);
     }
 
     /**
      * Returns the channel docs.
      * <p>
-     * 
+     *
      * @return the channel docs, <b>null</b> if none.
-     * 
+     *
      */
     public String getDocs() {
         return docs;
@@ -399,9 +383,9 @@ public class Channel extends WireFeed {
     /**
      * Sets the channel docs.
      * <p>
-     * 
+     *
      * @param docs the channel docs to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setDocs(final String docs) {
         this.docs = docs;
@@ -410,9 +394,9 @@ public class Channel extends WireFeed {
     /**
      * Returns the channel managing editor.
      * <p>
-     * 
+     *
      * @return the channel managing editor, <b>null</b> if none.
-     * 
+     *
      */
     public String getManagingEditor() {
         return managingEditor;
@@ -421,9 +405,9 @@ public class Channel extends WireFeed {
     /**
      * Sets the channel managing editor.
      * <p>
-     * 
+     *
      * @param managingEditor the channel managing editor to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setManagingEditor(final String managingEditor) {
         this.managingEditor = managingEditor;
@@ -432,9 +416,9 @@ public class Channel extends WireFeed {
     /**
      * Returns the channel web master.
      * <p>
-     * 
+     *
      * @return the channel web master, <b>null</b> if none.
-     * 
+     *
      */
     public String getWebMaster() {
         return webMaster;
@@ -443,9 +427,9 @@ public class Channel extends WireFeed {
     /**
      * Sets the channel web master.
      * <p>
-     * 
+     *
      * @param webMaster the channel web master to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setWebMaster(final String webMaster) {
         this.webMaster = webMaster;
@@ -454,25 +438,21 @@ public class Channel extends WireFeed {
     /**
      * Returns the channel skip hours.
      * <p>
-     * 
+     *
      * @return a list of Integer elements with the channel skip hours, an empty list if none.
-     * 
+     *
      */
     public List<Integer> getSkipHours() {
-        if (skipHours != null) {
-            return skipHours;
-        } else {
-            return new ArrayList<Integer>();
-        }
+        return Lists.createWhenNull(skipHours);
     }
 
     /**
      * Sets the channel skip hours.
      * <p>
-     * 
+     *
      * @param skipHours the list of Integer elements with the channel skip hours to set, an empty
      *            list or <b>null</b> if none.
-     * 
+     *
      */
     public void setSkipHours(final List<Integer> skipHours) {
         if (skipHours != null) {
@@ -494,25 +474,21 @@ public class Channel extends WireFeed {
     /**
      * Returns the channel skip days.
      * <p>
-     * 
+     *
      * @return a list of Day elements with the channel skip days, an empty list if none.
-     * 
+     *
      */
     public List<String> getSkipDays() {
-        if (skipDays != null) {
-            return skipDays;
-        } else {
-            return new ArrayList<String>();
-        }
+        return Lists.createWhenNull(skipDays);
     }
 
     /**
      * Sets the channel skip days.
      * <p>
-     * 
+     *
      * @param skipDays the list of Day elements with the channel skip days to set, an empty list or
      *            <b>null</b> if none.
-     * 
+     *
      */
     public void setSkipDays(final List<String> skipDays) {
         if (skipDays != null) {
@@ -535,9 +511,9 @@ public class Channel extends WireFeed {
     /**
      * Returns the channel cloud.
      * <p>
-     * 
+     *
      * @return the channel cloud, <b>null</b> if none.
-     * 
+     *
      */
     public Cloud getCloud() {
         return cloud;
@@ -546,9 +522,9 @@ public class Channel extends WireFeed {
     /**
      * Sets the channel cloud.
      * <p>
-     * 
+     *
      * @param cloud the channel cloud to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setCloud(final Cloud cloud) {
         this.cloud = cloud;
@@ -557,24 +533,21 @@ public class Channel extends WireFeed {
     /**
      * Returns the channel categories.
      * <p>
-     * 
+     *
      * @return a list of Category elements with the channel categories, an empty list if none.
-     * 
+     *
      */
     public List<Category> getCategories() {
-        if (categories == null) {
-            categories = new ArrayList<Category>();
-        }
-        return categories;
+        return categories = Lists.createWhenNull(categories);
     }
 
     /**
      * Sets the channel categories.
      * <p>
-     * 
+     *
      * @param categories the list of Category elements with the channel categories to set, an empty
      *            list or <b>null</b> if none.
-     * 
+     *
      */
     public void setCategories(final List<Category> categories) {
         this.categories = categories;
@@ -583,9 +556,9 @@ public class Channel extends WireFeed {
     /**
      * Returns the channel generator.
      * <p>
-     * 
+     *
      * @return the channel generator, <b>null</b> if none.
-     * 
+     *
      */
     public String getGenerator() {
         return generator;
@@ -594,9 +567,9 @@ public class Channel extends WireFeed {
     /**
      * Sets the channel generator.
      * <p>
-     * 
+     *
      * @param generator the channel generator to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setGenerator(final String generator) {
         this.generator = generator;
@@ -605,9 +578,9 @@ public class Channel extends WireFeed {
     /**
      * Returns the channel time to live.
      * <p>
-     * 
+     *
      * @return the channel time to live, <b>null</b> if none.
-     * 
+     *
      */
     public int getTtl() {
         return ttl;
@@ -616,9 +589,9 @@ public class Channel extends WireFeed {
     /**
      * Sets the channel time to live.
      * <p>
-     * 
+     *
      * @param ttl the channel time to live to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setTtl(final int ttl) {
         this.ttl = ttl;
@@ -627,25 +600,22 @@ public class Channel extends WireFeed {
     /**
      * Returns the channel modules.
      * <p>
-     * 
+     *
      * @return a list of ModuleImpl elements with the channel modules, an empty list if none.
-     * 
+     *
      */
     @Override
     public List<Module> getModules() {
-        if (modules == null) {
-            modules = new ArrayList<Module>();
-        }
-        return modules;
+        return modules = Lists.createWhenNull(modules);
     }
 
     /**
      * Sets the channel modules.
      * <p>
-     * 
+     *
      * @param modules the list of ModuleImpl elements with the channel modules to set, an empty list
      *            or <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setModules(final List<Module> modules) {
@@ -655,7 +625,7 @@ public class Channel extends WireFeed {
     /**
      * Returns the module identified by a given URI.
      * <p>
-     * 
+     *
      * @param uri the URI of the ModuleImpl.
      * @return The module with the given URI, <b>null</b> if none.
      */

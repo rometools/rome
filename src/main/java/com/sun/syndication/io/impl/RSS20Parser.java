@@ -22,8 +22,6 @@ import org.jdom2.Element;
 
 import com.sun.syndication.feed.rss.Description;
 
-/**
- */
 public class RSS20Parser extends RSS094Parser {
 
     public RSS20Parser() {
@@ -52,19 +50,11 @@ public class RSS20Parser extends RSS094Parser {
 
     @Override
     public boolean isMyType(final Document document) {
-        boolean ok;
         final Element rssRoot = document.getRootElement();
-        ok = rssRoot.getName().equals("rss");
-        if (ok) {
-            ok = false;
-            final Attribute version = rssRoot.getAttribute("version");
-            if (version != null) {
-                // At this point, as far ROME is concerned RSS 2.0, 2.00 and
-                // 2.0.X are all the same, so let's use startsWith for leniency.
-                ok = version.getValue().startsWith(getRSSVersion());
-            }
-        }
-        return ok;
+        final Attribute version = rssRoot.getAttribute("version");
+        // as far ROME is concerned RSS 2.0, 2.00 and 2.0.X are all the same, so let's use
+        // startsWith for leniency.
+        return rssRoot.getName().equals("rss") && version != null && version.getValue().startsWith(getRSSVersion());
     }
 
 }

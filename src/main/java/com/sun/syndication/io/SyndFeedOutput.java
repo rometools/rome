@@ -30,21 +30,13 @@ import com.sun.syndication.feed.synd.SyndFeed;
  * <p>
  * It delegates to a WireFeedOutput to generate all feed types.
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public class SyndFeedOutput {
-    private final WireFeedOutput feedOutput;
 
-    /**
-     * Creates a SyndFeedOutput instance.
-     * <p>
-     * 
-     */
-    public SyndFeedOutput() {
-        feedOutput = new WireFeedOutput();
-    }
+    private final WireFeedOutput feedOutput = new WireFeedOutput();
 
     /**
      * Creates a String with the XML representation for the given SyndFeedImpl.
@@ -53,12 +45,12 @@ public class SyndFeedOutput {
      * the responsibility of the developer to ensure that if the String is written to a character
      * stream the stream charset is the same as the feed encoding property.
      * <p>
-     * 
+     *
      * @param feed Abstract feed to create XML representation from. The type of the SyndFeedImpl
      *            must match the type given to the FeedOuptut constructor.
      * @return a String with the XML representation for the given SyndFeedImpl.
      * @throws FeedException thrown if the XML representation for the feed could not be created.
-     * 
+     *
      */
     public String outputString(final SyndFeed feed) throws FeedException {
         return feedOutput.outputString(feed.createWireFeed());
@@ -71,13 +63,13 @@ public class SyndFeedOutput {
      * the responsibility of the developer to ensure that if the String is written to a character
      * stream the stream charset is the same as the feed encoding property.
      * <p>
-     * 
+     *
      * @param feed Abstract feed to create XML representation from. The type of the SyndFeedImpl
      *            must match the type given to the FeedOuptut constructor.
      * @param prettyPrint pretty-print XML (true) oder collapsed
      * @return a String with the XML representation for the given SyndFeedImpl.
      * @throws FeedException thrown if the XML representation for the feed could not be created.
-     * 
+     *
      */
     public String outputString(final SyndFeed feed, final boolean prettyPrint) throws FeedException {
         return feedOutput.outputString(feed.createWireFeed(), prettyPrint);
@@ -91,13 +83,13 @@ public class SyndFeedOutput {
      * responsibility of the developer to ensure the feed encoding is set to the platform charset
      * encoding.
      * <p>
-     * 
+     *
      * @param feed Abstract feed to create XML representation from. The type of the SyndFeedImpl
      *            must match the type given to the FeedOuptut constructor.
      * @param file the file where to write the XML representation for the given SyndFeedImpl.
      * @throws IOException thrown if there was some problem writing to the File.
      * @throws FeedException thrown if the XML representation for the feed could not be created.
-     * 
+     *
      */
     public void output(final SyndFeed feed, final File file) throws IOException, FeedException {
         feedOutput.output(feed.createWireFeed(), file);
@@ -111,14 +103,14 @@ public class SyndFeedOutput {
      * responsibility of the developer to ensure the feed encoding is set to the platform charset
      * encoding.
      * <p>
-     * 
+     *
      * @param feed Abstract feed to create XML representation from. The type of the SyndFeedImpl
      *            must match the type given to the FeedOuptut constructor.
      * @param prettyPrint pretty-print XML (true) oder collapsed
      * @param file the file where to write the XML representation for the given SyndFeedImpl.
      * @throws IOException thrown if there was some problem writing to the File.
      * @throws FeedException thrown if the XML representation for the feed could not be created.
-     * 
+     *
      */
     public void output(final SyndFeed feed, final File file, final boolean prettyPrint) throws IOException, FeedException {
         feedOutput.output(feed.createWireFeed(), file, prettyPrint);
@@ -131,13 +123,13 @@ public class SyndFeedOutput {
      * the responsibility of the developer to ensure that if the String is written to a character
      * stream the stream charset is the same as the feed encoding property.
      * <p>
-     * 
+     *
      * @param feed Abstract feed to create XML representation from. The type of the SyndFeedImpl
      *            must match the type given to the FeedOuptut constructor.
      * @param writer Writer to write the XML representation for the given SyndFeedImpl.
      * @throws IOException thrown if there was some problem writing to the Writer.
      * @throws FeedException thrown if the XML representation for the feed could not be created.
-     * 
+     *
      */
     public void output(final SyndFeed feed, final Writer writer) throws IOException, FeedException {
         feedOutput.output(feed.createWireFeed(), writer);
@@ -150,14 +142,14 @@ public class SyndFeedOutput {
      * the responsibility of the developer to ensure that if the String is written to a character
      * stream the stream charset is the same as the feed encoding property.
      * <p>
-     * 
+     *
      * @param feed Abstract feed to create XML representation from. The type of the SyndFeedImpl
      *            must match the type given to the FeedOuptut constructor.
      * @param prettyPrint pretty-print XML (true) oder collapsed
      * @param writer Writer to write the XML representation for the given SyndFeedImpl.
      * @throws IOException thrown if there was some problem writing to the Writer.
      * @throws FeedException thrown if the XML representation for the feed could not be created.
-     * 
+     *
      */
     public void output(final SyndFeed feed, final Writer writer, final boolean prettyPrint) throws IOException, FeedException {
         feedOutput.output(feed.createWireFeed(), writer, prettyPrint);
@@ -168,12 +160,12 @@ public class SyndFeedOutput {
      * <p>
      * This method does not use the feed encoding property.
      * <p>
-     * 
+     *
      * @param feed Abstract feed to create W3C DOM document from. The type of the SyndFeedImpl must
      *            match the type given to the FeedOuptut constructor.
      * @return the W3C DOM document for the given SyndFeedImpl.
      * @throws FeedException thrown if the W3C DOM document for the feed could not be created.
-     * 
+     *
      */
     public org.w3c.dom.Document outputW3CDom(final SyndFeed feed) throws FeedException {
         return feedOutput.outputW3CDom(feed.createWireFeed());
@@ -184,12 +176,12 @@ public class SyndFeedOutput {
      * <p>
      * This method does not use the feed encoding property.
      * <p>
-     * 
+     *
      * @param feed Abstract feed to create JDOM document from. The type of the SyndFeedImpl must
      *            match the type given to the FeedOuptut constructor.
      * @return the JDOM document for the given SyndFeedImpl.
      * @throws FeedException thrown if the JDOM document for the feed could not be created.
-     * 
+     *
      */
     public Document outputJDom(final SyndFeed feed) throws FeedException {
         return feedOutput.outputJDom(feed.createWireFeed());

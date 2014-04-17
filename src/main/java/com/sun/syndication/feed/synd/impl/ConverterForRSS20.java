@@ -16,8 +16,6 @@
  */
 package com.sun.syndication.feed.synd.impl;
 
-/**
- */
 public class ConverterForRSS20 extends ConverterForRSS094 {
 
     public ConverterForRSS20() {

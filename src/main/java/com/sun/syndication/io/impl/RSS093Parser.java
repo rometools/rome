@@ -41,23 +41,29 @@ public class RSS093Parser extends RSS092Parser {
 
     @Override
     protected Item parseItem(final Element rssRoot, final Element eItem, final Locale locale) {
+
         final Item item = super.parseItem(rssRoot, eItem, locale);
-        Element e = eItem.getChild("pubDate", getRSSNamespace());
-        if (e != null) {
-            item.setPubDate(DateParser.parseDate(e.getText(), locale));
+
+        final Element pubDate = eItem.getChild("pubDate", getRSSNamespace());
+        if (pubDate != null) {
+            item.setPubDate(DateParser.parseDate(pubDate.getText(), locale));
         }
-        e = eItem.getChild("expirationDate", getRSSNamespace());
-        if (e != null) {
-            item.setExpirationDate(DateParser.parseDate(e.getText(), locale));
+
+        final Element expirationDate = eItem.getChild("expirationDate", getRSSNamespace());
+        if (expirationDate != null) {
+            item.setExpirationDate(DateParser.parseDate(expirationDate.getText(), locale));
         }
-        e = eItem.getChild("description", getRSSNamespace());
-        if (e != null) {
-            final String type = e.getAttributeValue("type");
+
+        final Element description = eItem.getChild("description", getRSSNamespace());
+        if (description != null) {
+            final String type = description.getAttributeValue("type");
             if (type != null) {
                 item.getDescription().setType(type);
             }
         }
+
         return item;
+
     }
 
 }

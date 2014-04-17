@@ -22,6 +22,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.rometools.utils.Lists;
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.module.DCModule;
 import com.sun.syndication.feed.rss.Channel;
@@ -36,9 +37,8 @@ import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.feed.synd.SyndImage;
 import com.sun.syndication.feed.synd.SyndPerson;
 
-/**
- */
 public class ConverterForRSS091Userland extends ConverterForRSS090 {
+
     public ConverterForRSS091Userland() {
         this("rss_0.91U");
     }
@@ -49,13 +49,21 @@ public class ConverterForRSS091Userland extends ConverterForRSS090 {
 
     @Override
     public void copyInto(final WireFeed feed, final SyndFeed syndFeed) {
+
         final Channel channel = (Channel) feed;
+
         super.copyInto(channel, syndFeed);
+
         syndFeed.setLanguage(channel.getLanguage()); // c
+
         syndFeed.setCopyright(channel.getCopyright()); // c
+
         syndFeed.setDocs(channel.getDocs());
+
         syndFeed.setManagingEditor(channel.getManagingEditor());
+
         syndFeed.setWebMaster(channel.getWebMaster());
+
         syndFeed.setGenerator(channel.getGenerator());
 
         final Date pubDate = channel.getPubDate();
@@ -69,12 +77,12 @@ public class ConverterForRSS091Userland extends ConverterForRSS090 {
         final String author = channel.getManagingEditor();
 
         if (author != null) {
+
             final List<String> creators = ((DCModule) syndFeed.getModule(DCModule.URI)).getCreators();
 
             if (!creators.contains(author)) {
-                final Set<String> s = new LinkedHashSet<String>(); // using a set to
-                // remove
-                // duplicates
+                // using a set to remove duplicates
+                final Set<String> s = new LinkedHashSet<String>();
                 s.addAll(creators); // DC creators
                 s.add(author); // feed native author
                 creators.clear();
@@ -87,7 +95,6 @@ public class ConverterForRSS091Userland extends ConverterForRSS090 {
         final Description desc = new Description();
         desc.setValue(sContent.getValue());
         desc.setType(sContent.getType());
-
         return desc;
     }
 
@@ -95,7 +102,6 @@ public class ConverterForRSS091Userland extends ConverterForRSS090 {
     protected Image createRSSImage(final SyndImage sImage) {
         final Image image = super.createRSSImage(sImage);
         image.setDescription(sImage.getDescription());
-
         return image;
     }
 
@@ -104,8 +110,11 @@ public class ConverterForRSS091Userland extends ConverterForRSS090 {
     // synd.description -> rss.description
     @Override
     protected Item createRSSItem(final SyndEntry sEntry) {
+
         final Item item = super.createRSSItem(sEntry);
+
         item.setComments(sEntry.getComments());
+
         final SyndContent sContent = sEntry.getDescription();
 
         if (sContent != null) {
@@ -114,7 +123,7 @@ public class ConverterForRSS091Userland extends ConverterForRSS090 {
 
         final List<SyndContent> contents = sEntry.getContents();
 
-        if (contents != null && !contents.isEmpty()) {
+        if (Lists.isNotEmpty(contents)) {
             final SyndContent syndContent = contents.get(0);
             final Content cont = new Content();
             cont.setValue(syndContent.getValue());
@@ -136,8 +145,9 @@ public class ConverterForRSS091Userland extends ConverterForRSS090 {
         channel.setWebMaster(syndFeed.getWebMaster());
         channel.setGenerator(syndFeed.getGenerator());
 
-        if (syndFeed.getAuthors() != null && !syndFeed.getAuthors().isEmpty()) {
-            final SyndPerson author = syndFeed.getAuthors().get(0);
+        final List<SyndPerson> authors = syndFeed.getAuthors();
+        if (Lists.isNotEmpty(authors)) {
+            final SyndPerson author = authors.get(0);
             channel.setManagingEditor(author.getName());
         }
 
@@ -149,8 +159,11 @@ public class ConverterForRSS091Userland extends ConverterForRSS090 {
     // rss.description -> synd.description
     @Override
     protected SyndEntry createSyndEntry(final Item item, final boolean preserveWireItem) {
+
         final SyndEntry syndEntry = super.createSyndEntry(item, preserveWireItem);
+
         final Description desc = item.getDescription();
+
         syndEntry.setComments(item.getComments());
 
         if (desc != null) {
@@ -179,7 +192,7 @@ public class ConverterForRSS091Userland extends ConverterForRSS090 {
     protected SyndImage createSyndImage(final Image rssImage) {
         final SyndImage syndImage = super.createSyndImage(rssImage);
         syndImage.setDescription(rssImage.getDescription());
-
         return syndImage;
     }
+
 }

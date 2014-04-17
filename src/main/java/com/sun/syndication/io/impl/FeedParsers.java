@@ -34,22 +34,22 @@ import com.sun.syndication.io.WireFeedParser;
  * Parsers for a specific type must extend this class and register in the parser list. (Right now
  * registration is hardcoded in the WireFeedParser constructor).
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public class FeedParsers extends PluginManager<WireFeedParser> {
 
     /**
      * WireFeedParser.classes= [className] ...
-     * 
+     *
      */
     public static final String FEED_PARSERS_KEY = "WireFeedParser.classes";
 
     /**
      * Creates a parser instance.
      * <p>
-     * 
+     *
      */
     public FeedParsers() {
         super(FEED_PARSERS_KEY);
@@ -62,22 +62,20 @@ public class FeedParsers extends PluginManager<WireFeedParser> {
     /**
      * Finds the real parser type for the given document feed.
      * <p>
-     * 
+     *
      * @param document document feed to find the parser for.
      * @return the parser for the given document or <b>null</b> if there is no parser for that
      *         document.
-     * 
+     *
      */
     public WireFeedParser getParserFor(final Document document) {
         final List<WireFeedParser> parsers = getPlugins();
-        WireFeedParser parser = null;
-        for (int i = 0; parser == null && i < parsers.size(); i++) {
-            parser = parsers.get(i);
-            if (!parser.isMyType(document)) {
-                parser = null;
+        for (final WireFeedParser parser : parsers) {
+            if (parser.isMyType(document)) {
+                return parser;
             }
         }
-        return parser;
+        return null;
     }
 
     @Override

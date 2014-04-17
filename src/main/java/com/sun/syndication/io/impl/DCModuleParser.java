@@ -64,139 +64,163 @@ public class DCModuleParser implements ModuleParser {
     /**
      * Parse an element tree and return the module found in it.
      * <p>
-     * 
+     *
      * @param dcRoot the root element containing the module elements.
      * @param locale for date/time parsing
      * @return the module parsed from the element tree, <i>null</i> if none.
      */
     @Override
     public Module parse(final Element dcRoot, final Locale locale) {
+
         boolean foundSomething = false;
         final DCModule dcm = new DCModuleImpl();
 
-        List<Element> eList = dcRoot.getChildren("title", getDCNamespace());
-        if (!eList.isEmpty()) {
+        final List<Element> titles = dcRoot.getChildren("title", getDCNamespace());
+        if (!titles.isEmpty()) {
             foundSomething = true;
-            dcm.setTitles(parseElementList(eList));
+            dcm.setTitles(parseElementList(titles));
         }
-        eList = dcRoot.getChildren("creator", getDCNamespace());
-        if (!eList.isEmpty()) {
+
+        final List<Element> creators = dcRoot.getChildren("creator", getDCNamespace());
+        if (!creators.isEmpty()) {
             foundSomething = true;
-            dcm.setCreators(parseElementList(eList));
+            dcm.setCreators(parseElementList(creators));
         }
-        eList = dcRoot.getChildren("subject", getDCNamespace());
-        if (!eList.isEmpty()) {
+
+        final List<Element> subjects = dcRoot.getChildren("subject", getDCNamespace());
+        if (!subjects.isEmpty()) {
             foundSomething = true;
-            dcm.setSubjects(parseSubjects(eList));
+            dcm.setSubjects(parseSubjects(subjects));
         }
-        eList = dcRoot.getChildren("description", getDCNamespace());
-        if (!eList.isEmpty()) {
+
+        final List<Element> descriptions = dcRoot.getChildren("description", getDCNamespace());
+        if (!descriptions.isEmpty()) {
             foundSomething = true;
-            dcm.setDescriptions(parseElementList(eList));
+            dcm.setDescriptions(parseElementList(descriptions));
         }
-        eList = dcRoot.getChildren("publisher", getDCNamespace());
-        if (!eList.isEmpty()) {
+
+        final List<Element> publishers = dcRoot.getChildren("publisher", getDCNamespace());
+        if (!publishers.isEmpty()) {
             foundSomething = true;
-            dcm.setPublishers(parseElementList(eList));
+            dcm.setPublishers(parseElementList(publishers));
         }
-        eList = dcRoot.getChildren("contributor", getDCNamespace());
-        if (!eList.isEmpty()) {
+
+        final List<Element> contributors = dcRoot.getChildren("contributor", getDCNamespace());
+        if (!contributors.isEmpty()) {
             foundSomething = true;
-            dcm.setContributors(parseElementList(eList));
+            dcm.setContributors(parseElementList(contributors));
         }
-        eList = dcRoot.getChildren("date", getDCNamespace());
-        if (!eList.isEmpty()) {
+
+        final List<Element> dates = dcRoot.getChildren("date", getDCNamespace());
+        if (!dates.isEmpty()) {
             foundSomething = true;
-            dcm.setDates(parseElementListDate(eList, locale));
+            dcm.setDates(parseElementListDate(dates, locale));
         }
-        eList = dcRoot.getChildren("type", getDCNamespace());
-        if (!eList.isEmpty()) {
+
+        final List<Element> types = dcRoot.getChildren("type", getDCNamespace());
+        if (!types.isEmpty()) {
             foundSomething = true;
-            dcm.setTypes(parseElementList(eList));
+            dcm.setTypes(parseElementList(types));
         }
-        eList = dcRoot.getChildren("format", getDCNamespace());
-        if (!eList.isEmpty()) {
+
+        final List<Element> formats = dcRoot.getChildren("format", getDCNamespace());
+        if (!formats.isEmpty()) {
             foundSomething = true;
-            dcm.setFormats(parseElementList(eList));
+            dcm.setFormats(parseElementList(formats));
         }
-        eList = dcRoot.getChildren("identifier", getDCNamespace());
-        if (!eList.isEmpty()) {
+
+        final List<Element> identifiers = dcRoot.getChildren("identifier", getDCNamespace());
+        if (!identifiers.isEmpty()) {
             foundSomething = true;
-            dcm.setIdentifiers(parseElementList(eList));
+            dcm.setIdentifiers(parseElementList(identifiers));
         }
-        eList = dcRoot.getChildren("source", getDCNamespace());
-        if (!eList.isEmpty()) {
+
+        final List<Element> sources = dcRoot.getChildren("source", getDCNamespace());
+        if (!sources.isEmpty()) {
             foundSomething = true;
-            dcm.setSources(parseElementList(eList));
+            dcm.setSources(parseElementList(sources));
         }
-        eList = dcRoot.getChildren("language", getDCNamespace());
-        if (!eList.isEmpty()) {
+
+        final List<Element> languages = dcRoot.getChildren("language", getDCNamespace());
+        if (!languages.isEmpty()) {
             foundSomething = true;
-            dcm.setLanguages(parseElementList(eList));
+            dcm.setLanguages(parseElementList(languages));
         }
-        eList = dcRoot.getChildren("relation", getDCNamespace());
-        if (!eList.isEmpty()) {
+
+        final List<Element> relations = dcRoot.getChildren("relation", getDCNamespace());
+        if (!relations.isEmpty()) {
             foundSomething = true;
-            dcm.setRelations(parseElementList(eList));
+            dcm.setRelations(parseElementList(relations));
         }
-        eList = dcRoot.getChildren("coverage", getDCNamespace());
-        if (!eList.isEmpty()) {
+
+        final List<Element> coverages = dcRoot.getChildren("coverage", getDCNamespace());
+        if (!coverages.isEmpty()) {
             foundSomething = true;
-            dcm.setCoverages(parseElementList(eList));
+            dcm.setCoverages(parseElementList(coverages));
         }
-        eList = dcRoot.getChildren("rights", getDCNamespace());
-        if (!eList.isEmpty()) {
+
+        final List<Element> rights = dcRoot.getChildren("rights", getDCNamespace());
+        if (!rights.isEmpty()) {
             foundSomething = true;
-            dcm.setRightsList(parseElementList(eList));
+            dcm.setRightsList(parseElementList(rights));
         }
+
         if (foundSomething) {
             return dcm;
         } else {
             return null;
         }
+
     }
 
     /**
      * Utility method to parse a taxonomy from an element.
      * <p>
-     * 
+     *
      * @param desc the taxonomy description element.
      * @return the string contained in the resource of the element.
      */
     protected final String getTaxonomy(final Element desc) {
-        String d = null;
-        final Element taxo = desc.getChild("topic", getTaxonomyNamespace());
-        if (taxo != null) {
-            final Attribute a = taxo.getAttribute("resource", getRDFNamespace());
-            if (a != null) {
-                d = a.getValue();
+        String taxonomy = null;
+        final Element topic = desc.getChild("topic", getTaxonomyNamespace());
+        if (topic != null) {
+            final Attribute resource = topic.getAttribute("resource", getRDFNamespace());
+            if (resource != null) {
+                taxonomy = resource.getValue();
             }
         }
-        return d;
+        return taxonomy;
     }
 
     /**
      * Utility method to parse a list of subjects out of a list of elements.
      * <p>
-     * 
+     *
      * @param eList the element list to parse.
      * @return a list of subjects parsed from the elements.
      */
     protected final List<DCSubject> parseSubjects(final List<Element> eList) {
+
         final List<DCSubject> subjects = new ArrayList<DCSubject>();
-        for (final Element element : eList) {
-            final Element eSubject = element;
-            final Element eDesc = eSubject.getChild("Description", getRDFNamespace());
-            if (eDesc != null) {
-                final String taxonomy = getTaxonomy(eDesc);
-                final List<Element> eValues = eDesc.getChildren("value", getRDFNamespace());
-                for (final Element element2 : eValues) {
-                    final Element eValue = element2;
+
+        for (final Element eSubject : eList) {
+
+            final Element description = eSubject.getChild("Description", getRDFNamespace());
+
+            if (description != null) {
+
+                final String taxonomy = getTaxonomy(description);
+
+                final List<Element> values = description.getChildren("value", getRDFNamespace());
+                for (final Element value : values) {
+
                     final DCSubject subject = new DCSubjectImpl();
                     subject.setTaxonomyUri(taxonomy);
-                    subject.setValue(eValue.getText());
+                    subject.setValue(value.getText());
                     subjects.add(subject);
+
                 }
+
             } else {
                 final DCSubject subject = new DCSubjectImpl();
                 subject.setValue(eSubject.getText());
@@ -210,34 +234,31 @@ public class DCModuleParser implements ModuleParser {
     /**
      * Utility method to parse a list of strings out of a list of elements.
      * <p>
-     * 
-     * @param eList the list of elements to parse.
+     *
+     * @param elements the list of elements to parse.
      * @return the list of strings
      */
-    protected final List<String> parseElementList(final List<Element> eList) {
+    protected final List<String> parseElementList(final List<Element> elements) {
         final List<String> values = new ArrayList<String>();
-        for (final Element element : eList) {
-            final Element e = element;
-            values.add(e.getText());
+        for (final Element element : elements) {
+            values.add(element.getText());
         }
-
         return values;
     }
 
     /**
      * Utility method to parse a list of dates out of a list of elements.
      * <p>
-     * 
-     * @param eList the list of elements to parse.
+     *
+     * @param elements the list of elements to parse.
      * @return the list of dates.
      */
-    protected final List<Date> parseElementListDate(final List<Element> eList, final Locale locale) {
+    protected final List<Date> parseElementListDate(final List<Element> elements, final Locale locale) {
         final List<Date> values = new ArrayList<Date>();
-        for (final Element element : eList) {
-            final Element e = element;
-            values.add(DateParser.parseDate(e.getText(), locale));
+        for (final Element element : elements) {
+            values.add(DateParser.parseDate(element.getText(), locale));
         }
-
         return values;
     }
+
 }

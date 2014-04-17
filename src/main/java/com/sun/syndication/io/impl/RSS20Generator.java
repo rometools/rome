@@ -28,11 +28,10 @@ import com.sun.syndication.feed.rss.Item;
 /**
  * Feed Generator for RSS 2.0
  * <p/>
- * 
+ *
  * @author Elaine Chien
- * 
+ *
  */
-
 public class RSS20Generator extends RSS094Generator {
 
     public RSS20Generator() {
@@ -45,6 +44,7 @@ public class RSS20Generator extends RSS094Generator {
 
     @Override
     protected void populateChannel(final Channel channel, final Element eChannel) {
+
         super.populateChannel(channel, eChannel);
 
         final String generator = channel.getGenerator();
@@ -58,19 +58,20 @@ public class RSS20Generator extends RSS094Generator {
         }
 
         final List<Category> categories = channel.getCategories();
-        for (int i = 0; i < categories.size(); i++) {
-            eChannel.addContent(generateCategoryElement(categories.get(i)));
+        for (final Category category : categories) {
+            eChannel.addContent(generateCategoryElement(category));
         }
 
     }
 
     @Override
     public void populateItem(final Item item, final Element eItem, final int index) {
+
         super.populateItem(item, eItem, index);
 
-        final Element eDescription = eItem.getChild("description", getFeedNamespace());
-        if (eDescription != null) {
-            eDescription.removeAttribute("type");
+        final Element description = eItem.getChild("description", getFeedNamespace());
+        if (description != null) {
+            description.removeAttribute("type");
         }
 
         final String author = item.getAuthor();

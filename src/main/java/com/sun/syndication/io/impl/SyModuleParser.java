@@ -26,9 +26,8 @@ import com.sun.syndication.feed.module.SyModule;
 import com.sun.syndication.feed.module.SyModuleImpl;
 import com.sun.syndication.io.ModuleParser;
 
-/**
- */
 public class SyModuleParser implements ModuleParser {
+
     @Override
     public String getNamespaceUri() {
         return SyModule.URI;
@@ -40,29 +39,35 @@ public class SyModuleParser implements ModuleParser {
 
     @Override
     public Module parse(final Element syndRoot, final Locale locale) {
+
         boolean foundSomething = false;
+
         final SyModule sm = new SyModuleImpl();
 
-        Element e = syndRoot.getChild("updatePeriod", getDCNamespace());
-        if (e != null) {
+        final Element updatePeriod = syndRoot.getChild("updatePeriod", getDCNamespace());
+        if (updatePeriod != null) {
             foundSomething = true;
-            sm.setUpdatePeriod(e.getText());
+            sm.setUpdatePeriod(updatePeriod.getText());
         }
-        e = syndRoot.getChild("updateFrequency", getDCNamespace());
-        if (e != null) {
+
+        final Element updateFrequency = syndRoot.getChild("updateFrequency", getDCNamespace());
+        if (updateFrequency != null) {
             foundSomething = true;
-            sm.setUpdateFrequency(Integer.parseInt(e.getText().trim()));
+            sm.setUpdateFrequency(Integer.parseInt(updateFrequency.getText().trim()));
         }
-        e = syndRoot.getChild("updateBase", getDCNamespace());
-        if (e != null) {
+
+        final Element updateBase = syndRoot.getChild("updateBase", getDCNamespace());
+        if (updateBase != null) {
             foundSomething = true;
-            sm.setUpdateBase(DateParser.parseDate(e.getText(), locale));
+            sm.setUpdateBase(DateParser.parseDate(updateBase.getText(), locale));
         }
+
         if (foundSomething) {
             return sm;
         } else {
             return null;
         }
+
     }
 
 }

@@ -49,33 +49,21 @@ public class RSS10Parser extends RSS090Parser {
      * It checks for RDF ("http://www.w3.org/1999/02/22-rdf-syntax-ns#") namespace being defined in
      * the root element and for the RSS 1.0 ("http://purl.org/rss/1.0/") namespace in the channel
      * element.
-     * 
+     *
      * @param document document to check if it can be parsed with this parser implementation.
      * @return <b>true</b> if the document is RSS1., <b>false</b> otherwise.
      */
     @Override
     public boolean isMyType(final Document document) {
-        boolean ok = false;
-
         final Element rssRoot = document.getRootElement();
         final Namespace defaultNS = rssRoot.getNamespace();
-
-        ok = defaultNS != null && defaultNS.equals(getRDFNamespace());
-        if (ok) {
-            // now also test if the channel element exists with the right
-            // namespace
-            final Element channel = rssRoot.getChild("channel", getRSSNamespace());
-            if (channel == null) {
-                ok = false;
-            }
-        }
-        return ok;
+        return defaultNS != null && defaultNS.equals(getRDFNamespace()) && rssRoot.getChild("channel", getRSSNamespace()) != null;
     }
 
     /**
      * Returns the namespace used by RSS elements in document of the RSS 1.0
      * <P>
-     * 
+     *
      * @return returns "http://purl.org/rss/1.0/".
      */
     @Override
@@ -89,29 +77,32 @@ public class RSS10Parser extends RSS090Parser {
      * It first invokes super.parseItem and then parses and injects the description property if
      * present.
      * <p/>
-     * 
+     *
      * @param rssRoot the root element of the RSS document in case it's needed for context.
      * @param eItem the item element to parse.
      * @return the parsed RSSItem bean.
      */
     @Override
     protected Item parseItem(final Element rssRoot, final Element eItem, final Locale locale) {
+
         final Item item = super.parseItem(rssRoot, eItem, locale);
-        final Element e = eItem.getChild("description", getRSSNamespace());
-        if (e != null) {
-            item.setDescription(parseItemDescription(rssRoot, e));
+
+        final Element description = eItem.getChild("description", getRSSNamespace());
+        if (description != null) {
+            item.setDescription(parseItemDescription(rssRoot, description));
         }
-        final Element ce = eItem.getChild("encoded", getContentNamespace());
-        if (ce != null) {
+
+        final Element encoded = eItem.getChild("encoded", getContentNamespace());
+        if (encoded != null) {
             final Content content = new Content();
             content.setType(Content.HTML);
-            content.setValue(ce.getText());
+            content.setValue(encoded.getText());
             item.setContent(content);
         }
 
-        final String uri = eItem.getAttributeValue("about", getRDFNamespace());
-        if (uri != null) {
-            item.setUri(uri);
+        final String about = eItem.getAttributeValue("about", getRDFNamespace());
+        if (about != null) {
+            item.setUri(about);
         }
 
         return item;
@@ -119,6 +110,7 @@ public class RSS10Parser extends RSS090Parser {
 
     @Override
     protected WireFeed parseChannel(final Element rssRoot, final Locale locale) {
+
         final Channel channel = (Channel) super.parseChannel(rssRoot, locale);
 
         final Element eChannel = rssRoot.getChild("channel", getRSSNamespace());

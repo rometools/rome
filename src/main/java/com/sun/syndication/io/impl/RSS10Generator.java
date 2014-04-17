@@ -29,9 +29,9 @@ import com.sun.syndication.io.FeedException;
 /**
  * Feed Generator for RSS 1.0
  * <p/>
- * 
+ *
  * @author Elaine Chien
- * 
+ *
  */
 
 public class RSS10Generator extends RSS090Generator {
@@ -54,22 +54,25 @@ public class RSS10Generator extends RSS090Generator {
 
     @Override
     protected void populateChannel(final Channel channel, final Element eChannel) {
+
         super.populateChannel(channel, eChannel);
-        if (channel.getUri() != null) {
-            eChannel.setAttribute("about", channel.getUri(), getRDFNamespace());
+
+        final String channelUri = channel.getUri();
+        if (channelUri != null) {
+            eChannel.setAttribute("about", channelUri, getRDFNamespace());
         }
+
         final List<Item> items = channel.getItems();
         if (!items.isEmpty()) {
             final Element eItems = new Element("items", getFeedNamespace());
             final Element eSeq = new Element("Seq", getRDFNamespace());
-            for (int i = 0; i < items.size(); i++) {
-                final Item item = items.get(i);
-                final Element eLi = new Element("li", getRDFNamespace());
+            for (final Item item : items) {
+                final Element lis = new Element("li", getRDFNamespace());
                 final String uri = item.getUri();
                 if (uri != null) {
-                    eLi.setAttribute("resource", uri, getRDFNamespace());
+                    lis.setAttribute("resource", uri, getRDFNamespace());
                 }
-                eSeq.addContent(eLi);
+                eSeq.addContent(lis);
             }
             eItems.addContent(eSeq);
             eChannel.addContent(eItems);
@@ -78,10 +81,11 @@ public class RSS10Generator extends RSS090Generator {
 
     @Override
     protected void populateItem(final Item item, final Element eItem, final int index) {
+
         super.populateItem(item, eItem, index);
+
         final String link = item.getLink();
         final String uri = item.getUri();
-
         if (uri != null) {
             eItem.setAttribute("about", uri, getRDFNamespace());
         } else if (link != null) {
@@ -92,11 +96,13 @@ public class RSS10Generator extends RSS090Generator {
         if (description != null) {
             eItem.addContent(generateSimpleElement("description", description.getValue()));
         }
+
         if (item.getModule(getContentNamespace().getURI()) == null && item.getContent() != null) {
             final Element elem = new Element("encoded", getContentNamespace());
             elem.addContent(item.getContent().getValue());
             eItem.addContent(elem);
         }
+
     }
 
     @Override

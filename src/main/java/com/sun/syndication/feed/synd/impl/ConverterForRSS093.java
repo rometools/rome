@@ -21,8 +21,6 @@ import java.util.Date;
 import com.sun.syndication.feed.rss.Item;
 import com.sun.syndication.feed.synd.SyndEntry;
 
-/**
- */
 public class ConverterForRSS093 extends ConverterForRSS092 {
 
     public ConverterForRSS093() {
@@ -35,11 +33,15 @@ public class ConverterForRSS093 extends ConverterForRSS092 {
 
     @Override
     protected SyndEntry createSyndEntry(final Item item, final boolean preserveWireItem) {
+
         final SyndEntry syndEntry = super.createSyndEntry(item, preserveWireItem);
+
         final Date pubDate = item.getPubDate();
-        if (pubDate != null && syndEntry.getPublishedDate() == null) {
+        final Date publishedDate = syndEntry.getPublishedDate();
+        if (pubDate != null && publishedDate == null) {
             syndEntry.setPublishedDate(pubDate); // c
         }
+
         return syndEntry;
     }
 

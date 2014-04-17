@@ -17,9 +17,10 @@
 package com.sun.syndication.feed.atom;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
+import com.rometools.utils.Alternatives;
+import com.rometools.utils.Lists;
 import com.sun.syndication.feed.impl.ObjectBean;
 import com.sun.syndication.feed.module.Extendable;
 import com.sun.syndication.feed.module.Module;
@@ -29,7 +30,7 @@ import com.sun.syndication.feed.synd.SyndPerson;
 /**
  * Bean for person elements of Atom feeds.
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
  * @author Dave Johnson (updated for Atom 1.0)
  */
@@ -48,7 +49,7 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
     /**
      * Default constructor. All properties are set to <b>null</b>.
      * <p>
-     * 
+     *
      */
     public Person() {
         objBean = new ObjectBean(this.getClass(), this);
@@ -57,10 +58,10 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
     /**
      * Creates a deep 'bean' clone of the object.
      * <p>
-     * 
+     *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     * 
+     *
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
@@ -71,10 +72,10 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
      * <p>
-     * 
+     *
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     * 
+     *
      */
     @Override
     public boolean equals(final Object other) {
@@ -86,9 +87,9 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
      * <p>
      * It follows the contract defined by the Object hashCode() method.
      * <p>
-     * 
+     *
      * @return the hashcode of the bean object.
-     * 
+     *
      */
     @Override
     public int hashCode() {
@@ -98,9 +99,9 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
     /**
      * Returns the String representation for the object.
      * <p>
-     * 
+     *
      * @return String representation for the object.
-     * 
+     *
      */
     @Override
     public String toString() {
@@ -110,9 +111,9 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
     /**
      * Returns the person name.
      * <p>
-     * 
+     *
      * @return the person name, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public String getName() {
@@ -122,9 +123,9 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
     /**
      * Sets the personname.
      * <p>
-     * 
+     *
      * @param name the person name, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setName(final String name) {
@@ -134,7 +135,7 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
     /**
      * Returns the person URL (same as {@link #getUri()})
      * <p>
-     * 
+     *
      * @return the person URL, <b>null</b> if none.
      */
     public String getUrl() {
@@ -144,7 +145,7 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
     /**
      * Sets the person URL (same as {@link #setUri(java.lang.String)})
      * <p>
-     * 
+     *
      * @param url the person URL, <b>null</b> if none.
      */
     public void setUrl(final String url) {
@@ -156,19 +157,15 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
     }
 
     public String getUriResolved(final String resolveURI) {
-        if (uriResolved != null) {
-            return uriResolved;
-        } else {
-            return uri;
-        }
+        return Alternatives.firstNotNull(uriResolved, uri);
     }
 
     /**
      * Returns the person email.
      * <p>
-     * 
+     *
      * @return the person email, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public String getEmail() {
@@ -178,9 +175,9 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
     /**
      * Sets the person email.
      * <p>
-     * 
+     *
      * @param email the person email, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setEmail(final String email) {
@@ -190,7 +187,7 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
     /**
      * Returns the uri
      * <p>
-     * 
+     *
      * @return Returns the uri.
      * @since Atom 1.0
      */
@@ -202,7 +199,7 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
     /**
      * Set the uri
      * <p>
-     * 
+     *
      * @param uri The uri to set.
      * @since Atom 1.0
      */
@@ -214,25 +211,22 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
     /**
      * Returns the entry modules.
      * <p>
-     * 
+     *
      * @return a list of ModuleImpl elements with the entry modules, an emtpy list if none.
-     * 
+     *
      */
     @Override
     public List<Module> getModules() {
-        if (modules == null) {
-            modules = new ArrayList<Module>();
-        }
-        return modules;
+        return modules = Lists.createWhenNull(modules);
     }
 
     /**
      * Sets the entry modules.
      * <p>
-     * 
+     *
      * @param modules the list of ModuleImpl elements with the entry modules to set, an empty list
      *            or <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setModules(final List<Module> modules) {
@@ -242,7 +236,7 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
     /**
      * Returns the module identified by a given URI.
      * <p>
-     * 
+     *
      * @param uri the URI of the ModuleImpl.
      * @return The module with the given URI, <b>null</b> if none.
      */

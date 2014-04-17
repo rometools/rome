@@ -36,9 +36,9 @@ import com.sun.syndication.io.ModuleGenerator;
 /**
  * Feed Generator for DublinCore Module.
  * <p/>
- * 
+ *
  * @author Elaine Chien
- * 
+ *
  */
 public class DCModuleGenerator implements ModuleGenerator {
 
@@ -83,7 +83,7 @@ public class DCModuleGenerator implements ModuleGenerator {
      * It is used by the the feed generators to add their namespace definition in the root element
      * of the generated document (forward-missing of Java 5.0 Generics).
      * <p/>
-     * 
+     *
      * @return a set with all the URIs this module generator uses.
      */
     @Override
@@ -94,97 +94,137 @@ public class DCModuleGenerator implements ModuleGenerator {
     /**
      * Populate an element tree with elements for a module.
      * <p>
-     * 
+     *
      * @param module the module to populate from.
      * @param element the root element to attach child elements to.
      */
     @Override
     public final void generate(final Module module, final Element element) {
+
         final DCModule dcModule = (DCModule) module;
 
-        if (dcModule.getTitle() != null) {
+        final String title = dcModule.getTitle();
+        if (title != null) {
             element.addContent(generateSimpleElementList("title", dcModule.getTitles()));
         }
-        if (dcModule.getCreator() != null) {
+
+        final String creator = dcModule.getCreator();
+        if (creator != null) {
             element.addContent(generateSimpleElementList("creator", dcModule.getCreators()));
         }
+
         final List<DCSubject> subjects = dcModule.getSubjects();
-        for (int i = 0; i < subjects.size(); i++) {
-            element.addContent(generateSubjectElement(subjects.get(i)));
+        for (final DCSubject dcSubject : subjects) {
+            element.addContent(generateSubjectElement(dcSubject));
         }
-        if (dcModule.getDescription() != null) {
+
+        final String description = dcModule.getDescription();
+        if (description != null) {
             element.addContent(generateSimpleElementList("description", dcModule.getDescriptions()));
         }
-        if (dcModule.getPublisher() != null) {
+
+        final String publisher = dcModule.getPublisher();
+        if (publisher != null) {
             element.addContent(generateSimpleElementList("publisher", dcModule.getPublishers()));
         }
-        if (dcModule.getContributors() != null) {
-            element.addContent(generateSimpleElementList("contributor", dcModule.getContributors()));
+
+        final List<String> contributors = dcModule.getContributors();
+        if (contributors != null) {
+            element.addContent(generateSimpleElementList("contributor", contributors));
         }
-        if (dcModule.getDate() != null) {
+
+        final Date dcDate = dcModule.getDate();
+        if (dcDate != null) {
             for (final Date date : dcModule.getDates()) {
                 element.addContent(generateSimpleElement("date", DateParser.formatW3CDateTime(date, Locale.US)));
             }
         }
-        if (dcModule.getType() != null) {
+
+        final String type = dcModule.getType();
+        if (type != null) {
             element.addContent(generateSimpleElementList("type", dcModule.getTypes()));
         }
-        if (dcModule.getFormat() != null) {
+
+        final String format = dcModule.getFormat();
+        if (format != null) {
             element.addContent(generateSimpleElementList("format", dcModule.getFormats()));
         }
-        if (dcModule.getIdentifier() != null) {
+
+        final String identifier = dcModule.getIdentifier();
+        if (identifier != null) {
             element.addContent(generateSimpleElementList("identifier", dcModule.getIdentifiers()));
         }
-        if (dcModule.getSource() != null) {
+
+        final String source = dcModule.getSource();
+        if (source != null) {
             element.addContent(generateSimpleElementList("source", dcModule.getSources()));
         }
-        if (dcModule.getLanguage() != null) {
+
+        final String language = dcModule.getLanguage();
+        if (language != null) {
             element.addContent(generateSimpleElementList("language", dcModule.getLanguages()));
         }
-        if (dcModule.getRelation() != null) {
+
+        final String relation = dcModule.getRelation();
+        if (relation != null) {
             element.addContent(generateSimpleElementList("relation", dcModule.getRelations()));
         }
-        if (dcModule.getCoverage() != null) {
+
+        final String coverage = dcModule.getCoverage();
+        if (coverage != null) {
             element.addContent(generateSimpleElementList("coverage", dcModule.getCoverages()));
         }
-        if (dcModule.getRights() != null) {
+
+        final String rights = dcModule.getRights();
+        if (rights != null) {
             element.addContent(generateSimpleElementList("rights", dcModule.getRightsList()));
         }
+
     }
 
     /**
      * Utility method to generate an element for a subject.
      * <p>
-     * 
+     *
      * @param subject the subject to generate an element for.
      * @return the element for the subject.
      */
     protected final Element generateSubjectElement(final DCSubject subject) {
+
         final Element subjectElement = new Element("subject", getDCNamespace());
 
-        if (subject.getTaxonomyUri() != null) {
-            final Element descriptionElement = new Element("Description", getRDFNamespace());
+        final String taxonomyUri = subject.getTaxonomyUri();
+        final String value = subject.getValue();
+
+        if (taxonomyUri != null) {
+
+            final Attribute resourceAttribute = new Attribute("resource", taxonomyUri, getRDFNamespace());
+
             final Element topicElement = new Element("topic", getTaxonomyNamespace());
-            final Attribute resourceAttribute = new Attribute("resource", subject.getTaxonomyUri(), getRDFNamespace());
             topicElement.setAttribute(resourceAttribute);
+
+            final Element descriptionElement = new Element("Description", getRDFNamespace());
             descriptionElement.addContent(topicElement);
 
-            if (subject.getValue() != null) {
+            if (value != null) {
                 final Element valueElement = new Element("value", getRDFNamespace());
-                valueElement.addContent(subject.getValue());
+                valueElement.addContent(value);
                 descriptionElement.addContent(valueElement);
             }
+
             subjectElement.addContent(descriptionElement);
+
         } else {
-            subjectElement.addContent(subject.getValue());
+            subjectElement.addContent(value);
         }
+
         return subjectElement;
     }
 
     /**
      * Utility method to generate a single element containing a string.
      * <p>
-     * 
+     *
      * @param name the name of the elment to generate.
      * @param value the value of the text in the element.
      * @return the element generated.
@@ -192,24 +232,22 @@ public class DCModuleGenerator implements ModuleGenerator {
     protected final Element generateSimpleElement(final String name, final String value) {
         final Element element = new Element(name, getDCNamespace());
         element.addContent(value);
-
         return element;
     }
 
     /**
      * Utility method to generate a list of simple elements.
      * <p>
-     * 
+     *
      * @param name the name of the element list to generate.
-     * @param value the list of values for the elements.
+     * @param values the list of values for the elements.
      * @return a list of Elements created.
      */
-    protected final List<Element> generateSimpleElementList(final String name, final List<String> value) {
+    protected final List<Element> generateSimpleElementList(final String name, final List<String> values) {
         final List<Element> elements = new ArrayList<Element>();
-        for (final String string : value) {
-            elements.add(generateSimpleElement(name, string));
+        for (final String value : values) {
+            elements.add(generateSimpleElement(name, value));
         }
-
         return elements;
     }
 }

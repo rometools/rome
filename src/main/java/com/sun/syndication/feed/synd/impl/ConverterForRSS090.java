@@ -19,6 +19,8 @@ package com.sun.syndication.feed.synd.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jdom2.Element;
+
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.module.impl.ModuleUtils;
 import com.sun.syndication.feed.rss.Channel;
@@ -32,6 +34,7 @@ import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.feed.synd.SyndFeedImpl;
 import com.sun.syndication.feed.synd.SyndImage;
 import com.sun.syndication.feed.synd.SyndImageImpl;
+import com.sun.syndication.feed.synd.SyndLink;
 
 /**
  */
@@ -53,13 +56,20 @@ public class ConverterForRSS090 implements Converter {
 
     @Override
     public void copyInto(final WireFeed feed, final SyndFeed syndFeed) {
+
         syndFeed.setModules(ModuleUtils.cloneModules(feed.getModules()));
-        if (!feed.getForeignMarkup().isEmpty()) {
-            syndFeed.setForeignMarkup(feed.getForeignMarkup());
+
+        final List<Element> foreignMarkup = feed.getForeignMarkup();
+        if (!foreignMarkup.isEmpty()) {
+            syndFeed.setForeignMarkup(foreignMarkup);
         }
+
         syndFeed.setStyleSheet(feed.getStyleSheet());
+
         syndFeed.setEncoding(feed.getEncoding());
+
         final Channel channel = (Channel) feed;
+
         syndFeed.setTitle(channel.getTitle());
         syndFeed.setLink(channel.getLink());
         syndFeed.setDescription(channel.getDescription());
@@ -85,22 +95,25 @@ public class ConverterForRSS090 implements Converter {
 
     protected List<SyndEntry> createSyndEntries(final List<Item> rssItems, final boolean preserveWireItems) {
         final List<SyndEntry> syndEntries = new ArrayList<SyndEntry>();
-        for (int i = 0; i < rssItems.size(); i++) {
-            syndEntries.add(createSyndEntry(rssItems.get(i), preserveWireItems));
+        for (final Item item : rssItems) {
+            syndEntries.add(createSyndEntry(item, preserveWireItems));
         }
         return syndEntries;
     }
 
     protected SyndEntry createSyndEntry(final Item item, final boolean preserveWireItem) {
+
         final SyndEntryImpl syndEntry = new SyndEntryImpl();
+
         if (preserveWireItem) {
             syndEntry.setWireEntry(item);
         }
 
         syndEntry.setModules(ModuleUtils.cloneModules(item.getModules()));
 
-        if (!item.getForeignMarkup().isEmpty()) {
-            syndEntry.setForeignMarkup(item.getForeignMarkup());
+        final List<Element> foreignMarkup = item.getForeignMarkup();
+        if (!foreignMarkup.isEmpty()) {
+            syndEntry.setForeignMarkup(foreignMarkup);
         }
 
         syndEntry.setUri(item.getUri());
@@ -134,12 +147,16 @@ public class ConverterForRSS090 implements Converter {
         channel.setEncoding(syndFeed.getEncoding());
 
         channel.setTitle(syndFeed.getTitle());
-        if (syndFeed.getLink() != null) {
-            channel.setLink(syndFeed.getLink());
-        } else if (!syndFeed.getLinks().isEmpty()) {
-            channel.setLink(syndFeed.getLinks().get(0).getHref());
+        final String link = syndFeed.getLink();
+        final List<SyndLink> links = syndFeed.getLinks();
+        if (link != null) {
+            channel.setLink(link);
+        } else if (!links.isEmpty()) {
+            channel.setLink(links.get(0).getHref());
         }
+
         channel.setDescription(syndFeed.getDescription());
+
         final SyndImage sImage = syndFeed.getImage();
         if (sImage != null) {
             channel.setImage(createRSSImage(sImage));
@@ -150,9 +167,11 @@ public class ConverterForRSS090 implements Converter {
             channel.setItems(createRSSItems(sEntries));
         }
 
-        if (!syndFeed.getForeignMarkup().isEmpty()) {
-            channel.setForeignMarkup(syndFeed.getForeignMarkup());
+        final List<Element> foreignMarkup = syndFeed.getForeignMarkup();
+        if (!foreignMarkup.isEmpty()) {
+            channel.setForeignMarkup(foreignMarkup);
         }
+
         return channel;
     }
 
@@ -166,22 +185,29 @@ public class ConverterForRSS090 implements Converter {
 
     protected List<Item> createRSSItems(final List<SyndEntry> sEntries) {
         final List<Item> list = new ArrayList<Item>();
-        for (int i = 0; i < sEntries.size(); i++) {
-            list.add(createRSSItem(sEntries.get(i)));
+        for (final SyndEntry syndEntry : sEntries) {
+            list.add(createRSSItem(syndEntry));
         }
         return list;
     }
 
     protected Item createRSSItem(final SyndEntry sEntry) {
+
         final Item item = new Item();
+
         item.setModules(ModuleUtils.cloneModules(sEntry.getModules()));
+
         item.setTitle(sEntry.getTitle());
+
         item.setLink(sEntry.getLink());
-        if (!sEntry.getForeignMarkup().isEmpty()) {
-            item.setForeignMarkup(sEntry.getForeignMarkup());
+
+        final List<Element> foreignMarkup = sEntry.getForeignMarkup();
+        if (!foreignMarkup.isEmpty()) {
+            item.setForeignMarkup(foreignMarkup);
         }
 
         item.setSource(createSource(sEntry.getSource()));
+
         final String uri = sEntry.getUri();
         if (uri != null) {
             item.setUri(uri);

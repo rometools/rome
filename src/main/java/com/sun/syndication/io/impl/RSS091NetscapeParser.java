@@ -21,8 +21,6 @@ import org.jdom2.DocType;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-/**
- */
 public class RSS091NetscapeParser extends RSS091UserlandParser {
 
     public RSS091NetscapeParser() {
@@ -39,27 +37,15 @@ public class RSS091NetscapeParser extends RSS091UserlandParser {
 
     @Override
     public boolean isMyType(final Document document) {
-        boolean ok = false;
-        final Element rssRoot = document.getRootElement();
-        ok = rssRoot.getName().equals("rss");
-        if (ok) {
-            ok = false;
-            final Attribute version = rssRoot.getAttribute("version");
-            if (version != null) {
-                ok = version.getValue().equals(getRSSVersion());
-                if (ok) {
-                    ok = false;
-                    final DocType docType = document.getDocType();
 
-                    if (docType != null) {
-                        ok = ELEMENT_NAME.equals(docType.getElementName());
-                        ok = ok && PUBLIC_ID.equals(docType.getPublicID());
-                        ok = ok && SYSTEM_ID.equals(docType.getSystemID());
-                    }
-                }
-            }
-        }
-        return ok;
+        final Element rssRoot = document.getRootElement();
+        final String name = rssRoot.getName();
+        final Attribute version = rssRoot.getAttribute("version");
+        final DocType docType = document.getDocType();
+
+        return name.equals(ELEMENT_NAME) && version != null && version.getValue().equals(getRSSVersion()) && docType != null
+                && ELEMENT_NAME.equals(docType.getElementName()) && PUBLIC_ID.equals(docType.getPublicID()) && SYSTEM_ID.equals(docType.getSystemID());
+
     }
 
     @Override

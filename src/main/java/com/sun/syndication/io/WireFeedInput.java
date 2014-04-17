@@ -52,13 +52,21 @@ import com.sun.syndication.io.impl.XmlFixerReader;
  * <p>
  * The WireFeedInput useds liberal parsers.
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public class WireFeedInput {
 
+    private static final InputSource EMPTY_INPUTSOURCE = new InputSource(new ByteArrayInputStream(new byte[0]));
+    private static final EntityResolver RESOLVER = new EmptyEntityResolver();
+
     private static Map<ClassLoader, FeedParsers> clMap = new WeakHashMap<ClassLoader, FeedParsers>();
+
+    private final boolean validate;
+    private final Locale locale;
+
+    private boolean xmlHealerOn;
 
     private static FeedParsers getFeedParsers() {
         synchronized (WireFeedInput.class) {
@@ -72,9 +80,6 @@ public class WireFeedInput {
         }
     }
 
-    private static final InputSource EMPTY_INPUTSOURCE = new InputSource(new ByteArrayInputStream(new byte[0]));
-    private static final EntityResolver RESOLVER = new EmptyEntityResolver();
-
     private static class EmptyEntityResolver implements EntityResolver {
         @Override
         public InputSource resolveEntity(final String publicId, final String systemId) {
@@ -85,19 +90,14 @@ public class WireFeedInput {
         }
     }
 
-    private final boolean validate;
-
-    private boolean xmlHealerOn;
-    private final Locale locale;
-
     /**
      * Returns the list of supported input feed types.
      * <p>
-     * 
+     *
      * @see WireFeed for details on the format of these strings.
      *      <p>
      * @return a list of String elements with the supported input feed types.
-     * 
+     *
      */
     public static List<String> getSupportedFeedTypes() {
         return getFeedParsers().getSupportedFeedTypes();
@@ -106,7 +106,7 @@ public class WireFeedInput {
     /**
      * Creates a WireFeedInput instance with input validation turned off.
      * <p>
-     * 
+     *
      */
     public WireFeedInput() {
         this(false, Locale.US);
@@ -115,10 +115,10 @@ public class WireFeedInput {
     /**
      * Creates a WireFeedInput instance.
      * <p>
-     * 
+     *
      * @param validate indicates if the input should be validated. NOT IMPLEMENTED YET (validation
      *            does not happen)
-     * 
+     *
      */
     public WireFeedInput(final boolean validate, final Locale locale) {
         this.validate = false; // TODO FIX THIS THINGY
@@ -137,9 +137,9 @@ public class WireFeedInput {
      * <p>
      * By default is TRUE.
      * <p>
-     * 
+     *
      * @param heals TRUE enables stream healing, FALSE disables it.
-     * 
+     *
      */
     public void setXmlHealerOn(final boolean heals) {
         xmlHealerOn = heals;
@@ -156,9 +156,9 @@ public class WireFeedInput {
      * <p>
      * By default is TRUE.
      * <p>
-     * 
+     *
      * @return TRUE if healing is enabled, FALSE if not.
-     * 
+     *
      */
     public boolean getXmlHealerOn() {
         return xmlHealerOn;
@@ -169,7 +169,7 @@ public class WireFeedInput {
      * <p>
      * NOTE: This method delages to the 'AsbtractFeed WireFeedInput#build(org.jdom2.Document)'.
      * <p>
-     * 
+     *
      * @param file file to read to create the WireFeed.
      * @return the WireFeed read from the file.
      * @throws FileNotFoundException thrown if the file could not be found.
@@ -177,7 +177,7 @@ public class WireFeedInput {
      * @throws IllegalArgumentException thrown if feed type could not be understood by any of the
      *             underlying parsers.
      * @throws FeedException if the feed could not be parsed
-     * 
+     *
      */
     public WireFeed build(final File file) throws FileNotFoundException, IOException, IllegalArgumentException, FeedException {
         WireFeed feed;
@@ -195,13 +195,13 @@ public class WireFeedInput {
      * <p>
      * NOTE: This method delages to the 'AsbtractFeed WireFeedInput#build(org.jdom2.Document)'.
      * <p>
-     * 
+     *
      * @param reader Reader to read to create the WireFeed.
      * @return the WireFeed read from the Reader.
      * @throws IllegalArgumentException thrown if feed type could not be understood by any of the
      *             underlying parsers.
      * @throws FeedException if the feed could not be parsed
-     * 
+     *
      */
     public WireFeed build(Reader reader) throws IllegalArgumentException, FeedException {
         final SAXBuilder saxBuilder = createSAXBuilder();
@@ -225,13 +225,13 @@ public class WireFeedInput {
      * <p>
      * NOTE: This method delages to the 'AsbtractFeed WireFeedInput#build(org.jdom2.Document)'.
      * <p>
-     * 
+     *
      * @param is W3C SAX InputSource to read to create the WireFeed.
      * @return the WireFeed read from the W3C SAX InputSource.
      * @throws IllegalArgumentException thrown if feed type could not be understood by any of the
      *             underlying parsers.
      * @throws FeedException if the feed could not be parsed
-     * 
+     *
      */
     public WireFeed build(final InputSource is) throws IllegalArgumentException, FeedException {
         final SAXBuilder saxBuilder = createSAXBuilder();
@@ -252,13 +252,13 @@ public class WireFeedInput {
      * <p>
      * NOTE: This method delages to the 'AsbtractFeed WireFeedInput#build(org.jdom2.Document)'.
      * <p>
-     * 
+     *
      * @param document W3C DOM document to read to create the WireFeed.
      * @return the WireFeed read from the W3C DOM document.
      * @throws IllegalArgumentException thrown if feed type could not be understood by any of the
      *             underlying parsers.
      * @throws FeedException if the feed could not be parsed
-     * 
+     *
      */
     public WireFeed build(final org.w3c.dom.Document document) throws IllegalArgumentException, FeedException {
         final DOMBuilder domBuilder = new DOMBuilder();
@@ -277,13 +277,13 @@ public class WireFeedInput {
      * <p>
      * NOTE: All other build methods delegate to this method.
      * <p>
-     * 
+     *
      * @param document JDOM document to read to create the WireFeed.
      * @return the WireFeed read from the JDOM document.
      * @throws IllegalArgumentException thrown if feed type could not be understood by any of the
      *             underlying parsers.
      * @throws FeedException if the feed could not be parsed
-     * 
+     *
      */
     public WireFeed build(final Document document) throws IllegalArgumentException, FeedException {
         final WireFeedParser parser = getFeedParsers().getParserFor(document);
@@ -295,7 +295,7 @@ public class WireFeedInput {
 
     /**
      * Creates and sets up a org.jdom2.input.SAXBuilder for parsing.
-     * 
+     *
      * @return a new org.jdom2.input.SAXBuilder object
      */
     protected SAXBuilder createSAXBuilder() {
@@ -357,4 +357,5 @@ public class WireFeedInput {
         saxBuilder.setExpandEntities(false);
         return saxBuilder;
     }
+
 }

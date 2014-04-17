@@ -26,8 +26,6 @@ import com.sun.syndication.feed.rss.Channel;
 import com.sun.syndication.feed.rss.Guid;
 import com.sun.syndication.feed.rss.Item;
 
-/**
- */
 public class RSS094Parser extends RSS093Parser {
 
     public RSS094Parser() {
@@ -45,22 +43,19 @@ public class RSS094Parser extends RSS093Parser {
 
     @Override
     protected WireFeed parseChannel(final Element rssRoot, final Locale locale) {
+
         final Channel channel = (Channel) super.parseChannel(rssRoot, locale);
+
         final Element eChannel = rssRoot.getChild("channel", getRSSNamespace());
 
-        final List<Element> eCats = eChannel.getChildren("category", getRSSNamespace());
-        channel.setCategories(parseCategories(eCats));
+        final List<Element> categories = eChannel.getChildren("category", getRSSNamespace());
+        channel.setCategories(parseCategories(categories));
 
-        final Element eTtl = eChannel.getChild("ttl", getRSSNamespace());
-        if (eTtl != null && eTtl.getText() != null) {
-            Integer ttlValue = null;
-            try {
-                ttlValue = new Integer(eTtl.getText());
-            } catch (final NumberFormatException nfe) {
-                ; // let it go by
-            }
+        final Element ttl = eChannel.getChild("ttl", getRSSNamespace());
+        if (ttl != null && ttl.getText() != null) {
+            final Integer ttlValue = NumberParser.parseInt(ttl.getText());
             if (ttlValue != null) {
-                channel.setTtl(ttlValue.intValue());
+                channel.setTtl(ttlValue);
             }
         }
 
@@ -69,33 +64,40 @@ public class RSS094Parser extends RSS093Parser {
 
     @Override
     public Item parseItem(final Element rssRoot, final Element eItem, final Locale locale) {
+
         final Item item = super.parseItem(rssRoot, eItem, locale);
+
         item.setExpirationDate(null);
 
-        Element e = eItem.getChild("author", getRSSNamespace());
-        if (e != null) {
-            item.setAuthor(e.getText());
+        final Element author = eItem.getChild("author", getRSSNamespace());
+        if (author != null) {
+            item.setAuthor(author.getText());
         }
 
-        e = eItem.getChild("guid", getRSSNamespace());
-        if (e != null) {
+        final Element eGuid = eItem.getChild("guid", getRSSNamespace());
+        if (eGuid != null) {
+
             final Guid guid = new Guid();
-            final String att = e.getAttributeValue("isPermaLink");// getRSSNamespace());
-            // DONT KNOW WHY
-            // DOESN'T WORK
+
+            // getRSSNamespace()); DONT KNOW WHY DOESN'T WORK
+            final String att = eGuid.getAttributeValue("isPermaLink");
             if (att != null) {
                 guid.setPermaLink(att.equalsIgnoreCase("true"));
             }
-            guid.setValue(e.getText());
+
+            guid.setValue(eGuid.getText());
+
             item.setGuid(guid);
+
         }
 
-        e = eItem.getChild("comments", getRSSNamespace());
-        if (e != null) {
-            item.setComments(e.getText());
+        final Element comments = eItem.getChild("comments", getRSSNamespace());
+        if (comments != null) {
+            item.setComments(comments.getText());
         }
 
         return item;
+
     }
 
 }

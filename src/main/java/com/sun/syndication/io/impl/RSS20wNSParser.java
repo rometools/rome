@@ -26,16 +26,17 @@ import com.sun.syndication.feed.WireFeed;
 
 /**
  * To address issue with certain feeds (brought up by Charles Miller):
- * 
+ *
  * "During the debacle that was the rollout of RSS2.0, this namespace was tried, and even appeared
  * in Dave Winer's Scripting News feed for a while. It was then withdrawn, but the wonderful thing
  * about standards is the moment you roll one out, even if it's marked as unfinished and subject to
  * change, someone will end up stuck with it forever."
- * 
+ *
  * Note that there is not counter part on the generator, we only generate the final RSS2
- * 
+ *
  */
 public class RSS20wNSParser extends RSS20Parser {
+
     private static String RSS20_URI = "http://backend.userland.com/rss2";
 
     public RSS20wNSParser() {
@@ -50,11 +51,7 @@ public class RSS20wNSParser extends RSS20Parser {
     public boolean isMyType(final Document document) {
         final Element rssRoot = document.getRootElement();
         final Namespace defaultNS = rssRoot.getNamespace();
-        boolean ok = defaultNS != null && defaultNS.equals(getRSSNamespace());
-        if (ok) {
-            ok = super.isMyType(document);
-        }
-        return ok;
+        return defaultNS != null && defaultNS.equals(getRSSNamespace()) && super.isMyType(document);
     }
 
     @Override
@@ -65,7 +62,7 @@ public class RSS20wNSParser extends RSS20Parser {
     /**
      * After we parse the feed we put "rss_2.0" in it (so converters and generators work) this
      * parser is a phantom.
-     * 
+     *
      */
     @Override
     protected WireFeed parseChannel(final Element rssRoot, final Locale locale) {

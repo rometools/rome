@@ -28,6 +28,9 @@ import java.util.Set;
 
 import org.jdom2.Element;
 
+import com.rometools.utils.Dates;
+import com.rometools.utils.Lists;
+import com.rometools.utils.Strings;
 import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.impl.CopyFromHelper;
 import com.sun.syndication.feed.impl.ObjectBean;
@@ -42,13 +45,18 @@ import com.sun.syndication.feed.synd.impl.URINormalizer;
 /**
  * Bean for entries of SyndFeedImpl feeds.
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public class SyndEntryImpl implements Serializable, SyndEntry {
+
     private static final long serialVersionUID = 1944144041409866698L;
+
+    private static final CopyFromHelper COPY_FROM_HELPER;
+
     private final ObjectBean objBean;
+
     private String uri;
     private String link;
     private String comments;
@@ -63,8 +71,9 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
     private List<SyndPerson> contributors;
     private SyndFeed source;
     private List<Element> foreignMarkup;
-    private Object wireEntry; // com.sun.syndication.feed.atom.Entry or
-                              // com.sun.syndication.feed.rss.Item
+
+    // com.sun.syndication.feed.atom.Entry or com.sun.syndication.feed.rss.Item
+    private Object wireEntry;
 
     // ISSUE: some converters assume this is never null
     private List<SyndCategory> categories = new ArrayList<SyndCategory>();
@@ -80,19 +89,41 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
     public static final Set<String> CONVENIENCE_PROPERTIES = Collections.unmodifiableSet(IGNORE_PROPERTIES);
 
     static {
+
         IGNORE_PROPERTIES.add("publishedDate");
         IGNORE_PROPERTIES.add("author");
+
+        final Map<String, Class<?>> basePropInterfaceMap = new HashMap<String, Class<?>>();
+        basePropInterfaceMap.put("uri", String.class);
+        basePropInterfaceMap.put("title", String.class);
+        basePropInterfaceMap.put("link", String.class);
+        basePropInterfaceMap.put("uri", String.class);
+        basePropInterfaceMap.put("description", SyndContent.class);
+        basePropInterfaceMap.put("contents", SyndContent.class);
+        basePropInterfaceMap.put("enclosures", SyndEnclosure.class);
+        basePropInterfaceMap.put("modules", Module.class);
+        basePropInterfaceMap.put("categories", SyndCategory.class);
+
+        final Map<Class<? extends CopyFrom>, Class<?>> basePropClassImplMap = new HashMap<Class<? extends CopyFrom>, Class<?>>();
+        basePropClassImplMap.put(SyndContent.class, SyndContentImpl.class);
+        basePropClassImplMap.put(SyndEnclosure.class, SyndEnclosureImpl.class);
+        basePropClassImplMap.put(SyndCategory.class, SyndCategoryImpl.class);
+        basePropClassImplMap.put(DCModule.class, DCModuleImpl.class);
+        basePropClassImplMap.put(SyModule.class, SyModuleImpl.class);
+
+        COPY_FROM_HELPER = new CopyFromHelper(SyndEntry.class, basePropInterfaceMap, basePropClassImplMap);
+
     }
 
     /**
      * For implementations extending SyndEntryImpl to be able to use the ObjectBean functionality
      * with extended interfaces.
      * <p>
-     * 
+     *
      * @param beanClass
      * @param convenienceProperties set containing the convenience properties of the SyndEntryImpl
      *            (the are ignored during cloning, check CloneableBean for details).
-     * 
+     *
      */
     protected SyndEntryImpl(final Class<?> beanClass, final Set<String> convenienceProperties) {
         objBean = new ObjectBean(beanClass, this, convenienceProperties);
@@ -101,7 +132,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
     /**
      * Default constructor. All properties are set to <b>null</b>.
      * <p>
-     * 
+     *
      */
     public SyndEntryImpl() {
         this(SyndEntry.class, IGNORE_PROPERTIES);
@@ -110,10 +141,10 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
     /**
      * Creates a deep 'bean' clone of the object.
      * <p>
-     * 
+     *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     * 
+     *
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
@@ -124,10 +155,10 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
      * <p>
-     * 
+     *
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     * 
+     *
      */
     @Override
     public boolean equals(final Object other) {
@@ -154,9 +185,9 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      * <p>
      * It follows the contract defined by the Object hashCode() method.
      * <p>
-     * 
+     *
      * @return the hashcode of the bean object.
-     * 
+     *
      */
     @Override
     public int hashCode() {
@@ -166,9 +197,9 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
     /**
      * Returns the String representation for the object.
      * <p>
-     * 
+     *
      * @return String representation for the object.
-     * 
+     *
      */
     @Override
     public String toString() {
@@ -185,9 +216,9 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      * <p>
      * The returned URI is a normalized URI as specified in RFC 2396bis.
      * <p>
-     * 
+     *
      * @return the entry URI, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public String getUri() {
@@ -202,9 +233,9 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      * href="http://wiki.java.net/bin/edit/Javawsxml/Rome04URIMapping">Feed and entry URI
      * mapping</a>.
      * <p>
-     * 
+     *
      * @param uri the entry URI to set, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setUri(final String uri) {
@@ -214,9 +245,9 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
     /**
      * Returns the entry title.
      * <p>
-     * 
+     *
      * @return the entry title, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public String getTitle() {
@@ -229,9 +260,9 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
     /**
      * Sets the entry title.
      * <p>
-     * 
+     *
      * @param title the entry title to set, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setTitle(final String title) {
@@ -244,9 +275,9 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
     /**
      * Returns the entry title as a text construct.
      * <p>
-     * 
+     *
      * @return the entry title, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public SyndContent getTitleEx() {
@@ -256,9 +287,9 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
     /**
      * Sets the entry title as a text construct.
      * <p>
-     * 
+     *
      * @param title the entry title to set, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setTitleEx(final SyndContent title) {
@@ -268,9 +299,9 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
     /**
      * Returns the entry link.
      * <p>
-     * 
+     *
      * @return the entry link, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public String getLink() {
@@ -280,9 +311,9 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
     /**
      * Sets the entry link.
      * <p>
-     * 
+     *
      * @param link the entry link to set, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setLink(final String link) {
@@ -292,9 +323,9 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
     /**
      * Returns the entry description.
      * <p>
-     * 
+     *
      * @return the entry description, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public SyndContent getDescription() {
@@ -304,9 +335,9 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
     /**
      * Sets the entry description.
      * <p>
-     * 
+     *
      * @param description the entry description to set, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setDescription(final SyndContent description) {
@@ -316,25 +347,22 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
     /**
      * Returns the entry contents.
      * <p>
-     * 
+     *
      * @return a list of SyndContentImpl elements with the entry contents, an empty list if none.
-     * 
+     *
      */
     @Override
     public List<SyndContent> getContents() {
-        if (contents == null) {
-            contents = new ArrayList<SyndContent>();
-        }
-        return contents;
+        return contents = Lists.createWhenNull(contents);
     }
 
     /**
      * Sets the entry contents.
      * <p>
-     * 
+     *
      * @param contents the list of SyndContentImpl elements with the entry contents to set, an empty
      *            list or <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setContents(final List<SyndContent> contents) {
@@ -344,25 +372,22 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
     /**
      * Returns the entry enclosures.
      * <p>
-     * 
+     *
      * @return a list of SyndEnclosure elements with the entry enclosures, an empty list if none.
-     * 
+     *
      */
     @Override
     public List<SyndEnclosure> getEnclosures() {
-        if (enclosures == null) {
-            enclosures = new ArrayList<SyndEnclosure>();
-        }
-        return enclosures;
+        return enclosures = Lists.createWhenNull(enclosures);
     }
 
     /**
      * Sets the entry enclosures.
      * <p>
-     * 
+     *
      * @param enclosures the list of SyndEnclosure elements with the entry enclosures to set, an
      *            empty list or <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setEnclosures(final List<SyndEnclosure> enclosures) {
@@ -374,9 +399,9 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      * <p>
      * This method is a convenience method, it maps to the Dublin Core module date.
      * <p>
-     * 
+     *
      * @return the entry published date, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public Date getPublishedDate() {
@@ -388,9 +413,9 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      * <p>
      * This method is a convenience method, it maps to the Dublin Core module date.
      * <p>
-     * 
+     *
      * @param publishedDate the entry published date to set, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setPublishedDate(final Date publishedDate) {
@@ -400,9 +425,9 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
     /**
      * Returns the entry categories.
      * <p>
-     * 
+     *
      * @return a list of SyndCategoryImpl elements with the entry categories, an empty list if none.
-     * 
+     *
      */
     @Override
     public List<SyndCategory> getCategories() {
@@ -414,10 +439,10 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      * <p>
      * This method is a convenience method, it maps to the Dublin Core module subjects.
      * <p>
-     * 
+     *
      * @param categories the list of SyndCategoryImpl elements with the entry categories to set, an
      *            empty list or <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setCategories(final List<SyndCategory> categories) {
@@ -427,15 +452,13 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
     /**
      * Returns the entry modules.
      * <p>
-     * 
+     *
      * @return a list of ModuleImpl elements with the entry modules, an empty list if none.
-     * 
+     *
      */
     @Override
     public List<Module> getModules() {
-        if (modules == null) {
-            modules = new ArrayList<Module>();
-        }
+        modules = Lists.createWhenNull(modules);
         if (ModuleUtils.getModule(modules, DCModule.URI) == null) {
             modules.add(new DCModuleImpl());
         }
@@ -445,10 +468,10 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
     /**
      * Sets the entry modules.
      * <p>
-     * 
+     *
      * @param modules the list of ModuleImpl elements with the entry modules to set, an empty list
      *            or <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setModules(final List<Module> modules) {
@@ -458,7 +481,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
     /**
      * Returns the module identified by a given URI.
      * <p>
-     * 
+     *
      * @param uri the URI of the ModuleImpl.
      * @return The module with the given URI, <b>null</b> if none.
      */
@@ -469,9 +492,9 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
 
     /**
      * Returns the Dublin Core module of the feed.
-     * 
+     *
      * @return the DC module, it's never <b>null</b>
-     * 
+     *
      */
     private DCModule getDCModule() {
         return (DCModule) getModule(DCModule.URI);
@@ -487,48 +510,21 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
         COPY_FROM_HELPER.copy(this, obj);
     }
 
-    private static final CopyFromHelper COPY_FROM_HELPER;
-
-    static {
-        final Map<String, Class<?>> basePropInterfaceMap = new HashMap<String, Class<?>>();
-        basePropInterfaceMap.put("uri", String.class);
-        basePropInterfaceMap.put("title", String.class);
-        basePropInterfaceMap.put("link", String.class);
-        basePropInterfaceMap.put("uri", String.class);
-        basePropInterfaceMap.put("description", SyndContent.class);
-        basePropInterfaceMap.put("contents", SyndContent.class);
-        basePropInterfaceMap.put("enclosures", SyndEnclosure.class);
-        basePropInterfaceMap.put("modules", Module.class);
-        basePropInterfaceMap.put("categories", SyndCategory.class);
-
-        final Map<Class<? extends CopyFrom>, Class<?>> basePropClassImplMap = new HashMap<Class<? extends CopyFrom>, Class<?>>();
-        basePropClassImplMap.put(SyndContent.class, SyndContentImpl.class);
-        basePropClassImplMap.put(SyndEnclosure.class, SyndEnclosureImpl.class);
-        basePropClassImplMap.put(SyndCategory.class, SyndCategoryImpl.class);
-        basePropClassImplMap.put(DCModule.class, DCModuleImpl.class);
-        basePropClassImplMap.put(SyModule.class, SyModuleImpl.class);
-
-        COPY_FROM_HELPER = new CopyFromHelper(SyndEntry.class, basePropInterfaceMap, basePropClassImplMap);
-    }
-
     /**
      * Returns the links
      * <p>
-     * 
+     *
      * @return Returns the links.
      */
     @Override
     public List<SyndLink> getLinks() {
-        if (links == null) {
-            links = new ArrayList<SyndLink>();
-        }
-        return links;
+        return links = Lists.createWhenNull(links);
     }
 
     /**
      * Set the links
      * <p>
-     * 
+     *
      * @param links The links to set.
      */
     @Override
@@ -539,22 +535,18 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
     /**
      * Returns the updatedDate
      * <p>
-     * 
+     *
      * @return Returns the updatedDate.
      */
     @Override
     public Date getUpdatedDate() {
-        if (updatedDate == null) {
-            return null;
-        } else {
-            return new Date(updatedDate.getTime());
-        }
+        return Dates.copy(updatedDate);
     }
 
     /**
      * Set the updatedDate
      * <p>
-     * 
+     *
      * @param updatedDate The updatedDate to set.
      */
     @Override
@@ -564,16 +556,9 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
 
     @Override
     public List<SyndPerson> getAuthors() {
-        if (authors == null) {
-            authors = new ArrayList<SyndPerson>();
-        }
-        return authors;
+        return authors = Lists.createWhenNull(authors);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.sun.syndication.feed.synd.SyndEntry#setAuthors(java.util.List)
-     */
     @Override
     public void setAuthors(final List<SyndPerson> authors) {
         this.authors = authors;
@@ -584,26 +569,29 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      * <p>
      * This method is a convenience method, it maps to the Dublin Core module creator.
      * <p>
-     * 
+     *
      * @return the entry author, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public String getAuthor() {
+
         String author;
 
         // Start out looking for one or more authors in authors. For non-Atom
         // feeds, authors may actually be null.
-        if (authors != null && !authors.isEmpty()) {
+        if (Lists.isNotEmpty(authors)) {
             author = authors.get(0).getName();
         } else {
             author = getDCModule().getCreator();
         }
+
         if (author == null) {
             author = "";
         }
 
         return author;
+
     }
 
     /**
@@ -611,28 +599,24 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      * <p>
      * This method is a convenience method, it maps to the Dublin Core module creator.
      * <p>
-     * 
+     *
      * @param author the entry author to set, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setAuthor(final String author) {
-        // Get the DCModule so that we can check to see if "creator" is already
-        // set.
+        // Get the DCModule so that we can check to see if "creator" is already set.
         final DCModule dcModule = getDCModule();
         final String currentValue = dcModule.getCreator();
 
-        if (currentValue == null || currentValue.length() == 0) {
+        if (Strings.isEmpty(currentValue)) {
             getDCModule().setCreator(author);
         }
     }
 
     @Override
     public List<SyndPerson> getContributors() {
-        if (contributors == null) {
-            contributors = new ArrayList<SyndPerson>();
-        }
-        return contributors;
+        return contributors = Lists.createWhenNull(contributors);
     }
 
     @Override
@@ -653,42 +637,33 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
     /**
      * Returns foreign markup found at channel level.
      * <p>
-     * 
+     *
      * @return list of JDOM nodes containing channel-level foreign markup, an empty list if none.
-     * 
+     *
      */
     @Override
     public List<Element> getForeignMarkup() {
-        if (foreignMarkup == null) {
-            foreignMarkup = new ArrayList<Element>();
-        }
-        return foreignMarkup;
+        return foreignMarkup = Lists.createWhenNull(foreignMarkup);
     }
 
     /**
      * Sets foreign markup found at channel level.
      * <p>
-     * 
+     *
      * @param foreignMarkup list of JDOM nodes containing channel-level foreign markup, an empty
      *            list if none.
-     * 
+     *
      */
     @Override
     public void setForeignMarkup(final List<Element> foreignMarkup) {
         this.foreignMarkup = foreignMarkup;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String getComments() {
         return comments;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void setComments(final String comments) {
         this.comments = comments;
@@ -705,11 +680,13 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
 
     @Override
     public SyndLink findRelatedLink(final String relation) {
-        for (final SyndLink l : getLinks()) {
-            if (relation.equals(l.getRel())) {
-                return l;
+        final List<SyndLink> syndLinks = getLinks();
+        for (final SyndLink syndLink : syndLinks) {
+            if (relation.equals(syndLink.getRel())) {
+                return syndLink;
             }
         }
         return null;
     }
+
 }

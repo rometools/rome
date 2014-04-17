@@ -28,21 +28,34 @@ import com.sun.syndication.feed.impl.ObjectBean;
 /**
  * Subject of the Dublin Core ModuleImpl, default implementation.
  * <p>
- * 
+ *
  * @see <a href="http://web.resource.org/rss/1.0/modules/dc/">Dublin Core module</a>.
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
+
     private static final long serialVersionUID = 6276396184267118968L;
+    private static final CopyFromHelper COPY_FROM_HELPER;
+
     private final ObjectBean objBean;
     private String taxonomyUri;
     private String value;
 
+    static {
+        final Map<String, Class<?>> basePropInterfaceMap = new HashMap<String, Class<?>>();
+        basePropInterfaceMap.put("taxonomyUri", String.class);
+        basePropInterfaceMap.put("value", String.class);
+
+        final Map<Class<? extends CopyFrom>, Class<?>> basePropClassImplMap = Collections.<Class<? extends CopyFrom>, Class<?>> emptyMap();
+
+        COPY_FROM_HELPER = new CopyFromHelper(DCSubject.class, basePropInterfaceMap, basePropClassImplMap);
+    }
+
     /**
      * Default constructor. All properties are set to <b>null</b>.
      * <p>
-     * 
+     *
      */
     public DCSubjectImpl() {
         objBean = new ObjectBean(this.getClass(), this);
@@ -51,10 +64,10 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
     /**
      * Creates a deep 'bean' clone of the object.
      * <p>
-     * 
+     *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     * 
+     *
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
@@ -65,10 +78,10 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
      * <p>
-     * 
+     *
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     * 
+     *
      */
     @Override
     public boolean equals(final Object other) {
@@ -83,9 +96,9 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
      * <p>
      * It follows the contract defined by the Object hashCode() method.
      * <p>
-     * 
+     *
      * @return the hashcode of the bean object.
-     * 
+     *
      */
     @Override
     public int hashCode() {
@@ -95,9 +108,9 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
     /**
      * Returns the String representation for the object.
      * <p>
-     * 
+     *
      * @return String representation for the object.
-     * 
+     *
      */
     @Override
     public String toString() {
@@ -107,9 +120,9 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
     /**
      * Returns the DublinCore subject taxonomy URI.
      * <p>
-     * 
+     *
      * @return the DublinCore subject taxonomy URI, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public String getTaxonomyUri() {
@@ -119,9 +132,9 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
     /**
      * Sets the DublinCore subject taxonomy URI.
      * <p>
-     * 
+     *
      * @param taxonomyUri the DublinCore subject taxonomy URI to set, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setTaxonomyUri(final String taxonomyUri) {
@@ -131,9 +144,9 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
     /**
      * Returns the DublinCore subject value.
      * <p>
-     * 
+     *
      * @return the DublinCore subject value, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public String getValue() {
@@ -143,9 +156,9 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
     /**
      * Sets the DublinCore subject value.
      * <p>
-     * 
+     *
      * @param value the DublinCore subject value to set, <b>null</b> if none.
-     * 
+     *
      */
     @Override
     public void setValue(final String value) {
@@ -160,18 +173,6 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
     @Override
     public void copyFrom(final CopyFrom obj) {
         COPY_FROM_HELPER.copy(this, obj);
-    }
-
-    private static final CopyFromHelper COPY_FROM_HELPER;
-
-    static {
-        final Map<String, Class<?>> basePropInterfaceMap = new HashMap<String, Class<?>>();
-        basePropInterfaceMap.put("taxonomyUri", String.class);
-        basePropInterfaceMap.put("value", String.class);
-
-        final Map<Class<? extends CopyFrom>, Class<?>> basePropClassImplMap = Collections.<Class<? extends CopyFrom>, Class<?>> emptyMap();
-
-        COPY_FROM_HELPER = new CopyFromHelper(DCSubject.class, basePropInterfaceMap, basePropClassImplMap);
     }
 
 }
