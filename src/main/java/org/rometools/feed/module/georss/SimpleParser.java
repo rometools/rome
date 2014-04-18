@@ -27,6 +27,7 @@ import org.rometools.feed.module.georss.geometries.Polygon;
 import org.rometools.feed.module.georss.geometries.Position;
 import org.rometools.feed.module.georss.geometries.PositionList;
 
+import com.rometools.utils.Strings;
 import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.ModuleParser;
 
@@ -50,7 +51,7 @@ public class SimpleParser implements ModuleParser {
 
     private static PositionList parsePosList(final Element element) {
         final String coordinates = element.getText();
-        final String[] coord = GeoRSSUtils.trimWhitespace(coordinates).split(" ");
+        final String[] coord = Strings.trimToEmpty(coordinates).split(" ");
         final PositionList posList = new PositionList();
         for (int i = 0; i < coord.length; i += 2) {
             posList.add(Double.parseDouble(coord[i]), Double.parseDouble(coord[i + 1]));
@@ -58,10 +59,6 @@ public class SimpleParser implements ModuleParser {
         return posList;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.sun.syndication.io.ModuleParser#parse(org.jdom2.Element)
-     */
     @Override
     public Module parse(final Element element, final Locale locale) {
         final Module geoRssModule = parseSimple(element);
@@ -78,7 +75,7 @@ public class SimpleParser implements ModuleParser {
         final Element whereElement = element.getChild("where", GeoRSSModule.SIMPLE_NS);
         if (pointElement != null) {
             geoRSSModule = new SimpleModuleImpl();
-            final String coordinates = GeoRSSUtils.trimWhitespace(pointElement.getText());
+            final String coordinates = Strings.trimToEmpty(pointElement.getText());
             if (!"".equals(coordinates)) {
                 final String[] coord = coordinates.split(" ");
                 final Position pos = new Position(Double.parseDouble(coord[0]), Double.parseDouble(coord[1]));
@@ -97,7 +94,7 @@ public class SimpleParser implements ModuleParser {
         } else if (boxElement != null) {
             geoRSSModule = new SimpleModuleImpl();
             final String coordinates = boxElement.getText();
-            final String[] coord = GeoRSSUtils.trimWhitespace(coordinates).split(" ");
+            final String[] coord = Strings.trimToEmpty(coordinates).split(" ");
             final Envelope envelope = new Envelope(Double.parseDouble(coord[0]), Double.parseDouble(coord[1]), Double.parseDouble(coord[2]),
                     Double.parseDouble(coord[3]));
             geoRSSModule.setGeometry(envelope);

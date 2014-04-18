@@ -28,33 +28,6 @@ import com.sun.syndication.feed.synd.SyndFeed;
  */
 public class GeoRSSUtils {
 
-    static String trimWhitespace(final String in) {
-        if (in == null) {
-            return "";
-        }
-        final StringBuffer strbuf = new StringBuffer();
-        int i = 0;
-        for (; i < in.length() && Character.isWhitespace(in.charAt(i)); ++i) {
-            ;
-        }
-
-        boolean wasWhite = false;
-        for (; i < in.length(); ++i) {
-            final char ch = in.charAt(i);
-            if (Character.isWhitespace(ch)) {
-                wasWhite = true;
-            } else {
-                if (wasWhite) {
-                    strbuf.append(' ');
-                }
-                strbuf.append(ch);
-                wasWhite = false;
-            }
-
-        }
-        return strbuf.toString();
-    }
-
     /**
      * This convenience method checks whether there is any geoRss Element and will return it (georss simple or W3GGeo).
      *

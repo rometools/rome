@@ -29,6 +29,7 @@ import org.rometools.feed.module.georss.geometries.Polygon;
 import org.rometools.feed.module.georss.geometries.Position;
 import org.rometools.feed.module.georss.geometries.PositionList;
 
+import com.rometools.utils.Strings;
 import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.ModuleParser;
 
@@ -41,19 +42,11 @@ import com.sun.syndication.io.ModuleParser;
  */
 public class GMLParser implements ModuleParser {
 
-    /*
-     * (non-Javadoc)
-     * @see com.sun.syndication.io.ModuleParser#getNamespaceUri()
-     */
     @Override
     public String getNamespaceUri() {
         return GeoRSSModule.GEORSS_GEORSS_URI;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.sun.syndication.io.ModuleParser#parse(org.jdom2.Element)
-     */
     @Override
     public Module parse(final Element element, final Locale locale) {
         final Module geoRssModule = parseGML(element);
@@ -62,7 +55,7 @@ public class GMLParser implements ModuleParser {
 
     private static PositionList parsePosList(final Element element) {
         final String coordinates = element.getText();
-        final String[] coord = GeoRSSUtils.trimWhitespace(coordinates).split(" ");
+        final String[] coord = Strings.trimToEmpty(coordinates).split(" ");
         final PositionList posList = new PositionList();
         for (int i = 0; i < coord.length; i += 2) {
             posList.add(Double.parseDouble(coord[i]), Double.parseDouble(coord[i + 1]));
@@ -82,7 +75,7 @@ public class GMLParser implements ModuleParser {
             if (posElement != null) {
                 geoRSSModule = new GMLModuleImpl();
                 final String coordinates = posElement.getText();
-                final String[] coord = GeoRSSUtils.trimWhitespace(coordinates).split(" ");
+                final String[] coord = Strings.trimToEmpty(coordinates).split(" ");
                 final Position pos = new Position(Double.parseDouble(coord[0]), Double.parseDouble(coord[1]));
                 geoRSSModule.setGeometry(new Point(pos));
             }
@@ -140,9 +133,9 @@ public class GMLParser implements ModuleParser {
             if (lowerElement != null && upperElement != null) {
                 geoRSSModule = new GMLModuleImpl();
                 final String lowerCoordinates = lowerElement.getText();
-                final String[] lowerCoord = GeoRSSUtils.trimWhitespace(lowerCoordinates).split(" ");
+                final String[] lowerCoord = Strings.trimToEmpty(lowerCoordinates).split(" ");
                 final String upperCoordinates = upperElement.getText();
-                final String[] upperCoord = GeoRSSUtils.trimWhitespace(upperCoordinates).split(" ");
+                final String[] upperCoord = Strings.trimToEmpty(upperCoordinates).split(" ");
                 final Envelope envelope = new Envelope(Double.parseDouble(lowerCoord[0]), Double.parseDouble(lowerCoord[1]), Double.parseDouble(upperCoord[0]),
                         Double.parseDouble(upperCoord[1]));
                 geoRSSModule.setGeometry(envelope);
