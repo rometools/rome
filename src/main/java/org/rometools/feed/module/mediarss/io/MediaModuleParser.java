@@ -313,19 +313,25 @@ public class MediaModuleParser implements ModuleParser {
         }
         // ratings
         {
-            final List<Element> ratings = e.getChildren("rating", getNS());
             final ArrayList<Rating> values = new ArrayList<Rating>();
 
-            for (int i = 0; ratings != null && i < ratings.size(); i++) {
+            final List<Element> ratings = e.getChildren("rating", getNS());
+            for (final Element ratingElement : ratings) {
                 try {
-                    final Element rat = ratings.get(i);
-                    values.add(new Rating(rat.getAttributeValue("scheme"), rat.getText()));
+                    final String ratingText = ratingElement.getText();
+                    String ratingScheme = Strings.trimToNull(ratingElement.getAttributeValue("scheme"));
+                    if (ratingScheme == null) {
+                        ratingScheme = "urn:simple";
+                    }
+                    final Rating rating = new Rating(ratingScheme, ratingText);
+                    values.add(rating);
                 } catch (final Exception ex) {
                     LOG.warn("Exception parsing rating tag.", ex);
                 }
             }
 
             md.setRatings(values.toArray(new Rating[values.size()]));
+
         }
         // text
         {

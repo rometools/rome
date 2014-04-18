@@ -22,6 +22,7 @@ import junit.framework.TestSuite;
 
 import org.rometools.feed.module.AbstractTestCase;
 import org.rometools.feed.module.mediarss.types.MediaContent;
+import org.rometools.feed.module.mediarss.types.Rating;
 import org.rometools.feed.module.mediarss.types.Thumbnail;
 
 import com.sun.syndication.feed.synd.SyndEntry;
@@ -90,7 +91,7 @@ public class MediaModuleTest extends AbstractTestCase {
     }
 
     /**
-     * test url with whitespace in media element
+     * tests parsing thubnails with empty dimensions
      * (https://github.com/rometools/rome-modules/issues/7).
      *
      * @throws IOException if file not found or not accessible
@@ -105,6 +106,24 @@ public class MediaModuleTest extends AbstractTestCase {
         final Thumbnail[] thumbnails = module.getMetadata().getThumbnail();
 
         assertThat(thumbnails, is(notNullValue()));
+
+    }
+
+    /**
+     * tests parsing rating without scheme (https://github.com/rometools/rome-modules/issues/12).
+     *
+     * @throws IOException if file not found or not accessible
+     * @throws FeedException when the feed can't be parsed
+     *
+     */
+    public void testParseRatingWithoutScheme() throws FeedException, IOException {
+
+        final SyndFeed feed = getSyndFeed("org/rometools/feed/module/mediarss/issue-12.xml");
+        final SyndEntry entry = feed.getEntries().get(0);
+        final MediaEntryModule module = (MediaEntryModule) entry.getModule(MediaEntryModule.URI);
+        final Rating[] ratings = module.getMetadata().getRatings();
+
+        assertThat(ratings, is(notNullValue()));
 
     }
 
