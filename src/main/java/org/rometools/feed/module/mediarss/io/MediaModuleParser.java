@@ -22,7 +22,6 @@
 package org.rometools.feed.module.mediarss.io;
 
 import java.net.URI;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -50,9 +49,10 @@ import org.rometools.feed.module.mediarss.types.UrlReference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.rometools.utils.Integers;
+import com.rometools.utils.Strings;
 import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.ModuleParser;
-import com.sun.syndication.io.impl.NumberParser;
 
 /**
  * @author Nathanial X. Freitas
@@ -347,16 +347,30 @@ public class MediaModuleParser implements ModuleParser {
         }
         // thumbnails
         {
-            final List<Element> thumbnails = e.getChildren("thumbnail", getNS());
             final ArrayList<Thumbnail> values = new ArrayList<Thumbnail>();
 
-            for (int i = 0; thumbnails != null && i < thumbnails.size(); i++) {
+            final List<Element> thumbnails = e.getChildren("thumbnail", getNS());
+            for (final Element thumb : thumbnails) {
                 try {
-                    final Element thumb = thumbnails.get(i);
-                    final Time t = thumb.getAttributeValue("time") == null ? null : new Time(thumb.getAttributeValue("time"));
-                    final Integer width = thumb.getAttributeValue("width") == null ? null : new Integer(thumb.getAttributeValue("width"));
-                    final Integer height = thumb.getAttributeValue("height") == null ? null : new Integer(thumb.getAttributeValue("height"));
-                    values.add(new Thumbnail(new URI(thumb.getAttributeValue("url")), width, height, t));
+
+                    final String timeAttr = Strings.trimToNull(thumb.getAttributeValue("time"));
+                    Time time = null;
+                    if (timeAttr == null) {
+                        time = new Time(timeAttr);
+                    }
+
+                    final String widthAttr = thumb.getAttributeValue("width");
+                    final Integer width = Integers.parse(widthAttr);
+
+                    final String heightAttr = thumb.getAttributeValue("height");
+                    final Integer height = Integers.parse(heightAttr);
+
+                    final String url = thumb.getAttributeValue("url");
+                    final URI uri = new URI(url);
+                    final Thumbnail thumbnail = new Thumbnail(uri, width, height, time);
+
+                    values.add(thumbnail);
+
                 } catch (final Exception ex) {
                     LOG.warn("Exception parsing thumbnail tag.", ex);
                 }
