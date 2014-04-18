@@ -81,6 +81,34 @@ public class StringsTest {
     }
 
     @Test
+    public void testTrimToEmpty() {
+
+        final String nullString = null;
+        final String emptyString = "";
+        final String blankString = " ";
+        final String string = " a ";
+
+        assertThat(Strings.trimToEmpty(nullString), is(""));
+        assertThat(Strings.trimToEmpty(emptyString), is(""));
+        assertThat(Strings.trimToEmpty(blankString), is(""));
+        assertThat(Strings.trimToEmpty(string), is("a"));
+    }
+
+    @Test
+    public void testTrimToNull() {
+
+        final String nullString = null;
+        final String emptyString = "";
+        final String blankString = " ";
+        final String string = " a ";
+
+        assertThat(Strings.trimToNull(nullString), is(nullValue()));
+        assertThat(Strings.trimToNull(emptyString), is(nullValue()));
+        assertThat(Strings.trimToNull(blankString), is(nullValue()));
+        assertThat(Strings.trimToNull(string), is("a"));
+    }
+
+    @Test
     public void testToLowerCase() {
 
         final String nullString = null;

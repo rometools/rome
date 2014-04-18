@@ -48,7 +48,7 @@ public final class Strings {
     }
 
     /**
-     * null-safe trimming of a String.
+     * Removes the whitespace at the beginning and end of a String.
      *
      * @param s The String to trim, may be null
      * @return null when the input String is null, the trimmed String otherwise
@@ -58,6 +58,36 @@ public final class Strings {
             return null;
         } else {
             return s.trim();
+        }
+    }
+
+    /**
+     * Removes the whitespace at the beginning and end of a String. When the String only contains whitespace, it returns null.
+     *
+     * @param s The String to trim, may be null
+     * @return null when the input String is null or does only contain whitespace, the trimmed String otherwise
+     */
+    public static String trimToNull(final String s) {
+        final String trimmed = trim(s);
+        if (trimmed == null || trimmed.isEmpty()) {
+            return null;
+        } else {
+            return trimmed;
+        }
+    }
+
+    /**
+     * Removes the whitespace at the beginning and end of a String. When the String only contains whitespace, it returns null.
+     *
+     * @param s The String to trim, may be null
+     * @return null when the input String is null or does only contain whitespace, the trimmed String otherwise
+     */
+    public static String trimToEmpty(final String s) {
+        final String trimmed = trim(s);
+        if (trimmed == null || trimmed.isEmpty()) {
+            return "";
+        } else {
+            return trimmed;
         }
     }
 
