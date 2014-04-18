@@ -22,6 +22,7 @@
 package org.rometools.feed.module.mediarss.io;
 
 import java.net.URI;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -102,7 +103,7 @@ public class MediaModuleParser implements ModuleParser {
 
                 if (content.getAttributeValue("url") != null) {
                     try {
-                        mc = new MediaContent(new UrlReference(new URI(content.getAttributeValue("url"))));
+                        mc = new MediaContent(new UrlReference(new URI(content.getAttributeValue("url").replace(' ', '+'))));
                         mc.setPlayer(parsePlayer(content));
                     } catch (final Exception ex) {
                         LOG.warn("Exception parsing content tag.", ex);
@@ -113,17 +114,23 @@ public class MediaModuleParser implements ModuleParser {
                 if (mc != null) {
                     values.add(mc);
                     try {
-                        mc.setAudioChannels(content.getAttributeValue("channels") == null ? null : new Integer(content.getAttributeValue("channels")));
+                        if (content.getAttributeValue("channels") != null) {
+                            mc.setAudioChannels(Integer.valueOf(content.getAttributeValue("channels")));
+                        }
                     } catch (final Exception ex) {
                         LOG.warn("Exception parsing content tag.", ex);
                     }
                     try {
-                        mc.setBitrate(content.getAttributeValue("bitrate") == null ? null : new Float(content.getAttributeValue("bitrate")));
+                        if (content.getAttributeValue("bitrate") != null) {
+                            mc.setBitrate(Float.valueOf(content.getAttributeValue("bitrate")));
+                        }
                     } catch (final Exception ex) {
                         LOG.warn("Exception parsing content tag.", ex);
                     }
                     try {
-                        mc.setDuration(content.getAttributeValue("duration") == null ? null : new Long(content.getAttributeValue("duration")));
+                        if (content.getAttributeValue("duration") != null) {
+                            mc.setDuration(Long.valueOf(content.getAttributeValue("duration")));
+                        }
                     } catch (final Exception ex) {
                         LOG.warn("Exception parsing content tag.", ex);
                     }
@@ -143,17 +150,23 @@ public class MediaModuleParser implements ModuleParser {
                     }
 
                     try {
-                        mc.setFileSize(content.getAttributeValue("fileSize") == null ? null : NumberParser.parseLong(content.getAttributeValue("fileSize")));
+                        if (content.getAttributeValue("fileSize") != null) {
+                            mc.setFileSize(Long.valueOf(content.getAttributeValue("fileSize")));
+                        }
                     } catch (final Exception ex) {
                         LOG.warn("Exception parsing content tag.", ex);
                     }
                     try {
-                        mc.setFramerate(content.getAttributeValue("framerate") == null ? null : NumberParser.parseFloat(content.getAttributeValue("framerate")));
+                        if (content.getAttributeValue("framerate") != null) {
+                            mc.setFramerate(Float.valueOf(content.getAttributeValue("framerate")));
+                        }
                     } catch (final Exception ex) {
                         LOG.warn("Exception parsing content tag.", ex);
                     }
                     try {
-                        mc.setHeight(content.getAttributeValue("height") == null ? null : NumberParser.parseInt(content.getAttributeValue("height")));
+                        if (content.getAttributeValue("height") != null) {
+                            mc.setHeight(Integer.valueOf(content.getAttributeValue("height")));
+                        }
                     } catch (final Exception ex) {
                         LOG.warn("Exception parsing content tag.", ex);
                     }
@@ -161,20 +174,25 @@ public class MediaModuleParser implements ModuleParser {
                     mc.setLanguage(content.getAttributeValue("lang"));
                     mc.setMetadata(parseMetadata(content));
                     try {
-                        mc.setSamplingrate(content.getAttributeValue("samplingrate") == null ? null : NumberParser.parseFloat(content
-                                .getAttributeValue("samplingrate")));
+                        if (content.getAttributeValue("samplingrate") != null) {
+                            mc.setSamplingrate(Float.valueOf(content.getAttributeValue("samplingrate")));
+                        }
                     } catch (final Exception ex) {
                         LOG.warn("Exception parsing content tag.", ex);
                     }
 
                     mc.setType(content.getAttributeValue("type"));
                     try {
-                        mc.setWidth(content.getAttributeValue("width") == null ? null : NumberParser.parseInt(content.getAttributeValue("width")));
+                        if (content.getAttributeValue("width") != null) {
+                            mc.setWidth(Integer.valueOf(content.getAttributeValue("width")));
+                        }
                     } catch (final Exception ex) {
                         LOG.warn("Exception parsing content tag.", ex);
                     }
 
-                    mc.setDefaultContent(content.getAttributeValue("isDefault") == null ? false : Boolean.getBoolean(content.getAttributeValue("isDefault")));
+                    if (content.getAttributeValue("isDefault") != null) {
+                        mc.setDefaultContent(Boolean.valueOf(content.getAttributeValue("isDefault")));
+                    }
                 } else {
                     LOG.warn("Could not find MediaContent.");
                 }

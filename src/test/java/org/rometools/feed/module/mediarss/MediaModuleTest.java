@@ -9,7 +9,6 @@ package org.rometools.feed.module.mediarss;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
@@ -18,6 +17,7 @@ import junit.framework.Test;
 import junit.framework.TestSuite;
 
 import org.rometools.feed.module.AbstractTestCase;
+import org.rometools.feed.module.mediarss.types.MediaContent;
 
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
@@ -26,21 +26,28 @@ import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.SyndFeedOutput;
 
 /**
- *
+ * 
  * @author cooper
  */
 public class MediaModuleTest extends AbstractTestCase {
 
+    /**
+     * @param testName id of test
+     */
     public MediaModuleTest(final String testName) {
         super(testName);
     }
 
+    /**
+     * @return actual test suite
+     */
     public static Test suite() {
-        final TestSuite suite = new TestSuite(MediaModuleTest.class);
-
-        return suite;
+        return new TestSuite(MediaModuleTest.class);
     }
 
+    /**
+     * @throws Exception if file not found or not accessible
+     */
     public void testGoogleVideo() throws Exception {
         final SyndFeed feed = getSyndFeed(new File(getTestFile("data/YouTube-MostPopular.rss")));
         for (final Object element : feed.getEntries()) {
@@ -50,6 +57,9 @@ public class MediaModuleTest extends AbstractTestCase {
         }
     }
 
+    /**
+     * @throws Exception if file not found or not accessible
+     */
     public void testParse() throws Exception {
         final File test = new File(super.getTestFile("xml"));
         final File[] files = test.listFiles();
@@ -74,7 +84,31 @@ public class MediaModuleTest extends AbstractTestCase {
         }
     }
 
-    private SyndFeed getSyndFeed(final File file) throws FileNotFoundException, IllegalArgumentException, IOException, FeedException {
+    /**
+     * test url with whitespace in media element (https://github.com/rometools/rome-modules/issues/20).
+     * 
+     * @throws Exception if file not found or not accessible
+     */
+    public void testParseMediaContentContainingURLWithSpaces() throws Exception {
+        final SyndFeed feed = getSyndFeed(new File(getTestFile("org/rometools/feed/module/mediarss/issue-20.xml")));
+        final SyndEntry entry = (SyndEntry) feed.getEntries().get(0);
+        final MediaEntryModule m = (MediaEntryModule) entry.getModule(MediaEntryModule.URI);
+        assertNotNull("missing media entry module", m);
+        final MediaContent[] mcs = m.getMediaContents();
+        assertNotNull("missing media:content", mcs);
+        assertEquals("wrong count of media:content", 1, mcs.length);
+        final MediaContent mc = mcs[0];
+        assertEquals("http://www.foo.com/path/containing+spaces/trailer.mov", mc.getReference().toString());
+    }
+
+    /**
+     * @param file to parse
+     * @return SyndFeed implementation
+     * @throws IllegalArgumentException
+     * @throws IOException if file not found or not accessible
+     * @throws FeedException if parsing failed
+     */
+    private SyndFeed getSyndFeed(final File file) throws IOException, FeedException {
         final SyndFeedInput input = new SyndFeedInput();
         return input.build(file);
     }
