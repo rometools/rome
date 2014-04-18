@@ -64,6 +64,16 @@
 			<url>http://www.screaming-penguin.com</url>
 			<timezone>-4</timezone>
 		</developer>
+		<developer>
+			<id>farrukhnajmi</id>
+			<name>Farrukh Najmi</name>
+			<url>http://www.wellfleetsoftware.com/farrukh</url>
+		</developer>
+		<developer>
+			<id>imk</id>
+			<name>Martin Kurz</name>
+			<timezone>Europe/Berlin</timezone>
+		</developer>
 	</developers>
 
 	<build>
