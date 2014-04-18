@@ -61,8 +61,12 @@ public class W3CGeoParser implements ModuleParser {
         }
         if (lat != null && lng != null) {
             geoRSSModule = new W3CGeoModuleImpl();
-            final Position pos = new Position(Double.parseDouble(lat.getText()), Double.parseDouble(lng.getText()));
-            geoRSSModule.setGeometry(new Point(pos));
+            final String latTxt = lat.getText();
+            final String lngTxt = lng.getText();
+            if (!"".equals(latTxt) && !"".equals(lngTxt)) {
+                final Position pos = new Position(Double.parseDouble(lat.getText()), Double.parseDouble(lng.getText()));
+                geoRSSModule.setGeometry(new Point(pos));
+            }
         }
 
         return geoRSSModule;

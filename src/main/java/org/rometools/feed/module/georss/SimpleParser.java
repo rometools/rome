@@ -78,10 +78,12 @@ public class SimpleParser implements ModuleParser {
         final Element whereElement = element.getChild("where", GeoRSSModule.SIMPLE_NS);
         if (pointElement != null) {
             geoRSSModule = new SimpleModuleImpl();
-            final String coordinates = pointElement.getText();
-            final String[] coord = GeoRSSUtils.trimWhitespace(coordinates).split(" ");
-            final Position pos = new Position(Double.parseDouble(coord[0]), Double.parseDouble(coord[1]));
-            geoRSSModule.setGeometry(new Point(pos));
+            final String coordinates = GeoRSSUtils.trimWhitespace(pointElement.getText());
+            if (!"".equals(coordinates)) {
+                final String[] coord = coordinates.split(" ");
+                final Position pos = new Position(Double.parseDouble(coord[0]), Double.parseDouble(coord[1]));
+                geoRSSModule.setGeometry(new Point(pos));
+            }
         } else if (lineElement != null) {
             geoRSSModule = new SimpleModuleImpl();
             final PositionList posList = parsePosList(lineElement);
