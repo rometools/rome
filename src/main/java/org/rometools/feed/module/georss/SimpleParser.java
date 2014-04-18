@@ -40,68 +40,117 @@ import com.sun.syndication.io.ModuleParser;
  */
 public class SimpleParser implements ModuleParser {
 
-    /*
-     * (non-Javadoc)
-     * @see com.sun.syndication.io.ModuleParser#getNamespaceUri()
-     */
     @Override
     public String getNamespaceUri() {
         return GeoRSSModule.GEORSS_GEORSS_URI;
     }
 
     private static PositionList parsePosList(final Element element) {
-        final String coordinates = element.getText();
-        final String[] coord = Strings.trimToEmpty(coordinates).split(" ");
-        final PositionList posList = new PositionList();
-        for (int i = 0; i < coord.length; i += 2) {
-            posList.add(Double.parseDouble(coord[i]), Double.parseDouble(coord[i + 1]));
+
+        PositionList posList = null;
+
+        final String coordinates = Strings.trimToNull(element.getText());
+        if (coordinates != null) {
+
+            posList = new PositionList();
+            final String[] coord = coordinates.split(" ");
+            for (int i = 0; i < coord.length; i += 2) {
+                final double latitude = Double.parseDouble(coord[i]);
+                final double longitude = Double.parseDouble(coord[i + 1]);
+                posList.add(latitude, longitude);
+            }
+
         }
+
         return posList;
+
     }
 
     @Override
     public Module parse(final Element element, final Locale locale) {
-        final Module geoRssModule = parseSimple(element);
-        return geoRssModule;
+        return parseSimple(element);
     }
 
     static Module parseSimple(final Element element) {
-        GeoRSSModule geoRSSModule = null;
 
         final Element pointElement = element.getChild("point", GeoRSSModule.SIMPLE_NS);
         final Element lineElement = element.getChild("line", GeoRSSModule.SIMPLE_NS);
         final Element polygonElement = element.getChild("polygon", GeoRSSModule.SIMPLE_NS);
         final Element boxElement = element.getChild("box", GeoRSSModule.SIMPLE_NS);
         final Element whereElement = element.getChild("where", GeoRSSModule.SIMPLE_NS);
+
+        GeoRSSModule geoRSSModule = null;
+
         if (pointElement != null) {
-            geoRSSModule = new SimpleModuleImpl();
-            final String coordinates = Strings.trimToEmpty(pointElement.getText());
-            if (!"".equals(coordinates)) {
+
+            final String coordinates = Strings.trimToNull(pointElement.getText());
+            if (coordinates != null) {
+
                 final String[] coord = coordinates.split(" ");
-                final Position pos = new Position(Double.parseDouble(coord[0]), Double.parseDouble(coord[1]));
-                geoRSSModule.setGeometry(new Point(pos));
+                final double latitude = Double.parseDouble(coord[0]);
+                final double longitude = Double.parseDouble(coord[1]);
+
+                final Position pos = new Position(latitude, longitude);
+
+                final Point point = new Point(pos);
+
+                geoRSSModule = new SimpleModuleImpl();
+                geoRSSModule.setGeometry(point);
+
             }
+
         } else if (lineElement != null) {
-            geoRSSModule = new SimpleModuleImpl();
+
             final PositionList posList = parsePosList(lineElement);
-            geoRSSModule.setGeometry(new LineString(posList));
+
+            if (posList != null) {
+
+                final LineString lineString = new LineString(posList);
+
+                geoRSSModule = new SimpleModuleImpl();
+                geoRSSModule.setGeometry(lineString);
+
+            }
+
         } else if (polygonElement != null) {
-            geoRSSModule = new SimpleModuleImpl();
+
             final PositionList posList = parsePosList(polygonElement);
-            final Polygon poly = new Polygon();
-            poly.setExterior(new LinearRing(posList));
-            geoRSSModule.setGeometry(poly);
+            if (posList != null) {
+
+                final LinearRing linearRing = new LinearRing(posList);
+
+                final Polygon poly = new Polygon();
+                poly.setExterior(linearRing);
+
+                geoRSSModule = new SimpleModuleImpl();
+                geoRSSModule.setGeometry(poly);
+
+            }
+
         } else if (boxElement != null) {
-            geoRSSModule = new SimpleModuleImpl();
-            final String coordinates = boxElement.getText();
-            final String[] coord = Strings.trimToEmpty(coordinates).split(" ");
-            final Envelope envelope = new Envelope(Double.parseDouble(coord[0]), Double.parseDouble(coord[1]), Double.parseDouble(coord[2]),
-                    Double.parseDouble(coord[3]));
-            geoRSSModule.setGeometry(envelope);
+
+            final String coordinates = Strings.trimToNull(boxElement.getText());
+            if (coordinates != null) {
+
+                final String[] coord = coordinates.split(" ");
+                final double bottom = Double.parseDouble(coord[0]);
+                final double left = Double.parseDouble(coord[1]);
+                final double top = Double.parseDouble(coord[2]);
+                final double right = Double.parseDouble(coord[3]);
+
+                final Envelope envelope = new Envelope(bottom, left, top, right);
+
+                geoRSSModule = new SimpleModuleImpl();
+                geoRSSModule.setGeometry(envelope);
+            }
+
         } else if (whereElement != null) {
+
             geoRSSModule = (GeoRSSModule) GMLParser.parseGML(whereElement);
+
         }
 
         return geoRSSModule;
     }
+
 }
