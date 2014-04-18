@@ -7,6 +7,10 @@
 
 package org.rometools.feed.module.mediarss;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -18,6 +22,7 @@ import junit.framework.TestSuite;
 
 import org.rometools.feed.module.AbstractTestCase;
 import org.rometools.feed.module.mediarss.types.MediaContent;
+import org.rometools.feed.module.mediarss.types.Thumbnail;
 
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
@@ -26,7 +31,7 @@ import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.SyndFeedOutput;
 
 /**
- * 
+ *
  * @author cooper
  */
 public class MediaModuleTest extends AbstractTestCase {
@@ -85,13 +90,33 @@ public class MediaModuleTest extends AbstractTestCase {
     }
 
     /**
-     * test url with whitespace in media element (https://github.com/rometools/rome-modules/issues/20).
-     * 
+     * test url with whitespace in media element
+     * (https://github.com/rometools/rome-modules/issues/7).
+     *
+     * @throws IOException if file not found or not accessible
+     * @throws FeedException when the feed can't be parsed
+     *
+     */
+    public void testParseThumbnailWithEmptyDimensions() throws FeedException, IOException {
+
+        final SyndFeed feed = getSyndFeed("org/rometools/feed/module/mediarss/issue-07.xml");
+        final SyndEntry entry = feed.getEntries().get(0);
+        final MediaEntryModule module = (MediaEntryModule) entry.getModule(MediaEntryModule.URI);
+        final Thumbnail[] thumbnails = module.getMetadata().getThumbnail();
+
+        assertThat(thumbnails, is(notNullValue()));
+
+    }
+
+    /**
+     * test url with whitespace in media element
+     * (https://github.com/rometools/rome-modules/issues/20).
+     *
      * @throws Exception if file not found or not accessible
      */
     public void testParseMediaContentContainingURLWithSpaces() throws Exception {
-        final SyndFeed feed = getSyndFeed(new File(getTestFile("org/rometools/feed/module/mediarss/issue-20.xml")));
-        final SyndEntry entry = (SyndEntry) feed.getEntries().get(0);
+        final SyndFeed feed = getSyndFeed("org/rometools/feed/module/mediarss/issue-20.xml");
+        final SyndEntry entry = feed.getEntries().get(0);
         final MediaEntryModule m = (MediaEntryModule) entry.getModule(MediaEntryModule.URI);
         assertNotNull("missing media entry module", m);
         final MediaContent[] mcs = m.getMediaContents();
@@ -101,15 +126,14 @@ public class MediaModuleTest extends AbstractTestCase {
         assertEquals("http://www.foo.com/path/containing+spaces/trailer.mov", mc.getReference().toString());
     }
 
-    /**
-     * @param file to parse
-     * @return SyndFeed implementation
-     * @throws IllegalArgumentException
-     * @throws IOException if file not found or not accessible
-     * @throws FeedException if parsing failed
-     */
     private SyndFeed getSyndFeed(final File file) throws IOException, FeedException {
-        final SyndFeedInput input = new SyndFeedInput();
-        return input.build(file);
+        return new SyndFeedInput().build(file);
     }
+
+    private SyndFeed getSyndFeed(final String filePath) throws IOException, FeedException {
+        final String fullPath = getTestFile(filePath);
+        final File file = new File(fullPath);
+        return new SyndFeedInput().build(file);
+    }
+
 }
