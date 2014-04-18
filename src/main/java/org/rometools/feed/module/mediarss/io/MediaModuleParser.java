@@ -50,6 +50,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.rometools.utils.Integers;
+import com.rometools.utils.Longs;
 import com.rometools.utils.Strings;
 import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.ModuleParser;
@@ -129,7 +130,7 @@ public class MediaModuleParser implements ModuleParser {
                     }
                     try {
                         if (content.getAttributeValue("duration") != null) {
-                            mc.setDuration(Long.valueOf(content.getAttributeValue("duration")));
+                            mc.setDuration(Longs.parseDecimal(content.getAttributeValue("duration")));
                         }
                     } catch (final Exception ex) {
                         LOG.warn("Exception parsing content tag.", ex);

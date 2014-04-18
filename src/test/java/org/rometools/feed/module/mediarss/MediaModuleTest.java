@@ -110,6 +110,24 @@ public class MediaModuleTest extends AbstractTestCase {
     }
 
     /**
+     * tests parsing a decimal duration (https://github.com/rometools/rome-modules/issues/8).
+     *
+     * @throws IOException if file not found or not accessible
+     * @throws FeedException when the feed can't be parsed
+     *
+     */
+    public void testParseDecimalDuration() throws FeedException, IOException {
+
+        final SyndFeed feed = getSyndFeed("org/rometools/feed/module/mediarss/issue-08.xml");
+        final SyndEntry entry = feed.getEntries().get(0);
+        final MediaEntryModule module = (MediaEntryModule) entry.getModule(MediaEntryModule.URI);
+        final Thumbnail[] thumbnails = module.getMetadata().getThumbnail();
+
+        assertThat(thumbnails, is(notNullValue()));
+
+    }
+
+    /**
      * tests parsing rating without scheme (https://github.com/rometools/rome-modules/issues/12).
      *
      * @throws IOException if file not found or not accessible
