@@ -355,7 +355,7 @@ public class MediaModuleParser implements ModuleParser {
 
                     final String timeAttr = Strings.trimToNull(thumb.getAttributeValue("time"));
                     Time time = null;
-                    if (timeAttr == null) {
+                    if (timeAttr != null) {
                         time = new Time(timeAttr);
                     }
 
