@@ -8,47 +8,32 @@
 
 How to build Rome?
 
-
  Rome is built using mighty {{{http://maven.apache.org/}Maven}}! This is why these instructions are so short:\-)
 
 
  If you don't want to build Rome we'd suggest you download a binary build:\-)
 
+*Check out from GitHub
 
-*Check out from Subversion
-
-
- See {{{https://rometools.jira.com/source/browse/ROME}Version Control}} for access intructions and to browse the source from your browser.
-
-
- Check out the tag version\-0\-1 for version 0.1. Else checkout the trunk for the development version.
-
+ See {{{https://github.com/rometools/rome}GitHub}} for access intructions and to browse the source from your browser.
 
 *Setup maven
 
-
  See {{{http://maven.apache.org/run\-maven/index.html}Installing Maven}} for details.
-
 
  Maven automatically downloads dependencies of a project from an online repository.
 
-
 *Build rome.jar
-
 
  At the command prompt type:
 
-
-
 +------+
 
-> mvn jar:jar
+> mvn package
 
 +------+
 
  This will build
-
-
 
 +------+
 
@@ -58,20 +43,15 @@ rome/target/rome-VERSION.jar
 
  You're good to go.
 
-
 **Build a full binary distribution
-
-
 
 +------+
 
-> mvn
+> mvn install
 
 +------+
 
 **Build the project site
-
-
 
 +------+
 
@@ -84,8 +64,6 @@ rome/target/rome-VERSION.jar
 
 **Work on Rome using Eclipse
 
-
-
 +------+
 
 > mvn eclipse:eclipse
@@ -93,7 +71,3 @@ rome/target/rome-VERSION.jar
 +------+
 
  will setup the Eclipse project for you.
-
-
- We don't use the site:deploy or dist:deploy targets yet since java.net is not very maven\-friendly yet:\-)
-
