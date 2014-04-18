@@ -45,7 +45,7 @@ import com.sun.syndication.io.XmlReader;
  * tests for geo-rss module.
  * 
  */
-public class RssTest extends TestCase {
+public class GeoRSSModuleTest extends TestCase {
 
     private static final double DELTA = 0.00001;
 
