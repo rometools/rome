@@ -299,7 +299,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         this.assertEquals("Industriy", new String[] { "Internet" }, module.getJobIndustries());
         Assert.assertEquals("Employer", "Google, Inc", module.getEmployer());
         this.assertEquals("Job Function", new String[] { "Google Coordinator" }, module.getJobFunctions());
-        LOG.debug("{}", module.getJobTypes());
+        LOG.debug("{}", new Object[] { module.getJobTypes() });
         this.assertEquals("Job Type", new String[] { "full-time" }, module.getJobTypes());
         Assert.assertEquals("Currency", CurrencyEnumeration.USD, module.getCurrency());
         Assert.assertEquals("Salary", new Float(40000), module.getSalary());

@@ -27,6 +27,7 @@ import org.rometools.feed.module.georss.geometries.Polygon;
 import org.rometools.feed.module.georss.geometries.Position;
 import org.rometools.feed.module.georss.geometries.PositionList;
 
+import com.rometools.utils.Doubles;
 import com.rometools.utils.Strings;
 import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.ModuleParser;
@@ -87,15 +88,24 @@ public class SimpleParser implements ModuleParser {
             if (coordinates != null) {
 
                 final String[] coord = coordinates.split(" ");
-                final double latitude = Double.parseDouble(coord[0]);
-                final double longitude = Double.parseDouble(coord[1]);
 
-                final Position pos = new Position(latitude, longitude);
+                if (coord.length == 2) {
 
-                final Point point = new Point(pos);
+                    final Double latitude = Doubles.parse(coord[0]);
+                    final Double longitude = Doubles.parse(coord[1]);
 
-                geoRSSModule = new SimpleModuleImpl();
-                geoRSSModule.setGeometry(point);
+                    if (latitude != null && longitude != null) {
+
+                        final Position pos = new Position(latitude, longitude);
+
+                        final Point point = new Point(pos);
+
+                        geoRSSModule = new SimpleModuleImpl();
+                        geoRSSModule.setGeometry(point);
+
+                    }
+
+                }
 
             }
 

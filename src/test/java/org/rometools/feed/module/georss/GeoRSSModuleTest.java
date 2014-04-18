@@ -19,14 +19,14 @@ package org.rometools.feed.module.georss;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import junit.framework.TestCase;
-
+import org.rometools.feed.module.AbstractTestCase;
 import org.rometools.feed.module.georss.geometries.LineString;
 import org.rometools.feed.module.georss.geometries.Position;
 import org.rometools.feed.module.georss.geometries.PositionList;
@@ -37,21 +37,26 @@ import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndEntryImpl;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.feed.synd.SyndFeedImpl;
+import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.SyndFeedOutput;
 import com.sun.syndication.io.XmlReader;
 
 /**
  * tests for geo-rss module.
- * 
+ *
  */
-public class GeoRSSModuleTest extends TestCase {
+public class GeoRSSModuleTest extends AbstractTestCase {
+
+    public GeoRSSModuleTest(final String testName) {
+        super(testName);
+    }
 
     private static final double DELTA = 0.00001;
 
     /**
      * compares expected lat/lng values with acutal values read from feed.
-     * 
+     *
      * @param fileName a file in the src/data directory
      * @param expectedLat array of expected latitude values
      * @param expectedLng array of expected longitude values
@@ -63,7 +68,7 @@ public class GeoRSSModuleTest extends TestCase {
 
     /**
      * test expected latitude and longitude values in items of test file.
-     * 
+     *
      * @param in testfeed
      * @param expectedLat expected latitude values
      * @param expectedLng expected longitude values
@@ -256,6 +261,25 @@ public class GeoRSSModuleTest extends TestCase {
             assertEquals(latitudes[i], positionList.getLatitude(i), DELTA);
             assertEquals(longitudes[i], positionList.getLongitude(i), DELTA);
         }
+    }
+
+    /**
+     * Tests whether a feed with invalid point values can be parsed
+     * (https://github.com/rometools/rome-modules/issues/02).
+     *
+     * @throws IOException if file not found or not accessible
+     * @throws FeedException when the feed can't be parsed
+     *
+     */
+    public void testParseInvalidPointValue() throws IOException, FeedException {
+        // only tests whether file can be parsed (there should be no exception)
+        getSyndFeed("org/rometools/feed/module/georss/issue-02.xml");
+    }
+
+    private SyndFeed getSyndFeed(final String filePath) throws IOException, FeedException {
+        final String fullPath = getTestFile(filePath);
+        final File file = new File(fullPath);
+        return new SyndFeedInput().build(file);
     }
 
 }
