@@ -22,6 +22,7 @@ import org.jdom2.Element;
 import org.rometools.feed.module.georss.geometries.Point;
 import org.rometools.feed.module.georss.geometries.Position;
 
+import com.rometools.utils.Strings;
 import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.ModuleParser;
 
@@ -34,16 +35,13 @@ import com.sun.syndication.io.ModuleParser;
  */
 public class W3CGeoParser implements ModuleParser {
 
-    /*
-     * (non-Javadoc)
-     * @see com.sun.syndication.io.ModuleParser#getNamespaceUri()
-     */
     @Override
     public String getNamespaceUri() {
         return GeoRSSModule.GEORSS_W3CGEO_URI;
     }
 
     static Module parseW3C(final Element element) {
+
         GeoRSSModule geoRSSModule = null;
 
         // do we have an optional "Point" element ?
@@ -59,27 +57,34 @@ public class W3CGeoParser implements ModuleParser {
         if (lng == null) {
             lng = pointElement.getChild("lon", GeoRSSModule.W3CGEO_NS);
         }
+
         if (lat != null && lng != null) {
+
             geoRSSModule = new W3CGeoModuleImpl();
-            final String latTxt = lat.getText();
-            final String lngTxt = lng.getText();
-            if (!"".equals(latTxt) && !"".equals(lngTxt)) {
-                final Position pos = new Position(Double.parseDouble(lat.getText()), Double.parseDouble(lng.getText()));
-                geoRSSModule.setGeometry(new Point(pos));
+
+            final String latTxt = Strings.trimToNull(lat.getText());
+            final String lngTxt = Strings.trimToNull(lng.getText());
+
+            if (latTxt != null && lngTxt != null) {
+
+                final double latitude = Double.parseDouble(lat.getText());
+                final double longitude = Double.parseDouble(lng.getText());
+
+                final Position position = new Position(latitude, longitude);
+
+                final Point point = new Point(position);
+
+                geoRSSModule.setGeometry(point);
             }
+
         }
 
         return geoRSSModule;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.sun.syndication.io.ModuleParser#parse(org.jdom2.Element)
-     */
     @Override
     public Module parse(final Element element, final Locale locale) {
-        final Module geoRssModule = parseW3C(element);
-        return geoRssModule;
+        return parseW3C(element);
     }
 
 }
