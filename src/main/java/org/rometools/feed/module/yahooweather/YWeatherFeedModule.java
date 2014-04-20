@@ -53,68 +53,68 @@ public interface YWeatherFeedModule extends YWeatherModule {
      *
      * @return The location the feed is for.
      */
-    public Location getLocation();
+    Location getLocation();
 
     /**
      * The location the feed is for.
      *
      * @param location The location the feed is for.
      */
-    public void setLocation(Location location);
+    void setLocation(Location location);
 
     /**
      * Astronomical information for the location.
      *
      * @return Astronomical information for the location.
      */
-    public Astronomy getAstronomy();
+    Astronomy getAstronomy();
 
     /**
      * Astronomical information for the location.
      *
      * @param astronomy Astronomical information for the location.
      */
-    public void setAstronomy(Astronomy astronomy);
+    void setAstronomy(Astronomy astronomy);
 
     /**
      * Units that data in the feed is provided in.
      *
      * @return Units that data in the feed is provided in.
      */
-    public Units getUnits();
+    Units getUnits();
 
     /**
      * Units that data in the feed is provided in.
      *
      * @param units Units that data in the feed is provided in.
      */
-    public void setUnits(Units units);
+    void setUnits(Units units);
 
     /**
      * Current wind conditions at the location.
      *
      * @return Current wind conditions at the location.
      */
-    public Wind getWind();
+    Wind getWind();
 
     /**
      * Current wind conditions at the location.
      *
      * @param wind Current wind conditions at the location.
      */
-    public void setWind(Wind wind);
+    void setWind(Wind wind);
 
     /**
      * The current atmospheric conditions.
      *
      * @return Atmosphere object.
      */
-    public Atmosphere getAtmosphere();
+    Atmosphere getAtmosphere();
 
     /**
-     * Sets the current atmopheric condictions
+     * Sets the current atmopheric condictions.
      *
      * @param value Atmosphere object.
      */
-    public void setAtmosphere(Atmosphere value);
+    void setAtmosphere(Atmosphere value);
 }

@@ -63,6 +63,8 @@ public class YWeatherModuleImpl extends ModuleImpl implements YWeatherEntryModul
     private Wind wind;
     private Forecast[] forecasts;
 
+    /**
+     */
     public YWeatherModuleImpl() {
         super(YWeatherModuleImpl.class, YWeatherModule.URI);
     }
@@ -164,6 +166,9 @@ public class YWeatherModuleImpl extends ModuleImpl implements YWeatherEntryModul
         this.atmosphere = atmosphere;
     }
 
-    public static interface CopyFromInterface extends YWeatherFeedModule, YWeatherEntryModule {
+    /**
+     * Inteface combining feed and entry module.
+     */
+    public interface CopyFromInterface extends YWeatherFeedModule, YWeatherEntryModule {
     }
 }

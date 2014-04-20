@@ -38,14 +38,14 @@ package org.rometools.feed.module.yahooweather;
 import com.sun.syndication.feed.module.Module;
 
 /**
- * A simple parent interface that defines the feed URI
+ * A simple parent interface that defines the feed URI.
  *
  * @version $Id: YWeatherModule.java,v 1.2 2008/01/22 14:50:06 kebernet Exp $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public interface YWeatherModule extends Module {
     /**
-     * "http://xml.weather.yahoo.com/ns/rss/1.0"
+     * "http://xml.weather.yahoo.com/ns/rss/1.0".
      */
-    public static String URI = "http://xml.weather.yahoo.com/ns/rss/1.0";
+    String URI = "http://xml.weather.yahoo.com/ns/rss/1.0";
 }

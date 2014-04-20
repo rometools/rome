@@ -51,26 +51,26 @@ public interface YWeatherEntryModule extends YWeatherModule {
      *
      * @return The current conditions.
      */
-    public Condition getCondition();
+    Condition getCondition();
 
     /**
      * The current conditions.
      *
      * @param condition The current conditions.
      */
-    public void setCondition(Condition condition);
+    void setCondition(Condition condition);
 
     /**
      * Forecasts for this location.
      *
      * @return Forecasts for this location.
      */
-    public Forecast[] getForecasts();
+    Forecast[] getForecasts();
 
     /**
      * Forecasts for this location.
      *
      * @param forecasts Forecasts for this location.
      */
-    public void setForecasts(Forecast[] forecasts);
+    void setForecasts(Forecast[] forecasts);
 }
