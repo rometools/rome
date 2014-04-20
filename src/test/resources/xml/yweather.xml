@@ -1,0 +1,65 @@
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<rss version="2.0" xmlns:yweather="http://xml.weather.yahoo.com/ns/rss/1.0"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
+	<channel>
+		<!-- http://xml.weather.yahoo.com/forecastrss/ITXX0090.xml -->
+		<title>Yahoo! Weather - Milano/Linate, IT</title>
+		<link>http://us.rd.yahoo.com/dailynews/rss/weather/Milano/Linate__IT/*http://weather.yahoo.com/forecast/ITXX0090_f.html</link>
+		<description>Yahoo! Weather for Milano/Linate, IT</description>
+		<language>en-us</language>
+		<lastBuildDate>Sun, 20 Apr 2014 8:19 pm CEST</lastBuildDate>
+		<ttl>60</ttl>
+		<yweather:location city="Milano/Linate" region=""
+			country="IT" />
+		<yweather:units temperature="F" distance="mi" pressure="in"
+			speed="mph" />
+		<yweather:wind chill="59" direction="210" speed="7" />
+		<yweather:atmosphere humidity="72" visibility="6210"
+			pressure="29.71" rising="0" />
+		<yweather:astronomy sunrise="6:29 am" sunset="8:12 pm" />
+		<image>
+			<title>Yahoo! Weather</title>
+			<width>142</width>
+			<height>18</height>
+			<link>http://weather.yahoo.com</link>
+			<url>http://l.yimg.com/a/i/brand/purplelogo//uh/us/news-wea.gif</url>
+		</image>
+		<item>
+			<title>Conditions for Milano/Linate, IT at 8:19 pm CEST</title>
+			<geo:lat>45.43</geo:lat>
+			<geo:long>9.28</geo:long>
+			<link>http://us.rd.yahoo.com/dailynews/rss/weather/Milano/Linate__IT/*http://weather.yahoo.com/forecast/ITXX0090_f.html</link>
+			<pubDate>Sun, 20 Apr 2014 8:19 pm CEST</pubDate>
+			<yweather:condition text="Mostly Cloudy" code="27"
+				temp="59" date="Sun, 20 Apr 2014 8:19 pm CEST" />
+			<description><![CDATA[
+<img src="http://l.yimg.com/a/i/us/we/52/27.gif"/><br />
+<b>Current Conditions:</b><br />
+Mostly Cloudy, 59 F<BR />
+<BR /><b>Forecast:</b><BR />
+Sun - Rain. High: 65 Low: 52<br />
+Mon - Light Rain. High: 61 Low: 50<br />
+Tue - PM Showers. High: 69 Low: 49<br />
+Wed - Sunny. High: 74 Low: 50<br />
+Thu - Mostly Sunny. High: 76 Low: 52<br />
+<br />
+<a href="http://us.rd.yahoo.com/dailynews/rss/weather/Milano/Linate__IT/*http://weather.yahoo.com/forecast/ITXX0090_f.html">Full Forecast at Yahoo! Weather</a><BR/><BR/>
+(provided by <a href="http://www.weather.com" >The Weather Channel</a>)<br/>
+]]></description>
+			<yweather:forecast day="Sun" date="20 Apr 2014"
+				low="52" high="65" text="Rain" code="12" />
+			<yweather:forecast day="Mon" date="21 Apr 2014"
+				low="50" high="61" text="Light Rain" code="11" />
+			<yweather:forecast day="Tue" date="22 Apr 2014"
+				low="49" high="69" text="PM Showers" code="39" />
+			<yweather:forecast day="Wed" date="23 Apr 2014"
+				low="50" high="74" text="Sunny" code="32" />
+			<yweather:forecast day="Thu" date="24 Apr 2014"
+				low="52" high="76" text="Mostly Sunny" code="34" />
+			<guid isPermaLink="false">ITXX0090_2014_04_24_7_00_CEST</guid>
+		</item>
+	</channel>
+</rss>
+
+<!-- fan1572.sports.bf1.yahoo.com Sun Apr 20 18:57:39 PST 2014 -->

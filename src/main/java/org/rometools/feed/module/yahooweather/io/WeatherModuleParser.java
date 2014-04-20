@@ -69,12 +69,7 @@ import com.sun.syndication.io.ModuleParser;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class WeatherModuleParser implements ModuleParser {
-
     private static final Logger LOG = LoggerFactory.getLogger(WeatherModuleParser.class);
-
-    private static final SimpleDateFormat TIME_ONLY = new SimpleDateFormat("h:mm a");
-    private static final SimpleDateFormat LONG_DATE = new SimpleDateFormat("EEE, d MMM yyyy h:mm a zzz");
-    private static final SimpleDateFormat SHORT_DATE = new SimpleDateFormat("d MMM yyyy");
     private static final Namespace NS = Namespace.getNamespace(YWeatherModule.URI);
 
     @Override
@@ -129,8 +124,9 @@ public class WeatherModuleParser implements ModuleParser {
 
         if (astronomy != null) {
             try {
-                final Astronomy a = new Astronomy(TIME_ONLY.parse(astronomy.getAttributeValue("sunrise").replaceAll("am", "AM").replaceAll("pm", "PM")),
-                        TIME_ONLY.parse(astronomy.getAttributeValue("sunset").replaceAll("am", "AM").replaceAll("pm", "PM")));
+                final SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a", locale);
+                final Astronomy a = new Astronomy(timeFormat.parse(astronomy.getAttributeValue("sunrise").replaceAll("am", "AM").replaceAll("pm", "PM")),
+                        timeFormat.parse(astronomy.getAttributeValue("sunset").replaceAll("am", "AM").replaceAll("pm", "PM")));
                 module.setAstronomy(a);
             } catch (final ParseException pe) {
                 LOG.warn("ParseException processing <astronomy> tag.", pe);
@@ -141,8 +137,9 @@ public class WeatherModuleParser implements ModuleParser {
 
         if (condition != null) {
             try {
+                final SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, d MMM yyyy h:mm a zzz", locale);
                 final Condition c = new Condition(condition.getAttributeValue("text"), ConditionCode.fromCode(Integer.parseInt(condition
-                        .getAttributeValue("code"))), Integer.parseInt(condition.getAttributeValue("temp")), LONG_DATE.parse(condition
+                        .getAttributeValue("code"))), Integer.parseInt(condition.getAttributeValue("temp")), dateFormat.parse(condition
                                 .getAttributeValue("date").replaceAll("pm", "PM").replaceAll("am", "AM")));
                 module.setCondition(c);
             } catch (final NumberFormatException nfe) {
@@ -158,11 +155,12 @@ public class WeatherModuleParser implements ModuleParser {
             final Forecast[] f = new Forecast[forecasts.size()];
             int i = 0;
 
+            final SimpleDateFormat dateFormat = new SimpleDateFormat("d MMM yyyy", locale);
             for (final Iterator<Element> it = forecasts.iterator(); it.hasNext(); i++) {
                 final Element forecast = it.next();
 
                 try {
-                    f[i] = new Forecast(forecast.getAttributeValue("day"), SHORT_DATE.parse(forecast.getAttributeValue("date")), Integer.parseInt(forecast
+                    f[i] = new Forecast(forecast.getAttributeValue("day"), dateFormat.parse(forecast.getAttributeValue("date")), Integer.parseInt(forecast
                             .getAttributeValue("low")), Integer.parseInt(forecast.getAttributeValue("high")), forecast.getAttributeValue("text"),
                             ConditionCode.fromCode(Integer.parseInt(forecast.getAttributeValue("code"))));
                 } catch (final NumberFormatException nfe) {

@@ -39,6 +39,7 @@ package org.rometools.feed.module.yahooweather.io;
 
 import java.text.SimpleDateFormat;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 
 import org.jdom2.Element;
@@ -58,11 +59,11 @@ import com.sun.syndication.io.ModuleGenerator;
  */
 public class WeatherModuleGenerator implements ModuleGenerator {
     private static final Namespace NS = Namespace.getNamespace("yweather", YWeatherModule.URI);
-    private static final SimpleDateFormat TIME_ONLY = new SimpleDateFormat("h:mm a");
-    private static final SimpleDateFormat LONG_DATE = new SimpleDateFormat("EEE, d MMM yyyy h:mm a zzz");
-    private static final SimpleDateFormat SHORT_DATE = new SimpleDateFormat("d MMM yyyy");
+    private static final SimpleDateFormat TIME_ONLY = new SimpleDateFormat("h:mm a", Locale.US);
+    private static final SimpleDateFormat LONG_DATE = new SimpleDateFormat("EEE, d MMM yyyy h:mm a zzz", Locale.US);
+    private static final SimpleDateFormat SHORT_DATE = new SimpleDateFormat("d MMM yyyy", Locale.US);
 
-    /** Creates a new instance of SlashModuleGenerator */
+    /** Creates a new instance of SlashModuleGenerator. */
     public WeatherModuleGenerator() {
     }
 

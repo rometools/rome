@@ -24,23 +24,31 @@ import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.SyndFeedOutput;
 
 /**
- *
+ * 
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class WeatherGeneratorTest extends AbstractTestCase {
 
     private static final Logger LOG = LoggerFactory.getLogger(WeatherGeneratorTest.class);
 
+    /**
+     * @param testName name of the test
+     */
     public WeatherGeneratorTest(final String testName) {
         super(testName);
     }
 
+    /**
+     * @return test suite
+     */
     public static Test suite() {
         return new TestSuite(WeatherGeneratorTest.class);
     }
 
     /**
      * Test of generate method, of class com.totsp.xml.syndication.base.io.SlashGenerator.
+     * 
+     * @throws Exception on error
      */
     public void testGenerate() throws Exception {
         LOG.debug("testGenerate");
@@ -56,18 +64,15 @@ public class WeatherGeneratorTest extends AbstractTestCase {
             final SyndFeed feed = input.build(testFiles[h]);
             output.output(feed, new File("target/" + testFiles[h].getName()));
             final SyndFeed feed2 = input.build(new File("target/" + testFiles[h].getName()));
-            {
-                final YWeatherModule weather = (YWeatherModule) feed.getModule(YWeatherModule.URI);
-                final YWeatherModule weather2 = (YWeatherModule) feed2.getModule(YWeatherModule.URI);
-                Assert.assertEquals(testFiles[h].getName(), weather, weather2);
-
-            }
+            final YWeatherModule weather = (YWeatherModule) feed.getModule(YWeatherModule.URI);
+            final YWeatherModule weather2 = (YWeatherModule) feed2.getModule(YWeatherModule.URI);
+            Assert.assertEquals(testFiles[h].getName(), weather, weather2);
             for (int i = 0; i < feed.getEntries().size(); i++) {
                 final SyndEntry entry = feed.getEntries().get(i);
                 final SyndEntry entry2 = feed2.getEntries().get(i);
-                final YWeatherModule weather = (YWeatherModule) entry.getModule(YWeatherModule.URI);
-                final YWeatherModule weather2 = (YWeatherModule) entry2.getModule(YWeatherModule.URI);
-                Assert.assertEquals(testFiles[h].getName(), weather, weather2);
+                final YWeatherModule weatherEntry = (YWeatherModule) entry.getModule(YWeatherModule.URI);
+                final YWeatherModule weatherEntry2 = (YWeatherModule) entry2.getModule(YWeatherModule.URI);
+                assertEquals(testFiles[h].getName(), weatherEntry, weatherEntry2);
             }
         }
 
