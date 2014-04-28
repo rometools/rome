@@ -6,8 +6,8 @@ package org.rometools.certiorem.hub;
 
 import java.net.URL;
 
-import org.rometools.fetcher.impl.FeedFetcherCache;
-import org.rometools.fetcher.impl.SyndFeedInfo;
+import com.rometools.fetcher.impl.FeedFetcherCache;
+import com.rometools.fetcher.impl.SyndFeedInfo;
 
 /**
  * Wrapper FeedFetcherCache that wraps a backing FeedFetcherCache and makes sure

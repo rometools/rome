@@ -12,9 +12,9 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.rometools.fetcher.impl.HashMapFeedInfoCache;
-import org.rometools.fetcher.impl.HttpURLFeedFetcher;
 
+import com.rometools.fetcher.impl.HashMapFeedInfoCache;
+import com.rometools.fetcher.impl.HttpURLFeedFetcher;
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
 

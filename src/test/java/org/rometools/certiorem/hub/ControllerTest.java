@@ -29,11 +29,12 @@ import org.junit.Test;
 import org.rometools.certiorem.HttpStatusCodeException;
 import org.rometools.certiorem.hub.data.HubDAO;
 import org.rometools.certiorem.hub.data.ram.InMemoryHubDAO;
-import org.rometools.fetcher.FeedFetcher;
-import org.rometools.fetcher.impl.HashMapFeedInfoCache;
-import org.rometools.fetcher.impl.HttpURLFeedFetcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.rometools.fetcher.FeedFetcher;
+import com.rometools.fetcher.impl.HashMapFeedInfoCache;
+import com.rometools.fetcher.impl.HttpURLFeedFetcher;
 
 /**
  *

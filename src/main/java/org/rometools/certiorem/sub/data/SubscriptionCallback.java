@@ -5,7 +5,7 @@
 
 package org.rometools.certiorem.sub.data;
 
-import org.rometools.fetcher.impl.SyndFeedInfo;
+import com.rometools.fetcher.impl.SyndFeedInfo;
 
 /**
  *

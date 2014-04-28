@@ -34,11 +34,11 @@ import org.rometools.certiorem.sub.Requester.RequestCallback;
 import org.rometools.certiorem.sub.data.SubDAO;
 import org.rometools.certiorem.sub.data.Subscription;
 import org.rometools.certiorem.sub.data.SubscriptionCallback;
-import org.rometools.fetcher.impl.FeedFetcherCache;
-import org.rometools.fetcher.impl.SyndFeedInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.rometools.fetcher.impl.FeedFetcherCache;
+import com.rometools.fetcher.impl.SyndFeedInfo;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.feed.synd.SyndLink;
 import com.sun.syndication.io.FeedException;

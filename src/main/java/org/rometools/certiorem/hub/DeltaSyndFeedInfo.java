@@ -12,8 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.rometools.fetcher.impl.SyndFeedInfo;
-
+import com.rometools.fetcher.impl.SyndFeedInfo;
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
 

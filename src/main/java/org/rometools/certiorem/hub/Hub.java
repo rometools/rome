@@ -32,10 +32,10 @@ import org.rometools.certiorem.hub.Verifier.VerificationCallback;
 import org.rometools.certiorem.hub.data.HubDAO;
 import org.rometools.certiorem.hub.data.Subscriber;
 import org.rometools.certiorem.hub.data.SubscriptionSummary;
-import org.rometools.fetcher.FeedFetcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.rometools.fetcher.FeedFetcher;
 import com.sun.syndication.feed.synd.SyndFeed;
 
 /**
