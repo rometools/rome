@@ -11,9 +11,6 @@ import org.rometools.certiorem.hub.verify.standard.UnthreadedVerifier;
 import org.rometools.certiorem.sub.Subscriptions;
 import org.rometools.certiorem.sub.data.ram.InMemorySubDAO;
 import org.rometools.certiorem.sub.request.AsyncRequester;
-import org.rometools.fetcher.FeedFetcher;
-import org.rometools.fetcher.impl.HashMapFeedInfoCache;
-import org.rometools.fetcher.impl.HttpURLFeedFetcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,6 +21,9 @@ import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import com.google.inject.servlet.GuiceServletContextListener;
 import com.google.inject.servlet.ServletModule;
+import com.rometools.fetcher.FeedFetcher;
+import com.rometools.fetcher.impl.HashMapFeedInfoCache;
+import com.rometools.fetcher.impl.HttpURLFeedFetcher;
 
 /**
  *

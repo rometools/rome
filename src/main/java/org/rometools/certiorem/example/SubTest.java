@@ -12,12 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.rometools.certiorem.sub.Subscriptions;
 import org.rometools.certiorem.sub.data.Subscription;
 import org.rometools.certiorem.sub.data.SubscriptionCallback;
-import org.rometools.fetcher.impl.SyndFeedInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import com.rometools.fetcher.impl.SyndFeedInfo;
 
 /**
  *
