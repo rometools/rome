@@ -31,6 +31,8 @@ import org.rometools.feed.module.georss.geometries.Point;
 import org.rometools.feed.module.georss.geometries.Polygon;
 import org.rometools.feed.module.georss.geometries.Position;
 import org.rometools.feed.module.georss.geometries.PositionList;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.syndication.feed.module.Module;
 import com.sun.syndication.io.ModuleGenerator;
@@ -43,6 +45,7 @@ import com.sun.syndication.io.ModuleGenerator;
  *
  */
 public class SimpleGenerator implements ModuleGenerator {
+    private static final Logger LOG = LoggerFactory.getLogger(SimpleGenerator.class);
 
     private static final Set<Namespace> NAMESPACES;
     static {
@@ -51,6 +54,10 @@ public class SimpleGenerator implements ModuleGenerator {
         NAMESPACES = Collections.unmodifiableSet(nss);
     }
 
+    /**
+     * @param posList PositionList to convert
+     * @return String representation
+     */
     private String posListToString(final PositionList posList) {
         final StringBuffer sb = new StringBuffer();
         for (int i = 0; i < posList.size(); ++i) {
@@ -117,10 +124,10 @@ public class SimpleGenerator implements ModuleGenerator {
                 polygonElement.addContent(posListToString(posList));
                 element.addContent(polygonElement);
             } else {
-                System.err.println("GeoRSS simple format can't handle rings of type: " + ring.getClass().getName());
+                LOG.error("GeoRSS simple format can't handle rings of type: " + ring.getClass().getName());
             }
-            if (((Polygon) geometry).getInterior() != null || !((Polygon) geometry).getInterior().isEmpty()) {
-                System.err.println("GeoRSS simple format can't handle interior rings (ignored)");
+            if (((Polygon) geometry).getInterior() != null && !((Polygon) geometry).getInterior().isEmpty()) {
+                LOG.error("GeoRSS simple format can't handle interior rings (ignored)");
             }
         } else if (geometry instanceof Envelope) {
             final Envelope envelope = (Envelope) geometry;
@@ -129,7 +136,7 @@ public class SimpleGenerator implements ModuleGenerator {
                     + envelope.getMaxLongitude());
             element.addContent(boxElement);
         } else {
-            System.err.println("GeoRSS simple format can't handle geometries of type: " + geometry.getClass().getName());
+            LOG.error("GeoRSS simple format can't handle geometries of type: " + geometry.getClass().getName());
         }
     }
 
