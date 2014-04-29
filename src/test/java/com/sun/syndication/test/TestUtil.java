@@ -1,4 +1,4 @@
-package test;
+package com.sun.syndication.test;
 
 import java.io.InputStreamReader;
 import java.io.Reader;

@@ -12,14 +12,13 @@ package com.sun.syndication;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 
-import test.NullWriter;
-import test.TestUtil;
-
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.feed.synd.SyndFeedImpl;
 import com.sun.syndication.io.WireFeedInput;
 import com.sun.syndication.io.WireFeedOutput;
+import com.sun.syndication.test.NullWriter;
+import com.sun.syndication.test.TestUtil;
 
 /**
  * 
