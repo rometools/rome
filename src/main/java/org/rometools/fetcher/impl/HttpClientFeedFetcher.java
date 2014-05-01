@@ -28,8 +28,10 @@ import org.apache.commons.httpclient.Header;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.HttpMethod;
+import org.apache.commons.httpclient.HttpMethodRetryHandler;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.params.HttpClientParams;
+import org.apache.commons.httpclient.params.HttpMethodParams;
 import org.rometools.fetcher.FetcherEvent;
 import org.rometools.fetcher.FetcherException;
 
@@ -65,6 +67,13 @@ public class HttpClientFeedFetcher extends AbstractFeedFetcher {
         setCredentialSupplier(credentialSupplier);
     }
 
+	/**
+	 * @param handler Sets the retry handler
+	 */
+	public synchronized void setRetryHandler(HttpMethodRetryHandler handler) {
+		httpClientParams.setParameter(HttpMethodParams.RETRY_HANDLER, handler);
+	}
+	
     /**
      * @param timeout Sets the connect timeout for the HttpClient but using the URLConnection method name. Uses the HttpClientParams method
      *            setConnectionManagerTimeout instead of setConnectTimeout
