@@ -19,11 +19,12 @@ package org.rometools.feed.module.activitystreams.types;
 
 /**
  * <p>
- * The "folder" object type represents a collection of files or media objects. This is similar to the "photo album" object type, but not specifically
- * representing a collection of "photos."
+ * The "folder" object type represents a collection of files or media objects. This is similar to
+ * the "photo album" object type, but not specifically representing a collection of "photos."
  * </p>
  * <p>
- * The "folder" object type is identified by the URI <tt>http://activitystrea.ms/schema/1.0/folder</tt>.
+ * The "folder" object type is identified by the URI
+ * <tt>http://activitystrea.ms/schema/1.0/folder</tt>.
  * </p>
  * <p>
  * A folder has the following additional components:
@@ -33,8 +34,9 @@ package org.rometools.feed.module.activitystreams.types;
  * <blockquote class="text">
  * <dl>
  * <dt>Preview Image Link</dt>
- * <dd>A Media Link Construct describing an image file that can be used as a preview image for the folder. Represented by the Representative Image component of
- * the base Object Construct. Processors MAY ignore thumbnails that are of an inappropriate size for their user interface.</dd>
+ * <dd>A Media Link Construct describing an image file that can be used as a preview image for the
+ * folder. Represented by the Representative Image component of the base Object Construct.
+ * Processors MAY ignore thumbnails that are of an inappropriate size for their user interface.</dd>
  * </dl>
  * </blockquote>
  *

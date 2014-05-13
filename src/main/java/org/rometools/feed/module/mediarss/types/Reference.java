@@ -23,7 +23,8 @@
 package org.rometools.feed.module.mediarss.types;
 
 /**
- * This class is an idenfier for UrlReference and PlayerReference and is required for constructing a MediaContent object.
+ * This class is an idenfier for UrlReference and PlayerReference and is required for constructing a
+ * MediaContent object.
  *
  * @author cooper
  */

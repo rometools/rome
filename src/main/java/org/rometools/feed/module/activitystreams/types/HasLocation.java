@@ -22,15 +22,19 @@ import org.rometools.feed.module.portablecontacts.ContactModule;
 
 /**
  * <p>
- * Location is a concept which can be used inside the atom:entry level, atom:author and activity:object. Location can be specified via geographic coordinates, a
- * street address, a free-form location name or a combination of these. Geographic coordinates should be included as a geo:point element as described by the
- * GeoRSS specification. Addresses should be included using a poco:address element defined at Portable Contacts specification. The entry level location
- * represents the location of the author at the time the activity was performed. The author level location represents the primary location of the author.
- * Finally, the location within other objects represents the physical location of those objects. All location fields are optional. For free form addresses use
- * the poco:formatted field.
+ * Location is a concept which can be used inside the atom:entry level, atom:author and
+ * activity:object. Location can be specified via geographic coordinates, a street address, a
+ * free-form location name or a combination of these. Geographic coordinates should be included as a
+ * geo:point element as described by the GeoRSS specification. Addresses should be included using a
+ * poco:address element defined at Portable Contacts specification. The entry level location
+ * represents the location of the author at the time the activity was performed. The author level
+ * location represents the primary location of the author. Finally, the location within other
+ * objects represents the physical location of those objects. All location fields are optional. For
+ * free form addresses use the poco:formatted field.
  * </p>
  * <p>
- * <a class='info' href='#location-poco'>Figure&nbsp;1<span> (</span><span class='info'>Location Example</span><span>)</span></a>
+ * <a class='info' href='#location-poco'>Figure&nbsp;1<span> (</span><span class='info'>Location
+ * Example</span><span>)</span></a>
  * </p>
  * <p>
  * <br />
@@ -77,7 +81,8 @@ import org.rometools.feed.module.portablecontacts.ContactModule;
  * <p>
  * <table border="0" cellpadding="0" cellspacing="2" align="center">
  * <tr>
- * <td align="center"><font face="monaco, MS Sans Serif" size="1"><b>&nbsp;Figure&nbsp;1: Location Example&nbsp;</b></font><br />
+ * <td align="center"><font face="monaco, MS Sans Serif" size="1"><b>&nbsp;Figure&nbsp;1: Location
+ * Example&nbsp;</b></font><br />
  * </td>
  * </tr>
  * </table>

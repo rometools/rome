@@ -46,11 +46,14 @@ import com.sun.syndication.feed.impl.ToStringBean;
  * Forecast information about current atmospheric pressure, humidity, and visibility. Attributes:
  * <ul class="topspace">
  * <li>humidity: humidity, in percent (integer)</li>
- * <li>visibility, in the units specified by the distance attribute of the yweather:units element (mi or km). Note that the visibility is specified as the
- * actual value * 100. For example, a visibility of 16.5 miles will be specified as 1650. A visibility of 14 kilometers will appear as 1400. (integer) [
- * <em>A double here, and adjusted accordingly</em>]</li>
- * <li>pressure: barometric pressure, in the units specified by the pressure attribute of the yweather:units element (in or mb). (float).</li>
- * <li>rising: state of the barometric pressure: steady (0), rising (1), or falling (2). (integer: 0, 1, 2)</li>
+ * <li>visibility, in the units specified by the distance attribute of the yweather:units element
+ * (mi or km). Note that the visibility is specified as the actual value * 100. For example, a
+ * visibility of 16.5 miles will be specified as 1650. A visibility of 14 kilometers will appear as
+ * 1400. (integer) [ <em>A double here, and adjusted accordingly</em>]</li>
+ * <li>pressure: barometric pressure, in the units specified by the pressure attribute of the
+ * yweather:units element (in or mb). (float).</li>
+ * <li>rising: state of the barometric pressure: steady (0), rising (1), or falling (2). (integer:
+ * 0, 1, 2)</li>
  * </ul>
  *
  * @version $Id: Atmosphere.java,v 1.2 2008/01/22 14:50:05 kebernet Exp $

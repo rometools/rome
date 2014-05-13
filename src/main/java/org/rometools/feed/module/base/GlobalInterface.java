@@ -56,13 +56,15 @@ public interface GlobalInterface extends Serializable {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="expiration_date"></a>expiration_date</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="expiration_date"></a>expiration_date</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Details</b></font></td>
      *
-     * <td><font size="-1"> Date that the item expires in <a href="http://www.iso.org/iso/en/prods-services/popstds/datesandtime.html">ISO 8601</a> format:
-     * YYYY-MM-DD</font></td>
+     * <td><font size="-1"> Date that the item expires in <a
+     * href="http://www.iso.org/iso/en/prods-services/popstds/datesandtime.html">ISO 8601</a>
+     * format: YYYY-MM-DD</font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Example</b></font></td>
@@ -72,7 +74,8 @@ public interface GlobalInterface extends Serializable {
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Attribute of</b></font></td>
-     * <td><font size="-1"> Reference Items, Events, Housing, Jobs, People profiles, Products, Services, Travel, Vehicles, Wanted Ads.</font></td>
+     * <td><font size="-1"> Reference Items, Events, Housing, Jobs, People profiles, Products,
+     * Services, Travel, Vehicles, Wanted Ads.</font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Content type</b></font></td>
@@ -92,13 +95,15 @@ public interface GlobalInterface extends Serializable {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="expiration_date"></a>expiration_date</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="expiration_date"></a>expiration_date</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Details</b></font></td>
      *
-     * <td><font size="-1"> Date that the item expires in <a href="http://www.iso.org/iso/en/prods-services/popstds/datesandtime.html">ISO 8601</a> format:
-     * YYYY-MM-DD</font></td>
+     * <td><font size="-1"> Date that the item expires in <a
+     * href="http://www.iso.org/iso/en/prods-services/popstds/datesandtime.html">ISO 8601</a>
+     * format: YYYY-MM-DD</font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Example</b></font></td>
@@ -108,7 +113,8 @@ public interface GlobalInterface extends Serializable {
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Attribute of</b></font></td>
-     * <td><font size="-1"> Reference Items, Events, Housing, Jobs, People profiles, Products, Services, Travel, Vehicles, Wanted Ads.</font></td>
+     * <td><font size="-1"> Reference Items, Events, Housing, Jobs, People profiles, Products,
+     * Services, Travel, Vehicles, Wanted Ads.</font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Content type</b></font></td>
@@ -128,24 +134,28 @@ public interface GlobalInterface extends Serializable {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="expiration_date_time"></a>expiration_date_time</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="expiration_date_time"></a>expiration_date_time</b></font></td>
      *
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Details</b></font></td>
-     * <td><font size="-1"> Date and time that the item expires in <a href="http://www.iso.org/iso/en/prods-services/popstds/datesandtime.html">ISO 8601</a>
+     * <td><font size="-1"> Date and time that the item expires in <a
+     * href="http://www.iso.org/iso/en/prods-services/popstds/datesandtime.html">ISO 8601</a>
      * format: YYYY-MM-DDThh:mm:ss</font></td>
      * </tr>
      *
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Example</b></font></td>
      *
-     * <td><font size="-1"> &lt;g:expiration_date_time&gt;12-20-05T11:59:59&lt;/g:expiration_date_time&gt; </font></td>
+     * <td><font size="-1">
+     * &lt;g:expiration_date_time&gt;12-20-05T11:59:59&lt;/g:expiration_date_time&gt; </font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Attribute of</b></font></td>
      *
-     * <td><font size="-1"> Reference Items, Events, Housing, Jobs, People profiles, Products, Services, Travel, Vehicles, Wanted Ads.</font></td>
+     * <td><font size="-1"> Reference Items, Events, Housing, Jobs, People profiles, Products,
+     * Services, Travel, Vehicles, Wanted Ads.</font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -166,24 +176,28 @@ public interface GlobalInterface extends Serializable {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="expiration_date_time"></a>expiration_date_time</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="expiration_date_time"></a>expiration_date_time</b></font></td>
      *
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Details</b></font></td>
-     * <td><font size="-1"> Date and time that the item expires in <a href="http://www.iso.org/iso/en/prods-services/popstds/datesandtime.html">ISO 8601</a>
+     * <td><font size="-1"> Date and time that the item expires in <a
+     * href="http://www.iso.org/iso/en/prods-services/popstds/datesandtime.html">ISO 8601</a>
      * format: YYYY-MM-DDThh:mm:ss</font></td>
      * </tr>
      *
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Example</b></font></td>
      *
-     * <td><font size="-1"> &lt;g:expiration_date_time&gt;12-20-05T11:59:59&lt;/g:expiration_date_time&gt; </font></td>
+     * <td><font size="-1">
+     * &lt;g:expiration_date_time&gt;12-20-05T11:59:59&lt;/g:expiration_date_time&gt; </font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Attribute of</b></font></td>
      *
-     * <td><font size="-1"> Reference Items, Events, Housing, Jobs, People profiles, Products, Services, Travel, Vehicles, Wanted Ads.</font></td>
+     * <td><font size="-1"> Reference Items, Events, Housing, Jobs, People profiles, Products,
+     * Services, Travel, Vehicles, Wanted Ads.</font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -203,14 +217,17 @@ public interface GlobalInterface extends Serializable {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="id"></a>id</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="id"></a>id</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Details</b></font></td>
      *
-     * <td><font size="-1"> Unique alphanumeric identifier for each item - e.g., your internal ID code.<br>
-     * IMPORTANT: Once you submit an item with a unique id, this identifier must not change when you send in a new bulk upload. Each item must retain the same
-     * id in subsequent bulk uploads.</font></td>
+     * <td><font size="-1"> Unique alphanumeric identifier for each item - e.g., your internal ID
+     * code.<br>
+     * IMPORTANT: Once you submit an item with a unique id, this identifier must not change when you
+     * send in a new bulk upload. Each item must retain the same id in subsequent bulk
+     * uploads.</font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Example</b></font></td>
@@ -220,8 +237,8 @@ public interface GlobalInterface extends Serializable {
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Attribute of</b></font></td>
-     * <td><font size="-1"> Reference Items, Events, Housing, Jobs, News and Articles, People profiles, Products, Reviews, Services, Travel, Vehicles, Wanted
-     * Ads.</font></td>
+     * <td><font size="-1"> Reference Items, Events, Housing, Jobs, News and Articles, People
+     * profiles, Products, Reviews, Services, Travel, Vehicles, Wanted Ads.</font></td>
      *
      * </tr>
      *
@@ -241,14 +258,17 @@ public interface GlobalInterface extends Serializable {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="id"></a>id</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="id"></a>id</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Details</b></font></td>
      *
-     * <td><font size="-1"> Unique alphanumeric identifier for each item - e.g., your internal ID code.<br>
-     * IMPORTANT: Once you submit an item with a unique id, this identifier must not change when you send in a new bulk upload. Each item must retain the same
-     * id in subsequent bulk uploads.</font></td>
+     * <td><font size="-1"> Unique alphanumeric identifier for each item - e.g., your internal ID
+     * code.<br>
+     * IMPORTANT: Once you submit an item with a unique id, this identifier must not change when you
+     * send in a new bulk upload. Each item must retain the same id in subsequent bulk
+     * uploads.</font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Example</b></font></td>
@@ -258,8 +278,8 @@ public interface GlobalInterface extends Serializable {
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Attribute of</b></font></td>
-     * <td><font size="-1"> Reference Items, Events, Housing, Jobs, News and Articles, People profiles, Products, Reviews, Services, Travel, Vehicles, Wanted
-     * Ads.</font></td>
+     * <td><font size="-1"> Reference Items, Events, Housing, Jobs, News and Articles, People
+     * profiles, Products, Reviews, Services, Travel, Vehicles, Wanted Ads.</font></td>
      *
      * </tr>
      *
@@ -280,14 +300,17 @@ public interface GlobalInterface extends Serializable {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="image_link"></a>image_link</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="image_link"></a>image_link</b></font></td>
      *
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Details</b></font></td>
-     * <td><font size="-1"> URL of an associated image if available online. Use your full-sized images; do not use thumbnail images. Up to ten image_links, all
-     * placed in between their own &lt;image_link&gt; and &lt;/image_link&gt; attributes, can be included with each item. If you do not have an image available,
-     * do not include this attribute. Please do not include an image that says "Image not available." Relative URLs and logo images are not acceptable.</font></td>
+     * <td><font size="-1"> URL of an associated image if available online. Use your full-sized
+     * images; do not use thumbnail images. Up to ten image_links, all placed in between their own
+     * &lt;image_link&gt; and &lt;/image_link&gt; attributes, can be included with each item. If you
+     * do not have an image available, do not include this attribute. Please do not include an image
+     * that says "Image not available." Relative URLs and logo images are not acceptable.</font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -305,8 +328,8 @@ public interface GlobalInterface extends Serializable {
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Attribute of</b></font></td>
      *
-     * <td><font size="-1"> Reference Items, Events, Housing, Jobs, News and Articles, People profiles, Products, Reviews, Services, Travel, Vehicles, Wanted
-     * Ads.</font></td>
+     * <td><font size="-1"> Reference Items, Events, Housing, Jobs, News and Articles, People
+     * profiles, Products, Reviews, Services, Travel, Vehicles, Wanted Ads.</font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Content type</b></font></td>
@@ -327,14 +350,17 @@ public interface GlobalInterface extends Serializable {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="image_link"></a>image_link</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="image_link"></a>image_link</b></font></td>
      *
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Details</b></font></td>
-     * <td><font size="-1"> URL of an associated image if available online. Use your full-sized images; do not use thumbnail images. Up to ten image_links, all
-     * placed in between their own &lt;image_link&gt; and &lt;/image_link&gt; attributes, can be included with each item. If you do not have an image available,
-     * do not include this attribute. Please do not include an image that says "Image not available." Relative URLs and logo images are not acceptable.</font></td>
+     * <td><font size="-1"> URL of an associated image if available online. Use your full-sized
+     * images; do not use thumbnail images. Up to ten image_links, all placed in between their own
+     * &lt;image_link&gt; and &lt;/image_link&gt; attributes, can be included with each item. If you
+     * do not have an image available, do not include this attribute. Please do not include an image
+     * that says "Image not available." Relative URLs and logo images are not acceptable.</font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -352,8 +378,8 @@ public interface GlobalInterface extends Serializable {
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Attribute of</b></font></td>
      *
-     * <td><font size="-1"> Reference Items, Events, Housing, Jobs, News and Articles, People profiles, Products, Reviews, Services, Travel, Vehicles, Wanted
-     * Ads.</font></td>
+     * <td><font size="-1"> Reference Items, Events, Housing, Jobs, News and Articles, People
+     * profiles, Products, Reviews, Services, Travel, Vehicles, Wanted Ads.</font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Content type</b></font></td>
@@ -383,10 +409,12 @@ public interface GlobalInterface extends Serializable {
      *
      * <font size="-1"><b>Details</b></font></td>
      * <td>
-     * <font size="-1">A list of classifications the item may fall under. Up to ten user-selected label, each placed in between their own &lt;label&gt;
+     * <font size="-1">A list of classifications the item may fall under. Up to ten user-selected
+     * label, each placed in between their own &lt;label&gt;
      *
-     * and &lt;/label&gt; tags, can be included with each item. These attributes will be used to match your items to search queries. Each attribute value will
-     * be checked for policy compliance.</font></td>
+     * and &lt;/label&gt; tags, can be included with each item. These attributes will be used to
+     * match your items to search queries. Each attribute value will be checked for policy
+     * compliance.</font></td>
      * </tr>
      *
      * <tr valign="top">
@@ -419,15 +447,16 @@ public interface GlobalInterface extends Serializable {
      * <br>
      * </font> <font size="-1"><em>Not acceptable:</em><br>
      *
-     * </font> <font size="-1">&lt;g:label&gt; leater, power locks, sunroof, ABS &lt;/g:label&gt;</font></td>
+     * </font> <font size="-1">&lt;g:label&gt; leater, power locks, sunroof, ABS
+     * &lt;/g:label&gt;</font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120">
      * <font size="-1"><b>Attribute of</b></font></td>
      *
      * <td>
-     * <font size="-1">Reference Items, Events, Housing, Jobs, News and Articles, People profiles, Products, Reviews, Services, Travel, Vehicles, Wanted
-     * Ads.</font></td>
+     * <font size="-1">Reference Items, Events, Housing, Jobs, News and Articles, People profiles,
+     * Products, Reviews, Services, Travel, Vehicles, Wanted Ads.</font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120">
@@ -459,10 +488,12 @@ public interface GlobalInterface extends Serializable {
      *
      * <font size="-1"><b>Details</b></font></td>
      * <td>
-     * <font size="-1">A list of classifications the item may fall under. Up to ten user-selected label, each placed in between their own &lt;label&gt;
+     * <font size="-1">A list of classifications the item may fall under. Up to ten user-selected
+     * label, each placed in between their own &lt;label&gt;
      *
-     * and &lt;/label&gt; tags, can be included with each item. These attributes will be used to match your items to search queries. Each attribute value will
-     * be checked for policy compliance.</font></td>
+     * and &lt;/label&gt; tags, can be included with each item. These attributes will be used to
+     * match your items to search queries. Each attribute value will be checked for policy
+     * compliance.</font></td>
      * </tr>
      *
      * <tr valign="top">
@@ -495,15 +526,16 @@ public interface GlobalInterface extends Serializable {
      * <br>
      * </font> <font size="-1"><em>Not acceptable:</em><br>
      *
-     * </font> <font size="-1">&lt;g:label&gt; leater, power locks, sunroof, ABS &lt;/g:label&gt;</font></td>
+     * </font> <font size="-1">&lt;g:label&gt; leater, power locks, sunroof, ABS
+     * &lt;/g:label&gt;</font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120">
      * <font size="-1"><b>Attribute of</b></font></td>
      *
      * <td>
-     * <font size="-1">Reference Items, Events, Housing, Jobs, News and Articles, People profiles, Products, Reviews, Services, Travel, Vehicles, Wanted
-     * Ads.</font></td>
+     * <font size="-1">Reference Items, Events, Housing, Jobs, News and Articles, People profiles,
+     * Products, Reviews, Services, Travel, Vehicles, Wanted Ads.</font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120">

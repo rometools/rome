@@ -43,7 +43,8 @@ import org.rometools.feed.module.base.types.CurrencyEnumeration;
 import org.rometools.feed.module.base.types.PriceTypeEnumeration;
 
 /**
- * This is an interface for the GoogleBase plug in that exposes methods used for Job listing entry types.
+ * This is an interface for the GoogleBase plug in that exposes methods used for Job listing entry
+ * types.
  *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @version $Revision: 1.1 $
@@ -54,7 +55,8 @@ public interface Job extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="education"></a>education</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="education"></a>education</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Details</b></font></td>
@@ -87,7 +89,8 @@ public interface Job extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="education"></a>education</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="education"></a>education</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Details</b></font></td>
@@ -120,7 +123,8 @@ public interface Job extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="employer"></a>employer</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="employer"></a>employer</b></font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -153,7 +157,8 @@ public interface Job extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="employer"></a>employer</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="employer"></a>employer</b></font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -187,7 +192,8 @@ public interface Job extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="immigration_status"></a>immigration_status</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="immigration_status"></a>immigration_status</b></font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -198,7 +204,8 @@ public interface Job extends GlobalInterface {
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Example</b></font></td>
      *
-     * <td><font size="-1">&lt;g:immigration_status&gt;Permanent resident&lt;/g:immigration_status&gt;</font></td>
+     * <td><font size="-1">&lt;g:immigration_status&gt;Permanent
+     * resident&lt;/g:immigration_status&gt;</font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -224,7 +231,8 @@ public interface Job extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="immigration_status"></a>immigration_status</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="immigration_status"></a>immigration_status</b></font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -235,7 +243,8 @@ public interface Job extends GlobalInterface {
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Example</b></font></td>
      *
-     * <td><font size="-1">&lt;g:immigration_status&gt;Permanent resident&lt;/g:immigration_status&gt;</font></td>
+     * <td><font size="-1">&lt;g:immigration_status&gt;Permanent
+     * resident&lt;/g:immigration_status&gt;</font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -262,7 +271,8 @@ public interface Job extends GlobalInterface {
      * <tbody>
      * <tr valign="top">
      *
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="job_function"></a>job_function</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="job_function"></a>job_function</b></font></td>
      * </tr>
      *
      * <tr valign="top">
@@ -303,7 +313,8 @@ public interface Job extends GlobalInterface {
      * <tbody>
      * <tr valign="top">
      *
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="job_function"></a>job_function</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="job_function"></a>job_function</b></font></td>
      * </tr>
      *
      * <tr valign="top">
@@ -419,12 +430,14 @@ public interface Job extends GlobalInterface {
      * <tbody>
      * <tr valign="top">
      *
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="job_type"></a>job_type</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="job_type"></a>job_type</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
      *
-     * <td><font size="-1"> Type of employment position. Example: Full-time, part-time, contractor, etc.</font></td>
+     * <td><font size="-1"> Type of employment position. Example: Full-time, part-time, contractor,
+     * etc.</font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -457,12 +470,14 @@ public interface Job extends GlobalInterface {
      * <tbody>
      * <tr valign="top">
      *
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="job_type"></a>job_type</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="job_type"></a>job_type</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
      *
-     * <td><font size="-1"> Type of employment position. Example: Full-time, part-time, contractor, etc.</font></td>
+     * <td><font size="-1"> Type of employment position. Example: Full-time, part-time, contractor,
+     * etc.</font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -495,32 +510,37 @@ public interface Job extends GlobalInterface {
      * <tbody>
      * <tr valign="top">
      *
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="location"></a>location</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="location"></a>location</b></font></td>
      * </tr>
      * <tr valign="top">
      *
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> Location of a property. Should include street, city, state, postal code, and country, in that order. </font></td>
+     * <td><font size="-1"> Location of a property. Should include street, city, state, postal code,
+     * and country, in that order. </font></td>
      *
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Example</b></font></td>
      *
      * <td><font size="-1"> <em>Acceptable:</em><br>
-     * &lt;g:location&gt;<st1:place>123 Main St, <st1:city>Anytown</st1:city>, <st1:state>CA</st1:state>, <st1:postalcode>12345</st1:postalcode>,
+     * &lt;g:location&gt;<st1:place>123 Main St, <st1:city>Anytown</st1:city>,
+     * <st1:state>CA</st1:state>, <st1:postalcode>12345</st1:postalcode>,
      * <st1:country-region>USA</st1:country-region></st1:place>&lt;/g:location&gt;<br>
      *
      * <em>Not acceptable:</em><br>
-     * &lt;g:location&gt;<st1:place><st1:city>123</st1:city> Main St,, <st1:state>CA</st1:state>, <st1:postalcode>12345</st1:postalcode>,
+     * &lt;g:location&gt;<st1:place><st1:city>123</st1:city> Main St,, <st1:state>CA</st1:state>,
+     * <st1:postalcode>12345</st1:postalcode>,
      * <st1:country-region>USA</st1:country-region></st1:place>&lt;/g:location&gt;<br>
-     * &lt;g:location&gt; <st1:place><st1:city>Anytown</st1:city>, <st1:state>CA</st1:state>, <st1:postalcode>12345</st1:postalcode>,
+     * &lt;g:location&gt; <st1:place><st1:city>Anytown</st1:city>, <st1:state>CA</st1:state>,
+     * <st1:postalcode>12345</st1:postalcode>,
      * <st1:country-region>USA</st1:country-region></st1:place>&lt;/g:location&gt;</font></td>
      *
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Reference Items, Events, Housing, Jobs, News and Articles, People profiles, Products, Reviews, Services, Travel, Vehicles, Wanted
-     * Ads.</font></td>
+     * <td><font size="-1"> Reference Items, Events, Housing, Jobs, News and Articles, People
+     * profiles, Products, Reviews, Services, Travel, Vehicles, Wanted Ads.</font></td>
      * </tr>
      *
      * <tr valign="top">
@@ -541,32 +561,37 @@ public interface Job extends GlobalInterface {
      * <tbody>
      * <tr valign="top">
      *
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="location"></a>location</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="location"></a>location</b></font></td>
      * </tr>
      * <tr valign="top">
      *
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> Location of a property. Should include street, city, state, postal code, and country, in that order. </font></td>
+     * <td><font size="-1"> Location of a property. Should include street, city, state, postal code,
+     * and country, in that order. </font></td>
      *
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Example</b></font></td>
      *
      * <td><font size="-1"> <em>Acceptable:</em><br>
-     * &lt;g:location&gt;<st1:place>123 Main St, <st1:city>Anytown</st1:city>, <st1:state>CA</st1:state>, <st1:postalcode>12345</st1:postalcode>,
+     * &lt;g:location&gt;<st1:place>123 Main St, <st1:city>Anytown</st1:city>,
+     * <st1:state>CA</st1:state>, <st1:postalcode>12345</st1:postalcode>,
      * <st1:country-region>USA</st1:country-region></st1:place>&lt;/g:location&gt;<br>
      *
      * <em>Not acceptable:</em><br>
-     * &lt;g:location&gt;<st1:place><st1:city>123</st1:city> Main St,, <st1:state>CA</st1:state>, <st1:postalcode>12345</st1:postalcode>,
+     * &lt;g:location&gt;<st1:place><st1:city>123</st1:city> Main St,, <st1:state>CA</st1:state>,
+     * <st1:postalcode>12345</st1:postalcode>,
      * <st1:country-region>USA</st1:country-region></st1:place>&lt;/g:location&gt;<br>
-     * &lt;g:location&gt; <st1:place><st1:city>Anytown</st1:city>, <st1:state>CA</st1:state>, <st1:postalcode>12345</st1:postalcode>,
+     * &lt;g:location&gt; <st1:place><st1:city>Anytown</st1:city>, <st1:state>CA</st1:state>,
+     * <st1:postalcode>12345</st1:postalcode>,
      * <st1:country-region>USA</st1:country-region></st1:place>&lt;/g:location&gt;</font></td>
      *
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Reference Items, Events, Housing, Jobs, News and Articles, People profiles, Products, Reviews, Services, Travel, Vehicles, Wanted
-     * Ads.</font></td>
+     * <td><font size="-1"> Reference Items, Events, Housing, Jobs, News and Articles, People
+     * profiles, Products, Reviews, Services, Travel, Vehicles, Wanted Ads.</font></td>
      * </tr>
      *
      * <tr valign="top">
@@ -586,13 +611,15 @@ public interface Job extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="salary"></a>salary</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="salary"></a>salary</b></font></td>
      * </tr>
      *
      * <tr valign="top">
      *
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> Salary for this position. Non-numeric values such as "$" symbols are not acceptable. </font></td>
+     * <td><font size="-1"> Salary for this position. Non-numeric values such as "$" symbols are not
+     * acceptable. </font></td>
      * </tr>
      * <tr valign="top">
      *
@@ -618,7 +645,8 @@ public interface Job extends GlobalInterface {
      * </tbody>
      * </table>
      *
-     * @param salary Salary for this position. Non-numeric values such as "$" symbols are not acceptable.
+     * @param salary Salary for this position. Non-numeric values such as "$" symbols are not
+     *            acceptable.
      */
     public void setSalary(Float salary);
 
@@ -627,13 +655,15 @@ public interface Job extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="salary"></a>salary</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="salary"></a>salary</b></font></td>
      * </tr>
      *
      * <tr valign="top">
      *
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> Salary for this position. Non-numeric values such as "$" symbols are not acceptable. </font></td>
+     * <td><font size="-1"> Salary for this position. Non-numeric values such as "$" symbols are not
+     * acceptable. </font></td>
      * </tr>
      * <tr valign="top">
      *
@@ -668,13 +698,15 @@ public interface Job extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="salary_type"></a>salary_type</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="salary_type"></a>salary_type</b></font></td>
      *
      * </tr>
      *
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> The type of salary included. Accepted values are �starting� or �negotiable;� The default is �starting at.�</font></td>
+     * <td><font size="-1"> The type of salary included. Accepted values are �starting� or
+     * �negotiable;� The default is �starting at.�</font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -709,13 +741,15 @@ public interface Job extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="salary_type"></a>salary_type</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="salary_type"></a>salary_type</b></font></td>
      *
      * </tr>
      *
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> The type of salary included. Accepted values are �starting� or �negotiable;� The default is �starting at.�</font></td>
+     * <td><font size="-1"> The type of salary included. Accepted values are �starting� or
+     * �negotiable;� The default is �starting at.�</font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -751,14 +785,16 @@ public interface Job extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="currency"></a>currency</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="currency"></a>currency</b></font></td>
      *
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Details</b></font></td>
      *
      * <td><font size="-1">Currency of the price amount for an item. Values must be in <a
-     * href="http://www.iso.org/iso/en/prods-services/popstds/currencycodeslist.html">ISO 4217</a> currency code format.</font></td>
+     * href="http://www.iso.org/iso/en/prods-services/popstds/currencycodeslist.html">ISO 4217</a>
+     * currency code format.</font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Example</b></font></td>
@@ -793,14 +829,16 @@ public interface Job extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="currency"></a>currency</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="currency"></a>currency</b></font></td>
      *
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Details</b></font></td>
      *
      * <td><font size="-1">Currency of the price amount for an item. Values must be in <a
-     * href="http://www.iso.org/iso/en/prods-services/popstds/currencycodeslist.html">ISO 4217</a> currency code format.</font></td>
+     * href="http://www.iso.org/iso/en/prods-services/popstds/currencycodeslist.html">ISO 4217</a>
+     * currency code format.</font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Example</b></font></td>

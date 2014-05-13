@@ -25,8 +25,9 @@ import org.rometools.feed.module.sle.types.Sort;
 import com.sun.syndication.feed.module.Module;
 
 /**
- * This is a <b>parse only</b> module that holds the values of enternal fields declared in the SLE module. These will <b>not</b> be persisted on an output()
- * call, <b>nor</b> will changing a value here change a value in another module or a foreign markup tag.
+ * This is a <b>parse only</b> module that holds the values of enternal fields declared in the SLE
+ * module. These will <b>not</b> be persisted on an output() call, <b>nor</b> will changing a value
+ * here change a value in another module or a foreign markup tag.
  *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
@@ -63,8 +64,9 @@ public interface SleEntry extends Module {
      * Returns an array of EntryValues for the fields declared in the heading.
      *
      * <b>NB:</b><br />
-     * Right now the parser will take any default=true field and change it to an integer value representing the default order in the field. You should not rely
-     * on these values data display to a user!
+     * Right now the parser will take any default=true field and change it to an integer value
+     * representing the default order in the field. You should not rely on these values data display
+     * to a user!
      *
      * @return Array of EntryValue implementations from this entry.
      */

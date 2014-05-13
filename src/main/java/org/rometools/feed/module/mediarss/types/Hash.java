@@ -32,7 +32,8 @@ import com.sun.syndication.feed.impl.ToStringBean;
  * <strong>&lt;media:hash&gt;</strong></p>
  *
  * <p>
- * This is the hash of the binary media file. It can appear multiple times as long as each instance is a different <em>algo</em>. It has 1 optional attribute.
+ * This is the hash of the binary media file. It can appear multiple times as long as each instance
+ * is a different <em>algo</em>. It has 1 optional attribute.
  * </p>
  * <p>
  * </p>
@@ -42,7 +43,8 @@ import com.sun.syndication.feed.impl.ToStringBean;
  * </pre>
  *
  * <p>
- * <em>algo</em> indicates the algorithm used to create the hash. Possible values are 'md5' and 'sha-1'. Default value is 'md5'. It is an optional attribute.
+ * <em>algo</em> indicates the algorithm used to create the hash. Possible values are 'md5' and
+ * 'sha-1'. Default value is 'md5'. It is an optional attribute.
  *
  * @author cooper
  */

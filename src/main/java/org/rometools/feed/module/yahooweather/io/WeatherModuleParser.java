@@ -140,7 +140,7 @@ public class WeatherModuleParser implements ModuleParser {
                 final SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, d MMM yyyy h:mm a zzz", locale);
                 final Condition c = new Condition(condition.getAttributeValue("text"), ConditionCode.fromCode(Integer.parseInt(condition
                         .getAttributeValue("code"))), Integer.parseInt(condition.getAttributeValue("temp")), dateFormat.parse(condition
-                                .getAttributeValue("date").replaceAll("pm", "PM").replaceAll("am", "AM")));
+                        .getAttributeValue("date").replaceAll("pm", "PM").replaceAll("am", "AM")));
                 module.setCondition(c);
             } catch (final NumberFormatException nfe) {
                 LOG.warn("NumberFormatException processing <condition> tag.", nfe);

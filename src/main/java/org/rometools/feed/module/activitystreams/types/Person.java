@@ -21,11 +21,12 @@ import com.sun.syndication.feed.atom.Link;
 
 /**
  * <p>
- * The "person" Object type represents a user account. This is often represents a person, but might also be a company or fictitious character that is being
- * represented by a user account.
+ * The "person" Object type represents a user account. This is often represents a person, but might
+ * also be a company or fictitious character that is being represented by a user account.
  * </p>
  * <p>
- * The "person" Object type is identified by the URI <tt>http://activitystrea.ms/schema/1.0/person</tt>.
+ * The "person" Object type is identified by the URI
+ * <tt>http://activitystrea.ms/schema/1.0/person</tt>.
  * </p>
  * <p>
  * A person has the following additional components:
@@ -35,10 +36,12 @@ import com.sun.syndication.feed.atom.Link;
  * <blockquote class="text">
  * <dl>
  * <dt>Display Name</dt>
- * <dd>A name that can be used for the person in the user interface. This is often a name by which the individual is known in a given context; no restriction is
- * placed on what kind of name may be used here. Represented by the Name component of the base Object Construct.</dd>
+ * <dd>A name that can be used for the person in the user interface. This is often a name by which
+ * the individual is known in a given context; no restriction is placed on what kind of name may be
+ * used here. Represented by the Name component of the base Object Construct.</dd>
  * <dt>Avatar</dt>
- * <dd>A link to an "avatar" or "userpic" image for the user. Represented by the Representative Image component of the base Object Construct.</dd>
+ * <dd>A link to an "avatar" or "userpic" image for the user. Represented by the Representative
+ * Image component of the base Object Construct.</dd>
  * </dl>
  * </blockquote>
  *

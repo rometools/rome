@@ -42,7 +42,8 @@ package org.rometools.feed.module.base;
 import org.rometools.feed.module.base.types.GenderEnumeration;
 
 /**
- * This is an interface for the GoogleBase plug in that exposes methods used for Person (personal ad, resume, profile) entry types.
+ * This is an interface for the GoogleBase plug in that exposes methods used for Person (personal
+ * ad, resume, profile) entry types.
  *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @version $Revision: 1.2 $
@@ -53,11 +54,13 @@ public interface Person extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr bgcolor="#dddddd" valign="top">
-     * <td colspan="2" nowrap="nowrap"><font size="-1"><strong><a name="age"></a>age</strong></font></td>
+     * <td colspan="2" nowrap="nowrap"><font size="-1"><strong><a name="age"></a>age</strong></font>
+     * </td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><strong><font size="-1">Details</font></strong></td>
-     * <td><font size="-1">Minimum age requirement for the event or the age of the individual in a People profiles bulk upload entry.</font></td>
+     * <td><font size="-1">Minimum age requirement for the event or the age of the individual in a
+     * People profiles bulk upload entry.</font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -90,11 +93,13 @@ public interface Person extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr bgcolor="#dddddd" valign="top">
-     * <td colspan="2" nowrap="nowrap"><font size="-1"><strong><a name="age"></a>age</strong></font></td>
+     * <td colspan="2" nowrap="nowrap"><font size="-1"><strong><a name="age"></a>age</strong></font>
+     * </td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><strong><font size="-1">Details</font></strong></td>
-     * <td><font size="-1">Minimum age requirement for the event or the age of the individual in a People profiles bulk upload entry.</font></td>
+     * <td><font size="-1">Minimum age requirement for the event or the age of the individual in a
+     * People profiles bulk upload entry.</font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -127,7 +132,8 @@ public interface Person extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="education"></a>education</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="education"></a>education</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Details</b></font></td>
@@ -160,7 +166,8 @@ public interface Person extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="education"></a>education</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="education"></a>education</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Details</b></font></td>
@@ -194,7 +201,8 @@ public interface Person extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="employer"></a>employer</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="employer"></a>employer</b></font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -228,7 +236,8 @@ public interface Person extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="employer"></a>employer</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="employer"></a>employer</b></font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -262,12 +271,14 @@ public interface Person extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="ethnicity"></a>ethnicity</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="ethnicity"></a>ethnicity</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Details</b></font></td>
      *
-     * <td><font size="-1"> Ethnicity of the individual in the People profiles bulk upload entry.</font></td>
+     * <td><font size="-1"> Ethnicity of the individual in the People profiles bulk upload
+     * entry.</font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -299,12 +310,14 @@ public interface Person extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="ethnicity"></a>ethnicity</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="ethnicity"></a>ethnicity</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Details</b></font></td>
      *
-     * <td><font size="-1"> Ethnicity of the individual in the People profiles bulk upload entry.</font></td>
+     * <td><font size="-1"> Ethnicity of the individual in the People profiles bulk upload
+     * entry.</font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -336,13 +349,15 @@ public interface Person extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="gender"></a>gender</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="gender"></a>gender</b></font></td>
      *
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Details</b></font></td>
      *
-     * <td><font size="-1"> Gender of an individual in a People profiles bulk upload item. Acceptable values are �Male�, �M�, �Female�, or �F�.</font></td>
+     * <td><font size="-1"> Gender of an individual in a People profiles bulk upload item.
+     * Acceptable values are �Male�, �M�, �Female�, or �F�.</font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Example</b></font></td>
@@ -371,13 +386,15 @@ public interface Person extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="gender"></a>gender</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="gender"></a>gender</b></font></td>
      *
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Details</b></font></td>
      *
-     * <td><font size="-1"> Gender of an individual in a People profiles bulk upload item. Acceptable values are �Male�, �M�, �Female�, or �F�.</font></td>
+     * <td><font size="-1"> Gender of an individual in a People profiles bulk upload item.
+     * Acceptable values are �Male�, �M�, �Female�, or �F�.</font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Example</b></font></td>
@@ -406,7 +423,8 @@ public interface Person extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="interested_in"></a>interested_in</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="interested_in"></a>interested_in</b></font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -417,7 +435,8 @@ public interface Person extends GlobalInterface {
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Example</b></font></td>
      *
-     * <td><font size="-1"> &lt;g:interested_in&gt;Long walks on the beach.&lt;/g:interested_in&gt;</font></td>
+     * <td><font size="-1"> &lt;g:interested_in&gt;Long walks on the
+     * beach.&lt;/g:interested_in&gt;</font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Attribute of</b></font></td>
@@ -443,7 +462,8 @@ public interface Person extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="interested_in"></a>interested_in</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="interested_in"></a>interested_in</b></font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -454,7 +474,8 @@ public interface Person extends GlobalInterface {
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Example</b></font></td>
      *
-     * <td><font size="-1"> &lt;g:interested_in&gt;Long walks on the beach.&lt;/g:interested_in&gt;</font></td>
+     * <td><font size="-1"> &lt;g:interested_in&gt;Long walks on the
+     * beach.&lt;/g:interested_in&gt;</font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Attribute of</b></font></td>
@@ -480,32 +501,37 @@ public interface Person extends GlobalInterface {
      * <tbody>
      * <tr valign="top">
      *
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="location"></a>location</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="location"></a>location</b></font></td>
      * </tr>
      * <tr valign="top">
      *
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> Location of a property. Should include street, city, state, postal code, and country, in that order. </font></td>
+     * <td><font size="-1"> Location of a property. Should include street, city, state, postal code,
+     * and country, in that order. </font></td>
      *
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Example</b></font></td>
      *
      * <td><font size="-1"> <em>Acceptable:</em><br>
-     * &lt;g:location&gt;<st1:place>123 Main St, <st1:city>Anytown</st1:city>, <st1:state>CA</st1:state>, <st1:postalcode>12345</st1:postalcode>,
+     * &lt;g:location&gt;<st1:place>123 Main St, <st1:city>Anytown</st1:city>,
+     * <st1:state>CA</st1:state>, <st1:postalcode>12345</st1:postalcode>,
      * <st1:country-region>USA</st1:country-region></st1:place>&lt;/g:location&gt;<br>
      *
      * <em>Not acceptable:</em><br>
-     * &lt;g:location&gt;<st1:place><st1:city>123</st1:city> Main St,, <st1:state>CA</st1:state>, <st1:postalcode>12345</st1:postalcode>,
+     * &lt;g:location&gt;<st1:place><st1:city>123</st1:city> Main St,, <st1:state>CA</st1:state>,
+     * <st1:postalcode>12345</st1:postalcode>,
      * <st1:country-region>USA</st1:country-region></st1:place>&lt;/g:location&gt;<br>
-     * &lt;g:location&gt; <st1:place><st1:city>Anytown</st1:city>, <st1:state>CA</st1:state>, <st1:postalcode>12345</st1:postalcode>,
+     * &lt;g:location&gt; <st1:place><st1:city>Anytown</st1:city>, <st1:state>CA</st1:state>,
+     * <st1:postalcode>12345</st1:postalcode>,
      * <st1:country-region>USA</st1:country-region></st1:place>&lt;/g:location&gt;</font></td>
      *
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Reference Items, Events, Housing, Jobs, News and Articles, People profiles, Products, Reviews, Services, Travel, Vehicles, Wanted
-     * Ads.</font></td>
+     * <td><font size="-1"> Reference Items, Events, Housing, Jobs, News and Articles, People
+     * profiles, Products, Reviews, Services, Travel, Vehicles, Wanted Ads.</font></td>
      * </tr>
      *
      * <tr valign="top">
@@ -526,32 +552,37 @@ public interface Person extends GlobalInterface {
      * <tbody>
      * <tr valign="top">
      *
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="location"></a>location</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="location"></a>location</b></font></td>
      * </tr>
      * <tr valign="top">
      *
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> Location of a property. Should include street, city, state, postal code, and country, in that order. </font></td>
+     * <td><font size="-1"> Location of a property. Should include street, city, state, postal code,
+     * and country, in that order. </font></td>
      *
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Example</b></font></td>
      *
      * <td><font size="-1"> <em>Acceptable:</em><br>
-     * &lt;g:location&gt;<st1:place>123 Main St, <st1:city>Anytown</st1:city>, <st1:state>CA</st1:state>, <st1:postalcode>12345</st1:postalcode>,
+     * &lt;g:location&gt;<st1:place>123 Main St, <st1:city>Anytown</st1:city>,
+     * <st1:state>CA</st1:state>, <st1:postalcode>12345</st1:postalcode>,
      * <st1:country-region>USA</st1:country-region></st1:place>&lt;/g:location&gt;<br>
      *
      * <em>Not acceptable:</em><br>
-     * &lt;g:location&gt;<st1:place><st1:city>123</st1:city> Main St,, <st1:state>CA</st1:state>, <st1:postalcode>12345</st1:postalcode>,
+     * &lt;g:location&gt;<st1:place><st1:city>123</st1:city> Main St,, <st1:state>CA</st1:state>,
+     * <st1:postalcode>12345</st1:postalcode>,
      * <st1:country-region>USA</st1:country-region></st1:place>&lt;/g:location&gt;<br>
-     * &lt;g:location&gt; <st1:place><st1:city>Anytown</st1:city>, <st1:state>CA</st1:state>, <st1:postalcode>12345</st1:postalcode>,
+     * &lt;g:location&gt; <st1:place><st1:city>Anytown</st1:city>, <st1:state>CA</st1:state>,
+     * <st1:postalcode>12345</st1:postalcode>,
      * <st1:country-region>USA</st1:country-region></st1:place>&lt;/g:location&gt;</font></td>
      *
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Reference Items, Events, Housing, Jobs, News and Articles, People profiles, Products, Reviews, Services, Travel, Vehicles, Wanted
-     * Ads.</font></td>
+     * <td><font size="-1"> Reference Items, Events, Housing, Jobs, News and Articles, People
+     * profiles, Products, Reviews, Services, Travel, Vehicles, Wanted Ads.</font></td>
      * </tr>
      *
      * <tr valign="top">
@@ -573,14 +604,15 @@ public interface Person extends GlobalInterface {
      *
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a name="marital_status"></a>marital_status</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a
+     * name="marital_status"></a>marital_status</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1">
      *
      * <b>Details</b></font></td>
-     * <td><font size="-1"> Marital status of an individual in a People profiles bulk upload entry. For example -single, divorced, separated, widowed, married,
-     * and �in relationship.�</font></td>
+     * <td><font size="-1"> Marital status of an individual in a People profiles bulk upload entry.
+     * For example -single, divorced, separated, widowed, married, and �in relationship.�</font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -618,14 +650,15 @@ public interface Person extends GlobalInterface {
      *
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a name="marital_status"></a>marital_status</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a
+     * name="marital_status"></a>marital_status</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1">
      *
      * <b>Details</b></font></td>
-     * <td><font size="-1"> Marital status of an individual in a People profiles bulk upload entry. For example -single, divorced, separated, widowed, married,
-     * and �in relationship.�</font></td>
+     * <td><font size="-1"> Marital status of an individual in a People profiles bulk upload entry.
+     * For example -single, divorced, separated, widowed, married, and �in relationship.�</font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -663,13 +696,15 @@ public interface Person extends GlobalInterface {
      * <tbody>
      * <tr valign="top">
      *
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="occupation"></a>occupation</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="occupation"></a>occupation</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1">
      *
      * <b>Details</b></font></td>
-     * <td><font size="-1"> Industry the individual in a People profiles bulk upload is employed in.</font></td>
+     * <td><font size="-1"> Industry the individual in a People profiles bulk upload is employed
+     * in.</font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -705,13 +740,15 @@ public interface Person extends GlobalInterface {
      * <tbody>
      * <tr valign="top">
      *
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="occupation"></a>occupation</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="occupation"></a>occupation</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1">
      *
      * <b>Details</b></font></td>
-     * <td><font size="-1"> Industry the individual in a People profiles bulk upload is employed in.</font></td>
+     * <td><font size="-1"> Industry the individual in a People profiles bulk upload is employed
+     * in.</font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -746,19 +783,22 @@ public interface Person extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="sexual_orientation"></a>sexual_orientation</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="sexual_orientation"></a>sexual_orientation</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1">
      *
      * <b>Details</b></font></td>
      *
-     * <td><font size="-1"> Sexual orientation of an individual in a People profiles information type..</font></td>
+     * <td><font size="-1"> Sexual orientation of an individual in a People profiles information
+     * type..</font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Example</b></font></td>
      *
-     * <td><font size="-1"> &lt;g:sexual_orientation&gt;straight&lt;/g:sexual_orientation&gt;</font></td>
+     * <td><font size="-1"> &lt;g:sexual_orientation&gt;straight&lt;/g:sexual_orientation&gt;</font>
+     * </td>
      *
      * </tr>
      * <tr valign="top">
@@ -786,19 +826,22 @@ public interface Person extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="sexual_orientation"></a>sexual_orientation</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="sexual_orientation"></a>sexual_orientation</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1">
      *
      * <b>Details</b></font></td>
      *
-     * <td><font size="-1"> Sexual orientation of an individual in a People profiles information type..</font></td>
+     * <td><font size="-1"> Sexual orientation of an individual in a People profiles information
+     * type..</font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Example</b></font></td>
      *
-     * <td><font size="-1"> &lt;g:sexual_orientation&gt;straight&lt;/g:sexual_orientation&gt;</font></td>
+     * <td><font size="-1"> &lt;g:sexual_orientation&gt;straight&lt;/g:sexual_orientation&gt;</font>
+     * </td>
      *
      * </tr>
      * <tr valign="top">

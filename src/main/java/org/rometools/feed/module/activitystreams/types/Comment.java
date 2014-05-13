@@ -22,10 +22,12 @@ package org.rometools.feed.module.activitystreams.types;
  * The "comment" object type represents a textual response to another object.
  * </p>
  * <p>
- * The comment object type MUST NOT be used for other kinds of replies, such as video replies or reviews.
+ * The comment object type MUST NOT be used for other kinds of replies, such as video replies or
+ * reviews.
  * </p>
  * <p>
- * The "comment" object type is identified by the URI <tt>http://activitystrea.ms/schema/1.0/comment</tt>.
+ * The "comment" object type is identified by the URI
+ * <tt>http://activitystrea.ms/schema/1.0/comment</tt>.
  * </p>
  * <p>
  * A comment has the following additional components:
@@ -35,13 +37,16 @@ package org.rometools.feed.module.activitystreams.types;
  * <blockquote class="text">
  * <dl>
  * <dt>Subject</dt>
- * <dd>The subject of the comment. Represented by the Name component of the base Object Construct. Many systems do not have the concept of a title or subject
- * for a comment; such systems MUST omit the Name component. Processors SHOULD refer to such comments as simply being "a comment", with appropriate
- * localization, if they are to be described in a sentence.</dd>
+ * <dd>The subject of the comment. Represented by the Name component of the base Object Construct.
+ * Many systems do not have the concept of a title or subject for a comment; such systems MUST omit
+ * the Name component. Processors SHOULD refer to such comments as simply being "a comment", with
+ * appropriate localization, if they are to be described in a sentence.</dd>
  * <dt>Content</dt>
- * <dd>The content of the comment. Represented in JSON as a property called <tt>content</tt> whose value is a JSON string containing a fragment of HTML that
- * represents the content. Publishers SHOULD include any markup necessary to achieve a similar presentation to that on the publisher's own HTML pages, including
- * any links that the service automatically adds. Processors MAY remove all HTML markup and consider the comment to be plain text.</dd>
+ * <dd>The content of the comment. Represented in JSON as a property called <tt>content</tt> whose
+ * value is a JSON string containing a fragment of HTML that represents the content. Publishers
+ * SHOULD include any markup necessary to achieve a similar presentation to that on the publisher's
+ * own HTML pages, including any links that the service automatically adds. Processors MAY remove
+ * all HTML markup and consider the comment to be plain text.</dd>
  * </dl>
  * </blockquote>
  *

@@ -35,22 +35,25 @@ import com.sun.syndication.feed.impl.ToStringBean;
  *
  * Optional Elements
  * <p>
- * The following elements are optional and may appear as sub-elements of &lt;channel&gt;, &lt;item&gt;, &lt;media:content&gt; and/or &lt;media:group&gt;.
+ * The following elements are optional and may appear as sub-elements of &lt;channel&gt;,
+ * &lt;item&gt;, &lt;media:content&gt; and/or &lt;media:group&gt;.
  *
  *
  * </p>
  * <p>
  *
- * When an element appears at a shallow level, such as &lt;channel&gt; or &lt;item&gt;, it means that the element should be applied to every media object within
- * its scope.
+ * When an element appears at a shallow level, such as &lt;channel&gt; or &lt;item&gt;, it means
+ * that the element should be applied to every media object within its scope.
  * </p>
  *
  *
  * <p>
- * Duplicated elements appearing at deeper levels of the document tree have higher priority over other levels.
+ * Duplicated elements appearing at deeper levels of the document tree have higher priority over
+ * other levels.
  *
- * For example, &lt;media:content&gt; level elements are favored over &lt;item&gt; level elements. The priority level is listed from strongest to weakest:
- * &lt;media:content&gt;, &lt;media:group&gt;, &lt;item&gt;, &lt;channel&gt;.
+ * For example, &lt;media:content&gt; level elements are favored over &lt;item&gt; level elements.
+ * The priority level is listed from strongest to weakest: &lt;media:content&gt;,
+ * &lt;media:group&gt;, &lt;item&gt;, &lt;channel&gt;.
  * </p>
  *
  * @author cooper
@@ -81,28 +84,31 @@ public class Metadata implements Cloneable, Serializable {
     /**
      * <strong>&lt;media:category&gt;</strong></p>
      * <p>
-     * Allows a taxonomy to be set that gives an indication of the type of media content, and its particular contents. It has 2 optional attributes.
+     * Allows a taxonomy to be set that gives an indication of the type of media content, and its
+     * particular contents. It has 2 optional attributes.
      * </p>
      *
      * <pre>
      * &lt;media:category scheme="http://search.yahoo.com/mrss/category_
      *        schema"&gt;music/artist/album/song&lt;/media:category&gt;
-     *
+     * 
      *        &lt;media:category scheme="http://dmoz.org" label="Ace Ventura - Pet
      *        Detective"&gt;Arts/Movies/Titles/A/Ace_Ventura_Series/Ace_Ventura_
      *        -_Pet_Detective&lt;/media:category&gt;
-     *
+     * 
      *        &lt;media:category scheme="urn:flickr:tags"&gt;ycantpark
      *        mobile&lt;/media:category&gt;
      * </pre>
      *
      * <p>
-     * <em>scheme</em> is the URI that identifies the categorization scheme. It is an optional attribute. If this attribute is not included, the default scheme
-     * is 'http://search.yahoo.com/mrss/category_schema'.
+     * <em>scheme</em> is the URI that identifies the categorization scheme. It is an optional
+     * attribute. If this attribute is not included, the default scheme is
+     * 'http://search.yahoo.com/mrss/category_schema'.
      * </p>
      *
      * <p>
-     * <em>label</em> is the human readable label that can be displayed in end user applications. It is an optional attribute.
+     * <em>label</em> is the human readable label that can be displayed in end user applications. It
+     * is an optional attribute.
      * </p>
      *
      * @param categories categories for the item
@@ -114,28 +120,31 @@ public class Metadata implements Cloneable, Serializable {
     /**
      * <strong>&lt;media:category&gt;</strong></p>
      * <p>
-     * Allows a taxonomy to be set that gives an indication of the type of media content, and its particular contents. It has 2 optional attributes.
+     * Allows a taxonomy to be set that gives an indication of the type of media content, and its
+     * particular contents. It has 2 optional attributes.
      * </p>
      *
      * <pre>
      * &lt;media:category scheme="http://search.yahoo.com/mrss/category_
      *        schema"&gt;music/artist/album/song&lt;/media:category&gt;
-     *
+     * 
      *        &lt;media:category scheme="http://dmoz.org" label="Ace Ventura - Pet
      *        Detective"&gt;Arts/Movies/Titles/A/Ace_Ventura_Series/Ace_Ventura_
      *        -_Pet_Detective&lt;/media:category&gt;
-     *
+     * 
      *        &lt;media:category scheme="urn:flickr:tags"&gt;ycantpark
      *        mobile&lt;/media:category&gt;
      * </pre>
      *
      * <p>
-     * <em>scheme</em> is the URI that identifies the categorization scheme. It is an optional attribute. If this attribute is not included, the default scheme
-     * is 'http://search.yahoo.com/mrss/category_schema'.
+     * <em>scheme</em> is the URI that identifies the categorization scheme. It is an optional
+     * attribute. If this attribute is not included, the default scheme is
+     * 'http://search.yahoo.com/mrss/category_schema'.
      * </p>
      *
      * <p>
-     * <em>label</em> is the human readable label that can be displayed in end user applications. It is an optional attribute.
+     * <em>label</em> is the human readable label that can be displayed in end user applications. It
+     * is an optional attribute.
      * </p>
      *
      * @return categories for the item.
@@ -154,8 +163,9 @@ public class Metadata implements Cloneable, Serializable {
      * &lt;media:copyright url="http://blah.com/additional-info.html"&gt;2005 FooBar Media&lt;/media:copyright&gt;
      * </pre>
      * <p>
-     * <em>url</em> is the url for a terms of use page or additional copyright information. If the media is operating under a Creative Commons license, the
-     * Creative Commons module should be used instead. It is an optional attribute.
+     * <em>url</em> is the url for a terms of use page or additional copyright information. If the
+     * media is operating under a Creative Commons license, the Creative Commons module should be
+     * used instead. It is an optional attribute.
      * </p>
      *
      * @param copyright copyright text
@@ -174,8 +184,9 @@ public class Metadata implements Cloneable, Serializable {
      * &lt;media:copyright url="http://blah.com/additional-info.html"&gt;2005 FooBar Media&lt;/media:copyright&gt;
      * </pre>
      * <p>
-     * <em>url</em> is the url for a terms of use page or additional copyright information. If the media is operating under a Creative Commons license, the
-     * Creative Commons module should be used instead. It is an optional attribute.
+     * <em>url</em> is the url for a terms of use page or additional copyright information. If the
+     * media is operating under a Creative Commons license, the Creative Commons module should be
+     * used instead. It is an optional attribute.
      * </p>
      *
      * @return Copyright text
@@ -194,8 +205,9 @@ public class Metadata implements Cloneable, Serializable {
      * &lt;media:copyright url="http://blah.com/additional-info.html"&gt;2005 FooBar Media&lt;/media:copyright&gt;
      * </pre>
      * <p>
-     * <em>url</em> is the url for a terms of use page or additional copyright information. If the media is operating under a Creative Commons license, the
-     * Creative Commons module should be used instead. It is an optional attribute.
+     * <em>url</em> is the url for a terms of use page or additional copyright information. If the
+     * media is operating under a Creative Commons license, the Creative Commons module should be
+     * used instead. It is an optional attribute.
      * </p>
      *
      * @param copyrightUrl link to more copyright information.
@@ -214,8 +226,9 @@ public class Metadata implements Cloneable, Serializable {
      * &lt;media:copyright url="http://blah.com/additional-info.html"&gt;2005 FooBar Media&lt;/media:copyright&gt;
      * </pre>
      * <p>
-     * <em>url</em> is the url for a terms of use page or additional copyright information. If the media is operating under a Creative Commons license, the
-     * Creative Commons module should be used instead. It is an optional attribute.
+     * <em>url</em> is the url for a terms of use page or additional copyright information. If the
+     * media is operating under a Creative Commons license, the Creative Commons module should be
+     * used instead. It is an optional attribute.
      * </p>
      *
      * @return Link to more copyright information.
@@ -228,9 +241,10 @@ public class Metadata implements Cloneable, Serializable {
      * <strong>&lt;media:credit&gt;</strong></p>
      *
      * <p>
-     * Notable entity and the contribution to the creation of the media object. Current entities can include people, companies, locations, etc. Specific
-     * entities can have multiple roles, and several entities can have the same role. These should appear as distinct &lt;media:credit&gt; elements. It has 2
-     * optional attributes.
+     * Notable entity and the contribution to the creation of the media object. Current entities can
+     * include people, companies, locations, etc. Specific entities can have multiple roles, and
+     * several entities can have the same role. These should appear as distinct &lt;media:credit&gt;
+     * elements. It has 2 optional attributes.
      * </p>
      *
      * <pre>
@@ -241,8 +255,9 @@ public class Metadata implements Cloneable, Serializable {
      * </p>
      *
      * <p>
-     * <em>scheme</em> is the URI that identifies the role scheme. It is an optional attribute. If this attribute is not included, the default scheme is
-     * 'urn:ebu'. See: European Broadcasting Union Role Codes.
+     * <em>scheme</em> is the URI that identifies the role scheme. It is an optional attribute. If
+     * this attribute is not included, the default scheme is 'urn:ebu'. See: European Broadcasting
+     * Union Role Codes.
      * </p>
      *
      *
@@ -274,7 +289,9 @@ public class Metadata implements Cloneable, Serializable {
      *        vocalist
      * </pre>
      * <p>
-     * Additional roles: <a href="http://www.ebu.ch/en/technical/metadata/specifications/role_codes.php">European Broadcasting Union Role Codes</a>
+     * Additional roles: <a
+     * href="http://www.ebu.ch/en/technical/metadata/specifications/role_codes.php">European
+     * Broadcasting Union Role Codes</a>
      *
      * @param credits credits for the item.
      */
@@ -286,9 +303,10 @@ public class Metadata implements Cloneable, Serializable {
      * <strong>&lt;media:credit&gt;</strong></p>
      *
      * <p>
-     * Notable entity and the contribution to the creation of the media object. Current entities can include people, companies, locations, etc. Specific
-     * entities can have multiple roles, and several entities can have the same role. These should appear as distinct &lt;media:credit&gt; elements. It has 2
-     * optional attributes.
+     * Notable entity and the contribution to the creation of the media object. Current entities can
+     * include people, companies, locations, etc. Specific entities can have multiple roles, and
+     * several entities can have the same role. These should appear as distinct &lt;media:credit&gt;
+     * elements. It has 2 optional attributes.
      * </p>
      *
      * <pre>
@@ -299,8 +317,9 @@ public class Metadata implements Cloneable, Serializable {
      * </p>
      *
      * <p>
-     * <em>scheme</em> is the URI that identifies the role scheme. It is an optional attribute. If this attribute is not included, the default scheme is
-     * 'urn:ebu'. See: European Broadcasting Union Role Codes.
+     * <em>scheme</em> is the URI that identifies the role scheme. It is an optional attribute. If
+     * this attribute is not included, the default scheme is 'urn:ebu'. See: European Broadcasting
+     * Union Role Codes.
      * </p>
      *
      *
@@ -332,7 +351,9 @@ public class Metadata implements Cloneable, Serializable {
      *        vocalist
      * </pre>
      * <p>
-     * Additional roles: <a href="http://www.ebu.ch/en/technical/metadata/specifications/role_codes.php">European Broadcasting Union Role Codes</a>
+     * Additional roles: <a
+     * href="http://www.ebu.ch/en/technical/metadata/specifications/role_codes.php">European
+     * Broadcasting Union Role Codes</a>
      *
      * @return credits for the time.
      */
@@ -343,15 +364,17 @@ public class Metadata implements Cloneable, Serializable {
     /**
      * <strong>&lt;media:description&gt;</strong></p>
      * <p>
-     * Short description describing the media object typically a sentence in length. It has 1 optional attribute.
+     * Short description describing the media object typically a sentence in length. It has 1
+     * optional attribute.
      * </p>
      *
      * <pre>
      * &lt;media:description type="plain"&gt;This was some really bizarre band I listened to as a young lad.&lt;/media:description&gt;
      * </pre>
      * <p>
-     * <em>type</em> specifies the type of text embedded. Possible values are either 'plain' or 'html'. Default value is 'plain'. All html must be
-     * entity-encoded. It is an optional attribute.
+     * <em>type</em> specifies the type of text embedded. Possible values are either 'plain' or
+     * 'html'. Default value is 'plain'. All html must be entity-encoded. It is an optional
+     * attribute.
      * </p>
      *
      * @param description value of the description
@@ -363,15 +386,17 @@ public class Metadata implements Cloneable, Serializable {
     /**
      * <strong>&lt;media:description&gt;</strong></p>
      * <p>
-     * Short description describing the media object typically a sentence in length. It has 1 optional attribute.
+     * Short description describing the media object typically a sentence in length. It has 1
+     * optional attribute.
      * </p>
      *
      * <pre>
      * &lt;media:description type="plain"&gt;This was some really bizarre band I listened to as a young lad.&lt;/media:description&gt;
      * </pre>
      * <p>
-     * <em>type</em> specifies the type of text embedded. Possible values are either 'plain' or 'html'. Default value is 'plain'. All html must be
-     * entity-encoded. It is an optional attribute.
+     * <em>type</em> specifies the type of text embedded. Possible values are either 'plain' or
+     * 'html'. Default value is 'plain'. All html must be entity-encoded. It is an optional
+     * attribute.
      * </p>
      *
      * @return value of the description
@@ -383,15 +408,17 @@ public class Metadata implements Cloneable, Serializable {
     /**
      * <strong>&lt;media:description&gt;</strong></p>
      * <p>
-     * Short description describing the media object typically a sentence in length. It has 1 optional attribute.
+     * Short description describing the media object typically a sentence in length. It has 1
+     * optional attribute.
      * </p>
      *
      * <pre>
      * &lt;media:description type="plain"&gt;This was some really bizarre band I listened to as a young lad.&lt;/media:description&gt;
      * </pre>
      * <p>
-     * <em>type</em> specifies the type of text embedded. Possible values are either 'plain' or 'html'. Default value is 'plain'. All html must be
-     * entity-encoded. It is an optional attribute.
+     * <em>type</em> specifies the type of text embedded. Possible values are either 'plain' or
+     * 'html'. Default value is 'plain'. All html must be entity-encoded. It is an optional
+     * attribute.
      * </p>
      *
      * @param descriptionType type of the description.
@@ -403,15 +430,17 @@ public class Metadata implements Cloneable, Serializable {
     /**
      * <strong>&lt;media:description&gt;</strong></p>
      * <p>
-     * Short description describing the media object typically a sentence in length. It has 1 optional attribute.
+     * Short description describing the media object typically a sentence in length. It has 1
+     * optional attribute.
      * </p>
      *
      * <pre>
      * &lt;media:description type="plain"&gt;This was some really bizarre band I listened to as a young lad.&lt;/media:description&gt;
      * </pre>
      * <p>
-     * <em>type</em> specifies the type of text embedded. Possible values are either 'plain' or 'html'. Default value is 'plain'. All html must be
-     * entity-encoded. It is an optional attribute.
+     * <em>type</em> specifies the type of text embedded. Possible values are either 'plain' or
+     * 'html'. Default value is 'plain'. All html must be entity-encoded. It is an optional
+     * attribute.
      * </p>
      *
      * @return type of the description
@@ -424,8 +453,8 @@ public class Metadata implements Cloneable, Serializable {
      * <strong>&lt;media:hash&gt;</strong></p>
      *
      * <p>
-     * This is the hash of the binary media file. It can appear multiple times as long as each instance is a different <em>algo</em>. It has 1 optional
-     * attribute.
+     * This is the hash of the binary media file. It can appear multiple times as long as each
+     * instance is a different <em>algo</em>. It has 1 optional attribute.
      * </p>
      * <p>
      * </p>
@@ -435,8 +464,8 @@ public class Metadata implements Cloneable, Serializable {
      * </pre>
      *
      * <p>
-     * <em>algo</em> indicates the algorithm used to create the hash. Possible values are 'md5' and 'sha-1'. Default value is 'md5'. It is an optional
-     * attribute.
+     * <em>algo</em> indicates the algorithm used to create the hash. Possible values are 'md5' and
+     * 'sha-1'. Default value is 'md5'. It is an optional attribute.
      *
      * @param hash sets the hash for the item.
      */
@@ -448,8 +477,8 @@ public class Metadata implements Cloneable, Serializable {
      * <strong>&lt;media:hash&gt;</strong></p>
      *
      * <p>
-     * This is the hash of the binary media file. It can appear multiple times as long as each instance is a different <em>algo</em>. It has 1 optional
-     * attribute.
+     * This is the hash of the binary media file. It can appear multiple times as long as each
+     * instance is a different <em>algo</em>. It has 1 optional attribute.
      * </p>
      * <p>
      * </p>
@@ -459,8 +488,8 @@ public class Metadata implements Cloneable, Serializable {
      * </pre>
      *
      * <p>
-     * <em>algo</em> indicates the algorithm used to create the hash. Possible values are 'md5' and 'sha-1'. Default value is 'md5'. It is an optional
-     * attribute.
+     * <em>algo</em> indicates the algorithm used to create the hash. Possible values are 'md5' and
+     * 'sha-1'. Default value is 'md5'. It is an optional attribute.
      *
      * @return returns a Hash object for the item.
      */
@@ -471,7 +500,8 @@ public class Metadata implements Cloneable, Serializable {
     /**
      * <strong>&lt;media:keywords&gt;</strong></p>
      * <p>
-     * Highly relevant keywords describing the media object with typically a maximum of ten words. The keywords and phrases should be comma delimited.
+     * Highly relevant keywords describing the media object with typically a maximum of ten words.
+     * The keywords and phrases should be comma delimited.
      * </p>
      *
      * <pre>
@@ -487,7 +517,8 @@ public class Metadata implements Cloneable, Serializable {
     /**
      * <strong>&lt;media:keywords&gt;</strong></p>
      * <p>
-     * Highly relevant keywords describing the media object with typically a maximum of ten words. The keywords and phrases should be comma delimited.
+     * Highly relevant keywords describing the media object with typically a maximum of ten words.
+     * The keywords and phrases should be comma delimited.
      * </p>
      *
      * <pre>
@@ -505,22 +536,22 @@ public class Metadata implements Cloneable, Serializable {
      *
      *
      * <p>
-     * This allows the permissible audience to be declared. If this element is not included, it assumes that no restrictions are necessary. It has one optional
-     * attribute.
+     * This allows the permissible audience to be declared. If this element is not included, it
+     * assumes that no restrictions are necessary. It has one optional attribute.
      * </p>
      *
      * <pre>
      * &lt;media:rating scheme="urn:simple"&gt;adult&lt;/media:rating&gt;
      *               &lt;media:rating scheme="urn:icra"&gt;r (cz 1 lz 1 nz 1 oz 1 vz 1)&lt;/media:rating&gt;
      *               &lt;media:rating scheme="urn:mpaa"&gt;pg&lt;/media:rating&gt;
-     *
+     * 
      *               &lt;media:rating scheme="urn:v-chip"&gt;tv-y7-fv&lt;/media:rating&gt;
      * </pre>
      *
      *
      * <p>
-     * <em>scheme</em> is the URI that identifies the rating scheme. It is an optional attribute. If this attribute is not included, the default scheme is
-     * urn:simple (adult | nonadult).
+     * <em>scheme</em> is the URI that identifies the rating scheme. It is an optional attribute. If
+     * this attribute is not included, the default scheme is urn:simple (adult | nonadult).
      * </p>
      *
      * <p>
@@ -536,22 +567,22 @@ public class Metadata implements Cloneable, Serializable {
      *
      *
      * <p>
-     * This allows the permissible audience to be declared. If this element is not included, it assumes that no restrictions are necessary. It has one optional
-     * attribute.
+     * This allows the permissible audience to be declared. If this element is not included, it
+     * assumes that no restrictions are necessary. It has one optional attribute.
      * </p>
      *
      * <pre>
      * &lt;media:rating scheme="urn:simple"&gt;adult&lt;/media:rating&gt;
      *               &lt;media:rating scheme="urn:icra"&gt;r (cz 1 lz 1 nz 1 oz 1 vz 1)&lt;/media:rating&gt;
      *               &lt;media:rating scheme="urn:mpaa"&gt;pg&lt;/media:rating&gt;
-     *
+     * 
      *               &lt;media:rating scheme="urn:v-chip"&gt;tv-y7-fv&lt;/media:rating&gt;
      * </pre>
      *
      *
      * <p>
-     * <em>scheme</em> is the URI that identifies the rating scheme. It is an optional attribute. If this attribute is not included, the default scheme is
-     * urn:simple (adult | nonadult).
+     * <em>scheme</em> is the URI that identifies the rating scheme. It is an optional attribute. If
+     * this attribute is not included, the default scheme is urn:simple (adult | nonadult).
      * </p>
      *
      * <p>
@@ -566,11 +597,14 @@ public class Metadata implements Cloneable, Serializable {
      * <strong>&lt;media:restriction&gt; </strong></p>
      *
      * <p>
-     * Allows restrictions to be placed on the aggregator rendering the media in the feed. Currently, restrictions are based on distributor (uri) and country
-     * codes. This element is purely informational and no obligation can be assumed or implied. Only one &lt;media:restriction&gt; element of the same
-     * <em>type</em> can be applied to a media object - all others will be ignored.&nbsp;Entities in this element should be space separated. To allow the
-     * producer to explicitly declare his/her intentions, two literals are reserved: 'all', 'none'. These literals can only be used once. This element has 1
-     * required attribute, and 1 optional attribute (with strict requirements for its exclusion).
+     * Allows restrictions to be placed on the aggregator rendering the media in the feed.
+     * Currently, restrictions are based on distributor (uri) and country codes. This element is
+     * purely informational and no obligation can be assumed or implied. Only one
+     * &lt;media:restriction&gt; element of the same <em>type</em> can be applied to a media object
+     * - all others will be ignored.&nbsp;Entities in this element should be space separated. To
+     * allow the producer to explicitly declare his/her intentions, two literals are reserved:
+     * 'all', 'none'. These literals can only be used once. This element has 1 required attribute,
+     * and 1 optional attribute (with strict requirements for its exclusion).
      * </p>
      *
      * <pre>
@@ -578,8 +612,9 @@ public class Metadata implements Cloneable, Serializable {
      * </pre>
      *
      * <p>
-     * <em>relationship</em> indicates the type of relationship that the restriction represents (allow | deny). In the example above, the media object should
-     * only be syndicated in Australia and the United States. It is a required attribute.
+     * <em>relationship</em> indicates the type of relationship that the restriction represents
+     * (allow | deny). In the example above, the media object should only be syndicated in Australia
+     * and the United States. It is a required attribute.
      * </p>
      *
      * @param restrictions restrictions for the item.
@@ -592,11 +627,14 @@ public class Metadata implements Cloneable, Serializable {
      * <strong>&lt;media:restriction&gt; </strong></p>
      *
      * <p>
-     * Allows restrictions to be placed on the aggregator rendering the media in the feed. Currently, restrictions are based on distributor (uri) and country
-     * codes. This element is purely informational and no obligation can be assumed or implied. Only one &lt;media:restriction&gt; element of the same
-     * <em>type</em> can be applied to a media object - all others will be ignored.&nbsp;Entities in this element should be space separated. To allow the
-     * producer to explicitly declare his/her intentions, two literals are reserved: 'all', 'none'. These literals can only be used once. This element has 1
-     * required attribute, and 1 optional attribute (with strict requirements for its exclusion).
+     * Allows restrictions to be placed on the aggregator rendering the media in the feed.
+     * Currently, restrictions are based on distributor (uri) and country codes. This element is
+     * purely informational and no obligation can be assumed or implied. Only one
+     * &lt;media:restriction&gt; element of the same <em>type</em> can be applied to a media object
+     * - all others will be ignored.&nbsp;Entities in this element should be space separated. To
+     * allow the producer to explicitly declare his/her intentions, two literals are reserved:
+     * 'all', 'none'. These literals can only be used once. This element has 1 required attribute,
+     * and 1 optional attribute (with strict requirements for its exclusion).
      * </p>
      *
      * <pre>
@@ -604,8 +642,9 @@ public class Metadata implements Cloneable, Serializable {
      * </pre>
      *
      * <p>
-     * <em>relationship</em> indicates the type of relationship that the restriction represents (allow | deny). In the example above, the media object should
-     * only be syndicated in Australia and the United States. It is a required attribute.
+     * <em>relationship</em> indicates the type of relationship that the restriction represents
+     * (allow | deny). In the example above, the media object should only be syndicated in Australia
+     * and the United States. It is a required attribute.
      * </p>
      *
      * @return restrictions for the item.
@@ -617,21 +656,24 @@ public class Metadata implements Cloneable, Serializable {
     /**
      * <strong>&lt;media:text&gt;</strong></p>
      * <p>
-     * Allows the inclusion of a text transcript, closed captioning, or lyrics of the media content. Many of these elements are permitted to provide a time
-     * series of text. In such cases, it is encouraged, but not required, that the elements be grouped by language and appear in time sequence order based on
-     * the <em>start</em> time. Elements can have overlapping <em>start</em> and <em>end</em> times. It has 4 optional attributes.
+     * Allows the inclusion of a text transcript, closed captioning, or lyrics of the media content.
+     * Many of these elements are permitted to provide a time series of text. In such cases, it is
+     * encouraged, but not required, that the elements be grouped by language and appear in time
+     * sequence order based on the <em>start</em> time. Elements can have overlapping <em>start</em>
+     * and <em>end</em> times. It has 4 optional attributes.
      * </p>
      *
      * <pre>
      * &lt;media:text type="plain" lang="en" start="00:00:03.000"
      *        end="00:00:10.000"&gt; Oh, say, can you see&lt;/media:text&gt;
-     *
+     * 
      *        &lt;media:text type="plain" lang="en" start="00:00:10.000"
      *        end="00:00:17.000"&gt;By the dawn's early light&lt;/media:text&gt;
      * </pre>
      * <p>
-     * <em>type</em> specifies the type of text embedded. Possible values are either 'plain' or 'html'. Default value is 'plain'. All html must be
-     * entity-encoded. It is an optional attribute.
+     * <em>type</em> specifies the type of text embedded. Possible values are either 'plain' or
+     * 'html'. Default value is 'plain'. All html must be entity-encoded. It is an optional
+     * attribute.
      * </p>
      *
      *
@@ -640,18 +682,22 @@ public class Metadata implements Cloneable, Serializable {
      *
      *
      * <p>
-     * <em>lang</em> is the primary language encapsulated in the media object. Language codes possible are detailed in RFC 3066. This attribute is used similar
-     * to the xml:lang attribute detailed in the XML 1.0 Specification (Third Edition). It is an optional attribute.
+     * <em>lang</em> is the primary language encapsulated in the media object. Language codes
+     * possible are detailed in RFC 3066. This attribute is used similar to the xml:lang attribute
+     * detailed in the XML 1.0 Specification (Third Edition). It is an optional attribute.
      * </p>
      *
      * <p>
-     * <em>start</em> specifies the start time offset that the text starts being relevant to the media object. An example of this would be for closed
-     * captioning. It uses the NTP time code format (see: the time attribute used in &lt;media:thumbnail&gt;).&nbsp;It is an optional attribute.
+     * <em>start</em> specifies the start time offset that the text starts being relevant to the
+     * media object. An example of this would be for closed captioning. It uses the NTP time code
+     * format (see: the time attribute used in &lt;media:thumbnail&gt;).&nbsp;It is an optional
+     * attribute.
      * </p>
      *
      * <p>
-     * <em>end</em> specifies the end time that the text is relevant. If this attribute is not provided, and a <em>start</em> time is used, it is expected that
-     * the end time is either the end of the clip or the start of the next &lt;media:text&gt; element.
+     * <em>end</em> specifies the end time that the text is relevant. If this attribute is not
+     * provided, and a <em>start</em> time is used, it is expected that the end time is either the
+     * end of the clip or the start of the next &lt;media:text&gt; element.
      *
      * @param text text objects for the item.
      */
@@ -662,21 +708,24 @@ public class Metadata implements Cloneable, Serializable {
     /**
      * <strong>&lt;media:text&gt;</strong></p>
      * <p>
-     * Allows the inclusion of a text transcript, closed captioning, or lyrics of the media content. Many of these elements are permitted to provide a time
-     * series of text. In such cases, it is encouraged, but not required, that the elements be grouped by language and appear in time sequence order based on
-     * the <em>start</em> time. Elements can have overlapping <em>start</em> and <em>end</em> times. It has 4 optional attributes.
+     * Allows the inclusion of a text transcript, closed captioning, or lyrics of the media content.
+     * Many of these elements are permitted to provide a time series of text. In such cases, it is
+     * encouraged, but not required, that the elements be grouped by language and appear in time
+     * sequence order based on the <em>start</em> time. Elements can have overlapping <em>start</em>
+     * and <em>end</em> times. It has 4 optional attributes.
      * </p>
      *
      * <pre>
      * &lt;media:text type="plain" lang="en" start="00:00:03.000"
      *        end="00:00:10.000"&gt; Oh, say, can you see&lt;/media:text&gt;
-     *
+     * 
      *        &lt;media:text type="plain" lang="en" start="00:00:10.000"
      *        end="00:00:17.000"&gt;By the dawn's early light&lt;/media:text&gt;
      * </pre>
      * <p>
-     * <em>type</em> specifies the type of text embedded. Possible values are either 'plain' or 'html'. Default value is 'plain'. All html must be
-     * entity-encoded. It is an optional attribute.
+     * <em>type</em> specifies the type of text embedded. Possible values are either 'plain' or
+     * 'html'. Default value is 'plain'. All html must be entity-encoded. It is an optional
+     * attribute.
      * </p>
      *
      *
@@ -685,18 +734,22 @@ public class Metadata implements Cloneable, Serializable {
      *
      *
      * <p>
-     * <em>lang</em> is the primary language encapsulated in the media object. Language codes possible are detailed in RFC 3066. This attribute is used similar
-     * to the xml:lang attribute detailed in the XML 1.0 Specification (Third Edition). It is an optional attribute.
+     * <em>lang</em> is the primary language encapsulated in the media object. Language codes
+     * possible are detailed in RFC 3066. This attribute is used similar to the xml:lang attribute
+     * detailed in the XML 1.0 Specification (Third Edition). It is an optional attribute.
      * </p>
      *
      * <p>
-     * <em>start</em> specifies the start time offset that the text starts being relevant to the media object. An example of this would be for closed
-     * captioning. It uses the NTP time code format (see: the time attribute used in &lt;media:thumbnail&gt;).&nbsp;It is an optional attribute.
+     * <em>start</em> specifies the start time offset that the text starts being relevant to the
+     * media object. An example of this would be for closed captioning. It uses the NTP time code
+     * format (see: the time attribute used in &lt;media:thumbnail&gt;).&nbsp;It is an optional
+     * attribute.
      * </p>
      *
      * <p>
-     * <em>end</em> specifies the end time that the text is relevant. If this attribute is not provided, and a <em>start</em> time is used, it is expected that
-     * the end time is either the end of the clip or the start of the next &lt;media:text&gt; element.
+     * <em>end</em> specifies the end time that the text is relevant. If this attribute is not
+     * provided, and a <em>start</em> time is used, it is expected that the end time is either the
+     * end of the clip or the start of the next &lt;media:text&gt; element.
      *
      * @return Text objects for the item.
      */
@@ -709,8 +762,9 @@ public class Metadata implements Cloneable, Serializable {
      *
      *
      * <p>
-     * Allows particular images to be used as representative images for the media object. If multiple thumbnails are included, and time coding is not at play,
-     * it is assumed that the images are in order of importance. It has 1 required attribute and 3 optional attributes.
+     * Allows particular images to be used as representative images for the media object. If
+     * multiple thumbnails are included, and time coding is not at play, it is assumed that the
+     * images are in order of importance. It has 1 required attribute and 3 optional attributes.
      * </p>
      *
      *
@@ -732,9 +786,11 @@ public class Metadata implements Cloneable, Serializable {
      *
      *
      * <p>
-     * <em>time</em> specifies the time offset in relation to the media object. Typically this is used when creating multiple keyframes within a single video.
-     * The format for this attribute should be in the DSM-CC's Normal Play Time (NTP) as used in RTSP [<a href="http://www.ietf.org/rfc/rfc2326.txt">RFC 2326
-     * 3.6 Normal Play Time</a>]. It is an optional attribute.
+     * <em>time</em> specifies the time offset in relation to the media object. Typically this is
+     * used when creating multiple keyframes within a single video. The format for this attribute
+     * should be in the DSM-CC's Normal Play Time (NTP) as used in RTSP [<a
+     * href="http://www.ietf.org/rfc/rfc2326.txt">RFC 2326 3.6 Normal Play Time</a>]. It is an
+     * optional attribute.
      * </p>
      *
      * @param thumbnail thumbnails for the image
@@ -748,8 +804,9 @@ public class Metadata implements Cloneable, Serializable {
      *
      *
      * <p>
-     * Allows particular images to be used as representative images for the media object. If multiple thumbnails are included, and time coding is not at play,
-     * it is assumed that the images are in order of importance. It has 1 required attribute and 3 optional attributes.
+     * Allows particular images to be used as representative images for the media object. If
+     * multiple thumbnails are included, and time coding is not at play, it is assumed that the
+     * images are in order of importance. It has 1 required attribute and 3 optional attributes.
      * </p>
      *
      *
@@ -771,9 +828,11 @@ public class Metadata implements Cloneable, Serializable {
      *
      *
      * <p>
-     * <em>time</em> specifies the time offset in relation to the media object. Typically this is used when creating multiple keyframes within a single video.
-     * The format for this attribute should be in the DSM-CC's Normal Play Time (NTP) as used in RTSP [<a href="http://www.ietf.org/rfc/rfc2326.txt">RFC 2326
-     * 3.6 Normal Play Time</a>]. It is an optional attribute.
+     * <em>time</em> specifies the time offset in relation to the media object. Typically this is
+     * used when creating multiple keyframes within a single video. The format for this attribute
+     * should be in the DSM-CC's Normal Play Time (NTP) as used in RTSP [<a
+     * href="http://www.ietf.org/rfc/rfc2326.txt">RFC 2326 3.6 Normal Play Time</a>]. It is an
+     * optional attribute.
      * </p>
      *
      * @return Thumbnails for the image
@@ -793,8 +852,9 @@ public class Metadata implements Cloneable, Serializable {
      * </pre>
      *
      * <p>
-     * <em>type</em> specifies the type of text embedded. Possible values are either 'plain' or 'html'. Default value is 'plain'. All html must be
-     * entity-encoded. It is an optional attribute.
+     * <em>type</em> specifies the type of text embedded. Possible values are either 'plain' or
+     * 'html'. Default value is 'plain'. All html must be entity-encoded. It is an optional
+     * attribute.
      * </p>
      *
      * @param title Value of the title
@@ -814,8 +874,9 @@ public class Metadata implements Cloneable, Serializable {
      * </pre>
      *
      * <p>
-     * <em>type</em> specifies the type of text embedded. Possible values are either 'plain' or 'html'. Default value is 'plain'. All html must be
-     * entity-encoded. It is an optional attribute.
+     * <em>type</em> specifies the type of text embedded. Possible values are either 'plain' or
+     * 'html'. Default value is 'plain'. All html must be entity-encoded. It is an optional
+     * attribute.
      * </p>
      *
      * @return value of the title.
@@ -835,8 +896,9 @@ public class Metadata implements Cloneable, Serializable {
      * </pre>
      *
      * <p>
-     * <em>type</em> specifies the type of text embedded. Possible values are either 'plain' or 'html'. Default value is 'plain'. All html must be
-     * entity-encoded. It is an optional attribute.
+     * <em>type</em> specifies the type of text embedded. Possible values are either 'plain' or
+     * 'html'. Default value is 'plain'. All html must be entity-encoded. It is an optional
+     * attribute.
      * </p>
      *
      * @param titleType type of the title.
@@ -856,8 +918,9 @@ public class Metadata implements Cloneable, Serializable {
      * </pre>
      *
      * <p>
-     * <em>type</em> specifies the type of text embedded. Possible values are either 'plain' or 'html'. Default value is 'plain'. All html must be
-     * entity-encoded. It is an optional attribute.
+     * <em>type</em> specifies the type of text embedded. Possible values are either 'plain' or
+     * 'html'. Default value is 'plain'. All html must be entity-encoded. It is an optional
+     * attribute.
      * </p>
      *
      * @return type of the title
@@ -876,8 +939,9 @@ public class Metadata implements Cloneable, Serializable {
      * &lt;media:copyright url="http://blah.com/additional-info.html"&gt;2005 FooBar Media&lt;/media:copyright&gt;
      * </pre>
      * <p>
-     * <em>url</em> is the url for a terms of use page or additional copyright information. If the media is operating under a Creative Commons license, the
-     * Creative Commons module should be used instead. It is an optional attribute.
+     * <em>url</em> is the url for a terms of use page or additional copyright information. If the
+     * media is operating under a Creative Commons license, the Creative Commons module should be
+     * used instead. It is an optional attribute.
      * </p>
      *
      * @return Link to more copyright information.

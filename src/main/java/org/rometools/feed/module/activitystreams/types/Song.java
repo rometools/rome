@@ -21,13 +21,16 @@ package org.rometools.feed.module.activitystreams.types;
  * The "song" Object type represents a song or a recording of a song.
  * </p>
  * <p>
- * Objects of type Song might contain information about the song or recording, or they might contain some representation of the recording itself. In the latter
- * case, the song SHOULD also be annotated with the "audio" object type as described in <a class='info' href='#audio'>Section&nbsp;3.2.2<span> (</span><span
- * class='info'>Audio</span><span>)</span></a> and use its properties. This type should only be used when the publisher can guarantee that the object is a song
- * rather than merely a generic audio stream.
+ * Objects of type Song might contain information about the song or recording, or they might contain
+ * some representation of the recording itself. In the latter case, the song SHOULD also be
+ * annotated with the "audio" object type as described in <a class='info'
+ * href='#audio'>Section&nbsp;3.2.2<span> (</span><span class='info'>Audio</span><span>)</span></a>
+ * and use its properties. This type should only be used when the publisher can guarantee that the
+ * object is a song rather than merely a generic audio stream.
  * </p>
  * <p>
- * The Object type URL for the "song" Object type is <tt>http://activitystrea.ms/schema/1.0/song</tt>.
+ * The Object type URL for the "song" Object type is
+ * <tt>http://activitystrea.ms/schema/1.0/song</tt>.
  * </p>
  * <p>
  * A song has no additional components.

@@ -46,8 +46,10 @@ import com.sun.syndication.feed.impl.ToStringBean;
 /**
  * Forecast information about current astronomical conditions. Attributes:
  * <ul class="topspace">
- * <li>sunrise: today's sunrise time. The time is a string in a local time format of "h:mm am/pm", for example "7:02 am" (string)</li>
- * <li>sunset today's sunset time. The time is a string in a local time format of "h:mm am/pm", for example "4:51 pm" (string)</li>
+ * <li>sunrise: today's sunrise time. The time is a string in a local time format of "h:mm am/pm",
+ * for example "7:02 am" (string)</li>
+ * <li>sunset today's sunset time. The time is a string in a local time format of "h:mm am/pm", for
+ * example "4:51 pm" (string)</li>
  * </ul>
  *
  * @version $Id: Astronomy.java,v 1.2 2008/01/22 14:50:05 kebernet Exp $

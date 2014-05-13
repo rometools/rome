@@ -42,8 +42,8 @@ package org.rometools.feed.module.base.types;
 import java.util.Date;
 
 /**
- * This is a simple wrapper for java.util.Date that indicates it should be formatted without time of day for Google Base. It should be transparent to module
- * developers.
+ * This is a simple wrapper for java.util.Date that indicates it should be formatted without time of
+ * day for Google Base. It should be transparent to module developers.
  *
  * Move along. Nothing to see here.
  *

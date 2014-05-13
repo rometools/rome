@@ -47,7 +47,8 @@ import org.rometools.feed.module.photocast.types.Metadata;
 import com.sun.syndication.feed.module.Module;
 
 /**
- * This is a ROME module that provides support for the "http://www.apple.com/ilife/wallpapers" namespace.
+ * This is a ROME module that provides support for the "http://www.apple.com/ilife/wallpapers"
+ * namespace.
  *
  * See the package information for example usage.
  *

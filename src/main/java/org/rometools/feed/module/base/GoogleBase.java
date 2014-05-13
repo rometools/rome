@@ -45,15 +45,16 @@ import com.sun.syndication.feed.module.Module;
  * This is the root interface for the Google Base module.
  *
  * <p>
- * It supports all the individual data "types". If you want to work with, for instance, just the Article or Job datatype, you can cast it to the respective
- * interface and see only methods related to a particular entry type.
+ * It supports all the individual data "types". If you want to work with, for instance, just the
+ * Article or Job datatype, you can cast it to the respective interface and see only methods related
+ * to a particular entry type.
  * </p>
  *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @version $Revision: 1.1 $
  */
 public interface GoogleBase extends Module, Article, Course, Event, Job, Person, Product, Review, ScholarlyArticle, Service, Travel, Unknown, Vehicle, Wanted,
-Housing {
+        Housing {
     /** This is the URI for the Google Base Schema. */
     public static final String URI = "http://base.google.com/ns/1.0";
 }

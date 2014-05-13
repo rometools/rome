@@ -22,7 +22,8 @@ package org.rometools.feed.module.activitystreams.types;
  * The "photo" object type represents a graphical still image.
  * </p>
  * <p>
- * The "photo" Object type is identified by the URI <tt>http://activitystrea.ms/schema/1.0/photo</tt>.
+ * The "photo" Object type is identified by the URI
+ * <tt>http://activitystrea.ms/schema/1.0/photo</tt>.
  * </p>
  * <p>
  * A photo has the following additional components:
@@ -32,11 +33,14 @@ package org.rometools.feed.module.activitystreams.types;
  * <blockquote class="text">
  * <dl>
  * <dt>Thumbnail</dt>
- * <dd>A link to a thumbnail version of the image. Represented by the Representative Image component of the base Object Construct. Processors MAY ignore
- * thumbnails that are of an inappropriate size for their user interface.</dd>
+ * <dd>A link to a thumbnail version of the image. Represented by the Representative Image component
+ * of the base Object Construct. Processors MAY ignore thumbnails that are of an inappropriate size
+ * for their user interface.</dd>
  * <dt>Larger Image</dt>
- * <dd>A Media Link Construct linking to a larger -- ideally, full-size -- version of the photo intended for standalone viewing. Represented in JSON as a
- * property named <tt>fullImage</tt> whose value is a JSON object with properties as defined in [TODO: xref the JSON serialization of a Media Link Construct].</dd>
+ * <dd>A Media Link Construct linking to a larger -- ideally, full-size -- version of the photo
+ * intended for standalone viewing. Represented in JSON as a property named <tt>fullImage</tt> whose
+ * value is a JSON object with properties as defined in [TODO: xref the JSON serialization of a
+ * Media Link Construct].</dd>
  * </dl>
  * </blockquote>
  *

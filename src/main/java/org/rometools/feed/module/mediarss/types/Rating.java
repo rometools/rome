@@ -30,22 +30,22 @@ import com.sun.syndication.feed.impl.ToStringBean;
  *
  *
  * <p>
- * This allows the permissible audience to be declared. If this element is not included, it assumes that no restrictions are necessary. It has one optional
- * attribute.
+ * This allows the permissible audience to be declared. If this element is not included, it assumes
+ * that no restrictions are necessary. It has one optional attribute.
  * </p>
  *
  * <pre>
  * &lt;media:rating scheme="urn:simple"&gt;adult&lt;/media:rating&gt;
  *               &lt;media:rating scheme="urn:icra"&gt;r (cz 1 lz 1 nz 1 oz 1 vz 1)&lt;/media:rating&gt;
  *               &lt;media:rating scheme="urn:mpaa"&gt;pg&lt;/media:rating&gt;
- *
+ * 
  *               &lt;media:rating scheme="urn:v-chip"&gt;tv-y7-fv&lt;/media:rating&gt;
  * </pre>
  *
  *
  * <p>
- * <em>scheme</em> is the URI that identifies the rating scheme. It is an optional attribute. If this attribute is not included, the default scheme is
- * urn:simple (adult | nonadult).
+ * <em>scheme</em> is the URI that identifies the rating scheme. It is an optional attribute. If
+ * this attribute is not included, the default scheme is urn:simple (adult | nonadult).
  * </p>
  *
  * For compatibility, a medai:adult tag will appear in the ratings as a urn:simple equiv.

@@ -21,7 +21,8 @@
 package org.rometools.feed.module.base;
 
 /**
- * This is an unchecked exception that is thrown when a data value violates the Google Schema limits.
+ * This is an unchecked exception that is thrown when a data value violates the Google Schema
+ * limits.
  *
  * @version $Revision: 1.1 $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>

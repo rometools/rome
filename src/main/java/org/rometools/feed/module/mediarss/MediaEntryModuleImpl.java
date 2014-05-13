@@ -40,7 +40,8 @@ public class MediaEntryModuleImpl extends MediaModuleImpl implements MediaEntryM
     private static final long serialVersionUID = 1L;
 
     /*
-     * the variables in the MediaModule are set when they apply to all MediaContent instances in the set
+     * the variables in the MediaModule are set when they apply to all MediaContent instances in the
+     * set
      */
     private MediaContent[] mediaContents = new MediaContent[0];
     private MediaGroup[] mediaGroups = new MediaGroup[0];

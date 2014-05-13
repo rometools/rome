@@ -46,7 +46,8 @@ import java.util.StringTokenizer;
 import com.sun.syndication.io.impl.NumberParser;
 
 /**
- * An encapsulation of the duration of a podcast. This will serialize (via .toString()) to HH:MM:SS format, and can parse [H]*H:[M]*M:[S]*S or [M]*M:[S]*S.
+ * An encapsulation of the duration of a podcast. This will serialize (via .toString()) to HH:MM:SS
+ * format, and can parse [H]*H:[M]*M:[S]*S or [M]*M:[S]*S.
  *
  * @version $Revision: 1.7 $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>

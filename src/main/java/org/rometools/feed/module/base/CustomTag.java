@@ -92,8 +92,8 @@ public interface CustomTag {
      * <tr valign="top">
      * <td><font size="-1">dateTimeRange (DateTimeRange)</font></td>
      *
-     * <td><font size="-1">Start and end dates for an event. An attribute of this type will contain two sub-attributes, &lt;start&gt; and &lt;end&gt; in format
-     * YYYY-MM-DD</font></td>
+     * <td><font size="-1">Start and end dates for an event. An attribute of this type will contain
+     * two sub-attributes, &lt;start&gt; and &lt;end&gt; in format YYYY-MM-DD</font></td>
      *
      * <td><font size="-1">&lt;start&gt;1975-09-25&lt;/start&gt;<br>
      * &lt;end&gt;1975-09-25&lt;/end&gt;
@@ -123,7 +123,8 @@ public interface CustomTag {
      * </tbody>
      * </table>
      *
-     * @return The value of the tag. The objects class is determined by the "type" attribute on the tag.
+     * @return The value of the tag. The objects class is determined by the "type" attribute on the
+     *         tag.
      */
     public Object getValue();
 

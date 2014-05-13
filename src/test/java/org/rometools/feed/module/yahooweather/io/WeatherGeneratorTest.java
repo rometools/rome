@@ -24,7 +24,7 @@ import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.SyndFeedOutput;
 
 /**
- * 
+ *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class WeatherGeneratorTest extends AbstractTestCase {
@@ -47,7 +47,7 @@ public class WeatherGeneratorTest extends AbstractTestCase {
 
     /**
      * Test of generate method, of class com.totsp.xml.syndication.base.io.SlashGenerator.
-     * 
+     *
      * @throws Exception on error
      */
     public void testGenerate() throws Exception {

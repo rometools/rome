@@ -41,7 +41,8 @@ package org.rometools.feed.module.base;
 import org.rometools.feed.module.base.types.DateTimeRange;
 
 /**
- * This is an interface for the GoogleBase plug in that exposes methods used for Class or Course information entry types.
+ * This is an interface for the GoogleBase plug in that exposes methods used for Class or Course
+ * information entry types.
  *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @version $Revision: 1.2 $
@@ -56,12 +57,14 @@ public interface Course extends GlobalInterface {
      * <tbody>
      * <tr valign="top">
      *
-     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a name="course_date_range"></a>course_date_range</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a
+     * name="course_date_range"></a>course_date_range</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1">Date and time range a class is in session, in <a href="http://www.iso.org/iso/en/prods-services/popstds/datesandtime.html">ISO
-     * 8601</a>. Two sub-attributes are included in course_date_range attribute.
+     * <td><font size="-1">Date and time range a class is in session, in <a
+     * href="http://www.iso.org/iso/en/prods-services/popstds/datesandtime.html">ISO 8601</a>. Two
+     * sub-attributes are included in course_date_range attribute.
      * <ul type="disc">
      *
      * <li>start = Start date and time of a trip in format YYYY-MM-DDThh:mm:ss</li>
@@ -107,12 +110,14 @@ public interface Course extends GlobalInterface {
      * <tbody>
      * <tr valign="top">
      *
-     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a name="course_date_range"></a>course_date_range</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a
+     * name="course_date_range"></a>course_date_range</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1">Date and time range a class is in session, in <a href="http://www.iso.org/iso/en/prods-services/popstds/datesandtime.html">ISO
-     * 8601</a>. Two sub-attributes are included in course_date_range attribute.
+     * <td><font size="-1">Date and time range a class is in session, in <a
+     * href="http://www.iso.org/iso/en/prods-services/popstds/datesandtime.html">ISO 8601</a>. Two
+     * sub-attributes are included in course_date_range attribute.
      * <ul type="disc">
      *
      * <li>start = Start date and time of a trip in format YYYY-MM-DDThh:mm:ss</li>
@@ -156,7 +161,8 @@ public interface Course extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="course_number"></a>course_number</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="course_number"></a>course_number</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Details</b></font></td>
@@ -195,7 +201,8 @@ public interface Course extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="course_number"></a>course_number</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="course_number"></a>course_number</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Details</b></font></td>
@@ -233,7 +240,8 @@ public interface Course extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="course_times"></a>course_times</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="course_times"></a>course_times</b></font></td>
      *
      * </tr>
      *
@@ -272,7 +280,8 @@ public interface Course extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="course_times"></a>course_times</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="course_times"></a>course_times</b></font></td>
      *
      * </tr>
      *
@@ -311,13 +320,15 @@ public interface Course extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="salary"></a>salary</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="salary"></a>salary</b></font></td>
      * </tr>
      *
      * <tr valign="top">
      *
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> Salary for this position. Non-numeric values such as "$" symbols are not acceptable. </font></td>
+     * <td><font size="-1"> Salary for this position. Non-numeric values such as "$" symbols are not
+     * acceptable. </font></td>
      * </tr>
      * <tr valign="top">
      *
@@ -354,13 +365,15 @@ public interface Course extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="salary"></a>salary</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="salary"></a>salary</b></font></td>
      * </tr>
      *
      * <tr valign="top">
      *
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> Salary for this position. Non-numeric values such as "$" symbols are not acceptable. </font></td>
+     * <td><font size="-1"> Salary for this position. Non-numeric values such as "$" symbols are not
+     * acceptable. </font></td>
      * </tr>
      * <tr valign="top">
      *
@@ -397,7 +410,8 @@ public interface Course extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="subject"></a>subject</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="subject"></a>subject</b></font></td>
      * </tr>
      * <tr valign="top">
      *
@@ -436,7 +450,8 @@ public interface Course extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="subject"></a>subject</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="subject"></a>subject</b></font></td>
      * </tr>
      * <tr valign="top">
      *
@@ -473,7 +488,8 @@ public interface Course extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="university"></a>university</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="university"></a>university</b></font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -512,7 +528,8 @@ public interface Course extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="university"></a>university</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="university"></a>university</b></font></td>
      *
      * </tr>
      * <tr valign="top">

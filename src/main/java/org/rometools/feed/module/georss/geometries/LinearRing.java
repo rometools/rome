@@ -10,7 +10,8 @@
 package org.rometools.feed.module.georss.geometries;
 
 /**
- * Linear boundary object constructed by linear interpolation between points. Start and end point should be identical.
+ * Linear boundary object constructed by linear interpolation between points. Start and end point
+ * should be identical.
  *
  * @author runaas
  */

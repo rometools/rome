@@ -121,7 +121,7 @@ public class ContentModuleParser implements com.sun.syndication.io.ModuleParser 
                         contentStrings.add(value.getText());
                     }
 
-                    ci.setContentValueDOM((List<Content>) value.clone().getContent());
+                    ci.setContentValueDOM(value.clone().getContent());
                 }
 
                 if (format != null) {

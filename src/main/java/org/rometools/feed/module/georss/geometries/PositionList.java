@@ -122,7 +122,8 @@ public class PositionList implements Cloneable, Serializable {
     }
 
     /**
-     * Add a position at a given index in the list. The rest of the list is shifted one place to the "right"
+     * Add a position at a given index in the list. The rest of the list is shifted one place to the
+     * "right"
      *
      * @param pos position index
      * @param latitude

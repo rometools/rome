@@ -45,8 +45,9 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * This is a specialized Date class for working with the apple PhotoDate format. It provides a constructor taking a dobule value representing the fractional
- * number of days since 00:00:00 01/01/00.
+ * This is a specialized Date class for working with the apple PhotoDate format. It provides a
+ * constructor taking a dobule value representing the fractional number of days since 00:00:00
+ * 01/01/00.
  *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
@@ -74,7 +75,8 @@ public class PhotoDate extends Date {
     }
 
     /**
-     * Creates a new instance of PhotoDate with the fractional number of days since 00:00:00 01/01/00.
+     * Creates a new instance of PhotoDate with the fractional number of days since 00:00:00
+     * 01/01/00.
      *
      * @param photoDateValue fractional number of days since 00:00:00 01/01/00
      */

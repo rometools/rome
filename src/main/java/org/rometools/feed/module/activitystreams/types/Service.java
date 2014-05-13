@@ -19,11 +19,13 @@ package org.rometools.feed.module.activitystreams.types;
 
 /**
  * <p>
- * The "service" Object type represents a website, personal website or blog, business, brand, or other entity that performs some kind of work for other
- * entities, people, or services, or acts as kind of container for other objects.
+ * The "service" Object type represents a website, personal website or blog, business, brand, or
+ * other entity that performs some kind of work for other entities, people, or services, or acts as
+ * kind of container for other objects.
  * </p>
  * <p>
- * The "service" Object type is identified by the URI <tt>http://activitystrea.ms/schema/1.0/service</tt>.
+ * The "service" Object type is identified by the URI
+ * <tt>http://activitystrea.ms/schema/1.0/service</tt>.
  * </p>
  * <p>
  * A service has the following additional components:
@@ -33,9 +35,11 @@ package org.rometools.feed.module.activitystreams.types;
  * <blockquote class="text">
  * <dl>
  * <dt>icon</dt>
- * <dd>A Media Link Construct representing a link to a small image representing the service. Represented in JSON as a property named <tt>icon</tt> whose value
- * is a JSON object with properties as defined in [TODO: xref the JSON serialization of a Media Link Construct]. The linked image MUST have an aspect ratio of
- * one (horizontal) to one (vertical) and SHOULD be suitable for presentation at a small size.</dd>
+ * <dd>A Media Link Construct representing a link to a small image representing the service.
+ * Represented in JSON as a property named <tt>icon</tt> whose value is a JSON object with
+ * properties as defined in [TODO: xref the JSON serialization of a Media Link Construct]. The
+ * linked image MUST have an aspect ratio of one (horizontal) to one (vertical) and SHOULD be
+ * suitable for presentation at a small size.</dd>
  * </dl>
  * </blockquote>
  *

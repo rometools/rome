@@ -44,16 +44,22 @@ import com.sun.syndication.feed.impl.EqualsBean;
 import com.sun.syndication.feed.impl.ToStringBean;
 
 /**
- * The weather forecast for a specific day. The item element contains multiple forecast elements for today and tomorrow. Attributes:
+ * The weather forecast for a specific day. The item element contains multiple forecast elements for
+ * today and tomorrow. Attributes:
  * <ul class="topspace">
- * <li>day: day of the week to which this forecast applies. Possible values are Mon Tue Wed Thu Fri Sat Sun (string)</li>
- * <li>date: the date to which this forecast applies. The date is in "dd Mmm yyyy" format, for example "30 Nov 2005" (string)</li>
- * <li>low: the forecasted low temperature for this day, in the units specified by the yweather:units element (integer)</li>
- * <li>high: the forecasted high temperature for this day, in the units specified by the yweather:units element (integer)</li>
+ * <li>day: day of the week to which this forecast applies. Possible values are Mon Tue Wed Thu Fri
+ * Sat Sun (string)</li>
+ * <li>date: the date to which this forecast applies. The date is in "dd Mmm yyyy" format, for
+ * example "30 Nov 2005" (string)</li>
+ * <li>low: the forecasted low temperature for this day, in the units specified by the
+ * yweather:units element (integer)</li>
+ * <li>high: the forecasted high temperature for this day, in the units specified by the
+ * yweather:units element (integer)</li>
  * <li>text: a textual description of conditions, for example, "Partly Cloudy" (string)</li>
  *
- * <li>code: the condition code for this forecast. You could use this code to choose a text description or image for the forecast. The possible values for this
- * element are described in Condition Codes (integer)</li>
+ * <li>code: the condition code for this forecast. You could use this code to choose a text
+ * description or image for the forecast. The possible values for this element are described in
+ * Condition Codes (integer)</li>
  * </ul>
  *
  * @see ConditionCode
@@ -84,7 +90,8 @@ public class Forecast implements Serializable, Cloneable {
     /**
      * Constructs a new Forecast object.
      *
-     * @param day day of the week to which this forecast applies. Possible values are Mon Tue Wed Thu Fri Sat Sun (string)
+     * @param day day of the week to which this forecast applies. Possible values are Mon Tue Wed
+     *            Thu Fri Sat Sun (string)
      * @param date the date to which this forecast applies
      * @param low the forecasted low temperature for this day
      * @param high the forecasted high temperature for this day
@@ -104,7 +111,8 @@ public class Forecast implements Serializable, Cloneable {
     /**
      * Day of week
      *
-     * @return day of the week to which this forecast applies. Possible values are Mon Tue Wed Thu Fri Sat Sun (string)
+     * @return day of the week to which this forecast applies. Possible values are Mon Tue Wed Thu
+     *         Fri Sat Sun (string)
      */
     public String getDay() {
         return day;
@@ -113,7 +121,8 @@ public class Forecast implements Serializable, Cloneable {
     /**
      * Day of week
      *
-     * @param day day of the week to which this forecast applies. Possible values are Mon Tue Wed Thu Fri Sat Sun (string)
+     * @param day day of the week to which this forecast applies. Possible values are Mon Tue Wed
+     *            Thu Fri Sat Sun (string)
      */
     public void setDay(final String day) {
         this.day = day;

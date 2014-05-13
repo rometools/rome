@@ -47,11 +47,15 @@ import com.sun.syndication.feed.impl.ToStringBean;
  * The current weather conditions. Attributes:
  * <ul class="topspace">
  * <li>text: a textual description of conditions, for example, "Partly Cloudy" (string)</li>
- * <li>code: the condition code for this forecast. You could use this code to choose a text description or image for the forecast. The possible values for this
- * element are described in <a href="#codes">Condition Codes</a> (integer)</li>
- * <li>temp: the current temperature, in the units specified by the yweather:units element (integer)</li>
- * <li>date: the current date and time for which this forecast applies. [<em>I believe this should be the time this condition information was captured</em>] The
- * date is in <a href="http://www.rfc-editor.org/rfc/rfc822.txt">RFC822 Section 5</a> format, for example "Wed, 30 Nov 2005 1:56 pm PST" (string)</li>
+ * <li>code: the condition code for this forecast. You could use this code to choose a text
+ * description or image for the forecast. The possible values for this element are described in <a
+ * href="#codes">Condition Codes</a> (integer)</li>
+ * <li>temp: the current temperature, in the units specified by the yweather:units element (integer)
+ * </li>
+ * <li>date: the current date and time for which this forecast applies. [
+ * <em>I believe this should be the time this condition information was captured</em>] The date is
+ * in <a href="http://www.rfc-editor.org/rfc/rfc822.txt">RFC822 Section 5</a> format, for example
+ * "Wed, 30 Nov 2005 1:56 pm PST" (string)</li>
  * </ul>
  *
  * @version $Id: Condition.java,v 1.2 2008/01/22 14:50:05 kebernet Exp $

@@ -25,15 +25,18 @@ import com.sun.syndication.feed.impl.ObjectBean;
 
 /**
  * <p>
- * The <code>cf:sort</code> element is intended to inform the client that the property to which it refers
+ * The <code>cf:sort</code> element is intended to inform the client that the property to which it
+ * refers
  *
- * is one that is “sortable” – that is, that the client should provide a user interface that allows the
+ * is one that is “sortable” – that is, that the client should provide a user interface that allows
+ * the
  *
  * user to sort on that property.
  * </p>
  *
  * <p>
- * The <code>cf:sort</code> element can also be used to provide a label for the default sort that appears
+ * The <code>cf:sort</code> element can also be used to provide a label for the default sort that
+ * appears
  *
  * in the list (in this case, only the label attribute should be included).
  * </p>
@@ -43,20 +46,28 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * </p>
  *
  * <ul>
- * <li><b>ns</b> - this attribute is the full namespace used in the property element. If the attribute value is an empty string, it is assumed that
- * the&nbsp;property does not live in a namespace. If the ns attribute is omitted, the default value is the empty string. In the example above, the ns attribute
- * would contain "http://www.example.com/book". It would <i>not</i> contain the namespace prefix.</li>
- * <li><b>element</b> - this attribute is the name of the property (without any namespace). In the example above, the element attribute would contain
- * "firstedition" If this attribute is omitted, it is assumed that the label attribute is included and that this <code>cf:sort</code> element refers to the
- * default sort order.</li>
+ * <li><b>ns</b> - this attribute is the full namespace used in the property element. If the
+ * attribute value is an empty string, it is assumed that the&nbsp;property does not live in a
+ * namespace. If the ns attribute is omitted, the default value is the empty string. In the example
+ * above, the ns attribute would contain "http://www.example.com/book". It would <i>not</i> contain
+ * the namespace prefix.</li>
+ * <li><b>element</b> - this attribute is the name of the property (without any namespace). In the
+ * example above, the element attribute would contain "firstedition" If this attribute is omitted,
+ * it is assumed that the label attribute is included and that this <code>cf:sort</code> element
+ * refers to the default sort order.</li>
  *
- * <li><b>label</b> - this attribute contains a human-readable name for the property to which this <code>cf:sort</code> element refers. If it is omitted, the
- * client should use the value of the "element" attribute as the human-readable name. The "label" attribute is required if the "element" attribute is omitted.</li>
- * <li><b>data-type</b> - this attribute informs the client about the data-type of the property to which this <code>cf:sort</code> element refers.. It contains
- * one of the following values: date, number, text. If it is omitted, the default value is text.</li>
- * <li><b>default</b> - this attribute indicates whether the property to which this <code>cf:sort</code> element refers is the default sort order in the list.
- * The allowed values are "true" and "false". If omitted, the default value is "false". The items in the list <i>must</i> be already be sorted by the element –
- * this is, the client should not expect to have to resort by this field if it displaying content directly from the list. The client should respect only the
+ * <li><b>label</b> - this attribute contains a human-readable name for the property to which this
+ * <code>cf:sort</code> element refers. If it is omitted, the client should use the value of the
+ * "element" attribute as the human-readable name. The "label" attribute is required if the
+ * "element" attribute is omitted.</li>
+ * <li><b>data-type</b> - this attribute informs the client about the data-type of the property to
+ * which this <code>cf:sort</code> element refers.. It contains one of the following values: date,
+ * number, text. If it is omitted, the default value is text.</li>
+ * <li><b>default</b> - this attribute indicates whether the property to which this
+ * <code>cf:sort</code> element refers is the default sort order in the list. The allowed values are
+ * "true" and "false". If omitted, the default value is "false". The items in the list <i>must</i>
+ * be already be sorted by the element – this is, the client should not expect to have to resort by
+ * this field if it displaying content directly from the list. The client should respect only the
  * first instance of default="true" that it encounters.</li>
  *
  * </ul>

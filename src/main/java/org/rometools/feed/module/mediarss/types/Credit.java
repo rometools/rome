@@ -32,9 +32,10 @@ import com.sun.syndication.feed.impl.ToStringBean;
  * <strong>&lt;media:credit&gt;</strong></p>
  *
  * <p>
- * Notable entity and the contribution to the creation of the media object. Current entities can include people, companies, locations, etc. Specific entities
- * can have multiple roles, and several entities can have the same role. These should appear as distinct &lt;media:credit&gt; elements. It has 2 optional
- * attributes.
+ * Notable entity and the contribution to the creation of the media object. Current entities can
+ * include people, companies, locations, etc. Specific entities can have multiple roles, and several
+ * entities can have the same role. These should appear as distinct &lt;media:credit&gt; elements.
+ * It has 2 optional attributes.
  * </p>
  *
  * <pre>
@@ -45,8 +46,9 @@ import com.sun.syndication.feed.impl.ToStringBean;
  * </p>
  *
  * <p>
- * <em>scheme</em> is the URI that identifies the role scheme. It is an optional attribute. If this attribute is not included, the default scheme is 'urn:ebu'.
- * See: European Broadcasting Union Role Codes.
+ * <em>scheme</em> is the URI that identifies the role scheme. It is an optional attribute. If this
+ * attribute is not included, the default scheme is 'urn:ebu'. See: European Broadcasting Union Role
+ * Codes.
  * </p>
  *
  *
@@ -78,7 +80,9 @@ import com.sun.syndication.feed.impl.ToStringBean;
  *        vocalist
  * </pre>
  * <p>
- * Additional roles: <a href="http://www.ebu.ch/en/technical/metadata/specifications/role_codes.php">European Broadcasting Union Role Codes</a>
+ * Additional roles: <a
+ * href="http://www.ebu.ch/en/technical/metadata/specifications/role_codes.php">European
+ * Broadcasting Union Role Codes</a>
  *
  * @author cooper
  */

@@ -42,7 +42,8 @@ package org.rometools.feed.module.base;
 import java.util.Date;
 
 /**
- * This is an interface for the GoogleBase plug in that exposes methods used for Scholarly publication, research studies and reference materials.
+ * This is an interface for the GoogleBase plug in that exposes methods used for Scholarly
+ * publication, research studies and reference materials.
  *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @version $Revision: 1.2 $
@@ -54,7 +55,8 @@ public interface ScholarlyArticle extends GlobalInterface {
      *
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="author"></a>author</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="author"></a>author</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
@@ -89,7 +91,8 @@ public interface ScholarlyArticle extends GlobalInterface {
      *
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="author"></a>author</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="author"></a>author</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
@@ -125,7 +128,8 @@ public interface ScholarlyArticle extends GlobalInterface {
      *
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="pages"></a>pages</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="pages"></a>pages</b></font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -166,7 +170,8 @@ public interface ScholarlyArticle extends GlobalInterface {
      *
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="pages"></a>pages</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="pages"></a>pages</b></font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -207,7 +212,8 @@ public interface ScholarlyArticle extends GlobalInterface {
      *
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a name="publication_name"></a>publication_name</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a
+     * name="publication_name"></a>publication_name</b></font></td>
      * </tr>
      *
      * <tr valign="top">
@@ -219,7 +225,8 @@ public interface ScholarlyArticle extends GlobalInterface {
      * <tr valign="top">
      *
      * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:publication_name&gt; Journal of Appropriate Technology&lt;/g:publication_name&gt;</font></td>
+     * <td><font size="-1"> &lt;g:publication_name&gt; Journal of Appropriate
+     * Technology&lt;/g:publication_name&gt;</font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -248,7 +255,8 @@ public interface ScholarlyArticle extends GlobalInterface {
      *
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a name="publication_name"></a>publication_name</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a
+     * name="publication_name"></a>publication_name</b></font></td>
      * </tr>
      *
      * <tr valign="top">
@@ -260,7 +268,8 @@ public interface ScholarlyArticle extends GlobalInterface {
      * <tr valign="top">
      *
      * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:publication_name&gt; Journal of Appropriate Technology&lt;/g:publication_name&gt;</font></td>
+     * <td><font size="-1"> &lt;g:publication_name&gt; Journal of Appropriate
+     * Technology&lt;/g:publication_name&gt;</font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -288,7 +297,8 @@ public interface ScholarlyArticle extends GlobalInterface {
      * <tbody>
      * <tr valign="top">
      *
-     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a name="publication_volume"></a>publication_volume</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a
+     * name="publication_volume"></a>publication_volume</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
@@ -326,7 +336,8 @@ public interface ScholarlyArticle extends GlobalInterface {
      * <tbody>
      * <tr valign="top">
      *
-     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a name="publication_volume"></a>publication_volume</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a
+     * name="publication_volume"></a>publication_volume</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
@@ -364,15 +375,17 @@ public interface ScholarlyArticle extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a name="publish_date"></a>publish_date</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a
+     * name="publish_date"></a>publish_date</b></font></td>
      *
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1">
      *
      * <b>Details</b></font></td>
-     * <td><font size="-1"> Date the item was published in <a href="http://www.iso.org/iso/en/prods-services/popstds/datesandtime.html">ISO 8601</a> format:
-     * YYYY-MM-DD</font></td>
+     * <td><font size="-1"> Date the item was published in <a
+     * href="http://www.iso.org/iso/en/prods-services/popstds/datesandtime.html">ISO 8601</a>
+     * format: YYYY-MM-DD</font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -408,15 +421,17 @@ public interface ScholarlyArticle extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a name="publish_date"></a>publish_date</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a
+     * name="publish_date"></a>publish_date</b></font></td>
      *
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1">
      *
      * <b>Details</b></font></td>
-     * <td><font size="-1"> Date the item was published in <a href="http://www.iso.org/iso/en/prods-services/popstds/datesandtime.html">ISO 8601</a> format:
-     * YYYY-MM-DD</font></td>
+     * <td><font size="-1"> Date the item was published in <a
+     * href="http://www.iso.org/iso/en/prods-services/popstds/datesandtime.html">ISO 8601</a>
+     * format: YYYY-MM-DD</font></td>
      *
      * </tr>
      * <tr valign="top">

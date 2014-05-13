@@ -45,7 +45,8 @@ import java.util.Date;
 import org.rometools.feed.module.base.types.FloatUnit;
 
 /**
- * This is an interface for the GoogleBase plug in that exposes methods used for critical reviews of other things.
+ * This is an interface for the GoogleBase plug in that exposes methods used for critical reviews of
+ * other things.
  *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @version $Revision: 1.1 $
@@ -59,7 +60,8 @@ public interface Review extends GlobalInterface {
      *
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="author"></a>author</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="author"></a>author</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
@@ -96,7 +98,8 @@ public interface Review extends GlobalInterface {
      *
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="author"></a>author</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="author"></a>author</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
@@ -131,7 +134,8 @@ public interface Review extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="delivery_notes"></a>delivery_notes</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="delivery_notes"></a>delivery_notes</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Details</b></font></td>
@@ -141,7 +145,8 @@ public interface Review extends GlobalInterface {
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Example</b></font></td>
      * <td>
-     * <font size="-1">&lt;g:delivery_notes&gt;Items usually shipped within 24 hours.&lt;g:/delivery_notes&gt;<br>
+     * <font size="-1">&lt;g:delivery_notes&gt;Items usually shipped within 24
+     * hours.&lt;g:/delivery_notes&gt;<br>
      *
      * </font></td>
      *
@@ -169,7 +174,8 @@ public interface Review extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="delivery_notes"></a>delivery_notes</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="delivery_notes"></a>delivery_notes</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Details</b></font></td>
@@ -179,7 +185,8 @@ public interface Review extends GlobalInterface {
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Example</b></font></td>
      * <td>
-     * <font size="-1">&lt;g:delivery_notes&gt;Items usually shipped within 24 hours.&lt;g:/delivery_notes&gt;<br>
+     * <font size="-1">&lt;g:delivery_notes&gt;Items usually shipped within 24
+     * hours.&lt;g:/delivery_notes&gt;<br>
      *
      * </font></td>
      *
@@ -206,7 +213,8 @@ public interface Review extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="delivery_radius"></a>delivery_radius</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="delivery_radius"></a>delivery_radius</b></font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -243,7 +251,8 @@ public interface Review extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="delivery_radius"></a>delivery_radius</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="delivery_radius"></a>delivery_radius</b></font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -282,7 +291,8 @@ public interface Review extends GlobalInterface {
      *
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="name_of_item_being_reviewed"></a>name_of_item_being_reviewed</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="name_of_item_being_reviewed"></a>name_of_item_being_reviewed</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
@@ -293,7 +303,8 @@ public interface Review extends GlobalInterface {
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:name_of_item_being__reviewed&gt;Fleur de lys Restaurant&lt;/g:name_of_item_being_reviewed&gt;</font></td>
+     * <td><font size="-1"> &lt;g:name_of_item_being__reviewed&gt;Fleur de lys
+     * Restaurant&lt;/g:name_of_item_being_reviewed&gt;</font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -319,7 +330,8 @@ public interface Review extends GlobalInterface {
      *
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="name_of_item_being_reviewed"></a>name_of_item_being_reviewed</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="name_of_item_being_reviewed"></a>name_of_item_being_reviewed</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
@@ -330,7 +342,8 @@ public interface Review extends GlobalInterface {
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:name_of_item_being__reviewed&gt;Fleur de lys Restaurant&lt;/g:name_of_item_being_reviewed&gt;</font></td>
+     * <td><font size="-1"> &lt;g:name_of_item_being__reviewed&gt;Fleur de lys
+     * Restaurant&lt;/g:name_of_item_being_reviewed&gt;</font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -355,14 +368,16 @@ public interface Review extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a name="publish_date"></a>publish_date</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a
+     * name="publish_date"></a>publish_date</b></font></td>
      *
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
      *
-     * <td><font size="-1"> Date the item was published in <a href="http://www.iso.org/iso/en/prods-services/popstds/datesandtime.html">ISO 8601</a> format:
-     * YYYY-MM-DD</font></td>
+     * <td><font size="-1"> Date the item was published in <a
+     * href="http://www.iso.org/iso/en/prods-services/popstds/datesandtime.html">ISO 8601</a>
+     * format: YYYY-MM-DD</font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -397,14 +412,16 @@ public interface Review extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a name="publish_date"></a>publish_date</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a
+     * name="publish_date"></a>publish_date</b></font></td>
      *
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
      *
-     * <td><font size="-1"> Date the item was published in <a href="http://www.iso.org/iso/en/prods-services/popstds/datesandtime.html">ISO 8601</a> format:
-     * YYYY-MM-DD</font></td>
+     * <td><font size="-1"> Date the item was published in <a
+     * href="http://www.iso.org/iso/en/prods-services/popstds/datesandtime.html">ISO 8601</a>
+     * format: YYYY-MM-DD</font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -438,12 +455,14 @@ public interface Review extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="rating"></a>rating</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="rating"></a>rating</b></font></td>
      *
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> Rating of the product or service on a scale of 1-5, with 5 as the best. Numeric values only.</font></td>
+     * <td><font size="-1"> Rating of the product or service on a scale of 1-5, with 5 as the best.
+     * Numeric values only.</font></td>
      * </tr>
      *
      * <tr valign="top">
@@ -480,12 +499,14 @@ public interface Review extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="rating"></a>rating</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="rating"></a>rating</b></font></td>
      *
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> Rating of the product or service on a scale of 1-5, with 5 as the best. Numeric values only.</font></td>
+     * <td><font size="-1"> Rating of the product or service on a scale of 1-5, with 5 as the best.
+     * Numeric values only.</font></td>
      * </tr>
      *
      * <tr valign="top">
@@ -523,7 +544,8 @@ public interface Review extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="review_type"></a>review_type</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="review_type"></a>review_type</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1">
@@ -565,7 +587,8 @@ public interface Review extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="review_type"></a>review_type</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="review_type"></a>review_type</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1">
@@ -602,18 +625,20 @@ public interface Review extends GlobalInterface {
     public String getReviewType();
 
     /**
-     * The type of rating being provided: editorial (a review written by a member of your staff) or “user” ( a review written by a user of your site).
+     * The type of rating being provided: editorial (a review written by a member of your staff) or
+     * “user” ( a review written by a user of your site).
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="reviewer_type"></a>reviewer_type</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="reviewer_type"></a>reviewer_type</b></font></td>
      * </tr>
      * <tr valign="top">
      *
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
      *
-     * <td><font size="-1"> The type of rating being provided: editorial (a review written by a member of your staff) or “user” ( a review written by a user of
-     * your site)</font></td>
+     * <td><font size="-1"> The type of rating being provided: editorial (a review written by a
+     * member of your staff) or “user” ( a review written by a user of your site)</font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1">
@@ -636,24 +661,26 @@ public interface Review extends GlobalInterface {
      * </tbody>
      * </table>
      *
-     * @param reviewerType The type of rating being provided: editorial (a review written by a member of your staff) or “user” ( a review written by a user of
-     *            your site).
+     * @param reviewerType The type of rating being provided: editorial (a review written by a
+     *            member of your staff) or “user” ( a review written by a user of your site).
      */
     public void setReviewerType(String reviewerType);
 
     /**
-     * The type of rating being provided: editorial (a review written by a member of your staff) or “user” ( a review written by a user of your site).
+     * The type of rating being provided: editorial (a review written by a member of your staff) or
+     * “user” ( a review written by a user of your site).
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="reviewer_type"></a>reviewer_type</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="reviewer_type"></a>reviewer_type</b></font></td>
      * </tr>
      * <tr valign="top">
      *
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
      *
-     * <td><font size="-1"> The type of rating being provided: editorial (a review written by a member of your staff) or “user” ( a review written by a user of
-     * your site)</font></td>
+     * <td><font size="-1"> The type of rating being provided: editorial (a review written by a
+     * member of your staff) or “user” ( a review written by a user of your site)</font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1">
@@ -676,7 +703,8 @@ public interface Review extends GlobalInterface {
      * </tbody>
      * </table>
      *
-     * @return The type of rating being provided: editorial (a review written by a member of your staff) or “user” ( a review written by a user of your site).
+     * @return The type of rating being provided: editorial (a review written by a member of your
+     *         staff) or “user” ( a review written by a user of your site).
      */
     public String getReviewerType();
 
@@ -687,7 +715,8 @@ public interface Review extends GlobalInterface {
      * <tbody>
      * <tr valign="top">
      *
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="url_of_item_being_reviewed"></a>url_of_item_being_reviewed</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="url_of_item_being_reviewed"></a>url_of_item_being_reviewed</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1">
@@ -699,7 +728,8 @@ public interface Review extends GlobalInterface {
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Example</b></font></td>
      *
-     * <td><font size="-1"> &lt;g:url_of_item_being_reviewed&gt;http://www.fleurdelyssf.com/&lt;/g:url_of_item_being_reviewed&gt;</font></td>
+     * <td><font size="-1"> &lt;g:url_of_item_being_reviewed&gt;http://www.fleurdelyssf.com/&lt;/g:
+     * url_of_item_being_reviewed&gt;</font></td>
      * </tr>
      *
      * <tr valign="top">
@@ -729,7 +759,8 @@ public interface Review extends GlobalInterface {
      * <tbody>
      * <tr valign="top">
      *
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="url_of_item_being_reviewed"></a>url_of_item_being_reviewed</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="url_of_item_being_reviewed"></a>url_of_item_being_reviewed</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1">
@@ -741,7 +772,8 @@ public interface Review extends GlobalInterface {
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Example</b></font></td>
      *
-     * <td><font size="-1"> &lt;g:url_of_item_being_reviewed&gt;http://www.fleurdelyssf.com/&lt;/g:url_of_item_being_reviewed&gt;</font></td>
+     * <td><font size="-1"> &lt;g:url_of_item_being_reviewed&gt;http://www.fleurdelyssf.com/&lt;/g:
+     * url_of_item_being_reviewed&gt;</font></td>
      * </tr>
      *
      * <tr valign="top">

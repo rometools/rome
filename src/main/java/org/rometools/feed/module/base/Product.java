@@ -60,7 +60,8 @@ public interface Product extends GlobalInterface {
      * <tbody>
      * <tr bgcolor="#dddddd" valign="top">
      *
-     * <td colspan="2" nowrap="nowrap"><font size="-1"><strong><a name="actor"></a>actor</strong></font></td>
+     * <td colspan="2" nowrap="nowrap"><font size="-1"><strong><a
+     * name="actor"></a>actor</strong></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><strong><font size="-1">Details</font></strong></td>
@@ -96,7 +97,8 @@ public interface Product extends GlobalInterface {
      * <tbody>
      * <tr bgcolor="#dddddd" valign="top">
      *
-     * <td colspan="2" nowrap="nowrap"><font size="-1"><strong><a name="actor"></a>actor</strong></font></td>
+     * <td colspan="2" nowrap="nowrap"><font size="-1"><strong><a
+     * name="actor"></a>actor</strong></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><strong><font size="-1">Details</font></strong></td>
@@ -132,7 +134,8 @@ public interface Product extends GlobalInterface {
      * <tbody>
      * <tr bgcolor="#dddddd" valign="top">
      *
-     * <td colspan="2" nowrap="nowrap"><font size="-1"><strong><a name="apparel_type"></a>apparel_type</strong></font></td>
+     * <td colspan="2" nowrap="nowrap"><font size="-1"><strong><a
+     * name="apparel_type"></a>apparel_type</strong></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><strong><font size="-1">Details</font></strong></td>
@@ -169,7 +172,8 @@ public interface Product extends GlobalInterface {
      * <tbody>
      * <tr bgcolor="#dddddd" valign="top">
      *
-     * <td colspan="2" nowrap="nowrap"><font size="-1"><strong><a name="apparel_type"></a>apparel_type</strong></font></td>
+     * <td colspan="2" nowrap="nowrap"><font size="-1"><strong><a
+     * name="apparel_type"></a>apparel_type</strong></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><strong><font size="-1">Details</font></strong></td>
@@ -204,7 +208,8 @@ public interface Product extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="artist"></a>artist</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="artist"></a>artist</b></font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -242,7 +247,8 @@ public interface Product extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="artist"></a>artist</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="artist"></a>artist</b></font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -282,7 +288,8 @@ public interface Product extends GlobalInterface {
      *
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="author"></a>author</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="author"></a>author</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
@@ -318,7 +325,8 @@ public interface Product extends GlobalInterface {
      *
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="author"></a>author</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="author"></a>author</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
@@ -352,7 +360,8 @@ public interface Product extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="brand"></a>brand</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="brand"></a>brand</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
@@ -386,7 +395,8 @@ public interface Product extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="brand"></a>brand</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="brand"></a>brand</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
@@ -422,7 +432,8 @@ public interface Product extends GlobalInterface {
      *
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="color"></a>color</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="color"></a>color</b></font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -462,7 +473,8 @@ public interface Product extends GlobalInterface {
      *
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="color"></a>color</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="color"></a>color</b></font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -501,7 +513,8 @@ public interface Product extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="condition"></a>condition</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="condition"></a>condition</b></font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -539,7 +552,8 @@ public interface Product extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="condition"></a>condition</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="condition"></a>condition</b></font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -577,14 +591,16 @@ public interface Product extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="currency"></a>currency</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="currency"></a>currency</b></font></td>
      *
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Details</b></font></td>
      *
      * <td><font size="-1">Currency of the price amount for an item. Values must be in <a
-     * href="http://www.iso.org/iso/en/prods-services/popstds/currencycodeslist.html">ISO 4217</a> currency code format.</font></td>
+     * href="http://www.iso.org/iso/en/prods-services/popstds/currencycodeslist.html">ISO 4217</a>
+     * currency code format.</font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Example</b></font></td>
@@ -619,14 +635,16 @@ public interface Product extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="currency"></a>currency</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="currency"></a>currency</b></font></td>
      *
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Details</b></font></td>
      *
      * <td><font size="-1">Currency of the price amount for an item. Values must be in <a
-     * href="http://www.iso.org/iso/en/prods-services/popstds/currencycodeslist.html">ISO 4217</a> currency code format.</font></td>
+     * href="http://www.iso.org/iso/en/prods-services/popstds/currencycodeslist.html">ISO 4217</a>
+     * currency code format.</font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Example</b></font></td>
@@ -661,7 +679,8 @@ public interface Product extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="delivery_notes"></a>delivery_notes</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="delivery_notes"></a>delivery_notes</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Details</b></font></td>
@@ -671,7 +690,8 @@ public interface Product extends GlobalInterface {
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Example</b></font></td>
      * <td>
-     * <font size="-1">&lt;g:delivery_notes&gt;Items usually shipped within 24 hours.&lt;g:/delivery_notes&gt;<br>
+     * <font size="-1">&lt;g:delivery_notes&gt;Items usually shipped within 24
+     * hours.&lt;g:/delivery_notes&gt;<br>
      *
      * </font></td>
      *
@@ -698,7 +718,8 @@ public interface Product extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="delivery_notes"></a>delivery_notes</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="delivery_notes"></a>delivery_notes</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Details</b></font></td>
@@ -708,7 +729,8 @@ public interface Product extends GlobalInterface {
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Example</b></font></td>
      * <td>
-     * <font size="-1">&lt;g:delivery_notes&gt;Items usually shipped within 24 hours.&lt;g:/delivery_notes&gt;<br>
+     * <font size="-1">&lt;g:delivery_notes&gt;Items usually shipped within 24
+     * hours.&lt;g:/delivery_notes&gt;<br>
      *
      * </font></td>
      *
@@ -735,7 +757,8 @@ public interface Product extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="delivery_radius"></a>delivery_radius</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="delivery_radius"></a>delivery_radius</b></font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -772,7 +795,8 @@ public interface Product extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="delivery_radius"></a>delivery_radius</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="delivery_radius"></a>delivery_radius</b></font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -809,7 +833,8 @@ public interface Product extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="format"></a>format</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="format"></a>format</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Details</b></font></td>
@@ -846,7 +871,8 @@ public interface Product extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="format"></a>format</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="format"></a>format</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Details</b></font></td>
@@ -883,7 +909,8 @@ public interface Product extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="isbn"></a>isbn</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="isbn"></a>isbn</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Details</b></font></td>
@@ -918,7 +945,8 @@ public interface Product extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="isbn"></a>isbn</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="isbn"></a>isbn</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"><b>Details</b></font></td>
@@ -949,37 +977,43 @@ public interface Product extends GlobalInterface {
     public String getIsbn();
 
     /**
-     * Location of a property. Should include street, city, state, postal code, and country, in that order.
+     * Location of a property. Should include street, city, state, postal code, and country, in that
+     * order.
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
      *
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="location"></a>location</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="location"></a>location</b></font></td>
      * </tr>
      * <tr valign="top">
      *
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> Location of a property. Should include street, city, state, postal code, and country, in that order. </font></td>
+     * <td><font size="-1"> Location of a property. Should include street, city, state, postal code,
+     * and country, in that order. </font></td>
      *
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Example</b></font></td>
      *
      * <td><font size="-1"> <em>Acceptable:</em><br>
-     * &lt;g:location&gt;<st1:place>123 Main St, <st1:city>Anytown</st1:city>, <st1:state>CA</st1:state>, <st1:postalcode>12345</st1:postalcode>,
+     * &lt;g:location&gt;<st1:place>123 Main St, <st1:city>Anytown</st1:city>,
+     * <st1:state>CA</st1:state>, <st1:postalcode>12345</st1:postalcode>,
      * <st1:country-region>USA</st1:country-region></st1:place>&lt;/g:location&gt;<br>
      *
      * <em>Not acceptable:</em><br>
-     * &lt;g:location&gt;<st1:place><st1:city>123</st1:city> Main St,, <st1:state>CA</st1:state>, <st1:postalcode>12345</st1:postalcode>,
+     * &lt;g:location&gt;<st1:place><st1:city>123</st1:city> Main St,, <st1:state>CA</st1:state>,
+     * <st1:postalcode>12345</st1:postalcode>,
      * <st1:country-region>USA</st1:country-region></st1:place>&lt;/g:location&gt;<br>
-     * &lt;g:location&gt; <st1:place><st1:city>Anytown</st1:city>, <st1:state>CA</st1:state>, <st1:postalcode>12345</st1:postalcode>,
+     * &lt;g:location&gt; <st1:place><st1:city>Anytown</st1:city>, <st1:state>CA</st1:state>,
+     * <st1:postalcode>12345</st1:postalcode>,
      * <st1:country-region>USA</st1:country-region></st1:place>&lt;/g:location&gt;</font></td>
      *
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Reference Items, Events, Housing, Jobs, News and Articles, People profiles, Products, Reviews, Services, Travel, Vehicles, Wanted
-     * Ads.</font></td>
+     * <td><font size="-1"> Reference Items, Events, Housing, Jobs, News and Articles, People
+     * profiles, Products, Reviews, Services, Travel, Vehicles, Wanted Ads.</font></td>
      * </tr>
      *
      * <tr valign="top">
@@ -990,42 +1024,49 @@ public interface Product extends GlobalInterface {
      * </tbody>
      * </table>
      *
-     * @param location Location of a property. Should include street, city, state, postal code, and country, in that order.
+     * @param location Location of a property. Should include street, city, state, postal code, and
+     *            country, in that order.
      */
     public void setLocation(String location);
 
     /**
-     * Location of a property. Should include street, city, state, postal code, and country, in that order.
+     * Location of a property. Should include street, city, state, postal code, and country, in that
+     * order.
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
      *
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="location"></a>location</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="location"></a>location</b></font></td>
      * </tr>
      * <tr valign="top">
      *
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> Location of a property. Should include street, city, state, postal code, and country, in that order. </font></td>
+     * <td><font size="-1"> Location of a property. Should include street, city, state, postal code,
+     * and country, in that order. </font></td>
      *
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Example</b></font></td>
      *
      * <td><font size="-1"> <em>Acceptable:</em><br>
-     * &lt;g:location&gt;<st1:place>123 Main St, <st1:city>Anytown</st1:city>, <st1:state>CA</st1:state>, <st1:postalcode>12345</st1:postalcode>,
+     * &lt;g:location&gt;<st1:place>123 Main St, <st1:city>Anytown</st1:city>,
+     * <st1:state>CA</st1:state>, <st1:postalcode>12345</st1:postalcode>,
      * <st1:country-region>USA</st1:country-region></st1:place>&lt;/g:location&gt;<br>
      *
      * <em>Not acceptable:</em><br>
-     * &lt;g:location&gt;<st1:place><st1:city>123</st1:city> Main St,, <st1:state>CA</st1:state>, <st1:postalcode>12345</st1:postalcode>,
+     * &lt;g:location&gt;<st1:place><st1:city>123</st1:city> Main St,, <st1:state>CA</st1:state>,
+     * <st1:postalcode>12345</st1:postalcode>,
      * <st1:country-region>USA</st1:country-region></st1:place>&lt;/g:location&gt;<br>
-     * &lt;g:location&gt; <st1:place><st1:city>Anytown</st1:city>, <st1:state>CA</st1:state>, <st1:postalcode>12345</st1:postalcode>,
+     * &lt;g:location&gt; <st1:place><st1:city>Anytown</st1:city>, <st1:state>CA</st1:state>,
+     * <st1:postalcode>12345</st1:postalcode>,
      * <st1:country-region>USA</st1:country-region></st1:place>&lt;/g:location&gt;</font></td>
      *
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Reference Items, Events, Housing, Jobs, News and Articles, People profiles, Products, Reviews, Services, Travel, Vehicles, Wanted
-     * Ads.</font></td>
+     * <td><font size="-1"> Reference Items, Events, Housing, Jobs, News and Articles, People
+     * profiles, Products, Reviews, Services, Travel, Vehicles, Wanted Ads.</font></td>
      * </tr>
      *
      * <tr valign="top">
@@ -1036,7 +1077,8 @@ public interface Product extends GlobalInterface {
      * </tbody>
      * </table>
      *
-     * @return Location of a property. Should include street, city, state, postal code, and country, in that order.
+     * @return Location of a property. Should include street, city, state, postal code, and country,
+     *         in that order.
      */
     public String getLocation();
 
@@ -1141,7 +1183,8 @@ public interface Product extends GlobalInterface {
      *
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="manufacturer_id"></a>manufacturer_id</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="manufacturer_id"></a>manufacturer_id</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
@@ -1178,7 +1221,8 @@ public interface Product extends GlobalInterface {
      *
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="manufacturer_id"></a>manufacturer_id</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="manufacturer_id"></a>manufacturer_id</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
@@ -1374,7 +1418,8 @@ public interface Product extends GlobalInterface {
      * <tbody>
      * <tr valign="top">
      *
-     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a name="model_number"></a>model_number</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a
+     * name="model_number"></a>model_number</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
@@ -1412,7 +1457,8 @@ public interface Product extends GlobalInterface {
      * <tbody>
      * <tr valign="top">
      *
-     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a name="model_number"></a>model_number</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a
+     * name="model_number"></a>model_number</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
@@ -1449,14 +1495,17 @@ public interface Product extends GlobalInterface {
      *
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="payment_accepted"></a>payment_accepted</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="payment_accepted"></a>payment_accepted</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> Acceptable payment methods for item purchases. Acceptable values are “Cash,” “Check,” “Traveler’s Check,” “Visa,” “MasterCard,”
+     * <td><font size="-1"> Acceptable payment methods for item purchases. Acceptable values are
+     * “Cash,” “Check,” “Traveler’s Check,” “Visa,” “MasterCard,”
      *
-     * “American Express,” “Discover,” or “Wire transfer.” If you accept more than one method, include multiple instances of the &lt;payment_accepted&gt;
-     * attribute for each acceptable method.</font></td>
+     * “American Express,” “Discover,” or “Wire transfer.” If you accept more than one method,
+     * include multiple instances of the &lt;payment_accepted&gt; attribute for each acceptable
+     * method.</font></td>
      *
      * </tr>
      *
@@ -1495,14 +1544,17 @@ public interface Product extends GlobalInterface {
      *
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="payment_accepted"></a>payment_accepted</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="payment_accepted"></a>payment_accepted</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> Acceptable payment methods for item purchases. Acceptable values are “Cash,” “Check,” “Traveler’s Check,” “Visa,” “MasterCard,”
+     * <td><font size="-1"> Acceptable payment methods for item purchases. Acceptable values are
+     * “Cash,” “Check,” “Traveler’s Check,” “Visa,” “MasterCard,”
      *
-     * “American Express,” “Discover,” or “Wire transfer.” If you accept more than one method, include multiple instances of the &lt;payment_accepted&gt;
-     * attribute for each acceptable method.</font></td>
+     * “American Express,” “Discover,” or “Wire transfer.” If you accept more than one method,
+     * include multiple instances of the &lt;payment_accepted&gt; attribute for each acceptable
+     * method.</font></td>
      *
      * </tr>
      *
@@ -1540,7 +1592,8 @@ public interface Product extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="payment_notes"></a>payment_notes</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="payment_notes"></a>payment_notes</b></font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -1552,7 +1605,8 @@ public interface Product extends GlobalInterface {
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Example</b></font></td>
      *
-     * <td><font size="-1"> &lt;g:payment_notes&gt;Cash only for local orders.&lt;/g:payment_notes&gt;</font></td>
+     * <td><font size="-1"> &lt;g:payment_notes&gt;Cash only for local
+     * orders.&lt;/g:payment_notes&gt;</font></td>
      * </tr>
      * <tr valign="top">
      *
@@ -1581,7 +1635,8 @@ public interface Product extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="payment_notes"></a>payment_notes</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="payment_notes"></a>payment_notes</b></font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -1593,7 +1648,8 @@ public interface Product extends GlobalInterface {
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Example</b></font></td>
      *
-     * <td><font size="-1"> &lt;g:payment_notes&gt;Cash only for local orders.&lt;/g:payment_notes&gt;</font></td>
+     * <td><font size="-1"> &lt;g:payment_notes&gt;Cash only for local
+     * orders.&lt;/g:payment_notes&gt;</font></td>
      * </tr>
      * <tr valign="top">
      *
@@ -1623,13 +1679,15 @@ public interface Product extends GlobalInterface {
      *
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="pickup"></a>pickup</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="pickup"></a>pickup</b></font></td>
      * </tr>
      * <tr valign="top">
      *
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
      *
-     * <td><font size="-1"> Information about whether or not an item is available for pick up. Acceptable values are "True and "False". </font></td>
+     * <td><font size="-1"> Information about whether or not an item is available for pick up.
+     * Acceptable values are "True and "False". </font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Example</b></font></td>
@@ -1667,13 +1725,15 @@ public interface Product extends GlobalInterface {
      *
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="pickup"></a>pickup</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="pickup"></a>pickup</b></font></td>
      * </tr>
      * <tr valign="top">
      *
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
      *
-     * <td><font size="-1"> Information about whether or not an item is available for pick up. Acceptable values are "True and "False". </font></td>
+     * <td><font size="-1"> Information about whether or not an item is available for pick up.
+     * Acceptable values are "True and "False". </font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Example</b></font></td>
@@ -1712,12 +1772,14 @@ public interface Product extends GlobalInterface {
      * <tbody>
      * <tr valign="top">
      *
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="price"></a>price</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="price"></a>price</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> Prices can be a single price, 0 (free), or blank if not applicable. Numerice values only. When used as a sub-attribute of
-     * &lt;shipping&gt;, the value included reflects the price of shipping.</font></td>
+     * <td><font size="-1"> Prices can be a single price, 0 (free), or blank if not applicable.
+     * Numerice values only. When used as a sub-attribute of &lt;shipping&gt;, the value included
+     * reflects the price of shipping.</font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -1758,12 +1820,14 @@ public interface Product extends GlobalInterface {
      * <tbody>
      * <tr valign="top">
      *
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="price"></a>price</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="price"></a>price</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> Prices can be a single price, 0 (free), or blank if not applicable. Numerice values only. When used as a sub-attribute of
-     * &lt;shipping&gt;, the value included reflects the price of shipping.</font></td>
+     * <td><font size="-1"> Prices can be a single price, 0 (free), or blank if not applicable.
+     * Numerice values only. When used as a sub-attribute of &lt;shipping&gt;, the value included
+     * reflects the price of shipping.</font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -1802,13 +1866,15 @@ public interface Product extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="price_type"></a>price_type</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="price_type"></a>price_type</b></font></td>
      * </tr>
      *
      * <tr valign="top">
      *
      * <td width="120"><font size="-1"><b>Details</b></font></td>
-     * <td><font size="-1">The type of pricing for the item. Acceptable values are “negotiable,” or “starting.” The default is “starting”</font></td>
+     * <td><font size="-1">The type of pricing for the item. Acceptable values are “negotiable,” or
+     * “starting.” The default is “starting”</font></td>
      * </tr>
      * <tr valign="top">
      *
@@ -1843,13 +1909,15 @@ public interface Product extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="price_type"></a>price_type</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="price_type"></a>price_type</b></font></td>
      * </tr>
      *
      * <tr valign="top">
      *
      * <td width="120"><font size="-1"><b>Details</b></font></td>
-     * <td><font size="-1">The type of pricing for the item. Acceptable values are “negotiable,” or “starting.” The default is “starting”</font></td>
+     * <td><font size="-1">The type of pricing for the item. Acceptable values are “negotiable,” or
+     * “starting.” The default is “starting”</font></td>
      * </tr>
      * <tr valign="top">
      *
@@ -1962,7 +2030,8 @@ public interface Product extends GlobalInterface {
      *
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="product_type"></a>product_type</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="product_type"></a>product_type</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
@@ -1999,7 +2068,8 @@ public interface Product extends GlobalInterface {
      *
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="product_type"></a>product_type</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="product_type"></a>product_type</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
@@ -2037,13 +2107,14 @@ public interface Product extends GlobalInterface {
      * <tbody>
      * <tr valign="top">
      *
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="quantity"></a>quantity</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="quantity"></a>quantity</b></font></td>
      *
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> The number of units available for purchase. This attribute can be left blank if you have a large quantity or if it is not
-     * applicable. </font></td>
+     * <td><font size="-1"> The number of units available for purchase. This attribute can be left
+     * blank if you have a large quantity or if it is not applicable. </font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -2085,13 +2156,14 @@ public interface Product extends GlobalInterface {
      * <tbody>
      * <tr valign="top">
      *
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="quantity"></a>quantity</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="quantity"></a>quantity</b></font></td>
      *
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> The number of units available for purchase. This attribute can be left blank if you have a large quantity or if it is not
-     * applicable. </font></td>
+     * <td><font size="-1"> The number of units available for purchase. This attribute can be left
+     * blank if you have a large quantity or if it is not applicable. </font></td>
      *
      * </tr>
      * <tr valign="top">
@@ -2139,12 +2211,14 @@ public interface Product extends GlobalInterface {
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
      *
-     * <td><font size="-1"> Shipping options available for an item. Up to 10 shipping options can be included for each item. Three sub-attributes are included
-     * in the shipping attribute:
+     * <td><font size="-1"> Shipping options available for an item. Up to 10 shipping options can be
+     * included for each item. Three sub-attributes are included in the shipping attribute:
      * <ul type="disc">
      *
-     * <li>service = The type of service used to ship an item. Acceptable values are 'FedEx', 'UPS', 'DHL', 'Mail', and 'Other'</li>
-     * <li>country = The country an item will ship to. Only acceptable values are<b> </b>ISO 3166 country codes.</li>
+     * <li>service = The type of service used to ship an item. Acceptable values are 'FedEx', 'UPS',
+     * 'DHL', 'Mail', and 'Other'</li>
+     * <li>country = The country an item will ship to. Only acceptable values are<b> </b>ISO 3166
+     * country codes.</li>
      * <li>price = the price of shipping.</li>
      * </ul>
      * </font></td>
@@ -2195,12 +2269,14 @@ public interface Product extends GlobalInterface {
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
      *
-     * <td><font size="-1"> Shipping options available for an item. Up to 10 shipping options can be included for each item. Three sub-attributes are included
-     * in the shipping attribute:
+     * <td><font size="-1"> Shipping options available for an item. Up to 10 shipping options can be
+     * included for each item. Three sub-attributes are included in the shipping attribute:
      * <ul type="disc">
      *
-     * <li>service = The type of service used to ship an item. Acceptable values are 'FedEx', 'UPS', 'DHL', 'Mail', and 'Other'</li>
-     * <li>country = The country an item will ship to. Only acceptable values are<b> </b>ISO 3166 country codes.</li>
+     * <li>service = The type of service used to ship an item. Acceptable values are 'FedEx', 'UPS',
+     * 'DHL', 'Mail', and 'Other'</li>
+     * <li>country = The country an item will ship to. Only acceptable values are<b> </b>ISO 3166
+     * country codes.</li>
      * <li>price = the price of shipping.</li>
      * </ul>
      * </font></td>
@@ -2245,13 +2321,15 @@ public interface Product extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="size"></a>size</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="size"></a>size</b></font></td>
      * </tr>
      *
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
      *
-     * <td><font size="-1"> Dimensions of the item, expressed in either two or three dimensions.</font></td>
+     * <td><font size="-1"> Dimensions of the item, expressed in either two or three
+     * dimensions.</font></td>
      * </tr>
      * <tr valign="top">
      *
@@ -2285,13 +2363,15 @@ public interface Product extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="size"></a>size</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="size"></a>size</b></font></td>
      * </tr>
      *
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
      *
-     * <td><font size="-1"> Dimensions of the item, expressed in either two or three dimensions.</font></td>
+     * <td><font size="-1"> Dimensions of the item, expressed in either two or three
+     * dimensions.</font></td>
      * </tr>
      * <tr valign="top">
      *
@@ -2324,7 +2404,8 @@ public interface Product extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="tax_percent"></a>tax_percent</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="tax_percent"></a>tax_percent</b></font></td>
      * </tr>
      *
      * <tr valign="top">
@@ -2366,7 +2447,8 @@ public interface Product extends GlobalInterface {
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="tax_percent"></a>tax_percent</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="tax_percent"></a>tax_percent</b></font></td>
      * </tr>
      *
      * <tr valign="top">
@@ -2583,7 +2665,8 @@ public interface Product extends GlobalInterface {
      * <tr valign="top">
      *
      *
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="weight"></a>weight</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="weight"></a>weight</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
@@ -2624,7 +2707,8 @@ public interface Product extends GlobalInterface {
      * <tr valign="top">
      *
      *
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a name="weight"></a>weight</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="weight"></a>weight</b></font></td>
      * </tr>
      * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Details</b></font></td>

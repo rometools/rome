@@ -10,7 +10,8 @@ import com.sun.syndication.feed.CopyFrom;
 import com.sun.syndication.feed.module.Module;
 
 /**
- * The base module for SSE data synchronization. Defines a namespace, uri, and basic copying operations.
+ * The base module for SSE data synchronization. Defines a namespace, uri, and basic copying
+ * operations.
  */
 public abstract class SSEModule implements Module {
     private static final long serialVersionUID = 1L;

@@ -102,7 +102,7 @@ public class MediaModuleTest extends AbstractTestCase {
 
         final SyndFeed feed = getSyndFeed("org/rometools/feed/module/mediarss/issue-07.xml");
         final SyndEntry entry = feed.getEntries().get(0);
-        final MediaEntryModule module = (MediaEntryModule) entry.getModule(MediaEntryModule.URI);
+        final MediaEntryModule module = (MediaEntryModule) entry.getModule(MediaModule.URI);
         final Thumbnail[] thumbnails = module.getMetadata().getThumbnail();
 
         assertThat(thumbnails, is(notNullValue()));
@@ -120,7 +120,7 @@ public class MediaModuleTest extends AbstractTestCase {
 
         final SyndFeed feed = getSyndFeed("org/rometools/feed/module/mediarss/issue-08.xml");
         final SyndEntry entry = feed.getEntries().get(0);
-        final MediaEntryModule module = (MediaEntryModule) entry.getModule(MediaEntryModule.URI);
+        final MediaEntryModule module = (MediaEntryModule) entry.getModule(MediaModule.URI);
         final Thumbnail[] thumbnails = module.getMetadata().getThumbnail();
 
         assertThat(thumbnails, is(notNullValue()));
@@ -138,7 +138,7 @@ public class MediaModuleTest extends AbstractTestCase {
 
         final SyndFeed feed = getSyndFeed("org/rometools/feed/module/mediarss/issue-12.xml");
         final SyndEntry entry = feed.getEntries().get(0);
-        final MediaEntryModule module = (MediaEntryModule) entry.getModule(MediaEntryModule.URI);
+        final MediaEntryModule module = (MediaEntryModule) entry.getModule(MediaModule.URI);
         final Rating[] ratings = module.getMetadata().getRatings();
 
         assertThat(ratings, is(notNullValue()));
@@ -154,7 +154,7 @@ public class MediaModuleTest extends AbstractTestCase {
     public void testParseMediaContentContainingURLWithSpaces() throws Exception {
         final SyndFeed feed = getSyndFeed("org/rometools/feed/module/mediarss/issue-20.xml");
         final SyndEntry entry = feed.getEntries().get(0);
-        final MediaEntryModule m = (MediaEntryModule) entry.getModule(MediaEntryModule.URI);
+        final MediaEntryModule m = (MediaEntryModule) entry.getModule(MediaModule.URI);
         assertNotNull("missing media entry module", m);
         final MediaContent[] mcs = m.getMediaContents();
         assertNotNull("missing media:content", mcs);

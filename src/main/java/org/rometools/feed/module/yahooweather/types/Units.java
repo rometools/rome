@@ -47,13 +47,15 @@ import com.sun.syndication.feed.impl.ToStringBean;
  * <ul class="topspace">
  * <li>temperature: degree units, f for Fahrenheit or c for Celsius (character)</li>
  * <li>distance: units for distance, mi for miles or km for kilometers (string)</li>
- * <li>pressure: units of barometric pressure, in for pounds per square inch or mb for millibars (string) [<em>I am pretty sure this is wrong.
+ * <li>pressure: units of barometric pressure, in for pounds per square inch or mb for millibars
+ * (string) [<em>I am pretty sure this is wrong.
  *           I believe this number of be inches of Mercury, not PSI.</em>]</li>
  * <li>speed: units of speed, mph for miles per hour or kph for kilometers per hour (string)</li>
  * </ul>
- * Note that the default RSS feed uses Fahrenheit degree units and English units for all other attributes (miles, pounds per square inch, miles per hour). If
- * Celsius has been specified as the degree units for the feed (using the u request parameter), all the units are in metric format (Celsius, kilometers,
- * millibars, kilometers per hour).
+ * Note that the default RSS feed uses Fahrenheit degree units and English units for all other
+ * attributes (miles, pounds per square inch, miles per hour). If Celsius has been specified as the
+ * degree units for the feed (using the u request parameter), all the units are in metric format
+ * (Celsius, kilometers, millibars, kilometers per hour).
  *
  * @version $Id: Units.java,v 1.2 2008/01/22 14:50:05 kebernet Exp $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>

@@ -31,9 +31,10 @@ import com.sun.syndication.feed.impl.ToStringBean;
 /**
  * <strong>&lt;media:group&gt;</strong></p>
  * <p>
- * &lt;media:group&gt; is a sub-element of &lt;item&gt;. It allows grouping of &lt;media:content&gt; elements that are effectively the same content, yet
- * different representations.&nbsp;For instance: the same song recorded in both the WAV and MP3 format. It's an optional element that must only be used for this
- * purpose.
+ * &lt;media:group&gt; is a sub-element of &lt;item&gt;. It allows grouping of &lt;media:content&gt;
+ * elements that are effectively the same content, yet different representations.&nbsp;For instance:
+ * the same song recorded in both the WAV and MP3 format. It's an optional element that must only be
+ * used for this purpose.
  * </p>
  *
  * @author cooper
