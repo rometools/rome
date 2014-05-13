@@ -24,7 +24,8 @@ import java.util.List;
 import com.sun.syndication.feed.WireFeed;
 
 /**
- * This class represents the root of an OPML 1/2 feed and contains the elements that may appear in the &lt;head&gt; tag of the feed.
+ * This class represents the root of an OPML 1/2 feed and contains the elements that may appear in
+ * the &lt;head&gt; tag of the feed.
  *
  * @author <a href="mailto:cooper@screaming-penguin.com"> Robert "kebernet" Cooper</a>
  */
@@ -71,8 +72,9 @@ public class Opml extends WireFeed {
     }
 
     /**
-     * (OPML 2) &lt;docs&gt; is the http address of documentation for the format used in the OPML file. It's probably a pointer to <a
-     * href="http://www.opml.org/spec2">this page</a> for people who might stumble across the file on a web server 25 years from now and wonder what it is.
+     * (OPML 2) &lt;docs&gt; is the http address of documentation for the format used in the OPML
+     * file. It's probably a pointer to <a href="http://www.opml.org/spec2">this page</a> for people
+     * who might stumble across the file on a web server 25 years from now and wonder what it is.
      *
      * @param docs http address of documentation for the format used
      */
@@ -81,8 +83,9 @@ public class Opml extends WireFeed {
     }
 
     /**
-     * (OPML 2) &lt;docs&gt; is the http address of documentation for the format used in the OPML file. It's probably a pointer to <a
-     * href="http://www.opml.org/spec2">this page</a> for people who might stumble across the file on a web server 25 years from now and wonder what it is.
+     * (OPML 2) &lt;docs&gt; is the http address of documentation for the format used in the OPML
+     * file. It's probably a pointer to <a href="http://www.opml.org/spec2">this page</a> for people
+     * who might stumble across the file on a web server 25 years from now and wonder what it is.
      *
      * @return http address of documentation for the format used
      */
@@ -91,9 +94,10 @@ public class Opml extends WireFeed {
     }
 
     /**
-     * &lt;expansionState&gt;is a comma-separated list of line numbers that are expanded. The line numbers in the list tell you which headlines to expand. The
-     * order is important. For each element in the list, X, starting at the first summit, navigate flatdown X times and expand. Repeat for each element in the
-     * list.
+     * &lt;expansionState&gt;is a comma-separated list of line numbers that are expanded. The line
+     * numbers in the list tell you which headlines to expand. The order is important. For each
+     * element in the list, X, starting at the first summit, navigate flatdown X times and expand.
+     * Repeat for each element in the list.
      *
      * @param expansionState int array containing expanded elements.
      */
@@ -102,9 +106,10 @@ public class Opml extends WireFeed {
     }
 
     /**
-     * &lt;expansionState&gt; is a comma-separated list of line numbers that are expanded. The line numbers in the list tell you which headlines to expand. The
-     * order is important. For each element in the list, X, starting at the first summit, navigate flatdown X times and expand. Repeat for each element in the
-     * list.
+     * &lt;expansionState&gt; is a comma-separated list of line numbers that are expanded. The line
+     * numbers in the list tell you which headlines to expand. The order is important. For each
+     * element in the list, X, starting at the first summit, navigate flatdown X times and expand.
+     * Repeat for each element in the list.
      *
      * @return int array containing expanded elements.
      */
@@ -171,22 +176,26 @@ public class Opml extends WireFeed {
     }
 
     /**
-     * (OPML 2) &lt;ownerId&gt; is the http address of a web page that contains <strike>an HTML</strike> a form that allows a human reader to communicate with
-     * the author of the document via email or other means.
+     * (OPML 2) &lt;ownerId&gt; is the http address of a web page that contains <strike>an
+     * HTML</strike> a form that allows a human reader to communicate with the author of the
+     * document via email or other means.
      *
-     * @param ownerId http address of a web page that contains <strike>an HTML</strike> a form that allows a human reader to communicate with the author of the
-     *            document via email or other means.
+     * @param ownerId http address of a web page that contains <strike>an HTML</strike> a form that
+     *            allows a human reader to communicate with the author of the document via email or
+     *            other means.
      */
     public void setOwnerId(final String ownerId) {
         _ownerId = ownerId;
     }
 
     /**
-     * (OPML 2) &lt;ownerId&gt; is the http address of a web page that contains <strike>an HTML</strike> a form that allows a human reader to communicate with
-     * the author of the document via email or other means.
+     * (OPML 2) &lt;ownerId&gt; is the http address of a web page that contains <strike>an
+     * HTML</strike> a form that allows a human reader to communicate with the author of the
+     * document via email or other means.
      *
-     * @return http address of a web page that contains <strike>an HTML</strike> a form that allows a human reader to communicate with the author of the
-     *         document via email or other means.
+     * @return http address of a web page that contains <strike>an HTML</strike> a form that allows
+     *         a human reader to communicate with the author of the document via email or other
+     *         means.
      */
     public String getOwnerId() {
         return _ownerId;
@@ -229,20 +238,22 @@ public class Opml extends WireFeed {
     }
 
     /**
-     * &lt;vertScrollState&gt; is a number, saying which line of the outline is displayed on the top line of the window. This number is calculated with the
-     * expansion state already applied.
+     * &lt;vertScrollState&gt; is a number, saying which line of the outline is displayed on the top
+     * line of the window. This number is calculated with the expansion state already applied.
      *
-     * @param verticalScrollState which line of the outline is displayed on the top line of the window.
+     * @param verticalScrollState which line of the outline is displayed on the top line of the
+     *            window.
      */
     public void setVerticalScrollState(final Integer verticalScrollState) {
         _verticalScrollState = verticalScrollState;
     }
 
     /**
-     * &lt;vertScrollState&gt; is a number, saying which line of the outline is displayed on the top line of the window. This number is calculated with the
-     * expansion state already applied.
+     * &lt;vertScrollState&gt; is a number, saying which line of the outline is displayed on the top
+     * line of the window. This number is calculated with the expansion state already applied.
      *
-     * @return which line of the outline is displayed on the top line of the window. This number is calculated with the expansion state already applied.
+     * @return which line of the outline is displayed on the top line of the window. This number is
+     *         calculated with the expansion state already applied.
      */
     public Integer getVerticalScrollState() {
         return _verticalScrollState;

@@ -205,12 +205,12 @@ public class ConverterForOPML10 implements Converter {
         final List<SyndEntry> entries = Collections.synchronizedList(syndFeed.getEntries());
 
         final HashMap<String, Outline> entriesByNode = new HashMap<String, Outline>();
-        
+
         // this will hold entries that we can't parent the first time.
-        final ArrayList<OutlineHolder> doAfterPass = new ArrayList<OutlineHolder>(); 
+        final ArrayList<OutlineHolder> doAfterPass = new ArrayList<OutlineHolder>();
 
         // this holds root level outlines;
-        final ArrayList<Outline> root = new ArrayList<Outline>(); 
+        final ArrayList<Outline> root = new ArrayList<Outline>();
 
         for (int i = 0; i < entries.size(); i++) {
             final SyndEntry entry = entries.get(i);

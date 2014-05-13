@@ -21,7 +21,7 @@ import com.sun.syndication.test.NullWriter;
 import com.sun.syndication.test.TestUtil;
 
 /**
- * 
+ *
  * @author cooper
  */
 public class TestOpsOPML10links extends FeedOpsTest {

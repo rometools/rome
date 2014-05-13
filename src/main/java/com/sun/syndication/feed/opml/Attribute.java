@@ -29,8 +29,8 @@ import com.sun.syndication.feed.impl.ToStringBean;
  */
 public class Attribute implements Cloneable, Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
+    private static final long serialVersionUID = 1L;
+
     private String _name;
     private String _value;
 

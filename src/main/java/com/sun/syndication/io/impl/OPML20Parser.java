@@ -54,7 +54,7 @@ public class OPML20Parser extends OPML10Parser {
 
         if (e.getName().equals("opml")
                 && (e.getChild("head") != null && e.getChild("head").getChild("docs") != null || e.getAttributeValue("version") != null
-                && e.getAttributeValue("version").equals("2.0") || e.getChild("head") != null && e.getChild("head").getChild("ownerId") != null)) {
+                        && e.getAttributeValue("version").equals("2.0") || e.getChild("head") != null && e.getChild("head").getChild("ownerId") != null)) {
             return true;
         }
 

@@ -11,11 +11,11 @@ import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.feed.synd.SyndFeedImpl;
 
 /**
- * 
+ *
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public abstract class FeedOpsTest extends FeedTest {
 

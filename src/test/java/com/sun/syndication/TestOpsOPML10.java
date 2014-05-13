@@ -17,7 +17,7 @@ import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.feed.synd.SyndFeedImpl;
 
 /**
- * 
+ *
  * @author cooper
  */
 public class TestOpsOPML10 extends FeedOpsTest {

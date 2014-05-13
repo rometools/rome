@@ -66,7 +66,8 @@ public class Outline implements Cloneable, Serializable {
     }
 
     /**
-     * Creates an outline with the given title, xmlUrl and htmlUrl. This is traditionally used for aggregator feed lists and will get a type of "rss".
+     * Creates an outline with the given title, xmlUrl and htmlUrl. This is traditionally used for
+     * aggregator feed lists and will get a type of "rss".
      *
      * @param title Title of the entry.
      * @param xmlUrl link to XML file.
@@ -110,8 +111,9 @@ public class Outline implements Cloneable, Serializable {
     }
 
     /**
-     * isBreakpoint is a string, either "true" or "false", indicating whether a breakpoint is set on this outline. This attribute is mainly necessary for
-     * outlines used to edit scripts. If it's not present, the value is false.
+     * isBreakpoint is a string, either "true" or "false", indicating whether a breakpoint is set on
+     * this outline. This attribute is mainly necessary for outlines used to edit scripts. If it's
+     * not present, the value is false.
      *
      * @param breakpoint whether a breakpoint is set on this outline.
      */
@@ -120,8 +122,9 @@ public class Outline implements Cloneable, Serializable {
     }
 
     /**
-     * isBreakpoint is a string, either "true" or "false", indicating whether a breakpoint is set on this outline. This attribute is mainly necessary for
-     * outlines used to edit scripts. If it's not present, the value is false.
+     * isBreakpoint is a string, either "true" or "false", indicating whether a breakpoint is set on
+     * this outline. This attribute is mainly necessary for outlines used to edit scripts. If it's
+     * not present, the value is false.
      *
      * @return whether a breakpoint is set on this outline
      */
@@ -174,8 +177,9 @@ public class Outline implements Cloneable, Serializable {
     }
 
     /**
-     * isComment is a string, either "true" or "false", indicating whether the outline is commented or not. By convention if an outline is commented, all
-     * subordinate outlines are considered to also be commented. If it's not present, the value is false.
+     * isComment is a string, either "true" or "false", indicating whether the outline is commented
+     * or not. By convention if an outline is commented, all subordinate outlines are considered to
+     * also be commented. If it's not present, the value is false.
      *
      * @param comment whether the outline is commented
      */
@@ -184,8 +188,9 @@ public class Outline implements Cloneable, Serializable {
     }
 
     /**
-     * isComment is a string, either "true" or "false", indicating whether the outline is commented or not. By convention if an outline is commented, all
-     * subordinate outlines are considered to also be commented. If it's not present, the value is false.
+     * isComment is a string, either "true" or "false", indicating whether the outline is commented
+     * or not. By convention if an outline is commented, all subordinate outlines are considered to
+     * also be commented. If it's not present, the value is false.
      *
      * @return whether the outline is commented
      */

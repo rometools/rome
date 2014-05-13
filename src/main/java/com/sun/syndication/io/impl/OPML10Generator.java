@@ -52,7 +52,8 @@ public class OPML10Generator extends BaseWireFeedGenerator implements WireFeedGe
      *
      * @param feed the feed bean to generate the XML document from.
      * @return the generated XML document (JDOM).
-     * @throws IllegalArgumentException thrown if the type of the given feed bean does not match with the type of the WireFeedGenerator.
+     * @throws IllegalArgumentException thrown if the type of the given feed bean does not match
+     *             with the type of the WireFeedGenerator.
      * @throws FeedException thrown if the XML Document could not be created.
      */
     @Override

@@ -19,7 +19,7 @@ import com.sun.syndication.feed.opml.Outline;
 import com.sun.syndication.io.FeedException;
 
 /**
- * 
+ *
  * @author cooper
  */
 public class OPML20Generator extends OPML10Generator {
@@ -30,7 +30,7 @@ public class OPML20Generator extends OPML10Generator {
     /**
      * Returns the type of feed the generator creates.
      * <p>
-     * 
+     *
      * @return the type of feed the generator creates.
      * @see WireFeed for details on the format of this string.
      *      <p>
@@ -43,10 +43,11 @@ public class OPML20Generator extends OPML10Generator {
     /**
      * Creates an XML document (JDOM) for the given feed bean.
      * <p>
-     * 
+     *
      * @param feed the feed bean to generate the XML document from.
      * @return the generated XML document (JDOM).
-     * @throws IllegalArgumentException thrown if the type of the given feed bean does not match with the type of the WireFeedGenerator.
+     * @throws IllegalArgumentException thrown if the type of the given feed bean does not match
+     *             with the type of the WireFeedGenerator.
      * @throws FeedException thrown if the XML Document could not be created.
      */
     @Override
