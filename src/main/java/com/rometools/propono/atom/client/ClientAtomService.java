@@ -26,11 +26,11 @@ import org.apache.commons.httpclient.methods.GetMethod;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.input.SAXBuilder;
-import com.rometools.propono.atom.common.AtomService;
-import com.rometools.propono.utils.ProponoException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.rometools.propono.atom.common.AtomService;
+import com.rometools.propono.utils.ProponoException;
 import com.sun.syndication.feed.atom.Entry;
 import com.sun.syndication.io.impl.Atom10Parser;
 

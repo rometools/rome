@@ -18,6 +18,7 @@ package com.rometools.propono.atom.client;
 import java.util.List;
 
 import org.jdom2.Element;
+
 import com.rometools.propono.atom.common.AtomService;
 import com.rometools.propono.atom.common.Workspace;
 import com.rometools.propono.utils.ProponoException;

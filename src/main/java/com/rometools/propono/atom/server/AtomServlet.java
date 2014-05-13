@@ -35,12 +35,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.jdom2.Document;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
-import com.rometools.propono.atom.common.AtomService;
-import com.rometools.propono.atom.common.Categories;
-import com.rometools.propono.utils.Utilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.rometools.propono.atom.common.AtomService;
+import com.rometools.propono.atom.common.Categories;
+import com.rometools.propono.utils.Utilities;
 import com.sun.syndication.feed.atom.Content;
 import com.sun.syndication.feed.atom.Entry;
 import com.sun.syndication.feed.atom.Feed;

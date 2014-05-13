@@ -26,7 +26,6 @@ import com.rometools.propono.blogclient.BaseBlogEntry;
 import com.rometools.propono.blogclient.BlogClientException;
 import com.rometools.propono.blogclient.BlogEntry;
 import com.rometools.propono.utils.ProponoException;
-
 import com.sun.syndication.feed.atom.Entry;
 import com.sun.syndication.feed.atom.Link;
 import com.sun.syndication.feed.module.Module;

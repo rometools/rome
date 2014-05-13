@@ -22,6 +22,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.rometools.propono.atom.common.AtomService;
 import com.rometools.propono.atom.common.Categories;
 import com.rometools.propono.atom.server.AtomException;
@@ -29,9 +32,6 @@ import com.rometools.propono.atom.server.AtomHandler;
 import com.rometools.propono.atom.server.AtomMediaResource;
 import com.rometools.propono.atom.server.AtomRequest;
 import com.rometools.propono.atom.server.AtomServlet;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.sun.syndication.feed.atom.Entry;
 import com.sun.syndication.feed.atom.Feed;
 

@@ -30,14 +30,14 @@ import com.rometools.propono.utils.Utilities;
  * <pre>
  *    # Define list of collections to be offered
  *    propono.atomserver.filebased.collections=entries,gifimages
- *
+ * 
  *    # Defines 'entries' collection, accepts entries
  *    propono.atomserver.filebased.collection.entries.title=Entries
  *    propono.atomserver.filebased.collection.entries.singular=entry
  *    propono.atomserver.filebased.collection.entries.plural=entries
  *    propono.atomserver.filebased.collection.entries.accept=application/atom+xml;type=entry
  *    propono.atomserver.filebased.collection.entries.categories=general,category1,category2
- *
+ * 
  *    # Defines 'gifimages' collection, accepts only GIF files
  *    propono.atomserver.filebased.collection.gifimages.title=GIF Images
  *    propono.atomserver.filebased.collection.gifimages.singular=gif

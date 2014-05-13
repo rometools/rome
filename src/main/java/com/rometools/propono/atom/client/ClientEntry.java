@@ -33,11 +33,11 @@ import org.apache.commons.httpclient.methods.EntityEnclosingMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.PutMethod;
 import org.apache.commons.httpclient.methods.StringRequestEntity;
-import com.rometools.propono.utils.ProponoException;
-import com.rometools.propono.utils.Utilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.rometools.propono.utils.ProponoException;
+import com.rometools.propono.utils.Utilities;
 import com.sun.syndication.feed.atom.Content;
 import com.sun.syndication.feed.atom.Entry;
 import com.sun.syndication.feed.atom.Link;

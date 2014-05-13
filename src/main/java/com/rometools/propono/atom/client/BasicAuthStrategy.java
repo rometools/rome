@@ -17,8 +17,8 @@ package com.rometools.propono.atom.client;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpMethodBase;
-import com.rometools.propono.utils.ProponoException;
 
+import com.rometools.propono.utils.ProponoException;
 import com.sun.syndication.io.impl.Base64;
 
 public class BasicAuthStrategy implements AuthStrategy {

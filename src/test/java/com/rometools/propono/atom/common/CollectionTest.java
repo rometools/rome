@@ -15,7 +15,6 @@
  */
 package com.rometools.propono.atom.common;
 
-import com.rometools.propono.atom.common.Collection;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

@@ -25,7 +25,6 @@ import com.rometools.propono.atom.client.ClientMediaEntry;
 import com.rometools.propono.blogclient.BlogClientException;
 import com.rometools.propono.blogclient.BlogEntry;
 import com.rometools.propono.blogclient.BlogResource;
-
 import com.sun.syndication.feed.atom.Link;
 
 /**

@@ -15,11 +15,6 @@
  */
 package com.rometools.propono.blogclient;
 
-import com.rometools.propono.blogclient.BlogEntry;
-import com.rometools.propono.blogclient.BlogResource;
-import com.rometools.propono.blogclient.BlogConnection;
-import com.rometools.propono.blogclient.Blog;
-import com.rometools.propono.blogclient.BlogConnectionFactory;
 import java.io.File;
 import java.util.Iterator;
 
@@ -28,11 +23,11 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import org.junit.Ignore;
-import com.rometools.propono.blogclient.Blog.Collection;
-import com.rometools.propono.utils.Utilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.rometools.propono.blogclient.Blog.Collection;
+import com.rometools.propono.utils.Utilities;
 import com.sun.syndication.io.impl.Atom10Parser;
 
 /**

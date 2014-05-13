@@ -1,10 +1,10 @@
-/*   
+/*
  *  Copyright 2007 Dave Johnson (Blogapps project)
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -20,8 +20,9 @@ import java.io.InputStream;
 /**
  * Represents a file that has been uploaded to a blog.
  * <p />
- * Resources are modeled as a type of BlogEntry, but be aware: not all servers can save resource metadata (i.e. title, category, author, etc.). MetaWeblog based
- * servers can't save metadata at all and Atom protocol servers are not required to preserve uploaded file metadata.
+ * Resources are modeled as a type of BlogEntry, but be aware: not all servers can save resource
+ * metadata (i.e. title, category, author, etc.). MetaWeblog based servers can't save metadata at
+ * all and Atom protocol servers are not required to preserve uploaded file metadata.
  */
 public interface BlogResource extends BlogEntry {
 

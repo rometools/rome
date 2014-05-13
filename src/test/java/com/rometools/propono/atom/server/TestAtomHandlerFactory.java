@@ -16,8 +16,6 @@
  */
 package com.rometools.propono.atom.server;
 
-import com.rometools.propono.atom.server.AtomHandlerFactory;
-import com.rometools.propono.atom.server.AtomHandler;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 

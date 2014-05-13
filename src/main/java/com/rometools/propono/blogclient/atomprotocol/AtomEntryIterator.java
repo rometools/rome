@@ -17,12 +17,13 @@ package com.rometools.propono.blogclient.atomprotocol;
 
 import java.util.Iterator;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.rometools.propono.atom.client.ClientEntry;
 import com.rometools.propono.atom.client.ClientMediaEntry;
 import com.rometools.propono.blogclient.BlogClientException;
 import com.rometools.propono.blogclient.BlogEntry;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Atom protocol implementation of BlogClient entry iterator.

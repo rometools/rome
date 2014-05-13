@@ -15,11 +15,6 @@
  */
 package com.rometools.propono.atom.client;
 
-import com.rometools.propono.atom.client.ClientCollection;
-import com.rometools.propono.atom.client.GDataAuthStrategy;
-import com.rometools.propono.atom.client.ClientEntry;
-import com.rometools.propono.atom.client.AtomClientFactory;
-import com.rometools.propono.atom.client.ClientAtomService;
 import java.util.Iterator;
 
 import junit.framework.Test;

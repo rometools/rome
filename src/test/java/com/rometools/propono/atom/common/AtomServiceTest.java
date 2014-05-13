@@ -15,10 +15,6 @@
  */
 package com.rometools.propono.atom.common;
 
-import com.rometools.propono.atom.common.Collection;
-import com.rometools.propono.atom.common.Workspace;
-import com.rometools.propono.atom.common.Categories;
-import com.rometools.propono.atom.common.AtomService;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;

@@ -1,10 +1,10 @@
-/*   
+/*
  * Copyright 2007 Sun Microsystems, Inc.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -16,11 +16,11 @@
 package com.rometools.propono.atom.client;
 
 import com.rometools.propono.utils.ProponoException;
-
 import com.sun.syndication.io.impl.Atom10Parser;
 
 /**
- * Creates AtomService or ClientCollection based on username, password and end-point URI of Atom protocol service.
+ * Creates AtomService or ClientCollection based on username, password and end-point URI of Atom
+ * protocol service.
  */
 public class AtomClientFactory {
 

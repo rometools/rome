@@ -21,8 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.jdom2.Element;
-import com.rometools.propono.utils.ProponoException;
 
+import com.rometools.propono.utils.ProponoException;
 import com.sun.syndication.io.impl.Atom10Parser;
 
 /**

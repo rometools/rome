@@ -20,6 +20,7 @@ import java.util.HashMap;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
+
 import com.rometools.propono.blogclient.BlogClientException;
 import com.rometools.propono.blogclient.BlogResource;
 

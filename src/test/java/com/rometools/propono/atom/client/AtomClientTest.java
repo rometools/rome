@@ -15,13 +15,6 @@
  */
 package com.rometools.propono.atom.client;
 
-import com.rometools.propono.atom.client.ClientCollection;
-import com.rometools.propono.atom.client.ClientWorkspace;
-import com.rometools.propono.atom.client.BasicAuthStrategy;
-import com.rometools.propono.atom.client.ClientEntry;
-import com.rometools.propono.atom.client.AtomClientFactory;
-import com.rometools.propono.atom.client.ClientAtomService;
-import com.rometools.propono.atom.client.ClientMediaEntry;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,12 +24,12 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import org.junit.Ignore;
-import com.rometools.propono.atom.common.Categories;
-import com.rometools.propono.atom.common.Collection;
-import com.rometools.propono.utils.ProponoException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.rometools.propono.atom.common.Categories;
+import com.rometools.propono.atom.common.Collection;
+import com.rometools.propono.utils.ProponoException;
 import com.sun.syndication.feed.atom.Category;
 import com.sun.syndication.feed.atom.Content;
 

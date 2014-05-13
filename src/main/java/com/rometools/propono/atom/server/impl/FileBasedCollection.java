@@ -37,6 +37,7 @@ import javax.activation.MimetypesFileTypeMap;
 
 import org.jdom2.Document;
 import org.jdom2.output.XMLOutputter;
+
 import com.rometools.propono.atom.common.Categories;
 import com.rometools.propono.atom.common.Collection;
 import com.rometools.propono.atom.common.rome.AppModule;
@@ -45,7 +46,6 @@ import com.rometools.propono.atom.server.AtomException;
 import com.rometools.propono.atom.server.AtomMediaResource;
 import com.rometools.propono.atom.server.AtomNotFoundException;
 import com.rometools.propono.utils.Utilities;
-
 import com.sun.syndication.feed.WireFeed;
 import com.sun.syndication.feed.atom.Category;
 import com.sun.syndication.feed.atom.Content;

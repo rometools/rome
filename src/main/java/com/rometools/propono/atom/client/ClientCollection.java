@@ -26,12 +26,12 @@ import org.apache.commons.httpclient.HttpMethodBase;
 import org.apache.commons.httpclient.MultiThreadedHttpConnectionManager;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.jdom2.Element;
+
 import com.rometools.propono.atom.common.AtomService;
 import com.rometools.propono.atom.common.Categories;
 import com.rometools.propono.atom.common.Collection;
 import com.rometools.propono.atom.common.Workspace;
 import com.rometools.propono.utils.ProponoException;
-
 import com.sun.syndication.feed.atom.Entry;
 import com.sun.syndication.io.impl.Atom10Parser;
 

@@ -31,6 +31,9 @@ import org.mortbay.http.HttpContext;
 import org.mortbay.http.HttpServer;
 import org.mortbay.http.SocketListener;
 import org.mortbay.jetty.servlet.ServletHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.rometools.propono.atom.client.AtomClientFactory;
 import com.rometools.propono.atom.client.BasicAuthStrategy;
 import com.rometools.propono.atom.client.ClientAtomService;
@@ -42,9 +45,6 @@ import com.rometools.propono.atom.common.Categories;
 import com.rometools.propono.atom.common.Collection;
 import com.rometools.propono.atom.common.Workspace;
 import com.rometools.propono.utils.ProponoException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.sun.syndication.feed.atom.Category;
 import com.sun.syndication.feed.atom.Content;
 
