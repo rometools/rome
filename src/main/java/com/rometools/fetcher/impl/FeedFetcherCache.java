@@ -20,17 +20,17 @@ import java.net.URL;
 
 /**
  * <p>
- * An interface to allow caching of feed details. Implementing this allows the {@link com.rometools.fetcher.io.HttpURLFeedFetcher} class to enable conditional
- * gets
+ * An interface to allow caching of feed details. Implementing this allows the
+ * {@link com.rometools.fetcher.io.HttpURLFeedFetcher} class to enable conditional gets
  * </p>
- * 
+ *
  * @author Nick Lothian
- * 
+ *
  */
 public interface FeedFetcherCache {
     /**
      * Get a SyndFeedInfo object from the cache.
-     * 
+     *
      * @param feedUrl The url of the feed
      * @return A SyndFeedInfo or null if it is not in the cache
      */
@@ -38,7 +38,7 @@ public interface FeedFetcherCache {
 
     /**
      * Add a SyndFeedInfo object to the cache
-     * 
+     *
      * @param feedUrl The url of the feed
      * @param syndFeedInfo A SyndFeedInfo for the feed
      */
@@ -51,7 +51,7 @@ public interface FeedFetcherCache {
 
     /**
      * Removes the SyndFeedInfo identified by the url from the cache.
-     * 
+     *
      * @return The removed SyndFeedInfo
      */
     public SyndFeedInfo remove(URL feedUrl);

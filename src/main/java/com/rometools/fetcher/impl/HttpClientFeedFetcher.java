@@ -31,9 +31,9 @@ import org.apache.commons.httpclient.HttpMethod;
 import org.apache.commons.httpclient.auth.AuthScope;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.params.HttpClientParams;
+
 import com.rometools.fetcher.FetcherEvent;
 import com.rometools.fetcher.FetcherException;
-
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.SyndFeedInput;
@@ -67,8 +67,9 @@ public class HttpClientFeedFetcher extends AbstractFeedFetcher {
     }
 
     /**
-     * @param timeout Sets the connect timeout for the HttpClient but using the URLConnection method name. Uses the HttpClientParams method
-     *            setConnectionManagerTimeout instead of setConnectTimeout
+     * @param timeout Sets the connect timeout for the HttpClient but using the URLConnection method
+     *            name. Uses the HttpClientParams method setConnectionManagerTimeout instead of
+     *            setConnectTimeout
      *
      */
     public synchronized void setConnectTimeout(final int timeout) {
@@ -76,8 +77,9 @@ public class HttpClientFeedFetcher extends AbstractFeedFetcher {
     }
 
     /**
-     * @return The currently used connect timeout for the HttpClient but using the URLConnection method name. Uses the HttpClientParams method
-     *         getConnectionManagerTimeout instead of getConnectTimeout
+     * @return The currently used connect timeout for the HttpClient but using the URLConnection
+     *         method name. Uses the HttpClientParams method getConnectionManagerTimeout instead of
+     *         getConnectTimeout
      *
      */
     public int getConnectTimeout() {
@@ -135,14 +137,16 @@ public class HttpClientFeedFetcher extends AbstractFeedFetcher {
     }
 
     /**
-     * @return The currently used read timeout for the URLConnection, 0 is unlimited, i.e. no timeout
+     * @return The currently used read timeout for the URLConnection, 0 is unlimited, i.e. no
+     *         timeout
      */
     public synchronized void setReadTimeout(final int timeout) {
         httpClientParams.setSoTimeout(timeout);
     }
 
     /**
-     * @return timeout the read timeout for the URLConnection to a specified timeout, in milliseconds.
+     * @return timeout the read timeout for the URLConnection to a specified timeout, in
+     *         milliseconds.
      */
     public int getReadTimeout() {
         return getHttpClientParams().getSoTimeout();
@@ -284,7 +288,8 @@ public class HttpClientFeedFetcher extends AbstractFeedFetcher {
             final FeedFetcherCache cache = getFeedInfoCache();
 
             if (cache != null && statusCode == 226) {
-                // client is setup to use http delta encoding and the server supports it and has returned a delta encoded response
+                // client is setup to use http delta encoding and the server supports it and has
+                // returned a delta encoded response
                 // This response only includes new items
                 final SyndFeedInfo cachedInfo = cache.getFeedInfo(feedUrl);
 
@@ -360,8 +365,9 @@ public class HttpClientFeedFetcher extends AbstractFeedFetcher {
 
     public interface HttpClientMethodCallbackIntf {
         /**
-         * Allows access to the underlying HttpClient HttpMethod object. Note that in most cases, method.setRequestHeader(String, String) is what you want to do
-         * (rather than method.addRequestHeader(String, String))
+         * Allows access to the underlying HttpClient HttpMethod object. Note that in most cases,
+         * method.setRequestHeader(String, String) is what you want to do (rather than
+         * method.addRequestHeader(String, String))
          *
          * @param method
          */

@@ -12,7 +12,9 @@ public class AbstractFeedFetcherBeanInfo extends SimpleBeanInfo {
     @Override
     public EventSetDescriptor[] getEventSetDescriptors() {
         try {
-            final Class<AbstractFeedFetcher> clz = AbstractFeedFetcher.class; // get the class object which we'll describe
+            final Class<AbstractFeedFetcher> clz = AbstractFeedFetcher.class; // get the class
+                                                                              // object which we'll
+                                                                              // describe
             final Method addMethod = clz.getMethod("addFetcherEventListener", new Class[] { FetcherListener.class });
             final Method removeMethod = clz.getMethod("removeFetcherEventListener", new Class[] { FetcherListener.class });
             final Method listenerMethod = FetcherListener.class.getMethod("fetcherEvent", new Class[] { FetcherEvent.class });
@@ -20,7 +22,8 @@ public class AbstractFeedFetcherBeanInfo extends SimpleBeanInfo {
             final EventSetDescriptor[] results = new EventSetDescriptor[] { est };
             return results;
         } catch (final Exception e) {
-            // IntrospectionException, SecurityException and/or NoSuchMethodException can be thrown here
+            // IntrospectionException, SecurityException and/or NoSuchMethodException can be thrown
+            // here
             // the best we can do is to convert them to runtime exceptions
             throw new RuntimeException(e);
         }

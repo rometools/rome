@@ -25,7 +25,6 @@ import com.rometools.fetcher.FeedFetcher;
 import com.rometools.fetcher.impl.FeedFetcherCache;
 import com.rometools.fetcher.impl.HashMapFeedInfoCache;
 import com.rometools.fetcher.impl.HttpURLFeedFetcher;
-
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.feed.synd.SyndFeedImpl;
@@ -33,16 +32,17 @@ import com.sun.syndication.io.SyndFeedOutput;
 
 /**
  * <p>
- * It aggregates a list of RSS/Atom feeds (they can be of different types) into a single feed of the specified type.
+ * It aggregates a list of RSS/Atom feeds (they can be of different types) into a single feed of the
+ * specified type.
  * </p>
- * 
+ *
  * <p>
  * Converted from the original FeedAggregator sample
  * </p>
- * 
+ *
  * @author Alejandro Abdelnur
  * @author Nick Lothian
- * 
+ *
  */
 public class FeedAggregator {
 

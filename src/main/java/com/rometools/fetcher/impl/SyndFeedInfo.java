@@ -24,13 +24,14 @@ import com.sun.syndication.feed.synd.SyndFeed;
 
 /**
  * <p>
- * A class to represent a {@link com.sun.syndication.feed.synd.SyndFeed} and some useful information about it.
+ * A class to represent a {@link com.sun.syndication.feed.synd.SyndFeed} and some useful information
+ * about it.
  * </p>
- * 
+ *
  * <p>
  * This class is thread safe, as expected by the different feed fetcher implementations.
  * </p>
- * 
+ *
  * @author Nick Lothian
  */
 public class SyndFeedInfo implements Cloneable, Serializable {
@@ -50,10 +51,10 @@ public class SyndFeedInfo implements Cloneable, Serializable {
     /**
      * Creates a deep 'bean' clone of the object.
      * <p>
-     * 
+     *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     * 
+     *
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
@@ -61,12 +62,13 @@ public class SyndFeedInfo implements Cloneable, Serializable {
     }
 
     /**
-     * Indicates whether some other object is "equal to" this one as defined by the Object equals() method.
+     * Indicates whether some other object is "equal to" this one as defined by the Object equals()
+     * method.
      * <p>
-     * 
+     *
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     * 
+     *
      */
     @Override
     public boolean equals(final Object other) {
@@ -78,9 +80,9 @@ public class SyndFeedInfo implements Cloneable, Serializable {
      * <p>
      * It follows the contract defined by the Object hashCode() method.
      * <p>
-     * 
+     *
      * @return the hashcode of the bean object.
-     * 
+     *
      */
     @Override
     public int hashCode() {
@@ -90,9 +92,9 @@ public class SyndFeedInfo implements Cloneable, Serializable {
     /**
      * Returns the String representation for the object.
      * <p>
-     * 
+     *
      * @return String representation for the object.
-     * 
+     *
      */
     @Override
     public String toString() {
@@ -148,7 +150,8 @@ public class SyndFeedInfo implements Cloneable, Serializable {
     }
 
     /**
-     * @param string A unique ID to identify the feed. Note that if the URL of the feed changes this will remain the same
+     * @param string A unique ID to identify the feed. Note that if the URL of the feed changes this
+     *            will remain the same
      */
     public synchronized void setId(final String string) {
         id = string;

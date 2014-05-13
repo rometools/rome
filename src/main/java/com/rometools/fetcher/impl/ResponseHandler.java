@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
 
 /**
  * Utility class to help deal with HTTP responses
- * 
+ *
  */
 public class ResponseHandler {
     public static final String defaultCharacterEncoding = "ISO-8859-1";
@@ -34,12 +34,14 @@ public class ResponseHandler {
     }
 
     /**
-     * 
+     *
      * <p>
-     * Gets the character encoding of a response. (Note that this is different to the content-encoding)
+     * Gets the character encoding of a response. (Note that this is different to the
+     * content-encoding)
      * </p>
-     * 
-     * @param contentTypeHeader the value of the content-type HTTP header eg: text/html; charset=ISO-8859-4
+     *
+     * @param contentTypeHeader the value of the content-type HTTP header eg: text/html;
+     *            charset=ISO-8859-4
      * @return the character encoding, eg: ISO-8859-4
      */
     public static String getCharacterEncoding(final String contentTypeHeader) {

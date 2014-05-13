@@ -8,14 +8,14 @@ import java.util.Map;
  * <p>
  * An implementation of the {@link com.rometools.fetcher.impl.FeedFetcherCache} interface.
  * </p>
- * 
+ *
  * <p>
  * Unlike the HashMapFeedInfoCache this implementation will not grow unbound
  * </p>
- * 
+ *
  * @author Javier Kohen
  * @author Nick Lothian
- * 
+ *
  */
 public class LinkedHashMapFeedInfoCache extends HashMapFeedInfoCache {
 
@@ -42,7 +42,7 @@ public class LinkedHashMapFeedInfoCache extends HashMapFeedInfoCache {
 
     /**
      * Get the global instance of the cache
-     * 
+     *
      * @return an implementation of FeedFetcherCache
      */
     public static final FeedFetcherCache getInstance() {
@@ -53,11 +53,12 @@ public class LinkedHashMapFeedInfoCache extends HashMapFeedInfoCache {
      * <p>
      * Constructor for HashMapFeedInfoCache
      * </p>
-     * 
+     *
      * <p>
-     * Only use this if you want multiple instances of the cache. Usually {@link #getInstance()} is more appropriate.
+     * Only use this if you want multiple instances of the cache. Usually {@link #getInstance()} is
+     * more appropriate.
      * </p>
-     * 
+     *
      * @see #getInstance()
      */
     public LinkedHashMapFeedInfoCache() {

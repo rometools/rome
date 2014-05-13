@@ -25,13 +25,13 @@ import java.util.HashSet;
 import java.util.Properties;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.rometools.fetcher.FeedFetcher;
 import com.rometools.fetcher.FetcherEvent;
 import com.rometools.fetcher.FetcherException;
 import com.rometools.fetcher.FetcherListener;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.sun.syndication.feed.synd.SyndFeed;
 
 public abstract class AbstractFeedFetcher implements FeedFetcher {
@@ -189,7 +189,8 @@ public abstract class AbstractFeedFetcher implements FeedFetcher {
      * </p>
      *
      * <p>
-     * The returned feed will have the same data as the newFeed parameter, with the entries from originalFeed appended to the end of its entries.
+     * The returned feed will have the same data as the newFeed parameter, with the entries from
+     * originalFeed appended to the end of its entries.
      * </p>
      *
      * @param originalFeed

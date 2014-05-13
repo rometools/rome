@@ -5,9 +5,10 @@ import java.util.EventObject;
 import com.sun.syndication.feed.synd.SyndFeed;
 
 /**
- * Implementation note: FetcherEvent is not thread safe. Make sure that they are only ever accessed by one thread. If necessary, make all getters and setters
- * synchronized, or alternatively make all fields final.
- * 
+ * Implementation note: FetcherEvent is not thread safe. Make sure that they are only ever accessed
+ * by one thread. If necessary, make all getters and setters synchronized, or alternatively make all
+ * fields final.
+ *
  * @author nl
  */
 public class FetcherEvent extends EventObject {
@@ -39,7 +40,7 @@ public class FetcherEvent extends EventObject {
 
     /**
      * @return Returns the feed.
-     * 
+     *
      *         <p>
      *         The feed will only be set if the eventType is EVENT_TYPE_FEED_RETRIEVED
      *         </p>
@@ -50,7 +51,7 @@ public class FetcherEvent extends EventObject {
 
     /**
      * @param feed The feed to set.
-     * 
+     *
      *            <p>
      *            The feed will only be set if the eventType is EVENT_TYPE_FEED_RETRIEVED
      *            </p>

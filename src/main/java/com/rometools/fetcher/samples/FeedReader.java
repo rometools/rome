@@ -25,16 +25,15 @@ import com.rometools.fetcher.FetcherListener;
 import com.rometools.fetcher.impl.FeedFetcherCache;
 import com.rometools.fetcher.impl.HashMapFeedInfoCache;
 import com.rometools.fetcher.impl.HttpURLFeedFetcher;
-
 import com.sun.syndication.feed.synd.SyndFeed;
 
 /**
  * Reads and prints any RSS/Atom feed type. Converted from the original Rome sample FeedReader
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
  * @author Nick Lothian
- * 
+ *
  */
 public class FeedReader {
     public static void main(final String[] args) {

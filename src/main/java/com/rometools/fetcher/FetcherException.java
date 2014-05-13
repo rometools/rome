@@ -18,7 +18,7 @@ package com.rometools.fetcher;
 
 /**
  * @author Nick Lothian
- * 
+ *
  */
 public class FetcherException extends Exception {
     private static final long serialVersionUID = 1L;

@@ -24,16 +24,18 @@ import java.util.Map;
 
 /**
  * <p>
- * A very simple implementation of the {@link com.rometools.fetcher.impl.FeedFetcherCache} interface.
+ * A very simple implementation of the {@link com.rometools.fetcher.impl.FeedFetcherCache}
+ * interface.
  * </p>
- * 
+ *
  * <p>
- * This implementation uses a HashMap to cache retrieved feeds. This implementation is most suitible for sort term (client aggregator?) use, as the memory usage
- * will increase over time as the number of feeds in the cache increases.
+ * This implementation uses a HashMap to cache retrieved feeds. This implementation is most suitible
+ * for sort term (client aggregator?) use, as the memory usage will increase over time as the number
+ * of feeds in the cache increases.
  * </p>
- * 
+ *
  * @author Nick Lothian
- * 
+ *
  */
 public class HashMapFeedInfoCache implements FeedFetcherCache, Serializable {
     private static final long serialVersionUID = 1L;
@@ -46,11 +48,12 @@ public class HashMapFeedInfoCache implements FeedFetcherCache, Serializable {
      * <p>
      * Constructor for HashMapFeedInfoCache
      * </p>
-     * 
+     *
      * <p>
-     * Only use this if you want multiple instances of the cache. Usually getInstance() is more appropriate.
+     * Only use this if you want multiple instances of the cache. Usually getInstance() is more
+     * appropriate.
      * </p>
-     * 
+     *
      */
     public HashMapFeedInfoCache() {
         setInfoCache(createInfoCache());
@@ -58,7 +61,7 @@ public class HashMapFeedInfoCache implements FeedFetcherCache, Serializable {
 
     /**
      * Get the global instance of the cache
-     * 
+     *
      * @return an implementation of FeedFetcherCache
      */
     public static synchronized FeedFetcherCache getInstance() {
@@ -101,8 +104,9 @@ public class HashMapFeedInfoCache implements FeedFetcherCache, Serializable {
     }
 
     /**
-     * The API of this class indicates that map must thread safe. In other words, be sure to wrap it in a synchronized map unless you know what you are doing.
-     * 
+     * The API of this class indicates that map must thread safe. In other words, be sure to wrap it
+     * in a synchronized map unless you know what you are doing.
+     *
      * @param map the map to use as the info cache.
      */
     protected synchronized final void setInfoCache(final Map<String, SyndFeedInfo> map) {

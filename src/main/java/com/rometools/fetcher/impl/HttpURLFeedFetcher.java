@@ -26,7 +26,6 @@ import java.util.zip.GZIPInputStream;
 
 import com.rometools.fetcher.FetcherEvent;
 import com.rometools.fetcher.FetcherException;
-
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.SyndFeedInput;
@@ -36,18 +35,20 @@ import com.sun.syndication.io.XmlReader;
  * <p>
  * Class to retrieve syndication files via HTTP.
  * </p>
- * 
+ *
  * <p>
- * If passed a {@link com.rometools.fetcher.impl.FeedFetcherCache} in the constructor it will use conditional gets to only retrieve modified content.
+ * If passed a {@link com.rometools.fetcher.impl.FeedFetcherCache} in the constructor it will use
+ * conditional gets to only retrieve modified content.
  * </p>
- * 
+ *
  * <p>
- * The class uses the Accept-Encoding: gzip header to retrieve gzipped feeds where supported by the server.
+ * The class uses the Accept-Encoding: gzip header to retrieve gzipped feeds where supported by the
+ * server.
  * </p>
- * 
+ *
  * <p>
  * Simple usage:
- * 
+ *
  * <pre>
  * // create the cache
  * FeedFetcherCache feedInfoCache = HashMapFeedInfoCache.getFeedInfoCache();
@@ -56,14 +57,15 @@ import com.sun.syndication.io.XmlReader;
  * // retrieve the resource if it has changed
  * SyndFeed feed = new HttpURLFeedFetcher(feedInfoCache).retrieveFeed(feedUrl);
  * </pre>
- * 
+ *
  * </p>
- * 
+ *
  * @see <a
  *      href="http://fishbowl.pastiche.org/2002/10/21/http_conditional_get_for_rss_hackers">http://fishbowl.pastiche.org/2002/10/21/http_conditional_get_for_rss_hackers</a>
  * @see <a
  *      href="http://diveintomark.org/archives/2003/07/21/atom_aggregator_behavior_http_level">http://diveintomark.org/archives/2003/07/21/atom_aggregator_behavior_http_level</a>
- * @see <a href="http://bobwyman.pubsub.com/main/2004/09/using_rfc3229_w.html">http://bobwyman.pubsub.com/main/2004/09/using_rfc3229_w.html</a>
+ * @see <a
+ *      href="http://bobwyman.pubsub.com/main/2004/09/using_rfc3229_w.html">http://bobwyman.pubsub.com/main/2004/09/using_rfc3229_w.html</a>
  * @author Nick Lothian
  */
 public class HttpURLFeedFetcher extends AbstractFeedFetcher {
@@ -76,7 +78,7 @@ public class HttpURLFeedFetcher extends AbstractFeedFetcher {
 
     /**
      * Constructor to use HttpURLFeedFetcher without caching of feeds
-     * 
+     *
      */
     public HttpURLFeedFetcher() {
         super();
@@ -84,7 +86,7 @@ public class HttpURLFeedFetcher extends AbstractFeedFetcher {
 
     /**
      * Constructor to enable HttpURLFeedFetcher to cache feeds
-     * 
+     *
      * @param feedCache - an instance of the FeedFetcherCache interface
      */
     public HttpURLFeedFetcher(final FeedFetcherCache feedInfoCache) {
@@ -99,7 +101,7 @@ public class HttpURLFeedFetcher extends AbstractFeedFetcher {
 
     /**
      * Retrieve a feed over HTTP
-     * 
+     *
      * @param feedUrl A non-null URL of a RSS/Atom feed to retrieve
      * @return A {@link com.sun.syndication.feed.synd.SyndFeed} object
      * @throws IllegalArgumentException if the URL is null;
@@ -121,7 +123,8 @@ public class HttpURLFeedFetcher extends AbstractFeedFetcher {
         if (connectTimeout >= 0) {
             httpConnection.setConnectTimeout(connectTimeout);
         }
-        // httpConnection.setInstanceFollowRedirects(true); // this is true by default, but can be changed on a claswide basis
+        // httpConnection.setInstanceFollowRedirects(true); // this is true by default, but can be
+        // changed on a claswide basis
 
         final FeedFetcherCache cache = getFeedInfoCache();
         if (cache != null) {
@@ -217,7 +220,8 @@ public class HttpURLFeedFetcher extends AbstractFeedFetcher {
             if (isUsingDeltaEncoding() && imHeader != null && imHeader.indexOf("feed") >= 0) {
                 final FeedFetcherCache cache = getFeedInfoCache();
                 if (cache != null && connection.getResponseCode() == 226) {
-                    // client is setup to use http delta encoding and the server supports it and has returned a delta encoded response
+                    // client is setup to use http delta encoding and the server supports it and has
+                    // returned a delta encoded response
                     // This response only includes new items
                     final SyndFeedInfo cachedInfo = cache.getFeedInfo(orignalUrl);
                     if (cachedInfo != null) {
@@ -241,7 +245,7 @@ public class HttpURLFeedFetcher extends AbstractFeedFetcher {
      * <p>
      * Set appropriate HTTP headers, including conditional get and gzip encoding headers
      * </p>
-     * 
+     *
      * @param connection A URLConnection
      * @param syndFeedInfo The SyndFeedInfo for the feed to be retrieved. May be null
      */
@@ -278,7 +282,8 @@ public class HttpURLFeedFetcher extends AbstractFeedFetcher {
             is = new BufferedInputStream(inputStream);
         }
 
-        // InputStreamReader reader = new InputStreamReader(is, ResponseHandler.getCharacterEncoding(connection));
+        // InputStreamReader reader = new InputStreamReader(is,
+        // ResponseHandler.getCharacterEncoding(connection));
 
         // SyndFeedInput input = new SyndFeedInput();
 
@@ -322,5 +327,5 @@ public class HttpURLFeedFetcher extends AbstractFeedFetcher {
      */
     public synchronized void setConnectTimeout(final int timeout) {
         connectTimeout = timeout;
-    }    
+    }
 }
