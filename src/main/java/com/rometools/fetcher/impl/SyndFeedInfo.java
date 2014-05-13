@@ -34,7 +34,7 @@ import com.sun.syndication.feed.synd.SyndFeed;
  * @author Nick Lothian
  */
 public class SyndFeedInfo implements Cloneable, Serializable {
-    private static final long serialVersionUID = -1874786860901426015L;
+    private static final long serialVersionUID = 1L;
 
     private final ObjectBean _objBean;
     private String id;

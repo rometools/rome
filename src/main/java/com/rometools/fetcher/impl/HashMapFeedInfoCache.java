@@ -36,7 +36,7 @@ import java.util.Map;
  * 
  */
 public class HashMapFeedInfoCache implements FeedFetcherCache, Serializable {
-    private static final long serialVersionUID = -1594665619950916222L;
+    private static final long serialVersionUID = 1L;
 
     static HashMapFeedInfoCache _instance;
 

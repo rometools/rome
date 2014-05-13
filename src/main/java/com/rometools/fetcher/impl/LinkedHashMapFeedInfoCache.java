@@ -21,7 +21,7 @@ public class LinkedHashMapFeedInfoCache extends HashMapFeedInfoCache {
 
     private final class CacheImpl extends LinkedHashMap<String, SyndFeedInfo> {
 
-        private static final long serialVersionUID = -6977191330127794920L;
+        private static final long serialVersionUID = 1L;
 
         public CacheImpl() {
             super(16, 0.75F, true);
@@ -35,7 +35,7 @@ public class LinkedHashMapFeedInfoCache extends HashMapFeedInfoCache {
     }
 
     private static final int DEFAULT_MAX_ENTRIES = 20;
-    private static final long serialVersionUID = 1694228973357997417L;
+    private static final long serialVersionUID = 1L;
     private static final LinkedHashMapFeedInfoCache _instance = new LinkedHashMapFeedInfoCache();
 
     private int maxEntries = DEFAULT_MAX_ENTRIES;

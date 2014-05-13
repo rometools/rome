@@ -12,7 +12,7 @@ import com.sun.syndication.feed.synd.SyndFeed;
  */
 public class FetcherEvent extends EventObject {
 
-    private static final long serialVersionUID = 3985600601904140103L;
+    private static final long serialVersionUID = 1L;
 
     public static final String EVENT_TYPE_FEED_POLLED = "FEED_POLLED";
     public static final String EVENT_TYPE_FEED_RETRIEVED = "FEED_RETRIEVED";
