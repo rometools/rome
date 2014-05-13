@@ -23,7 +23,7 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * @author Michael W. Nassif (enrouteinc@gmail.com) Class representation of the Query object (Response portion so far)
  */
 public class OSQuery implements Cloneable, Serializable {
-    private static final long serialVersionUID = 3818092699440612477L;
+    private static final long serialVersionUID = 1L;
 
     ObjectBean _objBean = null;
 

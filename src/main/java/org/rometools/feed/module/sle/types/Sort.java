@@ -64,7 +64,7 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Sort implements Serializable, Cloneable {
-    private static final long serialVersionUID = -5839582908829350351L;
+    private static final long serialVersionUID = 1L;
     /**
      * dataType value for Date information.
      */

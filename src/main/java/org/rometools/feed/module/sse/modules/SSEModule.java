@@ -13,7 +13,7 @@ import com.sun.syndication.feed.module.Module;
  * The base module for SSE data synchronization. Defines a namespace, uri, and basic copying operations.
  */
 public abstract class SSEModule implements Module {
-    private static final long serialVersionUID = -7487775381662291314L;
+    private static final long serialVersionUID = 1L;
 
     public static final String SSE_SCHEMA_URI = "http://www.microsoft.com/schemas/rss/sse";
 

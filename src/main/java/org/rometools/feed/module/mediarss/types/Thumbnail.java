@@ -61,7 +61,7 @@ import com.sun.syndication.feed.impl.ToStringBean;
  * </p>
  */
 public class Thumbnail implements Cloneable, Serializable {
-    private static final long serialVersionUID = 2035345549055202026L;
+    private static final long serialVersionUID = 1L;
 
     private Integer thumbHeight = null;
     private Integer thumbWidth = null;

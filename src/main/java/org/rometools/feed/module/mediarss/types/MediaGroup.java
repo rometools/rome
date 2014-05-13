@@ -39,7 +39,7 @@ import com.sun.syndication.feed.impl.ToStringBean;
  * @author cooper
  */
 public class MediaGroup implements Cloneable, Serializable {
-    private static final long serialVersionUID = 768465435081309082L;
+    private static final long serialVersionUID = 1L;
 
     private Integer defaultContentIndex;
     private Metadata metadata;

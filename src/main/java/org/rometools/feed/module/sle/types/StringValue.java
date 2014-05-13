@@ -28,7 +28,7 @@ import com.sun.syndication.feed.impl.ObjectBean;
  */
 public class StringValue implements EntryValue {
 
-    private static final long serialVersionUID = -8384073300710802173L;
+    private static final long serialVersionUID = 1L;
 
     private final ObjectBean obj = new ObjectBean(StringValue.class, this);
 

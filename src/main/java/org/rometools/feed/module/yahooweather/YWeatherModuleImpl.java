@@ -54,7 +54,7 @@ import com.sun.syndication.feed.module.ModuleImpl;
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class YWeatherModuleImpl extends ModuleImpl implements YWeatherEntryModule, YWeatherFeedModule {
-    private static final long serialVersionUID = -4753704339578661020L;
+    private static final long serialVersionUID = 1L;
     private Location location;
     private Astronomy astronomy;
     private Atmosphere atmosphere;

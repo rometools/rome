@@ -70,7 +70,7 @@ import com.sun.syndication.feed.impl.ToStringBean;
  * @author cooper
  */
 public class Text implements Serializable {
-    private static final long serialVersionUID = 9043514380583850045L;
+    private static final long serialVersionUID = 1L;
     private String type;
     private final String value;
     private Time end;

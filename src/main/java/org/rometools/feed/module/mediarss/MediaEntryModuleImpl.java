@@ -37,7 +37,7 @@ import com.sun.syndication.feed.impl.ToStringBean;
  * @author Nathanial X. Freitas
  */
 public class MediaEntryModuleImpl extends MediaModuleImpl implements MediaEntryModule, Cloneable, Serializable {
-    private static final long serialVersionUID = -1564409507033924835L;
+    private static final long serialVersionUID = 1L;
 
     /*
      * the variables in the MediaModule are set when they apply to all MediaContent instances in the set

@@ -124,7 +124,7 @@ import com.sun.syndication.feed.impl.ToStringBean;
  *         within each instance of an <item> within an RSS 2.0 document.
  */
 public class MediaContent implements Serializable {
-    private static final long serialVersionUID = -4990262574794352616L;
+    private static final long serialVersionUID = 1L;
     private Expression expression;
     private Float bitrate = null;
     private Float framerate = null;

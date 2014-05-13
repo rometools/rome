@@ -47,7 +47,7 @@ import com.sun.syndication.feed.impl.ToStringBean;
  * @author cooper
  */
 public class Hash extends AbstractSchemeValue implements Serializable {
-    private static final long serialVersionUID = 3566980635881544337L;
+    private static final long serialVersionUID = 1L;
 
     /**
      * Creates a new instance of Hash

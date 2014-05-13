@@ -230,7 +230,7 @@ public class SSE091Parser implements DelegatingModuleParser {
     }
 
     private static class ContentFilter extends AbstractFilter<Element> {
-        private static final long serialVersionUID = 9087423853758730810L;
+        private static final long serialVersionUID = 1L;
         private final String name;
 
         private ContentFilter(final String name) {

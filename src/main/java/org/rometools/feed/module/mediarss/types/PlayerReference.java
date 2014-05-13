@@ -53,7 +53,7 @@ import com.sun.syndication.feed.impl.ToStringBean;
  * @author cooper
  */
 public class PlayerReference implements Reference, Serializable {
-    private static final long serialVersionUID = -2618211012392630834L;
+    private static final long serialVersionUID = 1L;
 
     private final Integer height;
     private final Integer width;

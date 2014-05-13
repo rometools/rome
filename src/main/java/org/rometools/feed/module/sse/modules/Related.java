@@ -18,7 +18,7 @@ import com.sun.syndication.feed.CopyFrom;
  * .
  */
 public class Related extends SSEModule {
-    private static final long serialVersionUID = -2982701526362850770L;
+    private static final long serialVersionUID = 1L;
 
     public static final String NAME = "related";
 

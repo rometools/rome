@@ -37,7 +37,7 @@ import com.sun.syndication.feed.module.ModuleImpl;
  * @author cooper
  */
 public class MediaModuleImpl extends ModuleImpl implements MediaModule, Serializable {
-    private static final long serialVersionUID = 1506805082848531979L;
+    private static final long serialVersionUID = 1L;
 
     private Metadata metadata;
     private PlayerReference player;

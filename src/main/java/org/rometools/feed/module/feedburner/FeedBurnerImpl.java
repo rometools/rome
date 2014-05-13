@@ -28,7 +28,7 @@ import com.sun.syndication.feed.CopyFrom;
  */
 public class FeedBurnerImpl implements FeedBurner {
 
-    private static final long serialVersionUID = 4595722221441468838L;
+    private static final long serialVersionUID = 1L;
 
     private String awareness;
     private String origLink;

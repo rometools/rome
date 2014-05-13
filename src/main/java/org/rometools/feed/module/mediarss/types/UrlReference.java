@@ -35,7 +35,7 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * @author cooper
  */
 public class UrlReference implements Reference, Serializable {
-    private static final long serialVersionUID = -178149736468242989L;
+    private static final long serialVersionUID = 1L;
 
     private final URI url;
 

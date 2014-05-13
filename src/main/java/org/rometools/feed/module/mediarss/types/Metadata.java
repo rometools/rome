@@ -56,7 +56,7 @@ import com.sun.syndication.feed.impl.ToStringBean;
  * @author cooper
  */
 public class Metadata implements Cloneable, Serializable {
-    private static final long serialVersionUID = 649350950456005250L;
+    private static final long serialVersionUID = 1L;
 
     private Hash hash;
     private String copyright;

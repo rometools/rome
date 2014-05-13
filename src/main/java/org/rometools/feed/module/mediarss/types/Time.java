@@ -33,7 +33,7 @@ import com.sun.syndication.feed.impl.EqualsBean;
  * @author cooper
  */
 public class Time implements Serializable {
-    private static final long serialVersionUID = 4088522049885593073L;
+    private static final long serialVersionUID = 1L;
 
     private static final long SECOND = 1000;
     private static final long MINUTE = 60 * SECOND;

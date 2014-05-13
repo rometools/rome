@@ -73,7 +73,7 @@ import com.sun.syndication.feed.impl.ToStringBean;
  * @author cooper
  */
 public class Restriction implements Serializable {
-    private static final long serialVersionUID = 7944281267467298628L;
+    private static final long serialVersionUID = 1L;
 
     private final Relationship relationship;
     private final String value;

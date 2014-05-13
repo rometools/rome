@@ -9,7 +9,7 @@ import com.sun.syndication.feed.rss.Item;
  * <sx:conflict> element within <sx:conflicts>
  */
 public class Conflict extends SSEModule {
-    private static final long serialVersionUID = -6923108346241653067L;
+    private static final long serialVersionUID = 1L;
 
     public static final String CONFLICTS_NAME = "conflicts";
 

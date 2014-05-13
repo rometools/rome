@@ -24,7 +24,7 @@ import java.io.Serializable;
  * value is 'full'. It is an optional attribute.
  */
 public class Expression implements Serializable {
-    private static final long serialVersionUID = 2356898289547679768L;
+    private static final long serialVersionUID = 1L;
 
     /**
      * Represents a complete media object.

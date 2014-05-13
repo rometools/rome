@@ -53,7 +53,7 @@ import com.sun.syndication.feed.impl.ToStringBean;
  * @author cooper
  */
 public class Rating extends AbstractSchemeValue {
-    private static final long serialVersionUID = 429385772347911315L;
+    private static final long serialVersionUID = 1L;
 
     /**
      * urn:simple adult. This will be populated on the deprecated media:adult tag as well,

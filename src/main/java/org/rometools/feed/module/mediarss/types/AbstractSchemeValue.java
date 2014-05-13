@@ -31,7 +31,7 @@ import java.io.Serializable;
  * @author cooper
  */
 public abstract class AbstractSchemeValue implements Serializable {
-    private static final long serialVersionUID = -917128796432458636L;
+    private static final long serialVersionUID = 1L;
     private final String scheme;
     private final String value;
 

@@ -24,7 +24,7 @@ import com.sun.syndication.feed.CopyFrom;
  * .
  */
 public class Sharing extends SSEModule {
-    private static final long serialVersionUID = 8626705992778126861L;
+    private static final long serialVersionUID = 1L;
 
     public static final String NAME = "sharing";
 

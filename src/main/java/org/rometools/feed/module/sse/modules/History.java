@@ -20,7 +20,7 @@ import com.sun.syndication.feed.CopyFrom;
  * .
  */
 public class History extends SSEModule {
-    private static final long serialVersionUID = -8007994009928369002L;
+    private static final long serialVersionUID = 1L;
 
     // A date-time attribute.
     private Date when;

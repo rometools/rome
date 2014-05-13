@@ -58,7 +58,7 @@ import com.sun.syndication.feed.impl.ToStringBean;
  * @author cooper
  */
 public class Category implements Serializable {
-    private static final long serialVersionUID = 5182373808661745402L;
+    private static final long serialVersionUID = 1L;
     /**
      * Schem for FLICKR tags
      */
