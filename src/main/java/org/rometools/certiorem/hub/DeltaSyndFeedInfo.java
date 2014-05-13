@@ -17,9 +17,9 @@ import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
 
 /**
- * Extends SyndFeedInfo to also track etags for individual entries. This may be
- * used with DeltaFeedInfoCache to only return feed with a subset of entries
- * that have changed since last fetch.
+ * Extends SyndFeedInfo to also track etags for individual entries. This may be used with
+ * DeltaFeedInfoCache to only return feed with a subset of entries that have changed since last
+ * fetch.
  *
  * @author najmi
  */
@@ -40,8 +40,8 @@ public class DeltaSyndFeedInfo extends SyndFeedInfo {
     }
 
     /**
-     * Gets a filtered version of the SyndFeed that only has entries that were
-     * changed in the last setSyndFeed() call.
+     * Gets a filtered version of the SyndFeed that only has entries that were changed in the last
+     * setSyndFeed() call.
      *
      * @return
      */
@@ -68,8 +68,8 @@ public class DeltaSyndFeedInfo extends SyndFeedInfo {
     }
 
     /**
-     * Overrides super class method to update changedMap and entryTagsMap for
-     * tracking changed entries.
+     * Overrides super class method to update changedMap and entryTagsMap for tracking changed
+     * entries.
      *
      * @param feed
      */

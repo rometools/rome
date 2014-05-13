@@ -25,7 +25,7 @@ package org.rometools.certiorem;
 public class HttpStatusCodeException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
-    
+
     private final int status;
 
     public HttpStatusCodeException(final int status, final String message, final Throwable cause) {

@@ -28,9 +28,8 @@ import org.rometools.certiorem.hub.data.SubscriptionSummary;
 public class UnthreadedNotifier extends AbstractNotifier {
 
     /**
-     * A blocking call that performs a notification. If there are pending
-     * retries that are older than two minutes old, they will be retried before
-     * the method returns.
+     * A blocking call that performs a notification. If there are pending retries that are older
+     * than two minutes old, they will be retried before the method returns.
      *
      * @param not
      */

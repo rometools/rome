@@ -69,8 +69,7 @@ public interface Verifier {
     public boolean verifyUnsubcribeSyncronously(Subscriber subscriber);
 
     /**
-     * An interface for capturing the result of a verification (subscribe or
-     * unsubscribe)
+     * An interface for capturing the result of a verification (subscribe or unsubscribe)
      */
     public static interface VerificationCallback {
         /**

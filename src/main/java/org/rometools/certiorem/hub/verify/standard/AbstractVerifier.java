@@ -58,7 +58,7 @@ public abstract class AbstractVerifier implements Verifier {
             final String challenge = UUID.randomUUID().toString();
             final StringBuilder queryString = new StringBuilder();
             queryString.append("hub.mode=").append(mode).append("&hub.topic=").append(URLEncoder.encode(subscriber.getTopic(), "UTF-8"))
-            .append("&hub.challenge=").append(challenge);
+                    .append("&hub.challenge=").append(challenge);
 
             if (subscriber.getLeaseSeconds() != -1) {
                 queryString.append("&hub.lease_seconds=").append(subscriber.getLeaseSeconds());

@@ -31,13 +31,11 @@ import com.sun.syndication.feed.synd.SyndFeed;
  */
 public interface Notifier {
     /**
-     * Instructs the notifier to begin sending notifications to the list of
-     * subscribers
+     * Instructs the notifier to begin sending notifications to the list of subscribers
      *
      * @param subscribers Subscribers to notify
      * @param value The SyndFeed to send them
-     * @param callback A callback that is invoked each time a subscriber is
-     *            notified.
+     * @param callback A callback that is invoked each time a subscriber is notified.
      */
     public void notifySubscribers(List<? extends Subscriber> subscribers, SyndFeed value, SubscriptionSummaryCallback callback);
 
