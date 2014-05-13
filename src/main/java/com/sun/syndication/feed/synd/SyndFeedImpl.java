@@ -53,7 +53,7 @@ import com.sun.syndication.feed.synd.impl.URINormalizer;
  */
 public class SyndFeedImpl implements Serializable, SyndFeed {
 
-    private static final long serialVersionUID = -2529165503200548045L;
+    private static final long serialVersionUID = 1L;
 
     private static final CopyFromHelper COPY_FROM_HELPER;
 

@@ -39,7 +39,7 @@ import com.sun.syndication.feed.impl.ObjectBean;
  */
 public class DCModuleImpl extends ModuleImpl implements DCModule {
 
-    private static final long serialVersionUID = -6502372914221178645L;
+    private static final long serialVersionUID = 1L;
 
     private final ObjectBean objBean;
     private List<String> title;

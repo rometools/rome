@@ -42,7 +42,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ToStringBean implements Serializable {
 
-    private static final long serialVersionUID = -5850496718959612854L;
+    private static final long serialVersionUID = 1L;
     private static final Logger LOG = LoggerFactory.getLogger(ToStringBean.class);
 
     private static final ThreadLocal<Stack<String[]>> PREFIX_TL = new ThreadLocal<Stack<String[]>>() {

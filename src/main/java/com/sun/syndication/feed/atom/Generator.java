@@ -28,7 +28,9 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * 
  */
 public class Generator implements Cloneable, Serializable {
-    private static final long serialVersionUID = -1457065669831041059L;
+    
+    private static final long serialVersionUID = 1L;
+    
     private final ObjectBean objBean;
     private String url;
     private String version;

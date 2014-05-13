@@ -41,7 +41,7 @@ import com.sun.syndication.feed.module.impl.ModuleUtils;
  */
 public class Channel extends WireFeed {
 
-    private static final long serialVersionUID = 745207486449728472L;
+    private static final long serialVersionUID = 1L;
 
     public static final String SUNDAY = "sunday";
     public static final String MONDAY = "monday";

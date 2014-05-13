@@ -44,7 +44,7 @@ import org.slf4j.LoggerFactory;
  */
 public class CloneableBean implements Serializable, Cloneable {
 
-    private static final long serialVersionUID = -6520053043831187823L;
+    private static final long serialVersionUID = 1L;
     private static final Logger LOG = LoggerFactory.getLogger(CloneableBean.class);
 
     private static final Set<Class<?>> BASIC_TYPES = new HashSet<Class<?>>();

@@ -14,7 +14,7 @@ import com.sun.syndication.feed.impl.ObjectBean;
  */
 public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
 
-    private static final long serialVersionUID = -5813049622142257411L;
+    private static final long serialVersionUID = 1L;
 
     private static final CopyFromHelper COPY_FROM_HELPER;
 

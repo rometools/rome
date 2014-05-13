@@ -29,7 +29,7 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * 
  */
 public class Guid implements Cloneable, Serializable {
-    private static final long serialVersionUID = -3915169615222624604L;
+    private static final long serialVersionUID = 1L;
     private final ObjectBean objBean;
     private boolean permaLink;
     private String value;

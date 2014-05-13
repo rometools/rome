@@ -29,7 +29,7 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * 
  */
 public class Source implements Cloneable, Serializable {
-    private static final long serialVersionUID = 7117390459877365931L;
+    private static final long serialVersionUID = 1L;
     private final ObjectBean objBean;
     private String url;
     private String value;

@@ -30,7 +30,7 @@ import com.sun.syndication.feed.impl.ObjectBean;
  */
 public class Link implements Cloneable, Serializable {
 
-    private static final long serialVersionUID = 670365139518027828L;
+    private static final long serialVersionUID = 1L;
 
     private final ObjectBean objBean;
 

@@ -36,7 +36,7 @@ import com.sun.syndication.feed.synd.SyndPerson;
  */
 public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
 
-    private static final long serialVersionUID = 8853656713347735541L;
+    private static final long serialVersionUID = 1L;
 
     private final ObjectBean objBean;
 

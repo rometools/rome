@@ -51,7 +51,7 @@ import com.sun.syndication.feed.synd.impl.URINormalizer;
  */
 public class SyndEntryImpl implements Serializable, SyndEntry {
 
-    private static final long serialVersionUID = 1944144041409866698L;
+    private static final long serialVersionUID = 1L;
 
     private static final CopyFromHelper COPY_FROM_HELPER;
 

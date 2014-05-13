@@ -26,7 +26,7 @@ import org.jdom2.input.JDOMParseException;
  */
 public class ParsingFeedException extends FeedException {
 
-    private static final long serialVersionUID = -4791878470117677698L;
+    private static final long serialVersionUID = 1L;
 
     /**
      * Creates a FeedException with a message.

@@ -36,7 +36,7 @@ import java.util.List;
  */
 public class EqualsBean implements Serializable {
 
-    private static final long serialVersionUID = 9120107899175152601L;
+    private static final long serialVersionUID = 1L;
 
     private static final Object[] NO_PARAMS = new Object[0];
 

@@ -39,7 +39,7 @@ import com.sun.syndication.feed.synd.SyndPerson;
  */
 public class Entry implements Cloneable, Serializable, Extendable {
 
-    private static final long serialVersionUID = 4874483180016783939L;
+    private static final long serialVersionUID = 1L;
 
     private Content summary;
     private Content title;

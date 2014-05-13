@@ -44,7 +44,7 @@ import com.sun.syndication.feed.module.impl.ModuleUtils;
  */
 public class Item implements Cloneable, Serializable, Extendable {
 
-    private static final long serialVersionUID = 3741763947754555947L;
+    private static final long serialVersionUID = 1L;
 
     private final ObjectBean objBean;
 

@@ -34,7 +34,7 @@ import com.sun.syndication.feed.impl.ObjectBean;
  */
 public class SyndContentImpl implements Serializable, SyndContent {
 
-    private static final long serialVersionUID = -8831050456661121113L;
+    private static final long serialVersionUID = 1L;
 
     private static final CopyFromHelper COPY_FROM_HELPER;
 

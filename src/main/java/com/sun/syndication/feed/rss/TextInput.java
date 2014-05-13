@@ -29,7 +29,7 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * 
  */
 public class TextInput implements Cloneable, Serializable {
-    private static final long serialVersionUID = -3262516270222989190L;
+    private static final long serialVersionUID = 1L;
     private final ObjectBean objBean;
     private String title;
     private String description;

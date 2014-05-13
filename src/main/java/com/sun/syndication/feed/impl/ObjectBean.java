@@ -42,7 +42,7 @@ import java.util.Set;
  */
 public class ObjectBean implements Serializable, Cloneable {
 
-    private static final long serialVersionUID = -8784981605711980095L;
+    private static final long serialVersionUID = 1L;
 
     private final EqualsBean equalsBean;
     private final ToStringBean toStringBean;

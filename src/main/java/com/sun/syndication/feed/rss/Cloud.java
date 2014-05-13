@@ -29,7 +29,7 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * 
  */
 public class Cloud implements Cloneable, Serializable {
-    private static final long serialVersionUID = 7380217488816772041L;
+    private static final long serialVersionUID = 1L;
     private final ObjectBean objBean;
     private String domain;
     private int port;

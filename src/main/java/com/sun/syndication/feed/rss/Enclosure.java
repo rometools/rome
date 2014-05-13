@@ -29,7 +29,7 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * 
  */
 public class Enclosure implements Cloneable, Serializable {
-    private static final long serialVersionUID = -2191354241339637856L;
+    private static final long serialVersionUID = 1L;
     private final ObjectBean objBean;
     private String url;
     private long length;

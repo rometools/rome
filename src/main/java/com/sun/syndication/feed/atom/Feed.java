@@ -36,7 +36,7 @@ import com.sun.syndication.feed.synd.SyndPerson;
  */
 public class Feed extends WireFeed {
 
-    private static final long serialVersionUID = -9175445106675422528L;
+    private static final long serialVersionUID = 1L;
 
     private String xmlBase;
     private List<Category> categories;

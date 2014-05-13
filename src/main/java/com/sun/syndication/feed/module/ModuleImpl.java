@@ -29,7 +29,7 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * 
  */
 public abstract class ModuleImpl implements Cloneable, Serializable, Module {
-    private static final long serialVersionUID = 3621352305155841238L;
+    private static final long serialVersionUID = 1L;
     private final ObjectBean objBean;
     private final String uri;
 

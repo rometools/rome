@@ -37,7 +37,7 @@ import com.sun.syndication.feed.impl.CopyFromHelper;
  */
 public class SyModuleImpl extends ModuleImpl implements SyModule {
 
-    private static final long serialVersionUID = -8345879299577437933L;
+    private static final long serialVersionUID = 1L;
 
     private static final Set<String> PERIODS = new HashSet<String>();
     private static final CopyFromHelper COPY_FROM_HELPER;
