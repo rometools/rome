@@ -62,10 +62,12 @@ public final class Strings {
     }
 
     /**
-     * Removes the whitespace at the beginning and end of a String. When the String only contains whitespace, it returns null.
+     * Removes the whitespace at the beginning and end of a String. When the String only contains
+     * whitespace, it returns null.
      *
      * @param s The String to trim, may be null
-     * @return null when the input String is null or does only contain whitespace, the trimmed String otherwise
+     * @return null when the input String is null or does only contain whitespace, the trimmed
+     *         String otherwise
      */
     public static String trimToNull(final String s) {
         final String trimmed = trim(s);
@@ -77,10 +79,12 @@ public final class Strings {
     }
 
     /**
-     * Removes the whitespace at the beginning and end of a String. When the String only contains whitespace, it returns null.
+     * Removes the whitespace at the beginning and end of a String. When the String only contains
+     * whitespace, it returns null.
      *
      * @param s The String to trim, may be null
-     * @return null when the input String is null or does only contain whitespace, the trimmed String otherwise
+     * @return null when the input String is null or does only contain whitespace, the trimmed
+     *         String otherwise
      */
     public static String trimToEmpty(final String s) {
         final String trimmed = trim(s);

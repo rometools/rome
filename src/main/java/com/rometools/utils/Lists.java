@@ -69,11 +69,13 @@ public final class Lists {
     }
 
     /**
-     * Checks whether the list has the given size. A null list is treated like a list without entries.
+     * Checks whether the list has the given size. A null list is treated like a list without
+     * entries.
      *
      * @param list The list to check
      * @param size The size to check
-     * @return true when the list has the given size or when size = 0 and the list is null, false otherwise
+     * @return true when the list has the given size or when size = 0 and the list is null, false
+     *         otherwise
      */
     public static boolean sizeIs(final List<?> list, final int size) {
         if (size == 0) {

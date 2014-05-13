@@ -7,7 +7,7 @@ public final class Integers {
 
     /**
      * Converts a String into an Integer.
-     * 
+     *
      * @param s The String to convert, may be null
      * @return The parsed Integer or null when parsing is not possible
      */
