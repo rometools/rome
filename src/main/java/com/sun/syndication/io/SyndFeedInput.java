@@ -34,9 +34,9 @@ import com.sun.syndication.feed.synd.SyndFeedImpl;
  * <p>
  * It delegates to a WireFeedInput to handle all feed types.
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public class SyndFeedInput {
     private final WireFeedInput feedInput;
@@ -45,7 +45,7 @@ public class SyndFeedInput {
     /**
      * Creates a SyndFeedInput instance with input validation turned off.
      * <p>
-     * 
+     *
      */
     public SyndFeedInput() {
         this(false, Locale.US);
@@ -54,10 +54,10 @@ public class SyndFeedInput {
     /**
      * Creates a SyndFeedInput instance.
      * <p>
-     * 
+     *
      * @param validate indicates if the input should be validated. NOT IMPLEMENTED YET (validation
      *            does not happen)
-     * 
+     *
      */
     public SyndFeedInput(final boolean validate, final Locale locale) {
         feedInput = new WireFeedInput(validate, locale);
@@ -74,9 +74,9 @@ public class SyndFeedInput {
      * <p>
      * By default is TRUE.
      * <p>
-     * 
+     *
      * @param heals TRUE enables stream healing, FALSE disables it.
-     * 
+     *
      */
     public void setXmlHealerOn(final boolean heals) {
         feedInput.setXmlHealerOn(heals);
@@ -93,9 +93,9 @@ public class SyndFeedInput {
      * <p>
      * By default is TRUE.
      * <p>
-     * 
+     *
      * @return TRUE if healing is enabled, FALSE if not.
-     * 
+     *
      */
     public boolean getXmlHealerOn() {
         return feedInput.getXmlHealerOn();
@@ -104,7 +104,7 @@ public class SyndFeedInput {
     /**
      * Builds SyndFeedImpl from a file.
      * <p>
-     * 
+     *
      * @param file file to read to create the SyndFeedImpl.
      * @return the SyndFeedImpl read from the file.
      * @throws FileNotFoundException thrown if the file could not be found.
@@ -112,7 +112,7 @@ public class SyndFeedInput {
      * @throws IllegalArgumentException thrown if feed type could not be understood by any of the
      *             underlying parsers.
      * @throws FeedException if the feed could not be parsed
-     * 
+     *
      */
     public SyndFeed build(final File file) throws FileNotFoundException, IOException, IllegalArgumentException, FeedException {
         return new SyndFeedImpl(feedInput.build(file), preserveWireFeed);
@@ -121,13 +121,13 @@ public class SyndFeedInput {
     /**
      * Builds SyndFeedImpl from an Reader.
      * <p>
-     * 
+     *
      * @param reader Reader to read to create the SyndFeedImpl.
      * @return the SyndFeedImpl read from the Reader.
      * @throws IllegalArgumentException thrown if feed type could not be understood by any of the
      *             underlying parsers.
      * @throws FeedException if the feed could not be parsed
-     * 
+     *
      */
     public SyndFeed build(final Reader reader) throws IllegalArgumentException, FeedException {
         return new SyndFeedImpl(feedInput.build(reader), preserveWireFeed);
@@ -136,13 +136,13 @@ public class SyndFeedInput {
     /**
      * Builds SyndFeedImpl from an W3C SAX InputSource.
      * <p>
-     * 
+     *
      * @param is W3C SAX InputSource to read to create the SyndFeedImpl.
      * @return the SyndFeedImpl read from the W3C SAX InputSource.
      * @throws IllegalArgumentException thrown if feed type could not be understood by any of the
      *             underlying parsers.
      * @throws FeedException if the feed could not be parsed
-     * 
+     *
      */
     public SyndFeed build(final InputSource is) throws IllegalArgumentException, FeedException {
         return new SyndFeedImpl(feedInput.build(is), preserveWireFeed);
@@ -151,13 +151,13 @@ public class SyndFeedInput {
     /**
      * Builds SyndFeedImpl from an W3C DOM document.
      * <p>
-     * 
+     *
      * @param document W3C DOM document to read to create the SyndFeedImpl.
      * @return the SyndFeedImpl read from the W3C DOM document.
      * @throws IllegalArgumentException thrown if feed type could not be understood by any of the
      *             underlying parsers.
      * @throws FeedException if the feed could not be parsed
-     * 
+     *
      */
     public SyndFeed build(final org.w3c.dom.Document document) throws IllegalArgumentException, FeedException {
         return new SyndFeedImpl(feedInput.build(document), preserveWireFeed);
@@ -166,20 +166,20 @@ public class SyndFeedInput {
     /**
      * Builds SyndFeedImpl from an JDOM document.
      * <p>
-     * 
+     *
      * @param document JDOM document to read to create the SyndFeedImpl.
      * @return the SyndFeedImpl read from the JDOM document.
      * @throws IllegalArgumentException thrown if feed type could not be understood by any of the
      *             underlying parsers.
      * @throws FeedException if the feed could not be parsed
-     * 
+     *
      */
     public SyndFeed build(final Document document) throws IllegalArgumentException, FeedException {
         return new SyndFeedImpl(feedInput.build(document), preserveWireFeed);
     }
 
     /**
-     * 
+     *
      * @return true if the WireFeed is made available in the SyndFeed. False by default.
      */
     public boolean isPreserveWireFeed() {
@@ -187,7 +187,7 @@ public class SyndFeedInput {
     }
 
     /**
-     * 
+     *
      * @param preserveWireFeed set to true to make the WireFeed is made available in the SyndFeed.
      *            False by default.
      */

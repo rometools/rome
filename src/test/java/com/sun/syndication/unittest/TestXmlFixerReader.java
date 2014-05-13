@@ -35,7 +35,7 @@ import com.sun.syndication.io.impl.XmlFixerReader;
 
 /**
  * @author pat, tucu
- * 
+ *
  */
 public class TestXmlFixerReader extends TestCase {
     private static final String XML_PROLOG = "<?xml version=\"1.0\" ?>";

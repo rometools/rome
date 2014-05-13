@@ -5,9 +5,9 @@ import com.sun.syndication.unittest.FeedTest;
 
 /**
  * Test for #137: RSS item description is not complete.
- * 
+ *
  * @author Martin Kurz
- * 
+ *
  */
 public class Issue137Test extends FeedTest {
 

@@ -27,33 +27,33 @@ import com.sun.syndication.feed.WireFeed;
  * <p>
  * TODO: explain how developers can plugin their own implementations.
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public interface WireFeedGenerator {
 
     /**
      * Returns the type of feed the generator creates.
      * <p>
-     * 
+     *
      * @see WireFeed for details on the format of this string.
      *      <p>
      * @return the type of feed the generator creates.
-     * 
+     *
      */
     public String getType();
 
     /**
      * Creates an XML document (JDOM) for the given feed bean.
      * <p>
-     * 
+     *
      * @param feed the feed bean to generate the XML document from.
      * @return the generated XML document (JDOM).
      * @throws IllegalArgumentException thrown if the type of the given feed bean does not match
      *             with the type of the WireFeedGenerator.
      * @throws FeedException thrown if the XML Document could not be created.
-     * 
+     *
      */
     public Document generate(WireFeed feed) throws IllegalArgumentException, FeedException;
 

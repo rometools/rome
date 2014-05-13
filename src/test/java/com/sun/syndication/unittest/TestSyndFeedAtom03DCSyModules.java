@@ -73,7 +73,7 @@ public class TestSyndFeedAtom03DCSyModules extends TestSyndFeedAtom03 {
             assertProperty(dc.getRights(), prefix + "dc:rights");
         } else {
             assertProperty(dc.getRights(), prefix + "copyright"); // in
-                                                                  // header
+            // header
             // is
             // convenience
             // method

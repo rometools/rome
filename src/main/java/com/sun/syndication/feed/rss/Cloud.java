@@ -24,9 +24,9 @@ import com.sun.syndication.feed.impl.ObjectBean;
 /**
  * Bean for clouds of RSS feeds.
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public class Cloud implements Cloneable, Serializable {
     private static final long serialVersionUID = 1L;
@@ -40,7 +40,7 @@ public class Cloud implements Cloneable, Serializable {
     /**
      * Default constructor. All properties are set to <b>null</b>.
      * <p>
-     * 
+     *
      */
     public Cloud() {
         objBean = new ObjectBean(this.getClass(), this);
@@ -49,10 +49,10 @@ public class Cloud implements Cloneable, Serializable {
     /**
      * Creates a deep 'bean' clone of the object.
      * <p>
-     * 
+     *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     * 
+     *
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
@@ -63,10 +63,10 @@ public class Cloud implements Cloneable, Serializable {
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
      * <p>
-     * 
+     *
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     * 
+     *
      */
     @Override
     public boolean equals(final Object other) {
@@ -78,9 +78,9 @@ public class Cloud implements Cloneable, Serializable {
      * <p>
      * It follows the contract defined by the Object hashCode() method.
      * <p>
-     * 
+     *
      * @return the hashcode of the bean object.
-     * 
+     *
      */
     @Override
     public int hashCode() {
@@ -90,9 +90,9 @@ public class Cloud implements Cloneable, Serializable {
     /**
      * Returns the String representation for the object.
      * <p>
-     * 
+     *
      * @return String representation for the object.
-     * 
+     *
      */
     @Override
     public String toString() {
@@ -102,9 +102,9 @@ public class Cloud implements Cloneable, Serializable {
     /**
      * Returns the cloud domain.
      * <p>
-     * 
+     *
      * @return the cloud domain, <b>null</b> if none.
-     * 
+     *
      */
     public String getDomain() {
         return domain;
@@ -113,9 +113,9 @@ public class Cloud implements Cloneable, Serializable {
     /**
      * Sets the cloud domain.
      * <p>
-     * 
+     *
      * @param domain the cloud domain to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setDomain(final String domain) {
         this.domain = domain;
@@ -124,9 +124,9 @@ public class Cloud implements Cloneable, Serializable {
     /**
      * Returns the cloud port.
      * <p>
-     * 
+     *
      * @return the cloud port, <b>null</b> if none.
-     * 
+     *
      */
     public int getPort() {
         return port;
@@ -135,9 +135,9 @@ public class Cloud implements Cloneable, Serializable {
     /**
      * Sets the cloud port.
      * <p>
-     * 
+     *
      * @param port the cloud port to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setPort(final int port) {
         this.port = port;
@@ -146,9 +146,9 @@ public class Cloud implements Cloneable, Serializable {
     /**
      * Returns the cloud path.
      * <p>
-     * 
+     *
      * @return the cloud path, <b>null</b> if none.
-     * 
+     *
      */
     public String getPath() {
         return path;
@@ -157,9 +157,9 @@ public class Cloud implements Cloneable, Serializable {
     /**
      * Sets the cloud path.
      * <p>
-     * 
+     *
      * @param path the cloud path to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setPath(final String path) {
         this.path = path;
@@ -168,9 +168,9 @@ public class Cloud implements Cloneable, Serializable {
     /**
      * Returns the cloud register procedure.
      * <p>
-     * 
+     *
      * @return the cloud register procedure, <b>null</b> if none.
-     * 
+     *
      */
     public String getRegisterProcedure() {
         return registerProcedure;
@@ -179,9 +179,9 @@ public class Cloud implements Cloneable, Serializable {
     /**
      * Sets the cloud register procedure.
      * <p>
-     * 
+     *
      * @param registerProcedure the cloud register procedure to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setRegisterProcedure(final String registerProcedure) {
         this.registerProcedure = registerProcedure;
@@ -190,9 +190,9 @@ public class Cloud implements Cloneable, Serializable {
     /**
      * Returns the cloud protocol.
      * <p>
-     * 
+     *
      * @return the cloud protocol, <b>null</b> if none.
-     * 
+     *
      */
     public String getProtocol() {
         return protocol;
@@ -201,9 +201,9 @@ public class Cloud implements Cloneable, Serializable {
     /**
      * Sets the cloud protocol.
      * <p>
-     * 
+     *
      * @param protocol the cloud protocol to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setProtocol(final String protocol) {
         this.protocol = protocol;

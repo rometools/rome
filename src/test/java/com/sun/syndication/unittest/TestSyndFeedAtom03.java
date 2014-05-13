@@ -13,7 +13,7 @@ import com.sun.syndication.io.impl.DateParser;
 
 /**
  * @author pat
- * 
+ *
  */
 public class TestSyndFeedAtom03 extends SyndFeedTest {
 

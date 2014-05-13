@@ -3,7 +3,7 @@ package com.sun.syndication.feed.synd.impl;
 /**
  * Utility class for normalizing an URI as specified in RFC 2396bis.
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
  */
 public class URINormalizer {
@@ -11,7 +11,7 @@ public class URINormalizer {
     /**
      * Normalizes an URI as specified in RFC 2396bis.
      * <p>
-     * 
+     *
      * @param uri to normalize.
      * @return the normalized value of the given URI, or <b>null</b> if the given URI was
      *         <b>null</b>.

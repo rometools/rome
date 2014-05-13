@@ -32,7 +32,7 @@ import com.sun.syndication.io.XmlReader;
 
 /**
  * @author pat, tucu
- * 
+ *
  */
 public class TestXmlReader extends TestCase {
     private static final String XML5 = "xml-prolog-encoding-spaced-single-quotes";
@@ -317,7 +317,7 @@ public class TestXmlReader extends TestCase {
     }
 
     /**
-     * 
+     *
      * @param bomType no-bom, UTF-16BE-bom, UTF-16LE-bom, UTF-8-bom
      * @param xmlType xml, xml-prolog, xml-prolog-charset
      * @return XML stream

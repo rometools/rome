@@ -33,9 +33,9 @@ import java.util.Set;
  * <p>
  * The java.beans.Introspector does not process the interfaces hierarchy chain, this one does.
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public class BeanIntrospector {
 
@@ -47,7 +47,7 @@ public class BeanIntrospector {
     /**
      * Extract all {@link PropertyDescriptor}s for properties with getters and setters for the given
      * class.
-     * 
+     *
      * @param clazz The class to extract the desired {@link PropertyDescriptor}s from
      * @return All {@link PropertyDescriptor} for properties with getters and setters for the given
      *         class.
@@ -66,7 +66,7 @@ public class BeanIntrospector {
     /**
      * Extract all {@link PropertyDescriptor}s for properties with a getter that does not come from
      * {@link Object} and does not accept parameters.
-     * 
+     *
      * @param clazz The class to extract the desired {@link PropertyDescriptor}s from
      * @return All {@link PropertyDescriptor}s for properties with a getter that does not come from
      *         {@link Object} and does not accept parameters.
@@ -105,7 +105,7 @@ public class BeanIntrospector {
     /**
      * Extract all {@link PropertyDescriptor}s for properties with a getter (that does not come from
      * {@link Object} and does not accept parameters) and a setter.
-     * 
+     *
      * @param clazz The class to extract the desired {@link PropertyDescriptor}s from
      * @return All {@link PropertyDescriptor}s for properties with a getter (that does not come from
      *         {@link Object} and does not accept parameters) and a setter.

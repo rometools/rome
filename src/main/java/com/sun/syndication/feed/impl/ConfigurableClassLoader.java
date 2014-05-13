@@ -5,9 +5,9 @@ package com.sun.syndication.feed.impl;
  * problems, simply override the default ClassLoader by calling the
  * {@link #setClassLoader(ClassLoader)} method before calling any ROME code. Unfortunately I don't
  * know whether this works because I have absolutely no experience with OSGi.
- * 
+ *
  * @author Patrick Gotthard
- * 
+ *
  */
 public enum ConfigurableClassLoader {
 
@@ -17,7 +17,7 @@ public enum ConfigurableClassLoader {
 
     /**
      * Get the configured ClassLoader. Returns
-     * 
+     *
      * @return The configured ClassLoader. Returns the ClassLoader of this enum when the ClassLoader
      *         was not overridden.
      */
@@ -30,7 +30,7 @@ public enum ConfigurableClassLoader {
 
     /**
      * Overrides the default ClassLoader (the ClassLoader of this enum).
-     * 
+     *
      * @param classLoader The ClassLoader to set.
      */
     public void setClassLoader(final ClassLoader classLoader) {

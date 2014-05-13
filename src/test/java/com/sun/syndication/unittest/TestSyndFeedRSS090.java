@@ -10,7 +10,7 @@ import com.sun.syndication.feed.synd.SyndEntry;
 
 /**
  * @author pat
- * 
+ *
  */
 public class TestSyndFeedRSS090 extends SyndFeedTest {
 

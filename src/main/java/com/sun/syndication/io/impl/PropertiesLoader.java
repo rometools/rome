@@ -25,9 +25,9 @@ import com.sun.syndication.feed.impl.ConfigurableClassLoader;
  * date formats) assume properties are list of tokens, that why the only method to get property
  * values is the getTokenizedProperty().
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public class PropertiesLoader {
 
@@ -38,9 +38,9 @@ public class PropertiesLoader {
 
     /**
      * Returns the PropertiesLoader singleton used by ROME to load plugin components.
-     * 
+     *
      * @return PropertiesLoader singleton.
-     * 
+     *
      */
     public static PropertiesLoader getPropertiesLoader() {
         synchronized (PropertiesLoader.class) {
@@ -63,11 +63,11 @@ public class PropertiesLoader {
     /**
      * Creates a PropertiesLoader.
      * <p>
-     * 
+     *
      * @param masterFileLocation master file location, there must be only one.
      * @param extraFileLocation extra file location, there may be many.
      * @throws IOException thrown if one of the properties file could not be read.
-     * 
+     *
      */
     private PropertiesLoader(final String masterFileLocation, final String extraFileLocation) throws IOException {
         final List<Properties> propertiesList = new ArrayList<Properties>();
@@ -109,12 +109,12 @@ public class PropertiesLoader {
      * Returns an array of tokenized values stored under a property key in all properties files. If
      * the master file has this property its tokens will be the first ones in the array.
      * <p>
-     * 
+     *
      * @param key property key to retrieve values
      * @param separator String with all separator characters to tokenize from the values in all
      *            properties files.
      * @return all the tokens for the given property key from all the properties files.
-     * 
+     *
      */
     public String[] getTokenizedProperty(final String key, final String separator) {
         final List<String> entriesList = new ArrayList<String>();
@@ -137,10 +137,10 @@ public class PropertiesLoader {
      * Returns an array of values stored under a property key in all properties files. If the master
      * file has this property it will be the first ones in the array.
      * <p>
-     * 
+     *
      * @param key property key to retrieve values
      * @return all the values for the given property key from all the properties files.
-     * 
+     *
      */
     public String[] getProperty(final String key) {
         final List<String> entriesList = new ArrayList<String>();

@@ -18,7 +18,7 @@ import com.sun.syndication.io.WireFeedInput;
 
 /**
  * @author pat, tucu
- * 
+ *
  */
 public abstract class FeedTest extends TestCase {
     private final String feedFileName;

@@ -36,9 +36,9 @@ import org.slf4j.LoggerFactory;
  * It works on all read/write properties, recursively. It support all primitive types, Strings,
  * Collections, ToString objects and multi-dimensional arrays of any of them.
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public class ToStringBean implements Serializable {
 
@@ -67,9 +67,9 @@ public class ToStringBean implements Serializable {
      * <p>
      * To be used by classes extending ToStringBean only.
      * <p>
-     * 
+     *
      * @param beanClass indicates the class to scan for properties, normally an interface class.
-     * 
+     *
      */
     protected ToStringBean(final Class<?> beanClass) {
         this.beanClass = beanClass;
@@ -96,10 +96,10 @@ public class ToStringBean implements Serializable {
      *   }
      * </code>
      * <p>
-     * 
+     *
      * @param beanClass indicates the class to scan for properties, normally an interface class.
      * @param obj object bean to create String representation.
-     * 
+     *
      */
     public ToStringBean(final Class<?> beanClass, final Object obj) {
         this.beanClass = beanClass;
@@ -111,9 +111,9 @@ public class ToStringBean implements Serializable {
      * <p>
      * It uses the Class name as the prefix.
      * <p>
-     * 
+     *
      * @return bean object String representation.
-     * 
+     *
      */
     @Override
     public String toString() {
@@ -138,10 +138,10 @@ public class ToStringBean implements Serializable {
     /**
      * Returns the String representation of the bean given in the constructor.
      * <p>
-     * 
+     *
      * @param prefix to use for bean properties.
      * @return bean object String representation.
-     * 
+     *
      */
     private String toString(final String prefix) {
 

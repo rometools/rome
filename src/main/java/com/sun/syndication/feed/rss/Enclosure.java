@@ -24,9 +24,9 @@ import com.sun.syndication.feed.impl.ObjectBean;
 /**
  * Bean for item enclosures of RSS feeds.
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public class Enclosure implements Cloneable, Serializable {
     private static final long serialVersionUID = 1L;
@@ -38,7 +38,7 @@ public class Enclosure implements Cloneable, Serializable {
     /**
      * Default constructor. All properties are set to <b>null</b>.
      * <p>
-     * 
+     *
      */
     public Enclosure() {
         objBean = new ObjectBean(this.getClass(), this);
@@ -47,10 +47,10 @@ public class Enclosure implements Cloneable, Serializable {
     /**
      * Creates a deep 'bean' clone of the object.
      * <p>
-     * 
+     *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     * 
+     *
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
@@ -61,10 +61,10 @@ public class Enclosure implements Cloneable, Serializable {
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
      * <p>
-     * 
+     *
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     * 
+     *
      */
     @Override
     public boolean equals(final Object other) {
@@ -79,9 +79,9 @@ public class Enclosure implements Cloneable, Serializable {
      * <p>
      * It follows the contract defined by the Object hashCode() method.
      * <p>
-     * 
+     *
      * @return the hashcode of the bean object.
-     * 
+     *
      */
     @Override
     public int hashCode() {
@@ -91,9 +91,9 @@ public class Enclosure implements Cloneable, Serializable {
     /**
      * Returns the String representation for the object.
      * <p>
-     * 
+     *
      * @return String representation for the object.
-     * 
+     *
      */
     @Override
     public String toString() {
@@ -103,9 +103,9 @@ public class Enclosure implements Cloneable, Serializable {
     /**
      * Returns the enclosure URL.
      * <p>
-     * 
+     *
      * @return the enclosure URL, <b>null</b> if none.
-     * 
+     *
      */
     public String getUrl() {
         return url;
@@ -114,9 +114,9 @@ public class Enclosure implements Cloneable, Serializable {
     /**
      * Sets the enclosure URL.
      * <p>
-     * 
+     *
      * @param url the enclosure URL to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setUrl(final String url) {
         this.url = url;
@@ -125,9 +125,9 @@ public class Enclosure implements Cloneable, Serializable {
     /**
      * Returns the enclosure length.
      * <p>
-     * 
+     *
      * @return the enclosure length, <b>0</b> if none.
-     * 
+     *
      */
     public long getLength() {
         return length;
@@ -136,9 +136,9 @@ public class Enclosure implements Cloneable, Serializable {
     /**
      * Sets the enclosure length.
      * <p>
-     * 
+     *
      * @param length the enclosure length to set, <b>0</b> if none.
-     * 
+     *
      */
     public void setLength(final long length) {
         this.length = length;
@@ -147,9 +147,9 @@ public class Enclosure implements Cloneable, Serializable {
     /**
      * Returns the enclosure type.
      * <p>
-     * 
+     *
      * @return the enclosure type, <b>null</b> if none.
-     * 
+     *
      */
     public String getType() {
         return type;
@@ -158,9 +158,9 @@ public class Enclosure implements Cloneable, Serializable {
     /**
      * Sets the enclosure type.
      * <p>
-     * 
+     *
      * @param type the enclosure type to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setType(final String type) {
         this.type = type;

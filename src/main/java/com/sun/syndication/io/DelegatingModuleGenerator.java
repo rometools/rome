@@ -8,7 +8,7 @@ package com.sun.syndication.io;
 public interface DelegatingModuleGenerator extends ModuleGenerator {
     /**
      * Provides a parent wirefeed reference to this ModuleParser, or "plugin-in".
-     * 
+     *
      * @param feedGenerator the parent wirefeed generator for this plugin.
      */
     void setFeedGenerator(WireFeedGenerator feedGenerator);

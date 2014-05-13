@@ -23,9 +23,9 @@ import com.sun.syndication.feed.impl.ObjectBean;
 /**
  * Bean for images of RSS feeds.
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public class Image implements Cloneable, Serializable {
     private static final long serialVersionUID = 1L;
@@ -40,7 +40,7 @@ public class Image implements Cloneable, Serializable {
     /**
      * Default constructor. All properties are set to <b>null</b>.
      * <p>
-     * 
+     *
      */
     public Image() {
         objBean = new ObjectBean(this.getClass(), this);
@@ -49,10 +49,10 @@ public class Image implements Cloneable, Serializable {
     /**
      * Creates a deep 'bean' clone of the object.
      * <p>
-     * 
+     *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     * 
+     *
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
@@ -63,10 +63,10 @@ public class Image implements Cloneable, Serializable {
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
      * <p>
-     * 
+     *
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     * 
+     *
      */
     @Override
     public boolean equals(final Object other) {
@@ -81,9 +81,9 @@ public class Image implements Cloneable, Serializable {
      * <p>
      * It follows the contract defined by the Object hashCode() method.
      * <p>
-     * 
+     *
      * @return the hashcode of the bean object.
-     * 
+     *
      */
     @Override
     public int hashCode() {
@@ -93,9 +93,9 @@ public class Image implements Cloneable, Serializable {
     /**
      * Returns the String representation for the object.
      * <p>
-     * 
+     *
      * @return String representation for the object.
-     * 
+     *
      */
     @Override
     public String toString() {
@@ -105,9 +105,9 @@ public class Image implements Cloneable, Serializable {
     /**
      * Returns the image title.
      * <p>
-     * 
+     *
      * @return the image title, <b>null</b> if none.
-     * 
+     *
      */
     public String getTitle() {
         return title;
@@ -116,9 +116,9 @@ public class Image implements Cloneable, Serializable {
     /**
      * Sets the image title.
      * <p>
-     * 
+     *
      * @param title the image title to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setTitle(final String title) {
         this.title = title;
@@ -127,9 +127,9 @@ public class Image implements Cloneable, Serializable {
     /**
      * Returns the image URL.
      * <p>
-     * 
+     *
      * @return the image URL, <b>null</b> if none.
-     * 
+     *
      */
     public String getUrl() {
         return url;
@@ -138,9 +138,9 @@ public class Image implements Cloneable, Serializable {
     /**
      * Sets the image URL.
      * <p>
-     * 
+     *
      * @param url the image URL to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setUrl(final String url) {
         this.url = url;
@@ -149,9 +149,9 @@ public class Image implements Cloneable, Serializable {
     /**
      * Returns the image link.
      * <p>
-     * 
+     *
      * @return the image link, <b>null</b> if none.
-     * 
+     *
      */
     public String getLink() {
         return link;
@@ -160,9 +160,9 @@ public class Image implements Cloneable, Serializable {
     /**
      * Sets the image link.
      * <p>
-     * 
+     *
      * @param link the image link to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setLink(final String link) {
         this.link = link;
@@ -171,9 +171,9 @@ public class Image implements Cloneable, Serializable {
     /**
      * Returns the image width.
      * <p>
-     * 
+     *
      * @return the image width, <b>null</b> if none.
-     * 
+     *
      */
     public Integer getWidth() {
         return width;
@@ -182,9 +182,9 @@ public class Image implements Cloneable, Serializable {
     /**
      * Sets the image width.
      * <p>
-     * 
+     *
      * @param width the image width to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setWidth(final Integer width) {
         this.width = width;
@@ -193,9 +193,9 @@ public class Image implements Cloneable, Serializable {
     /**
      * Returns the image height.
      * <p>
-     * 
+     *
      * @return the image height, <b>null</b> if none.
-     * 
+     *
      */
     public Integer getHeight() {
         return height;
@@ -204,9 +204,9 @@ public class Image implements Cloneable, Serializable {
     /**
      * Sets the image height.
      * <p>
-     * 
+     *
      * @param height the image height to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setHeight(final Integer height) {
         this.height = height;
@@ -215,9 +215,9 @@ public class Image implements Cloneable, Serializable {
     /**
      * Returns the image description.
      * <p>
-     * 
+     *
      * @return the image description, <b>null</b> if none.
-     * 
+     *
      */
     public String getDescription() {
         return description;
@@ -226,9 +226,9 @@ public class Image implements Cloneable, Serializable {
     /**
      * Sets the image description.
      * <p>
-     * 
+     *
      * @param description the image description to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setDescription(final String description) {
         this.description = description;

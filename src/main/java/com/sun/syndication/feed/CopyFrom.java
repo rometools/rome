@@ -28,7 +28,7 @@ public interface CopyFrom {
      * This is useful when dealing with properties that may have multiple implementations. For
      * example, Module.
      * <p>
-     * 
+     *
      * @return the interface the copyFrom works on.
      */
     public Class<? extends CopyFrom> getInterface();
@@ -41,9 +41,9 @@ public interface CopyFrom {
      * This method is useful for moving from one implementation of a bean interface to another. For
      * example from the default SyndFeed bean implementation to a Hibernate ready implementation.
      * <p>
-     * 
+     *
      * @param obj the instance to copy properties from.
-     * 
+     *
      */
     public void copyFrom(CopyFrom obj);
 

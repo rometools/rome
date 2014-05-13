@@ -22,9 +22,9 @@ import com.sun.syndication.feed.module.Extendable;
 /**
  * Bean interface for authors and contributors of SyndFeedImpl feeds and entries.
  * <p>
- * 
+ *
  * @author Dave Johnson
- * 
+ *
  */
 public interface SyndPerson extends Cloneable, Extendable {
 
@@ -61,10 +61,10 @@ public interface SyndPerson extends Cloneable, Extendable {
     /**
      * Creates a deep clone of the object.
      * <p>
-     * 
+     *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     * 
+     *
      */
     public Object clone() throws CloneNotSupportedException;
 

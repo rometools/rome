@@ -85,15 +85,15 @@ public class CloneableBean implements Serializable, Cloneable {
      * <code>
      *   public class Foo implements Cloneable {
      *       private CloneableBean cloneableBean;
-     *
+     * 
      *       public Foo() {
      *           cloneableBean = new CloneableBean(this);
      *       }
-     *
+     * 
      *       public Object clone() throws CloneNotSupportedException {
      *           return cloneableBean.beanClone();
      *       }
-     *
+     * 
      *   }
      * </code>
      * <p>

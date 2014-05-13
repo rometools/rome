@@ -30,15 +30,15 @@ import com.sun.syndication.io.WireFeedGenerator;
  * Generators for a specific type must extend this class and register in the generator list. (Right
  * now registration is hardcoded in the WireFeedGenerator constructor).
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public class FeedGenerators extends PluginManager<WireFeedGenerator> {
 
     /**
      * WireFeedGenerator.classes= [className] ...
-     * 
+     *
      */
     public static final String FEED_GENERATORS_KEY = "WireFeedGenerator.classes";
 

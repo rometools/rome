@@ -48,17 +48,17 @@ public class DateParser {
     // parse a valid date out of a substring of the full string given the mask so we have to check
     // the most complete format first, then it fails with exception
     private static final String[] W3CDATETIME_MASKS = { "yyyy-MM-dd'T'HH:mm:ss.SSSz", "yyyy-MM-dd't'HH:mm:ss.SSSz", "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
-        "yyyy-MM-dd't'HH:mm:ss.SSS'z'", "yyyy-MM-dd'T'HH:mm:ssz", "yyyy-MM-dd't'HH:mm:ssz", "yyyy-MM-dd'T'HH:mm:ssZ", "yyyy-MM-dd't'HH:mm:ssZ",
-        "yyyy-MM-dd'T'HH:mm:ss'Z'", "yyyy-MM-dd't'HH:mm:ss'z'", "yyyy-MM-dd'T'HH:mmz", // together
-        // with
-        // logic
-        // in
-        // the
-        // parseW3CDateTime
-        // they
-        "yyyy-MM'T'HH:mmz", // handle W3C dates without time forcing them to
-        // be GMT
-        "yyyy'T'HH:mmz", "yyyy-MM-dd't'HH:mmz", "yyyy-MM-dd'T'HH:mm'Z'", "yyyy-MM-dd't'HH:mm'z'", "yyyy-MM-dd", "yyyy-MM", "yyyy" };
+            "yyyy-MM-dd't'HH:mm:ss.SSS'z'", "yyyy-MM-dd'T'HH:mm:ssz", "yyyy-MM-dd't'HH:mm:ssz", "yyyy-MM-dd'T'HH:mm:ssZ", "yyyy-MM-dd't'HH:mm:ssZ",
+            "yyyy-MM-dd'T'HH:mm:ss'Z'", "yyyy-MM-dd't'HH:mm:ss'z'", "yyyy-MM-dd'T'HH:mmz", // together
+            // with
+            // logic
+            // in
+            // the
+            // parseW3CDateTime
+            // they
+            "yyyy-MM'T'HH:mmz", // handle W3C dates without time forcing them to
+            // be GMT
+            "yyyy'T'HH:mmz", "yyyy-MM-dd't'HH:mmz", "yyyy-MM-dd'T'HH:mm'Z'", "yyyy-MM-dd't'HH:mm'z'", "yyyy-MM-dd", "yyyy-MM", "yyyy" };
 
     /**
      * The masks used to validate and parse the input to this Atom date. These are a lot more
@@ -67,14 +67,14 @@ public class DateParser {
      */
     @SuppressWarnings("unused")
     private static final String[] masks = { "yyyy-MM-dd'T'HH:mm:ss.SSSz", "yyyy-MM-dd't'HH:mm:ss.SSSz", // invalid
-        "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", "yyyy-MM-dd't'HH:mm:ss.SSS'z'", // invalid
-        "yyyy-MM-dd'T'HH:mm:ssz", "yyyy-MM-dd't'HH:mm:ssz", // invalid
-        "yyyy-MM-dd'T'HH:mm:ss'Z'", "yyyy-MM-dd't'HH:mm:ss'z'", // invalid
-        "yyyy-MM-dd'T'HH:mmz", // invalid
-        "yyyy-MM-dd't'HH:mmz", // invalid
-        "yyyy-MM-dd'T'HH:mm'Z'", // invalid
-        "yyyy-MM-dd't'HH:mm'z'", // invalid
-        "yyyy-MM-dd", "yyyy-MM", "yyyy" };
+            "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", "yyyy-MM-dd't'HH:mm:ss.SSS'z'", // invalid
+            "yyyy-MM-dd'T'HH:mm:ssz", "yyyy-MM-dd't'HH:mm:ssz", // invalid
+            "yyyy-MM-dd'T'HH:mm:ss'Z'", "yyyy-MM-dd't'HH:mm:ss'z'", // invalid
+            "yyyy-MM-dd'T'HH:mmz", // invalid
+            "yyyy-MM-dd't'HH:mmz", // invalid
+            "yyyy-MM-dd'T'HH:mm'Z'", // invalid
+            "yyyy-MM-dd't'HH:mm'z'", // invalid
+            "yyyy-MM-dd", "yyyy-MM", "yyyy" };
 
     static {
         ADDITIONAL_MASKS = PropertiesLoader.getPropertiesLoader().getTokenizedProperty("datetime.extra.masks", "|");

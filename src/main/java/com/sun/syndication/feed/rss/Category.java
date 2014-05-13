@@ -24,9 +24,9 @@ import com.sun.syndication.feed.impl.ObjectBean;
 /**
  * Bean for categories of RSS feeds.
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public class Category implements Cloneable, Serializable {
     private static final long serialVersionUID = 1L;
@@ -37,7 +37,7 @@ public class Category implements Cloneable, Serializable {
     /**
      * Default constructor. All properties are set to <b>null</b>.
      * <p>
-     * 
+     *
      */
     public Category() {
         objBean = new ObjectBean(this.getClass(), this);
@@ -46,10 +46,10 @@ public class Category implements Cloneable, Serializable {
     /**
      * Creates a deep 'bean' clone of the object.
      * <p>
-     * 
+     *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     * 
+     *
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
@@ -60,10 +60,10 @@ public class Category implements Cloneable, Serializable {
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
      * <p>
-     * 
+     *
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     * 
+     *
      */
     @Override
     public boolean equals(final Object other) {
@@ -78,9 +78,9 @@ public class Category implements Cloneable, Serializable {
      * <p>
      * It follows the contract defined by the Object hashCode() method.
      * <p>
-     * 
+     *
      * @return the hashcode of the bean object.
-     * 
+     *
      */
     @Override
     public int hashCode() {
@@ -90,9 +90,9 @@ public class Category implements Cloneable, Serializable {
     /**
      * Returns the String representation for the object.
      * <p>
-     * 
+     *
      * @return String representation for the object.
-     * 
+     *
      */
     @Override
     public String toString() {
@@ -102,9 +102,9 @@ public class Category implements Cloneable, Serializable {
     /**
      * Returns the category domain.
      * <p>
-     * 
+     *
      * @return the category domain, <b>null</b> if none.
-     * 
+     *
      */
     public String getDomain() {
         return domain;
@@ -113,9 +113,9 @@ public class Category implements Cloneable, Serializable {
     /**
      * Sets the category domain.
      * <p>
-     * 
+     *
      * @param domain the category domain to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setDomain(final String domain) {
         this.domain = domain;
@@ -124,9 +124,9 @@ public class Category implements Cloneable, Serializable {
     /**
      * Returns the category value.
      * <p>
-     * 
+     *
      * @return the category value, <b>null</b> if none.
-     * 
+     *
      */
     public String getValue() {
         return value;
@@ -135,9 +135,9 @@ public class Category implements Cloneable, Serializable {
     /**
      * Sets the category value.
      * <p>
-     * 
+     *
      * @param value the category value to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setValue(final String value) {
         this.value = value;

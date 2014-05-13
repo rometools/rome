@@ -30,9 +30,9 @@ import java.util.List;
  * <p>
  * The hashcode is calculated by getting the hashcode of the Bean String representation.
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public class EqualsBean implements Serializable {
 
@@ -48,9 +48,9 @@ public class EqualsBean implements Serializable {
      * <p>
      * To be used by classes extending EqualsBean only.
      * <p>
-     * 
+     *
      * @param beanClass the class/interface to be used for property scanning.
-     * 
+     *
      */
     protected EqualsBean(final Class<?> beanClass) {
         this.beanClass = beanClass;
@@ -81,10 +81,10 @@ public class EqualsBean implements Serializable {
      *   }
      * </code>
      * <p>
-     * 
+     *
      * @param beanClass the class/interface to be used for property scanning.
      * @param obj object bean to test equality.
-     * 
+     *
      */
     public EqualsBean(final Class<?> beanClass, final Object obj) {
         if (!beanClass.isInstance(obj)) {
@@ -100,12 +100,12 @@ public class EqualsBean implements Serializable {
      * <p>
      * To be used by classes extending EqualsBean. Although it works also for classes using
      * EqualsBean in a delegation pattern, for correctness those classes should use the
-     * 
+     *
      * @see #beanEquals(Object) beanEquals method.
      *      <p>
      * @param obj he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     * 
+     *
      */
     @Override
     public boolean equals(final Object obj) {
@@ -117,12 +117,12 @@ public class EqualsBean implements Serializable {
      * defined by the Object equals() method.
      * <p>
      * To be used by classes using EqualsBean in a delegation pattern,
-     * 
+     *
      * @see #EqualsBean(Class,Object) constructor.
      *      <p>
      * @param obj he reference object with which to compare.
      * @return <b>true</b> if the object passed in the constructor is equal to the 'obj' object.
-     * 
+     *
      */
     public boolean beanEquals(final Object obj) {
 
@@ -174,11 +174,11 @@ public class EqualsBean implements Serializable {
      * <p>
      * To be used by classes extending EqualsBean. Although it works also for classes using
      * EqualsBean in a delegation pattern, for correctness those classes should use the
-     * 
+     *
      * @see #beanHashCode() beanHashCode method.
      *      <p>
      * @return the hashcode of the bean object.
-     * 
+     *
      */
     @Override
     public int hashCode() {
@@ -193,11 +193,11 @@ public class EqualsBean implements Serializable {
      * The hashcode is calculated by getting the hashcode of the Bean String representation.
      * <p>
      * To be used by classes using EqualsBean in a delegation pattern,
-     * 
+     *
      * @see #EqualsBean(Class,Object) constructor.
      *      <p>
      * @return the hashcode of the bean object.
-     * 
+     *
      */
     public int beanHashCode() {
         return obj.toString().hashCode();

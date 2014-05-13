@@ -24,9 +24,9 @@ import com.sun.syndication.feed.impl.ObjectBean;
  * Base class for modules describing Metadata of feeds, default implementations. Examples of such
  * modules are the Dublin Core and Syndication modules.
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public abstract class ModuleImpl implements Cloneable, Serializable, Module {
     private static final long serialVersionUID = 1L;
@@ -36,9 +36,9 @@ public abstract class ModuleImpl implements Cloneable, Serializable, Module {
     /**
      * Constructor.
      * <p>
-     * 
+     *
      * @param uri URI of the module.
-     * 
+     *
      */
     protected ModuleImpl(final Class<?> beanClass, final String uri) {
         objBean = new ObjectBean(beanClass, this);
@@ -48,10 +48,10 @@ public abstract class ModuleImpl implements Cloneable, Serializable, Module {
     /**
      * Creates a deep 'bean' clone of the object.
      * <p>
-     * 
+     *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     * 
+     *
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
@@ -62,10 +62,10 @@ public abstract class ModuleImpl implements Cloneable, Serializable, Module {
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
      * <p>
-     * 
+     *
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     * 
+     *
      */
     @Override
     public boolean equals(final Object other) {
@@ -80,9 +80,9 @@ public abstract class ModuleImpl implements Cloneable, Serializable, Module {
      * <p>
      * It follows the contract defined by the Object hashCode() method.
      * <p>
-     * 
+     *
      * @return the hashcode of the bean object.
-     * 
+     *
      */
     @Override
     public int hashCode() {
@@ -92,9 +92,9 @@ public abstract class ModuleImpl implements Cloneable, Serializable, Module {
     /**
      * Returns the String representation for the object.
      * <p>
-     * 
+     *
      * @return String representation for the object.
-     * 
+     *
      */
     @Override
     public String toString() {
@@ -104,9 +104,9 @@ public abstract class ModuleImpl implements Cloneable, Serializable, Module {
     /**
      * Returns the URI of the module.
      * <p>
-     * 
+     *
      * @return URI of the module.
-     * 
+     *
      */
     @Override
     public String getUri() {

@@ -1,11 +1,11 @@
 package com.sun.syndication.unittest;
 
 /**
- * 
+ *
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public class TestOpsAtom03 extends FeedOpsTest {
 

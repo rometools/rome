@@ -16,7 +16,7 @@ import com.sun.syndication.io.impl.DateParser;
 /**
  * @author pat
  * @author Dave Johnson (modified for Atom 1.0)
- * 
+ *
  */
 public class TestSyndFeedAtom10 extends TestSyndFeedAtom03 {
 

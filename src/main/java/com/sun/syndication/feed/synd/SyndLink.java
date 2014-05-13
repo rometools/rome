@@ -19,17 +19,17 @@ package com.sun.syndication.feed.synd;
 
 /**
  * Represents a link or enclosure associated with entry.
- * 
+ *
  * @author Dave Johnson
  */
 public interface SyndLink {
     /**
      * Creates a deep 'bean' clone of the object.
      * <p>
-     * 
+     *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     * 
+     *
      */
     public abstract Object clone() throws CloneNotSupportedException;
 
@@ -37,10 +37,10 @@ public interface SyndLink {
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
      * <p>
-     * 
+     *
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     * 
+     *
      */
     @Override
     public abstract boolean equals(Object other);
@@ -50,9 +50,9 @@ public interface SyndLink {
      * <p>
      * It follows the contract defined by the Object hashCode() method.
      * <p>
-     * 
+     *
      * @return the hashcode of the bean object.
-     * 
+     *
      */
     @Override
     public abstract int hashCode();
@@ -60,9 +60,9 @@ public interface SyndLink {
     /**
      * Returns the String representation for the object.
      * <p>
-     * 
+     *
      * @return String representation for the object.
-     * 
+     *
      */
     @Override
     public abstract String toString();
@@ -70,79 +70,79 @@ public interface SyndLink {
     /**
      * Returns the link rel.
      * <p>
-     * 
+     *
      * @return the link rel, <b>null</b> if none.
-     * 
+     *
      */
     public abstract String getRel();
 
     /**
      * Sets the link rel.
      * <p>
-     * 
+     *
      * @param rel the link rel,, <b>null</b> if none.
-     * 
+     *
      */
     public abstract void setRel(String rel);
 
     /**
      * Returns the link type.
      * <p>
-     * 
+     *
      * @return the link type, <b>null</b> if none.
-     * 
+     *
      */
     public abstract String getType();
 
     /**
      * Sets the link type.
      * <p>
-     * 
+     *
      * @param type the link type, <b>null</b> if none.
-     * 
+     *
      */
     public abstract void setType(String type);
 
     /**
      * Returns the link href.
      * <p>
-     * 
+     *
      * @return the link href, <b>null</b> if none.
-     * 
+     *
      */
     public abstract String getHref();
 
     /**
      * Sets the link href.
      * <p>
-     * 
+     *
      * @param href the link href, <b>null</b> if none.
-     * 
+     *
      */
     public abstract void setHref(String href);
 
     /**
      * Returns the link title.
      * <p>
-     * 
+     *
      * @return the link title, <b>null</b> if none.
-     * 
+     *
      */
     public abstract String getTitle();
 
     /**
      * Sets the link title.
      * <p>
-     * 
+     *
      * @param title the link title, <b>null</b> if none.
-     * 
+     *
      */
     public abstract void setTitle(String title);
 
     /**
      * Returns the hreflang
      * <p>
-     * 
+     *
      * @return Returns the hreflang.
      */
     public abstract String getHreflang();
@@ -150,7 +150,7 @@ public interface SyndLink {
     /**
      * Set the hreflang
      * <p>
-     * 
+     *
      * @param hreflang The hreflang to set.
      */
     public abstract void setHreflang(String hreflang);
@@ -158,7 +158,7 @@ public interface SyndLink {
     /**
      * Returns the length
      * <p>
-     * 
+     *
      * @return Returns the length.
      */
     public abstract long getLength();
@@ -166,7 +166,7 @@ public interface SyndLink {
     /**
      * Set the length
      * <p>
-     * 
+     *
      * @param length The length to set.
      */
     public abstract void setLength(long length);

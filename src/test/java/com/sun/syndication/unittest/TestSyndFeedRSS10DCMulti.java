@@ -11,7 +11,7 @@ import com.sun.syndication.io.impl.DateParser;
 /**
  * Test case for the multi-valued DublinCore module elements.
  * <p>
- * 
+ *
  * @author Paul Dlug
  */
 public class TestSyndFeedRSS10DCMulti extends TestSyndFeedRSS10 {

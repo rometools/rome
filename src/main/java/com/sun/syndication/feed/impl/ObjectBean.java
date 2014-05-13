@@ -36,9 +36,9 @@ import java.util.Set;
  * <P>
  * All ObjectBean subclasses properties should be live references.
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public class ObjectBean implements Serializable, Cloneable {
 
@@ -51,9 +51,9 @@ public class ObjectBean implements Serializable, Cloneable {
     /**
      * Constructor.
      * <p>
-     * 
+     *
      * @param beanClass the class/interface to be used for property scanning.
-     * 
+     *
      */
     public ObjectBean(final Class<?> beanClass, final Object obj) {
         this(beanClass, obj, null);
@@ -68,10 +68,10 @@ public class ObjectBean implements Serializable, Cloneable {
      * and SyndEntry beans have convenience properties, publishedDate, author, copyright and
      * categories all of them mapped to properties in the DC Module.
      * <p>
-     * 
+     *
      * @param beanClass the class/interface to be used for property scanning.
      * @param ignoreProperties properties to ignore when cloning.
-     * 
+     *
      */
     public ObjectBean(final Class<?> beanClass, final Object obj, final Set<String> ignoreProperties) {
         equalsBean = new EqualsBean(beanClass, obj);
@@ -82,10 +82,10 @@ public class ObjectBean implements Serializable, Cloneable {
     /**
      * Creates a deep 'bean' clone of the object.
      * <p>
-     * 
+     *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     * 
+     *
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
@@ -96,10 +96,10 @@ public class ObjectBean implements Serializable, Cloneable {
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
      * <p>
-     * 
+     *
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     * 
+     *
      */
     @Override
     public boolean equals(final Object other) {
@@ -111,9 +111,9 @@ public class ObjectBean implements Serializable, Cloneable {
      * <p>
      * It follows the contract defined by the Object hashCode() method.
      * <p>
-     * 
+     *
      * @return the hashcode of the bean object.
-     * 
+     *
      */
     @Override
     public int hashCode() {
@@ -123,9 +123,9 @@ public class ObjectBean implements Serializable, Cloneable {
     /**
      * Returns the String representation for the object.
      * <p>
-     * 
+     *
      * @return String representation for the object.
-     * 
+     *
      */
     @Override
     public String toString() {

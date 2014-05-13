@@ -13,7 +13,7 @@ import com.sun.syndication.feed.synd.SyndEntry;
 
 /**
  * @author pat
- * 
+ *
  */
 public class TestSyndFeedRSS20 extends TestSyndFeedRSS094 {
 
@@ -39,7 +39,7 @@ public class TestSyndFeedRSS20 extends TestSyndFeedRSS094 {
 
     /**
      * Test we can get to RSS attributes which aren't exposed in the SyndEntry object
-     * 
+     *
      * @throws Exception
      */
     public void testPreservedWireItems() throws Exception {

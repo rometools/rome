@@ -20,19 +20,19 @@ package com.sun.syndication.io.impl;
 /**
  * Encodes/decodes byte arrays and Strings into/from a base 64 String.
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public class Base64 {
 
     /**
      * Encodes a String into a base 64 String. The resulting encoding is chunked at 76 bytes.
      * <p>
-     * 
+     *
      * @param s String to encode.
      * @return encoded string.
-     * 
+     *
      */
     public static String encode(String s) {
         byte[] sBytes = s.getBytes();
@@ -44,12 +44,12 @@ public class Base64 {
     /**
      * Decodes a base 64 String into a String.
      * <p>
-     * 
+     *
      * @param s String to decode.
      * @return encoded string.
      * @throws java.lang.IllegalArgumentException thrown if the given byte array was not valid
      *             com.sun.syndication.io.impl.Base64 encoding.
-     * 
+     *
      */
     public static String decode(String s) throws IllegalArgumentException {
         s = s.replaceAll("\n", "");
@@ -72,10 +72,10 @@ public class Base64 {
     /**
      * Encodes a byte array into a base 64 byte array.
      * <p>
-     * 
+     *
      * @param dData byte array to encode.
      * @return encoded byte array.
-     * 
+     *
      */
     public static byte[] encode(final byte[] dData) {
         if (dData == null) {
@@ -142,12 +142,12 @@ public class Base64 {
     /**
      * Dencodes a com.sun.syndication.io.impl.Base64 byte array.
      * <p>
-     * 
+     *
      * @param eData byte array to decode.
      * @return decoded byte array.
      * @throws java.lang.IllegalArgumentException thrown if the given byte array was not valid
      *             com.sun.syndication.io.impl.Base64 encoding.
-     * 
+     *
      */
     public static byte[] decode(final byte[] eData) {
         if (eData == null) {

@@ -24,9 +24,9 @@ import com.sun.syndication.feed.impl.ObjectBean;
 /**
  * Bean for item descriptions of RSS feeds.
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public class Content implements Cloneable, Serializable {
     private static final long serialVersionUID = 1L;
@@ -39,7 +39,7 @@ public class Content implements Cloneable, Serializable {
     /**
      * Default constructor. All properties are set to <b>null</b>.
      * <p>
-     * 
+     *
      */
     public Content() {
         objBean = new ObjectBean(this.getClass(), this);
@@ -48,9 +48,9 @@ public class Content implements Cloneable, Serializable {
     /**
      * Sets the description type.
      * <p>
-     * 
+     *
      * @param type the description type to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setType(final String type) {
         this.type = type;
@@ -59,9 +59,9 @@ public class Content implements Cloneable, Serializable {
     /**
      * Returns the description type.
      * <p>
-     * 
+     *
      * @return the description type, <b>null</b> if none.
-     * 
+     *
      */
     public String getType() {
         return type;
@@ -70,9 +70,9 @@ public class Content implements Cloneable, Serializable {
     /**
      * Sets the description value.
      * <p>
-     * 
+     *
      * @param value the description value to set, <b>null</b> if none.
-     * 
+     *
      */
     public void setValue(final String value) {
         this.value = value;
@@ -81,9 +81,9 @@ public class Content implements Cloneable, Serializable {
     /**
      * Returns the description value.
      * <p>
-     * 
+     *
      * @return the description value, <b>null</b> if none.
-     * 
+     *
      */
     public String getValue() {
         return value;
@@ -92,10 +92,10 @@ public class Content implements Cloneable, Serializable {
     /**
      * Creates a deep 'bean' clone of the object.
      * <p>
-     * 
+     *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     * 
+     *
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
@@ -106,10 +106,10 @@ public class Content implements Cloneable, Serializable {
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
      * <p>
-     * 
+     *
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     * 
+     *
      */
     @Override
     public boolean equals(final Object other) {
@@ -125,9 +125,9 @@ public class Content implements Cloneable, Serializable {
      * <p>
      * It follows the contract defined by the Object hashCode() method.
      * <p>
-     * 
+     *
      * @return the hashcode of the bean object.
-     * 
+     *
      */
     @Override
     public int hashCode() {
@@ -137,9 +137,9 @@ public class Content implements Cloneable, Serializable {
     /**
      * Returns the String representation for the object.
      * <p>
-     * 
+     *
      * @return String representation for the object.
-     * 
+     *
      */
     @Override
     public String toString() {

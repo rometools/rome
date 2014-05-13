@@ -11,9 +11,9 @@ import java.io.InputStream;
  * processing with the stream. Note that the original InputStream given to the XmlReader cannot be
  * used as that one has been already read.
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public class XmlReaderException extends IOException {
     private static final long serialVersionUID = 1L;
@@ -29,13 +29,13 @@ public class XmlReaderException extends IOException {
      * <p>
      * Instances of this exception are thrown by the XmlReader.
      * <p>
-     * 
+     *
      * @param msg message describing the reason for the exception.
      * @param bomEnc BOM encoding.
      * @param xmlGuessEnc XML guess encoding.
      * @param xmlEnc XML prolog encoding.
      * @param is the unconsumed InputStream.
-     * 
+     *
      */
     public XmlReaderException(final String msg, final String bomEnc, final String xmlGuessEnc, final String xmlEnc, final InputStream is) {
         this(msg, null, null, bomEnc, xmlGuessEnc, xmlEnc, is);
@@ -46,7 +46,7 @@ public class XmlReaderException extends IOException {
      * <p>
      * Instances of this exception are thrown by the XmlReader.
      * <p>
-     * 
+     *
      * @param msg message describing the reason for the exception.
      * @param ctMime MIME type in the content-type.
      * @param ctEnc encoding in the content-type.
@@ -54,7 +54,7 @@ public class XmlReaderException extends IOException {
      * @param xmlGuessEnc XML guess encoding.
      * @param xmlEnc XML prolog encoding.
      * @param is the unconsumed InputStream.
-     * 
+     *
      */
     public XmlReaderException(final String msg, final String ctMime, final String ctEnc, final String bomEnc, final String xmlGuessEnc, final String xmlEnc,
             final InputStream is) {
@@ -70,9 +70,9 @@ public class XmlReaderException extends IOException {
     /**
      * Returns the BOM encoding found in the InputStream.
      * <p>
-     * 
+     *
      * @return the BOM encoding, null if none.
-     * 
+     *
      */
     public String getBomEncoding() {
         return bomEncoding;
@@ -81,9 +81,9 @@ public class XmlReaderException extends IOException {
     /**
      * Returns the encoding guess based on the first bytes of the InputStream.
      * <p>
-     * 
+     *
      * @return the encoding guess, null if it couldn't be guessed.
-     * 
+     *
      */
     public String getXmlGuessEncoding() {
         return xmlGuessEncoding;
@@ -92,9 +92,9 @@ public class XmlReaderException extends IOException {
     /**
      * Returns the encoding found in the XML prolog of the InputStream.
      * <p>
-     * 
+     *
      * @return the encoding of the XML prolog, null if none.
-     * 
+     *
      */
     public String getXmlEncoding() {
         return xmlEncoding;
@@ -103,10 +103,10 @@ public class XmlReaderException extends IOException {
     /**
      * Returns the MIME type in the content-type used to attempt determining the encoding.
      * <p>
-     * 
+     *
      * @return the MIME type in the content-type, null if there was not content-type or the encoding
      *         detection did not involve HTTP.
-     * 
+     *
      */
     public String getContentTypeMime() {
         return contentTypeMime;
@@ -115,10 +115,10 @@ public class XmlReaderException extends IOException {
     /**
      * Returns the encoding in the content-type used to attempt determining the encoding.
      * <p>
-     * 
+     *
      * @return the encoding in the content-type, null if there was not content-type, no encoding in
      *         it or the encoding detection did not involve HTTP.
-     * 
+     *
      */
     public String getContentTypeEncoding() {
         return contentTypeEncoding;
@@ -128,9 +128,9 @@ public class XmlReaderException extends IOException {
      * Returns the unconsumed InputStream to allow the application to do an alternate encoding
      * detection on the InputStream.
      * <p>
-     * 
+     *
      * @return the unconsumed InputStream.
-     * 
+     *
      */
     public InputStream getInputStream() {
         return is;

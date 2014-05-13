@@ -41,9 +41,9 @@ import com.sun.syndication.io.impl.FeedGenerators;
  * It generates all flavors of RSS (0.90, 0.91, 0.92, 0.93, 0.94, 1.0 and 2.0) and Atom 0.3 feeds.
  * Generators are plugable (they must implement the ModuleParser interface).
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public class WireFeedOutput {
     private static Map<ClassLoader, FeedGenerators> clMap = new WeakHashMap<ClassLoader, FeedGenerators>();
@@ -63,11 +63,11 @@ public class WireFeedOutput {
     /**
      * Returns the list of supported output feed types.
      * <p>
-     * 
+     *
      * @see WireFeed for details on the format of these strings.
      *      <p>
      * @return a list of String elements with the supported output feed types.
-     * 
+     *
      */
     public static List<String> getSupportedFeedTypes() {
         return getFeedGenerators().getSupportedFeedTypes();
@@ -76,7 +76,7 @@ public class WireFeedOutput {
     /**
      * Creates a FeedOuput instance.
      * <p>
-     * 
+     *
      */
     public WireFeedOutput() {
     }
@@ -90,14 +90,14 @@ public class WireFeedOutput {
      * <p>
      * NOTE: This method delages to the 'Document WireFeedOutput#outputJDom(WireFeed)'.
      * <p>
-     * 
+     *
      * @param feed Abstract feed to create XML representation from. The type of the WireFeed must
      *            match the type given to the FeedOuptut constructor.
      * @return a String with the XML representation for the given WireFeed.
      * @throws IllegalArgumentException thrown if the feed type of the WireFeedOutput and WireFeed
      *             don't match.
      * @throws FeedException thrown if the XML representation for the feed could not be created.
-     * 
+     *
      */
     public String outputString(final WireFeed feed) throws IllegalArgumentException, FeedException {
         return this.outputString(feed, true);
@@ -112,7 +112,7 @@ public class WireFeedOutput {
      * <p>
      * NOTE: This method delages to the 'Document WireFeedOutput#outputJDom(WireFeed)'.
      * <p>
-     * 
+     *
      * @param feed Abstract feed to create XML representation from. The type of the WireFeed must
      *            match the type given to the FeedOuptut constructor.
      * @param prettyPrint pretty-print XML (true) oder collapsed
@@ -120,7 +120,7 @@ public class WireFeedOutput {
      * @throws IllegalArgumentException thrown if the feed type of the WireFeedOutput and WireFeed
      *             don't match.
      * @throws FeedException thrown if the XML representation for the feed could not be created.
-     * 
+     *
      */
     public String outputString(final WireFeed feed, final boolean prettyPrint) throws IllegalArgumentException, FeedException {
         final Document doc = outputJDom(feed);
@@ -148,7 +148,7 @@ public class WireFeedOutput {
      * <p>
      * NOTE: This method delages to the 'Document WireFeedOutput#outputJDom(WireFeed)'.
      * <p>
-     * 
+     *
      * @param feed Abstract feed to create XML representation from. The type of the WireFeed must
      *            match the type given to the FeedOuptut constructor.
      * @param file the file where to write the XML representation for the given WireFeed.
@@ -156,7 +156,7 @@ public class WireFeedOutput {
      *             don't match.
      * @throws IOException thrown if there was some problem writing to the File.
      * @throws FeedException thrown if the XML representation for the feed could not be created.
-     * 
+     *
      */
     public void output(final WireFeed feed, final File file) throws IllegalArgumentException, IOException, FeedException {
         this.output(feed, file, true);
@@ -172,7 +172,7 @@ public class WireFeedOutput {
      * <p>
      * NOTE: This method delages to the 'Document WireFeedOutput#outputJDom(WireFeed)'.
      * <p>
-     * 
+     *
      * @param feed Abstract feed to create XML representation from. The type of the WireFeed must
      *            match the type given to the FeedOuptut constructor.
      * @param file the file where to write the XML representation for the given WireFeed.
@@ -181,7 +181,7 @@ public class WireFeedOutput {
      *             don't match.
      * @throws IOException thrown if there was some problem writing to the File.
      * @throws FeedException thrown if the XML representation for the feed could not be created.
-     * 
+     *
      */
     public void output(final WireFeed feed, final File file, final boolean prettyPrint) throws IllegalArgumentException, IOException, FeedException {
         final Writer writer = new FileWriter(file);
@@ -198,7 +198,7 @@ public class WireFeedOutput {
      * <p>
      * NOTE: This method delages to the 'Document WireFeedOutput#outputJDom(WireFeed)'.
      * <p>
-     * 
+     *
      * @param feed Abstract feed to create XML representation from. The type of the WireFeed must
      *            match the type given to the FeedOuptut constructor.
      * @param writer Writer to write the XML representation for the given WireFeed.
@@ -206,7 +206,7 @@ public class WireFeedOutput {
      *             don't match.
      * @throws IOException thrown if there was some problem writing to the Writer.
      * @throws FeedException thrown if the XML representation for the feed could not be created.
-     * 
+     *
      */
     public void output(final WireFeed feed, final Writer writer) throws IllegalArgumentException, IOException, FeedException {
         this.output(feed, writer, true);
@@ -221,7 +221,7 @@ public class WireFeedOutput {
      * <p>
      * NOTE: This method delages to the 'Document WireFeedOutput#outputJDom(WireFeed)'.
      * <p>
-     * 
+     *
      * @param feed Abstract feed to create XML representation from. The type of the WireFeed must
      *            match the type given to the FeedOuptut constructor.
      * @param writer Writer to write the XML representation for the given WireFeed.
@@ -230,7 +230,7 @@ public class WireFeedOutput {
      *             don't match.
      * @throws IOException thrown if there was some problem writing to the Writer.
      * @throws FeedException thrown if the XML representation for the feed could not be created.
-     * 
+     *
      */
     public void output(final WireFeed feed, final Writer writer, final boolean prettyPrint) throws IllegalArgumentException, IOException, FeedException {
         final Document doc = outputJDom(feed);
@@ -255,14 +255,14 @@ public class WireFeedOutput {
      * <p>
      * NOTE: This method delages to the 'Document WireFeedOutput#outputJDom(WireFeed)'.
      * <p>
-     * 
+     *
      * @param feed Abstract feed to create W3C DOM document from. The type of the WireFeed must
      *            match the type given to the FeedOuptut constructor.
      * @return the W3C DOM document for the given WireFeed.
      * @throws IllegalArgumentException thrown if the feed type of the WireFeedOutput and WireFeed
      *             don't match.
      * @throws FeedException thrown if the W3C DOM document for the feed could not be created.
-     * 
+     *
      */
     public org.w3c.dom.Document outputW3CDom(final WireFeed feed) throws IllegalArgumentException, FeedException {
         final Document doc = outputJDom(feed);
@@ -281,14 +281,14 @@ public class WireFeedOutput {
      * <p>
      * NOTE: All other output methods delegate to this method.
      * <p>
-     * 
+     *
      * @param feed Abstract feed to create JDOM document from. The type of the WireFeed must match
      *            the type given to the FeedOuptut constructor.
      * @return the JDOM document for the given WireFeed.
      * @throws IllegalArgumentException thrown if the feed type of the WireFeedOutput and WireFeed
      *             don't match.
      * @throws FeedException thrown if the JDOM document for the feed could not be created.
-     * 
+     *
      */
     public Document outputJDom(final WireFeed feed) throws IllegalArgumentException, FeedException {
         final String type = feed.getFeedType();

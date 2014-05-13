@@ -4,9 +4,9 @@ import com.sun.syndication.unittest.FeedTest;
 
 /**
  * Test for #134: Incorrect handling of CDATA sections.
- * 
+ *
  * @author Martin Kurz
- * 
+ *
  */
 public class Issue88Test extends FeedTest {
 

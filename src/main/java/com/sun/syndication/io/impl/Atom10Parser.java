@@ -689,7 +689,7 @@ public class Atom10Parser extends BaseWireFeedParser {
      * Parse entry from reader.
      */
     public static Entry parseEntry(final Reader rd, final String baseURI, final Locale locale) throws JDOMException, IOException, IllegalArgumentException,
-    FeedException {
+            FeedException {
 
         // Parse entry into JDOM tree
         final SAXBuilder builder = new SAXBuilder();

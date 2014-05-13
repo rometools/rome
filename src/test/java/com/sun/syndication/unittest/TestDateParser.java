@@ -27,11 +27,11 @@ import junit.framework.TestCase;
 import com.sun.syndication.io.impl.DateParser;
 
 /**
- * 
+ *
  * Start of tests for DateParser
- * 
+ *
  * @author Nick Lothian
- * 
+ *
  */
 public class TestDateParser extends TestCase {
     public void testParse() {

@@ -25,9 +25,9 @@ import com.sun.syndication.feed.rss.Item;
 /**
  * Feed Generator for RSS 0.94
  * <p/>
- * 
+ *
  * @author Elaine Chien
- * 
+ *
  */
 
 public class RSS094Generator extends RSS093Generator {

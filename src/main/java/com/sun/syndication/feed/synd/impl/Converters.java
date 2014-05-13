@@ -29,7 +29,7 @@ public class Converters extends PluginManager<Converter> {
 
     /**
      * Converter.classes= [className] ...
-     * 
+     *
      */
     public static final String CONVERTERS_KEY = "Converter.classes";
 

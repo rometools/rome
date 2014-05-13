@@ -33,7 +33,7 @@ import com.sun.syndication.io.impl.XmlFixerReader;
 import com.sun.syndication.unittest.SyndFeedTest;
 
 /**
- * 
+ *
  * @author robert.cooper
  */
 public class Issue1Test extends SyndFeedTest {

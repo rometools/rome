@@ -23,14 +23,14 @@ import com.sun.syndication.feed.impl.ObjectBean;
 /**
  * Bean for the generator element of Atom feeds.
  * <p>
- * 
+ *
  * @author Alejandro Abdelnur
- * 
+ *
  */
 public class Generator implements Cloneable, Serializable {
-    
+
     private static final long serialVersionUID = 1L;
-    
+
     private final ObjectBean objBean;
     private String url;
     private String version;
@@ -39,7 +39,7 @@ public class Generator implements Cloneable, Serializable {
     /**
      * Default constructor. All properties are set to <b>null</b>.
      * <p>
-     * 
+     *
      */
     public Generator() {
         objBean = new ObjectBean(this.getClass(), this);
@@ -48,10 +48,10 @@ public class Generator implements Cloneable, Serializable {
     /**
      * Creates a deep 'bean' clone of the object.
      * <p>
-     * 
+     *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     * 
+     *
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
@@ -62,10 +62,10 @@ public class Generator implements Cloneable, Serializable {
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
      * <p>
-     * 
+     *
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     * 
+     *
      */
     @Override
     public boolean equals(final Object other) {
@@ -80,9 +80,9 @@ public class Generator implements Cloneable, Serializable {
      * <p>
      * It follows the contract defined by the Object hashCode() method.
      * <p>
-     * 
+     *
      * @return the hashcode of the bean object.
-     * 
+     *
      */
     @Override
     public int hashCode() {
@@ -92,9 +92,9 @@ public class Generator implements Cloneable, Serializable {
     /**
      * Returns the String representation for the object.
      * <p>
-     * 
+     *
      * @return String representation for the object.
-     * 
+     *
      */
     @Override
     public String toString() {
@@ -104,9 +104,9 @@ public class Generator implements Cloneable, Serializable {
     /**
      * Returns the generator URL.
      * <p>
-     * 
+     *
      * @return the generator URL, <b>null</b> if none.
-     * 
+     *
      */
     public String getUrl() {
         return url;
@@ -115,9 +115,9 @@ public class Generator implements Cloneable, Serializable {
     /**
      * Sets the generator URL.
      * <p>
-     * 
+     *
      * @param url the generator URL, <b>null</b> if none.
-     * 
+     *
      */
     public void setUrl(final String url) {
         this.url = url;
@@ -126,9 +126,9 @@ public class Generator implements Cloneable, Serializable {
     /**
      * Returns the generator version.
      * <p>
-     * 
+     *
      * @return the generator version, <b>null</b> if none.
-     * 
+     *
      */
     public String getVersion() {
         return version;
@@ -137,9 +137,9 @@ public class Generator implements Cloneable, Serializable {
     /**
      * Sets the generator version.
      * <p>
-     * 
+     *
      * @param version the generator version, <b>null</b> if none.
-     * 
+     *
      */
     public void setVersion(final String version) {
         this.version = version;
@@ -148,9 +148,9 @@ public class Generator implements Cloneable, Serializable {
     /**
      * Returns the generator value.
      * <p>
-     * 
+     *
      * @return the generator value, <b>null</b> if none.
-     * 
+     *
      */
     public String getValue() {
         return value;
@@ -159,9 +159,9 @@ public class Generator implements Cloneable, Serializable {
     /**
      * Sets the generator value.
      * <p>
-     * 
+     *
      * @param value the generator value, <b>null</b> if none.
-     * 
+     *
      */
     public void setValue(final String value) {
         this.value = value;
