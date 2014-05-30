@@ -3,19 +3,19 @@
  * and open the template in the editor.
  */
 
-package org.rometools.certiorem.example;
+package com.rometools.certiorem.webapp;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.rometools.certiorem.pub.NotificationException;
-import org.rometools.certiorem.pub.Publisher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.inject.Singleton;
+import com.rometools.certiorem.pub.NotificationException;
+import com.rometools.certiorem.pub.Publisher;
 
 /**
  *

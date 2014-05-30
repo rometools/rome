@@ -25,7 +25,7 @@
 
     <listener>
         <display-name>Guice config</display-name>
-        <listener-class>org.rometools.certiorem.example.ServerModule</listener-class>
+        <listener-class>com.rometools.certiorem.example.ServerModule</listener-class>
     </listener>
     
 </web-app>

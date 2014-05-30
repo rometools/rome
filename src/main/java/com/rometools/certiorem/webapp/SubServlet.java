@@ -3,26 +3,25 @@
  * and open the template in the editor.
  */
 
-package org.rometools.certiorem.example;
-
-import org.rometools.certiorem.hub.Hub;
-import org.rometools.certiorem.web.AbstractHubServlet;
+package com.rometools.certiorem.webapp;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import com.rometools.certiorem.sub.Subscriptions;
+import com.rometools.certiorem.web.AbstractSubServlet;
 
 /**
  *
  * @author robert.cooper
  */
 @Singleton
-public class HubServlet extends AbstractHubServlet {
+public class SubServlet extends AbstractSubServlet {
 
     private static final long serialVersionUID = 1L;
 
     @Inject
-    public HubServlet(final Hub hub) {
-        super(hub);
+    public SubServlet(final Subscriptions subscriptions) {
+        super(subscriptions);
     }
 
 }

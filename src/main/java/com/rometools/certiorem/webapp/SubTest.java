@@ -3,20 +3,20 @@
  * and open the template in the editor.
  */
 
-package org.rometools.certiorem.example;
+package com.rometools.certiorem.webapp;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.rometools.certiorem.sub.Subscriptions;
-import org.rometools.certiorem.sub.data.Subscription;
-import org.rometools.certiorem.sub.data.SubscriptionCallback;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import com.rometools.certiorem.sub.Subscriptions;
+import com.rometools.certiorem.sub.data.Subscription;
+import com.rometools.certiorem.sub.data.SubscriptionCallback;
 import com.rometools.fetcher.impl.SyndFeedInfo;
 
 /**
