@@ -28,7 +28,7 @@ import org.slf4j.LoggerFactory;
 
 import com.rometools.propono.blogclient.Blog.Collection;
 import com.rometools.propono.utils.Utilities;
-import com.sun.syndication.io.impl.Atom10Parser;
+import com.rometools.rome.io.impl.Atom10Parser;
 
 /**
  * Tests Atom and MetaWeblog API CRUD via BlogClient. Exclude this from automated tests because it

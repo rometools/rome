@@ -26,10 +26,10 @@ import com.rometools.propono.blogclient.BaseBlogEntry;
 import com.rometools.propono.blogclient.BlogClientException;
 import com.rometools.propono.blogclient.BlogEntry;
 import com.rometools.propono.utils.ProponoException;
-import com.sun.syndication.feed.atom.Entry;
-import com.sun.syndication.feed.atom.Link;
-import com.sun.syndication.feed.module.Module;
-import com.sun.syndication.feed.synd.SyndPerson;
+import com.rometools.rome.feed.atom.Entry;
+import com.rometools.rome.feed.atom.Link;
+import com.rometools.rome.feed.module.Module;
+import com.rometools.rome.feed.synd.SyndPerson;
 
 /**
  * Atom protocol implementation of BlogEntry.
@@ -135,8 +135,8 @@ public class AtomEntry extends BaseBlogEntry implements BlogEntry {
                 }
             }
         }
-        final List<com.sun.syndication.feed.atom.Content> contents = entry.getContents();
-        com.sun.syndication.feed.atom.Content romeContent = null;
+        final List<com.rometools.rome.feed.atom.Content> contents = entry.getContents();
+        com.rometools.rome.feed.atom.Content romeContent = null;
         if (contents != null && !contents.isEmpty()) {
             romeContent = contents.get(0);
         }
@@ -147,8 +147,8 @@ public class AtomEntry extends BaseBlogEntry implements BlogEntry {
         }
         if (entry.getCategories() != null) {
             final List<Category> cats = new ArrayList<Category>();
-            final List<com.sun.syndication.feed.atom.Category> romeCats = entry.getCategories();
-            for (final com.sun.syndication.feed.atom.Category romeCat : romeCats) {
+            final List<com.rometools.rome.feed.atom.Category> romeCats = entry.getCategories();
+            for (final com.rometools.rome.feed.atom.Category romeCat : romeCats) {
                 final BlogEntry.Category cat = new BlogEntry.Category();
                 cat.setId(romeCat.getTerm());
                 cat.setUrl(romeCat.getScheme());
@@ -159,7 +159,7 @@ public class AtomEntry extends BaseBlogEntry implements BlogEntry {
         }
         final List<SyndPerson> authors = entry.getAuthors();
         if (authors != null && !authors.isEmpty()) {
-            final com.sun.syndication.feed.atom.Person romeAuthor = (com.sun.syndication.feed.atom.Person) authors.get(0);
+            final com.rometools.rome.feed.atom.Person romeAuthor = (com.rometools.rome.feed.atom.Person) authors.get(0);
             if (romeAuthor != null) {
                 author = new Person();
                 author.setName(romeAuthor.getName());
@@ -184,7 +184,7 @@ public class AtomEntry extends BaseBlogEntry implements BlogEntry {
         }
         entry.setTitle(title);
         if (author != null) {
-            final com.sun.syndication.feed.atom.Person person = new com.sun.syndication.feed.atom.Person();
+            final com.rometools.rome.feed.atom.Person person = new com.rometools.rome.feed.atom.Person();
             person.setName(author.getName());
             person.setEmail(author.getEmail());
             person.setUrl(author.getUrl());
@@ -193,17 +193,17 @@ public class AtomEntry extends BaseBlogEntry implements BlogEntry {
             entry.setAuthors(authors);
         }
         if (content != null) {
-            final com.sun.syndication.feed.atom.Content romeContent = new com.sun.syndication.feed.atom.Content();
+            final com.rometools.rome.feed.atom.Content romeContent = new com.rometools.rome.feed.atom.Content();
             romeContent.setValue(content.getValue());
             romeContent.setType(content.getType());
-            final List<com.sun.syndication.feed.atom.Content> contents = new ArrayList<com.sun.syndication.feed.atom.Content>();
+            final List<com.rometools.rome.feed.atom.Content> contents = new ArrayList<com.rometools.rome.feed.atom.Content>();
             contents.add(romeContent);
             entry.setContents(contents);
         }
         if (categories != null) {
-            final List<com.sun.syndication.feed.atom.Category> romeCats = new ArrayList<com.sun.syndication.feed.atom.Category>();
+            final List<com.rometools.rome.feed.atom.Category> romeCats = new ArrayList<com.rometools.rome.feed.atom.Category>();
             for (final Category cat : categories) {
-                final com.sun.syndication.feed.atom.Category romeCategory = new com.sun.syndication.feed.atom.Category();
+                final com.rometools.rome.feed.atom.Category romeCategory = new com.rometools.rome.feed.atom.Category();
                 romeCategory.setTerm(cat.getId());
                 romeCategory.setScheme(cat.getUrl());
                 romeCategory.setLabel(cat.getName());

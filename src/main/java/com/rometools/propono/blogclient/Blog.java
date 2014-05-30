@@ -45,7 +45,7 @@ public interface Blog {
      * Get a single BlogEntry (or BlogResource) by token.
      *
      * @param token Token from blog entry's getToken() method.
-     * @throws com.sun.syndication.propono.blogclient.BlogClientException On error fetching the blog
+     * @throws com.rometools.rome.propono.blogclient.BlogClientException On error fetching the blog
      *             entry.
      * @return Blog entry specified by token.
      */

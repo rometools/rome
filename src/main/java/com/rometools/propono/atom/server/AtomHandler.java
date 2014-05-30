@@ -21,15 +21,15 @@ package com.rometools.propono.atom.server;
 
 import com.rometools.propono.atom.common.AtomService;
 import com.rometools.propono.atom.common.Categories;
-import com.sun.syndication.feed.atom.Entry;
-import com.sun.syndication.feed.atom.Feed;
+import com.rometools.rome.feed.atom.Entry;
+import com.rometools.rome.feed.atom.Feed;
 
 /**
  * Interface for handling single Atom protocol requests.
  *
  * <p>
  * To create your own Atom protocol implementation you must implement this interface and create a
- * concrete sub-class of {@link com.sun.syndication.propono.atom.server.AtomHandlerFactory} which is
+ * concrete sub-class of {@link com.rometools.rome.propono.atom.server.AtomHandlerFactory} which is
  * capable of instantiating it.
  * </p>
  */
@@ -40,10 +40,10 @@ public interface AtomHandler {
     public String getAuthenticatedUsername();
 
     /**
-     * Return {@link com.sun.syndication.propono.atom.common.AtomService} object that contains the
-     * {@link com.sun.syndication.propono.atom.common.Workspace} objects available to the currently
+     * Return {@link com.rometools.rome.propono.atom.common.AtomService} object that contains the
+     * {@link com.rometools.rome.propono.atom.common.Workspace} objects available to the currently
      * authenticated user and within those the
-     * {@link com.sun.syndication.propono.atom.common.Collection} avalaible.
+     * {@link com.rometools.rome.propono.atom.common.Collection} avalaible.
      */
     public AtomService getAtomService(AtomRequest req) throws AtomException;
 

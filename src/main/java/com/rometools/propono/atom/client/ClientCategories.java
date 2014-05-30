@@ -31,7 +31,7 @@ import com.rometools.propono.utils.ProponoException;
 
 /**
  * Models an Atom protocol Categories element, which may contain ROME Atom
- * {@link com.sun.syndication.feed.atom.Category} elements.
+ * {@link com.rometools.rome.feed.atom.Category} elements.
  */
 public class ClientCategories extends Categories {
     private ClientCollection clientCollection = null;

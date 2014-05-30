@@ -24,9 +24,9 @@ import java.util.Locale;
 import org.jdom2.Element;
 import org.jdom2.Namespace;
 
-import com.sun.syndication.feed.module.Module;
-import com.sun.syndication.io.ModuleParser;
-import com.sun.syndication.io.impl.DateParser;
+import com.rometools.rome.feed.module.Module;
+import com.rometools.rome.io.ModuleParser;
+import com.rometools.rome.io.impl.DateParser;
 
 /**
  * Parses APP module information from a JDOM element and into <code>AppModule</code> form.

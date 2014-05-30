@@ -23,7 +23,7 @@ import junit.framework.TestSuite;
 
 import org.junit.Ignore;
 
-import com.sun.syndication.feed.atom.Content;
+import com.rometools.rome.feed.atom.Content;
 
 /**
  * Simple APP test designed to run against Blogger.com.

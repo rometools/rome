@@ -45,8 +45,8 @@ import com.rometools.propono.atom.common.Categories;
 import com.rometools.propono.atom.common.Collection;
 import com.rometools.propono.atom.common.Workspace;
 import com.rometools.propono.utils.ProponoException;
-import com.sun.syndication.feed.atom.Category;
-import com.sun.syndication.feed.atom.Content;
+import com.rometools.rome.feed.atom.Category;
+import com.rometools.rome.feed.atom.Content;
 
 /**
  * Test Propono Atom Client against Atom Server via Jetty. Extends <code>AtomClientTest</code> to

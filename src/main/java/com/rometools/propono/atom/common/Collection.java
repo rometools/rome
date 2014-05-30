@@ -23,7 +23,7 @@ import java.util.List;
 import org.jdom2.Element;
 
 import com.rometools.propono.utils.ProponoException;
-import com.sun.syndication.io.impl.Atom10Parser;
+import com.rometools.rome.io.impl.Atom10Parser;
 
 /**
  * Models an Atom workspace collection.
@@ -150,7 +150,7 @@ public class Collection {
     /**
      * Get categories allowed by collection.
      *
-     * @return Collection of {@link com.sun.syndication.propono.atom.common.Categories} objects.
+     * @return Collection of {@link com.rometools.rome.propono.atom.common.Categories} objects.
      */
     public List<Categories> getCategories() {
         return categories;

@@ -38,11 +38,11 @@ import org.slf4j.LoggerFactory;
 
 import com.rometools.propono.utils.ProponoException;
 import com.rometools.propono.utils.Utilities;
-import com.sun.syndication.feed.atom.Content;
-import com.sun.syndication.feed.atom.Entry;
-import com.sun.syndication.feed.atom.Link;
-import com.sun.syndication.io.impl.Atom10Generator;
-import com.sun.syndication.io.impl.Atom10Parser;
+import com.rometools.rome.feed.atom.Content;
+import com.rometools.rome.feed.atom.Entry;
+import com.rometools.rome.feed.atom.Link;
+import com.rometools.rome.io.impl.Atom10Generator;
+import com.rometools.rome.io.impl.Atom10Parser;
 
 /**
  * Client implementation of Atom entry, extends ROME Entry to add methods for easily getting/setting
@@ -130,8 +130,8 @@ public class ClientEntry extends Entry {
      * Update entry by posting new representation of entry to server. Note that you should not
      * attempt to update entries that you get from iterating over a collection they may be "partial"
      * entries. If you want to update an entry, you must get it via one of the
-     * <code>getEntry()</code> methods in {@link com.sun.syndication.propono.atom.common.Collection}
-     * or {@link com.sun.syndication.propono.atom.common.AtomService}.
+     * <code>getEntry()</code> methods in {@link com.rometools.rome.propono.atom.common.Collection}
+     * or {@link com.rometools.rome.propono.atom.common.AtomService}.
      *
      * @throws ProponoException If entry is a "partial" entry.
      */

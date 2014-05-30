@@ -22,7 +22,7 @@ import java.io.InputStreamReader;
 import java.util.Properties;
 
 /**
- * Find {@link com.sun.syndication.propono.atom.server.AtomHandlerFactory} based on properties
+ * Find {@link com.rometools.rome.propono.atom.server.AtomHandlerFactory} based on properties
  * files.
  */
 class FactoryFinder {

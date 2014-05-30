@@ -39,7 +39,7 @@ public class CollectionTest extends TestCase {
     }
 
     /**
-     * Test of accepts method, of class com.sun.syndication.propono.atom.common.Collection.
+     * Test of accepts method, of class com.rometools.rome.propono.atom.common.Collection.
      */
     public void testAccepts() {
 

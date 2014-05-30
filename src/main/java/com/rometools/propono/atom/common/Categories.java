@@ -22,12 +22,12 @@ import java.util.List;
 
 import org.jdom2.Element;
 
-import com.sun.syndication.feed.atom.Category;
-import com.sun.syndication.io.impl.Atom10Parser;
+import com.rometools.rome.feed.atom.Category;
+import com.rometools.rome.io.impl.Atom10Parser;
 
 /**
  * Models an Atom protocol Categories element, which may contain ROME Atom
- * {@link com.sun.syndication.feed.atom.Category} elements.
+ * {@link com.rometools.rome.feed.atom.Category} elements.
  */
 public class Categories {
 
@@ -56,7 +56,7 @@ public class Categories {
     /**
      * Iterate over Category objects
      *
-     * @return List of ROME Atom {@link com.sun.syndication.feed.atom.Category}
+     * @return List of ROME Atom {@link com.rometools.rome.feed.atom.Category}
      */
     public List<Category> getCategories() {
         return categories;

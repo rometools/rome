@@ -39,12 +39,12 @@ import org.slf4j.LoggerFactory;
 
 import com.rometools.propono.utils.ProponoException;
 import com.rometools.propono.utils.Utilities;
-import com.sun.syndication.feed.atom.Content;
-import com.sun.syndication.feed.atom.Entry;
-import com.sun.syndication.feed.atom.Link;
-import com.sun.syndication.io.FeedException;
-import com.sun.syndication.io.impl.Atom10Generator;
-import com.sun.syndication.io.impl.Atom10Parser;
+import com.rometools.rome.feed.atom.Content;
+import com.rometools.rome.feed.atom.Entry;
+import com.rometools.rome.feed.atom.Link;
+import com.rometools.rome.io.FeedException;
+import com.rometools.rome.io.impl.Atom10Generator;
+import com.rometools.rome.io.impl.Atom10Parser;
 
 /**
  * Client implementation of Atom media-link entry, an Atom entry that provides meta-data for a media

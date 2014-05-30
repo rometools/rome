@@ -41,18 +41,18 @@ import org.slf4j.LoggerFactory;
 import com.rometools.propono.atom.common.AtomService;
 import com.rometools.propono.atom.common.Categories;
 import com.rometools.propono.utils.Utilities;
-import com.sun.syndication.feed.atom.Content;
-import com.sun.syndication.feed.atom.Entry;
-import com.sun.syndication.feed.atom.Feed;
-import com.sun.syndication.feed.atom.Link;
-import com.sun.syndication.io.WireFeedOutput;
-import com.sun.syndication.io.impl.Atom10Generator;
-import com.sun.syndication.io.impl.Atom10Parser;
+import com.rometools.rome.feed.atom.Content;
+import com.rometools.rome.feed.atom.Entry;
+import com.rometools.rome.feed.atom.Feed;
+import com.rometools.rome.feed.atom.Link;
+import com.rometools.rome.io.WireFeedOutput;
+import com.rometools.rome.io.impl.Atom10Generator;
+import com.rometools.rome.io.impl.Atom10Parser;
 
 /**
  * Atom Servlet implements Atom protocol by calling an
- * {@link com.sun.syndication.propono.atom.server.AtomHandler} implementation. This servlet takes
- * care of parsing incoming XML into ROME Atom {@link com.sun.syndication.feed.atom.Entry} objects,
+ * {@link com.rometools.rome.propono.atom.server.AtomHandler} implementation. This servlet takes
+ * care of parsing incoming XML into ROME Atom {@link com.rometools.rome.feed.atom.Entry} objects,
  * passing those to the handler and serializing to the response the entries and feeds returned by
  * the handler.
  */

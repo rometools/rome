@@ -22,8 +22,8 @@ import com.rometools.propono.atom.server.AtomHandler;
 import com.rometools.propono.atom.server.AtomHandlerFactory;
 
 /**
- * Extends {@link com.sun.syndication.propono.atom.server.AtomHandlerFactory} to create and return
- * {@link com.sun.syndication.propono.atom.server.impl.FileBasedAtomHandler}.
+ * Extends {@link com.rometools.rome.propono.atom.server.AtomHandlerFactory} to create and return
+ * {@link com.rometools.rome.propono.atom.server.impl.FileBasedAtomHandler}.
  */
 public class FileBasedAtomHandlerFactory extends AtomHandlerFactory {
 

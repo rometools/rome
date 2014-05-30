@@ -32,8 +32,8 @@ import com.rometools.propono.atom.common.Categories;
 import com.rometools.propono.atom.common.Collection;
 import com.rometools.propono.atom.common.Workspace;
 import com.rometools.propono.utils.ProponoException;
-import com.sun.syndication.feed.atom.Entry;
-import com.sun.syndication.io.impl.Atom10Parser;
+import com.rometools.rome.feed.atom.Entry;
+import com.rometools.rome.io.impl.Atom10Parser;
 
 /**
  * Models an Atom collection, extends Collection and adds methods for adding, retrieving, updateing

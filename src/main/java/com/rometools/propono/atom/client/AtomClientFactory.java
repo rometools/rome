@@ -16,7 +16,7 @@
 package com.rometools.propono.atom.client;
 
 import com.rometools.propono.utils.ProponoException;
-import com.sun.syndication.io.impl.Atom10Parser;
+import com.rometools.rome.io.impl.Atom10Parser;
 
 /**
  * Creates AtomService or ClientCollection based on username, password and end-point URI of Atom

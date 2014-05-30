@@ -25,9 +25,9 @@ import com.rometools.propono.utils.ProponoException;
 
 /**
  * Represents Atom protocol workspace on client-side. It extends the common
- * {@link com.sun.syndication.propono.atom.common.Workspace} to return
- * {@link com.sun.syndication.propono.atom.client.ClientCollection} objects instead of common
- * {@link com.sun.syndication.propono.atom.common.Collection}s.
+ * {@link com.rometools.rome.propono.atom.common.Workspace} to return
+ * {@link com.rometools.rome.propono.atom.client.ClientCollection} objects instead of common
+ * {@link com.rometools.rome.propono.atom.common.Collection}s.
  */
 public class ClientWorkspace extends Workspace {
 

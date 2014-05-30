@@ -17,7 +17,7 @@ package com.rometools.propono.atom.server;
 
 /**
  * Thrown when a problem with configuration with the
- * {@link com.sun.syndication.propono.atom.server.AtomHandlerFactory} exists. This error will
+ * {@link com.rometools.rome.propono.atom.server.AtomHandlerFactory} exists. This error will
  * typically be thrown when the class of a parser factory specified in the system properties cannot
  * be found or instantiated.
  */

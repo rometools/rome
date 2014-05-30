@@ -46,18 +46,18 @@ import com.rometools.propono.atom.server.AtomException;
 import com.rometools.propono.atom.server.AtomMediaResource;
 import com.rometools.propono.atom.server.AtomNotFoundException;
 import com.rometools.propono.utils.Utilities;
-import com.sun.syndication.feed.WireFeed;
-import com.sun.syndication.feed.atom.Category;
-import com.sun.syndication.feed.atom.Content;
-import com.sun.syndication.feed.atom.Entry;
-import com.sun.syndication.feed.atom.Feed;
-import com.sun.syndication.feed.atom.Link;
-import com.sun.syndication.feed.module.Module;
-import com.sun.syndication.io.FeedException;
-import com.sun.syndication.io.WireFeedInput;
-import com.sun.syndication.io.WireFeedOutput;
-import com.sun.syndication.io.impl.Atom10Generator;
-import com.sun.syndication.io.impl.Atom10Parser;
+import com.rometools.rome.feed.WireFeed;
+import com.rometools.rome.feed.atom.Category;
+import com.rometools.rome.feed.atom.Content;
+import com.rometools.rome.feed.atom.Entry;
+import com.rometools.rome.feed.atom.Feed;
+import com.rometools.rome.feed.atom.Link;
+import com.rometools.rome.feed.module.Module;
+import com.rometools.rome.io.FeedException;
+import com.rometools.rome.io.WireFeedInput;
+import com.rometools.rome.io.WireFeedOutput;
+import com.rometools.rome.io.impl.Atom10Generator;
+import com.rometools.rome.io.impl.Atom10Parser;
 
 /**
  * File based Atom collection implementation. This is the heart of the file-based Atom service
@@ -121,7 +121,7 @@ public class FileBasedCollection extends Collection {
     /**
      * Get feed document representing collection.
      *
-     * @throws com.sun.syndication.propono.atom.server.AtomException On error retrieving feed file.
+     * @throws com.rometools.rome.propono.atom.server.AtomException On error retrieving feed file.
      * @return Atom Feed representing collection.
      */
     public Feed getFeedDocument() throws AtomException {

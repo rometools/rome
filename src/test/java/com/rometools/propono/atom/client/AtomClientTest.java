@@ -30,8 +30,8 @@ import org.slf4j.LoggerFactory;
 import com.rometools.propono.atom.common.Categories;
 import com.rometools.propono.atom.common.Collection;
 import com.rometools.propono.utils.ProponoException;
-import com.sun.syndication.feed.atom.Category;
-import com.sun.syndication.feed.atom.Content;
+import com.rometools.rome.feed.atom.Category;
+import com.rometools.rome.feed.atom.Content;
 
 /**
  * Simple APP test designed to run against a live Atom server.

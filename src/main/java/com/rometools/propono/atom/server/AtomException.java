@@ -22,7 +22,7 @@ package com.rometools.propono.atom.server;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Exception thrown by {@link com.sun.syndication.propono.atom.server.AtomHandler} and extended by
+ * Exception thrown by {@link com.rometools.rome.propono.atom.server.AtomHandler} and extended by
  * other Propono Atom exception classes.
  */
 public class AtomException extends Exception {

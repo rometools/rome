@@ -31,14 +31,14 @@ import org.slf4j.LoggerFactory;
 
 import com.rometools.propono.atom.common.AtomService;
 import com.rometools.propono.utils.ProponoException;
-import com.sun.syndication.feed.atom.Entry;
-import com.sun.syndication.io.impl.Atom10Parser;
+import com.rometools.rome.feed.atom.Entry;
+import com.rometools.rome.io.impl.Atom10Parser;
 
 /**
  * This class models an Atom Publising Protocol Service Document. It extends the common
- * {@link com.sun.syndication.propono.atom.common.Collection} class to add a <code>getEntry()</code>
- * method and to return {@link com.sun.syndication.propono.atom.client.ClientWorkspace} objects
- * instead of common {@link com.sun.syndication.propono.atom.common.Workspace}s.
+ * {@link com.rometools.rome.propono.atom.common.Collection} class to add a <code>getEntry()</code>
+ * method and to return {@link com.rometools.rome.propono.atom.client.ClientWorkspace} objects
+ * instead of common {@link com.rometools.rome.propono.atom.common.Workspace}s.
  */
 public class ClientAtomService extends AtomService {
 

@@ -21,7 +21,7 @@ package com.rometools.propono.atom.common.rome;
 
 import java.util.Date;
 
-import com.sun.syndication.feed.module.Module;
+import com.rometools.rome.feed.module.Module;
 
 /**
  * ROME Extension Module to Atom protocol extensions to Atom format.

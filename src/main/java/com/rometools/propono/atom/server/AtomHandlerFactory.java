@@ -22,14 +22,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Defines a factory that enables the {@link com.sun.syndication.propono.atom.server.AtomServlet} to
- * obtain an {@link com.sun.syndication.propono.atom.server.AtomHandler} that handles an Atom
+ * Defines a factory that enables the {@link com.rometools.rome.propono.atom.server.AtomServlet} to
+ * obtain an {@link com.rometools.rome.propono.atom.server.AtomHandler} that handles an Atom
  * request.
  *
  * <p>
  * To create your own Atom protocol implementation you must sub-class this class with your own
  * factory that is capable of creating instances of your
- * {@link com.sun.syndication.propono.atom.server.AtomHandler} impementation.
+ * {@link com.rometools.rome.propono.atom.server.AtomHandler} impementation.
  * </p>
  */
 public abstract class AtomHandlerFactory {
@@ -51,7 +51,7 @@ public abstract class AtomHandlerFactory {
      * <code>AtomHandlerFactory</code> implementation class to load:
      * <ul>
      * <li>
-     * Use the <code>com.sun.syndication.propono.atom.server.AtomHandlerFactory</code> system
+     * Use the <code>com.rometools.rome.propono.atom.server.AtomHandlerFactory</code> system
      * property.</li>
      * <li>
      * Use the properties file "/propono.properties" in the classpath. This configuration file is in
@@ -64,7 +64,7 @@ public abstract class AtomHandlerFactory {
      * of any property in propono.properties after it has been read for the first time.</li>
      * <li>
      * If not available, to determine the classname. The Services API will look for a classname in
-     * the file: <code>META-INF/services/com.sun.syndication.AtomHandlerFactory</code> in jars
+     * the file: <code>META-INF/services/com.rometools.rome.AtomHandlerFactory</code> in jars
      * available to the runtime.</li>
      * <li>
      * Platform default <code>AtomHandlerFactory</code> instance.</li>
@@ -88,7 +88,7 @@ public abstract class AtomHandlerFactory {
     }
 
     /**
-     * Creates a new instance of a {@link com.sun.syndication.propono.atom.server.AtomHandler} using
+     * Creates a new instance of a {@link com.rometools.rome.propono.atom.server.AtomHandler} using
      * the currently configured parameters.
      *
      * @return A new instance of a AtomHandler.

@@ -32,13 +32,13 @@ import com.rometools.propono.atom.server.AtomHandler;
 import com.rometools.propono.atom.server.AtomMediaResource;
 import com.rometools.propono.atom.server.AtomRequest;
 import com.rometools.propono.atom.server.AtomServlet;
-import com.sun.syndication.feed.atom.Entry;
-import com.sun.syndication.feed.atom.Feed;
+import com.rometools.rome.feed.atom.Entry;
+import com.rometools.rome.feed.atom.Feed;
 
 /**
- * File-based {@link com.sun.syndication.propono.atom.server.AtomHandler} implementation that stores
+ * File-based {@link com.rometools.rome.propono.atom.server.AtomHandler} implementation that stores
  * entries and media-entries to disk. Implemented using
- * {@link com.sun.syndication.propono.atom.server.impl.FileBasedAtomService}.
+ * {@link com.rometools.rome.propono.atom.server.impl.FileBasedAtomService}.
  */
 public class FileBasedAtomHandler implements AtomHandler {
 
@@ -118,7 +118,7 @@ public class FileBasedAtomHandler implements AtomHandler {
     /**
      * Return introspection document
      *
-     * @throws com.sun.syndication.propono.atom.server.AtomException Unexpected exception.
+     * @throws com.rometools.rome.propono.atom.server.AtomException Unexpected exception.
      * @return AtomService object with workspaces and collections.
      */
     @Override
@@ -129,7 +129,7 @@ public class FileBasedAtomHandler implements AtomHandler {
     /**
      * Returns null because we use in-line categories.
      *
-     * @throws com.sun.syndication.propono.atom.server.AtomException Unexpected exception.
+     * @throws com.rometools.rome.propono.atom.server.AtomException Unexpected exception.
      * @return Categories object
      */
     @Override
@@ -147,7 +147,7 @@ public class FileBasedAtomHandler implements AtomHandler {
      *
      * @param areq Details of HTTP request
      * @return ROME feed representing collection.
-     * @throws com.sun.syndication.propono.atom.server.AtomException Invalid collection or other
+     * @throws com.rometools.rome.propono.atom.server.AtomException Invalid collection or other
      *             exception.
      */
     @Override
@@ -166,7 +166,7 @@ public class FileBasedAtomHandler implements AtomHandler {
      *
      * @param entry Entry to be added to collection.
      * @param areq Details of HTTP request
-     * @throws com.sun.syndication.propono.atom.server.AtomException On invalid collection or other
+     * @throws com.rometools.rome.propono.atom.server.AtomException On invalid collection or other
      *             error.
      * @return Entry as represented on server.
      */
@@ -191,7 +191,7 @@ public class FileBasedAtomHandler implements AtomHandler {
      * Get entry specified by pathInfo.
      *
      * @param areq Details of HTTP request
-     * @throws com.sun.syndication.propono.atom.server.AtomException On invalid pathinfo or other
+     * @throws com.rometools.rome.propono.atom.server.AtomException On invalid pathinfo or other
      *             error.
      * @return ROME Entry object.
      */
@@ -219,7 +219,7 @@ public class FileBasedAtomHandler implements AtomHandler {
      *
      * @param entry
      * @param areq Details of HTTP request
-     * @throws com.sun.syndication.propono.atom.server.AtomException
+     * @throws com.rometools.rome.propono.atom.server.AtomException
      */
     @Override
     public void putEntry(final AtomRequest areq, final Entry entry) throws AtomException {

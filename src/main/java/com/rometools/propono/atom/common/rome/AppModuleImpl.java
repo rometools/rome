@@ -22,8 +22,8 @@ package com.rometools.propono.atom.common.rome;
 
 import java.util.Date;
 
-import com.sun.syndication.feed.CopyFrom;
-import com.sun.syndication.feed.module.ModuleImpl;
+import com.rometools.rome.feed.CopyFrom;
+import com.rometools.rome.feed.module.ModuleImpl;
 
 /**
  * Bean representation of APP module.
