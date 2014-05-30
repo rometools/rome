@@ -12,7 +12,7 @@ Rome v0.3 Tutorial, Using Rome to create and write a syndication feed
  <<Software requirements:>> J2SE 1.4\+, JDOM B10 and Rome 0.3.
 
 
- Rome represents syndication feeds (RSS and Atom) as instances of the com.sun.syndication.synd.SyndFeedI interface. The SyndFeedI interfaces and its properties follow the Java Bean patterns. The default implementations provided with Rome are all lightweight classes.
+ Rome represents syndication feeds (RSS and Atom) as instances of the com.rometools.rome.synd.SyndFeedI interface. The SyndFeedI interfaces and its properties follow the Java Bean patterns. The default implementations provided with Rome are all lightweight classes.
 
 
  Creating a feed with SyndFeedI beans consists of creating beans and setting their properties. The following code fragments show how a SyndFeedI bean with 3 entries is created.
@@ -102,10 +102,10 @@ output.output(feed,writer);
 
 +------+
 
-package com.sun.syndication.samples;
+package com.rometools.rome.samples;
 
-import com.sun.syndication.feed.synd.*;
-import com.sun.syndication.io.SyndFeedOutput;
+import com.rometools.rome.feed.synd.*;
+import com.rometools.rome.io.SyndFeedOutput;
 
 import java.io.FileWriter;
 import java.io.Writer;

@@ -12,7 +12,7 @@ Rss and atOM utilitiEs (ROME) v0.5 Tutorial, Using ROME to convert a syndication
  <<Software requirements:>> Synd J2SE 1.4\+, JDOM 1.0 and ROME 0.5.
 
 
- ROME represents syndication feeds (RSS and Atom) as instances of the com.sun.syndication.synd.SyndFeed interface. The SyndFeed interfaces and its properties follow the Java Bean patterns. The default implementations provided with ROME are all lightweight classes.
+ ROME represents syndication feeds (RSS and Atom) as instances of the com.rometools.rome.synd.SyndFeed interface. The SyndFeed interfaces and its properties follow the Java Bean patterns. The default implementations provided with ROME are all lightweight classes.
 
 
  ROME includes parsers to process syndication feeds into SyndFeed instances. The SyndFeedInput class handles the parsers using the correct one based on the syndication feed being processed. The developer does not need to worry about selecting the right parser for a syndication feed, the SyndFeedInput will take care of it by peeking at the syndication feed structure. All it takes to read a syndication feed using ROME are the following 2 lines of code:
@@ -49,15 +49,15 @@ output.output(feed,new PrintWriter(System.out));
 
 +------+
 
-package com.sun.syndication.samples;
+package com.rometools.rome.samples;
 
 import java.net.URL;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import com.sun.syndication.feed.synd.SyndFeed;
-import com.sun.syndication.io.SyndFeedInput;
-import com.sun.syndication.io.SyndFeedOutput;
-import com.sun.syndication.io.XmlReader;
+import com.rometools.rome.feed.synd.SyndFeed;
+import com.rometools.rome.io.SyndFeedInput;
+import com.rometools.rome.io.SyndFeedOutput;
+import com.rometools.rome.io.XmlReader;
 
 /**
  * It Converts any RSS/Atom feed type to a an RSS/Atom feed of the

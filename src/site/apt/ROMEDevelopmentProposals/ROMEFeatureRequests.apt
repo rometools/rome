@@ -8,7 +8,7 @@
 
 ROME Feature Requests
 
- * <<BUG:>> com.sun.syndication.io.impl.DateParser:Date parseW3CDateTime(String) incorrectly uses a comma (",") rather than a decimal (".") to delimit the seconds from miliseconds. The correct format can be found on {{{http://www.w3.org/TR/NOTE\-datetime}http://www.w3.org/TR/NOTE\-datetime}}. The bug is on line 170 (version 0.8). The fix is to replace the line with this: <<<int secFraction \= pre.indexOf(".");>>> \-\- JLP 9/4/2006
+ * <<BUG:>> com.rometools.rome.io.impl.DateParser:Date parseW3CDateTime(String) incorrectly uses a comma (",") rather than a decimal (".") to delimit the seconds from miliseconds. The correct format can be found on {{{http://www.w3.org/TR/NOTE\-datetime}http://www.w3.org/TR/NOTE\-datetime}}. The bug is on line 170 (version 0.8). The fix is to replace the line with this: <<<int secFraction \= pre.indexOf(".");>>> \-\- JLP 9/4/2006
  
  * <<BUG:>> Atom 1.0 parsing uses wrong Content types. "text", "html", "xhtml" do not match what is parse from the content elements. Subsequently, the content elements always have a null value \- no way to get content.
  

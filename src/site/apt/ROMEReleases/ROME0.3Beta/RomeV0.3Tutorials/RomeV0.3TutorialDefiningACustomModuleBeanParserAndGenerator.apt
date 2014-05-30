@@ -319,19 +319,19 @@ public class SampleModuleGenerator  implements ModuleGenerator {
 
 # Parsers for RSS 1.0 feed modules
 #
-rss_1.0.feed.ModuleParser.classes=com.sun.syndication.samples.module.SampleModuleParser
+rss_1.0.feed.ModuleParser.classes=com.rometools.rome.samples.module.SampleModuleParser
 
 # Parsers for RSS 1.0 item modules
 #
-rss_1.0.item.ModuleParser.classes=com.sun.syndication.samples.module.SampleModuleParser
+rss_1.0.item.ModuleParser.classes=com.rometools.rome.samples.module.SampleModuleParser
 
 # Generators for RSS 1.0 feed modules
 #
-rss_1.0.feed.ModuleGenerator.classes=com.sun.syndication.samples.module.SampleModuleGenerator
+rss_1.0.feed.ModuleGenerator.classes=com.rometools.rome.samples.module.SampleModuleGenerator
 
 # Generators for RSS_1.0 entry modules
 #
-rss_1.0.item.ModuleGenerator.classes=com.sun.syndication.samples.module.SampleModuleGenerator
+rss_1.0.item.ModuleGenerator.classes=com.rometools.rome.samples.module.SampleModuleGenerator
 
 +------+
 

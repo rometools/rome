@@ -12,7 +12,7 @@ Rome v0.1 Tutorial, Using Rome to read a syndication feed
  <<Software requirements:>> J2SE 1.4\+, Xerces 2.4.0, JDOM B10, Commons Codec 1.2 and Rome 0.1.
 
 
- Rome represents syndication feeds (RSS and Atom) as instances of the com.sun.syndication.synd.SyndFeedI interface. The SyndFeedI interfaces and its properties follow the Java Bean patterns. The default implementations provided with Rome are all lightweight classes.
+ Rome represents syndication feeds (RSS and Atom) as instances of the com.rometools.rome.synd.SyndFeedI interface. The SyndFeedI interfaces and its properties follow the Java Bean patterns. The default implementations provided with Rome are all lightweight classes.
 
 
  Rome includes parsers to process syndication feeds into SyndFeedI instances. The SyndInput class handles the parsers using the correct one based on the syndication feed being processed. The developer does not need to worry about selecting the right parser for a syndication feed, the SyndInput will take care of it by peeking at the syndication feed structure. All it takes to read a syndication feed using Rome are the following 2 lines of code:
@@ -45,11 +45,11 @@ System.out.println(feed);
 
 +------+
 
-package com.sun.syndication.samples;
+package com.rometools.rome.samples;
 
 import java.net.URL;
-import com.sun.syndication.feed.synd.SyndFeedI;
-import com.sun.syndication.io.SyndInput;
+import com.rometools.rome.feed.synd.SyndFeedI;
+import com.rometools.rome.io.SyndInput;
 
 public class FeedReader {
 

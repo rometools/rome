@@ -12,7 +12,7 @@ Rome v0.2 Tutorial, Using Rome to aggregate many syndication feeds into a single
  <<Software requirements:>> J2SE 1.4\+, JDOM B10 and Rome 0.2.
 
 
- Rome represents syndication feeds (RSS and Atom) as instances of the com.sun.syndication.synd.SyndFeedI interface. The SyndFeedI interfaces and its properties follow the Java Bean patterns. The default implementations provided with Rome are all lightweight classes.
+ Rome represents syndication feeds (RSS and Atom) as instances of the com.rometools.rome.synd.SyndFeedI interface. The SyndFeedI interfaces and its properties follow the Java Bean patterns. The default implementations provided with Rome are all lightweight classes.
 
 
  Rome includes parsers to process syndication feeds into SyndFeedI instances. The SyndFeedInput class handles the parsers using the correct one based on the syndication feed being processed. The developer does not need to worry about selecting the right parser for a syndication feed, the SyndFeedInput will take care of it by peeking at the syndication feed structure. All it takes to read a syndication feed using Rome are the following 2 lines of code:
@@ -70,16 +70,16 @@ aggrFeed.setLink("http://www.anonymous.com");
 
 +------+
 
-package com.sun.syndication.samples;
+package com.rometools.rome.samples;
 
 import java.net.URL;
 import java.util.List;
 import java.util.ArrayList;
 
-import com.sun.syndication.feed.synd.SyndFeedI;
-import com.sun.syndication.feed.synd.SyndFeed;
-import com.sun.syndication.io.SyndFeedOutput;
-import com.sun.syndication.io.SyndFeedInput;
+import com.rometools.rome.feed.synd.SyndFeedI;
+import com.rometools.rome.feed.synd.SyndFeed;
+import com.rometools.rome.io.SyndFeedOutput;
+import com.rometools.rome.io.SyndFeedInput;
 
 /**
  * It aggregates a list of RSS/Atom feeds (they can be of different types)

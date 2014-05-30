@@ -12,7 +12,7 @@ Understanding Rss and atOM utilitiEs (ROME) Bean Utilities
  ROME bean utilities are not part of ROME public API. They are used by the default implementation of ROME beans and it may be useful for alternate implementations as well. It is important to keep in mind that these APIs are not public and they are subject to change breaking backward compatibility.
 
 
- Rome <com.sun.syndication.feed.impl> package contains a set of Java classes that provide support for all the basic features Java Beans commonly must have: toString, equals, hashcode and cloning.
+ Rome <com.rometools.rome.feed.impl> package contains a set of Java classes that provide support for all the basic features Java Beans commonly must have: toString, equals, hashcode and cloning.
 
 
  By using these classes Beans don't have to hand code these functions. This greatly simplifies things when Beans have several properties, collection properties and composite properties.

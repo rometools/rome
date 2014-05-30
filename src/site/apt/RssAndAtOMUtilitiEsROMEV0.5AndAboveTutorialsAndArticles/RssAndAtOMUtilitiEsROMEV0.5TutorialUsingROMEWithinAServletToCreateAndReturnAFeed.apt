@@ -66,11 +66,11 @@ public class FeedServlet extends HttpServlet {
 
 +------+
 
-package com.sun.syndication.samples.servlet;
+package com.rometools.rome.samples.servlet;
 
-import com.sun.syndication.feed.synd.*;
-import com.sun.syndication.io.FeedException;
-import com.sun.syndication.io.SyndFeedOutput;
+import com.rometools.rome.feed.synd.*;
+import com.rometools.rome.io.FeedException;
+import com.rometools.rome.io.SyndFeedOutput;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -222,7 +222,7 @@ public class FeedServlet extends HttpServlet {
 
     <servlet>
         <servlet-name>FeedServlet</servlet-name>
-        <servlet-class>com.sun.syndication.samples.servlet.FeedServlet</servlet-class>
+        <servlet-class>com.rometools.rome.samples.servlet.FeedServlet</servlet-class>
         <init-param>
             <param-name>default.feed.type</param-name>
             <param-value>rss_2.0</param-value>
