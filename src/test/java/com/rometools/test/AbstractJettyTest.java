@@ -38,9 +38,9 @@ import com.rometools.fetcher.FetcherException;
 import com.rometools.fetcher.FetcherListener;
 import com.rometools.fetcher.impl.FeedFetcherCache;
 import com.rometools.fetcher.impl.HashMapFeedInfoCache;
-import com.sun.syndication.feed.atom.Entry;
-import com.sun.syndication.feed.synd.SyndEntry;
-import com.sun.syndication.feed.synd.SyndFeed;
+import com.rometools.rome.feed.atom.Entry;
+import com.rometools.rome.feed.synd.SyndEntry;
+import com.rometools.rome.feed.synd.SyndFeed;
 
 /**
  * @author nl
@@ -145,7 +145,7 @@ public abstract class AbstractJettyTest extends TestCase {
         }
 
         /**
-         * @see com.sun.syndication.fetcher.FetcherListener#fetcherEvent(com.sun.syndication.fetcher.FetcherEvent)
+         * @see com.rometools.rome.fetcher.FetcherListener#fetcherEvent(com.rometools.rome.fetcher.FetcherEvent)
          */
         @Override
         public void fetcherEvent(final FetcherEvent event) {

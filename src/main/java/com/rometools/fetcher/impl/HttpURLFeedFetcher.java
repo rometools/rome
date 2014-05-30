@@ -26,10 +26,10 @@ import java.util.zip.GZIPInputStream;
 
 import com.rometools.fetcher.FetcherEvent;
 import com.rometools.fetcher.FetcherException;
-import com.sun.syndication.feed.synd.SyndFeed;
-import com.sun.syndication.io.FeedException;
-import com.sun.syndication.io.SyndFeedInput;
-import com.sun.syndication.io.XmlReader;
+import com.rometools.rome.feed.synd.SyndFeed;
+import com.rometools.rome.io.FeedException;
+import com.rometools.rome.io.SyndFeedInput;
+import com.rometools.rome.io.XmlReader;
 
 /**
  * <p>
@@ -103,7 +103,7 @@ public class HttpURLFeedFetcher extends AbstractFeedFetcher {
      * Retrieve a feed over HTTP
      *
      * @param feedUrl A non-null URL of a RSS/Atom feed to retrieve
-     * @return A {@link com.sun.syndication.feed.synd.SyndFeed} object
+     * @return A {@link com.rometools.rome.feed.synd.SyndFeed} object
      * @throws IllegalArgumentException if the URL is null;
      * @throws IOException if a TCP error occurs
      * @throws FeedException if the feed is not valid

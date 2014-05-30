@@ -25,10 +25,10 @@ import com.rometools.fetcher.FeedFetcher;
 import com.rometools.fetcher.impl.FeedFetcherCache;
 import com.rometools.fetcher.impl.HashMapFeedInfoCache;
 import com.rometools.fetcher.impl.HttpURLFeedFetcher;
-import com.sun.syndication.feed.synd.SyndEntry;
-import com.sun.syndication.feed.synd.SyndFeed;
-import com.sun.syndication.feed.synd.SyndFeedImpl;
-import com.sun.syndication.io.SyndFeedOutput;
+import com.rometools.rome.feed.synd.SyndEntry;
+import com.rometools.rome.feed.synd.SyndFeed;
+import com.rometools.rome.feed.synd.SyndFeedImpl;
+import com.rometools.rome.io.SyndFeedOutput;
 
 /**
  * <p>

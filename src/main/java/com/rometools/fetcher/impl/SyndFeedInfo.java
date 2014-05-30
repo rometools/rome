@@ -19,12 +19,12 @@ package com.rometools.fetcher.impl;
 import java.io.Serializable;
 import java.net.URL;
 
-import com.sun.syndication.feed.impl.ObjectBean;
-import com.sun.syndication.feed.synd.SyndFeed;
+import com.rometools.rome.feed.impl.ObjectBean;
+import com.rometools.rome.feed.synd.SyndFeed;
 
 /**
  * <p>
- * A class to represent a {@link com.sun.syndication.feed.synd.SyndFeed} and some useful information
+ * A class to represent a {@link com.rometools.rome.feed.synd.SyndFeed} and some useful information
  * about it.
  * </p>
  *

@@ -33,7 +33,7 @@ public class HttpClientFeedFetcherTest extends AbstractJettyTest {
     }
 
     /**
-     * @see com.sun.syndication.fetcher.impl.AbstractJettyTest#getFeedFetcher()
+     * @see com.rometools.rome.fetcher.impl.AbstractJettyTest#getFeedFetcher()
      */
     @Override
     protected FeedFetcher getFeedFetcher() {
@@ -46,7 +46,7 @@ public class HttpClientFeedFetcherTest extends AbstractJettyTest {
     }
 
     /**
-     * @see com.sun.syndication.fetcher.impl.AbstractJettyTest#getAuthenticatedFeedFetcher()
+     * @see com.rometools.rome.fetcher.impl.AbstractJettyTest#getAuthenticatedFeedFetcher()
      */
     @Override
     public FeedFetcher getAuthenticatedFeedFetcher() {

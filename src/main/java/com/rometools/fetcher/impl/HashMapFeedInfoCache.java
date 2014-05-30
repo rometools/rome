@@ -114,7 +114,7 @@ public class HashMapFeedInfoCache implements FeedFetcherCache, Serializable {
     }
 
     /**
-     * @see com.sun.syndication.fetcher.impl.FeedFetcherCache#clear()
+     * @see com.rometools.rome.fetcher.impl.FeedFetcherCache#clear()
      */
     @Override
     public void clear() {
@@ -124,7 +124,7 @@ public class HashMapFeedInfoCache implements FeedFetcherCache, Serializable {
     }
 
     /**
-     * @see com.sun.syndication.fetcher.impl.FeedFetcherCache#remove(java.net.URL)
+     * @see com.rometools.rome.fetcher.impl.FeedFetcherCache#remove(java.net.URL)
      */
     @Override
     public SyndFeedInfo remove(final URL url) {
