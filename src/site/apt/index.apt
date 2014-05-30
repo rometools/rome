@@ -86,16 +86,16 @@ The ROME Modules Subproject.
 
  This is intended to serve as a guide for contributions as well as a hint for users working with the modules.
 
- * Modules are packaged in com.sun.syndication.feed.module.\[Module Name\].
+ * Modules are packaged in com.rometools.rome.feed.module.\[Module Name\].
  
- * Modules contain a com.sun.syndication.feed.module.\[Module Name\].Module.URI reference for retrieval from ROME Synd\* classes.
+ * Modules contain a com.rometools.rome.feed.module.\[Module Name\].Module.URI reference for retrieval from ROME Synd\* classes.
  
- * Modules contain a com.sun.syndication.feed.module.\[Module Name\].ModuleImpl that is a concrete implementation.
+ * Modules contain a com.rometools.rome.feed.module.\[Module Name\].ModuleImpl that is a concrete implementation.
  
- * Modules contain a com.sun.syndication.feed.module.\[Module Name\].types package that holds any other datatypes needed for the module.
+ * Modules contain a com.rometools.rome.feed.module.\[Module Name\].types package that holds any other datatypes needed for the module.
   Many of these are simple immutable types to simplify clone() and copyFrom()
  
- * Modules contain a com.sun.syndication.feed.module.\[Module Name\].io package with parsers and generators.
+ * Modules contain a com.rometools.rome.feed.module.\[Module Name\].io package with parsers and generators.
  
  []
     
