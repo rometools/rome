@@ -34,10 +34,10 @@ import org.apache.commons.httpclient.params.HttpClientParams;
 
 import com.rometools.fetcher.FetcherEvent;
 import com.rometools.fetcher.FetcherException;
-import com.sun.syndication.feed.synd.SyndFeed;
-import com.sun.syndication.io.FeedException;
-import com.sun.syndication.io.SyndFeedInput;
-import com.sun.syndication.io.XmlReader;
+import com.rometools.rome.feed.synd.SyndFeed;
+import com.rometools.rome.io.FeedException;
+import com.rometools.rome.io.SyndFeedInput;
+import com.rometools.rome.io.XmlReader;
 
 /**
  * @author Nick Lothian

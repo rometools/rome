@@ -25,7 +25,7 @@ import com.rometools.fetcher.FetcherListener;
 import com.rometools.fetcher.impl.FeedFetcherCache;
 import com.rometools.fetcher.impl.HashMapFeedInfoCache;
 import com.rometools.fetcher.impl.HttpURLFeedFetcher;
-import com.sun.syndication.feed.synd.SyndFeed;
+import com.rometools.rome.feed.synd.SyndFeed;
 
 /**
  * Reads and prints any RSS/Atom feed type. Converted from the original Rome sample FeedReader
@@ -81,7 +81,7 @@ public class FeedReader {
 
     static class FetcherEventListenerImpl implements FetcherListener {
         /**
-         * @see com.sun.syndication.fetcher.FetcherListener#fetcherEvent(com.sun.syndication.fetcher.FetcherEvent)
+         * @see com.rometools.rome.fetcher.FetcherListener#fetcherEvent(com.rometools.rome.fetcher.FetcherEvent)
          */
         @Override
         public void fetcherEvent(final FetcherEvent event) {

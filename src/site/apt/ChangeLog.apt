@@ -93,7 +93,7 @@ Change Log
 *Prior to 1.0RC2
 
  [[1]] BeanInfo class added for AbstractFeedFetcher\
- com.sun.syndication.fetcher.impl.AbstractFeedFetcherBeanInfo was created to allow introspection to correctly find the events
+ com.rometools.rome.fetcher.impl.AbstractFeedFetcherBeanInfo was created to allow introspection to correctly find the events
 
  [[1]] Callback to allow access to HttpClient HttpMethod object\
  Add a HttpClientMethodCallbackIntf to allow the calling code to modify the HttpClient HttpMethod used to make the request

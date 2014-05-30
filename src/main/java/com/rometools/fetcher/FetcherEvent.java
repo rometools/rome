@@ -2,7 +2,7 @@ package com.rometools.fetcher;
 
 import java.util.EventObject;
 
-import com.sun.syndication.feed.synd.SyndFeed;
+import com.rometools.rome.feed.synd.SyndFeed;
 
 /**
  * Implementation note: FetcherEvent is not thread safe. Make sure that they are only ever accessed

@@ -19,8 +19,8 @@ package com.rometools.fetcher;
 import java.io.IOException;
 import java.net.URL;
 
-import com.sun.syndication.feed.synd.SyndFeed;
-import com.sun.syndication.io.FeedException;
+import com.rometools.rome.feed.synd.SyndFeed;
+import com.rometools.rome.io.FeedException;
 
 public interface FeedFetcher {
     /**
@@ -101,7 +101,7 @@ public interface FeedFetcher {
      * Retrieve a feed over HTTP
      *
      * @param feedUrl A non-null URL of a RSS/Atom feed to retrieve
-     * @return A {@link com.sun.syndication.feed.synd.SyndFeed} object
+     * @return A {@link com.rometools.rome.feed.synd.SyndFeed} object
      * @throws IllegalArgumentException if the URL is null;
      * @throws IOException if a TCP error occurs
      * @throws FeedException if the feed is not valid

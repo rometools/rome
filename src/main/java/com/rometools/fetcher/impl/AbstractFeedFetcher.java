@@ -32,7 +32,7 @@ import com.rometools.fetcher.FeedFetcher;
 import com.rometools.fetcher.FetcherEvent;
 import com.rometools.fetcher.FetcherException;
 import com.rometools.fetcher.FetcherListener;
-import com.sun.syndication.feed.synd.SyndFeed;
+import com.rometools.rome.feed.synd.SyndFeed;
 
 public abstract class AbstractFeedFetcher implements FeedFetcher {
 
