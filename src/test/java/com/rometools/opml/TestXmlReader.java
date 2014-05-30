@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package com.sun.syndication;
+package com.rometools.opml;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -28,7 +28,7 @@ import java.util.Map;
 
 import junit.framework.TestCase;
 
-import com.sun.syndication.io.XmlReader;
+import com.rometools.rome.io.XmlReader;
 
 /**
  * @author pat, tucu

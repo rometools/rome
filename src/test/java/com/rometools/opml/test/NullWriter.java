@@ -1,4 +1,4 @@
-package com.sun.syndication.test;
+package com.rometools.opml.test;
 
 import java.io.IOException;
 import java.io.Writer;

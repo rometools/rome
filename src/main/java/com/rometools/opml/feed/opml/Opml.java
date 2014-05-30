@@ -15,13 +15,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sun.syndication.feed.opml;
+package com.rometools.opml.feed.opml;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.sun.syndication.feed.WireFeed;
+import com.rometools.rome.feed.WireFeed;
 
 /**
  * This class represents the root of an OPML 1/2 feed and contains the elements that may appear in

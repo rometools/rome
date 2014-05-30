@@ -1,4 +1,4 @@
-package com.sun.syndication;
+package com.rometools.opml;
 
 /**
  * @author pat

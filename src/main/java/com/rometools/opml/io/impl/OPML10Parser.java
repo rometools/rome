@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sun.syndication.io.impl;
+package com.rometools.opml.io.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,12 +27,14 @@ import org.jdom2.Element;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.sun.syndication.feed.WireFeed;
-import com.sun.syndication.feed.opml.Attribute;
-import com.sun.syndication.feed.opml.Opml;
-import com.sun.syndication.feed.opml.Outline;
-import com.sun.syndication.io.FeedException;
-import com.sun.syndication.io.WireFeedParser;
+import com.rometools.opml.feed.opml.Attribute;
+import com.rometools.opml.feed.opml.Opml;
+import com.rometools.opml.feed.opml.Outline;
+import com.rometools.rome.feed.WireFeed;
+import com.rometools.rome.io.FeedException;
+import com.rometools.rome.io.WireFeedParser;
+import com.rometools.rome.io.impl.BaseWireFeedParser;
+import com.rometools.rome.io.impl.DateParser;
 
 /**
  *

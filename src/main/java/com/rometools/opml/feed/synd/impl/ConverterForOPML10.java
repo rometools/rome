@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sun.syndication.feed.synd.impl;
+package com.rometools.opml.feed.synd.impl;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,22 +26,22 @@ import java.util.Stack;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.sun.syndication.feed.WireFeed;
-import com.sun.syndication.feed.opml.Attribute;
-import com.sun.syndication.feed.opml.Opml;
-import com.sun.syndication.feed.opml.Outline;
-import com.sun.syndication.feed.synd.Converter;
-import com.sun.syndication.feed.synd.SyndCategory;
-import com.sun.syndication.feed.synd.SyndCategoryImpl;
-import com.sun.syndication.feed.synd.SyndContent;
-import com.sun.syndication.feed.synd.SyndContentImpl;
-import com.sun.syndication.feed.synd.SyndEntry;
-import com.sun.syndication.feed.synd.SyndEntryImpl;
-import com.sun.syndication.feed.synd.SyndFeed;
-import com.sun.syndication.feed.synd.SyndLink;
-import com.sun.syndication.feed.synd.SyndLinkImpl;
-import com.sun.syndication.feed.synd.SyndPerson;
-import com.sun.syndication.feed.synd.SyndPersonImpl;
+import com.rometools.opml.feed.opml.Attribute;
+import com.rometools.opml.feed.opml.Opml;
+import com.rometools.opml.feed.opml.Outline;
+import com.rometools.rome.feed.WireFeed;
+import com.rometools.rome.feed.synd.Converter;
+import com.rometools.rome.feed.synd.SyndCategory;
+import com.rometools.rome.feed.synd.SyndCategoryImpl;
+import com.rometools.rome.feed.synd.SyndContent;
+import com.rometools.rome.feed.synd.SyndContentImpl;
+import com.rometools.rome.feed.synd.SyndEntry;
+import com.rometools.rome.feed.synd.SyndEntryImpl;
+import com.rometools.rome.feed.synd.SyndFeed;
+import com.rometools.rome.feed.synd.SyndLink;
+import com.rometools.rome.feed.synd.SyndLinkImpl;
+import com.rometools.rome.feed.synd.SyndPerson;
+import com.rometools.rome.feed.synd.SyndPersonImpl;
 
 /**
  *

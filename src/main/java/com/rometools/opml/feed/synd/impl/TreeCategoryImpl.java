@@ -7,10 +7,10 @@
  * and open the template in the editor.
  */
 
-package com.sun.syndication.feed.synd.impl;
+package com.rometools.opml.feed.synd.impl;
 
-import com.sun.syndication.feed.synd.SyndCategory;
-import com.sun.syndication.feed.synd.SyndCategoryImpl;
+import com.rometools.rome.feed.synd.SyndCategory;
+import com.rometools.rome.feed.synd.SyndCategoryImpl;
 
 /**
  *

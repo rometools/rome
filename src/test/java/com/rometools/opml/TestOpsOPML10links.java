@@ -7,18 +7,18 @@
  * and open the template in the editor.
  */
 
-package com.sun.syndication;
+package com.rometools.opml;
 
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 
-import com.sun.syndication.feed.WireFeed;
-import com.sun.syndication.feed.synd.SyndFeed;
-import com.sun.syndication.feed.synd.SyndFeedImpl;
-import com.sun.syndication.io.WireFeedInput;
-import com.sun.syndication.io.WireFeedOutput;
-import com.sun.syndication.test.NullWriter;
-import com.sun.syndication.test.TestUtil;
+import com.rometools.opml.test.NullWriter;
+import com.rometools.opml.test.TestUtil;
+import com.rometools.rome.feed.WireFeed;
+import com.rometools.rome.feed.synd.SyndFeed;
+import com.rometools.rome.feed.synd.SyndFeedImpl;
+import com.rometools.rome.io.WireFeedInput;
+import com.rometools.rome.io.WireFeedOutput;
 
 /**
  *

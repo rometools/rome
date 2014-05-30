@@ -1,4 +1,4 @@
-package com.sun.syndication;
+package com.rometools.opml;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -10,10 +10,10 @@ import org.jdom2.Document;
 import org.jdom2.input.SAXBuilder;
 import org.jdom2.input.sax.XMLReaders;
 
-import com.sun.syndication.feed.WireFeed;
-import com.sun.syndication.feed.synd.SyndFeed;
-import com.sun.syndication.io.SyndFeedInput;
-import com.sun.syndication.io.WireFeedInput;
+import com.rometools.rome.feed.WireFeed;
+import com.rometools.rome.feed.synd.SyndFeed;
+import com.rometools.rome.io.SyndFeedInput;
+import com.rometools.rome.io.WireFeedInput;
 
 /**
  * @author pat, tucu
