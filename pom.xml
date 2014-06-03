@@ -7,10 +7,11 @@
 	<parent>
 		<groupId>com.rometools</groupId>
 		<artifactId>rome-parent</artifactId>
-		<version>1.5.0-SNAPSHOT</version>
+		<version>1.5.0</version>
 	</parent>
 
 	<artifactId>rome-opml</artifactId>
+	<version>1.5.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>rome-opml</name>
@@ -20,9 +21,9 @@
 	<url>http://rometools.github.io/rome-opml/</url>
 
 	<scm>
-		<connection>scm:git:git@github.com:rometools/rome-opml.git</connection>
-		<developerConnection>scm:git:git@github.com:rometools/rome-opml.git</developerConnection>
-		<url>https://github.com/rometools/rome-opml/</url>
+		<connection>scm:git:ssh://github.com/rometools/rome-opml.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/rometools/rome-opml.git</developerConnection>
+		<url>https://github.com/rometools/rome-opml</url>
 	</scm>
 
 	<developers>
