@@ -22,7 +22,7 @@
 
 	<scm>
 		<connection>scm:git:ssh://github.com/rometools/rome-utils.git</connection>
-		<developerConnection>scm:git:ssh//git@github.com/rometools/rome-utils.git</developerConnection>
+		<developerConnection>scm:git:ssh://git@github.com/rometools/rome-utils.git</developerConnection>
 		<url>https://github.com/rometools/rome-utils</url>
 	</scm>
 
