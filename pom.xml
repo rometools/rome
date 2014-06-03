@@ -40,8 +40,8 @@
 	</licenses>
 
 	<scm>
-		<connection>scm:git:https://github.com/rometools/rome-parent.git</connection>
-		<developerConnection>scm:git:https://github.com/rometools/rome-parent.git</developerConnection>
+		<connection>scm:git:ssh://github.com/rometools/rome-parent.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/rometools/rome-parent.git</developerConnection>
 		<url>https://github.com/rometools/rome-parent</url>
 	</scm>
 
