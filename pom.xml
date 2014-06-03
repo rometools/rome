@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>com.rometools</groupId>
 		<artifactId>rome-parent</artifactId>
-		<version>1.5.0-SNAPSHOT</version>
+		<version>1.5.0</version>
 	</parent>
 
 	<artifactId>rome-utils</artifactId>
@@ -20,8 +20,8 @@
 	<url>http://rometools.github.io/rome-utils/</url>
 
 	<scm>
-		<connection>scm:git:git@github.com:rometools/rome-utils.git</connection>
-		<developerConnection>scm:git:git@github.com:rometools/rome-utils.git</developerConnection>
+		<connection>scm:git:ssh://github.com/rometools/rome-utils.git</connection>
+		<developerConnection>scm:git:ssh//git@github.com/rometools/rome-utils.git</developerConnection>
 		<url>https://github.com/rometools/rome-utils</url>
 	</scm>
 
