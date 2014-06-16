@@ -90,7 +90,7 @@
 			<artifactId>commons-beanutils</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>xmlrpc</groupId>
+			<groupId>org.apache.xmlrpc</groupId>
 			<artifactId>xmlrpc-client</artifactId>
 		</dependency>
 		<dependency>
