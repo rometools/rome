@@ -21,6 +21,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Map;
 import java.util.zip.GZIPInputStream;
 
 import org.apache.commons.httpclient.Credentials;
@@ -50,6 +51,7 @@ public class HttpClientFeedFetcher extends AbstractFeedFetcher {
     private FeedFetcherCache feedInfoCache;
     private volatile HttpClientMethodCallbackIntf httpClientMethodCallback;
     private volatile HttpClientParams httpClientParams;
+    private Map<String,String> customRequestHeaders;
 
     public HttpClientFeedFetcher() {
         setHttpClientParams(new HttpClientParams());
@@ -160,6 +162,14 @@ public class HttpClientFeedFetcher extends AbstractFeedFetcher {
     public int getReadTimeout() {
         return getHttpClientParams().getSoTimeout();
     }
+    
+    /**
+     * Apply any request headers to the HTTP method call.
+     * @param customRequestHeaders
+     */
+    public synchronized void setCustomRequestHeaders(final Map<String,String> customRequestHeaders) {
+        this.customRequestHeaders = customRequestHeaders;
+    }
 
     @Override
     public SyndFeed retrieveFeed(final URL url) throws IllegalArgumentException, IOException, FeedException, FetcherException {
@@ -196,8 +206,18 @@ public class HttpClientFeedFetcher extends AbstractFeedFetcher {
         final String urlStr = feedUrl.toString();
 
         final HttpMethod method = new GetMethod(urlStr);
-        method.addRequestHeader("Accept-Encoding", "gzip");
-        method.addRequestHeader("User-Agent", userAgent);
+        if (customRequestHeaders == null) {
+        	method.addRequestHeader("Accept-Encoding", "gzip");
+            method.addRequestHeader("User-Agent", userAgent);
+        	
+        } else {
+        	for (final Map.Entry<String,String> entry : customRequestHeaders.entrySet()) {
+        		method.addRequestHeader(entry.getKey(), entry.getValue());
+        	}
+        	if (!customRequestHeaders.containsKey("Accept-Encoding")) method.addRequestHeader("Accept-Encoding", "gzip");
+        	if (!customRequestHeaders.containsKey("User-Agent")) method.addRequestHeader("User-Agent", userAgent);
+        }
+        
         method.setFollowRedirects(true);
 
         if (httpClientMethodCallback != null) {
