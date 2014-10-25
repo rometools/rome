@@ -90,6 +90,8 @@ public class ConverterForRSS090 implements Converter {
         syndImage.setTitle(rssImage.getTitle());
         syndImage.setUrl(rssImage.getUrl());
         syndImage.setLink(rssImage.getLink());
+        syndImage.setWidth(rssImage.getWidth());
+        syndImage.setHeight(rssImage.getHeight());
         return syndImage;
     }
 

@@ -7,6 +7,7 @@ import java.util.Locale;
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndImage;
 import com.rometools.rome.io.impl.DateParser;
+import org.junit.Assert;
 
 /**
  * @author pat
@@ -33,6 +34,9 @@ public abstract class SyndFeedTest extends FeedTest {
 
     protected void assertEqualsStr(final String expected, final String actual) {
         assertEquals(prefix + "." + expected, actual);
+    }
+    protected void assertEqualsInt(final int expected, final int actual) {
+        Assert.assertEquals(expected, actual);
     }
 
     public void testPreserveWireFeed() throws Exception {
@@ -73,13 +77,14 @@ public abstract class SyndFeedTest extends FeedTest {
         assertEquals(DateParser.parseRFC822("Mon, 01 Jan 2001 00:00:00 GMT", Locale.US), this.getCachedSyndFeed().getPublishedDate());
     }
 
-    // how do i get height and width?
     public void testImage() throws Exception {
         final SyndImage img = this.getCachedSyndFeed().getImage();
         assertEqualsStr("channel.image.description", img.getDescription());
         assertEqualsStr("channel.image.link", img.getLink());
         assertEqualsStr("channel.image.title", img.getTitle());
         assertEqualsStr("channel.image.url", img.getUrl());
+        assertEqualsInt(100, img.getWidth());
+        assertEqualsInt(200, img.getHeight());
     }
 
     public void testEntries() throws Exception {
