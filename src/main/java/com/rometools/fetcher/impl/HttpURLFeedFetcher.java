@@ -69,7 +69,9 @@ import com.rometools.rome.io.XmlReader;
  * @author Nick Lothian
  */
 public class HttpURLFeedFetcher extends AbstractFeedFetcher {
-    private int connectTimeout = -1;
+
+    private volatile int  connectTimeout = -1;
+
     static final int POLL_EVENT = 1;
     static final int RETRIEVE_EVENT = 2;
     static final int UNCHANGED_EVENT = 3;
@@ -81,16 +83,15 @@ public class HttpURLFeedFetcher extends AbstractFeedFetcher {
      *
      */
     public HttpURLFeedFetcher() {
-        super();
+        this(null);
     }
 
     /**
      * Constructor to enable HttpURLFeedFetcher to cache feeds
      *
-     * @param feedCache - an instance of the FeedFetcherCache interface
+     * @param feedInfoCache - an instance of the FeedFetcherCache interface
      */
     public HttpURLFeedFetcher(final FeedFetcherCache feedInfoCache) {
-        this();
         setFeedInfoCache(feedInfoCache);
     }
 
@@ -129,7 +130,7 @@ public class HttpURLFeedFetcher extends AbstractFeedFetcher {
         final FeedFetcherCache cache = getFeedInfoCache();
         if (cache != null) {
             SyndFeedInfo syndFeedInfo = cache.getFeedInfo(feedUrl);
-            setRequestHeaders(connection, syndFeedInfo);
+            setRequestHeaders(connection, syndFeedInfo, userAgent);
             httpConnection.connect();
             try {
                 fireEvent(FetcherEvent.EVENT_TYPE_FEED_POLLED, connection);
@@ -160,9 +161,7 @@ public class HttpURLFeedFetcher extends AbstractFeedFetcher {
         } else {
             fireEvent(FetcherEvent.EVENT_TYPE_FEED_POLLED, connection);
             InputStream inputStream = null;
-            setRequestHeaders(connection, null);
-
-            connection.addRequestProperty("User-Agent", userAgent);
+            setRequestHeaders(connection, null, userAgent);
 
             httpConnection.connect();
             try {
@@ -205,7 +204,7 @@ public class HttpURLFeedFetcher extends AbstractFeedFetcher {
         syndFeedInfo.setId(orignalUrl.toString());
 
         // This will be 0 if the server doesn't support or isn't setting the last modified header
-        syndFeedInfo.setLastModified(new Long(connection.getLastModified()));
+        syndFeedInfo.setLastModified(connection.getLastModified());
 
         // This will be null if the server doesn't support or isn't setting the ETag header
         syndFeedInfo.setETag(connection.getHeaderField("ETag"));
@@ -217,7 +216,7 @@ public class HttpURLFeedFetcher extends AbstractFeedFetcher {
             SyndFeed syndFeed = getSyndFeedFromStream(inputStream, connection);
 
             final String imHeader = connection.getHeaderField("IM");
-            if (isUsingDeltaEncoding() && imHeader != null && imHeader.indexOf("feed") >= 0) {
+            if (isUsingDeltaEncoding() && imHeader != null && imHeader.contains("feed")) {
                 final FeedFetcherCache cache = getFeedInfoCache();
                 if (cache != null && connection.getResponseCode() == 226) {
                     // client is setup to use http delta encoding and the server supports it and has
@@ -248,15 +247,16 @@ public class HttpURLFeedFetcher extends AbstractFeedFetcher {
      *
      * @param connection A URLConnection
      * @param syndFeedInfo The SyndFeedInfo for the feed to be retrieved. May be null
+     * @param userAgent the name of the user-agent to be placed in HTTP-header.
      */
-    protected void setRequestHeaders(final URLConnection connection, final SyndFeedInfo syndFeedInfo) {
+    protected void setRequestHeaders(final URLConnection connection, final SyndFeedInfo syndFeedInfo, String userAgent) {
         if (syndFeedInfo != null) {
             // set the headers to get feed only if modified
             // we support the use of both last modified and eTag headers
             if (syndFeedInfo.getLastModified() != null) {
                 final Object lastModified = syndFeedInfo.getLastModified();
                 if (lastModified instanceof Long) {
-                    connection.setIfModifiedSince(((Long) syndFeedInfo.getLastModified()).longValue());
+                    connection.setIfModifiedSince((Long) syndFeedInfo.getLastModified());
                 }
             }
             if (syndFeedInfo.getETag() != null) {
@@ -266,6 +266,7 @@ public class HttpURLFeedFetcher extends AbstractFeedFetcher {
         }
         // header to retrieve feed gzipped
         connection.setRequestProperty("Accept-Encoding", "gzip");
+        connection.addRequestProperty("User-Agent", userAgent);
 
         if (isUsingDeltaEncoding()) {
             connection.addRequestProperty("A-IM", "feed");
@@ -287,7 +288,7 @@ public class HttpURLFeedFetcher extends AbstractFeedFetcher {
 
         // SyndFeedInput input = new SyndFeedInput();
 
-        XmlReader reader = null;
+        XmlReader reader;
         if (connection.getHeaderField("Content-Type") != null) {
             reader = new XmlReader(is, connection.getHeaderField("Content-Type"), true);
         } else {
