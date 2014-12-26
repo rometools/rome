@@ -40,6 +40,7 @@ public class ThreadingModuleTest extends AbstractTestCase {
         assertEquals("tag:example.org,2005:1", threadingModule.getRef());
         assertEquals("application/xhtml+xml", threadingModule.getType());
         assertEquals("http://www.example.org/entries/1", threadingModule.getHref());
+        assertNull(threadingModule.getSource());
     }
 
     public void testGenerate() throws IOException, FeedException {
@@ -62,6 +63,7 @@ public class ThreadingModuleTest extends AbstractTestCase {
         threadingModule.setRef("tag:example.org,2005:2");
         threadingModule.setType("application/xhtml+xml");
         threadingModule.setHref("http://www.example.org/entries/2");
+        threadingModule.setSource("http://example.org/entries/2");
 
         newReplyEntry.getModules().add(threadingModule);
         entries.add(newReplyEntry);
@@ -75,9 +77,10 @@ public class ThreadingModuleTest extends AbstractTestCase {
         SyndEntry generatedReplyEntry = generatedFeed.getEntries().get(3);
         assertNotNull(generatedReplyEntry);
         ThreadingModule generatedReplyThreadingModule = (ThreadingModule) generatedReplyEntry.getModule(ThreadingModule.URI);
-        assertEquals(generatedReplyThreadingModule.getRef(), "tag:example.org,2005:2");
-        assertEquals(generatedReplyThreadingModule.getType(), "application/xhtml+xml");
-        assertEquals(generatedReplyThreadingModule.getHref(), "http://www.example.org/entries/2");
+        assertEquals("tag:example.org,2005:2", generatedReplyThreadingModule.getRef());
+        assertEquals("application/xhtml+xml", generatedReplyThreadingModule.getType());
+        assertEquals("http://www.example.org/entries/2", generatedReplyThreadingModule.getHref());
+        assertEquals("http://example.org/entries/2", generatedReplyThreadingModule.getSource());
     }
 
     public void testEnd2End() throws IOException, FeedException {
