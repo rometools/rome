@@ -33,7 +33,7 @@ public interface CBModule extends Module {
      * URI of the RSS CB Module
      *
      */
-    String URI = "http://www.cbwiki.net/wiki/index.php/Specification_1.2/";
+    String URI = "http://www.centralbanks.org/rss/";
 
     /**
      * Gets the CB event.
