@@ -31,6 +31,8 @@ import org.jdom2.Element;
 import com.rometools.rome.feed.CopyFrom;
 import com.rometools.rome.feed.impl.CopyFromHelper;
 import com.rometools.rome.feed.impl.ObjectBean;
+import com.rometools.rome.feed.module.CBModule;
+import com.rometools.rome.feed.module.CBModuleImpl;
 import com.rometools.rome.feed.module.DCModule;
 import com.rometools.rome.feed.module.DCModuleImpl;
 import com.rometools.rome.feed.module.Module;
@@ -108,6 +110,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
         basePropClassImplMap.put(SyndContent.class, SyndContentImpl.class);
         basePropClassImplMap.put(SyndEnclosure.class, SyndEnclosureImpl.class);
         basePropClassImplMap.put(SyndCategory.class, SyndCategoryImpl.class);
+        basePropClassImplMap.put(CBModule.class, CBModuleImpl.class);
         basePropClassImplMap.put(DCModule.class, DCModuleImpl.class);
         basePropClassImplMap.put(SyModule.class, SyModuleImpl.class);
 
