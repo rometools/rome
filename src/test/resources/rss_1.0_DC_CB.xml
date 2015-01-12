@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rdf:RDF xmlns="http://purl.org/rss/1.0/"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:hr="http://www.w3.org/2000/08/w3c-synd/#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:cb="http://www.centralbanks.org/rss/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <channel>
+        <title xmlns="">RSS Feed</title>
+        <link xmlns="">http://www.mas.gov.sg/en/News-and-Publications/MAS-Announcements.aspxsc_display=rss</link>
+    </channel>
+    <item>
+        <title>Consumer Price Developments in October 2014</title>
+        <link>http://www.mas.gov.sg/en/News-and-Publications/MAS-Announcements/2014/Consumer-Price-Developments-in-October-2014.aspx</link>
+        <dc:date>2014-11-24 12:08 PM</dc:date>
+        <description/>
+        <cb:news>
+            <cb:occurenceDate>2014-11-24 12:08 PM</cb:occurenceDate>
+        </cb:news>
+    </item>
+    <item rdf:about="/en/News-and-Publications/MAS-Announcements/2014/Macroeconomic-Review-October-2014.aspx">
+        <title>Macroeconomic Review October 2014</title>
+        <link>http://www.mas.gov.sg/en/News-and-Publications/MAS-Announcements/2014/Macroeconomic-Review-October-2014.aspx</link>
+        <dc:date>2014-10-28 12:10 PM</dc:date>
+        <description/>
+        <cb:news>
+            <cb:simpleTitle>Macroeconomic Review October 2014</cb:simpleTitle>
+            <cb:occurenceDate>2014-10-28 12:10 PM</cb:occurenceDate>
+        </cb:news>
+    </item>
+</rdf:RDF>
