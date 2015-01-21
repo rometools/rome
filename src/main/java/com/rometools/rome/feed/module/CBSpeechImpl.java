@@ -25,34 +25,36 @@ import java.util.Map;
 import com.rometools.rome.feed.CopyFrom;
 import com.rometools.rome.feed.impl.CopyFromHelper;
 import com.rometools.rome.feed.impl.ObjectBean;
+import com.rometools.rome.io.ISO3166CountyCode;
 
 /**
- * Subject of the CB ModuleImpl, default implementation.
+ * Subject of the CB SpeechImpl, default implementation.
  * <p>
  *
  * @see <a href="http://www.cbwiki.net/wiki/index.php/RSS-CBMain">RSS CB module</a>.
- * @author Norbert Kiesel <nkiesel@metricstream.com>
+ * @author Munavar Basha <munavar.basha@metricstream.com>
+ * @author Manish SV Kumar <manish.svk@metricstream.com>
  *
  */
-public class CBEventImpl implements Cloneable, Serializable, CBEvent {
-
+public class CBSpeechImpl implements Cloneable, Serializable, CBSpeech {
+	
     private static final long serialVersionUID = 1L;
     private static final CopyFromHelper COPY_FROM_HELPER;
 
     private final ObjectBean objBean;
     private String simpleTitle;
-    private String occurenceDate;
+    private String occurrenceDate;
     private String institutionAbbrev;
     private String audience;
     private List<String> keyword;
-    private CBResource resource;
-    private CBPerson person;
     private String venue;
     private String locationAsWritten;
-    private String locationCountry;
     private String locationState;
     private String locationCity;
-    private String eventDateEnd;
+    private String parseType;
+    private CBResource resource;
+    private CBPerson person;
+    private ISO3166CountyCode locationCountry;
 
     static {
         final Map<String, Class<?>> basePropInterfaceMap = new HashMap<String, Class<?>>();
@@ -66,21 +68,20 @@ public class CBEventImpl implements Cloneable, Serializable, CBEvent {
         basePropInterfaceMap.put("locationCountry", String.class);
         basePropInterfaceMap.put("locationState", String.class);
         basePropInterfaceMap.put("locationCity", String.class);
-        basePropInterfaceMap.put("eventDateEnd", String.class);
 
         final Map<Class<? extends CopyFrom>, Class<?>> basePropClassImplMap = new HashMap<Class<? extends CopyFrom>, Class<?>>();
         basePropClassImplMap.put(CBResource.class, CBResourceImpl.class);
         basePropClassImplMap.put(CBPerson.class, CBPersonImpl.class);
 
-        COPY_FROM_HELPER = new CopyFromHelper(CBEvent.class, basePropInterfaceMap, basePropClassImplMap);
+        COPY_FROM_HELPER = new CopyFromHelper(CBSpeech.class, basePropInterfaceMap, basePropClassImplMap);
     }
-
+    
     /**
      * Default constructor. All properties are set to <b>null</b>.
      * <p>
      *
      */
-    public CBEventImpl() {
+    public CBSpeechImpl() {
         objBean = new ObjectBean(this.getClass(), this);
     }
 
@@ -108,7 +109,7 @@ public class CBEventImpl implements Cloneable, Serializable, CBEvent {
      */
     @Override
     public boolean equals(final Object other) {
-        if (!(other instanceof CBEventImpl)) {
+        if (!(other instanceof CBNewsImpl)) {
             return false;
         }
         return objBean.equals(other);
@@ -141,8 +142,8 @@ public class CBEventImpl implements Cloneable, Serializable, CBEvent {
     }
 
     @Override
-    public Class<CBEvent> getInterface() {
-        return CBEvent.class;
+    public Class<CBSpeech> getInterface() {
+        return CBSpeech.class;
     }
 
     @Override
@@ -151,107 +152,121 @@ public class CBEventImpl implements Cloneable, Serializable, CBEvent {
     }
 
     /**
-     * Returns the CB event simpleTitle.
-     * <p>
-     *
-     * @return the CB event simpleTitle, <b>null</b> if none.
-     *
+     * Gets the value of the simpleTitle property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
 	@Override
-    public String getSimpleTitle() {
+	public String getSimpleTitle() {
 		return simpleTitle;
 	}
-
+	
     /**
-     * Sets the CB event simpleTitle.
-     * <p>
-     *
-     * @param simpleTitle the CB event simpleTitle to set, <b>null</b> if none.
-     *
+     * Sets the value of the simpleTitle property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
 	@Override
-    public void setSimpleTitle(String simpleTitle) {
+	public void setSimpleTitle(String simpleTitle) {
 		this.simpleTitle = simpleTitle;
-	}
-
-	/**
-     * Returns the CB event occurenceDate.
-     * <p>
-     *
-     * @return the CB event occurenceDate, <b>null</b> if none.
-     *
-     */
-	@Override
-    public String getOccurenceDate() {
-		return occurenceDate;
+		
 	}
 
     /**
-     * Sets the CB event occurenceDate.
-     * <p>
-     *
-     * @param occurenceDate the CB event occurenceDate to set, <b>null</b> if none.
-     *
+     * Gets the value of the occurrenceDate property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
 	@Override
-    public void setOccurenceDate(String occurenceDate) {
-		this.occurenceDate = occurenceDate;
+	public String getOccurrenceDate() {
+		return occurrenceDate;
 	}
 
-	/**
-     * Returns the CB event institutionAbbrev.
-     * <p>
-     *
-     * @return the CB event institutionAbbrev, <b>null</b> if none.
-     *
+    /**
+     * Sets the value of the occurrenceDate property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
 	@Override
-    public String getInstitutionAbbrev() {
+	public void setOccurrenceDate(String occurrenceDate) {
+		this.occurrenceDate = occurrenceDate;
+		
+	}
+
+    /**
+     * Gets the value of the institutionAbbrev property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+	@Override
+	public String getInstitutionAbbrev() {
 		return institutionAbbrev;
 	}
 
     /**
-     * Sets the CB event institutionAbbrev.
-     * <p>
-     *
-     * @param institutionAbbrev the CB event institutionAbbrev to set, <b>null</b> if none.
-     *
+     * Sets the value of the institutionAbbrev property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
 	@Override
-    public void setInstitutionAbbrev(String institutionAbbrev) {
+	public void setInstitutionAbbrev(String institutionAbbrev) {
 		this.institutionAbbrev = institutionAbbrev;
+		
 	}
-
-	/**
-     * Returns the CB event audience.
-     * <p>
-     *
-     * @return the CB event audience, <b>null</b> if none.
-     *
+	
+    /**
+     * Gets the value of the audience property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
 	@Override
-    public String getAudience() {
+	public String getAudience() {
 		return audience;
 	}
 
     /**
-     * Sets the CB event audience.
-     * <p>
-     *
-     * @param audience the CB event audience to set, <b>null</b> if none.
-     *
+     * Sets the value of the audience property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
 	@Override
-    public void setAudience(String audience) {
+	public void setAudience(String audience) {
 		this.audience = audience;
+		
 	}
 
-	/**
-     * Returns the list of CB event keyword.
+    /**
+     * Gets the value of the keyword property.
+     * 
      * <p>
-     *
-     * @return the CB event keyword list, <b>null</b> if none.
-     *
+     * Objects of the following type(s) are allowed in the list
+     * {@link String }
+     * 
+     * 
      */
 	@Override
     public List<String> getKeyword() {
@@ -262,34 +277,36 @@ public class CBEventImpl implements Cloneable, Serializable, CBEvent {
     }
 	
 	/**
-     * Sets the CB event keyword.
+     * Sets the CB paper keyword.
      * <p>
      *
-     * @param keyList the CB event keyword to set, <b>null</b> if none.
+     * @param keyList the CB paper keyword to set, <b>null</b> if none.
      *
      */
 	@Override
     public void setKeyword(List<String> keyList) {
         this.keyword = keyList;
     }
-
-	/**
-     * Returns the CB event resource.
+	
+    /**
+     * Gets the value of the resource property.
+     * 
      * <p>
-     *
-     * @return the CB event resource, <b>null</b> if none.
-     *
+     * Objects of the following type(s) are allowed in the list
+     * {@link CBResource }
+     * 
+     * 
      */
 	@Override
-    public CBResource getResource() {
+	public CBResource getResource() {
 		return resource;
 	}
-
+	
     /**
-     * Sets the CB event resource.
+     * Sets the CB news resource.
      * <p>
      *
-     * @param resource the CB event resource to set, <b>null</b> if none.
+     * @param resource the CB news resource to set, <b>null</b> if none.
      *
      */
 	@Override
@@ -297,23 +314,25 @@ public class CBEventImpl implements Cloneable, Serializable, CBEvent {
 		this.resource = resource;
 	}
 
-	/**
-     * Returns the CB event person.
+    /**
+     * Gets the value of the person property.
+     * 
      * <p>
-     *
-     * @return the CB event person, <b>null</b> if none.
-     *
+     * Objects of the following type(s) are allowed in the list
+     * {@link CBPerson }
+     * 
+     * 
      */
 	@Override
-    public CBPerson getPerson() {
+	public CBPerson getPerson() {
 		return person;
 	}
-
+	
     /**
-     * Sets the CB event person.
+     * Sets the CB news person.
      * <p>
      *
-     * @param person the CB event person to set, <b>null</b> if none.
+     * @param person the CB news person to set, <b>null</b> if none.
      *
      */
 	@Override
@@ -321,147 +340,166 @@ public class CBEventImpl implements Cloneable, Serializable, CBEvent {
 		this.person = person;
 	}
 
-	/**
-     * Returns the CB event venue.
-     * <p>
-     *
-     * @return the CB event venue, <b>null</b> if none.
-     *
+    /**
+     * Gets the value of the venue property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
 	@Override
-    public String getVenue() {
+	public String getVenue() {
 		return venue;
 	}
 
     /**
-     * Sets the CB event venue.
-     * <p>
-     *
-     * @param venue the CB event venue to set, <b>null</b> if none.
-     *
+     * Sets the value of the venue property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
 	@Override
-    public void setVenue(String venue) {
+	public void setVenue(String venue) {
 		this.venue = venue;
+		
 	}
 
-	/**
-     * Returns the CB event locationAsWritten.
-     * <p>
-     *
-     * @return the CB event locationAsWritten, <b>null</b> if none.
-     *
+    /**
+     * Gets the value of the locationAsWritten property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
 	@Override
-    public String getLocationAsWritten() {
+	public String getLocationAsWritten() {
 		return locationAsWritten;
 	}
 
     /**
-     * Sets the CB event locationAsWritten.
-     * <p>
-     *
-     * @param locationAsWritten the CB event locationAsWritten to set, <b>null</b> if none.
-     *
+     * Sets the value of the locationAsWritten property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
 	@Override
-    public void setLocationAsWritten(String locationAsWritten) {
+	public void setLocationAsWritten(String locationAsWritten) {
 		this.locationAsWritten = locationAsWritten;
+		
 	}
 
-	/**
-     * Returns the CB event locationCountry.
-     * <p>
-     *
-     * @return the CB event locationCountry, <b>null</b> if none.
-     *
+    /**
+     * Gets the value of the locationCountry property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ISO3166CountyCode }
+     *     
      */
 	@Override
-    public String getLocationCountry() {
+	public ISO3166CountyCode getLocationCountry() {
 		return locationCountry;
 	}
 
     /**
-     * Sets the CB event locationCountry.
-     * <p>
-     *
-     * @param locationCountry the CB event locationCountry to set, <b>null</b> if none.
-     *
+     * Sets the value of the locationCountry property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ISO3166CountyCode }
+     *     
      */
 	@Override
-    public void setLocationCountry(String locationCountry) {
+	public void setLocationCountry(ISO3166CountyCode locationCountry) {
 		this.locationCountry = locationCountry;
+		
 	}
 
-	/**
-     * Returns the CB event locationState.
-     * <p>
-     *
-     * @return the CB event locationState, <b>null</b> if none.
-     *
+    /**
+     * Gets the value of the locationState property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
 	@Override
-    public String getLocationState() {
+	public String getLocationState() {
 		return locationState;
 	}
 
     /**
-     * Sets the CB event locationState.
-     * <p>
-     *
-     * @param locationState the CB event locationState to set, <b>null</b> if none.
-     *
+     * Sets the value of the locationState property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
 	@Override
-    public void setLocationState(String locationState) {
+	public void setLocationState(String locationState) {
 		this.locationState = locationState;
+		
 	}
 
-	/**
-     * Returns the CB event locationCity.
-     * <p>
-     *
-     * @return the CB event locationCity, <b>null</b> if none.
-     *
+    /**
+     * Gets the value of the locationCity property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
 	@Override
-    public String getLocationCity() {
+	public String getLocationCity() {
 		return locationCity;
 	}
 
     /**
-     * Sets the CB event locationCity.
-     * <p>
-     *
-     * @param locationCity the CB event locationCity to set, <b>null</b> if none.
-     *
+     * Sets the value of the locationCity property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
 	@Override
-    public void setLocationCity(String locationCity) {
+	public void setLocationCity(String locationCity) {
 		this.locationCity = locationCity;
-	}
-
-	/**
-     * Returns the CB event eventDateEnd.
-     * <p>
-     *
-     * @return the CB event eventDateEnd, <b>null</b> if none.
-     *
-     */
-	@Override
-    public String getEventDateEnd() {
-		return eventDateEnd;
+		
 	}
 
     /**
-     * Sets the CB event eventDateEnd.
-     * <p>
-     *
-     * @param eventDateEnd the CB event eventDateEnd to set, <b>null</b> if none.
-     *
+     * Gets the value of the parseType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
 	@Override
-    public void setEventDateEnd(String eventDateEnd) {
-		this.eventDateEnd = eventDateEnd;
+	public String getParseType() {
+		return parseType;
 	}
+
+    /**
+     * Sets the value of the parseType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+	@Override
+	public void setParseType(String parseType) {
+		this.parseType = parseType;
+		
+	}
+
 }

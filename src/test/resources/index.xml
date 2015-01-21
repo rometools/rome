@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns="http://purl.org/rss/1.0/"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:hr="http://www.w3.org/2000/08/w3c-synd/#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:cb="http://www.centralbanks.org/rss/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <channel rdf:about="http://www.bis.org/list/bis/index.rss">
+    <title>Bank for International Settlements</title>
+    <link>http://www.bis.org/list/bis/index.rss</link>
+  </channel>
+  <item rdf:about="http://www.bis.org/review/r150114a.htm">
+    <title>14Jan/Timothy Lane: Drilling down - understanding oil prices and their economic impact</title>
+    <link>http://www.bis.org/review/r150114a.htm</link>
+    <description>Remarks by Mr Timothy Lane, Deputy Governor of the Bank of Canada, to the International Trade Association (MITA), Madison, Wisconsin, 13 January 2015.</description>
+    <dc:title>Timothy Lane: Drilling down - understanding oil prices and their economic impact</dc:title>
+    <dc:date>2015-01-14T10:20:00Z</dc:date>
+    <cb:speech>
+      <cb:simpleTitle>Timothy Lane: Drilling down - understanding oil prices and their economic impact</cb:simpleTitle>
+      <cb:occurrenceDate>2015-01-14T10:20:00Z</cb:occurrenceDate>
+      <cb:institutionAbbrev>BIS</cb:institutionAbbrev>
+      <cb:resource>
+        <cb:title>PDF version</cb:title>
+        <cb:link>http://www.bis.org/review/r150114a.pdf</cb:link>
+        <cb:description />
+      </cb:resource>
+      <cb:person type="author">
+        <cb:nameAsWritten>Timothy Lane</cb:nameAsWritten>
+        <cb:surname>Lane</cb:surname>
+        <cb:personalTitle>Mr</cb:personalTitle>
+        <cb:role>
+          <cb:jobTitle>Deputy Governor</cb:jobTitle>
+          <cb:affiliation>Bank of Canada</cb:affiliation>
+        </cb:role>
+      </cb:person>
+    </cb:speech>
+  </item>
+  <item rdf:about="http://www.bis.org/review/r150113a.htm">
+    <title>13Jan/Benoît Cœuré: Interview in Die Welt</title>
+    <link>http://www.bis.org/review/r150113a.htm</link>
+    <description>Interview with Mr Benoît Cœuré, Member of the Executive Board of the European Central Bank, in Die Welt, published on 13 January 2015.</description>
+    <dc:title>Benoît Cœuré: Interview in Die Welt</dc:title>
+    <dc:date>2015-01-13T10:07:00Z</dc:date>
+    <cb:speech>
+      <cb:simpleTitle>Benoît Cœuré: Interview in Die Welt</cb:simpleTitle>
+      <cb:occurrenceDate>2015-01-13T10:07:00Z</cb:occurrenceDate>
+      <cb:institutionAbbrev>BIS</cb:institutionAbbrev>
+      <cb:resource>
+        <cb:title>PDF version</cb:title>
+        <cb:link>http://www.bis.org/review/r150113a.pdf</cb:link>
+        <cb:description />
+      </cb:resource>
+      <cb:person type="author">
+        <cb:nameAsWritten>Benoît Cœuré</cb:nameAsWritten>
+        <cb:surname>Cœuré</cb:surname>
+        <cb:personalTitle>Mr</cb:personalTitle>
+        <cb:role>
+          <cb:jobTitle>Member of the Executive Board</cb:jobTitle>
+          <cb:affiliation>European Central Bank</cb:affiliation>
+        </cb:role>
+      </cb:person>
+    </cb:speech>
+  </item>
+</rdf:RDF>
+

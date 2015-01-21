@@ -24,6 +24,7 @@ import com.rometools.rome.feed.CopyFrom;
  *
  * @see <a href="http://www.cbwiki.net/wiki/index.php/RSS-CBMain">RSS CB module</a>.
  * @author Norbert Kiesel <nkiesel@metricstream.com>
+ * @author Manish SV Kumar <manish.svk@metricstream.com>
  *
  */
 public interface CBPerson extends Cloneable, CopyFrom {
@@ -44,5 +45,76 @@ public interface CBPerson extends Cloneable, CopyFrom {
      *
      */
     void setGivenName(String givenName);
+    
+    /**
+     * Returns the CB person surname.
+     * <p>
+     *
+     * @return the CB person surname, <b>null</b> if none.
+     *
+     */
+    String getSurname();
 
+    /**
+     * Sets the CB person surname.
+     * <p>
+     *
+     * @param surname the CB person surname to set, <b>null</b> if none.
+     *
+     */
+    void setSurname(String surname);
+    
+    /**
+     * Returns the CB person personalTitle.
+     * <p>
+     *
+     * @return the CB person personalTitle, <b>null</b> if none.
+     *
+     */
+    String getPersonalTitle();
+
+    /**
+     * Sets the CB person personalTitle.
+     * <p>
+     *
+     * @param personalTitle the CB person personalTitle to set, <b>null</b> if none.
+     *
+     */
+    void setPersonalTitle(String personalTitle);
+
+    /**
+     * Returns the CB person nameAsWritten.
+     * <p>
+     *
+     * @return the CB person nameAsWritten, <b>null</b> if none.
+     *
+     */
+    String getNameAsWritten();
+
+    /**
+     * Sets the CB person nameAsWritten.
+     * <p>
+     *
+     * @param nameAsWritten the CB person nameAsWritten to set, <b>null</b> if none.
+     *
+     */
+    void setNameAsWritten(String nameAsWritten);
+    
+    /**
+     * Returns the CB role.
+     * <p>
+     *
+     * @return the CB role, <b>null</b> if none.
+     *
+     */
+    CBRole getRole();
+
+    /**
+     * Sets the CB role.
+     * <p>
+     *
+     * @param role the CB person role to set, <b>null</b> if none.
+     *
+     */
+    void setRole(CBRole role);
 }

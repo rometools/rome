@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rdf:RDF xmlns="http://purl.org/rss/1.0/"
-         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-         xmlns:hr="http://www.w3.org/2000/08/w3c-synd/#"
-         xmlns:dc="http://purl.org/dc/elements/1.1/"
-         xmlns:cb="http://www.centralbanks.org/rss/"
-         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+		xmlns="http://purl.org/rss/1.0/" 
+		xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+		xmlns:cb="http://www.cbwiki.net/wiki/index.php/Specification_1.1" 
+		xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+		xmlns:dcterms="http://purl.org/dc/terms/" 
+		xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" 
+		xmlns:dc="http://purl.org/dc/elements/1.1/" 
+		xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/">
     <channel>
         <title xmlns="">RSS Feed</title>
         <link xmlns="">http://www.mas.gov.sg/en/News-and-Publications/MAS-Announcements.aspxsc_display=rss</link>
@@ -17,6 +20,22 @@
         <cb:news>
             <cb:occurenceDate>2014-11-24 12:08 PM</cb:occurenceDate>
         </cb:news>
+        <cb:paper>
+        	<cb:simpleTitle>Secular stagnation, debt overhang and other rationales for sluggish growth, six years on</cb:simpleTitle>
+			<cb:occurrenceDate>2015-01-16T11:00:00Z</cb:occurrenceDate>
+			<cb:institutionAbbrev>BIS</cb:institutionAbbrev>
+			<cb:keyword>leverage</cb:keyword>
+			<cb:keyword>unconventional monetary policy</cb:keyword>
+			<cb:keyword>term premium</cb:keyword>
+		</cb:paper>
+		<cb:speech>
+			<cb:simpleTitle>Benoît Cœuré: Interview in Libération</cb:simpleTitle>
+			<cb:occurrenceDate>2015-01-19T11:09:00Z</cb:occurrenceDate>
+			<cb:institutionAbbrev>BIS</cb:institutionAbbrev>
+		</cb:speech>
+		<cb:statistics>
+			<cb:institutionAbbrev>BIS</cb:institutionAbbrev>
+		</cb:statistics>
     </item>
     <item rdf:about="/en/News-and-Publications/MAS-Announcements/2014/Macroeconomic-Review-October-2014.aspx">
         <title>Macroeconomic Review October 2014</title>
@@ -27,5 +46,30 @@
             <cb:simpleTitle>Macroeconomic Review October 2014</cb:simpleTitle>
             <cb:occurenceDate>2014-10-28 12:10 PM</cb:occurenceDate>
         </cb:news>
+		<cb:paper>
+			<cb:keyword>term premium</cb:keyword>
+        	<cb:resource>
+				<cb:title>PDF version</cb:title>
+				<cb:link>http://www.bis.org/publ/work482.pdf</cb:link>
+				<cb:description>Test description</cb:description>
+			</cb:resource>
+			<cb:person type="author">
+				<cb:nameAsWritten>Thomas Jordan</cb:nameAsWritten>
+				<cb:surname>Jordan</cb:surname>
+				<cb:personalTitle>Mr</cb:personalTitle>
+				<cb:givenName>TJ</cb:givenName>
+				<cb:role>
+					<cb:jobTitle>Chairman of the Governing Board</cb:jobTitle>
+					<cb:affiliation>Swiss National Bank</cb:affiliation>
+				</cb:role>
+			</cb:person>
+		</cb:paper>
+		<cb:speech>
+			<cb:locationAsWritten>Bengaluru</cb:locationAsWritten>
+			<cb:locationState>Karnataka</cb:locationState>
+			<cb:locationCity>Bangalore</cb:locationCity>
+		</cb:speech>
+		<cb:statistics>
+		</cb:statistics>
     </item>
 </rdf:RDF>

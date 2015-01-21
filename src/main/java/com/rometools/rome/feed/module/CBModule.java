@@ -16,8 +16,6 @@
  */
 package com.rometools.rome.feed.module;
 
-import java.util.Date;
-import java.util.List;
 
 /**
  * Dublin Core Module.
@@ -33,7 +31,8 @@ public interface CBModule extends Module {
      * URI of the RSS CB Module
      *
      */
-    String URI = "http://www.centralbanks.org/rss/";
+    //String URI = "http://www.centralbanks.org/rss/";
+    String URI = "http://www.cbwiki.net/wiki/index.php/Specification_1.1";
 
     /**
      * Gets the CB event.
@@ -71,57 +70,57 @@ public interface CBModule extends Module {
      */
     void setNews(CBNews news);
 
-    // /**
-    //  * Gets the CB paper.
-    //  * <p>
-    //  *
-    //  * @return the CB Paper, or <b>null</b> if none.
-    //  *
-    //  */
-    // CBPaper getPaper();
+     /**
+      * Gets the CB paper.
+      * <p>
+      *
+      * @return the CB Paper, or <b>null</b> if none.
+      *
+      */
+     CBPaper getPaper();
 
-    // /**
-    //  * Sets the CB paper.
-    //  * <p>
-    //  *
-    //  * @param Set the CB Paper or <b>null</b> if none.
-    //  *
-    //  */
-    // void setPaper(CBPaper paper);
+     /**
+      * Sets the CB paper.
+      * <p>
+      *
+      * @param Set the CB Paper or <b>null</b> if none.
+      *
+      */
+     void setPaper(CBPaper paper);
 
-    // /**
-    //  * Gets the CB speech.
-    //  * <p>
-    //  *
-    //  * @return the CB Speech, or <b>null</b> if none.
-    //  *
-    //  */
-    // CBSpeech getSpeech();
+     /**
+      * Gets the CB speech.
+      * <p>
+      *
+      * @return the CB Speech, or <b>null</b> if none.
+      *
+      */
+     CBSpeech getSpeech();
 
-    // /**
-    //  * Sets the CB speech.
-    //  * <p>
-    //  *
-    //  * @param Set the CB Speech or <b>null</b> if none.
-    //  *
-    //  */
-    // void setSpeech(CBSpeech speech);
+     /**
+      * Sets the CB speech.
+      * <p>
+      *
+      * @param Set the CB Speech or <b>null</b> if none.
+      *
+      */
+     void setSpeech(CBSpeech speech);
 
-    // /**
-    //  * Gets the CB statistics.
-    //  * <p>
-    //  *
-    //  * @return the CB Statistics, or <b>null</b> if none.
-    //  *
-    //  */
-    // CBStatistics getStatistics();
+     /**
+      * Gets the CB statistics.
+      * <p>
+      *
+      * @return the CB Statistics, or <b>null</b> if none.
+      *
+      */
+     CBStatistics getStatistics();
 
-    // /**
-    //  * Sets the CB statistics.
-    //  * <p>
-    //  *
-    //  * @param Set the CB Statistics or <b>null</b> if none.
-    //  *
-    //  */
-    // void setStatistics(CBStatistics statistics);
+     /**
+      * Sets the CB statistics.
+      * <p>
+      *
+      * @param Set the CB Statistics or <b>null</b> if none.
+      *
+      */
+     void setStatistics(CBStatistics statistics);
 }

@@ -16,6 +16,8 @@
  */
 package com.rometools.rome.feed.module;
 
+import java.util.List;
+
 import com.rometools.rome.feed.CopyFrom;
 
 /**
@@ -88,16 +90,16 @@ public interface CBNews extends Cloneable, CopyFrom {
      * @return the CB news keyword, <b>null</b> if none.
      *
      */
-    String getKeyword();
-
+    List<String> getKeyword();
+    
     /**
      * Sets the CB news keyword.
      * <p>
      *
-     * @param keyword the CB news keyword to set, <b>null</b> if none.
+     * @param strkey the CB paper news to set, <b>null</b> if none.
      *
      */
-    void setKeyword(String keyword);
+    void setKeyword(List<String> strkey);
 
 	/**
      * Returns the CB news resource.

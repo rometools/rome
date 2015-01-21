@@ -17,17 +17,14 @@
 package com.rometools.rome.feed.module;
 
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import com.rometools.rome.feed.CopyFrom;
 import com.rometools.rome.feed.impl.CopyFromHelper;
 import com.rometools.rome.feed.impl.ObjectBean;
-import com.rometools.utils.Lists;
 
 /**
  * CB RSS ModuleImpl, default implementation.
@@ -44,9 +41,9 @@ public class CBModuleImpl extends ModuleImpl implements CBModule {
     private final ObjectBean objBean;
 	private CBEvent event;
 	private CBNews news;
-	// private CBPaper paper;
-	// private CBSpeech speech;
-	// private CBStatistics statistics;
+	private CBPaper paper;
+	private CBSpeech speech;
+	private CBStatistics statistics;
 
     /**
      * Properties to be ignored when cloning.
@@ -120,72 +117,72 @@ public class CBModuleImpl extends ModuleImpl implements CBModule {
 		this.news = news;
 	}
 	
-    // /**
-    //  * Gets the CB paper.
-    //  * <p>
-    //  *
-    //  * @return the CB Paper, or <b>null</b> if none.
-    //  *
-    //  */
-    // CBPaper getPaper() {
-	// 	return paper;
-	// }
+     /**
+      * Gets the CB paper.
+      * <p>
+      *
+      * @return the CB Paper, or <b>null</b> if none.
+      *
+      */
+     public CBPaper getPaper() {
+	 	return paper;
+	 }
 	
-    // /**
-    //  * Sets the CB paper.
-    //  * <p>
-    //  *
-    //  * @param Set the CB Paper or <b>null</b> if none.
-    //  *
-    //  */
-    // void setPaper(CBPaper paper) {
-	// 	this.paper = paper;
-	// }
+     /**
+      * Sets the CB paper.
+      * <p>
+      *
+      * @param Set the CB Paper or <b>null</b> if none.
+      *
+      */
+     public void setPaper(CBPaper paper) {
+	 	this.paper = paper;
+	 }
 	
-    // /**
-    //  * Gets the CB speech.
-    //  * <p>
-    //  *
-    //  * @return the CB Speech, or <b>null</b> if none.
-    //  *
-    //  */
-	// CBSpeech getSpeech() {
-	// 	return speech;
-	// }
+     /**
+      * Gets the CB speech.
+      * <p>
+      *
+      * @return the CB Speech, or <b>null</b> if none.
+      *
+      */
+	 public CBSpeech getSpeech() {
+	 	return speech;
+	 }
 	
-    // /**
-    //  * Sets the CB speech.
-    //  * <p>
-    //  *
-    //  * @param Set the CB Speech or <b>null</b> if none.
-    //  *
-    //  */
-    // void setSpeech(CBSpeech speech) {
-	// 	this.speech = speech;
-	// }
+     /**
+      * Sets the CB speech.
+      * <p>
+      *
+      * @param Set the CB Speech or <b>null</b> if none.
+      *
+      */
+     public void setSpeech(CBSpeech speech) {
+	 	this.speech = speech;
+	 }
 	
-    // /**
-    //  * Gets the CB statistics.
-    //  * <p>
-    //  *
-    //  * @return the CB Statistics, or <b>null</b> if none.
-    //  *
-    //  */
-    // CBStatistics getStatistics() {
-	// 	return statistics;
-	// }
+     /**
+      * Gets the CB statistics.
+      * <p>
+      *
+      * @return the CB Statistics, or <b>null</b> if none.
+      *
+      */
+     public CBStatistics getStatistics() {
+	 	return statistics;
+	 }
 	
 
-    // /**
-    //  * Sets the CB statistics.
-    //  * <p>
-    //  *
-    //  * @param Set the CB Statistics or <b>null</b> if none.
-    //  *
-    //  */
-    // void setStatistics(CBStatistics statistics) {
-	// 	this.statistics = statistics;
-	// }
+     /**
+      * Sets the CB statistics.
+      * <p>
+      *
+      * @param Set the CB Statistics or <b>null</b> if none.
+      *
+      */
+     public void setStatistics(CBStatistics statistics) {
+	 	this.statistics = statistics;
+	 }
 	
 
     /**
@@ -259,9 +256,9 @@ public class CBModuleImpl extends ModuleImpl implements CBModule {
         final Map<Class<? extends CopyFrom>, Class<?>> basePropClassImplMap = new HashMap<Class<? extends CopyFrom>, Class<?>>();
         basePropClassImplMap.put(CBEvent.class, CBEventImpl.class);
         basePropClassImplMap.put(CBNews.class, CBNewsImpl.class);
-        // basePropClassImplMap.put(CBPaper.class, CBPaperImpl.class);
-        // basePropClassImplMap.put(CBSpeech.class, CBSpeechImpl.class);
-        // basePropClassImplMap.put(CBStatistics.class, CBStatisticsImpl.class);
+        basePropClassImplMap.put(CBPaper.class, CBPaperImpl.class);
+        basePropClassImplMap.put(CBSpeech.class, CBSpeechImpl.class);
+        basePropClassImplMap.put(CBStatistics.class, CBStatisticsImpl.class);
 
         COPY_FROM_HELPER = new CopyFromHelper(CBModule.class, basePropInterfaceMap, basePropClassImplMap);
     }

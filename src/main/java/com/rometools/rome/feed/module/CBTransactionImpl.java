@@ -17,7 +17,6 @@
 package com.rometools.rome.feed.module;
 
 import java.io.Serializable;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,38 +25,36 @@ import com.rometools.rome.feed.impl.CopyFromHelper;
 import com.rometools.rome.feed.impl.ObjectBean;
 
 /**
- * Person of the CB ModuleImpl, default implementation.
+ * Subject of the CB ModuleImpl, default implementation.
  * <p>
  *
  * @see <a href="http://www.cbwiki.net/wiki/index.php/RSS-CBMain">RSS CB module</a>.
- * @author Norbert Kiesel <nkiesel@metricstream.com>
  * @author Manish SV Kumar <manish.svk@metricstream.com>
  *
  */
-
-public class CBPersonImpl implements Cloneable, Serializable, CBPerson {
+public class CBTransactionImpl implements Cloneable, Serializable, CBTransaction {
 
     private static final long serialVersionUID = 1L;
     private static final CopyFromHelper COPY_FROM_HELPER;
 
     private final ObjectBean objBean;
-    private String givenName;
-    private String surname;
-    private String personalTitle;
-    private String nameAsWritten;
-    private CBRole role;
-    
+    private CBObservation observation;
+    private String transactionName;
+    private String transactionType;
+    private CBObservationPeriod observationPeriod;
+    private String transactionTerm;
+
     static {
         final Map<String, Class<?>> basePropInterfaceMap = new HashMap<String, Class<?>>();
-        basePropInterfaceMap.put("givenName", String.class);
-        basePropInterfaceMap.put("surname", String.class);
-        basePropInterfaceMap.put("personalTitle", String.class);
-        basePropInterfaceMap.put("nameAsWritten", String.class);
+        basePropInterfaceMap.put("transactionName", String.class);
+        basePropInterfaceMap.put("transactionType", String.class);
+        basePropInterfaceMap.put("transactionTerm", String.class);
 
         final Map<Class<? extends CopyFrom>, Class<?>> basePropClassImplMap = new HashMap<Class<? extends CopyFrom>, Class<?>>();
-        basePropClassImplMap.put(CBRole.class, CBRoleImpl.class);
+        basePropClassImplMap.put(CBObservation.class, CBObservationImpl.class);
+        basePropClassImplMap.put(CBObservationPeriod.class, CBObservationPeriodImpl.class);
 
-        COPY_FROM_HELPER = new CopyFromHelper(CBPerson.class, basePropInterfaceMap, basePropClassImplMap);
+        COPY_FROM_HELPER = new CopyFromHelper(CBTransaction.class, basePropInterfaceMap, basePropClassImplMap);
     }
 
     /**
@@ -65,7 +62,7 @@ public class CBPersonImpl implements Cloneable, Serializable, CBPerson {
      * <p>
      *
      */
-    public CBPersonImpl() {
+    public CBTransactionImpl() {
         objBean = new ObjectBean(this.getClass(), this);
     }
 
@@ -93,7 +90,7 @@ public class CBPersonImpl implements Cloneable, Serializable, CBPerson {
      */
     @Override
     public boolean equals(final Object other) {
-        if (!(other instanceof CBPersonImpl)) {
+        if (!(other instanceof CBTransactionImpl)) {
             return false;
         }
         return objBean.equals(other);
@@ -126,8 +123,8 @@ public class CBPersonImpl implements Cloneable, Serializable, CBPerson {
     }
 
     @Override
-    public Class<CBPerson> getInterface() {
-        return CBPerson.class;
+    public Class<CBTransaction> getInterface() {
+        return CBTransaction.class;
     }
 
     @Override
@@ -136,123 +133,113 @@ public class CBPersonImpl implements Cloneable, Serializable, CBPerson {
     }
 
     /**
-     * Returns the CB person givenName.
+     * Returns the CB Transaction Observation.
      * <p>
      *
-     * @return the CB person givenName, <b>null</b> if none.
+     * @return the CB Transaction Observation, <b>null</b> if none.
      *
      */
-    @Override
-    public String getGivenName(){
-    	return givenName;
-    }
+	public CBObservation getObservation(){
+		return observation;
+	}
 
     /**
-     * Sets the CB person givenName.
+     * Sets the CB Transaction Observation.
      * <p>
      *
-     * @param givenName the CB person givenName to set, <b>null</b> if none.
+     * @param observation the CB Transaction Observation to set, <b>null</b> if none.
      *
      */
-    @Override
-    public void setGivenName(String givenName){
-    	this.givenName = givenName;
+    public void setObservation(CBObservation observation){
+    	this.observation = observation;
     }
     
     /**
-     * Returns the CB person surname.
+     * Returns the CB Transaction transactionName.
      * <p>
      *
-     * @return the CB person surname, <b>null</b> if none.
+     * @return the CB Transaction transactionName, <b>null</b> if none.
      *
      */
-    @Override
-    public String getSurname(){
-    	return surname;
+    public String getTransactionName(){
+    	return transactionName;
     }
 
     /**
-     * Sets the CB person surname.
+     * Sets the CB Transaction transactionName.
      * <p>
      *
-     * @param surname the CB person surname to set, <b>null</b> if none.
+     * @param transactionName the CB Transaction transactionName to set, <b>null</b> if none.
      *
      */
-    @Override
-    public void setSurname(String surname){
-    	this.surname = surname;
+    public void setTransactionName(String transactionName){
+    	this.transactionName = transactionName;
     }
     
     /**
-     * Returns the CB person personalTitle.
+     * Returns the CB Transaction transactionType.
      * <p>
      *
-     * @return the CB person personalTitle, <b>null</b> if none.
+     * @return the CB Transaction transactionType, <b>null</b> if none.
      *
      */
-    @Override
-    public String getPersonalTitle(){
-    	return personalTitle;
+    public String getTransactionType(){
+    	return transactionType;
     }
 
     /**
-     * Sets the CB person personalTitle.
+     * Sets the CB Transaction transactionType.
      * <p>
      *
-     * @param personalTitle the CB person personalTitle to set, <b>null</b> if none.
+     * @param transactionType the CB Transaction transactionType to set, <b>null</b> if none.
      *
      */
-    @Override
-    public void setPersonalTitle(String personalTitle){
-    	this.personalTitle = personalTitle;
-    }
-
-    /**
-     * Returns the CB person nameAsWritten.
-     * <p>
-     *
-     * @return the CB person nameAsWritten, <b>null</b> if none.
-     *
-     */
-    @Override
-    public String getNameAsWritten(){
-    	return nameAsWritten;
-    }
-
-    /**
-     * Sets the CB person nameAsWritten.
-     * <p>
-     *
-     * @param nameAsWritten the CB person nameAsWritten to set, <b>null</b> if none.
-     *
-     */
-    @Override
-    public void setNameAsWritten(String nameAsWritten){
-    	this.nameAsWritten = nameAsWritten;
+    public void setTransactionType(String transactionType){
+    	this.transactionType = transactionType;
     }
     
     /**
-     * Returns the CB role.
+     * Returns the CB Transaction ObservationPeriod.
      * <p>
      *
-     * @return the CB role, <b>null</b> if none.
+     * @return the CB Transaction ObservationPeriod, <b>null</b> if none.
      *
      */
-    @Override
-    public CBRole getRole(){
-    	return role;
+    public CBObservationPeriod getObservationPeriod(){
+    	return observationPeriod;
     }
 
     /**
-     * Sets the CB role.
+     * Sets the CB Transaction ObservationPeriod.
      * <p>
      *
-     * @param role the CB person role to set, <b>null</b> if none.
+     * @param observationPeriod the CB Transaction ObservationPeriod to set, <b>null</b> if none.
      *
      */
-    @Override
-    public void setRole(CBRole role){
-    	this.role = role;
+    public void setObservationPeriod(CBObservationPeriod observationPeriod){
+    	this.observationPeriod = observationPeriod;
+    }
+    
+    /**
+     * Returns the CB Transaction transactionTerm.
+     * <p>
+     *
+     * @return the CB Transaction transactionTerm, <b>null</b> if none.
+     *
+     */
+    public String getTransactionTerm(){
+    	return transactionTerm;
+    }
+
+    /**
+     * Sets the CB Transaction transactionTerm.
+     * <p>
+     *
+     * @param transactionTerm the CB Transaction transactionTerm to set, <b>null</b> if none.
+     *
+     */
+    public void setTransactionTerm(String transactionTerm){
+    	this.transactionTerm = transactionTerm;
     }
 
 }

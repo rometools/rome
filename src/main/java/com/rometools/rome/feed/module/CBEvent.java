@@ -16,6 +16,8 @@
  */
 package com.rometools.rome.feed.module;
 
+import java.util.List;
+
 import com.rometools.rome.feed.CopyFrom;
 
 /**
@@ -106,16 +108,16 @@ public interface CBEvent extends Cloneable, CopyFrom {
      * @return the CB event keyword, <b>null</b> if none.
      *
      */
-    String getKeyword();
-
+    List<String> getKeyword();
+    
     /**
      * Sets the CB event keyword.
      * <p>
      *
-     * @param keyword the CB event keyword to set, <b>null</b> if none.
+     * @param strkey the CB event keyword to set, <b>null</b> if none.
      *
      */
-    void setKeyword(String keyword);
+    void setKeyword(List<String> strkey);
 
 	/**
      * Returns the CB event resource.

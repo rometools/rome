@@ -17,7 +17,6 @@
 package com.rometools.rome.feed.module;
 
 import java.io.Serializable;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,38 +25,35 @@ import com.rometools.rome.feed.impl.CopyFromHelper;
 import com.rometools.rome.feed.impl.ObjectBean;
 
 /**
- * Person of the CB ModuleImpl, default implementation.
+ * Subject of the CB ModuleImpl, default implementation.
  * <p>
  *
  * @see <a href="http://www.cbwiki.net/wiki/index.php/RSS-CBMain">RSS CB module</a>.
- * @author Norbert Kiesel <nkiesel@metricstream.com>
  * @author Manish SV Kumar <manish.svk@metricstream.com>
  *
  */
-
-public class CBPersonImpl implements Cloneable, Serializable, CBPerson {
+public class CBObservationImpl implements Cloneable, Serializable, CBObservation {
 
     private static final long serialVersionUID = 1L;
     private static final CopyFromHelper COPY_FROM_HELPER;
 
     private final ObjectBean objBean;
-    private String givenName;
-    private String surname;
-    private String personalTitle;
-    private String nameAsWritten;
-    private CBRole role;
-    
+    private String value;
+    private String unit;
+    private String unit_mult;
+    private String decimals;
+
+
     static {
         final Map<String, Class<?>> basePropInterfaceMap = new HashMap<String, Class<?>>();
-        basePropInterfaceMap.put("givenName", String.class);
-        basePropInterfaceMap.put("surname", String.class);
-        basePropInterfaceMap.put("personalTitle", String.class);
-        basePropInterfaceMap.put("nameAsWritten", String.class);
+        basePropInterfaceMap.put("value", String.class);
+        basePropInterfaceMap.put("unit", String.class);
+        basePropInterfaceMap.put("unit_mult", String.class);
+        basePropInterfaceMap.put("decimals", String.class);
 
         final Map<Class<? extends CopyFrom>, Class<?>> basePropClassImplMap = new HashMap<Class<? extends CopyFrom>, Class<?>>();
-        basePropClassImplMap.put(CBRole.class, CBRoleImpl.class);
 
-        COPY_FROM_HELPER = new CopyFromHelper(CBPerson.class, basePropInterfaceMap, basePropClassImplMap);
+        COPY_FROM_HELPER = new CopyFromHelper(CBObservation.class, basePropInterfaceMap, basePropClassImplMap);
     }
 
     /**
@@ -65,7 +61,7 @@ public class CBPersonImpl implements Cloneable, Serializable, CBPerson {
      * <p>
      *
      */
-    public CBPersonImpl() {
+    public CBObservationImpl() {
         objBean = new ObjectBean(this.getClass(), this);
     }
 
@@ -93,7 +89,7 @@ public class CBPersonImpl implements Cloneable, Serializable, CBPerson {
      */
     @Override
     public boolean equals(final Object other) {
-        if (!(other instanceof CBPersonImpl)) {
+        if (!(other instanceof CBObservationImpl)) {
             return false;
         }
         return objBean.equals(other);
@@ -126,8 +122,8 @@ public class CBPersonImpl implements Cloneable, Serializable, CBPerson {
     }
 
     @Override
-    public Class<CBPerson> getInterface() {
-        return CBPerson.class;
+    public Class<CBObservation> getInterface() {
+        return CBObservation.class;
     }
 
     @Override
@@ -136,123 +132,94 @@ public class CBPersonImpl implements Cloneable, Serializable, CBPerson {
     }
 
     /**
-     * Returns the CB person givenName.
+     * Returns the CB observation value.
      * <p>
      *
-     * @return the CB person givenName, <b>null</b> if none.
+     * @return the CB observation value, <b>null</b> if none.
      *
      */
     @Override
-    public String getGivenName(){
-    	return givenName;
+    public String getValue() {
+    	return value;
     }
 
     /**
-     * Sets the CB person givenName.
+     * Sets the CB observation value.
      * <p>
      *
-     * @param givenName the CB person givenName to set, <b>null</b> if none.
+     * @param value the CB observation value to set, <b>null</b> if none.
      *
      */
     @Override
-    public void setGivenName(String givenName){
-    	this.givenName = givenName;
+    public void setValue(String value) {
+    	this.value = value;
+    }
+
+    /**
+     * Returns the CB Observation unit.
+     * <p>
+     *
+     * @return the CB Observation unit, <b>null</b> if none.
+     *
+     */
+    @Override
+    public String getUnit(){
+    	return unit;
+    }
+
+    /**
+     * Sets the CB Observation unit.
+     * <p>
+     *
+     * @param unit the CB Observation unit to set, <b>null</b> if none.
+     *
+     */
+    public void setUnit(String unit){
+    	this.unit = unit;
+    }
+
+    /**
+     * Returns the CB Observation unit_mult.
+     * <p>
+     *
+     * @return the CB Observation unit_mult, <b>null</b> if none.
+     *
+     */
+    public String getUnitMult(){
+    	return unit_mult;
+    }
+
+    /**
+     * Sets the CB Observation unit_mult.
+     * <p>
+     *
+     * @param unitMult the CB Observation unit_mult to set, <b>null</b> if none.
+     *
+     */
+    public void setUnitMult(String unitMult){
+    	this.unit_mult = unitMult;
     }
     
     /**
-     * Returns the CB person surname.
+     * Returns the CB Observation decimals.
      * <p>
      *
-     * @return the CB person surname, <b>null</b> if none.
+     * @return the CB Observation decimals, <b>null</b> if none.
      *
      */
-    @Override
-    public String getSurname(){
-    	return surname;
+    public String getDecimal(){
+    	return decimals;
     }
 
     /**
-     * Sets the CB person surname.
+     * Sets the CB Observation decimal.
      * <p>
      *
-     * @param surname the CB person surname to set, <b>null</b> if none.
+     * @param decimal the CB Observation decimal to set, <b>null</b> if none.
      *
      */
-    @Override
-    public void setSurname(String surname){
-    	this.surname = surname;
-    }
-    
-    /**
-     * Returns the CB person personalTitle.
-     * <p>
-     *
-     * @return the CB person personalTitle, <b>null</b> if none.
-     *
-     */
-    @Override
-    public String getPersonalTitle(){
-    	return personalTitle;
-    }
-
-    /**
-     * Sets the CB person personalTitle.
-     * <p>
-     *
-     * @param personalTitle the CB person personalTitle to set, <b>null</b> if none.
-     *
-     */
-    @Override
-    public void setPersonalTitle(String personalTitle){
-    	this.personalTitle = personalTitle;
-    }
-
-    /**
-     * Returns the CB person nameAsWritten.
-     * <p>
-     *
-     * @return the CB person nameAsWritten, <b>null</b> if none.
-     *
-     */
-    @Override
-    public String getNameAsWritten(){
-    	return nameAsWritten;
-    }
-
-    /**
-     * Sets the CB person nameAsWritten.
-     * <p>
-     *
-     * @param nameAsWritten the CB person nameAsWritten to set, <b>null</b> if none.
-     *
-     */
-    @Override
-    public void setNameAsWritten(String nameAsWritten){
-    	this.nameAsWritten = nameAsWritten;
-    }
-    
-    /**
-     * Returns the CB role.
-     * <p>
-     *
-     * @return the CB role, <b>null</b> if none.
-     *
-     */
-    @Override
-    public CBRole getRole(){
-    	return role;
-    }
-
-    /**
-     * Sets the CB role.
-     * <p>
-     *
-     * @param role the CB person role to set, <b>null</b> if none.
-     *
-     */
-    @Override
-    public void setRole(CBRole role){
-    	this.role = role;
+    public void setDecimal(String decimals){
+    	this.decimals = decimals;
     }
 
 }

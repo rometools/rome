@@ -17,8 +17,10 @@
 package com.rometools.rome.feed.module;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.rometools.rome.feed.CopyFrom;
@@ -42,7 +44,7 @@ public class CBNewsImpl implements Cloneable, Serializable, CBNews {
     private String simpleTitle;
     private String occurenceDate;
     private String institutionAbbrev;
-    private String keyword;
+    private List<String> keyword;
     private CBResource resource;
     private CBPerson person;
 
@@ -51,7 +53,7 @@ public class CBNewsImpl implements Cloneable, Serializable, CBNews {
         basePropInterfaceMap.put("simpleTitle", String.class);
         basePropInterfaceMap.put("occurenceDate", String.class);
         basePropInterfaceMap.put("institutionAbbrev", String.class);
-        basePropInterfaceMap.put("keyword", String.class);
+        basePropInterfaceMap.put("keyword", List.class);
 
         final Map<Class<? extends CopyFrom>, Class<?>> basePropClassImplMap = new HashMap<Class<? extends CopyFrom>, Class<?>>();
         basePropClassImplMap.put(CBResource.class, CBResourceImpl.class);
@@ -208,29 +210,32 @@ public class CBNewsImpl implements Cloneable, Serializable, CBNews {
 	}
 
 	/**
-     * Returns the CB news keyword.
+     * Returns the CB news keyword list.
      * <p>
      *
-     * @return the CB news keyword, <b>null</b> if none.
+     * @return the CB news keyword list, <b>null</b> if none.
      *
      */
 	@Override
-    public String getKeyword() {
-		return keyword;
-	}
+    public List<String> getKeyword() {
+        if (keyword == null) {
+            keyword = new ArrayList<String>();
+        }
+        return this.keyword;
+    }
 
-    /**
+	/**
      * Sets the CB news keyword.
      * <p>
      *
-     * @param keyword the CB news keyword to set, <b>null</b> if none.
+     * @param keyList the CB news keyword to set, <b>null</b> if none.
      *
      */
 	@Override
-    public void setKeyword(String keyword) {
-		this.keyword = keyword;
-	}
-
+    public void setKeyword(List<String> keyList) {
+        this.keyword = keyList;
+    }
+	
 	/**
      * Returns the CB news resource.
      * <p>

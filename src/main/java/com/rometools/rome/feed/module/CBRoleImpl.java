@@ -26,38 +26,30 @@ import com.rometools.rome.feed.impl.CopyFromHelper;
 import com.rometools.rome.feed.impl.ObjectBean;
 
 /**
- * Person of the CB ModuleImpl, default implementation.
+ * Role of the CB ModuleImpl, default implementation.
  * <p>
  *
  * @see <a href="http://www.cbwiki.net/wiki/index.php/RSS-CBMain">RSS CB module</a>.
- * @author Norbert Kiesel <nkiesel@metricstream.com>
  * @author Manish SV Kumar <manish.svk@metricstream.com>
  *
  */
-
-public class CBPersonImpl implements Cloneable, Serializable, CBPerson {
+public class CBRoleImpl implements Cloneable, Serializable, CBRole {
 
     private static final long serialVersionUID = 1L;
     private static final CopyFromHelper COPY_FROM_HELPER;
 
     private final ObjectBean objBean;
-    private String givenName;
-    private String surname;
-    private String personalTitle;
-    private String nameAsWritten;
-    private CBRole role;
-    
+    private String jobTitle;
+    private String affiliation;
+
     static {
         final Map<String, Class<?>> basePropInterfaceMap = new HashMap<String, Class<?>>();
-        basePropInterfaceMap.put("givenName", String.class);
-        basePropInterfaceMap.put("surname", String.class);
-        basePropInterfaceMap.put("personalTitle", String.class);
-        basePropInterfaceMap.put("nameAsWritten", String.class);
+        basePropInterfaceMap.put("jobTitle", String.class);
+        basePropInterfaceMap.put("affiliation", String.class);
 
-        final Map<Class<? extends CopyFrom>, Class<?>> basePropClassImplMap = new HashMap<Class<? extends CopyFrom>, Class<?>>();
-        basePropClassImplMap.put(CBRole.class, CBRoleImpl.class);
+        final Map<Class<? extends CopyFrom>, Class<?>> basePropClassImplMap = Collections.<Class<? extends CopyFrom>, Class<?>> emptyMap();
 
-        COPY_FROM_HELPER = new CopyFromHelper(CBPerson.class, basePropInterfaceMap, basePropClassImplMap);
+        COPY_FROM_HELPER = new CopyFromHelper(CBRole.class, basePropInterfaceMap, basePropClassImplMap);
     }
 
     /**
@@ -65,7 +57,7 @@ public class CBPersonImpl implements Cloneable, Serializable, CBPerson {
      * <p>
      *
      */
-    public CBPersonImpl() {
+    public CBRoleImpl() {
         objBean = new ObjectBean(this.getClass(), this);
     }
 
@@ -93,7 +85,7 @@ public class CBPersonImpl implements Cloneable, Serializable, CBPerson {
      */
     @Override
     public boolean equals(final Object other) {
-        if (!(other instanceof CBPersonImpl)) {
+        if (!(other instanceof CBRoleImpl)) {
             return false;
         }
         return objBean.equals(other);
@@ -126,8 +118,8 @@ public class CBPersonImpl implements Cloneable, Serializable, CBPerson {
     }
 
     @Override
-    public Class<CBPerson> getInterface() {
-        return CBPerson.class;
+    public Class<CBRole> getInterface() {
+        return CBRole.class;
     }
 
     @Override
@@ -136,123 +128,51 @@ public class CBPersonImpl implements Cloneable, Serializable, CBPerson {
     }
 
     /**
-     * Returns the CB person givenName.
+     * Returns the CBRole jobTitle.
      * <p>
      *
-     * @return the CB person givenName, <b>null</b> if none.
+     * @return the CBRole jobTitle, <b>null</b> if none.
      *
      */
     @Override
-    public String getGivenName(){
-    	return givenName;
+    public String getJobTitle(){
+    	return jobTitle;
     }
 
     /**
-     * Sets the CB person givenName.
+     * Sets the CBRole jobTitle.
      * <p>
      *
-     * @param givenName the CB person givenName to set, <b>null</b> if none.
+     * @param jobTitle the CBRole jobTitle to set, <b>null</b> if none.
      *
      */
     @Override
-    public void setGivenName(String givenName){
-    	this.givenName = givenName;
-    }
-    
-    /**
-     * Returns the CB person surname.
-     * <p>
-     *
-     * @return the CB person surname, <b>null</b> if none.
-     *
-     */
-    @Override
-    public String getSurname(){
-    	return surname;
+    public void setJobTitle(String jobTitle){
+    	this.jobTitle = jobTitle;
     }
 
     /**
-     * Sets the CB person surname.
+     * Returns the CBRole affiliation.
      * <p>
      *
-     * @param surname the CB person surname to set, <b>null</b> if none.
+     * @return the CBRole affiliation, <b>null</b> if none.
      *
      */
     @Override
-    public void setSurname(String surname){
-    	this.surname = surname;
-    }
-    
-    /**
-     * Returns the CB person personalTitle.
-     * <p>
-     *
-     * @return the CB person personalTitle, <b>null</b> if none.
-     *
-     */
-    @Override
-    public String getPersonalTitle(){
-    	return personalTitle;
+    public String getAffiliation(){
+    	return affiliation;
     }
 
     /**
-     * Sets the CB person personalTitle.
+     * Sets the CBRole affiliation.
      * <p>
      *
-     * @param personalTitle the CB person personalTitle to set, <b>null</b> if none.
+     * @param affiliation the CBRole affiliation to set, <b>null</b> if none.
      *
      */
     @Override
-    public void setPersonalTitle(String personalTitle){
-    	this.personalTitle = personalTitle;
-    }
-
-    /**
-     * Returns the CB person nameAsWritten.
-     * <p>
-     *
-     * @return the CB person nameAsWritten, <b>null</b> if none.
-     *
-     */
-    @Override
-    public String getNameAsWritten(){
-    	return nameAsWritten;
-    }
-
-    /**
-     * Sets the CB person nameAsWritten.
-     * <p>
-     *
-     * @param nameAsWritten the CB person nameAsWritten to set, <b>null</b> if none.
-     *
-     */
-    @Override
-    public void setNameAsWritten(String nameAsWritten){
-    	this.nameAsWritten = nameAsWritten;
-    }
-    
-    /**
-     * Returns the CB role.
-     * <p>
-     *
-     * @return the CB role, <b>null</b> if none.
-     *
-     */
-    @Override
-    public CBRole getRole(){
-    	return role;
-    }
-
-    /**
-     * Sets the CB role.
-     * <p>
-     *
-     * @param role the CB person role to set, <b>null</b> if none.
-     *
-     */
-    @Override
-    public void setRole(CBRole role){
-    	this.role = role;
+    public void setAffiliation(String affiliation){
+    	this.affiliation = affiliation;
     }
 
 }

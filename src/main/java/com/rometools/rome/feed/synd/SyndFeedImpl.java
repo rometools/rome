@@ -746,6 +746,9 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
         if (ModuleUtils.getModule(modules, DCModule.URI) == null) {
             modules.add(new DCModuleImpl());
         }
+        if (ModuleUtils.getModule(modules, CBModule.URI) == null) {
+            modules.add(new CBModuleImpl());
+        }
         return modules;
     }
 
