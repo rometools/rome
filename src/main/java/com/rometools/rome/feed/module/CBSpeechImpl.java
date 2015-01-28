@@ -1,5 +1,5 @@
 /*
- * Copyright 2004 Sun Microsystems, Inc.
+ * Copyright 2015 MetricStream, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ import com.rometools.rome.feed.impl.ObjectBean;
 import com.rometools.rome.io.ISO3166CountyCode;
 
 /**
- * Subject of the CB SpeechImpl, default implementation.
+ * Speech of the Central Bank SpeechImpl, default implementation.
  * <p>
  *
  * @see <a href="http://www.cbwiki.net/wiki/index.php/RSS-CBMain">RSS CB module</a>.
@@ -269,7 +269,7 @@ public class CBSpeechImpl implements Cloneable, Serializable, CBSpeech {
      * 
      */
 	@Override
-    public List<String> getKeyword() {
+    public List<String> getKeywords() {
         if (keyword == null) {
             keyword = new ArrayList<String>();
         }
@@ -284,7 +284,7 @@ public class CBSpeechImpl implements Cloneable, Serializable, CBSpeech {
      *
      */
 	@Override
-    public void setKeyword(List<String> keyList) {
+    public void setKeywords(List<String> keyList) {
         this.keyword = keyList;
     }
 	

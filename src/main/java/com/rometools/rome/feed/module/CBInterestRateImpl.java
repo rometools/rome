@@ -1,5 +1,5 @@
 /*
- * Copyright 2004 Sun Microsystems, Inc.
+ * Copyright 2015 MetricStream, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ import com.rometools.rome.feed.impl.CopyFromHelper;
 import com.rometools.rome.feed.impl.ObjectBean;
 
 /**
- * Subject of the CB ModuleImpl, default implementation.
+ * Interest Rate of the Central Bank ModuleImpl, default implementation.
  * <p>
  *
  * @see <a href="http://www.cbwiki.net/wiki/index.php/RSS-CBMain">RSS CB module</a>.

@@ -1,5 +1,5 @@
 /*
- * Copyright 2004 Sun Microsystems, Inc.
+ * Copyright 2015 MetricStream, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ import java.util.List;
 import com.rometools.rome.feed.CopyFrom;
 
 /**
- * Subject of the Dublin Core ModuleImpl.
+ * Paper of the Central Bank ModuleImpl.
  * <p>
  *
  * @see <a href="http://www.cbwiki.net/wiki/index.php/RSS-CBMain">RSS CB module</a>.
@@ -98,16 +98,16 @@ public interface CBPaper extends Cloneable, CopyFrom{
  	 *  @param keyword the CB news keyword to set, <b>null</b> if none.
      * 
      */
-    public List<String> getKeyword();
+    public List<String> getKeywords();
     
     /**
      * Sets the CB paper keyword.
      * <p>
      *
-     * @param strkey the CB paper keyword to set, <b>null</b> if none.
+     * @param keyList the CB paper keyword to set, <b>null</b> if none.
      *
      */
-    public void setKeyword(List<String> strkey);
+    public void setKeywords(List<String> keyList);
 
     /**
      * Gets the value of the resource property.

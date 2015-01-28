@@ -1,5 +1,5 @@
 /*
- * Copyright 2004 Sun Microsystems, Inc.
+ * Copyright 2015 MetricStream, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -91,25 +91,22 @@ public class CBModuleGenerator implements ModuleGenerator {
     }
 
     /**
-     * Utility method to generate an element for a subject.
+     * Utility method to generate an element for a speech.
      * <p>
      *
-     * @param subject the subject to generate an element for.
-     * @return the element for the subject.
+     * @param speech the speech to generate an element for.
+     * @return the element for the speech.
      */
-    protected final Element generateSpeechElement(final CBSpeech subject) {
+    protected final Element generateSpeechElement(final CBSpeech speech) {
 
         final Element speechElement = new Element("speech", getCBNamespace());
-        final String simpleTitle = subject.getSimpleTitle();
+        final String simpleTitle = speech.getSimpleTitle();
 
         if (simpleTitle != null) {
         	final Element simpleTitleElement = new Element("simpleTitle", getCBNamespace());
         	simpleTitleElement.addContent(simpleTitle);
         	speechElement.addContent(simpleTitleElement);
         }
-        System.out.println("-------------------------");
-        System.out.println(speechElement);
-        System.out.println(speechElement.toString());
         return speechElement;
     }
 

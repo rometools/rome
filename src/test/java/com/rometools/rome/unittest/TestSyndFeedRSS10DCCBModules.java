@@ -45,14 +45,14 @@ public class TestSyndFeedRSS10DCCBModules extends FeedTest {
 			assertEquals("2015-01-16T11:00:00Z", paper.getOccurrenceDate());
 			assertEquals("Secular stagnation, debt overhang and other rationales for sluggish growth, six years on", paper.getSimpleTitle());
 			assertEquals("BIS", paper.getInstitutionAbbrev());
-			List<String> keyList = paper.getKeyword();
+			List<String> keyList = paper.getKeywords();
 			assertEquals("3", Integer.toString(keyList.size()));
 			for(String key : keyList){
 				assertNotNull(key);
 			}
 			
 			//cb:speech
-			assertEquals("Benoît Cœuré: Interview in Libération", speech.getSimpleTitle());
+			assertEquals("Sample Speech Simple Title", speech.getSimpleTitle());
 			assertEquals("2015-01-19T11:09:00Z", speech.getOccurrenceDate());
 			assertEquals("BIS", speech.getInstitutionAbbrev());
 			

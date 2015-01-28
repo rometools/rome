@@ -1,5 +1,5 @@
 /*
- * Copyright 2004 Sun Microsystems, Inc.
+ * Copyright 2015 MetricStream, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ import com.rometools.rome.feed.impl.CopyFromHelper;
 import com.rometools.rome.feed.impl.ObjectBean;
 
 /**
- * Subject of the CBPaperImpl, default implementation.
+ * Paper of the Central Bank ModuleImpl, default implementation.
  * <p>
  *
  * @see <a href="http://www.cbwiki.net/wiki/index.php/RSS-CBMain">RSS CB Paper</a>.
@@ -231,7 +231,7 @@ public class CBPaperImpl implements Cloneable, Serializable, CBPaper{
      *
      */
 	@Override
-    public List<String> getKeyword() {
+    public List<String> getKeywords() {
         if (this.keyword == null) {
             this.keyword = new ArrayList<String>();
         }
@@ -246,7 +246,7 @@ public class CBPaperImpl implements Cloneable, Serializable, CBPaper{
      *
      */
 	@Override
-    public void setKeyword(List<String> keyList) {
+    public void setKeywords(List<String> keyList) {
         this.keyword = keyList;
     }
 	

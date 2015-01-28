@@ -1,5 +1,5 @@
 /*
- * Copyright 2004 Sun Microsystems, Inc.
+ * Copyright 2015 MetricStream, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ package com.rometools.rome.feed.module;
 import com.rometools.rome.feed.CopyFrom;
 
 /**
- * Subject of the Dublin Core ModuleImpl.
+ * Interest Rate of the Central Bank ModuleImpl.
  * <p>
  *
  * @see <a href="http://www.cbwiki.net/wiki/index.php/RSS-CBMain">RSS CB module</a>.

@@ -1,5 +1,5 @@
 /*
- * Copyright 2004 Sun Microsystems, Inc.
+ * Copyright 2015 MetricStream, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@ import com.rometools.rome.feed.CopyFrom;
 import com.rometools.rome.io.ISO3166CountyCode;
 
 /**
- * Subject of the Dublin Core ModuleImpl.
+ * Speech of the Central Bank SpeechImpl.
  * <p>
  *
  * @see <a href="http://www.cbwiki.net/wiki/index.php/RSS-CBMain">RSS CB module</a>.
@@ -123,16 +123,16 @@ public interface CBSpeech extends Cloneable, CopyFrom  {
      * 
      * 
      */
-    public List<String> getKeyword();
+    public List<String> getKeywords();
     
     /**
      * Sets the CB speech keyword.
      * <p>
      *
-     * @param strkey the CB speech keyword to set, <b>null</b> if none.
+     * @param keyList the CB speech keyword to set, <b>null</b> if none.
      *
      */
-    public void setKeyword(List<String> strkey);
+    public void setKeywords(List<String> keyList);
     
     /**
      * Gets the value of the resource property.

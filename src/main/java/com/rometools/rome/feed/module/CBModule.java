@@ -1,5 +1,5 @@
 /*
- * Copyright 2004 Sun Microsystems, Inc.
+ * Copyright 2015 MetricStream, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@ package com.rometools.rome.feed.module;
 
 
 /**
- * Dublin Core Module.
+ * Central Bank Module.
  * <p>
  *
  * @see <a href="http://www.cbwiki.net/wiki/index.php/RSS-CBMain">RSS CB module</a>.
@@ -31,7 +31,6 @@ public interface CBModule extends Module {
      * URI of the RSS CB Module
      *
      */
-    //String URI = "http://www.centralbanks.org/rss/";
     String URI = "http://www.cbwiki.net/wiki/index.php/Specification_1.1";
 
     /**

@@ -1,5 +1,5 @@
 /*
- * Copyright 2004 Sun Microsystems, Inc.
+ * Copyright 2015 MetricStream, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -408,7 +408,7 @@ public class CBModuleParser implements ModuleParser {
 		
 		final List<Element> keyList = element.getChildren("keyword", getCBNamespace());
 		for(Element keyword : keyList){
-			speech.getKeyword().add(keyword.getText());
+			speech.getKeywords().add(keyword.getText());
 		}
 		
 		final Element resource = element.getChild("resource", getCBNamespace());
@@ -482,7 +482,7 @@ public class CBModuleParser implements ModuleParser {
 
 		final List<Element> keyList = element.getChildren("keyword", getCBNamespace());
 		for(Element keyword : keyList){
-			event.getKeyword().add(keyword.getText());
+			event.getKeywords().add(keyword.getText());
 		}
 
 		final Element resource = element.getChild("resource", getCBNamespace());
@@ -558,7 +558,7 @@ public class CBModuleParser implements ModuleParser {
 		for(Element keyword : keyList){
 			kList.add(keyword.getText());
 		}
-		paperObj.setKeyword(kList);
+		paperObj.setKeywords(kList);
 		
 		final Element resource = element.getChild("resource", getCBNamespace());
 		if (resource != null) {
@@ -715,7 +715,7 @@ public class CBModuleParser implements ModuleParser {
 
 		final List<Element> keyList = element.getChildren("keyword", getCBNamespace());
 		for(Element keyword : keyList){
-			news.getKeyword().add(keyword.getText());
+			news.getKeywords().add(keyword.getText());
 		}
 
 		 final Element resource = element.getChild("resource", getCBNamespace());
