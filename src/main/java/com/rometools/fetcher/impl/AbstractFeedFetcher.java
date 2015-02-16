@@ -38,22 +38,25 @@ public abstract class AbstractFeedFetcher implements FeedFetcher {
 
     private static final Logger LOG = LoggerFactory.getLogger(AbstractFeedFetcher.class);
 
-    private final Set<FetcherListener> fetcherEventListeners;
+    private final Set<FetcherListener> listeners;
     private String userAgent;
     private boolean usingDeltaEncoding;
     private boolean preserveWireFeed;
 
     public AbstractFeedFetcher() {
-        fetcherEventListeners = Collections.synchronizedSet(new HashSet<FetcherListener>());
+
+        listeners = Collections.synchronizedSet(new HashSet<FetcherListener>());
 
         final Properties props = new Properties(System.getProperties());
         final String resourceName = "fetcher.properties";
 
         try {
+
             InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(resourceName);
             if (inputStream == null) {
                 inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(resourceName);
             }
+
             if (inputStream != null) {
                 props.load(inputStream);
                 System.getProperties().putAll(props);
@@ -61,6 +64,7 @@ public abstract class AbstractFeedFetcher implements FeedFetcher {
             } else {
                 LOG.warn("Could not find {} on classpath", resourceName);
             }
+
         } catch (final IOException e) {
             // do nothing - we don't want to fail just because we could not find the version
             LOG.error("Error reading {} from classpath: {}", resourceName, e.getMessage());
@@ -117,8 +121,8 @@ public abstract class AbstractFeedFetcher implements FeedFetcher {
      */
     protected void fireEvent(final String eventType, final String urlStr, final SyndFeed feed) {
         final FetcherEvent fetcherEvent = new FetcherEvent(this, urlStr, eventType, feed);
-        synchronized (fetcherEventListeners) {
-            for (final FetcherListener fetcherEventListener : fetcherEventListeners) {
+        synchronized (listeners) {
+            for (final FetcherListener fetcherEventListener : listeners) {
                 fetcherEventListener.fetcherEvent(fetcherEvent);
             }
         }
@@ -127,14 +131,14 @@ public abstract class AbstractFeedFetcher implements FeedFetcher {
     @Override
     public void addFetcherEventListener(final FetcherListener listener) {
         if (listener != null) {
-            fetcherEventListeners.add(listener);
+            listeners.add(listener);
         }
     }
 
     @Override
     public void removeFetcherEventListener(final FetcherListener listener) {
         if (listener != null) {
-            fetcherEventListeners.remove(listener);
+            listeners.remove(listener);
         }
     }
 
@@ -198,9 +202,8 @@ public abstract class AbstractFeedFetcher implements FeedFetcher {
      * @return
      */
     public static SyndFeed combineFeeds(final SyndFeed originalFeed, final SyndFeed newFeed) {
-        SyndFeed result;
         try {
-            result = (SyndFeed) newFeed.clone();
+            final SyndFeed result = (SyndFeed) newFeed.clone();
             result.getEntries().addAll(result.getEntries().size(), originalFeed.getEntries());
             return result;
         } catch (final CloneNotSupportedException e) {
