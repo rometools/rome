@@ -36,9 +36,13 @@ import com.rometools.rome.feed.synd.SyndFeed;
  *
  */
 public class FeedReader {
+
     public static void main(final String[] args) {
+
         boolean ok = false;
+
         if (args.length == 1) {
+
             try {
                 final URL feedUrl = new URL(args[0]);
                 final FeedFetcherCache feedInfoCache = HashMapFeedInfoCache.getInstance();
@@ -64,10 +68,12 @@ public class FeedReader {
                 System.err.println("If a \"Feed Unchanged\" event fired then the server supports conditional gets.");
 
                 ok = true;
+
             } catch (final Exception ex) {
                 System.out.println("ERROR: " + ex.getMessage());
                 ex.printStackTrace();
             }
+
         }
 
         if (!ok) {

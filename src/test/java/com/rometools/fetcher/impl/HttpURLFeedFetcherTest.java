@@ -14,21 +14,17 @@
  * limitations under the License.
  *
  */
-package com.rometools.test;
+package com.rometools.fetcher.impl;
 
-import org.apache.commons.httpclient.Credentials;
-import org.apache.commons.httpclient.UsernamePasswordCredentials;
-
+import com.rometools.fetcher.AbstractJettyTest;
 import com.rometools.fetcher.FeedFetcher;
+import com.rometools.fetcher.TestBasicAuthenticator;
 import com.rometools.fetcher.impl.FeedFetcherCache;
-import com.rometools.fetcher.impl.HttpClientFeedFetcher;
+import com.rometools.fetcher.impl.HttpURLFeedFetcher;
 
-/**
- * @author Nick Lothian
- */
-public class HttpClientFeedFetcherTest extends AbstractJettyTest {
+public class HttpURLFeedFetcherTest extends AbstractJettyTest {
 
-    public HttpClientFeedFetcherTest(final String s) {
+    public HttpURLFeedFetcherTest(final String s) {
         super(s);
     }
 
@@ -37,12 +33,12 @@ public class HttpClientFeedFetcherTest extends AbstractJettyTest {
      */
     @Override
     protected FeedFetcher getFeedFetcher() {
-        return new HttpClientFeedFetcher();
+        return new HttpURLFeedFetcher();
     }
 
     @Override
     protected FeedFetcher getFeedFetcher(final FeedFetcherCache cache) {
-        return new HttpClientFeedFetcher(cache);
+        return new HttpURLFeedFetcher(cache);
     }
 
     /**
@@ -50,15 +46,12 @@ public class HttpClientFeedFetcherTest extends AbstractJettyTest {
      */
     @Override
     public FeedFetcher getAuthenticatedFeedFetcher() {
-        return new HttpClientFeedFetcher(null, new HttpClientFeedFetcher.CredentialSupplier() {
-            @Override
-            public Credentials getCredentials(final String realm, final String host) {
-                if ("localhost".equals(host)) {
-                    return new UsernamePasswordCredentials("username", "password");
-                } else {
-                    return null;
-                }
-            }
-        });
+        // setup the authenticator
+        java.net.Authenticator.setDefault(new TestBasicAuthenticator());
+
+        final FeedFetcher feedFetcher = getFeedFetcher();
+
+        return feedFetcher;
     }
+
 }

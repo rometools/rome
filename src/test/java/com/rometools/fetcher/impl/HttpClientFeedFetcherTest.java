@@ -14,15 +14,22 @@
  * limitations under the License.
  *
  */
-package com.rometools.test;
+package com.rometools.fetcher.impl;
 
+import org.apache.commons.httpclient.Credentials;
+import org.apache.commons.httpclient.UsernamePasswordCredentials;
+
+import com.rometools.fetcher.AbstractJettyTest;
 import com.rometools.fetcher.FeedFetcher;
 import com.rometools.fetcher.impl.FeedFetcherCache;
-import com.rometools.fetcher.impl.HttpURLFeedFetcher;
+import com.rometools.fetcher.impl.HttpClientFeedFetcher;
 
-public class HttpURLFeedFetcherTest extends AbstractJettyTest {
+/**
+ * @author Nick Lothian
+ */
+public class HttpClientFeedFetcherTest extends AbstractJettyTest {
 
-    public HttpURLFeedFetcherTest(final String s) {
+    public HttpClientFeedFetcherTest(final String s) {
         super(s);
     }
 
@@ -31,12 +38,12 @@ public class HttpURLFeedFetcherTest extends AbstractJettyTest {
      */
     @Override
     protected FeedFetcher getFeedFetcher() {
-        return new HttpURLFeedFetcher();
+        return new HttpClientFeedFetcher();
     }
 
     @Override
     protected FeedFetcher getFeedFetcher(final FeedFetcherCache cache) {
-        return new HttpURLFeedFetcher(cache);
+        return new HttpClientFeedFetcher(cache);
     }
 
     /**
@@ -44,12 +51,15 @@ public class HttpURLFeedFetcherTest extends AbstractJettyTest {
      */
     @Override
     public FeedFetcher getAuthenticatedFeedFetcher() {
-        // setup the authenticator
-        java.net.Authenticator.setDefault(new TestBasicAuthenticator());
-
-        final FeedFetcher feedFetcher = getFeedFetcher();
-
-        return feedFetcher;
+        return new HttpClientFeedFetcher(null, new HttpClientFeedFetcher.CredentialSupplier() {
+            @Override
+            public Credentials getCredentials(final String realm, final String host) {
+                if ("localhost".equals(host)) {
+                    return new UsernamePasswordCredentials("username", "password");
+                } else {
+                    return null;
+                }
+            }
+        });
     }
-
 }

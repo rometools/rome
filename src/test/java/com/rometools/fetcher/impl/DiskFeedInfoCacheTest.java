@@ -1,4 +1,4 @@
-package com.rometools.test;
+package com.rometools.fetcher.impl;
 
 import java.io.File;
 import java.net.URL;

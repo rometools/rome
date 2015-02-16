@@ -47,9 +47,13 @@ import com.rometools.rome.io.SyndFeedOutput;
 public class FeedAggregator {
 
     public static void main(final String[] args) {
+
         boolean ok = false;
+
         if (args.length >= 2) {
+
             try {
+
                 final String outputType = args[0];
 
                 final SyndFeed feed = new SyndFeedImpl();
@@ -76,10 +80,12 @@ public class FeedAggregator {
                 output.output(feed, new PrintWriter(System.out));
 
                 ok = true;
+
             } catch (final Exception ex) {
                 System.out.println("ERROR: " + ex.getMessage());
                 ex.printStackTrace();
             }
+
         }
 
         if (!ok) {

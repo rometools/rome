@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package com.rometools.test;
+package com.rometools.fetcher;
 
 import java.io.BufferedReader;
 import java.io.IOException;
