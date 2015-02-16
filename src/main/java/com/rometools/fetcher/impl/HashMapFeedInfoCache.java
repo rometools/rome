@@ -38,9 +38,10 @@ import java.util.Map;
  *
  */
 public class HashMapFeedInfoCache implements FeedFetcherCache, Serializable {
+
     private static final long serialVersionUID = 1L;
 
-    static HashMapFeedInfoCache _instance;
+    static HashMapFeedInfoCache instance;
 
     private Map<String, SyndFeedInfo> infoCache;
 
@@ -65,10 +66,10 @@ public class HashMapFeedInfoCache implements FeedFetcherCache, Serializable {
      * @return an implementation of FeedFetcherCache
      */
     public static synchronized FeedFetcherCache getInstance() {
-        if (_instance == null) {
-            _instance = new HashMapFeedInfoCache();
+        if (instance == null) {
+            instance = new HashMapFeedInfoCache();
         }
-        return _instance;
+        return instance;
     }
 
     protected Map<String, SyndFeedInfo> createInfoCache() {

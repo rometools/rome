@@ -28,6 +28,7 @@ import java.net.URL;
  *
  */
 public interface FeedFetcherCache {
+
     /**
      * Get a SyndFeedInfo object from the cache.
      *
@@ -55,4 +56,5 @@ public interface FeedFetcherCache {
      * @return The removed SyndFeedInfo
      */
     public SyndFeedInfo remove(URL feedUrl);
+
 }

@@ -42,6 +42,7 @@ import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.FeedException;
 import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.XmlReader;
+import com.rometools.utils.IO;
 
 /**
  * @author Nick Lothian
@@ -279,9 +280,7 @@ public class HttpClientFeedFetcher extends AbstractFeedFetcher {
 
         } finally {
 
-            if (stream != null) {
-                stream.close();
-            }
+            IO.close(stream);
 
         }
 

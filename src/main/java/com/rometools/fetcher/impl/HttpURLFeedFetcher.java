@@ -30,6 +30,7 @@ import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.FeedException;
 import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.XmlReader;
+import com.rometools.utils.IO;
 
 /**
  * <p>
@@ -70,7 +71,7 @@ import com.rometools.rome.io.XmlReader;
  */
 public class HttpURLFeedFetcher extends AbstractFeedFetcher {
 
-    private volatile int  connectTimeout = -1;
+    private volatile int connectTimeout = -1;
 
     static final int POLL_EVENT = 1;
     static final int RETRIEVE_EVENT = 2;
@@ -170,9 +171,7 @@ public class HttpURLFeedFetcher extends AbstractFeedFetcher {
             } catch (final java.io.IOException e) {
                 handleErrorCodes(((HttpURLConnection) connection).getResponseCode());
             } finally {
-                if (inputStream != null) {
-                    inputStream.close();
-                }
+                IO.close(inputStream);
                 httpConnection.disconnect();
             }
             // we will never actually get to this line
@@ -234,9 +233,7 @@ public class HttpURLFeedFetcher extends AbstractFeedFetcher {
 
             syndFeedInfo.setSyndFeed(syndFeed);
         } finally {
-            if (inputStream != null) {
-                inputStream.close();
-            }
+            IO.close(inputStream);
         }
     }
 
@@ -249,7 +246,7 @@ public class HttpURLFeedFetcher extends AbstractFeedFetcher {
      * @param syndFeedInfo The SyndFeedInfo for the feed to be retrieved. May be null
      * @param userAgent the name of the user-agent to be placed in HTTP-header.
      */
-    protected void setRequestHeaders(final URLConnection connection, final SyndFeedInfo syndFeedInfo, String userAgent) {
+    protected void setRequestHeaders(final URLConnection connection, final SyndFeedInfo syndFeedInfo, final String userAgent) {
         if (syndFeedInfo != null) {
             // set the headers to get feed only if modified
             // we support the use of both last modified and eTag headers
@@ -288,7 +285,7 @@ public class HttpURLFeedFetcher extends AbstractFeedFetcher {
 
         // SyndFeedInput input = new SyndFeedInput();
 
-        XmlReader reader;
+        final XmlReader reader;
         if (connection.getHeaderField("Content-Type") != null) {
             reader = new XmlReader(is, connection.getHeaderField("Content-Type"), true);
         } else {

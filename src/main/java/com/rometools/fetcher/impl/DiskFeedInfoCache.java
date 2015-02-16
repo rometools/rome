@@ -24,8 +24,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URL;
 
+import com.rometools.utils.IO;
+
 /**
- * Disk based cache.
+ * Disk based feed cache.
  */
 public class DiskFeedInfoCache implements FeedFetcherCache {
 
@@ -37,71 +39,42 @@ public class DiskFeedInfoCache implements FeedFetcherCache {
 
     @Override
     public SyndFeedInfo getFeedInfo(final URL url) {
-        SyndFeedInfo info = null;
-        final String fileName = cachePath + File.separator + "feed_" + replaceNonAlphanumeric(url.toString(), '_').trim();
-        FileInputStream fis = null;
-        ObjectInputStream ois = null;
-        try {
-            fis = new FileInputStream(fileName);
-            ois = new ObjectInputStream(fis);
-            info = (SyndFeedInfo) ois.readObject();
-        } catch (final FileNotFoundException e) {
-            // That's OK, we'l return null
-        } catch (final ClassNotFoundException e) {
-            // Error writing to cache is fatal
-            throw new RuntimeException("Attempting to read from cache", e);
-        } catch (final IOException e) {
-            // Error writing to cache is fatal
-            throw new RuntimeException("Attempting to read from cache", e);
-        } finally {
-            if (fis != null) {
-                try {
-                    fis.close();
-                } catch (final IOException e) {
-                }
-            }
-            if (ois != null) {
-                try {
-                    ois.close();
-                } catch (final IOException e) {
-                }
-            }
-        }
-        return info;
+        final String fileName = generateFilename(url);
+        return getFeedInfo(fileName);
     }
 
     @Override
     public void setFeedInfo(final URL url, final SyndFeedInfo feedInfo) {
-        final String fileName = cachePath + File.separator + "feed_" + replaceNonAlphanumeric(url.toString(), '_').trim();
-        FileOutputStream fos;
+
+        final String fileName = generateFilename(url);
+
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+
         try {
+
             fos = new FileOutputStream(fileName);
-            final ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos = new ObjectOutputStream(fos);
             oos.writeObject(feedInfo);
             fos.flush();
-            fos.close();
-        } catch (final Exception e) {
-            // Error writing to cache is fatal
-            throw new RuntimeException("Attempting to write to cache", e);
+
+        } catch (final FileNotFoundException e) {
+
+            throw new RuntimeException("Error while writing to cache", e);
+
+        } catch (final IOException e) {
+
+            throw new RuntimeException("Error while writing to cache", e);
+
+        } finally {
+
+            IO.closeQuietly(fos);
+            IO.closeQuietly(oos);
+
         }
+
     }
 
-    public static String replaceNonAlphanumeric(final String str, final char subst) {
-        final StringBuffer ret = new StringBuffer(str.length());
-        final char[] testChars = str.toCharArray();
-        for (final char testChar : testChars) {
-            if (Character.isLetterOrDigit(testChar)) {
-                ret.append(testChar);
-            } else {
-                ret.append(subst);
-            }
-        }
-        return ret.toString();
-    }
-
-    /**
-     * Clear the cache.
-     */
     @Override
     public synchronized void clear() {
         final File file = new File(cachePath);
@@ -114,57 +87,72 @@ public class DiskFeedInfoCache implements FeedFetcherCache {
                 final File deleteMe = new File(cachePath + File.separator + files[i]);
                 deleteMe.delete();
             }
-
             // don't delete the cache directory
         }
     }
 
     @Override
     public SyndFeedInfo remove(final URL url) {
+        final String fileName = generateFilename(url);
+        final SyndFeedInfo info = getFeedInfo(fileName);
+        if (info != null) {
+            final File file = new File(fileName);
+            if (file.exists()) {
+                file.delete();
+            }
+        }
+        return info;
+    }
+
+    private SyndFeedInfo getFeedInfo(final String fileName) {
 
         SyndFeedInfo info = null;
-        final String fileName = cachePath + File.separator + "feed_" + replaceNonAlphanumeric(url.toString(), '_').trim();
         FileInputStream fis = null;
         ObjectInputStream ois = null;
-        boolean consumed = false;
 
         try {
 
             fis = new FileInputStream(fileName);
             ois = new ObjectInputStream(fis);
             info = (SyndFeedInfo) ois.readObject();
-            consumed = true;
 
         } catch (final FileNotFoundException e) {
-            // That's OK, we'l return null
+
+            // feed is not cached yet
+
         } catch (final ClassNotFoundException e) {
-            // Error writing to cache is fatal
-            throw new RuntimeException("Attempting to read from cache", e);
+
+            throw new RuntimeException("Unable to read from cache", e);
+
         } catch (final IOException e) {
-            // Error writing to cache is fatal
-            throw new RuntimeException("Attempting to read from cache", e);
+
+            throw new RuntimeException("Unable to read from cache", e);
+
         } finally {
-            if (fis != null) {
-                try {
-                    fis.close();
-                } catch (final IOException e) {
-                }
-            }
-            if (ois != null) {
-                try {
-                    ois.close();
-                } catch (final IOException e) {
-                }
-            }
-            if (consumed) {
-                final File file = new File(fileName);
-                if (file.exists()) {
-                    file.delete();
-                }
-            }
+
+            IO.closeQuietly(fis);
+            IO.closeQuietly(ois);
+
         }
 
         return info;
 
     }
+
+    private static String replaceNonAlphanumeric(final String string, final char character) {
+        final StringBuffer buffer = new StringBuffer(string.length());
+        for (final char singleChar : string.toCharArray()) {
+            if (Character.isLetterOrDigit(singleChar)) {
+                buffer.append(singleChar);
+            } else {
+                buffer.append(character);
+            }
+        }
+        return buffer.toString();
+    }
+
+    private String generateFilename(final URL url) {
+        return cachePath + File.separator + "feed_" + replaceNonAlphanumeric(url.toString(), '_').trim();
+    }
+
 }
