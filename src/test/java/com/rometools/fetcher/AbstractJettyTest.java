@@ -32,10 +32,6 @@ import org.mortbay.jetty.servlet.ServletHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.rometools.fetcher.FeedFetcher;
-import com.rometools.fetcher.FetcherEvent;
-import com.rometools.fetcher.FetcherException;
-import com.rometools.fetcher.FetcherListener;
 import com.rometools.fetcher.impl.FeedFetcherCache;
 import com.rometools.fetcher.impl.HashMapFeedInfoCache;
 import com.rometools.rome.feed.atom.Entry;
@@ -107,8 +103,8 @@ public abstract class AbstractJettyTest extends TestCase {
      */
     private ServletHandler createServletHandler() {
         final ServletHandler servlets = new ServletHandler();
-        servlets.addServlet("FetcherTestServlet", FetcherTestServlet.SERVLET_MAPPING, "com.rometools.test.FetcherTestServlet");
-        servlets.addServlet("FetcherTestServlet", FetcherTestServlet.SERVLET_MAPPING2, "com.rometools.test.FetcherTestServlet");
+        servlets.addServlet("FetcherTestServlet", FetcherTestServlet.SERVLET_MAPPING, "com.rometools.fetcher.FetcherTestServlet");
+        servlets.addServlet("FetcherTestServlet", FetcherTestServlet.SERVLET_MAPPING2, "com.rometools.fetcher.FetcherTestServlet");
         return servlets;
     }
 
