@@ -67,7 +67,8 @@ public class OPML20Generator extends OPML10Generator {
 
         retValue = super.generateHead(opml);
 
-        final Element docs = new Element("docs", opml.getDocs());
+        final Element docs = new Element("docs");
+        docs.setText(opml.getDocs());
         retValue.addContent(docs);
 
         return retValue;
