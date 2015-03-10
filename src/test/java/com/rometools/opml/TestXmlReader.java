@@ -51,14 +51,17 @@ public class TestXmlReader extends TestCase {
         InputStream is = getXmlStream("no-bom", "xml", encoding, encoding);
         XmlReader xmlReader = new XmlReader(is, false);
         assertEquals(xmlReader.getEncoding(), "UTF-8");
+        xmlReader.close();
 
         is = getXmlStream("no-bom", "xml-prolog", encoding, encoding);
         xmlReader = new XmlReader(is);
         assertEquals(xmlReader.getEncoding(), "UTF-8");
+        xmlReader.close();
 
         is = getXmlStream("no-bom", "xml-prolog-encoding", encoding, encoding);
         xmlReader = new XmlReader(is);
         assertEquals(xmlReader.getEncoding(), encoding);
+        xmlReader.close();
 
     }
 
