@@ -110,23 +110,23 @@ public class OPML10Generator extends BaseWireFeedGenerator implements WireFeedGe
         boolean hasHead = false;
 
         if (opml.getCreated() != null) {
-            hasHead = addNotNullSimpleElement(head, "dateCreated", DateParser.formatRFC822(opml.getCreated(), Locale.US));
+            hasHead |= addNotNullSimpleElement(head, "dateCreated", DateParser.formatRFC822(opml.getCreated(), Locale.US));
         }
 
-        hasHead = addNotNullSimpleElement(head, "expansionState", intArrayToCsvString(opml.getExpansionState()));
+        hasHead |= addNotNullSimpleElement(head, "expansionState", intArrayToCsvString(opml.getExpansionState()));
 
         if (opml.getModified() != null) {
-            hasHead = addNotNullSimpleElement(head, "dateModified", DateParser.formatRFC822(opml.getModified(), Locale.US));
+            hasHead |= addNotNullSimpleElement(head, "dateModified", DateParser.formatRFC822(opml.getModified(), Locale.US));
         }
 
-        hasHead = addNotNullSimpleElement(head, "ownerEmail", opml.getOwnerEmail());
-        hasHead = addNotNullSimpleElement(head, "ownerName", opml.getOwnerName());
-        hasHead = addNotNullSimpleElement(head, "title", opml.getTitle());
-        hasHead = addNotNullSimpleElement(head, "vertScrollState", opml.getVerticalScrollState());
-        hasHead = addNotNullSimpleElement(head, "windowBottom", opml.getWindowBottom());
-        hasHead = addNotNullSimpleElement(head, "windowLeft", opml.getWindowLeft());
-        hasHead = addNotNullSimpleElement(head, "windowRight", opml.getWindowRight());
-        hasHead = addNotNullSimpleElement(head, "windowTop", opml.getWindowTop());
+        hasHead |= addNotNullSimpleElement(head, "ownerEmail", opml.getOwnerEmail());
+        hasHead |= addNotNullSimpleElement(head, "ownerName", opml.getOwnerName());
+        hasHead |= addNotNullSimpleElement(head, "title", opml.getTitle());
+        hasHead |= addNotNullSimpleElement(head, "vertScrollState", opml.getVerticalScrollState());
+        hasHead |= addNotNullSimpleElement(head, "windowBottom", opml.getWindowBottom());
+        hasHead |= addNotNullSimpleElement(head, "windowLeft", opml.getWindowLeft());
+        hasHead |= addNotNullSimpleElement(head, "windowRight", opml.getWindowRight());
+        hasHead |= addNotNullSimpleElement(head, "windowTop", opml.getWindowTop());
 
         if (hasHead) {
             return head;
