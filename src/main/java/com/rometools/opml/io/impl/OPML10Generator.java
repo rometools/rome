@@ -67,6 +67,7 @@ public class OPML10Generator extends BaseWireFeedGenerator implements WireFeedGe
         final Opml opml = (Opml) feed;
         final Document doc = new Document();
         final Element root = new Element("opml");
+        root.setAttribute("version", "1.0");
         doc.addContent(root);
 
         final Element head = generateHead(opml);
