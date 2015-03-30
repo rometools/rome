@@ -64,6 +64,42 @@ public interface SyndImage extends Cloneable, CopyFrom {
     void setUrl(String url);
 
     /**
+     * Returns the image width.
+     * <p>
+     *
+     * @return the image width, <b>null</b> if none.
+     *
+     */
+    public Integer getWidth();
+
+    /**
+     * Sets the image width.
+     * <p>
+     *
+     * @param width the image width to set, <b>null</b> if none.
+     *
+     */
+    public void setWidth(Integer width);
+
+    /**
+     * Returns the image height.
+     * <p>
+     *
+     * @return the image height, <b>null</b> if none.
+     *
+     */
+    public Integer getHeight();
+
+    /**
+     * Sets the image height.
+     * <p>
+     *
+     * @param height the image height to set, <b>null</b> if none.
+     *
+     */
+    public void setHeight(Integer height);
+
+    /**
      * Returns the image link.
      * <p>
      *
