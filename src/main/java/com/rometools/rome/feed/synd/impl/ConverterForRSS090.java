@@ -182,6 +182,8 @@ public class ConverterForRSS090 implements Converter {
         image.setTitle(sImage.getTitle());
         image.setUrl(sImage.getUrl());
         image.setLink(sImage.getLink());
+        image.setHeight(sImage.getHeight());
+        image.setWidth(sImage.getWidth());
         return image;
     }
 
