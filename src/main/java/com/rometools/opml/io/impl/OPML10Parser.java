@@ -106,61 +106,61 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
             opml.setOwnerName(head.getChildTextTrim("ownerName"));
             opml.setOwnerEmail(head.getChildTextTrim("ownerEmail"));
             opml.setVerticalScrollState(readInteger(head.getChildText("vertScrollState")));
-        }
 
-        try {
-            opml.setWindowBottom(readInteger(head.getChildText("windowBottom")));
-        } catch (final NumberFormatException nfe) {
-            LOG.warn("Unable to parse windowBottom", nfe);
+            try {
+                opml.setWindowBottom(readInteger(head.getChildText("windowBottom")));
+            } catch (final NumberFormatException nfe) {
+                LOG.warn("Unable to parse windowBottom", nfe);
 
-            if (validate) {
-                throw new FeedException("Unable to parse windowBottom", nfe);
+                if (validate) {
+                    throw new FeedException("Unable to parse windowBottom", nfe);
+                }
             }
-        }
 
-        try {
-            opml.setWindowLeft(readInteger(head.getChildText("windowLeft")));
-        } catch (final NumberFormatException nfe) {
-            LOG.warn("Unable to parse windowLeft", nfe);
-        }
-
-        try {
-            opml.setWindowRight(readInteger(head.getChildText("windowRight")));
-        } catch (final NumberFormatException nfe) {
-            LOG.warn("Unable to parse windowRight", nfe);
-
-            if (validate) {
-                throw new FeedException("Unable to parse windowRight", nfe);
+            try {
+                opml.setWindowLeft(readInteger(head.getChildText("windowLeft")));
+            } catch (final NumberFormatException nfe) {
+                LOG.warn("Unable to parse windowLeft", nfe);
             }
-        }
 
-        try {
-            opml.setWindowLeft(readInteger(head.getChildText("windowLeft")));
-        } catch (final NumberFormatException nfe) {
-            LOG.warn("Unable to parse windowLeft", nfe);
+            try {
+                opml.setWindowRight(readInteger(head.getChildText("windowRight")));
+            } catch (final NumberFormatException nfe) {
+                LOG.warn("Unable to parse windowRight", nfe);
 
-            if (validate) {
-                throw new FeedException("Unable to parse windowLeft", nfe);
+                if (validate) {
+                    throw new FeedException("Unable to parse windowRight", nfe);
+                }
             }
-        }
 
-        try {
-            opml.setWindowTop(readInteger(head.getChildText("windowTop")));
-        } catch (final NumberFormatException nfe) {
-            LOG.warn("Unable to parse windowTop", nfe);
+            try {
+                opml.setWindowLeft(readInteger(head.getChildText("windowLeft")));
+            } catch (final NumberFormatException nfe) {
+                LOG.warn("Unable to parse windowLeft", nfe);
 
-            if (validate) {
-                throw new FeedException("Unable to parse windowTop", nfe);
+                if (validate) {
+                    throw new FeedException("Unable to parse windowLeft", nfe);
+                }
             }
-        }
 
-        try {
-            opml.setExpansionState(readIntArray(head.getChildText("expansionState")));
-        } catch (final NumberFormatException nfe) {
-            LOG.warn("Unable to parse expansionState", nfe);
+            try {
+                opml.setWindowTop(readInteger(head.getChildText("windowTop")));
+            } catch (final NumberFormatException nfe) {
+                LOG.warn("Unable to parse windowTop", nfe);
 
-            if (validate) {
-                throw new FeedException("Unable to parse expansionState", nfe);
+                if (validate) {
+                    throw new FeedException("Unable to parse windowTop", nfe);
+                }
+            }
+
+            try {
+                opml.setExpansionState(readIntArray(head.getChildText("expansionState")));
+            } catch (final NumberFormatException nfe) {
+                LOG.warn("Unable to parse expansionState", nfe);
+
+                if (validate) {
+                    throw new FeedException("Unable to parse expansionState", nfe);
+                }
             }
         }
 
