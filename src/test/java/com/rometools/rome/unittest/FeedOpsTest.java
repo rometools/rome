@@ -21,6 +21,10 @@ public abstract class FeedOpsTest extends FeedTest {
     protected FeedOpsTest(final String feedType) {
         super(feedType + ".xml");
     }
+    
+    protected FeedOpsTest(final String feedType, boolean allowDoctypes) {
+        super(feedType + ".xml", allowDoctypes);
+    }
 
     // 1.2a
     public void testWireFeedEquals() throws Exception {

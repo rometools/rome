@@ -21,7 +21,9 @@ import com.rometools.rome.io.WireFeedInput;
  *
  */
 public abstract class FeedTest extends TestCase {
+    
     private final String feedFileName;
+    private final boolean allowDoctypes;
     private Document jDomDoc = null;
     private WireFeed wireFeed = null;
     private SyndFeed syndFeed = null;
@@ -29,7 +31,12 @@ public abstract class FeedTest extends TestCase {
     private boolean preservingWireFeed = false;
 
     protected FeedTest(final String feedFileName) {
+        this(feedFileName, false);
+    }
+    
+    protected FeedTest(final String feedFileName, boolean allowDoctypes) {
         this.feedFileName = feedFileName;
+        this.allowDoctypes = allowDoctypes;
     }
 
     protected String getFeedFileName() {
@@ -50,12 +57,14 @@ public abstract class FeedTest extends TestCase {
 
     protected WireFeed getWireFeed() throws Exception {
         final WireFeedInput in = new WireFeedInput();
+        in.setAllowDoctypes(allowDoctypes);
         return in.build(getFeedReader());
     }
 
     protected SyndFeed getSyndFeed(final boolean preserveWireFeed) throws Exception {
         final SyndFeedInput in = new SyndFeedInput();
         in.setPreserveWireFeed(preserveWireFeed);
+        in.setAllowDoctypes(allowDoctypes);
         return in.build(getFeedReader());
     }
 

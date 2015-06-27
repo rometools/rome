@@ -18,7 +18,7 @@ import com.rometools.rome.io.impl.DateParser;
 public class TestSyndFeedRSS091N extends SyndFeedTest {
 
     public TestSyndFeedRSS091N() {
-        super("rss_0.91N", "rss_0.91N.xml");
+        super("rss_0.91N", "rss_0.91N.xml", true);
     }
 
     protected TestSyndFeedRSS091N(final String type) {

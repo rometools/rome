@@ -15,7 +15,7 @@ public class TestOpsRSS091N extends FeedOpsTest {
     }
 
     public TestOpsRSS091N() {
-        super("rss_0.91N");
+        super("rss_0.91N", true);
     }
 
 }

@@ -100,6 +100,27 @@ public class SyndFeedInput {
     public boolean getXmlHealerOn() {
         return feedInput.getXmlHealerOn();
     }
+    
+    /**
+     * Indicates whether Doctype declarations are allowed.
+     *  
+     * @return true when Doctype declarations are allowed, false otherwise
+     */
+    public boolean isAllowDoctypes() {
+        return feedInput.isAllowDoctypes();
+    }
+
+    /**
+     * Since ROME 1.5.1 we fixed a security vulnerability by disallowing Doctype declarations by default. 
+     * This change breaks the compatibility with at least RSS 0.91N because it requires a Doctype declaration. 
+     * You are able to allow Doctype declarations again with this property. You should only activate it 
+     * when the feeds that you process are absolutely trustful. 
+     *  
+     * @param allowDoctypes true when Doctype declarations should be allowed again, false otherwise
+     */
+    public void setAllowDoctypes(boolean allowDoctypes) {
+        feedInput.setAllowDoctypes(allowDoctypes);
+    }
 
     /**
      * Builds SyndFeedImpl from a file.
