@@ -20,7 +20,11 @@ public abstract class SyndFeedTest extends FeedTest {
     }
 
     protected SyndFeedTest(final String feedType, final String feedFileName) {
-        super(feedFileName);
+        this(feedType, feedFileName, false);
+    }
+    
+    protected SyndFeedTest(final String feedType, final String feedFileName, boolean allowDoctypes) {
+        super(feedFileName, allowDoctypes);
         prefix = feedType;
     }
 
