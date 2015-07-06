@@ -77,7 +77,7 @@ public class XmlReader extends Reader {
     private static final MessageFormat HTTP_EX_3 = new MessageFormat(
             "Invalid encoding, CT-MIME [{0}] CT-Enc [{1}] BOM [{2}] XML guess [{3}] XML prolog [{4}], Invalid MIME");
 
-    private static String staticDefaultEncoding = null;
+    private static String staticDefaultEncoding = UTF_8;
 
     private final String defaultEncoding;
 
