@@ -47,7 +47,7 @@ public class SyModuleParser implements ModuleParser {
         final Element updatePeriod = syndRoot.getChild("updatePeriod", getDCNamespace());
         if (updatePeriod != null) {
             foundSomething = true;
-            sm.setUpdatePeriod(updatePeriod.getText());
+            sm.setUpdatePeriod(updatePeriod.getText().trim());
         }
 
         final Element updateFrequency = syndRoot.getChild("updateFrequency", getDCNamespace());
