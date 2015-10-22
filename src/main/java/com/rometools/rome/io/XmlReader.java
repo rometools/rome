@@ -238,6 +238,15 @@ public class XmlReader extends Reader {
         defaultEncoding = staticDefaultEncoding;
         final boolean lenient = true;
         if (conn instanceof HttpURLConnection) {
+        	final Package pckg = this.getClass().getPackage();
+        	String userAgent = "ROME";
+            if (pckg.getImplementationTitle() != null && pckg.getImplementationVersion() != null) {
+            	userAgent = pckg.getImplementationTitle() + "/" + pckg.getImplementationVersion();
+            }
+            
+            //Set the user agent accordingly
+            conn.setRequestProperty("User-Agent", userAgent);
+        	
         	//Checks whether the given connection redirects
         	int status = ((HttpURLConnection)conn).getResponseCode();
         	if(status == HttpURLConnection.HTTP_MOVED_TEMP
@@ -247,14 +256,10 @@ public class XmlReader extends Reader {
         		((HttpURLConnection) conn).disconnect();
         		//...get the new location from the header to create a new connection
         		conn = new URL(conn.getHeaderField("Location")).openConnection();
+        		conn.setRequestProperty("User-Agent", userAgent); //Reset user agent to new connection    		
         	}
         	
-            final Package pckg = this.getClass().getPackage();
-            if (pckg.getImplementationTitle() != null && pckg.getImplementationVersion() != null) {
-                conn.setRequestProperty("User-Agent", pckg.getImplementationTitle() + "/" + pckg.getImplementationVersion());
-            } else {
-                conn.setRequestProperty("User-Agent", "ROME");
-            }
+            //
             try {
                 doHttpStream(conn.getInputStream(), conn.getContentType(), lenient);
             } catch (final XmlReaderException ex) {
