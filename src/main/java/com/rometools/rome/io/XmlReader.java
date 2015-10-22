@@ -234,10 +234,21 @@ public class XmlReader extends Reader {
      * @throws IOException thrown if there is a problem reading the stream of the URLConnection.
      *
      */
-    public XmlReader(final URLConnection conn) throws IOException {
+    public XmlReader(URLConnection conn) throws IOException {
         defaultEncoding = staticDefaultEncoding;
         final boolean lenient = true;
         if (conn instanceof HttpURLConnection) {
+        	//Checks whether the given connection redirects
+        	int status = ((HttpURLConnection)conn).getResponseCode();
+        	if(status == HttpURLConnection.HTTP_MOVED_TEMP
+        			|| status == HttpURLConnection.HTTP_MOVED_PERM
+        			|| status == HttpURLConnection.HTTP_SEE_OTHER) {
+        		//Close the old connection and..
+        		((HttpURLConnection) conn).disconnect();
+        		//...get the new location from the header to create a new connection
+        		conn = new URL(conn.getHeaderField("Location")).openConnection();
+        	}
+        	
             final Package pckg = this.getClass().getPackage();
             if (pckg.getImplementationTitle() != null && pckg.getImplementationVersion() != null) {
                 conn.setRequestProperty("User-Agent", pckg.getImplementationTitle() + "/" + pckg.getImplementationVersion());
