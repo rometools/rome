@@ -151,6 +151,19 @@ public class ITunesParser implements ModuleParser {
                 final Duration dur = new Duration(duration.getValue().trim());
                 entryInfo.setDuration(dur);
             }
+
+            final Element closedCaptioned = element.getChild("isClosedCaptioned", ns);
+
+            if (closedCaptioned != null && closedCaptioned.getValue() != null && closedCaptioned.getValue().trim().equalsIgnoreCase("yes")) {
+                entryInfo.setClosedCaptioned(true);
+            }
+
+            final Element order = element.getChild("order", ns);
+
+            if (order != null && order.getValue() != null) {
+                final Integer o = Integer.valueOf(order.getValue().trim());
+                entryInfo.setOrder(o);
+            }
         }
         if (module != null) {
             // All these are common to both Channel and Item
