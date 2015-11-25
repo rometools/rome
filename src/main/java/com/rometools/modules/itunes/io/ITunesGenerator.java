@@ -124,6 +124,12 @@ public class ITunesGenerator implements ModuleGenerator {
             if (info.getDuration() != null) {
                 element.addContent(generateSimpleElement("duration", info.getDuration().toString()));
             }
+            if (info.getClosedCaptioned()) {
+                element.addContent(generateSimpleElement("isClosedCaptioned", "yes"));
+            }
+            if (info.getOrder() != null) {
+                element.addContent(generateSimpleElement("order", info.getOrder().toString()));
+            }
         }
 
         if (itunes.getAuthor() != null) {

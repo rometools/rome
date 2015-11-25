@@ -103,4 +103,18 @@ public class ITunesParserTest extends AbstractTestCase {
         }
     }
 
+    /**
+     * Test of parse method, of class com.rometools.modules.itunes.io.ITunesParser.
+     */
+    public void testParseItem() throws Exception {
+        File feed = new File(getTestFile("xml/leshow.xml"));
+        final SyndFeedInput input = new SyndFeedInput();
+        SyndFeed syndfeed = input.build(new XmlReader(feed.toURI().toURL()));
+
+        SyndEntry entry = syndfeed.getEntries().get(0);
+
+        EntryInformationImpl entryInfo = (EntryInformationImpl) entry.getModule(AbstractITunesObject.URI);
+        assertEquals(true, entryInfo.getClosedCaptioned());
+        assertEquals(Integer.valueOf(2), entryInfo.getOrder());
+    }
 }
