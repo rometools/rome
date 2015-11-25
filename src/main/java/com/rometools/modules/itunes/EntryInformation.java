@@ -66,4 +66,11 @@ public interface EntryInformation extends ITunes {
      */
     public void setDuration(Duration duration);
 
+    public boolean getClosedCaptioned();
+
+    public void setClosedCaptioned(boolean closedCaptioned);
+
+    public Integer getOrder();
+
+    public void setOrder(Integer order);
 }

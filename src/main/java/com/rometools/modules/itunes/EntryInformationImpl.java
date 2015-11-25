@@ -55,6 +55,8 @@ public class EntryInformationImpl extends AbstractITunesObject implements EntryI
      */
     private static final long serialVersionUID = 1L;
     private Duration duration;
+    private boolean closedCaptioned;
+    private Integer order;
 
     /**
      * Creates a new instance of EntryInformationImpl
@@ -82,6 +84,26 @@ public class EntryInformationImpl extends AbstractITunesObject implements EntryI
         this.duration = duration;
     }
 
+    @Override
+    public boolean getClosedCaptioned() {
+        return closedCaptioned;
+    }
+
+    @Override
+    public void setClosedCaptioned(boolean closedCaptioned) {
+        this.closedCaptioned = closedCaptioned;
+    }
+
+    @Override
+    public Integer getOrder() {
+        return order;
+    }
+
+    @Override
+    public void setOrder(Integer order) {
+        this.order = order;
+    }
+
     /**
      * Defined by the ROME module API
      *
@@ -105,6 +127,8 @@ public class EntryInformationImpl extends AbstractITunesObject implements EntryI
 
         setSubtitle(info.getSubtitle());
         setSummary(info.getSummary());
+        setClosedCaptioned(info.getClosedCaptioned());
+        setOrder(info.getOrder());
     }
 
     /**
@@ -123,8 +147,12 @@ public class EntryInformationImpl extends AbstractITunesObject implements EntryI
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("[");
-        sb.append(" Duration: ");
+        sb.append(" duration: ");
         sb.append(getDuration());
+        sb.append(" closedCaptioned: ");
+        sb.append(getClosedCaptioned());
+        sb.append(" order: ");
+        sb.append(getOrder());
         sb.append("]");
         sb.append(super.toString());
 
