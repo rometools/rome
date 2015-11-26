@@ -32,7 +32,7 @@ import com.rometools.rome.feed.module.Module;
 public abstract class SSEModule implements Module {
     private static final long serialVersionUID = 1L;
     
-    private static final Logger		LOG	= LoggerFactory.getLogger(SSEModule.class);
+    private static final Logger	LOG	= LoggerFactory.getLogger(SSEModule.class);
 
     public static final String SSE_SCHEMA_URI = "http://www.microsoft.com/schemas/rss/sse";
 

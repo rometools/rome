@@ -21,7 +21,6 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.rometools.modules.base.GoogleBaseImpl;
 import com.rometools.modules.opensearch.OpenSearchModule;
 import com.rometools.modules.opensearch.entity.OSQuery;
 import com.rometools.rome.feed.CopyFrom;
@@ -33,7 +32,7 @@ import com.rometools.rome.feed.module.ModuleImpl;
  */
 public class OpenSearchModuleImpl extends ModuleImpl implements OpenSearchModule, Serializable {
     private static final long serialVersionUID = 1L;
-    private static final Logger		LOG	= LoggerFactory.getLogger(OpenSearchModuleImpl.class);
+    private static final Logger	LOG	= LoggerFactory.getLogger(OpenSearchModuleImpl.class);
     private int totalResults = -1;
     private int startIndex = 1;
     private int itemsPerPage = -1;

@@ -20,7 +20,6 @@ import org.jdom2.Namespace;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.rometools.modules.base.GoogleBaseImpl;
 import com.rometools.modules.georss.geometries.AbstractGeometry;
 import com.rometools.modules.georss.geometries.Point;
 import com.rometools.modules.georss.geometries.Position;
@@ -38,7 +37,7 @@ public abstract class GeoRSSModule extends ModuleImpl implements Cloneable {
 
     private static final long serialVersionUID = 1L;
     
-    private static final Logger		LOG	= LoggerFactory.getLogger(GeoRSSModule.class);
+    private static final Logger	LOG	= LoggerFactory.getLogger(GeoRSSModule.class);
 
     protected AbstractGeometry geometry;
 

@@ -75,7 +75,7 @@ import com.rometools.rome.io.ModuleGenerator;
 public class GoogleBaseGenerator implements ModuleGenerator {
     private static final Namespace NS = Namespace.getNamespace("g-core", GoogleBase.URI);
     
-    private static final Logger		LOG	= LoggerFactory.getLogger(GoogleBaseGenerator.class);
+    private static final Logger	LOG	= LoggerFactory.getLogger(GoogleBaseGenerator.class);
 
     /** Creates a new instance of GoogleBaseGenerator */
     public GoogleBaseGenerator() {
