@@ -42,6 +42,9 @@ import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.Date;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.rometools.modules.base.types.CloneableType;
 import com.rometools.modules.base.types.CurrencyEnumeration;
 import com.rometools.modules.base.types.DateTimeRange;
@@ -68,6 +71,8 @@ public class GoogleBaseImpl implements GoogleBase {
      *
      */
     private static final long serialVersionUID = 1L;
+    
+    private static final Logger		LOG	= LoggerFactory.getLogger(GoogleBaseImpl.class);
 
     /** boolean:listing_type */
     private Boolean listingType;
@@ -1297,7 +1302,7 @@ public class GoogleBaseImpl implements GoogleBase {
 
             return gbi;
         } catch (final Exception e) {
-            e.printStackTrace();
+            LOG.error("Error",e);
             throw new CloneNotSupportedException();
         }
     }

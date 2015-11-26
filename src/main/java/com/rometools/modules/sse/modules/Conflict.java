@@ -17,6 +17,10 @@ package com.rometools.modules.sse.modules;
 
 import java.util.Date;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.rometools.modules.base.GoogleBaseImpl;
 import com.rometools.rome.feed.CopyFrom;
 import com.rometools.rome.feed.rss.Item;
 
@@ -25,6 +29,8 @@ import com.rometools.rome.feed.rss.Item;
  */
 public class Conflict extends SSEModule {
     private static final long serialVersionUID = 1L;
+    
+    private static final Logger		LOG	= LoggerFactory.getLogger(Conflict.class);
 
     public static final String CONFLICTS_NAME = "conflicts";
 
@@ -69,7 +75,7 @@ public class Conflict extends SSEModule {
             conflict.conflictItem = (Item) conflictItem.clone();
         } catch (final CloneNotSupportedException e) {
             // should not happen
-            e.printStackTrace();
+        	LOG.error("Error",e);
         }
     }
 

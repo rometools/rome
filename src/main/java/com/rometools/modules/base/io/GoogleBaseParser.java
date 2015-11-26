@@ -96,10 +96,8 @@ public class GoogleBaseParser implements ModuleParser {
             pds = Introspector.getBeanInfo(GoogleBaseImpl.class).getPropertyDescriptors();
             PROPS2TAGS.load(GoogleBaseParser.class.getResourceAsStream("/com/rometools/modules/base/io/tags.properties"));
         } catch (final IOException e) {
-            e.printStackTrace();
             LOG.error("Unable to read properties file for Google Base tags!", e);
         } catch (final IntrospectionException e) {
-            e.printStackTrace();
             LOG.error("Unable to get property descriptors for GoogleBaseImpl!", e);
         }
     }
@@ -144,7 +142,6 @@ public class GoogleBaseParser implements ModuleParser {
                         handleTag(child, pd, module);
                     } catch (final Exception e) {
                         LOG.warn("Unable to handle tag: " + child.getName(), e);
-                        e.printStackTrace();
                     }
                 }
             }

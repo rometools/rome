@@ -45,6 +45,10 @@ import java.util.Map;
 import java.util.StringTokenizer;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.rometools.modules.base.GoogleBaseImpl;
 import com.rometools.rome.feed.impl.EqualsBean;
 import com.rometools.rome.feed.impl.ToStringBean;
 
@@ -56,6 +60,7 @@ public class License {
 
     private static final String CC_START = "http://creativecommons.org/licenses/";
     private static final Map<String, License> lookupLicense = new ConcurrentHashMap<String, License>();
+    private static final Logger		LOG	= LoggerFactory.getLogger(License.class);
     public static final License NO_DERIVS = new License("http://creativecommons.org/licenses/nd/1.0/", new Behaviour[0], new Behaviour[] {
             Behaviour.DISTRIBUTION, Behaviour.REPRODUCTION });
     public static final License NO_DERIVS_NONCOMMERCIAL = new License("http://creativecommons.org/licenses/nd-nc/1.0/",
@@ -120,7 +125,7 @@ public class License {
                         }
                     }
                 } catch (final Exception e) {
-                    e.printStackTrace();
+                	 LOG.error("Error",e);
                 }
             }
         }
