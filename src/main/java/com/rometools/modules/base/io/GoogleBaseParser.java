@@ -1,41 +1,36 @@
 /*
  * GoogleBaseParser.java
- *
+ * 
  * Created on November 17, 2005, 11:31 AM
- *
- * This library is provided under dual licenses.
- * You may choose the terms of the Lesser General Public License or the Apache
- * License at your discretion.
- *
- *  Copyright (C) 2005  Robert Cooper, Temple of the Screaming Penguin
- *
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * 
+ * This library is provided under dual licenses. You may choose the terms of the Lesser General
+ * Public License or the Apache License at your discretion.
+ * 
+ * Copyright (C) 2005 Robert Cooper, Temple of the Screaming Penguin
+ * 
+ * 
+ * This library is free software; you can redistribute it and/or modify it under the terms of the
+ * GNU Lesser General Public License as published by the Free Software Foundation; either version
+ * 2.1 of the License, or (at your option) any later version.
+ * 
+ * This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
+ * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * 
+ * You should have received a copy of the GNU Lesser General Public License along with this library;
+ * if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+ * 02111-1307 USA
+ * 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
  */
 package com.rometools.modules.base.io;
 
@@ -195,12 +190,13 @@ public class GoogleBaseParser implements ModuleParser {
         } else if (pd.getPropertyType() == FloatUnit.class || pd.getPropertyType().getComponentType() == FloatUnit.class) {
             tagValue = new FloatUnit(tag.getText());
         } else if (pd.getPropertyType() == DateTimeRange.class || pd.getPropertyType().getComponentType() == DateTimeRange.class) {
-            tagValue = new DateTimeRange(LONG_DT_FMT.parse(tag.getChild("start", GoogleBaseParser.NS).getText().trim()), LONG_DT_FMT.parse(tag
-                    .getChild("end", GoogleBaseParser.NS).getText().trim()));
+            tagValue =
+                    new DateTimeRange(LONG_DT_FMT.parse(tag.getChild("start", GoogleBaseParser.NS).getText().trim()), LONG_DT_FMT.parse(tag
+                            .getChild("end", GoogleBaseParser.NS).getText().trim()));
         } else if (pd.getPropertyType() == ShippingType.class || pd.getPropertyType().getComponentType() == ShippingType.class) {
             final FloatUnit price = new FloatUnit(tag.getChild("price", GoogleBaseParser.NS).getText().trim());
-            ShippingType.ServiceEnumeration service = ShippingType.ServiceEnumeration
-                    .findByValue(tag.getChild("service", GoogleBaseParser.NS).getText().trim());
+            ShippingType.ServiceEnumeration service =
+                    ShippingType.ServiceEnumeration.findByValue(tag.getChild("service", GoogleBaseParser.NS).getText().trim());
 
             if (service == null) {
                 service = ShippingType.ServiceEnumeration.STANDARD;
@@ -223,7 +219,7 @@ public class GoogleBaseParser implements ModuleParser {
         }
 
         if (!pd.getPropertyType().isArray()) {
-            pd.getWriteMethod().invoke(module, new Object[] { tagValue });
+            pd.getWriteMethod().invoke(module, new Object[] {tagValue});
         } else {
             final Object[] current = (Object[]) pd.getReadMethod().invoke(module, (Object[]) null);
             final int newSize = current == null ? 1 : current.length + 1;
@@ -236,7 +232,7 @@ public class GoogleBaseParser implements ModuleParser {
             }
 
             Array.set(setValue, i, tagValue);
-            pd.getWriteMethod().invoke(module, new Object[] { setValue });
+            pd.getWriteMethod().invoke(module, new Object[] {setValue});
         }
     }
 }

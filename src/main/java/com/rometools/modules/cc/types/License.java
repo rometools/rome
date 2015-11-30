@@ -1,41 +1,36 @@
 /*
  * LicenseEnumeration.java
- *
+ * 
  * Created on November 20, 2005, 3:20 PM
- *
- * This library is provided under dual licenses.
- * You may choose the terms of the Lesser General Public License or the Apache
- * License at your discretion.
- *
- *  Copyright (C) 2005  Robert Cooper, Temple of the Screaming Penguin
- *
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * 
+ * This library is provided under dual licenses. You may choose the terms of the Lesser General
+ * Public License or the Apache License at your discretion.
+ * 
+ * Copyright (C) 2005 Robert Cooper, Temple of the Screaming Penguin
+ * 
+ * 
+ * This library is free software; you can redistribute it and/or modify it under the terms of the
+ * GNU Lesser General Public License as published by the Free Software Foundation; either version
+ * 2.1 of the License, or (at your option) any later version.
+ * 
+ * This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
+ * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * 
+ * You should have received a copy of the GNU Lesser General Public License along with this library;
+ * if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+ * 02111-1307 USA
+ * 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
  */
 package com.rometools.modules.cc.types;
 
@@ -59,30 +54,30 @@ public class License {
 
     private static final String CC_START = "http://creativecommons.org/licenses/";
     private static final Map<String, License> lookupLicense = new ConcurrentHashMap<String, License>();
-    private static final Logger	LOG	= LoggerFactory.getLogger(License.class);
+    private static final Logger LOG = LoggerFactory.getLogger(License.class);
     public static final License NO_DERIVS = new License("http://creativecommons.org/licenses/nd/1.0/", new Behaviour[0], new Behaviour[] {
-            Behaviour.DISTRIBUTION, Behaviour.REPRODUCTION });
+            Behaviour.DISTRIBUTION, Behaviour.REPRODUCTION});
     public static final License NO_DERIVS_NONCOMMERCIAL = new License("http://creativecommons.org/licenses/nd-nc/1.0/",
-            new Behaviour[] { Behaviour.NONCOMMERCIAL }, new Behaviour[] { Behaviour.DISTRIBUTION, Behaviour.REPRODUCTION });
-    public static final License NONCOMMERCIAL = new License("http://creativecommons.org/licenses/nc/1.0/", new Behaviour[] { Behaviour.NONCOMMERCIAL },
-            new Behaviour[] { Behaviour.DERIVATIVE, Behaviour.DISTRIBUTION, Behaviour.REPRODUCTION });
-    public static final License SHARE_ALIKE = new License("http://creativecommons.org/licenses/sa/1.0/", new Behaviour[] { Behaviour.COPYLEFT },
-            new Behaviour[] { Behaviour.DERIVATIVE, Behaviour.DISTRIBUTION, Behaviour.REPRODUCTION });
-    public static final License SHARE_ALIKE_NONCOMMERCIAL = new License("http://creativecommons.org/licenses/nc-sa/1.0/", new Behaviour[] { Behaviour.COPYLEFT,
-            Behaviour.NONCOMMERCIAL }, new Behaviour[] { Behaviour.DERIVATIVE, Behaviour.DISTRIBUTION, Behaviour.REPRODUCTION });
-    public static final License SHARE_ALIKE_ATTRIBUTION = new License("http://creativecommons.org/licenses/by-sa/2.5/", new Behaviour[] { Behaviour.COPYLEFT,
-            Behaviour.ATTRIBUTION }, new Behaviour[] { Behaviour.DERIVATIVE, Behaviour.DISTRIBUTION, Behaviour.REPRODUCTION });
+            new Behaviour[] {Behaviour.NONCOMMERCIAL}, new Behaviour[] {Behaviour.DISTRIBUTION, Behaviour.REPRODUCTION});
+    public static final License NONCOMMERCIAL = new License("http://creativecommons.org/licenses/nc/1.0/", new Behaviour[] {Behaviour.NONCOMMERCIAL},
+            new Behaviour[] {Behaviour.DERIVATIVE, Behaviour.DISTRIBUTION, Behaviour.REPRODUCTION});
+    public static final License SHARE_ALIKE = new License("http://creativecommons.org/licenses/sa/1.0/", new Behaviour[] {Behaviour.COPYLEFT}, new Behaviour[] {
+            Behaviour.DERIVATIVE, Behaviour.DISTRIBUTION, Behaviour.REPRODUCTION});
+    public static final License SHARE_ALIKE_NONCOMMERCIAL = new License("http://creativecommons.org/licenses/nc-sa/1.0/", new Behaviour[] {Behaviour.COPYLEFT,
+            Behaviour.NONCOMMERCIAL}, new Behaviour[] {Behaviour.DERIVATIVE, Behaviour.DISTRIBUTION, Behaviour.REPRODUCTION});
+    public static final License SHARE_ALIKE_ATTRIBUTION = new License("http://creativecommons.org/licenses/by-sa/2.5/", new Behaviour[] {Behaviour.COPYLEFT,
+            Behaviour.ATTRIBUTION}, new Behaviour[] {Behaviour.DERIVATIVE, Behaviour.DISTRIBUTION, Behaviour.REPRODUCTION});
     public static final License SHARE_ALIKE_NONCOMMERCIAL_ATTRIBUTION = new License("http://creativecommons.org/licenses/by-nc-sa/2.5/", new Behaviour[] {
-            Behaviour.COPYLEFT, Behaviour.ATTRIBUTION, Behaviour.NONCOMMERCIAL }, new Behaviour[] { Behaviour.DERIVATIVE, Behaviour.DISTRIBUTION,
-            Behaviour.REPRODUCTION });
+            Behaviour.COPYLEFT, Behaviour.ATTRIBUTION, Behaviour.NONCOMMERCIAL}, new Behaviour[] {Behaviour.DERIVATIVE, Behaviour.DISTRIBUTION,
+            Behaviour.REPRODUCTION});
     public static final License NONCOMMERCIAL_ATTRIBUTION = new License("http://creativecommons.org/licenses/by-nc/2.5/", new Behaviour[] {
-            Behaviour.ATTRIBUTION, Behaviour.NONCOMMERCIAL }, new Behaviour[] { Behaviour.DERIVATIVE, Behaviour.DISTRIBUTION, Behaviour.REPRODUCTION });
+            Behaviour.ATTRIBUTION, Behaviour.NONCOMMERCIAL}, new Behaviour[] {Behaviour.DERIVATIVE, Behaviour.DISTRIBUTION, Behaviour.REPRODUCTION});
     public static final License NONCOMMERCIAL_ATTRIBUTION_NO_DERIVS = new License("http://creativecommons.org/licenses/by-nc-nd/2.5/", new Behaviour[] {
-            Behaviour.ATTRIBUTION, Behaviour.NONCOMMERCIAL }, new Behaviour[] { Behaviour.DISTRIBUTION, Behaviour.REPRODUCTION });
-    public static final License ATTRIBUTION_NO_DERIVS = new License("http://creativecommons.org/licenses/by-nd/2.5/",
-            new Behaviour[] { Behaviour.ATTRIBUTION }, new Behaviour[] { Behaviour.DISTRIBUTION, Behaviour.REPRODUCTION });
-    public static final License ATTRIBUTION = new License("http://creativecommons.org/licenses/by/2.5/", new Behaviour[] { Behaviour.ATTRIBUTION },
-            new Behaviour[] { Behaviour.DERIVATIVE, Behaviour.DISTRIBUTION, Behaviour.REPRODUCTION });
+            Behaviour.ATTRIBUTION, Behaviour.NONCOMMERCIAL}, new Behaviour[] {Behaviour.DISTRIBUTION, Behaviour.REPRODUCTION});
+    public static final License ATTRIBUTION_NO_DERIVS = new License("http://creativecommons.org/licenses/by-nd/2.5/", new Behaviour[] {Behaviour.ATTRIBUTION},
+            new Behaviour[] {Behaviour.DISTRIBUTION, Behaviour.REPRODUCTION});
+    public static final License ATTRIBUTION = new License("http://creativecommons.org/licenses/by/2.5/", new Behaviour[] {Behaviour.ATTRIBUTION},
+            new Behaviour[] {Behaviour.DERIVATIVE, Behaviour.DISTRIBUTION, Behaviour.REPRODUCTION});
     private final String uri;
     private final Behaviour[] permits;
     private final Behaviour[] requires;
@@ -124,7 +119,7 @@ public class License {
                         }
                     }
                 } catch (final Exception e) {
-                	 LOG.error("Error",e);
+                    LOG.error("Error", e);
                 }
             }
         }
