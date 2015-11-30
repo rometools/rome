@@ -35,6 +35,7 @@ public class ThreadingModuleImpl extends ModuleImpl implements ThreadingModule {
             setHref(module.getHref());
             setRef(module.getRef());
             setType(module.getType());
+            setSource(module.getSource());
         }
     }
 
