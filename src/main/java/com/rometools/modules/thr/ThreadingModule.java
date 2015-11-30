@@ -25,5 +25,5 @@ public interface ThreadingModule extends Module {
 
     public String getSource();
 
-    public void setSource(String href);
+    public void setSource(String source);
 }
