@@ -16,6 +16,9 @@
  */
 package com.rometools.rome.unittest;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -125,6 +128,39 @@ public class TestDateParser extends TestCase {
         // INVALID
         sDate = "X20:10 2000-10-10";
         assertNull(DateParser.parseDate(sDate, Locale.US));
+    }
 
+    public void testRfc822WithZTimeZone() throws Exception {
+        assertDateEquals(
+            "1970-01-01 00:00:00",
+            DateParser.parseRFC822("Thu, 01 Jan 1970 00:00:00 Z", Locale.US));
+    }
+
+    public void testRfc822WithUtTimeZone() throws Exception {
+        assertDateEquals(
+            "1970-01-01 00:00:00",
+            DateParser.parseRFC822("Thu, 01 Jan 1970 00:00:00 UT", Locale.US));
+    }
+
+    public void testRfc822WithUtcTimeZone() throws Exception {
+        assertDateEquals(
+            "1970-01-01 00:00:00",
+            DateParser.parseRFC822("Thu, 01 Jan 1970 00:00:00 UTC", Locale.US));
+    }
+
+    static void assertDateEquals(String expectedString, Date actual) {
+        if (actual == null) {
+            fail("Actual date is null");
+        }
+
+        final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+
+        try {
+            final Date expected = dateFormat.parse(expectedString);
+            assertEquals(expected, actual);
+        } catch (ParseException e) {
+            fail("Failed to parse date: " + e.getMessage());
+        }
     }
 }
