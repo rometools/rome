@@ -16,151 +16,105 @@
  */
 package com.rometools.rome.unittest;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Locale;
-import java.util.TimeZone;
-
-import junit.framework.TestCase;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import com.rometools.rome.io.impl.DateParser;
 
-/**
- *
- * Start of tests for DateParser
- *
- * @author Nick Lothian
- *
- */
-public class TestDateParser extends TestCase {
-    public void testParse() {
-        final Calendar cal = new GregorianCalendar();
-        cal.setTimeZone(TimeZone.getTimeZone("GMT"));
+import org.junit.Test;
 
-        // four-digit year
-        String sDate = "Tue, 19 Jul 2005 23:00:51 GMT";
-        cal.setTime(DateParser.parseRFC822(sDate, Locale.US));
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
-        assertEquals(2005, cal.get(Calendar.YEAR));
-        assertEquals(6, cal.get(Calendar.MONTH)); // month is zero-indexed
-        assertEquals(19, cal.get(Calendar.DAY_OF_MONTH));
-        assertEquals(3, cal.get(Calendar.DAY_OF_WEEK));
-        assertEquals(23, cal.get(Calendar.HOUR_OF_DAY));
-        assertEquals(0, cal.get(Calendar.MINUTE));
-        assertEquals(51, cal.get(Calendar.SECOND));
+public class TestDateParser {
 
-        // two-digit year
-        sDate = "Tue, 19 Jul 05 23:00:51 GMT";
-        cal.setTime(DateParser.parseRFC822(sDate, Locale.US));
-
-        assertEquals(2005, cal.get(Calendar.YEAR));
-        assertEquals(6, cal.get(Calendar.MONTH)); // month is zero-indexed
-        assertEquals(19, cal.get(Calendar.DAY_OF_MONTH));
-        assertEquals(3, cal.get(Calendar.DAY_OF_WEEK));
-        assertEquals(23, cal.get(Calendar.HOUR_OF_DAY));
-        assertEquals(0, cal.get(Calendar.MINUTE));
-        assertEquals(51, cal.get(Calendar.SECOND));
-
-        // four-digit year
-        sDate = "Tue, 19 Jul 2005 23:00:51 UT";
-        cal.setTime(DateParser.parseRFC822(sDate, Locale.US));
-
-        assertEquals(2005, cal.get(Calendar.YEAR));
-        assertEquals(6, cal.get(Calendar.MONTH)); // month is zero-indexed
-        assertEquals(19, cal.get(Calendar.DAY_OF_MONTH));
-        assertEquals(3, cal.get(Calendar.DAY_OF_WEEK));
-        assertEquals(23, cal.get(Calendar.HOUR_OF_DAY));
-        assertEquals(0, cal.get(Calendar.MINUTE));
-        assertEquals(51, cal.get(Calendar.SECOND));
-
-        // two-digit year
-        sDate = "Tue, 19 Jul 05 23:00:51 UT";
-        cal.setTime(DateParser.parseRFC822(sDate, Locale.US));
-
-        assertEquals(2005, cal.get(Calendar.YEAR));
-        assertEquals(6, cal.get(Calendar.MONTH)); // month is zero-indexed
-        assertEquals(19, cal.get(Calendar.DAY_OF_MONTH));
-        assertEquals(3, cal.get(Calendar.DAY_OF_WEEK));
-        assertEquals(23, cal.get(Calendar.HOUR_OF_DAY));
-        assertEquals(0, cal.get(Calendar.MINUTE));
-        assertEquals(51, cal.get(Calendar.SECOND));
-
-        // RFC822
-        sDate = "Tue, 19 Jul 2005 23:00:51 GMT";
-        assertNotNull(DateParser.parseDate(sDate, Locale.US));
-
-        // RFC822
-        sDate = "Tue, 19 Jul 05 23:00:51 GMT";
-        assertNotNull(DateParser.parseDate(sDate, Locale.US));
-
-        final Calendar c = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
-        c.set(2000, Calendar.JANUARY, 01, 0, 0, 0);
-        final Date expectedDate = c.getTime();
-
-        // W3C
-        sDate = "2000-01-01T00:00:00Z";
-        assertEquals(expectedDate.getTime() / 1000, DateParser.parseDate(sDate, Locale.US).getTime() / 1000);
-
-        // W3C
-        sDate = "2000-01-01T00:00Z";
-        assertEquals(expectedDate.getTime() / 1000, DateParser.parseDate(sDate, Locale.US).getTime() / 1000);
-
-        // W3C
-        sDate = "2000-01-01";
-        assertEquals(expectedDate.getTime() / 1000, DateParser.parseDate(sDate, Locale.US).getTime() / 1000);
-
-        // W3C
-        sDate = "2000-01";
-        assertEquals(expectedDate.getTime() / 1000, DateParser.parseDate(sDate, Locale.US).getTime() / 1000);
-
-        // W3C
-        sDate = "2000";
-        assertEquals(expectedDate.getTime() / 1000, DateParser.parseDate(sDate, Locale.US).getTime() / 1000);
-
-        // EXTRA
-        sDate = "18:10 2000/10/10";
-        assertNotNull(DateParser.parseDate(sDate, Locale.US));
-
-        // INVALID
-        sDate = "X20:10 2000-10-10";
-        assertNull(DateParser.parseDate(sDate, Locale.US));
+    @Test
+    public void testW3c() {
+        assertEquals(date("2005-07-19 17:00:42"),
+                     DateParser.parseW3CDateTime("2005-07-19T17:00:42Z", Locale.US));
     }
 
-    public void testRfc822WithZTimeZone() throws Exception {
-        assertDateEquals(
-            "1970-01-01 00:00:00",
-            DateParser.parseRFC822("Thu, 01 Jan 1970 00:00:00 Z", Locale.US));
+    @Test
+    public void testW3cNoSeconds() {
+        assertEquals(date("2005-07-19 17:00:00"),
+                     DateParser.parseW3CDateTime("2005-07-19T17:00Z", Locale.US));
     }
 
-    public void testRfc822WithUtTimeZone() throws Exception {
-        assertDateEquals(
-            "1970-01-01 00:00:00",
-            DateParser.parseRFC822("Thu, 01 Jan 1970 00:00:00 UT", Locale.US));
+    @Test
+    public void testW3cNoTime() {
+        assertEquals(date("2005-07-19 00:00:00"),
+                     DateParser.parseW3CDateTime("2005-07-19", Locale.US));
     }
 
-    public void testRfc822WithUtcTimeZone() throws Exception {
-        assertDateEquals(
-            "1970-01-01 00:00:00",
-            DateParser.parseRFC822("Thu, 01 Jan 1970 00:00:00 UTC", Locale.US));
+    @Test
+    public void testW3cOnlyYearAndMonth() {
+        assertEquals(date("2005-07-01 00:00:00"),
+                     DateParser.parseW3CDateTime("2005-07", Locale.US));
     }
 
-    static void assertDateEquals(String expectedString, Date actual) {
-        if (actual == null) {
-            fail("Actual date is null");
-        }
+    @Test
+    public void testW3cOnlyYear() {
+        assertEquals(date("2005-01-01 00:00:00"),
+                     DateParser.parseW3CDateTime("2005", Locale.US));
+    }
 
+    @Test
+    public void testRfc822FourDigitYear() {
+        assertEquals(date("2005-07-19 17:00:42"),
+                     DateParser.parseRFC822("Tue, 19 Jul 2005 17:00:42 GMT", Locale.US));
+    }
+
+    @Test
+    public void testRfc822TwoDigitYear() {
+        assertEquals(date("2005-07-19 17:00:42"),
+                     DateParser.parseRFC822("Tue, 19 Jul 05 17:00:42 GMT", Locale.US));
+    }
+
+    @Test
+    public void testRfc822WithUtTimeZone() {
+        assertEquals(date("2005-07-19 17:00:42"),
+                     DateParser.parseRFC822("Tue, 19 Jul 2005 17:00:42 UT", Locale.US));
+    }
+
+    @Test
+    public void testRfc822WithUtcTimeZone() {
+        assertEquals(date("2005-07-19 17:00:42"),
+                     DateParser.parseRFC822("Tue, 19 Jul 2005 17:00:42 UTC", Locale.US));
+    }
+
+    @Test
+    public void testRfc822WithZTimeZone() {
+        assertEquals(date("2005-07-19 17:00:42"),
+                     DateParser.parseRFC822("Tue, 19 Jul 2005 17:00:42 Z", Locale.US));
+    }
+
+    @Test
+    public void testExtraMaskInRomePropertiesFile() {
+        assertEquals(date("2005-07-19 17:00:00", TimeZone.getDefault()),
+                     DateParser.parseDate("17:00 2005/07/19", Locale.US));
+    }
+
+    @Test
+    public void testInvalidDate() {
+        assertNull(DateParser.parseDate("X00:00 2005-07-19", Locale.US));
+    }
+
+    static Date date(String dateString) {
+        return date(dateString, TimeZone.getTimeZone("UTC"));
+    }
+
+    static Date date(String dateString, TimeZone timeZone) {
         final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+        dateFormat.setTimeZone(timeZone);
 
         try {
-            final Date expected = dateFormat.parse(expectedString);
-            assertEquals(expected, actual);
+            return dateFormat.parse(dateString);
         } catch (ParseException e) {
-            fail("Failed to parse date: " + e.getMessage());
+            throw new IllegalArgumentException("Failed to parse date", e);
         }
     }
 }
