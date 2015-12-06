@@ -67,23 +67,13 @@ public interface FeedInformation extends ITunes {
      */
     public void setCategories(List<Category> categories);
 
-    /**
-     * Sets the URL for the image.
-     *
-     * NOTE: To specification images should be in PNG or JPEG format.
-     *
-     * @param image Sets the URL for the image.
-     */
-    public void setImage(URL image);
+    public boolean getComplete();
 
-    /**
-     * Returns the URL for the image.
-     *
-     * NOTE: To specification images should be in PNG or JPEG format.
-     *
-     * @return Returns the URL for the image.
-     */
-    public URL getImage();
+    public void setComplete(boolean complete);
+
+    public String getNewFeedUrl();
+
+    public void setNewFeedUrl(String newFeedUrl);
 
     /**
      * Sets the owner email address for the feed.

@@ -42,6 +42,8 @@ package com.rometools.modules.itunes;
 
 import com.rometools.rome.feed.module.Module;
 
+import java.net.URL;
+
 /**
  * This interface contains the methods common to all iTunes module points.
  *
@@ -93,6 +95,10 @@ public interface ITunes extends Module {
      * @param explicit Boolean as to whether this feed or entry contains adult content
      */
     public void setExplicit(boolean explicit);
+
+    public URL getImage();
+
+    public void setImage(URL image);
 
     /**
      * A list of keywords for this feed or entry

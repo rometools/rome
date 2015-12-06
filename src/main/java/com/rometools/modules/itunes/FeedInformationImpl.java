@@ -66,8 +66,9 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
 
     private String ownerName;
     private String ownerEmailAddress;
-    private URL image;
     private List<Category> categories;
+    private boolean complete;
+    private String newFeedUrl;
 
     /**
      * Creates a new instance of FeedInformationImpl
@@ -93,6 +94,26 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
     @Override
     public void setCategories(final List<Category> categories) {
         this.categories = categories;
+    }
+
+    @Override
+    public boolean getComplete() {
+        return complete;
+    }
+
+    @Override
+    public void setComplete(boolean complete) {
+        this.complete = complete;
+    }
+
+    @Override
+    public String getNewFeedUrl() {
+        return newFeedUrl;
+    }
+
+    @Override
+    public void setNewFeedUrl(String newFeedUrl) {
+        this.newFeedUrl = newFeedUrl;
     }
 
     /**
@@ -136,30 +157,6 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
     }
 
     /**
-     * Returns the URL for the image.
-     *
-     * NOTE: To specification images should be in PNG or JPEG format.
-     *
-     * @return Returns the URL for the image.
-     */
-    @Override
-    public URL getImage() {
-        return image;
-    }
-
-    /**
-     * Sets the URL for the image.
-     *
-     * NOTE: To specification images should be in PNG or JPEG format.
-     *
-     * @param image Sets the URL for the image.
-     */
-    @Override
-    public void setImage(final URL image) {
-        this.image = image;
-    }
-
-    /**
      * Required by the ROME API
      *
      * @param obj object to copy property values from
@@ -175,6 +172,8 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
             getCategories().addAll(info.getCategories());
         }
 
+        setComplete(info.getComplete());
+        setNewFeedUrl(info.getNewFeedUrl());
         setExplicit(info.getExplicit());
 
         try {
@@ -215,10 +214,12 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
         sb.append(getOwnerEmailAddress());
         sb.append(" name: ");
         sb.append(getOwnerName());
-        sb.append(" image: ");
-        sb.append(getImage());
         sb.append(" categories: ");
         sb.append(getCategories());
+        sb.append(" complete: ");
+        sb.append(getComplete());
+        sb.append(" newFeedUrl: ");
+        sb.append(getNewFeedUrl());
         sb.append("]");
         sb.append(super.toString());
 
