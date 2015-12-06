@@ -19,7 +19,9 @@ package com.rometools.rome.io.impl;
 import java.text.DateFormat;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
@@ -146,13 +148,31 @@ public class DateParser {
      *
      */
     public static Date parseRFC822(String sDate, final Locale locale) {
-        final int utIndex = sDate.indexOf(" UT");
-        if (utIndex > -1) {
-            final String pre = sDate.substring(0, utIndex);
-            final String post = sDate.substring(utIndex + 3);
-            sDate = pre + " GMT" + post;
-        }
+        sDate = convertUnsupportedTimeZones(sDate);
         return parseUsingMask(RFC822_MASKS, sDate, locale);
+    }
+
+    private static String convertUnsupportedTimeZones(String sDate) {
+        final List<String> unsupportedZeroOffsetTimeZones = Arrays.asList("UT", "Z");
+
+        for (String timeZone : unsupportedZeroOffsetTimeZones) {
+            if (sDate.endsWith(timeZone)) {
+                return replaceLastOccurrence(sDate, timeZone, "UTC");
+            }
+        }
+        return sDate;
+    }
+
+    private static String replaceLastOccurrence(String original, String target, String replacement) {
+        final int lastIndexOfTarget = original.lastIndexOf(target);
+
+        if (lastIndexOfTarget == -1) {
+            return original;
+        } else {
+            return new StringBuilder(original)
+                .replace(lastIndexOfTarget, lastIndexOfTarget + target.length(), replacement)
+                .toString();
+        }
     }
 
     /**

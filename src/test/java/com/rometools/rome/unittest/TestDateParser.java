@@ -1,6 +1,4 @@
 /*
- * Copyright 2004-2005 Sun Microsystems, Inc.
- *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,119 +10,109 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
+
 package com.rometools.rome.unittest;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Locale;
-import java.util.TimeZone;
-
-import junit.framework.TestCase;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import com.rometools.rome.io.impl.DateParser;
 
-/**
- *
- * Start of tests for DateParser
- *
- * @author Nick Lothian
- *
- */
-public class TestDateParser extends TestCase {
-    public void testParse() {
-        final Calendar cal = new GregorianCalendar();
-        cal.setTimeZone(TimeZone.getTimeZone("GMT"));
+import org.junit.Test;
 
-        // four-digit year
-        String sDate = "Tue, 19 Jul 2005 23:00:51 GMT";
-        cal.setTime(DateParser.parseRFC822(sDate, Locale.US));
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
-        assertEquals(2005, cal.get(Calendar.YEAR));
-        assertEquals(6, cal.get(Calendar.MONTH)); // month is zero-indexed
-        assertEquals(19, cal.get(Calendar.DAY_OF_MONTH));
-        assertEquals(3, cal.get(Calendar.DAY_OF_WEEK));
-        assertEquals(23, cal.get(Calendar.HOUR_OF_DAY));
-        assertEquals(0, cal.get(Calendar.MINUTE));
-        assertEquals(51, cal.get(Calendar.SECOND));
+public class TestDateParser {
 
-        // two-digit year
-        sDate = "Tue, 19 Jul 05 23:00:51 GMT";
-        cal.setTime(DateParser.parseRFC822(sDate, Locale.US));
+    @Test
+    public void testW3c() {
+        assertEquals(date("2005-07-19 17:00:42"),
+                     DateParser.parseW3CDateTime("2005-07-19T17:00:42Z", Locale.US));
+    }
 
-        assertEquals(2005, cal.get(Calendar.YEAR));
-        assertEquals(6, cal.get(Calendar.MONTH)); // month is zero-indexed
-        assertEquals(19, cal.get(Calendar.DAY_OF_MONTH));
-        assertEquals(3, cal.get(Calendar.DAY_OF_WEEK));
-        assertEquals(23, cal.get(Calendar.HOUR_OF_DAY));
-        assertEquals(0, cal.get(Calendar.MINUTE));
-        assertEquals(51, cal.get(Calendar.SECOND));
+    @Test
+    public void testW3cNoSeconds() {
+        assertEquals(date("2005-07-19 17:00:00"),
+                     DateParser.parseW3CDateTime("2005-07-19T17:00Z", Locale.US));
+    }
 
-        // four-digit year
-        sDate = "Tue, 19 Jul 2005 23:00:51 UT";
-        cal.setTime(DateParser.parseRFC822(sDate, Locale.US));
+    @Test
+    public void testW3cNoTime() {
+        assertEquals(date("2005-07-19 00:00:00"),
+                     DateParser.parseW3CDateTime("2005-07-19", Locale.US));
+    }
 
-        assertEquals(2005, cal.get(Calendar.YEAR));
-        assertEquals(6, cal.get(Calendar.MONTH)); // month is zero-indexed
-        assertEquals(19, cal.get(Calendar.DAY_OF_MONTH));
-        assertEquals(3, cal.get(Calendar.DAY_OF_WEEK));
-        assertEquals(23, cal.get(Calendar.HOUR_OF_DAY));
-        assertEquals(0, cal.get(Calendar.MINUTE));
-        assertEquals(51, cal.get(Calendar.SECOND));
+    @Test
+    public void testW3cOnlyYearAndMonth() {
+        assertEquals(date("2005-07-01 00:00:00"),
+                     DateParser.parseW3CDateTime("2005-07", Locale.US));
+    }
 
-        // two-digit year
-        sDate = "Tue, 19 Jul 05 23:00:51 UT";
-        cal.setTime(DateParser.parseRFC822(sDate, Locale.US));
+    @Test
+    public void testW3cOnlyYear() {
+        assertEquals(date("2005-01-01 00:00:00"),
+                     DateParser.parseW3CDateTime("2005", Locale.US));
+    }
 
-        assertEquals(2005, cal.get(Calendar.YEAR));
-        assertEquals(6, cal.get(Calendar.MONTH)); // month is zero-indexed
-        assertEquals(19, cal.get(Calendar.DAY_OF_MONTH));
-        assertEquals(3, cal.get(Calendar.DAY_OF_WEEK));
-        assertEquals(23, cal.get(Calendar.HOUR_OF_DAY));
-        assertEquals(0, cal.get(Calendar.MINUTE));
-        assertEquals(51, cal.get(Calendar.SECOND));
+    @Test
+    public void testRfc822FourDigitYear() {
+        assertEquals(date("2005-07-19 17:00:42"),
+                     DateParser.parseRFC822("Tue, 19 Jul 2005 17:00:42 GMT", Locale.US));
+    }
 
-        // RFC822
-        sDate = "Tue, 19 Jul 2005 23:00:51 GMT";
-        assertNotNull(DateParser.parseDate(sDate, Locale.US));
+    @Test
+    public void testRfc822TwoDigitYear() {
+        assertEquals(date("2005-07-19 17:00:42"),
+                     DateParser.parseRFC822("Tue, 19 Jul 05 17:00:42 GMT", Locale.US));
+    }
 
-        // RFC822
-        sDate = "Tue, 19 Jul 05 23:00:51 GMT";
-        assertNotNull(DateParser.parseDate(sDate, Locale.US));
+    @Test
+    public void testRfc822WithUtTimeZone() {
+        assertEquals(date("2005-07-19 17:00:42"),
+                     DateParser.parseRFC822("Tue, 19 Jul 2005 17:00:42 UT", Locale.US));
+    }
 
-        final Calendar c = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
-        c.set(2000, Calendar.JANUARY, 01, 0, 0, 0);
-        final Date expectedDate = c.getTime();
+    @Test
+    public void testRfc822WithUtcTimeZone() {
+        assertEquals(date("2005-07-19 17:00:42"),
+                     DateParser.parseRFC822("Tue, 19 Jul 2005 17:00:42 UTC", Locale.US));
+    }
 
-        // W3C
-        sDate = "2000-01-01T00:00:00Z";
-        assertEquals(expectedDate.getTime() / 1000, DateParser.parseDate(sDate, Locale.US).getTime() / 1000);
+    @Test
+    public void testRfc822WithZTimeZone() {
+        assertEquals(date("2005-07-19 17:00:42"),
+                     DateParser.parseRFC822("Tue, 19 Jul 2005 17:00:42 Z", Locale.US));
+    }
 
-        // W3C
-        sDate = "2000-01-01T00:00Z";
-        assertEquals(expectedDate.getTime() / 1000, DateParser.parseDate(sDate, Locale.US).getTime() / 1000);
+    @Test
+    public void testExtraMaskInRomePropertiesFile() {
+        assertEquals(date("2005-07-19 17:00:00", TimeZone.getDefault()),
+                     DateParser.parseDate("17:00 2005/07/19", Locale.US));
+    }
 
-        // W3C
-        sDate = "2000-01-01";
-        assertEquals(expectedDate.getTime() / 1000, DateParser.parseDate(sDate, Locale.US).getTime() / 1000);
+    @Test
+    public void testInvalidDate() {
+        assertNull(DateParser.parseDate("X00:00 2005-07-19", Locale.US));
+    }
 
-        // W3C
-        sDate = "2000-01";
-        assertEquals(expectedDate.getTime() / 1000, DateParser.parseDate(sDate, Locale.US).getTime() / 1000);
+    static Date date(String dateString) {
+        return date(dateString, TimeZone.getTimeZone("UTC"));
+    }
 
-        // W3C
-        sDate = "2000";
-        assertEquals(expectedDate.getTime() / 1000, DateParser.parseDate(sDate, Locale.US).getTime() / 1000);
+    static Date date(String dateString, TimeZone timeZone) {
+        final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        dateFormat.setTimeZone(timeZone);
 
-        // EXTRA
-        sDate = "18:10 2000/10/10";
-        assertNotNull(DateParser.parseDate(sDate, Locale.US));
-
-        // INVALID
-        sDate = "X20:10 2000-10-10";
-        assertNull(DateParser.parseDate(sDate, Locale.US));
-
+        try {
+            return dateFormat.parse(dateString);
+        } catch (ParseException e) {
+            throw new IllegalArgumentException("Failed to parse date", e);
+        }
     }
 }
