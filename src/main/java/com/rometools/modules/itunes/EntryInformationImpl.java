@@ -43,6 +43,12 @@ package com.rometools.modules.itunes;
 import com.rometools.modules.itunes.types.Duration;
 import com.rometools.rome.feed.CopyFrom;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
 /**
  * This class contains information for iTunes podcast feeds that exist at the Item level.
  *
@@ -54,6 +60,9 @@ public class EntryInformationImpl extends AbstractITunesObject implements EntryI
      *
      */
     private static final long serialVersionUID = 1L;
+
+    private static final Logger LOG = LoggerFactory.getLogger(EntryInformationImpl.class);
+
     private Duration duration;
     private boolean closedCaptioned;
     private Integer order;
@@ -120,6 +129,14 @@ public class EntryInformationImpl extends AbstractITunesObject implements EntryI
         }
 
         setExplicit(info.getExplicit());
+
+        try {
+            if (info.getImage() != null) {
+                setImage(new URL(info.getImage().toExternalForm()));
+            }
+        } catch (final MalformedURLException e) {
+            LOG.debug("Error copying URL:" + info.getImage(), e);
+        }
 
         if (info.getKeywords() != null) {
             setKeywords(info.getKeywords().clone());

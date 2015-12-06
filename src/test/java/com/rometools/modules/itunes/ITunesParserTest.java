@@ -81,6 +81,8 @@ public class ITunesParserTest extends AbstractTestCase {
                 "summary",
                 "A weekly, hour-long romp through the worlds of media, politics, sports and show business, leavened with an eclectic mix of mysterious music, hosted by Harry Shearer.",
                 feedInfo.getSummary());
+        assertEquals(true, feedInfo.getComplete());
+        assertEquals("http://example.org", feedInfo.getNewFeedUrl());
 
         List<SyndEntry> entries = syndfeed.getEntries();
         Iterator<SyndEntry> it = entries.iterator();
@@ -116,5 +118,6 @@ public class ITunesParserTest extends AbstractTestCase {
         EntryInformationImpl entryInfo = (EntryInformationImpl) entry.getModule(AbstractITunesObject.URI);
         assertEquals(true, entryInfo.getClosedCaptioned());
         assertEquals(Integer.valueOf(2), entryInfo.getOrder());
+        assertEquals("http://example.org/image.png", entryInfo.getImage().toString());
     }
 }

@@ -98,12 +98,6 @@ public class ITunesGenerator implements ModuleGenerator {
             owner.addContent(name);
             element.addContent(owner);
 
-            if (info.getImage() != null) {
-                final Element image = generateSimpleElement("image", "");
-                image.setAttribute("href", info.getImage().toExternalForm());
-                element.addContent(image);
-            }
-
             final List<Category> categories = info.getCategories();
             for (final Category cat : categories) {
 
@@ -118,6 +112,15 @@ public class ITunesGenerator implements ModuleGenerator {
 
                 element.addContent(category);
             }
+
+            if (info.getComplete()) {
+                element.addContent(generateSimpleElement("complete", "yes"));
+            }
+
+            if (info.getNewFeedUrl() != null) {
+                element.addContent(generateSimpleElement("new-feed-url", info.getNewFeedUrl()));
+            }
+
         } else if (itunes instanceof EntryInformationImpl) {
             final EntryInformationImpl info = (EntryInformationImpl) itunes;
 
@@ -144,6 +147,12 @@ public class ITunesGenerator implements ModuleGenerator {
             element.addContent(generateSimpleElement("explicit", "yes"));
         } else {
             element.addContent(generateSimpleElement("explicit", "no"));
+        }
+
+        if (itunes.getImage() != null) {
+            final Element image = generateSimpleElement("image", "");
+            image.setAttribute("href", itunes.getImage().toExternalForm());
+            element.addContent(image);
         }
 
         if (itunes.getKeywords() != null) {

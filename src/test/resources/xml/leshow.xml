@@ -7,6 +7,8 @@
         <description>A weekly, hour-long romp through the worlds of media, politics, sports and show business, leavened with an eclectic mix of mysterious music, hosted by Harry Shearer.</description>
         <itunes:subtitle>An hour&#39;s worth of Harry Shearer</itunes:subtitle>
         <itunes:summary>A weekly, hour-long romp through the worlds of media, politics, sports and show business, leavened with an eclectic mix of mysterious music, hosted by Harry Shearer.</itunes:summary>
+        <itunes:complete>yes</itunes:complete>
+        <itunes:new-feed-url>http://example.org</itunes:new-feed-url>
         <language>en</language>
         
             <copyright>KCRW 2005</copyright>
@@ -68,6 +70,7 @@
     <itunes:keywords></itunes:keywords>  
     <itunes:isClosedCaptioned>yes</itunes:isClosedCaptioned>
     <itunes:order>2</itunes:order>
+    <itunes:image href="http://example.org/image.png"></itunes:image>
 </item>
 
         

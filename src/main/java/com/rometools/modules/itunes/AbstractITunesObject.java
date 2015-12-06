@@ -40,6 +40,8 @@
  */
 package com.rometools.modules.itunes;
 
+import java.net.URL;
+
 /**
  * This is an abstract object that implements the attributes common across Feeds or Items in an
  * iTunes compatible RSS feed.
@@ -74,6 +76,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
     private String author;
     private boolean block;
     private boolean explicit;
+    private URL image;
     private String[] keywords;
     private String subtitle;
     private String summary;
@@ -166,6 +169,16 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
         this.explicit = explicit;
     }
 
+    @Override
+    public URL getImage() {
+        return image;
+    }
+
+    @Override
+    public void setImage(final URL image) {
+        this.image = image;
+    }
+
     /**
      * A list of keywords for this feed or entry
      *
@@ -239,6 +252,8 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
         sb.append(getBlock());
         sb.append(" Explicit: ");
         sb.append(getExplicit());
+        sb.append(" Image: ");
+        sb.append(getImage());
         sb.append(" Keywords: ");
 
         if (getKeywords() != null) {
