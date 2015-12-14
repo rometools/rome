@@ -14,13 +14,14 @@
  * limitations under the License.
  *
  */
+
 package com.rometools.rome.io.impl;
+
+import com.rometools.rome.feed.rss.Description;
 
 import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
-
-import com.rometools.rome.feed.rss.Description;
 
 public class RSS20Parser extends RSS094Parser {
 
@@ -50,11 +51,16 @@ public class RSS20Parser extends RSS094Parser {
 
     @Override
     public boolean isMyType(final Document document) {
-        final Element rssRoot = document.getRootElement();
-        final Attribute version = rssRoot.getAttribute("version");
-        // as far ROME is concerned RSS 2.0, 2.00 and 2.0.X are all the same, so let's use
-        // startsWith for leniency.
-        return rssRoot.getName().equals("rss") && version != null && version.getValue().startsWith(getRSSVersion());
+        return rootElementMatches(document) && versionMatches(document);
     }
 
+    private boolean rootElementMatches(final Document document) {
+        return document.getRootElement().getName().equals("rss");
+    }
+
+    private boolean versionMatches(final Document document) {
+        final Attribute version = document.getRootElement().getAttribute("version");
+        return (version != null)
+               && version.getValue().trim().startsWith(getRSSVersion());
+    }
 }
