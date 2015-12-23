@@ -283,7 +283,7 @@ public class Atom03Generator extends BaseWireFeedGenerator {
 
         final String rel = link.getRel();
         if (rel != null) {
-            final Attribute relAttribute = new Attribute("rel", rel.toString());
+            final Attribute relAttribute = new Attribute("rel", rel);
             linkElement.setAttribute(relAttribute);
         }
 
@@ -351,7 +351,7 @@ public class Atom03Generator extends BaseWireFeedGenerator {
 
         final String mode = content.getMode();
         if (mode != null) {
-            final Attribute modeAttribute = new Attribute("mode", mode.toString());
+            final Attribute modeAttribute = new Attribute("mode", mode);
             contentElement.setAttribute(modeAttribute);
         }
 

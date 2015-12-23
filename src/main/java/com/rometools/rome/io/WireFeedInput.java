@@ -204,11 +204,14 @@ public class WireFeedInput {
     public WireFeed build(final File file) throws FileNotFoundException, IOException, IllegalArgumentException, FeedException {
         WireFeed feed;
         Reader reader = new FileReader(file);
-        if (xmlHealerOn) {
-            reader = new XmlFixerReader(reader);
+        try {
+            if (xmlHealerOn) {
+                reader = new XmlFixerReader(reader);
+            }
+            feed = this.build(reader);
+        } finally {
+            reader.close();
         }
-        feed = this.build(reader);
-        reader.close();
         return feed;
     }
 
