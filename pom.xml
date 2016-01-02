@@ -60,6 +60,29 @@
 					<content>${project.build.directory}/site</content>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<configuration>
+					<instructions>
+						<Export-Package>
+							com.rometools.fetcher,
+							com.rometools.fetcher.impl
+						</Export-Package>
+						<Import-Package>
+							com.rometools.rome.feed.impl,
+							com.rometools.rome.feed.synd,
+							com.rometools.rome.io,
+							com.rometools.utils,
+							org.apache.commons.httpclient;resolution:=optional,
+							org.apache.commons.httpclient.auth;resolution:=optional,
+							org.apache.commons.httpclient.methods;resolution:=optional,
+							org.apache.commons.httpclient.params;resolution:=optional,
+							org.slf4j
+						</Import-Package>
+					</instructions>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
