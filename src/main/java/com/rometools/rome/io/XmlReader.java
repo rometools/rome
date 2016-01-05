@@ -518,7 +518,7 @@ public class XmlReader extends Reader {
     private String calculateHttpEncoding(final String cTMime, final String cTEnc, final String bomEnc, final String xmlGuessEnc, final String xmlEnc,
             final InputStream is, final boolean lenient) throws IOException {
         String encoding;
-        if (lenient & xmlEnc != null) {
+        if (lenient && xmlEnc != null) {
             encoding = xmlEnc;
         } else {
             final boolean appXml = isAppXml(cTMime);

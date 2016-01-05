@@ -185,8 +185,11 @@ public class WireFeedOutput {
      */
     public void output(final WireFeed feed, final File file, final boolean prettyPrint) throws IllegalArgumentException, IOException, FeedException {
         final Writer writer = new FileWriter(file);
-        this.output(feed, writer, prettyPrint);
-        writer.close();
+        try {
+            this.output(feed, writer, prettyPrint);
+        } finally {
+            writer.close();
+        }
     }
 
     /**
