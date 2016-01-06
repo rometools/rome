@@ -14,7 +14,17 @@
  * limitations under the License.
  *
  */
-package com.rometools.rome.unittest;
+
+package com.rometools.rome.io;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -22,27 +32,27 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.nio.charset.Charset;
 import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Map;
 
-import junit.framework.TestCase;
-
-import com.rometools.rome.io.XmlReader;
-
 /**
  * @author pat, tucu
- *
  */
-public class TestXmlReader extends TestCase {
+public class XmlReaderTest {
+
     private static final String XML5 = "xml-prolog-encoding-spaced-single-quotes";
     private static final String XML4 = "xml-prolog-encoding-single-quotes";
     private static final String XML3 = "xml-prolog-encoding-double-quotes";
     private static final String XML2 = "xml-prolog";
     private static final String XML1 = "xml";
 
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
+
     public static void main(final String[] args) throws Exception {
-        final TestXmlReader test = new TestXmlReader();
+        final XmlReaderTest test = new XmlReaderTest();
         test.testRawBom();
         test.testRawNoBom();
         test.testHttp();
@@ -92,10 +102,12 @@ public class TestXmlReader extends TestCase {
         }
     }
 
+    @Test
     public void testRawNoBom() throws Exception {
         testRawNoBomValid("US-ASCII");
         testRawNoBomValid("UTF-8");
         testRawNoBomValid("ISO-8859-1");
+        testRawNoBomValid("CP1047");
     }
 
     protected void testRawBomValid(final String encoding) throws Exception {
@@ -120,6 +132,7 @@ public class TestXmlReader extends TestCase {
         }
     }
 
+    @Test
     public void testRawBom() throws Exception {
         testRawBomValid("UTF-8");
         testRawBomValid("UTF-16BE");
@@ -136,6 +149,7 @@ public class TestXmlReader extends TestCase {
         testRawBomInvalid("UTF-16LE-bom", "UTF-16LE", "UTF-8");
     }
 
+    @Test
     public void testHttp() throws Exception {
         testHttpValid("application/xml", "no-bom", "US-ASCII", null);
         testHttpValid("application/xml", "UTF-8-bom", "US-ASCII", null);
@@ -271,6 +285,7 @@ public class TestXmlReader extends TestCase {
     private static final String ENCODING_ATTRIBUTE_XML = "<?xml version=\"1.0\" ?> \n" + "<atom:feed xmlns:atom=\"http://www.w3.org/2005/Atom\">\n" + "\n"
             + "  <atom:entry>\n" + "    <atom:title encoding=\"base64\"><![CDATA\n" + "aW5nTGluZSIgLz4";
 
+    @Test
     public void testEncodingAttributeXML() throws Exception {
         final InputStream is = new ByteArrayInputStream(ENCODING_ATTRIBUTE_XML.getBytes());
         final XmlReader xmlReader = new XmlReader(is, "", true);
@@ -348,4 +363,120 @@ public class TestXmlReader extends TestCase {
         return new ByteArrayInputStream(baos.toByteArray());
     }
 
+    @Test
+    public void testGetXmlProlog() throws IOException {
+        final InputStream input = stringToStream("<?xml encoding=\"TEST\"?>", "UTF-8");
+        final String guessedEncoding = "UTF-8";
+
+        final String prologEncoding = XmlReader.getXmlProlog(input, guessedEncoding);
+
+        assertEquals("TEST", prologEncoding);
+    }
+
+    @Test
+    public void testGetXmlProlog_Utf8() throws IOException {
+        final InputStream input = stringToStream("<?xml encoding=\"UTF-8\"?>", "UTF-8");
+        final String guessedEncoding = "UTF-8";
+
+        final String prologEncoding = XmlReader.getXmlProlog(input, guessedEncoding);
+
+        assertEquals("UTF-8", prologEncoding);
+    }
+
+    @Test
+    public void testGetXmlProlog_Utf16() throws IOException {
+        final InputStream input = stringToStream("<?xml encoding=\"UTF-16\"?>", "UTF-16");
+        final String guessedEncoding = "UTF-16";
+
+        assertEquals("UTF-16", XmlReader.getXmlProlog(input, guessedEncoding));
+    }
+
+    @Test
+    public void testGetXmlProlog_Cp1047() throws IOException {
+        final InputStream input = stringToStream("<?xml encoding=\"CP1047\"?>", "CP1047");
+        final String guessedEncoding = "CP1047";
+
+        assertEquals("CP1047", XmlReader.getXmlProlog(input, guessedEncoding));
+    }
+
+    @Test
+    public void testGetXmlProlog_NoEncoding() throws IOException {
+        final InputStream input = stringToStream("<?xml>", "UTF-8");
+        final String guessedEncoding = "UTF-8";
+
+        assertNull(XmlReader.getXmlProlog(input, guessedEncoding));
+    }
+
+    @Test
+    public void testGetXmlProlog_GuessedIsNull() throws IOException {
+        final InputStream input = stringToStream("<?xml encoding=\"UTF-8\"?>", "UTF-8");
+        final String guessedEncoding = null;
+
+        assertNull(XmlReader.getXmlProlog(input, guessedEncoding));
+    }
+
+    @Test
+    public void testGetXmlProlog_UppercaseResult() throws IOException {
+        final InputStream input = stringToStream("<?xml encoding=\"utf-8\"?>", "UTF-8");
+        final String guessedEncoding = "UTF-8";
+
+        assertEquals("UTF-8", XmlReader.getXmlProlog(input, guessedEncoding));
+    }
+
+    @Test
+    public void testGetXmlProlog_DifferentAsciiCompatible() throws IOException {
+        final InputStream input = stringToStream("<?xml encoding=\"TEST\"?>", "ISO-8859-1");
+        final String guessedEncoding = "UTF-8";
+
+        assertEquals("TEST", XmlReader.getXmlProlog(input, guessedEncoding));
+    }
+
+    @Test
+    public void testGetXmlProlog_DifferentAsciiIncompatible() throws IOException {
+        final InputStream input = stringToStream("<?xml encoding=\"TEST\"?>", "UTF-16BE");
+        final String guessedEncoding = "UTF-16LE";
+
+        expectedException.expect(IOException.class);
+
+        XmlReader.getXmlProlog(input, guessedEncoding);
+    }
+
+    @Test
+    public void testGetXmlProlog_NoClosingAngleBracket() throws IOException {
+        final InputStream input = stringToStream("<?xml encoding=\"TEST\"", "UTF-8");
+        final String guessedEncoding = "UTF-8";
+
+        expectedException.expect(IOException.class);
+
+        XmlReader.getXmlProlog(input, guessedEncoding);
+    }
+
+    @Test
+    public void testGetXmlProlog_Empty() throws IOException {
+        final InputStream input = stringToStream("", "UTF-8");
+        final String guessedEncoding = "UTF-8";
+
+        expectedException.expect(IOException.class);
+
+        XmlReader.getXmlProlog(input, guessedEncoding);
+    }
+
+    @Test
+    public void testGetXmlProlog_ClosingAngleBracketIsTooFar() throws IOException {
+        final StringBuilder spaces = new StringBuilder();
+        for (int i = 0; i < 5000; i++) {
+            spaces.append(" ");
+        }
+
+        final InputStream input = stringToStream("<?xml encoding=\"TEST\"?" + spaces + ">", "UTF-8");
+        final String guessedEncoding = "UTF-8";
+
+        expectedException.expect(IOException.class);
+
+        XmlReader.getXmlProlog(input, guessedEncoding);
+    }
+
+    static InputStream stringToStream(String string, String encoding) {
+        return new ByteArrayInputStream(string.getBytes(Charset.forName(encoding)));
+    }
 }
