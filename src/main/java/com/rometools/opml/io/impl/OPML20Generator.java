@@ -72,27 +72,30 @@ public class OPML20Generator extends OPML10Generator {
         }
 
         final List<String> categories = outline.getCategories();
-        final String categoriesValue = generateCategoriesValue(categories);
-        addNotNullAttribute(outlineElement, "category", categoriesValue);
+        final String categoryValue = generateCategoryValue(categories);
+        addNotNullAttribute(outlineElement, "category", categoryValue);
 
         return outlineElement;
 
     }
 
-    private String generateCategoriesValue(final Collection<String> categories) {
+    private String generateCategoryValue(final Collection<String> categories) {
+
         final StringBuilder builder = new StringBuilder();
+
         for (final String category : categories) {
             if (category != null && !category.trim().isEmpty()) {
                 builder.append("/");
                 builder.append(category.trim());
             }
         }
-        final String categoryString = builder.toString();
-        if (categoryString == null || categoryString.isEmpty()) {
-            return null;
+
+        if (builder.length() > 0) {
+            return builder.toString();
         } else {
-            return categoryString;
+            return null;
         }
+
     }
 
 }
