@@ -6,9 +6,18 @@ import java.io.File;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import org.custommonkey.xmlunit.Diff;
+import org.custommonkey.xmlunit.ElementNameAndAttributeQualifier;
+import org.custommonkey.xmlunit.XMLAssert;
+import org.custommonkey.xmlunit.XMLUnit;
+import org.jdom2.Document;
+import org.jdom2.output.Format;
+import org.jdom2.output.XMLOutputter;
+
 import com.rometools.rome.feed.WireFeed;
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.feed.synd.SyndFeedImpl;
+import com.rometools.rome.io.WireFeedOutput;
 
 /**
  *
@@ -62,6 +71,27 @@ public abstract class FeedOpsTest extends FeedTest {
         ois.close();
 
         assertTrue(feed1.equals(feed2));
+    }
+
+    // 1.5
+    public void testWireFeedJDOMSerialization() throws Exception {
+        Document inputDoc = getCachedJDomDoc();
+
+        final WireFeed feed = getCachedWireFeed();
+        WireFeedOutput output = new WireFeedOutput();
+        Document outputDoc = output.outputJDom(feed);
+
+        XMLOutputter outputter = new XMLOutputter(Format.getCompactFormat());
+        String inputString = outputter.outputString(inputDoc);
+        String outputString = outputter.outputString(outputDoc);
+
+        XMLUnit.setIgnoreWhitespace(true);
+        XMLUnit.setIgnoreAttributeOrder(true);
+        Diff diff = XMLUnit.compareXML(inputString, outputString);
+        // ignore elements order
+        diff.overrideElementQualifier(new ElementNameAndAttributeQualifier());
+
+        XMLAssert.assertXMLEqual(diff, true);
     }
 
     // 1.6
