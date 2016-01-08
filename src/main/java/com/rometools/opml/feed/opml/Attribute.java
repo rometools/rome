@@ -31,13 +31,8 @@ public class Attribute implements Cloneable, Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String _name;
-    private String _value;
-
-    /** Creates a new instance of Attribute */
-    public Attribute() {
-        super();
-    }
+    private String name;
+    private String value;
 
     /**
      * Creates a new instance of Attribute.
@@ -53,62 +48,40 @@ public class Attribute implements Cloneable, Serializable {
         setValue(value);
     }
 
-    /**
-     * name of the attribute.
-     *
-     * @param name name of the attribute.
-     */
     public void setName(final String name) {
-        _name = name;
+        this.name = name;
     }
 
-    /**
-     * name of the attribute.
-     *
-     * @return name of the attribute.
-     */
     public String getName() {
-        return _name;
+        return name;
     }
 
-    /**
-     * value of the attribute.
-     *
-     * @param value value of the attribute.
-     */
     public void setValue(final String value) {
-        _value = value;
+        this.value = value;
     }
 
-    /**
-     * value of the attribute.
-     *
-     * @return value of the attribute.
-     */
     public String getValue() {
-        return _value;
+        return value;
     }
 
     @Override
     public Object clone() {
-        return new Attribute(_name, _value);
+        return new Attribute(name, value);
     }
 
     @Override
     public boolean equals(final Object obj) {
-        final EqualsBean eBean = new EqualsBean(Attribute.class, this);
-        return eBean.beanEquals(obj);
+        return new EqualsBean(Attribute.class, this).beanEquals(obj);
     }
 
     @Override
     public int hashCode() {
-        final EqualsBean equals = new EqualsBean(Attribute.class, this);
-        return equals.beanHashCode();
+        return new EqualsBean(Attribute.class, this).beanHashCode();
     }
 
     @Override
     public String toString() {
-        final ToStringBean tsBean = new ToStringBean(Attribute.class, this);
-        return tsBean.toString();
+        return new ToStringBean(Attribute.class, this).toString();
     }
+
 }

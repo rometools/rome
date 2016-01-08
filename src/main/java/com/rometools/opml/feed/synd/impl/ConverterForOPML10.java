@@ -44,7 +44,6 @@ import com.rometools.rome.feed.synd.SyndPerson;
 import com.rometools.rome.feed.synd.SyndPersonImpl;
 
 /**
- *
  * @author cooper
  */
 public class ConverterForOPML10 implements Converter {
@@ -53,11 +52,6 @@ public class ConverterForOPML10 implements Converter {
 
     public static final String URI_TREE = "urn:rome.tree";
     public static final String URI_ATTRIBUTE = "urn:rome.attribute#";
-
-    /** Creates a new instance of ConverterForOPML10 */
-    public ConverterForOPML10() {
-        super();
-    }
 
     protected void addOwner(final Opml opml, final SyndFeed syndFeed) {
         if (opml.getOwnerEmail() != null || opml.getOwnerName() != null) {
@@ -77,8 +71,7 @@ public class ConverterForOPML10 implements Converter {
      * <p>
      *
      * @param feed real feed to copy/convert.
-     * @param syndFeed the SyndFeedImpl that will contain the copied/converted values of the real
-     *            feed.
+     * @param syndFeed the SyndFeedImpl that will contain the copied/converted values of the real feed.
      */
     @Override
     public void copyInto(final WireFeed feed, final SyndFeed syndFeed) {
@@ -90,10 +83,10 @@ public class ConverterForOPML10 implements Converter {
         syndFeed.setModules(opml.getModules());
         syndFeed.setFeedType(getType());
 
-        createEntries(new TreeContext(), syndFeed.getEntries(), opml.getOutlines());
+        createEntries(new Stack<Integer>(), syndFeed.getEntries(), opml.getOutlines());
     }
 
-    protected void createEntries(final TreeContext context, final List<SyndEntry> allEntries, final List<Outline> outlines) {
+    protected void createEntries(final Stack<Integer> context, final List<SyndEntry> allEntries, final List<Outline> outlines) {
         final List<Outline> so = Collections.synchronizedList(outlines);
 
         for (int i = 0; i < so.size(); i++) {
@@ -101,7 +94,7 @@ public class ConverterForOPML10 implements Converter {
         }
     }
 
-    protected SyndEntry createEntry(final TreeContext context, final List<SyndEntry> allEntries, final Outline outline) {
+    protected SyndEntry createEntry(final Stack<Integer> context, final List<SyndEntry> allEntries, final Outline outline) {
         final SyndEntry entry = new SyndEntryImpl();
 
         if (outline.getType() != null && outline.getType().equals("rss")) {
@@ -197,7 +190,6 @@ public class ConverterForOPML10 implements Converter {
      *
      * @param syndFeed SyndFeedImpl to copy/convert value from.
      * @return a real feed with copied/converted values of the SyndFeedImpl.
-     *
      */
     @Override
     public WireFeed createRealFeed(final SyndFeed syndFeed) {
@@ -333,11 +325,9 @@ public class ConverterForOPML10 implements Converter {
 
     /**
      * Returns the type (version) of the real feed this converter handles.
-     * <p>
      *
      * @return the real feed type.
      * @see WireFeed for details on the format of this string.
-     *      <p>
      */
     @Override
     public String getType() {
@@ -345,21 +335,15 @@ public class ConverterForOPML10 implements Converter {
     }
 
     private static class OutlineHolder {
-        Outline outline;
-        String parent;
+
+        private final Outline outline;
+        private final String parent;
 
         public OutlineHolder(final Outline outline, final String parent) {
             this.outline = outline;
             this.parent = parent;
         }
+
     }
 
-    private static class TreeContext extends Stack<Integer> {
-
-        private static final long serialVersionUID = 1L;
-
-        TreeContext() {
-            super();
-        }
-    }
 }

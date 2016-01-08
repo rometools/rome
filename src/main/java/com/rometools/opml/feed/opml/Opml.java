@@ -24,8 +24,8 @@ import java.util.List;
 import com.rometools.rome.feed.WireFeed;
 
 /**
- * This class represents the root of an OPML 1/2 feed and contains the elements that may appear in
- * the &lt;head&gt; tag of the feed.
+ * This class represents the root of an OPML 1/2 feed and contains the elements that may appear in the &lt;head&gt; tag
+ * of the feed.
  *
  * @author <a href="mailto:cooper@screaming-penguin.com"> Robert "kebernet" Cooper</a>
  */
@@ -33,25 +33,20 @@ public class Opml extends WireFeed {
 
     private static final long serialVersionUID = 1L;
 
-    private Date _created;
-    private Date _modified;
-    private Integer _verticalScrollState;
-    private Integer _windowBottom;
-    private Integer _windowLeft;
-    private Integer _windowRight;
-    private Integer _windowTop;
-    private List<Outline> _outlines;
-    private String _docs;
-    private String _ownerEmail;
-    private String _ownerId;
-    private String _ownerName;
-    private String _title;
-    private int[] _expansionState;
-
-    /** Creates a new instance of Opml */
-    public Opml() {
-        super();
-    }
+    private Date created;
+    private Date modified;
+    private Integer verticalScrollState;
+    private Integer windowBottom;
+    private Integer windowLeft;
+    private Integer windowRight;
+    private Integer windowTop;
+    private List<Outline> outlines;
+    private String docs;
+    private String ownerEmail;
+    private String ownerId;
+    private String ownerName;
+    private String title;
+    private int[] expansionState;
 
     /**
      * <dateCreated> is a date-time, indicating when the document was created.
@@ -59,7 +54,7 @@ public class Opml extends WireFeed {
      * @param created date-time, indicating when the document was created.
      */
     public void setCreated(final Date created) {
-        _created = created;
+        this.created = created;
     }
 
     /**
@@ -68,53 +63,51 @@ public class Opml extends WireFeed {
      * @return date-time, indicating when the document was created.
      */
     public Date getCreated() {
-        return _created;
+        return created;
     }
 
     /**
-     * (OPML 2) &lt;docs&gt; is the http address of documentation for the format used in the OPML
-     * file. It's probably a pointer to <a href="http://www.opml.org/spec2">this page</a> for people
-     * who might stumble across the file on a web server 25 years from now and wonder what it is.
+     * (OPML 2) &lt;docs&gt; is the http address of documentation for the format used in the OPML file. It's probably a
+     * pointer to <a href="http://www.opml.org/spec2">this page</a> for people who might stumble across the file on a
+     * web server 25 years from now and wonder what it is.
      *
      * @param docs http address of documentation for the format used
      */
     public void setDocs(final String docs) {
-        _docs = docs;
+        this.docs = docs;
     }
 
     /**
-     * (OPML 2) &lt;docs&gt; is the http address of documentation for the format used in the OPML
-     * file. It's probably a pointer to <a href="http://www.opml.org/spec2">this page</a> for people
-     * who might stumble across the file on a web server 25 years from now and wonder what it is.
+     * (OPML 2) &lt;docs&gt; is the http address of documentation for the format used in the OPML file. It's probably a
+     * pointer to <a href="http://www.opml.org/spec2">this page</a> for people who might stumble across the file on a
+     * web server 25 years from now and wonder what it is.
      *
      * @return http address of documentation for the format used
      */
     public String getDocs() {
-        return _docs;
+        return docs;
     }
 
     /**
-     * &lt;expansionState&gt;is a comma-separated list of line numbers that are expanded. The line
-     * numbers in the list tell you which headlines to expand. The order is important. For each
-     * element in the list, X, starting at the first summit, navigate flatdown X times and expand.
-     * Repeat for each element in the list.
+     * &lt;expansionState&gt;is a comma-separated list of line numbers that are expanded. The line numbers in the list
+     * tell you which headlines to expand. The order is important. For each element in the list, X, starting at the
+     * first summit, navigate flatdown X times and expand. Repeat for each element in the list.
      *
      * @param expansionState int array containing expanded elements.
      */
     public void setExpansionState(final int[] expansionState) {
-        _expansionState = expansionState;
+        this.expansionState = expansionState;
     }
 
     /**
-     * &lt;expansionState&gt; is a comma-separated list of line numbers that are expanded. The line
-     * numbers in the list tell you which headlines to expand. The order is important. For each
-     * element in the list, X, starting at the first summit, navigate flatdown X times and expand.
-     * Repeat for each element in the list.
+     * &lt;expansionState&gt; is a comma-separated list of line numbers that are expanded. The line numbers in the list
+     * tell you which headlines to expand. The order is important. For each element in the list, X, starting at the
+     * first summit, navigate flatdown X times and expand. Repeat for each element in the list.
      *
      * @return int array containing expanded elements.
      */
     public int[] getExpansionState() {
-        return _expansionState;
+        return expansionState;
     }
 
     /**
@@ -123,7 +116,7 @@ public class Opml extends WireFeed {
      * @param modified date-time, indicating when the document was last modified.
      */
     public void setModified(final Date modified) {
-        _modified = modified;
+        this.modified = modified;
     }
 
     /**
@@ -132,7 +125,7 @@ public class Opml extends WireFeed {
      * @return date-time, indicating when the document was last modified.
      */
     public Date getModified() {
-        return _modified;
+        return modified;
     }
 
     /**
@@ -141,7 +134,7 @@ public class Opml extends WireFeed {
      * @param outlines Root level Outline object that should appear in the &lt;body&gt;
      */
     public void setOutlines(final List<Outline> outlines) {
-        _outlines = outlines;
+        this.outlines = outlines;
     }
 
     /**
@@ -150,11 +143,11 @@ public class Opml extends WireFeed {
      * @return Root level Outline object that should appear in the &lt;body&gt;
      */
     public List<Outline> getOutlines() {
-        if (_outlines == null) {
-            _outlines = new ArrayList<Outline>();
+        if (outlines == null) {
+            outlines = new ArrayList<Outline>();
         }
 
-        return _outlines;
+        return outlines;
     }
 
     /**
@@ -163,7 +156,7 @@ public class Opml extends WireFeed {
      * @param ownerEmail the email address of the owner of the document.
      */
     public void setOwnerEmail(final String ownerEmail) {
-        _ownerEmail = ownerEmail;
+        this.ownerEmail = ownerEmail;
     }
 
     /**
@@ -172,33 +165,29 @@ public class Opml extends WireFeed {
      * @return the email address of the owner of the document.
      */
     public String getOwnerEmail() {
-        return _ownerEmail;
+        return ownerEmail;
     }
 
     /**
-     * (OPML 2) &lt;ownerId&gt; is the http address of a web page that contains <strike>an
-     * HTML</strike> a form that allows a human reader to communicate with the author of the
-     * document via email or other means.
+     * (OPML 2) &lt;ownerId&gt; is the http address of a web page that contains <strike>an HTML</strike> a form that
+     * allows a human reader to communicate with the author of the document via email or other means.
      *
-     * @param ownerId http address of a web page that contains <strike>an HTML</strike> a form that
-     *            allows a human reader to communicate with the author of the document via email or
-     *            other means.
+     * @param ownerId http address of a web page that contains <strike>an HTML</strike> a form that allows a human
+     *            reader to communicate with the author of the document via email or other means.
      */
     public void setOwnerId(final String ownerId) {
-        _ownerId = ownerId;
+        this.ownerId = ownerId;
     }
 
     /**
-     * (OPML 2) &lt;ownerId&gt; is the http address of a web page that contains <strike>an
-     * HTML</strike> a form that allows a human reader to communicate with the author of the
-     * document via email or other means.
+     * (OPML 2) &lt;ownerId&gt; is the http address of a web page that contains <strike>an HTML</strike> a form that
+     * allows a human reader to communicate with the author of the document via email or other means.
      *
-     * @return http address of a web page that contains <strike>an HTML</strike> a form that allows
-     *         a human reader to communicate with the author of the document via email or other
-     *         means.
+     * @return http address of a web page that contains <strike>an HTML</strike> a form that allows a human reader to
+     *         communicate with the author of the document via email or other means.
      */
     public String getOwnerId() {
-        return _ownerId;
+        return ownerId;
     }
 
     /**
@@ -207,7 +196,7 @@ public class Opml extends WireFeed {
      * @param ownerName the owner of the document.
      */
     public void setOwnerName(final String ownerName) {
-        _ownerName = ownerName;
+        this.ownerName = ownerName;
     }
 
     /**
@@ -216,7 +205,7 @@ public class Opml extends WireFeed {
      * @return the owner of the document.
      */
     public String getOwnerName() {
-        return _ownerName;
+        return ownerName;
     }
 
     /**
@@ -225,7 +214,7 @@ public class Opml extends WireFeed {
      * @param title title of the document.
      */
     public void setTitle(final String title) {
-        _title = title;
+        this.title = title;
     }
 
     /**
@@ -234,29 +223,28 @@ public class Opml extends WireFeed {
      * @return title of the document.
      */
     public String getTitle() {
-        return _title;
+        return title;
     }
 
     /**
-     * &lt;vertScrollState&gt; is a number, saying which line of the outline is displayed on the top
-     * line of the window. This number is calculated with the expansion state already applied.
+     * &lt;vertScrollState&gt; is a number, saying which line of the outline is displayed on the top line of the window.
+     * This number is calculated with the expansion state already applied.
      *
-     * @param verticalScrollState which line of the outline is displayed on the top line of the
-     *            window.
+     * @param verticalScrollState which line of the outline is displayed on the top line of the window.
      */
     public void setVerticalScrollState(final Integer verticalScrollState) {
-        _verticalScrollState = verticalScrollState;
+        this.verticalScrollState = verticalScrollState;
     }
 
     /**
-     * &lt;vertScrollState&gt; is a number, saying which line of the outline is displayed on the top
-     * line of the window. This number is calculated with the expansion state already applied.
+     * &lt;vertScrollState&gt; is a number, saying which line of the outline is displayed on the top line of the window.
+     * This number is calculated with the expansion state already applied.
      *
-     * @return which line of the outline is displayed on the top line of the window. This number is
-     *         calculated with the expansion state already applied.
+     * @return which line of the outline is displayed on the top line of the window. This number is calculated with the
+     *         expansion state already applied.
      */
     public Integer getVerticalScrollState() {
-        return _verticalScrollState;
+        return verticalScrollState;
     }
 
     /**
@@ -265,7 +253,7 @@ public class Opml extends WireFeed {
      * @param windowBottom the pixel location of the bottom edge of the window.
      */
     public void setWindowBottom(final Integer windowBottom) {
-        _windowBottom = windowBottom;
+        this.windowBottom = windowBottom;
     }
 
     /**
@@ -274,7 +262,7 @@ public class Opml extends WireFeed {
      * @return the pixel location of the bottom edge of the window.
      */
     public Integer getWindowBottom() {
-        return _windowBottom;
+        return windowBottom;
     }
 
     /**
@@ -283,7 +271,7 @@ public class Opml extends WireFeed {
      * @param windowLeft the pixel location of the left edge of the window.
      */
     public void setWindowLeft(final Integer windowLeft) {
-        _windowLeft = windowLeft;
+        this.windowLeft = windowLeft;
     }
 
     /**
@@ -292,7 +280,7 @@ public class Opml extends WireFeed {
      * @return the pixel location of the left edge of the window.
      */
     public Integer getWindowLeft() {
-        return _windowLeft;
+        return windowLeft;
     }
 
     /**
@@ -301,7 +289,7 @@ public class Opml extends WireFeed {
      * @param windowRight the pixel location of the right edge of the window.
      */
     public void setWindowRight(final Integer windowRight) {
-        _windowRight = windowRight;
+        this.windowRight = windowRight;
     }
 
     /**
@@ -310,7 +298,7 @@ public class Opml extends WireFeed {
      * @return the pixel location of the right edge of the window.
      */
     public Integer getWindowRight() {
-        return _windowRight;
+        return windowRight;
     }
 
     /**
@@ -319,7 +307,7 @@ public class Opml extends WireFeed {
      * @param windowTop the pixel location of the top edge of the window.
      */
     public void setWindowTop(final Integer windowTop) {
-        _windowTop = windowTop;
+        this.windowTop = windowTop;
     }
 
     /**
@@ -328,6 +316,7 @@ public class Opml extends WireFeed {
      * @return the pixel location of the top edge of the window.
      */
     public Integer getWindowTop() {
-        return _windowTop;
+        return windowTop;
     }
+
 }

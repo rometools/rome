@@ -37,14 +37,12 @@ import com.rometools.rome.io.impl.BaseWireFeedParser;
 import com.rometools.rome.io.impl.DateParser;
 
 /**
- *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
 
     private static Logger LOG = LoggerFactory.getLogger(OPML10Parser.class);
 
-    /** Creates a new instance of Opml10Parser */
     public OPML10Parser() {
         super("opml_1.0", null);
     }
@@ -111,7 +109,6 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
                 opml.setWindowBottom(readInteger(head.getChildText("windowBottom")));
             } catch (final NumberFormatException nfe) {
                 LOG.warn("Unable to parse windowBottom", nfe);
-
                 if (validate) {
                     throw new FeedException("Unable to parse windowBottom", nfe);
                 }
@@ -121,13 +118,15 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
                 opml.setWindowLeft(readInteger(head.getChildText("windowLeft")));
             } catch (final NumberFormatException nfe) {
                 LOG.warn("Unable to parse windowLeft", nfe);
+                if (validate) {
+                    throw new FeedException("Unable to parse windowLeft", nfe);
+                }
             }
 
             try {
                 opml.setWindowRight(readInteger(head.getChildText("windowRight")));
             } catch (final NumberFormatException nfe) {
                 LOG.warn("Unable to parse windowRight", nfe);
-
                 if (validate) {
                     throw new FeedException("Unable to parse windowRight", nfe);
                 }
@@ -137,7 +136,6 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
                 opml.setWindowLeft(readInteger(head.getChildText("windowLeft")));
             } catch (final NumberFormatException nfe) {
                 LOG.warn("Unable to parse windowLeft", nfe);
-
                 if (validate) {
                     throw new FeedException("Unable to parse windowLeft", nfe);
                 }
@@ -147,7 +145,6 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
                 opml.setWindowTop(readInteger(head.getChildText("windowTop")));
             } catch (final NumberFormatException nfe) {
                 LOG.warn("Unable to parse windowTop", nfe);
-
                 if (validate) {
                     throw new FeedException("Unable to parse windowTop", nfe);
                 }
@@ -157,7 +154,6 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
                 opml.setExpansionState(readIntArray(head.getChildText("expansionState")));
             } catch (final NumberFormatException nfe) {
                 LOG.warn("Unable to parse expansionState", nfe);
-
                 if (validate) {
                     throw new FeedException("Unable to parse expansionState", nfe);
                 }

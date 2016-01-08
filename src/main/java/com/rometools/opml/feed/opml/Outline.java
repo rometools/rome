@@ -37,20 +37,18 @@ public class Outline implements Cloneable, Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Date _created;
-    private List<Attribute> _attributes;
-    private List<String> _categories;
-    private List<Outline> _children;
-    private List<Module> _modules;
-    private String _text;
-    private String _title;
-    private String _type;
-    private boolean _breakpoint;
-    private boolean _comment;
+    private Date created;
+    private List<Attribute> attributes;
+    private List<String> categories;
+    private List<Outline> children;
+    private List<Module> modules;
+    private String text;
+    private String title;
+    private String type;
+    private boolean breakpoint;
+    private boolean comment;
 
-    /** Creates a new instance of Outline */
     public Outline() {
-        super();
     }
 
     /**
@@ -60,14 +58,13 @@ public class Outline implements Cloneable, Serializable {
      * @param text text attribute value
      */
     public Outline(final String type, final String text) {
-        super();
         setType(type);
         setText(text);
     }
 
     /**
-     * Creates an outline with the given title, xmlUrl and htmlUrl. This is traditionally used for
-     * aggregator feed lists and will get a type of "rss".
+     * Creates an outline with the given title, xmlUrl and htmlUrl. This is traditionally used for aggregator feed lists
+     * and will get a type of "rss".
      *
      * @param title Title of the entry.
      * @param xmlUrl link to XML file.
@@ -94,7 +91,7 @@ public class Outline implements Cloneable, Serializable {
      * @param attributes List of attributes on this outline.
      */
     public void setAttributes(final List<Attribute> attributes) {
-        _attributes = attributes;
+        this.attributes = attributes;
     }
 
     /**
@@ -103,33 +100,31 @@ public class Outline implements Cloneable, Serializable {
      * @return List of attributes on this outline.
      */
     public List<Attribute> getAttributes() {
-        if (_attributes == null) {
-            _attributes = new ArrayList<Attribute>();
+        if (attributes == null) {
+            attributes = new ArrayList<Attribute>();
         }
 
-        return _attributes;
+        return attributes;
     }
 
     /**
-     * isBreakpoint is a string, either "true" or "false", indicating whether a breakpoint is set on
-     * this outline. This attribute is mainly necessary for outlines used to edit scripts. If it's
-     * not present, the value is false.
+     * isBreakpoint is a string, either "true" or "false", indicating whether a breakpoint is set on this outline. This
+     * attribute is mainly necessary for outlines used to edit scripts. If it's not present, the value is false.
      *
      * @param breakpoint whether a breakpoint is set on this outline.
      */
     public void setBreakpoint(final boolean breakpoint) {
-        _breakpoint = breakpoint;
+        this.breakpoint = breakpoint;
     }
 
     /**
-     * isBreakpoint is a string, either "true" or "false", indicating whether a breakpoint is set on
-     * this outline. This attribute is mainly necessary for outlines used to edit scripts. If it's
-     * not present, the value is false.
+     * isBreakpoint is a string, either "true" or "false", indicating whether a breakpoint is set on this outline. This
+     * attribute is mainly necessary for outlines used to edit scripts. If it's not present, the value is false.
      *
      * @return whether a breakpoint is set on this outline
      */
     public boolean isBreakpoint() {
-        return _breakpoint;
+        return breakpoint;
     }
 
     /**
@@ -138,7 +133,7 @@ public class Outline implements Cloneable, Serializable {
      * @param categories (OPML 2) A List of Strings indicating values in the category attribute.
      */
     public void setCategories(final List<String> categories) {
-        _categories = categories;
+        this.categories = categories;
     }
 
     /**
@@ -147,11 +142,11 @@ public class Outline implements Cloneable, Serializable {
      * @return (OPML 2) A List of Strings indicating values in the category attribute.
      */
     public List<String> getCategories() {
-        if (_categories == null) {
-            _categories = new ArrayList<String>();
+        if (categories == null) {
+            categories = new ArrayList<String>();
         }
 
-        return _categories;
+        return categories;
     }
 
     /**
@@ -160,7 +155,7 @@ public class Outline implements Cloneable, Serializable {
      * @param children A list of sub-outlines for this entry.
      */
     public void setChildren(final List<Outline> children) {
-        _children = children;
+        this.children = children;
     }
 
     /**
@@ -169,33 +164,33 @@ public class Outline implements Cloneable, Serializable {
      * @return A list of sub-outlines for this entry.
      */
     public List<Outline> getChildren() {
-        if (_children == null) {
-            _children = new ArrayList<Outline>();
+        if (children == null) {
+            children = new ArrayList<Outline>();
         }
 
-        return _children;
+        return children;
     }
 
     /**
-     * isComment is a string, either "true" or "false", indicating whether the outline is commented
-     * or not. By convention if an outline is commented, all subordinate outlines are considered to
-     * also be commented. If it's not present, the value is false.
+     * isComment is a string, either "true" or "false", indicating whether the outline is commented or not. By
+     * convention if an outline is commented, all subordinate outlines are considered to also be commented. If it's not
+     * present, the value is false.
      *
      * @param comment whether the outline is commented
      */
     public void setComment(final boolean comment) {
-        _comment = comment;
+        this.comment = comment;
     }
 
     /**
-     * isComment is a string, either "true" or "false", indicating whether the outline is commented
-     * or not. By convention if an outline is commented, all subordinate outlines are considered to
-     * also be commented. If it's not present, the value is false.
+     * isComment is a string, either "true" or "false", indicating whether the outline is commented or not. By
+     * convention if an outline is commented, all subordinate outlines are considered to also be commented. If it's not
+     * present, the value is false.
      *
      * @return whether the outline is commented
      */
     public boolean isComment() {
-        return _comment;
+        return comment;
     }
 
     /**
@@ -204,7 +199,7 @@ public class Outline implements Cloneable, Serializable {
      * @param created date-time that the outline node was created.
      */
     public void setCreated(final Date created) {
-        _created = created;
+        this.created = created;
     }
 
     /**
@@ -213,7 +208,7 @@ public class Outline implements Cloneable, Serializable {
      * @return date-time that the outline node was created.
      */
     public Date getCreated() {
-        return _created;
+        return created;
     }
 
     /**
@@ -235,15 +230,15 @@ public class Outline implements Cloneable, Serializable {
     }
 
     public void setModules(final List<Module> modules) {
-        _modules = modules;
+        this.modules = modules;
     }
 
     public List<Module> getModules() {
-        if (_modules == null) {
-            _modules = new ArrayList<Module>();
+        if (modules == null) {
+            modules = new ArrayList<Module>();
         }
 
-        return _modules;
+        return modules;
     }
 
     /**
@@ -252,7 +247,7 @@ public class Outline implements Cloneable, Serializable {
      * @param text The "text" attribute of the outline.
      */
     public void setText(final String text) {
-        _text = text;
+        this.text = text;
     }
 
     /**
@@ -261,7 +256,7 @@ public class Outline implements Cloneable, Serializable {
      * @return The "text" attribute of the outline.
      */
     public String getText() {
-        return _text;
+        return text;
     }
 
     /**
@@ -270,7 +265,7 @@ public class Outline implements Cloneable, Serializable {
      * @param title The "title" attribute of the outline.
      */
     public void setTitle(final String title) {
-        _title = title;
+        this.title = title;
     }
 
     /**
@@ -279,7 +274,7 @@ public class Outline implements Cloneable, Serializable {
      * @return The "title" attribute of the outline.
      */
     public String getTitle() {
-        return _title;
+        return title;
     }
 
     /**
@@ -288,7 +283,7 @@ public class Outline implements Cloneable, Serializable {
      * @param type The "type" attribute of the outline.
      */
     public void setType(final String type) {
-        _type = type;
+        this.type = type;
     }
 
     /**
@@ -297,7 +292,7 @@ public class Outline implements Cloneable, Serializable {
      * @return The "type" attribute of the outline.
      */
     public String getType() {
-        return _type;
+        return type;
     }
 
     /**
@@ -333,7 +328,7 @@ public class Outline implements Cloneable, Serializable {
         o.setBreakpoint(isBreakpoint());
         o.setCategories(new ArrayList<String>(getCategories()));
         o.setComment(isComment());
-        o.setCreated(_created != null ? (Date) _created.clone() : null);
+        o.setCreated(created != null ? (Date) created.clone() : null);
         o.setModules(new ArrayList<Module>(getModules()));
         o.setText(getText());
         o.setTitle(getTitle());
@@ -341,13 +336,13 @@ public class Outline implements Cloneable, Serializable {
 
         final ArrayList<Outline> children = new ArrayList<Outline>();
         for (int i = 0; i < getChildren().size(); i++) {
-            children.add((Outline) _children.get(i).clone());
+            children.add((Outline) this.children.get(i).clone());
         }
         o.setChildren(children);
 
         final ArrayList<Attribute> attributes = new ArrayList<Attribute>();
         for (int i = 0; i < getAttributes().size(); i++) {
-            attributes.add((Attribute) _attributes.get(i).clone());
+            attributes.add((Attribute) this.attributes.get(i).clone());
         }
         o.setAttributes(attributes);
 
@@ -356,22 +351,17 @@ public class Outline implements Cloneable, Serializable {
 
     @Override
     public boolean equals(final Object obj) {
-        final EqualsBean eBean = new EqualsBean(Outline.class, this);
-
-        return eBean.beanEquals(obj);
+        return new EqualsBean(Outline.class, this).beanEquals(obj);
     }
 
     @Override
     public int hashCode() {
-        final EqualsBean equals = new EqualsBean(Outline.class, this);
-
-        return equals.beanHashCode();
+        return new EqualsBean(Outline.class, this).beanHashCode();
     }
 
     @Override
     public String toString() {
-        final ToStringBean tsBean = new ToStringBean(Outline.class, this);
-
-        return tsBean.toString();
+        return new ToStringBean(Outline.class, this).toString();
     }
+
 }

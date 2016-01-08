@@ -35,11 +35,10 @@ import com.rometools.rome.io.impl.BaseWireFeedGenerator;
 import com.rometools.rome.io.impl.DateParser;
 
 /**
- *
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class OPML10Generator extends BaseWireFeedGenerator implements WireFeedGenerator {
-    /** Creates a new instance of Opml10Generator */
+
     public OPML10Generator() {
         super("opml_1.0");
     }
@@ -50,16 +49,16 @@ public class OPML10Generator extends BaseWireFeedGenerator implements WireFeedGe
 
     /**
      * Creates an XML document (JDOM) for the given feed bean.
-     * <p>
      *
      * @param feed the feed bean to generate the XML document from.
      * @return the generated XML document (JDOM).
-     * @throws IllegalArgumentException thrown if the type of the given feed bean does not match
-     *             with the type of the WireFeedGenerator.
+     * @throws IllegalArgumentException thrown if the type of the given feed bean does not match with the type of the
+     *             WireFeedGenerator.
      * @throws FeedException thrown if the XML Document could not be created.
      */
     @Override
     public Document generate(final WireFeed feed) throws IllegalArgumentException, FeedException {
+
         if (!(feed instanceof Opml)) {
             throw new IllegalArgumentException("Not an OPML file");
         }
@@ -88,9 +87,7 @@ public class OPML10Generator extends BaseWireFeedGenerator implements WireFeedGe
         if (target == null || name == null || value == null) {
             return false;
         }
-
         target.setAttribute(name, value.toString());
-
         return true;
     }
 

@@ -1,25 +1,12 @@
-/*
- * ConverterForOPML20.java
- *
- * Created on April 25, 2006, 5:29 PM
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
 package com.rometools.opml.feed.synd.impl;
 
 import com.rometools.rome.feed.WireFeed;
 import com.rometools.rome.feed.synd.SyndFeed;
 
 /**
- *
  * @author cooper
  */
 public class ConverterForOPML20 extends ConverterForOPML10 {
-    /** Creates a new instance of ConverterForOPML20 */
-    public ConverterForOPML20() {
-        super();
-    }
 
     /**
      * Returns the type (version) of the real feed this converter handles.
@@ -41,8 +28,7 @@ public class ConverterForOPML20 extends ConverterForOPML10 {
      * <p>
      *
      * @param feed real feed to copy/convert.
-     * @param syndFeed the SyndFeedImpl that will contain the copied/converted values of the real
-     *            feed.
+     * @param syndFeed the SyndFeedImpl that will contain the copied/converted values of the real feed.
      */
     @Override
     public void copyInto(final WireFeed feed, final SyndFeed syndFeed) {
@@ -58,10 +44,7 @@ public class ConverterForOPML20 extends ConverterForOPML10 {
      */
     @Override
     public WireFeed createRealFeed(final SyndFeed syndFeed) {
-        WireFeed retValue;
-
-        retValue = super.createRealFeed(syndFeed);
-
-        return retValue;
+        return super.createRealFeed(syndFeed);
     }
+
 }
