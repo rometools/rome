@@ -88,7 +88,7 @@ public class OPML20Generator extends OPML10Generator {
             }
         }
         final String categoryString = builder.toString();
-        if (categoryString == null || categoryString.trim().isEmpty()) {
+        if (categoryString == null || categoryString.isEmpty()) {
             return null;
         } else {
             return categoryString;
