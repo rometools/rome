@@ -83,9 +83,14 @@ public class OPML20Generator extends OPML10Generator {
 
         final StringBuilder builder = new StringBuilder();
 
+        boolean first = true;
         for (final String category : categories) {
             if (category != null && !category.trim().isEmpty()) {
-                builder.append("/");
+                if (first) {
+                    first = false;
+                } else {
+                    builder.append(",");
+                }
                 builder.append(category.trim());
             }
         }

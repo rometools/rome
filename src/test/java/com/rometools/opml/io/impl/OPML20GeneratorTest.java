@@ -4,49 +4,70 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-import java.io.IOException;
 import java.util.Arrays;
-import java.util.List;
 
 import org.custommonkey.xmlunit.XMLUnit;
-import org.custommonkey.xmlunit.exceptions.XpathException;
 import org.junit.Test;
 import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
+import org.w3c.dom.NodeList;
 
 import com.rometools.opml.feed.opml.Opml;
 import com.rometools.opml.feed.opml.Outline;
-import com.rometools.rome.io.FeedException;
 import com.rometools.rome.io.WireFeedOutput;
 
 public class OPML20GeneratorTest {
 
     @Test
-    public void testCategoryOutput() throws IllegalArgumentException, FeedException, SAXException, IOException, XpathException {
-        checkCategoryOutput(null, "");
-        checkCategoryOutput(Arrays.asList("category1"), "/category1");
-        checkCategoryOutput(Arrays.asList("category1", "category2"), "/category1/category2");
+    public void testOutputOfNullCategory() {
+        assertThat(categoryOf((String) null).getLength(), is(equalTo(0)));
     }
 
-    private void checkCategoryOutput(final List<String> categories, final String asserted)
-            throws IllegalArgumentException, FeedException, SAXException, IOException, XpathException {
+    @Test
+    public void testOutputOfEmptyCategory() {
+        assertThat(categoryOf("").getLength(), is(equalTo(0)));
+    }
 
-        final Outline outline = new Outline("outline1", null);
-        outline.setCategories(categories);
-        final List<Outline> outlines = Arrays.asList(outline);
+    @Test
+    public void testOutputOfBlankCategory() {
+        assertThat(categoryOf(" ").getLength(), is(equalTo(0)));
+    }
 
-        final Opml opml = new Opml();
-        opml.setFeedType("opml_2.0");
-        opml.setTitle("title");
-        opml.setOutlines(outlines);
+    @Test
+    public void testOutputOfOneCategory() {
+        assertThat(categoryValueOf("category1"), is(equalTo("category1")));
+    }
 
-        final WireFeedOutput output = new WireFeedOutput();
-        final String xml = output.outputString(opml);
+    @Test
+    public void testOutputOfMultipleCategories() {
+        assertThat(categoryValueOf("category1", "category2"), is(equalTo("category1,category2")));
+    }
 
-        final Document document = XMLUnit.buildControlDocument(xml);
-        final String categoryValue = XMLUnit.newXpathEngine().evaluate("/opml/body/outline/@category", document);
-        assertThat(categoryValue, is(equalTo(asserted)));
+    private NodeList categoryOf(final String... categories) {
 
+        try {
+
+            final Outline outline = new Outline("outline1", null);
+            outline.setCategories(Arrays.asList(categories));
+
+            final Opml opml = new Opml();
+            opml.setFeedType("opml_2.0");
+            opml.setTitle("title");
+            opml.setOutlines(Arrays.asList(outline));
+
+            final WireFeedOutput output = new WireFeedOutput();
+            final String xml = output.outputString(opml);
+
+            final Document document = XMLUnit.buildControlDocument(xml);
+            return XMLUnit.newXpathEngine().getMatchingNodes("/opml/body/outline/@category", document);
+
+        } catch (final Exception e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    private String categoryValueOf(final String... categories) {
+        return categoryOf(categories).item(0).getNodeValue();
     }
 
 }
