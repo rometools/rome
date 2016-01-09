@@ -1,5 +1,7 @@
 package com.rometools.opml.io.impl;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.Locale;
 
 import org.jdom2.Document;
@@ -12,7 +14,9 @@ import com.rometools.rome.io.FeedException;
 import com.rometools.rome.io.impl.DateParser;
 
 /**
- * @author cooper
+ * Generator for OPML 2.0 documents.
+ *
+ * @see <a href="http://dev.opml.org/spec2.html">http://dev.opml.org/spec2.html</a>
  */
 public class OPML20Generator extends OPML10Generator {
 
@@ -41,33 +45,61 @@ public class OPML20Generator extends OPML10Generator {
      */
     @Override
     public Document generate(final WireFeed feed) throws IllegalArgumentException, FeedException {
-        final Document retValue = super.generate(feed);
-        retValue.getRootElement().setAttribute("version", "2.0");
-        return retValue;
+        final Document document = super.generate(feed);
+        document.getRootElement().setAttribute("version", "2.0");
+        return document;
     }
 
     @Override
     protected Element generateHead(final Opml opml) {
 
-        final Element docs = new Element("docs");
-        docs.setText(opml.getDocs());
+        final Element docsElement = new Element("docs");
+        docsElement.setText(opml.getDocs());
 
-        final Element retValue = super.generateHead(opml);
-        retValue.addContent(docs);
-        return retValue;
+        final Element headElement = super.generateHead(opml);
+        headElement.addContent(docsElement);
+        return headElement;
 
     }
 
     @Override
     protected Element generateOutline(final Outline outline) {
 
-        final Element retValue = super.generateOutline(outline);
+        final Element outlineElement = super.generateOutline(outline);
 
         if (outline.getCreated() != null) {
-            retValue.setAttribute("created", DateParser.formatRFC822(outline.getCreated(), Locale.US));
+            outlineElement.setAttribute("created", DateParser.formatRFC822(outline.getCreated(), Locale.US));
         }
 
-        return retValue;
+        final List<String> categories = outline.getCategories();
+        final String categoryValue = generateCategoryValue(categories);
+        addNotNullAttribute(outlineElement, "category", categoryValue);
+
+        return outlineElement;
+
+    }
+
+    private String generateCategoryValue(final Collection<String> categories) {
+
+        final StringBuilder builder = new StringBuilder();
+
+        boolean first = true;
+        for (final String category : categories) {
+            if (category != null && !category.trim().isEmpty()) {
+                if (first) {
+                    first = false;
+                } else {
+                    builder.append(",");
+                }
+                builder.append(category.trim());
+            }
+        }
+
+        if (builder.length() > 0) {
+            return builder.toString();
+        } else {
+            return null;
+        }
 
     }
 
