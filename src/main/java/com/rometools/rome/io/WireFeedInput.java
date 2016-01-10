@@ -370,8 +370,8 @@ public class WireFeedInput {
     
     private void setFeature(SAXBuilder saxBuilder, XMLReader parser, String feature, boolean value) {
         try {
-            saxBuilder.setFeature(feature, true);
-            parser.setFeature(feature, true);
+            saxBuilder.setFeature(feature, value);
+            parser.setFeature(feature, value);
         } catch (final SAXNotRecognizedException e) {
             // ignore
         } catch (final SAXNotSupportedException e) {
