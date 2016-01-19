@@ -235,16 +235,32 @@ public class XmlReader extends Reader {
      * @throws IOException thrown if there is a problem reading the stream of the URLConnection.
      *
      */
-    public XmlReader(final URLConnection conn) throws IOException {
+    public XmlReader(URLConnection conn) throws IOException {
         defaultEncoding = staticDefaultEncoding;
         final boolean lenient = true;
         if (conn instanceof HttpURLConnection) {
-            final Package pckg = this.getClass().getPackage();
+        	final Package pckg = this.getClass().getPackage();
+        	String userAgent = "ROME";
             if (pckg.getImplementationTitle() != null && pckg.getImplementationVersion() != null) {
-                conn.setRequestProperty("User-Agent", pckg.getImplementationTitle() + "/" + pckg.getImplementationVersion());
-            } else {
-                conn.setRequestProperty("User-Agent", "ROME");
+            	userAgent = pckg.getImplementationTitle() + "/" + pckg.getImplementationVersion();
             }
+            
+            //Set the user agent accordingly
+            conn.setRequestProperty("User-Agent", userAgent);
+        	
+        	//Checks whether the given connection redirects
+        	int status = ((HttpURLConnection)conn).getResponseCode();
+        	if(status == HttpURLConnection.HTTP_MOVED_TEMP
+        			|| status == HttpURLConnection.HTTP_MOVED_PERM
+        			|| status == HttpURLConnection.HTTP_SEE_OTHER) {
+        		//Close the old connection and..
+        		((HttpURLConnection) conn).disconnect();
+        		//...get the new location from the header to create a new connection
+        		conn = new URL(conn.getHeaderField("Location")).openConnection();
+        		conn.setRequestProperty("User-Agent", userAgent); //Reset user agent to new connection    		
+        	}
+        	
+            //
             try {
                 doHttpStream(conn.getInputStream(), conn.getContentType(), lenient);
             } catch (final XmlReaderException ex) {
