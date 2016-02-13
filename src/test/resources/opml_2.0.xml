@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+<head>
+    <title>Bloglines Subscriptions</title>
+    <dateCreated>Tue, 25 Apr 2006 19:19:28 GMT</dateCreated>
+    <docs>http://foo.com</docs>
+    <ownerName>Robert Cooper</ownerName>
+</head>
+<body>
+  <outline title="Subscriptions">
+    <outline title="Bloglines | News" htmlUrl="http://www.bloglines.com" type="rss" xmlUrl="http://www.bloglines.com/rss/about/news"/>
+    <outline title="screaming-penguin.com" htmlUrl="http://www.screaming-penguin.com" type="rss" xmlUrl="http://screaming-penguin.com/screamRDF.txt"/>
+    <outline title="Food" htmlUrl="http://www.livejournal.com/users/vrikodhara/" type="rss" xmlUrl="http://www.livejournal.com/users/vrikodhara/data/rss"/>
+    <outline title="Fafblog" htmlUrl="http://fafblog.blogspot.com" type="rss" xmlUrl="http://fafblog.blogspot.com/atom.xml"/>
+    <outline title="nerdy">
+        <outline title="The Register" htmlUrl="http://www.theregister.co.uk/" type="rss" xmlUrl="http://www.theregister.co.uk/feeds/latest.rdf"/>
+        <outline title="Plastic: Most Recent" htmlUrl="http://www.plastic.com/" type="rss" xmlUrl="http://www.plastic.com/plastic.xml"/>
+        <outline title="CNET News.com" htmlUrl="http://news.com.com/" type="rss" xmlUrl="http://news.com.com/2547-1_3-0-5.xml"/>
+        <outline title="The String Coffee Table" htmlUrl="http://golem.ph.utexas.edu/string/" type="rss" xmlUrl="http://golem.ph.utexas.edu/string/rss2.xml"/>
+        <outline title="Musings" htmlUrl="http://golem.ph.utexas.edu/~distler/blog/" type="rss" xmlUrl="http://golem.ph.utexas.edu/~distler/blog/rss2.xml"/>
+        <outline title="New Scientist - Latest Headlines" htmlUrl="http://www.newscientist.com/news.ns" type="rss" xmlUrl="http://www.newscientist.com/feed.ns?index=online-news"/>
+        <outline category="foo, bar, baz" title="Slashdot" htmlUrl="http://slashdot.org/" type="rss" xmlUrl="http://rss.slashdot.org/slashdot/eqWf"/>
+    </outline>
+    <outline title="tech people">
+    </outline>
+    <outline title="podcasts">
+    </outline>
+</outline>
+</body>
+</opml>
