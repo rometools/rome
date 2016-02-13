@@ -14,16 +14,16 @@
     <version>1.6.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <!-- Just for testing the build locally -->
-    <!-- <modules> -->
-    <!-- <module>../rome</module> -->
-    <!-- <module>../rome-certiorem</module> -->
-    <!-- <module>../rome-certiorem-webapp</module> -->
-    <!-- <module>../rome-fetcher</module> -->
-    <!-- <module>../rome-modules</module> -->
-    <!-- <module>../rome-opml</module> -->
-    <!-- <module>../rome-propono</module> -->
-    <!-- </modules> -->
+    <modules>
+        <module>rome</module>
+        <module>rome-certiorem</module>
+        <module>rome-certiorem-webapp</module>
+        <module>rome-fetcher</module>
+        <module>rome-modules</module>
+        <module>rome-opml</module>
+        <module>rome-propono</module>
+        <module>rome-utils</module>
+    </modules>
 
     <name>rome-parent</name>
 
