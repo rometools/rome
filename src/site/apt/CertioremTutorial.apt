@@ -1,0 +1,124 @@
+ -----
+ Certiorem Tutorial
+ -----
+ kebernet
+ -----
+ 2011-12-06 19:23:15.220
+ -----
+
+Certiorem Tutorial
+
+ Certiorem is a PubSubHubub (PSH) implementation for ROME. It isn't an application, but an API for building each of the three components (Publisher, Subscriber and Hub) into your web apps.
+
+ You can see an {{{https://github.com/rometools/rome-incubator/tree/master/pubsubhubub/webapp}example webapp here}}.
+
+Creating a Hub
+
+ Hubs take notifications, or "Pings" that tell it the content of a feed has been updated, fetch the feed, then notify each of the subscribers of the change. As you will begin to see, Certiorem is very much about "Composition" of classes. The Hub class is a prime example of this.
+
+ Looking at the example webapp we see:
+
++------+
+@Provides
+@Singleton
+public Hub buildHub() {
+    FeedFetcher fetcher = new HttpURLFeedFetcher(new DeltaFeedInfoCache());
+    Hub hub = new Hub(new InMemoryHubDAO(), new UnthreadedVerifier(), new UnthreadedNotifier(), fetcher);
+
+    return hub;
+}
++------+
+
+ First we construct an instance of FeedFetcher, from the Fetcher subproject. This will be used to fetch feeds from remote hosts. There are a number of implementations for FeedFetcher and FeedInfoCache in the Fetcher project. Please look there for info on what is what.
+
+ Next we need a HubDAO implementation. This is a DAO for managing Subscriber and SubscriptionSummary classes. Here we are using an in\-memory DAO, which like the HashMapFeedInfoCache will evaporate if we restart our web application. A JPA implementation for persistence is also available, but incomplete at time of writing.
+
+ Next we need two implementations of network client interfaces: a Verifier, and a Notifier. The Verifier calls back to the Subscribers and verifies their subscribe/unsubscribe operations. A Notifier is used to send updates to to the clients. There are two basic implementations of these provided: A ThreadPool\* and Unthreaded\* version of each. The thread pool version uses a ThreadPoolExecutor to run queues of outbound calls. The Unthreaded version of each, makes the network calls in\-line with the request to the hub. These are suitable for environments like Google App Engine where spawning threads from servlets is absolutely verboten.
+
+ There are other constructors that contain lists of restrictions for what the hub will support: acceptable topic feeds, ports, protocols, etc.
+
+ The hub here is just a business logic class. In order to have a functioning hub, we need a servlet exposing the Hub. In the "web" package, there is an abstract servlet you can use to do just this. In the Guice wired example, we simply create a servlet with an injected Hub implementation.
+
++------+
+@Singleton
+public class HubServlet extends AbstractHubServlet {
+
+    @Inject
+    public HubServlet(final Hub hub){
+        super(hub);
+    }
+}
+//... in the ServerModule...
+
+serve("/hub*").with(HubServlet.class);
++------+
+
+ We can now include a \<link rel\="hub"\> value in our feeds and publish notifications of changes. 
+
+Publishing Ping Notifications
+
+ This is perhaps the easiest thing to do. The Publisher class will take various combinations of URLs and SyndFeeds and send the appropriate notification. If your SyndFeed contains a \<link rel\='sel' /\> and \<link rel\='hub' /\> you can just pass the SyndFeed object. Otherwise, you can use the URL strings where appropriate.
+
+ The example couldn't be simpler:
+
++------+
+Publisher pub = new Publisher();
+try {
+    pub.sendUpdateNotification("http://localhost/webapp/hub", "http://localhost/webapp/research-atom.xml");
+} catch (NotificationException ex) {
+    Logger.getLogger(NotifyTest.class.getName()).log(Level.SEVERE, null, ex);
+    throw new ServletException(ex);
+}
++------+
+
+ Once this notification is sent, the hub will make a request to the feed and notify the clients of new entries.
+
+Subscribing to Feeds
+
+ To set up a feed subscriber, you need to go through a process very much like setting up a Hub. First, create the Subscriptions class by composition:
+
++------+
+@Provides
+@Singleton
+public Subscriptions buildSubs(){
+    Subscriptions subs = new Subscriptions(new HashMapFeedInfoCache(), new AsyncRequester(),
+            "http://localhost/webapp/subscriptions/", new InMemorySubDAO());
+    return subs;
+}
++------+
+
+ First we need a FeedInfoCache implementation. This will be updated as notifications come in, so in your web app, you want to make sure this is shared with the FeedFetcher implementation you are using to read feeds. Next you need a Requester, this is a network class that makes subscription requests to remote hubs. Next, a URL prefix for where the callbacks will live. This really means the URL to the SubServlet that is resolvable externally. Finally, a DAO for storing and retrieving Subscription objects.
+
+ As in the Hub, we need a wrapper servlet to call into the Subscriptions class
+
++------+
+@Singleton
+public class SubServlet extends AbstractSubServlet {
+
+    @Inject
+    public SubServlet(final Subscriptions subscriptions){
+        super(subscriptions);
+    }
+}
+
+// In the ServerModule...
+serve("/subscriptions/*").with(SubServlet.class)
++------+
+
+ Now if we want to subscribe to a feed, we get a reference to the Subscriptions object, and pass in either the SyndFeed (with appropriate rel\="hub" and rel\="self" links) or simply a couple of URLs:
+
++------+
+ subs.subscribe("http://localhost/webapp/hub", "http://localhost/webapp/research-atom.xml", true, -1, null, new SubscriptionCallback(){
+
+            public void onFailure(Exception e) {
+                e.printStackTrace();
+            }
+
+            public void onSubscribe(Subscription subscribed) {
+                System.out.println("Subscribed "+subscribed.getId() +" "+subscribed.getSourceUrl());
+            }
+
+        });
++------+
+
+ Here we pass in the URL of the Hub, the URL of the feed, a boolean indicating we want to make the subscription request synchronously, the lease seconds we want to keep the subscription for, a null cryptographic secret, and a Callback invoked when the subscribe request completes.

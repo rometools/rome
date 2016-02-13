@@ -1,0 +1,47 @@
+ -----
+ certiorem
+ -----
+ kebernet
+ -----
+ 2011-03-19 10:30:35.292
+ -----
+
+Certiorem
+
+ Certiorem is an implementation of the {{{http://pubsubhubbub.googlecode.com/svn/trunk/pubsubhubbub\-core\-0.3.html}PubSubHubub }}protocol for ROME.
+
+ It is dependent on ROME and ROME\-Fetcher for the base implementations, and will provide standard plugins for Propono to allow for publish eventing, where applicable.
+
+*Primary Components
+
+*Hub Implementation and Scaffolding (Done)
+
+ The first part of Certiorem is a basic set of scaffolding classes that can be used to create a PSH notification hub. Initially, this will include a non\-guaranteed delivery hub, with standard implementations suitable for deployment on most JavaEE application servers or Google App Engine. It is intended that there should be at least one simple, drop in WAR file, utilizing JavaEE classes that can work in a default configuration for various standard web containers. Subsequently,  each of the classes in the PSH implementation up through the primary Controller class use constructor\-time composition/configuration so that the user/developer can easily construct a custom configuration of the Hub.
+
+**Client Implementation Integrated with ROME\-Fetcher (Done)
+
+ For web\-based applications that use ROME\-Fetcher, an extended push\-notified store wrapper that will update based on callbacks from a Hub of change notifications. This will include a highly configurable callback servlet to write into the Fetcher cache as changes are made. Additionally, the system should support (semi\-)real time notifications of changes in the form of a listener that exectutes in a TBD thread state relative to the callback servlet. This should be packaged as a simple JAR with no more deps than fetcher that defines the callback servlet, and automagically does subscribes where link\=rel appropriate.
+
+**Notification Implementation for Propono based and JAX\-RS based Servers (In Progress)
+
+ This should be a simple API call to notify a Hub of changes to topics. Again, this should provide real\-time notifications either synchronously or asynchronously. Importantly for Asynchronous notifications, they should block subsequent change notifications pending a notification to the Hub.
+
+ References: 
+
+ {{{https://github.com/nlothian/RTUpdates/blob/master/src/com/nicklothian/pubsubhub/PubSubHubSubscriptionServlet.java}https://github.com/nlothian/RTUpdates/blob/master/src/com/nicklothian/pubsubhub/PubSubHubSubscriptionServlet.java}}
+
+ {{{http://grack.com/blog/2009/09/09/parsing\-the\-pubsubhubbub\-notifications/}http://grack.com/blog/2009/09/09/parsing\-the\-pubsubhubbub\-notifications/}}
+
+Notes on the Code
+
+ It is still mostly a rough sketch, but the big outlines are there:
+
+ There are three main packages: pub, sub and hub.
+
+ The pub package is basically just a single utility class for pushing notifications to a hub.
+
+ The hub package contains the Hub class. This is a general business controller that is intended to allow you to build a servlet around it with a very, very thin veneer, but you could also use it to drive an XMPP or JMS version too. It is basically built by composition of a number of classes, for which there are some default implementations: A Verifier, which makes the callback to verify new subscriptions, the HubDAO which stores the current subscriptions and subscriber statistics, and a Notifier which actually sends notifications to the subscribers. There are a couple of implementations of each of these (though the JPA HubDAO is still in process). Mostly the implementations for the Verifier and Notifier support threadpooling or no\-threads (for App Engine use).
+
+ I have just started sketching out the sub package, but it basically has a "Subscriptions" class that will take in notifications (using the same "thin veneer" pattern that the Hub class uses). It is also constructed with some impls: A SubscriptionDAO that stores you current subscription information, a FeedFetcherCache that holds the received data, and a Requester that makes the subscription requests to hubs.
+
+ I am hoping to have a basic end to end example working sometime in the next week or so, but if anyone wants to look over what is there, feel free.
