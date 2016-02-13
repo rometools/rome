@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://purl.org/rss/1.0/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:syn="http://purl.org/rss/1.0/modules/syndication/" xmlns:admin="http://webns.net/mvcb/" xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0">
+  <channel rdf:about="http://slashdot.org/">
+    <title>Slashdot</title>
+    <link>http://slashdot.org/</link>
+    <description>News for nerds, stuff that matters</description>
+    <dc:language>en-us</dc:language>
+    <dc:rights>Copyright 1997-2005, OSTG - Open Source Technology Group, Inc.  All Rights Reserved.</dc:rights>
+    <dc:date>2005-11-20T01:11:49+00:00</dc:date>
+    <dc:publisher>OSTG</dc:publisher>
+    <dc:creator>pater@slashdot.org</dc:creator>
+    <dc:subject>Technology</dc:subject>
+    <syn:updatePeriod>hourly</syn:updatePeriod>
+    <syn:updateFrequency>1</syn:updateFrequency>
+    <syn:updateBase>1970-01-01T00:00+00:00</syn:updateBase>
+    <items>
+      <rdf:Seq>
+        <rdf:li rdf:resource="http://slashdot.org/article.pl?sid=05/11/19/2014233&amp;from=rss" />
+        <rdf:li rdf:resource="http://games.slashdot.org/article.pl?sid=05/11/19/224214&amp;from=rss" />
+        <rdf:li rdf:resource="http://apache.slashdot.org/article.pl?sid=05/11/19/2010223&amp;from=rss" />
+        <rdf:li rdf:resource="http://yro.slashdot.org/article.pl?sid=05/11/19/208219&amp;from=rss" />
+        <rdf:li rdf:resource="http://hardware.slashdot.org/article.pl?sid=05/11/19/1810238&amp;from=rss" />
+        <rdf:li rdf:resource="http://games.slashdot.org/article.pl?sid=05/11/18/156253&amp;from=rss" />
+        <rdf:li rdf:resource="http://hardware.slashdot.org/article.pl?sid=05/11/19/186252&amp;from=rss" />
+        <rdf:li rdf:resource="http://slashdot.org/article.pl?sid=05/11/19/1534223&amp;from=rss" />
+        <rdf:li rdf:resource="http://slashdot.org/article.pl?sid=05/11/19/149242&amp;from=rss" />
+        <rdf:li rdf:resource="http://yro.slashdot.org/article.pl?sid=05/11/19/143247&amp;from=rss" />
+      </rdf:Seq>
+    </items>
+    <image rdf:resource="http://images.slashdot.org/topics/topicslashdot.gif" />
+    <textinput rdf:resource="http://slashdot.org/search.pl" />
+  </channel>
+  <image rdf:about="http://images.slashdot.org/topics/topicslashdot.gif">
+    <title>Slashdot</title>
+    <url>http://images.slashdot.org/topics/topicslashdot.gif</url>
+    <link>http://slashdot.org/</link>
+  </image>
+  <item rdf:about="http://slashdot.org/article.pl?sid=05/11/19/2014233&amp;from=rss">
+    <title>The Prisoner To Be Remade On U.K. TV</title>
+    <link>http://rss.slashdot.org/Slashdot/slashdot?m=1961</link>
+    <description>An anonymous reader writes "Various UK news sites are reporting that Sky One is to commission a remake of the cult 60s UK TV series, The Prisoner. See u.tv and This is London." From the This Is London story: "The series, which made its debut 1967, is today credited by its fans as being ahead of its time. Featuring McGoohan as a former secret agent trapped in an isolated seaside village, it was shown in more than 60 countries. The new version will not be placed in the original setting, the north Wales village of Portmeirion, or have the arty, 'pop' feel of the original, according to the magazine Broadcast. Damien Timmer, who has been lined up to executive produce the show, told the television and radio industry magazine that the new series 'takes liberties with the original'."&lt;img src="http://rss.slashdot.org/Slashdot/slashdot?g=1961"/&gt;</description>
+    <dc:creator>Zonk</dc:creator>
+    <dc:date>2005-11-20T00:43:00+00:00</dc:date>
+    <dc:subject>tv</dc:subject>
+    <slash:department>now-we-need-more-red-dwarf</slash:department>
+    <slash:section>mainpage</slash:section>
+    <slash:comments>25</slash:comments>
+    <slash:hit_parade>25,22,19,12,2,0,0</slash:hit_parade>
+    <feedburner:origLink>http://slashdot.org/article.pl?sid=05/11/19/2014233&amp;from=rss</feedburner:origLink>
+  </item>
+  <item rdf:about="http://games.slashdot.org/article.pl?sid=05/11/19/224214&amp;from=rss">
+    <title>Spike TV Video Game Award Winners</title>
+    <link>http://rss.slashdot.org/Slashdot/slashdot?m=1960</link>
+    <description>Gamespot reports on the results from Friday's Spike TV Video Game Awards. Top Game honor went to RE4, while King Kong and World of Warcraft both took home several category nods. From the article: "As much as Spike might have refined the show over its past pair of efforts, it was clear the network had not yet found a way to perfectly merge the subject matter, the celebrities, and the audience. Nowhere was evidence of this more pronounced than in the significant number of audience members heading for the exits right after Missy Elliott's climactic performance, having seen all they came for and not caring to find out who was going to take home the Game of the Year award. Winners for Best Gaming Publication, Best Gaming Website, and Best Gaming Blog were not announced at the show. "
+&lt;p&gt;&lt;a href="http://rss.slashdot.org/~c/Slashdot/slashdot?a=dJ24JB"&gt;&lt;img src="http://rss.slashdot.org/~c/Slashdot/slashdot?i=dJ24JB" border="0"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://rss.slashdot.org/Slashdot/slashdot?g=1960"/&gt;</description>
+    <dc:creator>Zonk</dc:creator>
+    <dc:date>2005-11-19T23:40:00+00:00</dc:date>
+    <dc:subject>tv</dc:subject>
+    <slash:department>at-least-there-was-some-jack-black</slash:department>
+    <slash:section>games</slash:section>
+    <slash:comments>38</slash:comments>
+    <slash:hit_parade>38,36,29,21,6,4,1</slash:hit_parade>
+    <feedburner:origLink>http://games.slashdot.org/article.pl?sid=05/11/19/224214&amp;from=rss</feedburner:origLink>
+  </item>
+  <item rdf:about="http://apache.slashdot.org/article.pl?sid=05/11/19/2010223&amp;from=rss">
+    <title>Apache Comes With Too Much Community Overhead?</title>
+    <link>http://rss.slashdot.org/Slashdot/slashdot?m=1959</link>
+    <description>drizzle writes "There's an interesting story on the Apache Marketing blog about whether or not Apache projects come with too much overhead, especially compared with other services or a roll-your-own approach. The article states, 'It's true that compared with SourceForge, Apache has a more rigorous management structure. The ASF has formalized processes and procedures that we believe represent best practices governance. All new projects must pass through an incubation period to ensure that all of the project's members have internalized these processes. However, each project's leadership has a tremendous amount of discretion in managing within this framework.' There is also a follow up article written by one of the httpd developers about 'What Apache brings to the table.' The article cites community, experience, legal framework, diversity, brand strength, and networking as reasons why developers and companies should consider bringing their projects over to Apache."&lt;img src="http://rss.slashdot.org/Slashdot/slashdot?g=1959"/&gt;</description>
+    <dc:creator>Zonk</dc:creator>
+    <dc:date>2005-11-19T22:39:00+00:00</dc:date>
+    <dc:subject>software</dc:subject>
+    <slash:department>many-hands-make-light-work</slash:department>
+    <slash:section>apache</slash:section>
+    <slash:comments>62</slash:comments>
+    <slash:hit_parade>62,60,40,30,18,12,8</slash:hit_parade>
+    <feedburner:origLink>http://apache.slashdot.org/article.pl?sid=05/11/19/2010223&amp;from=rss</feedburner:origLink>
+  </item>
+  <item rdf:about="http://yro.slashdot.org/article.pl?sid=05/11/19/208219&amp;from=rss">
+    <title>The Guardian On Intellectual Property</title>
+    <link>http://rss.slashdot.org/Slashdot/slashdot?m=1958</link>
+    <description>mykdavies writes "The Guardian has an excellent article giving lay readers an overview of some of the problems being caused by the concept of 'intellectual property', including references to stories familiar to Slashdot readers, such as DVD Jon, the Sony rootkit, Amazon and Google business patents." From the article: "Even facts about the world can, in some cases, become the property of commercial companies. It was the promise of gaining patents on the human genome that lured investors into the private consortium that attempted to sequence it in competition with the public effort. Laboratory animals have already been patented, starting with the OncoMouse, an animal whose genome has been manipulated to ensure that it develops cancer."&lt;img src="http://rss.slashdot.org/Slashdot/slashdot?g=1958"/&gt;</description>
+    <dc:creator>Zonk</dc:creator>
+    <dc:date>2005-11-19T21:27:00+00:00</dc:date>
+    <dc:subject>patents</dc:subject>
+    <slash:department>ins-and-outs</slash:department>
+    <slash:section>yro</slash:section>
+    <slash:comments>110</slash:comments>
+    <slash:hit_parade>110,105,76,45,20,7,2</slash:hit_parade>
+    <feedburner:origLink>http://yro.slashdot.org/article.pl?sid=05/11/19/208219&amp;from=rss</feedburner:origLink>
+  </item>
+  <item rdf:about="http://hardware.slashdot.org/article.pl?sid=05/11/19/1810238&amp;from=rss">
+    <title>Cisco Moving On Set-Top Boxes</title>
+    <link>http://rss.slashdot.org/Slashdot/slashdot?m=1957</link>
+    <description>nevermindme writes "Cisco has agreed to plunk down a whopping $6.9bn for Scientific-Atlanta, hoping to take a major share of the set-top-box market and push video efforts. The networking giant will pay $43 per share in cash for Scientific-Atlanta ($5.3bn) and swallow $1.6bn in debt. With the buy, Cisco acquires one of the more dominant set-top-box makers. In addition, it pushes well beyond the data center to touch consumers where they live."
+&lt;p&gt;&lt;a href="http://rss.slashdot.org/~c/Slashdot/slashdot?a=UAEMGp"&gt;&lt;img src="http://rss.slashdot.org/~c/Slashdot/slashdot?i=UAEMGp" border="0"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://rss.slashdot.org/Slashdot/slashdot?g=1957"/&gt;</description>
+    <dc:creator>Zonk</dc:creator>
+    <dc:date>2005-11-19T20:30:00+00:00</dc:date>
+    <dc:subject>tv</dc:subject>
+    <slash:department>new-horizons</slash:department>
+    <slash:section>hardware</slash:section>
+    <slash:comments>72</slash:comments>
+    <slash:hit_parade>72,68,51,35,16,9,5</slash:hit_parade>
+    <feedburner:origLink>http://hardware.slashdot.org/article.pl?sid=05/11/19/1810238&amp;from=rss</feedburner:origLink>
+  </item>
+  <item rdf:about="http://games.slashdot.org/article.pl?sid=05/11/18/156253&amp;from=rss">
+    <title>Getting All 1,700 Parts of the Xbox 360 to Market</title>
+    <link>http://rss.slashdot.org/Slashdot/slashdot?m=1956</link>
+    <description>Carl Bialik from the WSJ writes "Microsoft is hoping its Xbox 360 will further the company's goal to 'link the Web and entertainment of all forms in consumers' living rooms,' the Wall Street Journal reports, but 'one manufacturing misstep -- a shortage of graphics chips or a recalled hard drive -- could derail those ambitions and drag Microsoft's unprofitable videogame business even deeper into the red.' The WSJ traces the 1,700 parts that go into the device through the supply chain -- from two southern China factories, Rotterdam, and on to Toledo, Memphis, and ultimately, retailers in the U.S. -- and looks at what could go wrong along the way."&lt;img src="http://rss.slashdot.org/Slashdot/slashdot?g=1956"/&gt;</description>
+    <dc:creator>Zonk</dc:creator>
+    <dc:date>2005-11-19T19:36:00+00:00</dc:date>
+    <dc:subject>xbox</dc:subject>
+    <slash:department>complicated-process</slash:department>
+    <slash:section>games</slash:section>
+    <slash:comments>141</slash:comments>
+    <slash:hit_parade>141,140,103,73,19,12,8</slash:hit_parade>
+    <feedburner:origLink>http://games.slashdot.org/article.pl?sid=05/11/18/156253&amp;from=rss</feedburner:origLink>
+  </item>
+  <item rdf:about="http://hardware.slashdot.org/article.pl?sid=05/11/19/186252&amp;from=rss">
+    <title>Is Wi-Fi Ruining College?</title>
+    <link>http://rss.slashdot.org/Slashdot/slashdot?m=1955</link>
+    <description>theodp writes "Over at Slate, Avi Zenilman has seen the real classroom of the future firsthand: Students use class time to read the Drudge Report, send e-mail, play Legend of Zelda, or update profiles on Facebook.com. But not to worry - replace laptops with crumpled notes, and the classroom of the future looks a lot like the classroom of the past." From the article: "... when Cornell University researchers outfitted classrooms with wireless Internet and monitored students' browsing habits, they concluded, 'Longer browsing sessions during class tend to lead to lower grades, but there's a hint that a greater number of browsing sessions during class may actually lead to higher grades.' It seems a bit of a stretch to impute a causal relationship, but it's certainly possible that the kind of brain that can handle multiple channels of information is also the kind of brain that earns A's."&lt;img src="http://rss.slashdot.org/Slashdot/slashdot?g=1955"/&gt;</description>
+    <dc:creator>Zonk</dc:creator>
+    <dc:date>2005-11-19T18:46:00+00:00</dc:date>
+    <dc:subject>ed</dc:subject>
+    <slash:department>no</slash:department>
+    <slash:section>hardware</slash:section>
+    <slash:comments>279</slash:comments>
+    <slash:hit_parade>279,272,210,140,43,23,13</slash:hit_parade>
+    <feedburner:origLink>http://hardware.slashdot.org/article.pl?sid=05/11/19/186252&amp;from=rss</feedburner:origLink>
+  </item>
+  <item rdf:about="http://slashdot.org/article.pl?sid=05/11/19/1534223&amp;from=rss">
+    <title>Sony Completes First Full-Length Blu-ray Disc</title>
+    <link>http://rss.slashdot.org/Slashdot/slashdot?m=1954</link>
+    <description>john writes "Sony Pictures Home Entertainment announced that authoring has been completed on the first Blu-ray Disc (BD) to contain a full-length, high-definition feature film. Charlie's Angels: Full Throttle was compressed and authored in MPEG 2 full high-definition (1920 x 1080) and is now being shipped to BD hardware companies for player testing."
+&lt;p&gt;&lt;a href="http://rss.slashdot.org/~c/Slashdot/slashdot?a=OZPTC3"&gt;&lt;img src="http://rss.slashdot.org/~c/Slashdot/slashdot?i=OZPTC3" border="0"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://rss.slashdot.org/Slashdot/slashdot?g=1954"/&gt;</description>
+    <dc:creator>CowboyNeal</dc:creator>
+    <dc:date>2005-11-19T17:13:00+00:00</dc:date>
+    <dc:subject>sony</dc:subject>
+    <slash:department>hot-off-the-presses</slash:department>
+    <slash:section>mainpage</slash:section>
+    <slash:comments>210</slash:comments>
+    <slash:hit_parade>210,200,156,106,32,21,13</slash:hit_parade>
+    <feedburner:origLink>http://slashdot.org/article.pl?sid=05/11/19/1534223&amp;from=rss</feedburner:origLink>
+  </item>
+  <item rdf:about="http://slashdot.org/article.pl?sid=05/11/19/149242&amp;from=rss">
+    <title>Richard Stallman Accosted For Tinfoil Hat</title>
+    <link>http://rss.slashdot.org/Slashdot/slashdot?m=1953</link>
+    <description>ndansmith writes "Bruce Perens posts in his blog about an amusing encounter between Richard Stallman and United Nations security at the World Summit on the Information Society in Tunis. It seems that RFID technology, which Stallman opposes for privacy reasons, was used in the identification badges for the conference. From the blog: 'You can't give Richard a visible RF ID strip without expecting him to protest. Richard acquired an entire roll of aluminum foil and wore his foil-shielded pass prominently.' During a keynote speech, Stallman also passed around the tinfoil for other to use as well. It seems that UN security was not amused, however, as they would not let him leave the room for some time." What makes this even funnier, of course, is that tin foil hats won't stop them.&lt;img src="http://rss.slashdot.org/Slashdot/slashdot?g=1953"/&gt;</description>
+    <dc:creator>CowboyNeal</dc:creator>
+    <dc:date>2005-11-19T16:04:00+00:00</dc:date>
+    <dc:subject>humor</dc:subject>
+    <slash:department>of-all-the-reasons</slash:department>
+    <slash:section>mainpage</slash:section>
+    <slash:comments>425</slash:comments>
+    <slash:hit_parade>425,412,333,250,97,57,42</slash:hit_parade>
+    <feedburner:origLink>http://slashdot.org/article.pl?sid=05/11/19/149242&amp;from=rss</feedburner:origLink>
+  </item>
+  <item rdf:about="http://yro.slashdot.org/article.pl?sid=05/11/19/143247&amp;from=rss">
+    <title>Baltimore to Test Cell Phone Traffic Monitoring</title>
+    <link>http://rss.slashdot.org/Slashdot/slashdot?m=1952</link>
+    <description>Momoru writes "The Baltimore Sun is reporting that a Canadian company, Delcan NET, will begin testing a technology that determines the flow of automobile traffic by monitoring cell phone traffic. The company promises a revolutionary way to determine backups, but privacy advocates fear the implications of a third party tracking users by their cell phones."&lt;img src="http://rss.slashdot.org/Slashdot/slashdot?g=1952"/&gt;</description>
+    <dc:creator>CowboyNeal</dc:creator>
+    <dc:date>2005-11-19T15:10:00+00:00</dc:date>
+    <dc:subject>privacy</dc:subject>
+    <slash:department>big-brother-is-listening</slash:department>
+    <slash:section>yro</slash:section>
+    <slash:comments>118</slash:comments>
+    <slash:hit_parade>118,114,75,49,23,20,14</slash:hit_parade>
+    <feedburner:origLink>http://yro.slashdot.org/article.pl?sid=05/11/19/143247&amp;from=rss</feedburner:origLink>
+  </item>
+  <textinput rdf:about="http://slashdot.org/search.pl">
+    <title>Search Slashdot</title>
+    <description>Search Slashdot stories</description>
+    <name>query</name>
+    <link>http://slashdot.org/search.pl</link>
+  </textinput>
+</rdf:RDF>
+
