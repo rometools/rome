@@ -1,0 +1,29 @@
+ -----
+ ROME Propono Version 0.4
+ -----
+ mkurz
+ -----
+ 2011-08-16 04:52:04.427
+ -----
+
+ROME Propono Version 0.4
+
+ This is the first release of the {{{./index.html}Rome Propono}} publishing library. It's a beta release and will be followed closely by Propono 0.5.
+
+*Downloads
+
+ * {{{./rome\-propono\-0.4\-src.zip}rome\-propono\-0.4\-src.zip}}
+
+ * {{{./rome\-propono\-0.4.tar.gz}rome\-propono\-0.4.tar.gz}}
+
+ * {{{./rome\-propono\-0.4.zip}rome\-propono\-0.4.zip}}
+
+ * {{{./rome\-propono\-0.4\-src.tar.gz}rome\-propono\-0.4\-src.tar.gz}}
+
+ []
+
+*API Docs
+
+ * {{{https://rome.dev.java.net/apidocs/subprojects/propono/0.4/overview\-summary.html}Propono 0.4 API Docs}}
+ 
+ []

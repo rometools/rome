@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<app:service xmlns:app="http://www.w3.org/2007/app">
+  <app:workspace>
+    <atom:title xmlns:atom="http://www.w3.org/2005/Atom">adminblog1</atom:title>
+    <app:collection href="http://localhost:8080/roller/roller-services/app/adminblog/entries">
+      <atom:title xmlns:atom="http://www.w3.org/2005/Atom">Weblog Entries</atom:title>
+      <app:categories app:fixed="yes" app:scheme="http://localhost/roller/adminblog/">
+        <atom:category xmlns:atom="http://www.w3.org/2005/Atom" atom:term="/General" atom:label="General" />
+        <atom:category xmlns:atom="http://www.w3.org/2005/Atom" atom:term="/Status" atom:label="Status" />
+      </app:categories>
+      <app:accept>entry</app:accept>
+    </app:collection>
+    <app:collection href="http://localhost:8080/roller/roller-services/app/adminblog/resources">
+      <atom:title xmlns:atom="http://www.w3.org/2005/Atom">Media Files</atom:title>
+      <app:accept>*/*</app:accept>
+    </app:collection>
+  </app:workspace>
+</app:service>
