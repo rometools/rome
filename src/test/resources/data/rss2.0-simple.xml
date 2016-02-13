@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:georss="http://www.georss.org/georss">
+<channel>
+<title>GeoNames.org recent changes</title>
+<link>http://www.geonames.org/recent-changes.html</link>
+<description>50 most recent modifications</description>
+<item>
+<title>Jerusalem</title>
+<link>http://www.geonames.org/maps/geonameId=281184</link>
+<guid>http://www.geonames.org/maps/geonameId=281184&amp;revision=80</guid>
+<description>delete name :la,Hierusalem </description>
+<pubDate>Mon, 03 Apr 2006 10:35:16 +0200</pubDate>
+<georss:point>31.7666667 35.2333333</georss:point>
+</item>
+<item>
+<title>Jerusalem</title>
+<link>http://www.geonames.org/maps/geonameId=281184</link>
+<guid>http://www.geonames.org/maps/geonameId=281184&amp;revision=72</guid>
+<description>add name :he,Ir Ha-Qodesh</description>
+<pubDate>Mon, 03 Apr 2006 10:32:24 +0200</pubDate>
+<georss:point>31.7666667 35.2333333</georss:point>
+</item>
+<item>
+<title>Jerusalem</title>
+<link>http://www.geonames.org/maps/geonameId=281184</link>
+<guid>http://www.geonames.org/maps/geonameId=281184&amp;revision=31</guid>
+<description>update name :grc,Μωριας</description>
+<pubDate>Mon, 03 Apr 2006 10:17:41 +0200</pubDate>
+<georss:point>31.7666667 35.2333333</georss:point>
+</item>
+</channel>
+</rss>

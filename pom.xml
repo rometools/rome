@@ -1,0 +1,119 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.rometools</groupId>
+        <artifactId>rome-parent</artifactId>
+        <version>1.6.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>rome-modules</artifactId>
+    <version>1.6.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>rome-modules</name>
+
+    <description>Plugin collection for the ROME RSS and Atom Utilities</description>
+
+    <url>http://rometools.github.io/rome-modules/</url>
+
+    <scm>
+        <connection>scm:git:ssh://github.com/rometools/rome-modules.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/rometools/rome-modules.git</developerConnection>
+        <url>https://github.com/rometools/rome-modules</url>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>kebernet</id>
+            <email>kebernet@gmail.com</email>
+            <name>Robert Cooper</name>
+        </developer>
+    </developers>
+
+    <repositories>
+        <repository>
+            <id>sonatype-nexus-snapshots</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-scm-publish-plugin</artifactId>
+                <configuration>
+                    <scmBranch>gh-pages</scmBranch>
+                    <pubScmUrl>${project.scm.developerConnection}</pubScmUrl>
+                    <content>${project.build.directory}/site</content>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <configuration>
+                    <instructions>
+                        <Export-Package>
+                            !com.rometools.modules.*.io,
+                            com.rometools.modules.*,
+                        </Export-Package>
+                        <Import-Package>
+                            org.jdom2,
+                            org.jdom2.filter,
+                            org.jdom2.input,
+                            org.jdom2.input.sax,
+                            org.jdom2.output,
+                            org.slf4j,
+                            org.w3c.dom,
+                            org.xml.sax
+                        </Import-Package>
+                        <_exportcontents>
+                            com.rometools.rome.feed,
+                            com.rometools.rome.feed.atom,
+                            com.rometools.rome.feed.module,
+                            com.rometools.rome.feed.rss,
+                            com.rometools.rome.feed.synd,
+                            com.rometools.rome.io,
+                            com.rometools.utils
+                        </_exportcontents>
+                        <Embed-Dependency>*;artifactId=rome|rome-utils</Embed-Dependency>
+                        <Embed-Transitive>true</Embed-Transitive>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.rometools</groupId>
+            <artifactId>rome</artifactId>
+            <version>1.6.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-library</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>

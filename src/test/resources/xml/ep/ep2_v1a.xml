@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:sx="http://www.microsoft.com/schemas/rss/sse">
+    <sx:sharing until="Fri, 6 Jan 2006 19:24:09 GMT" since="Fri, 6 Jan 2006 19:24:09 GMT" window="30" version="0.91"/>
+    <channel>
+        <title>playlist.xml</title>
+        <description>Sample playlist</description>
+        <link>http://www.somefakesite.com/index.html</link>
+        <item>
+            <sx:sync id="101" version="1" deleted="false" conflict="false">
+                <sx:history when="Fri, 6 Jan 2006 19:24:09 GMT" by="sseRSSConvert.js"/>
+            </sx:sync>
+            <title>Heart of Glass.mp3</title>
+            <description>Blondie - Heart of Glass.mp3</description>
+        </item>
+        <item>
+            <sx:sync id="102" version="1" deleted="false" conflict="false">
+                <sx:history when="Fri, 6 Jan 2006 19:24:09 GMT" by="sseRSSConvert.js"/>
+            </sx:sync>
+            <title>Manic Monday.mp3</title>
+            <description>Bangles - Manic Monday.mp3</description>
+        </item>
+        <item>
+            <sx:sync id="103" version="1" deleted="false" conflict="false">
+                <sx:history when="Fri, 6 Jan 2006 19:24:09 GMT" by="sseRSSConvert.js"/>
+            </sx:sync>
+            <title>Everybody Have Fun Tonight.mp3</title>
+            <description>Wang Chung - Everybody Have Fun Tonight.mp3</description>
+        </item>
+        <item>
+            <sx:sync id="104" version="1" deleted="false" conflict="false">
+                <sx:history when="Fri, 6 Jan 2006 19:24:09 GMT" by="sseRSSConvert.js"/>
+            </sx:sync>
+            <title>She Blinded Me With Science.mp3</title>
+            <description>Thomas Dolby - She Blinded Me With Science.mp3</description>
+        </item>
+        <item>
+            <sx:sync id="105" version="1" deleted="false" conflict="false">
+                <sx:history when="Fri, 6 Jan 2006 19:24:09 GMT" by="sseRSSConvert.js"/>
+            </sx:sync>
+            <title>Rivers of Babylon (HTC).mp3</title>
+            <description>Jimmy Cliff - Rivers of Babylon (HTC).mp3</description>
+        </item>
+        <item>
+            <sx:sync id="106" version="1" deleted="false" conflict="false">
+                <sx:history when="Fri, 6 Jan 2006 19:24:09 GMT" by="sseRSSConvert.js"/>
+            </sx:sync>
+            <title>The Tide Is High.mp3</title>
+            <description>Blondie - The Tide Is High.mp3</description>
+        </item>
+        <item>
+            <sx:sync id="107" version="1" deleted="false" conflict="false">
+                <sx:history when="Fri, 6 Jan 2006 19:24:09 GMT" by="sseRSSConvert.js"/>
+            </sx:sync>
+            <title>Back to the Island.mp3</title>
+            <description>Leon Russell - Back to the Island.mp3</description>
+        </item>
+        <item>
+            <sx:sync id="108" version="1" deleted="false" conflict="false">
+                <sx:history when="Fri, 6 Jan 2006 19:24:09 GMT" by="sseRSSConvert.js"/>
+            </sx:sync>
+            <title>Lucky Man.mp3</title>
+            <description>Emerson Lake &amp; Palmer - Lucky Man.mp3</description>
+        </item>
+        <item>
+            <sx:sync id="109" version="1" deleted="false" conflict="false">
+                <sx:history when="Fri, 6 Jan 2006 19:24:09 GMT" by="sseRSSConvert.js"/>
+            </sx:sync>
+            <title>Up on Cripple Creek.mp3</title>
+            <description>The Band - Up on Cripple Creek.mp3</description>
+        </item>
+        <item>
+            <sx:sync id="110" version="1" deleted="false" conflict="false">
+                <sx:history when="Fri, 6 Jan 2006 19:24:09 GMT" by="sseRSSConvert.js"/>
+            </sx:sync>
+            <title>Crackerbox Palace.mp3</title>
+            <description>George Harrison - Crackerbox Palace.mp3</description>
+        </item>
+        <item>
+            <sx:sync id="111" version="1" deleted="false" conflict="false">
+                <sx:history when="Fri, 6 Jan 2006 19:24:09 GMT" by="sseRSSConvert.js"/>
+            </sx:sync>
+            <title>Taxi.Mp3</title>
+            <description>Harry Chapin - Taxi.Mp3</description>
+        </item>
+        <item>
+            <sx:sync id="112" version="1" deleted="false" conflict="false">
+                <sx:history when="Fri, 6 Jan 2006 19:24:09 GMT" by="sseRSSConvert.js"/>
+            </sx:sync>
+            <title>Thick As A Brick.mp3</title>
+            <description>Jethro Tull-Thick As A Brick.mp3</description>
+        </item>
+        <item>
+            <sx:sync id="113" version="1" deleted="false" conflict="false">
+                <sx:history when="Fri, 6 Jan 2006 19:24:09 GMT" by="sseRSSConvert.js"/>
+            </sx:sync>
+            <title>Riding With the King.mp3</title>
+            <description>B. B. King &amp; Eric Clapton - Riding With the King - 11 - Hold On Im Coming.mp3</description>
+        </item>
+        <item>
+            <sx:sync id="ep2.100" version="1" deleted="false" conflict="false">
+                <sx:history when="Fri, 6 Jan 2006 19:24:09 GMT" by="sseRSSCreate.js"/>
+            </sx:sync>
+            <title>Return to Forever</title>
+            <description>All songs</description>
+        </item>
+    </channel>
+</rss>

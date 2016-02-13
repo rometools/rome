@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<rss version="2.0" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
+<channel>
+<title>coldplay Tour</title>
+<link>http://www.myconcertdates.com/event.php?name=coldplay</link>
+<description>coldplay Tour</description>
+<language>en-us</language>
+<copyright>Copyright 2005, The Newledge Group</copyright>
+<item>
+<title>04/03/2006: Manchester, NH</title>
+<link>http://www.myconcertdates.com/event.php?name=coldplay&amp;m=4&amp;d=3&amp;y=2006</link>
+<description>Verizon Wireless Arena New Hampshire. &lt;br&gt;&lt;br&gt;Feed provided by &lt;a href="http://www.myconcertdates.com"&gt;www.myconcertdates.com&lt;/a&gt;</description>
+<geo:Point>
+<geo:lat>42.986284</geo:lat>
+<geo:long>-71.45156</geo:long>
+</geo:Point>
+<pubDate>Thu, 17 Nov 2005 09:20:02 GMT</pubDate>
+</item>
+<item>
+<title>04/04/2006: Uncasville, CT</title>
+<link>http://www.myconcertdates.com/event.php?name=coldplay&amp;m=4&amp;d=4&amp;y=2006</link>
+<description>Mohegan Sun Arena. &lt;br&gt;&lt;br&gt;Feed provided by &lt;a href="http://www.myconcertdates.com"&gt;www.myconcertdates.com&lt;/a&gt;</description>
+<geo:Point>
+<geo:lat>41.492491</geo:lat>
+<geo:long>-72.095783</geo:long>
+</geo:Point>
+<pubDate>Thu, 17 Nov 2005 09:20:01 GMT</pubDate>
+</item>
+<item>
+<title>04/06/2006: Philadelphia, PA</title>
+<link>http://www.myconcertdates.com/event.php?name=coldplay&amp;m=4&amp;d=6&amp;y=2006</link>
+<description>Wachovia Center (First Union Center). &lt;br&gt;&lt;br&gt;Feed provided by &lt;a href="http://www.myconcertdates.com"&gt;www.myconcertdates.com&lt;/a&gt;</description>
+<geo:Point>
+<geo:lat>39.901893</geo:lat>
+<geo:long>-75.171998</geo:long>
+</geo:Point>
+<pubDate>Thu, 17 Nov 2005 09:20:03 GMT</pubDate>
+</item>
+<item>
+<title>09/06/2006: New York, NY</title>
+<link>http://www.myconcertdates.com/event.php?name=coldplay&amp;m=9&amp;d=6&amp;y=2006</link>
+<description>Madison Square Garden. &lt;br&gt;&lt;br&gt;Feed provided by &lt;a href="http://www.myconcertdates.com"&gt;www.myconcertdates.com&lt;/a&gt;</description>
+<geo:Point>
+<geo:lat>40.750598</geo:lat>
+<geo:long>-73.993392</geo:long>
+</geo:Point>
+<pubDate>Sat, 16 Jul 2005 04:03:11 GMT</pubDate>
+</item>
+</channel>
+</rss>
+  

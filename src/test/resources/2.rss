@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<title>We're Sorry</title>
+	<LINK REL="STYLESHEET" TYPE="text/css" HREF="http://www.mac.com/i/sr/1/styles/fonts.css">
+	<LINK REL="STYLESHEET" TYPE="text/css" HREF="http://www.mac.com/i/sr/1/styles/global.css">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="http://web.mac.com/stuartbainbridge/iPhoto/the-5-6-7-8's-red-cloth/index.rss" />
+</head>
+<body>
+<div id="content" style="width: 502px">
+	<div style="height: 50px"></div>
+	<table width="502" cellpadding="0" cellspacing="0" border="0" bgcolor="#f3f3f3" align="center">
+		<tr>
+			<td width="1"></td>
+			<td width="9"></td>
+			<td width="80"></td>
+			<td width="402"></td>
+			<td width="9"></td>
+			<td width="1"></td>
+		</tr>
+		<tr>
+			<td align="center" valign="top" colspan="6" height="10"><img src="http://www.mac.com/if/JavaSharedResources.framework/WebServerResources/English.lproj/images/alert_topbar.gif" width="501" height="10" border=0 alt=""></td>
+		</tr>
+		<tr>
+			<td bgcolor="#E3E2E2"></td>
+			<td></td>
+			<td align="center"><img src="http://www.mac.com/if/JavaSharedResources.framework/WebServerResources/English.lproj/images/logo_photocast_warning.jpg" width="63" height="55" border=0 alt=""></td>
+			<td colspan="2"><span style="font-family:Lucida Grande,Verdana;font-size:26px;font-weight:bold;">We're Sorry</span></td>
+			<td bgcolor="#E3E2E2"></td>
+		</tr>
+		<tr>
+			<td bgcolor="#E3E2E2"></td>
+			<td></td>
+			<td></td>
+			<td><div class="instructions_gray"><b>The browser you are using does not support the display of Photocasts.</b></div>
+			<div class="content_gray"><br><b>You can view the photos in this Photocast with Safari RSS (included with Mac OS X v10.4 Tiger or later) or other photo-compatible RSS reader for Mac, Windows, and other operating systems. Copy the link below and bookmark or subscribe to it using your RSS reader so you can return to the photos in the future.<p><div style="width:402px; height: 40px; overflow: auto;">http://web.mac.com/stuartbainbridge/iPhoto/the-5-6-7-8's-red-cloth/index.rss</div><p><a href='http://www.apple.com/ilife/iphoto/features/photocasting.html'>Learn more</a> about iPhoto 6 and viewing Photocasts.</b></div>
+			</td>
+			<td></td>
+			<td bgcolor="#E3E2E2"></td>
+		</tr>
+		<tr>
+			<td bgcolor="#E3E2E2"></td>
+			<td colspan="4" height="20"></td>
+			<td bgcolor="#E3E2E2"></td>
+		</tr>
+		<tr>
+			<td align="center" valign="top" colspan="6" height="10"><img src="http://www.mac.com/if/JavaSharedResources.framework/WebServerResources/English.lproj/images/alert_btmbar.gif" width="501" height="10" border=0 alt=""></td>
+		</tr>
+	</table>
+	</div>
+</body>
+</html>

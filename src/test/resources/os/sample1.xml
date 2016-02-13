@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : sample1.xml
+    Created on : April 25, 2006, 8:54 PM
+    Author     : cooper
+    Description:
+        Purpose of the document follows.
+-->
+
+<rss version="2.0" 
+     xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">
+  <channel>
+    <title>Example.com Search: New York history</title>
+    <link>http://example.com/New+York+history</link>
+    <description>Search results for "New York history" at Example.com</description>
+    <opensearch:totalResults>4230000</opensearch:totalResults>
+    <opensearch:startIndex>21</opensearch:startIndex>
+    <opensearch:itemsPerPage>10</opensearch:itemsPerPage>
+    <opensearch:link rel="search"
+                     href="http://example.com/opensearchdescription.xml" type="application/opensearchdescription+xml"/>
+    <opensearch:Query role="request" searchTerms="New York History" />
+    <item>
+      <title>New York History</title>
+      <link>http://www.columbia.edu/cu/lweb/eguids/amerihist/nyc.html</link>
+      <description>
+        ... Harlem.NYC - A virtual tour and information on 
+        businesses ...  with historic photos of Columbia's own New York 
+        neighborhood ... Internet Resources for the City's History. ...
+      </description>
+    </item>
+    <item>
+      <title>New York History</title>
+      <link>http://www.columbia.edu/cu/lweb/eguids/amerihist/nyc.html</link>
+      <description>
+        ... Harlem.NYC - A virtual tour and information on 
+        businesses ...  with historic photos of Columbia's own New York 
+        neighborhood ... Internet Resources for the City's History. ...
+      </description>
+    </item>
+    <item>
+      <title>New York History</title>
+      <link>http://www.columbia.edu/cu/lweb/eguids/amerihist/nyc.html</link>
+      <description>
+        ... Harlem.NYC - A virtual tour and information on 
+        businesses ...  with historic photos of Columbia's own New York 
+        neighborhood ... Internet Resources for the City's History. ...
+      </description>
+    </item>
+    <item>
+      <title>New York History</title>
+      <link>http://www.columbia.edu/cu/lweb/eguids/amerihist/nyc.html</link>
+      <description>
+        ... Harlem.NYC - A virtual tour and information on 
+        businesses ...  with historic photos of Columbia's own New York 
+        neighborhood ... Internet Resources for the City's History. ...
+      </description>
+    </item>
+    <item>
+      <title>New York History</title>
+      <link>http://www.columbia.edu/cu/lweb/eguids/amerihist/nyc.html</link>
+      <description>
+        ... Harlem.NYC - A virtual tour and information on 
+        businesses ...  with historic photos of Columbia's own New York 
+        neighborhood ... Internet Resources for the City's History. ...
+      </description>
+    </item>
+    <item>
+      <title>New York History</title>
+      <link>http://www.columbia.edu/cu/lweb/eguids/amerihist/nyc.html</link>
+      <description>
+        ... Harlem.NYC - A virtual tour and information on 
+        businesses ...  with historic photos of Columbia's own New York 
+        neighborhood ... Internet Resources for the City's History. ...
+      </description>
+    </item>
+    <item>
+      <title>New York History</title>
+      <link>http://www.columbia.edu/cu/lweb/eguids/amerihist/nyc.html</link>
+      <description>
+        ... Harlem.NYC - A virtual tour and information on 
+        businesses ...  with historic photos of Columbia's own New York 
+        neighborhood ... Internet Resources for the City's History. ...
+      </description>
+    </item>
+    <item>
+      <title>New York History</title>
+      <link>http://www.columbia.edu/cu/lweb/eguids/amerihist/nyc.html</link>
+      <description>
+        ... Harlem.NYC - A virtual tour and information on 
+        businesses ...  with historic photos of Columbia's own New York 
+        neighborhood ... Internet Resources for the City's History. ...
+      </description>
+    </item>
+    <item>
+      <title>New York History</title>
+      <link>http://www.columbia.edu/cu/lweb/eguids/amerihist/nyc.html</link>
+      <description>
+        ... Harlem.NYC - A virtual tour and information on 
+        businesses ...  with historic photos of Columbia's own New York 
+        neighborhood ... Internet Resources for the City's History. ...
+      </description>
+    </item>
+    <item>
+      <title>New York History</title>
+      <link>http://www.columbia.edu/cu/lweb/eguids/amerihist/nyc.html</link>
+      <description>
+        ... Harlem.NYC - A virtual tour and information on 
+        businesses ...  with historic photos of Columbia's own New York 
+        neighborhood ... Internet Resources for the City's History. ...
+      </description>
+    </item>    
+  </channel>
+</rss>

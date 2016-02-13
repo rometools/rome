@@ -1,0 +1,261 @@
+<rss xmlns:itunes="http://www.itunes.com/DTDs/Podcast-1.0.dtd" version="2.0">
+<channel>
+
+<title>KCRW's Left, Right &amp;amp; Center</title>
+<itunes:author>R.Scheer, A.Huffington, M.Miller &amp;amp; T.Blankley</itunes:author>
+<link>http://www.kcrw.com/show/lr</link>
+<description>Support KCRW's public radio podcasts. Join online at KCRW.com or call 800-600-5279. Provocative, up-to-the-minute, alive and witty, KCRW's weekly confrontation over politics, policy and popular culture proves those with impeccable credentials needn't lack personality. Featuring four of the most insightful news analysts anywhere, this weekly "love-hate relationship of the air" reaches about 50,000 of the most influential radio listeners in Southern California.</description>
+<itunes:subtitle>KCRW's weekly confrontation over politics, policy and popular culture.</itunes:subtitle>
+<itunes:summary>Provocative, up-to-the-minute, alive and witty, KCRW's weekly confrontation over politics, policy and popular culture proves those with impeccable credentials needn't lack personality. Featuring four of the most insightful news analysts anywhere, this weekly "love-hate relationship of the air" reaches about 50,000 of the most influential radio listeners in Southern California.</itunes:summary>
+
+<language>en-us</language>
+<copyright>KCRW 2006</copyright>
+	<itunes:owner>
+		<itunes:name>KCRW Podmaster</itunes:name>
+		<itunes:email>podmaster@kcrw.org</itunes:email>
+	</itunes:owner>
+<lastBuildDate>
+Sat, 22 Apr 2006 23:15:03 -0700</lastBuildDate>
+
+<ttl>60</ttl>
+<image>
+    <url>http://www.kcrw.com/images/kcrw_logo_small.gif</url>
+    <title>KCRW.com</title>
+    <link>http://www.kcrw.com/</link>
+    <height>59</height>
+    <width>144</width>
+
+</image>
+<itunes:link rel="image" type="video/jpeg" href="http://www.kcrw.com/podcast/images/lr.jpg">Left, Right &amp;amp; Center</itunes:link>
+
+<category>Politics</category>
+	<itunes:category>
+	<itunes:category text="Politics" />
+	</itunes:category>
+
+	<item>
+	    <title>China's Big Visit; Big Changes at the White House; Golly Gee, Gas Prices!</title>
+
+	    	<itunes:author>R.Scheer, A.Huffington, M.Miller &amp;amp; T.Blankley</itunes:author>
+	    <link>		http://www.kcrw.com/cgi-bin/db/kcrw.pl?show_code=lr&amp;air_date=04/21/06&amp;tmplt_type=Show</link>
+	    <description></description>
+		    <itunes:subtitle></itunes:subtitle>
+		    <itunes:summary></itunes:summary>
+	    		    <itunes:duration>
+
+				00:28:59			</itunes:duration>
+		<enclosure url="http://aolradio.podcast.aol.com/kcrw/audio/lr/lr060421Chinas_Big_Visit_Big.mp3?1145657863"
+		    length="13998405"
+		    type="audio/mpeg" />
+		<guid>http://aolradio.podcast.aol.com/kcrw/audio/lr/lr060421Chinas_Big_Visit_Big.mp3?1145657863</guid>
+	    	   <pubDate>Fri, 21 Apr 2006 09:00:00 -0700 </pubDate>
+	   
+	   <category>Politics</category>
+	<itunes:category>
+	<itunes:category text="Politics" />
+
+	</itunes:category>
+	<itunes:explicit>no</itunes:explicit>
+	<itunes:keywords></itunes:keywords>
+	</item>
+	<item>
+	    <title>Iran Nukes; Rumsfeld Won't Go; Mitt Romney and Mass Healthcare</title>
+	    	<itunes:author>R.Scheer, A.Huffington, M.Miller &amp;amp; T.Blankley</itunes:author>
+
+	    <link>		http://www.kcrw.com/cgi-bin/db/kcrw.pl?show_code=lr&amp;air_date=04/14/06&amp;tmplt_type=Show</link>
+	    <description></description>
+		    <itunes:subtitle></itunes:subtitle>
+		    <itunes:summary></itunes:summary>
+	    		    <itunes:duration>
+				00:29:00			</itunes:duration>
+
+		<enclosure url="http://aolradio.podcast.aol.com/kcrw/audio/lr/lr060414Iran_Nukes_Rumsfeld_.mp3?1145062782"
+		    length="14003629"
+		    type="audio/mpeg" />
+		<guid>http://aolradio.podcast.aol.com/kcrw/audio/lr/lr060414Iran_Nukes_Rumsfeld_.mp3?1145062782</guid>
+	    	   <pubDate>Fri, 14 Apr 2006 09:00:00 -0700 </pubDate>
+	   
+	   <category>Politics</category>
+	<itunes:category>
+	<itunes:category text="Politics" />
+	</itunes:category>
+
+	<itunes:explicit>no</itunes:explicit>
+	<itunes:keywords></itunes:keywords>
+	</item>
+	<item>
+	    <title>Did W OK Libby Leak?; Delay's Departure; Uncompromising Positions on Immigration</title>
+	    	<itunes:author>R.Scheer, A.Huffington, M.Miller &amp;amp; T.Blankley</itunes:author>
+	    <link>		http://www.kcrw.com/cgi-bin/db/kcrw.pl?show_code=lr&amp;air_date=04/07/06&amp;tmplt_type=Show</link>
+
+	    <description>Lawrence O'Donnell, executive producer of The West Wing, hosts.  Matt Miller and Arianna Huffington are  away.&lt;br clear=all&gt;</description>
+		    <itunes:subtitle>Lawrence O'Donnell, executive producer of The West Wing, hosts.  Matt Miller and Arianna Huffington are  away.&lt;br clear=all&gt;</itunes:subtitle>
+		    <itunes:summary>Lawrence O'Donnell, executive producer of The West Wing, hosts.  Matt Miller and Arianna Huffington are  away.&lt;br clear=all&gt;</itunes:summary>
+	    		    <itunes:duration>
+				00:29:00			</itunes:duration>
+
+		<enclosure url="http://aolradio.podcast.aol.com/kcrw/audio/lr/lr060407Did_W_OK_Libby_Leak_.mp3?1144445197"
+		    length="14001958"
+		    type="audio/mpeg" />
+		<guid>http://aolradio.podcast.aol.com/kcrw/audio/lr/lr060407Did_W_OK_Libby_Leak_.mp3?1144445197</guid>
+	    	   <pubDate>Fri,  7 Apr 2006 09:00:00 -0700 </pubDate>
+	   
+	   <category>Politics</category>
+	<itunes:category>
+	<itunes:category text="Politics" />
+	</itunes:category>
+
+	<itunes:explicit>no</itunes:explicit>
+	<itunes:keywords></itunes:keywords>
+	</item>
+	<item>
+	    <title>Immigration, French Employment Riots, White House Shakeup and One Last Word</title>
+	    	<itunes:author>R.Scheer, A.Huffington, M.Miller &amp;amp; T.Blankley</itunes:author>
+	    <link>		http://www.kcrw.com/cgi-bin/db/kcrw.pl?show_code=lr&amp;air_date=03/31/06&amp;tmplt_type=Show</link>
+
+	    <description></description>
+		    <itunes:subtitle></itunes:subtitle>
+		    <itunes:summary></itunes:summary>
+	    		    <itunes:duration>
+				00:29:00			</itunes:duration>
+		<enclosure url="http://aolradio.podcast.aol.com/kcrw/audio/lr/lr060331Immigration_French_E.mp3?1143845320"
+		    length="14002584"
+		    type="audio/mpeg" />
+		<guid>http://aolradio.podcast.aol.com/kcrw/audio/lr/lr060331Immigration_French_E.mp3?1143845320</guid>
+	    	   <pubDate>Fri, 31 Mar 2006 08:00:00 -0800 </pubDate>
+
+	   
+	   <category>Politics</category>
+	<itunes:category>
+	<itunes:category text="Politics" />
+	</itunes:category>
+	<itunes:explicit>no</itunes:explicit>
+	<itunes:keywords></itunes:keywords>
+	</item>
+	<item>
+
+	    <title>Iraq, Third Anniversary; Media Response; Republicans and Immigration</title>
+	    	<itunes:author>R.Scheer, A.Huffington, M.Miller &amp;amp; T.Blankley</itunes:author>
+	    <link>		http://www.kcrw.com/cgi-bin/db/kcrw.pl?show_code=lr&amp;air_date=03/24/06&amp;tmplt_type=Show</link>
+	    <description>Lawrence O'Donnell, executive producer of &lt;a href=&amp;quothttp://www.nbc.com/The_West_Wing&amp;quot target=&amp;quotnew&amp;quot&gt;The West Wing&lt;/a&gt;, sits in for Matt Miller, who is away.&lt;br&gt;</description>
+
+		    <itunes:subtitle>Lawrence O'Donnell, executive producer of &lt;a href=&amp;quothttp://www.nbc.com/The_West_Wing&amp;quot target=&amp;quotnew&amp;quot&gt;The West Wing&lt;/a&gt;, sits in for Matt Miller, who is away.&lt;br&gt;</itunes:subtitle>
+		    <itunes:summary>Lawrence O'Donnell, executive producer of &lt;a href=&amp;quothttp://www.nbc.com/The_West_Wing&amp;quot target=&amp;quotnew&amp;quot&gt;The West Wing&lt;/a&gt;, sits in for Matt Miller, who is away.&lt;br&gt;</itunes:summary>
+
+	    		    <itunes:duration>
+				00:28:59			</itunes:duration>
+		<enclosure url="http://aolradio.podcast.aol.com/kcrw/audio/lr/lr060324Iraq_Third_Anniversa.mp3?1143240653"
+		    length="13999450"
+		    type="audio/mpeg" />
+		<guid>http://aolradio.podcast.aol.com/kcrw/audio/lr/lr060324Iraq_Third_Anniversa.mp3?1143240653</guid>
+	    	   <pubDate>Fri, 24 Mar 2006 08:00:00 -0800 </pubDate>
+	   
+	   <category>Politics</category>
+	<itunes:category>
+
+	<itunes:category text="Politics" />
+	</itunes:category>
+	<itunes:explicit>no</itunes:explicit>
+	<itunes:keywords></itunes:keywords>
+	</item>
+	<item>
+	    <title>Iran Wants to Talk; Republicans Drunk on Debt; Impeachment: New Battle Cry of Far Left, Far Right!</title>
+	    	<itunes:author>R.Scheer, A.Huffington, M.Miller &amp;amp; T.Blankley</itunes:author>
+
+	    <link>		http://www.kcrw.com/cgi-bin/db/kcrw.pl?show_code=lr&amp;air_date=03/17/06&amp;tmplt_type=Show</link>
+	    <description>Arianna Huffington is away.&lt;br&gt;</description>
+		    <itunes:subtitle>Arianna Huffington is away.&lt;br&gt;</itunes:subtitle>
+		    <itunes:summary>Arianna Huffington is away.&lt;br&gt;</itunes:summary>
+
+	    		    <itunes:duration>
+				00:28:59			</itunes:duration>
+		<enclosure url="http://aolradio.podcast.aol.com/kcrw/audio/lr/lr060317Iran_Wants_to_Talk_R.mp3?1142631399"
+		    length="13998405"
+		    type="audio/mpeg" />
+		<guid>http://aolradio.podcast.aol.com/kcrw/audio/lr/lr060317Iran_Wants_to_Talk_R.mp3?1142631399</guid>
+	    	   <pubDate>Fri, 17 Mar 2006 08:00:00 -0800 </pubDate>
+	   
+	   <category>Politics</category>
+	<itunes:category>
+
+	<itunes:category text="Politics" />
+	</itunes:category>
+	<itunes:explicit>no</itunes:explicit>
+	<itunes:keywords></itunes:keywords>
+	</item>
+	<item>
+	    <title>Bye-Bye, Dubai; Bush's Plummeting Polls; Why Democrats Can't Get Traction; Economic Roundup</title>
+	    	<itunes:author>R.Scheer, A.Huffington, M.Miller &amp;amp; T.Blankley</itunes:author>
+
+	    <link>		http://www.kcrw.com/cgi-bin/db/kcrw.pl?show_code=lr&amp;air_date=03/10/06&amp;tmplt_type=Show</link>
+	    <description>Bye Bye, Dubai.  Bush's plummeting polls.  Why can't Democrats get traction?
+Plus, Greenspan inks book deal.  Stock market rallies. (Arianna Huffington is away.)&lt;br&gt;</description>
+		    <itunes:subtitle>Bye Bye, Dubai.  Bush's plummeting polls.  Why can't Democrats get traction?
+Plus, Greenspan inks book deal.  Stock market rallies. (Arianna Huffington is away.)&lt;br&gt;</itunes:subtitle>
+		    <itunes:summary>Bye Bye, Dubai.  Bush's plummeting polls.  Why can't Democrats get traction?
+Plus, Greenspan inks book deal.  Stock market rallies. (Arianna Huffington is away.)&lt;br&gt;</itunes:summary>
+
+	    		    <itunes:duration>
+				00:28:59			</itunes:duration>
+		<enclosure url="http://aolradio.podcast.aol.com/kcrw/audio/lr/lr060310Bye-Bye_Dubai_Bushs_.mp3?1142025475"
+		    length="13997569"
+		    type="audio/mpeg" />
+		<guid>http://aolradio.podcast.aol.com/kcrw/audio/lr/lr060310Bye-Bye_Dubai_Bushs_.mp3?1142025475</guid>
+	    	   <pubDate>Fri, 10 Mar 2006 08:00:00 -0800 </pubDate>
+	   
+	   <category>Politics</category>
+	<itunes:category>
+
+	<itunes:category text="Politics" />
+	</itunes:category>
+	<itunes:explicit>no</itunes:explicit>
+	<itunes:keywords></itunes:keywords>
+	</item>
+	<item>
+	    <title>Nukes in the News; Doubts on Dubai Ports; Katrina Culpability; Is Iraq Irreparable?</title>
+	    	<itunes:author>R.Scheer, A.Huffington, M.Miller &amp;amp; T.Blankley</itunes:author>
+
+	    <link>		http://www.kcrw.com/cgi-bin/db/kcrw.pl?show_code=lr&amp;air_date=03/03/06&amp;tmplt_type=Show</link>
+	    <description>Lawrence O'Donnell sits in for Matt Miller as moderator.&lt;br&gt;</description>
+		    <itunes:subtitle>Lawrence O'Donnell sits in for Matt Miller as moderator.&lt;br&gt;</itunes:subtitle>
+		    <itunes:summary>Lawrence O'Donnell sits in for Matt Miller as moderator.&lt;br&gt;</itunes:summary>
+
+	    		    <itunes:duration>
+				00:29:00			</itunes:duration>
+		<enclosure url="http://aolradio.podcast.aol.com/kcrw/audio/lr/lr060303Nukes_in_the_News_Do.mp3?1141422299"
+		    length="14005301"
+		    type="audio/mpeg" />
+		<guid>http://aolradio.podcast.aol.com/kcrw/audio/lr/lr060303Nukes_in_the_News_Do.mp3?1141422299</guid>
+	    	   <pubDate>Fri,  3 Mar 2006 08:00:00 -0800 </pubDate>
+	   
+	   <category>Politics</category>
+	<itunes:category>
+
+	<itunes:category text="Politics" />
+	</itunes:category>
+	<itunes:explicit>no</itunes:explicit>
+	<itunes:keywords></itunes:keywords>
+	</item>
+	<item>
+	    <title>Civil War in Iraq? Port Wars in the US? Bye Bye, Larry Summers and Defending Free Speech</title>
+	    	<itunes:author>R.Scheer, A.Huffington, M.Miller &amp;amp; T.Blankley</itunes:author>
+
+	    <link>		http://www.kcrw.com/cgi-bin/db/kcrw.pl?show_code=lr&amp;air_date=02/24/06&amp;tmplt_type=Show</link>
+	    <description></description>
+		    <itunes:subtitle></itunes:subtitle>
+		    <itunes:summary></itunes:summary>
+	    	   <pubDate>Fri, 24 Feb 2006 08:00:00 -0800 </pubDate>
+	   
+	   <category>Politics</category>
+
+	<itunes:category>
+	<itunes:category text="Politics" />
+	</itunes:category>
+	<itunes:explicit>no</itunes:explicit>
+	<itunes:keywords></itunes:keywords>
+	</item>
+
+</channel>
+</rss>
+ 
+

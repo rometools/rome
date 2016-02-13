@@ -1,0 +1,1401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:media="http://search.yahoo.com/mrss/"
+	>
+<!--
+Source: http://thetorontonian.ca/feed/
+Test feed for https://github.com/rometools/rome-modules/issues/27
+-->
+<channel>
+	<title>The Torontonian</title>
+	<atom:link href="http://thetorontonian.ca/feed/" rel="self" type="application/rss+xml" />
+	<link>http://thetorontonian.ca</link>
+	<description>A Lifestyle Blog</description>
+	<lastBuildDate>Tue, 15 Apr 2014 20:19:46 +0000</lastBuildDate>
+	<language>en</language>
+		<sy:updatePeriod>hourly</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.com/</generator>
+<cloud domain='thetorontonian.ca' port='80' path='/?rsscloud=notify' registerProcedure='' protocol='http-post' />
+<image>
+		<url>http://0.gravatar.com/blavatar/81b7bf46fd5aa138012ed7156d139088?s=96&#038;d=http%3A%2F%2Fs2.wp.com%2Fi%2Fbuttonw-com.png</url>
+		<title>The Torontonian</title>
+		<link>http://thetorontonian.ca</link>
+	</image>
+	<atom:link rel="search" type="application/opensearchdescription+xml" href="http://thetorontonian.ca/osd.xml" title="The Torontonian" />
+	<atom:link rel='hub' href='http://thetorontonian.ca/?pushpress=hub'/>
+	<item>
+		<title>Moonwalk Away : Ear Candy</title>
+		<link>http://thetorontonian.ca/2014/04/02/moonwalk-away-ear-candy/</link>
+		<comments>http://thetorontonian.ca/2014/04/02/moonwalk-away-ear-candy/#comments</comments>
+		<pubDate>Wed, 02 Apr 2014 20:48:31 +0000</pubDate>
+		<dc:creator><![CDATA[The Torontonian]]></dc:creator>
+				<category><![CDATA[Inspiration]]></category>
+		<category><![CDATA[city girlc]]></category>
+		<category><![CDATA[city lig]]></category>
+		<category><![CDATA[goldfish]]></category>
+		<category><![CDATA[good music]]></category>
+		<category><![CDATA[moonwalk]]></category>
+		<category><![CDATA[moonwalk away]]></category>
+		<category><![CDATA[music]]></category>
+		<category><![CDATA[south africa]]></category>
+		<category><![CDATA[toronto]]></category>
+		<category><![CDATA[toronto life]]></category>
+		<category><![CDATA[torontonian]]></category>
+		<category><![CDATA[travel]]></category>
+
+		<guid isPermaLink="false">http://thetorontonian.ca/?p=1970</guid>
+		<description><![CDATA[When I came back from South Africa four years ago one of the only tangible memories I brought back with me was a CD by a band named Goldfish : an electronica and dance group hailing from Cape Town. Last night at the #WMCFW I fell in love with one of the runway songs (seriously, the music was [&#8230;]<img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=thetorontonian.ca&#038;blog=56221465&#038;post=1970&#038;subd=wildclassyfit&#038;ref=&#038;feed=1" width="1" height="1" />]]></description>
+		<wfw:commentRss>http://thetorontonian.ca/2014/04/02/moonwalk-away-ear-candy/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		<georss:point> </georss:point>
+		<geo:lat></geo:lat>
+		<geo:long></geo:long>
+		<media:content url="http://2.gravatar.com/avatar/24e7eca63ff2e063c326cc0746560eb9?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">wildclassyfit</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>The Best Things Are Bitter-Sweet : Garlic Roasted Radicchio</title>
+		<link>http://thetorontonian.ca/2014/03/28/the-best-things-are-bitter-sweet-garlic-roasted-radicchio/</link>
+		<comments>http://thetorontonian.ca/2014/03/28/the-best-things-are-bitter-sweet-garlic-roasted-radicchio/#comments</comments>
+		<pubDate>Fri, 28 Mar 2014 17:25:40 +0000</pubDate>
+		<dc:creator><![CDATA[The Torontonian]]></dc:creator>
+				<category><![CDATA[Recipe]]></category>
+		<category><![CDATA[bbq]]></category>
+		<category><![CDATA[blog]]></category>
+		<category><![CDATA[blogto]]></category>
+		<category><![CDATA[Bloor]]></category>
+		<category><![CDATA[broil]]></category>
+		<category><![CDATA[chef]]></category>
+		<category><![CDATA[city]]></category>
+		<category><![CDATA[city girl]]></category>
+		<category><![CDATA[city life]]></category>
+		<category><![CDATA[Cook]]></category>
+		<category><![CDATA[dinner]]></category>
+		<category><![CDATA[dinner inspiration]]></category>
+		<category><![CDATA[diy]]></category>
+		<category><![CDATA[eat right]]></category>
+		<category><![CDATA[Food]]></category>
+		<category><![CDATA[foodie]]></category>
+		<category><![CDATA[Garlic]]></category>
+		<category><![CDATA[good food]]></category>
+		<category><![CDATA[healthy]]></category>
+		<category><![CDATA[healthy lfiestyle]]></category>
+		<category><![CDATA[healthyfood]]></category>
+		<category><![CDATA[inspiration]]></category>
+		<category><![CDATA[italian]]></category>
+		<category><![CDATA[king]]></category>
+		<category><![CDATA[lettuce]]></category>
+		<category><![CDATA[life]]></category>
+		<category><![CDATA[lifestyle]]></category>
+		<category><![CDATA[marinade]]></category>
+		<category><![CDATA[oil]]></category>
+		<category><![CDATA[purple]]></category>
+		<category><![CDATA[queen]]></category>
+		<category><![CDATA[radicchio]]></category>
+		<category><![CDATA[roasted]]></category>
+		<category><![CDATA[spring]]></category>
+		<category><![CDATA[spring veg]]></category>
+		<category><![CDATA[taste to]]></category>
+		<category><![CDATA[thetorontonian]]></category>
+		<category><![CDATA[toronto]]></category>
+		<category><![CDATA[toronto blogger]]></category>
+		<category><![CDATA[toronto eats]]></category>
+		<category><![CDATA[toronto food]]></category>
+		<category><![CDATA[toronto life]]></category>
+		<category><![CDATA[toronto recipe]]></category>
+		<category><![CDATA[torontonian]]></category>
+		<category><![CDATA[veg recipe]]></category>
+		<category><![CDATA[vegan]]></category>
+		<category><![CDATA[vegetables]]></category>
+		<category><![CDATA[vegetarian]]></category>
+		<category><![CDATA[veggie recipe]]></category>
+		<category><![CDATA[yonge]]></category>
+		<category><![CDATA[yorkville]]></category>
+		<category><![CDATA[ziploc]]></category>
+
+		<guid isPermaLink="false">http://wildclassyfit.wordpress.com/?p=1965</guid>
+		<description><![CDATA[For most things that are bitter by nature, they must be dolled up in different ways so that the harshness is pleasantly exemplified. Grapefruit needs sugar, Aperol needs Prosecco, and radicchio, the star of this post, needs a great garlic marinade. Most people shy away from radicchio because lazy chefs around the world just toss it [&#8230;]<img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=thetorontonian.ca&#038;blog=56221465&#038;post=1965&#038;subd=wildclassyfit&#038;ref=&#038;feed=1" width="1" height="1" />]]></description>
+		<wfw:commentRss>http://thetorontonian.ca/2014/03/28/the-best-things-are-bitter-sweet-garlic-roasted-radicchio/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		<georss:point>0.000000 0.000000</georss:point>
+		<geo:lat>0.000000</geo:lat>
+		<geo:long>0.000000</geo:long>
+		<media:thumbnail url="http://wildclassyfit.files.wordpress.com/2014/03/20140328-131858.jpg?w=150" />
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/20140328-131858.jpg?w=150" medium="image">
+			<media:title type="html">20140328-131858.jpg</media:title>
+		</media:content>
+
+		<media:content url="http://2.gravatar.com/avatar/24e7eca63ff2e063c326cc0746560eb9?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">wildclassyfit</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/20140328-131858.jpg" medium="image">
+			<media:title type="html">20140328-131858.jpg</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/20140328-132054.jpg" medium="image">
+			<media:title type="html">20140328-132054.jpg</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/20140328-132008.jpg" medium="image">
+			<media:title type="html">20140328-132008.jpg</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/20140328-132020.jpg" medium="image">
+			<media:title type="html">20140328-132020.jpg</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/20140328-132136.jpg" medium="image">
+			<media:title type="html">20140328-132136.jpg</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/20140328-131915.jpg" medium="image">
+			<media:title type="html">20140328-131915.jpg</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/20140328-131958.jpg" medium="image">
+			<media:title type="html">20140328-131958.jpg</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/20140328-132046.jpg" medium="image">
+			<media:title type="html">20140328-132046.jpg</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/20140328-132029.jpg" medium="image">
+			<media:title type="html">20140328-132029.jpg</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/20140328-132129.jpg" medium="image">
+			<media:title type="html">20140328-132129.jpg</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/20140328-132101.jpg" medium="image">
+			<media:title type="html">20140328-132101.jpg</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/20140328-132109.jpg" medium="image">
+			<media:title type="html">20140328-132109.jpg</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/20140328-131943.jpg" medium="image">
+			<media:title type="html">20140328-131943.jpg</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/20140328-132136.jpg" medium="image">
+			<media:title type="html">20140328-132136.jpg</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>Live Well, Drink Well : Greenhouse Juice Co.</title>
+		<link>http://thetorontonian.ca/2014/03/19/live-well-drink-well-greenhouse-juice-co/</link>
+		<comments>http://thetorontonian.ca/2014/03/19/live-well-drink-well-greenhouse-juice-co/#comments</comments>
+		<pubDate>Wed, 19 Mar 2014 18:05:08 +0000</pubDate>
+		<dc:creator><![CDATA[The Torontonian]]></dc:creator>
+				<category><![CDATA[Restaurants]]></category>
+		<category><![CDATA[Shops]]></category>
+		<category><![CDATA[blogto]]></category>
+		<category><![CDATA[bolt]]></category>
+		<category><![CDATA[bolt juice bar]]></category>
+		<category><![CDATA[branding]]></category>
+		<category><![CDATA[canada]]></category>
+		<category><![CDATA[carrot common]]></category>
+		<category><![CDATA[city]]></category>
+		<category><![CDATA[city boy]]></category>
+		<category><![CDATA[city girl]]></category>
+		<category><![CDATA[citygirl]]></category>
+		<category><![CDATA[danforth]]></category>
+		<category><![CDATA[detox]]></category>
+		<category><![CDATA[drink right]]></category>
+		<category><![CDATA[eatright]]></category>
+		<category><![CDATA[fresh fruit]]></category>
+		<category><![CDATA[fresh juice]]></category>
+		<category><![CDATA[fresh veg]]></category>
+		<category><![CDATA[greenhouse]]></category>
+		<category><![CDATA[greenhouse juice]]></category>
+		<category><![CDATA[greenhouse juice co]]></category>
+		<category><![CDATA[health]]></category>
+		<category><![CDATA[healthy]]></category>
+		<category><![CDATA[healthy in the city]]></category>
+		<category><![CDATA[healthy lifestyle]]></category>
+		<category><![CDATA[healthy toronto]]></category>
+		<category><![CDATA[juice]]></category>
+		<category><![CDATA[juice bar]]></category>
+		<category><![CDATA[juicer]]></category>
+		<category><![CDATA[juicers]]></category>
+		<category><![CDATA[king]]></category>
+		<category><![CDATA[lifestyle]]></category>
+		<category><![CDATA[nyc]]></category>
+		<category><![CDATA[parkdale]]></category>
+		<category><![CDATA[queen]]></category>
+		<category><![CDATA[rosedale]]></category>
+		<category><![CDATA[the grid]]></category>
+		<category><![CDATA[thetorontonian]]></category>
+		<category><![CDATA[toronto]]></category>
+		<category><![CDATA[toronto bar]]></category>
+		<category><![CDATA[toronto bras]]></category>
+		<category><![CDATA[toronto food]]></category>
+		<category><![CDATA[toronto health]]></category>
+		<category><![CDATA[toronto juice]]></category>
+		<category><![CDATA[toronto juice bar]]></category>
+		<category><![CDATA[toronto juicers]]></category>
+		<category><![CDATA[toronto life]]></category>
+		<category><![CDATA[toronto restaurants]]></category>
+		<category><![CDATA[torontonian]]></category>
+		<category><![CDATA[where to go in toronto]]></category>
+		<category><![CDATA[yoga]]></category>
+		<category><![CDATA[yonge]]></category>
+		<category><![CDATA[yorkville]]></category>
+
+		<guid isPermaLink="false">http://thetorontonian.ca/?p=1917</guid>
+		<description><![CDATA[Does anyone else happen to find juicers a little bit sexy? Im not talking about the $300 mini ones that take hours to clean, but the industrial ones that pulverize whole fruits and vegetables to pulp- free liquid faster than you can say &#8216;zzzzip&#8217;. I think I fall in love every time I watch a [&#8230;]<img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=thetorontonian.ca&#038;blog=56221465&#038;post=1917&#038;subd=wildclassyfit&#038;ref=&#038;feed=1" width="1" height="1" />]]></description>
+		<wfw:commentRss>http://thetorontonian.ca/2014/03/19/live-well-drink-well-greenhouse-juice-co/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		<georss:point>0.000000 0.000000</georss:point>
+		<geo:lat>0.000000</geo:lat>
+		<geo:long>0.000000</geo:long>
+		<media:thumbnail url="http://wildclassyfit.files.wordpress.com/2014/03/img_0642.jpg?w=112" />
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0642.jpg?w=112" medium="image">
+			<media:title type="html">IMG_0642</media:title>
+		</media:content>
+
+		<media:content url="http://2.gravatar.com/avatar/24e7eca63ff2e063c326cc0746560eb9?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">wildclassyfit</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0683.jpg" medium="image">
+			<media:title type="html">IMG_0683</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0668.jpg" medium="image">
+			<media:title type="html">IMG_0668</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0675.jpg" medium="image">
+			<media:title type="html">IMG_0675</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0642.jpg" medium="image">
+			<media:title type="html">IMG_0642</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0680.jpg" medium="image">
+			<media:title type="html">IMG_0680</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0674.jpg" medium="image">
+			<media:title type="html">IMG_0674</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0679.jpg" medium="image">
+			<media:title type="html">IMG_0679</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0662.jpg" medium="image">
+			<media:title type="html">IMG_0662</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0670.jpg" medium="image">
+			<media:title type="html">IMG_0670</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0672.jpg" medium="image">
+			<media:title type="html">IMG_0672</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0666.jpg" medium="image">
+			<media:title type="html">IMG_0666</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0677.jpg" medium="image">
+			<media:title type="html">IMG_0677</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0665.jpg" medium="image">
+			<media:title type="html">IMG_0665</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0682.jpg" medium="image">
+			<media:title type="html">IMG_0682</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0664.jpg" medium="image">
+			<media:title type="html">IMG_0664</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0676.jpg" medium="image">
+			<media:title type="html">IMG_0676</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0681.jpg" medium="image">
+			<media:title type="html">IMG_0681</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>I Love You More Than Coffee, But Not Always Before</title>
+		<link>http://thetorontonian.ca/2014/03/07/i-love-you-more-than-coffee-but-not-always-before/</link>
+		<comments>http://thetorontonian.ca/2014/03/07/i-love-you-more-than-coffee-but-not-always-before/#comments</comments>
+		<pubDate>Fri, 07 Mar 2014 18:44:04 +0000</pubDate>
+		<dc:creator><![CDATA[The Torontonian]]></dc:creator>
+				<category><![CDATA[Restaurants]]></category>
+		<category><![CDATA[adventure]]></category>
+		<category><![CDATA[best cafe]]></category>
+		<category><![CDATA[best cafe in the world]]></category>
+		<category><![CDATA[best coffee in toronto]]></category>
+		<category><![CDATA[best coffeeshop]]></category>
+		<category><![CDATA[big city]]></category>
+		<category><![CDATA[blog]]></category>
+		<category><![CDATA[blogger]]></category>
+		<category><![CDATA[blogto]]></category>
+		<category><![CDATA[book]]></category>
+		<category><![CDATA[cafe]]></category>
+		<category><![CDATA[canada]]></category>
+		<category><![CDATA[city cafe]]></category>
+		<category><![CDATA[city coffee]]></category>
+		<category><![CDATA[city girl]]></category>
+		<category><![CDATA[city life]]></category>
+		<category><![CDATA[coffee]]></category>
+		<category><![CDATA[coffee bean]]></category>
+		<category><![CDATA[coffee shop]]></category>
+		<category><![CDATA[coffee shops]]></category>
+		<category><![CDATA[coffeeshop]]></category>
+		<category><![CDATA[college st]]></category>
+		<category><![CDATA[dineto]]></category>
+		<category><![CDATA[eat right]]></category>
+		<category><![CDATA[empire espresso]]></category>
+		<category><![CDATA[escape]]></category>
+		<category><![CDATA[explore]]></category>
+		<category><![CDATA[fika cake]]></category>
+		<category><![CDATA[ginger tea]]></category>
+		<category><![CDATA[hot drinks]]></category>
+		<category><![CDATA[i deal coffee]]></category>
+		<category><![CDATA[kensington]]></category>
+		<category><![CDATA[Kensington Market]]></category>
+		<category><![CDATA[le neuf cafe]]></category>
+		<category><![CDATA[list of toronto]]></category>
+		<category><![CDATA[little nicky]]></category>
+		<category><![CDATA[little nicky's]]></category>
+		<category><![CDATA[mocha]]></category>
+		<category><![CDATA[nyc]]></category>
+		<category><![CDATA[panemar cafe]]></category>
+		<category><![CDATA[photo]]></category>
+		<category><![CDATA[queen west]]></category>
+		<category><![CDATA[study sesh]]></category>
+		<category><![CDATA[taste to]]></category>
+		<category><![CDATA[Tea]]></category>
+		<category><![CDATA[thetorontonian]]></category>
+		<category><![CDATA[top toronto]]></category>
+		<category><![CDATA[toronto]]></category>
+		<category><![CDATA[toronto cafe]]></category>
+		<category><![CDATA[toronto coffee]]></category>
+		<category><![CDATA[toronto food]]></category>
+		<category><![CDATA[toronto life]]></category>
+		<category><![CDATA[toronto list]]></category>
+		<category><![CDATA[toronto weekend]]></category>
+		<category><![CDATA[torontonian]]></category>
+		<category><![CDATA[underground coffeshop]]></category>
+		<category><![CDATA[weekend in toronto]]></category>
+		<category><![CDATA[west end]]></category>
+		<category><![CDATA[where to go in toronto]]></category>
+		<category><![CDATA[yorkville]]></category>
+
+		<guid isPermaLink="false">http://thetorontonian.ca/?p=1820</guid>
+		<description><![CDATA[I&#8217;m at that point in the year where I need a change of scenery but I  don&#8217;t want to (can&#8217;t afford to) spend any money. I want to get out of my house on the weekend, but I don&#8217;t want to spend money at the bar. I want to walk my dog 4x a day, [&#8230;]<img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=thetorontonian.ca&#038;blog=56221465&#038;post=1820&#038;subd=wildclassyfit&#038;ref=&#038;feed=1" width="1" height="1" />]]></description>
+		<wfw:commentRss>http://thetorontonian.ca/2014/03/07/i-love-you-more-than-coffee-but-not-always-before/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		<georss:point>0.000000 0.000000</georss:point>
+		<geo:lat>0.000000</geo:lat>
+		<geo:long>0.000000</geo:long>
+		<media:thumbnail url="http://wildclassyfit.files.wordpress.com/2014/03/img_0239.jpg?w=150" />
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0239.jpg?w=150" medium="image">
+			<media:title type="html">IMG_0239</media:title>
+		</media:content>
+
+		<media:content url="http://2.gravatar.com/avatar/24e7eca63ff2e063c326cc0746560eb9?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">wildclassyfit</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0239.jpg" medium="image">
+			<media:title type="html">IMG_0239</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2013/11/img_0366.jpg" medium="image">
+			<media:title type="html">IMG_0366</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0418.jpg" medium="image">
+			<media:title type="html">IMG_0418</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0426.jpg" medium="image">
+			<media:title type="html">IMG_0426</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0428.jpg" medium="image">
+			<media:title type="html">IMG_0428</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0425.jpg" medium="image">
+			<media:title type="html">IMG_0425</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0424.jpg" medium="image">
+			<media:title type="html">IMG_0424</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0422.jpg" medium="image">
+			<media:title type="html">IMG_0422</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0423.jpg" medium="image">
+			<media:title type="html">IMG_0423</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0420.jpg" medium="image">
+			<media:title type="html">IMG_0420</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0419.jpg" medium="image">
+			<media:title type="html">IMG_0419</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0417.jpg" medium="image">
+			<media:title type="html">IMG_0417</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0415.jpg" medium="image">
+			<media:title type="html">IMG_0415</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0414.jpg" medium="image">
+			<media:title type="html">IMG_0414</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0413.jpg" medium="image">
+			<media:title type="html">IMG_0413</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0411.jpg" medium="image">
+			<media:title type="html">IMG_0411</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0412.jpg" medium="image">
+			<media:title type="html">IMG_0412</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0410.jpg" medium="image">
+			<media:title type="html">IMG_0410</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0405.jpg" medium="image">
+			<media:title type="html">IMG_0405</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0406.jpg" medium="image">
+			<media:title type="html">IMG_0406</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0402.jpg" medium="image">
+			<media:title type="html">IMG_0402</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0239.jpg" medium="image">
+			<media:title type="html">IMG_0239</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0404.jpg" medium="image">
+			<media:title type="html">IMG_0404</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0401.jpg" medium="image">
+			<media:title type="html">IMG_0401</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0400.jpg" medium="image">
+			<media:title type="html">IMG_0400</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0237.jpg" medium="image">
+			<media:title type="html">IMG_0237</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0408.jpg" medium="image">
+			<media:title type="html">IMG_0408</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0382.jpg" medium="image">
+			<media:title type="html">IMG_0382</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0383.jpg" medium="image">
+			<media:title type="html">IMG_0383</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0380.jpg" medium="image">
+			<media:title type="html">IMG_0380</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0378.jpg" medium="image">
+			<media:title type="html">IMG_0378</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0379.jpg" medium="image">
+			<media:title type="html">IMG_0379</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0377.jpg" medium="image">
+			<media:title type="html">IMG_0377</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0376.jpg" medium="image">
+			<media:title type="html">IMG_0376</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0375.jpg" medium="image">
+			<media:title type="html">IMG_0375</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0373.jpg" medium="image">
+			<media:title type="html">IMG_0373</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0374.jpg" medium="image">
+			<media:title type="html">IMG_0374</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0384.jpg" medium="image">
+			<media:title type="html">IMG_0384</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0399.jpg" medium="image">
+			<media:title type="html">IMG_0399</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0398.jpg" medium="image">
+			<media:title type="html">IMG_0398</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0396.jpg" medium="image">
+			<media:title type="html">IMG_0396</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0395.jpg" medium="image">
+			<media:title type="html">IMG_0395</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0394.jpg" medium="image">
+			<media:title type="html">IMG_0394</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0392.jpg" medium="image">
+			<media:title type="html">IMG_0392</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0393.jpg" medium="image">
+			<media:title type="html">IMG_0393</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0391.jpg" medium="image">
+			<media:title type="html">IMG_0391</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0390.jpg" medium="image">
+			<media:title type="html">IMG_0390</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0389.jpg" medium="image">
+			<media:title type="html">IMG_0389</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0386.jpg" medium="image">
+			<media:title type="html">IMG_0386</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0387.jpg" medium="image">
+			<media:title type="html">IMG_0387</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0388.jpg" medium="image">
+			<media:title type="html">IMG_0388</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0371.jpg" medium="image">
+			<media:title type="html">IMG_0371</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0368.jpg" medium="image">
+			<media:title type="html">IMG_0368</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0369.jpg" medium="image">
+			<media:title type="html">IMG_0369</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0370.jpg" medium="image">
+			<media:title type="html">IMG_0370</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0367.jpg" medium="image">
+			<media:title type="html">IMG_0367</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0366.jpg" medium="image">
+			<media:title type="html">IMG_0366</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0365.jpg" medium="image">
+			<media:title type="html">IMG_0365</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0361.jpg" medium="image">
+			<media:title type="html">IMG_0361</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0362.jpg" medium="image">
+			<media:title type="html">IMG_0362</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0364.jpg" medium="image">
+			<media:title type="html">IMG_0364</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0360.jpg" medium="image">
+			<media:title type="html">IMG_0360</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0358.jpg" medium="image">
+			<media:title type="html">IMG_0358</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0359.jpg" medium="image">
+			<media:title type="html">IMG_0359</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0357.jpg" medium="image">
+			<media:title type="html">IMG_0357</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0356.jpg" medium="image">
+			<media:title type="html">IMG_0356</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0354.jpg" medium="image">
+			<media:title type="html">IMG_0354</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0355.jpg" medium="image">
+			<media:title type="html">IMG_0355</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0353.jpg" medium="image">
+			<media:title type="html">IMG_0353</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0352.jpg" medium="image">
+			<media:title type="html">IMG_0352</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0350.jpg" medium="image">
+			<media:title type="html">IMG_0350</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0349.jpg" medium="image">
+			<media:title type="html">IMG_0349</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0348.jpg" medium="image">
+			<media:title type="html">IMG_0348</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0346.jpg" medium="image">
+			<media:title type="html">IMG_0346</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0347.jpg" medium="image">
+			<media:title type="html">IMG_0347</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/03/img_0351.jpg" medium="image">
+			<media:title type="html">IMG_0351</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2013/11/img_0327.jpg" medium="image">
+			<media:title type="html">IMG_0327</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2013/12/img_1139.jpg" medium="image">
+			<media:title type="html">IMG_1139</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>Happy Is Sexy : How To Say No To Winter Blues</title>
+		<link>http://thetorontonian.ca/2014/02/28/happy-is-sexy-how-to-say-no-to-winter-blues/</link>
+		<comments>http://thetorontonian.ca/2014/02/28/happy-is-sexy-how-to-say-no-to-winter-blues/#comments</comments>
+		<pubDate>Fri, 28 Feb 2014 16:32:58 +0000</pubDate>
+		<dc:creator><![CDATA[The Torontonian]]></dc:creator>
+				<category><![CDATA[Inspiration]]></category>
+		<category><![CDATA[adventure]]></category>
+		<category><![CDATA[blog]]></category>
+		<category><![CDATA[blogger]]></category>
+		<category><![CDATA[blogto]]></category>
+		<category><![CDATA[Bloor]]></category>
+		<category><![CDATA[books]]></category>
+		<category><![CDATA[challenge]]></category>
+		<category><![CDATA[city]]></category>
+		<category><![CDATA[city girl]]></category>
+		<category><![CDATA[city life]]></category>
+		<category><![CDATA[Food]]></category>
+		<category><![CDATA[happiness]]></category>
+		<category><![CDATA[happy]]></category>
+		<category><![CDATA[inspiration]]></category>
+		<category><![CDATA[king west]]></category>
+		<category><![CDATA[love]]></category>
+		<category><![CDATA[notable]]></category>
+		<category><![CDATA[nyc]]></category>
+		<category><![CDATA[nyc life]]></category>
+		<category><![CDATA[ossington]]></category>
+		<category><![CDATA[pics]]></category>
+		<category><![CDATA[puppy]]></category>
+		<category><![CDATA[queen west]]></category>
+		<category><![CDATA[sunglasses]]></category>
+		<category><![CDATA[the grid]]></category>
+		<category><![CDATA[thetorontonian]]></category>
+		<category><![CDATA[toronto]]></category>
+		<category><![CDATA[toronto fun]]></category>
+		<category><![CDATA[toronto girl]]></category>
+		<category><![CDATA[toronto life]]></category>
+		<category><![CDATA[toronto weekend]]></category>
+		<category><![CDATA[torontonian]]></category>
+		<category><![CDATA[travel]]></category>
+		<category><![CDATA[unif]]></category>
+		<category><![CDATA[what to do]]></category>
+		<category><![CDATA[words]]></category>
+		<category><![CDATA[yeates]]></category>
+		<category><![CDATA[yoga]]></category>
+		<category><![CDATA[yonge]]></category>
+		<category><![CDATA[yonge bloor]]></category>
+		<category><![CDATA[yorkville]]></category>
+
+		<guid isPermaLink="false">http://thetorontonian.ca/?p=1765</guid>
+		<description><![CDATA[Not only is it February 28th today, it also happens to be the last day of February, meaning two whole months have passed since that drunken stumble into 2014. It&#8217;s that time of the year where we seriously consider moving to Zanzibar or Hvar to avoid the bone- whipping negative temperatures. HOW IS IT STILL [&#8230;]<img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=thetorontonian.ca&#038;blog=56221465&#038;post=1765&#038;subd=wildclassyfit&#038;ref=&#038;feed=1" width="1" height="1" />]]></description>
+		<wfw:commentRss>http://thetorontonian.ca/2014/02/28/happy-is-sexy-how-to-say-no-to-winter-blues/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		<georss:point>43.653226 -79.383184</georss:point>
+		<geo:lat>43.653226</geo:lat>
+		<geo:long>-79.383184</geo:long>
+		<media:thumbnail url="http://wildclassyfit.files.wordpress.com/2014/02/img_0099.jpg?w=150" />
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_0099.jpg?w=150" medium="image">
+			<media:title type="html">IMG_0099</media:title>
+		</media:content>
+
+		<media:content url="http://2.gravatar.com/avatar/24e7eca63ff2e063c326cc0746560eb9?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">wildclassyfit</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_0099.jpg" medium="image">
+			<media:title type="html">IMG_0099</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2013/12/20131227-063017.jpg" medium="image">
+			<media:title type="html">20131227-063017.jpg</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_00202.jpg" medium="image">
+			<media:title type="html">IMG_0020</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_0094.jpg" medium="image">
+			<media:title type="html">IMG_0094</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_0079.jpg" medium="image">
+			<media:title type="html">IMG_0079</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_0085.jpg" medium="image">
+			<media:title type="html">IMG_0085</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3853.jpg" medium="image">
+			<media:title type="html">IMG_3853</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2013/12/20131227-063305.jpg" medium="image">
+			<media:title type="html">20131227-063305.jpg</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>To Love Would Be An Awfully Big Adventure</title>
+		<link>http://thetorontonian.ca/2014/02/14/in-lieu-of-v-day-will-you-be-mine/</link>
+		<comments>http://thetorontonian.ca/2014/02/14/in-lieu-of-v-day-will-you-be-mine/#comments</comments>
+		<pubDate>Fri, 14 Feb 2014 13:00:00 +0000</pubDate>
+		<dc:creator><![CDATA[The Torontonian]]></dc:creator>
+				<category><![CDATA[holidays]]></category>
+		<category><![CDATA[bff]]></category>
+		<category><![CDATA[big city]]></category>
+		<category><![CDATA[blog]]></category>
+		<category><![CDATA[blogger]]></category>
+		<category><![CDATA[blogto]]></category>
+		<category><![CDATA[Bloor]]></category>
+		<category><![CDATA[bloor west]]></category>
+		<category><![CDATA[city]]></category>
+		<category><![CDATA[city girl]]></category>
+		<category><![CDATA[city life]]></category>
+		<category><![CDATA[coda]]></category>
+		<category><![CDATA[dinner]]></category>
+		<category><![CDATA[diy]]></category>
+		<category><![CDATA[girl]]></category>
+		<category><![CDATA[gun range]]></category>
+		<category><![CDATA[happy]]></category>
+		<category><![CDATA[happy girl]]></category>
+		<category><![CDATA[homemade]]></category>
+		<category><![CDATA[i love you]]></category>
+		<category><![CDATA[inspiration]]></category>
+		<category><![CDATA[into the wild]]></category>
+		<category><![CDATA[king west]]></category>
+		<category><![CDATA[love]]></category>
+		<category><![CDATA[love me]]></category>
+		<category><![CDATA[nyc]]></category>
+		<category><![CDATA[parkdale]]></category>
+		<category><![CDATA[party]]></category>
+		<category><![CDATA[peanut butter]]></category>
+		<category><![CDATA[peanut butter cups]]></category>
+		<category><![CDATA[queen west]]></category>
+		<category><![CDATA[quotes]]></category>
+		<category><![CDATA[recipe]]></category>
+		<category><![CDATA[smile]]></category>
+		<category><![CDATA[thetorontonian]]></category>
+		<category><![CDATA[toronto]]></category>
+		<category><![CDATA[toronto events]]></category>
+		<category><![CDATA[toronto life]]></category>
+		<category><![CDATA[toronto valentines]]></category>
+		<category><![CDATA[torontonian]]></category>
+		<category><![CDATA[v-day]]></category>
+		<category><![CDATA[valentines]]></category>
+		<category><![CDATA[valentines day]]></category>
+		<category><![CDATA[what to do]]></category>
+		<category><![CDATA[where to go]]></category>
+		<category><![CDATA[yonge]]></category>
+		<category><![CDATA[yorkville]]></category>
+
+		<guid isPermaLink="false">http://thetorontonian.ca/?p=1758</guid>
+		<description><![CDATA[As I sat down to write this post I wondered how my words for this year&#8217;s Valentines Day would differ from what I said last year, and the year before that, and so on.  It took me a good 10 minutes to realize that playing some love songs was pertinent and persisted to pour myself [&#8230;]<img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=thetorontonian.ca&#038;blog=56221465&#038;post=1758&#038;subd=wildclassyfit&#038;ref=&#038;feed=1" width="1" height="1" />]]></description>
+		<wfw:commentRss>http://thetorontonian.ca/2014/02/14/in-lieu-of-v-day-will-you-be-mine/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		<georss:point>0.000000 0.000000</georss:point>
+		<geo:lat>0.000000</geo:lat>
+		<geo:long>0.000000</geo:long>
+		<media:thumbnail url="http://wildclassyfit.files.wordpress.com/2014/02/img_3860.jpg?w=150" />
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3860.jpg?w=150" medium="image">
+			<media:title type="html">IMG_3860</media:title>
+		</media:content>
+
+		<media:content url="http://2.gravatar.com/avatar/24e7eca63ff2e063c326cc0746560eb9?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">wildclassyfit</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3852.jpg" medium="image">
+			<media:title type="html">IMG_3852</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3878.jpg" medium="image">
+			<media:title type="html">IMG_3878</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3853.jpg" medium="image">
+			<media:title type="html">IMG_3853</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3829.jpg" medium="image">
+			<media:title type="html">IMG_3829</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3468.jpg" medium="image">
+			<media:title type="html">IMG_3468</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3863.jpg" medium="image">
+			<media:title type="html">IMG_3863</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3855.jpg" medium="image">
+			<media:title type="html">IMG_3855</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3860.jpg" medium="image">
+			<media:title type="html">IMG_3860</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3875.jpg" medium="image">
+			<media:title type="html">IMG_3875</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3867.jpg" medium="image">
+			<media:title type="html">IMG_3867</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3729.jpg" medium="image">
+			<media:title type="html">IMG_3729</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3848.jpg" medium="image">
+			<media:title type="html">IMG_3848</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2013/08/blog6.jpg" medium="image">
+			<media:title type="html">blog6</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3850.jpg" medium="image">
+			<media:title type="html">IMG_3850</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3854.jpg" medium="image">
+			<media:title type="html">IMG_3854</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3857.jpg" medium="image">
+			<media:title type="html">IMG_3857</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3861.jpg" medium="image">
+			<media:title type="html">IMG_3861</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3866.jpg" medium="image">
+			<media:title type="html">IMG_3866</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3862.jpg" medium="image">
+			<media:title type="html">IMG_3862</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3856.jpg" medium="image">
+			<media:title type="html">IMG_3856</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3868.jpg" medium="image">
+			<media:title type="html">IMG_3868</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3872.jpg" medium="image">
+			<media:title type="html">IMG_3872</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3874.jpg" medium="image">
+			<media:title type="html">IMG_3874</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3870.jpg" medium="image">
+			<media:title type="html">IMG_3870</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3849.jpg" medium="image">
+			<media:title type="html">IMG_3849</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>To Eat Is An Art: Seven Chefs &amp; A Five-Way</title>
+		<link>http://thetorontonian.ca/2014/02/12/to-eat-is-an-art-seven-chefs-a-5-way/</link>
+		<comments>http://thetorontonian.ca/2014/02/12/to-eat-is-an-art-seven-chefs-a-5-way/#comments</comments>
+		<pubDate>Wed, 12 Feb 2014 21:39:12 +0000</pubDate>
+		<dc:creator><![CDATA[The Torontonian]]></dc:creator>
+				<category><![CDATA[events]]></category>
+		<category><![CDATA[beast]]></category>
+		<category><![CDATA[blog]]></category>
+		<category><![CDATA[blogger]]></category>
+		<category><![CDATA[blogto]]></category>
+		<category><![CDATA[Bloor]]></category>
+		<category><![CDATA[canoe]]></category>
+		<category><![CDATA[city girl]]></category>
+		<category><![CDATA[city life]]></category>
+		<category><![CDATA[citylife]]></category>
+		<category><![CDATA[Cook]]></category>
+		<category><![CDATA[dinner]]></category>
+		<category><![CDATA[dinner date]]></category>
+		<category><![CDATA[dinner event]]></category>
+		<category><![CDATA[diy]]></category>
+		<category><![CDATA[Food]]></category>
+		<category><![CDATA[foodie]]></category>
+		<category><![CDATA[freds not here]]></category>
+		<category><![CDATA[good food]]></category>
+		<category><![CDATA[group of seven chefs]]></category>
+		<category><![CDATA[happiness]]></category>
+		<category><![CDATA[healthy]]></category>
+		<category><![CDATA[Holiday]]></category>
+		<category><![CDATA[Home]]></category>
+		<category><![CDATA[inspiration]]></category>
+		<category><![CDATA[matty matheson]]></category>
+		<category><![CDATA[parkdale]]></category>
+		<category><![CDATA[parts & labour]]></category>
+		<category><![CDATA[parts and labour]]></category>
+		<category><![CDATA[queen west]]></category>
+		<category><![CDATA[taste to]]></category>
+		<category><![CDATA[the group of seven chefs]]></category>
+		<category><![CDATA[thetorontonian]]></category>
+		<category><![CDATA[things to doc]]></category>
+		<category><![CDATA[toronotnian]]></category>
+		<category><![CDATA[toronto]]></category>
+		<category><![CDATA[toronto eats]]></category>
+		<category><![CDATA[toronto events]]></category>
+		<category><![CDATA[toronto food]]></category>
+		<category><![CDATA[toronto foodies]]></category>
+		<category><![CDATA[toronto girl]]></category>
+		<category><![CDATA[toronto life]]></category>
+		<category><![CDATA[toronto restaurants]]></category>
+		<category><![CDATA[torontonian]]></category>
+		<category><![CDATA[winterlicious]]></category>
+		<category><![CDATA[yorkville]]></category>
+
+		<guid isPermaLink="false">http://thetorontonian.ca/?p=1696</guid>
+		<description><![CDATA[Although Winterlicious wins in forcing much needed get-togethers during the coldest time of the year, I knew our love affair was over when I began being seduced by the main menu, never to look another Prix Fixe in the eyes again *sigh*. Yes, it&#8217;s a great way to test a restaurant on a budget, but I have [&#8230;]<img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=thetorontonian.ca&#038;blog=56221465&#038;post=1696&#038;subd=wildclassyfit&#038;ref=&#038;feed=1" width="1" height="1" />]]></description>
+		<wfw:commentRss>http://thetorontonian.ca/2014/02/12/to-eat-is-an-art-seven-chefs-a-5-way/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		<georss:point>0.000000 0.000000</georss:point>
+		<geo:lat>0.000000</geo:lat>
+		<geo:long>0.000000</geo:long>
+		<media:thumbnail url="http://wildclassyfit.files.wordpress.com/2014/02/img_3771.jpg?w=112" />
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3771.jpg?w=112" medium="image">
+			<media:title type="html">IMG_3771</media:title>
+		</media:content>
+
+		<media:content url="http://2.gravatar.com/avatar/24e7eca63ff2e063c326cc0746560eb9?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">wildclassyfit</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3791.jpg" medium="image">
+			<media:title type="html">IMG_3791</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3776.jpg" medium="image">
+			<media:title type="html">IMG_3776</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3752.jpg" medium="image">
+			<media:title type="html">IMG_3752</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3775.jpg" medium="image">
+			<media:title type="html">IMG_3775</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3774.jpg" medium="image">
+			<media:title type="html">IMG_3774</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3773.jpg" medium="image">
+			<media:title type="html">IMG_3773</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3771.jpg" medium="image">
+			<media:title type="html">IMG_3771</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3772.jpg" medium="image">
+			<media:title type="html">IMG_3772</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3781.jpg" medium="image">
+			<media:title type="html">IMG_3781</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>Soup City : Mushroom Dumpling French Onion Soup</title>
+		<link>http://thetorontonian.ca/2014/02/10/soup-city-mushroom-dumpling-french-onion-soup/</link>
+		<comments>http://thetorontonian.ca/2014/02/10/soup-city-mushroom-dumpling-french-onion-soup/#comments</comments>
+		<pubDate>Mon, 10 Feb 2014 20:31:41 +0000</pubDate>
+		<dc:creator><![CDATA[The Torontonian]]></dc:creator>
+				<category><![CDATA[Recipe]]></category>
+		<category><![CDATA[blog to]]></category>
+		<category><![CDATA[city girl]]></category>
+		<category><![CDATA[city lfie]]></category>
+		<category><![CDATA[city life]]></category>
+		<category><![CDATA[dinenr idea]]></category>
+		<category><![CDATA[diy]]></category>
+		<category><![CDATA[eat right]]></category>
+		<category><![CDATA[eat well]]></category>
+		<category><![CDATA[februaryw]]></category>
+		<category><![CDATA[Food]]></category>
+		<category><![CDATA[food porn]]></category>
+		<category><![CDATA[foodie]]></category>
+		<category><![CDATA[french onion soup]]></category>
+		<category><![CDATA[healthy]]></category>
+		<category><![CDATA[healthy soup]]></category>
+		<category><![CDATA[how to]]></category>
+		<category><![CDATA[monday blue]]></category>
+		<category><![CDATA[monday blues]]></category>
+		<category><![CDATA[nyc]]></category>
+		<category><![CDATA[onion soup]]></category>
+		<category><![CDATA[recipe]]></category>
+		<category><![CDATA[Soup]]></category>
+		<category><![CDATA[spanish onion]]></category>
+		<category><![CDATA[thetorontonian]]></category>
+		<category><![CDATA[toronto]]></category>
+		<category><![CDATA[toronto food]]></category>
+		<category><![CDATA[toronto life]]></category>
+		<category><![CDATA[torontonian]]></category>
+		<category><![CDATA[vegetarian]]></category>
+		<category><![CDATA[warm up]]></category>
+		<category><![CDATA[winter]]></category>
+		<category><![CDATA[winter soup]]></category>
+		<category><![CDATA[yorkville]]></category>
+
+		<guid isPermaLink="false">http://thetorontonian.ca/?p=1645</guid>
+		<description><![CDATA[I have always found it poetic that French Onion soup relies on Spanish onions for its sweet, savoury satisfying taste. Yes, it&#8217;s true that the glutton in all of us orders this dish for the overwhelming amount of melted gruyere and soft slurpy chunks of fresh bread. However, the real showstopper should be the broth, [&#8230;]<img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=thetorontonian.ca&#038;blog=56221465&#038;post=1645&#038;subd=wildclassyfit&#038;ref=&#038;feed=1" width="1" height="1" />]]></description>
+		<wfw:commentRss>http://thetorontonian.ca/2014/02/10/soup-city-mushroom-dumpling-french-onion-soup/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		<georss:point>0.000000 0.000000</georss:point>
+		<geo:lat>0.000000</geo:lat>
+		<geo:long>0.000000</geo:long>
+		<media:thumbnail url="http://wildclassyfit.files.wordpress.com/2014/02/img_3710.jpg?w=112" />
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3710.jpg?w=112" medium="image">
+			<media:title type="html">IMG_3710</media:title>
+		</media:content>
+
+		<media:content url="http://2.gravatar.com/avatar/24e7eca63ff2e063c326cc0746560eb9?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">wildclassyfit</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3711.jpg" medium="image">
+			<media:title type="html">IMG_3711</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3700.jpg" medium="image">
+			<media:title type="html">IMG_3700</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3715.jpg" medium="image">
+			<media:title type="html">IMG_3715</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3721.jpg" medium="image">
+			<media:title type="html">IMG_3721</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3720.jpg" medium="image">
+			<media:title type="html">IMG_3720</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3513.jpg" medium="image">
+			<media:title type="html">IMG_3513</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3516.jpg" medium="image">
+			<media:title type="html">IMG_3516</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3509.jpg" medium="image">
+			<media:title type="html">IMG_3509</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/http-makeagif-com-media-2-10-2014-ivcobl.gif" medium="image">
+			<media:title type="html">http---makeagif.com--media-2-10-2014-iVcobL</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3710.jpg" medium="image">
+			<media:title type="html">IMG_3710</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3707.jpg" medium="image">
+			<media:title type="html">IMG_3707</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3708.jpg" medium="image">
+			<media:title type="html">IMG_3708</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3705.jpg" medium="image">
+			<media:title type="html">IMG_3705</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3711.jpg" medium="image">
+			<media:title type="html">IMG_3711</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3717.jpg" medium="image">
+			<media:title type="html">IMG_3717</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3697.jpg" medium="image">
+			<media:title type="html">IMG_3697</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3740.jpg" medium="image">
+			<media:title type="html">IMG_3740</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3741.jpg" medium="image">
+			<media:title type="html">IMG_3741</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/img_3742.jpg" medium="image">
+			<media:title type="html">IMG_3742</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>Body Fuel: Getting Jiggy With Ginger</title>
+		<link>http://thetorontonian.ca/2014/02/04/body-fuel-getting-jiggy-with-ginger/</link>
+		<comments>http://thetorontonian.ca/2014/02/04/body-fuel-getting-jiggy-with-ginger/#comments</comments>
+		<pubDate>Tue, 04 Feb 2014 12:04:27 +0000</pubDate>
+		<dc:creator><![CDATA[The Torontonian]]></dc:creator>
+				<category><![CDATA[Recipe]]></category>
+		<category><![CDATA[city girl]]></category>
+		<category><![CDATA[city life]]></category>
+		<category><![CDATA[cold]]></category>
+		<category><![CDATA[fit]]></category>
+		<category><![CDATA[flu]]></category>
+		<category><![CDATA[foot scrub]]></category>
+		<category><![CDATA[ginger]]></category>
+		<category><![CDATA[ginger soup]]></category>
+		<category><![CDATA[ginger syrup]]></category>
+		<category><![CDATA[ginger tea]]></category>
+		<category><![CDATA[healthy]]></category>
+		<category><![CDATA[immune system]]></category>
+		<category><![CDATA[my city]]></category>
+		<category><![CDATA[natural remedy]]></category>
+		<category><![CDATA[nyc]]></category>
+		<category><![CDATA[organic]]></category>
+		<category><![CDATA[pickled ginger]]></category>
+		<category><![CDATA[remedy]]></category>
+		<category><![CDATA[salt scrub]]></category>
+		<category><![CDATA[stay healthy]]></category>
+		<category><![CDATA[sugar scrub]]></category>
+		<category><![CDATA[sushi]]></category>
+		<category><![CDATA[thetorontonian]]></category>
+		<category><![CDATA[things to do in toronto]]></category>
+		<category><![CDATA[toronto]]></category>
+		<category><![CDATA[toronto blog]]></category>
+		<category><![CDATA[toronto blogger]]></category>
+		<category><![CDATA[toronto city]]></category>
+		<category><![CDATA[toronto idea]]></category>
+		<category><![CDATA[toronto stuff]]></category>
+		<category><![CDATA[torontonian]]></category>
+		<category><![CDATA[ways to use ginger]]></category>
+		<category><![CDATA[winter]]></category>
+		<category><![CDATA[yorkville]]></category>
+
+		<guid isPermaLink="false">http://thetorontonian.ca/?p=1630</guid>
+		<description><![CDATA[After four months of putting up with piercing cold winds, ice blanket slip n&#8217; slides and enough snowfall to make me never want to leave my house again, I am beginning to fear that the inevitable cold, flu and/or throat infection is about to hit. Although I wouldn&#8217;t mind the opportunity to be bed-ridden for [&#8230;]<img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=thetorontonian.ca&#038;blog=56221465&#038;post=1630&#038;subd=wildclassyfit&#038;ref=&#038;feed=1" width="1" height="1" />]]></description>
+		<wfw:commentRss>http://thetorontonian.ca/2014/02/04/body-fuel-getting-jiggy-with-ginger/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		<georss:point>0.000000 0.000000</georss:point>
+		<geo:lat>0.000000</geo:lat>
+		<geo:long>0.000000</geo:long>
+		<media:thumbnail url="http://wildclassyfit.files.wordpress.com/2014/02/ging2.jpg?w=150" />
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/ging2.jpg?w=150" medium="image">
+			<media:title type="html">ging2</media:title>
+		</media:content>
+
+		<media:content url="http://2.gravatar.com/avatar/24e7eca63ff2e063c326cc0746560eb9?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">wildclassyfit</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/ging3.jpg" medium="image">
+			<media:title type="html">ging3</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/ging8.jpg" medium="image">
+			<media:title type="html">ging8</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/ging5.jpg" medium="image">
+			<media:title type="html">ging5</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/ging2.jpg" medium="image">
+			<media:title type="html">ging2</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/ging7.jpg" medium="image">
+			<media:title type="html">ging7</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2013/12/img_1432.jpg" medium="image">
+			<media:title type="html">IMG_1432</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/ging4.jpg" medium="image">
+			<media:title type="html">ging4</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/ging6.jpg" medium="image">
+			<media:title type="html">ging6</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/ging9.jpg" medium="image">
+			<media:title type="html">ging9</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/02/ging.jpg" medium="image">
+			<media:title type="html">ging</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>Have You Seen This? Faith In Humanity Restored</title>
+		<link>http://thetorontonian.ca/2014/01/29/have-you-seen-this-faith-in-humanity-restored/</link>
+		<comments>http://thetorontonian.ca/2014/01/29/have-you-seen-this-faith-in-humanity-restored/#comments</comments>
+		<pubDate>Thu, 30 Jan 2014 01:09:44 +0000</pubDate>
+		<dc:creator><![CDATA[The Torontonian]]></dc:creator>
+				<category><![CDATA[Inspiration]]></category>
+		<category><![CDATA[awesome video]]></category>
+		<category><![CDATA[beautiful]]></category>
+		<category><![CDATA[best video]]></category>
+		<category><![CDATA[blogto]]></category>
+		<category><![CDATA[city girl]]></category>
+		<category><![CDATA[city life]]></category>
+		<category><![CDATA[faith in humanity]]></category>
+		<category><![CDATA[gay rights]]></category>
+		<category><![CDATA[grammy]]></category>
+		<category><![CDATA[grammys]]></category>
+		<category><![CDATA[happiness]]></category>
+		<category><![CDATA[human nature]]></category>
+		<category><![CDATA[humanity]]></category>
+		<category><![CDATA[inspiration]]></category>
+		<category><![CDATA[LGBT]]></category>
+		<category><![CDATA[macklemore]]></category>
+		<category><![CDATA[madonna]]></category>
+		<category><![CDATA[making progress]]></category>
+		<category><![CDATA[north america]]></category>
+		<category><![CDATA[osheaga]]></category>
+		<category><![CDATA[progress]]></category>
+		<category><![CDATA[queen latifah]]></category>
+		<category><![CDATA[the grammys]]></category>
+		<category><![CDATA[the torontonian]]></category>
+		<category><![CDATA[thetorontonian]]></category>
+		<category><![CDATA[toronto]]></category>
+		<category><![CDATA[toronto life]]></category>
+		<category><![CDATA[torontolife]]></category>
+		<category><![CDATA[torontonian]]></category>
+		<category><![CDATA[video]]></category>
+		<category><![CDATA[world]]></category>
+		<category><![CDATA[yorkville]]></category>
+
+		<guid isPermaLink="false">http://thetorontonian.ca/?p=1585</guid>
+		<description><![CDATA[My first thought while watching this video is that it might just be one of the best things I have ever witnessed in my entire twenty- two (twenty-three?) years of life. A f*cking plus for the Grammy&#8217;s: this is the kind of positive messages we need to not only be sending, but actively participating in. [&#8230;]<img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=thetorontonian.ca&#038;blog=56221465&#038;post=1585&#038;subd=wildclassyfit&#038;ref=&#038;feed=1" width="1" height="1" />]]></description>
+		<wfw:commentRss>http://thetorontonian.ca/2014/01/29/have-you-seen-this-faith-in-humanity-restored/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		<georss:point>0.000000 0.000000</georss:point>
+		<geo:lat>0.000000</geo:lat>
+		<geo:long>0.000000</geo:long>
+		<media:thumbnail url="http://wildclassyfit.files.wordpress.com/2014/01/grammys-wedding.jpg?w=150" />
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/01/grammys-wedding.jpg?w=150" medium="image">
+			<media:title type="html">grammys-wedding</media:title>
+		</media:content>
+
+		<media:content url="http://2.gravatar.com/avatar/24e7eca63ff2e063c326cc0746560eb9?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">wildclassyfit</media:title>
+		</media:content>
+
+		<media:content url="http://wildclassyfit.files.wordpress.com/2014/01/mak.jpg" medium="image">
+			<media:title type="html">mak</media:title>
+		</media:content>
+	</item>
+	</channel>
+</rss>

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+  <head>
+    <title>GeoRSS package documentation</title>
+  </head>
+  <body>
+
+
+
+This package contains classes to enable the rome rss library with georss support. 
+GeoRSS describes a number of ways to encoding location in RSS feeds
+
+
+    <h3>Code Examples </h3>
+
+    <h4>GeoRSS Consumer</h4>
+
+    <pre>   SyndFeedInput input = new SyndFeedInput();
+       SyndFeed feed = input.build(new XmlReader(new URL(
+             "http://www.geonames.org/recent-changes.xml")));
+
+       List&lt;syndentry&gt; entries = feed.getEntries();
+       for (SyndEntry entry : entries) {
+            GeoRSSModule geoRSSModule = GeoRSSUtils.getGeoRSS(entry);
+            System.out.println(entry.getTitle() + " : lat="
+                  + geoRSSModule.getPosition().getLatitude() + ",lng="
+                  + geoRSSModule.getPosition().getLongitude() + ", desc="
+                  + entry.getDescription().getValue() + "; time="
+                  + entry.getPublishedDate());
+       }
+   </pre>
+
+
+
+
+    <h4>GeoRSS Producer</h4>
+
+    <pre>    GeoRSSModule geoRSSModule = new W3CGeoModuleImpl();
+        //GeoRSSModule geoRSSModule = new SimpleModuleImpl();
+        geoRSSModule.setPosition(new Position(47.0, 9.0));
+        entry.getModules().add(geoRSSModule);
+    </pre>
+
+  </body>
+</html>

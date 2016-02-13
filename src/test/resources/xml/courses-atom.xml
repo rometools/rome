@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed version="0.3" xmlns="http://purl.org/atom/ns#" 
+xmlns:g="http://base.google.com/ns/1.0">
+
+
+<title>The name of your feed</title>
+  
+<link href="The URL to the HTML website"
+  rel="alternate" type="text/html" />
+
+<issued>2003-12-13T18:30:02Z</issued><modified>2003-12-13T18:30:02Z</modified>
+
+  <author>
+    <name>The name of the author</name>
+  </author> 
+  
+<entry>
+
+    <title>Robots and Society</title>
+    <link rel="alternate" type="text/html" 
+     href="http://www.example.com/courses/robots.html"/>
+    <id>tag:providers-website-item1.com,2003:3.2397</id>
+   <issued>2003-12-13T18:30:02Z</issued> <modified>2003-12-13T18:30:02Z</modified>
+   <summary>Research and study of the integration of robots in developed economies.</summary>
+   
+     <g:image_link>http://www.providers-website.com/image1.jpg</g:image_link>
+   <g:expiration_date>2005-11-30</g:expiration_date>
+   <g:label>robots</g:label>
+   <g:label>society</g:label>
+   <g:label>computers</g:label>
+   
+   <g:course_date_range>
+       	  <g:start>2005-08-19T08:30:00</g:start>     
+  		  <g:end>2005-12-20T09:45:00</g:end>
+   </g:course_date_range>
+   <g:course_number>CS 230</g:course_number>
+   <g:course_times>MWF 08:30-09:00</g:course_times>
+   <g:subject>computer science</g:subject>
+   <g:university>Johnson State</g:university>
+   
+  </entry>
+  
+  <entry>
+   
+   <title>Documentary Filming</title>
+   <link rel="alternate" type="text/html" 
+     href="http://www.example.com/courses/documentary.html"/>
+    <id>tag:providers-website-item2.com,2003:3.2397</id>
+    <issued>2003-12-13T18:30:02Z</issued> <modified>2003-12-13T18:30:02Z</modified>
+   <summary>Understanding the theory behind filming documentaries.</summary>
+
+     <g:image_link>http://www.providers-website.com/image1.jpg</g:image_link>
+   <g:expiration_date>2005-11-30</g:expiration_date>
+   <g:label>film</g:label>
+   <g:label>video</g:label>
+   <g:label>documentary</g:label>
+   
+   <g:course_date_range>
+      	  <g:start>2005-08-19T08:30:00</g:start>     
+  		  <g:end>2005-12-20T09:45:00</g:end>
+   </g:course_date_range>
+   <g:course_number>FS 192</g:course_number>
+   <g:course_times>TTh 14:00-16:00</g:course_times>
+   <g:subject>film</g:subject>
+   <g:university>Johnson State</g:university>
+  
+    </entry>
+</feed>
