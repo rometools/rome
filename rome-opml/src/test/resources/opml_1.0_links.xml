@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<opml version="1.0">
+  <head>
+    <title>Top Ten Sources for podcasting</title>
+    <ownerName>Newsilike Media Group</ownerName>
+    <ownerEmail>opml@TopTenSources.com</ownerEmail>
+    <dateCreated>Thu, 27 Apr 2006 05:47:27 GMT</dateCreated>
+    <dateModified>Thu, 27 Apr 2006 05:47:27 GMT</dateModified>
+    <expansionState>0</expansionState>
+    <vertScrollState>0</vertScrollState>
+    <windowLeft>0</windowLeft>
+    <windowTop>0</windowTop>
+    <windowRight>100</windowRight>
+    <windowBottom>100</windowBottom>
+  </head>
+  <body>
+    <outline type="link" text="TopTenSources: podcasting" url="http://podcasting.TopTenSources.com/TopTenSources/" />
+    <outline text="CBS Technology News Podcast - Larry Magid' Tech Report">
+      <outline type="link" text="Larry Magid's Tech Report" url="http://www.cbsnews.com" />
+    </outline>
+    <outline text="Adam Curry: Daily Source Code">
+      <outline type="link" text="#374 Daily Source Code for Tuesday April 25th 2006" url="http://radio.weblogs.com/0001014/2006/04/26.html#a7304" />
+      <outline type="link" text="#373 Daily Source Code for Monday April 24th 2006" url="http://radio.weblogs.com/0001014/2006/04/24.html#a7303" />
+      <outline type="link" text="#372 Daily Source Code for Friday April 21st 2006" url="http://radio.weblogs.com/0001014/2006/04/21.html#a7302" />
+      <outline type="link" text="#371 Daily Source Code for Thursday April 20th 2006" url="http://radio.weblogs.com/0001014/2006/04/20.html#a7301" />
+      <outline type="link" text="#370 Daily Source Code for Wednesday April 19th 2006" url="http://radio.weblogs.com/0001014/2006/04/19.html#a7300" />
+    </outline>
+    <outline text="Gillmor Gang">
+      <outline type="link" text="Syndicate Gang Part I" url="http://gillmorgang.podshow.com/?p=44" />
+      <outline type="link" text="HughTrain Gang" url="http://gillmorgang.podshow.com/?p=43" />
+      <outline type="link" text="Phlegm at 11 Gang" url="http://gillmorgang.podshow.com/?p=42" />
+      <outline type="link" text="NDA Gang" url="http://gillmorgang.podshow.com/?p=41" />
+      <outline type="link" text="When the Music’s Over Gang" url="http://gillmorgang.podshow.com/?p=40" />
+    </outline>
+    <outline text="ITC: All Programs">
+      <outline type="link" text="Doc Searls: Syndicate" url="http://feeds.feedburner.com/ITConversations-EverythingMP3?m=689" />
+      <outline type="link" text="Business Panel: The Podcast Academy" url="http://feeds.feedburner.com/ITConversations-EverythingMP3?m=688" />
+      <outline type="link" text="CN Update: April 24, 2006" url="http://feeds.feedburner.com/ITConversations-EverythingMP3?m=687" />
+      <outline type="link" text="Hossein Eslambolchi: AT T: The Networked Future is Open" url="http://feeds.feedburner.com/ITConversations-EverythingMP3?m=686" />
+      <outline type="link" text="Dileep George: Understanding the Neocortex to Accelerate our Understanding of Intelligence" url="http://feeds.feedburner.com/ITConversations-EverythingMP3?m=685" />
+    </outline>
+    <outline text="FamilyTechTalk">
+      <outline type="link" text="FamilyTechTalk 24 April 15, 2006" url="http://familytechtalk.com/podcasts/ftt24.mp3" />
+      <outline type="link" text="FamilyTechTalk 23 April 7, 2006" url="http://familytechtalk.com/podcasts/ftt23.mp3" />
+      <outline type="link" text="FamilyTechTalk 22 March 31, 2006" url="http://familytechtalk.com/podcasts/ftt22.mp3" />
+      <outline type="link" text="FamilyTechTalk 20  March 17, 2006" url="http://familytechtalk.com/podcasts/ftt20.mp3" />
+      <outline type="link" text="FamilyTechTalk 21 March 24, 2006" url="http://familytechtalk.com/podcasts/ftt21.mp3" />
+    </outline>
+    <outline text="On The Media from NPR/WNYC">
+      <outline type="link" text="On The Media - April 14, 2006" url="http://feeds.feedburner.com/onthemedia?m=35" />
+      <outline type="link" text="On The Media - April 21, 2006" url="http://feeds.wnyc.org/onthemedia?m=37" />
+      <outline type="link" text="On The Media - April 07, 2006" url="http://feeds.feedburner.com/onthemedia?m=34" />
+    </outline>
+    <outline text="Morning Coffee Notes">
+      <outline type="link" text="OPML 2.0 is easy to understand if you're intelligent, have common sense and are patient. It's really simple. I explain, in this podcast, why the improvements in OPML 2.0 will help users. " url="http://static2.podcatch.com/blogs/gems/snedit/cn06mar01.mp3" />
+      <outline type="link" text="Today's podcast is about WordPress, Google and the OPML community. It's especially important for the leaders of the OPML community to listen to this podcast, because I want to explore ways for the support system to grow. I think we just had a very good experience and I want to build on it." url="http://static2.podcatch.com/blogs/gems/snedit/cn06feb01.mp3" />
+      <outline type="link" text="I just recorded a segment for Chris Lydon's show with my state of the union speech, above, and also recorded it as an MP3, so here it is the second Morning Coffee Notes of 2006. &quot;;-&gt;&quot;" url="http://static2.podcatch.com/blogs/gems/snedit/cn06jan31.mp3" />
+      <outline type="link" text="Morning Coffee Notes interview with John Palfrey, founder of toptensources.com, and director of Berkman Center." url="http://static2.podcatch.com/blogs/gems/snedit/cn05Jan02.mp3" />
+      <outline type="link" text="A Morning Coffee Notes podcast with thoughts about the scene in New Orleans and on the Gulf Coast. " url="http://static2.podcatch.com/blogs/gems/snedit/cn05Dec16.mp3" />
+    </outline>
+    <outline text="Gillmor Daily">
+      <outline type="link" text="Death Cab for Links Part II" url="http://gillmordaily.podshow.com/?p=66" />
+      <outline type="link" text="Death Cab for Links Part I" url="http://gillmordaily.podshow.com/?p=65" />
+      <outline type="link" text="Java’s Open Sores? Part II" url="http://gillmordaily.podshow.com/?p=64" />
+      <outline type="link" text="Java’s Open Sores? Part I" url="http://gillmordaily.podshow.com/?p=63" />
+      <outline type="link" text="Gillmor Daily 1 Redux Part II" url="http://gillmordaily.podshow.com/?p=62" />
+    </outline>
+    <outline text="Latest ZDNet Podcasts">
+      <outline type="link" text="Sling Media CEO Blake Krikorian unplugged" url="http://blogs.zdnet.com/BTL/index.php?p=2924&amp;part=rss&amp;tag=feed&amp;subj=zdblog" />
+      <outline type="link" text="Video goes Internet--the future of what you watch" url="http://blogs.zdnet.com/BTL/index.php?p=2920&amp;part=rss&amp;tag=feed&amp;subj=zdblog" />
+      <outline type="link" text="Will or could RSS get forked?" url="http://blogs.zdnet.com/BTL/index.php?p=2906&amp;part=rss&amp;tag=feed&amp;subj=zdblog" />
+      <outline type="link" text="Learning from the masters: Creating a $1 billion company" url="http://blogs.zdnet.com/BTL/index.php?p=2910&amp;part=rss&amp;tag=feed&amp;subj=zdblog" />
+      <outline type="link" text="Apple vs. bloggers, AMD vs. Intel, DRM vs. consumers Yahoo vs. China, Microsoft vs. EU and more..." url="http://blogs.zdnet.com/BTL/index.php?p=2901&amp;part=rss&amp;tag=feed&amp;subj=zdblog" />
+    </outline>
+  </body>
+</opml>
