@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
+    <channel>
+        <item>
+            <media:content url="http://someurl/somevideo.wmv" fileSize="21592869" bitrate="496024"
+                duration="174.42" type="video/x-ms-wmv" isDefault="false" />
+        </item>
+    </channel>
+</rss>

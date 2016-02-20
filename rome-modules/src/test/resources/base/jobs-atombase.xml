@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<feed version="0.3" xmlns="http://purl.org/atom/ns#" 
+xmlns:g="http://base.google.com/ns/1.0">
+
+<title>The name of your channel</title>
+<link href="The URL to the HTML website" rel="alternate" type="text/html"/>
+
+<modified>2003-12-13T18:30:02Z</modified>
+  <author>
+    <name>The name of the author</name>
+  </author>
+
+  
+  <entry>
+
+   <title>Google Coordinator - Mountain View</title>
+   <link rel="alternate" type="text/html" href="http://provider-website.com/item1-info-page.html"/>
+   <id>tag:providers-website-item1.com,2003:3.2397</id>
+   <issued>2003-12-13T08:29:29-04:00</issued>
+   <modified>2003-12-13T18:30:02</modified>
+   <summary>The successful candidate will be responsible for providing excellent service to our merchants, while simultaneously helping the product run smoothly behind the scenes. This person should be proactive, organized, extremely detail-oriented, and should work well within a group.</summary>
+
+   <g:image_link>http://www.providers-website.com/image1.jpg</g:image_link>
+   <g:expiration_date>2005-12-20</g:expiration_date>
+   <g:label>Coordinator</g:label>
+   <g:label>Google</g:label>
+   <g:label>Online Support</g:label> 
+
+   <g:job_industry>Internet</g:job_industry>
+   <g:employer>Google, Inc</g:employer>
+   <g:job_function>Google Coordinator</g:job_function>
+   <g:job_type>full-time</g:job_type>
+   <g:currency>USD</g:currency>
+   <g:salary>40000</g:salary>
+   <g:salary_type>starting</g:salary_type>
+   <g:education>BS</g:education>
+   <g:immigration_status>Permanent Resident</g:immigration_status>
+   <g:location>1600 Amphitheatre Parkway, Mountain View, CA, 94043, USA</g:location>
+   
+  </entry>
+
+  <entry>
+
+   <title>Google T-Shirt Distributor</title>
+   <link rel="alternate" type="text/html" href="http://provider-website.com/item2-info-page.html"/>
+   <id>tag:providers-website-item1.com,2003:3.2397</id>
+   <issued>2003-12-13T08:29:29-04:00</issued>
+   <modified>2003-12-13T18:30:02</modified>
+   <summary>Love T-shirts? Just can't get enough? Why not consider a career as an official Google T-shirt Distributor. You will have first dibs on all new t-shirts, and you'll get the satisfaction of giving each Googler ONE t-shirt each.</summary>
+   <g:image_link>http://www.providers-website.com/image2.jpg</g:image_link>
+   <g:expiration_date>2006-01-20</g:expiration_date>
+   <g:label>Distributor</g:label>
+   <g:label>T-Shirts</g:label>
+   <g:label>Google</g:label>
+  
+   <g:job_industry>Customer Service</g:job_industry>
+   <g:employer>Google, Inc.</g:employer>
+   <g:job_function>Distributor</g:job_function>
+   <g:job_type>part-time</g:job_type>
+   <g:currency>USD</g:currency>
+   <g:salary>25000</g:salary>
+   <g:salary_type>starting</g:salary_type>
+   <g:education>High School</g:education>
+   <g:immigration_status>Permanent Resident</g:immigration_status>
+   <g:location>1600 Amphitheatre Parkway, Mountain View, CA, 94043, USA</g:location>
+
+
+  </entry>
+</feed>

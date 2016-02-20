@@ -4,130 +4,133 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.rometools</groupId>
-        <artifactId>rome-parent</artifactId>
-        <version>1.6.0-SNAPSHOT</version>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>9</version>
     </parent>
 
-    <artifactId>rome</artifactId>
+    <groupId>com.rometools</groupId>
+    <artifactId>rome-parent</artifactId>
     <version>1.6.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
-    <name>rome</name>
+    <modules>
+        <module>rome</module>
+        <module>rome-certiorem</module>
+        <module>rome-certiorem-webapp</module>
+        <module>rome-fetcher</module>
+        <module>rome-modules</module>
+        <module>rome-opml</module>
+        <module>rome-propono</module>
+        <module>rome-utils</module>
+    </modules>
 
-    <description>All Roads Lead to ROME. ROME is a set of Atom/RSS Java utilities that make it
-        easy to work in Java with most syndication formats. Today it accepts all flavors of RSS
-        (0.90, 0.91, 0.92, 0.93, 0.94, 1.0 and 2.0), Atom 0.3 and Atom 1.0 feeds. Rome includes
-        a set of parsers and generators for the various flavors of feeds, as well as converters
-        to convert from one format to another. The parsers can give you back Java objects that
-        are either specific for the format you want to work with, or a generic normalized
-        SyndFeed object that lets you work on with the data without bothering about the
-        underlying format.
-    </description>
+    <name>rome-parent</name>
 
-    <url>http://rometools.github.io/rome/</url>
+    <description>Parent for all ROME projects</description>
+
+    <url>http://rometools.github.io/rome-parent/</url>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
 
     <scm>
-        <connection>scm:git:ssh://github.com/rometools/rome.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/rometools/rome.git</developerConnection>
-        <url>https://github.com/rometools/rome</url>
+        <connection>scm:git:ssh://github.com/rometools/rome-parent.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/rometools/rome-parent.git</developerConnection>
+        <url>https://github.com/rometools/rome-parent</url>
     </scm>
 
     <developers>
         <developer>
-            <name>Alejandro Abdelnur</name>
-            <url>http://blog.sun.com/roller/page/tucu</url>
-            <timezone>0</timezone>
-        </developer>
-        <developer>
-            <name>Dave Johnson</name>
-            <url>http://rollerweblogger.org/roller</url>
-            <timezone>-5</timezone>
-        </developer>
-        <developer>
-            <name>Elaine Chien</name>
-            <timezone>0</timezone>
-        </developer>
-        <developer>
-            <name>Patrick Chanezon</name>
-            <url>http://www.chanezon.com/pat/weblog</url>
-            <timezone>-9</timezone>
-        </developer>
-        <developer>
             <name>Patrick Gotthard</name>
+            <email>patrick@patrick-gotthard.de</email>
             <url>http://www.patrick-gotthard.de</url>
             <timezone>+1</timezone>
         </developer>
-        <developer>
-            <name>Robert Cooper</name>
-            <email>kebernet@gmail.com</email>
-            <url>http://www.screaming-penguin.com</url>
-            <timezone>-4</timezone>
-        </developer>
-        <developer>
-            <id>farrukhnajmi</id>
-            <name>Farrukh Najmi</name>
-            <url>http://www.wellfleetsoftware.com/farrukh</url>
-        </developer>
-        <developer>
-            <id>imk</id>
-            <name>Martin Kurz</name>
-            <timezone>Europe/Berlin</timezone>
-        </developer>
     </developers>
 
-    <repositories>
-        <repository>
-            <id>sonatype-nexus-snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
 
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.1</version>
+                    <configuration>
+                        <source>1.6</source>
+                        <target>1.6</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>3.3</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-scm-publish-plugin</artifactId>
+                    <version>1.0</version>
+                </plugin>
+                <!-- The following plugin doesn't modify the build. It is 
+                    only used to hide irrelevant warnings in Eclipse -->
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.apache.maven.plugins</groupId>
+                                        <artifactId>maven-enforcer-plugin</artifactId>
+                                        <versionRange>[1.0.0,)</versionRange>
+                                        <goals>
+                                            <goal>enforce</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore />
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>maven-bundle-plugin</artifactId>
+                    <version>3.0.1</version>
+                    <executions>
+                        <execution>
+                            <id>bundle</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>bundle</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <reporting>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>2.4</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                            <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.apache.maven.doxia</groupId>
-                        <artifactId>doxia-module-markdown</artifactId>
-                        <version>1.5</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.apache.maven.doxia</groupId>
-                        <artifactId>doxia-module-confluence</artifactId>
-                        <version>1.5</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-scm-publish-plugin</artifactId>
-                <configuration>
-                    <scmBranch>gh-pages</scmBranch>
-                    <pubScmUrl>${project.scm.developerConnection}</pubScmUrl>
-                    <content>${project.build.directory}/site</content>
-                </configuration>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>2.7</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.felix</groupId>
@@ -159,32 +162,96 @@
                 </configuration>
             </plugin>
         </plugins>
-    </build>
+    </reporting>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.rometools</groupId>
-            <artifactId>rome-utils</artifactId>
-            <version>1.6.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jdom</groupId>
-            <artifactId>jdom2</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <!-- JDOM -->
+            <dependency>
+                <groupId>org.jdom</groupId>
+                <artifactId>jdom2</artifactId>
+                <version>2.0.5</version>
+            </dependency>
+            <!-- Logging -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>1.7.10</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>1.1.2</version>
+            </dependency>
+            <!-- JUnit -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.12</version>
+            </dependency>
+            <!-- Hamcrest -->
+            <dependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>hamcrest-library</artifactId>
+                <version>1.3</version>
+            </dependency>
+            <!-- JavaX -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>2.5</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet.jsp</groupId>
+                <artifactId>jsp-api</artifactId>
+                <version>2.1</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.persistence</groupId>
+                <artifactId>persistence-api</artifactId>
+                <version>1.0.2</version>
+            </dependency>
+            <!-- Guice -->
+            <dependency>
+                <groupId>com.google.inject.extensions</groupId>
+                <artifactId>guice-servlet</artifactId>
+                <version>2.0</version>
+            </dependency>
+            <!-- Apache Commons -->
+            <dependency>
+                <groupId>commons-httpclient</groupId>
+                <artifactId>commons-httpclient</artifactId>
+                <version>3.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.3.2</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>1.9.2</version>
+            </dependency>
+            <!-- Jetty -->
+            <dependency>
+                <groupId>jetty</groupId>
+                <artifactId>jetty</artifactId>
+                <version>4.2.12</version>
+            </dependency>
+            <!-- XML-RPC -->
+            <dependency>
+                <groupId>org.apache.xmlrpc</groupId>
+                <artifactId>xmlrpc-client</artifactId>
+                <version>3.1.3</version>
+            </dependency>
+            <!-- OAuth -->
+            <dependency>
+                <groupId>net.oauth.core</groupId>
+                <artifactId>oauth</artifactId>
+                <version>20100527</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 </project>

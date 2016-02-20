@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed version="0.3" xmlns="http://purl.org/atom/ns#" 
+xmlns:g="http://base.google.com/ns/1.0">
+
+<title>The name of your feed</title>
+  
+<link href="The URL to the HTML website"
+  rel="alternate" type="text/html"/>
+
+<modified>2003-12-13T18:30:02Z</modified>
+
+  <author>
+    <name>The name of the author</name>
+  </author> 
+  
+<entry>
+
+    <title>Google's 2005 Halloween Fright Fest</title>
+    <link rel="alternate" type="text/html" href="http://provider-website.com/item1-info-page.html"/>
+    <id>tag:providers-website-item1.com,2003:3.2397</id>
+   <issued>2003-12-13T18:30:02</issued>
+   <modified>2003-12-13T18:30:02</modified>
+   <summary>Come face to face with your most horrific fears. This year's Halloween fest will be sure to scare your socks off, complete with a real haunted Googleplex, decomposed BBQ roadkill, and vials of beetlejuice.</summary>
+   
+   <g:image_link>http://www.providers-website.com/image1.jpg</g:image_link>
+   <g:expiration_date>2005-12-20</g:expiration_date>
+   <g:label>Festival</g:label>
+   <g:label>Halloween</g:label>
+   <g:label>Party</g:label>
+   <g:label>Costumes</g:label>
+   
+   <g:currency>USD</g:currency>
+   <g:price>10</g:price>
+   <g:price_type>starting</g:price_type>
+   <g:payment_accepted>Cash</g:payment_accepted>
+   <g:payment_accepted>Check</g:payment_accepted>
+   <g:payment_accepted>Visa</g:payment_accepted>
+   <g:payment_notes>Cash only for local orders</g:payment_notes>
+   <g:event_date_range>
+   	<g:start>2005-07-04T20:00:00</g:start>
+     	<g:end>2005-07-04T23:00:00</g:end>
+   </g:event_date_range>
+   <g:location>1600 Amphitheatre Parkway, Mountain View, CA, 94043</g:location>
+   <g:shipping>
+     	<g:country>US</g:country>
+     	<g:service>Overnight</g:service>
+     	<g:price>32.95</g:price>
+   </g:shipping>
+   <g:tax_region>California</g:tax_region>
+   <g:tax_percent>8.25</g:tax_percent>
+  
+  </entry>
+  
+  <entry>
+   
+   <title>U2 Elevation tour</title>
+   <link rel="alternate" type="text/html" href="http://provider-website.com/item2-info-page.html"/>
+    <id>tag:providers-website-item2.com,2003:3.2397</id>
+    <issued>2003-12-13T18:30:02</issued>
+    <modified>2003-12-13T18:30:02</modified>
+    <summary>Rock Concert!</summary>
+
+   <g:image_link>http://www.providers-website.com/image2.jpg</g:image_link>
+   <g:expiration_date>2005-12-20</g:expiration_date>
+   <g:label>Concert</g:label>
+   <g:label>festival</g:label>
+   <g:label>music</g:label>
+
+   <g:currency>USD</g:currency>
+   <g:price>50</g:price>
+   <g:price_type>starting</g:price_type>
+   <g:payment_accepted>Cash</g:payment_accepted>
+   <g:payment_accepted>Check</g:payment_accepted>
+   <g:payment_accepted>Visa</g:payment_accepted>
+   <g:payment_notes>Cash only for local orders</g:payment_notes>
+   <g:event_date_range>
+     	<g:start>2005-08-02T20:30:00</g:start>
+     	<g:end>2005-08-23T23:43:00</g:end>
+   </g:event_date_range>
+   <g:location>123 Main St, Anytown, CA, 12345, USA</g:location>
+   <g:shipping>
+     	<g:country>US</g:country>
+     	<g:service>Overnight</g:service>
+     	<g:price>32.95</g:price>
+   </g:shipping>
+   <g:tax_region>California</g:tax_region>
+   <g:tax_percent>8.25</g:tax_percent>
+  
+    </entry>
+</feed>

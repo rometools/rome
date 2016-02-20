@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns="http://purl.org/rss/1.0/"
+xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:syn="http://purl.org/rss/1.0/modules/syndication/"
+xmlns:admin="http://webns.net/mvcb/"
+xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+>
+<channel rdf:about="http://www.tagzania.com/tag/ticino">
+<title>Tagzania - http://www.tagzania.com/tag/ticino</title>
+<link>http://www.tagzania.com/tag/ticino</link>
+<description></description>
+<items>
+ <rdf:Seq>
+    <rdf:li rdf:resource="http://www.tagzania.com/item/10679" />
+    <rdf:li rdf:resource="http://www.tagzania.com/item/10678" />
+    <rdf:li rdf:resource="http://www.tagzania.com/item/10652" />
+   </rdf:Seq>
+</items>
+
+</channel>
+
+<item rdf:about="http://www.tagzania.com/item/10679">
+<title>Pugerna</title>
+<link>http://www.tagzania.com/item/10679</link>
+<geo:lat>45.9774</geo:lat>
+<geo:long>8.9781</geo:long>
+<dc:creator>tagman</dc:creator>
+<dc:date>2006-02-21T21:16:00Z </dc:date>
+<dc:subject>ticino
+switzerland
+</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+        <rdf:li resource="http://www.tagzania.com/tag/ticino" />
+        <rdf:li resource="http://www.tagzania.com/tag/switzerland" />
+      </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.tagzania.com/item/10678">
+<title>Campione d'Italia</title>
+<link>http://www.tagzania.com/item/10678</link>
+<geo:lat>45.9707</geo:lat>
+<geo:long>8.97055</geo:long>
+<dc:creator>tagman</dc:creator>
+<dc:date>2006-02-21T21:14:00Z </dc:date>
+<dc:subject>ticino
+switzerland
+enclave
+italy
+lugano
+lake
+</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+        <rdf:li resource="http://www.tagzania.com/tag/ticino" />
+        <rdf:li resource="http://www.tagzania.com/tag/switzerland" />
+        <rdf:li resource="http://www.tagzania.com/tag/enclave" />
+        <rdf:li resource="http://www.tagzania.com/tag/italy" />
+        <rdf:li resource="http://www.tagzania.com/tag/lugano" />
+        <rdf:li resource="http://www.tagzania.com/tag/lake" />
+      </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.tagzania.com/item/10652">
+<title>Monte Brè</title>
+<link>http://www.tagzania.com/item/10652</link>
+<geo:lat>46.0087</geo:lat>
+<geo:long>8.98579</geo:long>
+<dc:creator>tagzania</dc:creator>
+<dc:date>2006-02-21T10:43:00Z </dc:date>
+<dc:subject>switzerland
+ticino
+geonames
+</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+        <rdf:li resource="http://www.tagzania.com/tag/switzerland" />
+        <rdf:li resource="http://www.tagzania.com/tag/ticino" />
+        <rdf:li resource="http://www.tagzania.com/tag/geonames" />
+      </rdf:Bag>
+</taxo:topics>
+</item>
+
+
+</rdf:RDF>
+
+
+

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<feed version="0.3" xmlns="http://purl.org/atom/ns#" 
+xmlns:g="http://base.google.com/ns/1.0">
+
+<title>The name of your feed</title>
+<link href="The URL to the HTML website"
+  rel="alternate" type="text/html"/>
+
+<modified>2003-12-13T18:30:02Z</modified>
+
+<author>
+  <name>The name of the author</name>
+</author>
+
+  <entry>
+
+    <title>Wanted: Used Acme Bio Truck</title>
+    <summary>Wanted a used Acme Bio Truct </summary>
+   <link rel="alternate" type="text/html"
+    href="http://provider-website.com/item1-info-page.html"/>
+   <id>tag:providers-website-item1.com,2003:3.2397</id>
+   <issued>2003-12-13T08:29:29-04:00</issued>
+   <modified>2003-12-13T18:30:02Z</modified>
+    <g:image_link>http://www.providers-website.com/image1.jpg</g:image_link>
+    <g:expiration_date>2005-12-20</g:expiration_date>
+    <g:label>Wanted</g:label>
+    <g:label>Truck</g:label>
+
+    <g:location>123 Main Street, Anytown, CA, 12345, USA</g:location>
+
+  </entry>
+ 
+  <entry>
+	<title>Wanted: Acme 2000 Camera</title>
+   	<summary>Wanted new or used Acme 2000 camera </summary>
+        <link rel="alternate" type="text/html"
+         href="http://provider-website.com/item2-info-page.html"/>
+        <id>tag:providers-website-item1.com,2003:3.2397</id>
+         <issued>2003-12-13T08:29:29-04:00</issued>
+         <modified>2003-12-13T18:30:02Z</modified>
+         <g:image_link>http://www.providers-website.com/image2.jpg</g:image_link>
+         <g:expiration_date>2005-12-20</g:expiration_date>
+         <g:label>Camera</g:label>
+          <g:label>Acme</g:label>
+   
+   	<g:location>123 Main Street, Anytown, CA, 12345, USA</g:location>
+  </entry>
+</feed>
+
+

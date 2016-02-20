@@ -1,0 +1,75 @@
+<rss version="2.0">
+    <channel>
+        <title>playlist.xml</title>
+        <description>Sample playlist</description>
+        <link>http://www.somefakesite.com/index.html</link>
+
+        <item>
+            <title>Heart of Glass.mp3</title>
+            <description>Blondie - Heart of Glass.mp3</description>
+        </item>
+
+        <item>
+            <title>Manic Monday.mp3</title>
+            <description>Bangles - Manic Monday.mp3</description>
+        </item>
+
+        <item>
+            <title>Everybody Have Fun Tonight.mp3</title>
+            <description>Wang Chung - Everybody Have Fun Tonight.mp3</description>
+        </item>
+
+        <item>
+            <title>She Blinded Me With Science.mp3</title>
+            <description>Thomas Dolby - She Blinded Me With Science.mp3</description>
+        </item>
+
+        <item>
+            <title>Rivers of Babylon (HTC).mp3</title>
+            <description>Jimmy Cliff - Rivers of Babylon (HTC).mp3</description>
+        </item>
+
+        <item>
+            <title>The Tide Is High.mp3</title>
+            <description>Blondie - The Tide Is High.mp3</description>
+        </item>
+
+        <item>
+            <title>Back to the Island.mp3</title>
+            <description>Leon Russell - Back to the Island.mp3</description>
+        </item>
+
+        <item>
+            <title>Lucky Man.mp3</title>
+            <description>Emerson Lake and Palmer - Lucky Man.mp3</description>
+        </item>
+
+        <item>
+            <title>Up on Cripple Creek.mp3</title>
+            <description>The Band - Up on Cripple Creek.mp3</description>
+        </item>
+
+        <item>
+            <title>Crackerbox Palace.mp3</title>
+            <description>George Harrison - Crackerbox Palace.mp3</description>
+        </item>
+
+        <item>
+            <title>Taxi.Mp3</title>
+            <description>Harry Chapin - Taxi.Mp3</description>
+        </item>
+
+        <item>
+            <title>Thick As A Brick.mp3</title>
+            <description>Jethro Tull-Thick As A Brick.mp3</description>
+        </item>
+
+        <item>
+            <title>Riding With the King.mp3</title>
+
+            <description>
+                B. B. King and Eric Clapton - Riding With the King - 11 - Hold On Im Coming.mp3
+            </description>
+        </item>
+    </channel>
+</rss>

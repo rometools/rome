@@ -1,0 +1,7 @@
+.classpath
+.project
+.settings
+target
+.idea
+*.iml
+atlassian-ide-plugin.xml

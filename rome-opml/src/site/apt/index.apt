@@ -1,0 +1,125 @@
+ -----
+ Home
+ -----
+ kwebble
+ -----
+ 2011-09-23 14:15:28.442
+ -----
+
+ROME OPML
+
+ This project provides support for {{{http://www.opml.org/}OPML}} in ROME.
+
+*Downloads
+ 
+ * {{{./apidocs/index.html}JavaDocs}}
+ 
+ []
+ 
+*Sample Usage
+
+ To use this parser, simply include the jar file in your classpath as you are using ROME. Be sure it exists at the same level as ROME,
+ such that, if ROME is in the common classpath of an application server, don't include this jar in your webapps WEB\-INF/lib.
+
++------+
+WireFeedInput input = new WireFeedInput();
+ Opml feed = (Opml) input.build( new File("myOpml.xml") );
+ List<Outline> outlines = (List<Outline>) feed.getOutlines();
++------+
+ 
+*Hierarchy vs Flat
+ 
+ Since OPML is a hierarchical format, some magic is required to preserve this information when they feed is moved to a Synd\* structure.
+ This is accomplished by adding categories indicating the tree structure to the {{{http://wiki.java.net/bin/edit/Javawsxml/SyndEntries?topicparent\=Javawsxml.OPML;nowysiwyg\=0}SyndEntries}} ...
+
+ For example:
+
++------+
+<opml version="1.0">
+ <head>
+  <title>Top Ten Sources for podcasting</title>
+  <ownerName>Newsilike Media Group</ownerName>
+  <ownerEmail>opml@TopTenSources.com</ownerEmail>
+ </head>
+ <body>
+  <outline type="link" text="TopTenSources: podcasting"
+	url="http://podcasting.TopTenSources.com/TopTenSources/" />
+  <outline text="CBS Technology News Podcast - Larry Magid' Tech Report">
+   <outline type="link" text="Larry Magid's Tech Report" url="http://www.cbsnews.com" />
+  </outline>
+  <outline text="Adam Curry: Daily Source Code">
+   <outline type="link" text="#374 Daily Source Code for Tuesday April 25th 2006"
+	url="http://radio.weblogs.com/0001014/2006/04/26.html#a7304" />
+   <outline type="link" text="#373 Daily Source Code for Monday April 24th 2006"
+	url="http://radio.weblogs.com/0001014/2006/04/24.html#a7303" />
+   <outline type="link" text="#372 Daily Source Code for Friday April 21st 2006"
+	url="http://radio.weblogs.com/0001014/2006/04/21.html#a7302" />
+   <outline type="link" text="#371 Daily Source Code for Thursday April 20th 2006"
+	url="http://radio.weblogs.com/0001014/2006/04/20.html#a7301" />
+   <outline type="link" text="#370 Daily Source Code for Wednesday April 19th 2006"
+	url="http://radio.weblogs.com/0001014/2006/04/19.html#a7300" />
+  </outline>
+  <outline text="Gillmor Gang">
+   <outline type="link" text="Syndicate Gang Part I" url="http://gillmorgang.podshow.com/?p=44" />
+   <outline type="link" text="HughTrain Gang" url="http://gillmorgang.podshow.com/?p=43" />
+   <outline type="link" text="Phlegm at 11 Gang" url="http://gillmorgang.podshow.com/?p=42" />
+   <outline type="link" text="NDA Gang" url="http://gillmorgang.podshow.com/?p=41" />
+   <outline type="link" text="When the Music?s Over Gang" url="http://gillmorgang.podshow.com/?p=40" />
+  </outline>
++------+
+
+ ...\
+ When converted to RSS2 becomes:
+
++------+
+<channel>
+  <title>Top Ten Sources for podcasting</title>
+  <link>http://foo.com</link>
+  <description />
+  <managingEditor>Newsilike Media Group</managingEditor>
+  <item>
+   <title>TopTenSources: podcasting</title>
+   <link>http://podcasting.TopTenSources.com/TopTenSources/</link>
+   <category domain="urn:rome.tree">node.-1732517202</category>
+   <category domain="urn:rome.attribute#url">http://podcasting.TopTenSources.com/TopTenSources/</category>
+   <guid>http://podcasting.TopTenSources.com/TopTenSources/</guid>
+  </item>
+  <item>
+   <title>CBS Technology News Podcast - Larry Magid' Tech Report</title>
+   <category domain="urn:rome.tree">node.1353657827</category>
+  </item>
+  <item>
+   <title>Larry Magid's Tech Report</title>
+   <link>http://www.cbsnews.com</link>
+   <category domain="urn:rome.tree">node.-4085850</category>
+   <category domain="urn:rome.tree">parent.1353657827</category>
+   <category domain="urn:rome.attribute#url">http://www.cbsnews.com</category>
+   <guid>http://www.cbsnews.com</guid>
+  </item>
+  <item>
+   <title>Adam Curry: Daily Source Code</title>
+   <category domain="urn:rome.tree">node.835791399</category>
+  </item>
+  <item>
+   <title>#374 Daily Source Code for Tuesday April 25th 2006</title>
+   <link>http://radio.weblogs.com/0001014/2006/04/26.html#a7304</link>
+   <category domain="urn:rome.tree">node.222050897</category>
+   <category domain="urn:rome.tree">parent.835791399</category>
+   <category domain="urn:rome.attribute#url">http://radio.weblogs.com/0001014/2006/04/26.html#a7304</category>
+   <guid>http://radio.weblogs.com/0001014/2006/04/26.html#a7304</guid>
+  </item>
+  <item>
+   <title>#373 Daily Source Code for Monday April 24th 2006</title>
+   <link>http://radio.weblogs.com/0001014/2006/04/24.html#a7303</link>
+   <category domain="urn:rome.tree">node.2088220478</category>
+   <category domain="urn:rome.tree">parent.835791399</category>
+   <category domain="urn:rome.attribute#url">http://radio.weblogs.com/0001014/2006/04/24.html#a7303</category>
+   <guid>http://radio.weblogs.com/0001014/2006/04/24.html#a7303</guid>
+  </item>
++------+
+ 
+ Nodes get categories with the "urn:rome.tree" URI that is used to maintain the tree structure.
+
+ The other thing you will notice is the "urn:rome.attribute#url". Since OPML allows you to add arbitrary attributes to each outline element, these are used to preserve these values.
+
+   

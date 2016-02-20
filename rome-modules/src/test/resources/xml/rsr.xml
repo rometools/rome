@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/DTDs/Podcast-1.0.dtd">
+  <channel>
+    <title>La Capsule multimédia - La 1ère - RSR</title>
+    <itunes:author>RSR - La 1ère</itunes:author>
+    <link>http://www.rsr.ch/capsule</link>
+    <description>C'est là qu'on voit le numérique dans tous ses états. C'est là que les capsules de la semaine sont téléchargeables et livrées à vos oreilles. Avec un appétit féroce vous pouvez les écouter encore et encore. C'est le podcast de la capsule multimédia. A siroter ou à croquer. 
+</description>
+    <itunes:subtitle>La chronique multimédia du Journal du Matin.</itunes:subtitle>
+
+    <itunes:summary>C'est là qu'on voit le numérique dans tous ses états. C'est là que les capsules de la semaine sont téléchargeables et livrées à vos oreilles. Avec un appétit féroce vous pouvez les écouter encore et encore. C'est le podcast de la capsule multimédia. A siroter ou à croquer. </itunes:summary>
+    <itunes:owner>
+      <itunes:name>La Capsule multimédia - La 1ère - RSR</itunes:name>
+      <itunes:email>info.multimedia@rsr.ch</itunes:email>
+    </itunes:owner>
+    <itunes:category text="Technology">
+      <itunes:category>Gadgets</itunes:category>
+
+    </itunes:category>
+    <itunes:category text="Games &amp; Hobbies">
+      <itunes:category>Video Games</itunes:category>
+    </itunes:category>
+    <itunes:keywords>radio multimedia internet jeux video games</itunes:keywords>
+    <language>fr-ch</language>
+    <copyright>© RSR</copyright>
+
+    <managingEditor>info.multimedia@rsr.ch</managingEditor>
+    <pubDate>Mon, 11 Dec 2006 00:00:00 GMT</pubDate>
+    <lastBuildDate>Mon, 11 Dec 2006 07:23:29 GMT</lastBuildDate>
+    <image>
+      <url>http://www1.rsr.ch/rsr/podcasting/img/logo_lp.jpg</url>
+      <link>http://www.rsr.ch/capsule</link>
+      <title>logo</title>
+    </image>
+    <itunes:image href="http://www1.rsr.ch/rsr/podcasting/img/logo_lp.jpg" />
+    <item>
+      <title>La Wii</title>
+      <link>http://www.rsr.ch/capsule</link>
+      <author>Radio Suisse Romande</author>
+      <itunes:author>RSR - La 1ère</itunes:author>
+
+      <pubDate>Mon, 11 Dec 2006 06:20:00 GMT</pubDate>
+      <source url="http://www.rsr.ch/podcast.aspx?rss=capsule" />
+      <description>Invité : Laurent Dormond.
+
+
+
+La nouvelle console Nintendo, appelé Wii, est arrivée. La différence la plus notable consiste dans manette de forme et avec des options différentes : pour la main droite, une télécommande et pour la main gauche, une sorte de poire appelé « Nunchuk » avec un capteur de mouvement relié à la console par Bluettoth, c’est à dire un système radio sans fil.
+
+</description>
+      <enclosure url="http://podcast.rsr.ch/media/capsule/20061211-la-wii.mp3" type="audio/mpeg" length="2328108" />
+      <itunes:duration>00:04:49.0</itunes:duration>
+    </item>
+    <item>
+
+      <title>Le Salon IUT Telecom de Hong Kong</title>
+      <link>http://www.rsr.ch/capsule</link>
+      <author>Radio Suisse Romande</author>
+      <itunes:author>RSR - La 1ère</itunes:author>
+      <pubDate>Fri, 08 Dec 2006 06:20:00 GMT</pubDate>
+      <source url="http://www.rsr.ch/podcast.aspx?rss=capsule" />
+
+      <description>Un des grands courants qui ressort de ce salon c’est l’appareil unique. Vous aurez de plus en plus entre les mains une seule machine qui fait  téléphone  agenda, GPS, console de jeux, lecteur vidéo, téléchargeur de fichiers, copilote etc. </description>
+      <enclosure url="http://podcast.rsr.ch/media/capsule/20061208-le-salon-iut-telecom-de-hong-kong.mp3" type="audio/mpeg" length="2020726" />
+      <itunes:duration>00:04:10.6</itunes:duration>
+    </item>
+    <item>
+      <title>Le salon de la découverte ITU Telecom World 2006 à Hong Kong</title>
+      <link>http://www.rsr.ch/capsule</link>
+
+      <author>Radio Suisse Romande</author>
+      <itunes:author>RSR - La 1ère</itunes:author>
+      <pubDate>Thu, 07 Dec 2006 06:20:00 GMT</pubDate>
+      <source url="http://www.rsr.ch/podcast.aspx?rss=capsule" />
+      <description>Jean-Olivier Pain est allé se balader au salon de la découverte ITU et y a découvert des caméras de surveillance-téléphone ou encore un micro à émotions.</description>
+      <enclosure url="http://podcast.rsr.ch/media/capsule/20061207-le-salon-de-la-decouverte-itu-telecom-world-2006-a-hong-kong.mp3" type="audio/mpeg" length="1785442" />
+      <itunes:duration>00:03:41.2</itunes:duration>
+
+    </item>
+    <item>
+      <title>Le salon de l'ITU à Hong-Kong</title>
+      <link>http://www.rsr.ch/capsule</link>
+      <author>Radio Suisse Romande</author>
+      <itunes:author>RSR - La 1ère</itunes:author>
+      <pubDate>Wed, 06 Dec 2006 06:20:00 GMT</pubDate>
+
+      <source url="http://www.rsr.ch/podcast.aspx?rss=capsule" />
+      <description>Invité : Jean-Paul Chaib, directeur du développement pour la société ATDI SA
+Pour être présent sur le marché asiatique des multimédias, il faut être présent à la grande foire de l’International Telecommunication Union qui se tient actuellement à Hong-Kong. </description>
+      <enclosure url="http://podcast.rsr.ch/media/capsule/20061206-le-salon-de-l-itu-a-hong-kong.mp3" type="audio/mpeg" length="1794397" />
+      <itunes:duration>00:03:42.3</itunes:duration>
+    </item>
+    <item>
+      <title>Salon Telecom 2007</title>
+
+      <link>http://www.rsr.ch/capsule</link>
+      <author>Radio Suisse Romande</author>
+      <itunes:author>RSR - La 1ère</itunes:author>
+      <pubDate>Tue, 05 Dec 2006 06:20:00 GMT</pubDate>
+      <source url="http://www.rsr.ch/podcast.aspx?rss=capsule" />
+      <description>A Hong-Kong a lieu le rendez-vous de l’ITU Telecom, le salon des télécommunications ITU Telecom. On parle de convergences, de multimédia et de solutions groupées. On peut trouver des écrans haute définition, tactiles, où les textes sont hyper lisibles, aux menus accessibles au premier coup d’œil. Le téléphone IP a beaucoup la cote, ainsi que la téléphonie Wifi.</description>
+
+      <enclosure url="http://podcast.rsr.ch/media/capsule/20061205-salon-telecom-2007.mp3" type="audio/mpeg" length="1354902" />
+      <itunes:duration>00:02:47.4</itunes:duration>
+    </item>
+    <item>
+      <title>ITU Telecom</title>
+      <link>http://www.rsr.ch/capsule</link>
+      <author>Radio Suisse Romande</author>
+
+      <itunes:author>RSR - La 1ère</itunes:author>
+      <pubDate>Mon, 04 Dec 2006 06:20:00 GMT</pubDate>
+      <source url="http://www.rsr.ch/podcast.aspx?rss=capsule" />
+      <description>Invité :  Fernando Lagrana, directeur exécutif de l’ITU Telecom.
+
+
+
+L’ITU est l’organisation  faîtière qui planifie et coordonne le monde des télécommunications et des services, notamment de tout ce qui est numérique. 200 Etats membres la composent et 600 secteurs sont concernés par ses activités.
+</description>
+      <enclosure url="http://podcast.rsr.ch/media/capsule/20061204-itu-telecom.mp3" type="audio/mpeg" length="2115162" />
+      <itunes:duration>00:04:22.4</itunes:duration>
+    </item>
+
+    <item>
+      <title>Tony Hawk’s – Project 8</title>
+      <link>http://www.rsr.ch/capsule</link>
+      <author>Radio Suisse Romande</author>
+      <itunes:author>RSR - La 1ère</itunes:author>
+      <pubDate>Fri, 01 Dec 2006 06:20:00 GMT</pubDate>
+
+      <source url="http://www.rsr.ch/podcast.aspx?rss=capsule" />
+      <description>Un nouveau jeu vidéo à roulettes sort sur PS2, Xbox 360, sans doute sur PC mais plus tard également sur Nintendo DS et PSP. Le nom de ce jeu tout-terrains ? Il s’agit du huitième opus du skateboarder Tony Hawk, « Tony Hawk’s-Project 8 ».</description>
+      <enclosure url="http://podcast.rsr.ch/media/capsule/20061201-tony-hawk-s--project-8.mp3" type="audio/mpeg" length="2114339" />
+      <itunes:duration>00:04:22.3</itunes:duration>
+    </item>
+    <item>
+      <title>Vidéo-blog-reportage-interactif</title>
+
+      <link>http://www.rsr.ch/capsule</link>
+      <author>Radio Suisse Romande</author>
+      <itunes:author>RSR - La 1ère</itunes:author>
+      <pubDate>Thu, 30 Nov 2006 06:20:00 GMT</pubDate>
+      <source url="http://www.rsr.ch/podcast.aspx?rss=capsule" />
+      <description>Invitée : Tristan Mendès France, assistant parlementaire français.
+Partir dans un pays étranger, faire là-bas un reportage filmé avec des téléphones portables, influencer le reportage selon les réactions sur le blog, voilà comment pourrait s'envisager le nouveau métier de correspondant.</description>
+
+      <enclosure url="http://podcast.rsr.ch/media/capsule/20061130-video-blog-reportage-interactif.mp3" type="audio/mpeg" length="1764306" />
+      <itunes:duration>00:03:38.6</itunes:duration>
+    </item>
+    <item>
+      <title>GPS Coyote</title>
+      <link>http://www.rsr.ch/capsule</link>
+      <author>Radio Suisse Romande</author>
+
+      <itunes:author>RSR - La 1ère</itunes:author>
+      <pubDate>Wed, 29 Nov 2006 06:20:00 GMT</pubDate>
+      <source url="http://www.rsr.ch/podcast.aspx?rss=capsule" />
+      <description>Ce GPS a en plus d’un appareil de navigation classique une technologie de téléphone portable, c’est à dire une carte Sim et l’opérateur mobile, afin d’avertir les automobilistes de la présence de radars.</description>
+      <enclosure url="http://podcast.rsr.ch/media/capsule/20061129-gps-coyote.mp3" type="audio/mpeg" length="2281509" />
+      <itunes:duration>00:04:43.2</itunes:duration>
+    </item>
+
+    <item>
+      <title>Orb, logiciel permettant d’atteindre son disque dur partout dans le monde.</title>
+      <link>http://www.rsr.ch/capsule</link>
+      <author>Radio Suisse Romande</author>
+      <itunes:author>RSR - La 1ère</itunes:author>
+      <pubDate>Tue, 28 Nov 2006 06:20:00 GMT</pubDate>
+
+      <source url="http://www.rsr.ch/podcast.aspx?rss=capsule" />
+      <description>Pour accéder depuis les quatre coins du monde à son ordinateur resté en Suisse, il suffit de taper « mycast.orb.com » . Cela fait monter une demande de logon et de mot de passe et ensuite Orb retrouvera la machine souhaitée et la rendra accessible pour une liaison directe. </description>
+      <enclosure url="http://podcast.rsr.ch/media/capsule/20061128-orb-logiciel-permettant-d-atteindre-son-disque-dur-partout-dans-le-monde.mp3" type="audio/mpeg" length="1888692" />
+      <itunes:duration>00:03:54.1</itunes:duration>
+    </item>
+    <item>
+      <title>Le Hawk-Eye</title>
+
+      <link>http://www.rsr.ch/capsule</link>
+      <author>Radio Suisse Romande</author>
+      <itunes:author>RSR - La 1ère</itunes:author>
+      <pubDate>Mon, 27 Nov 2006 06:20:00 GMT</pubDate>
+      <source url="http://www.rsr.ch/podcast.aspx?rss=capsule" />
+      <description>Un nouveau procédé numérique fait son apparition dans les  compétitions de tennis, il s’appelle le Hawk-Eye, littéralement Œil de faucon. Le système a été inauguré lors du Masters de Miami, à Key Biscayne, avant une grande première en grand chelem lors de l'US Open 2006. La balle se retrouve donc sous étroite surveillance. En effet, des caméras situées autour du court, capturent la trajectoire de la balle et en fonction des paramètres du mouvement représente mathématiquement la trajectoire de la balle avec son impacte sur le sol. Invité : Rémy Azémar, responsable du service arbitrage à la fédération française de tennis.</description>
+
+      <enclosure url="http://podcast.rsr.ch/media/capsule/20061127-le-hawk-eye.mp3" type="audio/mpeg" length="1828651" />
+      <itunes:duration>00:03:46.6</itunes:duration>
+    </item>
+    <item>
+      <title>Call of Duty III : en marche vers Paris</title>
+      <link>http://www.rsr.ch/capsule</link>
+      <author>Radio Suisse Romande</author>
+
+      <itunes:author>RSR - La 1ère</itunes:author>
+      <pubDate>Fri, 24 Nov 2006 06:20:00 GMT</pubDate>
+      <source url="http://www.rsr.ch/podcast.aspx?rss=capsule" />
+      <description>Call of Duty III est un jeu qui sort exclusivement sur Xbox 360. Ca mitraille de tous les côtés dans une France de 1944 bucolique au graphisme parfait.</description>
+      <enclosure url="http://podcast.rsr.ch/media/capsule/20061124-jeux-videos-call-of-duty-iii--en-marche-vers-paris.mp3" type="audio/mpeg" length="1864624" />
+      <itunes:duration>00:03:51.1</itunes:duration>
+    </item>
+
+    <item>
+      <title>Poker en ligne</title>
+      <link>http://www.rsr.ch/capsule</link>
+      <author>Radio Suisse Romande</author>
+      <itunes:author>RSR - La 1ère</itunes:author>
+      <pubDate>Wed, 22 Nov 2006 06:20:00 GMT</pubDate>
+
+      <source url="http://www.rsr.ch/podcast.aspx?rss=capsule" />
+      <description>Invité : Julien Brecard, coordinateur évènementiel pour Everest Poker point net.
+
+
+
+Quelques sites donnent la possibilité de passer par une école de poker gratuite et en ligne où par un logiciel  à installer. Une fois le jeu appris, vous pouvez jouer sur Texas Holden No limit, la variété de Poker la plus jouée sur le Net, qui est reconnaissable à ses cartes en amandes et ses jetons en plastique du Missouri.
+</description>
+      <enclosure url="http://podcast.rsr.ch/media/capsule/20061122-poker-en-ligne.mp3" type="audio/mpeg" length="1742137" />
+      <itunes:duration>00:03:35.8</itunes:duration>
+    </item>
+    <item>
+      <title>Débit France volet II</title>
+
+      <link>http://www.rsr.ch/capsule</link>
+      <author>Radio Suisse Romande</author>
+      <itunes:author>RSR - La 1ère</itunes:author>
+      <pubDate>Tue, 21 Nov 2006 06:20:00 GMT</pubDate>
+      <source url="http://www.rsr.ch/podcast.aspx?rss=capsule" />
+      <description>La connexion haut débit est nécessaire, car pour faire passer dans le tuyau, la télé, la téléphonie, le surf et le téléchargement, il faut des connexions avec du biceps. Le débit n’est pas le seul critère. On pense que plus le débit est élevé plus la réception de la TV sera de qualité, mais c’est faux. Avec l’Adsl , tout le monde ne loge pas à la même enseigne. Invité : William Rang, directeur technique d’IP Label en France.</description>
+
+      <enclosure url="http://podcast.rsr.ch/media/capsule/20061121-debit-france-volet-ii.mp3" type="audio/mpeg" length="2015489" />
+      <itunes:duration>00:04:10.0</itunes:duration>
+    </item>
+    <item>
+      <title>Débit France</title>
+      <link>http://www.rsr.ch/capsule</link>
+      <author>Radio Suisse Romande</author>
+
+      <itunes:author>RSR - La 1ère</itunes:author>
+      <pubDate>Mon, 20 Nov 2006 06:20:00 GMT</pubDate>
+      <source url="http://www.rsr.ch/podcast.aspx?rss=capsule" />
+      <description>Invité : William Rang, directeur technique d’IP Label en France.
+
+
+
+Le « triple Play », en termes informatiques signifie qu’avec une connexion ADSL ou câble une personne peut se connecter à Internet, avoir accès aux chaînes de télévision et avoir un téléphone fixe. Tous ces services passent par une seule  connexion . La situation en France. 
+</description>
+      <enclosure url="http://podcast.rsr.ch/media/capsule/20061120-debit-france.mp3" type="audio/mpeg" length="1709743" />
+      <itunes:duration>00:03:31.8</itunes:duration>
+    </item>
+
+  </channel>
+</rss>
+ 

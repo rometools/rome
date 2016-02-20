@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <title>KCRW's Le Show</title>
+    <link>http://www.kcrw.com/show/ls</link>
+    <description>A weekly, hour-long romp through the worlds of media, politics, sports and show business, leavened with an eclectic mix of mysterious music, hosted by Harry Shearer.</description>
+    <language>en</language>
+    <copyright>KCRW 2005</copyright>
+    <category>Comedy</category>
+    <itunes:owner>
+      <itunes:email />
+      <itunes:name>Harry Shearer</itunes:name>
+    </itunes:owner>
+    <itunes:image href="http://a1.phobos.apple.com/Music/y2005/m06/d26/h21/mcdrrifv.jpg" />
+    <itunes:category text="Comedy" />
+    <itunes:category text="Comedy" />
+    <itunes:author>Harry Shearer</itunes:author>
+    <itunes:explicit>no</itunes:explicit>
+    <itunes:keywords />
+    <itunes:subtitle>An hour's worth of Harry Shearer</itunes:subtitle>
+    <itunes:summary>A weekly, hour-long romp through the worlds of media, politics, sports and show business, leavened with an eclectic mix of mysterious music, hosted by Harry Shearer.</itunes:summary>
+    <dc:subject>Comedy</dc:subject>
+    <dc:language>en</dc:language>
+    <dc:rights>KCRW 2005</dc:rights>
+    <item>
+      <title>le Show</title>
+      <description />
+      <enclosure url="http://a1.phobos.apple.com/Podcasts/y2005/m08/d01/h14/eosmhmit.mp3" length="16770270" type="" />
+      <category>Comedy</category>
+      <pubDate>Sun, 31 Jul 2005 16:00:00 GMT</pubDate>
+      <guid isPermaLink="false">http://66.186.18.80/podcast/mp3/ls/ls050731le_Show.mp3</guid>
+      <itunes:duration>00:46:34</itunes:duration>
+      <itunes:author>Harry Shearer</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:keywords />
+      <itunes:subtitle />
+      <itunes:summary />
+      <dc:date>2005-07-31T16:00:00Z</dc:date>
+    </item>
+    <item>
+      <title>le Show</title>
+      <description />
+      <enclosure url="http://a1.phobos.apple.com/Podcasts/y2005/m07/d25/h15/kubgxyqj.mp3" length="15841460" type="" />
+      <category>Comedy</category>
+      <pubDate>Sun, 24 Jul 2005 16:00:00 GMT</pubDate>
+      <guid isPermaLink="false">http://66.186.18.80/podcast/mp3/ls/ls050724le_Show.mp3</guid>
+      <itunes:duration>00:44:00</itunes:duration>
+      <itunes:author>Harry Shearer</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:keywords />
+      <itunes:subtitle />
+      <itunes:summary />
+      <dc:date>2005-07-24T16:00:00Z</dc:date>
+    </item>
+    <item>
+      <title>le Show</title>
+      <description />
+      <enclosure url="http://a1.phobos.apple.com/Features/y2005/m07/d18/h18/dj.mwuhgyyh.mp3" length="17483726" type="" />
+      <category>Comedy</category>
+      <pubDate>Sun, 17 Jul 2005 16:00:00 GMT</pubDate>
+      <guid isPermaLink="false">http://66.186.18.80/podcast/mp3/ls/ls050717le_Show.mp3</guid>
+      <itunes:duration>00:48:33</itunes:duration>
+      <itunes:author>Harry Shearer</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:keywords />
+      <itunes:subtitle />
+      <itunes:summary />
+      <dc:date>2005-07-17T16:00:00Z</dc:date>
+    </item>
+    <item>
+      <title>le Show</title>
+      <description />
+      <enclosure url="http://a1.phobos.apple.com/Music/y2005/m07/d12/h14/axebmlyj.mp3" length="16541124" type="" />
+      <category>Comedy</category>
+      <pubDate>Sun, 10 Jul 2005 16:00:00 GMT</pubDate>
+      <guid isPermaLink="false">http://66.186.18.80/podcast/mp3/ls/ls050710le_Show.mp3</guid>
+      <itunes:duration>00:45:56</itunes:duration>
+      <itunes:author>Harry Shearer</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:keywords />
+      <itunes:subtitle />
+      <itunes:summary />
+      <dc:date>2005-07-10T16:00:00Z</dc:date>
+    </item>
+  </channel>
+</rss>
+

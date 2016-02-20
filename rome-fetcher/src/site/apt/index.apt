@@ -1,0 +1,72 @@
+ -----
+ Home
+ -----
+ mkurz
+ -----
+ 2011-08-15 17:44:31.665
+ -----
+
+Rome Fetcher
+
+ The Rome Fetcher (see modules/fetcher) allows the retrieval of feeds via HTTP. It supports
+ {{{http://fishbowl.pastiche.org/2002/10/21/http_conditional_get_for_rss_hackers}HTTP conditional gets}}
+ (ie: last modified and ETag handling) and GZip encoded feeds. It should enable user to write aggregators that follow the
+ {{{http://diveintomark.org/archives/2003/07/21/atom_aggregator_behavior_http_level}Atom aggregator behaviour recommendations}}
+
+ As with the rest of Rome, the Fetcher subproject is ultra\-lean \- it requires {{{./Dependencies/index.html}no new dependencies}}
+ over the requirements for Rome.
+
+Tutorials
+ 
+ * {{{./BuildingTheRomeFetcher.html}Building the Rome Fetcher (fetcher)}}
+
+ * {{{./UsingTheRomeFetcherModuleToRetrieveFeeds.html}Using the Rome Fetcher module to retrieve feeds (fetcher)}}
+
+ * {{{./SampleProgramsIncluded.html}Sample programs included (fetcher)}}
+
+ []
+ 
+Todo list
+ 
+ * {{{./TodoList.html}Todo list (fetcher)}}
+
+ []
+ 
+Wish list
+
+ * {{{./WishList.html}Wish list (fetcher)}}
+
+ []
+ 
+Issues
+
+ * {{{./KnownIssues.html}Known Issues (fetcher)}}
+
+ []
+ 
+Releases
+
+ * {{{./Releases/RomeFetcher0.3.html}Rome Fetcher 0.3 (fetcher)}}
+
+ * {{{./Releases/RomeFetcher0.4.html}Rome Fetcher 0.4 (fetcher)}}
+
+ * {{{./Releases/RomeFetcher0.5.html}Rome Fetcher 0.5 (fetcher)}}
+
+ * {{{./Releases/ROMEFetcher0.6.html}ROME Fetcher 0.6 (fetcher)}}
+
+ * {{{./Releases/ROMEFetcher0.7.html}ROME Fetcher 0.7 (fetcher)}}
+
+ * {{{./Releases/ROMEFetcher0.9.html}ROME Fetcher 0.9 (fetcher)}}
+
+ * {{{./Releases/ROMEFetcher1.0RC2.html}ROME Fetcher 1.0 RC2 (fetcher)}}
+
+ * {{{./Releases/ROMEFetcher1.0.html}ROME Fetcher 1.0 (fetcher)}}
+
+ []
+ 
+Change Log
+ 
+ * {{{./ChangeLog.html}Change Log (fetcher)}}
+
+ []
+ 
