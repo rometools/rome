@@ -45,7 +45,6 @@
         <dependency>
             <groupId>com.rometools</groupId>
             <artifactId>rome-certiorem</artifactId>
-            <version>1.5.0</version>
         </dependency>
         <dependency>
             <groupId>com.google.inject.extensions</groupId>
