@@ -1,4 +1,3 @@
-rome-utils
-==========
+# ROME Utils
 
-Utility classes for ROME projects
+This modules provides utility classes for all ROME projects

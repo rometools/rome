@@ -1,4 +1,3 @@
-rome-certiorem-webapp
-=====================
+# ROME Certiorem WebApp
 
-Example project using rome-certiorem
+An example webapp for rome-certiorem
