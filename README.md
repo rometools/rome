@@ -1,6 +1,7 @@
 # ROME
 
 ROME is a Java framework for RSS and Atom feeds. The framework consist of several modules:
+
 | Module | Description |
 | ------ | ----------- |
 | rome-parent | is the parent project for all ROME modules and contains the common Maven configuration. |
