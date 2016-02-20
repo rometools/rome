@@ -241,6 +241,13 @@
                 <artifactId>junit</artifactId>
                 <version>4.12</version>
             </dependency>
+            <!-- XMLUnit -->
+            <dependency>
+                <groupId>xmlunit</groupId>
+                <artifactId>xmlunit</artifactId>
+                <version>1.5</version>
+                <scope>test</scope>
+            </dependency>
             <!-- Hamcrest -->
             <dependency>
                 <groupId>org.hamcrest</groupId>

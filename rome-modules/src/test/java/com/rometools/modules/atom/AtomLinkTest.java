@@ -6,34 +6,17 @@
  */
 package com.rometools.modules.atom;
 
+import java.io.File;
+
 import com.rometools.modules.AbstractTestCase;
 import com.rometools.modules.atom.io.AtomModuleGenerator;
 import com.rometools.modules.atom.modules.AtomLinkModule;
-import com.rometools.modules.sle.SimpleListExtension;
-import com.rometools.modules.sse.SSE091Generator;
-import com.rometools.modules.sse.modules.Conflict;
-import com.rometools.modules.sse.modules.History;
-import com.rometools.modules.sse.modules.SSEModule;
-import com.rometools.modules.sse.modules.Sync;
 import com.rometools.rome.feed.atom.Link;
-import com.rometools.rome.feed.rss.Item;
-import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.SyndFeedInput;
-import com.rometools.rome.io.SyndFeedOutput;
-import com.rometools.rome.io.XmlReader;
-import com.rometools.rome.io.impl.DateParser;
+
 import junit.framework.Test;
 import junit.framework.TestSuite;
-import org.jdom2.Attribute;
-import org.jdom2.Content;
-import org.jdom2.Document;
-import org.jdom2.Element;
-import org.jdom2.input.SAXBuilder;
-
-import java.io.File;
-import java.net.URL;
-import java.util.*;
 
 /**
  * Test to verify correctness of SSE subproject.

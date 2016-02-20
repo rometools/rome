@@ -8,9 +8,7 @@
 
 MediaRSS
 
- This plugin is for use with Yahoo! MediaRSS/Flickr Photostreams
-
- The latest version is 0.1 available.
+ This plugin is for use with Yahoo! MediaRSS/Flickr Photostreams, see {{{http://www.rssboard.org/media-rss}Media RSS Specification}}.
 
 *Sample Usage
 
@@ -38,6 +36,10 @@ mySyndEntry.getModules().add( module );
 +------+
 
 *Changes
+
+**1.7.0-SNAPSHOT
+
+ new elements from in MediaRSS 1.5.1 supported
 
 **0.2.1
 

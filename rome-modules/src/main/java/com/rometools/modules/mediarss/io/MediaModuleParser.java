@@ -21,7 +21,9 @@
  */
 package com.rometools.modules.mediarss.io;
 
+import java.net.MalformedURLException;
 import java.net.URI;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -32,32 +34,49 @@ import org.jdom2.Namespace;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.rometools.modules.georss.GeoRSSModule;
+import com.rometools.modules.georss.SimpleParser;
 import com.rometools.modules.mediarss.MediaEntryModuleImpl;
 import com.rometools.modules.mediarss.MediaModule;
 import com.rometools.modules.mediarss.MediaModuleImpl;
 import com.rometools.modules.mediarss.types.Category;
+import com.rometools.modules.mediarss.types.Community;
 import com.rometools.modules.mediarss.types.Credit;
+import com.rometools.modules.mediarss.types.Embed;
+import com.rometools.modules.mediarss.types.Embed.Param;
 import com.rometools.modules.mediarss.types.Expression;
 import com.rometools.modules.mediarss.types.Hash;
+import com.rometools.modules.mediarss.types.License;
+import com.rometools.modules.mediarss.types.Location;
 import com.rometools.modules.mediarss.types.MediaContent;
 import com.rometools.modules.mediarss.types.MediaGroup;
 import com.rometools.modules.mediarss.types.Metadata;
+import com.rometools.modules.mediarss.types.Metadata.RightsStatus;
+import com.rometools.modules.mediarss.types.PeerLink;
 import com.rometools.modules.mediarss.types.PlayerReference;
+import com.rometools.modules.mediarss.types.Price;
 import com.rometools.modules.mediarss.types.Rating;
 import com.rometools.modules.mediarss.types.Restriction;
+import com.rometools.modules.mediarss.types.Scene;
+import com.rometools.modules.mediarss.types.StarRating;
+import com.rometools.modules.mediarss.types.Statistics;
+import com.rometools.modules.mediarss.types.Status;
+import com.rometools.modules.mediarss.types.SubTitle;
+import com.rometools.modules.mediarss.types.Tag;
 import com.rometools.modules.mediarss.types.Text;
 import com.rometools.modules.mediarss.types.Thumbnail;
 import com.rometools.modules.mediarss.types.Time;
 import com.rometools.modules.mediarss.types.UrlReference;
 import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.io.ModuleParser;
+import com.rometools.utils.Doubles;
 import com.rometools.utils.Integers;
 import com.rometools.utils.Longs;
 import com.rometools.utils.Strings;
 
 /**
  * @author Nathanial X. Freitas
- *
+ * 
  */
 public class MediaModuleParser implements ModuleParser {
 
@@ -80,19 +99,24 @@ public class MediaModuleParser implements ModuleParser {
             mod = new MediaEntryModuleImpl();
         }
 
-        mod.setMetadata(parseMetadata(mmRoot));
+        mod.setMetadata(parseMetadata(mmRoot, locale));
         mod.setPlayer(parsePlayer(mmRoot));
 
         if (mod instanceof MediaEntryModuleImpl) {
             final MediaEntryModuleImpl m = (MediaEntryModuleImpl) mod;
-            m.setMediaContents(parseContent(mmRoot));
-            m.setMediaGroups(parseGroup(mmRoot));
+            m.setMediaContents(parseContent(mmRoot, locale));
+            m.setMediaGroups(parseGroup(mmRoot, locale));
         }
 
         return mod;
     }
 
-    private MediaContent[] parseContent(final Element e) {
+    /**
+     * @param e element to parse
+     * @param locale locale for parsing
+     * @return array of media:content elements
+     */
+    private MediaContent[] parseContent(final Element e, final Locale locale) {
 
         final List<Element> contents = e.getChildren("content", getNS());
         final ArrayList<MediaContent> values = new ArrayList<MediaContent>();
@@ -173,7 +197,7 @@ public class MediaModuleParser implements ModuleParser {
                     }
 
                     mc.setLanguage(content.getAttributeValue("lang"));
-                    mc.setMetadata(parseMetadata(content));
+                    mc.setMetadata(parseMetadata(content, locale));
                     try {
                         if (content.getAttributeValue("samplingrate") != null) {
                             mc.setSamplingrate(Float.valueOf(content.getAttributeValue("samplingrate")));
@@ -206,13 +230,18 @@ public class MediaModuleParser implements ModuleParser {
         return values.toArray(new MediaContent[values.size()]);
     }
 
-    private MediaGroup[] parseGroup(final Element e) {
+    /**
+     * @param e element to parse
+     * @param locale locale for parsing
+     * @return array of media:group elements
+     */
+    private MediaGroup[] parseGroup(final Element e, final Locale locale) {
         final List<Element> groups = e.getChildren("group", getNS());
         final ArrayList<MediaGroup> values = new ArrayList<MediaGroup>();
 
         for (int i = 0; groups != null && i < groups.size(); i++) {
             final Element group = groups.get(i);
-            final MediaGroup g = new MediaGroup(parseContent(group));
+            final MediaGroup g = new MediaGroup(parseContent(group, locale));
 
             for (int j = 0; j < g.getContents().length; j++) {
                 if (g.getContents()[j].isDefaultContent()) {
@@ -222,60 +251,372 @@ public class MediaModuleParser implements ModuleParser {
                 }
             }
 
-            g.setMetadata(parseMetadata(group));
+            g.setMetadata(parseMetadata(group, locale));
             values.add(g);
         }
 
         return values.toArray(new MediaGroup[values.size()]);
     }
 
-    private Metadata parseMetadata(final Element e) {
+    /**
+     * @param e element to parse
+     * @param locale locale for parsing
+     * @return Metadata of media:group or media:content
+     */
+    private Metadata parseMetadata(final Element e, final Locale locale) {
         final Metadata md = new Metadata();
-        // categories
-        {
-            final List<Element> categories = e.getChildren("category", getNS());
-            final ArrayList<Category> values = new ArrayList<Category>();
+        parseCategories(e, md);
+        parseCopyright(e, md);
+        parseCredits(e, md);
+        parseDescription(e, md);
+        parseHash(e, md);
+        parseKeywords(e, md);
+        parseRatings(e, md);
+        parseText(e, md);
+        parseThumbnail(e, md);
+        parseTitle(e, md);
+        parseRestrictions(e, md);
+        parseAdultMetadata(e, md);
+        parseBackLinks(e, md);
+        parseComments(e, md);
+        parseCommunity(e, md);
+        parsePrices(e, md);
+        parseResponses(e, md);
+        parseStatus(e, md);
+        parseEmbed(e, md);
+        parseLicenses(e, md);
+        parseSubTitles(e, md);
+        parsePeerLinks(e, md);
+        parseRights(e, md);
+        parseLocations(e, md, locale);
+        parseScenes(e, md);
+        return md;
+    }
 
-            for (int i = 0; categories != null && i < categories.size(); i++) {
-                try {
-                    final Element cat = categories.get(i);
-                    values.add(new Category(cat.getAttributeValue("scheme"), cat.getAttributeValue("label"), cat.getText()));
-                } catch (final Exception ex) {
-                    LOG.warn("Exception parsing category tag.", ex);
+    /**
+     * @param e element to parse
+     * @param md metadata to fill in
+     */
+    private void parseScenes(final Element e, final Metadata md) {
+        final Element scenesElement = e.getChild("scenes", getNS());
+        if (scenesElement != null) {
+            final List<Element> sceneElements = scenesElement.getChildren("scene", getNS());
+            final Scene[] scenes = new Scene[sceneElements.size()];
+            for (int i = 0; i < sceneElements.size(); i++) {
+                scenes[i] = new Scene();
+                scenes[i].setTitle(sceneElements.get(i).getChildText("sceneTitle", getNS()));
+                scenes[i].setDescription(sceneElements.get(i).getChildText("sceneDescription", getNS()));
+                final String sceneStartTime = sceneElements.get(i).getChildText("sceneStartTime", getNS());
+                if (sceneStartTime != null) {
+                    scenes[i].setStartTime(new Time(sceneStartTime));
+                }
+                final String sceneEndTime = sceneElements.get(i).getChildText("sceneEndTime", getNS());
+                if (sceneEndTime != null) {
+                    scenes[i].setEndTime(new Time(sceneEndTime));
                 }
             }
+            md.setScenes(scenes);
+        }
+    }
 
-            md.setCategories(values.toArray(new Category[values.size()]));
+    /**
+     * @param e element to parse
+     * @param md metadata to fill in
+     * @param locale locale for parser
+     */
+    private void parseLocations(final Element e, final Metadata md, final Locale locale) {
+        final List<Element> locationElements = e.getChildren("location", getNS());
+        final Location[] locations = new Location[locationElements.size()];
+        final SimpleParser geoRssParser = new SimpleParser();
+        for (int i = 0; i < locationElements.size(); i++) {
+            locations[i] = new Location();
+            locations[i].setDescription(locationElements.get(i).getAttributeValue("description"));
+            if (locationElements.get(i).getAttributeValue("start") != null) {
+                locations[i].setStart(new Time(locationElements.get(i).getAttributeValue("start")));
+            }
+            if (locationElements.get(i).getAttributeValue("end") != null) {
+                locations[i].setEnd(new Time(locationElements.get(i).getAttributeValue("end")));
+            }
+            final Module geoRssModule = geoRssParser.parse(locationElements.get(i), locale);
+            if (geoRssModule != null && geoRssModule instanceof GeoRSSModule) {
+                locations[i].setGeoRss((GeoRSSModule) geoRssModule);
+            }
+        }
+        md.setLocations(locations);
+    }
+
+    /**
+     * @param e element to parse
+     * @param md metadata to fill in
+     */
+    private void parseRights(final Element e, final Metadata md) {
+        final Element rightsElement = e.getChild("rights", getNS());
+        if (rightsElement != null && rightsElement.getAttributeValue("status") != null) {
+            md.setRights(RightsStatus.valueOf(rightsElement.getAttributeValue("status")));
+        }
+    }
+
+    /**
+     * @param e element to parse
+     * @param md metadata to fill in
+     */
+    private void parsePeerLinks(final Element e, final Metadata md) {
+        final List<Element> peerLinkElements = e.getChildren("peerLink", getNS());
+        final PeerLink[] peerLinks = new PeerLink[peerLinkElements.size()];
+        for (int i = 0; i < peerLinkElements.size(); i++) {
+            peerLinks[i] = new PeerLink();
+            peerLinks[i].setType(peerLinkElements.get(i).getAttributeValue("type"));
+            if (peerLinkElements.get(i).getAttributeValue("href") != null) {
+                try {
+                    peerLinks[i].setHref(new URL(peerLinkElements.get(i).getAttributeValue("href")));
+                } catch (MalformedURLException ex) {
+                    LOG.warn("Exception parsing peerLink href attribute.", ex);
+                }
+            }
+        }
+        md.setPeerLinks(peerLinks);
+    }
+
+    /**
+     * @param e element to parse
+     * @param md metadata to fill in
+     */
+    private void parseSubTitles(final Element e, final Metadata md) {
+        final List<Element> subTitleElements = e.getChildren("subTitle", getNS());
+        final SubTitle[] subtitles = new SubTitle[subTitleElements.size()];
+        for (int i = 0; i < subTitleElements.size(); i++) {
+            subtitles[i] = new SubTitle();
+            subtitles[i].setType(subTitleElements.get(i).getAttributeValue("type"));
+            subtitles[i].setLang(subTitleElements.get(i).getAttributeValue("lang"));
+            if (subTitleElements.get(i).getAttributeValue("href") != null) {
+                try {
+                    subtitles[i].setHref(new URL(subTitleElements.get(i).getAttributeValue("href")));
+                } catch (MalformedURLException ex) {
+                    LOG.warn("Exception parsing subTitle href attribute.", ex);
+                }
+            }
+        }
+        md.setSubTitles(subtitles);
+    }
+
+    /**
+     * @param e element to parse
+     * @param md metadata to fill in
+     */
+    private void parseLicenses(final Element e, final Metadata md) {
+        final List<Element> licenseElements = e.getChildren("license", getNS());
+        final License[] licenses = new License[licenseElements.size()];
+        for (int i = 0; i < licenseElements.size(); i++) {
+            licenses[i] = new License();
+            licenses[i].setType(licenseElements.get(i).getAttributeValue("type"));
+            licenses[i].setValue(licenseElements.get(i).getTextTrim());
+            if (licenseElements.get(i).getAttributeValue("href") != null) {
+                try {
+                    licenses[i].setHref(new URL(licenseElements.get(i).getAttributeValue("href")));
+                } catch (MalformedURLException ex) {
+                    LOG.warn("Exception parsing license href attribute.", ex);
+                }
+            }
+        }
+        md.setLicenses(licenses);
+    }
+
+    /**
+     * @param e element to parse
+     * @param md metadata to fill in
+     */
+    private void parsePrices(final Element e, final Metadata md) {
+        final List<Element> priceElements = e.getChildren("price", getNS());
+        final Price[] prices = new Price[priceElements.size()];
+        for (int i = 0; i < priceElements.size(); i++) {
+            final Element priceElement = priceElements.get(i);
+            prices[i] = new Price();
+            prices[i].setCurrency(priceElement.getAttributeValue("currency"));
+            prices[i].setPrice(Doubles.parse(priceElement.getAttributeValue("price")));
+            if (priceElement.getAttributeValue("type") != null) {
+                prices[i].setType(Price.Type.valueOf(priceElement.getAttributeValue("type").toUpperCase()));
+            }
+            if (priceElement.getAttributeValue("info") != null) {
+                try {
+                    prices[i].setInfo(new URL(priceElement.getAttributeValue("info")));
+                } catch (MalformedURLException ex) {
+                    LOG.warn("Exception parsing price info attribute.", ex);
+                }
+            }
+        }
+        md.setPrices(prices);
+    }
+
+    /**
+     * @param e element to parse
+     * @param md metadata to fill in
+     */
+    private void parseStatus(final Element e, final Metadata md) {
+        final Element statusElement = e.getChild("status", getNS());
+        if (statusElement != null) {
+            final Status status = new Status();
+            status.setState(Status.State.valueOf(statusElement.getAttributeValue("state")));
+            status.setReason(statusElement.getAttributeValue("reason"));
+            md.setStatus(status);
+        }
+    }
+
+    /**
+     * @param e element to parse
+     * @param md metadata to fill in
+     */
+    private void parseBackLinks(final Element e, final Metadata md) {
+        final Element backLinksElement = e.getChild("backLinks", getNS());
+        if (backLinksElement != null) {
+            final List<Element> backLinkElements = backLinksElement.getChildren("backLink", getNS());
+            final URL[] backLinks = new URL[backLinkElements.size()];
+            for (int i = 0; i < backLinkElements.size(); i++) {
+                try {
+                    backLinks[i] = new URL(backLinkElements.get(i).getTextTrim());
+                } catch (MalformedURLException ex) {
+                    LOG.warn("Exception parsing backLink tag.", ex);
+                }
+            }
+            md.setBackLinks(backLinks);
+        }
+    }
+
+    /**
+     * @param e element to parse
+     * @param md metadata to fill in
+     */
+    private void parseComments(final Element e, final Metadata md) {
+        final Element commentsElement = e.getChild("comments", getNS());
+        if (commentsElement != null) {
+            final List<Element> commentElements = commentsElement.getChildren("comment", getNS());
+            final String[] comments = new String[commentElements.size()];
+            for (int i = 0; i < commentElements.size(); i++) {
+                comments[i] = commentElements.get(i).getTextTrim();
+            }
+            md.setComments(comments);
+        }
+    }
+
+    /**
+     * @param e element to parse
+     * @param md metadata to fill in
+     */
+    private void parseResponses(final Element e, final Metadata md) {
+        final Element responsesElement = e.getChild("responses", getNS());
+        if (responsesElement != null) {
+            final List<Element> responseElements = responsesElement.getChildren("response", getNS());
+            final String[] responses = new String[responseElements.size()];
+            for (int i = 0; i < responseElements.size(); i++) {
+                responses[i] = responseElements.get(i).getTextTrim();
+            }
+            md.setResponses(responses);
+        }
+    }
+
+    /**
+     * @param e element to parse
+     * @param md metadata to fill in
+     */
+    private void parseCommunity(final Element e, final Metadata md) {
+        final Element communityElement = e.getChild("community", getNS());
+        if (communityElement != null) {
+            final Community community = new Community();
+            final Element starRatingElement = communityElement.getChild("starRating", getNS());
+            if (starRatingElement != null) {
+                final StarRating starRating = new StarRating();
+                starRating.setAverage(Doubles.parse(starRatingElement.getAttributeValue("average")));
+                starRating.setCount(Integers.parse(starRatingElement.getAttributeValue("count")));
+                starRating.setMax(Integers.parse(starRatingElement.getAttributeValue("max")));
+                starRating.setMin(Integers.parse(starRatingElement.getAttributeValue("min")));
+                community.setStarRating(starRating);
+            }
+            final Element statisticsElement = communityElement.getChild("statistics", getNS());
+            if (statisticsElement != null) {
+                final Statistics statistics = new Statistics();
+                statistics.setFavorites(Integers.parse(statisticsElement.getAttributeValue("favorites")));
+                statistics.setViews(Integers.parse(statisticsElement.getAttributeValue("views")));
+                community.setStatistics(statistics);
+            }
+            final Element tagsElement = communityElement.getChild("tags", getNS());
+            if (tagsElement != null) {
+                final String tagsText = tagsElement.getTextTrim();
+                final String[] tags = tagsText.split("\\s*,\\s*");
+                for (String tagText : tags) {
+                    final String[] tagParts = tagText.split("\\s*:\\s*");
+                    final Tag tag = new Tag(tagParts[0]);
+                    if (tagParts.length > 1) {
+                        tag.setWeight(Integers.parse(tagParts[1]));
+                    }
+                    community.getTags().add(tag);
+                }
+            }
+            md.setCommunity(community);
+        }
+    }
+
+    /**
+     * @param e element to parse
+     * @param md metadata to fill in
+     */
+    private void parseCategories(final Element e, final Metadata md) {
+        final List<Element> categories = e.getChildren("category", getNS());
+        final ArrayList<Category> values = new ArrayList<Category>();
+
+        for (int i = 0; categories != null && i < categories.size(); i++) {
+            try {
+                final Element cat = categories.get(i);
+                values.add(new Category(cat.getAttributeValue("scheme"), cat.getAttributeValue("label"), cat.getText()));
+            } catch (final Exception ex) {
+                LOG.warn("Exception parsing category tag.", ex);
+            }
         }
 
-        // copyright
+        md.setCategories(values.toArray(new Category[values.size()]));
+    }
+
+    /**
+     * @param e element to parse
+     * @param md metadata to fill in
+     */
+    private void parseCopyright(final Element e, final Metadata md) {
         try {
             final Element copy = e.getChild("copyright", getNS());
 
             if (copy != null) {
                 md.setCopyright(copy.getText());
-                md.setCopyrightUrl(copy.getAttributeValue("url") != null ? new URI(copy.getAttributeValue("url")) : null);
+                if (copy.getAttributeValue("url") != null) {
+                    md.setCopyrightUrl(new URI(copy.getAttributeValue("url")));
+                }
             }
         } catch (final Exception ex) {
             LOG.warn("Exception parsing copyright tag.", ex);
         }
-        // credits
-        {
-            final List<Element> credits = e.getChildren("credit", getNS());
-            final ArrayList<Credit> values = new ArrayList<Credit>();
+    }
 
-            for (int i = 0; credits != null && i < credits.size(); i++) {
-                try {
-                    final Element cred = credits.get(i);
-                    values.add(new Credit(cred.getAttributeValue("scheme"), cred.getAttributeValue("role"), cred.getText()));
-                    md.setCredits(values.toArray(new Credit[values.size()]));
-                } catch (final Exception ex) {
-                    LOG.warn("Exception parsing credit tag.", ex);
-                }
+    /**
+     * @param e element to parse
+     * @param md metadata to fill in
+     */
+    private void parseCredits(final Element e, final Metadata md) {
+        final List<Element> credits = e.getChildren("credit", getNS());
+        final ArrayList<Credit> values = new ArrayList<Credit>();
+
+        for (int i = 0; credits != null && i < credits.size(); i++) {
+            try {
+                final Element cred = credits.get(i);
+                values.add(new Credit(cred.getAttributeValue("scheme"), cred.getAttributeValue("role"), cred.getText()));
+                md.setCredits(values.toArray(new Credit[values.size()]));
+            } catch (final Exception ex) {
+                LOG.warn("Exception parsing credit tag.", ex);
             }
         }
+    }
 
-        // description
+    /**
+     * @param e element to parse
+     * @param md metadata to fill in
+     */
+    private void parseDescription(final Element e, final Metadata md) {
         try {
             final Element description = e.getChild("description", getNS());
 
@@ -286,8 +627,39 @@ public class MediaModuleParser implements ModuleParser {
         } catch (final Exception ex) {
             LOG.warn("Exception parsing description tag.", ex);
         }
+    }
 
-        // hash
+    /**
+     * @param e element to parse
+     * @param md metadata to fill in
+     */
+    private void parseEmbed(final Element e, final Metadata md) {
+        final Element embedElement = e.getChild("embed", getNS());
+        if (embedElement != null) {
+            final Embed embed = new Embed();
+            embed.setWidth(Integers.parse(embedElement.getAttributeValue("width")));
+            embed.setHeight(Integers.parse(embedElement.getAttributeValue("height")));
+            if (embedElement.getAttributeValue("url") != null) {
+                try {
+                    embed.setUrl(new URL(embedElement.getAttributeValue("url")));
+                } catch (MalformedURLException ex) {
+                    LOG.warn("Exception parsing embed tag.", ex);
+                }
+            }
+            final List<Element> paramElements = embedElement.getChildren("param", getNS());
+            embed.setParams(new Param[paramElements.size()]);
+            for (int i = 0; i < paramElements.size(); i++) {
+                embed.getParams()[i] = new Param(paramElements.get(i).getAttributeValue("name"), paramElements.get(i).getTextTrim());
+            }
+            md.setEmbed(embed);
+        }
+    }
+
+    /**
+     * @param e element to parse
+     * @param md metadata to fill in
+     */
+    private void parseHash(final Element e, final Metadata md) {
         try {
             final Element hash = e.getChild("hash", getNS());
 
@@ -297,161 +669,204 @@ public class MediaModuleParser implements ModuleParser {
         } catch (final Exception ex) {
             LOG.warn("Exception parsing hash tag.", ex);
         }
-        // keywords
-        {
-            final Element keywords = e.getChild("keywords", getNS());
-
-            if (keywords != null) {
-                final StringTokenizer tok = new StringTokenizer(keywords.getText(), ",");
-                final String[] value = new String[tok.countTokens()];
-
-                for (int i = 0; tok.hasMoreTokens(); i++) {
-                    value[i] = tok.nextToken().trim();
-                }
-
-                md.setKeywords(value);
-            }
-        }
-        // ratings
-        {
-            final ArrayList<Rating> values = new ArrayList<Rating>();
-
-            final List<Element> ratings = e.getChildren("rating", getNS());
-            for (final Element ratingElement : ratings) {
-                try {
-                    final String ratingText = ratingElement.getText();
-                    String ratingScheme = Strings.trimToNull(ratingElement.getAttributeValue("scheme"));
-                    if (ratingScheme == null) {
-                        ratingScheme = "urn:simple";
-                    }
-                    final Rating rating = new Rating(ratingScheme, ratingText);
-                    values.add(rating);
-                } catch (final Exception ex) {
-                    LOG.warn("Exception parsing rating tag.", ex);
-                }
-            }
-
-            md.setRatings(values.toArray(new Rating[values.size()]));
-
-        }
-        // text
-        {
-            final List<Element> texts = e.getChildren("text", getNS());
-            final ArrayList<Text> values = new ArrayList<Text>();
-
-            for (int i = 0; texts != null && i < texts.size(); i++) {
-                try {
-                    final Element text = texts.get(i);
-                    final Time start = text.getAttributeValue("start") == null ? null : new Time(text.getAttributeValue("start"));
-                    final Time end = text.getAttributeValue("end") == null ? null : new Time(text.getAttributeValue("end"));
-                    values.add(new Text(text.getAttributeValue("type"), text.getTextTrim(), start, end));
-                } catch (final Exception ex) {
-                    LOG.warn("Exception parsing text tag.", ex);
-                }
-            }
-
-            md.setText(values.toArray(new Text[values.size()]));
-        }
-        // thumbnails
-        {
-            final ArrayList<Thumbnail> values = new ArrayList<Thumbnail>();
-
-            final List<Element> thumbnails = e.getChildren("thumbnail", getNS());
-            for (final Element thumb : thumbnails) {
-                try {
-
-                    final String timeAttr = Strings.trimToNull(thumb.getAttributeValue("time"));
-                    Time time = null;
-                    if (timeAttr != null) {
-                        time = new Time(timeAttr);
-                    }
-
-                    final String widthAttr = thumb.getAttributeValue("width");
-                    final Integer width = Integers.parse(widthAttr);
-
-                    final String heightAttr = thumb.getAttributeValue("height");
-                    final Integer height = Integers.parse(heightAttr);
-
-                    final String url = thumb.getAttributeValue("url");
-                    final URI uri = new URI(url);
-                    final Thumbnail thumbnail = new Thumbnail(uri, width, height, time);
-
-                    values.add(thumbnail);
-
-                } catch (final Exception ex) {
-                    LOG.warn("Exception parsing thumbnail tag.", ex);
-                }
-            }
-
-            md.setThumbnail(values.toArray(new Thumbnail[values.size()]));
-        }
-        // title
-        {
-            final Element title = e.getChild("title", getNS());
-
-            if (title != null) {
-                md.setTitle(title.getText());
-                md.setTitleType(title.getAttributeValue("type"));
-            }
-        }
-        // restrictions
-        {
-            final List<Element> restrictions = e.getChildren("restriction", getNS());
-            final ArrayList<Restriction> values = new ArrayList<Restriction>();
-
-            for (int i = 0; i < restrictions.size(); i++) {
-                final Element r = restrictions.get(i);
-                Restriction.Type type = null;
-
-                if (r.getAttributeValue("type").equalsIgnoreCase("uri")) {
-                    type = Restriction.Type.URI;
-                } else if (r.getAttributeValue("type").equalsIgnoreCase("country")) {
-                    type = Restriction.Type.COUNTRY;
-                }
-
-                Restriction.Relationship relationship = null;
-
-                if (r.getAttributeValue("relationship").equalsIgnoreCase("allow")) {
-                    relationship = Restriction.Relationship.ALLOW;
-                } else if (r.getAttributeValue("relationship").equalsIgnoreCase("deny")) {
-                    relationship = Restriction.Relationship.DENY;
-                }
-
-                final Restriction value = new Restriction(relationship, type, r.getTextTrim());
-                values.add(value);
-            }
-
-            md.setRestrictions(values.toArray(new Restriction[values.size()]));
-        }
-        // handle adult
-        {
-            final Element adult = e.getChild("adult", getNS());
-
-            if (adult != null && md.getRatings().length == 0) {
-                final Rating[] r = new Rating[1];
-
-                if (adult.getTextTrim().equals("true")) {
-                    r[0] = new Rating("urn:simple", "adult");
-                } else {
-                    r[0] = new Rating("urn:simple", "nonadult");
-                }
-
-                md.setRatings(r);
-            }
-        }
-
-        return md;
     }
 
+    /**
+     * @param e element to parse
+     * @param md metadata to fill in
+     */
+    private void parseKeywords(final Element e, final Metadata md) {
+        final Element keywords = e.getChild("keywords", getNS());
+
+        if (keywords != null) {
+            final StringTokenizer tok = new StringTokenizer(keywords.getText(), ",");
+            final String[] value = new String[tok.countTokens()];
+
+            for (int i = 0; tok.hasMoreTokens(); i++) {
+                value[i] = tok.nextToken().trim();
+            }
+
+            md.setKeywords(value);
+        }
+    }
+
+    /**
+     * @param e element to parse
+     * @param md metadata to fill in
+     */
+    private void parseRatings(final Element e, final Metadata md) {
+        final ArrayList<Rating> values = new ArrayList<Rating>();
+
+        final List<Element> ratings = e.getChildren("rating", getNS());
+        for (final Element ratingElement : ratings) {
+            try {
+                final String ratingText = ratingElement.getText();
+                String ratingScheme = Strings.trimToNull(ratingElement.getAttributeValue("scheme"));
+                if (ratingScheme == null) {
+                    ratingScheme = "urn:simple";
+                }
+                final Rating rating = new Rating(ratingScheme, ratingText);
+                values.add(rating);
+            } catch (final Exception ex) {
+                LOG.warn("Exception parsing rating tag.", ex);
+            }
+        }
+
+        md.setRatings(values.toArray(new Rating[values.size()]));
+
+    }
+
+    /**
+     * @param e element to parse
+     * @param md metadata to fill in
+     */
+    private void parseText(final Element e, final Metadata md) {
+        final List<Element> texts = e.getChildren("text", getNS());
+        final ArrayList<Text> values = new ArrayList<Text>();
+
+        for (int i = 0; texts != null && i < texts.size(); i++) {
+            try {
+                final Element text = texts.get(i);
+                Time start = null;
+                if (text.getAttributeValue("start") != null) {
+                    start = new Time(text.getAttributeValue("start"));
+                }
+                Time end = null;
+                if (text.getAttributeValue("end") != null) {
+                    end = new Time(text.getAttributeValue("end"));
+                }
+                values.add(new Text(text.getAttributeValue("type"), text.getTextTrim(), start, end));
+            } catch (final Exception ex) {
+                LOG.warn("Exception parsing text tag.", ex);
+            }
+        }
+
+        md.setText(values.toArray(new Text[values.size()]));
+    }
+
+    /**
+     * @param e element to parse
+     * @param md metadata to fill in
+     */
+    private void parseThumbnail(final Element e, final Metadata md) {
+        final ArrayList<Thumbnail> values = new ArrayList<Thumbnail>();
+
+        final List<Element> thumbnails = e.getChildren("thumbnail", getNS());
+        for (final Element thumb : thumbnails) {
+            try {
+
+                final String timeAttr = Strings.trimToNull(thumb.getAttributeValue("time"));
+                Time time = null;
+                if (timeAttr != null) {
+                    time = new Time(timeAttr);
+                }
+
+                final String widthAttr = thumb.getAttributeValue("width");
+                final Integer width = Integers.parse(widthAttr);
+
+                final String heightAttr = thumb.getAttributeValue("height");
+                final Integer height = Integers.parse(heightAttr);
+
+                final String url = thumb.getAttributeValue("url");
+                final URI uri = new URI(url);
+                final Thumbnail thumbnail = new Thumbnail(uri, width, height, time);
+
+                values.add(thumbnail);
+
+            } catch (final Exception ex) {
+                LOG.warn("Exception parsing thumbnail tag.", ex);
+            }
+        }
+
+        md.setThumbnail(values.toArray(new Thumbnail[values.size()]));
+    }
+
+    /**
+     * @param e element to parse
+     * @param md metadata to fill in
+     */
+    private void parseTitle(final Element e, final Metadata md) {
+        final Element title = e.getChild("title", getNS());
+
+        if (title != null) {
+            md.setTitle(title.getText());
+            md.setTitleType(title.getAttributeValue("type"));
+        }
+    }
+
+    /**
+     * @param e element to parse
+     * @param md metadata to fill in
+     */
+    private void parseRestrictions(final Element e, final Metadata md) {
+        final List<Element> restrictions = e.getChildren("restriction", getNS());
+        final ArrayList<Restriction> values = new ArrayList<Restriction>();
+
+        for (int i = 0; i < restrictions.size(); i++) {
+            final Element r = restrictions.get(i);
+            Restriction.Type type = null;
+
+            if (r.getAttributeValue("type").equalsIgnoreCase(Restriction.Type.URI.toString())) {
+                type = Restriction.Type.URI;
+            } else if (r.getAttributeValue("type").equalsIgnoreCase(Restriction.Type.COUNTRY.toString())) {
+                type = Restriction.Type.COUNTRY;
+            } else if (r.getAttributeValue("type").equalsIgnoreCase(Restriction.Type.SHARING.toString())) {
+                type = Restriction.Type.SHARING;
+            }
+
+            Restriction.Relationship relationship = null;
+
+            if (r.getAttributeValue("relationship").equalsIgnoreCase("allow")) {
+                relationship = Restriction.Relationship.ALLOW;
+            } else if (r.getAttributeValue("relationship").equalsIgnoreCase("deny")) {
+                relationship = Restriction.Relationship.DENY;
+            }
+
+            final Restriction value = new Restriction(relationship, type, r.getTextTrim());
+            values.add(value);
+        }
+
+        md.setRestrictions(values.toArray(new Restriction[values.size()]));
+    }
+
+    /**
+     * @param e element to parse
+     * @param md metadata to fill in
+     */
+    private void parseAdultMetadata(final Element e, final Metadata md) {
+        final Element adult = e.getChild("adult", getNS());
+
+        if (adult != null && md.getRatings().length == 0) {
+            final Rating[] r = new Rating[1];
+
+            if (adult.getTextTrim().equals("true")) {
+                r[0] = new Rating("urn:simple", "adult");
+            } else {
+                r[0] = new Rating("urn:simple", "nonadult");
+            }
+
+            md.setRatings(r);
+        }
+    }
+
+    /**
+     * @param e element to parse
+     * @return PlayerReference element
+     */
     private PlayerReference parsePlayer(final Element e) {
         final Element player = e.getChild("player", getNS());
         PlayerReference p = null;
 
         if (player != null) {
-            final Integer width = player.getAttributeValue("width") == null ? null : new Integer(player.getAttributeValue("width"));
-            final Integer height = player.getAttributeValue("height") == null ? null : new Integer(player.getAttributeValue("height"));
-
             try {
+                Integer width = null;
+                if (player.getAttributeValue("width") != null) {
+                    width = Integer.valueOf(player.getAttributeValue("width"));
+                }
+                Integer height = null;
+                if (player.getAttributeValue("height") != null) {
+                    height = Integer.valueOf(player.getAttributeValue("height"));
+                }
                 p = new PlayerReference(new URI(player.getAttributeValue("url")), width, height);
             } catch (final Exception ex) {
                 LOG.warn("Exception parsing player tag.", ex);
