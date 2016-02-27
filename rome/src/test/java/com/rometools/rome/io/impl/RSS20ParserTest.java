@@ -44,4 +44,10 @@ public class RSS20ParserTest {
         document.setRootElement(new Element("rss").setAttribute("version", "2.0test"));
         assertTrue(parser.isMyType(document));
     }
+
+    @Test
+    public void testIsMyTypeVersionAbsent() {
+        document.setRootElement(new Element("rss"));
+        assertTrue(parser.isMyType(document));
+    }
 }
