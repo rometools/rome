@@ -51,7 +51,8 @@ public class RSS20Parser extends RSS094Parser {
 
     @Override
     public boolean isMyType(final Document document) {
-        return rootElementMatches(document) && versionMatches(document);
+        return rootElementMatches(document)
+               && (versionMatches(document) || versionAbsent(document));
     }
 
     private boolean rootElementMatches(final Document document) {
@@ -62,5 +63,9 @@ public class RSS20Parser extends RSS094Parser {
         final Attribute version = document.getRootElement().getAttribute("version");
         return (version != null)
                && version.getValue().trim().startsWith(getRSSVersion());
+    }
+
+    private boolean versionAbsent(final Document document) {
+        return document.getRootElement().getAttribute("version") == null;
     }
 }
