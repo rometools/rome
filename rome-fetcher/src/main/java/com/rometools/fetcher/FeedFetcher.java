@@ -117,4 +117,15 @@ public interface FeedFetcher {
      * corresponding wireEntry property set.
      */
     void setPreserveWireFeed(boolean preserveWireFeed);
+    
+    /**
+     * In ROME 1.5.1 we fixed a security vulnerability by disallowing Doctype declarations by default. 
+     * This change breaks the compatibility with at least RSS 0.91N because it requires a Doctype declaration. 
+     * You are able to allow Doctype declarations again with this property. You should only activate it 
+     * when the feeds that you process are absolutely trustful. 
+     *  
+     * @param allowDoctypes true when Doctype declarations should be allowed again, false otherwise
+     */
+    void setAllowDoctypes(boolean allowDoctypes);
+
 }

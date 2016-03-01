@@ -280,11 +280,6 @@ public class HttpURLFeedFetcher extends AbstractFeedFetcher {
             is = new BufferedInputStream(inputStream);
         }
 
-        // InputStreamReader reader = new InputStreamReader(is,
-        // ResponseHandler.getCharacterEncoding(connection));
-
-        // SyndFeedInput input = new SyndFeedInput();
-
         final XmlReader reader;
         if (connection.getHeaderField("Content-Type") != null) {
             reader = new XmlReader(is, connection.getHeaderField("Content-Type"), true);
@@ -294,6 +289,7 @@ public class HttpURLFeedFetcher extends AbstractFeedFetcher {
 
         final SyndFeedInput syndFeedInput = new SyndFeedInput();
         syndFeedInput.setPreserveWireFeed(isPreserveWireFeed());
+        syndFeedInput.setAllowDoctypes(isAllowDoctypes());
 
         return syndFeedInput.build(reader);
 
