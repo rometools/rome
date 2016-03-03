@@ -42,6 +42,7 @@ public abstract class AbstractFeedFetcher implements FeedFetcher {
     private String userAgent;
     private boolean usingDeltaEncoding;
     private boolean preserveWireFeed;
+    private boolean allowDoctypes = false;
 
     public AbstractFeedFetcher() {
 
@@ -222,4 +223,13 @@ public abstract class AbstractFeedFetcher implements FeedFetcher {
         this.preserveWireFeed = preserveWireFeed;
     }
 
+    public boolean isAllowDoctypes() {
+        return allowDoctypes;
+    }
+
+    @Override
+    public void setAllowDoctypes(boolean allowDoctypes) {
+        this.allowDoctypes = allowDoctypes;
+    }
+    
 }

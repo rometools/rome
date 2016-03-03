@@ -275,6 +275,7 @@ public class HttpClientFeedFetcher extends AbstractFeedFetcher {
 
             final SyndFeedInput syndFeedInput = new SyndFeedInput();
             syndFeedInput.setPreserveWireFeed(isPreserveWireFeed());
+            syndFeedInput.setAllowDoctypes(isAllowDoctypes());
 
             return syndFeedInput.build(reader);
 
