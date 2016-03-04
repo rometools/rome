@@ -68,7 +68,11 @@ import com.rometools.utils.IO;
  * @see <a
  *      href="http://bobwyman.pubsub.com/main/2004/09/using_rfc3229_w.html">http://bobwyman.pubsub.com/main/2004/09/using_rfc3229_w.html</a>
  * @author Nick Lothian
+ * 
+ * @deprecated ROME Fetcher will be dropped in the next major version of ROME (version 2). For more information and some migration hints, 
+ * please have a look at our <a href="https://github.com/rometools/rome/issues/276">detailed explanation</a>.
  */
+@Deprecated
 public class HttpURLFeedFetcher extends AbstractFeedFetcher {
 
     private volatile int connectTimeout = -1;

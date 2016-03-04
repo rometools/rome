@@ -46,7 +46,11 @@ import com.rometools.utils.IO;
 
 /**
  * @author Nick Lothian
+ * 
+ * @deprecated HttpClient v3 is known to have some security vulnerabilities! In addition ROME Fetcher will be dropped in the next major version of ROME (version 2). 
+ * For more information and some migration hints, please have a look at our <a href="https://github.com/rometools/rome/issues/276">detailed explanation</a>.
  */
+@Deprecated
 public class HttpClientFeedFetcher extends AbstractFeedFetcher {
 
     private CredentialSupplier credentialSupplier;
