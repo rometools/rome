@@ -16,7 +16,10 @@ import java.util.Map;
  * @author Javier Kohen
  * @author Nick Lothian
  *
+ * @deprecated ROME Fetcher will be dropped in the next major version of ROME (version 2). For more information and some migration hints, 
+ * please have a look at our <a href="https://github.com/rometools/rome/issues/276">detailed explanation</a>.
  */
+@Deprecated
 public class LinkedHashMapFeedInfoCache extends HashMapFeedInfoCache {
 
     private final class CacheImpl extends LinkedHashMap<String, SyndFeedInfo> {

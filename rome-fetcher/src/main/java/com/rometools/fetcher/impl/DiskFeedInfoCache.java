@@ -28,7 +28,11 @@ import com.rometools.utils.IO;
 
 /**
  * Disk based feed cache.
+ * 
+ * @deprecated ROME Fetcher will be dropped in the next major version of ROME (version 2). For more information and some migration hints, 
+ * please have a look at our <a href="https://github.com/rometools/rome/issues/276">detailed explanation</a>.
  */
+@Deprecated
 public class DiskFeedInfoCache implements FeedFetcherCache {
 
     protected String cachePath = null;

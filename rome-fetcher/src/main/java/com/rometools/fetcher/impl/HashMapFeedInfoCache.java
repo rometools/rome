@@ -35,8 +35,11 @@ import java.util.Map;
  * </p>
  *
  * @author Nick Lothian
- *
+ * 
+ * @deprecated ROME Fetcher will be dropped in the next major version of ROME (version 2). For more information and some migration hints, 
+ * please have a look at our <a href="https://github.com/rometools/rome/issues/276">detailed explanation</a>.
  */
+@Deprecated
 public class HashMapFeedInfoCache implements FeedFetcherCache, Serializable {
 
     private static final long serialVersionUID = 1L;

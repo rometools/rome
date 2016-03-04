@@ -22,8 +22,11 @@ import java.util.regex.Pattern;
 
 /**
  * Utility class to help deal with HTTP responses
- *
+ * *
+ * @deprecated ROME Fetcher will be dropped in the next major version of ROME (version 2). For more information and some migration hints, 
+ * please have a look at our <a href="https://github.com/rometools/rome/issues/276">detailed explanation</a>.
  */
+@Deprecated
 public class ResponseHandler {
     public static final String defaultCharacterEncoding = "ISO-8859-1";
 
