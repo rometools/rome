@@ -18,6 +18,13 @@ ROME is a Java framework for RSS and Atom feeds. The framework consist of severa
 
 ## Changelog
 
+### 1.6.0
+
+- [Upgrade of JDOM to version 2.0.5](https://github.com/rometools/rome/issues/197)
+- [Maven plugin and dependency updates](https://github.com/rometools/rome/issues/268)
+- [Support for allowing Doctype declarations in rome-fetcher](https://github.com/rometools/rome/issues/234)
+- [OSGi improvements](https://github.com/rometools/rome/issues/143) 
+
 ### 1.5.1
 
 - solved an [XML bomb](https://en.wikipedia.org/wiki/Billion_laughs) vulnerability
