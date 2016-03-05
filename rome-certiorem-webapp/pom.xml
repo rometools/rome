@@ -14,7 +14,7 @@
 
     <name>rome-certiorem-webapp</name>
 
-    <description>A simple webapp taht uses rome-certiorem</description>
+    <description>A simple webapp that uses rome-certiorem</description>
 
     <build>
         <plugins>
