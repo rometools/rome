@@ -1,5 +1,7 @@
 # ROME
 
+[![Join the chat at https://gitter.im/rometools/rome](https://badges.gitter.im/rometools/rome.svg)](https://gitter.im/rometools/rome?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.rometools/rome/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.rometools/rome)
 
 ROME is a Java framework for RSS and Atom feeds. The framework consist of several modules:
