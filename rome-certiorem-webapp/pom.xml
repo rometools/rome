@@ -14,32 +14,19 @@
 
     <name>rome-certiorem-webapp</name>
 
-    <licenses>
-        <license>
-            <name>The Apache Software License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
+    <description>A simple webapp taht uses rome-certiorem</description>
 
-    <scm>
-        <connection>scm:git:git@github.com:rometools/rome-certiorem-webapp.git</connection>
-        <developerConnection>scm:git:git@github.com:rometools/rome-certiorem-webapp.git</developerConnection>
-        <url>https://github.com/rometools/rome-certiorem-webapp/</url>
-    </scm>
-
-    <repositories>
-        <repository>
-            <id>sonatype-nexus-snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
         <dependency>

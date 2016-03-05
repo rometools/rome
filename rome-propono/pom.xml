@@ -21,55 +21,6 @@
         and the MetaWeblog API.
     </description>
 
-    <url>http://rometools.github.io/rome-propono/</url>
-
-    <scm>
-        <connection>scm:git:ssh://github.com/rometools/rome-propono.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/rometools/rome-propono.git</developerConnection>
-        <url>https://github.com/rometools/rome-propono</url>
-    </scm>
-
-    <developers>
-        <developer>
-            <name>Dave Johnson</name>
-            <url>http://rollerweblogger.org/roller</url>
-            <timezone>-5</timezone>
-        </developer>
-        <developer>
-            <name>Robert Cooper</name>
-            <email>kebernet@gmail.com</email>
-            <url>http://www.screaming-penguin.com</url>
-            <timezone>-4</timezone>
-        </developer>
-    </developers>
-
-    <repositories>
-        <repository>
-            <id>sonatype-nexus-snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-scm-publish-plugin</artifactId>
-                <configuration>
-                    <scmBranch>gh-pages</scmBranch>
-                    <pubScmUrl>${project.scm.developerConnection}</pubScmUrl>
-                    <content>${project.build.directory}/site</content>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
     <dependencies>
         <dependency>
             <groupId>com.rometools</groupId>

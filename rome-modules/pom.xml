@@ -16,46 +16,8 @@
 
     <description>Plugin collection for the ROME RSS and Atom Utilities</description>
 
-    <url>http://rometools.github.io/rome-modules/</url>
-
-    <scm>
-        <connection>scm:git:ssh://github.com/rometools/rome-modules.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/rometools/rome-modules.git</developerConnection>
-        <url>https://github.com/rometools/rome-modules</url>
-    </scm>
-
-    <developers>
-        <developer>
-            <id>kebernet</id>
-            <email>kebernet@gmail.com</email>
-            <name>Robert Cooper</name>
-        </developer>
-    </developers>
-
-    <repositories>
-        <repository>
-            <id>sonatype-nexus-snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-scm-publish-plugin</artifactId>
-                <configuration>
-                    <scmBranch>gh-pages</scmBranch>
-                    <pubScmUrl>${project.scm.developerConnection}</pubScmUrl>
-                    <content>${project.build.directory}/site</content>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
