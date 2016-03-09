@@ -3,12 +3,6 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>9</version>
-    </parent>
-
     <groupId>com.rometools</groupId>
     <artifactId>rome-parent</artifactId>
     <version>1.6.0-SNAPSHOT</version>
@@ -30,7 +24,7 @@
 
     <description>Parent for all ROME projects</description>
 
-    <url>http://rometools.github.io/rome-parent/</url>
+    <url>http://rometools.com</url>
 
     <licenses>
         <license>
@@ -41,19 +35,70 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:ssh://github.com/rometools/rome-parent.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/rometools/rome-parent.git</developerConnection>
-        <url>https://github.com/rometools/rome-parent</url>
+        <connection>scm:git:ssh://github.com/rometools/rome.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/rometools/rome.git</developerConnection>
+        <url>https://github.com/rometools/rome</url>
     </scm>
 
     <developers>
+        <developer>
+            <name>Alejandro Abdelnur</name>
+            <url>http://blog.sun.com/roller/page/tucu</url>
+            <timezone>0</timezone>
+        </developer>
+        <developer>
+            <name>Dave Johnson</name>
+            <url>http://rollerweblogger.org/roller</url>
+            <timezone>-5</timezone>
+        </developer>
+        <developer>
+            <name>Elaine Chien</name>
+            <timezone>0</timezone>
+        </developer>
+        <developer>
+            <id>farrukhnajmi</id>
+            <name>Farrukh Najmi</name>
+            <url>http://www.wellfleetsoftware.com/farrukh</url>
+        </developer>
+        <developer>
+            <id>imk</id>
+            <name>Martin Kurz</name>
+            <timezone>Europe/Berlin</timezone>
+        </developer>
+        <developer>
+            <name>Nick Lothian</name>
+            <url>http://nicklothian.com</url>
+        </developer>
+        <developer>
+            <name>Patrick Chanezon</name>
+            <url>http://www.chanezon.com/pat/weblog</url>
+            <timezone>-9</timezone>
+        </developer>
         <developer>
             <name>Patrick Gotthard</name>
             <email>patrick@patrick-gotthard.de</email>
             <url>http://www.patrick-gotthard.de</url>
             <timezone>+1</timezone>
         </developer>
+        <developer>
+            <id>kebernet</id>
+            <name>Robert Cooper</name>
+            <email>kebernet@gmail.com</email>
+            <url>http://www.kebernet.net</url>
+            <timezone>-4</timezone>
+        </developer>
     </developers>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -74,13 +119,13 @@
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-site-plugin</artifactId>
-                    <version>3.3</version>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>2.10</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-project-info-reports-plugin</artifactId>
-                    <version>2.8.1</version>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>2.6</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -106,10 +151,10 @@
                                 <pluginExecution>
                                     <pluginExecutionFilter>
                                         <groupId>org.apache.maven.plugins</groupId>
-                                        <artifactId>maven-enforcer-plugin</artifactId>
+                                        <artifactId>maven-dependency-plugin</artifactId>
                                         <versionRange>[1.0.0,)</versionRange>
                                         <goals>
-                                            <goal>enforce</goal>
+                                            <goal>copy-dependencies</goal>
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
@@ -147,18 +192,80 @@
                         </execution>
                     </executions>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>2.5.3</version>
+                    <configuration>
+                        <useReleaseProfile>false</useReleaseProfile>
+                        <releaseProfiles>release</releaseProfiles>
+                        <goals>deploy</goals>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.sonatype.plugins</groupId>
+                    <artifactId>nexus-staging-maven-plugin</artifactId>
+                    <version>1.6.6</version>
+                    <extensions>true</extensions>
+                    <configuration>
+                        <serverId>ossrh</serverId>
+                        <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                        <autoReleaseAfterClose>false</autoReleaseAfterClose>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
 
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-project-info-reports-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </reporting>
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>3.0.0</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>2.10.3</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.6</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
     <dependencyManagement>
         <dependencies>
@@ -225,6 +332,12 @@
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>4.12</version>
+            </dependency>
+            <!-- XMLUnit -->
+            <dependency>
+                <groupId>xmlunit</groupId>
+                <artifactId>xmlunit</artifactId>
+                <version>1.6</version>
             </dependency>
             <!-- Hamcrest -->
             <dependency>

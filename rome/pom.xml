@@ -24,76 +24,11 @@
         underlying format.
     </description>
 
-    <url>http://rometools.github.io/rome/</url>
-
-    <scm>
-        <connection>scm:git:ssh://github.com/rometools/rome.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/rometools/rome.git</developerConnection>
-        <url>https://github.com/rometools/rome</url>
-    </scm>
-
-    <developers>
-        <developer>
-            <name>Alejandro Abdelnur</name>
-            <url>http://blog.sun.com/roller/page/tucu</url>
-            <timezone>0</timezone>
-        </developer>
-        <developer>
-            <name>Dave Johnson</name>
-            <url>http://rollerweblogger.org/roller</url>
-            <timezone>-5</timezone>
-        </developer>
-        <developer>
-            <name>Elaine Chien</name>
-            <timezone>0</timezone>
-        </developer>
-        <developer>
-            <name>Patrick Chanezon</name>
-            <url>http://www.chanezon.com/pat/weblog</url>
-            <timezone>-9</timezone>
-        </developer>
-        <developer>
-            <name>Patrick Gotthard</name>
-            <url>http://www.patrick-gotthard.de</url>
-            <timezone>+1</timezone>
-        </developer>
-        <developer>
-            <name>Robert Cooper</name>
-            <email>kebernet@gmail.com</email>
-            <url>http://www.screaming-penguin.com</url>
-            <timezone>-4</timezone>
-        </developer>
-        <developer>
-            <id>farrukhnajmi</id>
-            <name>Farrukh Najmi</name>
-            <url>http://www.wellfleetsoftware.com/farrukh</url>
-        </developer>
-        <developer>
-            <id>imk</id>
-            <name>Martin Kurz</name>
-            <timezone>Europe/Berlin</timezone>
-        </developer>
-    </developers>
-
-    <repositories>
-        <repository>
-            <id>sonatype-nexus-snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>2.4</version>
                 <configuration>
                     <archive>
                         <manifest>
@@ -101,31 +36,6 @@
                             <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
                         </manifest>
                     </archive>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.apache.maven.doxia</groupId>
-                        <artifactId>doxia-module-markdown</artifactId>
-                        <version>1.5</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.apache.maven.doxia</groupId>
-                        <artifactId>doxia-module-confluence</artifactId>
-                        <version>1.5</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-scm-publish-plugin</artifactId>
-                <configuration>
-                    <scmBranch>gh-pages</scmBranch>
-                    <pubScmUrl>${project.scm.developerConnection}</pubScmUrl>
-                    <content>${project.build.directory}/site</content>
                 </configuration>
             </plugin>
             <plugin>

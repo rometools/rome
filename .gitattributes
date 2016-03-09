@@ -1,2 +1,2 @@
-# Set the default behavior, in case people don't have core.autocrlf set.
+# Set the default behavior, in case people don't have core.autocrlf set. See http://git-scm.com/docs/gitattributes
 * text=auto

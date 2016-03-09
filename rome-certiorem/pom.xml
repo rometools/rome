@@ -16,59 +16,6 @@
 
     <description>A PubSubHubub implementation for Java based on ROME</description>
 
-    <scm>
-        <connection>scm:git:ssh://github.com/rometools/rome-certiorem.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/rometools/rome-certiorem.git</developerConnection>
-        <url>https://github.com/rometools/rome-certiorem</url>
-    </scm>
-
-    <developers>
-        <developer>
-            <name>Robert Cooper</name>
-            <email>kebernet@gmail.comM</email>
-            <url>http://www.kebernet.net</url>
-        </developer>
-        <developer>
-            <name>Farrukh Najmi</name>
-            <url>http://wellfleetsoftware.com</url>
-        </developer>
-    </developers>
-
-    <repositories>
-        <repository>
-            <id>sonatype-nexus-snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <configuration>
-                    <port>9000</port>
-                    <tempWebappDirectory>${basedir}/target/site/tempdir</tempWebappDirectory>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-scm-publish-plugin</artifactId>
-                <configuration>
-                    <scmBranch>gh-pages</scmBranch>
-                    <pubScmUrl>${project.scm.developerConnection}</pubScmUrl>
-                    <content>${project.build.directory}/site</content>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
     <dependencies>
         <dependency>
             <groupId>com.rometools</groupId>
