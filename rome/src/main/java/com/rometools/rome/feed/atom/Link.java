@@ -17,7 +17,9 @@
 package com.rometools.rome.feed.atom;
 
 import java.io.Serializable;
+import java.util.List;
 
+import org.jdom2.Attribute;
 import com.rometools.rome.feed.impl.ObjectBean;
 import com.rometools.utils.Alternatives;
 
@@ -41,6 +43,8 @@ public class Link implements Cloneable, Serializable {
     private String hreflang;
     private String title;
     private long length;
+    private List<Attribute> foreignAttributes;
+
 
     /**
      * Default constructor. All properties are set to <b>null</b>.
@@ -75,7 +79,21 @@ public class Link implements Cloneable, Serializable {
      */
     @Override
     public boolean equals(final Object other) {
-        return objBean.equals(other);
+        if (other == null) {
+            return false;
+        }
+        if (!(other instanceof Link)) {
+            return false;
+        }
+        // can't use foreign attributes in equals, due to JDOM equals impl
+        final List<Attribute> fm = getForeignAttributes();
+        setForeignAttributes(((Link) other).getForeignAttributes());
+
+        final boolean ret = objBean.equals(other);
+        // restore foreign markup
+        setForeignAttributes(fm);
+
+        return ret;
     }
 
     /**
@@ -241,5 +259,23 @@ public class Link implements Cloneable, Serializable {
      */
     public void setLength(final long length) {
         this.length = length;
+    }
+
+    /**
+     * Returns foreign attributes found on the Link object
+     * 
+     * @return the foreignAttributes (mutable)
+     */
+    public List<Attribute> getForeignAttributes() {
+        return foreignAttributes;
+    }
+
+    /**
+     * Sets foreign attributes on the Link object
+     * 
+     * @param foreignAttributes the foreignAttributes to set
+     */
+    public void setForeignAttributes(List<Attribute> foreignAttributes) {
+        this.foreignAttributes = foreignAttributes;
     }
 }

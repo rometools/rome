@@ -258,6 +258,12 @@ public class Atom10Parser extends BaseWireFeedParser {
             }
         }
 
+        final List<Attribute> foreignAttributes = extractForeignAttributes(eLink, getAtomNamespace());
+        if (!foreignAttributes.isEmpty()) {
+            link.setForeignAttributes(foreignAttributes);
+        }
+
+        
         return link;
 
     }

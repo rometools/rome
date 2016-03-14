@@ -401,6 +401,11 @@ public class Atom10Generator extends BaseWireFeedGenerator {
             final Attribute lenght = new Attribute("length", Long.toString(link.getLength()));
             linkElement.setAttribute(lenght);
         }
+        
+        final List<Attribute> foreignAttributes = link.getForeignAttributes();
+        if (null != foreignAttributes) {
+            generateForeignAttributes(linkElement, foreignAttributes);
+        }
 
         return linkElement;
 
