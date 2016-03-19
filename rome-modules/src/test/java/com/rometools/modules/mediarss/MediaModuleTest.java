@@ -15,14 +15,13 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.List;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
 import com.rometools.modules.AbstractTestCase;
-import com.rometools.modules.mediarss.MediaEntryModule;
-import com.rometools.modules.mediarss.MediaModule;
 import com.rometools.modules.mediarss.types.MediaContent;
 import com.rometools.modules.mediarss.types.Rating;
 import com.rometools.modules.mediarss.types.Thumbnail;
@@ -89,6 +88,16 @@ public class MediaModuleTest extends AbstractTestCase {
                 assertEquals(entries.get(i).getModule(MediaModule.URI), feed2.getEntries().get(i).getModule(MediaModule.URI));
             }
         }
+    }
+
+
+    public void testParseFileSizeWithUnits() throws Exception {
+        final SyndFeed feed = getSyndFeed("org/rometools/feed/module/mediarss/filesize-with-unit.xml");
+        final List<SyndEntry> entries = feed.getEntries();
+
+        final MediaEntryModule module = (MediaEntryModule) entries.get(0).getModule(MediaModule.URI);
+        Long parsedFileSize = module.getMediaContents()[0].getFileSize();
+        assertThat(parsedFileSize, is(new BigDecimal(1000).pow(3).longValue()));
     }
 
     /**
