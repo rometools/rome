@@ -28,6 +28,9 @@ import com.rometools.rome.feed.synd.SyndFeed;
  */
 public class GeoRSSUtils {
 
+    private GeoRSSUtils() {
+    }
+
     /**
      * This convenience method checks whether there is any geoRss Element and will return it (georss
      * simple or W3GGeo).

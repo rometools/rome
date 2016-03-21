@@ -32,6 +32,9 @@ class FactoryFinder {
     private static SecuritySupport ss = new SecuritySupport();
     private static boolean firstTime = true;
 
+    private FactoryFinder() {
+    }
+
     private static void dPrint(final String msg) {
         if (debug) {
             System.err.println("Propono: " + msg);

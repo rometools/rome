@@ -31,6 +31,9 @@ public class BlogConnectionFactory {
 
     private static String METAWEBLOG_IMPL_CLASS = "com.rometools.propono.blogclient.metaweblog.MetaWeblogConnection";
 
+    private BlogConnectionFactory() {
+    }
+
     /**
      * Create a connection to a blog server.
      *

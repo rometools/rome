@@ -8,6 +8,9 @@ package com.rometools.rome.feed.synd.impl;
  */
 public class URINormalizer {
 
+    private URINormalizer() {
+    }
+
     /**
      * Normalizes an URI as specified in RFC 2396bis.
      * <p>

@@ -32,6 +32,9 @@ public class ResponseHandler {
 
     private final static Pattern characterEncodingPattern = Pattern.compile("charset=([.[^; ]]*)");
 
+    private ResponseHandler() {
+    }
+
     public static String getCharacterEncoding(final URLConnection connection) {
         return getCharacterEncoding(connection.getContentType());
     }

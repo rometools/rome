@@ -44,6 +44,9 @@ public class BeanIntrospector {
     private static final String GETTER = "get";
     private static final String BOOLEAN_GETTER = "is";
 
+    private BeanIntrospector() {
+    }
+
     /**
      * Extract all {@link PropertyDescriptor}s for properties with getters and setters for the given
      * class.

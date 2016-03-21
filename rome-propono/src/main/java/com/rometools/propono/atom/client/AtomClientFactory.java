@@ -28,6 +28,9 @@ public class AtomClientFactory {
         Atom10Parser.setResolveURIs(true);
     }
 
+    private AtomClientFactory() {
+    }
+
     /**
      * Create AtomService by reading service doc from Atom Server.
      */
