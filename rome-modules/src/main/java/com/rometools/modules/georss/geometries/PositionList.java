@@ -51,6 +51,10 @@ public class PositionList implements Cloneable, Serializable {
 
     @Override
     public boolean equals(final Object obj) {
+        if(obj == null) {
+            return false;
+        }
+        
         if (this == obj) {
             return true;
         }

@@ -47,6 +47,10 @@ public final class LinearRing extends AbstractRing {
 
     @Override
     public boolean equals(final Object obj) {
+        if(obj == null) {
+            return false;
+        }
+        
         if (this == obj) {
             return true;
         }

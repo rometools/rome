@@ -103,6 +103,10 @@ public class PhotoDate extends Date {
 
     @Override
     public boolean equals(final Object o) {
+        if(o == null) {
+            return false;
+        }
+
         if (o instanceof Date || ((Date) o).getTime() / 1000 == getTime() / 1000) {
             return true;
         } else {

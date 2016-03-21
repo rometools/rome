@@ -56,6 +56,10 @@ public final class Polygon extends AbstractSurface implements Cloneable {
 
     @Override
     public boolean equals(final Object obj) {
+        if(obj == null) {
+            return false;
+        }
+        
         if (this == obj) {
             return true;
         }
