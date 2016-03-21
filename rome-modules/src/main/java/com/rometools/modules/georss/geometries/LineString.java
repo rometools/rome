@@ -59,6 +59,11 @@ public final class LineString extends AbstractCurve {
         return getPositionList().equals(((LineString) obj).getPositionList());
     }
 
+    @Override
+    public int hashCode() {
+        return this.posList != null ? this.posList.hashCode() : 0;
+    }
+
     /**
      * Get the position list
      *

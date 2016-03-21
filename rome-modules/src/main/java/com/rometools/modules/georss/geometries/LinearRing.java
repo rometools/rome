@@ -56,6 +56,11 @@ public final class LinearRing extends AbstractRing {
         return getPositionList().equals(((LinearRing) obj).getPositionList());
     }
 
+    @Override
+    public int hashCode() {
+        return this.posList != null ? this.posList.hashCode() : 0;
+    }
+
     /**
      * Get the position list
      *

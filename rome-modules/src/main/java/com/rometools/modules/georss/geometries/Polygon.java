@@ -87,6 +87,13 @@ public final class Polygon extends AbstractSurface implements Cloneable {
         return true;
     }
 
+    @Override
+    public int hashCode() {
+        int result = this.exterior != null ? this.exterior.hashCode() : 0;
+        result = 31 * result + (this.interior != null ? this.interior.hashCode() : 0);
+        return result;
+    }
+
     /**
      * Retrieve the outer border
      *

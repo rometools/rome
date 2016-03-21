@@ -44,6 +44,8 @@ package com.rometools.modules.slash;
 import com.rometools.rome.feed.CopyFrom;
 import com.rometools.rome.feed.impl.EqualsBean;
 
+import java.util.Arrays;
+
 /**
  * @version $Revision: 1.2 $
  * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
@@ -142,4 +144,12 @@ public class SlashImpl implements Slash {
         return eBean.beanEquals(obj);
     }
 
+    @Override
+    public int hashCode() {
+        int result = this.section != null ? this.section.hashCode() : 0;
+        result = 31 * result + (this.department != null ? this.department.hashCode() : 0);
+        result = 31 * result + (this.comments != null ? this.comments.hashCode() : 0);
+        result = 31 * result + Arrays.hashCode(this.hitParade);
+        return result;
+    }
 }

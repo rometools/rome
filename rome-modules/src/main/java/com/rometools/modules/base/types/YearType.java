@@ -104,4 +104,9 @@ public class YearType implements CloneableType {
         }
         return false;
     }
+
+    @Override
+    public int hashCode() {
+        return this.year;
+    }
 }

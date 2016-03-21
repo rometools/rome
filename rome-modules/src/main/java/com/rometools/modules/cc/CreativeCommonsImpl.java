@@ -41,6 +41,7 @@
 package com.rometools.modules.cc;
 
 import java.lang.reflect.Array;
+import java.util.Arrays;
 
 import com.rometools.modules.cc.types.License;
 import com.rometools.rome.feed.CopyFrom;
@@ -115,6 +116,13 @@ public class CreativeCommonsImpl implements CreativeCommons {
         final EqualsBean eBean = new EqualsBean(this.getClass(), this);
 
         return eBean.beanEquals(obj);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Arrays.hashCode(this.allLicenses);
+        result = 31 * result + Arrays.hashCode(this.licenses);
+        return result;
     }
 
     @Override

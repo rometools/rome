@@ -84,6 +84,13 @@ public class AtomEntry extends BaseBlogEntry implements BlogEntry {
     }
 
     @Override
+    public int hashCode() {
+        int result = this.editURI != null ? this.editURI.hashCode() : 0;
+        result = 31 * result + (this.collection != null ? this.collection.hashCode() : 0);
+        return result;
+    }
+
+    @Override
     public void save() throws BlogClientException {
         final boolean create = getToken() == null;
         if (create && getCollection() == null) {

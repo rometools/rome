@@ -65,6 +65,17 @@ public class Position implements Cloneable, Serializable {
         return p.latitude == latitude && p.longitude == longitude;
     }
 
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        temp = Double.doubleToLongBits(this.latitude);
+        result = (int) (temp ^ temp >>> 32);
+        temp = Double.doubleToLongBits(this.longitude);
+        result = 31 * result + (int) (temp ^ temp >>> 32);
+        return result;
+    }
+
     /**
      * @return latitude
      */

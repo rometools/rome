@@ -145,6 +145,13 @@ public class CustomTagImpl implements CustomTag {
         return false;
     }
 
+    @Override
+    public int hashCode() {
+        int result = this.value != null ? this.value.hashCode() : 0;
+        result = 31 * result + (this.name != null ? this.name.hashCode() : 0);
+        return result;
+    }
+
     /**
      * Creates and returns a copy of this object. The precise meaning of "copy" may depend on the
      * class of the object. The general intent is that, for any object <tt>x</tt>, the expression:
@@ -241,6 +248,11 @@ public class CustomTagImpl implements CustomTag {
             } else {
                 return false;
             }
+        }
+
+        @Override
+        public int hashCode() {
+            return this.value != null ? this.value.hashCode() : 0;
         }
     }
 }

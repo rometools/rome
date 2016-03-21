@@ -56,6 +56,11 @@ public final class Point extends AbstractGeometricPrimitive {
         return getPosition().equals(((Point) obj).getPosition());
     }
 
+    @Override
+    public int hashCode() {
+        return this.pos != null ? this.pos.hashCode() : 0;
+    }
+
     /**
      * Get the position
      *

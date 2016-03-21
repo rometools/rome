@@ -121,4 +121,11 @@ public class IntUnit implements CloneableType {
         }
         return false;
     }
+
+    @Override
+    public int hashCode() {
+        int result = this.units != null ? this.units.hashCode() : 0;
+        result = 31 * result + this.value;
+        return result;
+    }
 }

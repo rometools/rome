@@ -126,6 +126,15 @@ public class ClientEntry extends Entry {
         return false;
     }
 
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + (this.service != null ? this.service.hashCode() : 0);
+        result = 31 * result + (this.collection != null ? this.collection.hashCode() : 0);
+        result = 31 * result + (this.partial ? 1 : 0);
+        return result;
+    }
+
     /**
      * Update entry by posting new representation of entry to server. Note that you should not
      * attempt to update entries that you get from iterating over a collection they may be "partial"
