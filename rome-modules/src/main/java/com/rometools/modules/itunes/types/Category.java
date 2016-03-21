@@ -125,7 +125,7 @@ public class Category implements Serializable {
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer(getName());
+        final StringBuilder sb = new StringBuilder(getName());
 
         if (getSubcategory() != null) {
             sb.append(" -> " + getSubcategory().toString());

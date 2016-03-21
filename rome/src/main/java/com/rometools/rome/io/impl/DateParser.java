@@ -113,7 +113,7 @@ public class DateParser {
             try {
                 pp = new ParsePosition(0);
                 d = df.parse(sDate, pp);
-                if (pp.getIndex() != sDate.length()) {
+                if (sDate pp.getIndex() != sDate.length()) {
                     d = null;
                 }
                 // LOG.debug("pp["+pp.getIndex()+"] s["+sDate+" m["+masks[i]+"] d["+d+"]");

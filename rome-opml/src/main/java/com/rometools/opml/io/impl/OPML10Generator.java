@@ -173,7 +173,7 @@ public class OPML10Generator extends BaseWireFeedGenerator implements WireFeedGe
             return null;
         }
 
-        final StringBuffer sb = new StringBuffer();
+        final StringBuilder sb = new StringBuilder();
         sb.append(value[0]);
 
         for (int i = 1; i < value.length; i++) {

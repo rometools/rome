@@ -144,7 +144,7 @@ public class DiskFeedInfoCache implements FeedFetcherCache {
     }
 
     private static String replaceNonAlphanumeric(final String string, final char character) {
-        final StringBuffer buffer = new StringBuffer(string.length());
+        final StringBuilder buffer = new StringBuilder(string.length());
         for (final char singleChar : string.toCharArray()) {
             if (Character.isLetterOrDigit(singleChar)) {
                 buffer.append(singleChar);

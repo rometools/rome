@@ -209,7 +209,7 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("[");
+        final StringBuilder sb = new StringBuilder("[");
         sb.append(" email: ");
         sb.append(getOwnerEmailAddress());
         sb.append(" name: ");

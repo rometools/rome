@@ -80,7 +80,7 @@ public class SlashModuleGenerator implements ModuleGenerator {
             element.addContent(generateSimpleElement("section", slash.getSection()));
         }
         if (slash.getHitParade() != null && slash.getHitParade().length > 0) {
-            final StringBuffer buff = new StringBuffer();
+            final StringBuilder buff = new StringBuilder();
             final Integer[] p = slash.getHitParade();
             for (int i = 0; i < p.length; i++) {
                 if (i != 0) {

@@ -83,7 +83,7 @@ public final class Utilities {
      * Read input from stream and into string.
      */
     public static String streamToString(final InputStream is) throws IOException {
-        final StringBuffer sb = new StringBuffer();
+        final StringBuilder sb = new StringBuilder();
         final BufferedReader in = new BufferedReader(new InputStreamReader(is));
         String line;
         while ((line = in.readLine()) != null) {
@@ -119,7 +119,7 @@ public final class Utilities {
      * Replaces occurences of non-alphanumeric characters with a supplied char.
      */
     public static String replaceNonAlphanumeric(final String str, final char subst) {
-        final StringBuffer ret = new StringBuffer(str.length());
+        final StringBuilder ret = new StringBuilder(str.length());
         final char[] testChars = str.toCharArray();
         for (final char testChar : testChars) {
             if (Character.isLetterOrDigit(testChar)) {
