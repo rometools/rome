@@ -30,6 +30,9 @@ public class ModuleUtils {
 
     private static final Logger LOG = LoggerFactory.getLogger(ModuleUtils.class);
 
+    private ModuleUtils() {
+    }
+
     public static List<Module> cloneModules(final List<Module> modules) {
         List<Module> cModules = null;
         if (modules != null) {
