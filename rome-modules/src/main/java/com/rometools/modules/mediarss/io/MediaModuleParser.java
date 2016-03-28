@@ -21,10 +21,13 @@
  */
 package com.rometools.modules.mediarss.io;
 
+import java.math.BigDecimal;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.StringTokenizer;
 
 import org.jdom2.Element;
@@ -65,6 +68,8 @@ public class MediaModuleParser implements ModuleParser {
 
     private static final Namespace NS = Namespace.getNamespace(MediaModule.URI);
 
+    private static final Pattern FILESIZE_WITH_UNIT_PATTERN = Pattern.compile("([\\d,.]+)([TGMK])?B", Pattern.CASE_INSENSITIVE);
+
     @Override
     public String getNamespaceUri() {
         return MediaModule.URI;
@@ -90,6 +95,35 @@ public class MediaModuleParser implements ModuleParser {
         }
 
         return mod;
+    }
+
+    static long parseFileSize(String fileSizeAttrValue) {
+        String nonWSFileSize = fileSizeAttrValue.replaceAll("\\s", "");
+
+        if(nonWSFileSize.matches("\\d+")) {
+            return Long.valueOf(nonWSFileSize);
+        }
+
+        Matcher sizeWithUnitMatcher = FILESIZE_WITH_UNIT_PATTERN.matcher(nonWSFileSize);
+        if (sizeWithUnitMatcher.matches()) {
+            BigDecimal number = new BigDecimal(sizeWithUnitMatcher.group(1).replace(',', '.'));
+            BigDecimal multiplier = BigDecimal.valueOf(1);
+            if (sizeWithUnitMatcher.group(2) != null) {
+                char unit  = sizeWithUnitMatcher.group(2).toLowerCase().charAt(0);
+                if (unit == 'k') {
+                    multiplier = BigDecimal.valueOf(1000);
+                } else if (unit == 'm') {
+                    multiplier = BigDecimal.valueOf(1000).pow(2);
+                } else if (unit == 'g') {
+                    multiplier = BigDecimal.valueOf(1000).pow(3);
+                } else if (unit == 't') {
+                    multiplier = BigDecimal.valueOf(1000).pow(4);
+                }
+            }
+            return number.multiply(multiplier).longValue();
+        }
+
+        throw new NumberFormatException("Invalid file size: " + fileSizeAttrValue);
     }
 
     private MediaContent[] parseContent(final Element e) {
@@ -152,7 +186,7 @@ public class MediaModuleParser implements ModuleParser {
 
                     try {
                         if (content.getAttributeValue("fileSize") != null) {
-                            mc.setFileSize(Long.valueOf(content.getAttributeValue("fileSize")));
+                            mc.setFileSize(parseFileSize(content.getAttributeValue("fileSize")));
                         }
                     } catch (final Exception ex) {
                         LOG.warn("Exception parsing content tag.", ex);
