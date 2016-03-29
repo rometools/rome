@@ -324,6 +324,11 @@ public class Atom10Generator extends BaseWireFeedGenerator {
             eEntry.addContent(sourceElement);
         }
 
+        final String rights = entry.getRights();
+        if (rights != null) {
+            eEntry.addContent(generateSimpleElement("rights", rights));
+        }
+
     }
 
     protected void checkFeedHeaderConstraints(final Element eFeed) throws FeedException {
