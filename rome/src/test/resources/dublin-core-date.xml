@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+	<channel>
+		<item>
+			<pubDate>Thu, 01 Jan 1970 00:00:00 GMT</pubDate>
+			<dc:date>1970-01-01T00:00:01Z</dc:date>
+		</item>
+	</channel>
+</rss>
