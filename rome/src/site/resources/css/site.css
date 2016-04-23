@@ -21,3 +21,11 @@ h1 {
   font-weight:900;
   font-size: x-large;
 }
+
+#banner {
+  margin-bottom: 10px;
+}
+
+.breadcrumb {
+  overflow: auto;
+}
