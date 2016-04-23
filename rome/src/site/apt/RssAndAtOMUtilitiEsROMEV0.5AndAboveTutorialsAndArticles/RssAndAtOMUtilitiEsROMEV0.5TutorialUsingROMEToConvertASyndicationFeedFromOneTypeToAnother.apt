@@ -9,9 +9,6 @@
 Rss and atOM utilitiEs (ROME) v0.5 Tutorial, Using ROME to convert a syndication feed from one type to another
 
 
- <<Software requirements:>> Synd J2SE 1.4\+, JDOM 1.0 and ROME 0.5.
-
-
  ROME represents syndication feeds (RSS and Atom) as instances of the com.rometools.rome.synd.SyndFeed interface. The SyndFeed interfaces and its properties follow the Java Bean patterns. The default implementations provided with ROME are all lightweight classes.
 
 
