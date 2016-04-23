@@ -13,13 +13,23 @@
     <bannerLeft>
         <name>ROME</name>
         <src>images/romelogo.png</src>
-        <href>http://github.com/rometools/</href>
+        <href>/index.html</href>
     </bannerLeft>
-    
+
+    <custom>
+        <fluidoSkin>
+            <gitHub>
+                <projectId>rometools/rome</projectId>
+                <ribbonOrientation>right</ribbonOrientation>
+                <ribbonColor>black</ribbonColor>
+            </gitHub>
+        </fluidoSkin>
+    </custom>
+
     <publishDate position="right" />
     
     <version position="right" />
-    
+
     <body>
         <menu name="Rome">
             <item name="Overview" href="index.html" />
