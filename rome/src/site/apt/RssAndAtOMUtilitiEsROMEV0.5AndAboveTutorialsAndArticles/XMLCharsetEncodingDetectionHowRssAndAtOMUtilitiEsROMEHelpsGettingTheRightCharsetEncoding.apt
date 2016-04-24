@@ -6,7 +6,7 @@
  2011-08-15 08:55:25.019
  -----
 
-XML Charset Encoding detection, how Rss and atOM utilitiEs (ROME) helps getting the right charset encoding
+XML Charset Encoding detection, how ROME helps getting the right charset encoding
 
 
  Determining the charset set encoding of an XML document it may prove not as easy as it seems, and when the XML document is served over HTTP things get a little more hairy.

@@ -8,36 +8,25 @@
 
 Welcome to ROME
 
- <"...ending syndication feed confusion by supporting all of 'em. "> <{{{http://blogs.sun.com/roller/page/webmink/20040616#rome_wasn_t_built_in}\*}}>
-
- <<ROME is a set of>> <<R>><<SS and At>><<om>> <<Utiliti>><<e>><<s for Java that is open source under the Apache 2.0 license.>>
-
- RSS 0.90, RSS 0.91 Netscape, RSS 0.91 Userland, RSS 0.92, RSS 0.93, RSS 0.94, RSS 1.0, RSS 2.0, Atom 0.3, Atom 1.0
+ ROME is a Java framework for RSS and Atom feeds. It's open source and licensed under the Apache 2.0 license.
 
  ROME includes a set of parsers and generators for the various flavors of syndication feeds, as well as converters to convert from one format to another.
  The parsers can give you back Java objects that are either specific for the format you want to work with, or a generic normalized SyndFeed class that
  lets you work on with the data without bothering about the incoming or outgoing feed type.
 
- If you use ROME for your site or software, please add it to the wiki page {{{./ProductsOrSitesPoweredByROME.html}PoweredByRome}}, or drop us an email
-
- Some of the links in the Navigation are out of date. This is because no one can edit them at present. However any registered user can edit the content
- of the pages and you'll find most of the links updated there, notably the Tutorials and Articles.
-
 *ROME Subprojects
 
-*----+--+--+
-||Subproject||Purpose||Latest Release|
-*----+--+--+
-|{{{http://rometools.github.io/rome-fetcher/index.html}ROME Fetcher}}|A caching feed fetcher that supports retrieval of feeds via {{{http://fishbowl.pastiche.org/2002/10/21/http_conditional_get_for_rss_hackers}HTTP conditional GET}}. Supports ETags, GZip compression, and {{{http://bobwyman.pubsub.com/main/2004/09/using_rfc3229_w.html}RFC3229 Delta encoding}}.|{{{../fetcher/Releases/ROMEFetcher1.0.html}ROME Fetcher}} v1.0 (Mar 11 2009)|
-*----+--+--+
-|{{{http://rometools.github.io/rome-modules/index.html}Rome Modules}}|Provide support for feed extensions such as GeoRSS, iTunes, Microsoft SSE and SLE, Google GData and others.|{{{./index.html}ROME Modules 1.0}} (Feb 24 2011)|
-*----+--+--+
-|{{{http://rometools.github.io/rome-propono/index.html}ROME Propono}}|Supports publishing protocols, specifically the Atom Publishing Protocol and the legacy MetaWeblog API. Propono includes an Atom client library, an Atom server framework and a Blog client that supports both Atom protocol and the MetaWeblog API.|{{{../propono/ROMEProponoVersion0.6.html}ROME Propono v0.6}}.|
-*----+--+--+
-|{{{http://rometools.github.io/rome-mano/index.html}ROME Mano}}|A servlet pipeline framework for RSS and Atom feeds.| |
-*----+--+--+
-|{{{http://rometools.github.io/rome-opml/index.html}OPML for ROME}}|Outline Processor Markup Language (OPML) parser and tools.| |
-*----+--+--+
+*----+--+
+||Subproject||Purpose|
+*----+--+
+|{{{./Modules/index.html}Modules}}|Provide support for feed extensions such as GeoRSS, iTunes, Microsoft SSE and SLE, Google GData and others.|
+*----+--+
+|{{{./Fetcher/index.html}Fetcher}} (deprecated)|A caching feed fetcher that supports retrieval of feeds via {{{http://fishbowl.pastiche.org/2002/10/21/http_conditional_get_for_rss_hackers}HTTP conditional GET}}. Supports ETags, GZip compression, and {{{http://bobwyman.pubsub.com/main/2004/09/using_rfc3229_w.html}RFC3229 Delta encoding}}.|
+*----+--+
+|{{{./Propono/index.html}Propono}}|Supports publishing protocols, specifically the Atom Publishing Protocol and the legacy MetaWeblog API. Propono includes an Atom client library, an Atom server framework and a Blog client that supports both Atom protocol and the MetaWeblog API.|
+*----+--+
+|{{{./Opml/index.html}OPML}}|Outline Processor Markup Language (OPML) parser and tools.|
+*----+--+
 
 *Further information
 

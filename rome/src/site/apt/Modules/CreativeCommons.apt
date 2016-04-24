@@ -12,8 +12,6 @@ Creative Commons
 
  This module provides a unified rights and license system for both the RSS2/Atom and RSS/RDF namespace. However, if you wish to <<generate>> RDF/RSS feeds, you need to use a CVS build of ROME (or a version higher than 0.8).
 
- The latest version is 0.2 available.
-
 *Sample Usage
 
 +------+

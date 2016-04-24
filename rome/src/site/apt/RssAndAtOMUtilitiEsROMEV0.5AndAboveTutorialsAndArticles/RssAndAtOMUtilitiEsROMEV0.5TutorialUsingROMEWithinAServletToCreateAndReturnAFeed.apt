@@ -6,10 +6,7 @@
  2011-08-15 09:34:50.713
  -----
 
-Rss and atOM utilitiEs (ROME) v0.5 Tutorial, Using ROME within a Servlet to create and return a feed
-
-
- <<Software requirements:>> J2SE 1.4\+, Servlet Container 2.3\+, JDOM 1.0 and ROME 0.5.
+Using ROME within a Servlet to create and return a feed
 
 
  This sample consists of a servlet that serves a feed as response. The feed type (RSS in any of its variants or Atom) can be specified as a URL parameter when requesting the feed. The returned feed is hardwired in the sample and it would be straight forward to modify the sample to generate the feed dynamically (i.e. from data stored in a database).
