@@ -10,8 +10,6 @@ Microsoft Simple Sharing Extensions
 
  This ROME module supports Microsoft Simple Sharing Extensions, an RSS and {{{../opml/index.html}OPML}} extension designed to support data synchronization between bi\-directional feeds.
 
- The latest version is 0.1 available.
-
 *Sample Usage
 
 +------+

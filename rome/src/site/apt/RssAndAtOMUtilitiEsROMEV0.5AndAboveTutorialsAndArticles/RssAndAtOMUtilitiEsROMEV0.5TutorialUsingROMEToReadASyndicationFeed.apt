@@ -6,7 +6,7 @@
  2011-08-15 09:08:56.262
  -----
 
-Rss and atOM utilitiEs (ROME) v0.5 Tutorial, Using ROME to read a syndication feed
+Using ROME to read a syndication feed
 
 
  ROME represents syndication feeds (RSS and Atom) as instances of the com.rometools.rome.synd.SyndFeed interface. The SyndFeed interfaces and its properties follow the Java Bean patterns. The default implementations provided with ROME are all lightweight classes.

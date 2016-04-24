@@ -6,7 +6,7 @@
  2011-08-15 09:03:07.534
  -----
 
-Rss and atOM utilitiEs (ROME) Plugins Mechanism
+Plugins Mechanism
 
 
  ROME has been designed around a plugin mechanism. All the supported feed types (RSSs and Atom) is done by plugins included in the distribution.

@@ -6,7 +6,7 @@
  2011-08-15 09:20:35.352
  -----
 
-Rss and atOM utilitiEs (ROME) v0.5 Tutorial, Using ROME to create and write a syndication feed
+Using ROME to create and write a syndication feed
 
 
  ROME represents syndication feeds (RSS and Atom) as instances of the com.rometools.rome.synd.SyndFeed interface. The SyndFeed interfaces and its properties follow the Java Bean patterns. The default implementations provided with ROME are all lightweight classes.
