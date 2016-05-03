@@ -5,5 +5,6 @@
         <link>http://test.com</link>
         <description>Test description</description>
         <atom:link href="http://test.com" type="application/rss+xml" rel="self" />
+        <atom:link href="http://test.com/alt" type="application/rss+xml" rel="alternate" />
     </channel>
 </rss>

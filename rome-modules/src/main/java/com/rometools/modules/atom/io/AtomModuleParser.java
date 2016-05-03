@@ -13,6 +13,7 @@
  * limitations under the License.
  *
  */
+
 package com.rometools.modules.atom.io;
 
 import com.rometools.modules.atom.modules.AtomLinkModule;
@@ -25,6 +26,8 @@ import org.jdom2.Attribute;
 import org.jdom2.Element;
 import org.jdom2.Namespace;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Locale;
 
 public class AtomModuleParser implements ModuleParser {
@@ -40,12 +43,14 @@ public class AtomModuleParser implements ModuleParser {
     public Module parse(Element element, Locale locale) {
         AtomLinkModuleImpl mod = new AtomLinkModuleImpl();
         if (element.getName().equals("channel") || element.getName().equals("item")) {
-            Element link = element.getChild("link", NS);
-            if (link != null) {
+            List<Element> links = element.getChildren("link", NS);
+            List<Link> result = new LinkedList<Link>();
+            for (Element link : links) {
                 Link l = parseLink(link);
-                mod.setLink(l);
-                return mod;
+                result.add(l);
             }
+            mod.setLinks(result);
+            return mod;
         }
         return null;
     }
