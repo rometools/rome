@@ -133,4 +133,11 @@ public class DateTimeRange implements CloneableType {
         }
         return true;
     }
+
+    @Override
+    public int hashCode() {
+        int result = this.end != null ? this.end.hashCode() : 0;
+        result = 31 * result + (this.start != null ? this.start.hashCode() : 0);
+        return result;
+    }
 }

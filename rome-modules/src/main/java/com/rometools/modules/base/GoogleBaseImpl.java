@@ -36,6 +36,7 @@ package com.rometools.modules.base;
 
 import java.lang.reflect.Array;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.Date;
 
 import org.slf4j.Logger;
@@ -1410,6 +1411,103 @@ public class GoogleBaseImpl implements GoogleBase {
         final EqualsBean eBean = new EqualsBean(this.getClass(), this);
 
         return eBean.beanEquals(obj);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = this.listingType != null ? this.listingType.hashCode() : 0;
+        result = 31 * result + (this.pickup != null ? this.pickup.hashCode() : 0);
+        result = 31 * result + (this.currency != null ? this.currency.hashCode() : 0);
+        result = 31 * result + (this.expirationDateTime != null ? this.expirationDateTime.hashCode() : 0);
+        result = 31 * result + (this.courseDateRange != null ? this.courseDateRange.hashCode() : 0);
+        result = 31 * result + (this.eventDateRange != null ? this.eventDateRange.hashCode() : 0);
+        result = 31 * result + (this.travelDateRange != null ? this.travelDateRange.hashCode() : 0);
+        result = 31 * result + (this.bathrooms != null ? this.bathrooms.hashCode() : 0);
+        result = 31 * result + (this.hoaDues != null ? this.hoaDues.hashCode() : 0);
+        result = 31 * result + (this.rating != null ? this.rating.hashCode() : 0);
+        result = 31 * result + (this.salary != null ? this.salary.hashCode() : 0);
+        result = 31 * result + (this.taxPercent != null ? this.taxPercent.hashCode() : 0);
+        result = 31 * result + (this.deliveryRadius != null ? this.deliveryRadius.hashCode() : 0);
+        result = 31 * result + (this.megapixels != null ? this.megapixels.hashCode() : 0);
+        result = 31 * result + (this.memory != null ? this.memory.hashCode() : 0);
+        result = 31 * result + (this.price != null ? this.price.hashCode() : 0);
+        result = 31 * result + (this.processorSpeed != null ? this.processorSpeed.hashCode() : 0);
+        result = 31 * result + (this.weight != null ? this.weight.hashCode() : 0);
+        result = 31 * result + (this.gender != null ? this.gender.hashCode() : 0);
+        result = 31 * result + (this.area != null ? this.area.hashCode() : 0);
+        result = 31 * result + (this.age != null ? this.age.hashCode() : 0);
+        result = 31 * result + (this.bedrooms != null ? this.bedrooms.hashCode() : 0);
+        result = 31 * result + (this.mileage != null ? this.mileage.hashCode() : 0);
+        result = 31 * result + (this.pages != null ? this.pages.hashCode() : 0);
+        result = 31 * result + (this.quantity != null ? this.quantity.hashCode() : 0);
+        result = 31 * result + (this.fromLocation != null ? this.fromLocation.hashCode() : 0);
+        result = 31 * result + (this.location != null ? this.location.hashCode() : 0);
+        result = 31 * result + (this.toLocation != null ? this.toLocation.hashCode() : 0);
+        result = 31 * result + (this.priceType != null ? this.priceType.hashCode() : 0);
+        result = 31 * result + (this.salaryType != null ? this.salaryType.hashCode() : 0);
+        result = 31 * result + (this.expirationDate != null ? this.expirationDate.hashCode() : 0);
+        result = 31 * result + (this.publishDate != null ? this.publishDate.hashCode() : 0);
+        result = 31 * result + (this.size != null ? this.size.hashCode() : 0);
+        result = 31 * result + (this.SexualOrientation != null ? this.SexualOrientation.hashCode() : 0);
+        result = 31 * result + (this.apparelType != null ? this.apparelType.hashCode() : 0);
+        result = 31 * result + (this.brand != null ? this.brand.hashCode() : 0);
+        result = 31 * result + (this.condition != null ? this.condition.hashCode() : 0);
+        result = 31 * result + (this.courseNumber != null ? this.courseNumber.hashCode() : 0);
+        result = 31 * result + (this.courseTimes != null ? this.courseTimes.hashCode() : 0);
+        result = 31 * result + (this.deliveryNotes != null ? this.deliveryNotes.hashCode() : 0);
+        result = 31 * result + (this.education != null ? this.education.hashCode() : 0);
+        result = 31 * result + (this.employer != null ? this.employer.hashCode() : 0);
+        result = 31 * result + (this.id != null ? this.id.hashCode() : 0);
+        result = 31 * result + (this.immigrationStatus != null ? this.immigrationStatus.hashCode() : 0);
+        result = 31 * result + (this.isbn != null ? this.isbn.hashCode() : 0);
+        result = 31 * result + (this.make != null ? this.make.hashCode() : 0);
+        result = 31 * result + (this.manufacturer != null ? this.manufacturer.hashCode() : 0);
+        result = 31 * result + (this.manufacturerId != null ? this.manufacturerId.hashCode() : 0);
+        result = 31 * result + (this.maritalStatus != null ? this.maritalStatus.hashCode() : 0);
+        result = 31 * result + (this.model != null ? this.model.hashCode() : 0);
+        result = 31 * result + (this.modelNumber != null ? this.modelNumber.hashCode() : 0);
+        result = 31 * result + (this.nameOfItemBeingReviewed != null ? this.nameOfItemBeingReviewed.hashCode() : 0);
+        result = 31 * result + (this.newsSource != null ? this.newsSource.hashCode() : 0);
+        result = 31 * result + (this.occupation != null ? this.occupation.hashCode() : 0);
+        result = 31 * result + (this.operatingSystems != null ? this.operatingSystems.hashCode() : 0);
+        result = 31 * result + (this.paymentNotes != null ? this.paymentNotes.hashCode() : 0);
+        result = 31 * result + (this.publicationName != null ? this.publicationName.hashCode() : 0);
+        result = 31 * result + (this.publicationVolume != null ? this.publicationVolume.hashCode() : 0);
+        result = 31 * result + (this.reviewType != null ? this.reviewType.hashCode() : 0);
+        result = 31 * result + (this.reviewerType != null ? this.reviewerType.hashCode() : 0);
+        result = 31 * result + (this.schoolDistrict != null ? this.schoolDistrict.hashCode() : 0);
+        result = 31 * result + (this.serviceType != null ? this.serviceType.hashCode() : 0);
+        result = 31 * result + (this.taxRegion != null ? this.taxRegion.hashCode() : 0);
+        result = 31 * result + (this.university != null ? this.university.hashCode() : 0);
+        result = 31 * result + (this.upc != null ? this.upc.hashCode() : 0);
+        result = 31 * result + (this.vehicleType != null ? this.vehicleType.hashCode() : 0);
+        result = 31 * result + (this.vin != null ? this.vin.hashCode() : 0);
+        result = 31 * result + (this.urlOfItemBeingReviewed != null ? this.urlOfItemBeingReviewed.hashCode() : 0);
+        result = 31 * result + (this.year != null ? this.year.hashCode() : 0);
+        result = 31 * result + Arrays.hashCode(this.actors);
+        result = 31 * result + Arrays.hashCode(this.agents);
+        result = 31 * result + Arrays.hashCode(this.artists);
+        result = 31 * result + Arrays.hashCode(this.authors);
+        result = 31 * result + Arrays.hashCode(this.color);
+        result = 31 * result + Arrays.hashCode(this.ethnicities);
+        result = 31 * result + Arrays.hashCode(this.format);
+        result = 31 * result + Arrays.hashCode(this.imageLinks);
+        result = 31 * result + Arrays.hashCode(this.interestedIn);
+        result = 31 * result + Arrays.hashCode(this.jobFunctions);
+        result = 31 * result + Arrays.hashCode(this.jobIndustries);
+        result = 31 * result + Arrays.hashCode(this.jobTypes);
+        result = 31 * result + Arrays.hashCode(this.labels);
+        result = 31 * result + Arrays.hashCode(this.licenses);
+        result = 31 * result + Arrays.hashCode(this.paymentAccepted);
+        result = 31 * result + Arrays.hashCode(this.productTypes);
+        result = 31 * result + Arrays.hashCode(this.programmingLanguages);
+        result = 31 * result + Arrays.hashCode(this.propertyTypes);
+        result = 31 * result + Arrays.hashCode(this.relatedLinks);
+        result = 31 * result + Arrays.hashCode(this.shipping);
+        result = 31 * result + Arrays.hashCode(this.squareFootages);
+        result = 31 * result + Arrays.hashCode(this.subjectAreas);
+        result = 31 * result + Arrays.hashCode(this.subjects);
+        return result;
     }
 
     private Object arrayCopy(final Object[] source) {

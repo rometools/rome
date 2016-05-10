@@ -165,4 +165,12 @@ public class Size implements CloneableType {
         }
         return false;
     }
+
+    @Override
+    public int hashCode() {
+        int result = this.height != null ? this.height.hashCode() : 0;
+        result = 31 * result + (this.length != null ? this.length.hashCode() : 0);
+        result = 31 * result + (this.width != null ? this.width.hashCode() : 0);
+        return result;
+    }
 }

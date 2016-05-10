@@ -222,6 +222,14 @@ public interface BlogEntry {
             return false;
         }
 
+        @Override
+        public int hashCode() {
+            int result = this.id != null ? this.id.hashCode() : 0;
+            result = 31 * result + (this.name != null ? this.name.hashCode() : 0);
+            result = 31 * result + (this.url != null ? this.url.hashCode() : 0);
+            return result;
+        }
+
         /** Get category id */
         public String getId() {
             return id;

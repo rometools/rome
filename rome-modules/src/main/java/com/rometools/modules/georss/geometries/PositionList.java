@@ -16,6 +16,7 @@
 package com.rometools.modules.georss.geometries;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 /**
  * A list of geographic positions, latitude, longitude decimal degrees WGS84
@@ -68,6 +69,14 @@ public class PositionList implements Cloneable, Serializable {
             }
         }
         return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Arrays.hashCode(this.latitude);
+        result = 31 * result + Arrays.hashCode(this.longitude);
+        result = 31 * result + this.size;
+        return result;
     }
 
     private void ensureCapacity(int new_size) {

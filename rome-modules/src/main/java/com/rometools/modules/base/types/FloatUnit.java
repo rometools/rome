@@ -166,4 +166,11 @@ public class FloatUnit implements CloneableType {
         }
         return false;
     }
+
+    @Override
+    public int hashCode() {
+        int result = this.units != null ? this.units.hashCode() : 0;
+        result = 31 * result + (this.value != +0.0f ? Float.floatToIntBits(this.value) : 0);
+        return result;
+    }
 }

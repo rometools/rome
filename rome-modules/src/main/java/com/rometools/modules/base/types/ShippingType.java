@@ -132,6 +132,14 @@ public class ShippingType implements CloneableType {
         return false;
     }
 
+    @Override
+    public int hashCode() {
+        int result = this.price != null ? this.price.hashCode() : 0;
+        result = 31 * result + (this.service != null ? this.service.hashCode() : 0);
+        result = 31 * result + (this.country != null ? this.country.hashCode() : 0);
+        return result;
+    }
+
     /**
      * Enumeration class of valid options for ServiceType.
      */
