@@ -147,8 +147,12 @@ public class ITunesParser implements ModuleParser {
             final Element duration = element.getChild("duration", ns);
 
             if (duration != null && duration.getValue() != null) {
-                final Duration dur = new Duration(duration.getValue().trim());
-                entryInfo.setDuration(dur);
+                try {
+                    final Duration dur = new Duration(duration.getValue().trim());
+                    entryInfo.setDuration(dur);
+                } catch (Exception e) {
+                    LOG.warn("Failed to parse duration: {}", duration.getValue());
+                }
             }
 
             final Element closedCaptioned = element.getChild("isClosedCaptioned", ns);
@@ -216,7 +220,7 @@ public class ITunesParser implements ModuleParser {
                     final URL imageURL = new URL(image.getAttributeValue("href").trim());
                     module.setImage(imageURL);
                 } catch (final MalformedURLException e) {
-                    LOG.debug("Malformed URL Exception reading itunes:image tag: {}", image.getAttributeValue("href"));
+                    LOG.warn("Malformed URL Exception reading itunes:image tag: {}", image.getAttributeValue("href"));
                 }
             }
         }

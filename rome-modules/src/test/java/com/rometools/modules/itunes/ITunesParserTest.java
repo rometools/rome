@@ -34,6 +34,7 @@ import com.rometools.modules.itunes.AbstractITunesObject;
 import com.rometools.modules.itunes.EntryInformationImpl;
 import com.rometools.modules.itunes.FeedInformationImpl;
 import com.rometools.modules.itunes.io.ITunesGenerator;
+import com.rometools.modules.itunes.types.Duration;
 import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndFeed;
@@ -132,5 +133,29 @@ public class ITunesParserTest extends AbstractTestCase {
         assertEquals(true, entryInfo.getClosedCaptioned());
         assertEquals(Integer.valueOf(2), entryInfo.getOrder());
         assertEquals("http://example.org/image.png", entryInfo.getImage().toString());
+    }
+
+    public void testDuration() throws Exception {
+        SyndFeed feed = new SyndFeedInput().build(new XmlReader(getClass().getResource("duration.xml")));
+        SyndEntry entry = feed.getEntries().get(0);
+        EntryInformationImpl module = (EntryInformationImpl) entry.getModule(AbstractITunesObject.URI);
+
+        assertEquals(1000, module.getDuration().getMilliseconds());
+    }
+
+    public void testDurationEmpty() throws Exception {
+        SyndFeed feed = new SyndFeedInput().build(new XmlReader(getClass().getResource("duration-empty.xml")));
+        SyndEntry entry = feed.getEntries().get(0);
+        EntryInformationImpl module = (EntryInformationImpl) entry.getModule(AbstractITunesObject.URI);
+
+        assertNull(module.getDuration());
+    }
+
+    public void testDurationBad() throws Exception {
+        SyndFeed feed = new SyndFeedInput().build(new XmlReader(getClass().getResource("duration-bad.xml")));
+        SyndEntry entry = feed.getEntries().get(0);
+        EntryInformationImpl module = (EntryInformationImpl) entry.getModule(AbstractITunesObject.URI);
+
+        assertNull(module.getDuration());
     }
 }
