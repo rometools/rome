@@ -95,7 +95,6 @@ public class ContentModuleGenerator implements com.rometools.rome.io.ModuleGener
                 }
 
                 if (contentItem.getContentFormat() != null) {
-                    // LOG.debug( "Format");
                     final Element format = new Element("format", CONTENT_NS);
                     final Attribute formatResource = new Attribute("resource", contentItem.getContentFormat(), RDF_NS);
                     format.setAttribute(formatResource);
@@ -104,7 +103,6 @@ public class ContentModuleGenerator implements com.rometools.rome.io.ModuleGener
                 }
 
                 if (contentItem.getContentEncoding() != null) {
-                    // LOG.debug( "Encoding");
                     final Element encoding = new Element("encoding", CONTENT_NS);
                     final Attribute encodingResource = new Attribute("resource", contentItem.getContentEncoding(), RDF_NS);
                     encoding.setAttribute(encodingResource);

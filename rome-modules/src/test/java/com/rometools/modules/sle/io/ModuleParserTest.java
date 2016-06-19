@@ -59,7 +59,7 @@ public class ModuleParserTest extends AbstractTestCase {
         final SyndFeedInput input = new SyndFeedInput();
         final SyndFeed feed = input.build(new File(super.getTestFile("data/bookexample.xml")));
         final SimpleListExtension sle = (SimpleListExtension) feed.getModule(SimpleListExtension.URI);
-        // LOG.debug( sle );
+
         assertEquals("list", sle.getTreatAs());
         final Group[] groups = sle.getGroupFields();
         assertEquals("genre", groups[0].getElement());

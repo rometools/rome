@@ -113,9 +113,7 @@ public class DateParser {
                 if (pp.getIndex() != sDate.length()) {
                     d = null;
                 }
-                // LOG.debug("pp["+pp.getIndex()+"] s["+sDate+" m["+masks[i]+"] d["+d+"]");
             } catch (final Exception ex1) {
-                // LOG.debug("s: "+sDate+" m: "+masks[i]+" d: "+null);
             }
         }
         return d;

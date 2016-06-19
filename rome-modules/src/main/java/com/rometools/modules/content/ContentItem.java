@@ -114,39 +114,31 @@ public class ContentItem implements Cloneable {
         }
         final ContentItem other = (ContentItem) obj;
         if (contentFormat == null ? other.contentFormat != null : !contentFormat.equals(other.contentFormat)) {
-            // LOG.debug("format");
             return false;
         }
         if (contentEncoding == null ? other.contentEncoding != null : !contentEncoding.equals(other.contentEncoding)) {
-            // LOG.debug("enc");
             return false;
         }
         final String thisCV = contentValue.replaceAll(" xmlns=\"http://www.w3.org/1999/xhtml\"", "").trim();
-        ;
         final String thatCV = other.contentValue.replaceAll(" xmlns=\"http://www.w3.org/1999/xhtml\"", "").trim();
         if (contentValue == null ? other.contentValue != null : !thisCV.equals(thatCV)) {
 
             return false;
         }
         if (contentValueDOM != other.contentValueDOM && (contentValueDOM == null || !contentValueDOM.equals(other.contentValueDOM))) {
-            // LOG.debug("vd");
             return false;
         }
         if (contentAbout == null ? other.contentAbout != null : !contentAbout.equals(other.contentAbout)) {
-            // LOG.debug("abt");
             return false;
         }
         if (contentValueParseType == null ? other.contentValueParseType != null : !contentValueParseType.equals(other.contentValueParseType)) {
-            // LOG.debug("pt");
             return false;
         }
         if (contentValueNamespace != other.contentValueNamespace
                 && (contentValueNamespace == null || !contentValueNamespace.equals(other.contentValueNamespace))) {
-            // LOG.debug("ns");
             return false;
         }
         if (contentResource == null ? other.contentResource != null : !contentResource.equals(other.contentResource)) {
-            // LOG.debug("res");
             return false;
         }
         return true;

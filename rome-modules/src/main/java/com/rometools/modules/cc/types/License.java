@@ -66,7 +66,6 @@ public class License {
         License.lookupLicense.put(uri, this);
 
         if (this.uri.endsWith("/")) {
-            // LOG.debug(uri.substring(0,this.uri.lastIndexOf("/")));
             License.lookupLicense.put(uri.substring(0, this.uri.lastIndexOf("/")), this);
         }
     }

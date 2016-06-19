@@ -148,7 +148,7 @@ public class ModuleParser implements com.rometools.rome.io.ModuleParser {
 
                     continue;
                 }
-                // LOG.debug(e.getName());
+
                 final Element value = e.getChild(sort2.getElement(), sort2.getNamespace());
                 if (value == null) {
                     LOG.debug("No value for {} : {}", sort2.getElement(), sort2.getNamespace());

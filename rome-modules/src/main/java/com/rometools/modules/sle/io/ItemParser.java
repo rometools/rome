@@ -83,10 +83,9 @@ public class ItemParser implements com.rometools.rome.io.ModuleParser {
         values = values.size() == 0 ? values : new ArrayList<EntryValue>();
 
         final List<Element> sorts = new ArrayList<Element>(element.getChildren("sort", ModuleParser.TEMP));
-        // LOG.debug("]]] sorts on element"+sorts.size());
+
         for (final Element sort : sorts) {
             final String dataType = sort.getAttributeValue("data-type");
-            // LOG.debug("Doing datatype "+dataType +" :: "+sorts.size());
             if (dataType == null || dataType.equals(Sort.TEXT_TYPE)) {
                 final StringValue value = new StringValue();
                 value.setElement(sort.getAttributeValue("element"));
@@ -145,7 +144,7 @@ public class ItemParser implements com.rometools.rome.io.ModuleParser {
                 throw new RuntimeException("Unknown datatype");
             }
         }
-        // LOG.debug("Values created "+values.size()+" from sorts" +sorts.size());
+
         sle.setSortValues(values.toArray(new EntryValue[values.size()]));
 
         return sle;
