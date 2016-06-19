@@ -20,9 +20,6 @@ import com.rometools.modules.yahooweather.types.Forecast;
 
 /**
  * An interface describing the entry/item level data for Yahoo Weather.
- *
- * @version $Id: YWeatherEntryModule.java,v 1.2 2008/01/22 14:50:06 kebernet Exp $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public interface YWeatherEntryModule extends YWeatherModule {
     /**

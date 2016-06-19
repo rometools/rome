@@ -23,9 +23,6 @@ import com.rometools.modules.itunes.types.Category;
 
 /**
  * This class contains information for iTunes podcast feeds that exist at the Channel level.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- * @version $Revision: 1.2 $
  */
 public interface FeedInformation extends ITunes {
 

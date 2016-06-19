@@ -21,10 +21,6 @@ import java.util.List;
 
 import com.rometools.rome.feed.synd.SyndEntry;
 
-/**
- * @author pat
- *
- */
 public class TestSyndFeedRSS090 extends SyndFeedTest {
 
     public TestSyndFeedRSS090() {

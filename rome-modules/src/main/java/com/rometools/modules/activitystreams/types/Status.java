@@ -38,8 +38,6 @@ package com.rometools.modules.activitystreams.types;
  * <p>
  * A status has the same components as a note.
  * </p>
- *
- * @author robert.cooper
  */
 public class Status extends ActivityObject {
 

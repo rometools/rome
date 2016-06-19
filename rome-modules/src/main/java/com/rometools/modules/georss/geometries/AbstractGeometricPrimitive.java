@@ -17,8 +17,6 @@ package com.rometools.modules.georss.geometries;
 
 /**
  * Abstract base class for geometric primitives (non-composite geometric objects)
- *
- * @author runaas
  */
 public abstract class AbstractGeometricPrimitive extends AbstractGeometry {
 

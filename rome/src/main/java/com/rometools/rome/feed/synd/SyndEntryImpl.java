@@ -44,10 +44,6 @@ import com.rometools.utils.Strings;
 
 /**
  * Bean for entries of SyndFeedImpl feeds.
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public class SyndEntryImpl implements Serializable, SyndEntry {
 

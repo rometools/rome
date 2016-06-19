@@ -27,10 +27,6 @@ import com.rometools.rome.feed.impl.ObjectBean;
 
 /**
  * Bean for content of SyndFeedImpl entries.
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public class SyndContentImpl implements Serializable, SyndContent {
 

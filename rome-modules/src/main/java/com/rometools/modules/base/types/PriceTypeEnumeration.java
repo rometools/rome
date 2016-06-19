@@ -17,9 +17,6 @@ package com.rometools.modules.base.types;
 
 /**
  * Enumeration of values suitable for "price_type" or "salary_type".
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- * @version $Revision: 1.1 $
  */
 public class PriceTypeEnumeration implements CloneableType {
     /**

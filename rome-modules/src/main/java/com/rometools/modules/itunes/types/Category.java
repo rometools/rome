@@ -21,9 +21,6 @@ import java.io.Serializable;
 /**
  * This Category information. Basically a name and an optional Subcategory. Categories are defined
  * by Apple. See ITMS for a view.
- *
- * @version $Revision: 1.2 $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Category implements Serializable {
     /**

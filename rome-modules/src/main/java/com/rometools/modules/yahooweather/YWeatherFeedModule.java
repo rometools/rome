@@ -23,9 +23,6 @@ import com.rometools.modules.yahooweather.types.Wind;
 
 /**
  * An interface describing feed/channel level data for Yahoo Weather.
- *
- * @version $Id: YWeatherFeedModule.java,v 1.3 2008/03/29 16:19:12 kebernet Exp $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public interface YWeatherFeedModule extends YWeatherModule {
     /**

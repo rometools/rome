@@ -43,8 +43,6 @@ package com.rometools.modules.activitystreams.types;
  * W3CDTF spec.] [TODO: Include prose describing how to represent just a date vs. a date and time.]</dd>
  * </dl>
  * </blockquote>
- *
- * @author robert.cooper
  */
 public class Event extends ActivityObject {
 

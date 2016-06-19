@@ -26,10 +26,6 @@ import com.rometools.modules.photocast.PhotocastModule;
 import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.io.ModuleGenerator;
 
-/**
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- */
 public class Generator implements ModuleGenerator {
 
     private static final Namespace NS = Namespace.getNamespace("apple-wallpapers", PhotocastModule.URI);

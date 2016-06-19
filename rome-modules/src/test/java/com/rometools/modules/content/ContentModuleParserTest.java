@@ -30,10 +30,6 @@ import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.XmlReader;
 
-/**
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert Cooper</a>
- */
 public class ContentModuleParserTest extends AbstractTestCase {
     public ContentModuleParserTest(final String testName) {
         super(testName);

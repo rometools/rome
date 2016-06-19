@@ -42,8 +42,6 @@ import com.rometools.rome.io.impl.RSS20Parser;
 
 /**
  * Parses embedded SSE content from RSS channel and item content.
- *
- * @author <a href="mailto:ldornin@dev.java.net">ldornin</a>
  */
 public class SSE091Parser implements DelegatingModuleParser {
 

@@ -28,8 +28,6 @@ package com.rometools.modules.activitystreams.types;
  * </p>
  * <p>
  * A group has no additional components.
- *
- * @author robert.cooper
  */
 public class Group {
 

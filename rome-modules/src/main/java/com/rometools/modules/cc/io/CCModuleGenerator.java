@@ -30,10 +30,6 @@ import com.rometools.modules.cc.types.License;
 import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.io.ModuleGenerator;
 
-/**
- * @version $Revision: 1.1 $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- */
 public class CCModuleGenerator implements ModuleGenerator {
 
     private static final Logger LOG = LoggerFactory.getLogger(CCModuleGenerator.class);

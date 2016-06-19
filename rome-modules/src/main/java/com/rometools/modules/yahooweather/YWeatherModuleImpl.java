@@ -28,9 +28,6 @@ import com.rometools.rome.feed.module.ModuleImpl;
 
 /**
  * A Module implementation for entry or feed level information.
- *
- * @version $Id: YWeatherModuleImpl.java,v 1.2 2008/01/22 14:50:06 kebernet Exp $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class YWeatherModuleImpl extends ModuleImpl implements YWeatherEntryModule, YWeatherFeedModule {
     private static final long serialVersionUID = 1L;

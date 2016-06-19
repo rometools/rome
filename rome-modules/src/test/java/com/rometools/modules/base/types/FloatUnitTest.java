@@ -29,10 +29,6 @@ import org.slf4j.LoggerFactory;
 
 import com.rometools.modules.base.types.FloatUnit;
 
-/**
- *
- * @author rcooper
- */
 public class FloatUnitTest extends TestCase {
 
     private static final Logger LOG = LoggerFactory.getLogger(FloatUnitTest.class);

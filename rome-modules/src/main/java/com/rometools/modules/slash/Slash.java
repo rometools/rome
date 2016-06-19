@@ -22,9 +22,6 @@ import com.rometools.rome.feed.module.Module;
 
 /**
  * This interface represents the Slash RSS extension.
- *
- * @version $Revision: 1.2 $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public interface Slash extends Module, Serializable {
 

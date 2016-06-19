@@ -31,10 +31,6 @@ import com.rometools.rome.io.ModuleGenerator;
 
 /**
  * W3CGeoGenerator produces georss elements in georss W3C geo format.
- *
- * @author Marc Wick
- * @version $Id: W3CGeoGenerator.java,v 1.3 2007/04/18 09:59:30 marcwick Exp $
- *
  */
 public class W3CGeoGenerator implements ModuleGenerator {
 

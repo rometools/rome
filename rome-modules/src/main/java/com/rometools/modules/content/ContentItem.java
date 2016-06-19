@@ -25,9 +25,6 @@ import org.jdom2.Namespace;
 /**
  * This class represents a content item per the "Original Syntax".
  * http://purl.org/rss/1.0/modules/content/
- *
- * @version $Revision: 1.1 $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class ContentItem implements Cloneable {
 

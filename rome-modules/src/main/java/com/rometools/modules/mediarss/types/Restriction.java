@@ -76,8 +76,6 @@ import com.rometools.rome.feed.impl.ToStringBean;
  * <p>
  * "uri" allows restrictions based on URI. Examples: urn:apple, http://images.google.com, urn:yahoo,
  * etc.
- *
- * @author cooper
  */
 public class Restriction implements Serializable {
     private static final long serialVersionUID = 1L;

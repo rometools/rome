@@ -21,10 +21,6 @@ import com.rometools.rome.feed.CopyFrom;
 
 /**
  * Bean interface for categories of SyndFeedImpl feeds and entries.
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public interface SyndCategory extends Cloneable, CopyFrom {
     /**

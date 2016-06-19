@@ -23,10 +23,6 @@ import com.rometools.modules.base.types.FloatUnit;
 import com.rometools.modules.base.types.IntUnit;
 import com.rometools.modules.base.types.ShortDate;
 
-/**
- * @version $Revision: 1.1 $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- */
 public class CustomTagImpl implements CustomTag {
     private Object value;
     private final String name;

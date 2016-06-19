@@ -25,10 +25,6 @@ import java.io.InputStream;
  * The exception returns the unconsumed InputStream to allow the application to do an alternate
  * processing with the stream. Note that the original InputStream given to the XmlReader cannot be
  * used as that one has been already read.
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public class XmlReaderException extends IOException {
     private static final long serialVersionUID = 1L;

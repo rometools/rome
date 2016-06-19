@@ -35,9 +35,6 @@ import com.rometools.rome.feed.impl.ToStringBean;
  * in <a href="http://www.rfc-editor.org/rfc/rfc822.txt">RFC822 Section 5</a> format, for example
  * "Wed, 30 Nov 2005 1:56 pm PST" (string)</li>
  * </ul>
- *
- * @version $Id: Condition.java,v 1.2 2008/01/22 14:50:05 kebernet Exp $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Condition implements Serializable, Cloneable {
     /**

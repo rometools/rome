@@ -17,11 +17,6 @@ package com.rometools.modules.base.types;
 
 import com.rometools.modules.base.io.GoogleBaseParser;
 
-/**
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- * @version $Revision: 1.1 $
- */
 public class IntUnit implements CloneableType {
     private String units;
     private final int value;

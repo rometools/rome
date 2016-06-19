@@ -24,9 +24,6 @@ import com.rometools.modules.base.types.Size;
 
 /**
  * This is an interface for the GoogleBase plug in that exposes methods used for Products.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- * @version $Revision: 1.1 $
  */
 public interface Product extends GlobalInterface {
     /**

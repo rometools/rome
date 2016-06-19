@@ -31,8 +31,6 @@ import com.rometools.rome.feed.impl.EqualsBean;
 
 /**
  * Used to indicate a URL primary reference for a MediaContent object.
- *
- * @author cooper
  */
 public class UrlReference implements Reference, Serializable {
     private static final long serialVersionUID = 1L;

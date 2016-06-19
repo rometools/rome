@@ -27,8 +27,6 @@ package com.rometools.modules.activitystreams.types;
  * <p>
  * A list has no additional components.
  * </p>
- *
- * @author robert.cooper
  */
 public class List extends ActivityObject {
 

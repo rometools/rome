@@ -20,9 +20,6 @@ import com.rometools.modules.base.types.DateTimeRange;
 /**
  * This is an interface for the GoogleBase plug in that exposes methods used for Class or Course
  * information entry types.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- * @version $Revision: 1.2 $
  */
 public interface Course extends GlobalInterface {
     /**

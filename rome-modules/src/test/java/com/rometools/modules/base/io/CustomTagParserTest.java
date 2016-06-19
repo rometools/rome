@@ -41,10 +41,6 @@ import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.SyndFeedInput;
 
-/**
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- */
 public class CustomTagParserTest extends AbstractTestCase {
 
     private static final Logger LOG = LoggerFactory.getLogger(CustomTagParserTest.class);

@@ -40,9 +40,6 @@ import com.rometools.utils.Lists;
 /**
  * Feed Generator for Atom
  * <p/>
- *
- * @author Elaine Chien
- *
  */
 
 public class Atom03Generator extends BaseWireFeedGenerator {

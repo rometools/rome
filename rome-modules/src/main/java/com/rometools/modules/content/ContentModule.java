@@ -19,10 +19,6 @@ import java.util.List;
 
 import com.rometools.rome.feed.module.Module;
 
-/**
- * @version $Revision: 1.1 $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- */
 public interface ContentModule extends Module {
 
     public static final String URI = "http://purl.org/rss/1.0/modules/content/";

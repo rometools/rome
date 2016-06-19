@@ -33,10 +33,6 @@ import com.rometools.rome.feed.synd.SyndFeedImpl;
  * DOcument) into an SyndFeedImpl.
  * <p>
  * It delegates to a WireFeedInput to handle all feed types.
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public class SyndFeedInput {
     private final WireFeedInput feedInput;

@@ -35,10 +35,6 @@ import java.util.Set;
  * corresponding property.
  * <P>
  * All ObjectBean subclasses properties should be live references.
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public class ObjectBean implements Serializable, Cloneable {
 

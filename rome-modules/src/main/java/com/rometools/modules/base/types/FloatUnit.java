@@ -19,9 +19,6 @@ import com.rometools.modules.base.io.GoogleBaseParser;
 
 /**
  * This class represents a quantity consisting of a float value and an optional units specification.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- * @version $Revision: 1.1 $
  */
 public class FloatUnit implements CloneableType {
     /**

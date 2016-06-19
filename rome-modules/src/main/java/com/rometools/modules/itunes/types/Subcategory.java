@@ -20,9 +20,6 @@ import java.io.Serializable;
 
 /**
  * This class represents a Subcategor of a Category.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- * @version $Revision: 1.2 $
  */
 public class Subcategory implements Serializable {
     /**

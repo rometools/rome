@@ -17,11 +17,6 @@ package com.rometools.modules.base.types;
 
 import java.util.HashMap;
 
-/**
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- * @version $Revision: 1.1 $
- */
 public class PaymentTypeEnumeration {
 
     private static final HashMap<String, PaymentTypeEnumeration> lookup = new HashMap<String, PaymentTypeEnumeration>();

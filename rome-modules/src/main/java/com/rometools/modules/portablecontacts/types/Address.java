@@ -17,10 +17,6 @@
 
 package com.rometools.modules.portablecontacts.types;
 
-/**
- *
- * @author robert.cooper
- */
 public class Address {
 
 }

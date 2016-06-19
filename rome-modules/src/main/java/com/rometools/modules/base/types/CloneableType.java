@@ -17,9 +17,6 @@ package com.rometools.modules.base.types;
 
 /**
  * This is just a holder interface for cloneable elements.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- * @version $Revision: 1.1 $
  */
 public interface CloneableType extends Cloneable {
     public Object clone();

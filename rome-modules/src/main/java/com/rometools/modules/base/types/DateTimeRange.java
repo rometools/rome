@@ -19,9 +19,6 @@ import java.util.Date;
 
 /**
  * Represents a time range.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- * @version $Revision: 1.2 $
  */
 public class DateTimeRange implements CloneableType {
     /**

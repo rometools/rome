@@ -36,10 +36,6 @@ import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.SyndFeedOutput;
 
-/**
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- */
 public class WeatherGeneratorTest extends AbstractTestCase {
 
     private static final Logger LOG = LoggerFactory.getLogger(WeatherGeneratorTest.class);

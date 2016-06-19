@@ -24,9 +24,6 @@ import com.rometools.rome.feed.CopyFrom;
 import com.rometools.rome.feed.impl.CopyFromHelper;
 import com.rometools.rome.feed.impl.ObjectBean;
 
-/**
- * @author Alejandro Abdelnur
- */
 public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
 
     private static final long serialVersionUID = 1L;

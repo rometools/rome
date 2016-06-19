@@ -43,11 +43,6 @@ import com.rometools.modules.base.types.YearType;
 import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.io.ModuleGenerator;
 
-/**
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper
- * @version $Revision: 1.1 $
- */
 public class GoogleBaseGenerator implements ModuleGenerator {
     private static final Namespace NS = Namespace.getNamespace("g-core", GoogleBase.URI);
 

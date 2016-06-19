@@ -16,8 +16,6 @@
  */
 package com.rometools.rome.feed.synd.impl;
 
-/**
- */
 public class ConverterForRSS091Netscape extends ConverterForRSS091Userland {
 
     public ConverterForRSS091Netscape() {

@@ -35,10 +35,6 @@ import com.rometools.modules.sle.types.StringValue;
 import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.io.impl.DateParser;
 
-/**
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- */
 public class ItemParser implements com.rometools.rome.io.ModuleParser {
     /** Creates a new instance of ItemParser */
     public ItemParser() {

@@ -30,10 +30,6 @@ import com.rometools.modules.itunes.types.Category;
 import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.io.ModuleGenerator;
 
-/**
- * @version $Revision: 1.3 $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- */
 public class ITunesGenerator implements ModuleGenerator {
 
     private static final HashSet<Namespace> NAMESPACES = new HashSet<Namespace>();

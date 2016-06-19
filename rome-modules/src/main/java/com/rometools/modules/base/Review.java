@@ -23,9 +23,6 @@ import com.rometools.modules.base.types.FloatUnit;
 /**
  * This is an interface for the GoogleBase plug in that exposes methods used for critical reviews of
  * other things.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- * @version $Revision: 1.1 $
  */
 public interface Review extends GlobalInterface {
     /**

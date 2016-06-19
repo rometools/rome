@@ -27,10 +27,6 @@ import com.rometools.rome.feed.impl.ObjectBean;
 
 /**
  * Bean for images of SyndFeedImpl feeds.
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public class SyndImageImpl implements Serializable, SyndImage {
 

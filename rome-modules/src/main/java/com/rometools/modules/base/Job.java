@@ -21,9 +21,6 @@ import com.rometools.modules.base.types.PriceTypeEnumeration;
 /**
  * This is an interface for the GoogleBase plug in that exposes methods used for Job listing entry
  * types.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- * @version $Revision: 1.1 $
  */
 public interface Job extends GlobalInterface {
     /**

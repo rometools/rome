@@ -22,8 +22,6 @@ import com.rometools.rome.feed.impl.ToStringBean;
 /**
  * This is an immutable class representing the apple-wallpapers:metadata tag in the photocast
  * module.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Metadata {
 

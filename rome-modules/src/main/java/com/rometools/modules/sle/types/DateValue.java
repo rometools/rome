@@ -25,8 +25,6 @@ import com.rometools.rome.feed.impl.ObjectBean;
 
 /**
  * An EntryValue implementation representing a "date" data-type.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class DateValue implements EntryValue {
 

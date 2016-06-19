@@ -25,10 +25,6 @@ import com.rometools.utils.Strings;
 
 /**
  * Bean for content elements of Atom feeds.
- * <p>
- *
- * @author Alejandro Abdelnur
- * @author Dave Johnson (updated for Atom 1.0)
  */
 public class Content implements Cloneable, Serializable {
 

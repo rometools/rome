@@ -22,8 +22,6 @@ import com.rometools.rome.feed.module.ModuleImpl;
 
 /**
  * Currently no support for thr:count, thr:updated, thr:total link attributes.
- * 
- * @author <a href="mailto:andreas@feldschmid.com">Andreas Feldschmid</a>
  */
 public class ThreadingModuleImpl extends ModuleImpl implements ThreadingModule {
 

@@ -71,8 +71,6 @@ import com.rometools.rome.feed.impl.ObjectBean;
  * first instance of default="true" that it encounters.</li>
  *
  * </ul>
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Sort implements Serializable, Cloneable {
     private static final long serialVersionUID = 1L;

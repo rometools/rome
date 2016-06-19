@@ -21,8 +21,6 @@ import java.util.List;
 
 /**
  * Polygon, a surface object bounded by one external ring and zero or more internal rings
- *
- * @author runaas
  */
 public final class Polygon extends AbstractSurface implements Cloneable {
     /**

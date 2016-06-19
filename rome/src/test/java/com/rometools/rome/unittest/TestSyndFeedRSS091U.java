@@ -17,10 +17,6 @@
  */
 package com.rometools.rome.unittest;
 
-/**
- * @author pat
- *
- */
 public class TestSyndFeedRSS091U extends TestSyndFeedRSS091N {
 
     public TestSyndFeedRSS091U() {

@@ -19,10 +19,6 @@ package com.rometools.modules.cc;
 import com.rometools.modules.cc.types.License;
 import com.rometools.rome.feed.module.Module;
 
-/**
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- */
 public interface CreativeCommons extends Module {
 
     public static final String URI = "rome:CreativeCommons";

@@ -21,10 +21,6 @@ import com.rometools.modules.itunes.types.Duration;
 
 /**
  * This class contains information for iTunes podcast feeds that exist at the Item level.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- * @version $Revision: 1.2 $
- *
  */
 public interface EntryInformation extends ITunes {
 

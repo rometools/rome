@@ -52,8 +52,6 @@ import com.rometools.rome.feed.impl.ToStringBean;
  * <em>width</em> is the width of the browser window that the <em>url</em> should be opened in. It
  * is an optional attribute.
  * </p>
- *
- * @author cooper
  */
 public class PlayerReference implements Reference, Serializable {
     private static final long serialVersionUID = 1L;

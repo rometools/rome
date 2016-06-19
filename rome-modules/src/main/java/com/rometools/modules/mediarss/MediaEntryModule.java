@@ -27,8 +27,6 @@ import com.rometools.modules.mediarss.types.MediaGroup;
 
 /**
  * Represents entry/item level information.
- *
- * @author cooper
  */
 public interface MediaEntryModule extends MediaModule {
     /**

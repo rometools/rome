@@ -34,9 +34,6 @@ import com.rometools.rome.feed.impl.ToStringBean;
  * attributes (miles, pounds per square inch, miles per hour). If Celsius has been specified as the
  * degree units for the feed (using the u request parameter), all the units are in metric format
  * (Celsius, kilometers, millibars, kilometers per hour).
- *
- * @version $Id: Units.java,v 1.2 2008/01/22 14:50:05 kebernet Exp $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Units implements Serializable, Cloneable {
     /**

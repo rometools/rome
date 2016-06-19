@@ -43,8 +43,6 @@ package com.rometools.modules.activitystreams.types;
  * Construct].</dd>
  * </dl>
  * </blockquote>
- *
- * @author robert.cooper
  */
 public class Product extends ActivityObject {
 

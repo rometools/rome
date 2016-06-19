@@ -259,9 +259,6 @@ import com.rometools.rome.feed.impl.EqualsBean;
  * </tr>
  * </tbody>
  * </table>
- *
- * @version $Id: ConditionCode.java,v 1.2 2008/01/22 14:50:05 kebernet Exp $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class ConditionCode implements Serializable {
 

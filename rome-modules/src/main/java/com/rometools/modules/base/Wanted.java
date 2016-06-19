@@ -19,9 +19,6 @@ import com.rometools.modules.base.types.FloatUnit;
 
 /**
  * This is an interface for the GoogleBase plug in that exposes methods used for wanted ads.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- * @version $Revision: 1.1 $
  */
 public interface Wanted extends GlobalInterface {
     /**

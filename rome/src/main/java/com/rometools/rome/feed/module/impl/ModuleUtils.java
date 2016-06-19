@@ -24,8 +24,6 @@ import org.slf4j.LoggerFactory;
 
 import com.rometools.rome.feed.module.Module;
 
-/**
- */
 public class ModuleUtils {
 
     private static final Logger LOG = LoggerFactory.getLogger(ModuleUtils.class);

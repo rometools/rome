@@ -35,10 +35,6 @@ import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.SyndFeedOutput;
 import com.rometools.rome.io.XmlReader;
 
-/**
- *
- * @author cooper
- */
 public class ITunesGeneratorTest extends AbstractTestCase {
 
     private static final Logger LOG = LoggerFactory.getLogger(ITunesGeneratorTest.class);

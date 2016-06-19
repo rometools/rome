@@ -33,9 +33,6 @@ import com.rometools.rome.feed.impl.ToStringBean;
  * <li>rising: state of the barometric pressure: steady (0), rising (1), or falling (2). (integer:
  * 0, 1, 2)</li>
  * </ul>
- *
- * @version $Id: Atmosphere.java,v 1.2 2008/01/22 14:50:05 kebernet Exp $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Atmosphere implements Serializable, Cloneable {
     /**

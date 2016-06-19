@@ -22,9 +22,6 @@ import java.util.Date;
  * day for Google Base. It should be transparent to module developers.
  *
  * Move along. Nothing to see here.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- * @version $Revision: 1.1 $
  */
 public class ShortDate extends Date implements CloneableType {
     /**

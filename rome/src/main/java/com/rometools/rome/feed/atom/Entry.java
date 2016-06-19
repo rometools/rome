@@ -32,10 +32,6 @@ import com.rometools.utils.Lists;
 
 /**
  * Bean for entry elements of Atom feeds.
- * <p>
- *
- * @author Alejandro Abdelnur
- * @author Dave Johnson (updated for Atom 1.0)
  */
 public class Entry implements Cloneable, Serializable, Extendable {
 

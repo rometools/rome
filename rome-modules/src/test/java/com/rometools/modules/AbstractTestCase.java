@@ -26,8 +26,6 @@ import junit.framework.TestCase;
 
 /**
  * Abstract base class for test cases.
- *
- * @author <a href="jason@zenplex.com">Jason van Zyl</a>
  */
 public abstract class AbstractTestCase extends TestCase {
     /**

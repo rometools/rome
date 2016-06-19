@@ -22,8 +22,6 @@ import com.rometools.rome.feed.atom.Link;
 
 /**
  * Provides access to A9 Open Search information.
- *
- * @author Michael W. Nassif (enrouteinc@gmail.com)
  */
 public interface OpenSearchResponse {
 

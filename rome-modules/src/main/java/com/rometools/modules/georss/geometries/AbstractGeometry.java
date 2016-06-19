@@ -19,8 +19,6 @@ import java.io.Serializable;
 
 /**
  * Abstract base class for geometries.
- *
- * @author runaas
  */
 public abstract class AbstractGeometry implements Cloneable, Serializable {
 

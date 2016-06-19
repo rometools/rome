@@ -44,8 +44,6 @@ package com.rometools.modules.activitystreams.types;
  * content.</dd>
  * </dl>
  * </blockquote>
- *
- * @author robert.cooper
  */
 public class Article extends ActivityObject {
     /**

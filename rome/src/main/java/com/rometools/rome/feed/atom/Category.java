@@ -23,9 +23,6 @@ import com.rometools.utils.Alternatives;
 
 /**
  * Bean for category elements of Atom feeds.
- * <p>
- *
- * @author Dave Johnson (added for Atom 1.0)
  */
 public class Category implements Cloneable, Serializable {
 

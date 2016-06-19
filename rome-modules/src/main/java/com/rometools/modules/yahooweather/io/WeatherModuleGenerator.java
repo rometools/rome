@@ -31,9 +31,6 @@ import com.rometools.rome.io.ModuleGenerator;
 
 /**
  * The ModuleGenerator implementation for the Yahoo Weather plug in.
- *
- * @version $Revision: 1.3 $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class WeatherModuleGenerator implements ModuleGenerator {
     private static final Namespace NS = Namespace.getNamespace("yweather", YWeatherModule.URI);

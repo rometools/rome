@@ -30,11 +30,6 @@ import org.jdom2.Namespace;
 import com.rometools.rome.feed.WireFeed;
 import com.rometools.rome.io.impl.RSS20Parser;
 
-/**
- * @author Nathanial X. Freitas
- *
- *
- */
 public class RSS20YahooParser extends RSS20Parser {
     // the Yahoo Namespace URI they sometimes use in the returns for video.search.yahoo.com RSS feed
     private static final String RSS_URI = "urn:yahoo:yn";

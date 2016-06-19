@@ -52,8 +52,6 @@ package com.rometools.modules.activitystreams.types;
  * number giving the rating.</dd>
  * </dl>
  * </blockquote>
- *
- * @author robert.cooper
  */
 public class Review extends ActivityObject {
 

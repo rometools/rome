@@ -42,8 +42,6 @@ package com.rometools.modules.activitystreams.types;
  * longitude in degrees.</dd>
  * </dl>
  * </blockquote>
- *
- * @author robert.cooper
  */
 public class Place extends ActivityObject {
 

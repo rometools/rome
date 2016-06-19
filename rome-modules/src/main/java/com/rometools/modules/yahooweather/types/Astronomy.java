@@ -29,9 +29,6 @@ import com.rometools.rome.feed.impl.ToStringBean;
  * <li>sunset today's sunset time. The time is a string in a local time format of "h:mm am/pm", for
  * example "4:51 pm" (string)</li>
  * </ul>
- *
- * @version $Id: Astronomy.java,v 1.2 2008/01/22 14:50:05 kebernet Exp $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Astronomy implements Serializable, Cloneable {
     /**

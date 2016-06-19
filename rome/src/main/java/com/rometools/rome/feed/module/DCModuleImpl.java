@@ -34,8 +34,6 @@ import com.rometools.utils.Lists;
  * <p>
  *
  * @see <a href="http://web.resource.org/rss/1.0/modules/dc/">Dublin Core module</a>.
- * @author Alejandro Abdelnur
- *
  */
 public class DCModuleImpl extends ModuleImpl implements DCModule {
 

@@ -27,9 +27,6 @@ import java.net.URL;
 
 /**
  * This class contains information for iTunes podcast feeds that exist at the Item level.
- *
- * @version $Revision: 1.2 $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class EntryInformationImpl extends AbstractITunesObject implements EntryInformation {
     /**

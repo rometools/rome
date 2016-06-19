@@ -22,10 +22,6 @@ import com.rometools.rome.feed.impl.ObjectBean;
 
 /**
  * Bean for images of RSS feeds.
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public class Image implements Cloneable, Serializable {
     private static final long serialVersionUID = 1L;

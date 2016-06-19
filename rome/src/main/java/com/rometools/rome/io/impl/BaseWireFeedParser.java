@@ -32,9 +32,6 @@ import com.rometools.rome.feed.module.Extendable;
 import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.io.WireFeedParser;
 
-/**
- * @author Alejandro Abdelnur
- */
 public abstract class BaseWireFeedParser implements WireFeedParser {
     /**
      * [TYPE].feed.ModuleParser.classes= [className] ...

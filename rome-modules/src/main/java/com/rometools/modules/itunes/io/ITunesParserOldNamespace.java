@@ -18,10 +18,6 @@ package com.rometools.modules.itunes.io;
 
 import org.jdom2.Namespace;
 
-/**
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- */
 public class ITunesParserOldNamespace extends ITunesParser {
     String URI = "http://www.itunes.com/DTDs/Podcast-1.0.dtd";
 

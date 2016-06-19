@@ -18,9 +18,6 @@ package com.rometools.modules.base;
 
 /**
  * This class represents a custom tag name and value.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- * @version $Revision: 1.2 $
  */
 public interface CustomTag {
 

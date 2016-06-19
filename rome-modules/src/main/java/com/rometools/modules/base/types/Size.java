@@ -19,9 +19,6 @@ import java.util.StringTokenizer;
 
 /**
  * Represents the size on an item in 2 or 3 dimensions.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- * @version $Revision: 1.2 $
  */
 public class Size implements CloneableType {
     /**

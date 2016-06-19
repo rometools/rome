@@ -24,10 +24,6 @@ import java.util.Locale;
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.io.impl.DateParser;
 
-/**
- * @author pat
- *
- */
 public class TestSyndFeedRSS091N extends SyndFeedTest {
 
     public TestSyndFeedRSS091N() {

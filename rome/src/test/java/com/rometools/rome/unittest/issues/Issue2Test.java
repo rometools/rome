@@ -22,10 +22,6 @@ import java.util.List;
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.unittest.TestSyndFeedRSS094;
 
-/**
- *
- * @author robert.cooper
- */
 public class Issue2Test extends TestSyndFeedRSS094 {
 
     @Override

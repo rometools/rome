@@ -19,8 +19,6 @@ package com.rometools.modules.georss.geometries;
  * Envelope, a bounding box spanned by an upper right and lower left corner point. Note that if the
  * box spans the -180 180 degree meridian the numerical value of the minLongitude may be greater
  * than the maxLongitude.
- *
- * @author runaas
  */
 public class Envelope extends AbstractGeometry {
     /**

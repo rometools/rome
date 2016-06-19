@@ -43,8 +43,6 @@ package com.rometools.modules.activitystreams.types;
  * Media Link Construct].</dd>
  * </dl>
  * </blockquote>
- *
- * @author robert.cooper
  */
 public class Photo extends ActivityObject {
 

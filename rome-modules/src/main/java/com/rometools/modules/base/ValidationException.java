@@ -19,9 +19,6 @@ package com.rometools.modules.base;
 /**
  * This is an unchecked exception that is thrown when a data value violates the Google Schema
  * limits.
- *
- * @version $Revision: 1.1 $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class ValidationException extends RuntimeException {
 

@@ -16,10 +16,6 @@
  */
 package com.rometools.modules.activitystreams.types;
 
-/**
- *
- * @author robert.cooper
- */
 public enum Verb {
     /**
      * The "mark as favorite" Verb indicates that the Subject marked the Object as an item of

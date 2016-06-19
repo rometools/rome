@@ -30,8 +30,6 @@ package com.rometools.modules.activitystreams.types;
  * <p>
  * A playlist has no additional components.
  * </p>
- *
- * @author robert.cooper
  */
 public class Playlist extends ActivityObject {
 

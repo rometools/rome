@@ -34,10 +34,6 @@ import org.slf4j.LoggerFactory;
 import com.rometools.modules.content.ContentItem;
 import com.rometools.modules.content.ContentModule;
 
-/**
- * @version $Revision: 1.2 $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- */
 public class ContentModuleGenerator implements com.rometools.rome.io.ModuleGenerator {
 
     private static final Logger LOG = LoggerFactory.getLogger(ContentModuleGenerator.class);

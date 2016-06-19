@@ -22,9 +22,6 @@ import java.net.URL;
 
 /**
  * This interface contains the methods common to all iTunes module points.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- * @version $Revision: 1.3 $
  */
 public interface ITunes extends Module {
 

@@ -54,8 +54,6 @@ import com.rometools.rome.feed.impl.ObjectBean;
  * "element" attribute as the human-readable name. The "label" attribute is required if the
  * "element" attribute is omitted.&nbsp;&nbsp;</li>
  * </ul>
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Group implements Serializable, Cloneable {
     private static final long serialVersionUID = 1L;

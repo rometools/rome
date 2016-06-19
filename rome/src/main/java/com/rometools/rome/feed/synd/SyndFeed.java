@@ -30,10 +30,6 @@ import com.rometools.rome.feed.module.Module;
  * Bean interface for all types of feeds.
  * <p>
  * It handles all RSS versions and Atom 0.3, it normalizes all info, it may lose information.
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 

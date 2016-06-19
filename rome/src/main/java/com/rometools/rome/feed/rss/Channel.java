@@ -34,10 +34,6 @@ import com.rometools.utils.Lists;
  * <p>
  * It handles all RSS versions (0.9, 0.91, 0.92, 0.93, 0.94, 1.0 and 2.0) without losing
  * information.
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public class Channel extends WireFeed {
 

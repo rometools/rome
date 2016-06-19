@@ -37,7 +37,6 @@ import com.rometools.rome.io.SyndFeedOutput;
  * SleEntry objects on the items.
  * </p>
  *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  * @see SleEntry
  */
 public final class SleUtility {

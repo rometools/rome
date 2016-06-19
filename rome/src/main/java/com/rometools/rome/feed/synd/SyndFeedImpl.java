@@ -46,10 +46,6 @@ import com.rometools.utils.Lists;
  * <p>
  * It handles all RSS versions, Atom 0.3 and Atom 1.0, it normalizes all info, it may lose
  * information.
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public class SyndFeedImpl implements Serializable, SyndFeed {
 

@@ -17,8 +17,6 @@ package com.rometools.modules.georss.geometries;
 
 /**
  * Linear object constructed by linear interpolation between points
- *
- * @author runaas
  */
 public final class LineString extends AbstractCurve {
     /**

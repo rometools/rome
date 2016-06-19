@@ -24,9 +24,6 @@ import com.rometools.rome.feed.module.SyModule;
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.io.impl.DateParser;
 
-/**
- * @author pat
- */
 public class TestSyndFeedAtom03DCSyModules extends TestSyndFeedAtom03 {
 
     public TestSyndFeedAtom03DCSyModules() {

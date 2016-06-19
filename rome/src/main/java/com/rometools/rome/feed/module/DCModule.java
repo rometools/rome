@@ -24,8 +24,6 @@ import java.util.List;
  * <p>
  *
  * @see <a href="http://web.resource.org/rss/1.0/modules/dc/">Dublin Core module</a>.
- * @author Alejandro Abdelnur
- *
  */
 public interface DCModule extends Module {
 

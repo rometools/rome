@@ -29,11 +29,6 @@ import com.rometools.modules.cc.types.License;
 import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.io.ModuleParser;
 
-/**
- *
- * @version $Revision: 1.3 $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- */
 public class ModuleParserRSS2 implements ModuleParser {
 
     private static final Namespace NS = Namespace.getNamespace(CreativeCommonsImpl.RSS2_URI);

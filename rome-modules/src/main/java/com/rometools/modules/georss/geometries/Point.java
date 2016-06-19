@@ -17,8 +17,6 @@ package com.rometools.modules.georss.geometries;
 
 /**
  * Point object, contains a position
- *
- * @author runaas
  */
 public final class Point extends AbstractGeometricPrimitive {
     /**

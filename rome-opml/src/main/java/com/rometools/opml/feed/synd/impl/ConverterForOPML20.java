@@ -18,9 +18,6 @@ package com.rometools.opml.feed.synd.impl;
 import com.rometools.rome.feed.WireFeed;
 import com.rometools.rome.feed.synd.SyndFeed;
 
-/**
- * @author cooper
- */
 public class ConverterForOPML20 extends ConverterForOPML10 {
 
     /**

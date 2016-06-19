@@ -20,9 +20,6 @@ import java.util.Date;
 /**
  * This is an interface for the GoogleBase plug in that exposes methods used for Scholarly
  * publication, research studies and reference materials.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- * @version $Revision: 1.2 $
  */
 public interface ScholarlyArticle extends GlobalInterface {
     /**

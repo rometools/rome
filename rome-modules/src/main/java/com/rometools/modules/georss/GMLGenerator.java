@@ -39,10 +39,6 @@ import com.rometools.rome.io.ModuleGenerator;
 
 /**
  * GMLGenerator produces georss elements in georss GML format.
- *
- * @author Marc Wick
- * @version $Id: GMLGenerator.java,v 1.1 2007/04/18 09:59:29 marcwick Exp $
- *
  */
 public class GMLGenerator implements ModuleGenerator {
 

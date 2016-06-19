@@ -24,10 +24,6 @@ import org.slf4j.LoggerFactory;
 
 import com.rometools.modules.activitystreams.types.Verb;
 
-/**
- *
- * @author robert.cooper
- */
 public class VerbTest extends TestCase {
 
     private static final Logger LOG = LoggerFactory.getLogger(VerbTest.class);

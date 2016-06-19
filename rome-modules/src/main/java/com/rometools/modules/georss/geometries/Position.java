@@ -19,8 +19,6 @@ import java.io.Serializable;
 
 /**
  * A two dimensional position represented by latitude and longitude decimal degrees in WGS84
- *
- * @author runaas
  */
 public class Position implements Cloneable, Serializable {
     /**

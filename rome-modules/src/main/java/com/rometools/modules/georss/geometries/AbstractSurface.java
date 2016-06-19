@@ -17,8 +17,6 @@ package com.rometools.modules.georss.geometries;
 
 /**
  * Abstract base class for surface (area) objects
- *
- * @author runaas
  */
 public abstract class AbstractSurface extends AbstractGeometricPrimitive {
 

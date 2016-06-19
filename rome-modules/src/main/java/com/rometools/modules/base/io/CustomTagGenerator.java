@@ -35,10 +35,6 @@ import com.rometools.modules.base.types.ShortDate;
 import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.io.ModuleGenerator;
 
-/**
- * @version $Revision: 1.1 $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- */
 public class CustomTagGenerator implements ModuleGenerator {
 
     static final HashSet<Namespace> NAMESPACES = new HashSet<Namespace>();

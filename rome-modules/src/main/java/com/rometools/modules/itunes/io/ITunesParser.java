@@ -38,10 +38,6 @@ import com.rometools.modules.itunes.types.Subcategory;
 import com.rometools.rome.io.ModuleParser;
 import com.rometools.rome.io.WireFeedParser;
 
-/**
- * @version $Revision: 1.10 $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- */
 public class ITunesParser implements ModuleParser {
 
     private static final Logger LOG = LoggerFactory.getLogger(ITunesParser.class);

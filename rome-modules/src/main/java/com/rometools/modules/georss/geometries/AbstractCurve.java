@@ -16,8 +16,6 @@ package com.rometools.modules.georss.geometries;
 
 /**
  * Abstract base class for Curves (linear objects)
- *
- * @author runaas
  */
 public abstract class AbstractCurve extends AbstractGeometricPrimitive {
 

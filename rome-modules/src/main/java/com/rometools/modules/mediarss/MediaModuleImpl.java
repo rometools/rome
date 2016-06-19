@@ -32,8 +32,6 @@ import com.rometools.rome.feed.module.ModuleImpl;
 /**
  *
  * This class represents feed/channel level elements for MediaRSS
- *
- * @author cooper
  */
 public class MediaModuleImpl extends ModuleImpl implements MediaModule, Serializable {
     private static final long serialVersionUID = 1L;

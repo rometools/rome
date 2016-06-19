@@ -35,10 +35,6 @@ import com.rometools.modules.photocast.types.PhotoDate;
 import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.io.ModuleParser;
 
-/**
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- */
 public class Parser implements ModuleParser {
 
     private static final Logger LOG = LoggerFactory.getLogger(Parser.class);

@@ -30,10 +30,6 @@ import com.rometools.modules.cc.types.License.Behaviour;
 import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.io.ModuleParser;
 
-/**
- * @version $Revision: 1.3 $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- */
 public class ModuleParserRSS1 implements ModuleParser {
 
     private static final Namespace NS = Namespace.getNamespace(CreativeCommonsImpl.RSS1_URI);

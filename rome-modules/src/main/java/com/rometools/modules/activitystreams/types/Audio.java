@@ -40,8 +40,6 @@ package com.rometools.modules.activitystreams.types;
  * for the audio stream. Represented in JSON as a property called <tt>embedCode</tt> whose value is
  * a JSON string containing the fragment of HTML.</dd>
  * </dl>
- *
- * @author robert.cooper
  */
 public class Audio extends ActivityObject {
     /**

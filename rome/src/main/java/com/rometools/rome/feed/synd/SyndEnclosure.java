@@ -17,9 +17,6 @@ package com.rometools.rome.feed.synd;
 
 import com.rometools.rome.feed.CopyFrom;
 
-/**
- * @author Alejandro Abdelnur
- */
 public interface SyndEnclosure extends Cloneable, CopyFrom {
     /**
      * Returns the enclosure URL.

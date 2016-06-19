@@ -19,8 +19,6 @@ import java.io.Serializable;
 
 /**
  * Abstract base class for rings (closed linear objects used for polygon borders)
- *
- * @author runaas
  */
 public abstract class AbstractRing implements Cloneable, Serializable {
 

@@ -21,9 +21,6 @@ import java.util.Date;
 
 /**
  * This is an interface representing the universals.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- * @version $Revision: 1.2 $
  */
 public interface GlobalInterface extends Serializable {
     /**

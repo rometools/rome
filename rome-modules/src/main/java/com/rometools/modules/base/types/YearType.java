@@ -20,9 +20,6 @@ import java.util.Date;
 
 /**
  * This class represents a simple 4 digit year.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- * @version $Revision: 1.1 $
  */
 public class YearType implements CloneableType {
     /**

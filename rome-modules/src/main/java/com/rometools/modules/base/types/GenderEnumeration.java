@@ -17,9 +17,6 @@ package com.rometools.modules.base.types;
 
 /**
  * Simple enumeration for Genders.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- * @version $Revision: 1.1 $
  */
 public class GenderEnumeration implements CloneableType {
     /** Men */

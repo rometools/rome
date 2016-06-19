@@ -37,10 +37,6 @@ import com.rometools.utils.Lists;
  * <p>
  * For RSS1.0 it supports Dublin Core and Syndication modules. Note that those modules currently
  * support simple syntax format only.
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public class Item implements Cloneable, Serializable, Extendable {
 

@@ -38,8 +38,6 @@ package com.rometools.modules.activitystreams.types;
  * MAY ignore thumbnails that are of an inappropriate size for their user interface.</dd>
  * </dl>
  * </blockquote>
- *
- * @author robert.cooper
  */
 public class PhotoAlbum extends ActivityObject {
 

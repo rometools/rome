@@ -27,9 +27,6 @@ import com.rometools.rome.feed.impl.ToStringBean;
  * <li>region: state, territory, or region, if given (string)</li>
  * <li>country: two-character country code. (string)</li>
  * </ul>
- *
- * @version $Id: Location.java,v 1.2 2008/01/22 14:50:05 kebernet Exp $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Location implements Serializable, Cloneable {
     /**

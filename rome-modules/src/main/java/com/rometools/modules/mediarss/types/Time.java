@@ -30,8 +30,6 @@ import com.rometools.rome.feed.impl.EqualsBean;
 /**
  * Represents a <a href="http://www.ietf.org/rfc/rfc2326.txt">RFC 2326 3.6 Normal Play Time</a>
  * timestamp.
- *
- * @author cooper
  */
 public class Time implements Serializable {
     private static final long serialVersionUID = 1L;

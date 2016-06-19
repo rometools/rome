@@ -19,10 +19,6 @@ package com.rometools.modules.slash;
 import com.rometools.rome.feed.CopyFrom;
 import com.rometools.rome.feed.impl.EqualsBean;
 
-/**
- * @version $Revision: 1.2 $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- */
 public class SlashImpl implements Slash {
 
     private static final long serialVersionUID = 1L;

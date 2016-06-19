@@ -21,10 +21,6 @@ import com.rometools.rome.feed.module.Extendable;
 
 /**
  * Bean interface for authors and contributors of SyndFeedImpl feeds and entries.
- * <p>
- *
- * @author Dave Johnson
- *
  */
 public interface SyndPerson extends Cloneable, Extendable {
 

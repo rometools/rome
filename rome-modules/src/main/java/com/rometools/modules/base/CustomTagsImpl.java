@@ -21,10 +21,6 @@ import java.util.List;
 
 import com.rometools.rome.feed.CopyFrom;
 
-/**
- * @version $Revision: 1.1 $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- */
 public class CustomTagsImpl implements CustomTags {
 
     private static final long serialVersionUID = 1L;

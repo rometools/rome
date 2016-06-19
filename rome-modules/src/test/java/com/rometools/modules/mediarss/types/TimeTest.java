@@ -30,10 +30,6 @@ import org.slf4j.LoggerFactory;
 
 import com.rometools.modules.mediarss.types.Time;
 
-/**
- *
- * @author cooper
- */
 public class TimeTest extends TestCase {
 
     private static final Logger LOG = LoggerFactory.getLogger(TimeTest.class);

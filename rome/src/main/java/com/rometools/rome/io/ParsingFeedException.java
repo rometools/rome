@@ -20,9 +20,6 @@ import org.jdom2.input.JDOMParseException;
 
 /**
  * Exception thrown by WireFeedInput instance if it can not parse a feed.
- *
- * @author Elaine Chien
- *
  */
 public class ParsingFeedException extends FeedException {
 

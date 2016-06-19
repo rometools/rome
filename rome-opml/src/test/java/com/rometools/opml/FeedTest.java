@@ -30,10 +30,6 @@ import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.WireFeedInput;
 
-/**
- * @author pat, tucu
- *
- */
 public abstract class FeedTest extends TestCase {
 
     private final String fileName;

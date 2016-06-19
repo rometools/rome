@@ -33,10 +33,6 @@ import com.rometools.rome.io.WireFeedParser;
  * <p>
  * Parsers for a specific type must extend this class and register in the parser list. (Right now
  * registration is hardcoded in the WireFeedParser constructor).
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public class FeedParsers extends PluginManager<WireFeedParser> {
 

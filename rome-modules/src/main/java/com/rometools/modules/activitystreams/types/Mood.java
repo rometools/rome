@@ -35,8 +35,6 @@ package com.rometools.modules.activitystreams.types;
  * icon image. The mood icon image SHOULD be small and appropriate to be displayed alongside the
  * mood keyword at a normal text size.
  * </p>
- *
- * @author robert.cooper
  */
 public class Mood {
     private String iconUrl;

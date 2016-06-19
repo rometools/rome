@@ -19,9 +19,6 @@ import java.util.HashMap;
 
 /**
  * This class represents a specific shipping option for an item.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- * @version $Revision: 1.1 $
  */
 public class ShippingType implements CloneableType {
     /**

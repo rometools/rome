@@ -36,10 +36,6 @@ import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.SyndFeedOutput;
 
-/**
- *
- * @author cooper
- */
 public class GeneratorTest extends AbstractTestCase {
 
     private static final Logger LOG = LoggerFactory.getLogger(GeneratorTest.class);

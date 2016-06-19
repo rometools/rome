@@ -19,9 +19,6 @@ package com.rometools.rome.io;
 /**
  * Exception thrown by WireFeedInput, WireFeedOutput, WireFeedParser and WireFeedGenerator instances
  * if they can not parse or generate a feed.
- *
- * @author Alejandro Abdelnur
- *
  */
 public class FeedException extends Exception {
 

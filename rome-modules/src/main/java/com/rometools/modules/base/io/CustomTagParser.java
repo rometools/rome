@@ -40,10 +40,6 @@ import com.rometools.modules.base.types.ShortDate;
 import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.io.ModuleParser;
 
-/**
- * @version $Revision: 1.4 $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- */
 public class CustomTagParser implements ModuleParser {
 
     private static final Logger LOG = LoggerFactory.getLogger(CustomTagParser.class);

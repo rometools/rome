@@ -31,10 +31,6 @@ import com.rometools.modules.content.ContentItem;
 import com.rometools.modules.content.ContentModule;
 import com.rometools.modules.content.ContentModuleImpl;
 
-/**
- * @version $Revision: 1.3 $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- */
 public class ContentModuleParser implements com.rometools.rome.io.ModuleParser {
     private static final Namespace CONTENT_NS = Namespace.getNamespace("content", ContentModule.URI);
     private static final Namespace RDF_NS = Namespace.getNamespace("rdf", ContentModule.RDF_URI);

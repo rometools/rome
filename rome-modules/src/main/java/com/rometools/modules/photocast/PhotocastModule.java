@@ -26,8 +26,6 @@ import com.rometools.rome.feed.module.Module;
  * namespace.
  *
  * See the package information for example usage.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public interface PhotocastModule extends Module {
     /**

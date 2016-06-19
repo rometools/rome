@@ -32,10 +32,6 @@ import com.rometools.modules.sle.types.Group;
 import com.rometools.modules.sle.types.Sort;
 import com.rometools.rome.feed.module.Module;
 
-/**
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- */
 public class ModuleParser implements com.rometools.rome.io.ModuleParser {
 
     private static final Logger LOG = LoggerFactory.getLogger(ModuleParser.class);

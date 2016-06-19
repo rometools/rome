@@ -27,10 +27,6 @@ import org.slf4j.LoggerFactory;
 import com.rometools.rome.feed.impl.EqualsBean;
 import com.rometools.rome.feed.impl.ToStringBean;
 
-/**
- * @version $Revision: 1.1 $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- */
 public class License {
 
     private static final String CC_START = "http://creativecommons.org/licenses/";

@@ -29,9 +29,6 @@ import com.rometools.rome.io.ModuleParser;
 
 /**
  * ModuleParser implementation for Slash RSS.
- *
- * @version $Revision: 1.3 $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class SlashModuleParser implements ModuleParser {
 

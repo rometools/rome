@@ -24,9 +24,6 @@ import com.rometools.rome.io.impl.NumberParser;
 /**
  * An encapsulation of the duration of a podcast. This will serialize (via .toString()) to HH:MM:SS
  * format, and can parse [H]*H:[M]*M:[S]*S or [M]*M:[S]*S.
- *
- * @version $Revision: 1.7 $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Duration implements Serializable {
     /**

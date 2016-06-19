@@ -29,10 +29,6 @@ import java.util.List;
  * Collections, bean-like objects and multi-dimensional arrays of any of them.
  * <p>
  * The hashcode is calculated by getting the hashcode of the Bean String representation.
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public class EqualsBean implements Serializable {
 

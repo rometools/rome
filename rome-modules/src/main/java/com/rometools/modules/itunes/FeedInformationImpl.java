@@ -29,9 +29,6 @@ import com.rometools.rome.feed.CopyFrom;
 
 /**
  * This class contains information for iTunes podcast feeds that exist at the Channel level.
- *
- * @version $Revision: 1.2 $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class FeedInformationImpl extends AbstractITunesObject implements FeedInformation {
 

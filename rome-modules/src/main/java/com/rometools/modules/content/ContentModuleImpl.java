@@ -23,10 +23,6 @@ import java.util.List;
 import com.rometools.rome.feed.CopyFrom;
 import com.rometools.rome.feed.module.ModuleImpl;
 
-/**
- * @version $Revision: 1.4 $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- */
 public class ContentModuleImpl extends ModuleImpl implements ContentModule {
 
     private static final long serialVersionUID = 1L;

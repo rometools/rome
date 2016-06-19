@@ -23,9 +23,6 @@ import org.jdom2.Element;
 /**
  * Feed Generator for RSS 0.91
  * <p/>
- *
- * @author Elaine Chien
- *
  */
 public class RSS091NetscapeGenerator extends RSS091UserlandGenerator {
 

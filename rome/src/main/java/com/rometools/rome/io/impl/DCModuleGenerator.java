@@ -36,9 +36,6 @@ import com.rometools.rome.io.ModuleGenerator;
 /**
  * Feed Generator for DublinCore Module.
  * <p/>
- *
- * @author Elaine Chien
- *
  */
 public class DCModuleGenerator implements ModuleGenerator {
 

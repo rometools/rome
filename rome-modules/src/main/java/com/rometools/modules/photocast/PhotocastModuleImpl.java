@@ -24,10 +24,6 @@ import com.rometools.rome.feed.CopyFrom;
 import com.rometools.rome.feed.impl.EqualsBean;
 import com.rometools.rome.feed.impl.ToStringBean;
 
-/**
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- */
 public class PhotocastModuleImpl implements PhotocastModule {
     /**
      *

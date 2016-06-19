@@ -20,10 +20,6 @@ import java.util.List;
 
 import com.rometools.rome.feed.module.Module;
 
-/**
- * @version $Revision: 1.1 $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- */
 public interface CustomTags extends Module {
 
     public static final String URI = "http://base.google.com/cns/1.0";

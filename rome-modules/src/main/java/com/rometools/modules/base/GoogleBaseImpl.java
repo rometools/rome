@@ -39,9 +39,6 @@ import com.rometools.rome.feed.impl.EqualsBean;
 
 /**
  * This is the implementation class for the GoogleBase module interface.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- * @version $Revision: 1.2 $
  */
 public class GoogleBaseImpl implements GoogleBase {
     /**

@@ -49,8 +49,6 @@ package com.rometools.modules.activitystreams.types;
  * all HTML markup and consider the comment to be plain text.</dd>
  * </dl>
  * </blockquote>
- *
- * @author robert.cooper
  */
 public class Comment extends ActivityObject {
 

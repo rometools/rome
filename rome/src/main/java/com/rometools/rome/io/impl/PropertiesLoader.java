@@ -39,10 +39,6 @@ import com.rometools.rome.feed.impl.ConfigurableClassLoader;
  * Current use cases (plugin manager for parsers/converters/generators for feeds
  * and modules and date formats) assume properties are list of tokens, that why
  * the only method to get property values is the getTokenizedProperty().
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public class PropertiesLoader {
 

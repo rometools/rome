@@ -17,10 +17,6 @@
 
 package com.rometools.modules.portablecontacts;
 
-/**
- *
- * @author robert.cooper
- */
 public interface ContactModule {
 
 }

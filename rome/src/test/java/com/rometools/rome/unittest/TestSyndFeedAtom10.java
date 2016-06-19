@@ -26,11 +26,6 @@ import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndLink;
 import com.rometools.rome.io.impl.DateParser;
 
-/**
- * @author pat
- * @author Dave Johnson (modified for Atom 1.0)
- *
- */
 public class TestSyndFeedAtom10 extends TestSyndFeedAtom03 {
 
     public TestSyndFeedAtom10() {

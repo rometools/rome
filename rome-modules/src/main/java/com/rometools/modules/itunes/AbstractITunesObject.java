@@ -21,9 +21,6 @@ import java.net.URL;
 /**
  * This is an abstract object that implements the attributes common across Feeds or Items in an
  * iTunes compatible RSS feed.
- *
- * @version $Revision: 1.4 $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneable {
     /**

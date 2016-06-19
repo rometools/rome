@@ -23,10 +23,6 @@ import com.rometools.rome.feed.CopyFrom;
 import com.rometools.rome.feed.impl.EqualsBean;
 import com.rometools.rome.feed.impl.ToStringBean;
 
-/**
- * @version $Revision: 1.1 $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- */
 public class CreativeCommonsImpl implements CreativeCommons {
 
     private static final long serialVersionUID = 1L;

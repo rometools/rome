@@ -24,9 +24,6 @@ import com.rometools.modules.base.types.ShippingType;
 
 /**
  * This is an interface for the GoogleBase plug in that exposes methods used for Event entry types.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- * @version $Revision: 1.1 $
  */
 public interface Event extends GlobalInterface {
     /**

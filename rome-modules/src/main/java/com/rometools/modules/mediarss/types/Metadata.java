@@ -55,8 +55,6 @@ import com.rometools.rome.feed.impl.ToStringBean;
  * The priority level is listed from strongest to weakest: &lt;media:content&gt;,
  * &lt;media:group&gt;, &lt;item&gt;, &lt;channel&gt;.
  * </p>
- *
- * @author cooper
  */
 public class Metadata implements Cloneable, Serializable {
     private static final long serialVersionUID = 1L;

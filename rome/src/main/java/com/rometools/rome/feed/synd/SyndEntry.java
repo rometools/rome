@@ -27,10 +27,6 @@ import com.rometools.rome.feed.module.Module;
 
 /**
  * Bean interface for entries of SyndFeedImpl feeds.
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public interface SyndEntry extends Cloneable, CopyFrom, Extendable {
 

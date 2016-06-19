@@ -35,8 +35,6 @@ package com.rometools.modules.activitystreams.types;
  * <p>
  * A song has no additional components.
  * </p>
- *
- * @author robert.cooper
  */
 public class Song extends ActivityObject {
     /**

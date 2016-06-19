@@ -19,8 +19,6 @@ import java.io.Serializable;
 
 /**
  * A list of geographic positions, latitude, longitude decimal degrees WGS84
- *
- * @author runaas
  */
 public class PositionList implements Cloneable, Serializable {
     /**

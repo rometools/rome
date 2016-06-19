@@ -24,9 +24,6 @@ import com.rometools.modules.base.types.YearType;
 
 /**
  * This is an interface for the GoogleBase plug in that exposes methods used for vehicles.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- * @version $Revision: 1.1 $
  */
 public interface Vehicle extends GlobalInterface {
     /**
