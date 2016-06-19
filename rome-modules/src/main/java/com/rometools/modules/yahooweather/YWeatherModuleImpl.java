@@ -39,8 +39,6 @@ public class YWeatherModuleImpl extends ModuleImpl implements YWeatherEntryModul
     private Wind wind;
     private Forecast[] forecasts;
 
-    /**
-     */
     public YWeatherModuleImpl() {
         super(YWeatherModuleImpl.class, YWeatherModule.URI);
     }

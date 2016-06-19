@@ -46,8 +46,6 @@ public class Time implements Serializable {
     private long milliseconds = 0;
 
     /**
-     * Creates a new instance of Time
-     *
      * @param milliseconds milliseconds in length or offset.
      */
     public Time(final long milliseconds) {
@@ -55,8 +53,6 @@ public class Time implements Serializable {
     }
 
     /**
-     * Creates a new instance of Time
-     *
      * @param value <a href="http://www.ietf.org/rfc/rfc2326.txt">RFC 2326 3.6 Normal Play Time</a>
      *            value
      */

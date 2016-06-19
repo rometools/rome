@@ -30,11 +30,6 @@ public class Description implements Cloneable, Serializable {
     private String type;
     private String value;
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public Description() {
         objBean = new ObjectBean(this.getClass(), this);
     }

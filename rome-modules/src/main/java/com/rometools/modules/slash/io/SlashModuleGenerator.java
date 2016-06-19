@@ -33,7 +33,6 @@ public class SlashModuleGenerator implements ModuleGenerator {
 
     private static final Namespace NAMESPACE = Namespace.getNamespace("slash", Slash.URI);
 
-    /** Creates a new instance of SlashModuleGenerator */
     public SlashModuleGenerator() {
     }
 

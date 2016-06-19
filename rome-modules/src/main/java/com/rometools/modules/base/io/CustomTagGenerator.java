@@ -43,7 +43,6 @@ public class CustomTagGenerator implements ModuleGenerator {
         NAMESPACES.add(CustomTagParser.NS);
     }
 
-    /** Creates a new instance of CustomTagGenerator */
     public CustomTagGenerator() {
     }
 

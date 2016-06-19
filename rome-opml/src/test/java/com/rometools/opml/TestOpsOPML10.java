@@ -30,7 +30,6 @@ import com.rometools.rome.feed.synd.SyndFeedImpl;
 
 public class TestOpsOPML10 extends FeedOpsTest {
 
-    /** Creates a new instance of TestOpsOPML10 */
     public TestOpsOPML10() {
         super("opml_1.0");
     }

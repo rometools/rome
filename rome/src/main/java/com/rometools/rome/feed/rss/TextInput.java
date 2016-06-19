@@ -32,11 +32,6 @@ public class TextInput implements Cloneable, Serializable {
     private String name;
     private String link;
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public TextInput() {
         objBean = new ObjectBean(this.getClass(), this);
     }

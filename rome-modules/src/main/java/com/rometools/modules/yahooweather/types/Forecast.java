@@ -43,9 +43,7 @@ import com.rometools.rome.feed.impl.ToStringBean;
  * @see ConditionCode
  */
 public class Forecast implements Serializable, Cloneable {
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
     private transient ToStringBean toString = new ToStringBean(Forecast.class, this);
     private transient EqualsBean equals = new EqualsBean(Forecast.class, this);
@@ -64,8 +62,6 @@ public class Forecast implements Serializable, Cloneable {
     }
 
     /**
-     * Constructs a new Forecast object.
-     *
      * @param day day of the week to which this forecast applies. Possible values are Mon Tue Wed
      *            Thu Fri Sat Sun (string)
      * @param date the date to which this forecast applies

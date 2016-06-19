@@ -94,8 +94,6 @@ public class Sort implements Serializable, Cloneable {
     private final boolean defaultOrder;
 
     /**
-     * Creates a new instance of Sort
-     *
      * @param namespace Namespace of the element
      * @param element Name of the element
      * @param dataType data-type of the element

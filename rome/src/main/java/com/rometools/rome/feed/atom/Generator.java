@@ -32,11 +32,6 @@ public class Generator implements Cloneable, Serializable {
     private String version;
     private String value;
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public Generator() {
         objBean = new ObjectBean(this.getClass(), this);
     }

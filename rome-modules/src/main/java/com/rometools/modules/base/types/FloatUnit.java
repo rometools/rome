@@ -73,8 +73,6 @@ public class FloatUnit implements CloneableType {
     }
 
     /**
-     * Creates a new instance of FloatUnit
-     *
      * @param value float value
      * @param units Units represented, or null.
      */

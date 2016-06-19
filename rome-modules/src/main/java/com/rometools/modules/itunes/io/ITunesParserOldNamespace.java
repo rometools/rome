@@ -21,7 +21,6 @@ import org.jdom2.Namespace;
 public class ITunesParserOldNamespace extends ITunesParser {
     String URI = "http://www.itunes.com/DTDs/Podcast-1.0.dtd";
 
-    /** Creates a new instance of ITunesParserOldNamespace */
     public ITunesParserOldNamespace() {
         super();
         super.ns = Namespace.getNamespace(URI);

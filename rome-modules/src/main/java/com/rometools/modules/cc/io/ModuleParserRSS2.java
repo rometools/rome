@@ -33,7 +33,6 @@ public class ModuleParserRSS2 implements ModuleParser {
 
     private static final Namespace NS = Namespace.getNamespace(CreativeCommonsImpl.RSS2_URI);
 
-    /** Creates a new instance of ModuleParserRSS2 */
     public ModuleParserRSS2() {
     }
 

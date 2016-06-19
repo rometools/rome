@@ -59,9 +59,6 @@ public class License {
     private final Behaviour[] permits;
     private final Behaviour[] requires;
 
-    /**
-     * Creates a new instance of License
-     */
     public License(final String uri, final Behaviour[] requires, final Behaviour[] permits) {
         this.requires = requires;
         this.permits = permits;

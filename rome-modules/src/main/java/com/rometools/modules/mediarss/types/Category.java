@@ -69,8 +69,6 @@ public class Category implements Serializable {
     private final String value;
 
     /**
-     * Creates a new instance of Category
-     *
      * @param scheme scheme used
      * @param label label for the category
      * @param value value of the category item
@@ -82,8 +80,6 @@ public class Category implements Serializable {
     }
 
     /**
-     * Creates a new Category.
-     *
      * @param value value of the category.
      */
     public Category(final String value) {

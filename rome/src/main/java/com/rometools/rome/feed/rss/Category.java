@@ -30,11 +30,6 @@ public class Category implements Cloneable, Serializable {
     private String domain;
     private String value;
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public Category() {
         objBean = new ObjectBean(this.getClass(), this);
     }

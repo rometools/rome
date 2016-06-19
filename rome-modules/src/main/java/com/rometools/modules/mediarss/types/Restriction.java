@@ -85,8 +85,6 @@ public class Restriction implements Serializable {
     private final Type type;
 
     /**
-     * Creates a new instance of Restriction
-     *
      * @param relationship a Restriction.Relationship object
      * @param type A Restriction.Type object
      * @param value a value for the restriction.

@@ -38,11 +38,6 @@ public class Link implements Cloneable, Serializable {
     private String title;
     private long length;
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public Link() {
         objBean = new ObjectBean(this.getClass(), this);
     }

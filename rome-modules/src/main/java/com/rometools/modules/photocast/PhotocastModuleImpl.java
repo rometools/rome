@@ -25,9 +25,7 @@ import com.rometools.rome.feed.impl.EqualsBean;
 import com.rometools.rome.feed.impl.ToStringBean;
 
 public class PhotocastModuleImpl implements PhotocastModule {
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
     private Date photoDate;
     private Date cropDate;
@@ -35,7 +33,6 @@ public class PhotocastModuleImpl implements PhotocastModule {
     private URL thumbnailUrl;
     private Metadata metadata;
 
-    /** Creates a new instance of PhotocastModuleImpl */
     public PhotocastModuleImpl() {
     }
 

@@ -34,7 +34,6 @@ public class ModuleGenerator implements com.rometools.rome.io.ModuleGenerator {
         NAMESPACES.add(ModuleParser.NS);
     }
 
-    /** Creates a new instance of ModuleGenerator */
     public ModuleGenerator() {
         super();
     }

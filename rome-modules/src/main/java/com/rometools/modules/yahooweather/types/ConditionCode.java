@@ -340,8 +340,6 @@ public class ConditionCode implements Serializable {
 
     /**
      * Text description of condition (from the table at top of class)
-     *
-     * @return
      */
     public String getDescription() {
         return description;

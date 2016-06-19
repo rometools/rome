@@ -31,8 +31,6 @@ public class DateTimeRange implements CloneableType {
     private Date start;
 
     /**
-     * Creates a new instance of DateTimeRange
-     *
      * @param start Beginning of the timeframe.
      * @param end End of the Timeframe.
      */

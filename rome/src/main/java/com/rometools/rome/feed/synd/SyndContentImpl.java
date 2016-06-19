@@ -50,11 +50,6 @@ public class SyndContentImpl implements Serializable, SyndContent {
         COPY_FROM_HELPER = new CopyFromHelper(SyndContent.class, basePropInterfaceMap, basePropClassImplMap);
     }
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public SyndContentImpl() {
         objBean = new ObjectBean(SyndContent.class, this);
     }

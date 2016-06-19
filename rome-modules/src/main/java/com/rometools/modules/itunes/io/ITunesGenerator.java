@@ -39,7 +39,6 @@ public class ITunesGenerator implements ModuleGenerator {
         NAMESPACES.add(NAMESPACE);
     }
 
-    /** Creates a new instance of ITunesGenerator */
     public ITunesGenerator() {
     }
 

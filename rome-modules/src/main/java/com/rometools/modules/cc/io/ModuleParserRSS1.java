@@ -35,9 +35,6 @@ public class ModuleParserRSS1 implements ModuleParser {
     private static final Namespace NS = Namespace.getNamespace(CreativeCommonsImpl.RSS1_URI);
     static final Namespace RDF = Namespace.getNamespace(CreativeCommonsImpl.RDF_URI);
 
-    /**
-     * Creates a new instance of ModuleParserRSS1
-     */
     public ModuleParserRSS1() {
     }
 

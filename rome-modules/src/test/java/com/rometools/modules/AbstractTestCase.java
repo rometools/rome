@@ -33,9 +33,6 @@ public abstract class AbstractTestCase extends TestCase {
      */
     public String basedir = System.getProperty("basedir") + "/src/test/resources";
 
-    /**
-     * Constructor.
-     */
     public AbstractTestCase(final String testName) {
         super(testName);
     }

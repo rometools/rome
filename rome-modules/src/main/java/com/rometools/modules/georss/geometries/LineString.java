@@ -19,13 +19,10 @@ package com.rometools.modules.georss.geometries;
  * Linear object constructed by linear interpolation between points
  */
 public final class LineString extends AbstractCurve {
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
     private PositionList posList;
 
-    /** Creates a new instance of LineString */
     public LineString() {
 
     }

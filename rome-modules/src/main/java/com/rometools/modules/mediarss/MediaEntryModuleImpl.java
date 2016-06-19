@@ -43,9 +43,6 @@ public class MediaEntryModuleImpl extends MediaModuleImpl implements MediaEntryM
     private MediaContent[] mediaContents = new MediaContent[0];
     private MediaGroup[] mediaGroups = new MediaGroup[0];
 
-    /**
-     * Creates a new instance.
-     */
     public MediaEntryModuleImpl() {
         super(MediaEntryModule.class, MediaModule.URI);
     }

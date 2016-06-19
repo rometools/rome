@@ -37,9 +37,7 @@ import com.rometools.rome.feed.impl.ToStringBean;
  * </ul>
  */
 public class Condition implements Serializable, Cloneable {
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
     private final EqualsBean equals = new EqualsBean(Condition.class, this);
     private final ToStringBean toString = new ToStringBean(Condition.class, this);
@@ -48,16 +46,11 @@ public class Condition implements Serializable, Cloneable {
     private int temperature;
     private Date date;
 
-    /**
-     * Simple constructor
-     */
     public Condition() {
         super();
     }
 
     /**
-     * Constructs a new Condition.
-     *
      * @param text a textual description of conditions, for example, "Partly Cloudy"
      * @param code the condition code for this forecast.
      * @param temperature the current temperature

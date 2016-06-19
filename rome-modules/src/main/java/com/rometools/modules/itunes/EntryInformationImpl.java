@@ -29,9 +29,7 @@ import java.net.URL;
  * This class contains information for iTunes podcast feeds that exist at the Item level.
  */
 public class EntryInformationImpl extends AbstractITunesObject implements EntryInformation {
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
 
     private static final Logger LOG = LoggerFactory.getLogger(EntryInformationImpl.class);
@@ -40,9 +38,6 @@ public class EntryInformationImpl extends AbstractITunesObject implements EntryI
     private boolean closedCaptioned;
     private Integer order;
 
-    /**
-     * Creates a new instance of EntryInformationImpl
-     */
     public EntryInformationImpl() {
     }
 

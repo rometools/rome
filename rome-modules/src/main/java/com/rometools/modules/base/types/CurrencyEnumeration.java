@@ -544,11 +544,6 @@ public class CurrencyEnumeration {
     // </xs:restriction>
     private final String value;
 
-    /**
-     * Creates a new instance of CurrencyEnumeration
-     *
-     * @param value DOCUMENT ME!
-     */
     private CurrencyEnumeration(final String value) {
         this.value = value;
         lookup.put(value, this);

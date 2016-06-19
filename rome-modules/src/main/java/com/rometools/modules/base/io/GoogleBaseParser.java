@@ -49,9 +49,6 @@ import com.rometools.modules.base.types.YearType;
 import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.io.ModuleParser;
 
-/**
- * DOCUMENT ME!
- */
 public class GoogleBaseParser implements ModuleParser {
 
     private static final Logger LOG = LoggerFactory.getLogger(GoogleBaseParser.class);
@@ -75,9 +72,6 @@ public class GoogleBaseParser implements ModuleParser {
         }
     }
 
-    /**
-     * Creates a new instance of GoogleBaseParser
-     */
     public GoogleBaseParser() {
         super();
     }

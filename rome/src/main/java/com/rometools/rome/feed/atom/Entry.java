@@ -56,11 +56,6 @@ public class Entry implements Cloneable, Serializable, Extendable {
     private String rights;
     private String xmlBase;
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public Entry() {
         objBean = new ObjectBean(this.getClass(), this);
     }

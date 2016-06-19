@@ -38,7 +38,6 @@ public class WeatherModuleGenerator implements ModuleGenerator {
     private static final SimpleDateFormat LONG_DATE = new SimpleDateFormat("EEE, d MMM yyyy h:mm a zzz", Locale.US);
     private static final SimpleDateFormat SHORT_DATE = new SimpleDateFormat("d MMM yyyy", Locale.US);
 
-    /** Creates a new instance of SlashModuleGenerator. */
     public WeatherModuleGenerator() {
     }
 

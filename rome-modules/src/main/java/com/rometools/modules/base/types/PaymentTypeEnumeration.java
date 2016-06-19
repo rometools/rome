@@ -32,7 +32,6 @@ public class PaymentTypeEnumeration {
     public static final PaymentTypeEnumeration PAYPAL = new PaymentTypeEnumeration("Paypal");
     private final String value;
 
-    /** Creates a new instance of PaymentTypeEnumeration */
     private PaymentTypeEnumeration(final String value) {
         this.value = value;
         lookup.put(this.value.toUpperCase(), this);

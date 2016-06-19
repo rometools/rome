@@ -36,9 +36,7 @@ import com.rometools.rome.feed.impl.ToStringBean;
  * (Celsius, kilometers, millibars, kilometers per hour).
  */
 public class Units implements Serializable, Cloneable {
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
     private transient ToStringBean toString = new ToStringBean(Units.class, this);
     private transient EqualsBean equals = new EqualsBean(Units.class, this);
@@ -55,8 +53,6 @@ public class Units implements Serializable, Cloneable {
     }
 
     /**
-     * Constructs a new Units object
-     *
      * @param temperature units of temp ("f" or "c");
      * @param distance units of distance ("mi" or "km")
      * @param pressure units of pressure ("in" or "mb")

@@ -89,8 +89,6 @@ public class Text implements Serializable {
     }
 
     /**
-     * Creates a new instance of Text
-     *
      * @param type type of text
      * @param value value of text
      */

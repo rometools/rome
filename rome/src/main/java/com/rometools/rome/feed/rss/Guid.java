@@ -30,11 +30,6 @@ public class Guid implements Cloneable, Serializable {
     private boolean permaLink;
     private String value;
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public Guid() {
         objBean = new ObjectBean(this.getClass(), this);
     }

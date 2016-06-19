@@ -87,11 +87,6 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
         IGNORE_PROPERTIES.add("rights");
     }
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public DCModuleImpl() {
         super(DCModule.class, URI);
         objBean = new ObjectBean(DCModule.class, this, CONVENIENCE_PROPERTIES);

@@ -32,11 +32,6 @@ public class Content implements Cloneable, Serializable {
     private String type;
     private String value;
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public Content() {
         objBean = new ObjectBean(this.getClass(), this);
     }

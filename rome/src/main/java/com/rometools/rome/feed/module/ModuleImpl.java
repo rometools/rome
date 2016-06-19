@@ -30,9 +30,6 @@ public abstract class ModuleImpl implements Cloneable, Serializable, Module {
     private final String uri;
 
     /**
-     * Constructor.
-     * <p>
-     *
      * @param uri URI of the module.
      *
      */

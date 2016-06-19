@@ -36,7 +36,7 @@ import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.io.impl.DateParser;
 
 public class ItemParser implements com.rometools.rome.io.ModuleParser {
-    /** Creates a new instance of ItemParser */
+
     public ItemParser() {
         super();
     }

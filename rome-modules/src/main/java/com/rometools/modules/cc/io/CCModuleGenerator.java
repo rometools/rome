@@ -45,9 +45,6 @@ public class CCModuleGenerator implements ModuleGenerator {
         NAMESPACES.add(RDF);
     }
 
-    /**
-     * Creates a new instance of CCModuleGenerator
-     */
     public CCModuleGenerator() {
         super();
     }

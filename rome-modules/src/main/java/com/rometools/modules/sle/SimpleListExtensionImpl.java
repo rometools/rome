@@ -30,7 +30,6 @@ public class SimpleListExtensionImpl extends ModuleImpl implements SimpleListExt
     private Group[] groupFields;
     private Sort[] sortFields;
 
-    /** Creates a new instance of SimpleListExtensionImpl */
     public SimpleListExtensionImpl() {
         super(SimpleListExtensionImpl.class, SimpleListExtension.URI);
     }

@@ -37,7 +37,6 @@ public class ContentItem implements Cloneable {
     private List<Namespace> contentValueNamespace;
     private String contentResource;
 
-    /** Creates a new instance of ContentItem */
     public ContentItem() {
     }
 

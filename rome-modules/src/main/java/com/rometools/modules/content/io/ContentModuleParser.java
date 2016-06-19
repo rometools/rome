@@ -35,7 +35,6 @@ public class ContentModuleParser implements com.rometools.rome.io.ModuleParser {
     private static final Namespace CONTENT_NS = Namespace.getNamespace("content", ContentModule.URI);
     private static final Namespace RDF_NS = Namespace.getNamespace("rdf", ContentModule.RDF_URI);
 
-    /** Creates a new instance of ContentModuleParser */
     public ContentModuleParser() {
     }
 

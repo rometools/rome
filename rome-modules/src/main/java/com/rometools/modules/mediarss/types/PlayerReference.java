@@ -61,8 +61,6 @@ public class PlayerReference implements Reference, Serializable {
     private final URI url;
 
     /**
-     * Creates a new instance of PlayerReference
-     *
      * @param url url of the player
      * @param width width of the player
      * @param height height of the player
@@ -80,8 +78,6 @@ public class PlayerReference implements Reference, Serializable {
     }
 
     /**
-     * Constructs a new PlayerReference
-     *
      * @param url URL of the player
      */
     public PlayerReference(final URI url) {

@@ -50,11 +50,6 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
         COPY_FROM_HELPER = new CopyFromHelper(DCSubject.class, basePropInterfaceMap, basePropClassImplMap);
     }
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public DCSubjectImpl() {
         objBean = new ObjectBean(this.getClass(), this);
     }

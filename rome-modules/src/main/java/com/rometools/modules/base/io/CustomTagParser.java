@@ -46,7 +46,6 @@ public class CustomTagParser implements ModuleParser {
 
     static final Namespace NS = Namespace.getNamespace("g-custom", CustomTags.URI);
 
-    /** Creates a new instance of CustomTagParser */
     public CustomTagParser() {
     }
 

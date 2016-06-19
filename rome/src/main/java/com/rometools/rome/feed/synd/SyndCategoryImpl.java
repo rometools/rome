@@ -127,11 +127,6 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
         return subject;
     }
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public SyndCategoryImpl() {
         this(new DCSubjectImpl());
     }

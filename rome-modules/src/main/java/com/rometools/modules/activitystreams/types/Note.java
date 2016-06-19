@@ -49,9 +49,6 @@ package com.rometools.modules.activitystreams.types;
  */
 public class Note extends ActivityObject {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
     @Override

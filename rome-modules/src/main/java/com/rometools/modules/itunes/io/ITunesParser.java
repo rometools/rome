@@ -44,7 +44,6 @@ public class ITunesParser implements ModuleParser {
 
     Namespace ns = Namespace.getNamespace(AbstractITunesObject.URI);
 
-    /** Creates a new instance of ITunesParser */
     public ITunesParser() {
     }
 

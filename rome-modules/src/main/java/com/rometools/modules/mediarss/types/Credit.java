@@ -95,8 +95,6 @@ public class Credit implements Serializable {
     private final String scheme;
 
     /**
-     * Creates a new instance of Credit
-     *
      * @param scheme schem used
      * @param role role name
      * @param name persons name

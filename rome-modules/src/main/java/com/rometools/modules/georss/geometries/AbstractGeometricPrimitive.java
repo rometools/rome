@@ -20,12 +20,8 @@ package com.rometools.modules.georss.geometries;
  */
 public abstract class AbstractGeometricPrimitive extends AbstractGeometry {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
-    /** Creates a new instance of GeometricPrimitive */
     public AbstractGeometricPrimitive() {
 
     }

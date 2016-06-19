@@ -45,8 +45,6 @@ public class MediaGroup implements Cloneable, Serializable {
     private MediaContent[] contents = new MediaContent[0];
 
     /**
-     * Creates a new instance of MediaGroup
-     *
      * @param contents Contents of the group.
      */
     public MediaGroup(final MediaContent[] contents) {
@@ -54,8 +52,6 @@ public class MediaGroup implements Cloneable, Serializable {
     }
 
     /**
-     * Creates a new instance of MediaGroup
-     *
      * @param contents contents of the group
      * @param defaultContentIndex index of the default content value.
      */
@@ -65,8 +61,6 @@ public class MediaGroup implements Cloneable, Serializable {
     }
 
     /**
-     * Creates a new instance of MediaGroup
-     *
      * @param contents contents of the group
      * @param defaultContentIndex index of the default content item.
      * @param metadata metadata for the group.

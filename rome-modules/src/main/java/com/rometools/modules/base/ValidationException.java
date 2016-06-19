@@ -22,12 +22,8 @@ package com.rometools.modules.base;
  */
 public class ValidationException extends RuntimeException {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
-    /** Creates a new instance of ValidationException */
     public ValidationException(final String message) {
         super(message);
     }

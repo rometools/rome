@@ -57,11 +57,6 @@ public class SyndImageImpl implements Serializable, SyndImage {
         COPY_FROM_HELPER = new CopyFromHelper(SyndImage.class, basePropInterfaceMap, basePropClassImplMap);
     }
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public SyndImageImpl() {
         objBean = new ObjectBean(SyndImage.class, this);
     }

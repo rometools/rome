@@ -33,8 +33,6 @@ public class Attribute implements Cloneable, Serializable {
     private String value;
 
     /**
-     * Creates a new instance of Attribute.
-     *
      * @param name name of the attribute.
      * @param value value of the attribute.
      */

@@ -39,16 +39,12 @@ public class MediaModuleImpl extends ModuleImpl implements MediaModule, Serializ
     private Metadata metadata;
     private PlayerReference player;
 
-    /** Creates a new instance of MediaModuleImpl */
     public MediaModuleImpl() {
         this(MediaModule.class, MediaModule.URI);
     }
 
     /**
      * constructor that passes values up to ModuleImpl.
-     *
-     * @param clazz
-     * @param uri
      */
     public MediaModuleImpl(final Class<? extends MediaModule> clazz, final String uri) {
         super(clazz, uri);

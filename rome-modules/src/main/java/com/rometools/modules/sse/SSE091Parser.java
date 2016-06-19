@@ -48,7 +48,6 @@ public class SSE091Parser implements DelegatingModuleParser {
     // root of the sharing element
     private RSS20Parser rssParser;
 
-    /** Creates a new instance of SSE091Parser */
     public SSE091Parser() {
     }
 

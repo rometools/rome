@@ -45,9 +45,6 @@ public class ObjectBean implements Serializable, Cloneable {
     private final CloneableBean cloneableBean;
 
     /**
-     * Constructor.
-     * <p>
-     *
      * @param beanClass the class/interface to be used for property scanning.
      *
      */

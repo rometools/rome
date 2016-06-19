@@ -35,8 +35,6 @@ public class ShippingType implements CloneableType {
     private final String country;
 
     /**
-     * Creates a new instance of ShippingType
-     *
      * @param price The price of the shipping option
      * @param service Shipping service used.
      * @param country Country shipped to.
@@ -132,8 +130,6 @@ public class ShippingType implements CloneableType {
         private final String value;
 
         /**
-         * Creates a new instance of ServiceEnumeration.
-         *
          * @param value String value to encapsulate.
          */
         private ServiceEnumeration(final String value) {

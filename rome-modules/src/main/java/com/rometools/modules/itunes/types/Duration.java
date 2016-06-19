@@ -26,9 +26,7 @@ import com.rometools.rome.io.impl.NumberParser;
  * format, and can parse [H]*H:[M]*M:[S]*S or [M]*M:[S]*S.
  */
 public class Duration implements Serializable {
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
     static final long SECOND = 1000;
     static final long MINUTE = SECOND * 60;

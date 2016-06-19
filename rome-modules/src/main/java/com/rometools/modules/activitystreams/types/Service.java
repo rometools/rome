@@ -45,9 +45,6 @@ package com.rometools.modules.activitystreams.types;
  */
 public class Service extends ActivityObject {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
     @Override

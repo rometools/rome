@@ -42,9 +42,6 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
     private boolean complete;
     private String newFeedUrl;
 
-    /**
-     * Creates a new instance of FeedInformationImpl
-     */
     public FeedInformationImpl() {
     }
 

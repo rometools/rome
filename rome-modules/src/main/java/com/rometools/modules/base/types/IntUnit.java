@@ -50,7 +50,6 @@ public class IntUnit implements CloneableType {
         }
     }
 
-    /** Creates a new instance of IntUnit */
     public IntUnit(final int value, final String units) {
         this.value = value;
         this.units = units;

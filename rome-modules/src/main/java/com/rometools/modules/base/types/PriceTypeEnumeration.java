@@ -33,8 +33,6 @@ public class PriceTypeEnumeration implements CloneableType {
     private final String value;
 
     /**
-     * Creates a new instance of PriceTypeEnumeration
-     *
      * @param value Value to encapsulate
      */
     private PriceTypeEnumeration(final String value) {

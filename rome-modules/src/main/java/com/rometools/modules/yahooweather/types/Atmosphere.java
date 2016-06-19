@@ -35,9 +35,7 @@ import com.rometools.rome.feed.impl.ToStringBean;
  * </ul>
  */
 public class Atmosphere implements Serializable, Cloneable {
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
     private final EqualsBean equals = new EqualsBean(Atmosphere.class, this);
     private final ToStringBean toString = new ToStringBean(Atmosphere.class, this);
@@ -54,8 +52,6 @@ public class Atmosphere implements Serializable, Cloneable {
     }
 
     /**
-     * Constructs a new Atmosphere object
-     *
      * @param humidity humidity, in percent
      * @param visibility visibility distance (value beyond 1/100ths of a unit will be truncated)
      * @param pressure barometric pressure
@@ -162,9 +158,7 @@ public class Atmosphere implements Serializable, Cloneable {
     }
 
     public static class PressureChange implements Serializable {
-        /**
-         *
-         */
+
         private static final long serialVersionUID = 1L;
         public static final PressureChange RISING = new PressureChange(1, "rising");
         public static final PressureChange STEADY = new PressureChange(0, "steady");

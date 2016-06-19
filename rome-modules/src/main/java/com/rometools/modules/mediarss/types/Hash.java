@@ -50,8 +50,6 @@ public class Hash extends AbstractSchemeValue implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * Creates a new instance of Hash
-     *
      * @param algorithm algoright used
      * @param value value of the hash
      */

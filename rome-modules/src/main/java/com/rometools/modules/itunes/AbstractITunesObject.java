@@ -23,9 +23,7 @@ import java.net.URL;
  * iTunes compatible RSS feed.
  */
 public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneable {
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
 
     /**
@@ -33,7 +31,6 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
      * <p>
      * What is up with using a versioned DTD anyway?
      * </p>
-     * \
      */
     public static final String URI = "http://www.itunes.com/dtds/podcast-1.0.dtd";
 

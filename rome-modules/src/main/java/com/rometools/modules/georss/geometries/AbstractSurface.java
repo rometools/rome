@@ -20,12 +20,8 @@ package com.rometools.modules.georss.geometries;
  */
 public abstract class AbstractSurface extends AbstractGeometricPrimitive {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
-    /** Creates a new instance of Surface */
     public AbstractSurface() {
     }
 

@@ -29,9 +29,7 @@ import com.rometools.rome.feed.impl.ToStringBean;
  * </ul>
  */
 public class Location implements Serializable, Cloneable {
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
     private transient ToStringBean toString = new ToStringBean(Location.class, this);
     private transient EqualsBean equals = new EqualsBean(Location.class, this);
@@ -39,16 +37,11 @@ public class Location implements Serializable, Cloneable {
     private String region;
     private String country;
 
-    /**
-     * Simple constructor
-     */
     public Location() {
         super();
     }
 
     /**
-     * Constructs a new Location object.
-     *
      * @param city city name
      * @param region state, territory, or region, if given
      * @param country two-character country code.

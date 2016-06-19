@@ -125,11 +125,6 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
         objBean = new ObjectBean(beanClass, this, convenienceProperties);
     }
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public SyndEntryImpl() {
         this(SyndEntry.class, IGNORE_PROPERTIES);
     }

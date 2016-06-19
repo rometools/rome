@@ -30,11 +30,6 @@ public class Source implements Cloneable, Serializable {
     private String url;
     private String value;
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public Source() {
         objBean = new ObjectBean(this.getClass(), this);
     }

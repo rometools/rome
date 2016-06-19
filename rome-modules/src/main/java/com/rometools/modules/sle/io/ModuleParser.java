@@ -39,7 +39,6 @@ public class ModuleParser implements com.rometools.rome.io.ModuleParser {
     static final Namespace NS = Namespace.getNamespace("cf", SimpleListExtension.URI);
     public static final Namespace TEMP = Namespace.getNamespace("rome-sle", "urn:rome:sle");
 
-    /** Creates a new instance of ModuleParser */
     public ModuleParser() {
         super();
     }

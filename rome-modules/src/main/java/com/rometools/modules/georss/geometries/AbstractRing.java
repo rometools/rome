@@ -22,12 +22,8 @@ import java.io.Serializable;
  */
 public abstract class AbstractRing implements Cloneable, Serializable {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
-    /** Creates a new instance of AbstractRing */
     public AbstractRing() {
     }
 

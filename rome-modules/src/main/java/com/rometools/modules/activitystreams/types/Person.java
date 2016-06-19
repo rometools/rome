@@ -47,9 +47,6 @@ import com.rometools.rome.feed.atom.Link;
  */
 public class Person extends ActivityObject {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
     @Override

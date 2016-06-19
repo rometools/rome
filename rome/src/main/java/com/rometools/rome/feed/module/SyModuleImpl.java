@@ -61,11 +61,6 @@ public class SyModuleImpl extends ModuleImpl implements SyModule {
 
     }
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public SyModuleImpl() {
         super(SyModule.class, URI);
     }

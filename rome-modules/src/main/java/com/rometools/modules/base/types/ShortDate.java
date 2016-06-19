@@ -24,12 +24,9 @@ import java.util.Date;
  * Move along. Nothing to see here.
  */
 public class ShortDate extends Date implements CloneableType {
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
 
-    /** Creates a new instance of ShortDate */
     public ShortDate() {
         super();
     }

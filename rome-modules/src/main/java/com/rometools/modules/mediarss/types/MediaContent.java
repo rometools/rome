@@ -164,13 +164,8 @@ public class MediaContent implements Serializable {
     private String type = null;
     private boolean defaultContent;
 
-    /*
-     * MediaContent constructor
-     */
 
     /**
-     * Creates a new MediaContent
-     *
      * @param reference UrlReference or Player reference for the item.
      */
     public MediaContent(final Reference reference) {

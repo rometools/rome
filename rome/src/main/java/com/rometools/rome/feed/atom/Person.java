@@ -42,11 +42,6 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
     private String email;
     private List<Module> modules;
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public Person() {
         objBean = new ObjectBean(this.getClass(), this);
     }

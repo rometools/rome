@@ -34,7 +34,6 @@ public class SlashModuleParser implements ModuleParser {
 
     private static final Namespace NS = Namespace.getNamespace(Slash.URI);
 
-    /** Creates a new instance of SlashModuleParser */
     public SlashModuleParser() {
         super();
     }

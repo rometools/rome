@@ -48,7 +48,6 @@ public class GoogleBaseGenerator implements ModuleGenerator {
 
     private static final Logger LOG = LoggerFactory.getLogger(GoogleBaseGenerator.class);
 
-    /** Creates a new instance of GoogleBaseGenerator */
     public GoogleBaseGenerator() {
         super();
     }

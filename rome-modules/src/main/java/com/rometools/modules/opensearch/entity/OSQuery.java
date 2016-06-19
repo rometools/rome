@@ -32,10 +32,6 @@ public class OSQuery implements Cloneable, Serializable {
     private String title;
     private String searchTerms;
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     */
     public OSQuery() {
         _objBean = new ObjectBean(this.getClass(), this);
     }

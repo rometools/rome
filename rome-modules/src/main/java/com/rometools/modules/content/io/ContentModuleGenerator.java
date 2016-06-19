@@ -48,7 +48,6 @@ public class ContentModuleGenerator implements com.rometools.rome.io.ModuleGener
         NAMESPACES = Collections.unmodifiableSet(nss);
     }
 
-    /** Creates a new instance of ContentModuleGenerator */
     public ContentModuleGenerator() {
     }
 

@@ -44,7 +44,6 @@ public class SleEntryImpl implements SleEntry {
     private EntryValue[] groupValues = EMPTY_VALUES;
     private EntryValue[] sortValues = EMPTY_VALUES;
 
-    /** Creates a new instance of SleEntryImpl */
     public SleEntryImpl() {
         super();
     }

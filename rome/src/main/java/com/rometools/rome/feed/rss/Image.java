@@ -33,11 +33,6 @@ public class Image implements Cloneable, Serializable {
     private Integer height = -1;
     private String description;
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public Image() {
         objBean = new ObjectBean(this.getClass(), this);
     }

@@ -20,13 +20,10 @@ package com.rometools.modules.georss.geometries;
  * should be identical.
  */
 public final class LinearRing extends AbstractRing {
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
     private PositionList posList;
 
-    /** Creates a new instance of LinearLing */
     public LinearRing() {
     }
 

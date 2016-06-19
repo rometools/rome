@@ -34,7 +34,6 @@ import com.rometools.rome.io.WireFeedOutput;
 
 public class TestOpsOPML10links extends FeedOpsTest {
 
-    /** Creates a new instance of TestOpsOPML10 */
     public TestOpsOPML10links() {
         super("opml_1.0_links");
     }

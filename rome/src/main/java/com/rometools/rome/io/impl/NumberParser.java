@@ -91,7 +91,6 @@ public final class NumberParser {
      *
      * @param str
      * @param def the value to return if the String cannot be parsed
-     * @return
      */
     public static float parseFloat(final String str, final float def) {
         final Float result = parseFloat(str);

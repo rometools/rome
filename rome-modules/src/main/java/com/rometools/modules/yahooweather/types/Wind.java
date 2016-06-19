@@ -35,9 +35,7 @@ import com.rometools.rome.feed.impl.ToStringBean;
  * (Celsius, kilometers, millibars, kilometers per hour).
  */
 public class Wind implements Serializable, Cloneable {
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
     private transient ToStringBean toString = new ToStringBean(Wind.class, this);
     private transient EqualsBean equals = new EqualsBean(Wind.class, this);
@@ -45,16 +43,11 @@ public class Wind implements Serializable, Cloneable {
     private int direction;
     private int speed;
 
-    /**
-     * Simple Constructor
-     */
     public Wind() {
         super();
     }
 
     /**
-     * Constructs a new Wind object
-     *
      * @param chill wind chill adjusted temperature
      * @param direction direction of wind in degrees
      * @param speed speed of wind

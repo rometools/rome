@@ -64,8 +64,6 @@ public class Rating extends AbstractSchemeValue {
     public static final Rating NONADULT = new Rating("urn:simple", "nonadult");
 
     /**
-     * Constructs a new Rating object.
-     *
      * @param scheme scheme used for the rating
      * @param value value of the rating.
      */
@@ -73,11 +71,6 @@ public class Rating extends AbstractSchemeValue {
         super(scheme, value);
     }
 
-    /**
-     *
-     * @param obj
-     * @return
-     */
     @Override
     public boolean equals(final Object obj) {
         final EqualsBean eBean = new EqualsBean(this.getClass(), this);
@@ -85,10 +78,6 @@ public class Rating extends AbstractSchemeValue {
         return eBean.beanEquals(obj);
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public int hashCode() {
         final EqualsBean equals = new EqualsBean(this.getClass(), this);
@@ -96,10 +85,6 @@ public class Rating extends AbstractSchemeValue {
         return equals.beanHashCode();
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public String toString() {
         final ToStringBean tsBean = new ToStringBean(this.getClass(), this);

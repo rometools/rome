@@ -22,13 +22,10 @@ import java.io.Serializable;
  * This class represents a Subcategor of a Category.
  */
 public class Subcategory implements Serializable {
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
     private String name;
 
-    /** Creates a new instance of SubCategory */
     public Subcategory() {
     }
 

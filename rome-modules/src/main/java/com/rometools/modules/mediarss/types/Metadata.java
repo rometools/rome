@@ -74,7 +74,6 @@ public class Metadata implements Cloneable, Serializable {
     private Text[] text = new Text[0];
     private Thumbnail[] thumbnail = new Thumbnail[0];
 
-    /** Creates a new instance of Metadata */
     public Metadata() {
         super();
     }

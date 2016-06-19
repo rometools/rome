@@ -62,11 +62,6 @@ public class Content implements Cloneable, Serializable {
         MODES.add(ESCAPED);
     }
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public Content() {
         objBean = new ObjectBean(this.getClass(), this);
     }

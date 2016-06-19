@@ -60,11 +60,6 @@ public class Item implements Cloneable, Serializable, Extendable {
     private List<Module> modules;
     private List<Element> foreignMarkup;
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public Item() {
         objBean = new ObjectBean(this.getClass(), this);
     }

@@ -23,9 +23,6 @@ import com.rometools.rome.feed.atom.Entry;
 
 public abstract class ActivityObject extends Entry implements HasLocation {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
     public abstract String getTypeIRI();

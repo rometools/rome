@@ -53,10 +53,6 @@ public class ModuleUtils {
      *
      *
      * @since 1.5 Changed to return the first, not the last.
-     *
-     * @param modules
-     * @param uri
-     * @return
      */
     public static Module getModule(final List<Module> modules, final String uri) {
         Module searchedModule = null;

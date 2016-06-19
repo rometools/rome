@@ -37,8 +37,6 @@ public class YearType implements CloneableType {
     }
 
     /**
-     * Creates a new instance of YearType
-     *
      * @param date Date to get the year from.
      */
     public YearType(final Date date) {

@@ -50,8 +50,6 @@ public class Size implements CloneableType {
     }
 
     /**
-     * Creates a new instance of Size
-     *
      * @param length lenght value
      * @param width width value
      */
@@ -61,8 +59,6 @@ public class Size implements CloneableType {
     }
 
     /**
-     * Creates a new instance of Size.
-     *
      * @param length Length value.
      * @param width Width value.
      * @param height Height value.

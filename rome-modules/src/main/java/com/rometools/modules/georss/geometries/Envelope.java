@@ -21,24 +21,16 @@ package com.rometools.modules.georss.geometries;
  * than the maxLongitude.
  */
 public class Envelope extends AbstractGeometry {
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
     protected double minLatitude, minLongitude, maxLatitude, maxLongitude;
 
-    /** Creates a new instance of Envelope */
     public Envelope() {
         minLatitude = minLongitude = maxLatitude = maxLongitude = Double.NaN;
     }
 
     /**
      * Construct object from coordinate values
-     *
-     * @param minLatitude
-     * @param minLongitude
-     * @param maxLatitude
-     * @param maxLongitude
      */
     public Envelope(final double minLatitude, final double minLongitude, final double maxLatitude, final double maxLongitude) {
         this.minLatitude = minLatitude;

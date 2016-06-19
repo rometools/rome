@@ -35,7 +35,6 @@ public class Generator implements ModuleGenerator {
         NAMESPACES.add(NS);
     }
 
-    /** Creates a new instance of Generator */
     public Generator() {
         super();
     }

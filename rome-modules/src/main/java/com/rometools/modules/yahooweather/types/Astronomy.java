@@ -31,9 +31,7 @@ import com.rometools.rome.feed.impl.ToStringBean;
  * </ul>
  */
 public class Astronomy implements Serializable, Cloneable {
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
     private final EqualsBean equals = new EqualsBean(Astronomy.class, this);
     private final ToStringBean toString = new ToStringBean(Astronomy.class, this);
@@ -48,8 +46,6 @@ public class Astronomy implements Serializable, Cloneable {
     }
 
     /**
-     * Constructs a new Astronomy object
-     *
      * @param sunrise time of sunrise (from 0ms)
      * @param sunset time of sunset (from 0ms)
      */

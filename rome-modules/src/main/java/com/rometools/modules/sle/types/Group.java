@@ -63,8 +63,6 @@ public class Group implements Serializable, Cloneable {
     private final String label;
 
     /**
-     * Creates a new instance of Group
-     *
      * @param namespace Namespace of the element
      * @param element Name of the element
      * @param label Label for the grouping.

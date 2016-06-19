@@ -36,11 +36,6 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
     private String title;
     private long length;
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public SyndLinkImpl() {
         objBean = new ObjectBean(this.getClass(), this);
     }

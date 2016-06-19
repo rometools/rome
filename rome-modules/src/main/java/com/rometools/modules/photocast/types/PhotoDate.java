@@ -26,14 +26,10 @@ import java.util.Date;
  */
 public class PhotoDate extends Date {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
     private static final long Y2K = 946616400531l;
     private static final double DAY = 24 * 60 * 60 * 1000;
 
-    /** Creates a new instance of PhotoDate */
     public PhotoDate() {
         super();
     }

@@ -38,8 +38,6 @@ public class UrlReference implements Reference, Serializable {
     private final URI url;
 
     /**
-     * Creates a new UrlReference.
-     *
      * @param url URL to the media source
      */
     public UrlReference(final URI url) {
@@ -51,8 +49,6 @@ public class UrlReference implements Reference, Serializable {
     }
 
     /**
-     * Creates a new instance of UrlReference
-     *
      * @param url String value of a URL
      * @throws java.net.MalformedURLException thrown on bad URLs
      */

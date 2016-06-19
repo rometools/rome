@@ -45,7 +45,6 @@ public class Parser implements ModuleParser {
     // 2006-01-11 16:42:26 -0800
     static final DateFormat CROP_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z");
 
-    /** Creates a new instance of Parser */
     public Parser() {
     }
 
