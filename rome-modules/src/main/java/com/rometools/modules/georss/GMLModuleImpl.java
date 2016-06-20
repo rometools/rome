@@ -19,10 +19,6 @@ package com.rometools.modules.georss;
 /**
  * GMLModuleImpl is the implementation of the {@link GeoRSSModule} Interface for the gml GeoRSS
  * format.
- *
- * @author Marc Wick
- * @version $Id: GMLModuleImpl.java,v 1.1 2007/04/18 09:59:29 marcwick Exp $
- *
  */
 public class GMLModuleImpl extends GeoRSSModule {
 

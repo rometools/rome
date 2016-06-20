@@ -23,10 +23,6 @@ import com.rometools.rome.feed.impl.ObjectBean;
 
 /**
  * Bean for text input of RSS feeds.
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public class TextInput implements Cloneable, Serializable {
     private static final long serialVersionUID = 1L;
@@ -36,11 +32,6 @@ public class TextInput implements Cloneable, Serializable {
     private String name;
     private String link;
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public TextInput() {
         objBean = new ObjectBean(this.getClass(), this);
     }

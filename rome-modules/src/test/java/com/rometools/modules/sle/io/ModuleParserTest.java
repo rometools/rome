@@ -38,10 +38,6 @@ import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.SyndFeedInput;
 
-/**
- *
- * @author cooper
- */
 public class ModuleParserTest extends AbstractTestCase {
 
     private static final Logger LOG = LoggerFactory.getLogger(ModuleParserTest.class);
@@ -63,7 +59,7 @@ public class ModuleParserTest extends AbstractTestCase {
         final SyndFeedInput input = new SyndFeedInput();
         final SyndFeed feed = input.build(new File(super.getTestFile("data/bookexample.xml")));
         final SimpleListExtension sle = (SimpleListExtension) feed.getModule(SimpleListExtension.URI);
-        // LOG.debug( sle );
+
         assertEquals("list", sle.getTreatAs());
         final Group[] groups = sle.getGroupFields();
         assertEquals("genre", groups[0].getElement());

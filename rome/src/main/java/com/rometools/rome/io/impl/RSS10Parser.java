@@ -28,8 +28,6 @@ import com.rometools.rome.feed.rss.Content;
 import com.rometools.rome.feed.rss.Description;
 import com.rometools.rome.feed.rss.Item;
 
-/**
- */
 public class RSS10Parser extends RSS090Parser {
 
     private static final String RSS_URI = "http://purl.org/rss/1.0/";

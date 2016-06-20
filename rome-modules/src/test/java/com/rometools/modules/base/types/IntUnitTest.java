@@ -30,10 +30,6 @@ import org.slf4j.LoggerFactory;
 import com.rometools.modules.base.types.IntUnit;
 import com.rometools.modules.cc.io.CCModuleGenerator;
 
-/**
- *
- * @author rcooper
- */
 public class IntUnitTest extends TestCase {
 
     private static final Logger LOG = LoggerFactory.getLogger(CCModuleGenerator.class);

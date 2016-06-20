@@ -15,9 +15,6 @@
 
 package com.rometools.modules.opensearch;
 
-/**
- * @author Michael W. Nassif (enrouteinc@gmail.com)
- */
 public class RequiredAttributeMissingException extends RuntimeException {
     private static final long serialVersionUID = 1L;
 

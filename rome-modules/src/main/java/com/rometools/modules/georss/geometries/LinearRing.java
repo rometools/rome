@@ -18,17 +18,12 @@ package com.rometools.modules.georss.geometries;
 /**
  * Linear boundary object constructed by linear interpolation between points. Start and end point
  * should be identical.
- *
- * @author runaas
  */
 public final class LinearRing extends AbstractRing {
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
     private PositionList posList;
 
-    /** Creates a new instance of LinearLing */
     public LinearRing() {
     }
 

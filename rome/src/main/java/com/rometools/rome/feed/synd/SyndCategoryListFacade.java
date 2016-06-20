@@ -33,10 +33,6 @@ import com.rometools.rome.feed.module.DCSubject;
  * DublinCore subjects.
  * <P>
  * All this mess to avoid making DCSubjectImpl implement SyndCategory (which it would be odd).
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 class SyndCategoryListFacade extends AbstractList<SyndCategory> {
 

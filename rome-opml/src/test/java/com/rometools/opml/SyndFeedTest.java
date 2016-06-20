@@ -15,10 +15,6 @@
  */
 package com.rometools.opml;
 
-/**
- * @author pat
- *
- */
 public abstract class SyndFeedTest extends FeedTest {
     private String _prefix = null;
 

@@ -24,10 +24,6 @@ import com.rometools.rome.feed.rss.Channel;
 import com.rometools.rome.feed.rss.Item;
 import com.rometools.rome.feed.synd.SyndEntry;
 
-/**
- * @author pat
- *
- */
 public class TestSyndFeedRSS20 extends TestSyndFeedRSS094 {
 
     public TestSyndFeedRSS20() {

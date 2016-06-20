@@ -25,10 +25,6 @@ import com.rometools.rome.feed.synd.SyndCategory;
 import com.rometools.rome.feed.synd.SyndEnclosure;
 import com.rometools.rome.feed.synd.SyndEntry;
 
-/**
- * @author pat
- *
- */
 public class TestSyndFeedRSS092 extends TestSyndFeedRSS091N {
 
     public TestSyndFeedRSS092() {

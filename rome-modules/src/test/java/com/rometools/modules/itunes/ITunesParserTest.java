@@ -41,10 +41,6 @@ import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.XmlReader;
 
-/**
- *
- * @author cooper
- */
 public class ITunesParserTest extends AbstractTestCase {
 
     private static final Logger LOG = LoggerFactory.getLogger(ITunesParserTest.class);

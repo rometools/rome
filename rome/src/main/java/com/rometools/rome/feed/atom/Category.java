@@ -23,9 +23,6 @@ import com.rometools.utils.Alternatives;
 
 /**
  * Bean for category elements of Atom feeds.
- * <p>
- *
- * @author Dave Johnson (added for Atom 1.0)
  */
 public class Category implements Cloneable, Serializable {
 
@@ -38,11 +35,6 @@ public class Category implements Cloneable, Serializable {
     private String schemeResolved;
     private String label;
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public Category() {
         objBean = new ObjectBean(this.getClass(), this);
     }

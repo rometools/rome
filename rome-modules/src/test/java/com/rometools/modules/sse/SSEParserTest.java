@@ -226,13 +226,6 @@ public class SSEParserTest extends AbstractTestCase {
                     }
                 }
 
-                // if (!foundEqual) {
-                // // show accumulated error messages
-                // for (Iterator mesgIter = messages.iterator(); mesgIter.hasNext();) {
-                // LOG.debug((String) mesgIter.next());
-                // }
-                // }
-
                 // look for the content in the other tree
                 assertTrue("could not find matching element for: " + one.getName(), foundEqual);
             }

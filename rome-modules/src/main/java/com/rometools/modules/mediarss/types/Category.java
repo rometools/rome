@@ -57,8 +57,6 @@ import com.rometools.rome.feed.impl.ToStringBean;
  * <em>label</em> is the human readable label that can be displayed in end user applications. It is
  * an optional attribute.
  * </p>
- *
- * @author cooper
  */
 public class Category implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -71,8 +69,6 @@ public class Category implements Serializable {
     private final String value;
 
     /**
-     * Creates a new instance of Category
-     *
      * @param scheme scheme used
      * @param label label for the category
      * @param value value of the category item
@@ -84,8 +80,6 @@ public class Category implements Serializable {
     }
 
     /**
-     * Creates a new Category.
-     *
      * @param value value of the category.
      */
     public Category(final String value) {

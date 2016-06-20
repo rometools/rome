@@ -35,9 +35,6 @@ import org.slf4j.LoggerFactory;
 
 import com.rometools.rome.feed.CopyFrom;
 
-/**
- * @author Alejandro Abdelnur
- */
 public class CopyFromHelper {
 
     private static final Logger LOG = LoggerFactory.getLogger(CopyFromHelper.class);

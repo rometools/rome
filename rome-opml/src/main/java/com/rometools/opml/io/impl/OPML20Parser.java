@@ -30,12 +30,8 @@ import com.rometools.rome.feed.WireFeed;
 import com.rometools.rome.io.FeedException;
 import com.rometools.rome.io.impl.DateParser;
 
-/**
- *
- * @author cooper
- */
 public class OPML20Parser extends OPML10Parser {
-    /** Creates a new instance of Opml20Parser */
+
     public OPML20Parser() {
         super("opml_2.0");
     }

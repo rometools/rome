@@ -32,8 +32,6 @@ import com.rometools.rome.feed.impl.ObjectBean;
  * This is a <b>parse only</b> module that holds the values of enternal fields declared in the SLE
  * module. These will <b>not</b> be persisted on an output() call, <b>nor</b> will changing a value
  * here change a value in another module or a foreign markup tag.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class SleEntryImpl implements SleEntry {
 
@@ -46,7 +44,6 @@ public class SleEntryImpl implements SleEntry {
     private EntryValue[] groupValues = EMPTY_VALUES;
     private EntryValue[] sortValues = EMPTY_VALUES;
 
-    /** Creates a new instance of SleEntryImpl */
     public SleEntryImpl() {
         super();
     }

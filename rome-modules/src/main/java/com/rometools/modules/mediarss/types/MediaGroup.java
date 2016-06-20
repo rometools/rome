@@ -36,8 +36,6 @@ import com.rometools.rome.feed.impl.ToStringBean;
  * the same song recorded in both the WAV and MP3 format. It's an optional element that must only be
  * used for this purpose.
  * </p>
- *
- * @author cooper
  */
 public class MediaGroup implements Cloneable, Serializable {
     private static final long serialVersionUID = 1L;
@@ -47,8 +45,6 @@ public class MediaGroup implements Cloneable, Serializable {
     private MediaContent[] contents = new MediaContent[0];
 
     /**
-     * Creates a new instance of MediaGroup
-     *
      * @param contents Contents of the group.
      */
     public MediaGroup(final MediaContent[] contents) {
@@ -56,8 +52,6 @@ public class MediaGroup implements Cloneable, Serializable {
     }
 
     /**
-     * Creates a new instance of MediaGroup
-     *
      * @param contents contents of the group
      * @param defaultContentIndex index of the default content value.
      */
@@ -67,8 +61,6 @@ public class MediaGroup implements Cloneable, Serializable {
     }
 
     /**
-     * Creates a new instance of MediaGroup
-     *
      * @param contents contents of the group
      * @param defaultContentIndex index of the default content item.
      * @param metadata metadata for the group.

@@ -44,10 +44,6 @@ import com.rometools.rome.feed.synd.SyndFeedImpl;
 import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.SyndFeedOutput;
 
-/**
- *
- * @author rcooper
- */
 public class GoogleBaseGeneratorTest extends AbstractTestCase {
 
     private static final Logger LOG = LoggerFactory.getLogger(GoogleBaseGeneratorTest.class);

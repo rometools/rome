@@ -19,10 +19,6 @@ package com.rometools.modules.georss;
 /**
  * SimpleModuleImpl is the implementation of the {@link GeoRSSModule} Interface for the GeoRSS
  * Simple format.
- *
- * @author Marc Wick
- * @version $Id: SimpleModuleImpl.java,v 1.4 2007/04/18 09:59:29 marcwick Exp $
- *
  */
 public class SimpleModuleImpl extends GeoRSSModule {
 

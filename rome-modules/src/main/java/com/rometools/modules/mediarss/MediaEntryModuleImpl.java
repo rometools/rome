@@ -32,8 +32,6 @@ import com.rometools.rome.feed.impl.ToStringBean;
 
 /**
  * Represents information for an Entry/Item level.
- *
- * @author Nathanial X. Freitas
  */
 public class MediaEntryModuleImpl extends MediaModuleImpl implements MediaEntryModule, Cloneable, Serializable {
     private static final long serialVersionUID = 1L;
@@ -45,9 +43,6 @@ public class MediaEntryModuleImpl extends MediaModuleImpl implements MediaEntryM
     private MediaContent[] mediaContents = new MediaContent[0];
     private MediaGroup[] mediaGroups = new MediaGroup[0];
 
-    /**
-     * Creates a new instance.
-     */
     public MediaEntryModuleImpl() {
         super(MediaEntryModule.class, MediaModule.URI);
     }

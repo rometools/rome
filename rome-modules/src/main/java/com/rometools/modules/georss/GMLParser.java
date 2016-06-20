@@ -35,10 +35,6 @@ import com.rometools.utils.Strings;
 
 /**
  * GMLParser is a parser for the GML georss format.
- *
- * @author Marc Wick
- * @version $Id: GMLParser.java,v 1.2 2007/06/05 20:44:53 marcwick Exp $
- *
  */
 public class GMLParser implements ModuleParser {
 

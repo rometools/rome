@@ -21,10 +21,6 @@ import com.rometools.modules.activitystreams.types.ActivityObject;
 import com.rometools.modules.activitystreams.types.Mood;
 import com.rometools.modules.activitystreams.types.Verb;
 
-/**
- *
- * @author robert.cooper
- */
 public interface ActivityStreamModule {
 
     public Verb getVerb();

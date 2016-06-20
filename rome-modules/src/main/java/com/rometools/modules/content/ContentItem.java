@@ -1,35 +1,11 @@
 /*
- * ContentItem.java
- *
- * Created on January 12, 2005, 8:52 AM
- *
- * This library is provided under dual licenses.
- * You may choose the terms of the Lesser General Public License or the Apache
- * License at your discretion.
- *
- *  Copyright (C) 2005  Robert Cooper, Temple of the Screaming Penguin
- *
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
+ * Copyright 2005 Robert Cooper, Temple of the Screaming Penguin
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -49,9 +25,6 @@ import org.jdom2.Namespace;
 /**
  * This class represents a content item per the "Original Syntax".
  * http://purl.org/rss/1.0/modules/content/
- *
- * @version $Revision: 1.1 $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class ContentItem implements Cloneable {
 
@@ -64,7 +37,6 @@ public class ContentItem implements Cloneable {
     private List<Namespace> contentValueNamespace;
     private String contentResource;
 
-    /** Creates a new instance of ContentItem */
     public ContentItem() {
     }
 
@@ -142,39 +114,31 @@ public class ContentItem implements Cloneable {
         }
         final ContentItem other = (ContentItem) obj;
         if (contentFormat == null ? other.contentFormat != null : !contentFormat.equals(other.contentFormat)) {
-            // LOG.debug("format");
             return false;
         }
         if (contentEncoding == null ? other.contentEncoding != null : !contentEncoding.equals(other.contentEncoding)) {
-            // LOG.debug("enc");
             return false;
         }
         final String thisCV = contentValue.replaceAll(" xmlns=\"http://www.w3.org/1999/xhtml\"", "").trim();
-        ;
         final String thatCV = other.contentValue.replaceAll(" xmlns=\"http://www.w3.org/1999/xhtml\"", "").trim();
         if (contentValue == null ? other.contentValue != null : !thisCV.equals(thatCV)) {
 
             return false;
         }
         if (contentValueDOM != other.contentValueDOM && (contentValueDOM == null || !contentValueDOM.equals(other.contentValueDOM))) {
-            // LOG.debug("vd");
             return false;
         }
         if (contentAbout == null ? other.contentAbout != null : !contentAbout.equals(other.contentAbout)) {
-            // LOG.debug("abt");
             return false;
         }
         if (contentValueParseType == null ? other.contentValueParseType != null : !contentValueParseType.equals(other.contentValueParseType)) {
-            // LOG.debug("pt");
             return false;
         }
         if (contentValueNamespace != other.contentValueNamespace
                 && (contentValueNamespace == null || !contentValueNamespace.equals(other.contentValueNamespace))) {
-            // LOG.debug("ns");
             return false;
         }
         if (contentResource == null ? other.contentResource != null : !contentResource.equals(other.contentResource)) {
-            // LOG.debug("res");
             return false;
         }
         return true;

@@ -32,10 +32,6 @@ import java.util.Set;
  * Obtains all property descriptors from a bean (interface or implementation).
  * <p>
  * The java.beans.Introspector does not process the interfaces hierarchy chain, this one does.
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public class BeanIntrospector {
 

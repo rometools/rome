@@ -40,9 +40,6 @@ import com.rometools.rome.io.impl.RSS20Generator;
 
 /**
  * Generator for the SSE Module.
- * <p>
- *
- * @author <a href="mailto:ldornin@gmail.com">Laird Dornin</a>
  */
 public class SSE091Generator implements DelegatingModuleGenerator {
     private RSS20Generator parentGenerator;

@@ -32,10 +32,6 @@ import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.SyndFeedOutput;
 
-/**
- *
- * @author cooper
- */
 public class OpenSearchModuleTest extends AbstractTestCase {
 
     public OpenSearchModuleTest(final String testName) {

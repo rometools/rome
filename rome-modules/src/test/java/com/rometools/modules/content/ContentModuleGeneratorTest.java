@@ -33,10 +33,6 @@ import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.SyndFeedOutput;
 import com.rometools.rome.io.XmlReader;
 
-/**
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert Cooper</a>
- */
 public class ContentModuleGeneratorTest extends AbstractTestCase {
 
     private static final Logger LOG = LoggerFactory.getLogger(ContentModuleGeneratorTest.class);

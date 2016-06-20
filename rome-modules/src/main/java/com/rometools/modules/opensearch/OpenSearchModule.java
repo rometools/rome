@@ -19,8 +19,6 @@ import com.rometools.rome.feed.module.Module;
 
 /**
  * Provides access to A9 Open Search information.
- *
- * @author Michael W. Nassif (enrouteinc@gmail.com)
  */
 public interface OpenSearchModule extends Module, OpenSearchResponse {
 

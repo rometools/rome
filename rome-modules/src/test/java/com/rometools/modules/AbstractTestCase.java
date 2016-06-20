@@ -26,8 +26,6 @@ import junit.framework.TestCase;
 
 /**
  * Abstract base class for test cases.
- *
- * @author <a href="jason@zenplex.com">Jason van Zyl</a>
  */
 public abstract class AbstractTestCase extends TestCase {
     /**
@@ -35,9 +33,6 @@ public abstract class AbstractTestCase extends TestCase {
      */
     public String basedir = System.getProperty("basedir") + "/src/test/resources";
 
-    /**
-     * Constructor.
-     */
     public AbstractTestCase(final String testName) {
         super(testName);
     }

@@ -22,10 +22,6 @@ import com.rometools.rome.feed.impl.ObjectBean;
 
 /**
  * Bean for the generator element of Atom feeds.
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public class Generator implements Cloneable, Serializable {
 
@@ -36,11 +32,6 @@ public class Generator implements Cloneable, Serializable {
     private String version;
     private String value;
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public Generator() {
         objBean = new ObjectBean(this.getClass(), this);
     }

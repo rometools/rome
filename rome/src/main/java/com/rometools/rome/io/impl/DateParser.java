@@ -33,9 +33,6 @@ import java.util.TimeZone;
  * It uses the JDK java.text.SimpleDateFormat class attemtping the parse using a mask for each one
  * of the possible formats.
  * <p/>
- *
- * @author Alejandro Abdelnur
- *
  */
 public class DateParser {
 
@@ -116,9 +113,7 @@ public class DateParser {
                 if (pp.getIndex() != sDate.length()) {
                     d = null;
                 }
-                // LOG.debug("pp["+pp.getIndex()+"] s["+sDate+" m["+masks[i]+"] d["+d+"]");
             } catch (final Exception ex1) {
-                // LOG.debug("s: "+sDate+" m: "+masks[i]+" d: "+null);
             }
         }
         return d;

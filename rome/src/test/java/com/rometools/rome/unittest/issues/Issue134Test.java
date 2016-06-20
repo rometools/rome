@@ -20,9 +20,6 @@ import com.rometools.rome.unittest.FeedTest;
 
 /**
  * Test for #134: Incorrect handling of CDATA sections.
- *
- * @author Martin Kurz
- *
  */
 public class Issue134Test extends FeedTest {
 

@@ -21,10 +21,6 @@ import com.rometools.rome.feed.synd.SyndFeed;
 
 /**
  * static utility methods for georss.
- *
- * @author Marc Wick
- * @version $Id: GeoRSSUtils.java,v 1.4 2007/04/18 09:59:29 marcwick Exp $
- *
  */
 public class GeoRSSUtils {
 

@@ -19,28 +19,18 @@ package com.rometools.modules.georss.geometries;
  * Envelope, a bounding box spanned by an upper right and lower left corner point. Note that if the
  * box spans the -180 180 degree meridian the numerical value of the minLongitude may be greater
  * than the maxLongitude.
- *
- * @author runaas
  */
 public class Envelope extends AbstractGeometry {
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
     protected double minLatitude, minLongitude, maxLatitude, maxLongitude;
 
-    /** Creates a new instance of Envelope */
     public Envelope() {
         minLatitude = minLongitude = maxLatitude = maxLongitude = Double.NaN;
     }
 
     /**
      * Construct object from coordinate values
-     *
-     * @param minLatitude
-     * @param minLongitude
-     * @param maxLatitude
-     * @param maxLongitude
      */
     public Envelope(final double minLatitude, final double minLongitude, final double maxLatitude, final double maxLongitude) {
         this.minLatitude = minLatitude;

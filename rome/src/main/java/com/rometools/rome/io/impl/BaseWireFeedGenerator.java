@@ -27,9 +27,6 @@ import org.jdom2.Parent;
 import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.io.WireFeedGenerator;
 
-/**
- * @author Alejandro Abdelnur
- */
 public abstract class BaseWireFeedGenerator implements WireFeedGenerator {
 
     /**

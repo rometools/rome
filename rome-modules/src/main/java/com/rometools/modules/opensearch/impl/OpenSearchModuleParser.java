@@ -33,10 +33,6 @@ import com.rometools.rome.feed.atom.Link;
 import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.io.ModuleParser;
 
-/**
- * @author Michael W. Nassif (enrouteinc@gmail.com) OpenSearch implementation of the ModuleParser
- *         class
- */
 public class OpenSearchModuleParser implements ModuleParser {
 
     private static final Namespace OS_NS = Namespace.getNamespace("opensearch", OpenSearchModule.URI);

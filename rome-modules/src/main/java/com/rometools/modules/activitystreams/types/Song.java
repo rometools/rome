@@ -35,13 +35,9 @@ package com.rometools.modules.activitystreams.types;
  * <p>
  * A song has no additional components.
  * </p>
- *
- * @author robert.cooper
  */
 public class Song extends ActivityObject {
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
     private Audio audio;
 

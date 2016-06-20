@@ -18,15 +18,10 @@ package com.rometools.modules.mediarss.io;
 
 import org.jdom2.Namespace;
 
-/**
- *
- * @author cooper
- */
 public class AlternateMediaModuleParser extends MediaModuleParser {
 
     private static final Namespace NS = Namespace.getNamespace("http://search.yahoo.com/mrss");
 
-    /** Creates a new instance of AlternateMediaModuleParser */
     public AlternateMediaModuleParser() {
         super();
     }

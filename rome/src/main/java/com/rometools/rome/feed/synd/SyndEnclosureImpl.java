@@ -24,9 +24,6 @@ import com.rometools.rome.feed.CopyFrom;
 import com.rometools.rome.feed.impl.CopyFromHelper;
 import com.rometools.rome.feed.impl.ObjectBean;
 
-/**
- * @author Alejandro Abdelnur
- */
 public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
 
     private static final long serialVersionUID = 1L;
@@ -50,11 +47,6 @@ public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
         COPY_FROM_HELPER = new CopyFromHelper(SyndEnclosure.class, basePropInterfaceMap, basePropClassImplMap);
     }
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public SyndEnclosureImpl() {
         objBean = new ObjectBean(SyndEnclosure.class, this);
     }

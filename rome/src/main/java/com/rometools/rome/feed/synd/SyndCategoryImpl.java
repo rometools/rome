@@ -30,10 +30,6 @@ import com.rometools.rome.feed.module.DCSubjectImpl;
 
 /**
  * Bean for categories of SyndFeedImpl feeds and entries.
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public class SyndCategoryImpl implements Serializable, SyndCategory {
 
@@ -131,11 +127,6 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
         return subject;
     }
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public SyndCategoryImpl() {
         this(new DCSubjectImpl());
     }

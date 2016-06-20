@@ -24,8 +24,6 @@ import com.rometools.rome.feed.module.Module;
 /**
  * This is the primary module interface for the <a href="http://msdn.microsoft.com/xml/rss/sle/">MS
  * Simple List Extensions</a>.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public interface SimpleListExtension extends Module {
     /**

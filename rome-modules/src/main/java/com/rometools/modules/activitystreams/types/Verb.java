@@ -16,10 +16,6 @@
  */
 package com.rometools.modules.activitystreams.types;
 
-/**
- *
- * @author robert.cooper
- */
 public enum Verb {
     /**
      * The "mark as favorite" Verb indicates that the Subject marked the Object as an item of
@@ -186,9 +182,6 @@ public enum Verb {
     RSVP_NO("http://activitystrea.ms/schema/1.0/rsvp-no");
     private final String iri;
 
-    /**
-     * @param iri
-     */
     Verb(final String iri) {
         this.iri = iri;
     }
@@ -198,11 +191,6 @@ public enum Verb {
         return iri;
     }
 
-    /**
-     *
-     * @param iri
-     * @return
-     */
     public static Verb fromIRI(final String iri) {
         for (final Verb v : Verb.values()) {
             if (v.toString().equals(iri)) {

@@ -72,8 +72,6 @@ public class Thumbnail implements Cloneable, Serializable {
     private URI thumbUrl = null;
 
     /**
-     * Creates a new thumbnail
-     *
      * @param url URL to thumbnail
      * @param width width in pixels
      * @param height height in pixels
@@ -87,8 +85,6 @@ public class Thumbnail implements Cloneable, Serializable {
     }
 
     /**
-     * Creates a new thumbnail
-     *
      * @param url URL
      * @param width width
      * @param height height
@@ -98,8 +94,6 @@ public class Thumbnail implements Cloneable, Serializable {
     }
 
     /**
-     * Creates a new thumbnail
-     *
      * @param url URL
      */
     public Thumbnail(final URI url) {

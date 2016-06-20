@@ -27,8 +27,6 @@ import com.rometools.rome.io.ModuleParser;
 
 /**
  * Currently no support for thr:count, thr:updated, thr:total link attributes.
- * 
- * @author <a href="mailto:andreas@feldschmid.com">Andreas Feldschmid</a>
  */
 public class ThreadingModuleParser implements ModuleParser {
 

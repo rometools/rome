@@ -24,13 +24,6 @@ import com.rometools.rome.feed.WireFeed;
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.feed.synd.SyndFeedImpl;
 
-/**
- *
- * <p>
- *
- * @author Alejandro Abdelnur
- *
- */
 public abstract class FeedOpsTest extends FeedTest {
 
     protected FeedOpsTest(final String feedType) {

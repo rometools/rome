@@ -29,8 +29,6 @@ import com.rometools.modules.content.ContentItem;
 
 /**
  * This is all standard property storage testing.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert Cooper</a>
  */
 public class ContentItemTest extends TestCase {
 

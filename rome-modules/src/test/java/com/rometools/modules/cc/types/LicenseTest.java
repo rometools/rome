@@ -26,9 +26,6 @@ import org.junit.Test;
 
 import com.rometools.modules.cc.types.License;
 
-/**
- * @author Matthew Buckett
- */
 public class LicenseTest {
 
     @Before

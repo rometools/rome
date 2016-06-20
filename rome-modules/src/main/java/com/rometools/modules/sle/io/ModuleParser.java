@@ -32,10 +32,6 @@ import com.rometools.modules.sle.types.Group;
 import com.rometools.modules.sle.types.Sort;
 import com.rometools.rome.feed.module.Module;
 
-/**
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- */
 public class ModuleParser implements com.rometools.rome.io.ModuleParser {
 
     private static final Logger LOG = LoggerFactory.getLogger(ModuleParser.class);
@@ -43,7 +39,6 @@ public class ModuleParser implements com.rometools.rome.io.ModuleParser {
     static final Namespace NS = Namespace.getNamespace("cf", SimpleListExtension.URI);
     public static final Namespace TEMP = Namespace.getNamespace("rome-sle", "urn:rome:sle");
 
-    /** Creates a new instance of ModuleParser */
     public ModuleParser() {
         super();
     }
@@ -153,7 +148,7 @@ public class ModuleParser implements com.rometools.rome.io.ModuleParser {
 
                     continue;
                 }
-                // LOG.debug(e.getName());
+
                 final Element value = e.getChild(sort2.getElement(), sort2.getNamespace());
                 if (value == null) {
                     LOG.debug("No value for {} : {}", sort2.getElement(), sort2.getNamespace());

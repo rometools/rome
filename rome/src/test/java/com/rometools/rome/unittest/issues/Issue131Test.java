@@ -26,9 +26,6 @@ import com.rometools.rome.unittest.FeedTest;
 
 /**
  * Test for #131: SyndFeedImpl copyFrom method does not copy Entry Categories.
- *
- * @author Martin Kurz
- *
  */
 public class Issue131Test extends FeedTest {
 

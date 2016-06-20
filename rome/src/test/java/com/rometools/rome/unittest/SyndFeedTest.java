@@ -24,9 +24,6 @@ import com.rometools.rome.feed.synd.SyndImage;
 import com.rometools.rome.io.impl.DateParser;
 import org.junit.Assert;
 
-/**
- * @author pat
- */
 public abstract class SyndFeedTest extends FeedTest {
     private String prefix = null;
 

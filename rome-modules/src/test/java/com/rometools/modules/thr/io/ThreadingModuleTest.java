@@ -30,10 +30,6 @@ import com.rometools.rome.io.FeedException;
 import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.SyndFeedOutput;
 
-/**
- * 
- * @author <a href="mailto:andreas@feldschmid.com">Andreas Feldschmid</a>
- */
 public class ThreadingModuleTest extends AbstractTestCase {
 
     public ThreadingModuleTest(String testName) {

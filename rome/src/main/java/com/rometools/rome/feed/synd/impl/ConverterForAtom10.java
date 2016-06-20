@@ -49,8 +49,6 @@ import com.rometools.rome.feed.synd.SyndPerson;
 import com.rometools.utils.Lists;
 import com.rometools.utils.Strings;
 
-/**
- */
 public class ConverterForAtom10 implements Converter {
 
     private final String type;

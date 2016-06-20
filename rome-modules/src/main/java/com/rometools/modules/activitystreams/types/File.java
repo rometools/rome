@@ -45,14 +45,9 @@ package com.rometools.modules.activitystreams.types;
  * property called <tt>mimeType</tt> whose value is a JSON string containing the MIME type.</dd>
  * </dl>
  * </blockquote>
- *
- * @author robert.cooper
  */
 public class File extends ActivityObject {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
     @Override

@@ -22,7 +22,6 @@ import com.rometools.propono.atom.common.Workspace;
  */
 public class FileBasedWorkspace extends Workspace {
 
-    /** Creates a new instance of FileBasedWorkspace */
     public FileBasedWorkspace(final String handle, final String baseDir) {
         super(handle, "text");
     }

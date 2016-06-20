@@ -17,9 +17,6 @@ package com.rometools.rome.feed.synd.impl;
 
 /**
  * Utility class for normalizing an URI as specified in RFC 2396bis.
- * <p>
- *
- * @author Alejandro Abdelnur
  */
 public class URINormalizer {
 

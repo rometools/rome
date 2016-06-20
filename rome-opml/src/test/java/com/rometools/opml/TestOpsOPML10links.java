@@ -32,13 +32,8 @@ import com.rometools.rome.feed.synd.SyndFeedImpl;
 import com.rometools.rome.io.WireFeedInput;
 import com.rometools.rome.io.WireFeedOutput;
 
-/**
- *
- * @author cooper
- */
 public class TestOpsOPML10links extends FeedOpsTest {
 
-    /** Creates a new instance of TestOpsOPML10 */
     public TestOpsOPML10links() {
         super("opml_1.0_links");
     }

@@ -39,14 +39,9 @@ package com.rometools.modules.activitystreams.types;
  * Processors MAY ignore thumbnails that are of an inappropriate size for their user interface.</dd>
  * </dl>
  * </blockquote>
- *
- * @author robert.cooper
  */
 public class Folder extends ActivityObject {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
     @Override

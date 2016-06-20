@@ -27,12 +27,6 @@ import com.rometools.utils.Lists;
 
 /**
  * Bean for Atom feeds.
- * <p>
- * It handles Atom feeds version 0.3 without loosing any feed information.
- * <p>
- *
- * @author Alejandro Abdelnur
- * @author Dave Johnson (updated for Atom 1.0)
  */
 public class Feed extends WireFeed {
 

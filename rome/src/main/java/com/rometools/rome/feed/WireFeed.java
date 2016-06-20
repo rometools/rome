@@ -37,10 +37,6 @@ import com.rometools.utils.Lists;
  * <p>
  * The format of the 'type' property must be [FEEDNAME]_[FEEDVERSION] with the FEEDNAME in lower
  * case, for example: rss_0.9, rss_0.93, atom_0.3
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public abstract class WireFeed implements Cloneable, Serializable, Extendable {
 

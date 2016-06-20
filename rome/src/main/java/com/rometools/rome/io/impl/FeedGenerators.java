@@ -29,10 +29,6 @@ import com.rometools.rome.io.WireFeedGenerator;
  * <p>
  * Generators for a specific type must extend this class and register in the generator list. (Right
  * now registration is hardcoded in the WireFeedGenerator constructor).
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public class FeedGenerators extends PluginManager<WireFeedGenerator> {
 

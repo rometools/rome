@@ -58,10 +58,6 @@ import com.rometools.utils.Integers;
 import com.rometools.utils.Longs;
 import com.rometools.utils.Strings;
 
-/**
- * @author Nathanial X. Freitas
- *
- */
 public class MediaModuleParser implements ModuleParser {
 
     private static final Logger LOG = LoggerFactory.getLogger(MediaModuleParser.class);

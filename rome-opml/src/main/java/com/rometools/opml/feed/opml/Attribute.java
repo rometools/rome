@@ -24,8 +24,6 @@ import com.rometools.rome.feed.impl.ToStringBean;
 
 /**
  * This is a simple name-value pair attribute for outlines.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Attribute implements Cloneable, Serializable {
 
@@ -35,8 +33,6 @@ public class Attribute implements Cloneable, Serializable {
     private String value;
 
     /**
-     * Creates a new instance of Attribute.
-     *
      * @param name name of the attribute.
      * @param value value of the attribute.
      */

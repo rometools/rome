@@ -44,10 +44,6 @@ import com.rometools.rome.io.FeedException;
 import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.SyndFeedOutput;
 
-/**
- *
- * @author cooper
- */
 public class MediaModuleTest extends AbstractTestCase {
 
     /**

@@ -19,18 +19,13 @@ import java.io.Serializable;
 
 /**
  * A two dimensional position represented by latitude and longitude decimal degrees in WGS84
- *
- * @author runaas
  */
 public class Position implements Cloneable, Serializable {
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
     private double latitude;
     private double longitude;
 
-    /** Creates a new instance of Position */
     public Position() {
         latitude = Double.NaN;
         longitude = Double.NaN;
@@ -38,9 +33,6 @@ public class Position implements Cloneable, Serializable {
 
     /**
      * Create Position from a pair of coordinate values
-     *
-     * @param latitude
-     * @param longitude
      */
     public Position(final double latitude, final double longitude) {
         this.latitude = latitude;

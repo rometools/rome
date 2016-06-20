@@ -89,8 +89,6 @@ import com.rometools.modules.portablecontacts.ContactModule;
  * <hr class="insert" />
  *
  * </p>
- *
- * @author robert.cooper
  */
 public interface HasLocation {
 

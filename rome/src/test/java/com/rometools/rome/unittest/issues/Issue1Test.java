@@ -32,10 +32,6 @@ import com.rometools.rome.io.XmlReader;
 import com.rometools.rome.io.impl.XmlFixerReader;
 import com.rometools.rome.unittest.SyndFeedTest;
 
-/**
- *
- * @author robert.cooper
- */
 public class Issue1Test extends SyndFeedTest {
     private static final String XML_PROLOG = "<?xml version=\"1.0\" ?>";
 

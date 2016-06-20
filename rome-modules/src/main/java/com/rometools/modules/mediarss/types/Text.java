@@ -71,8 +71,6 @@ import com.rometools.rome.feed.impl.ToStringBean;
  * and a <em>start</em> time is used, it is expected that the end time is either the end of the clip
  * or the start of the next &lt;media:text&gt; element.
  * </p>
- *
- * @author cooper
  */
 public class Text implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -91,8 +89,6 @@ public class Text implements Serializable {
     }
 
     /**
-     * Creates a new instance of Text
-     *
      * @param type type of text
      * @param value value of text
      */

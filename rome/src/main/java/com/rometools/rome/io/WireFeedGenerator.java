@@ -26,10 +26,6 @@ import com.rometools.rome.feed.WireFeed;
  * WireFeedGenerator instances must thread safe.
  * <p>
  * TODO: explain how developers can plugin their own implementations.
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public interface WireFeedGenerator {
 

@@ -48,8 +48,6 @@ import com.rometools.utils.Alternatives;
 import com.rometools.utils.Lists;
 import com.rometools.utils.Strings;
 
-/**
- */
 public class ConverterForAtom03 implements Converter {
 
     private final String type;

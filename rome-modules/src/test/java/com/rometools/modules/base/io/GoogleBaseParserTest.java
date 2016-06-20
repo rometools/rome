@@ -57,10 +57,6 @@ import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.SyndFeedInput;
 
-/**
- *
- * @author rcooper
- */
 public class GoogleBaseParserTest extends AbstractTestCase {
 
     private static final Logger LOG = LoggerFactory.getLogger(GoogleBaseParserTest.class);

@@ -43,9 +43,6 @@ import com.rometools.rome.feed.synd.SyndLinkImpl;
 import com.rometools.rome.feed.synd.SyndPerson;
 import com.rometools.rome.feed.synd.SyndPersonImpl;
 
-/**
- * @author cooper
- */
 public class ConverterForOPML10 implements Converter {
 
     private static final Logger LOG = LoggerFactory.getLogger(ConverterForOPML10.class);

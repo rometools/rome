@@ -37,10 +37,6 @@ import org.slf4j.LoggerFactory;
  * <p>
  * It works on all read/write properties, recursively. It support all primitive types, Strings,
  * Collections, Cloneable objects and multi-dimensional arrays of any of them.
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public class CloneableBean implements Serializable, Cloneable {
 

@@ -52,14 +52,9 @@ package com.rometools.modules.activitystreams.types;
  * number giving the rating.</dd>
  * </dl>
  * </blockquote>
- *
- * @author robert.cooper
  */
 public class Review extends ActivityObject {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
     @Override

@@ -32,10 +32,6 @@ import com.rometools.modules.content.ContentItem;
 import com.rometools.modules.content.ContentModule;
 import com.rometools.modules.content.ContentModuleImpl;
 
-/**
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert Cooper</a>
- */
 public class ContentModuleImplTest extends TestCase {
 
     private static final Logger LOG = LoggerFactory.getLogger(ContentModuleImplTest.class);

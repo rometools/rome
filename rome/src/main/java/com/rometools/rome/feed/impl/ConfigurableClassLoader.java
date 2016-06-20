@@ -20,9 +20,6 @@ package com.rometools.rome.feed.impl;
  * problems, simply override the default ClassLoader by calling the
  * {@link #setClassLoader(ClassLoader)} method before calling any ROME code. Unfortunately I don't
  * know whether this works because I have absolutely no experience with OSGi.
- *
- * @author Patrick Gotthard
- *
  */
 public enum ConfigurableClassLoader {
 

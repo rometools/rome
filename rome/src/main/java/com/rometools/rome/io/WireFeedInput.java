@@ -51,10 +51,6 @@ import com.rometools.rome.io.impl.XmlFixerReader;
  * Parsers are plugable (they must implement the WireFeedParser interface).
  * <p>
  * The WireFeedInput useds liberal parsers.
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public class WireFeedInput {
 

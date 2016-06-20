@@ -15,13 +15,6 @@
  */
 package com.rometools.rome.unittest;
 
-/**
- *
- * <p>
- *
- * @author Alejandro Abdelnur
- *
- */
 public class TestOpsRSS094 extends FeedOpsTest {
 
     public static void main(final String[] args) throws Exception {
