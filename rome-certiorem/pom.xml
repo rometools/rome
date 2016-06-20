@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.rometools</groupId>
         <artifactId>rome-parent</artifactId>
-        <version>1.6.1</version>
+        <version>1.7.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>rome-certiorem</artifactId>
