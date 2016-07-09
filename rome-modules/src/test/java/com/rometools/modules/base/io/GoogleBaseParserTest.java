@@ -74,45 +74,6 @@ public class GoogleBaseParserTest extends AbstractTestCase {
     /**
      * Test of parse method, of class com.totsp.xml.syndication.base.io.GoogleBaseParser.
      */
-    public void testQuickParse() throws Exception {
-        try {
-            LOG.debug("testParse");
-            final SyndFeedInput input = new SyndFeedInput();
-            final File testDir = new File(super.getTestFile("xml"));
-            final File[] testFiles = testDir.listFiles();
-            for (int h = 0; h < testFiles.length; h++) {
-                if (!testFiles[h].getName().endsWith(".xml")) {
-                    continue;
-                }
-                SyndFeed feed = null;
-                try {
-                    feed = input.build(testFiles[h]);
-                } catch (final Exception e) {
-                    throw new RuntimeException(testFiles[h].getAbsolutePath(), e);
-                }
-                final List<SyndEntry> entries = feed.getEntries();
-                for (int i = 0; i < entries.size(); i++) {
-                    final SyndEntry entry = entries.get(i);
-                    LOG.debug("{}", entry.getModules().size());
-                    for (int j = 0; j < entry.getModules().size(); j++) {
-                        LOG.debug("{}", entry.getModules().get(j).getClass());
-                        if (entry.getModules().get(j) instanceof GoogleBase) {
-                            final GoogleBase base = (GoogleBase) entry.getModules().get(j);
-                            LOG.debug(testFiles[h].getName());
-                            LOG.debug(super.beanToString(base, false));
-                        }
-                    }
-                }
-            }
-        } catch (final Exception e) {
-            e.printStackTrace();
-            throw e;
-        }
-    }
-
-    /**
-     * Test of parse method, of class com.totsp.xml.syndication.base.io.GoogleBaseParser.
-     */
     public void testCourse2Parse() throws Exception {
         LOG.debug("testCourse2Parse");
         final SyndFeedInput input = new SyndFeedInput();
