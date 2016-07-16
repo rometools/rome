@@ -24,7 +24,10 @@ import com.rometools.propono.atom.server.AtomHandlerFactory;
 /**
  * Extends {@link com.rometools.rome.propono.atom.server.AtomHandlerFactory} to create and return
  * {@link com.rometools.rome.propono.atom.server.impl.FileBasedAtomHandler}.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class FileBasedAtomHandlerFactory extends AtomHandlerFactory {
 
     /**

@@ -30,7 +30,10 @@ import com.rometools.rome.io.impl.DateParser;
 
 /**
  * Parses APP module information from a JDOM element and into <code>AppModule</code> form.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class AppModuleParser implements ModuleParser {
 
     /** Get URI of module namespace */

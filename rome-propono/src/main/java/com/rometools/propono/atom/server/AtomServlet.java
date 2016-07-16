@@ -55,7 +55,10 @@ import com.rometools.rome.io.impl.Atom10Parser;
  * care of parsing incoming XML into ROME Atom {@link com.rometools.rome.feed.atom.Entry} objects,
  * passing those to the handler and serializing to the response the entries and feeds returned by
  * the handler.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class AtomServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;

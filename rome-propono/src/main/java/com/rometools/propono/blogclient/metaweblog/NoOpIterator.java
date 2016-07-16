@@ -17,6 +17,10 @@ package com.rometools.propono.blogclient.metaweblog;
 
 import java.util.Iterator;
 
+/**
+ * @deprecated Propono will be removed in Rome 2.
+ */
+@Deprecated
 class NoOpIterator<T> implements Iterator<T> {
 
     /** No-op */

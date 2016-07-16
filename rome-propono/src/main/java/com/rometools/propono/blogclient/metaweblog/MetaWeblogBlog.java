@@ -37,7 +37,10 @@ import com.rometools.propono.blogclient.BlogResource;
 
 /**
  * Blog implementation that uses a mix of Blogger and MetaWeblog API methods.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class MetaWeblogBlog implements Blog {
 
     private final String blogid;

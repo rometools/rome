@@ -25,7 +25,10 @@ import com.rometools.rome.feed.module.Module;
 
 /**
  * ROME Extension Module to Atom protocol extensions to Atom format.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public interface AppModule extends Module {
 
     public static final String URI = "http://www.w3.org/2007/app";

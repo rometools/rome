@@ -28,7 +28,9 @@ import com.rometools.certiorem.hub.data.Subscriber;
  * Uses a ThreadPoolExecutor to do async verifications.
  *
  * @author robert.cooper
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 public class ThreadPoolVerifier extends AbstractVerifier {
     protected final ThreadPoolExecutor exeuctor;
 

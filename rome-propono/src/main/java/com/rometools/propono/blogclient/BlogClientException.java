@@ -18,7 +18,10 @@ package com.rometools.propono.blogclient;
 /**
  * Represents a Blog Client exception, the library throws these instead of implementation specific
  * exceptions.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class BlogClientException extends Exception {
 
     private static final long serialVersionUID = 1L;

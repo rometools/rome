@@ -21,7 +21,10 @@ import java.util.List;
 
 /**
  * Base implementation of a blog entry.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public abstract class BaseBlogEntry implements BlogEntry {
     protected String id = null;
     protected Person author = null;

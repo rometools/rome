@@ -32,7 +32,10 @@ import com.rometools.propono.blogclient.BlogConnection;
 
 /**
  * BlogClient implementation that uses a mix of Blogger and MetaWeblog API methods.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class MetaWeblogConnection implements BlogConnection {
 
     private URL url = null;

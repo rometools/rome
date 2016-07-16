@@ -19,7 +19,10 @@ import java.lang.reflect.Constructor;
 
 /**
  * Entry point to the Blogapps blog client library.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class BlogConnectionFactory {
 
     // BlogConnection implementations must:

@@ -23,7 +23,10 @@ import java.io.InputStream;
  * Resources are modeled as a type of BlogEntry, but be aware: not all servers can save resource
  * metadata (i.e. title, category, author, etc.). MetaWeblog based servers can't save metadata at
  * all and Atom protocol servers are not required to preserve uploaded file metadata.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public interface BlogResource extends BlogEntry {
 
     /** Get resource name (name is required) */

@@ -27,7 +27,10 @@ import com.rometools.propono.blogclient.BlogEntry;
 
 /**
  * Atom protocol implementation of BlogClient entry iterator.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class AtomEntryIterator implements Iterator<BlogEntry> {
 
     private static final Logger LOG = LoggerFactory.getLogger(AtomEntryIterator.class);

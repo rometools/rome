@@ -32,7 +32,9 @@ import com.rometools.certiorem.hub.Hub;
 /**
  *
  * @author robert.cooper
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 public abstract class AbstractHubServlet extends HttpServlet {
     /**
      *

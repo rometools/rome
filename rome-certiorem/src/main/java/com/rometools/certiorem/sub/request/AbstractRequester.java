@@ -29,7 +29,9 @@ import com.rometools.certiorem.sub.data.Subscription;
 /**
  *
  * @author robert.cooper
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 public abstract class AbstractRequester implements Requester {
 
     protected boolean sendRequest(final String hubUrl, final String mode, final Subscription subscription, final String verifySync, final long leaseSeconds,

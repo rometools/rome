@@ -39,7 +39,10 @@ import com.rometools.rome.io.impl.Atom10Parser;
  * {@link com.rometools.rome.propono.atom.common.Collection} class to add a <code>getEntry()</code>
  * method and to return {@link com.rometools.rome.propono.atom.client.ClientWorkspace} objects
  * instead of common {@link com.rometools.rome.propono.atom.common.Workspace}s.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class ClientAtomService extends AtomService {
 
     private static final Logger LOG = LoggerFactory.getLogger(ClientAtomService.class);

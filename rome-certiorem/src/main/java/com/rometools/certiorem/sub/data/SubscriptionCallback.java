@@ -23,7 +23,9 @@ import com.rometools.fetcher.impl.SyndFeedInfo;
 /**
  *
  * @author najmi
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 public interface SubscriptionCallback {
 
     void onNotify(Subscription subscribed, SyndFeedInfo feedInfo);

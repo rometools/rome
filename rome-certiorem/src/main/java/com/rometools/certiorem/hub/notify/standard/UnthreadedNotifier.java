@@ -24,7 +24,9 @@ import com.rometools.certiorem.hub.data.SubscriptionSummary;
  * A notifier that does not use threads. All calls are blocking and synchronous.
  *
  * @author robert.cooper
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 public class UnthreadedNotifier extends AbstractNotifier {
 
     /**

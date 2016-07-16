@@ -29,7 +29,9 @@ import com.rometools.certiorem.sub.data.Subscription;
  * A simple requester implementation that always makes requests as Async.
  *
  * @author robert.cooper
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 public class AsyncRequester extends AbstractRequester {
 
     private static final Logger LOG = LoggerFactory.getLogger(AsyncRequester.class);

@@ -30,7 +30,10 @@ import java.util.regex.Pattern;
 
 /**
  * Utilities for file I/O and string manipulation.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public final class Utilities {
 
     private static final String LS = System.getProperty("line.separator");

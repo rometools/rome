@@ -49,7 +49,10 @@ import com.rometools.rome.io.impl.Atom10Parser;
 /**
  * Client implementation of Atom media-link entry, an Atom entry that provides meta-data for a media
  * file (e.g. uploaded image or audio file).
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class ClientMediaEntry extends ClientEntry {
 
     private static final long serialVersionUID = 1L;

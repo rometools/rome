@@ -20,7 +20,10 @@ package com.rometools.propono.atom.server;
  * {@link com.rometools.rome.propono.atom.server.AtomHandlerFactory} exists. This error will
  * typically be thrown when the class of a parser factory specified in the system properties cannot
  * be found or instantiated.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class FactoryConfigurationError extends Error {
 
     private static final long serialVersionUID = 1L;

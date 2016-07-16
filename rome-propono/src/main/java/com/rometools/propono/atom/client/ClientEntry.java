@@ -47,7 +47,10 @@ import com.rometools.rome.io.impl.Atom10Parser;
 /**
  * Client implementation of Atom entry, extends ROME Entry to add methods for easily getting/setting
  * content, updating and removing the entry from the server.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class ClientEntry extends Entry {
 
     private static final long serialVersionUID = 1L;

@@ -39,7 +39,10 @@ import com.rometools.propono.utils.ProponoException;
 
 /**
  * Strategy for using OAuth.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class OAuthStrategy implements AuthStrategy {
 
     private State state = State.UNAUTHORIZED;

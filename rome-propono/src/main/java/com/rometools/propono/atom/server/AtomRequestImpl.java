@@ -29,7 +29,10 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * Default request implementation.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class AtomRequestImpl implements AtomRequest {
 
     private HttpServletRequest wrapped = null;

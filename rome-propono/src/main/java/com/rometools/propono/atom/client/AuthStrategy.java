@@ -15,11 +15,15 @@
  */
 package com.rometools.propono.atom.client;
 
+import com.rometools.propono.utils.ProponoException;
+
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpMethodBase;
 
-import com.rometools.propono.utils.ProponoException;
-
+/**
+ * @deprecated Propono will be removed in Rome 2.
+ */
+@Deprecated
 public interface AuthStrategy {
 
     /**

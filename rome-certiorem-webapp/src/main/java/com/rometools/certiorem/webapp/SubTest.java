@@ -35,7 +35,9 @@ import com.rometools.fetcher.impl.SyndFeedInfo;
 /**
  *
  * @author robert.cooper
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 @Singleton
 public class SubTest extends HttpServlet {
 

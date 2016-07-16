@@ -33,7 +33,10 @@ import com.rometools.propono.blogclient.BlogConnection;
 /**
  * Atom protocol of BlogConnection. Connects to Atom server, creates AtomBlog object for each Atom
  * workspace found and within each blog a collection for each Atom collection found.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class AtomConnection implements BlogConnection {
 
     private final Map<String, Blog> blogs = new HashMap<String, Blog>();

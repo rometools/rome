@@ -23,7 +23,9 @@ import java.util.concurrent.ThreadPoolExecutor;
 /**
  *
  * @author robert.cooper
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 public class ThreadpoolVerifierAdvanced extends ThreadPoolVerifier {
 
     public ThreadpoolVerifierAdvanced(final ThreadPoolExecutor executor) {

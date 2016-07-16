@@ -35,7 +35,9 @@ import com.rometools.rome.feed.synd.SyndFeed;
  * fetch.
  *
  * @author najmi
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 public class DeltaSyndFeedInfo extends SyndFeedInfo {
 
     /**

@@ -23,7 +23,9 @@ import java.io.Serializable;
 /**
  *
  * @author robert.cooper
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 public class Subscription implements Serializable {
     /**
      *

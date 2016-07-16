@@ -27,7 +27,10 @@ import com.rometools.rome.io.impl.Atom10Parser;
 
 /**
  * Models an Atom workspace collection.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class Collection {
 
     public static final String ENTRY_TYPE = "application/atom+xml;type=entry";
