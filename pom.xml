@@ -37,57 +37,8 @@
         <connection>scm:git:ssh://github.com/rometools/rome.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/rometools/rome.git</developerConnection>
         <url>https://github.com/rometools/rome</url>
-      <tag>HEAD</tag>
-  </scm>
-
-    <developers>
-        <developer>
-            <name>Alejandro Abdelnur</name>
-            <url>http://blog.sun.com/roller/page/tucu</url>
-            <timezone>0</timezone>
-        </developer>
-        <developer>
-            <name>Dave Johnson</name>
-            <url>http://rollerweblogger.org/roller</url>
-            <timezone>-5</timezone>
-        </developer>
-        <developer>
-            <name>Elaine Chien</name>
-            <timezone>0</timezone>
-        </developer>
-        <developer>
-            <id>farrukhnajmi</id>
-            <name>Farrukh Najmi</name>
-            <url>http://www.wellfleetsoftware.com/farrukh</url>
-        </developer>
-        <developer>
-            <id>imk</id>
-            <name>Martin Kurz</name>
-            <timezone>Europe/Berlin</timezone>
-        </developer>
-        <developer>
-            <name>Nick Lothian</name>
-            <url>http://nicklothian.com</url>
-        </developer>
-        <developer>
-            <name>Patrick Chanezon</name>
-            <url>http://www.chanezon.com/pat/weblog</url>
-            <timezone>-9</timezone>
-        </developer>
-        <developer>
-            <name>Patrick Gotthard</name>
-            <email>patrick@patrick-gotthard.de</email>
-            <url>http://www.patrick-gotthard.de</url>
-            <timezone>+1</timezone>
-        </developer>
-        <developer>
-            <id>kebernet</id>
-            <name>Robert Cooper</name>
-            <email>kebernet@gmail.com</email>
-            <url>http://www.kebernet.net</url>
-            <timezone>-4</timezone>
-        </developer>
-    </developers>
+        <tag>HEAD</tag>
+    </scm>
 
     <distributionManagement>
         <snapshotRepository>
