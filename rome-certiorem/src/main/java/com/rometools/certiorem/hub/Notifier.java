@@ -27,7 +27,9 @@ import com.rometools.rome.feed.synd.SyndFeed;
 /**
  *
  * @author robert.cooper
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 public interface Notifier {
     /**
      * Instructs the notifier to begin sending notifications to the list of subscribers

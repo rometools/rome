@@ -28,7 +28,9 @@ import com.rometools.fetcher.impl.SyndFeedInfo;
  * changes to entries in the underlying feed.
  *
  * @author najmi
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 public class DeltaFeedInfoCache implements FeedFetcherCache {
 
     FeedFetcherCache backingCache;

@@ -39,7 +39,10 @@ import com.rometools.rome.feed.atom.Feed;
  * File-based {@link com.rometools.rome.propono.atom.server.AtomHandler} implementation that stores
  * entries and media-entries to disk. Implemented using
  * {@link com.rometools.rome.propono.atom.server.impl.FileBasedAtomService}.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class FileBasedAtomHandler implements AtomHandler {
 
     private static final Logger LOG = LoggerFactory.getLogger(FileBasedAtomHandler.class);

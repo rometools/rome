@@ -27,7 +27,10 @@ import javax.activation.MimetypesFileTypeMap;
 
 /**
  * Represents a media link entry.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class AtomMediaResource {
     private String contentType = null;
     private long contentLength = 0;

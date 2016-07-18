@@ -47,7 +47,9 @@ import com.rometools.rome.io.SyndFeedInput;
 /**
  *
  * @author robert.cooper
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 public class Subscriptions {
 
     private static final Logger LOG = LoggerFactory.getLogger(Subscriptions.class);

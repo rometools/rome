@@ -35,7 +35,9 @@ import com.rometools.certiorem.hub.data.SubscriptionSummary;
 /**
  *
  * @author robert.cooper
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 public class JPADAO implements HubDAO {
 
     private final EntityManagerFactory factory;

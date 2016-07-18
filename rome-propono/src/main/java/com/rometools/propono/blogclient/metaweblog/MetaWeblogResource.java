@@ -26,7 +26,10 @@ import com.rometools.propono.blogclient.BlogResource;
 
 /**
  * MetaWeblog API implementation of an resource entry.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class MetaWeblogResource extends MetaWeblogEntry implements BlogResource {
     private final MetaWeblogBlog blog;
     private final String name;

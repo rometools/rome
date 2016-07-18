@@ -41,7 +41,9 @@ import com.rometools.fetcher.impl.HttpURLFeedFetcher;
 /**
  *
  * @author robert.cooper
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 public class ServerModule extends GuiceServletContextListener {
 
     private static final Logger LOG = LoggerFactory.getLogger(ServerModule.class);

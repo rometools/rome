@@ -33,7 +33,9 @@ import com.rometools.certiorem.hub.data.Subscriber;
 /**
  *
  * @author robert.cooper
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 @Entity
 @NamedQueries({ @NamedQuery(name = "Subcriber.forTopic", query = "SELECT o FROM JPASubscriber o WHERE o.topic = :topic AND o.expired = false ORDER BY o.subscribedAt") })
 public class JPASubscriber extends Subscriber implements Serializable {

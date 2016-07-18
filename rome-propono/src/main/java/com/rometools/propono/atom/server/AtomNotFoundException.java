@@ -23,7 +23,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Exception thrown by AtomHandler in that case a resource is not found.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class AtomNotFoundException extends AtomException {
 
     private static final long serialVersionUID = 1L;

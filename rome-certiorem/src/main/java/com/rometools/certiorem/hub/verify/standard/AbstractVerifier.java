@@ -39,7 +39,9 @@ import com.rometools.certiorem.hub.data.Subscriber;
  * operations, and expects a child class to do Async ops.
  *
  * @author robert.cooper
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 public abstract class AbstractVerifier implements Verifier {
 
     private static final Logger LOG = LoggerFactory.getLogger(AbstractVerifier.class);

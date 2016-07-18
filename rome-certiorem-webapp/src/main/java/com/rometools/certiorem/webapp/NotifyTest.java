@@ -33,7 +33,9 @@ import com.rometools.certiorem.pub.Publisher;
 /**
  *
  * @author robert.cooper
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 @Singleton
 public class NotifyTest extends HttpServlet {
 

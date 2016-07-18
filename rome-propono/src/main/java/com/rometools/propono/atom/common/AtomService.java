@@ -29,7 +29,10 @@ import com.rometools.propono.utils.ProponoException;
 /**
  * Models an Atom Publishing Protocol Service Document. Is able to read a Service document from a
  * JDOM Document and to write Service document out as a JDOM Document.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class AtomService {
 
     private List<Workspace> workspaces = new ArrayList<Workspace>();

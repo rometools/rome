@@ -27,7 +27,10 @@ import com.rometools.propono.blogclient.BlogEntry;
 
 /**
  * MetaWeblog API implementation of an entry.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class MetaWeblogEntry extends BaseBlogEntry {
 
     MetaWeblogEntry(final MetaWeblogBlog blog, final Map<String, Object> entryMap) {

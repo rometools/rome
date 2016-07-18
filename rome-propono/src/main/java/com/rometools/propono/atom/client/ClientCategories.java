@@ -32,7 +32,10 @@ import com.rometools.propono.utils.ProponoException;
 /**
  * Models an Atom protocol Categories element, which may contain ROME Atom
  * {@link com.rometools.rome.feed.atom.Category} elements.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class ClientCategories extends Categories {
     private ClientCollection clientCollection = null;
 

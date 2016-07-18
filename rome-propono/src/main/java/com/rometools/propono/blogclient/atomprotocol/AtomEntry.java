@@ -33,7 +33,10 @@ import com.rometools.rome.feed.synd.SyndPerson;
 
 /**
  * Atom protocol implementation of BlogEntry.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class AtomEntry extends BaseBlogEntry implements BlogEntry {
 
     String editURI = null;

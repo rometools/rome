@@ -22,6 +22,10 @@ import org.apache.commons.httpclient.methods.PostMethod;
 
 import com.rometools.propono.utils.ProponoException;
 
+/**
+ * @deprecated Propono will be removed in Rome 2.
+ */
+@Deprecated
 public class GDataAuthStrategy implements AuthStrategy {
     private final String email;
     private final String password;

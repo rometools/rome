@@ -24,7 +24,9 @@ import com.rometools.certiorem.hub.data.Subscriber;
  * A strategy interface for verification of subscriptions.
  *
  * @author robert.cooper
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 public interface Verifier {
 
     /**

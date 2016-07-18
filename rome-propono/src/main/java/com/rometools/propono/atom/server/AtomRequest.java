@@ -27,7 +27,10 @@ import java.util.Map;
 
 /**
  * Represents HTTP request to be processed by AtomHandler.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public interface AtomRequest {
 
     /**

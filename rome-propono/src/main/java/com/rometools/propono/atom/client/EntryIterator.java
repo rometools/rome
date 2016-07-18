@@ -33,7 +33,10 @@ import com.rometools.rome.io.WireFeedInput;
 
 /**
  * Enables iteration over entries in Atom protocol collection.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class EntryIterator implements Iterator<ClientEntry> {
 
     private static final Logger LOG = LoggerFactory.getLogger(EntryIterator.class);

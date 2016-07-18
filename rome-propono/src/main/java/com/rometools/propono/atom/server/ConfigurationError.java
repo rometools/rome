@@ -15,6 +15,10 @@
  */
 package com.rometools.propono.atom.server;
 
+/**
+ * @deprecated Propono will be removed in Rome 2.
+ */
+@Deprecated
 class ConfigurationError extends Error {
 
     private static final long serialVersionUID = 1L;

@@ -31,7 +31,9 @@ import com.rometools.certiorem.hub.data.SubscriptionSummary;
  * A notifier implementation that uses a thread pool to deliver notifications to subscribers
  *
  * @author robert.cooper
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 public class ThreadPoolNotifier extends AbstractNotifier {
     private static final long TWO_MINUTES = 2 * 60 * 1000;
     protected final ThreadPoolExecutor exeuctor;

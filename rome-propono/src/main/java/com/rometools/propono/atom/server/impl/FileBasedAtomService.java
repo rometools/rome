@@ -93,7 +93,10 @@ import com.rometools.propono.utils.Utilities;
  * Collection entry media (media file stored under entry directory)<br/>
  * <code>[servlet-context-dir]/[workspace-handle]/[collection-plural]/id/media/id</code>
  * </p>
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class FileBasedAtomService extends AtomService {
 
     private final Map<String, FileBasedWorkspace> workspaceMap = new TreeMap<String, FileBasedWorkspace>();

@@ -29,7 +29,10 @@ import com.rometools.rome.feed.atom.Link;
 
 /**
  * Atom protocol implementation of BlogResource.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class AtomResource extends AtomEntry implements BlogResource {
 
     private AtomCollection collection;

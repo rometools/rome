@@ -24,7 +24,10 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Exception to be thrown by <code>AtomHandler</code> implementations in the case that a user is not
  * authorized to access a resource.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class AtomNotAuthorizedException extends AtomException {
 
     private static final long serialVersionUID = 1L;

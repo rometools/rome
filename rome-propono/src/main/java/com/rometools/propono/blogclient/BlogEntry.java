@@ -20,7 +20,10 @@ import java.util.List;
 
 /**
  * Represents a single blog entry.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public interface BlogEntry {
 
     /** Get token, which can be used to fetch the blog entry */

@@ -28,7 +28,10 @@ import com.rometools.rome.io.impl.Atom10Parser;
 /**
  * Models an Atom protocol Categories element, which may contain ROME Atom
  * {@link com.rometools.rome.feed.atom.Category} elements.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class Categories {
 
     private final List<Category> categories = new ArrayList<Category>();

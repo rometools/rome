@@ -23,7 +23,9 @@ import com.rometools.certiorem.sub.data.Subscription;
 /**
  *
  * @author robert.cooper
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 public interface Requester {
     public void sendSubscribeRequest(String hubUrl, Subscription subscription, String verifySync, long leaseSeconds, String secret, String callbackUrl,
             RequestCallback callback);

@@ -32,7 +32,9 @@ import com.rometools.certiorem.hub.data.SubscriptionSummary;
  * A Simple In-Memory HubDAO for subscribers.
  *
  * @author robert.cooper
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 public class InMemoryHubDAO implements HubDAO {
     private final ConcurrentHashMap<String, List<Subscriber>> subscribers = new ConcurrentHashMap<String, List<Subscriber>>();
     private final ConcurrentHashMap<String, ConcurrentHashMap<String, SubscriptionSummary>> summaries = new ConcurrentHashMap<String, ConcurrentHashMap<String, SubscriptionSummary>>();

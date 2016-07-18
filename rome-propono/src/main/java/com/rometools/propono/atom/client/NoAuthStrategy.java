@@ -22,7 +22,10 @@ import com.rometools.propono.utils.ProponoException;
 
 /**
  * No authentication
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class NoAuthStrategy implements AuthStrategy {
 
     @Override

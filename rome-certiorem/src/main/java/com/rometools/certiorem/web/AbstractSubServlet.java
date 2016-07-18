@@ -32,7 +32,9 @@ import com.rometools.certiorem.sub.Subscriptions;
 /**
  *
  * @author robert.cooper
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 public abstract class AbstractSubServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;

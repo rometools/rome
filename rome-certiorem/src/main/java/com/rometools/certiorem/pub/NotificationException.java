@@ -21,7 +21,9 @@ package com.rometools.certiorem.pub;
 /**
  *
  * @author robert.cooper
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 public class NotificationException extends Exception {
 
     /**
