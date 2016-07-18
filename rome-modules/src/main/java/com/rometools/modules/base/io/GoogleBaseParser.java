@@ -15,9 +15,6 @@
  */
 package com.rometools.modules.base.io;
 
-import java.beans.IntrospectionException;
-import java.beans.Introspector;
-import java.beans.PropertyDescriptor;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.net.URL;
@@ -46,6 +43,8 @@ import com.rometools.modules.base.types.PriceTypeEnumeration;
 import com.rometools.modules.base.types.ShippingType;
 import com.rometools.modules.base.types.Size;
 import com.rometools.modules.base.types.YearType;
+import com.rometools.rome.feed.impl.BeanIntrospector;
+import com.rometools.rome.feed.impl.PropertyDescriptor;
 import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.io.ModuleParser;
 
@@ -59,16 +58,19 @@ public class GoogleBaseParser implements ModuleParser {
     public static final SimpleDateFormat LONG_DT_FMT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
     static final Namespace NS = Namespace.getNamespace(GoogleBase.URI);
     static final Properties PROPS2TAGS = new Properties();
-    static PropertyDescriptor[] pds = null;
+    static List<PropertyDescriptor> pds = null;
 
     static {
         try {
-            pds = Introspector.getBeanInfo(GoogleBaseImpl.class).getPropertyDescriptors();
+            pds = BeanIntrospector.getPropertyDescriptorsWithGetters(GoogleBaseImpl.class);
+        } catch (final IllegalArgumentException e) {
+            LOG.error("Failed to get property descriptors for GoogleBaseImpl", e);
+        }
+
+        try {
             PROPS2TAGS.load(GoogleBaseParser.class.getResourceAsStream("/com/rometools/modules/base/io/tags.properties"));
         } catch (final IOException e) {
             LOG.error("Unable to read properties file for Google Base tags!", e);
-        } catch (final IntrospectionException e) {
-            LOG.error("Unable to get property descriptors for GoogleBaseImpl!", e);
         }
     }
 

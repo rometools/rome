@@ -80,7 +80,6 @@ public class WeatherModuleParserTest extends AbstractTestCase {
                         final YWeatherModule base = (YWeatherModule) entry.getModules().get(j);
                         assertTrue(((YWeatherEntryModule) base).getForecasts().length > 0);
                         LOG.debug(testFiles[h].getName());
-                        LOG.debug(super.beanToString(base, false));
 
                         final YWeatherEntryModule module2 = new YWeatherModuleImpl();
                         module2.copyFrom(base);

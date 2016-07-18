@@ -15,11 +15,11 @@
  */
 package com.rometools.modules.base.io;
 
-import java.beans.PropertyDescriptor;
 import java.net.URL;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.jdom2.Element;
@@ -40,6 +40,7 @@ import com.rometools.modules.base.types.ShippingType;
 import com.rometools.modules.base.types.ShortDate;
 import com.rometools.modules.base.types.Size;
 import com.rometools.modules.base.types.YearType;
+import com.rometools.rome.feed.impl.PropertyDescriptor;
 import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.io.ModuleGenerator;
 
@@ -68,7 +69,7 @@ public class GoogleBaseGenerator implements ModuleGenerator {
     public void generate(final Module module, final Element element) {
         final GoogleBaseImpl mod = (GoogleBaseImpl) module;
         final HashMap<Object, Object> props2tags = new HashMap<Object, Object>(GoogleBaseParser.PROPS2TAGS);
-        final PropertyDescriptor[] pds = GoogleBaseParser.pds;
+        final List<PropertyDescriptor> pds = GoogleBaseParser.pds;
 
         for (final PropertyDescriptor pd : pds) {
             final String tagName = (String) props2tags.get(pd.getName());
