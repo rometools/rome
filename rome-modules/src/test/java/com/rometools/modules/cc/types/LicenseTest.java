@@ -23,10 +23,12 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import com.rometools.modules.cc.types.License;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class LicenseTest {
+
+    private static final Logger LOG = LoggerFactory.getLogger(LicenseTest.class);
 
     @Before
     public void setUp() {
@@ -54,6 +56,7 @@ public class LicenseTest {
                         }
                     }
                 } catch (final Exception e) {
+                    LOG.error("Exception in add-new thread", e);
                     hadException.set(true);
                 }
             }
@@ -66,12 +69,17 @@ public class LicenseTest {
                 final Random rnd = new Random();
                 try {
                     while (run.get()) {
+                        if (type.intValue() == 0) {
+                            continue;
+                        }
+
                         final License license = License.findByValue("http://creativecommons.org/licenses/" + rnd.nextInt(type.intValue()) + "/1");
                         if (license == null) {
                             hadProblem.set(true);
                         }
                     }
                 } catch (final Exception e) {
+                    LOG.error("Exception in get-existing thread", e);
                     hadException.set(true);
                 }
             }
