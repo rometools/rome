@@ -50,7 +50,7 @@ public class SimpleParser implements ModuleParser {
         if (coordinates != null) {
 
             posList = new PositionList();
-            final String[] coord = coordinates.split(" ");
+            final String[] coord = coordinates.split("\\s+");
             for (int i = 0; i < coord.length; i += 2) {
                 final double latitude = Double.parseDouble(coord[i]);
                 final double longitude = Double.parseDouble(coord[i + 1]);
@@ -83,7 +83,7 @@ public class SimpleParser implements ModuleParser {
             final String coordinates = Strings.trimToNull(pointElement.getText());
             if (coordinates != null) {
 
-                final String[] coord = coordinates.split(" ");
+                final String[] coord = coordinates.split("\\s+");
 
                 if (coord.length == 2) {
 
@@ -138,7 +138,7 @@ public class SimpleParser implements ModuleParser {
             final String coordinates = Strings.trimToNull(boxElement.getText());
             if (coordinates != null) {
 
-                final String[] coord = coordinates.split(" ");
+                final String[] coord = coordinates.split("\\s+");
                 final double bottom = Double.parseDouble(coord[0]);
                 final double left = Double.parseDouble(coord[1]);
                 final double top = Double.parseDouble(coord[2]);
