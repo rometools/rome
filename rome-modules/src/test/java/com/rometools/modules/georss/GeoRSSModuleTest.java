@@ -280,10 +280,10 @@ public class GeoRSSModuleTest extends AbstractTestCase {
     }
     
     public void testDoubleSpacePointValue() throws Exception {
-    	final Double[] lat = { 31.7666667, 31.7666667, 31.7666667 };
+        final Double[] lat = { 31.7666667, 31.7666667, 31.7666667 };
         final Double[] lng = { 35.2333333, 35.2333333, 35.2333333 };
-    	
-    	assertTestFile("georss-double-space-issue.xml", lat, lng);
+        
+        assertTestFile("georss-double-space-issue.xml", lat, lng);
     }
 
     private SyndFeed getSyndFeed(final String filePath) throws IOException, FeedException {
