@@ -7,9 +7,9 @@ ROME is a Java framework for RSS and Atom feeds. The framework consist of severa
 
 | Module | Description |
 | ------ | ----------- |
-| rome | is the main RSS and Atom library. It makes it easy to work with most syndication formats: RSS 0.90, RSS 0.91 Netscape, RSS 0.91 Userland, RSS 0.92, RSS 0.93, RSS 0.94, RSS 1.0, RSS 2.0, Atom 0.3, Atom 1.0. |
-| rome-modules| enables rome to handle several feed extensions like MediaRSS, GeoRSS and others. |
-| rome-opml | contains [OPML](https://en.wikipedia.org/wiki/OPML) parsers and tools. |
+| `rome` | Library for generating and parsing RSS and Atom feeds. |
+| `rome-modules` | Generators and parsers for extensions like MediaRSS, GeoRSS and others. |
+| `rome-opml` | [OPML](https://en.wikipedia.org/wiki/OPML) parsers and tools. |
 
 Deprecated modules: `rome-fetcher`, `rome-certiorem`, `rome-certiorem-webapp` and `rome-propono`.
 
