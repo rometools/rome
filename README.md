@@ -12,3 +12,24 @@ ROME is a Java framework for RSS and Atom feeds. The framework consist of severa
 | `rome-opml` | [OPML](https://en.wikipedia.org/wiki/OPML) parsers and tools. |
 
 Deprecated modules: `rome-fetcher`, `rome-certiorem`, `rome-certiorem-webapp` and `rome-propono`.
+
+## Examples
+
+Parse a feed:
+
+```java
+String url = "http://stackoverflow.com/feeds/tag?tagnames=rome";
+SyndFeed feed = new SyndFeedInput().build(new XmlReader(new URL(url)));
+System.out.println(feed.getTitle());
+```
+
+Generate a feed:
+
+```java
+SyndFeed feed = new SyndFeedImpl();
+feed.setFeedType("rss_2.0");
+feed.setTitle("test-title");
+feed.setDescription("test-description");
+feed.setLink("https://example.org");
+System.out.println(new SyndFeedOutput().outputString(feed));
+```
