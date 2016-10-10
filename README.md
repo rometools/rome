@@ -7,7 +7,6 @@ ROME is a Java framework for RSS and Atom feeds. The framework consist of severa
 
 | Module | Description |
 | ------ | ----------- |
-| rome-parent | is the parent project for all ROME modules and contains the common Maven configuration. |
 | rome-utils | provides utility classes that are used in several ROME modules. |
 | rome | is the main RSS and Atom library. It makes it easy to work with most syndication formats: RSS 0.90, RSS 0.91 Netscape, RSS 0.91 Userland, RSS 0.92, RSS 0.93, RSS 0.94, RSS 1.0, RSS 2.0, Atom 0.3, Atom 1.0. |
 | rome-modules| enables rome to handle several feed extensions like MediaRSS, GeoRSS and others. |
