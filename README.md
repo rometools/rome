@@ -10,10 +10,8 @@ ROME is a Java framework for RSS and Atom feeds. The framework consist of severa
 | rome | is the main RSS and Atom library. It makes it easy to work with most syndication formats: RSS 0.90, RSS 0.91 Netscape, RSS 0.91 Userland, RSS 0.92, RSS 0.93, RSS 0.94, RSS 1.0, RSS 2.0, Atom 0.3, Atom 1.0. |
 | rome-modules| enables rome to handle several feed extensions like MediaRSS, GeoRSS and others. |
 | rome-opml | contains [OPML](https://en.wikipedia.org/wiki/OPML) parsers and tools. |
-| rome-fetcher | is a caching feed fetcher that supports retrieval of feeds via HTTP conditional GET. Supports ETags, GZip compression, and RFC3229 Delta encoding. |
-| rome-certiorem | is a [PubSubHubub](https://en.wikipedia.org/wiki/PubSubHubbub) implementation based on rome. |
-| rome-certiorem-webapp | is an example webapp for rome-certiorem |
-| rome-propono | supports publishing protocols, specifically the Atom Publishing Protocol and the legacy MetaWeblog API. Propono includes an Atom client library, an Atom server framework and a Blog client that supports both Atom protocol and the MetaWeblog API. |
+
+Deprecated modules: `rome-fetcher`, `rome-certiorem`, `rome-certiorem-webapp` and `rome-propono`.
 
 ## Changelog
 
