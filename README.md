@@ -7,40 +7,29 @@ ROME is a Java framework for RSS and Atom feeds. The framework consist of severa
 
 | Module | Description |
 | ------ | ----------- |
-| rome-parent | is the parent project for all ROME modules and contains the common Maven configuration. |
-| rome-utils | provides utility classes that are used in several ROME modules. |
-| rome | is the main RSS and Atom library. It makes it easy to work with most syndication formats: RSS 0.90, RSS 0.91 Netscape, RSS 0.91 Userland, RSS 0.92, RSS 0.93, RSS 0.94, RSS 1.0, RSS 2.0, Atom 0.3, Atom 1.0. |
-| rome-modules| enables rome to handle several feed extensions like MediaRSS, GeoRSS and others. |
-| rome-opml | contains [OPML](https://en.wikipedia.org/wiki/OPML) parsers and tools. |
-| rome-fetcher | is a caching feed fetcher that supports retrieval of feeds via HTTP conditional GET. Supports ETags, GZip compression, and RFC3229 Delta encoding. |
-| rome-certiorem | is a [PubSubHubub](https://en.wikipedia.org/wiki/PubSubHubbub) implementation based on rome. |
-| rome-certiorem-webapp | is an example webapp for rome-certiorem |
-| rome-propono | supports publishing protocols, specifically the Atom Publishing Protocol and the legacy MetaWeblog API. Propono includes an Atom client library, an Atom server framework and a Blog client that supports both Atom protocol and the MetaWeblog API. |
+| `rome` | Library for generating and parsing RSS and Atom feeds. |
+| `rome-modules` | Generators and parsers for extensions like MediaRSS, GeoRSS and others. |
+| `rome-opml` | [OPML](https://en.wikipedia.org/wiki/OPML) parsers and tools. |
 
-## Changelog
+Deprecated modules: `rome-fetcher`, `rome-certiorem`, `rome-certiorem-webapp` and `rome-propono`.
 
-### 1.6.0
+## Examples
 
-- [Upgrade of JDOM to version 2.0.5](https://github.com/rometools/rome/issues/197)
-- [Maven plugin and dependency updates](https://github.com/rometools/rome/issues/268)
-- [Support for allowing Doctype declarations in rome-fetcher](https://github.com/rometools/rome/issues/234)
-- [OSGi improvements](https://github.com/rometools/rome/issues/143) 
+Parse a feed:
 
-### 1.5.1
+```java
+String url = "http://stackoverflow.com/feeds/tag?tagnames=rome";
+SyndFeed feed = new SyndFeedInput().build(new XmlReader(new URL(url)));
+System.out.println(feed.getTitle());
+```
 
-- solved an [XML bomb](https://en.wikipedia.org/wiki/Billion_laughs) vulnerability
+Generate a feed:
 
-Important note: due to the security fix ROME now forbids all Doctype declarations by default. This will break compatibility with RSS 0.91 Netscape
-because it requires a Doctype declaration. When you experience problems you have to activate the property **allowDoctypes** on the SyndFeedInput object. You 
-should only use this possibility when the feeds that you process are absolutely trustful.
-
-### 1.5.0
-
-- many (untracked) enhancements
-- code cleanup
-- renamed packages (was required to be able to push to Maven Central after years again)
-- updated sourcecode to Java 1.6
-
-### Prior to 1.5.0
-
-- see [http://rometools.github.io/rome/ROMEReleases](http://rometools.github.io/rome/ROMEReleases) 
+```java
+SyndFeed feed = new SyndFeedImpl();
+feed.setFeedType("rss_2.0");
+feed.setTitle("test-title");
+feed.setDescription("test-description");
+feed.setLink("https://example.org");
+System.out.println(new SyndFeedOutput().outputString(feed));
+```
