@@ -13,6 +13,7 @@
  * limitations under the License.
  *
  */
+
 package com.rometools.modules.atom.io;
 
 import com.rometools.modules.atom.modules.AtomLinkModule;
@@ -25,6 +26,7 @@ import org.jdom2.Namespace;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class AtomModuleGenerator implements ModuleGenerator {
@@ -52,46 +54,45 @@ public class AtomModuleGenerator implements ModuleGenerator {
     public void generate(Module module, Element element) {
         if (module instanceof AtomLinkModule) {
             AtomLinkModule m = (AtomLinkModule) module;
-            generateLinc(m.getLink(), element);
+            generateLinks(m.getLinks(), element);
         }
     }
 
-    private void generateLinc(Link link, Element element) {
-        if (link == null) {
-            return;
+    private void generateLinks(List<Link> links, Element element) {
+        for (Link link : links) {
+            Element linkElement = new Element("link", NS);
+
+            if (link.getHref() != null) {
+                Attribute href = new Attribute(AtomLinkAttribute.HREF, link.getHref());
+                linkElement.setAttribute(href);
+            }
+            if (link.getType() != null) {
+                Attribute type = new Attribute(AtomLinkAttribute.TYPE, link.getType());
+                linkElement.setAttribute(type);
+            }
+            if (link.getRel() != null) {
+                Attribute rel = new Attribute(AtomLinkAttribute.REL, link.getRel());
+                linkElement.setAttribute(rel);
+            }
+
+            if (link.getHreflang() != null) {
+                final Attribute hreflangAttribute = new Attribute(AtomLinkAttribute.HREF_LANG, link.getHreflang());
+                linkElement.setAttribute(hreflangAttribute);
+            }
+
+            if (link.getTitle() != null) {
+                final Attribute title = new Attribute(AtomLinkAttribute.TITLE, link.getTitle());
+                linkElement.setAttribute(title);
+            }
+
+            if (link.getLength() != 0) {
+                final Attribute lenght = new Attribute(AtomLinkAttribute.LENGTH, Long.toString(link.getLength()));
+                linkElement.setAttribute(lenght);
+            }
+
+            element.addContent(linkElement);
         }
 
-        Element linkElement = new Element("link", NS);
-
-        if (link.getHref() != null) {
-            Attribute href = new Attribute(AtomLinkAttribute.HREF, link.getHref());
-            linkElement.setAttribute(href);
-        }
-        if (link.getType() != null) {
-            Attribute type = new Attribute(AtomLinkAttribute.TYPE, link.getType());
-            linkElement.setAttribute(type);
-        }
-        if (link.getRel() != null) {
-            Attribute rel = new Attribute(AtomLinkAttribute.REL, link.getRel());
-            linkElement.setAttribute(rel);
-        }
-
-        if (link.getHreflang() != null) {
-            final Attribute hreflangAttribute = new Attribute(AtomLinkAttribute.HREF_LANG, link.getHreflang());
-            linkElement.setAttribute(hreflangAttribute);
-        }
-
-        if (link.getTitle() != null) {
-            final Attribute title = new Attribute(AtomLinkAttribute.TITLE, link.getTitle());
-            linkElement.setAttribute(title);
-        }
-
-        if (link.getLength() != 0) {
-            final Attribute lenght = new Attribute(AtomLinkAttribute.LENGTH, Long.toString(link.getLength()));
-            linkElement.setAttribute(lenght);
-        }
-
-        element.addContent(linkElement);
     }
 
 }
