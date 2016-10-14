@@ -58,39 +58,43 @@ public class AtomModuleGenerator implements ModuleGenerator {
         }
     }
 
+    private Element generateLink(Link link) {
+        Element linkElement = new Element("link", NS);
+
+        if (link.getHref() != null) {
+            Attribute href = new Attribute(AtomLinkAttribute.HREF, link.getHref());
+            linkElement.setAttribute(href);
+        }
+        if (link.getType() != null) {
+            Attribute type = new Attribute(AtomLinkAttribute.TYPE, link.getType());
+            linkElement.setAttribute(type);
+        }
+        if (link.getRel() != null) {
+            Attribute rel = new Attribute(AtomLinkAttribute.REL, link.getRel());
+            linkElement.setAttribute(rel);
+        }
+
+        if (link.getHreflang() != null) {
+            final Attribute hreflangAttribute = new Attribute(AtomLinkAttribute.HREF_LANG, link.getHreflang());
+            linkElement.setAttribute(hreflangAttribute);
+        }
+
+        if (link.getTitle() != null) {
+            final Attribute title = new Attribute(AtomLinkAttribute.TITLE, link.getTitle());
+            linkElement.setAttribute(title);
+        }
+
+        if (link.getLength() != 0) {
+            final Attribute length = new Attribute(AtomLinkAttribute.LENGTH, Long.toString(link.getLength()));
+            linkElement.setAttribute(length);
+        }
+
+        return linkElement;
+    }
+
     private void generateLinks(List<Link> links, Element element) {
         for (Link link : links) {
-            Element linkElement = new Element("link", NS);
-
-            if (link.getHref() != null) {
-                Attribute href = new Attribute(AtomLinkAttribute.HREF, link.getHref());
-                linkElement.setAttribute(href);
-            }
-            if (link.getType() != null) {
-                Attribute type = new Attribute(AtomLinkAttribute.TYPE, link.getType());
-                linkElement.setAttribute(type);
-            }
-            if (link.getRel() != null) {
-                Attribute rel = new Attribute(AtomLinkAttribute.REL, link.getRel());
-                linkElement.setAttribute(rel);
-            }
-
-            if (link.getHreflang() != null) {
-                final Attribute hreflangAttribute = new Attribute(AtomLinkAttribute.HREF_LANG, link.getHreflang());
-                linkElement.setAttribute(hreflangAttribute);
-            }
-
-            if (link.getTitle() != null) {
-                final Attribute title = new Attribute(AtomLinkAttribute.TITLE, link.getTitle());
-                linkElement.setAttribute(title);
-            }
-
-            if (link.getLength() != 0) {
-                final Attribute lenght = new Attribute(AtomLinkAttribute.LENGTH, Long.toString(link.getLength()));
-                linkElement.setAttribute(lenght);
-            }
-
-            element.addContent(linkElement);
+            element.addContent(generateLink(link));
         }
 
     }

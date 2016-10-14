@@ -35,8 +35,21 @@ public class AtomLinkModuleImpl implements AtomLinkModule, Cloneable, Serializab
     }
 
     @Override
+    public Link getLink() {
+        if(links.size() > 0) {
+            return links.get(0);
+        }
+        return null;
+    }
+
+    @Override
     public void setLinks(List<Link> links) {
         this.links = links;
+    }
+
+    @Override
+    public void setLink(Link link) {
+        links.set(0, link);
     }
 
     @Override
@@ -61,14 +74,25 @@ public class AtomLinkModuleImpl implements AtomLinkModule, Cloneable, Serializab
             l.setHreflang(link.getHreflang());
             l.setTitle(link.getTitle());
             l.setLength(link.getLength());
-            links.add(l);
+            this.links.add(l);
         }
     }
 
     @Override
     public Object clone() {
         final AtomLinkModuleImpl m = new AtomLinkModuleImpl();
-        List<Link> result = links.subList(0, links.size());
+        List<Link> result = new LinkedList<Link>();
+        for(Link link : this.getLinks()) {
+            Link l = new Link();
+            l.setHref(link.getHref());
+            l.setType(link.getType());
+            l.setRel(link.getRel());
+            l.setHreflang(link.getHreflang());
+            l.setTitle(link.getTitle());
+            l.setLength(link.getLength());
+            result.add(l);
+        }
+        links.subList(0, links.size());
         m.setLinks(result);
         return m;
     }

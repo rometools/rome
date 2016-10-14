@@ -26,6 +26,10 @@ public interface AtomLinkModule extends Module {
     String URI = "http://www.w3.org/2005/Atom";
 
     List<Link> getLinks();
+    @Deprecated
+    Link getLink();
 
     void setLinks(List<Link> links);
+    @Deprecated
+    void setLink(Link link);
 }
