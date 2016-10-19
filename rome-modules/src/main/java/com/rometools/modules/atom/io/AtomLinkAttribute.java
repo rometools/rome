@@ -15,7 +15,7 @@
  */
 package com.rometools.modules.atom.io;
 
-public interface AtomLinkAttribute {
+interface AtomLinkAttribute {
     String REL = "rel";
     String TYPE = "type";
     String HREF = "href";

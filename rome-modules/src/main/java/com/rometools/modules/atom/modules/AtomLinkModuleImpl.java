@@ -13,6 +13,7 @@
  * limitations under the License.
  *
  */
+
 package com.rometools.modules.atom.modules;
 
 import com.rometools.rome.feed.CopyFrom;
@@ -21,19 +22,34 @@ import com.rometools.rome.feed.impl.EqualsBean;
 import com.rometools.rome.feed.impl.ToStringBean;
 
 import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
 
 public class AtomLinkModuleImpl implements AtomLinkModule, Cloneable, Serializable {
 
-    private Link link;
+    private List<Link> links = new LinkedList<Link>();
+
+    @Override
+    public List<Link> getLinks() {
+        return links;
+    }
 
     @Override
     public Link getLink() {
-        return link;
+        if(links.size() > 0) {
+            return links.get(0);
+        }
+        return null;
+    }
+
+    @Override
+    public void setLinks(List<Link> links) {
+        this.links = links;
     }
 
     @Override
     public void setLink(Link link) {
-        this.link = link;
+        links.set(0, link);
     }
 
     @Override
@@ -49,8 +65,8 @@ public class AtomLinkModuleImpl implements AtomLinkModule, Cloneable, Serializab
     @Override
     public void copyFrom(CopyFrom obj) {
         AtomLinkModule other = (AtomLinkModule) obj;
-        Link link = other.getLink();
-        if (link != null) {
+        List<Link> links = other.getLinks();
+        for (Link link : links) {
             Link l = new Link();
             l.setHref(link.getHref());
             l.setType(link.getType());
@@ -58,14 +74,15 @@ public class AtomLinkModuleImpl implements AtomLinkModule, Cloneable, Serializab
             l.setHreflang(link.getHreflang());
             l.setTitle(link.getTitle());
             l.setLength(link.getLength());
-            setLink(l);
+            this.links.add(l);
         }
     }
 
     @Override
     public Object clone() {
         final AtomLinkModuleImpl m = new AtomLinkModuleImpl();
-        if (link != null) {
+        List<Link> result = new LinkedList<Link>();
+        for(Link link : this.getLinks()) {
             Link l = new Link();
             l.setHref(link.getHref());
             l.setType(link.getType());
@@ -73,8 +90,10 @@ public class AtomLinkModuleImpl implements AtomLinkModule, Cloneable, Serializab
             l.setHreflang(link.getHreflang());
             l.setTitle(link.getTitle());
             l.setLength(link.getLength());
-            m.setLink(l);
+            result.add(l);
         }
+        links.subList(0, links.size());
+        m.setLinks(result);
         return m;
     }
 
