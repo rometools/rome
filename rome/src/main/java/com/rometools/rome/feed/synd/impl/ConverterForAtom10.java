@@ -414,6 +414,11 @@ public class ConverterForAtom10 implements Converter {
             aFeed.setContributors(ConverterForAtom03.createAtomPersons(contributors));
         }
 
+        SyndImage image = syndFeed.getImage();
+        if (image != null) {
+            aFeed.setIcon(image.getUrl());
+        }
+
         aFeed.setRights(syndFeed.getCopyright());
 
         aFeed.setUpdated(syndFeed.getPublishedDate());
