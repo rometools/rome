@@ -30,7 +30,7 @@ feed.setDescription("This feed has been created using ROME (Java syndication uti
 
 +------+
 
- Then a list for entries is created, entries are created and added to the list. Each entry is set with a title, link, published date and a description. The description for the first entry is plain test, for the third entry is HTML. After each entry is created is added to the list.
+ Then a list for entries is created, entries are created and added to the list. Each entry is set with a title, link, published date and a description. The description for the first entry is plain text, for the third entry is HTML. After each entry is created is added to the list.
 
 
 
