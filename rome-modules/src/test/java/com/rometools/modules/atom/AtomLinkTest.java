@@ -22,6 +22,7 @@ package com.rometools.modules.atom;
 import com.rometools.modules.AbstractTestCase;
 import com.rometools.modules.atom.io.AtomModuleGenerator;
 import com.rometools.modules.atom.modules.AtomLinkModule;
+import com.rometools.modules.atom.modules.AtomLinkModuleImpl;
 import com.rometools.rome.feed.atom.Link;
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.SyndFeedInput;
@@ -77,6 +78,12 @@ public class AtomLinkTest extends AbstractTestCase {
         }
 
     }
-
+    
+    public void testSetLinkShouldWork() {
+        final AtomLinkModuleImpl atomLinkModule = new AtomLinkModuleImpl();
+        final Link link = new Link();
+        atomLinkModule.setLink(link);
+        assertEquals(link, atomLinkModule.getLink());
+    }
 }
 
