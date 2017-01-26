@@ -49,7 +49,11 @@ public class AtomLinkModuleImpl implements AtomLinkModule, Cloneable, Serializab
 
     @Override
     public void setLink(Link link) {
-        links.set(0, link);
+        if(links.size() > 0) {
+            links.set(0, link);
+        } else {
+            links.add(link);
+        }
     }
 
     @Override
