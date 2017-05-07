@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
+    <channel>
+        <item>
+            <media:restriction relationship="allow">all</media:restriction>
+            <media:restriction relationship="allow">none</media:restriction>
+        </item>
+    </channel>
+</rss>

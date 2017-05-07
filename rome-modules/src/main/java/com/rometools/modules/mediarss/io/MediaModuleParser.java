@@ -433,10 +433,12 @@ public class MediaModuleParser implements ModuleParser {
                 final Element r = restrictions.get(i);
                 Restriction.Type type = null;
 
-                if (r.getAttributeValue("type").equalsIgnoreCase("uri")) {
-                    type = Restriction.Type.URI;
-                } else if (r.getAttributeValue("type").equalsIgnoreCase("country")) {
-                    type = Restriction.Type.COUNTRY;
+                if (r.getAttributeValue("type") != null) {
+                    if (r.getAttributeValue("type").equalsIgnoreCase("uri")) {
+                        type = Restriction.Type.URI;
+                    } else if (r.getAttributeValue("type").equalsIgnoreCase("country")) {
+                        type = Restriction.Type.COUNTRY;
+                    }
                 }
 
                 Restriction.Relationship relationship = null;

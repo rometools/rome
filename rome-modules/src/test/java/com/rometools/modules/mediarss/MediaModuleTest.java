@@ -37,6 +37,7 @@ import junit.framework.TestSuite;
 import com.rometools.modules.AbstractTestCase;
 import com.rometools.modules.mediarss.types.MediaContent;
 import com.rometools.modules.mediarss.types.Rating;
+import com.rometools.modules.mediarss.types.Restriction;
 import com.rometools.modules.mediarss.types.Thumbnail;
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndFeed;
@@ -180,6 +181,15 @@ public class MediaModuleTest extends AbstractTestCase {
         assertEquals("wrong count of media:content", 1, mcs.length);
         final MediaContent mc = mcs[0];
         assertEquals("http://www.foo.com/path/containing+spaces/trailer.mov", mc.getReference().toString());
+    }
+    
+    public void testParseRestrictionWithoutType() throws FeedException, IOException  {
+        final SyndFeed feed = getSyndFeed("org/rometools/feed/module/mediarss/issue-331.xml");
+        final SyndEntry entry = feed.getEntries().get(0);
+        final MediaEntryModule module = (MediaEntryModule) entry.getModule(MediaModule.URI);
+        final Restriction[] restrictions = module.getMetadata().getRestrictions();
+        
+        assertThat(restrictions, is(notNullValue()));
     }
 
     private SyndFeed getSyndFeed(final File file) throws IOException, FeedException {
