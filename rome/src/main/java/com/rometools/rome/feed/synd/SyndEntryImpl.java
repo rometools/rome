@@ -561,7 +561,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      * This method is a convenience method, it maps to the Dublin Core module creator.
      * <p>
      *
-     * @return the entry author, <b>null</b> if none.
+     * @return the entry author, empty String if none.
      *
      */
     @Override
