@@ -200,7 +200,7 @@ public class ITunesParser implements ModuleParser {
     }
 
     protected String getXmlInnerText(final Element e) {
-        final StringBuffer sb = new StringBuffer();
+        final StringBuilder sb = new StringBuilder();
         final XMLOutputter xo = new XMLOutputter();
         final List<Content> children = e.getContent();
         sb.append(xo.outputString(children));

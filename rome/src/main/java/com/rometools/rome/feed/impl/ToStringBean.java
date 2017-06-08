@@ -145,7 +145,7 @@ public class ToStringBean implements Serializable {
      */
     private String toString(final String prefix) {
 
-        final StringBuffer sb = new StringBuffer(128);
+        final StringBuilder sb = new StringBuilder(128);
 
         try {
 

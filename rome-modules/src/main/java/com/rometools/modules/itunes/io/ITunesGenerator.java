@@ -127,7 +127,7 @@ public class ITunesGenerator implements ModuleGenerator {
         }
 
         if (itunes.getKeywords() != null) {
-            final StringBuffer sb = new StringBuffer();
+            final StringBuilder sb = new StringBuilder();
 
             for (int i = 0; i < itunes.getKeywords().length; i++) {
                 if (i != 0) {

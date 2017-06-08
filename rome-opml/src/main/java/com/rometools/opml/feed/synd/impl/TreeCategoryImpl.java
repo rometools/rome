@@ -24,6 +24,10 @@ public class TreeCategoryImpl extends SyndCategoryImpl {
 
     @Override
     public boolean equals(final Object o) {
+        if(o == null) {
+            return false;
+        }
+        
         final SyndCategory c = (SyndCategory) o;
         if (c.getTaxonomyUri() != null && c.getTaxonomyUri().equals(getTaxonomyUri())) {
             return true;

@@ -52,7 +52,7 @@ public class GMLGenerator implements ModuleGenerator {
 
     private Element createPosListElement(final PositionList posList) {
         final Element posElement = new Element("posList", GeoRSSModule.GML_NS);
-        final StringBuffer sb = new StringBuffer();
+        final StringBuilder sb = new StringBuilder();
         for (int i = 0; i < posList.size(); ++i) {
             sb.append(posList.getLatitude(i)).append(" ").append(posList.getLongitude(i)).append(" ");
         }

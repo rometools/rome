@@ -365,7 +365,7 @@ public class Atom03Generator extends BaseWireFeedGenerator {
 
             } else if (mode.equals(Content.XML)) {
 
-                final StringBuffer tmpDocString = new StringBuffer("<tmpdoc>");
+                final StringBuilder tmpDocString = new StringBuilder("<tmpdoc>");
                 tmpDocString.append(value);
                 tmpDocString.append("</tmpdoc>");
                 final StringReader tmpDocReader = new StringReader(tmpDocString.toString());

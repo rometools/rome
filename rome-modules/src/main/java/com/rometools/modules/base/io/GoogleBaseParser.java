@@ -120,7 +120,7 @@ public class GoogleBaseParser implements ModuleParser {
     }
 
     public static String stripNonValidCharacters(final char[] validCharacters, final String input) {
-        final StringBuffer newString = new StringBuffer();
+        final StringBuilder newString = new StringBuilder();
 
         for (int i = 0; i < input.length(); i++) {
             for (final char validCharacter : validCharacters) {

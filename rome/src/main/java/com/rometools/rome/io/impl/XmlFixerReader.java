@@ -661,7 +661,7 @@ public class XmlFixerReader extends Reader {
         if (s.indexOf('&') == -1) {
             return s;
         }
-        final StringBuffer sb = new StringBuffer(s.length());
+        final StringBuilder sb = new StringBuilder(s.length());
         int pos = 0;
         while (pos < s.length()) {
             String chunck = s.substring(pos);

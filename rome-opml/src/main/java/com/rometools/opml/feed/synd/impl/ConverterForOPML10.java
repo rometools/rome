@@ -207,7 +207,7 @@ public class ConverterForOPML10 implements Converter {
 
             final List<SyndCategory> cats = Collections.synchronizedList(entry.getCategories());
             boolean parentFound = false;
-            final StringBuffer category = new StringBuffer();
+            final StringBuilder category = new StringBuilder();
 
             for (int j = 0; j < cats.size(); j++) {
                 final SyndCategory cat = cats.get(j);

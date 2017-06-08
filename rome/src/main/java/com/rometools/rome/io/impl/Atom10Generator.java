@@ -479,7 +479,7 @@ public class Atom10Generator extends BaseWireFeedGenerator {
 
             if (atomType != null && (atomType.equals(Content.XHTML) || atomType.indexOf("/xml") != -1 || atomType.indexOf("+xml") != -1)) {
 
-                final StringBuffer tmpDocString = new StringBuffer("<tmpdoc>");
+                final StringBuilder tmpDocString = new StringBuilder("<tmpdoc>");
                 tmpDocString.append(value);
                 tmpDocString.append("</tmpdoc>");
                 final StringReader tmpDocReader = new StringReader(tmpDocString.toString());
