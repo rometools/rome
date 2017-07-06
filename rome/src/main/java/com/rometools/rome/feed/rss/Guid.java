@@ -27,7 +27,7 @@ import com.rometools.rome.feed.impl.ObjectBean;
 public class Guid implements Cloneable, Serializable {
     private static final long serialVersionUID = 1L;
     private final ObjectBean objBean;
-    private boolean permaLink;
+    private boolean permaLink = true;
     private String value;
 
     public Guid() {
