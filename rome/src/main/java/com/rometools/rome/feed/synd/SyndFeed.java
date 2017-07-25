@@ -424,6 +424,24 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
     void setImage(SyndImage image);
 
     /**
+     * Returns the feed icon.
+     * <p>
+     *
+     * @return the feed icon, <b>null</b> if none.
+     *
+     */
+    SyndImage getIcon();
+
+    /**
+     * Sets the feed icon.
+     * <p>
+     *
+     * @param icon the feed icon to set, <b>null</b> if none.
+     *
+     */
+    void setIcon(SyndImage icon);
+
+    /**
      * Returns the feed categories.
      * <p>
      * This method is a convenience method, it maps to the Dublin Core module subjects.
