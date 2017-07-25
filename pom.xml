@@ -337,6 +337,11 @@
                 <artifactId>oauth</artifactId>
                 <version>20100527</version>
             </dependency>
+            <dependency>
+                <groupId>com.github.tomakehurst</groupId>
+                <artifactId>wiremock</artifactId>
+                <version>1.58</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
