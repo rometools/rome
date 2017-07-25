@@ -18,6 +18,7 @@
     <email>author1@example.com</email>
   </contributor>
   <icon>http://example.com/icon</icon>
+  <logo>http://example.com/logo</logo>
   <subtitle type="html">atom_1.0.feed.tagline</subtitle>
   <id>http://example.com/blog/atom_1.0.xml</id>
   <generator uri="http://example.com/test">atom_1.0.feed.generator</generator>

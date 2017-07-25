@@ -67,6 +67,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     private String generator;
     private String styleSheet;
     private List<SyndLink> links;
+    private SyndImage icon;
     private SyndImage image;
     private List<SyndEntry> entries;
     private List<Module> modules;
@@ -610,6 +611,30 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
     @Override
     public void setCopyright(final String copyright) {
         getDCModule().setRights(copyright);
+    }
+
+    /**
+     * Returns the feed icon.
+     * <p>
+     *
+     * @return the feed icon, <b>null</b> if none.
+     *
+     */
+    @Override
+    public SyndImage getIcon() {
+        return icon;
+    }
+
+    /**
+     * Sets the feed icon.
+     * <p>
+     *
+     * @param image the feed icon to set, <b>null</b> if none.
+     *
+     */
+    @Override
+    public void setIcon(final SyndImage icon) {
+        this.icon = icon;
     }
 
     /**
