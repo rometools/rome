@@ -82,16 +82,17 @@ public class ConverterForAtom10 implements Converter {
         syndFeed.setStyleSheet(aFeed.getStyleSheet());
 
         final String logo = aFeed.getLogo();
-        final String icon = aFeed.getIcon();
-
         if (logo != null) {
             final SyndImage image = new SyndImageImpl();
             image.setUrl(logo);
             syndFeed.setImage(image);
-        } else if (icon != null) {
+        }
+
+        final String icon = aFeed.getIcon();
+        if (icon != null) {
             final SyndImage image = new SyndImageImpl();
             image.setUrl(icon);
-            syndFeed.setImage(image);
+            syndFeed.setIcon(image);
         }
 
         syndFeed.setUri(aFeed.getId());
@@ -416,7 +417,12 @@ public class ConverterForAtom10 implements Converter {
 
         SyndImage image = syndFeed.getImage();
         if (image != null) {
-            aFeed.setIcon(image.getUrl());
+            aFeed.setLogo(image.getUrl());
+        }
+
+        final SyndImage icon = syndFeed.getIcon();
+        if (icon != null) {
+            aFeed.setIcon(icon.getUrl());
         }
 
         aFeed.setRights(syndFeed.getCopyright());
