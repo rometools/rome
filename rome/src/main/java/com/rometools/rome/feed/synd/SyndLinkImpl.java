@@ -72,7 +72,15 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
         if (!(other instanceof SyndLinkImpl)) {
             return false;
         }
-        return objBean.equals(other);
+        // can't use foreign attributes in equals, due to JDOM equals impl
+        final List<Attribute> fm = getForeignAttributes();
+        setForeignAttributes(((SyndLink) other).getForeignAttributes());
+
+        boolean ret = objBean.equals(other);
+        // restore foreign markup
+        setForeignAttributes(fm);
+
+        return ret;
     }
 
     /**
