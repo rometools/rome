@@ -94,5 +94,5 @@
         </dependency>
     </dependencies>
 
-    <version>1.7.2-onto</version>
+    <version>1.7.5-SNAPSHOT</version>
 </project>

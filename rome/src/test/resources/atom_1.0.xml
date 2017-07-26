@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns='http://www.w3.org/2005/Atom' 
       xmlns:rometest='http://rome.dev.java.net/namespacetest' 
+      xmlns:security='http://example.com/namespace/security'
       xml:lang='en-us'>
   <title type="html">atom_1.0.feed.title</title>
   <link rel="self" type="text/html" href="http://example.com/blog/atom_1.0.xml"/>
@@ -59,6 +60,9 @@
 	        href="http://example.com/blog/enclosure2.gif"/>
 	<link rel="test" type="image/gif"
           href="tag:example.com,2005:Atom-Tests:xml-base:Test1"/>
+      <link rel="download" type="application/zip"
+            href="http://example.com/files/file.zip"
+            security:sha256Hash="847763bd4a72e3536702f2a8853edaeaaaab2040383ddbc71d91545da9cc2fa6"/>
       <id>http://example.com/blog/entry2</id>
       <author>
         <name>atom_1.0.feed.entry[1].author.name</name>

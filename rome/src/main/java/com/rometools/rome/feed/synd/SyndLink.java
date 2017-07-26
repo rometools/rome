@@ -17,6 +17,10 @@
  */
 package com.rometools.rome.feed.synd;
 
+import java.util.List;
+
+import org.jdom2.Attribute;
+
 /**
  * Represents a link or enclosure associated with entry.
  */
@@ -168,4 +172,22 @@ public interface SyndLink {
      * @param length The length to set.
      */
     public abstract void setLength(long length);
+
+    /**
+     * Returns foreign markup found at channel level.
+     * <p>
+     *
+     * @return Opaque object to discourage use
+     *
+     */
+    public List<Attribute> getForeignAttributes();
+
+    /**
+     * Sets foreign markup found at channel level.
+     * <p>
+     *
+     * @param foreignMarkup Opaque object to discourage use
+     *
+     */
+    public void setForeignAttributes(List<Attribute> foreignMarkup);
 }

@@ -18,8 +18,12 @@
 package com.rometools.rome.feed.synd;
 
 import java.io.Serializable;
+import java.util.List;
+
+import org.jdom2.Attribute;
 
 import com.rometools.rome.feed.impl.ObjectBean;
+import com.rometools.utils.Lists;
 
 /**
  * Represents a link or an enclosure.
@@ -35,6 +39,7 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
     private String hreflang;
     private String title;
     private long length;
+    private List<Attribute> foreignAttributes;
 
     public SyndLinkImpl() {
         objBean = new ObjectBean(this.getClass(), this);
@@ -235,5 +240,30 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
     @Override
     public void setLength(final long length) {
         this.length = length;
+    }
+
+    /**
+     * Returns foreign markup found at channel level.
+     * <p>
+     *
+     * @return Opaque object to discourage use
+     *
+     */
+    @Override
+    public List<Attribute> getForeignAttributes() {
+        return foreignAttributes = Lists.createWhenNull(foreignAttributes);
+    }
+
+    /**
+     * Sets foreign markup found at channel level.
+     * <p>
+     *
+     * @param foreignMarkup list of JDOM nodes containing channel-level foreign markup, an empty
+     *            list if none.
+     *
+     */
+    @Override
+    public void setForeignAttributes(List<Attribute> foreignAttributes) {
+        this.foreignAttributes = foreignAttributes;
     }
 }
