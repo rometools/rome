@@ -288,6 +288,11 @@ public class Atom10Generator extends BaseWireFeedGenerator {
             eEntry.addContent(generateSimpleElement("id", id));
         }
 
+        final String rights = entry.getRights();
+        if (rights != null) {
+            eEntry.addContent(generateSimpleElement("rights", rights));
+        }
+        
         final Date updated = entry.getUpdated();
         if (updated != null) {
             final Element updatedElement = new Element("updated", getFeedNamespace());

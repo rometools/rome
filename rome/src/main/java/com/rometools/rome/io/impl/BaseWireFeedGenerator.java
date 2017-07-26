@@ -108,6 +108,7 @@ public abstract class BaseWireFeedGenerator implements WireFeedGenerator {
                 final Element parent = foreignAttribute.getParent();
                 if (parent != null) {
                     parent.removeAttribute(foreignAttribute);
+                    foreignAttribute.detach();
                 }
                 element.setAttribute(foreignAttribute);
             }
