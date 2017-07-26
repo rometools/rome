@@ -31,7 +31,10 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Class which helps in handling File persistence related operations.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 class FileStore {
 
     private static final Logger LOG = LoggerFactory.getLogger(FileStore.class);

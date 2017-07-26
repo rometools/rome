@@ -23,10 +23,6 @@ import com.rometools.rome.feed.module.Module;
 
 /**
  * Interface for the FeedBurner RSS extension.
- *
- * @version 1.0
- * @author Georg Schmidl <georg.schmidl@scandio.de>
- *
  */
 public interface FeedBurner extends Module, Serializable, Cloneable {
 

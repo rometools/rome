@@ -16,7 +16,6 @@
  */
 package com.rometools.rome.feed.impl;
 
-import java.beans.PropertyDescriptor;
 import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.lang.reflect.Method;
@@ -37,10 +36,6 @@ import org.slf4j.LoggerFactory;
  * <p>
  * It works on all read/write properties, recursively. It support all primitive types, Strings,
  * Collections, Cloneable objects and multi-dimensional arrays of any of them.
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public class CloneableBean implements Serializable, Cloneable {
 

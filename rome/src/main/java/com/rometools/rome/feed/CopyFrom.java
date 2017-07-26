@@ -17,9 +17,6 @@
  */
 package com.rometools.rome.feed;
 
-/**
- * @author Alejandro Abdelnur
- */
 public interface CopyFrom {
 
     /**

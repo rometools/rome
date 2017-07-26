@@ -1,10 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.rometools</groupId>
     <artifactId>rome-parent</artifactId>
-    <version>1.7.0-SNAPSHOT</version>
+    <version>1.7.5-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
@@ -34,58 +35,17 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:ssh://github.com/rometools/rome.git</connection>
+        <connection>scm:git:https://github.com/rometools/rome.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/rometools/rome.git</developerConnection>
         <url>https://github.com/rometools/rome</url>
-      <tag>HEAD</tag>
-  </scm>
+    </scm>
 
     <developers>
         <developer>
-            <name>Alejandro Abdelnur</name>
-            <url>http://blog.sun.com/roller/page/tucu</url>
-            <timezone>0</timezone>
-        </developer>
-        <developer>
-            <name>Dave Johnson</name>
-            <url>http://rollerweblogger.org/roller</url>
-            <timezone>-5</timezone>
-        </developer>
-        <developer>
-            <name>Elaine Chien</name>
-            <timezone>0</timezone>
-        </developer>
-        <developer>
-            <id>farrukhnajmi</id>
-            <name>Farrukh Najmi</name>
-            <url>http://www.wellfleetsoftware.com/farrukh</url>
-        </developer>
-        <developer>
-            <id>imk</id>
-            <name>Martin Kurz</name>
-            <timezone>Europe/Berlin</timezone>
-        </developer>
-        <developer>
-            <name>Nick Lothian</name>
-            <url>http://nicklothian.com</url>
-        </developer>
-        <developer>
-            <name>Patrick Chanezon</name>
-            <url>http://www.chanezon.com/pat/weblog</url>
-            <timezone>-9</timezone>
-        </developer>
-        <developer>
             <name>Patrick Gotthard</name>
-            <email>patrick@patrick-gotthard.de</email>
-            <url>http://www.patrick-gotthard.de</url>
-            <timezone>+1</timezone>
-        </developer>
-        <developer>
-            <id>kebernet</id>
-            <name>Robert Cooper</name>
-            <email>kebernet@gmail.com</email>
-            <url>http://www.kebernet.net</url>
-            <timezone>-4</timezone>
+            <roles>
+                <role>Project lead</role>
+            </roles>
         </developer>
     </developers>
 
@@ -111,7 +71,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.5.1</version>
+                    <version>3.6.0</version>
                     <configuration>
                         <source>1.6</source>
                         <target>1.6</target>
@@ -120,12 +80,12 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-dependency-plugin</artifactId>
-                    <version>2.10</version>
+                    <version>3.0.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>2.6</version>
+                    <version>3.0.2</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -137,38 +97,21 @@
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-scm-plugin</artifactId>
+                    <version>1.9.5</version>
+                    <configuration>
+                        <connectionType>developerConnection</connectionType>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-scm-publish-plugin</artifactId>
                     <version>1.1</version>
-                </plugin>
-                <!-- The following plugin doesn't modify the build. It is only used to hide irrelevant warnings in Eclipse -->
-                <plugin>
-                    <groupId>org.eclipse.m2e</groupId>
-                    <artifactId>lifecycle-mapping</artifactId>
-                    <version>1.0.0</version>
-                    <configuration>
-                        <lifecycleMappingMetadata>
-                            <pluginExecutions>
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>org.apache.maven.plugins</groupId>
-                                        <artifactId>maven-dependency-plugin</artifactId>
-                                        <versionRange>[1.0.0,)</versionRange>
-                                        <goals>
-                                            <goal>copy-dependencies</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <ignore />
-                                    </action>
-                                </pluginExecution>
-                            </pluginExecutions>
-                        </lifecycleMappingMetadata>
-                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.felix</groupId>
                     <artifactId>maven-bundle-plugin</artifactId>
-                    <version>3.0.1</version>
+                    <version>3.2.0</version>
                     <executions>
                         <execution>
                             <id>bundle</id>
@@ -193,25 +136,14 @@
                     </executions>
                 </plugin>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-release-plugin</artifactId>
-                    <version>2.5.3</version>
-                    <configuration>
-                    	<tagNameFormat>@{project.version}</tagNameFormat>
-                        <useReleaseProfile>false</useReleaseProfile>
-                        <releaseProfiles>release</releaseProfiles>
-                        <goals>deploy</goals>
-                    </configuration>
-                </plugin>
-                <plugin>
                     <groupId>org.sonatype.plugins</groupId>
                     <artifactId>nexus-staging-maven-plugin</artifactId>
-                    <version>1.6.6</version>
+                    <version>1.6.7</version>
                     <extensions>true</extensions>
                     <configuration>
                         <serverId>ossrh</serverId>
                         <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                        <autoReleaseAfterClose>false</autoReleaseAfterClose>
+                        <autoReleaseAfterClose>true</autoReleaseAfterClose>
                     </configuration>
                 </plugin>
             </plugins>
@@ -226,7 +158,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
-                        <version>3.0.0</version>
+                        <version>3.0.1</version>
                         <executions>
                             <execution>
                                 <id>attach-sources</id>
@@ -239,10 +171,10 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>2.10.3</version>
-						<configuration>
-							<additionalparam>-Xdoclint:none</additionalparam>
-						</configuration>
+                        <version>2.10.4</version>
+                        <configuration>
+                            <additionalparam>-Xdoclint:none</additionalparam>
+                        </configuration>
                         <executions>
                             <execution>
                                 <id>attach-javadocs</id>
@@ -277,42 +209,42 @@
             <dependency>
                 <groupId>com.rometools</groupId>
                 <artifactId>rome</artifactId>
-                <version>1.7.0-SNAPSHOT</version>
+                <version>1.7.5-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.rometools</groupId>
                 <artifactId>rome-certiorem</artifactId>
-                <version>1.7.0-SNAPSHOT</version>
+                <version>1.7.5-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.rometools</groupId>
                 <artifactId>rome-certiorem-webapp</artifactId>
-                <version>1.7.0-SNAPSHOT</version>
+                <version>1.7.5-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.rometools</groupId>
                 <artifactId>rome-fetcher</artifactId>
-                <version>1.7.0-SNAPSHOT</version>
+                <version>1.7.5-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.rometools</groupId>
                 <artifactId>rome-modules</artifactId>
-                <version>1.7.0-SNAPSHOT</version>
+                <version>1.7.5-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.rometools</groupId>
                 <artifactId>rome-opml</artifactId>
-                <version>1.7.0-SNAPSHOT</version>
+                <version>1.7.5-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.rometools</groupId>
                 <artifactId>rome-propono</artifactId>
-                <version>1.7.0-SNAPSHOT</version>
+                <version>1.7.5-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.rometools</groupId>
                 <artifactId>rome-utils</artifactId>
-                <version>1.7.0-SNAPSHOT</version>
+                <version>1.7.5-SNAPSHOT</version>
             </dependency>
             <!-- JDOM -->
             <dependency>

@@ -63,7 +63,10 @@ import com.rometools.rome.io.impl.Atom10Parser;
  * File based Atom collection implementation. This is the heart of the file-based Atom service
  * implementation. It provides methods for adding, getting updating and deleting Atom entries and
  * media entries.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class FileBasedCollection extends Collection {
 
     private String handle = null;

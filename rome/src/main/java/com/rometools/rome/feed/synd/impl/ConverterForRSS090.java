@@ -36,8 +36,6 @@ import com.rometools.rome.feed.synd.SyndImage;
 import com.rometools.rome.feed.synd.SyndImageImpl;
 import com.rometools.rome.feed.synd.SyndLink;
 
-/**
- */
 public class ConverterForRSS090 implements Converter {
     private final String type;
 

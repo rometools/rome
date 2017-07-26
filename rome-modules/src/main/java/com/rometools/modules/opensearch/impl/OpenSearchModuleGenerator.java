@@ -31,9 +31,6 @@ import com.rometools.rome.feed.atom.Link;
 import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.io.ModuleGenerator;
 
-/**
- * @author Michael W. Nassif (enrouteinc@gmail.com) OpenSearch implementation of ModuleGenerator
- */
 public class OpenSearchModuleGenerator implements ModuleGenerator {
 
     private static final Namespace OS_NS = Namespace.getNamespace("opensearch", OpenSearchModule.URI);

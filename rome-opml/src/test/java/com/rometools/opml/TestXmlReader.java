@@ -30,10 +30,6 @@ import junit.framework.TestCase;
 
 import com.rometools.rome.io.XmlReader;
 
-/**
- * @author pat, tucu
- *
- */
 public class TestXmlReader extends TestCase {
 
     public static void main(final String[] args) throws Exception {

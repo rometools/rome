@@ -23,7 +23,9 @@ import java.util.List;
 /**
  *
  * @author robert.cooper
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 public interface HubDAO {
 
     public List<? extends Subscriber> subscribersForTopic(String topic);

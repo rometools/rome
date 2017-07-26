@@ -26,10 +26,6 @@ import com.rometools.modules.sle.types.Group;
 import com.rometools.modules.sle.types.Sort;
 import com.rometools.rome.feed.module.Module;
 
-/**
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- */
 public class ModuleGenerator implements com.rometools.rome.io.ModuleGenerator {
 
     private static final Set<Namespace> NAMESPACES = new HashSet<Namespace>();
@@ -38,7 +34,6 @@ public class ModuleGenerator implements com.rometools.rome.io.ModuleGenerator {
         NAMESPACES.add(ModuleParser.NS);
     }
 
-    /** Creates a new instance of ModuleGenerator */
     public ModuleGenerator() {
         super();
     }

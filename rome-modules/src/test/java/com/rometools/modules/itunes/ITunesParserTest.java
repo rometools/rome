@@ -3,6 +3,19 @@
  * JUnit based test
  *
  * Created on August 2, 2005, 1:30 PM
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
  */
 package com.rometools.modules.itunes;
 
@@ -21,16 +34,13 @@ import com.rometools.modules.itunes.AbstractITunesObject;
 import com.rometools.modules.itunes.EntryInformationImpl;
 import com.rometools.modules.itunes.FeedInformationImpl;
 import com.rometools.modules.itunes.io.ITunesGenerator;
+import com.rometools.modules.itunes.types.Duration;
 import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.XmlReader;
 
-/**
- *
- * @author cooper
- */
 public class ITunesParserTest extends AbstractTestCase {
 
     private static final Logger LOG = LoggerFactory.getLogger(ITunesParserTest.class);
@@ -119,5 +129,29 @@ public class ITunesParserTest extends AbstractTestCase {
         assertEquals(true, entryInfo.getClosedCaptioned());
         assertEquals(Integer.valueOf(2), entryInfo.getOrder());
         assertEquals("http://example.org/image.png", entryInfo.getImage().toString());
+    }
+
+    public void testDuration() throws Exception {
+        SyndFeed feed = new SyndFeedInput().build(new XmlReader(getClass().getResource("duration.xml")));
+        SyndEntry entry = feed.getEntries().get(0);
+        EntryInformationImpl module = (EntryInformationImpl) entry.getModule(AbstractITunesObject.URI);
+
+        assertEquals(1000, module.getDuration().getMilliseconds());
+    }
+
+    public void testDurationEmpty() throws Exception {
+        SyndFeed feed = new SyndFeedInput().build(new XmlReader(getClass().getResource("duration-empty.xml")));
+        SyndEntry entry = feed.getEntries().get(0);
+        EntryInformationImpl module = (EntryInformationImpl) entry.getModule(AbstractITunesObject.URI);
+
+        assertNull(module.getDuration());
+    }
+
+    public void testDurationBad() throws Exception {
+        SyndFeed feed = new SyndFeedInput().build(new XmlReader(getClass().getResource("duration-bad.xml")));
+        SyndEntry entry = feed.getEntries().get(0);
+        EntryInformationImpl module = (EntryInformationImpl) entry.getModule(AbstractITunesObject.URI);
+
+        assertNull(module.getDuration());
     }
 }

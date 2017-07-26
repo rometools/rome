@@ -25,10 +25,6 @@ import com.rometools.utils.Strings;
 
 /**
  * Bean for content elements of Atom feeds.
- * <p>
- *
- * @author Alejandro Abdelnur
- * @author Dave Johnson (updated for Atom 1.0)
  */
 public class Content implements Cloneable, Serializable {
 
@@ -66,11 +62,6 @@ public class Content implements Cloneable, Serializable {
         MODES.add(ESCAPED);
     }
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public Content() {
         objBean = new ObjectBean(this.getClass(), this);
     }

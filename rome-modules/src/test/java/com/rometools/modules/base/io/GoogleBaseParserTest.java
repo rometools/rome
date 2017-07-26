@@ -3,6 +3,19 @@
  * JUnit based test
  *
  * Created on November 17, 2005, 4:49 PM
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
  */
 package com.rometools.modules.base.io;
 
@@ -44,10 +57,6 @@ import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.SyndFeedInput;
 
-/**
- *
- * @author rcooper
- */
 public class GoogleBaseParserTest extends AbstractTestCase {
 
     private static final Logger LOG = LoggerFactory.getLogger(GoogleBaseParserTest.class);
@@ -60,45 +69,6 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         final TestSuite suite = new TestSuite(GoogleBaseParserTest.class);
 
         return suite;
-    }
-
-    /**
-     * Test of parse method, of class com.totsp.xml.syndication.base.io.GoogleBaseParser.
-     */
-    public void testQuickParse() throws Exception {
-        try {
-            LOG.debug("testParse");
-            final SyndFeedInput input = new SyndFeedInput();
-            final File testDir = new File(super.getTestFile("xml"));
-            final File[] testFiles = testDir.listFiles();
-            for (int h = 0; h < testFiles.length; h++) {
-                if (!testFiles[h].getName().endsWith(".xml")) {
-                    continue;
-                }
-                SyndFeed feed = null;
-                try {
-                    feed = input.build(testFiles[h]);
-                } catch (final Exception e) {
-                    throw new RuntimeException(testFiles[h].getAbsolutePath(), e);
-                }
-                final List<SyndEntry> entries = feed.getEntries();
-                for (int i = 0; i < entries.size(); i++) {
-                    final SyndEntry entry = entries.get(i);
-                    LOG.debug("{}", entry.getModules().size());
-                    for (int j = 0; j < entry.getModules().size(); j++) {
-                        LOG.debug("{}", entry.getModules().get(j).getClass());
-                        if (entry.getModules().get(j) instanceof GoogleBase) {
-                            final GoogleBase base = (GoogleBase) entry.getModules().get(j);
-                            LOG.debug(testFiles[h].getName());
-                            LOG.debug(super.beanToString(base, false));
-                        }
-                    }
-                }
-            }
-        } catch (final Exception e) {
-            e.printStackTrace();
-            throw e;
-        }
     }
 
     /**

@@ -42,14 +42,9 @@ package com.rometools.modules.activitystreams.types;
  * longitude in degrees.</dd>
  * </dl>
  * </blockquote>
- *
- * @author robert.cooper
  */
 public class Place extends ActivityObject {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
     @Override

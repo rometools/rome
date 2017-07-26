@@ -6,7 +6,7 @@
  2011-08-15 08:46:28.502
  -----
 
-Understanding Rss and atOM utilitiEs (ROME) Bean Utilities
+Understanding Bean Utilities
 
 
  ROME bean utilities are not part of ROME public API. They are used by the default implementation of ROME beans and it may be useful for alternate implementations as well. It is important to keep in mind that these APIs are not public and they are subject to change breaking backward compatibility.

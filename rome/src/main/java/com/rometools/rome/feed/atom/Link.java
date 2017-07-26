@@ -25,10 +25,6 @@ import com.rometools.utils.Alternatives;
 
 /**
  * Bean for link elements of Atom feeds.
- * <p>
- *
- * @author Alejandro Abdelnur
- * @author Dave Johnson (updated for Atom 1.0)
  */
 public class Link implements Cloneable, Serializable {
 
@@ -46,11 +42,6 @@ public class Link implements Cloneable, Serializable {
     private List<Attribute> foreignAttributes;
 
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public Link() {
         objBean = new ObjectBean(this.getClass(), this);
     }

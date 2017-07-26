@@ -27,8 +27,6 @@ import com.rometools.rome.io.ModuleParser;
 import com.rometools.rome.io.WireFeedParser;
 import com.rometools.utils.Lists;
 
-/**
- */
 public class ModuleParsers extends PluginManager<ModuleParser> {
 
     public ModuleParsers(final String propertyKey, final WireFeedParser parentParser) {

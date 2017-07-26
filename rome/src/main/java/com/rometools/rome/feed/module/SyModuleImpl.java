@@ -32,8 +32,6 @@ import com.rometools.utils.Dates;
  * <p>
  *
  * @see <a href="http://web.resource.org/rss/1.0/modules/syndication/">Syndication module</a>.
- * @author Alejandro Abdelnur
- *
  */
 public class SyModuleImpl extends ModuleImpl implements SyModule {
 
@@ -63,11 +61,6 @@ public class SyModuleImpl extends ModuleImpl implements SyModule {
 
     }
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public SyModuleImpl() {
         super(SyModule.class, URI);
     }

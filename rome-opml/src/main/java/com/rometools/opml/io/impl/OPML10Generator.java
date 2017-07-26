@@ -34,9 +34,6 @@ import com.rometools.rome.io.WireFeedGenerator;
 import com.rometools.rome.io.impl.BaseWireFeedGenerator;
 import com.rometools.rome.io.impl.DateParser;
 
-/**
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- */
 public class OPML10Generator extends BaseWireFeedGenerator implements WireFeedGenerator {
 
     public OPML10Generator() {

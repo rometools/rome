@@ -32,7 +32,7 @@ public class FetcherIT {
     public void test() throws Exception {
         FeedFetcherCache cache = HashMapFeedInfoCache.getInstance();
         FeedFetcher fetcher = new HttpURLFeedFetcher(cache);
-        SyndFeed feed = fetcher.retrieveFeed(new URL("http://www.w3.org/blog/news/feed/atom"));
+        SyndFeed feed = fetcher.retrieveFeed(new URL("https://www.w3.org/blog/news/feed/atom"));
 
         assertEquals("W3C News", feed.getTitle());
     }

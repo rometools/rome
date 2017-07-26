@@ -31,9 +31,6 @@ import com.rometools.rome.io.FeedException;
 
 /**
  * Feed Generator for RSS 0.92
- *
- * @author Elaine Chien
- *
  */
 public class RSS092Generator extends RSS091UserlandGenerator {
 

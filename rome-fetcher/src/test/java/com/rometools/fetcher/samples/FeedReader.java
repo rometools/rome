@@ -37,6 +37,9 @@ import com.rometools.rome.feed.synd.SyndFeed;
  */
 public class FeedReader {
 
+    private FeedReader() {
+    }
+
     public static void main(final String[] args) {
 
         boolean ok = false;

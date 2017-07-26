@@ -24,7 +24,10 @@ import java.util.List;
  * using the getCollections() and getCollection(String name) methods, which return Blog.Collection
  * objects, which you can use to create, retrieve update or delete entries within a collection.
  * </p>
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public interface Blog {
 
     /**

@@ -19,10 +19,6 @@ import java.io.Serializable;
 
 import com.rometools.rome.feed.impl.ObjectBean;
 
-/**
- * @author Michael W. Nassif (enrouteinc@gmail.com) Class representation of the Query object
- *         (Response portion so far)
- */
 public class OSQuery implements Cloneable, Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -36,10 +32,6 @@ public class OSQuery implements Cloneable, Serializable {
     private String title;
     private String searchTerms;
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     */
     public OSQuery() {
         _objBean = new ObjectBean(this.getClass(), this);
     }

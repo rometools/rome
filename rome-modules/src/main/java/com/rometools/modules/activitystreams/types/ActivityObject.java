@@ -21,15 +21,8 @@ import com.rometools.modules.georss.GeoRSSModule;
 import com.rometools.modules.portablecontacts.ContactModule;
 import com.rometools.rome.feed.atom.Entry;
 
-/**
- *
- * @author robert.cooper
- */
 public abstract class ActivityObject extends Entry implements HasLocation {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
     public abstract String getTypeIRI();

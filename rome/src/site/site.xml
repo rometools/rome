@@ -13,13 +13,23 @@
     <bannerLeft>
         <name>ROME</name>
         <src>images/romelogo.png</src>
-        <href>http://github.com/rometools/</href>
+        <href>/index.html</href>
     </bannerLeft>
-    
+
+    <custom>
+        <fluidoSkin>
+            <gitHub>
+                <projectId>rometools/rome</projectId>
+                <ribbonOrientation>right</ribbonOrientation>
+                <ribbonColor>black</ribbonColor>
+            </gitHub>
+        </fluidoSkin>
+    </custom>
+
     <publishDate position="right" />
     
     <version position="right" />
-    
+
     <body>
         <menu name="Rome">
             <item name="Overview" href="index.html" />
@@ -48,6 +58,38 @@
                 <item name="ROME 0.1 Beta" href="ROMEReleases/ROME0.1Beta/index.html" />
             </item>
             <item name="ROME Development Proposals" href="ROMEDevelopmentProposals/index.html" />
+            <item name="Modules" href="Modules/index.html" collapse="true">
+                <item name="iTunes Podcasting" href="Modules/ITunesPodcasting.html" />
+                <item name="GeoRSS.html" href="Modules/GeoRSS.html" />
+                <item name="Slash" href="Modules/Slash.html" />
+                <item name="Google Base" href="Modules/GoogleBase.html" />
+                <item name="Content" href="Modules/Content.html" />
+                <item name="Creative Commons" href="Modules/CreativeCommons.html" />
+                <item name="Yahoo! MediaRSS" href="Modules/MediaRSS.html" />
+                <item name="iPhoto Photocasting" href="Modules/IPhotoPhotocasting.html" />
+                <item name="A9 OpenSearch" href="Modules/A9OpenSearch.html" />
+                <item name="Microsoft Simple List Extensions" href="Modules/MicrosoftSimpleListExtensions.html" />
+                <item name="Microsoft Simple Sharing Extensions" href="Modules/MicrosoftSimpleSharingExtensions.html" />
+                <item name="Yahoo! Weather" href="Modules/Weather.html" />
+            </item>
+            <item name="Fetcher" href="Fetcher/index.html" collapse="true">
+                <item name="Dependencies" href="Fetcher/Dependencies/index.html" />
+                <item name="Releases" href="Fetcher/Releases/index.html" collapse="true">
+                    <item name="1.0" href="Fetcher/Releases/ROMEFetcher1.0.html" />
+                    <item name="1.0RC2" href="Fetcher/Releases/ROMEFetcher1.0RC2.html" />
+                    <item name="0.9" href="Fetcher/Releases/ROMEFetcher0.9.html" />
+                    <item name="0.7" href="Fetcher/Releases/ROMEFetcher0.7.html" />
+                    <item name="0.6" href="Fetcher/Releases/ROMEFetcher0.6.html" />
+                    <item name="0.5" href="Fetcher/Releases/RomeFetcher0.5.html" />
+                    <item name="0.4" href="Fetcher/Releases/RomeFetcher0.4.html" />
+                    <item name="0.3" href="Fetcher/Releases/RomeFetcher0.3.html" />
+                </item>
+            </item>
+            <item name="OPML" href="Opml/index.html"/>
+            <item name="Propono" href="Propono/index.html"/>
+            <item name="Certiorem" href="Certiorem/index.html" collapse="true">
+                <item name="Tutorial" href="Certiorem/CertioremTutorial.html" />
+            </item>
         </menu>
         <menu ref="reports" />
     </body>

@@ -24,7 +24,9 @@ import com.rometools.certiorem.hub.data.Subscriber;
  * A verifier that does not use threads. Suitable for Google App Engine.
  *
  * @author robert.cooper
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 public class UnthreadedVerifier extends AbstractVerifier {
 
     @Override

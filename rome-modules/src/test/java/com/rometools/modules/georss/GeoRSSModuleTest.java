@@ -278,6 +278,13 @@ public class GeoRSSModuleTest extends AbstractTestCase {
         // only tests whether file can be parsed (there should be no exception)
         getSyndFeed("org/rometools/feed/module/georss/issue-02.xml");
     }
+    
+    public void testDoubleSpacePointValue() throws Exception {
+        final Double[] lat = { 31.7666667, 31.7666667, 31.7666667 };
+        final Double[] lng = { 35.2333333, 35.2333333, 35.2333333 };
+        
+        assertTestFile("georss-double-space-issue.xml", lat, lng);
+    }
 
     private SyndFeed getSyndFeed(final String filePath) throws IOException, FeedException {
         final String fullPath = getTestFile(filePath);

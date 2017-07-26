@@ -3,6 +3,19 @@
  * JUnit based test
  *
  * Created on August 2, 2005, 1:30 PM
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
  */
 package com.rometools.modules.sse;
 
@@ -212,13 +225,6 @@ public class SSEParserTest extends AbstractTestCase {
                         }
                     }
                 }
-
-                // if (!foundEqual) {
-                // // show accumulated error messages
-                // for (Iterator mesgIter = messages.iterator(); mesgIter.hasNext();) {
-                // LOG.debug((String) mesgIter.next());
-                // }
-                // }
 
                 // look for the content in the other tree
                 assertTrue("could not find matching element for: " + one.getName(), foundEqual);

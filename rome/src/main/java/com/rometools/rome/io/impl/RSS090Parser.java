@@ -33,8 +33,6 @@ import com.rometools.rome.feed.rss.Item;
 import com.rometools.rome.feed.rss.TextInput;
 import com.rometools.rome.io.FeedException;
 
-/**
- */
 public class RSS090Parser extends BaseWireFeedParser {
 
     private static final String RDF_URI = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";

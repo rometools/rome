@@ -38,7 +38,10 @@ import com.rometools.rome.io.impl.Atom10Parser;
 /**
  * Models an Atom collection, extends Collection and adds methods for adding, retrieving, updateing
  * and deleting entries.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class ClientCollection extends Collection {
 
     private final boolean writable = true;

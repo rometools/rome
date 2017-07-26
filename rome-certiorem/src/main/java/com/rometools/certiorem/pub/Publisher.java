@@ -36,7 +36,9 @@ import com.rometools.rome.feed.synd.SyndLink;
  * A class for sending update notifications to a hub.
  *
  * @author robert.cooper
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 public class Publisher {
 
     private static final Logger LOG = LoggerFactory.getLogger(Publisher.class);

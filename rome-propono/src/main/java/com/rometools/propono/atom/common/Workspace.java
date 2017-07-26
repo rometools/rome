@@ -26,7 +26,10 @@ import com.rometools.propono.utils.ProponoException;
 
 /**
  * Models an Atom workspace.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class Workspace {
 
     private String title = null;

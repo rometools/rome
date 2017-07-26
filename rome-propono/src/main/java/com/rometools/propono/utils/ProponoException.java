@@ -20,7 +20,10 @@ import java.io.PrintWriter;
 
 /**
  * Base Propono exception class.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class ProponoException extends Exception {
 
     private static final long serialVersionUID = 1L;

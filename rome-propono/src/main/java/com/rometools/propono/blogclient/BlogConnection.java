@@ -20,7 +20,10 @@ import java.util.List;
 /**
  * A BlogConnection is a single-user connection to a blog server where the user has access to
  * multiple blogs, which are each represented by a Blog interface.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public interface BlogConnection {
 
     /** Returns collection of blogs available from this connection */

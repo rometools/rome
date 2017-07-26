@@ -21,10 +21,6 @@ import com.rometools.rome.feed.CopyFrom;
 
 /**
  * Bean interface for images of SyndFeedImpl feeds.
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public interface SyndImage extends Cloneable, CopyFrom {
     /**

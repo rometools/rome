@@ -31,7 +31,10 @@ import com.rometools.rome.feed.atom.Category;
 
 /**
  * Atom protocol implementation of BlogClient Blog.Collection.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class AtomCollection implements Blog.Collection {
 
     private Blog blog = null;

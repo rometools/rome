@@ -3,6 +3,19 @@
  * JUnit based test
  *
  * Created on March 29, 2006, 11:49 PM
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
  */
 
 package com.rometools.modules.mediarss;
@@ -15,16 +28,16 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.List;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
 import com.rometools.modules.AbstractTestCase;
-import com.rometools.modules.mediarss.MediaEntryModule;
-import com.rometools.modules.mediarss.MediaModule;
 import com.rometools.modules.mediarss.types.MediaContent;
 import com.rometools.modules.mediarss.types.Rating;
+import com.rometools.modules.mediarss.types.Restriction;
 import com.rometools.modules.mediarss.types.Thumbnail;
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndFeed;
@@ -32,10 +45,6 @@ import com.rometools.rome.io.FeedException;
 import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.SyndFeedOutput;
 
-/**
- *
- * @author cooper
- */
 public class MediaModuleTest extends AbstractTestCase {
 
     /**
@@ -89,6 +98,16 @@ public class MediaModuleTest extends AbstractTestCase {
                 assertEquals(entries.get(i).getModule(MediaModule.URI), feed2.getEntries().get(i).getModule(MediaModule.URI));
             }
         }
+    }
+
+
+    public void testParseFileSizeWithUnits() throws Exception {
+        final SyndFeed feed = getSyndFeed("org/rometools/feed/module/mediarss/filesize-with-unit.xml");
+        final List<SyndEntry> entries = feed.getEntries();
+
+        final MediaEntryModule module = (MediaEntryModule) entries.get(0).getModule(MediaModule.URI);
+        Long parsedFileSize = module.getMediaContents()[0].getFileSize();
+        assertThat(parsedFileSize, is(new BigDecimal(1000).pow(3).longValue()));
     }
 
     /**
@@ -162,6 +181,15 @@ public class MediaModuleTest extends AbstractTestCase {
         assertEquals("wrong count of media:content", 1, mcs.length);
         final MediaContent mc = mcs[0];
         assertEquals("http://www.foo.com/path/containing+spaces/trailer.mov", mc.getReference().toString());
+    }
+    
+    public void testParseRestrictionWithoutType() throws FeedException, IOException  {
+        final SyndFeed feed = getSyndFeed("org/rometools/feed/module/mediarss/issue-331.xml");
+        final SyndEntry entry = feed.getEntries().get(0);
+        final MediaEntryModule module = (MediaEntryModule) entry.getModule(MediaModule.URI);
+        final Restriction[] restrictions = module.getMetadata().getRestrictions();
+        
+        assertThat(restrictions, is(notNullValue()));
     }
 
     private SyndFeed getSyndFeed(final File file) throws IOException, FeedException {

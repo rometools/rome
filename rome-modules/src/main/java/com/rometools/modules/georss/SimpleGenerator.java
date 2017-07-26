@@ -39,10 +39,6 @@ import com.rometools.rome.io.ModuleGenerator;
 
 /**
  * SimpleGenerator produces georss elements in georss simple format.
- *
- * @author Marc Wick
- * @version $Id: SimpleGenerator.java,v 1.4 2007/04/18 09:59:29 marcwick Exp $
- *
  */
 public class SimpleGenerator implements ModuleGenerator {
     private static final Logger LOG = LoggerFactory.getLogger(SimpleGenerator.class);

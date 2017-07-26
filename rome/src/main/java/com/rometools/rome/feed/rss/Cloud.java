@@ -23,10 +23,6 @@ import com.rometools.rome.feed.impl.ObjectBean;
 
 /**
  * Bean for clouds of RSS feeds.
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public class Cloud implements Cloneable, Serializable {
     private static final long serialVersionUID = 1L;
@@ -37,11 +33,6 @@ public class Cloud implements Cloneable, Serializable {
     private String registerProcedure;
     private String protocol;
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public Cloud() {
         objBean = new ObjectBean(this.getClass(), this);
     }

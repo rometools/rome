@@ -28,7 +28,10 @@ import com.rometools.propono.utils.ProponoException;
  * {@link com.rometools.rome.propono.atom.common.Workspace} to return
  * {@link com.rometools.rome.propono.atom.client.ClientCollection} objects instead of common
  * {@link com.rometools.rome.propono.atom.common.Collection}s.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class ClientWorkspace extends Workspace {
 
     private ClientAtomService atomService = null;

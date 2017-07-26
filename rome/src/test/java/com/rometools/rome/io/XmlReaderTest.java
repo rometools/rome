@@ -37,9 +37,6 @@ import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @author pat, tucu
- */
 public class XmlReaderTest {
 
     private static final String XML5 = "xml-prolog-encoding-spaced-single-quotes";

@@ -17,17 +17,11 @@ package com.rometools.modules.georss.geometries;
 
 /**
  * Abstract base class for surface (area) objects
- *
- * @author runaas
  */
 public abstract class AbstractSurface extends AbstractGeometricPrimitive {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
-    /** Creates a new instance of Surface */
     public AbstractSurface() {
     }
 

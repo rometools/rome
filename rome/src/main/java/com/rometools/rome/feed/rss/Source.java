@@ -23,10 +23,6 @@ import com.rometools.rome.feed.impl.ObjectBean;
 
 /**
  * Bean for item sources of RSS feeds.
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public class Source implements Cloneable, Serializable {
     private static final long serialVersionUID = 1L;
@@ -34,11 +30,6 @@ public class Source implements Cloneable, Serializable {
     private String url;
     private String value;
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public Source() {
         objBean = new ObjectBean(this.getClass(), this);
     }

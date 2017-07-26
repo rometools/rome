@@ -1,33 +1,11 @@
 /*
- *
- *
- * This library is provided under dual licenses.
- * You may choose the terms of the Lesser General Public License or the Apache
- * License at your discretion.
- *
- *  Copyright (C) 2008  Robert Cooper, Temple of the Screaming Penguin
- *
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
+ * Copyright 2008 Robert Cooper, Temple of the Screaming Penguin
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -55,14 +33,9 @@ import com.rometools.rome.feed.impl.ToStringBean;
  * <li>rising: state of the barometric pressure: steady (0), rising (1), or falling (2). (integer:
  * 0, 1, 2)</li>
  * </ul>
- *
- * @version $Id: Atmosphere.java,v 1.2 2008/01/22 14:50:05 kebernet Exp $
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Atmosphere implements Serializable, Cloneable {
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
     private final EqualsBean equals = new EqualsBean(Atmosphere.class, this);
     private final ToStringBean toString = new ToStringBean(Atmosphere.class, this);
@@ -79,8 +52,6 @@ public class Atmosphere implements Serializable, Cloneable {
     }
 
     /**
-     * Constructs a new Atmosphere object
-     *
      * @param humidity humidity, in percent
      * @param visibility visibility distance (value beyond 1/100ths of a unit will be truncated)
      * @param pressure barometric pressure
@@ -187,9 +158,7 @@ public class Atmosphere implements Serializable, Cloneable {
     }
 
     public static class PressureChange implements Serializable {
-        /**
-         *
-         */
+
         private static final long serialVersionUID = 1L;
         public static final PressureChange RISING = new PressureChange(1, "rising");
         public static final PressureChange STEADY = new PressureChange(0, "steady");

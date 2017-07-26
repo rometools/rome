@@ -16,10 +16,6 @@
  */
 package com.rometools.modules.georss;
 
-/**
- * @author marc
- *
- */
 public class GeoRSSPoint implements Cloneable {
     private double latitude;
 

@@ -70,14 +70,9 @@ import com.rometools.rome.feed.atom.Link;
  * inappropriate size for their user interface.</dd>
  * </dl>
  * </blockquote>
- *
- * @author robert.cooper
  */
 public class Bookmark extends ActivityObject {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
     @Override

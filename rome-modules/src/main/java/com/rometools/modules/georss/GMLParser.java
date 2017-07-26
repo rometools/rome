@@ -35,10 +35,6 @@ import com.rometools.utils.Strings;
 
 /**
  * GMLParser is a parser for the GML georss format.
- *
- * @author Marc Wick
- * @version $Id: GMLParser.java,v 1.2 2007/06/05 20:44:53 marcwick Exp $
- *
  */
 public class GMLParser implements ModuleParser {
 
@@ -55,7 +51,7 @@ public class GMLParser implements ModuleParser {
 
     private static PositionList parsePosList(final Element element) {
         final String coordinates = element.getText();
-        final String[] coord = Strings.trimToEmpty(coordinates).split(" ");
+        final String[] coord = Strings.trimToEmpty(coordinates).split("\\s+");
         final PositionList posList = new PositionList();
         for (int i = 0; i < coord.length; i += 2) {
             posList.add(Double.parseDouble(coord[i]), Double.parseDouble(coord[i + 1]));
@@ -75,7 +71,7 @@ public class GMLParser implements ModuleParser {
             if (posElement != null) {
                 geoRSSModule = new GMLModuleImpl();
                 final String coordinates = posElement.getText();
-                final String[] coord = Strings.trimToEmpty(coordinates).split(" ");
+                final String[] coord = Strings.trimToEmpty(coordinates).split("\\s+");
                 final Position pos = new Position(Double.parseDouble(coord[0]), Double.parseDouble(coord[1]));
                 geoRSSModule.setGeometry(new Point(pos));
             }
@@ -133,9 +129,9 @@ public class GMLParser implements ModuleParser {
             if (lowerElement != null && upperElement != null) {
                 geoRSSModule = new GMLModuleImpl();
                 final String lowerCoordinates = lowerElement.getText();
-                final String[] lowerCoord = Strings.trimToEmpty(lowerCoordinates).split(" ");
+                final String[] lowerCoord = Strings.trimToEmpty(lowerCoordinates).split("\\s+");
                 final String upperCoordinates = upperElement.getText();
-                final String[] upperCoord = Strings.trimToEmpty(upperCoordinates).split(" ");
+                final String[] upperCoord = Strings.trimToEmpty(upperCoordinates).split("\\s+");
                 final Envelope envelope = new Envelope(Double.parseDouble(lowerCoord[0]), Double.parseDouble(lowerCoord[1]), Double.parseDouble(upperCoord[0]),
                         Double.parseDouble(upperCoord[1]));
                 geoRSSModule.setGeometry(envelope);

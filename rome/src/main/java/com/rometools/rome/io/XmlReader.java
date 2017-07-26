@@ -53,10 +53,6 @@ import java.util.regex.Pattern;
  * by Mark Pilgrim in his blog, <a
  * href="http://diveintomark.org/archives/2004/02/13/xml-media-types"> Determining the character
  * encoding of a feed</a>.
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public class XmlReader extends Reader {
 

@@ -21,7 +21,9 @@ package com.rometools.certiorem.sub.data;
 /**
  *
  * @author robert.cooper
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 public interface SubDAO {
 
     public Subscription findById(String id);

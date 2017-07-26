@@ -45,15 +45,11 @@ import com.rometools.rome.feed.impl.ToStringBean;
  * <p>
  * <em>algo</em> indicates the algorithm used to create the hash. Possible values are 'md5' and
  * 'sha-1'. Default value is 'md5'. It is an optional attribute.
- *
- * @author cooper
  */
 public class Hash extends AbstractSchemeValue implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * Creates a new instance of Hash
-     *
      * @param algorithm algoright used
      * @param value value of the hash
      */

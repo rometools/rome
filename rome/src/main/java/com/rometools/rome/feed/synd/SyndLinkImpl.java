@@ -23,10 +23,6 @@ import com.rometools.rome.feed.impl.ObjectBean;
 
 /**
  * Represents a link or an enclosure.
- * <p>
- *
- * @author Alejandro Abdelnur
- * @author Dave Johnson (updated for Atom 1.0)
  */
 public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
     private static final long serialVersionUID = 1L;
@@ -40,11 +36,6 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
     private String title;
     private long length;
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public SyndLinkImpl() {
         objBean = new ObjectBean(this.getClass(), this);
     }

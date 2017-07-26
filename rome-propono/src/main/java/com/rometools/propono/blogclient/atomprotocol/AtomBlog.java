@@ -34,7 +34,10 @@ import com.rometools.propono.utils.ProponoException;
 
 /**
  * Atom protocol implementation of the BlogClient Blog interface.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class AtomBlog implements Blog {
 
     private String name = null;

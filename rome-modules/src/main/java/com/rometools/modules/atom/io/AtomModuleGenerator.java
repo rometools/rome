@@ -1,3 +1,19 @@
+/*
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
 package com.rometools.modules.atom.io;
 
 import com.rometools.modules.atom.modules.AtomLinkModule;
@@ -10,6 +26,7 @@ import org.jdom2.Namespace;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class AtomModuleGenerator implements ModuleGenerator {
@@ -37,15 +54,11 @@ public class AtomModuleGenerator implements ModuleGenerator {
     public void generate(Module module, Element element) {
         if (module instanceof AtomLinkModule) {
             AtomLinkModule m = (AtomLinkModule) module;
-            generateLinc(m.getLink(), element);
+            generateLinks(m.getLinks(), element);
         }
     }
 
-    private void generateLinc(Link link, Element element) {
-        if (link == null) {
-            return;
-        }
-
+    private Element generateLink(Link link) {
         Element linkElement = new Element("link", NS);
 
         if (link.getHref() != null) {
@@ -72,11 +85,18 @@ public class AtomModuleGenerator implements ModuleGenerator {
         }
 
         if (link.getLength() != 0) {
-            final Attribute lenght = new Attribute(AtomLinkAttribute.LENGTH, Long.toString(link.getLength()));
-            linkElement.setAttribute(lenght);
+            final Attribute length = new Attribute(AtomLinkAttribute.LENGTH, Long.toString(link.getLength()));
+            linkElement.setAttribute(length);
         }
 
-        element.addContent(linkElement);
+        return linkElement;
+    }
+
+    private void generateLinks(List<Link> links, Element element) {
+        for (Link link : links) {
+            element.addContent(generateLink(link));
+        }
+
     }
 
 }

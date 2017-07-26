@@ -22,8 +22,6 @@ import org.jdom2.Element;
 
 import com.rometools.rome.feed.rss.Item;
 
-/**
- */
 public class RSS093Parser extends RSS092Parser {
 
     public RSS093Parser() {

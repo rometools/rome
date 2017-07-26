@@ -27,7 +27,10 @@ import com.rometools.rome.feed.module.ModuleImpl;
 
 /**
  * Bean representation of APP module.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class AppModuleImpl extends ModuleImpl implements AppModule {
 
     private static final long serialVersionUID = 1L;

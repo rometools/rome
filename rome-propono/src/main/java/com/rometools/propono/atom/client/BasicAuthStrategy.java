@@ -21,6 +21,10 @@ import org.apache.commons.httpclient.HttpMethodBase;
 import com.rometools.propono.utils.ProponoException;
 import com.rometools.rome.io.impl.Base64;
 
+/**
+ * @deprecated Propono will be removed in Rome 2.
+ */
+@Deprecated
 public class BasicAuthStrategy implements AuthStrategy {
     private final String credentials;
 

@@ -27,7 +27,10 @@ import java.security.PrivilegedExceptionAction;
 /**
  * This class is duplicated for each subpackage, it is package private and therefore is not exposed
  * as part of the public API.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 class SecuritySupport {
 
     ClassLoader getContextClassLoader() {

@@ -6,10 +6,7 @@
  2011-08-14 14:59:35.761
  -----
 
-Rome v0.4 Tutorial, Using Rome to create and write a syndication feed
-
-
- <<Software requirements:>> J2SE 1.4\+, JDOM 1.0 and Rome 0.4.
+Using Rome to create and write a syndication feed
 
 
  Rome represents syndication feeds (RSS and Atom) as instances of the com.rometools.rome.feed.synd.SyndFeed interface. The SyndFeed interfaces and its properties follow the Java Bean patterns. The default implementations provided with Rome are all lightweight classes.

@@ -40,7 +40,9 @@ import com.rometools.rome.io.SyndFeedOutput;
 /**
  *
  * @author robert.cooper
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 public abstract class AbstractNotifier implements Notifier {
 
     private static final Logger LOG = LoggerFactory.getLogger(AbstractNotifier.class);

@@ -43,7 +43,9 @@ import com.rometools.rome.feed.synd.SyndFeed;
  * a very thin servlet wrapper, or other, non-HTTP notification methods you might want to use.
  *
  * @author robert.cooper
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 public class Hub {
 
     private static final Logger LOG = LoggerFactory.getLogger(Hub.class);

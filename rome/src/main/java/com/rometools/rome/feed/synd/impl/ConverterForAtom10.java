@@ -49,8 +49,6 @@ import com.rometools.rome.feed.synd.SyndPerson;
 import com.rometools.utils.Lists;
 import com.rometools.utils.Strings;
 
-/**
- */
 public class ConverterForAtom10 implements Converter {
 
     private final String type;
@@ -414,6 +412,11 @@ public class ConverterForAtom10 implements Converter {
         final List<SyndPerson> contributors = syndFeed.getContributors();
         if (Lists.isNotEmpty(contributors)) {
             aFeed.setContributors(ConverterForAtom03.createAtomPersons(contributors));
+        }
+
+        SyndImage image = syndFeed.getImage();
+        if (image != null) {
+            aFeed.setIcon(image.getUrl());
         }
 
         aFeed.setRights(syndFeed.getCopyright());

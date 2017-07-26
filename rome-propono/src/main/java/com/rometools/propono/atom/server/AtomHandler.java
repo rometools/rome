@@ -32,7 +32,10 @@ import com.rometools.rome.feed.atom.Feed;
  * concrete sub-class of {@link com.rometools.rome.propono.atom.server.AtomHandlerFactory} which is
  * capable of instantiating it.
  * </p>
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public interface AtomHandler {
     /**
      * Get username of authenticated user. Return the username of the authenticated user

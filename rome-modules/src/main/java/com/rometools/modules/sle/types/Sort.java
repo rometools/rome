@@ -71,8 +71,6 @@ import com.rometools.rome.feed.impl.ObjectBean;
  * first instance of default="true" that it encounters.</li>
  *
  * </ul>
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Sort implements Serializable, Cloneable {
     private static final long serialVersionUID = 1L;
@@ -96,8 +94,6 @@ public class Sort implements Serializable, Cloneable {
     private final boolean defaultOrder;
 
     /**
-     * Creates a new instance of Sort
-     *
      * @param namespace Namespace of the element
      * @param element Name of the element
      * @param dataType data-type of the element

@@ -126,9 +126,6 @@ import com.rometools.rome.feed.impl.ToStringBean;
  * entries needed to index and organize media content. Additional supported attributes for
  * describing images, audio, and video may be added in future revisions of this document.
  * </p>
- *
- * @author Nathanial X. Freitas
- *
  *         MediaContent corresponds to the <madia:content> element defined within the MediaRSS
  *         specification. There may be one or more <media:content> instances within each instance of
  *         an <item> within an RSS 2.0 document.
@@ -167,13 +164,8 @@ public class MediaContent implements Serializable {
     private String type = null;
     private boolean defaultContent;
 
-    /*
-     * MediaContent constructor
-     */
 
     /**
-     * Creates a new MediaContent
-     *
      * @param reference UrlReference or Player reference for the item.
      */
     public MediaContent(final Reference reference) {

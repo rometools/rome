@@ -35,7 +35,9 @@ import com.rometools.certiorem.sub.data.Subscription;
 /**
  *
  * @author robert.cooper
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 public class InMemorySubDAO implements SubDAO {
 
     private static final Logger LOG = LoggerFactory.getLogger(InMemorySubDAO.class);

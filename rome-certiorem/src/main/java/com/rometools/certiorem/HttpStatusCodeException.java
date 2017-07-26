@@ -21,7 +21,9 @@ package com.rometools.certiorem;
 /**
  *
  * @author robert.cooper
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 public class HttpStatusCodeException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;

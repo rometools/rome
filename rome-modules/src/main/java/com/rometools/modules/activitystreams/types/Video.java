@@ -43,8 +43,6 @@ package com.rometools.modules.activitystreams.types;
  * a JSON string containing the fragment of HTML.</dd>
  * </dl>
  * </blockquote>
- *
- * @author robert.cooper
  */
 public class Video {
 

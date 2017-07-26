@@ -17,17 +17,12 @@ package com.rometools.modules.georss.geometries;
 
 /**
  * Point object, contains a position
- *
- * @author runaas
  */
 public final class Point extends AbstractGeometricPrimitive {
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
     private Position pos;
 
-    /** Creates a new instance of Point */
     public Point() {
 
     }

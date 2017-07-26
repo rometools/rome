@@ -23,22 +23,13 @@ import com.rometools.rome.feed.impl.ObjectBean;
 
 /**
  * Bean for item GUIDs of RSS feeds.
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public class Guid implements Cloneable, Serializable {
     private static final long serialVersionUID = 1L;
     private final ObjectBean objBean;
-    private boolean permaLink;
+    private boolean permaLink = true;
     private String value;
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public Guid() {
         objBean = new ObjectBean(this.getClass(), this);
     }

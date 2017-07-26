@@ -23,10 +23,6 @@ import com.rometools.rome.feed.CopyFrom;
 /**
  * Base class for modules describing Metadata of feeds. Examples of such modules are the Dublin Core
  * and Syndication modules.
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public interface Module extends Cloneable, CopyFrom, Serializable {
 

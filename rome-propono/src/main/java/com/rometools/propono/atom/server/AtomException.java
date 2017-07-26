@@ -24,7 +24,10 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Exception thrown by {@link com.rometools.rome.propono.atom.server.AtomHandler} and extended by
  * other Propono Atom exception classes.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class AtomException extends Exception {
 
     private static final long serialVersionUID = 1L;

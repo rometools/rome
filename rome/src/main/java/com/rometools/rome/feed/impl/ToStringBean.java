@@ -16,7 +16,6 @@
  */
 package com.rometools.rome.feed.impl;
 
-import java.beans.PropertyDescriptor;
 import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.lang.reflect.Method;
@@ -35,27 +34,13 @@ import org.slf4j.LoggerFactory;
  * <p>
  * It works on all read/write properties, recursively. It support all primitive types, Strings,
  * Collections, ToString objects and multi-dimensional arrays of any of them.
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public class ToStringBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private static final Logger LOG = LoggerFactory.getLogger(ToStringBean.class);
 
-    private static final ThreadLocal<Stack<String[]>> PREFIX_TL = new ThreadLocal<Stack<String[]>>() {
-        @Override
-        public Stack<String[]> get() {
-            Stack<String[]> o = super.get();
-            if (o == null) {
-                o = new Stack<String[]>();
-                set(o);
-            }
-            return o;
-        }
-    };
+    private static final ThreadLocal<Stack<String[]>> PREFIX_TL = new ThreadLocal<Stack<String[]>>();
 
     private static final Object[] NO_PARAMS = new Object[0];
 
@@ -117,7 +102,15 @@ public class ToStringBean implements Serializable {
      */
     @Override
     public String toString() {
-        final Stack<String[]> stack = PREFIX_TL.get();
+        Stack<String[]> stack = PREFIX_TL.get();
+        boolean needStackCleanup = false;
+
+        if (stack == null) {
+            stack = new Stack<String[]>();
+            PREFIX_TL.set(stack);
+            needStackCleanup = true;
+        }
+
         final String[] tsInfo;
         if (stack.isEmpty()) {
             tsInfo = null;
@@ -132,7 +125,14 @@ public class ToStringBean implements Serializable {
             prefix = tsInfo[0];
             tsInfo[1] = prefix;
         }
-        return this.toString(prefix);
+
+        final String result = toString(prefix);
+
+        if (needStackCleanup) {
+          PREFIX_TL.remove();
+        }
+
+        return result;
     }
 
     /**

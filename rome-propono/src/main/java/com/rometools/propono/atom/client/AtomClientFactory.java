@@ -21,11 +21,17 @@ import com.rometools.rome.io.impl.Atom10Parser;
 /**
  * Creates AtomService or ClientCollection based on username, password and end-point URI of Atom
  * protocol service.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class AtomClientFactory {
 
     static {
         Atom10Parser.setResolveURIs(true);
+    }
+
+    private AtomClientFactory() {
     }
 
     /**

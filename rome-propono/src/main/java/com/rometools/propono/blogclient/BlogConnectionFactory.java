@@ -19,7 +19,10 @@ import java.lang.reflect.Constructor;
 
 /**
  * Entry point to the Blogapps blog client library.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class BlogConnectionFactory {
 
     // BlogConnection implementations must:
@@ -30,6 +33,9 @@ public class BlogConnectionFactory {
     private static String ATOMPROTOCOL_IMPL_CLASS = "com.rometools.propono.blogclient.atomprotocol.AtomConnection";
 
     private static String METAWEBLOG_IMPL_CLASS = "com.rometools.propono.blogclient.metaweblog.MetaWeblogConnection";
+
+    private BlogConnectionFactory() {
+    }
 
     /**
      * Create a connection to a blog server.

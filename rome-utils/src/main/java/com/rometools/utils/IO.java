@@ -22,9 +22,6 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Utility class to handle I/O operations.
- *
- * @author Patrick Gotthard
- *
  */
 public final class IO {
 

@@ -35,8 +35,6 @@ import com.rometools.rome.feed.rss.Enclosure;
 import com.rometools.rome.feed.rss.Item;
 import com.rometools.rome.feed.rss.Source;
 
-/**
- */
 public class RSS092Parser extends RSS091UserlandParser {
 
     private static final Logger LOG = LoggerFactory.getLogger(RSS092Parser.class);

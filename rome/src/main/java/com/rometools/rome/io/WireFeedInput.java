@@ -51,10 +51,6 @@ import com.rometools.rome.io.impl.XmlFixerReader;
  * Parsers are plugable (they must implement the WireFeedParser interface).
  * <p>
  * The WireFeedInput useds liberal parsers.
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public class WireFeedInput {
 
@@ -359,23 +355,29 @@ public class WireFeedInput {
             }
 
         } catch (final JDOMException e) {
-            throw new IllegalStateException("JDOM could not create a SAX parser");
+            throw new IllegalStateException("JDOM could not create a SAX parser", e);
         }
         
         saxBuilder.setExpandEntities(false);
-        
+
         return saxBuilder;
-        
+
     }
     
     private void setFeature(SAXBuilder saxBuilder, XMLReader parser, String feature, boolean value) {
-        try {
+        if (isFeatureSupported(parser, feature, value)) {
             saxBuilder.setFeature(feature, value);
+        }
+    }
+
+    private boolean isFeatureSupported(XMLReader parser, String feature, boolean value) {
+        try {
             parser.setFeature(feature, value);
+            return true;
         } catch (final SAXNotRecognizedException e) {
-            // ignore
+            return false;
         } catch (final SAXNotSupportedException e) {
-            // ignore
+            return false;
         }
     }
 

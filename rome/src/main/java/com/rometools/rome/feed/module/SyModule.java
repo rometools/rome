@@ -23,8 +23,6 @@ import java.util.Date;
  * <p>
  *
  * @see <a href="http://web.resource.org/rss/1.0/modules/syndication/">Syndication module</a>.
- * @author Alejandro Abdelnur
- *
  */
 public interface SyModule extends Module {
 

@@ -36,9 +36,6 @@ import com.rometools.rome.io.WireFeedParser;
 import com.rometools.rome.io.impl.BaseWireFeedParser;
 import com.rometools.rome.io.impl.DateParser;
 
-/**
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- */
 public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
 
     private static Logger LOG = LoggerFactory.getLogger(OPML10Parser.class);

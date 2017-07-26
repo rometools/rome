@@ -24,13 +24,19 @@ import java.util.Properties;
 /**
  * Find {@link com.rometools.rome.propono.atom.server.AtomHandlerFactory} based on properties
  * files.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 class FactoryFinder {
 
     private static boolean debug = false;
     private static Properties cacheProps = new Properties();
     private static SecuritySupport ss = new SecuritySupport();
     private static boolean firstTime = true;
+
+    private FactoryFinder() {
+    }
 
     private static void dPrint(final String msg) {
         if (debug) {

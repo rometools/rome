@@ -6,10 +6,7 @@
  2011-08-14 14:57:11.190
  -----
 
-Rome v0.4 Tutorial, Using Rome to aggregate many syndication feeds into a single one
-
-
- <<Software requirements:>> J2SE 1.4\+, JDOM 1.0 and Rome 0.4.
+Using Rome to aggregate many syndication feeds into a single one
 
 
  Rome represents syndication feeds (RSS and Atom) as instances of the com.rometools.rome.synd.SyndFeed interface. The SyndFeed interfaces and its properties follow the Java Bean patterns. The default implementations provided with Rome are all lightweight classes.

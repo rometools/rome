@@ -34,7 +34,10 @@ import com.rometools.rome.io.ModuleGenerator;
 
 /**
  * Creates JDOM representation for APP Extension Module.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class AppModuleGenerator implements ModuleGenerator {
 
     private static final Namespace APP_NS = Namespace.getNamespace("app", AppModule.URI);

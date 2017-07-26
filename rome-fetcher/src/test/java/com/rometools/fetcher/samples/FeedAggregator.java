@@ -46,6 +46,9 @@ import com.rometools.rome.io.SyndFeedOutput;
  */
 public class FeedAggregator {
 
+    private FeedAggregator() {
+    }
+
     public static void main(final String[] args) {
 
         boolean ok = false;

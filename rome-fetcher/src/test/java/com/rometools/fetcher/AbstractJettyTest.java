@@ -175,29 +175,29 @@ public abstract class AbstractJettyTest extends TestCase {
         try {
             setupServer();
 
+
+            final URL url = this.getClass().getClassLoader().getResource("testuser.properties");
+            final UserRealm userRealm = new HashUserRealm("test", url.toString());
+
+            final BasicAuthenticator basicauthenticator = new BasicAuthenticator();
+
+            final SecurityHandler securityHandler = new SecurityHandler();
+
+            final SecurityConstraint securityConstraint = new SecurityConstraint();
+            securityConstraint.setName("test");
+            securityConstraint.addRole("*");
+            securityConstraint.setAuthenticate(true);
+
+            final ServletHandler servletHandler = createServletHandler();
+
             final HttpContext context = createContext();
-
-            final URL url = this.getClass().getResource("/testuser.properties");
-            final UserRealm ur = new HashUserRealm("test", url.getFile());
-            context.setRealm(ur);
-
-            final BasicAuthenticator ba = new BasicAuthenticator();
-            context.setAuthenticator(ba);
-
-            final SecurityHandler sh = new SecurityHandler();
-            context.addHandler(sh);
-
-            final SecurityConstraint sc = new SecurityConstraint();
-            sc.setName("test");
-            sc.addRole("*");
-            sc.setAuthenticate(true);
-            context.addSecurityConstraint("/", sc);
-
-            final ServletHandler servlets = createServletHandler();
-            context.addHandler(servlets);
+            context.setRealm(userRealm);
+            context.setAuthenticator(basicauthenticator);
+            context.addHandler(securityHandler);
+            context.addSecurityConstraint("/", securityConstraint);
+            context.addHandler(servletHandler);
 
             server.addContext(context);
-
             server.start();
 
             final FeedFetcher feedFetcher = getAuthenticatedFeedFetcher();

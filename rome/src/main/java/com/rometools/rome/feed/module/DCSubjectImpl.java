@@ -30,8 +30,6 @@ import com.rometools.rome.feed.impl.ObjectBean;
  * <p>
  *
  * @see <a href="http://web.resource.org/rss/1.0/modules/dc/">Dublin Core module</a>.
- * @author Alejandro Abdelnur
- *
  */
 public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
 
@@ -52,11 +50,6 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
         COPY_FROM_HELPER = new CopyFromHelper(DCSubject.class, basePropInterfaceMap, basePropClassImplMap);
     }
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public DCSubjectImpl() {
         objBean = new ObjectBean(this.getClass(), this);
     }

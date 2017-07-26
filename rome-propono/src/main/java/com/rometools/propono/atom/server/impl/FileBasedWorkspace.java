@@ -19,10 +19,12 @@ import com.rometools.propono.atom.common.Workspace;
 
 /**
  * File based Atom service Workspace.
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public class FileBasedWorkspace extends Workspace {
 
-    /** Creates a new instance of FileBasedWorkspace */
     public FileBasedWorkspace(final String handle, final String baseDir) {
         super(handle, "text");
     }

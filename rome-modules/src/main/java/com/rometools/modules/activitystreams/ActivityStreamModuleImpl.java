@@ -20,10 +20,6 @@ import com.rometools.modules.activitystreams.types.ActivityObject;
 import com.rometools.modules.activitystreams.types.Mood;
 import com.rometools.modules.activitystreams.types.Verb;
 
-/**
- *
- * @author robert.cooper
- */
 public class ActivityStreamModuleImpl implements ActivityStreamModule {
     private ActivityObject object;
     private Verb verb;

@@ -19,10 +19,6 @@ package com.rometools.rome.io.impl;
 
 /**
  * Encodes/decodes byte arrays and Strings into/from a base 64 String.
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public class Base64 {
 

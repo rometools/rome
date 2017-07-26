@@ -44,14 +44,9 @@ import com.rometools.rome.feed.atom.Link;
  * Image component of the base Object Construct.</dd>
  * </dl>
  * </blockquote>
- *
- * @author robert.cooper
  */
 public class Person extends ActivityObject {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
     @Override

@@ -6,10 +6,7 @@
  2011-08-15 09:29:19.297
  -----
 
-Rss and atOM utilitiEs (ROME) v0.5 Tutorial, Defining a Custom Module (bean, parser and generator)
-
-
- <<Software requirements:>> Synd J2SE 1.4\+, JDOM 1.0 and ROME 0.5.
+Defining a Custom Module (bean, parser and generator)
 
 
  This tutorial walks through the steps of creating a custom module for syndication feeds that support additional namespaces (such as RSS 1.0, RSS 2.0 and Atom 0.3).

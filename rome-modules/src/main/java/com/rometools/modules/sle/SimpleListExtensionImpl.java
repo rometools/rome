@@ -22,10 +22,6 @@ import com.rometools.modules.sle.types.Sort;
 import com.rometools.rome.feed.CopyFrom;
 import com.rometools.rome.feed.module.ModuleImpl;
 
-/**
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
- */
 public class SimpleListExtensionImpl extends ModuleImpl implements SimpleListExtension {
 
     private static final long serialVersionUID = 1L;
@@ -34,7 +30,6 @@ public class SimpleListExtensionImpl extends ModuleImpl implements SimpleListExt
     private Group[] groupFields;
     private Sort[] sortFields;
 
-    /** Creates a new instance of SimpleListExtensionImpl */
     public SimpleListExtensionImpl() {
         super(SimpleListExtensionImpl.class, SimpleListExtension.URI);
     }

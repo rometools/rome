@@ -43,14 +43,9 @@ package com.rometools.modules.activitystreams.types;
  * Construct].</dd>
  * </dl>
  * </blockquote>
- *
- * @author robert.cooper
  */
 public class Product extends ActivityObject {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
     @Override

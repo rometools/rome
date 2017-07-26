@@ -24,9 +24,6 @@ import com.rometools.rome.feed.CopyFrom;
 import com.rometools.rome.feed.atom.Link;
 import com.rometools.rome.feed.module.ModuleImpl;
 
-/**
- * @author Michael W. Nassif (enrouteinc@gmail.com) OpenSearch Module implementation
- */
 public class OpenSearchModuleImpl extends ModuleImpl implements OpenSearchModule, Serializable {
     private static final long serialVersionUID = 1L;
     private static final Logger LOG = LoggerFactory.getLogger(OpenSearchModuleImpl.class);

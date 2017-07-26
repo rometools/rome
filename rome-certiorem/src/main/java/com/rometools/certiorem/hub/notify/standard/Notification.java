@@ -24,7 +24,9 @@ import com.rometools.certiorem.hub.data.Subscriber;
 /**
  *
  * @author robert.cooper
+ * @deprecated Certiorem will be removed in Rome 2.
  */
+@Deprecated
 public class Notification {
 
     int retryCount = 0;

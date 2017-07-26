@@ -23,10 +23,6 @@ import com.rometools.rome.feed.impl.ObjectBean;
 
 /**
  * Bean for item descriptions of RSS feeds.
- * <p>
- *
- * @author Alejandro Abdelnur
- *
  */
 public class Description implements Cloneable, Serializable {
     private static final long serialVersionUID = 1L;
@@ -34,11 +30,6 @@ public class Description implements Cloneable, Serializable {
     private String type;
     private String value;
 
-    /**
-     * Default constructor. All properties are set to <b>null</b>.
-     * <p>
-     *
-     */
     public Description() {
         objBean = new ObjectBean(this.getClass(), this);
     }

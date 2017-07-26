@@ -31,7 +31,10 @@ import org.slf4j.LoggerFactory;
  * factory that is capable of creating instances of your
  * {@link com.rometools.rome.propono.atom.server.AtomHandler} impementation.
  * </p>
+ *
+ * @deprecated Propono will be removed in Rome 2.
  */
+@Deprecated
 public abstract class AtomHandlerFactory {
 
     private static final Logger LOG = LoggerFactory.getLogger(AtomHandlerFactory.class);

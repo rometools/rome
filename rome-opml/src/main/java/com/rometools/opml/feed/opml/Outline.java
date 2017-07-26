@@ -30,8 +30,6 @@ import com.rometools.rome.feed.module.Module;
 
 /**
  * This class represents an OPML outline element.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com">Robert "kebernet" Cooper</a>
  */
 public class Outline implements Cloneable, Serializable {
 

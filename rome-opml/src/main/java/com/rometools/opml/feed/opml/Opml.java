@@ -26,8 +26,6 @@ import com.rometools.rome.feed.WireFeed;
 /**
  * This class represents the root of an OPML 1/2 feed and contains the elements that may appear in the &lt;head&gt; tag
  * of the feed.
- *
- * @author <a href="mailto:cooper@screaming-penguin.com"> Robert "kebernet" Cooper</a>
  */
 public class Opml extends WireFeed {
 

@@ -83,8 +83,6 @@ import com.rometools.rome.feed.impl.ToStringBean;
  * Additional roles: <a
  * href="http://www.ebu.ch/en/technical/metadata/specifications/role_codes.php">European
  * Broadcasting Union Role Codes</a>
- *
- * @author cooper
  */
 public class Credit implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -97,8 +95,6 @@ public class Credit implements Serializable {
     private final String scheme;
 
     /**
-     * Creates a new instance of Credit
-     *
      * @param scheme schem used
      * @param role role name
      * @param name persons name

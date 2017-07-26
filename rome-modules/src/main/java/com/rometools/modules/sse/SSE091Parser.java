@@ -42,15 +42,12 @@ import com.rometools.rome.io.impl.RSS20Parser;
 
 /**
  * Parses embedded SSE content from RSS channel and item content.
- *
- * @author <a href="mailto:ldornin@dev.java.net">ldornin</a>
  */
 public class SSE091Parser implements DelegatingModuleParser {
 
     // root of the sharing element
     private RSS20Parser rssParser;
 
-    /** Creates a new instance of SSE091Parser */
     public SSE091Parser() {
     }
 
