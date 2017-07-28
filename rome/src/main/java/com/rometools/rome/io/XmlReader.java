@@ -17,8 +17,6 @@
 package com.rometools.rome.io;
 
 import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -30,6 +28,8 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.text.MessageFormat;
 import java.util.Locale;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -211,7 +211,29 @@ public class XmlReader extends Reader {
      *
      */
     public XmlReader(final URL url) throws IOException {
-        this(url.openConnection());
+        this(url, null);
+    }
+
+    /**
+     * Creates a Reader using the InputStream of a URL.
+     * <p>
+     * If the URL is not of type HTTP and there is not 'content-type' header in the fetched data it
+     * uses the same logic used for Files.
+     * <p>
+     * If the URL is a HTTP Url or there is a 'content-type' header in the fetched data it uses the
+     * same logic used for an InputStream with content-type.
+     * <p>
+     * It does a lenient charset encoding detection, check the constructor with the lenient
+     * parameter for details.
+     * <p>
+     *
+     * @param url URL to create a Reader from.
+     * @param requestHeaders optional Map of headers to set on http request.
+     * @throws IOException thrown if there is a problem reading the stream of the URL.
+     *
+     */
+    public XmlReader(final URL url, final Map<String, String> requestHeaders) throws IOException {
+        this(url.openConnection(), requestHeaders);
     }
 
     /**
@@ -232,15 +254,32 @@ public class XmlReader extends Reader {
      *
      */
     public XmlReader(final URLConnection conn) throws IOException {
+        this(conn, null);
+    }
+
+    /**
+     * Creates a Reader using the InputStream of a URLConnection.
+     * <p>
+     * If the URLConnection is not of type HttpURLConnection and there is not 'content-type' header
+     * in the fetched data it uses the same logic used for files.
+     * <p>
+     * If the URLConnection is a HTTP Url or there is a 'content-type' header in the fetched data it
+     * uses the same logic used for an InputStream with content-type.
+     * <p>
+     * It does a lenient charset encoding detection, check the constructor with the lenient
+     * parameter for details.
+     * <p>
+     *
+     * @param conn URLConnection to create a Reader from.
+     * @param requestHeaders optional Map of headers to set on http request.
+     * @throws IOException thrown if there is a problem reading the stream of the URLConnection.
+     *
+     */
+    public XmlReader(final URLConnection conn, final Map<String, String> requestHeaders) throws IOException {
         defaultEncoding = staticDefaultEncoding;
         final boolean lenient = true;
         if (conn instanceof HttpURLConnection) {
-            final Package pckg = this.getClass().getPackage();
-            if (pckg.getImplementationTitle() != null && pckg.getImplementationVersion() != null) {
-                conn.setRequestProperty("User-Agent", pckg.getImplementationTitle() + "/" + pckg.getImplementationVersion());
-            } else {
-                conn.setRequestProperty("User-Agent", "ROME");
-            }
+            setRequestHeader(conn, requestHeaders);
             try {
                 doHttpStream(conn.getInputStream(), conn.getContentType(), lenient);
             } catch (final XmlReaderException ex) {
@@ -550,6 +589,20 @@ public class XmlReader extends Reader {
             }
         }
         return encoding;
+    }
+
+    private void setRequestHeader(final URLConnection conn, final Map<String, String> requestHeaders) {
+        final Package pckg = this.getClass().getPackage();
+        if (pckg.getImplementationTitle() != null && pckg.getImplementationVersion() != null) {
+            conn.setRequestProperty("User-Agent", pckg.getImplementationTitle() + "/" + pckg.getImplementationVersion());
+        } else {
+            conn.setRequestProperty("User-Agent", "ROME");
+        }
+        if (requestHeaders != null) {
+            for (final Entry<String, String> requestHeader : requestHeaders.entrySet()) {
+                conn.setRequestProperty(requestHeader.getKey(), requestHeader.getValue());
+            }
+        }
     }
 
     // returns MIME type or NULL if httpContentType is NULL
