@@ -19,7 +19,7 @@ Other deprecated modules: `rome-certiorem`, `rome-certiorem-webapp` and `rome-pr
 Parse a feed:
 
 ```java
-String url = "http://stackoverflow.com/feeds/tag?tagnames=rome";
+String url = "https://stackoverflow.com/feeds/tag?tagnames=rome";
 SyndFeed feed = new SyndFeedInput().build(new XmlReader(new URL(url)));
 System.out.println(feed.getTitle());
 ```
