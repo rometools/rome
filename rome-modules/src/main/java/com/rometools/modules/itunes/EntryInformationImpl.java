@@ -37,7 +37,6 @@ public class EntryInformationImpl extends AbstractITunesObject implements EntryI
     private Duration duration;
     private boolean closedCaptioned;
     private Integer order;
-    private String encodedNotes;
     private String episodeType;
     private Integer season;
     private Integer episode;
@@ -84,22 +83,6 @@ public class EntryInformationImpl extends AbstractITunesObject implements EntryI
     public void setOrder(Integer order) {
         this.order = order;
     }
-
-    /**
-     * Get the encoded episode notes
-     *
-     * @see #setEncoded(String) setEncoded(encodedNotes) for details
-     */
-    @Override
-    public String getEncoded() { return encodedNotes; }
-
-    /**
-     * Set the episode notes (allow basic HTML tags such as &lt;p&gt;,&lt;ol&gt;,&lt;ul&gt;,&lt;a&gt;,&lt;em&gt;,&lt;i&gt; and &lt;b&gt;. See the <a href="http://podcasts.apple.com/resources/spec/ApplePodcastsSpecUpdatesiOS11.pdf">new spec by Apple</a> for details.
-     *
-     * @param encodedNotes
-     */
-    @Override
-    public void setEncoded(String encodedNotes) { this.encodedNotes = encodedNotes; }
 
     /**
      * Get the episode type
@@ -160,7 +143,6 @@ public class EntryInformationImpl extends AbstractITunesObject implements EntryI
 
         setSubtitle(info.getSubtitle());
         setSummary(info.getSummary());
-        setEncoded(info.getEncoded());
         setClosedCaptioned(info.getClosedCaptioned());
         setOrder(info.getOrder());
         setEpisodeType(info.getEpisodeType());
@@ -196,8 +178,6 @@ public class EntryInformationImpl extends AbstractITunesObject implements EntryI
         sb.append(getEpisode());
         sb.append(" episodeType: ");
         sb.append(getEpisodeType());
-        sb.append(" encoded: ");
-        sb.append(getEncoded());
         sb.append("]");
         sb.append(super.toString());
 

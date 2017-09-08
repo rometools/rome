@@ -72,7 +72,6 @@
     <itunes:isClosedCaptioned>yes</itunes:isClosedCaptioned>
     <itunes:order>2</itunes:order>
     <itunes:image href="http://example.org/image.png"></itunes:image>
-    <itunes:encoded><![CDATA[show notes with <b>bold</b> text.]]></itunes:encoded>
     <itunes:season>1</itunes:season>
     <itunes:episode>1</itunes:episode>
     <itunes:episodeType>full</itunes:episodeType>

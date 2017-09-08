@@ -163,12 +163,6 @@ public class ITunesParser implements ModuleParser {
             if (episodeType != null && episodeType.getValue() != null) {
                 entryInfo.setEpisodeType(episodeType.getTextTrim());
             }
-
-            final Element encoded = element.getChild("encoded", ns);
-
-            if (encoded != null && encoded.getValue() != null) {
-                entryInfo.setEncoded(encoded.getText());
-            }
         }
         if (module != null) {
             // All these are common to both Channel and Item

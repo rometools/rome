@@ -47,18 +47,6 @@ public interface EntryInformation extends ITunes {
     public void setOrder(Integer order);
 
     /**
-     * Get the encoded episode notes
-     * @see #setEncoded(String) setEncoded(encodedNotes) for details
-     */
-    public String getEncoded();
-
-    /**
-     * Set the episode notes (allow basic HTML tags such as &lt;p&gt;,&lt;ol&gt;,&lt;ul&gt;,&lt;a&gt;,&lt;em&gt;,&lt;i&gt; and &lt;b&gt;. See the <a href="http://podcasts.apple.com/resources/spec/ApplePodcastsSpecUpdatesiOS11.pdf">new spec by Apple</a> for details.
-     * @param encodedNotes
-     */
-    public void setEncoded(String encodedNotes);
-
-    /**
      * Get the episode type
      * @see #setEpisodeType(String) setEpisodeType(episodeType) for details
      */

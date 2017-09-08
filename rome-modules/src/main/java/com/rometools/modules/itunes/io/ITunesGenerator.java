@@ -108,9 +108,6 @@ public class ITunesGenerator implements ModuleGenerator {
             if (info.getOrder() != null) {
                 element.addContent(generateSimpleElement("order", info.getOrder().toString()));
             }
-            if (info.getEncoded() != null) {
-                element.addContent(generateSimpleElement("encoded", info.getEncoded()));
-            }
             if (info.getEpisodeType() != null) {
                 element.addContent(generateSimpleElement("episodeType", info.getEpisodeType()));
             }
