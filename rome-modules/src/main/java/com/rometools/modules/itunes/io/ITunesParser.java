@@ -109,6 +109,11 @@ public class ITunesParser implements ModuleParser {
                 feedInfo.setNewFeedUrl(newFeedUrl.getTextTrim());
             }
 
+            final Element type = element.getChild("type", ns);
+            if (type != null) {
+                feedInfo.setType(type.getTextTrim());
+            }
+
         } else if (element.getName().equals("item")) {
             final EntryInformationImpl entryInfo = new EntryInformationImpl();
             module = entryInfo;
@@ -137,6 +142,26 @@ public class ITunesParser implements ModuleParser {
             if (order != null && order.getValue() != null) {
                 final Integer o = Integer.valueOf(order.getValue().trim());
                 entryInfo.setOrder(o);
+            }
+
+            final Element season = element.getChild("season", ns);
+
+            if (season != null && season.getValue() != null) {
+                final Integer o = Integer.valueOf(season.getValue().trim());
+                entryInfo.setSeason(o);
+            }
+
+            final Element episode = element.getChild("episode", ns);
+
+            if (episode != null && episode.getValue() != null) {
+                final Integer o = Integer.valueOf(episode.getValue().trim());
+                entryInfo.setEpisode(o);
+            }
+
+            final Element episodeType = element.getChild("episodeType", ns);
+
+            if (episodeType != null && episodeType.getValue() != null) {
+                entryInfo.setEpisodeType(episodeType.getTextTrim());
             }
         }
         if (module != null) {

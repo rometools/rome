@@ -9,6 +9,7 @@
         <itunes:summary>A weekly, hour-long romp through the worlds of media, politics, sports and show business, leavened with an eclectic mix of mysterious music, hosted by Harry Shearer.</itunes:summary>
         <itunes:complete>yes</itunes:complete>
         <itunes:new-feed-url>http://example.org</itunes:new-feed-url>
+        <itunes:type>serial</itunes:type>
         <language>en</language>
         
             <copyright>KCRW 2005</copyright>
@@ -71,10 +72,12 @@
     <itunes:isClosedCaptioned>yes</itunes:isClosedCaptioned>
     <itunes:order>2</itunes:order>
     <itunes:image href="http://example.org/image.png"></itunes:image>
+    <itunes:season>1</itunes:season>
+    <itunes:episode>1</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
 </item>
 
-        
-            <item>
+<item>
     <title>le Show</title>
     <itunes:author>Harry Shearer</itunes:author>
     <description>
@@ -109,6 +112,9 @@
 	    <itunes:duration>44:00</itunes:duration>
 	
     <itunes:keywords></itunes:keywords>  
+    <itunes:season>1</itunes:season>
+    <itunes:episode>2</itunes:episode>
+    <itunes:episodeType>trailer</itunes:episodeType>
 </item>
 
         
@@ -147,6 +153,9 @@
 	    <itunes:duration>48:33</itunes:duration>
 	
     <itunes:keywords></itunes:keywords>  
+    <itunes:season>1</itunes:season>
+    <itunes:episode>2</itunes:episode>
+    <itunes:episodeType>bonus</itunes:episodeType>
 </item>
 
         

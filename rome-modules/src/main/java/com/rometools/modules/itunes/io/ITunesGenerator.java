@@ -84,6 +84,10 @@ public class ITunesGenerator implements ModuleGenerator {
                 element.addContent(category);
             }
 
+            if (info.getType() != null) {
+                element.addContent(generateSimpleElement("type",info.getType()));
+            }
+
             if (info.getComplete()) {
                 element.addContent(generateSimpleElement("complete", "yes"));
             }
@@ -103,6 +107,15 @@ public class ITunesGenerator implements ModuleGenerator {
             }
             if (info.getOrder() != null) {
                 element.addContent(generateSimpleElement("order", info.getOrder().toString()));
+            }
+            if (info.getEpisodeType() != null) {
+                element.addContent(generateSimpleElement("episodeType", info.getEpisodeType()));
+            }
+            if (info.getSeason() != null && info.getSeason() > 0) {
+                element.addContent(generateSimpleElement("season", info.getSeason().toString()));
+            }
+            if (info.getEpisode() != null && info.getEpisode() > 0) {
+                element.addContent(generateSimpleElement("episode", info.getEpisode().toString()));
             }
         }
 

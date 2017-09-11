@@ -41,6 +41,7 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
     private List<Category> categories;
     private boolean complete;
     private String newFeedUrl;
+    private String type;
 
     public FeedInformationImpl() {
     }
@@ -126,6 +127,22 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
     }
 
     /**
+     * Set the type of podcast to either Episodic (original type of podcasts) or Serial (should be consumed from oldest to newest)
+     * @see #getType() getType() for more details
+     * @param type  the type (Either 'serial' or 'episodic')
+     */
+    @Override
+    public void setType(final String type) { this.type = type; }
+
+    /**
+     * Return the type of podcast (either Episodic or Serial) as introduced in the new Apple Podcast spec for iOS 11.
+     * For more information see the <a href="http://podcasts.apple.com/resources/spec/ApplePodcastsSpecUpdatesiOS11.pdf">new spec by Apple</a>
+     * @return either 'episodic' (old school podcasts) or 'serial' (should be listened to from oldest to newest)
+     */
+    @Override
+    public String getType() { return type; }
+
+    /**
      * Required by the ROME API
      *
      * @param obj object to copy property values from
@@ -161,6 +178,7 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
         setOwnerName(info.getOwnerName());
         setSubtitle(info.getSubtitle());
         setSummary(info.getSummary());
+        setType(info.getType());
     }
 
     /**
@@ -189,6 +207,8 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
         sb.append(getComplete());
         sb.append(" newFeedUrl: ");
         sb.append(getNewFeedUrl());
+        sb.append(" type: ");
+        sb.append(getType());
         sb.append("]");
         sb.append(super.toString());
 

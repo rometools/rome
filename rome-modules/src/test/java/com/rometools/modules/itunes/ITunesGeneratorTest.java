@@ -107,6 +107,7 @@ public class ITunesGeneratorTest extends AbstractTestCase {
         fi.setOwnerName("sales.com");
         fi.getCategories().add(new Category("Shopping"));
         fi.setOwnerEmailAddress("patti@sales.com");
+        fi.setType("serial");
         feed.getModules().add(fi);
 
         final SyndFeedOutput output = new SyndFeedOutput();
