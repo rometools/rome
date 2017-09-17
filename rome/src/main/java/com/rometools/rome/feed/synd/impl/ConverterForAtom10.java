@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.jdom2.Attribute;
 import org.jdom2.Element;
 
 import com.rometools.rome.feed.WireFeed;
@@ -321,6 +322,12 @@ public class ConverterForAtom10 implements Converter {
         syndLink.setHreflang(link.getHreflang());
         syndLink.setLength(link.getLength());
         syndLink.setTitle(link.getTitle());
+
+        final List<Attribute> foreignAttributes = link.getForeignAttributes();
+        if (Lists.isNotEmpty(foreignAttributes)) {
+            syndLink.setForeignAttributes(foreignAttributes);
+        }
+
         return syndLink;
     }
 

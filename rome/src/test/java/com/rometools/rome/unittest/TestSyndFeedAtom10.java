@@ -21,6 +21,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import org.jdom2.Attribute;
+
 import com.rometools.rome.feed.atom.Entry;
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndLink;
@@ -114,7 +116,14 @@ public class TestSyndFeedAtom10 extends TestSyndFeedAtom03 {
         } else {
             final SyndLink slink = entry.getLinks().get(2);
             assertTrue(slink.getHref().startsWith("tag:"));
-
+            final SyndLink zipLink = entry.getLinks().get(3);
+            assertEquals(1, zipLink.getForeignAttributes().size());
+            final Attribute shaAttr = zipLink.getForeignAttributes().get(0);
+            assertEquals("security", shaAttr.getNamespacePrefix());
+            assertEquals("http://example.com/namespace/security", shaAttr.getNamespaceURI());
+            assertEquals("sha256Hash", shaAttr.getName());
+            assertEquals("847763bd4a72e3536702f2a8853edaeaaaab2040383ddbc71d91545da9cc2fa6",
+                    shaAttr.getValue());
         }
     }
 

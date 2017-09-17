@@ -20,6 +20,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.jdom2.Attribute;
 import org.jdom2.Element;
 import org.jdom2.Namespace;
 import org.jdom2.Parent;
@@ -113,6 +114,19 @@ public abstract class BaseWireFeedGenerator implements WireFeedGenerator {
         }
     }
 
+    protected void generateForeignAttributes(final Element element, final List<Attribute> foreignAttributes) {
+        if (foreignAttributes != null) {
+            for (final Attribute foreignAttribute : foreignAttributes) {
+                final Element parent = foreignAttribute.getParent();
+                if (parent != null) {
+                    parent.removeAttribute(foreignAttribute);
+                    foreignAttribute.detach();
+                }
+                element.setAttribute(foreignAttribute);
+            }
+        }
+    }
+    
     /**
      * Purging unused declarations is less optimal, performance-wise, than never adding them in the
      * first place. So, we should still ask the ROME guys to fix their code (not adding dozens of

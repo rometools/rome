@@ -284,6 +284,11 @@ public class Atom10Generator extends BaseWireFeedGenerator {
             eEntry.addContent(generateSimpleElement("id", id));
         }
 
+        final String rights = entry.getRights();
+        if (rights != null) {
+            eEntry.addContent(generateSimpleElement("rights", rights));
+        }
+
         final Date updated = entry.getUpdated();
         if (updated != null) {
             final Element updatedElement = new Element("updated", getFeedNamespace());
@@ -318,11 +323,6 @@ public class Atom10Generator extends BaseWireFeedGenerator {
             final Element sourceElement = new Element("source", getFeedNamespace());
             populateFeedHeader(source, sourceElement);
             eEntry.addContent(sourceElement);
-        }
-
-        final String rights = entry.getRights();
-        if (rights != null) {
-            eEntry.addContent(generateSimpleElement("rights", rights));
         }
 
     }
@@ -401,6 +401,11 @@ public class Atom10Generator extends BaseWireFeedGenerator {
         if (link.getLength() != 0) {
             final Attribute lenght = new Attribute("length", Long.toString(link.getLength()));
             linkElement.setAttribute(lenght);
+        }
+
+        final List<Attribute> foreignAttributes = link.getForeignAttributes();
+        if (null != foreignAttributes) {
+            generateForeignAttributes(linkElement, foreignAttributes);
         }
 
         return linkElement;

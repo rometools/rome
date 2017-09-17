@@ -99,4 +99,5 @@
         </dependency>
     </dependencies>
 
+    <version>1.7.5-SNAPSHOT</version>
 </project>
