@@ -38,6 +38,7 @@ import com.rometools.modules.base.Event;
 import com.rometools.modules.base.GoogleBase;
 import com.rometools.modules.base.Housing;
 import com.rometools.modules.base.Job;
+import com.rometools.modules.base.Offer;
 import com.rometools.modules.base.Person;
 import com.rometools.modules.base.Product;
 import com.rometools.modules.base.Review;
@@ -46,7 +47,7 @@ import com.rometools.modules.base.Service;
 import com.rometools.modules.base.Travel;
 import com.rometools.modules.base.Vehicle;
 import com.rometools.modules.base.Wanted;
-import com.rometools.modules.base.io.GoogleBaseParser;
+import com.rometools.modules.base.types.AvailabilityEnumeration;
 import com.rometools.modules.base.types.CurrencyEnumeration;
 import com.rometools.modules.base.types.FloatUnit;
 import com.rometools.modules.base.types.GenderEnumeration;
@@ -82,7 +83,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         final List<SyndEntry> entries = feed.getEntries();
         SyndEntry entry = entries.get(0);
         Course course = (Course) entry.getModule(GoogleBase.URI);
-        Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", course.getImageLinks()[0].toString());
+        Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", course.getImageLink().toString());
         Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(0);
         cal.set(2005, 10, 30, 0, 0, 0);
@@ -100,7 +101,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
 
         entry = entries.get(1);
         course = (Course) entry.getModule(GoogleBase.URI);
-        Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", course.getImageLinks()[0].toString());
+        Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", course.getImageLink().toString());
         cal = Calendar.getInstance();
         cal.setTimeInMillis(0);
         cal.set(2005, 10, 30, 0, 0, 0);
@@ -128,7 +129,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         final List<SyndEntry> entries = feed.getEntries();
         SyndEntry entry = entries.get(0);
         Event event = (Event) entry.getModule(GoogleBase.URI);
-        Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", event.getImageLinks()[0].toString());
+        Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", event.getImageLink().toString());
         final Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(0);
         cal.set(2005, 11, 20, 0, 0, 0);
@@ -158,7 +159,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
 
         entry = entries.get(1);
         event = (Event) entry.getModule(GoogleBase.URI);
-        Assert.assertEquals("Image Link", "http://www.providers-website.com/image2.jpg", event.getImageLinks()[0].toString());
+        Assert.assertEquals("Image Link", "http://www.providers-website.com/image2.jpg", event.getImageLink().toString());
         cal.setTimeInMillis(0);
         cal.set(2005, 11, 20, 0, 0, 0);
         Assert.assertEquals("Expiration Date", cal.getTime(), event.getExpirationDate());
@@ -199,7 +200,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         final List<SyndEntry> entries = feed.getEntries();
         SyndEntry entry = entries.get(0);
         Housing module = (Housing) entry.getModule(GoogleBase.URI);
-        Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", module.getImageLinks()[0].toString());
+        Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", module.getImageLink().toString());
         cal.set(2007, 11, 20, 0, 0, 0);
         Assert.assertEquals("Expiration Date", cal.getTime(), module.getExpirationDate());
         this.assertEquals("Labels", new String[] { "Housing", "New House", "Sale" }, module.getLabels());
@@ -226,7 +227,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
 
         entry = entries.get(1);
         module = (Housing) entry.getModule(GoogleBase.URI);
-        Assert.assertEquals("Image Link", "http://www.providers-website.com/image2.jpg", module.getImageLinks()[0].toString());
+        Assert.assertEquals("Image Link", "http://www.providers-website.com/image2.jpg", module.getImageLink().toString());
         cal.set(2008, 11, 20, 0, 0, 0);
         Assert.assertEquals("Expiration Date", cal.getTime(), module.getExpirationDate());
         this.assertEquals("Labels", new String[] { "Housing", "rent", "lease" }, module.getLabels());
@@ -263,7 +264,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         final List<SyndEntry> entries = feed.getEntries();
         final SyndEntry entry = entries.get(0);
         final Job module = (Job) entry.getModule(GoogleBase.URI);
-        Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", module.getImageLinks()[0].toString());
+        Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", module.getImageLink().toString());
         cal.set(2005, 11, 20, 0, 0, 0);
         Assert.assertEquals("Expiration Date", cal.getTime(), module.getExpirationDate());
         this.assertEquals("Labels", new String[] { "Coordinator", "Google", "Online Support" }, module.getLabels());
@@ -293,7 +294,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         final List<SyndEntry> entries = feed.getEntries();
         final SyndEntry entry = entries.get(0);
         final Article module = (Article) entry.getModule(GoogleBase.URI);
-        Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", module.getImageLinks()[0].toString());
+        Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", module.getImageLink().toString());
         cal.set(2007, 2, 20, 0, 0, 0);
         Assert.assertEquals("Expiration Date", cal.getTime(), module.getExpirationDate());
         this.assertEquals("Labels", new String[] { "news", "old" }, module.getLabels());
@@ -317,7 +318,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         final List<SyndEntry> entries = feed.getEntries();
         final SyndEntry entry = entries.get(0);
         final Travel module = (Travel) entry.getModule(GoogleBase.URI);
-        Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", module.getImageLinks()[0].toString());
+        Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", module.getImageLink().toString());
         cal.set(2005, 11, 20, 0, 0, 0);
         Assert.assertEquals("Expiration Date", cal.getTime(), module.getExpirationDate());
         this.assertEquals("Labels", new String[] { "Vacation", "Train" }, module.getLabels());
@@ -355,7 +356,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         final List<SyndEntry> entries = feed.getEntries();
         final SyndEntry entry = entries.get(0);
         final Person module = (Person) entry.getModule(GoogleBase.URI);
-        Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", module.getImageLinks()[0].toString());
+        Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", module.getImageLink().toString());
         cal.set(2005, 11, 20, 0, 0, 0);
         Assert.assertEquals("Expiration Date", cal.getTime(), module.getExpirationDate());
         this.assertEquals("Labels", new String[] { "Personals", "m4w" }, module.getLabels());
@@ -383,7 +384,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         final List<SyndEntry> entries = feed.getEntries();
         final SyndEntry entry = entries.get(0);
         final Product module = (Product) entry.getModule(GoogleBase.URI);
-        Assert.assertEquals("Image Link", "http://www.googlestore.com/appliance/images/products/GO0144E.jpg", module.getImageLinks()[0].toString());
+        Assert.assertEquals("Image Link", "http://www.googlestore.com/appliance/images/products/GO0144E.jpg", module.getImageLink().toString());
         cal.set(2005, 11, 20, 0, 0, 0);
         Assert.assertEquals("Expiration Date", cal.getTime(), module.getExpirationDate());
         this.assertEquals("Labels", new String[] { "web search", "appliance" }, module.getLabels());
@@ -410,6 +411,45 @@ public class GoogleBaseParserTest extends AbstractTestCase {
 
     }
 
+    public void testGoogleExampleParse() throws Exception {
+        LOG.debug("testGoogleExampleParse");
+        final SyndFeedInput input = new SyndFeedInput();
+        final Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(0);
+        final SyndFeed feed = input.build(new File(super.getTestFile("base/example_feed_xml_rss.xml")));
+        final List<SyndEntry> entries = feed.getEntries();
+        final SyndEntry entry = entries.get(0);
+        final Product module = (Product) entry.getModule(GoogleBase.URI);
+        final Offer moduleOffer = (Offer) entry.getModule(GoogleBase.URI);
+
+        Assert.assertEquals("Additional Image Link", "http://images.example.com/TV_123456_2.jpg", module.getAdditionalImageLinks()[0].toString());
+        Assert.assertEquals("Additional Image Link", "http://images.example.com/TV_123456_3.jpg", module.getAdditionalImageLinks()[1].toString());
+        Assert.assertEquals("Image Link", "http://images.example.com/TV_123456.png", module.getImageLink().toString());
+        Assert.assertEquals(AvailabilityEnumeration.IN_STOCK, moduleOffer.getAvailability());
+        Assert.assertEquals("Condition", "used", module.getCondition());
+        Assert.assertEquals("Google Product Category", "Electronics > Video > Televisions > Flat Panel Televisions", module.getGoogleProductCategory());
+
+
+
+        cal.set(2018, 01, 24, 0, 0, 0);
+        Assert.assertEquals("Expiration Date", cal.getTime(), module.getExpirationDate());
+
+        Assert.assertEquals("Price", 159.0, module.getPrice().getValue(), 0);
+        Assert.assertEquals("PriceUnit", CurrencyEnumeration.USD.getValue(), module.getPrice().getUnits().toString());
+
+        Assert.assertEquals("Mpn", "22LB4510/US" , module.getMpn());
+        Assert.assertEquals("Gtin", "71919219405200" , module.getGtin());
+        Assert.assertEquals("Brand", "LG", module.getBrand());
+
+
+        Assert.assertEquals("Shipping Price", (float) 14.95, module.getShipping()[0].getPrice().getValue(), 0);
+        Assert.assertEquals("Shipping Country", "US", module.getShipping()[0].getCountry());
+        Assert.assertEquals("Shipping Service", ShippingType.ServiceEnumeration.STANDARD, module.getShipping()[0].getService());
+
+
+    }
+
+
     /**
      * Test of parse method, of class com.totsp.xml.syndication.base.io.GoogleBaseParser.
      */
@@ -422,7 +462,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         final List<SyndEntry> entries = feed.getEntries();
         final SyndEntry entry = entries.get(0);
         final ScholarlyArticle module = (ScholarlyArticle) entry.getModule(GoogleBase.URI);
-        Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", module.getImageLinks()[0].toString());
+        Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", module.getImageLink().toString());
         cal.set(2005, 11, 20, 0, 0, 0);
         Assert.assertEquals("Expiration Date", cal.getTime(), module.getExpirationDate());
         this.assertEquals("Labels", new String[] { "Economy", "Tsunami" }, module.getLabels());
@@ -446,7 +486,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         final List<SyndEntry> entries = feed.getEntries();
         final SyndEntry entry = entries.get(0);
         final Review module = (Review) entry.getModule(GoogleBase.URI);
-        Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", module.getImageLinks()[0].toString());
+        Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", module.getImageLink().toString());
         cal.set(2005, 11, 20, 0, 0, 0);
         Assert.assertEquals("Expiration Date", cal.getTime(), module.getExpirationDate());
         this.assertEquals("Labels", new String[] { "Review", "Earth", "Google" }, module.getLabels());
@@ -473,7 +513,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         final List<SyndEntry> entries = feed.getEntries();
         final SyndEntry entry = entries.get(0);
         final Service module = (Service) entry.getModule(GoogleBase.URI);
-        Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", module.getImageLinks()[0].toString());
+        Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", module.getImageLink().toString());
         cal.set(2005, 11, 20, 0, 0, 0);
         Assert.assertEquals("Expiration Date", cal.getTime(), module.getExpirationDate());
         this.assertEquals("Labels", new String[] { "Food delivery" }, module.getLabels());
@@ -503,7 +543,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         final List<SyndEntry> entries = feed.getEntries();
         final SyndEntry entry = entries.get(0);
         final Vehicle module = (Vehicle) entry.getModule(GoogleBase.URI);
-        Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", module.getImageLinks()[0].toString());
+        Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", module.getImageLink().toString());
         cal.set(2005, 11, 20, 0, 0, 0);
         Assert.assertEquals("Expiration Date", cal.getTime(), module.getExpirationDate());
         this.assertEquals("Labels", new String[] { "car", "mini" }, module.getLabels());
@@ -537,7 +577,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         final List<SyndEntry> entries = feed.getEntries();
         final SyndEntry entry = entries.get(0);
         final Wanted module = (Wanted) entry.getModule(GoogleBase.URI);
-        Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", module.getImageLinks()[0].toString());
+        Assert.assertEquals("Image Link", "http://www.providers-website.com/image1.jpg", module.getImageLink().toString());
         cal.set(2005, 11, 20, 0, 0, 0);
         Assert.assertEquals("Expiration Date", cal.getTime(), module.getExpirationDate());
         this.assertEquals("Labels", new String[] { "Wanted", "Truck" }, module.getLabels());

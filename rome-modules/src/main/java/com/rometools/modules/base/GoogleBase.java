@@ -27,7 +27,7 @@ import com.rometools.rome.feed.module.Module;
  * </p>
  */
 public interface GoogleBase extends Module, Article, Course, Event, Job, Person, Product, Review, ScholarlyArticle, Service, Travel, Unknown, Vehicle, Wanted,
-        Housing {
+        Housing, Offer {
     /** This is the URI for the Google Base Schema. */
-    public static final String URI = "http://base.google.com/ns/1.0";
+    String URI = "http://base.google.com/ns/1.0";
 }

@@ -29,6 +29,7 @@ import org.slf4j.LoggerFactory;
 
 import com.rometools.modules.base.GoogleBase;
 import com.rometools.modules.base.GoogleBaseImpl;
+import com.rometools.modules.base.types.AvailabilityEnumeration;
 import com.rometools.modules.base.types.CurrencyEnumeration;
 import com.rometools.modules.base.types.DateTimeRange;
 import com.rometools.modules.base.types.FloatUnit;
@@ -45,7 +46,7 @@ import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.io.ModuleGenerator;
 
 public class GoogleBaseGenerator implements ModuleGenerator {
-    private static final Namespace NS = Namespace.getNamespace("g-core", GoogleBase.URI);
+    private static final Namespace NS = Namespace.getNamespace("g", GoogleBase.URI);
 
     private static final Logger LOG = LoggerFactory.getLogger(GoogleBaseGenerator.class);
 
@@ -100,7 +101,7 @@ public class GoogleBaseGenerator implements ModuleGenerator {
 
     public Element generateTag(final Object o, final String tagName) {
         if (o instanceof URL || o instanceof Float || o instanceof Boolean || o instanceof Integer || o instanceof String || o instanceof FloatUnit
-                || o instanceof IntUnit || o instanceof GenderEnumeration || o instanceof PaymentTypeEnumeration || o instanceof PriceTypeEnumeration
+                || o instanceof IntUnit || o instanceof GenderEnumeration || o instanceof PaymentTypeEnumeration || o instanceof AvailabilityEnumeration || o instanceof PriceTypeEnumeration
                 || o instanceof CurrencyEnumeration || o instanceof Size || o instanceof YearType) {
             return generateSimpleElement(tagName, o.toString());
         } else if (o instanceof ShortDate) {

@@ -60,7 +60,7 @@ public interface GlobalInterface extends Serializable {
      *
      * @param expirationDate the date this entry will expire
      */
-    public void setExpirationDate(Date expirationDate);
+    void setExpirationDate(Date expirationDate);
 
     /**
      * Expiration Date for this item. <br>
@@ -99,7 +99,7 @@ public interface GlobalInterface extends Serializable {
      *
      * @return the date this entry will expire
      */
-    public Date getExpirationDate();
+    Date getExpirationDate();
 
     /**
      * Date and time that the item expires.
@@ -141,7 +141,7 @@ public interface GlobalInterface extends Serializable {
      *
      * @param expirationDateTime Date and time that the item expires.
      */
-    public void setExpirationDateTime(Date expirationDateTime);
+    void setExpirationDateTime(Date expirationDateTime);
 
     /**
      * Date and time that the item expires.
@@ -183,7 +183,7 @@ public interface GlobalInterface extends Serializable {
      *
      * @return Date and time that the item expires.
      */
-    public Date getExpirationDateTime();
+    Date getExpirationDateTime();
 
     /**
      * Unique id for this item.
@@ -224,7 +224,7 @@ public interface GlobalInterface extends Serializable {
      *
      * @param id unique identifier for this entry
      */
-    public void setId(String id);
+    void setId(String id);
 
     /**
      * Unique id for this item.
@@ -265,7 +265,7 @@ public interface GlobalInterface extends Serializable {
      *
      * @return unique identifier for this entry
      */
-    public String getId();
+    String getId();
 
     /**
      * Images for this item. <br>
@@ -315,7 +315,7 @@ public interface GlobalInterface extends Serializable {
      *
      * @param imageLinks URLs to images. Limit 10.
      */
-    public void setImageLinks(URL[] imageLinks);
+    void setAdditionalImageLinks(URL[] imageLinks);
 
     /**
      * Images for this item. <br>
@@ -365,7 +365,7 @@ public interface GlobalInterface extends Serializable {
      *
      * @return URLs to images
      */
-    public URL[] getImageLinks();
+    URL[] getAdditionalImageLinks();
 
     /**
      * Labels for this item. <br>
@@ -444,7 +444,7 @@ public interface GlobalInterface extends Serializable {
      *
      * @param labels labels for this entry. Limit 10.
      */
-    public void setLabels(String[] labels);
+    void setLabels(String[] labels);
 
     /**
      * Labels for this item. <br>
@@ -523,5 +523,12 @@ public interface GlobalInterface extends Serializable {
      *
      * @return labels for this entry
      */
-    public String[] getLabels();
+    String[] getLabels();
+
+
+
+
+    URL getImageLink();
+
+    void setImageLink(URL imageLink);
 }

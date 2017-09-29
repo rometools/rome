@@ -15,13 +15,7 @@
  */
 package com.rometools.modules.base;
 
-import java.lang.reflect.Array;
-import java.net.URL;
-import java.util.Date;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+import com.rometools.modules.base.types.AvailabilityEnumeration;
 import com.rometools.modules.base.types.CloneableType;
 import com.rometools.modules.base.types.CurrencyEnumeration;
 import com.rometools.modules.base.types.DateTimeRange;
@@ -37,6 +31,13 @@ import com.rometools.modules.base.types.YearType;
 import com.rometools.rome.feed.CopyFrom;
 import com.rometools.rome.feed.impl.EqualsBean;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.lang.reflect.Array;
+import java.net.URL;
+import java.util.Date;
+
 /**
  * This is the implementation class for the GoogleBase module interface.
  */
@@ -46,286 +47,479 @@ public class GoogleBaseImpl implements GoogleBase {
 
     private static final Logger LOG = LoggerFactory.getLogger(GoogleBaseImpl.class);
 
-    /** boolean:listing_type */
+    /**
+     * boolean:listing_type
+     */
     private Boolean listingType;
 
-    /** Can this item be picked up. */
+    /**
+     * Can this item be picked up.
+     */
     private Boolean pickup;
 
-    /** currencyCodeEnumeration:currency */
+    /**
+     * currencyCodeEnumeration:currency
+     */
     private CurrencyEnumeration currency;
 
-    /** dateTime:expiration_date_time */
+    /**
+     * dateTime:expiration_date_time
+     */
     private Date expirationDateTime;
 
-    /** dateTimeRange:course_date_range */
+    /**
+     * dateTimeRange:course_date_range
+     */
     private DateTimeRange courseDateRange;
 
-    /** dateTimeRange:event_date_range */
+    /**
+     * dateTimeRange:event_date_range
+     */
     private DateTimeRange eventDateRange;
 
-    /** dateTimeRange:travel_date_range */
+    /**
+     * dateTimeRange:travel_date_range
+     */
     private DateTimeRange travelDateRange;
 
-    /** float:bathrooms */
+    /**
+     * float:bathrooms
+     */
     private Float bathrooms;
 
-    /** float:hoa_dues */
+    /**
+     * float:hoa_dues
+     */
     private Float hoaDues;
 
-    /** string:rating thoug this a value from 1 to 5 */
+    /**
+     * string:rating thoug this a value from 1 to 5
+     */
     private Float rating;
 
-    /** float:salary */
+    /**
+     * float:salary
+     */
     private Float salary;
 
-    /** percentType:tax_percent */
+    /**
+     * percentType:tax_percent
+     */
     private Float taxPercent;
 
-    /** floatUnit:delivery_radius */
+    /**
+     * floatUnit:delivery_radius
+     */
     private FloatUnit deliveryRadius;
 
-    /** floatUnit:megapixels */
+    /**
+     * floatUnit:megapixels
+     */
     private FloatUnit megapixels;
 
-    /** floatUnit:memory */
+    /**
+     * floatUnit:memory
+     */
     private FloatUnit memory;
 
-    /** floatUnit:price */
+    /**
+     * floatUnit:price
+     */
     private FloatUnit price;
 
-    /** floatUnit:processor_speed */
+    /**
+     * floatUnit:processor_speed
+     */
     private FloatUnit processorSpeed;
 
-    /** floatUnit:weight */
+    /**
+     * floatUnit:weight
+     */
     private FloatUnit weight;
 
-    /** genderEnumeration:gender */
+    /**
+     * genderEnumeration:gender
+     */
     private GenderEnumeration gender;
 
-    /** intUnit:area */
+    /**
+     * intUnit:area
+     */
     private IntUnit area;
 
-    /** integer:age */
+    /**
+     * integer:age
+     */
     private Integer age;
 
-    /** integer:bedrooms */
+    /**
+     * integer:bedrooms
+     */
     private Integer bedrooms;
 
-    /** integer:mileage */
+    /**
+     * integer:mileage
+     */
     private Integer mileage;
 
-    /** integer:pages */
+    /**
+     * integer:pages
+     */
     private Integer pages;
 
-    /** integer:quantity */
+    /**
+     * integer:quantity
+     */
     private Integer quantity;
 
-    /** locationType:from_location */
+    /**
+     * locationType:from_location
+     */
     private String fromLocation;
 
-    /** locationType:location */
+    /**
+     * locationType:location
+     */
     private String location;
 
-    /** locationType:to_location */
+    /**
+     * locationType:to_location
+     */
     private String toLocation;
 
-    /** priceTypeEnumeration:price_type */
+    /**
+     * priceTypeEnumeration:price_type
+     */
     private PriceTypeEnumeration priceType;
 
-    /** starting/neg:salary_type */
+    /**
+     * starting/neg:salary_type
+     */
     private PriceTypeEnumeration salaryType;
 
-    /** date:expiration_date */
+    /**
+     * date:expiration_date
+     */
     private ShortDate expirationDate;
 
-    /** date:publishedDate */
+    /**
+     * date:publishedDate
+     */
     private ShortDate publishDate;
 
-    /** string:size */
+    /**
+     * string:size
+     */
     private Size size;
 
-    /** string:sexual_orientation */
+    /**
+     * string:sexual_orientation
+     */
     private String SexualOrientation;
 
-    /** string apparel_type */
+    /**
+     * string apparel_type
+     */
     private String apparelType;
 
-    /** string:brand */
+    /**
+     * string:brand
+     */
     private String brand;
 
-    /** string:condition */
+    /**
+     * string:condition
+     */
     private String condition;
 
-    /** string:course_number */
+    /**
+     * string:course_number
+     */
     private String courseNumber;
 
-    /** string:course_times */
+    /**
+     * string:course_times
+     */
     private String courseTimes;
 
-    /** string:delivery_notes */
+    /**
+     * string:delivery_notes
+     */
     private String deliveryNotes;
 
-    /** string:education */
+    /**
+     * string:education
+     */
     private String education;
 
-    /** string:employer */
+    /**
+     * string:employer
+     */
     private String employer;
 
-    /** string:id */
+    /**
+     * string:id
+     */
     private String id;
 
-    /** string:immigration_status */
+    /**
+     * string:immigration_status
+     */
     private String immigrationStatus;
 
-    /** stirng:isbn */
+    /**
+     * stirng:isbn
+     */
     private String isbn;
 
-    /** string:make */
+    /**
+     * string:make
+     */
     private String make;
 
-    /** string:manufacturer */
+    /**
+     * string:manufacturer
+     */
     private String manufacturer;
 
-    /** string:manufacturer_id */
+    /**
+     * string:manufacturer_id
+     */
     private String manufacturerId;
 
-    /** string:marital_status */
+    /**
+     * string:marital_status
+     */
     private String maritalStatus;
 
-    /** string:model */
+    /**
+     * string:model
+     */
     private String model;
 
-    /** string:model_number */
+    /**
+     * string:model_number
+     */
     private String modelNumber;
 
-    /** string:name_of_item_being_reviewed */
+    /**
+     * string:name_of_item_being_reviewed
+     */
     private String nameOfItemBeingReviewed;
 
-    /** string:news_source */
+    /**
+     * string:news_source
+     */
     private String newsSource;
 
-    /** string:occupation */
+    /**
+     * string:occupation
+     */
     private String occupation;
 
-    /** string:operating_systems */
+    /**
+     * string:operating_systems
+     */
     private String operatingSystems;
 
-    /** string:payment_notes */
+    /**
+     * string:payment_notes
+     */
     private String paymentNotes;
 
-    /** string:publication_name */
+    /**
+     * string:publication_name
+     */
     private String publicationName;
 
-    /** string:publication_volume */
+    /**
+     * string:publication_volume
+     */
     private String publicationVolume;
 
-    /** string:review_type */
+    /**
+     * string:review_type
+     */
     private String reviewType;
 
-    /** string:reviewer_type */
+    /**
+     * string:reviewer_type
+     */
     private String reviewerType;
 
-    /** string:school_district */
+    /**
+     * string:school_district
+     */
     private String schoolDistrict;
 
-    /** string:service_type */
+    /**
+     * string:service_type
+     */
     private String serviceType;
 
-    /** string:taxRegion */
+    /**
+     * string:taxRegion
+     */
     private String taxRegion;
 
-    /** string:university */
+    /**
+     * string:university
+     */
     private String university;
 
-    /** string:upc */
+    /**
+     * string:upc
+     */
     private String upc;
 
-    /** string:vehicle_type */
+    /**
+     * string:vehicle_type
+     */
     private String vehicleType;
 
-    /** string:vin */
+    /**
+     * string:vin
+     */
     private String vin;
 
-    /** string:url_of_item_being_reviewed */
+    /**
+     * string:url_of_item_being_reviewed
+     */
     private URL urlOfItemBeingReviewed;
 
-    /** string:year */
+    /**
+     * string:year
+     */
     private YearType year;
 
-    /** string:actor */
+    /**
+     * string:actor
+     */
     private String[] actors;
 
-    /** string:agent */
+    /**
+     * string:agent
+     */
     private String[] agents;
 
-    /** string:artist */
+    /**
+     * string:artist
+     */
     private String[] artists;
 
-    /** string:author */
+    /**
+     * string:author
+     */
     private String[] authors;
 
-    /** string:color */
+    /**
+     * string:color
+     */
     private String[] color;
 
-    /** string:ethnicities */
+    /**
+     * string:ethnicities
+     */
     private String[] ethnicities;
 
-    /** string:format */
+    /**
+     * string:format
+     */
     private String[] format;
 
-    /** url:image_links */
-    private URL[] imageLinks;
+    /**
+     * url:image_links
+     */
+    private URL[] additionalImageLinks;
 
-    /** string:interested_in */
+
+    private URL imageLink;
+
+    /**
+     * string:interested_in
+     */
     private String[] interestedIn;
 
-    /** string:job_function */
+    /**
+     * string:job_function
+     */
     private String[] jobFunctions;
 
-    /** string:job_industry */
+    /**
+     * string:job_industry
+     */
     private String[] jobIndustries;
 
-    /** string:job_type */
+    /**
+     * string:job_type
+     */
     private String[] jobTypes;
 
-    /** string:label */
+    /**
+     * string:label
+     */
     private String[] labels;
 
-    /** string:license */
+    /**
+     * string:license
+     */
     private String[] licenses;
 
-    /** paymentTypeEnumeration:payment_accepted */
+    /**
+     * paymentTypeEnumeration:payment_accepted
+     */
     private PaymentTypeEnumeration[] paymentAccepted;
 
-    /** string:product_type */
+    /**
+     * string:product_type
+     */
     private String[] productTypes;
 
-    /** string:programming_language */
+    /**
+     * string:programming_language
+     */
     private String[] programmingLanguages;
 
-    /** string:property_type */
+    /**
+     * string:property_type
+     */
     private String[] propertyTypes;
 
-    /** url:related_link */
+    /**
+     * url:related_link
+     */
     private URL[] relatedLinks;
 
-    /** shippingType:shipping */
+    /**
+     * shippingType:shipping
+     */
     private ShippingType[] shipping;
 
-    /** intUnitType:square_footage */
+    /**
+     * intUnitType:square_footage
+     */
     private IntUnit[] squareFootages;
 
-    /** string:subject_area */
+    /**
+     * string:subject_area
+     */
     private String[] subjectAreas;
 
-    /** string:subject */
+    /**
+     * string:subject
+     */
     private String[] subjects;
 
-    @Override
-    public void setActors(final String[] actors) {
-        this.actors = actors;
-    }
+    private String googleProductCategory;
+
+    private AvailabilityEnumeration availability;
+
+    private Date availabilityDate;
+
+    private String gtin;
+
+    private String mpn;
+
 
     @Override
     public String[] getActors() {
@@ -333,8 +527,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setAge(final Integer age) {
-        this.age = age;
+    public void setActors(final String[] actors) {
+        this.actors = actors;
     }
 
     @Override
@@ -343,8 +537,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setAgents(final String[] agents) {
-        this.agents = agents == null ? new String[0] : agents;
+    public void setAge(final Integer age) {
+        this.age = age;
     }
 
     @Override
@@ -353,8 +547,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setApparelType(final String apparelType) {
-        this.apparelType = apparelType;
+    public void setAgents(final String[] agents) {
+        this.agents = agents == null ? new String[0] : agents;
     }
 
     @Override
@@ -363,8 +557,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setArea(final IntUnit area) {
-        this.area = area;
+    public void setApparelType(final String apparelType) {
+        this.apparelType = apparelType;
     }
 
     @Override
@@ -373,8 +567,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setArtists(final String[] artists) {
-        this.artists = artists;
+    public void setArea(final IntUnit area) {
+        this.area = area;
     }
 
     @Override
@@ -383,8 +577,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setAuthors(final String[] authors) {
-        this.authors = authors;
+    public void setArtists(final String[] artists) {
+        this.artists = artists;
     }
 
     @Override
@@ -393,8 +587,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setBathrooms(final Float bathrooms) {
-        this.bathrooms = bathrooms;
+    public void setAuthors(final String[] authors) {
+        this.authors = authors;
     }
 
     @Override
@@ -403,8 +597,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setBedrooms(final Integer bedrooms) {
-        this.bedrooms = bedrooms;
+    public void setBathrooms(final Float bathrooms) {
+        this.bathrooms = bathrooms;
     }
 
     @Override
@@ -413,8 +607,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setBrand(final String brand) {
-        this.brand = brand;
+    public void setBedrooms(final Integer bedrooms) {
+        this.bedrooms = bedrooms;
     }
 
     @Override
@@ -423,8 +617,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setColors(final String[] color) {
-        this.color = color;
+    public void setBrand(final String brand) {
+        this.brand = brand;
     }
 
     @Override
@@ -433,8 +627,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setCondition(final String condition) {
-        this.condition = condition;
+    public void setColors(final String[] color) {
+        this.color = color;
     }
 
     @Override
@@ -443,8 +637,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setCourseDateRange(final DateTimeRange courseDateRange) {
-        this.courseDateRange = courseDateRange;
+    public void setCondition(final String condition) {
+        this.condition = condition;
     }
 
     @Override
@@ -453,8 +647,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setCourseNumber(final String courseNumber) {
-        this.courseNumber = courseNumber;
+    public void setCourseDateRange(final DateTimeRange courseDateRange) {
+        this.courseDateRange = courseDateRange;
     }
 
     @Override
@@ -463,8 +657,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setCourseTimes(final String courseTimes) {
-        this.courseTimes = courseTimes;
+    public void setCourseNumber(final String courseNumber) {
+        this.courseNumber = courseNumber;
     }
 
     @Override
@@ -473,8 +667,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setCurrency(final CurrencyEnumeration currency) {
-        this.currency = currency;
+    public void setCourseTimes(final String courseTimes) {
+        this.courseTimes = courseTimes;
     }
 
     @Override
@@ -483,8 +677,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setDeliveryNotes(final String deliveryNotes) {
-        this.deliveryNotes = deliveryNotes;
+    public void setCurrency(final CurrencyEnumeration currency) {
+        this.currency = currency;
     }
 
     @Override
@@ -493,8 +687,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setDeliveryRadius(final FloatUnit deliveryRadius) {
-        this.deliveryRadius = deliveryRadius;
+    public void setDeliveryNotes(final String deliveryNotes) {
+        this.deliveryNotes = deliveryNotes;
     }
 
     @Override
@@ -503,8 +697,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setEducation(final String education) {
-        this.education = education;
+    public void setDeliveryRadius(final FloatUnit deliveryRadius) {
+        this.deliveryRadius = deliveryRadius;
     }
 
     @Override
@@ -513,8 +707,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setEmployer(final String employer) {
-        this.employer = employer;
+    public void setEducation(final String education) {
+        this.education = education;
     }
 
     @Override
@@ -523,8 +717,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setEthnicities(final String[] ethnicities) {
-        this.ethnicities = ethnicities;
+    public void setEmployer(final String employer) {
+        this.employer = employer;
     }
 
     @Override
@@ -533,13 +727,23 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setEventDateRange(final DateTimeRange eventDateRange) {
-        this.eventDateRange = eventDateRange;
+    public void setEthnicities(final String[] ethnicities) {
+        this.ethnicities = ethnicities;
     }
 
     @Override
     public DateTimeRange getEventDateRange() {
         return eventDateRange;
+    }
+
+    @Override
+    public void setEventDateRange(final DateTimeRange eventDateRange) {
+        this.eventDateRange = eventDateRange;
+    }
+
+    @Override
+    public Date getExpirationDate() {
+        return expirationDate;
     }
 
     @Override
@@ -552,8 +756,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public Date getExpirationDate() {
-        return expirationDate;
+    public Date getExpirationDateTime() {
+        return expirationDateTime;
     }
 
     @Override
@@ -562,8 +766,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public Date getExpirationDateTime() {
-        return expirationDateTime;
+    public String[] getFormat() {
+        return format == null ? new String[0] : format;
     }
 
     @Override
@@ -572,8 +776,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public String[] getFormat() {
-        return format == null ? new String[0] : format;
+    public String getFromLocation() {
+        return fromLocation;
     }
 
     @Override
@@ -582,8 +786,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public String getFromLocation() {
-        return fromLocation;
+    public GenderEnumeration getGender() {
+        return gender;
     }
 
     @Override
@@ -592,8 +796,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public GenderEnumeration getGender() {
-        return gender;
+    public Float getHoaDues() {
+        return hoaDues;
     }
 
     @Override
@@ -602,8 +806,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public Float getHoaDues() {
-        return hoaDues;
+    public String getId() {
+        return id;
     }
 
     @Override
@@ -612,23 +816,13 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public String getId() {
-        return id;
+    public URL[] getAdditionalImageLinks() {
+        return additionalImageLinks == null ? new URL[0] : additionalImageLinks;
     }
 
     @Override
-    public void setImageLinks(final URL[] imageLinks) {
-        this.imageLinks = imageLinks;
-    }
-
-    @Override
-    public URL[] getImageLinks() {
-        return imageLinks == null ? new URL[0] : imageLinks;
-    }
-
-    @Override
-    public void setImmigrationStatus(final String immigrationStatus) {
-        this.immigrationStatus = immigrationStatus;
+    public void setAdditionalImageLinks(final URL[] additionalImageLinks) {
+        this.additionalImageLinks = additionalImageLinks;
     }
 
     @Override
@@ -637,8 +831,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setInterestedIn(final String[] interestedIn) {
-        this.interestedIn = interestedIn;
+    public void setImmigrationStatus(final String immigrationStatus) {
+        this.immigrationStatus = immigrationStatus;
     }
 
     @Override
@@ -647,13 +841,13 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public Class<GoogleBase> getInterface() {
-        return GoogleBase.class;
+    public void setInterestedIn(final String[] interestedIn) {
+        this.interestedIn = interestedIn;
     }
 
     @Override
-    public void setIsbn(final String isbn) {
-        this.isbn = isbn;
+    public Class<GoogleBase> getInterface() {
+        return GoogleBase.class;
     }
 
     @Override
@@ -662,8 +856,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setJobFunctions(final String[] jobFunctions) {
-        this.jobFunctions = jobFunctions;
+    public void setIsbn(final String isbn) {
+        this.isbn = isbn;
     }
 
     @Override
@@ -672,8 +866,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setJobIndustries(final String[] jobIndustries) {
-        this.jobIndustries = jobIndustries;
+    public void setJobFunctions(final String[] jobFunctions) {
+        this.jobFunctions = jobFunctions;
     }
 
     @Override
@@ -682,8 +876,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setJobTypes(final String[] jobTypes) {
-        this.jobTypes = jobTypes;
+    public void setJobIndustries(final String[] jobIndustries) {
+        this.jobIndustries = jobIndustries;
     }
 
     @Override
@@ -692,8 +886,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setLabels(final String[] labels) {
-        this.labels = labels;
+    public void setJobTypes(final String[] jobTypes) {
+        this.jobTypes = jobTypes;
     }
 
     @Override
@@ -702,8 +896,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setLicenses(final String[] licenses) {
-        this.licenses = licenses;
+    public void setLabels(final String[] labels) {
+        this.labels = labels;
     }
 
     @Override
@@ -712,8 +906,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setListingType(final Boolean listingType) {
-        this.listingType = listingType;
+    public void setLicenses(final String[] licenses) {
+        this.licenses = licenses;
     }
 
     @Override
@@ -722,8 +916,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setLocation(final String location) {
-        this.location = location;
+    public void setListingType(final Boolean listingType) {
+        this.listingType = listingType;
     }
 
     @Override
@@ -732,8 +926,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setMake(final String make) {
-        this.make = make;
+    public void setLocation(final String location) {
+        this.location = location;
     }
 
     @Override
@@ -742,8 +936,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setManufacturer(final String manufacturer) {
-        this.manufacturer = manufacturer;
+    public void setMake(final String make) {
+        this.make = make;
     }
 
     @Override
@@ -752,8 +946,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setManufacturerId(final String manufacturerId) {
-        this.manufacturerId = manufacturerId;
+    public void setManufacturer(final String manufacturer) {
+        this.manufacturer = manufacturer;
     }
 
     @Override
@@ -762,8 +956,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setMaritalStatus(final String maritalStatus) {
-        this.maritalStatus = maritalStatus;
+    public void setManufacturerId(final String manufacturerId) {
+        this.manufacturerId = manufacturerId;
     }
 
     @Override
@@ -772,8 +966,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setMegapixels(final FloatUnit megapixels) {
-        this.megapixels = megapixels;
+    public void setMaritalStatus(final String maritalStatus) {
+        this.maritalStatus = maritalStatus;
     }
 
     @Override
@@ -782,8 +976,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setMemory(final FloatUnit memory) {
-        this.memory = memory;
+    public void setMegapixels(final FloatUnit megapixels) {
+        this.megapixels = megapixels;
     }
 
     @Override
@@ -792,8 +986,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setMileage(final Integer mileage) {
-        this.mileage = mileage;
+    public void setMemory(final FloatUnit memory) {
+        this.memory = memory;
     }
 
     @Override
@@ -802,8 +996,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setModel(final String model) {
-        this.model = model;
+    public void setMileage(final Integer mileage) {
+        this.mileage = mileage;
     }
 
     @Override
@@ -812,8 +1006,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setModelNumber(final String modelNumber) {
-        this.modelNumber = modelNumber;
+    public void setModel(final String model) {
+        this.model = model;
     }
 
     @Override
@@ -822,8 +1016,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setNameOfItemBeingReviewed(final String nameOfItemBeingReviewed) {
-        this.nameOfItemBeingReviewed = nameOfItemBeingReviewed;
+    public void setModelNumber(final String modelNumber) {
+        this.modelNumber = modelNumber;
     }
 
     @Override
@@ -832,8 +1026,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setNewsSource(final String newsSource) {
-        this.newsSource = newsSource;
+    public void setNameOfItemBeingReviewed(final String nameOfItemBeingReviewed) {
+        this.nameOfItemBeingReviewed = nameOfItemBeingReviewed;
     }
 
     @Override
@@ -842,8 +1036,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setOccupation(final String occupation) {
-        this.occupation = occupation;
+    public void setNewsSource(final String newsSource) {
+        this.newsSource = newsSource;
     }
 
     @Override
@@ -852,8 +1046,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setOperatingSystems(final String operatingSystems) {
-        this.operatingSystems = operatingSystems;
+    public void setOccupation(final String occupation) {
+        this.occupation = occupation;
     }
 
     @Override
@@ -862,8 +1056,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setPages(final Integer pages) {
-        this.pages = pages;
+    public void setOperatingSystems(final String operatingSystems) {
+        this.operatingSystems = operatingSystems;
     }
 
     @Override
@@ -872,8 +1066,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setPaymentAccepted(final PaymentTypeEnumeration[] paymentAccepted) {
-        this.paymentAccepted = paymentAccepted;
+    public void setPages(final Integer pages) {
+        this.pages = pages;
     }
 
     @Override
@@ -882,8 +1076,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setPaymentNotes(final String paymentNotes) {
-        this.paymentNotes = paymentNotes;
+    public void setPaymentAccepted(final PaymentTypeEnumeration[] paymentAccepted) {
+        this.paymentAccepted = paymentAccepted;
     }
 
     @Override
@@ -892,8 +1086,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setPickup(final Boolean pickup) {
-        this.pickup = pickup;
+    public void setPaymentNotes(final String paymentNotes) {
+        this.paymentNotes = paymentNotes;
     }
 
     @Override
@@ -902,8 +1096,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setPrice(final FloatUnit price) {
-        this.price = price;
+    public void setPickup(final Boolean pickup) {
+        this.pickup = pickup;
     }
 
     @Override
@@ -912,8 +1106,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setPriceType(final PriceTypeEnumeration priceType) {
-        this.priceType = priceType;
+    public void setPrice(final FloatUnit price) {
+        this.price = price;
     }
 
     @Override
@@ -922,8 +1116,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setProcessorSpeed(final FloatUnit processorSpeed) {
-        this.processorSpeed = processorSpeed;
+    public void setPriceType(final PriceTypeEnumeration priceType) {
+        this.priceType = priceType;
     }
 
     @Override
@@ -932,8 +1126,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setProductTypes(final String[] productTypes) {
-        this.productTypes = productTypes;
+    public void setProcessorSpeed(final FloatUnit processorSpeed) {
+        this.processorSpeed = processorSpeed;
     }
 
     @Override
@@ -942,8 +1136,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setProgrammingLanguages(final String[] programmingLanguages) {
-        this.programmingLanguages = programmingLanguages;
+    public void setProductTypes(final String[] productTypes) {
+        this.productTypes = productTypes;
     }
 
     @Override
@@ -952,8 +1146,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setPropertyTypes(final String[] propertyTypes) {
-        this.propertyTypes = propertyTypes;
+    public void setProgrammingLanguages(final String[] programmingLanguages) {
+        this.programmingLanguages = programmingLanguages;
     }
 
     @Override
@@ -962,8 +1156,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setPublicationName(final String publicationName) {
-        this.publicationName = publicationName;
+    public void setPropertyTypes(final String[] propertyTypes) {
+        this.propertyTypes = propertyTypes;
     }
 
     @Override
@@ -972,13 +1166,23 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setPublicationVolume(final String publicationVolume) {
-        this.publicationVolume = publicationVolume;
+    public void setPublicationName(final String publicationName) {
+        this.publicationName = publicationName;
     }
 
     @Override
     public String getPublicationVolume() {
         return publicationVolume;
+    }
+
+    @Override
+    public void setPublicationVolume(final String publicationVolume) {
+        this.publicationVolume = publicationVolume;
+    }
+
+    @Override
+    public Date getPublishDate() {
+        return publishDate;
     }
 
     @Override
@@ -991,8 +1195,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public Date getPublishDate() {
-        return publishDate;
+    public Integer getQuantity() {
+        return quantity;
     }
 
     @Override
@@ -1001,8 +1205,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public Integer getQuantity() {
-        return quantity;
+    public Float getRating() {
+        return rating;
     }
 
     @Override
@@ -1011,8 +1215,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public Float getRating() {
-        return rating;
+    public URL[] getRelatedLinks() {
+        return relatedLinks == null ? new URL[0] : relatedLinks;
     }
 
     @Override
@@ -1021,8 +1225,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public URL[] getRelatedLinks() {
-        return relatedLinks == null ? new URL[0] : relatedLinks;
+    public String getReviewType() {
+        return reviewType;
     }
 
     @Override
@@ -1031,8 +1235,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public String getReviewType() {
-        return reviewType;
+    public String getReviewerType() {
+        return reviewerType;
     }
 
     @Override
@@ -1041,8 +1245,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public String getReviewerType() {
-        return reviewerType;
+    public Float getSalary() {
+        return salary;
     }
 
     @Override
@@ -1051,8 +1255,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public Float getSalary() {
-        return salary;
+    public PriceTypeEnumeration getSalaryType() {
+        return salaryType;
     }
 
     @Override
@@ -1061,8 +1265,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public PriceTypeEnumeration getSalaryType() {
-        return salaryType;
+    public String getSchoolDistrict() {
+        return schoolDistrict;
     }
 
     @Override
@@ -1071,8 +1275,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public String getSchoolDistrict() {
-        return schoolDistrict;
+    public String getServiceType() {
+        return serviceType;
     }
 
     @Override
@@ -1081,8 +1285,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public String getServiceType() {
-        return serviceType;
+    public String getSexualOrientation() {
+        return SexualOrientation;
     }
 
     @Override
@@ -1091,8 +1295,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public String getSexualOrientation() {
-        return SexualOrientation;
+    public ShippingType[] getShipping() {
+        return shipping == null ? new ShippingType[0] : shipping;
     }
 
     @Override
@@ -1101,8 +1305,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public ShippingType[] getShipping() {
-        return shipping == null ? new ShippingType[0] : shipping;
+    public Size getSize() {
+        return size;
     }
 
     @Override
@@ -1111,8 +1315,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public Size getSize() {
-        return size;
+    public IntUnit[] getSquareFootages() {
+        return squareFootages == null ? new IntUnit[0] : squareFootages;
     }
 
     @Override
@@ -1121,8 +1325,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public IntUnit[] getSquareFootages() {
-        return squareFootages == null ? new IntUnit[0] : squareFootages;
+    public String[] getSubjectAreas() {
+        return subjectAreas == null ? new String[0] : subjectAreas;
     }
 
     @Override
@@ -1131,8 +1335,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public String[] getSubjectAreas() {
-        return subjectAreas == null ? new String[0] : subjectAreas;
+    public String[] getSubjects() {
+        return subjects == null ? new String[0] : subjects;
     }
 
     @Override
@@ -1141,8 +1345,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public String[] getSubjects() {
-        return subjects == null ? new String[0] : subjects;
+    public Float getTaxPercent() {
+        return taxPercent;
     }
 
     @Override
@@ -1151,8 +1355,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public Float getTaxPercent() {
-        return taxPercent;
+    public String getTaxRegion() {
+        return taxRegion;
     }
 
     @Override
@@ -1161,8 +1365,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public String getTaxRegion() {
-        return taxRegion;
+    public String getToLocation() {
+        return toLocation;
     }
 
     @Override
@@ -1171,8 +1375,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public String getToLocation() {
-        return toLocation;
+    public DateTimeRange getTravelDateRange() {
+        return travelDateRange;
     }
 
     @Override
@@ -1181,8 +1385,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public DateTimeRange getTravelDateRange() {
-        return travelDateRange;
+    public String getUniversity() {
+        return university;
     }
 
     @Override
@@ -1191,8 +1395,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public String getUniversity() {
-        return university;
+    public String getUpc() {
+        return upc;
     }
 
     @Override
@@ -1201,18 +1405,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public String getUpc() {
-        return upc;
-    }
-
-    @Override
     public String getUri() {
         return GoogleBase.URI;
-    }
-
-    @Override
-    public void setUrlOfItemBeingReviewed(final URL urlOfItemBeingReviewed) {
-        this.urlOfItemBeingReviewed = urlOfItemBeingReviewed;
     }
 
     @Override
@@ -1221,8 +1415,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setVehicleType(final String vehicleType) {
-        this.vehicleType = vehicleType;
+    public void setUrlOfItemBeingReviewed(final URL urlOfItemBeingReviewed) {
+        this.urlOfItemBeingReviewed = urlOfItemBeingReviewed;
     }
 
     @Override
@@ -1231,8 +1425,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setVin(final String vin) {
-        this.vin = vin;
+    public void setVehicleType(final String vehicleType) {
+        this.vehicleType = vehicleType;
     }
 
     @Override
@@ -1241,8 +1435,8 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setWeight(final FloatUnit weight) {
-        this.weight = weight;
+    public void setVin(final String vin) {
+        this.vin = vin;
     }
 
     @Override
@@ -1251,14 +1445,80 @@ public class GoogleBaseImpl implements GoogleBase {
     }
 
     @Override
-    public void setYear(final YearType year) {
-        this.year = year;
+    public void setWeight(final FloatUnit weight) {
+        this.weight = weight;
+    }
+
+    @Override
+    public String getGoogleProductCategory() {
+        return googleProductCategory;
+    }
+
+    @Override
+    public void setGoogleProductCategory(String googleProductCategory) {
+        this.googleProductCategory = googleProductCategory;
     }
 
     @Override
     public YearType getYear() {
         return year;
     }
+
+    @Override
+    public void setYear(final YearType year) {
+        this.year = year;
+    }
+
+    @Override
+    public AvailabilityEnumeration getAvailability() {
+        return availability;
+    }
+
+    @Override
+    public void setAvailability(AvailabilityEnumeration availability) {
+        this.availability = availability;
+    }
+
+    @Override
+    public Date getAvailabilityDate() {
+        return availabilityDate;
+    }
+
+    @Override
+    public void setAvailabilityDate(Date availabilityDate) {
+        this.availabilityDate = availabilityDate;
+    }
+
+    @Override
+    public URL getImageLink() {
+        return imageLink;
+    }
+
+    @Override
+    public void setImageLink(URL imageLink) {
+        this.imageLink = imageLink;
+    }
+
+    @Override
+    public String getGtin() {
+        return gtin;
+    }
+
+    @Override
+    public void setGtin(String gtin) {
+        this.gtin = gtin;
+    }
+
+    @Override
+    public String getMpn() {
+        return mpn;
+    }
+
+    @Override
+    public void setMpn(String mpn) {
+        this.mpn = mpn;
+    }
+
 
     // TODO: Finish
     @Override
@@ -1310,7 +1570,8 @@ public class GoogleBaseImpl implements GoogleBase {
         setGender(source.getGender());
         setHoaDues(source.getHoaDues());
         setId(source.getId());
-        setImageLinks((URL[]) arrayCopy(source.getImageLinks()));
+        setAdditionalImageLinks((URL[]) arrayCopy(source.getAdditionalImageLinks()));
+        setImageLink(source.getImageLink());
         setImmigrationStatus(source.getImmigrationStatus());
         setInterestedIn(source.getInterestedIn());
         setIsbn(source.getIsbn());
@@ -1374,6 +1635,12 @@ public class GoogleBaseImpl implements GoogleBase {
         setUniversity(source.getUniversity());
         setWeight(source.getWeight());
         setOperatingSystems(source.getOperatingSystems());
+        setAvailability(source.getAvailability());
+        setAvailabilityDate(source.getAvailabilityDate());
+        setGoogleProductCategory(source.getGoogleProductCategory());
+        setGtin(source.getGtin());
+        setMpn(source.getMpn());
+
     }
 
     @Override

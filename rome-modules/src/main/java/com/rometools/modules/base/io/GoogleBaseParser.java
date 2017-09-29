@@ -33,6 +33,7 @@ import org.slf4j.LoggerFactory;
 
 import com.rometools.modules.base.GoogleBase;
 import com.rometools.modules.base.GoogleBaseImpl;
+import com.rometools.modules.base.types.AvailabilityEnumeration;
 import com.rometools.modules.base.types.CurrencyEnumeration;
 import com.rometools.modules.base.types.DateTimeRange;
 import com.rometools.modules.base.types.FloatUnit;
@@ -180,6 +181,8 @@ public class GoogleBaseParser implements ModuleParser {
             tagValue = new ShippingType(price, service, country);
         } else if (pd.getPropertyType() == PaymentTypeEnumeration.class || pd.getPropertyType().getComponentType() == PaymentTypeEnumeration.class) {
             tagValue = PaymentTypeEnumeration.findByValue(tag.getText().trim());
+        } else if (pd.getPropertyType() == AvailabilityEnumeration.class || pd.getPropertyType().getComponentType() == AvailabilityEnumeration.class) {
+            tagValue = AvailabilityEnumeration.findByValue(tag.getText().trim());
         } else if (pd.getPropertyType() == PriceTypeEnumeration.class || pd.getPropertyType().getComponentType() == PriceTypeEnumeration.class) {
             tagValue = PriceTypeEnumeration.findByValue(tag.getText().trim());
         } else if (pd.getPropertyType() == CurrencyEnumeration.class || pd.getPropertyType().getComponentType() == CurrencyEnumeration.class) {

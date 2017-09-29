@@ -27,1503 +27,961 @@ import com.rometools.modules.base.types.Size;
  */
 public interface Product extends GlobalInterface {
     /**
-     * Actor featured in the video.
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
+     * Actor featured in the video. <table border="1" cellpadding="5" cellspacing="0" width="640">
      *
-     * <tbody>
-     * <tr bgcolor="#dddddd" valign="top">
+     * <tbody> <tr bgcolor="#dddddd" valign="top">
      *
-     * <td colspan="2" nowrap="nowrap"><font size="-1"><strong><a
-     * name="actor"></a>actor</strong></font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><strong><font size="-1">Details</font></strong></td>
-     * <td><font size="-1">Actor featured in the video.</font></td>
-     * </tr>
+     * <td colspan="2" nowrap="nowrap"><font size="-1"><strong><a name="actor"></a>actor</strong></font></td>
+     * </tr> <tr valign="top"> <td width="120"><strong><font size="-1">Details</font></strong></td>
+     * <td><font size="-1">Actor featured in the video.</font></td> </tr>
      *
      * <tr valign="top">
      *
-     * <td><strong><font size="-1">Example</font></strong></td>
-     * <td><font size="-1">&lt;g:actor&gt;Charlie Chaplin&lt;/g:actor&gt;</font></td>
-     * </tr>
-     * <tr valign="top">
+     * <td><strong><font size="-1">Example</font></strong></td> <td><font
+     * size="-1">&lt;g:actor&gt;Charlie Chaplin&lt;/g:actor&gt;</font></td> </tr> <tr valign="top">
      * <td><strong><font size="-1">Attribute of</font></strong></td>
      *
      * <td><font size="-1">Products</font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td><strong><font size="-1">Content type</font></strong></td>
-     * <td><font size="-1">string</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
-     *
-     * @param actors Actor featured in the video.
-     */
-    public void setActors(String[] actors);
-
-    /**
-     * Actor featured in the video.
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     *
-     * <tbody>
-     * <tr bgcolor="#dddddd" valign="top">
-     *
-     * <td colspan="2" nowrap="nowrap"><font size="-1"><strong><a
-     * name="actor"></a>actor</strong></font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><strong><font size="-1">Details</font></strong></td>
-     * <td><font size="-1">Actor featured in the video.</font></td>
-     * </tr>
-     *
-     * <tr valign="top">
-     *
-     * <td><strong><font size="-1">Example</font></strong></td>
-     * <td><font size="-1">&lt;g:actor&gt;Charlie Chaplin&lt;/g:actor&gt;</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td><strong><font size="-1">Attribute of</font></strong></td>
-     *
-     * <td><font size="-1">Products</font></td>
-     *
-     * </tr>
-     * <tr valign="top">
-     * <td><strong><font size="-1">Content type</font></strong></td>
-     * <td><font size="-1">string</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * </tr> <tr valign="top"> <td><strong><font size="-1">Content type</font></strong></td>
+     * <td><font size="-1">string</font></td> </tr> </tbody> </table>
      *
      * @return Actor featured in the video.
      */
-    public String[] getActors();
+    String[] getActors();
 
     /**
-     * The type of apparel being offered. <br>
+     * Actor featured in the video. <table border="1" cellpadding="5" cellspacing="0" width="640">
      *
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr bgcolor="#dddddd" valign="top">
+     * <tbody> <tr bgcolor="#dddddd" valign="top">
      *
-     * <td colspan="2" nowrap="nowrap"><font size="-1"><strong><a
-     * name="apparel_type"></a>apparel_type</strong></font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><strong><font size="-1">Details</font></strong></td>
+     * <td colspan="2" nowrap="nowrap"><font size="-1"><strong><a name="actor"></a>actor</strong></font></td>
+     * </tr> <tr valign="top"> <td width="120"><strong><font size="-1">Details</font></strong></td>
+     * <td><font size="-1">Actor featured in the video.</font></td> </tr>
      *
-     * <td><font size="-1"> The type of apparel being offered. Skirt, pants, sleepwear, etc.</font></td>
-     * </tr>
      * <tr valign="top">
      *
-     * <td><strong><font size="-1">Example</font></strong></td>
-     * <td><font size="-1">&lt;g:apparel_type&gt;sweater&lt;/g:apparel_type&gt;</font></td>
-     *
-     * </tr>
-     * <tr valign="top">
+     * <td><strong><font size="-1">Example</font></strong></td> <td><font
+     * size="-1">&lt;g:actor&gt;Charlie Chaplin&lt;/g:actor&gt;</font></td> </tr> <tr valign="top">
      * <td><strong><font size="-1">Attribute of</font></strong></td>
+     *
      * <td><font size="-1">Products</font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td><strong><font size="-1">Content type</font></strong></td>
+     * </tr> <tr valign="top"> <td><strong><font size="-1">Content type</font></strong></td>
+     * <td><font size="-1">string</font></td> </tr> </tbody> </table>
      *
-     * <td><font size="-1">string</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
-     *
-     * @param apparelType The type of apparel being offered.
+     * @param actors Actor featured in the video.
      */
-    public void setApparelType(String apparelType);
+    void setActors(String[] actors);
 
     /**
      * The type of apparel being offered. <br>
      *
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr bgcolor="#dddddd" valign="top">
+     * <table border="1" cellpadding="5" cellspacing="0" width="640"> <tbody> <tr bgcolor="#dddddd"
+     * valign="top">
      *
-     * <td colspan="2" nowrap="nowrap"><font size="-1"><strong><a
-     * name="apparel_type"></a>apparel_type</strong></font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><strong><font size="-1">Details</font></strong></td>
+     * <td colspan="2" nowrap="nowrap"><font size="-1"><strong><a name="apparel_type"></a>apparel_type</strong></font></td>
+     * </tr> <tr valign="top"> <td width="120"><strong><font size="-1">Details</font></strong></td>
      *
-     * <td><font size="-1"> The type of apparel being offered. Skirt, pants, sleepwear, etc.</font></td>
-     * </tr>
-     * <tr valign="top">
+     * <td><font size="-1"> The type of apparel being offered. Skirt, pants, sleepwear,
+     * etc.</font></td> </tr> <tr valign="top">
      *
-     * <td><strong><font size="-1">Example</font></strong></td>
-     * <td><font size="-1">&lt;g:apparel_type&gt;sweater&lt;/g:apparel_type&gt;</font></td>
+     * <td><strong><font size="-1">Example</font></strong></td> <td><font
+     * size="-1">&lt;g:apparel_type&gt;sweater&lt;/g:apparel_type&gt;</font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td><strong><font size="-1">Attribute of</font></strong></td>
+     * </tr> <tr valign="top"> <td><strong><font size="-1">Attribute of</font></strong></td>
      * <td><font size="-1">Products</font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td><strong><font size="-1">Content type</font></strong></td>
+     * </tr> <tr valign="top"> <td><strong><font size="-1">Content type</font></strong></td>
      *
-     * <td><font size="-1">string</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * <td><font size="-1">string</font></td> </tr> </tbody> </table>
      *
      * @return The type of apparel being offered.
      */
-    public String getApparelType();
+    String getApparelType();
 
     /**
-     * Artist that created the work.
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
-     * name="artist"></a>artist</b></font></td>
+     * The type of apparel being offered. <br>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
+     * <table border="1" cellpadding="5" cellspacing="0" width="640"> <tbody> <tr bgcolor="#dddddd"
+     * valign="top">
      *
-     * <td><font size="-1"> Artist that created the work.</font></td>
-     * </tr>
+     * <td colspan="2" nowrap="nowrap"><font size="-1"><strong><a name="apparel_type"></a>apparel_type</strong></font></td>
+     * </tr> <tr valign="top"> <td width="120"><strong><font size="-1">Details</font></strong></td>
      *
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:artist&gt;Vincent van Gogh&lt;/g:artist&gt;</font></td>
+     * <td><font size="-1"> The type of apparel being offered. Skirt, pants, sleepwear,
+     * etc.</font></td> </tr> <tr valign="top">
      *
-     * </tr>
-     * <tr valign="top">
+     * <td><strong><font size="-1">Example</font></strong></td> <td><font
+     * size="-1">&lt;g:apparel_type&gt;sweater&lt;/g:apparel_type&gt;</font></td>
      *
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Products</font></td>
-     * </tr>
-     * <tr valign="top">
+     * </tr> <tr valign="top"> <td><strong><font size="-1">Attribute of</font></strong></td>
+     * <td><font size="-1">Products</font></td>
      *
-     * <td width="120"><font size="-1">
+     * </tr> <tr valign="top"> <td><strong><font size="-1">Content type</font></strong></td>
      *
-     * <b>Content type</b></font></td>
-     * <td><font size="-1"> string</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * <td><font size="-1">string</font></td> </tr> </tbody> </table>
      *
-     * @param artists Artist that created the work.
+     * @param apparelType The type of apparel being offered.
      */
-    public void setArtists(String[] artists);
+    void setApparelType(String apparelType);
 
     /**
-     * Artist that created the work.
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
-     * name="artist"></a>artist</b></font></td>
+     * Artist that created the work. <table border="1" cellpadding="5" cellspacing="0" width="640">
+     * <tbody> <tr valign="top"> <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
+     * <b><a name="artist"></a>artist</b></font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Details</b></font></td>
      *
-     * <td><font size="-1"> Artist that created the work.</font></td>
-     * </tr>
+     * <td><font size="-1"> Artist that created the work.</font></td> </tr>
      *
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:artist&gt;Vincent van Gogh&lt;/g:artist&gt;</font></td>
+     * <tr valign="top"> <td width="120"><font size="-1"> <b>Example</b></font></td> <td><font
+     * size="-1"> &lt;g:artist&gt;Vincent van Gogh&lt;/g:artist&gt;</font></td>
      *
-     * </tr>
-     * <tr valign="top">
+     * </tr> <tr valign="top">
      *
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Products</font></td>
-     * </tr>
-     * <tr valign="top">
+     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td> <td><font size="-1">
+     * Products</font></td> </tr> <tr valign="top">
      *
      * <td width="120"><font size="-1">
      *
-     * <b>Content type</b></font></td>
-     * <td><font size="-1"> string</font></td>
-     * </tr>
-     * </tbody>
+     * <b>Content type</b></font></td> <td><font size="-1"> string</font></td> </tr> </tbody>
      * </table>
      *
      * @return Artist that created the work.
      */
-    public String[] getArtists();
+    String[] getArtists();
 
     /**
-     * Author of the item.
+     * Artist that created the work. <table border="1" cellpadding="5" cellspacing="0" width="640">
+     * <tbody> <tr valign="top"> <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
+     * <b><a name="artist"></a>artist</b></font></td>
      *
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Details</b></font></td>
      *
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
-     * name="author"></a>author</b></font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
+     * <td><font size="-1"> Artist that created the work.</font></td> </tr>
      *
-     * <td><font size="-1"> Author of the item.</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:author&gt;John Steinbeck&lt;/g:author&gt;</font></td>
+     * <tr valign="top"> <td width="120"><font size="-1"> <b>Example</b></font></td> <td><font
+     * size="-1"> &lt;g:artist&gt;Vincent van Gogh&lt;/g:artist&gt;</font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Reference Items, News and Articles</font></td>
-     * </tr>
+     * </tr> <tr valign="top">
      *
-     * <tr valign="top">
+     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td> <td><font size="-1">
+     * Products</font></td> </tr> <tr valign="top">
      *
-     * <td width="120"><font size="-1"> <b>Content type</b></font></td>
-     * <td><font size="-1"> string</font></td>
-     * </tr>
-     * </tbody>
+     * <td width="120"><font size="-1">
+     *
+     * <b>Content type</b></font></td> <td><font size="-1"> string</font></td> </tr> </tbody>
      * </table>
      *
-     * @param authors Author of the item.
+     * @param artists Artist that created the work.
      */
-    public void setAuthors(String[] authors);
+    void setArtists(String[] artists);
 
     /**
      * Author of the item.
      *
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      *
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
-     * name="author"></a>author</b></font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
+     * <tbody> <tr valign="top"> <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
+     * <b><a name="author"></a>author</b></font></td> </tr> <tr valign="top"> <td width="120"><font
+     * size="-1"> <b>Details</b></font></td>
      *
-     * <td><font size="-1"> Author of the item.</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:author&gt;John Steinbeck&lt;/g:author&gt;</font></td>
+     * <td><font size="-1"> Author of the item.</font></td> </tr> <tr valign="top"> <td
+     * width="120"><font size="-1"> <b>Example</b></font></td> <td><font size="-1">
+     * &lt;g:author&gt;John Steinbeck&lt;/g:author&gt;</font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Reference Items, News and Articles</font></td>
-     * </tr>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
+     * <td><font size="-1"> Reference Items, News and Articles</font></td> </tr>
      *
      * <tr valign="top">
      *
-     * <td width="120"><font size="-1"> <b>Content type</b></font></td>
-     * <td><font size="-1"> string</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * <td width="120"><font size="-1"> <b>Content type</b></font></td> <td><font size="-1">
+     * string</font></td> </tr> </tbody> </table>
      *
      * @return Author of the item.
      */
-    public String[] getAuthors();
+    String[] getAuthors();
 
     /**
-     * The brand name of an item.
+     * Author of the item.
+     *
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
-     * name="brand"></a>brand</b></font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
      *
-     * <td><font size="-1"> The brand name of an item.</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:brand&gt;Acme&lt;/g:brand&gt;</font></td>
+     * <tbody> <tr valign="top"> <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
+     * <b><a name="author"></a>author</b></font></td> </tr> <tr valign="top"> <td width="120"><font
+     * size="-1"> <b>Details</b></font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Products</font></td>
-     * </tr>
+     * <td><font size="-1"> Author of the item.</font></td> </tr> <tr valign="top"> <td
+     * width="120"><font size="-1"> <b>Example</b></font></td> <td><font size="-1">
+     * &lt;g:author&gt;John Steinbeck&lt;/g:author&gt;</font></td>
+     *
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
+     * <td><font size="-1"> Reference Items, News and Articles</font></td> </tr>
+     *
      * <tr valign="top">
      *
-     * <td width="120"><font size="-1"> <b>Content type</b></font></td>
+     * <td width="120"><font size="-1"> <b>Content type</b></font></td> <td><font size="-1">
+     * string</font></td> </tr> </tbody> </table>
      *
-     * <td><font size="-1"> string</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
-     *
-     * @param brand The brand name of an item.
+     * @param authors Author of the item.
      */
-    public void setBrand(String brand);
+    void setAuthors(String[] authors);
 
     /**
-     * The brand name of an item.
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
-     * name="brand"></a>brand</b></font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
+     * The brand name of an item. <table border="1" cellpadding="5" cellspacing="0" width="640">
+     * <tbody> <tr valign="top"> <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
+     * <b><a name="brand"></a>brand</b></font></td> </tr> <tr valign="top"> <td width="120"><font
+     * size="-1"> <b>Details</b></font></td>
      *
-     * <td><font size="-1"> The brand name of an item.</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:brand&gt;Acme&lt;/g:brand&gt;</font></td>
+     * <td><font size="-1"> The brand name of an item.</font></td> </tr> <tr valign="top"> <td
+     * width="120"><font size="-1"> <b>Example</b></font></td> <td><font size="-1">
+     * &lt;g:brand&gt;Acme&lt;/g:brand&gt;</font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Products</font></td>
-     * </tr>
-     * <tr valign="top">
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
+     * <td><font size="-1"> Products</font></td> </tr> <tr valign="top">
      *
      * <td width="120"><font size="-1"> <b>Content type</b></font></td>
      *
-     * <td><font size="-1"> string</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * <td><font size="-1"> string</font></td> </tr> </tbody> </table>
      *
      * @return The brand name of an item.
      */
-    public String getBrand();
+    String getBrand();
 
     /**
-     * Color of an item.
+     * The brand name of an item. <table border="1" cellpadding="5" cellspacing="0" width="640">
+     * <tbody> <tr valign="top"> <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
+     * <b><a name="brand"></a>brand</b></font></td> </tr> <tr valign="top"> <td width="120"><font
+     * size="-1"> <b>Details</b></font></td>
      *
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
+     * <td><font size="-1"> The brand name of an item.</font></td> </tr> <tr valign="top"> <td
+     * width="120"><font size="-1"> <b>Example</b></font></td> <td><font size="-1">
+     * &lt;g:brand&gt;Acme&lt;/g:brand&gt;</font></td>
      *
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
-     * name="color"></a>color</b></font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
+     * <td><font size="-1"> Products</font></td> </tr> <tr valign="top">
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     *
-     * <td><font size="-1"> Color of an item.</font></td>
-     * </tr>
-     * <tr valign="top">
-     *
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:color&gt;Black&lt;/g:color&gt;</font></td>
-     *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1">
-     *
-     * <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Products, Vehicles</font></td>
-     * </tr>
-     *
-     * <tr valign="top">
      * <td width="120"><font size="-1"> <b>Content type</b></font></td>
      *
-     * <td><font size="-1"> string</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * <td><font size="-1"> string</font></td> </tr> </tbody> </table>
      *
-     * @param color Color of an item.
+     * @param brand The brand name of an item.
      */
-    public void setColors(String[] color);
+    void setBrand(String brand);
 
     /**
      * Color of an item.
      *
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      *
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
-     * name="color"></a>color</b></font></td>
+     * <tbody> <tr valign="top"> <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
+     * <b><a name="color"></a>color</b></font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Details</b></font></td>
      *
-     * <td><font size="-1"> Color of an item.</font></td>
-     * </tr>
-     * <tr valign="top">
+     * <td><font size="-1"> Color of an item.</font></td> </tr> <tr valign="top">
      *
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:color&gt;Black&lt;/g:color&gt;</font></td>
+     * <td width="120"><font size="-1"> <b>Example</b></font></td> <td><font size="-1">
+     * &lt;g:color&gt;Black&lt;/g:color&gt;</font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1">
+     * </tr> <tr valign="top"> <td width="120"><font size="-1">
      *
-     * <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Products, Vehicles</font></td>
-     * </tr>
+     * <b>Attribute of</b></font></td> <td><font size="-1"> Products, Vehicles</font></td> </tr>
      *
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Content type</b></font></td>
+     * <tr valign="top"> <td width="120"><font size="-1"> <b>Content type</b></font></td>
      *
-     * <td><font size="-1"> string</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * <td><font size="-1"> string</font></td> </tr> </tbody> </table>
      *
      * @return Color of an item.
      */
-    public String[] getColors();
+    String[] getColors();
 
     /**
-     * Condition of the item. For example: new, used, or refurbished.
+     * Color of an item.
      *
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
-     * name="condition"></a>condition</b></font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Details</b></font></td>
-     * <td><font size="-1">Condition of the item. For example: new, used, or refurbished.</font></td>
+     * <tbody> <tr valign="top"> <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
+     * <b><a name="color"></a>color</b></font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Example</b></font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Details</b></font></td>
      *
-     * <td>
-     * <font size="-1">&lt;g:condition&gt;refurbished&lt;/g:condition&gt;</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Attribute of</b></font></td>
+     * <td><font size="-1"> Color of an item.</font></td> </tr> <tr valign="top">
      *
-     * <td><font size="-1">Products, Vehicles</font></td>
+     * <td width="120"><font size="-1"> <b>Example</b></font></td> <td><font size="-1">
+     * &lt;g:color&gt;Black&lt;/g:color&gt;</font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Content type</b></font></td>
-     * <td><font size="-1">string</font></td>
-     * </tr>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1">
      *
-     * </tbody>
-     * </table>
+     * <b>Attribute of</b></font></td> <td><font size="-1"> Products, Vehicles</font></td> </tr>
      *
-     * @param condition Condition of the item. For example: new, used, or refurbished.
+     * <tr valign="top"> <td width="120"><font size="-1"> <b>Content type</b></font></td>
+     *
+     * <td><font size="-1"> string</font></td> </tr> </tbody> </table>
+     *
+     * @param color Color of an item.
      */
-    public void setCondition(String condition);
+    void setColors(String[] color);
 
     /**
      * Condition of the item. For example: new, used, or refurbished.
      *
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * <table border="1" cellpadding="5" cellspacing="0" width="640"> <tbody> <tr valign="top"> <td
+     * colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
      * name="condition"></a>condition</b></font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Details</b></font></td>
-     * <td><font size="-1">Condition of the item. For example: new, used, or refurbished.</font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"><b>Details</b></font></td> <td><font
+     * size="-1">Condition of the item. For example: new, used, or refurbished.</font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Example</b></font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"><b>Example</b></font></td>
      *
-     * <td>
-     * <font size="-1">&lt;g:condition&gt;refurbished&lt;/g:condition&gt;</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Attribute of</b></font></td>
+     * <td> <font size="-1">&lt;g:condition&gt;refurbished&lt;/g:condition&gt;</font></td> </tr> <tr
+     * valign="top"> <td width="120"><font size="-1"><b>Attribute of</b></font></td>
      *
      * <td><font size="-1">Products, Vehicles</font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Content type</b></font></td>
-     * <td><font size="-1">string</font></td>
-     * </tr>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"><b>Content type</b></font></td>
+     * <td><font size="-1">string</font></td> </tr>
      *
-     * </tbody>
-     * </table>
+     * </tbody> </table>
      *
      * @return Condition of the item. For example: new, used, or refurbished.
      */
-    public String getCondition();
+    String getCondition();
 
     /**
-     * Currency of the price amount for an item.
+     * Condition of the item. For example: new, used, or refurbished.
      *
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
-     * name="currency"></a>currency</b></font></td>
+     * <table border="1" cellpadding="5" cellspacing="0" width="640"> <tbody> <tr valign="top"> <td
+     * colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="condition"></a>condition</b></font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Details</b></font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"><b>Details</b></font></td> <td><font
+     * size="-1">Condition of the item. For example: new, used, or refurbished.</font></td>
      *
-     * <td><font size="-1">Currency of the price amount for an item. Values must be in <a
-     * href="http://www.iso.org/iso/en/prods-services/popstds/currencycodeslist.html">ISO 4217</a>
-     * currency code format.</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Example</b></font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"><b>Example</b></font></td>
      *
-     * <td><font size="-1"><em>Acceptable:</em><br>
-     * &lt;g:currency&gt;USD&lt;/g:currency&gt;<br>
+     * <td> <font size="-1">&lt;g:condition&gt;refurbished&lt;/g:condition&gt;</font></td> </tr> <tr
+     * valign="top"> <td width="120"><font size="-1"><b>Attribute of</b></font></td>
      *
-     * <em>Not acceptable:</em><br>
-     * &lt;g:currency&gt;US Dollars&lt;/g:currency&gt;</font></td>
-     * </tr>
-     * <tr valign="top">
+     * <td><font size="-1">Products, Vehicles</font></td>
      *
-     * <td width="120"><font size="-1"><b>Attribute of</b></font></td>
-     * <td><font size="-1">Events, Housing, Products, Services, Travel, Vehicles</font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"><b>Content type</b></font></td>
+     * <td><font size="-1">string</font></td> </tr>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Content type</b></font></td>
-     * <td><font size="-1">currencyEnumeration</font></td>
+     * </tbody> </table>
      *
-     * </tr>
-     * </tbody>
-     * </table>
-     *
-     * @param value Currency of the price amount for an item.
+     * @param condition Condition of the item. For example: new, used, or refurbished.
      */
-    public void setCurrency(CurrencyEnumeration value);
+    void setCondition(String condition);
 
     /**
      * Currency of the price amount for an item.
      *
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * <table border="1" cellpadding="5" cellspacing="0" width="640"> <tbody> <tr valign="top"> <td
+     * colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
      * name="currency"></a>currency</b></font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Details</b></font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"><b>Details</b></font></td>
      *
      * <td><font size="-1">Currency of the price amount for an item. Values must be in <a
      * href="http://www.iso.org/iso/en/prods-services/popstds/currencycodeslist.html">ISO 4217</a>
-     * currency code format.</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Example</b></font></td>
+     * currency code format.</font></td> </tr> <tr valign="top"> <td width="120"><font
+     * size="-1"><b>Example</b></font></td>
      *
-     * <td><font size="-1"><em>Acceptable:</em><br>
-     * &lt;g:currency&gt;USD&lt;/g:currency&gt;<br>
+     * <td><font size="-1"><em>Acceptable:</em><br> &lt;g:currency&gt;USD&lt;/g:currency&gt;<br>
      *
-     * <em>Not acceptable:</em><br>
-     * &lt;g:currency&gt;US Dollars&lt;/g:currency&gt;</font></td>
-     * </tr>
-     * <tr valign="top">
+     * <em>Not acceptable:</em><br> &lt;g:currency&gt;US Dollars&lt;/g:currency&gt;</font></td>
+     * </tr> <tr valign="top">
      *
-     * <td width="120"><font size="-1"><b>Attribute of</b></font></td>
-     * <td><font size="-1">Events, Housing, Products, Services, Travel, Vehicles</font></td>
+     * <td width="120"><font size="-1"><b>Attribute of</b></font></td> <td><font size="-1">Events,
+     * Housing, Products, Services, Travel, Vehicles</font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Content type</b></font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"><b>Content type</b></font></td>
      * <td><font size="-1">currencyEnumeration</font></td>
      *
-     * </tr>
-     * </tbody>
-     * </table>
+     * </tr> </tbody> </table>
      *
      * @return Currency of the price amount for an item.
      */
-    public CurrencyEnumeration getCurrency();
+    CurrencyEnumeration getCurrency();
+
+    /**
+     * Currency of the price amount for an item.
+     *
+     * <table border="1" cellpadding="5" cellspacing="0" width="640"> <tbody> <tr valign="top"> <td
+     * colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="currency"></a>currency</b></font></td>
+     *
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"><b>Details</b></font></td>
+     *
+     * <td><font size="-1">Currency of the price amount for an item. Values must be in <a
+     * href="http://www.iso.org/iso/en/prods-services/popstds/currencycodeslist.html">ISO 4217</a>
+     * currency code format.</font></td> </tr> <tr valign="top"> <td width="120"><font
+     * size="-1"><b>Example</b></font></td>
+     *
+     * <td><font size="-1"><em>Acceptable:</em><br> &lt;g:currency&gt;USD&lt;/g:currency&gt;<br>
+     *
+     * <em>Not acceptable:</em><br> &lt;g:currency&gt;US Dollars&lt;/g:currency&gt;</font></td>
+     * </tr> <tr valign="top">
+     *
+     * <td width="120"><font size="-1"><b>Attribute of</b></font></td> <td><font size="-1">Events,
+     * Housing, Products, Services, Travel, Vehicles</font></td>
+     *
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"><b>Content type</b></font></td>
+     * <td><font size="-1">currencyEnumeration</font></td>
+     *
+     * </tr> </tbody> </table>
+     *
+     * @param value Currency of the price amount for an item.
+     */
+    void setCurrency(CurrencyEnumeration value);
+
+    /**
+     * Additional instructions to explain the item;s delivery process. <table border="1"
+     * cellpadding="5" cellspacing="0" width="640"> <tbody> <tr valign="top"> <td colspan="2"
+     * bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="delivery_notes"></a>delivery_notes</b></font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"><b>Details</b></font></td>
+     *
+     * <td><font size="-1">Additional instructions to explain the item�s delivery
+     * process.</font></td> </tr> <tr valign="top"> <td width="120"><font
+     * size="-1"><b>Example</b></font></td> <td> <font size="-1">&lt;g:delivery_notes&gt;Items
+     * usually shipped within 24 hours.&lt;g:/delivery_notes&gt;<br>
+     *
+     * </font></td>
+     *
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"><b>Attribute of</b></font></td> <td>
+     * <font size="-1">Events, Products, Reviews, Services, Travel, Vehicles, Wanted Ads.
+     * </font></td> </tr> <tr valign="top"> <td width="120"><font size="-1"><b>Content
+     * type</b></font></td>
+     *
+     * <td><font size="-1">string</font></td> </tr> </tbody> </table>
+     *
+     * @return Additional instructions to explain the item�s delivery process.
+     */
+    String getDeliveryNotes();
 
     /**
      * Additional instructions to explain the item’s delivery process.
      *
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
-     * name="delivery_notes"></a>delivery_notes</b></font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Details</b></font></td>
+     * <table border="1" cellpadding="5" cellspacing="0" width="640"> <tbody> <tr valign="top"> <td
+     * colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="delivery_notes"></a>delivery_notes</b></font></td> </tr> <tr valign="top"> <td
+     * width="120"><font size="-1"><b>Details</b></font></td>
      *
-     * <td><font size="-1">Additional instructions to explain the item’s delivery process.</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Example</b></font></td>
-     * <td>
-     * <font size="-1">&lt;g:delivery_notes&gt;Items usually shipped within 24
-     * hours.&lt;g:/delivery_notes&gt;<br>
+     * <td><font size="-1">Additional instructions to explain the item’s delivery
+     * process.</font></td> </tr> <tr valign="top"> <td width="120"><font
+     * size="-1"><b>Example</b></font></td> <td> <font size="-1">&lt;g:delivery_notes&gt;Items
+     * usually shipped within 24 hours.&lt;g:/delivery_notes&gt;<br>
      *
      * </font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Attribute of</b></font></td>
-     * <td>
-     * <font size="-1">Events, Products, Reviews, Services, Travel, Vehicles, Wanted Ads. </font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Content type</b></font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"><b>Attribute of</b></font></td> <td>
+     * <font size="-1">Events, Products, Reviews, Services, Travel, Vehicles, Wanted Ads.
+     * </font></td> </tr> <tr valign="top"> <td width="120"><font size="-1"><b>Content
+     * type</b></font></td>
      *
-     * <td><font size="-1">string</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * <td><font size="-1">string</font></td> </tr> </tbody> </table>
      *
      * @param deliveryNotes Additional instructions to explain the item’s delivery process.
      */
-    public void setDeliveryNotes(String deliveryNotes);
+    void setDeliveryNotes(String deliveryNotes);
 
     /**
-     * Additional instructions to explain the item;s delivery process.
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
-     * name="delivery_notes"></a>delivery_notes</b></font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Details</b></font></td>
+     * The maximum distance you will deliver an item in any direction. <table border="1"
+     * cellpadding="5" cellspacing="0" width="640"> <tbody> <tr valign="top"> <td colspan="2"
+     * bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="delivery_radius"></a>delivery_radius</b></font></td>
      *
-     * <td><font size="-1">Additional instructions to explain the item�s delivery process.</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Example</b></font></td>
-     * <td>
-     * <font size="-1">&lt;g:delivery_notes&gt;Items usually shipped within 24
-     * hours.&lt;g:/delivery_notes&gt;<br>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"><b>Details</b></font></td> <td><font
+     * size="-1">The maximum distance you will deliver an item in any direction. </font></td> </tr>
+     * <tr valign="top"> <td width="120"><font size="-1"><b>Example</b></font></td>
      *
-     * </font></td>
+     * <td> <font size="-1">&lt;g:delivery_radius&gt;10&lt;g:/delivery_radius&gt; </font> <br> <font
+     * size="-1">&lt;g:delivery_radius&gt;10km&lt;/g:delivery_radius&gt;</font></td> </tr> <tr
+     * valign="top"> <td width="120"><font size="-1"><b>Attribute of</b></font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Attribute of</b></font></td>
-     * <td>
-     * <font size="-1">Events, Products, Reviews, Services, Travel, Vehicles, Wanted Ads. </font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Content type</b></font></td>
+     * <td> <font size="-1">Events, Products, Reviews, Services, Travel, Vehicles, Wanted Ads.
+     * </font></td> </tr> <tr valign="top"> <td width="120"><font size="-1"><b>Content
+     * type</b></font></td> <td><font size="-1">floatUnit</font></td> </tr>
      *
-     * <td><font size="-1">string</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
-     *
-     * @return Additional instructions to explain the item�s delivery process.
-     */
-    public String getDeliveryNotes();
-
-    /**
-     * The maximum distance you will deliver an item in any direction.
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
-     * name="delivery_radius"></a>delivery_radius</b></font></td>
-     *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Details</b></font></td>
-     * <td><font size="-1">The maximum distance you will deliver an item in any direction. </font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Example</b></font></td>
-     *
-     * <td>
-     * <font size="-1">&lt;g:delivery_radius&gt;10&lt;g:/delivery_radius&gt; </font> <br>
-     * <font size="-1">&lt;g:delivery_radius&gt;10km&lt;/g:delivery_radius&gt;</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Attribute of</b></font></td>
-     *
-     * <td>
-     * <font size="-1">Events, Products, Reviews, Services, Travel, Vehicles, Wanted Ads. </font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Content type</b></font></td>
-     * <td><font size="-1">floatUnit</font></td>
-     * </tr>
-     *
-     * </tbody>
-     * </table>
-     *
-     * @param deliveryRadius The maximum distance you will deliver an item in any direction.
-     */
-    public void setDeliveryRadius(FloatUnit deliveryRadius);
-
-    /**
-     * The maximum distance you will deliver an item in any direction.
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
-     * name="delivery_radius"></a>delivery_radius</b></font></td>
-     *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Details</b></font></td>
-     * <td><font size="-1">The maximum distance you will deliver an item in any direction. </font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Example</b></font></td>
-     *
-     * <td>
-     * <font size="-1">&lt;g:delivery_radius&gt;10&lt;g:/delivery_radius&gt; </font> <br>
-     * <font size="-1">&lt;g:delivery_radius&gt;10km&lt;/g:delivery_radius&gt;</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Attribute of</b></font></td>
-     *
-     * <td>
-     * <font size="-1">Events, Products, Reviews, Services, Travel, Vehicles, Wanted Ads. </font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Content type</b></font></td>
-     * <td><font size="-1">floatUnit</font></td>
-     * </tr>
-     *
-     * </tbody>
-     * </table>
+     * </tbody> </table>
      *
      * @return The maximum distance you will deliver an item in any direction.
      */
-    public FloatUnit getDeliveryRadius();
+    FloatUnit getDeliveryRadius();
 
     /**
-     * Format of the content.
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
-     * name="format"></a>format</b></font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Details</b></font></td>
+     * The maximum distance you will deliver an item in any direction. <table border="1"
+     * cellpadding="5" cellspacing="0" width="640"> <tbody> <tr valign="top"> <td colspan="2"
+     * bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="delivery_radius"></a>delivery_radius</b></font></td>
      *
-     * <td><font size="-1"> Format of the content.</font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"><b>Details</b></font></td> <td><font
+     * size="-1">The maximum distance you will deliver an item in any direction. </font></td> </tr>
+     * <tr valign="top"> <td width="120"><font size="-1"><b>Example</b></font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Example</b></font></td>
-     * <td><font size="-1">&lt;g:format&gt;DVD&lt;/g:format&gt;<br>
+     * <td> <font size="-1">&lt;g:delivery_radius&gt;10&lt;g:/delivery_radius&gt; </font> <br> <font
+     * size="-1">&lt;g:delivery_radius&gt;10km&lt;/g:delivery_radius&gt;</font></td> </tr> <tr
+     * valign="top"> <td width="120"><font size="-1"><b>Attribute of</b></font></td>
      *
-     * &lt;g:format&gt;CD&lt;/g:format&gt;</font></td>
+     * <td> <font size="-1">Events, Products, Reviews, Services, Travel, Vehicles, Wanted Ads.
+     * </font></td> </tr> <tr valign="top"> <td width="120"><font size="-1"><b>Content
+     * type</b></font></td> <td><font size="-1">floatUnit</font></td> </tr>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Attribute of</b></font></td>
-     * <td><font size="-1"> Products</font></td>
+     * </tbody> </table>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Content type</b></font></td>
-     *
-     * <td><font size="-1"> string</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
-     *
-     * @param format Format of the content.
+     * @param deliveryRadius The maximum distance you will deliver an item in any direction.
      */
-    public void setFormat(String[] format);
+    void setDeliveryRadius(FloatUnit deliveryRadius);
 
     /**
-     * Format of the content.
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
-     * name="format"></a>format</b></font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Details</b></font></td>
+     * Format of the content. <table border="1" cellpadding="5" cellspacing="0" width="640"> <tbody>
+     * <tr valign="top"> <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="format"></a>format</b></font></td> </tr> <tr valign="top"> <td width="120"><font
+     * size="-1"><b>Details</b></font></td>
      *
      * <td><font size="-1"> Format of the content.</font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Example</b></font></td>
-     * <td><font size="-1">&lt;g:format&gt;DVD&lt;/g:format&gt;<br>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"><b>Example</b></font></td> <td><font
+     * size="-1">&lt;g:format&gt;DVD&lt;/g:format&gt;<br>
      *
      * &lt;g:format&gt;CD&lt;/g:format&gt;</font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Attribute of</b></font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"><b>Attribute of</b></font></td>
      * <td><font size="-1"> Products</font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Content type</b></font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"><b>Content type</b></font></td>
      *
-     * <td><font size="-1"> string</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * <td><font size="-1"> string</font></td> </tr> </tbody> </table>
      *
      * @return Format of the content.
      */
-    public String[] getFormat();
+    String[] getFormat();
 
     /**
-     * A unique 10 or 13 digit number assigned to every printed book.
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
-     * name="isbn"></a>isbn</b></font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Details</b></font></td>
+     * Format of the content. <table border="1" cellpadding="5" cellspacing="0" width="640"> <tbody>
+     * <tr valign="top"> <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="format"></a>format</b></font></td> </tr> <tr valign="top"> <td width="120"><font
+     * size="-1"><b>Details</b></font></td>
      *
-     * <td><font size="-1">A unique 10 or 13 digit number assigned to every printed book.</font></td>
-     * </tr>
+     * <td><font size="-1"> Format of the content.</font></td>
      *
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Example</b></font></td>
-     * <td><font size="-1">&lt;g:isbn&gt;0451524233&lt;/g:isbn&gt;</font></td>
-     * </tr>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"><b>Example</b></font></td> <td><font
+     * size="-1">&lt;g:format&gt;DVD&lt;/g:format&gt;<br>
      *
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Attribute of</b></font></td>
-     * <td><font size="-1">Products</font></td>
+     * &lt;g:format&gt;CD&lt;/g:format&gt;</font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Content type</b></font></td>
-     * <td><font size="-1">string</font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"><b>Attribute of</b></font></td>
+     * <td><font size="-1"> Products</font></td>
      *
-     * </tr>
-     * </tbody>
-     * </table>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"><b>Content type</b></font></td>
      *
-     * @param isbn A unique 10 or 13 digit number assigned to every printed book.
+     * <td><font size="-1"> string</font></td> </tr> </tbody> </table>
+     *
+     * @param format Format of the content.
      */
-    public void setIsbn(String isbn);
+    void setFormat(String[] format);
 
     /**
-     * A unique 10 or 13 digit number assigned to every printed book.
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
-     * name="isbn"></a>isbn</b></font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Details</b></font></td>
+     * A unique 10 or 13 digit number assigned to every printed book. <table border="1"
+     * cellpadding="5" cellspacing="0" width="640"> <tbody> <tr valign="top"> <td colspan="2"
+     * bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="isbn"></a>isbn</b></font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"><b>Details</b></font></td>
      *
-     * <td><font size="-1">A unique 10 or 13 digit number assigned to every printed book.</font></td>
-     * </tr>
+     * <td><font size="-1">A unique 10 or 13 digit number assigned to every printed
+     * book.</font></td> </tr>
      *
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Example</b></font></td>
-     * <td><font size="-1">&lt;g:isbn&gt;0451524233&lt;/g:isbn&gt;</font></td>
-     * </tr>
+     * <tr valign="top"> <td width="120"><font size="-1"><b>Example</b></font></td> <td><font
+     * size="-1">&lt;g:isbn&gt;0451524233&lt;/g:isbn&gt;</font></td> </tr>
      *
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Attribute of</b></font></td>
-     * <td><font size="-1">Products</font></td>
+     * <tr valign="top"> <td width="120"><font size="-1"><b>Attribute of</b></font></td> <td><font
+     * size="-1">Products</font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"><b>Content type</b></font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"><b>Content type</b></font></td>
      * <td><font size="-1">string</font></td>
      *
-     * </tr>
-     * </tbody>
-     * </table>
+     * </tr> </tbody> </table>
      *
      * @return A unique 10 or 13 digit number assigned to every printed book.
      */
-    public String getIsbn();
+    String getIsbn();
 
     /**
-     * Location of a property. Should include street, city, state, postal code, and country, in that
-     * order.
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
+     * A unique 10 or 13 digit number assigned to every printed book. <table border="1"
+     * cellpadding="5" cellspacing="0" width="640"> <tbody> <tr valign="top"> <td colspan="2"
+     * bgcolor="#dddddd" valign="top"><font size="-1"><b><a name="isbn"></a>isbn</b></font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"><b>Details</b></font></td>
      *
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
-     * name="location"></a>location</b></font></td>
-     * </tr>
-     * <tr valign="top">
+     * <td><font size="-1">A unique 10 or 13 digit number assigned to every printed
+     * book.</font></td> </tr>
      *
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> Location of a property. Should include street, city, state, postal code,
-     * and country, in that order. </font></td>
+     * <tr valign="top"> <td width="120"><font size="-1"><b>Example</b></font></td> <td><font
+     * size="-1">&lt;g:isbn&gt;0451524233&lt;/g:isbn&gt;</font></td> </tr>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
+     * <tr valign="top"> <td width="120"><font size="-1"><b>Attribute of</b></font></td> <td><font
+     * size="-1">Products</font></td>
      *
-     * <td><font size="-1"> <em>Acceptable:</em><br>
-     * &lt;g:location&gt;<st1:place>123 Main St, <st1:city>Anytown</st1:city>,
-     * <st1:state>CA</st1:state>, <st1:postalcode>12345</st1:postalcode>,
-     * <st1:country-region>USA</st1:country-region></st1:place>&lt;/g:location&gt;<br>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"><b>Content type</b></font></td>
+     * <td><font size="-1">string</font></td>
      *
-     * <em>Not acceptable:</em><br>
-     * &lt;g:location&gt;<st1:place><st1:city>123</st1:city> Main St,, <st1:state>CA</st1:state>,
-     * <st1:postalcode>12345</st1:postalcode>,
-     * <st1:country-region>USA</st1:country-region></st1:place>&lt;/g:location&gt;<br>
-     * &lt;g:location&gt; <st1:place><st1:city>Anytown</st1:city>, <st1:state>CA</st1:state>,
-     * <st1:postalcode>12345</st1:postalcode>,
-     * <st1:country-region>USA</st1:country-region></st1:place>&lt;/g:location&gt;</font></td>
+     * </tr> </tbody> </table>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Reference Items, Events, Housing, Jobs, News and Articles, People
-     * profiles, Products, Reviews, Services, Travel, Vehicles, Wanted Ads.</font></td>
-     * </tr>
-     *
-     * <tr valign="top">
-     *
-     * <td width="120"><font size="-1"> <b>Content type</b></font></td>
-     * <td><font size="-1"> locationType</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
-     *
-     * @param location Location of a property. Should include street, city, state, postal code, and
-     *            country, in that order.
+     * @param isbn A unique 10 or 13 digit number assigned to every printed book.
      */
-    public void setLocation(String location);
+    void setIsbn(String isbn);
 
     /**
      * Location of a property. Should include street, city, state, postal code, and country, in that
-     * order.
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
+     * order. <table border="1" cellpadding="5" cellspacing="0" width="640"> <tbody> <tr
+     * valign="top">
      *
      * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
-     * name="location"></a>location</b></font></td>
-     * </tr>
-     * <tr valign="top">
+     * name="location"></a>location</b></font></td> </tr> <tr valign="top">
      *
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> Location of a property. Should include street, city, state, postal code,
-     * and country, in that order. </font></td>
+     * <td width="120"><font size="-1"> <b>Details</b></font></td> <td><font size="-1"> Location of
+     * a property. Should include street, city, state, postal code, and country, in that order.
+     * </font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Example</b></font></td>
      *
-     * <td><font size="-1"> <em>Acceptable:</em><br>
-     * &lt;g:location&gt;<st1:place>123 Main St, <st1:city>Anytown</st1:city>,
+     * <td><font size="-1"> <em>Acceptable:</em><br> &lt;g:location&gt;<st1:place>123 Main St,
+     * <st1:city>Anytown</st1:city>, <st1:state>CA</st1:state>, <st1:postalcode>12345</st1:postalcode>,
+     * <st1:country-region>USA</st1:country-region></st1:place>&lt;/g:location&gt;<br>
+     *
+     * <em>Not acceptable:</em><br> &lt;g:location&gt;<st1:place><st1:city>123</st1:city> Main St,,
      * <st1:state>CA</st1:state>, <st1:postalcode>12345</st1:postalcode>,
      * <st1:country-region>USA</st1:country-region></st1:place>&lt;/g:location&gt;<br>
-     *
-     * <em>Not acceptable:</em><br>
-     * &lt;g:location&gt;<st1:place><st1:city>123</st1:city> Main St,, <st1:state>CA</st1:state>,
-     * <st1:postalcode>12345</st1:postalcode>,
-     * <st1:country-region>USA</st1:country-region></st1:place>&lt;/g:location&gt;<br>
      * &lt;g:location&gt; <st1:place><st1:city>Anytown</st1:city>, <st1:state>CA</st1:state>,
-     * <st1:postalcode>12345</st1:postalcode>,
-     * <st1:country-region>USA</st1:country-region></st1:place>&lt;/g:location&gt;</font></td>
+     * <st1:postalcode>12345</st1:postalcode>, <st1:country-region>USA</st1:country-region></st1:place>&lt;/g:location&gt;</font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
      * <td><font size="-1"> Reference Items, Events, Housing, Jobs, News and Articles, People
-     * profiles, Products, Reviews, Services, Travel, Vehicles, Wanted Ads.</font></td>
-     * </tr>
+     * profiles, Products, Reviews, Services, Travel, Vehicles, Wanted Ads.</font></td> </tr>
      *
      * <tr valign="top">
      *
-     * <td width="120"><font size="-1"> <b>Content type</b></font></td>
-     * <td><font size="-1"> locationType</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * <td width="120"><font size="-1"> <b>Content type</b></font></td> <td><font size="-1">
+     * locationType</font></td> </tr> </tbody> </table>
      *
      * @return Location of a property. Should include street, city, state, postal code, and country,
-     *         in that order.
+     * in that order.
      */
-    public String getLocation();
+    String getLocation();
 
     /**
-     * Company that manufactures the item.
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
+     * Location of a property. Should include street, city, state, postal code, and country, in that
+     * order. <table border="1" cellpadding="5" cellspacing="0" width="640"> <tbody> <tr
+     * valign="top">
      *
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top">
-     * <font size="-1"><b><a name="manufacturer"></a>manufacturer</b></font></td>
-     * </tr>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="location"></a>location</b></font></td> </tr> <tr valign="top">
      *
-     * <tr valign="top">
-     * <td width="120">
-     * <font size="-1"><b>Details</b></font></td>
-     * <td>
+     * <td width="120"><font size="-1"> <b>Details</b></font></td> <td><font size="-1"> Location of
+     * a property. Should include street, city, state, postal code, and country, in that order.
+     * </font></td>
      *
-     * <font size="-1">Company that manufactures the item.</font></td>
-     * </tr>
-     * <tr valign="top">
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Example</b></font></td>
      *
-     * <td width="120">
-     * <font size="-1"><b>Example</b></font></td>
-     * <td>
-     * <font size="-1">&lt;g:manufacturer&gt;Acme, Inc&lt;/g:manufacturer&gt;</font></td>
+     * <td><font size="-1"> <em>Acceptable:</em><br> &lt;g:location&gt;<st1:place>123 Main St,
+     * <st1:city>Anytown</st1:city>, <st1:state>CA</st1:state>, <st1:postalcode>12345</st1:postalcode>,
+     * <st1:country-region>USA</st1:country-region></st1:place>&lt;/g:location&gt;<br>
      *
-     * </tr>
-     * <tr valign="top">
+     * <em>Not acceptable:</em><br> &lt;g:location&gt;<st1:place><st1:city>123</st1:city> Main St,,
+     * <st1:state>CA</st1:state>, <st1:postalcode>12345</st1:postalcode>,
+     * <st1:country-region>USA</st1:country-region></st1:place>&lt;/g:location&gt;<br>
+     * &lt;g:location&gt; <st1:place><st1:city>Anytown</st1:city>, <st1:state>CA</st1:state>,
+     * <st1:postalcode>12345</st1:postalcode>, <st1:country-region>USA</st1:country-region></st1:place>&lt;/g:location&gt;</font></td>
      *
-     * <td width="120">
-     * <font size="-1"><b>Attribute of</b></font></td>
-     * <td>
-     * <font size="-1">Products</font></td>
-     * </tr>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
+     * <td><font size="-1"> Reference Items, Events, Housing, Jobs, News and Articles, People
+     * profiles, Products, Reviews, Services, Travel, Vehicles, Wanted Ads.</font></td> </tr>
+     *
      * <tr valign="top">
      *
-     * <td width="120">
+     * <td width="120"><font size="-1"> <b>Content type</b></font></td> <td><font size="-1">
+     * locationType</font></td> </tr> </tbody> </table>
      *
-     * <font size="-1"><b>Content type</b></font></td>
-     * <td>
-     * <font size="-1">string</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
-     *
-     * @param manufacturer Company that manufactures the item.
+     * @param location Location of a property. Should include street, city, state, postal code, and
+     *                 country, in that order.
      */
-    public void setManufacturer(String manufacturer);
+    void setLocation(String location);
 
     /**
-     * Company that manufactures the item.
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
+     * Company that manufactures the item. <table border="1" cellpadding="5" cellspacing="0"
+     * width="640">
      *
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top">
-     * <font size="-1"><b><a name="manufacturer"></a>manufacturer</b></font></td>
-     * </tr>
+     * <tbody> <tr valign="top"> <td colspan="2" bgcolor="#dddddd" valign="top"> <font
+     * size="-1"><b><a name="manufacturer"></a>manufacturer</b></font></td> </tr>
      *
-     * <tr valign="top">
-     * <td width="120">
-     * <font size="-1"><b>Details</b></font></td>
-     * <td>
+     * <tr valign="top"> <td width="120"> <font size="-1"><b>Details</b></font></td> <td>
      *
-     * <font size="-1">Company that manufactures the item.</font></td>
-     * </tr>
-     * <tr valign="top">
+     * <font size="-1">Company that manufactures the item.</font></td> </tr> <tr valign="top">
      *
-     * <td width="120">
-     * <font size="-1"><b>Example</b></font></td>
-     * <td>
-     * <font size="-1">&lt;g:manufacturer&gt;Acme, Inc&lt;/g:manufacturer&gt;</font></td>
+     * <td width="120"> <font size="-1"><b>Example</b></font></td> <td> <font
+     * size="-1">&lt;g:manufacturer&gt;Acme, Inc&lt;/g:manufacturer&gt;</font></td>
      *
-     * </tr>
-     * <tr valign="top">
+     * </tr> <tr valign="top">
      *
-     * <td width="120">
-     * <font size="-1"><b>Attribute of</b></font></td>
-     * <td>
-     * <font size="-1">Products</font></td>
-     * </tr>
-     * <tr valign="top">
+     * <td width="120"> <font size="-1"><b>Attribute of</b></font></td> <td> <font
+     * size="-1">Products</font></td> </tr> <tr valign="top">
      *
      * <td width="120">
      *
-     * <font size="-1"><b>Content type</b></font></td>
-     * <td>
-     * <font size="-1">string</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * <font size="-1"><b>Content type</b></font></td> <td> <font size="-1">string</font></td> </tr>
+     * </tbody> </table>
      *
      * @return Company that manufactures the item.
      */
-    public String getManufacturer();
+    String getManufacturer();
 
     /**
-     * Unique product ID code assigned by its manufacturer.
+     * Company that manufactures the item. <table border="1" cellpadding="5" cellspacing="0"
+     * width="640">
      *
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
+     * <tbody> <tr valign="top"> <td colspan="2" bgcolor="#dddddd" valign="top"> <font
+     * size="-1"><b><a name="manufacturer"></a>manufacturer</b></font></td> </tr>
      *
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
-     * name="manufacturer_id"></a>manufacturer_id</b></font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1">
+     * <tr valign="top"> <td width="120"> <font size="-1"><b>Details</b></font></td> <td>
      *
-     * Unique product ID code assigned by its manufacturer.</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:manufacturer_id&gt;030779A&lt;/g:manufacturer_id&gt;</font></td>
+     * <font size="-1">Company that manufactures the item.</font></td> </tr> <tr valign="top">
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Products</font></td>
-     * </tr>
+     * <td width="120"> <font size="-1"><b>Example</b></font></td> <td> <font
+     * size="-1">&lt;g:manufacturer&gt;Acme, Inc&lt;/g:manufacturer&gt;</font></td>
      *
-     * <tr valign="top">
+     * </tr> <tr valign="top">
      *
-     * <td width="120"><font size="-1"> <b>Content type</b></font></td>
-     * <td><font size="-1"> string</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * <td width="120"> <font size="-1"><b>Attribute of</b></font></td> <td> <font
+     * size="-1">Products</font></td> </tr> <tr valign="top">
      *
-     * @param manufacturerId Unique product ID code assigned by its manufacturer.
+     * <td width="120">
+     *
+     * <font size="-1"><b>Content type</b></font></td> <td> <font size="-1">string</font></td> </tr>
+     * </tbody> </table>
+     *
+     * @param manufacturer Company that manufactures the item.
      */
-    public void setManufacturerId(String manufacturerId);
+    void setManufacturer(String manufacturer);
 
     /**
      * Unique product ID code assigned by its manufacturer.
      *
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      *
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
-     * name="manufacturer_id"></a>manufacturer_id</b></font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1">
+     * <tbody> <tr valign="top"> <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
+     * <b><a name="manufacturer_id"></a>manufacturer_id</b></font></td> </tr> <tr valign="top"> <td
+     * width="120"><font size="-1"> <b>Details</b></font></td> <td><font size="-1">
      *
-     * Unique product ID code assigned by its manufacturer.</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:manufacturer_id&gt;030779A&lt;/g:manufacturer_id&gt;</font></td>
+     * Unique product ID code assigned by its manufacturer.</font></td> </tr> <tr valign="top"> <td
+     * width="120"><font size="-1"> <b>Example</b></font></td> <td><font size="-1">
+     * &lt;g:manufacturer_id&gt;030779A&lt;/g:manufacturer_id&gt;</font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Products</font></td>
-     * </tr>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
+     * <td><font size="-1"> Products</font></td> </tr>
      *
      * <tr valign="top">
      *
-     * <td width="120"><font size="-1"> <b>Content type</b></font></td>
-     * <td><font size="-1"> string</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * <td width="120"><font size="-1"> <b>Content type</b></font></td> <td><font size="-1">
+     * string</font></td> </tr> </tbody> </table>
      *
      * @return Unique product ID code assigned by its manufacturer.
      */
-    public String getManufacturerId();
+    String getManufacturerId();
 
     /**
-     * Resolution of a digital imaging device.
+     * Unique product ID code assigned by its manufacturer.
+     *
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
      *
-     * <b><a name="megapixels"></a>megapixels</b></font></td>
+     * <tbody> <tr valign="top"> <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
+     * <b><a name="manufacturer_id"></a>manufacturer_id</b></font></td> </tr> <tr valign="top"> <td
+     * width="120"><font size="-1"> <b>Details</b></font></td> <td><font size="-1">
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> Resolution of a digital imaging device.</font></td>
+     * Unique product ID code assigned by its manufacturer.</font></td> </tr> <tr valign="top"> <td
+     * width="120"><font size="-1"> <b>Example</b></font></td> <td><font size="-1">
+     * &lt;g:manufacturer_id&gt;030779A&lt;/g:manufacturer_id&gt;</font></td>
      *
-     * </tr>
-     *
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:megapixels&gt;5.2 MP&lt;/g:megapixels&gt;</font></td>
-     * </tr>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
+     * <td><font size="-1"> Products</font></td> </tr>
      *
      * <tr valign="top">
      *
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Products</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1">
+     * <td width="120"><font size="-1"> <b>Content type</b></font></td> <td><font size="-1">
+     * string</font></td> </tr> </tbody> </table>
      *
-     * <b>Content type</b></font></td>
-     *
-     * <td><font size="-1"> floatUnit</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
-     *
-     * @param megapixels Resolution of a digital imaging device.
+     * @param manufacturerId Unique product ID code assigned by its manufacturer.
      */
-    public void setMegapixels(FloatUnit megapixels);
+    void setManufacturerId(String manufacturerId);
 
     /**
-     * Resolution of a digital imaging device.
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
+     * Resolution of a digital imaging device. <table border="1" cellpadding="5" cellspacing="0"
+     * width="640"> <tbody> <tr valign="top"> <td colspan="2" bgcolor="#dddddd" valign="top"><font
+     * size="-1">
      *
      * <b><a name="megapixels"></a>megapixels</b></font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> Resolution of a digital imaging device.</font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Details</b></font></td> <td><font
+     * size="-1"> Resolution of a digital imaging device.</font></td>
      *
      * </tr>
      *
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:megapixels&gt;5.2 MP&lt;/g:megapixels&gt;</font></td>
-     * </tr>
+     * <tr valign="top"> <td width="120"><font size="-1"> <b>Example</b></font></td> <td><font
+     * size="-1"> &lt;g:megapixels&gt;5.2 MP&lt;/g:megapixels&gt;</font></td> </tr>
      *
      * <tr valign="top">
      *
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Products</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1">
+     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td> <td><font size="-1">
+     * Products</font></td> </tr> <tr valign="top"> <td width="120"><font size="-1">
      *
      * <b>Content type</b></font></td>
      *
-     * <td><font size="-1"> floatUnit</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * <td><font size="-1"> floatUnit</font></td> </tr> </tbody> </table>
      *
      * @return Resolution of a digital imaging device.
      */
-    public FloatUnit getMegapixels();
+    FloatUnit getMegapixels();
 
     /**
-     * The amount of memory included in an item.
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a name="memory"></a>memory</b></font></td>
+     * Resolution of a digital imaging device. <table border="1" cellpadding="5" cellspacing="0"
+     * width="640"> <tbody> <tr valign="top"> <td colspan="2" bgcolor="#dddddd" valign="top"><font
+     * size="-1">
+     *
+     * <b><a name="megapixels"></a>megapixels</b></font></td>
+     *
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Details</b></font></td> <td><font
+     * size="-1"> Resolution of a digital imaging device.</font></td>
      *
      * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> The amount of memory included in an item.</font></td>
-     * </tr>
+     *
+     * <tr valign="top"> <td width="120"><font size="-1"> <b>Example</b></font></td> <td><font
+     * size="-1"> &lt;g:megapixels&gt;5.2 MP&lt;/g:megapixels&gt;</font></td> </tr>
      *
      * <tr valign="top">
      *
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:memory&gt;128 MB&lt;/g:memory&gt;</font></td>
-     * </tr>
-     * <tr valign="top">
-     *
-     * <td width="120"><font size="-1">
-     *
-     * <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Products</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1">
+     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td> <td><font size="-1">
+     * Products</font></td> </tr> <tr valign="top"> <td width="120"><font size="-1">
      *
      * <b>Content type</b></font></td>
      *
-     * <td><font size="-1"> floatUnit</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * <td><font size="-1"> floatUnit</font></td> </tr> </tbody> </table>
      *
-     * @param memory The amount of memory included in an item.
+     * @param megapixels Resolution of a digital imaging device.
      */
-    public void setMemory(FloatUnit memory);
+    void setMegapixels(FloatUnit megapixels);
 
     /**
-     * The amount of memory included in an item.
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a name="memory"></a>memory</b></font></td>
+     * The amount of memory included in an item. <table border="1" cellpadding="5" cellspacing="0"
+     * width="640"> <tbody> <tr valign="top"> <td colspan="2" bgcolor="#dddddd"><font size="-1">
+     * <b><a name="memory"></a>memory</b></font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> The amount of memory included in an item.</font></td>
-     * </tr>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Details</b></font></td> <td><font
+     * size="-1"> The amount of memory included in an item.</font></td> </tr>
      *
      * <tr valign="top">
      *
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:memory&gt;128 MB&lt;/g:memory&gt;</font></td>
-     * </tr>
-     * <tr valign="top">
+     * <td width="120"><font size="-1"> <b>Example</b></font></td> <td><font size="-1">
+     * &lt;g:memory&gt;128 MB&lt;/g:memory&gt;</font></td> </tr> <tr valign="top">
      *
      * <td width="120"><font size="-1">
      *
-     * <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Products</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1">
+     * <b>Attribute of</b></font></td> <td><font size="-1"> Products</font></td> </tr> <tr
+     * valign="top"> <td width="120"><font size="-1">
      *
      * <b>Content type</b></font></td>
      *
-     * <td><font size="-1"> floatUnit</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * <td><font size="-1"> floatUnit</font></td> </tr> </tbody> </table>
      *
      * @return The amount of memory included in an item.
      */
-    public FloatUnit getMemory();
+    FloatUnit getMemory();
 
     /**
-     * Model number of the product.
+     * The amount of memory included in an item. <table border="1" cellpadding="5" cellspacing="0"
+     * width="640"> <tbody> <tr valign="top"> <td colspan="2" bgcolor="#dddddd"><font size="-1">
+     * <b><a name="memory"></a>memory</b></font></td>
      *
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     *
-     * <tbody>
-     * <tr valign="top">
-     *
-     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a
-     * name="model_number"></a>model_number</b></font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1">
-     *
-     * Model number of the product.</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:model_number&gt;1924863&lt;/g:model_number&gt;</font></td>
-     *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Products</font></td>
-     * </tr>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Details</b></font></td> <td><font
+     * size="-1"> The amount of memory included in an item.</font></td> </tr>
      *
      * <tr valign="top">
      *
-     * <td width="120"><font size="-1"> <b>Content type</b></font></td>
-     * <td><font size="-1"> string</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * <td width="120"><font size="-1"> <b>Example</b></font></td> <td><font size="-1">
+     * &lt;g:memory&gt;128 MB&lt;/g:memory&gt;</font></td> </tr> <tr valign="top">
      *
-     * @param modelNumber Model number of the product.
+     * <td width="120"><font size="-1">
+     *
+     * <b>Attribute of</b></font></td> <td><font size="-1"> Products</font></td> </tr> <tr
+     * valign="top"> <td width="120"><font size="-1">
+     *
+     * <b>Content type</b></font></td>
+     *
+     * <td><font size="-1"> floatUnit</font></td> </tr> </tbody> </table>
+     *
+     * @param memory The amount of memory included in an item.
      */
-    public void setModelNumber(String modelNumber);
+    void setMemory(FloatUnit memory);
 
     /**
      * Model number of the product.
      *
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      *
-     * <tbody>
-     * <tr valign="top">
+     * <tbody> <tr valign="top">
      *
-     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a
-     * name="model_number"></a>model_number</b></font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1">
+     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a name="model_number"></a>model_number</b></font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Details</b></font></td> <td><font
+     * size="-1">
      *
-     * Model number of the product.</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:model_number&gt;1924863&lt;/g:model_number&gt;</font></td>
+     * Model number of the product.</font></td> </tr> <tr valign="top"> <td width="120"><font
+     * size="-1"> <b>Example</b></font></td> <td><font size="-1"> &lt;g:model_number&gt;1924863&lt;/g:model_number&gt;</font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Products</font></td>
-     * </tr>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
+     * <td><font size="-1"> Products</font></td> </tr>
      *
      * <tr valign="top">
      *
-     * <td width="120"><font size="-1"> <b>Content type</b></font></td>
-     * <td><font size="-1"> string</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * <td width="120"><font size="-1"> <b>Content type</b></font></td> <td><font size="-1">
+     * string</font></td> </tr> </tbody> </table>
      *
      * @return Model number of the product.
      */
-    public String getModelNumber();
+    String getModelNumber();
 
     /**
-     * Acceptable payment methods for item purchases.
+     * Model number of the product.
      *
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      *
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
-     * name="payment_accepted"></a>payment_accepted</b></font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> Acceptable payment methods for item purchases. Acceptable values are
-     * “Cash,” “Check,” “Traveler’s Check,” “Visa,” “MasterCard,”
+     * <tbody> <tr valign="top">
      *
-     * “American Express,” “Discover,” or “Wire transfer.” If you accept more than one method,
-     * include multiple instances of the &lt;payment_accepted&gt; attribute for each acceptable
-     * method.</font></td>
+     * <td colspan="2" bgcolor="#dddddd"><font size="-1"> <b><a name="model_number"></a>model_number</b></font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Details</b></font></td> <td><font
+     * size="-1">
      *
-     * </tr>
+     * Model number of the product.</font></td> </tr> <tr valign="top"> <td width="120"><font
+     * size="-1"> <b>Example</b></font></td> <td><font size="-1"> &lt;g:model_number&gt;1924863&lt;/g:model_number&gt;</font></td>
+     *
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
+     * <td><font size="-1"> Products</font></td> </tr>
      *
      * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> <em>Acceptable:</em><br>
-     * &lt;g:payment_accepted&gt;Cash&lt;/g:payment_accepted&gt;<br>
      *
-     * &lt;g:payment_accepted&gt;Check&lt;/g:payment_accepted&gt;<br>
-     * <em>Not acceptable:</em><br>
-     * &lt;g:payment_accepted&gt;Cash Check&lt;/g:payment_accepted&gt;</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
+     * <td width="120"><font size="-1"> <b>Content type</b></font></td> <td><font size="-1">
+     * string</font></td> </tr> </tbody> </table>
      *
-     * <td><font size="-1"> Events, Housing, Products, Services, Travel, Vehicles</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Content type</b></font></td>
-     * <td><font size="-1">
-     *
-     * paymentMethodEnumeration</font></td>
-     *
-     * </tr>
-     * </tbody>
-     * </table>
-     *
-     * @param paymentAccepted Acceptable payment methods for item purchases.
+     * @param modelNumber Model number of the product.
      */
-    public void setPaymentAccepted(PaymentTypeEnumeration[] paymentAccepted);
+    void setModelNumber(String modelNumber);
 
     /**
      * Acceptable payment methods for item purchases.
      *
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      *
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
-     * name="payment_accepted"></a>payment_accepted</b></font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> Acceptable payment methods for item purchases. Acceptable values are
-     * “Cash,” “Check,” “Traveler’s Check,” “Visa,” “MasterCard,”
+     * <tbody> <tr valign="top"> <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
+     * <b><a name="payment_accepted"></a>payment_accepted</b></font></td> </tr> <tr valign="top">
+     * <td width="120"><font size="-1"> <b>Details</b></font></td> <td><font size="-1"> Acceptable
+     * payment methods for item purchases. Acceptable values are “Cash,” “Check,” “Traveler’s
+     * Check,” “Visa,” “MasterCard,”
      *
      * “American Express,” “Discover,” or “Wire transfer.” If you accept more than one method,
      * include multiple instances of the &lt;payment_accepted&gt; attribute for each acceptable
@@ -1531,1060 +989,742 @@ public interface Product extends GlobalInterface {
      *
      * </tr>
      *
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> <em>Acceptable:</em><br>
-     * &lt;g:payment_accepted&gt;Cash&lt;/g:payment_accepted&gt;<br>
+     * <tr valign="top"> <td width="120"><font size="-1"> <b>Example</b></font></td> <td><font
+     * size="-1"> <em>Acceptable:</em><br> &lt;g:payment_accepted&gt;Cash&lt;/g:payment_accepted&gt;<br>
      *
-     * &lt;g:payment_accepted&gt;Check&lt;/g:payment_accepted&gt;<br>
-     * <em>Not acceptable:</em><br>
-     * &lt;g:payment_accepted&gt;Cash Check&lt;/g:payment_accepted&gt;</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
+     * &lt;g:payment_accepted&gt;Check&lt;/g:payment_accepted&gt;<br> <em>Not acceptable:</em><br>
+     * &lt;g:payment_accepted&gt;Cash Check&lt;/g:payment_accepted&gt;</font></td> </tr> <tr
+     * valign="top"> <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
      *
-     * <td><font size="-1"> Events, Housing, Products, Services, Travel, Vehicles</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Content type</b></font></td>
-     * <td><font size="-1">
+     * <td><font size="-1"> Events, Housing, Products, Services, Travel, Vehicles</font></td> </tr>
+     * <tr valign="top"> <td width="120"><font size="-1"> <b>Content type</b></font></td> <td><font
+     * size="-1">
      *
      * paymentMethodEnumeration</font></td>
      *
-     * </tr>
-     * </tbody>
-     * </table>
+     * </tr> </tbody> </table>
      *
      * @return Acceptable payment methods for item purchases.
      */
-    public PaymentTypeEnumeration[] getPaymentAccepted();
+    PaymentTypeEnumeration[] getPaymentAccepted();
 
     /**
-     * Additional instructions to explain a payment policy.
+     * Acceptable payment methods for item purchases.
      *
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
-     * name="payment_notes"></a>payment_notes</b></font></td>
+     *
+     * <tbody> <tr valign="top"> <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
+     * <b><a name="payment_accepted"></a>payment_accepted</b></font></td> </tr> <tr valign="top">
+     * <td width="120"><font size="-1"> <b>Details</b></font></td> <td><font size="-1"> Acceptable
+     * payment methods for item purchases. Acceptable values are “Cash,” “Check,” “Traveler’s
+     * Check,” “Visa,” “MasterCard,”
+     *
+     * “American Express,” “Discover,” or “Wire transfer.” If you accept more than one method,
+     * include multiple instances of the &lt;payment_accepted&gt; attribute for each acceptable
+     * method.</font></td>
      *
      * </tr>
-     * <tr valign="top">
      *
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> Additional instructions to explain a payment policy.</font></td>
-     * </tr>
+     * <tr valign="top"> <td width="120"><font size="-1"> <b>Example</b></font></td> <td><font
+     * size="-1"> <em>Acceptable:</em><br> &lt;g:payment_accepted&gt;Cash&lt;/g:payment_accepted&gt;<br>
      *
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
+     * &lt;g:payment_accepted&gt;Check&lt;/g:payment_accepted&gt;<br> <em>Not acceptable:</em><br>
+     * &lt;g:payment_accepted&gt;Cash Check&lt;/g:payment_accepted&gt;</font></td> </tr> <tr
+     * valign="top"> <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
      *
-     * <td><font size="-1"> &lt;g:payment_notes&gt;Cash only for local
-     * orders.&lt;/g:payment_notes&gt;</font></td>
-     * </tr>
-     * <tr valign="top">
+     * <td><font size="-1"> Events, Housing, Products, Services, Travel, Vehicles</font></td> </tr>
+     * <tr valign="top"> <td width="120"><font size="-1"> <b>Content type</b></font></td> <td><font
+     * size="-1">
      *
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1">
+     * paymentMethodEnumeration</font></td>
      *
-     * Events, Housing, Products, Services, Travel, Vehicles</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1">
+     * </tr> </tbody> </table>
      *
-     * <b>Content type</b></font></td>
-     * <td><font size="-1"> string</font></td>
-     *
-     * </tr>
-     * </tbody>
-     * </table>
-     *
-     * @param paymentNotes Additional instructions to explain a payment policy.
+     * @param paymentAccepted Acceptable payment methods for item purchases.
      */
-    public void setPaymentNotes(String paymentNotes);
+    void setPaymentAccepted(PaymentTypeEnumeration[] paymentAccepted);
 
     /**
      * Additional instructions to explain a payment policy.
      *
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * <table border="1" cellpadding="5" cellspacing="0" width="640"> <tbody> <tr valign="top"> <td
+     * colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
      * name="payment_notes"></a>payment_notes</b></font></td>
      *
-     * </tr>
-     * <tr valign="top">
+     * </tr> <tr valign="top">
      *
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> Additional instructions to explain a payment policy.</font></td>
-     * </tr>
+     * <td width="120"><font size="-1"> <b>Details</b></font></td> <td><font size="-1"> Additional
+     * instructions to explain a payment policy.</font></td> </tr>
      *
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
+     * <tr valign="top"> <td width="120"><font size="-1"> <b>Example</b></font></td>
      *
      * <td><font size="-1"> &lt;g:payment_notes&gt;Cash only for local
-     * orders.&lt;/g:payment_notes&gt;</font></td>
-     * </tr>
-     * <tr valign="top">
+     * orders.&lt;/g:payment_notes&gt;</font></td> </tr> <tr valign="top">
      *
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1">
+     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td> <td><font size="-1">
      *
-     * Events, Housing, Products, Services, Travel, Vehicles</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1">
+     * Events, Housing, Products, Services, Travel, Vehicles</font></td> </tr> <tr valign="top"> <td
+     * width="120"><font size="-1">
      *
-     * <b>Content type</b></font></td>
-     * <td><font size="-1"> string</font></td>
+     * <b>Content type</b></font></td> <td><font size="-1"> string</font></td>
      *
-     * </tr>
-     * </tbody>
-     * </table>
+     * </tr> </tbody> </table>
      *
      * @return Additional instructions to explain a payment policy.
      */
-    public String getPaymentNotes();
+    String getPaymentNotes();
 
     /**
-     * Whether or not an item is available for pick up.
+     * Additional instructions to explain a payment policy.
      *
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
+     * <table border="1" cellpadding="5" cellspacing="0" width="640"> <tbody> <tr valign="top"> <td
+     * colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="payment_notes"></a>payment_notes</b></font></td>
      *
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
-     * name="pickup"></a>pickup</b></font></td>
-     * </tr>
-     * <tr valign="top">
+     * </tr> <tr valign="top">
      *
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
+     * <td width="120"><font size="-1"> <b>Details</b></font></td> <td><font size="-1"> Additional
+     * instructions to explain a payment policy.</font></td> </tr>
      *
-     * <td><font size="-1"> Information about whether or not an item is available for pick up.
-     * Acceptable values are "True and "False". </font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
+     * <tr valign="top"> <td width="120"><font size="-1"> <b>Example</b></font></td>
      *
-     * <td><font size="-1">
+     * <td><font size="-1"> &lt;g:payment_notes&gt;Cash only for local
+     * orders.&lt;/g:payment_notes&gt;</font></td> </tr> <tr valign="top">
      *
-     * <em>Acceptable:</em><br>
-     * &lt;g:pickup&gt;True&lt;/g:pickup&gt;<br>
-     * <em>Not acceptable:</em><br>
-     * &lt;g:pickup&gt;Not on Tuesdays&lt;/g:pickup&gt;</font></td>
-     * </tr>
+     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td> <td><font size="-1">
      *
-     * <tr valign="top">
+     * Events, Housing, Products, Services, Travel, Vehicles</font></td> </tr> <tr valign="top"> <td
+     * width="120"><font size="-1">
      *
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Products</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1">
+     * <b>Content type</b></font></td> <td><font size="-1"> string</font></td>
      *
-     * <b>Content type</b></font></td>
-     * <td><font size="-1"> boolean</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * </tr> </tbody> </table>
      *
-     * @param pickup Whether or not an item is available for pick up.
+     * @param paymentNotes Additional instructions to explain a payment policy.
      */
-    public void setPickup(Boolean pickup);
+    void setPaymentNotes(String paymentNotes);
 
     /**
      * Whether or not an item is available for pick up.
      *
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      *
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
-     * name="pickup"></a>pickup</b></font></td>
-     * </tr>
-     * <tr valign="top">
+     * <tbody> <tr valign="top"> <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
+     * <b><a name="pickup"></a>pickup</b></font></td> </tr> <tr valign="top">
      *
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
      *
      * <td><font size="-1"> Information about whether or not an item is available for pick up.
-     * Acceptable values are "True and "False". </font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
+     * Acceptable values are "True and "False". </font></td> </tr> <tr valign="top"> <td
+     * width="120"><font size="-1"> <b>Example</b></font></td>
      *
      * <td><font size="-1">
      *
-     * <em>Acceptable:</em><br>
-     * &lt;g:pickup&gt;True&lt;/g:pickup&gt;<br>
-     * <em>Not acceptable:</em><br>
-     * &lt;g:pickup&gt;Not on Tuesdays&lt;/g:pickup&gt;</font></td>
-     * </tr>
+     * <em>Acceptable:</em><br> &lt;g:pickup&gt;True&lt;/g:pickup&gt;<br> <em>Not
+     * acceptable:</em><br> &lt;g:pickup&gt;Not on Tuesdays&lt;/g:pickup&gt;</font></td> </tr>
      *
      * <tr valign="top">
      *
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Products</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1">
+     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td> <td><font size="-1">
+     * Products</font></td> </tr> <tr valign="top"> <td width="120"><font size="-1">
      *
-     * <b>Content type</b></font></td>
-     * <td><font size="-1"> boolean</font></td>
-     * </tr>
-     * </tbody>
+     * <b>Content type</b></font></td> <td><font size="-1"> boolean</font></td> </tr> </tbody>
      * </table>
      *
      * @return Whether or not an item is available for pick up.
      */
-    public Boolean getPickup();
+    Boolean getPickup();
 
     /**
-     * Price of the item.
-     *
+     * Whether or not an item is available for pick up.
      *
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
      *
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
-     * name="price"></a>price</b></font></td>
-     * </tr>
-     * <tr valign="top">
+     * <tbody> <tr valign="top"> <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
+     * <b><a name="pickup"></a>pickup</b></font></td> </tr> <tr valign="top">
+     *
      * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> Prices can be a single price, 0 (free), or blank if not applicable.
-     * Numerice values only. When used as a sub-attribute of &lt;shipping&gt;, the value included
-     * reflects the price of shipping.</font></td>
      *
-     * </tr>
+     * <td><font size="-1"> Information about whether or not an item is available for pick up.
+     * Acceptable values are "True and "False". </font></td> </tr> <tr valign="top"> <td
+     * width="120"><font size="-1"> <b>Example</b></font></td>
+     *
+     * <td><font size="-1">
+     *
+     * <em>Acceptable:</em><br> &lt;g:pickup&gt;True&lt;/g:pickup&gt;<br> <em>Not
+     * acceptable:</em><br> &lt;g:pickup&gt;Not on Tuesdays&lt;/g:pickup&gt;</font></td> </tr>
+     *
      * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> <em>Acceptable:</em><br>
-     * &lt;g:price&gt;5.95&lt;/g:price&gt;<br>
      *
-     * &lt;g:price&gt;0&lt;/g:price&gt;<br>
-     * <em>Not acceptable:</em><br>
-     * &lt;g:price&gt;5,95&lt;/g:price&gt;<br>
-     * &lt;g:price&gt;5.00 – 10.00&lt;/g:price&gt;<br>
+     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td> <td><font size="-1">
+     * Products</font></td> </tr> <tr valign="top"> <td width="120"><font size="-1">
      *
-     * &lt;g:price&gt;100 or best offer&lt;/g:price&gt;<br>
-     * &lt;g:price&gt;free&lt;/g:price&gt;</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     *
-     * <td><font size="-1"> Events, Housing, Products, Services, Travel, Vehicles</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Content type</b></font></td>
-     * <td valign="top"><font size="-1">floatUnit</font></td>
-     *
-     * </tr>
-     * </tbody>
+     * <b>Content type</b></font></td> <td><font size="-1"> boolean</font></td> </tr> </tbody>
      * </table>
      *
-     * @param price Price of the item.
+     * @param pickup Whether or not an item is available for pick up.
      */
-    public void setPrice(FloatUnit price);
+    void setPickup(Boolean pickup);
 
     /**
      * Price of the item.
      *
      *
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
+     * <table border="1" cellpadding="5" cellspacing="0" width="640"> <tbody> <tr valign="top">
      *
      * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
-     * name="price"></a>price</b></font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> Prices can be a single price, 0 (free), or blank if not applicable.
-     * Numerice values only. When used as a sub-attribute of &lt;shipping&gt;, the value included
-     * reflects the price of shipping.</font></td>
+     * name="price"></a>price</b></font></td> </tr> <tr valign="top"> <td width="120"><font
+     * size="-1"> <b>Details</b></font></td> <td><font size="-1"> Prices can be a single price, 0
+     * (free), or blank if not applicable. Numerice values only. When used as a sub-attribute of
+     * &lt;shipping&gt;, the value included reflects the price of shipping.</font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> <em>Acceptable:</em><br>
-     * &lt;g:price&gt;5.95&lt;/g:price&gt;<br>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Example</b></font></td> <td><font
+     * size="-1"> <em>Acceptable:</em><br> &lt;g:price&gt;5.95&lt;/g:price&gt;<br>
      *
-     * &lt;g:price&gt;0&lt;/g:price&gt;<br>
-     * <em>Not acceptable:</em><br>
-     * &lt;g:price&gt;5,95&lt;/g:price&gt;<br>
-     * &lt;g:price&gt;5.00 – 10.00&lt;/g:price&gt;<br>
+     * &lt;g:price&gt;0&lt;/g:price&gt;<br> <em>Not acceptable:</em><br>
+     * &lt;g:price&gt;5,95&lt;/g:price&gt;<br> &lt;g:price&gt;5.00 – 10.00&lt;/g:price&gt;<br>
      *
-     * &lt;g:price&gt;100 or best offer&lt;/g:price&gt;<br>
-     * &lt;g:price&gt;free&lt;/g:price&gt;</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
+     * &lt;g:price&gt;100 or best offer&lt;/g:price&gt;<br> &lt;g:price&gt;free&lt;/g:price&gt;</font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
      *
-     * <td><font size="-1"> Events, Housing, Products, Services, Travel, Vehicles</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Content type</b></font></td>
-     * <td valign="top"><font size="-1">floatUnit</font></td>
+     * <td><font size="-1"> Events, Housing, Products, Services, Travel, Vehicles</font></td> </tr>
+     * <tr valign="top"> <td width="120"><font size="-1"> <b>Content type</b></font></td> <td
+     * valign="top"><font size="-1">floatUnit</font></td>
      *
-     * </tr>
-     * </tbody>
-     * </table>
+     * </tr> </tbody> </table>
      *
      * @return Price of the item.
      */
-    public FloatUnit getPrice();
+    FloatUnit getPrice();
 
     /**
-     * The type of pricing for the item.
+     * Price of the item.
      *
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
-     * name="price_type"></a>price_type</b></font></td>
-     * </tr>
      *
-     * <tr valign="top">
+     * <table border="1" cellpadding="5" cellspacing="0" width="640"> <tbody> <tr valign="top">
      *
-     * <td width="120"><font size="-1"><b>Details</b></font></td>
-     * <td><font size="-1">The type of pricing for the item. Acceptable values are “negotiable,” or
-     * “starting.” The default is “starting”</font></td>
-     * </tr>
-     * <tr valign="top">
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="price"></a>price</b></font></td> </tr> <tr valign="top"> <td width="120"><font
+     * size="-1"> <b>Details</b></font></td> <td><font size="-1"> Prices can be a single price, 0
+     * (free), or blank if not applicable. Numerice values only. When used as a sub-attribute of
+     * &lt;shipping&gt;, the value included reflects the price of shipping.</font></td>
      *
-     * <td width="120"><font size="-1"><b>Example</b></font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Example</b></font></td> <td><font
+     * size="-1"> <em>Acceptable:</em><br> &lt;g:price&gt;5.95&lt;/g:price&gt;<br>
      *
-     * <td><font size="-1"><em>Acceptable:</em><br>
-     * &lt;g:price_type&gt;starting&lt;/g:price_type&gt;<br>
-     * <em>Not acceptable:</em><br>
-     * &lt;g:price_type&gt;100 OBO&lt;/g:price_type&gt;</font></td>
+     * &lt;g:price&gt;0&lt;/g:price&gt;<br> <em>Not acceptable:</em><br>
+     * &lt;g:price&gt;5,95&lt;/g:price&gt;<br> &lt;g:price&gt;5.00 – 10.00&lt;/g:price&gt;<br>
      *
-     * </tr>
+     * &lt;g:price&gt;100 or best offer&lt;/g:price&gt;<br> &lt;g:price&gt;free&lt;/g:price&gt;</font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
      *
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Events, Housing, Products, Services, Travel, Vehicles</font></td>
-     * </tr>
-     * <tr valign="top">
+     * <td><font size="-1"> Events, Housing, Products, Services, Travel, Vehicles</font></td> </tr>
+     * <tr valign="top"> <td width="120"><font size="-1"> <b>Content type</b></font></td> <td
+     * valign="top"><font size="-1">floatUnit</font></td>
      *
-     * <td width="120"><font size="-1"> <b>Content type</b></font></td>
-     * <td><font size="-1"> priceTypeEnumeration</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * </tr> </tbody> </table>
      *
-     * @param priceType The type of pricing for the item.
+     * @param price Price of the item.
      */
-    public void setPriceType(PriceTypeEnumeration priceType);
+    void setPrice(FloatUnit price);
 
     /**
      * The type of pricing for the item.
      *
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
-     * name="price_type"></a>price_type</b></font></td>
-     * </tr>
+     * <table border="1" cellpadding="5" cellspacing="0" width="640"> <tbody> <tr valign="top"> <td
+     * colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="price_type"></a>price_type</b></font></td> </tr>
      *
      * <tr valign="top">
      *
-     * <td width="120"><font size="-1"><b>Details</b></font></td>
-     * <td><font size="-1">The type of pricing for the item. Acceptable values are “negotiable,” or
-     * “starting.” The default is “starting”</font></td>
-     * </tr>
-     * <tr valign="top">
+     * <td width="120"><font size="-1"><b>Details</b></font></td> <td><font size="-1">The type of
+     * pricing for the item. Acceptable values are “negotiable,” or “starting.” The default is
+     * “starting”</font></td> </tr> <tr valign="top">
      *
      * <td width="120"><font size="-1"><b>Example</b></font></td>
      *
-     * <td><font size="-1"><em>Acceptable:</em><br>
-     * &lt;g:price_type&gt;starting&lt;/g:price_type&gt;<br>
-     * <em>Not acceptable:</em><br>
-     * &lt;g:price_type&gt;100 OBO&lt;/g:price_type&gt;</font></td>
+     * <td><font size="-1"><em>Acceptable:</em><br> &lt;g:price_type&gt;starting&lt;/g:price_type&gt;<br>
+     * <em>Not acceptable:</em><br> &lt;g:price_type&gt;100 OBO&lt;/g:price_type&gt;</font></td>
      *
      * </tr>
      *
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Events, Housing, Products, Services, Travel, Vehicles</font></td>
-     * </tr>
-     * <tr valign="top">
+     * <tr valign="top"> <td width="120"><font size="-1"> <b>Attribute of</b></font></td> <td><font
+     * size="-1"> Events, Housing, Products, Services, Travel, Vehicles</font></td> </tr> <tr
+     * valign="top">
      *
-     * <td width="120"><font size="-1"> <b>Content type</b></font></td>
-     * <td><font size="-1"> priceTypeEnumeration</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * <td width="120"><font size="-1"> <b>Content type</b></font></td> <td><font size="-1">
+     * priceTypeEnumeration</font></td> </tr> </tbody> </table>
      *
      * @return The type of pricing for the item.
      */
-    public PriceTypeEnumeration getPriceType();
+    PriceTypeEnumeration getPriceType();
 
     /**
-     * The processor speed for the product.
+     * The type of pricing for the item.
      *
+     * <table border="1" cellpadding="5" cellspacing="0" width="640"> <tbody> <tr valign="top"> <td
+     * colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"><b><a
+     * name="price_type"></a>price_type</b></font></td> </tr>
      *
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
      *
-     * <b><a name="processor_speed"></a>processor_speed</b></font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
+     * <td width="120"><font size="-1"><b>Details</b></font></td> <td><font size="-1">The type of
+     * pricing for the item. Acceptable values are “negotiable,” or “starting.” The default is
+     * “starting”</font></td> </tr> <tr valign="top">
      *
-     * <td><font size="-1"> The processor speed for the product.</font></td>
+     * <td width="120"><font size="-1"><b>Example</b></font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:processor_speed&gt;2&lt;/g:processor_speed&gt;</font></td>
+     * <td><font size="-1"><em>Acceptable:</em><br> &lt;g:price_type&gt;starting&lt;/g:price_type&gt;<br>
+     * <em>Not acceptable:</em><br> &lt;g:price_type&gt;100 OBO&lt;/g:price_type&gt;</font></td>
      *
      * </tr>
      *
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Products</font></td>
-     * </tr>
-     * <tr valign="top">
+     * <tr valign="top"> <td width="120"><font size="-1"> <b>Attribute of</b></font></td> <td><font
+     * size="-1"> Events, Housing, Products, Services, Travel, Vehicles</font></td> </tr> <tr
+     * valign="top">
      *
-     * <td width="120"><font size="-1"> <b>Content type</b></font></td>
-     * <td><font size="-1"> floatUnit</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * <td width="120"><font size="-1"> <b>Content type</b></font></td> <td><font size="-1">
+     * priceTypeEnumeration</font></td> </tr> </tbody> </table>
      *
-     * @param processorSpeed The processor speed for the product.
+     * @param priceType The type of pricing for the item.
      */
-    public void setProcessorSpeed(FloatUnit processorSpeed);
+    void setPriceType(PriceTypeEnumeration priceType);
 
     /**
      * The processor speed for the product.
      *
      *
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
+     * <table border="1" cellpadding="5" cellspacing="0" width="640"> <tbody> <tr valign="top"> <td
+     * colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
      *
-     * <b><a name="processor_speed"></a>processor_speed</b></font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
+     * <b><a name="processor_speed"></a>processor_speed</b></font></td> </tr> <tr valign="top"> <td
+     * width="120"><font size="-1"> <b>Details</b></font></td>
      *
      * <td><font size="-1"> The processor speed for the product.</font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:processor_speed&gt;2&lt;/g:processor_speed&gt;</font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Example</b></font></td> <td><font
+     * size="-1"> &lt;g:processor_speed&gt;2&lt;/g:processor_speed&gt;</font></td>
      *
      * </tr>
      *
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Products</font></td>
-     * </tr>
-     * <tr valign="top">
+     * <tr valign="top"> <td width="120"><font size="-1"> <b>Attribute of</b></font></td> <td><font
+     * size="-1"> Products</font></td> </tr> <tr valign="top">
      *
-     * <td width="120"><font size="-1"> <b>Content type</b></font></td>
-     * <td><font size="-1"> floatUnit</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * <td width="120"><font size="-1"> <b>Content type</b></font></td> <td><font size="-1">
+     * floatUnit</font></td> </tr> </tbody> </table>
      *
      * @return The processor speed for the product.
      */
-    public FloatUnit getProcessorSpeed();
+    FloatUnit getProcessorSpeed();
 
     /**
-     * The type of product being offered.
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
+     * The processor speed for the product.
      *
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
-     * name="product_type"></a>product_type</b></font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
      *
-     * <td><font size="-1">
+     * <table border="1" cellpadding="5" cellspacing="0" width="640"> <tbody> <tr valign="top"> <td
+     * colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
      *
-     * The type of product being offered. Toys, books, flowers, etc.</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:product_type&gt;electronics&lt;/g:product_type&gt;</font></td>
+     * <b><a name="processor_speed"></a>processor_speed</b></font></td> </tr> <tr valign="top"> <td
+     * width="120"><font size="-1"> <b>Details</b></font></td>
+     *
+     * <td><font size="-1"> The processor speed for the product.</font></td>
+     *
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Example</b></font></td> <td><font
+     * size="-1"> &lt;g:processor_speed&gt;2&lt;/g:processor_speed&gt;</font></td>
      *
      * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Products</font></td>
-     * </tr>
      *
-     * <tr valign="top">
+     * <tr valign="top"> <td width="120"><font size="-1"> <b>Attribute of</b></font></td> <td><font
+     * size="-1"> Products</font></td> </tr> <tr valign="top">
      *
-     * <td width="120"><font size="-1"> <b>Content type</b></font></td>
-     * <td><font size="-1"> string</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * <td width="120"><font size="-1"> <b>Content type</b></font></td> <td><font size="-1">
+     * floatUnit</font></td> </tr> </tbody> </table>
      *
-     * @param productTypes The type of product being offered.
+     * @param processorSpeed The processor speed for the product.
      */
-    public void setProductTypes(String[] productTypes);
+    void setProcessorSpeed(FloatUnit processorSpeed);
 
     /**
-     * The type of product being offered.
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
+     * The type of product being offered. <table border="1" cellpadding="5" cellspacing="0"
+     * width="640">
      *
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
-     * name="product_type"></a>product_type</b></font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
+     * <tbody> <tr valign="top"> <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
+     * <b><a name="product_type"></a>product_type</b></font></td> </tr> <tr valign="top"> <td
+     * width="120"><font size="-1"> <b>Details</b></font></td>
      *
      * <td><font size="-1">
      *
-     * The type of product being offered. Toys, books, flowers, etc.</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:product_type&gt;electronics&lt;/g:product_type&gt;</font></td>
+     * The type of product being offered. Toys, books, flowers, etc.</font></td> </tr> <tr
+     * valign="top"> <td width="120"><font size="-1"> <b>Example</b></font></td> <td><font
+     * size="-1"> &lt;g:product_type&gt;electronics&lt;/g:product_type&gt;</font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Products</font></td>
-     * </tr>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
+     * <td><font size="-1"> Products</font></td> </tr>
      *
      * <tr valign="top">
      *
-     * <td width="120"><font size="-1"> <b>Content type</b></font></td>
-     * <td><font size="-1"> string</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * <td width="120"><font size="-1"> <b>Content type</b></font></td> <td><font size="-1">
+     * string</font></td> </tr> </tbody> </table>
      *
      * @return The type of product being offered.
      */
-    public String[] getProductTypes();
+    String[] getProductTypes();
 
     /**
-     * Quantity available.
+     * The type of product being offered. <table border="1" cellpadding="5" cellspacing="0"
+     * width="640">
      *
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     *
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
-     * name="quantity"></a>quantity</b></font></td>
-     *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> The number of units available for purchase. This attribute can be left
-     * blank if you have a large quantity or if it is not applicable. </font></td>
-     *
-     * </tr>
-     * <tr valign="top">
-     *
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> <em>Acceptable:</em><br>
-     * &lt;g:quantity&gt;18&lt;/g:quantity&gt;<br>
-     *
-     * &lt;g:quantity&gt;0&lt;/g:quantity&gt;<br>
-     *
-     * <em>Not acceptable:</em><br>
-     * &lt;g:quantity&gt;out of stock&lt;/g:quantity&gt;</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1">
-     *
-     * <b>Attribute of</b></font></td>
-     *
-     * <td><font size="-1"> Events, Products, Services, Travel, Vehicles</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Content type</b></font></td>
+     * <tbody> <tr valign="top"> <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
+     * <b><a name="product_type"></a>product_type</b></font></td> </tr> <tr valign="top"> <td
+     * width="120"><font size="-1"> <b>Details</b></font></td>
      *
      * <td><font size="-1">
      *
-     * integer</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * The type of product being offered. Toys, books, flowers, etc.</font></td> </tr> <tr
+     * valign="top"> <td width="120"><font size="-1"> <b>Example</b></font></td> <td><font
+     * size="-1"> &lt;g:product_type&gt;electronics&lt;/g:product_type&gt;</font></td>
      *
-     * @param quantity Quantity available.
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
+     * <td><font size="-1"> Products</font></td> </tr>
+     *
+     * <tr valign="top">
+     *
+     * <td width="120"><font size="-1"> <b>Content type</b></font></td> <td><font size="-1">
+     * string</font></td> </tr> </tbody> </table>
+     *
+     * @param productTypes The type of product being offered.
      */
-    public void setQuantity(Integer quantity);
+    void setProductTypes(String[] productTypes);
 
     /**
      * Quantity available.
      *
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
+     * <table border="1" cellpadding="5" cellspacing="0" width="640"> <tbody> <tr valign="top">
      *
      * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
      * name="quantity"></a>quantity</b></font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> The number of units available for purchase. This attribute can be left
-     * blank if you have a large quantity or if it is not applicable. </font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Details</b></font></td> <td><font
+     * size="-1"> The number of units available for purchase. This attribute can be left blank if
+     * you have a large quantity or if it is not applicable. </font></td>
      *
-     * </tr>
-     * <tr valign="top">
+     * </tr> <tr valign="top">
      *
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> <em>Acceptable:</em><br>
-     * &lt;g:quantity&gt;18&lt;/g:quantity&gt;<br>
+     * <td width="120"><font size="-1"> <b>Example</b></font></td> <td><font size="-1">
+     * <em>Acceptable:</em><br> &lt;g:quantity&gt;18&lt;/g:quantity&gt;<br>
      *
      * &lt;g:quantity&gt;0&lt;/g:quantity&gt;<br>
      *
-     * <em>Not acceptable:</em><br>
-     * &lt;g:quantity&gt;out of stock&lt;/g:quantity&gt;</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1">
+     * <em>Not acceptable:</em><br> &lt;g:quantity&gt;out of stock&lt;/g:quantity&gt;</font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1">
      *
      * <b>Attribute of</b></font></td>
      *
-     * <td><font size="-1"> Events, Products, Services, Travel, Vehicles</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Content type</b></font></td>
+     * <td><font size="-1"> Events, Products, Services, Travel, Vehicles</font></td> </tr> <tr
+     * valign="top"> <td width="120"><font size="-1"> <b>Content type</b></font></td>
      *
      * <td><font size="-1">
      *
-     * integer</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * integer</font></td> </tr> </tbody> </table>
      *
      * @return Quantity available.
      */
-    public Integer getQuantity();
+    Integer getQuantity();
 
     /**
-     * Shipping options available for an item.
+     * Quantity available.
      *
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
+     * <table border="1" cellpadding="5" cellspacing="0" width="640"> <tbody> <tr valign="top">
      *
-     * <b><a name="shipping"></a>shipping</b></font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="quantity"></a>quantity</b></font></td>
      *
-     * <td><font size="-1"> Shipping options available for an item. Up to 10 shipping options can be
-     * included for each item. Three sub-attributes are included in the shipping attribute:
-     * <ul type="disc">
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Details</b></font></td> <td><font
+     * size="-1"> The number of units available for purchase. This attribute can be left blank if
+     * you have a large quantity or if it is not applicable. </font></td>
      *
-     * <li>service = The type of service used to ship an item. Acceptable values are 'FedEx', 'UPS',
-     * 'DHL', 'Mail', and 'Other'</li>
-     * <li>country = The country an item will ship to. Only acceptable values are<b> </b>ISO 3166
-     * country codes.</li>
-     * <li>price = the price of shipping.</li>
-     * </ul>
-     * </font></td>
+     * </tr> <tr valign="top">
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1">
+     * <td width="120"><font size="-1"> <b>Example</b></font></td> <td><font size="-1">
+     * <em>Acceptable:</em><br> &lt;g:quantity&gt;18&lt;/g:quantity&gt;<br>
      *
-     * <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:shipping&gt;<br>
-     * &lt;g:country&gt;US&lt;/g:country&gt;<br>
+     * &lt;g:quantity&gt;0&lt;/g:quantity&gt;<br>
      *
-     * &lt;g:service&gt;UPS&lt;/g:shipping&gt;<br>
+     * <em>Not acceptable:</em><br> &lt;g:quantity&gt;out of stock&lt;/g:quantity&gt;</font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1">
      *
-     * &lt;g:price&gt;35.95&lt;/g:price&gt;<br>
-     * &lt;/g:shipping&gt;</font></td>
-     * </tr>
-     * <tr valign="top">
+     * <b>Attribute of</b></font></td>
      *
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
+     * <td><font size="-1"> Events, Products, Services, Travel, Vehicles</font></td> </tr> <tr
+     * valign="top"> <td width="120"><font size="-1"> <b>Content type</b></font></td>
      *
-     * <td><font size="-1"> Products</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1">
+     * <td><font size="-1">
      *
-     * <b>Content type</b></font></td>
-     * <td><font size="-1"> shippingType</font></td>
+     * integer</font></td> </tr> </tbody> </table>
      *
-     * </tr>
-     * </tbody>
-     * </table>
-     *
-     * @param shipping Shipping options available for an item.
+     * @param quantity Quantity available.
      */
-    public void setShipping(ShippingType[] shipping);
+    void setQuantity(Integer quantity);
 
     /**
      * Shipping options available for an item.
      *
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
+     * <table border="1" cellpadding="5" cellspacing="0" width="640"> <tbody> <tr valign="top"> <td
+     * colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
      *
-     * <b><a name="shipping"></a>shipping</b></font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
+     * <b><a name="shipping"></a>shipping</b></font></td> </tr> <tr valign="top"> <td
+     * width="120"><font size="-1"> <b>Details</b></font></td>
      *
      * <td><font size="-1"> Shipping options available for an item. Up to 10 shipping options can be
-     * included for each item. Three sub-attributes are included in the shipping attribute:
-     * <ul type="disc">
+     * included for each item. Three sub-attributes are included in the shipping attribute: <ul
+     * type="disc">
      *
      * <li>service = The type of service used to ship an item. Acceptable values are 'FedEx', 'UPS',
-     * 'DHL', 'Mail', and 'Other'</li>
-     * <li>country = The country an item will ship to. Only acceptable values are<b> </b>ISO 3166
-     * country codes.</li>
-     * <li>price = the price of shipping.</li>
-     * </ul>
-     * </font></td>
+     * 'DHL', 'Mail', and 'Other'</li> <li>country = The country an item will ship to. Only
+     * acceptable values are<b> </b>ISO 3166 country codes.</li> <li>price = the price of
+     * shipping.</li> </ul> </font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1">
+     * </tr> <tr valign="top"> <td width="120"><font size="-1">
      *
-     * <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:shipping&gt;<br>
+     * <b>Example</b></font></td> <td><font size="-1"> &lt;g:shipping&gt;<br>
      * &lt;g:country&gt;US&lt;/g:country&gt;<br>
      *
      * &lt;g:service&gt;UPS&lt;/g:shipping&gt;<br>
      *
-     * &lt;g:price&gt;35.95&lt;/g:price&gt;<br>
-     * &lt;/g:shipping&gt;</font></td>
-     * </tr>
-     * <tr valign="top">
+     * &lt;g:price&gt;35.95&lt;/g:price&gt;<br> &lt;/g:shipping&gt;</font></td> </tr> <tr
+     * valign="top">
      *
      * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
      *
-     * <td><font size="-1"> Products</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1">
+     * <td><font size="-1"> Products</font></td> </tr> <tr valign="top"> <td width="120"><font
+     * size="-1">
      *
-     * <b>Content type</b></font></td>
-     * <td><font size="-1"> shippingType</font></td>
+     * <b>Content type</b></font></td> <td><font size="-1"> shippingType</font></td>
      *
-     * </tr>
-     * </tbody>
-     * </table>
+     * </tr> </tbody> </table>
      *
      * @return Shipping options available for an item.
      */
-    public ShippingType[] getShipping();
+    ShippingType[] getShipping();
 
     /**
-     * Dimensions of the item, expressed in either two or three dimensions.
+     * Shipping options available for an item.
      *
+     * <table border="1" cellpadding="5" cellspacing="0" width="640"> <tbody> <tr valign="top"> <td
+     * colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
      *
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
-     * name="size"></a>size</b></font></td>
-     * </tr>
+     * <b><a name="shipping"></a>shipping</b></font></td> </tr> <tr valign="top"> <td
+     * width="120"><font size="-1"> <b>Details</b></font></td>
      *
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
+     * <td><font size="-1"> Shipping options available for an item. Up to 10 shipping options can be
+     * included for each item. Three sub-attributes are included in the shipping attribute: <ul
+     * type="disc">
      *
-     * <td><font size="-1"> Dimensions of the item, expressed in either two or three
-     * dimensions.</font></td>
-     * </tr>
-     * <tr valign="top">
+     * <li>service = The type of service used to ship an item. Acceptable values are 'FedEx', 'UPS',
+     * 'DHL', 'Mail', and 'Other'</li> <li>country = The country an item will ship to. Only
+     * acceptable values are<b> </b>ISO 3166 country codes.</li> <li>price = the price of
+     * shipping.</li> </ul> </font></td>
      *
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:size&gt;12x10x4&lt;/g:size&gt;</font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1">
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1">
+     * <b>Example</b></font></td> <td><font size="-1"> &lt;g:shipping&gt;<br>
+     * &lt;g:country&gt;US&lt;/g:country&gt;<br>
      *
-     * <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Products</font></td>
-     * </tr>
-     * <tr valign="top">
+     * &lt;g:service&gt;UPS&lt;/g:shipping&gt;<br>
      *
-     * <td width="120"><font size="-1"> <b>Content type</b></font></td>
+     * &lt;g:price&gt;35.95&lt;/g:price&gt;<br> &lt;/g:shipping&gt;</font></td> </tr> <tr
+     * valign="top">
      *
-     * <td><font size="-1"> string</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
      *
-     * @param size Dimensions of the item, expressed in either two or three dimensions.
+     * <td><font size="-1"> Products</font></td> </tr> <tr valign="top"> <td width="120"><font
+     * size="-1">
+     *
+     * <b>Content type</b></font></td> <td><font size="-1"> shippingType</font></td>
+     *
+     * </tr> </tbody> </table>
+     *
+     * @param shipping Shipping options available for an item.
      */
-    public void setSize(Size size);
+    void setShipping(ShippingType[] shipping);
 
     /**
      * Dimensions of the item, expressed in either two or three dimensions.
      *
      *
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
-     * name="size"></a>size</b></font></td>
-     * </tr>
+     * <table border="1" cellpadding="5" cellspacing="0" width="640"> <tbody> <tr valign="top"> <td
+     * colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="size"></a>size</b></font></td> </tr>
      *
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
+     * <tr valign="top"> <td width="120"><font size="-1"> <b>Details</b></font></td>
      *
      * <td><font size="-1"> Dimensions of the item, expressed in either two or three
-     * dimensions.</font></td>
-     * </tr>
-     * <tr valign="top">
+     * dimensions.</font></td> </tr> <tr valign="top">
      *
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:size&gt;12x10x4&lt;/g:size&gt;</font></td>
+     * <td width="120"><font size="-1"> <b>Example</b></font></td> <td><font size="-1">
+     * &lt;g:size&gt;12x10x4&lt;/g:size&gt;</font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1">
+     * </tr> <tr valign="top"> <td width="120"><font size="-1">
      *
-     * <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Products</font></td>
-     * </tr>
-     * <tr valign="top">
+     * <b>Attribute of</b></font></td> <td><font size="-1"> Products</font></td> </tr> <tr
+     * valign="top">
      *
      * <td width="120"><font size="-1"> <b>Content type</b></font></td>
      *
-     * <td><font size="-1"> string</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * <td><font size="-1"> string</font></td> </tr> </tbody> </table>
      *
      * @return Dimensions of the item, expressed in either two or three dimensions.
      */
-    public Size getSize();
+    Size getSize();
 
     /**
-     * Tax rate associated with the event.
+     * Dimensions of the item, expressed in either two or three dimensions.
      *
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
-     * name="tax_percent"></a>tax_percent</b></font></td>
-     * </tr>
      *
-     * <tr valign="top">
-     * <td width="120"><font size="-1">
+     * <table border="1" cellpadding="5" cellspacing="0" width="640"> <tbody> <tr valign="top"> <td
+     * colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="size"></a>size</b></font></td> </tr>
      *
-     * <b>Details</b></font></td>
-     * <td><font size="-1"> Tax rate as a percentage.</font></td>
-     * </tr>
-     * <tr valign="top">
+     * <tr valign="top"> <td width="120"><font size="-1"> <b>Details</b></font></td>
      *
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
+     * <td><font size="-1"> Dimensions of the item, expressed in either two or three
+     * dimensions.</font></td> </tr> <tr valign="top">
      *
-     * <td><font size="-1"> &lt;g:tax_percent&gt;8.2&lt;g:/tax_percent&gt;</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1">
+     * <td width="120"><font size="-1"> <b>Example</b></font></td> <td><font size="-1">
+     * &lt;g:size&gt;12x10x4&lt;/g:size&gt;</font></td>
      *
-     * <b>Attribute of</b></font></td>
-     * <td><font size="-1">
+     * </tr> <tr valign="top"> <td width="120"><font size="-1">
      *
-     * Products, Events</font></td>
-     * </tr>
-     * <tr valign="top">
+     * <b>Attribute of</b></font></td> <td><font size="-1"> Products</font></td> </tr> <tr
+     * valign="top">
+     *
      * <td width="120"><font size="-1"> <b>Content type</b></font></td>
      *
-     * <td><font size="-1"> percentType</font></td>
+     * <td><font size="-1"> string</font></td> </tr> </tbody> </table>
      *
-     * </tr>
-     * </tbody>
-     * </table>
-     *
-     * @param taxPercent Tax rate associated with the event.
+     * @param size Dimensions of the item, expressed in either two or three dimensions.
      */
-    public void setTaxPercent(Float taxPercent);
+    void setSize(Size size);
 
     /**
      * Tax rate associated with the event.
      *
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
-     * name="tax_percent"></a>tax_percent</b></font></td>
-     * </tr>
+     * <table border="1" cellpadding="5" cellspacing="0" width="640"> <tbody> <tr valign="top"> <td
+     * colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="tax_percent"></a>tax_percent</b></font></td> </tr>
      *
-     * <tr valign="top">
-     * <td width="120"><font size="-1">
+     * <tr valign="top"> <td width="120"><font size="-1">
      *
-     * <b>Details</b></font></td>
-     * <td><font size="-1"> Tax rate as a percentage.</font></td>
-     * </tr>
+     * <b>Details</b></font></td> <td><font size="-1"> Tax rate as a percentage.</font></td> </tr>
      * <tr valign="top">
      *
      * <td width="120"><font size="-1"> <b>Example</b></font></td>
      *
-     * <td><font size="-1"> &lt;g:tax_percent&gt;8.2&lt;g:/tax_percent&gt;</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1">
+     * <td><font size="-1"> &lt;g:tax_percent&gt;8.2&lt;g:/tax_percent&gt;</font></td> </tr> <tr
+     * valign="top"> <td width="120"><font size="-1">
      *
-     * <b>Attribute of</b></font></td>
-     * <td><font size="-1">
+     * <b>Attribute of</b></font></td> <td><font size="-1">
      *
-     * Products, Events</font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Content type</b></font></td>
+     * Products, Events</font></td> </tr> <tr valign="top"> <td width="120"><font size="-1">
+     * <b>Content type</b></font></td>
      *
      * <td><font size="-1"> percentType</font></td>
      *
-     * </tr>
-     * </tbody>
-     * </table>
+     * </tr> </tbody> </table>
      *
      * @return Tax rate associated with the event.
      */
-    public Float getTaxPercent();
+    Float getTaxPercent();
 
     /**
-     * Region where tax applies.
+     * Tax rate associated with the event.
      *
+     * <table border="1" cellpadding="5" cellspacing="0" width="640"> <tbody> <tr valign="top"> <td
+     * colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="tax_percent"></a>tax_percent</b></font></td> </tr>
      *
+     * <tr valign="top"> <td width="120"><font size="-1">
      *
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
+     * <b>Details</b></font></td> <td><font size="-1"> Tax rate as a percentage.</font></td> </tr>
      * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
      *
-     * <b><a name="tax_region"></a>tax_region</b></font></td>
-     * </tr>
+     * <td width="120"><font size="-1"> <b>Example</b></font></td>
      *
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> Geographical region a tax rate applies to.</font></td>
+     * <td><font size="-1"> &lt;g:tax_percent&gt;8.2&lt;g:/tax_percent&gt;</font></td> </tr> <tr
+     * valign="top"> <td width="120"><font size="-1">
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1">
+     * <b>Attribute of</b></font></td> <td><font size="-1">
      *
-     * <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:tax_region&gt;California&lt;/g:tax_region&gt;</font></td>
+     * Products, Events</font></td> </tr> <tr valign="top"> <td width="120"><font size="-1">
+     * <b>Content type</b></font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
+     * <td><font size="-1"> percentType</font></td>
      *
-     * <td><font size="-1"> Product, Events,</font></td>
-     * </tr>
+     * </tr> </tbody> </table>
      *
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Content type</b></font></td>
-     * <td><font size="-1">string</font></td>
-     *
-     * </tr>
-     * </tbody>
-     * </table>
-     *
-     * @param taxRegion Region where tax applies.
+     * @param taxPercent Tax rate associated with the event.
      */
-    public void setTaxRegion(String taxRegion);
+    void setTaxPercent(Float taxPercent);
 
     /**
      * Region where tax applies.
      *
      *
      *
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
+     * <table border="1" cellpadding="5" cellspacing="0" width="640"> <tbody> <tr valign="top"> <td
+     * colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
      *
-     * <b><a name="tax_region"></a>tax_region</b></font></td>
-     * </tr>
+     * <b><a name="tax_region"></a>tax_region</b></font></td> </tr>
      *
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
-     * <td><font size="-1"> Geographical region a tax rate applies to.</font></td>
+     * <tr valign="top"> <td width="120"><font size="-1"> <b>Details</b></font></td> <td><font
+     * size="-1"> Geographical region a tax rate applies to.</font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1">
+     * </tr> <tr valign="top"> <td width="120"><font size="-1">
      *
-     * <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:tax_region&gt;California&lt;/g:tax_region&gt;</font></td>
+     * <b>Example</b></font></td> <td><font size="-1"> &lt;g:tax_region&gt;California&lt;/g:tax_region&gt;</font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
      *
-     * <td><font size="-1"> Product, Events,</font></td>
-     * </tr>
+     * <td><font size="-1"> Product, Events,</font></td> </tr>
      *
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Content type</b></font></td>
-     * <td><font size="-1">string</font></td>
+     * <tr valign="top"> <td width="120"><font size="-1"> <b>Content type</b></font></td> <td><font
+     * size="-1">string</font></td>
      *
-     * </tr>
-     * </tbody>
-     * </table>
+     * </tr> </tbody> </table>
      *
      * @return Region where tax applies.
      */
-    public String getTaxRegion();
+    String getTaxRegion();
 
     /**
-     * Product UPC code (Isn't that redundant?).
+     * Region where tax applies.
      *
      *
      *
-     * <table border="1" cellpadding="5" cellspacing="0" width="640">
+     * <table border="1" cellpadding="5" cellspacing="0" width="640"> <tbody> <tr valign="top"> <td
+     * colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
      *
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
+     * <b><a name="tax_region"></a>tax_region</b></font></td> </tr>
      *
-     * <b><a name="upc"></a>upc</b></font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
+     * <tr valign="top"> <td width="120"><font size="-1"> <b>Details</b></font></td> <td><font
+     * size="-1"> Geographical region a tax rate applies to.</font></td>
      *
-     * <td><font size="-1"> Product UPC code. </font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1">
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:upc&gt;834721479305&lt;/g:upc&gt;</font></td>
+     * <b>Example</b></font></td> <td><font size="-1"> &lt;g:tax_region&gt;California&lt;/g:tax_region&gt;</font></td>
      *
-     * </tr>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
      *
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Products</font></td>
-     * </tr>
+     * <td><font size="-1"> Product, Events,</font></td> </tr>
      *
-     * <tr valign="top">
-     * <td width="120"><font size="-1">
+     * <tr valign="top"> <td width="120"><font size="-1"> <b>Content type</b></font></td> <td><font
+     * size="-1">string</font></td>
      *
-     * <b>Content type</b></font></td>
-     * <td><font size="-1"> string</font></td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * </tr> </tbody> </table>
      *
-     * @param upc Product UPC code (Isn't that redundant?).
+     * @param taxRegion Region where tax applies.
      */
-    public void setUpc(String upc);
+    void setTaxRegion(String taxRegion);
 
     /**
      * Product UPC code (Isn't that redundant?).
@@ -2593,123 +1733,175 @@ public interface Product extends GlobalInterface {
      *
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      *
-     * <tbody>
-     * <tr valign="top">
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
+     * <tbody> <tr valign="top"> <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
      *
-     * <b><a name="upc"></a>upc</b></font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
+     * <b><a name="upc"></a>upc</b></font></td> </tr> <tr valign="top"> <td width="120"><font
+     * size="-1"> <b>Details</b></font></td>
      *
      * <td><font size="-1"> Product UPC code. </font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:upc&gt;834721479305&lt;/g:upc&gt;</font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Example</b></font></td> <td><font
+     * size="-1"> &lt;g:upc&gt;834721479305&lt;/g:upc&gt;</font></td>
      *
      * </tr>
      *
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Products</font></td>
-     * </tr>
+     * <tr valign="top"> <td width="120"><font size="-1"> <b>Attribute of</b></font></td> <td><font
+     * size="-1"> Products</font></td> </tr>
      *
-     * <tr valign="top">
-     * <td width="120"><font size="-1">
+     * <tr valign="top"> <td width="120"><font size="-1">
      *
-     * <b>Content type</b></font></td>
-     * <td><font size="-1"> string</font></td>
-     * </tr>
-     * </tbody>
+     * <b>Content type</b></font></td> <td><font size="-1"> string</font></td> </tr> </tbody>
      * </table>
      *
      * @return Product UPC code (Isn't that redundant?).
      */
-    public String getUpc();
+    String getUpc();
 
     /**
-     * Weight of the item.
+     * Product UPC code (Isn't that redundant?).
+     *
+     *
      *
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      *
-     * <tbody>
-     * <tr valign="top">
+     * <tbody> <tr valign="top"> <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1">
      *
+     * <b><a name="upc"></a>upc</b></font></td> </tr> <tr valign="top"> <td width="120"><font
+     * size="-1"> <b>Details</b></font></td>
      *
-     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
-     * name="weight"></a>weight</b></font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
+     * <td><font size="-1"> Product UPC code. </font></td>
      *
-     * <td><font size="-1"> Weight of the item.</font></td>
-     *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:weight&gt;5&lt;/g:weight&gt;</font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Example</b></font></td> <td><font
+     * size="-1"> &lt;g:upc&gt;834721479305&lt;/g:upc&gt;</font></td>
      *
      * </tr>
      *
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Products</font></td>
-     * </tr>
+     * <tr valign="top"> <td width="120"><font size="-1"> <b>Attribute of</b></font></td> <td><font
+     * size="-1"> Products</font></td> </tr>
      *
-     * <tr valign="top">
-     * <td width="120"><font size="-1">
+     * <tr valign="top"> <td width="120"><font size="-1">
      *
-     * <b>Content type</b></font></td>
-     * <td><font size="-1"> floatUnit</font></td>
-     * </tr>
-     * </tbody>
+     * <b>Content type</b></font></td> <td><font size="-1"> string</font></td> </tr> </tbody>
      * </table>
      *
-     * @param weight Weight of the item.
+     * @param upc Product UPC code (Isn't that redundant?).
      */
-    public void setWeight(FloatUnit weight);
+    void setUpc(String upc);
 
     /**
      * Weight of the item.
      *
      * <table border="1" cellpadding="5" cellspacing="0" width="640">
      *
-     * <tbody>
-     * <tr valign="top">
+     * <tbody> <tr valign="top">
      *
      *
      * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
-     * name="weight"></a>weight</b></font></td>
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Details</b></font></td>
+     * name="weight"></a>weight</b></font></td> </tr> <tr valign="top"> <td width="120"><font
+     * size="-1"> <b>Details</b></font></td>
      *
      * <td><font size="-1"> Weight of the item.</font></td>
      *
-     * </tr>
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Example</b></font></td>
-     * <td><font size="-1"> &lt;g:weight&gt;5&lt;/g:weight&gt;</font></td>
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Example</b></font></td> <td><font
+     * size="-1"> &lt;g:weight&gt;5&lt;/g:weight&gt;</font></td>
      *
      * </tr>
      *
-     * <tr valign="top">
-     * <td width="120"><font size="-1"> <b>Attribute of</b></font></td>
-     * <td><font size="-1"> Products</font></td>
-     * </tr>
+     * <tr valign="top"> <td width="120"><font size="-1"> <b>Attribute of</b></font></td> <td><font
+     * size="-1"> Products</font></td> </tr>
      *
-     * <tr valign="top">
-     * <td width="120"><font size="-1">
+     * <tr valign="top"> <td width="120"><font size="-1">
      *
-     * <b>Content type</b></font></td>
-     * <td><font size="-1"> floatUnit</font></td>
-     * </tr>
-     * </tbody>
+     * <b>Content type</b></font></td> <td><font size="-1"> floatUnit</font></td> </tr> </tbody>
      * </table>
      *
      * @return Weight of the item.
      */
-    public FloatUnit getWeight();
+    FloatUnit getWeight();
+
+    /**
+     * Weight of the item.
+     *
+     * <table border="1" cellpadding="5" cellspacing="0" width="640">
+     *
+     * <tbody> <tr valign="top">
+     *
+     *
+     * <td colspan="2" bgcolor="#dddddd" valign="top"><font size="-1"> <b><a
+     * name="weight"></a>weight</b></font></td> </tr> <tr valign="top"> <td width="120"><font
+     * size="-1"> <b>Details</b></font></td>
+     *
+     * <td><font size="-1"> Weight of the item.</font></td>
+     *
+     * </tr> <tr valign="top"> <td width="120"><font size="-1"> <b>Example</b></font></td> <td><font
+     * size="-1"> &lt;g:weight&gt;5&lt;/g:weight&gt;</font></td>
+     *
+     * </tr>
+     *
+     * <tr valign="top"> <td width="120"><font size="-1"> <b>Attribute of</b></font></td> <td><font
+     * size="-1"> Products</font></td> </tr>
+     *
+     * <tr valign="top"> <td width="120"><font size="-1">
+     *
+     * <b>Content type</b></font></td> <td><font size="-1"> floatUnit</font></td> </tr> </tbody>
+     * </table>
+     *
+     * @param weight Weight of the item.
+     */
+    void setWeight(FloatUnit weight);
+
+
+    /**
+     * Use the google_product_category [google_product_category] attribute to indicate the category
+     * of your item based on the Google product taxonomy. Categorising your product helps ensure
+     * that your ad is shown with the right search results.
+     *
+     * When to use: https://support.google.com/merchants/answer/6324436
+     *
+     *
+     * <g:google_product_category>2271</g:google_product_category> or <g:google_product_category>Clothing
+     * &amp; Accessories &gt; Clothing &gt; Dresses</g:google_product_category>
+     */
+    String getGoogleProductCategory();
+
+    /**
+     *
+     * @param googleProductCategory
+     */
+    void setGoogleProductCategory(String googleProductCategory);
+
+
+    /**
+     * Global Trade Item Numbers (GTINs)
+     *
+     * https://support.google.com/merchants/answer/6324461
+     *
+     *
+     * XML feeds is	<bold><g:gtin>3234567890126</g:gtin></bold>
+     *
+     * A GTIN uniquely identifies your product. This specific number helps us to make your ad richer
+     * and easier for users to find. Products submitted without any unique product identifiers are
+     * difficult to classify and may not be able to take advantage of all Google Shopping features.
+     */
+
+    String getGtin();
+
+    void setGtin(String gtin);
+
+
+    /**
+     * Manufacturer Part Number (MPN)
+     *
+     * https://support.google.com/merchants/answer/6324482
+     *
+     * XML feeds is	<g:mpn>GO12345OOGLE</g:mpn>
+     *
+     * MPNs are used to uniquely identify a specific product among all products from the same
+     * manufacturer. Users might search Google Shopping specifically for an MPN, so providing the
+     * MPN can help to ensure that your product is shown in relevant situations.
+     */
+    String getMpn();
+
+    void setMpn(String mpn);
+
 }
