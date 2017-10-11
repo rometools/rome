@@ -14,7 +14,9 @@ public class AddedDateConverter extends AbstractDateConverter {
                 .getTokenizedProperty("datetime.extra.masks", "|");
         String[] invalidMasks = {
                 "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm",
+                "HH:mm:ss yyyy-MM-dd", "HH:mm yyyy-MM-dd",
                 "yy-MM-dd HH:mm:ss", "yy-MM-dd HH:mm",
+                "HH:mm:ss yy-MM-dd", "HH:mm yy-MM-dd",
         };
         int totalLength = extraMasks.length + invalidMasks.length;
         int destPos = 0;
