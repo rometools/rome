@@ -24,6 +24,7 @@ public class RssParserTest {
                 "http://news.baidu.com/n?cmd=1&class=civilnews&tn=rss",
                 "http://feed.williamlong.info/",
                 "https://www.v2ex.com/index.xml",
+                "http://blog.csdn.net/ys743276112/rss/list",
         };
         for (String url : urls) {
             SyndFeed feed = new SyndFeedInput().build(new XmlReader(new URL(url)));
