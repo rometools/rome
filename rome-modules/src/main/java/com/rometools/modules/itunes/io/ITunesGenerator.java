@@ -16,6 +16,7 @@
  */
 package com.rometools.modules.itunes.io;
 
+import com.rometools.modules.itunes.types.Subcategory;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -75,9 +76,9 @@ public class ITunesGenerator implements ModuleGenerator {
                 final Element category = generateSimpleElement("category", "");
                 category.setAttribute("text", cat.getName());
 
-                if (cat.getSubcategory() != null) {
+                for (Subcategory subcategory : cat.getSubcategories()) {
                     final Element subcat = generateSimpleElement("category", "");
-                    subcat.setAttribute("text", cat.getSubcategory().getName());
+                    subcat.setAttribute("text", subcategory.getName());
                     category.addContent(subcat);
                 }
 
