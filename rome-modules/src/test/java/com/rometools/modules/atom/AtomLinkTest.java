@@ -19,6 +19,8 @@
  */
 package com.rometools.modules.atom;
 
+import java.io.File;
+
 import com.rometools.modules.AbstractTestCase;
 import com.rometools.modules.atom.io.AtomModuleGenerator;
 import com.rometools.modules.atom.modules.AtomLinkModule;

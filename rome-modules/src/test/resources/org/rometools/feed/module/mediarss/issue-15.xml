@@ -1,0 +1,66 @@
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/"
+  xmlns:georss="http://www.georss.org/georss"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:gml="http://www.opengis.net/gml">
+
+  <channel>
+    <title>Song Site</title>
+    <link>http://www.rssboard.org/media-rss</link>
+    <description>Media RSS example with new fields added in v1.5.0</description>
+    <item>
+      <link>http://www.foo.com</link>
+      <pubDate>Tue, 28 Aug 2001 00:08:56 GMT</pubDate>
+      <guid isPermaLink="false">http://www.foo.com</guid>
+      <dc:date>2001-08-28T00:08:56Z</dc:date>
+      <media:community>
+        <media:starRating average="3.5" count="20" min="1" max="10" />
+        <media:statistics views="5" favorites="5" />
+        <media:tags>news: 5, abc:3</media:tags>
+      </media:community>
+      <media:comments>
+        <media:comment>comment1</media:comment>
+        <media:comment>comment2</media:comment>
+      </media:comments>
+      <media:embed url="http://www.foo.com/player.swf" width="512" height="323">
+        <media:param name="type">application/x-shockwave-flash</media:param>
+        <media:param name="width">512</media:param>
+        <media:param name="height">323</media:param>
+        <media:param name="allowFullScreen">true</media:param>
+        <media:param name="flashVars">
+          id=12345&amp;vid=678912i&amp;lang=en-us&amp;intl=us&amp;thumbUrl=http://www.foo.com/thumbnail.jpg
+        </media:param>
+      </media:embed>
+      <media:responses>
+        <media:response>http://www.response1.com</media:response>
+        <media:response>http://www.response2.com</media:response>
+      </media:responses>
+      <media:backLinks>
+        <media:backLink>http://www.backlink1.com</media:backLink>
+        <media:backLink>http://www.backlink2.com</media:backLink>
+      </media:backLinks>
+      <media:rights status="official" />
+      <media:status state="active" />
+      <media:price type="rent" price="19.99" currency="EUR" />
+      <media:license type="text/html" href="http://www.licensehost.com/license"> Sample license for a video</media:license>
+      <media:subTitle type="application/smil" lang="en-us" href="http://www.foo.org/subtitle.smil" />
+      <media:peerLink type="application/x-bittorrent " href="http://www.foo.org/sampleFile.torrent" />
+      <media:location description="My house" start="00:01" end="01:00">
+        <georss:where>
+          <gml:Point>
+          <gml:pos>35.669998 139.770004</gml:pos>
+          </gml:Point>
+        </georss:where>
+      </media:location>
+      <media:restriction type="sharing" relationship="deny" />
+      <media:scenes>
+        <media:scene>
+          <media:sceneTitle>sceneTitle1</media:sceneTitle>
+          <media:sceneDescription>sceneDesc1</media:sceneDescription>
+          <media:sceneStartTime>00:15</media:sceneStartTime>
+          <media:sceneEndTime>00:45</media:sceneEndTime>
+        </media:scene>
+      </media:scenes>
+      <media:content url="http://www.foo.com/video.mov" fileSize="2000" bitrate="128" type="video/quicktime" expression="full" />
+    </item>
+  </channel>
+</rss>
