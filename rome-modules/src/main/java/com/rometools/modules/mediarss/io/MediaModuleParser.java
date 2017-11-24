@@ -838,14 +838,17 @@ public class MediaModuleParser implements ModuleParser {
 
         for (int i = 0; i < restrictions.size(); i++) {
             final Element r = restrictions.get(i);
-            Restriction.Type type = null;
 
-            if (r.getAttributeValue("type").equalsIgnoreCase(Restriction.Type.URI.toString())) {
-                type = Restriction.Type.URI;
-            } else if (r.getAttributeValue("type").equalsIgnoreCase(Restriction.Type.COUNTRY.toString())) {
-                type = Restriction.Type.COUNTRY;
-            } else if (r.getAttributeValue("type").equalsIgnoreCase(Restriction.Type.SHARING.toString())) {
-                type = Restriction.Type.SHARING;
+            Restriction.Type type = null;
+            String restrictionType = r.getAttributeValue("type");
+            if (restrictionType != null) {
+                if (restrictionType.equalsIgnoreCase(Restriction.Type.URI.toString())){
+                    type = Restriction.Type.URI;
+                } else if (restrictionType.equalsIgnoreCase(Restriction.Type.COUNTRY.toString())) {
+                    type = Restriction.Type.COUNTRY;
+                } else if (restrictionType.equalsIgnoreCase(Restriction.Type.SHARING.toString())) {
+                    type = Restriction.Type.SHARING;
+                }
             }
 
             Restriction.Relationship relationship = null;
