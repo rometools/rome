@@ -20,13 +20,19 @@ import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.SortedMap;
+import java.util.SortedSet;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -232,22 +238,48 @@ public class CloneableBean implements Serializable, Cloneable {
 
     private <T> Collection<T> cloneCollection(final Collection<T> collection) throws Exception {
         @SuppressWarnings("unchecked")
-        final Collection<T> newCollection = collection.getClass().newInstance();
+        final Collection<T> newCollection = newCollection(collection.getClass());
         for (final T item : collection) {
             newCollection.add(doClone(item));
         }
         return newCollection;
     }
 
+    private static <T extends Collection<E>, E> Collection<E> newCollection(Class<T> type)
+        throws InstantiationException, IllegalAccessException {
+        Collection<E> collection;
+        if (SortedSet.class.isAssignableFrom(type)) {
+            collection = new TreeSet<E>();
+        } else if (Set.class.isAssignableFrom(type)) {
+            collection = new HashSet<E>();
+        } else if (List.class.isAssignableFrom(type)) {
+            collection = new ArrayList<E>();
+        } else {
+            collection = type.newInstance();
+        }
+        return collection;
+    }
+
     private <K, V> Map<K, V> cloneMap(final Map<K, V> map) throws Exception {
         @SuppressWarnings("unchecked")
-        final Map<K, V> newMap = map.getClass().newInstance();
+        final Map<K, V> newMap = newMap(map.getClass());
         for (final Entry<K, V> entry : map.entrySet()) {
             final K clonedKey = doClone(entry.getKey());
             final V clonedValue = doClone(entry.getValue());
             newMap.put(clonedKey, clonedValue);
         }
         return newMap;
+    }
+
+    private static <T extends Map<K, V>, K, V> Map<K, V> newMap(Class<T> type)
+        throws InstantiationException, IllegalAccessException {
+        Map<K, V> map;
+        if (SortedMap.class.isAssignableFrom(type)) {
+            map = new TreeMap<K, V>();
+        } else {
+            map = new HashMap<K, V>();
+        }
+        return map;
     }
 
     private boolean isBasicType(final Class<?> vClass) {
