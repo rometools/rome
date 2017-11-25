@@ -143,22 +143,31 @@ public class ITunesParser implements ModuleParser {
             final Element order = element.getChild("order", ns);
 
             if (order != null && order.getValue() != null) {
-                final Integer o = Integer.valueOf(order.getValue().trim());
-                entryInfo.setOrder(o);
+                try {
+                    entryInfo.setOrder(Integer.valueOf(order.getValue().trim()));
+                } catch (NumberFormatException e) {
+                    LOG.warn("Failed to parse order: {}", order.getValue());
+                }
             }
 
             final Element season = element.getChild("season", ns);
 
             if (season != null && season.getValue() != null) {
-                final Integer o = Integer.valueOf(season.getValue().trim());
-                entryInfo.setSeason(o);
+                try {
+                    entryInfo.setSeason(Integer.valueOf(season.getValue().trim()));
+                } catch (NumberFormatException e) {
+                    LOG.warn("Failed to parse season: {}", season.getValue());
+                }
             }
 
             final Element episode = element.getChild("episode", ns);
 
             if (episode != null && episode.getValue() != null) {
-                final Integer o = Integer.valueOf(episode.getValue().trim());
-                entryInfo.setEpisode(o);
+                try {
+                    entryInfo.setEpisode(Integer.valueOf(episode.getValue().trim()));
+                } catch (NumberFormatException e) {
+                    LOG.warn("Failed to parse episode: {}", episode.getValue());
+                }
             }
 
             final Element episodeType = element.getChild("episodeType", ns);
