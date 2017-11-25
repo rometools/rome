@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.rometools</groupId>
         <artifactId>rome-parent</artifactId>
-        <version>1.8.2-SNAPSHOT</version>
+        <version>1.9.0</version>
     </parent>
 
     <artifactId>rome</artifactId>

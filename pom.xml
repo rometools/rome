@@ -5,7 +5,7 @@
 
     <groupId>com.rometools</groupId>
     <artifactId>rome-parent</artifactId>
-    <version>1.8.2-SNAPSHOT</version>
+    <version>1.9.0</version>
     <packaging>pom</packaging>
 
     <modules>
@@ -207,42 +207,42 @@
             <dependency>
                 <groupId>com.rometools</groupId>
                 <artifactId>rome</artifactId>
-                <version>1.8.2-SNAPSHOT</version>
+                <version>1.9.0</version>
             </dependency>
             <dependency>
                 <groupId>com.rometools</groupId>
                 <artifactId>rome-certiorem</artifactId>
-                <version>1.8.2-SNAPSHOT</version>
+                <version>1.9.0</version>
             </dependency>
             <dependency>
                 <groupId>com.rometools</groupId>
                 <artifactId>rome-certiorem-webapp</artifactId>
-                <version>1.8.2-SNAPSHOT</version>
+                <version>1.9.0</version>
             </dependency>
             <dependency>
                 <groupId>com.rometools</groupId>
                 <artifactId>rome-fetcher</artifactId>
-                <version>1.8.2-SNAPSHOT</version>
+                <version>1.9.0</version>
             </dependency>
             <dependency>
                 <groupId>com.rometools</groupId>
                 <artifactId>rome-modules</artifactId>
-                <version>1.8.2-SNAPSHOT</version>
+                <version>1.9.0</version>
             </dependency>
             <dependency>
                 <groupId>com.rometools</groupId>
                 <artifactId>rome-opml</artifactId>
-                <version>1.8.2-SNAPSHOT</version>
+                <version>1.9.0</version>
             </dependency>
             <dependency>
                 <groupId>com.rometools</groupId>
                 <artifactId>rome-propono</artifactId>
-                <version>1.8.2-SNAPSHOT</version>
+                <version>1.9.0</version>
             </dependency>
             <dependency>
                 <groupId>com.rometools</groupId>
                 <artifactId>rome-utils</artifactId>
-                <version>1.8.2-SNAPSHOT</version>
+                <version>1.9.0</version>
             </dependency>
             <!-- JDOM -->
             <dependency>
