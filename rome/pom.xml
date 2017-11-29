@@ -61,8 +61,8 @@
                             org.w3c.dom,
                             org.xml.sax
                         </Import-Package>
-                        <_exportcontents>com.rometools.utils</_exportcontents>
-                        <Embed-Dependency>rome-utils</Embed-Dependency>
+                        <!--<_exportcontents>com.rometools.utils</_exportcontents>-->
+                        <!--<Embed-Dependency>rome-utils</Embed-Dependency>-->
                     </instructions>
                 </configuration>
             </plugin>

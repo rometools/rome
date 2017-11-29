@@ -16,14 +16,13 @@
  */
 package com.rometools.rome.io.impl;
 
-import java.text.DateFormat;
-import java.text.ParsePosition;
+import com.rometools.rome.date.DateConverter;
+import com.rometools.rome.date.impl.AddedDateConverter;
+import com.rometools.rome.date.impl.RFC822DateConverter;
+import com.rometools.rome.date.impl.W3CDateTimeConverter;
+
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.TimeZone;
+import java.util.*;
 
 /**
  * A helper class that parses Dates out of Strings with date time in RFC822 and W3CDateTime formats
@@ -35,48 +34,15 @@ import java.util.TimeZone;
  * <p/>
  */
 public class DateParser {
-
-    private static String[] ADDITIONAL_MASKS;
-
-    // order is like this because the SimpleDateFormat.parse does not fail with exception if it can
-    // parse a valid date out of a substring of the full string given the mask so we have to check
-    // the most complete format first, then it fails with exception
-    private static final String[] RFC822_MASKS = { "EEE, dd MMM yy HH:mm:ss z", "EEE, dd MMM yy HH:mm z", "dd MMM yy HH:mm:ss z", "dd MMM yy HH:mm z" };
-
-    // order is like this because the SimpleDateFormat.parse does not fail with exception if it can
-    // parse a valid date out of a substring of the full string given the mask so we have to check
-    // the most complete format first, then it fails with exception
-    private static final String[] W3CDATETIME_MASKS = { "yyyy-MM-dd'T'HH:mm:ss.SSSz", "yyyy-MM-dd't'HH:mm:ss.SSSz", "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
-            "yyyy-MM-dd't'HH:mm:ss.SSS'z'", "yyyy-MM-dd'T'HH:mm:ssz", "yyyy-MM-dd't'HH:mm:ssz", "yyyy-MM-dd'T'HH:mm:ssZ", "yyyy-MM-dd't'HH:mm:ssZ",
-            "yyyy-MM-dd'T'HH:mm:ss'Z'", "yyyy-MM-dd't'HH:mm:ss'z'", "yyyy-MM-dd'T'HH:mmz", // together
-            // with
-            // logic
-            // in
-            // the
-            // parseW3CDateTime
-            // they
-            "yyyy-MM'T'HH:mmz", // handle W3C dates without time forcing them to
-            // be GMT
-            "yyyy'T'HH:mmz", "yyyy-MM-dd't'HH:mmz", "yyyy-MM-dd'T'HH:mm'Z'", "yyyy-MM-dd't'HH:mm'z'", "yyyy-MM-dd", "yyyy-MM", "yyyy" };
-
-    /**
-     * The masks used to validate and parse the input to this Atom date. These are a lot more
-     * forgiving than what the Atom spec allows. The forms that are invalid according to the spec
-     * are indicated.
-     */
-    @SuppressWarnings("unused")
-    private static final String[] masks = { "yyyy-MM-dd'T'HH:mm:ss.SSSz", "yyyy-MM-dd't'HH:mm:ss.SSSz", // invalid
-            "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", "yyyy-MM-dd't'HH:mm:ss.SSS'z'", // invalid
-            "yyyy-MM-dd'T'HH:mm:ssz", "yyyy-MM-dd't'HH:mm:ssz", // invalid
-            "yyyy-MM-dd'T'HH:mm:ss'Z'", "yyyy-MM-dd't'HH:mm:ss'z'", // invalid
-            "yyyy-MM-dd'T'HH:mmz", // invalid
-            "yyyy-MM-dd't'HH:mmz", // invalid
-            "yyyy-MM-dd'T'HH:mm'Z'", // invalid
-            "yyyy-MM-dd't'HH:mm'z'", // invalid
-            "yyyy-MM-dd", "yyyy-MM", "yyyy" };
+    private static List<DateConverter> mDateConverters;
+    private static DateConverter mW3CDateTimeConverter;
+    private static DateConverter mRFC822DateConverter;
 
     static {
-        ADDITIONAL_MASKS = PropertiesLoader.getPropertiesLoader().getTokenizedProperty("datetime.extra.masks", "|");
+        mDateConverters = new ArrayList<DateConverter>();
+        mDateConverters.add(mW3CDateTimeConverter = new W3CDateTimeConverter());
+        mDateConverters.add(mRFC822DateConverter = new RFC822DateConverter());
+        mDateConverters.add(new AddedDateConverter());
     }
 
     /**
@@ -86,37 +52,12 @@ public class DateParser {
     }
 
     /**
-     * Parses a Date out of a string using an array of masks.
-     * <p/>
-     * It uses the masks in order until one of them succedes or all fail.
-     * <p/>
+     * add date date converter
      *
-     * @param masks array of masks to use for parsing the string
-     * @param sDate string to parse for a date.
-     * @return the Date represented by the given string using one of the given masks. It returns
-     *         <b>null</b> if it was not possible to parse the the string with any of the masks.
-     *
+     * @param dateConverter DateConverter
      */
-    private static Date parseUsingMask(final String[] masks, String sDate, final Locale locale) {
-        if (sDate != null) {
-            sDate = sDate.trim();
-        }
-        ParsePosition pp = null;
-        Date d = null;
-        for (int i = 0; d == null && i < masks.length; i++) {
-            final DateFormat df = new SimpleDateFormat(masks[i], locale);
-            // df.setLenient(false);
-            df.setLenient(true);
-            try {
-                pp = new ParsePosition(0);
-                d = df.parse(sDate, pp);
-                if (pp.getIndex() != sDate.length()) {
-                    d = null;
-                }
-            } catch (final Exception ex1) {
-            }
-        }
-        return d;
+    public static void addDateConverter(DateConverter dateConverter) {
+        mDateConverters.add(dateConverter);
     }
 
     /**
@@ -139,35 +80,10 @@ public class DateParser {
      *
      * @param sDate string to parse for a date.
      * @return the Date represented by the given RFC822 string. It returns <b>null</b> if it was not
-     *         possible to parse the given string into a Date.
-     *
+     * possible to parse the given string into a Date.
      */
-    public static Date parseRFC822(String sDate, final Locale locale) {
-        sDate = convertUnsupportedTimeZones(sDate);
-        return parseUsingMask(RFC822_MASKS, sDate, locale);
-    }
-
-    private static String convertUnsupportedTimeZones(String sDate) {
-        final List<String> unsupportedZeroOffsetTimeZones = Arrays.asList("UT", "Z");
-
-        for (String timeZone : unsupportedZeroOffsetTimeZones) {
-            if (sDate.endsWith(timeZone)) {
-                return replaceLastOccurrence(sDate, timeZone, "UTC");
-            }
-        }
-        return sDate;
-    }
-
-    private static String replaceLastOccurrence(String original, String target, String replacement) {
-        final int lastIndexOfTarget = original.lastIndexOf(target);
-
-        if (lastIndexOfTarget == -1) {
-            return original;
-        } else {
-            return new StringBuilder(original)
-                .replace(lastIndexOfTarget, lastIndexOfTarget + target.length(), replacement)
-                .toString();
-        }
+    public static Date parseRFC822(final String sDate, final Locale locale) {
+        return mRFC822DateConverter.convert(sDate, locale);
     }
 
     /**
@@ -187,34 +103,10 @@ public class DateParser {
      *
      * @param sDate string to parse for a date.
      * @return the Date represented by the given W3C date-time string. It returns <b>null</b> if it
-     *         was not possible to parse the given string into a Date.
-     *
+     * was not possible to parse the given string into a Date.
      */
-    public static Date parseW3CDateTime(String sDate, final Locale locale) {
-        // if sDate has time on it, it injects 'GTM' before de TZ displacement to allow the
-        // SimpleDateFormat parser to parse it properly
-        final int tIndex = sDate.indexOf("T");
-        if (tIndex > -1) {
-            if (sDate.endsWith("Z")) {
-                sDate = sDate.substring(0, sDate.length() - 1) + "+00:00";
-            }
-            int tzdIndex = sDate.indexOf("+", tIndex);
-            if (tzdIndex == -1) {
-                tzdIndex = sDate.indexOf("-", tIndex);
-            }
-            if (tzdIndex > -1) {
-                String pre = sDate.substring(0, tzdIndex);
-                final int secFraction = pre.indexOf(",");
-                if (secFraction > -1) {
-                    pre = pre.substring(0, secFraction);
-                }
-                final String post = sDate.substring(tzdIndex);
-                sDate = pre + "GMT" + post;
-            }
-        } else {
-            sDate += "T00:00GMT";
-        }
-        return parseUsingMask(W3CDATETIME_MASKS, sDate, locale);
+    public static Date parseW3CDateTime(final String sDate, final Locale locale) {
+        return mW3CDateTimeConverter.convert(sDate, locale);
     }
 
     /**
@@ -223,18 +115,14 @@ public class DateParser {
      *
      * @param sDate string to parse for a date.
      * @return the Date represented by the given W3C date-time string. It returns <b>null</b> if it
-     *         was not possible to parse the given string into a Date.
-     *
-     * */
+     * was not possible to parse the given string into a Date.
+     */
     public static Date parseDate(final String sDate, final Locale locale) {
-        Date date = parseW3CDateTime(sDate, locale);
-        if (date == null) {
-            date = parseRFC822(sDate, locale);
-            if (date == null && ADDITIONAL_MASKS.length > 0) {
-                date = parseUsingMask(ADDITIONAL_MASKS, sDate, locale);
-            }
+        for (DateConverter converter : mDateConverters) {
+            Date date = converter.convert(sDate, locale);
+            if (date != null) return date;
         }
-        return date;
+        return null;
     }
 
     /**
@@ -245,8 +133,7 @@ public class DateParser {
      *
      * @param date Date to parse
      * @return the RFC822 represented by the given Date It returns <b>null</b> if it was not
-     *         possible to parse the date.
-     *
+     * possible to parse the date.
      */
     public static String formatRFC822(final Date date, final Locale locale) {
         final SimpleDateFormat dateFormater = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss 'GMT'", locale);
@@ -262,8 +149,7 @@ public class DateParser {
      *
      * @param date Date to parse
      * @return the W3C Date Time represented by the given Date It returns <b>null</b> if it was not
-     *         possible to parse the date.
-     *
+     * possible to parse the date.
      */
     public static String formatW3CDateTime(final Date date, final Locale locale) {
         final SimpleDateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", locale);
