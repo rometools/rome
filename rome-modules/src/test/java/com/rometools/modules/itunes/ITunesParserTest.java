@@ -76,7 +76,7 @@ public class ITunesParserTest extends AbstractTestCase {
      * Test of parse method, of class com.totsp.xml.syndication.itunes.ITunesParser.
      */
     public void testParse() throws Exception {
-        File feed = new File(getTestFile("xml/leshow.xml"));
+        File feed = new File(getTestFile("itunes/leshow.xml"));
         final SyndFeedInput input = new SyndFeedInput();
         SyndFeed syndfeed = input.build(new XmlReader(feed.toURI().toURL()));
 
@@ -86,7 +86,14 @@ public class ITunesParserTest extends AbstractTestCase {
         assertEquals("owner", "Harry Shearer", feedInfo.getOwnerName());
         assertEquals("email", "", feedInfo.getOwnerEmailAddress());
         assertEquals("image", "http://a1.phobos.apple.com/Music/y2005/m06/d26/h21/mcdrrifv.jpg", feedInfo.getImage().toExternalForm());
-        assertEquals("category", "Comedy", feedInfo.getCategories().get(0).getName());
+        assertEquals("category1", "Comedy", feedInfo.getCategories().get(0).getName());
+        assertEquals("category2",
+                "Arts & Entertainment",
+                feedInfo.getCategories().get(1).getName());
+        assertEquals(
+                "subCategory",
+                "Entertainment",
+                feedInfo.getCategories().get(1).getSubcategories().get(0).getName());
         assertEquals(
                 "summary",
                 "A weekly, hour-long romp through the worlds of media, politics, sports and show business, leavened with an eclectic mix of mysterious music, hosted by Harry Shearer.",

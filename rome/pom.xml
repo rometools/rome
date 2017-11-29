@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.rometools</groupId>
         <artifactId>rome-parent</artifactId>
-        <version>1.8.1-SNAPSHOT</version>
+        <version>1.9.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>rome</artifactId>
@@ -61,8 +61,8 @@
                             org.w3c.dom,
                             org.xml.sax
                         </Import-Package>
-                        <_exportcontents>com.rometools.utils</_exportcontents>
-                        <Embed-Dependency>rome-utils</Embed-Dependency>
+                        <!--<_exportcontents>com.rometools.utils</_exportcontents>-->
+                        <!--<Embed-Dependency>rome-utils</Embed-Dependency>-->
                     </instructions>
                 </configuration>
             </plugin>

@@ -52,8 +52,13 @@ public class SimpleParser implements ModuleParser {
             posList = new PositionList();
             final String[] coord = coordinates.split("\\s+");
             for (int i = 0; i < coord.length; i += 2) {
-                final double latitude = Double.parseDouble(coord[i]);
-                final double longitude = Double.parseDouble(coord[i + 1]);
+                final double latitude, longitude;
+                try {
+                    latitude = Double.parseDouble(coord[i]);
+                    longitude = Double.parseDouble(coord[i + 1]);
+                } catch (final NumberFormatException e) {
+                	return null;
+                }
                 posList.add(latitude, longitude);
             }
 
@@ -139,10 +144,15 @@ public class SimpleParser implements ModuleParser {
             if (coordinates != null) {
 
                 final String[] coord = coordinates.split("\\s+");
-                final double bottom = Double.parseDouble(coord[0]);
-                final double left = Double.parseDouble(coord[1]);
-                final double top = Double.parseDouble(coord[2]);
-                final double right = Double.parseDouble(coord[3]);
+                final double bottom, left, top, right;
+                try {
+                    bottom = Double.parseDouble(coord[0]);
+                    left = Double.parseDouble(coord[1]);
+                    top = Double.parseDouble(coord[2]);
+                    right = Double.parseDouble(coord[3]);
+                } catch (final NumberFormatException e) {
+                	return null;
+                }
 
                 final Envelope envelope = new Envelope(bottom, left, top, right);
 

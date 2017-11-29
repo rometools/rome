@@ -63,8 +63,13 @@ public class W3CGeoParser implements ModuleParser {
 
             if (latTxt != null && lngTxt != null) {
 
-                final double latitude = Double.parseDouble(lat.getText());
-                final double longitude = Double.parseDouble(lng.getText());
+                final double latitude, longitude;
+                try {
+                    latitude = Double.parseDouble(lat.getText());
+                    longitude = Double.parseDouble(lng.getText());
+                } catch (final NumberFormatException e) {
+                	return null;
+                }
 
                 final Position position = new Position(latitude, longitude);
 
