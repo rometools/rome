@@ -25,12 +25,9 @@ import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.StringTokenizer;
 
 import org.jdom2.Element;
 import org.jdom2.Namespace;
@@ -465,8 +462,16 @@ public class MediaModuleParser implements ModuleParser {
         for (int i = 0; i < priceElements.size(); i++) {
             final Element priceElement = priceElements.get(i);
             prices[i] = new Price();
-            prices[i].setCurrency(priceElement.getAttributeValue("currency"));
-            prices[i].setPrice(Doubles.parse(priceElement.getAttributeValue("price")));
+            try {
+                prices[i].setCurrency(Currency.getInstance(priceElement.getAttributeValue("currency")));
+            } catch (RuntimeException ex) {
+                LOG.warn("Exception parsing currency code", ex);
+            }
+            try {
+                prices[i].setPrice(new BigDecimal(priceElement.getAttributeValue("price")));
+            } catch (NumberFormatException ex) {
+                LOG.warn("Exception parsing price amount", ex);
+            }
             if (priceElement.getAttributeValue("type") != null) {
                 prices[i].setType(Price.Type.valueOf(priceElement.getAttributeValue("type").toUpperCase()));
             }
