@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:wfw="http://wellformedweb.org/CommentAPI/">
+	<channel>
+		<title>KenFM.de</title>
+		<link>https://kenfm.de</link>
+		<description/>
+		<item>
+			<title>KenFM-Spezial: Coexist – Der Islam</title>
+			<link>https://kenfm.de/kenfm-spezial-coexist-der-islam/</link>
+			<wfw:commentRss>https://kenfm.de/kenfm-spezial-coexist-der-islam/feed/</wfw:commentRss>
+		</item>
+	</channel>
+</rss>
