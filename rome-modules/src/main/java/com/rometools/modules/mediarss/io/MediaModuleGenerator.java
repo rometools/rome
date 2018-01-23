@@ -236,7 +236,7 @@ public class MediaModuleGenerator implements ModuleGenerator {
 
     /**
      * Generation of thumbnail tags.
-     * 
+     *
      * @param m source
      * @param e element to attach new element to
      */
@@ -253,7 +253,7 @@ public class MediaModuleGenerator implements ModuleGenerator {
 
     /**
      * Generation of backLinks tag.
-     * 
+     *
      * @param m source
      * @param e element to attach new element to
      */
@@ -269,7 +269,7 @@ public class MediaModuleGenerator implements ModuleGenerator {
 
     /**
      * Generation of comments tag.
-     * 
+     *
      * @param m source
      * @param e element to attach new element to
      */
@@ -285,7 +285,7 @@ public class MediaModuleGenerator implements ModuleGenerator {
 
     /**
      * Generation of community tag.
-     * 
+     *
      * @param m source
      * @param e element to attach new element to
      */
@@ -337,7 +337,7 @@ public class MediaModuleGenerator implements ModuleGenerator {
 
     /**
      * Generation of embed tag.
-     * 
+     *
      * @param m source
      * @param e element to attach new element to
      */
@@ -362,7 +362,7 @@ public class MediaModuleGenerator implements ModuleGenerator {
 
     /**
      * Generation of scenes tag.
-     * 
+     *
      * @param m source
      * @param e element to attach new element to
      */
@@ -385,7 +385,7 @@ public class MediaModuleGenerator implements ModuleGenerator {
 
     /**
      * Generation of location tags.
-     * 
+     *
      * @param m source
      * @param e element to attach new element to
      */
@@ -407,7 +407,7 @@ public class MediaModuleGenerator implements ModuleGenerator {
 
     /**
      * Generation of peerLink tags.
-     * 
+     *
      * @param m source
      * @param e element to attach new element to
      */
@@ -424,7 +424,7 @@ public class MediaModuleGenerator implements ModuleGenerator {
 
     /**
      * Generation of subTitle tags.
-     * 
+     *
      * @param m source
      * @param e element to attach new element to
      */
@@ -442,7 +442,7 @@ public class MediaModuleGenerator implements ModuleGenerator {
 
     /**
      * Generation of license tags.
-     * 
+     *
      * @param m source
      * @param e element to attach new element to
      */
@@ -462,7 +462,7 @@ public class MediaModuleGenerator implements ModuleGenerator {
 
     /**
      * Generation of backLinks tag.
-     * 
+     *
      * @param m source
      * @param e element to attach new element to
      */
@@ -486,7 +486,7 @@ public class MediaModuleGenerator implements ModuleGenerator {
 
     /**
      * Generation of responses tag.
-     * 
+     *
      * @param m source
      * @param e element to attach new element to
      */
@@ -503,7 +503,7 @@ public class MediaModuleGenerator implements ModuleGenerator {
 
     /**
      * Generation of status tag.
-     * 
+     *
      * @param m source
      * @param e element to attach new element to
      */

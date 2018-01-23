@@ -58,7 +58,7 @@ import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.SyndFeedOutput;
 
 /**
- * 
+ *
  * @author cooper
  */
 public class MediaModuleTest extends AbstractTestCase {
@@ -138,7 +138,7 @@ public class MediaModuleTest extends AbstractTestCase {
 
     /**
      * tests parsing thubnails with empty dimensions (https://github.com/rometools/rome-modules/issues/7).
-     * 
+     *
      * @throws IOException if file not found or not accessible
      * @throws FeedException when the feed can't be parsed
      */
@@ -151,7 +151,7 @@ public class MediaModuleTest extends AbstractTestCase {
 
     /**
      * tests parsing a decimal duration (https://github.com/rometools/rome-modules/issues/8).
-     * 
+     *
      * @throws IOException if file not found or not accessible
      * @throws FeedException when the feed can't be parsed
      */
@@ -164,7 +164,7 @@ public class MediaModuleTest extends AbstractTestCase {
 
     /**
      * tests parsing rating without scheme (https://github.com/rometools/rome-modules/issues/12).
-     * 
+     *
      * @throws IOException if file not found or not accessible
      * @throws FeedException when the feed can't be parsed
      */
@@ -177,7 +177,7 @@ public class MediaModuleTest extends AbstractTestCase {
 
     /**
      * test url with whitespace in media element (https://github.com/rometools/rome-modules/issues/20).
-     * 
+     *
      * @throws IOException if file not found or not accessible
      * @throws FeedException when the feed can't be parsed
      */
@@ -192,8 +192,24 @@ public class MediaModuleTest extends AbstractTestCase {
     }
 
     /**
+     * test media:content with media:thumbnail inside
+     *
+     * @throws IOException if file not found or not accessible
+     * @throws FeedException when the feed can't be parsed
+     */
+    public void testParseMediaContentContainingThumbnail() throws FeedException, IOException {
+        final MediaEntryModule module = getFirstModuleFromFile("org/rometools/feed/module/mediarss/file-with-thumnail-on-content.xml");
+        final MediaContent[] mediaContents = module.getMediaContents();
+        final MediaContent mediaContent = mediaContents[0];
+        final Thumbnail[] thumbnails = mediaContent.getThumbnails();
+        assertEquals("wrong count of thumbnails", 1, thumbnails.length);
+        Thumbnail thumbnail = thumbnails[0];
+        assertEquals("http://www.foo.com/keyframe.jpg", thumbnail.getUrl().toString());
+    }
+
+    /**
      * tests parsing of MediaRSS 1.5 elements (https://github.com/rometools/rome-modules/issues/15).
-     * 
+     *
      * @throws IOException if file not found or not accessible
      * @throws FeedException when the feed can't be parsed
      */
@@ -238,11 +254,11 @@ public class MediaModuleTest extends AbstractTestCase {
                 new FileReader(new File("target/issue-15.xml")));
         myDiff.overrideElementQualifier(new ElementNameQualifier());
         myDiff.overrideDifferenceListener(new DifferenceListener() {
-            
+
             @Override
             public void skippedComparison(final Node control, final Node test) {
             }
-            
+
             @Override
             public int differenceFound(final Difference difference) {
                 if (difference.getId() == DifferenceConstants.TEXT_VALUE_ID) {
@@ -273,13 +289,13 @@ public class MediaModuleTest extends AbstractTestCase {
         final SyndEntry entry = feed.getEntries().get(0);
         return (MediaEntryModule) entry.getModule(MediaEntryModule.URI);
     }
-    
+
     public void testParseRestrictionWithoutType() throws FeedException, IOException  {
         final SyndFeed feed = getSyndFeed("org/rometools/feed/module/mediarss/issue-331.xml");
         final SyndEntry entry = feed.getEntries().get(0);
         final MediaEntryModule module = (MediaEntryModule) entry.getModule(MediaModule.URI);
         final Restriction[] restrictions = module.getMetadata().getRestrictions();
-        
+
         assertThat(restrictions, is(notNullValue()));
     }
 

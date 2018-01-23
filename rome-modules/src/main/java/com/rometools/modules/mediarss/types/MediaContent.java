@@ -141,6 +141,9 @@ public class MediaContent implements Serializable {
      * private variable for storing instances of Thumbnail class each MediaContent can have zero to
      * many thumbnails
      */
+    private Thumbnail[] thumbnails = new Thumbnail[0];
+
+    /* Number of audioChannels of the resource */
     private Integer audioChannels = null;
 
     /* the height in pixels of the resource */
@@ -176,6 +179,28 @@ public class MediaContent implements Serializable {
         }
 
         setReference(reference);
+    }
+
+    /**
+     * thumbnails are representational images for the media object. It is an optional attribute.
+     *
+     * @return thumbnails Thumbnails contained within the media:content element
+     */
+    public Thumbnail[] getThumbnails() {
+        return thumbnails;
+    }
+
+    /**
+     * thumbnails are representational images for the media object. It is an optional attribute.
+     *
+     * @param thumbnails
+     */
+    public void setThumbnails(final Thumbnail[] thumbnails) {
+        if (thumbnails == null) {
+            this.thumbnails = new Thumbnail[0];
+        } else {
+            this.thumbnails = thumbnails;
+        }
     }
 
     /**
