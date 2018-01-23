@@ -24,6 +24,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 
+import com.rometools.modules.mediarss.types.MediaGroup;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
@@ -205,6 +206,17 @@ public class MediaModuleTest extends AbstractTestCase {
         assertEquals("wrong count of thumbnails", 1, thumbnails.length);
         Thumbnail thumbnail = thumbnails[0];
         assertEquals("http://www.foo.com/keyframe.jpg", thumbnail.getUrl().toString());
+    }
+
+    public void testParseMediaGroup() throws FeedException, IOException {
+        final MediaEntryModule module = getFirstModuleFromFile("org/rometools/feed/module/mediarss/file-with-media-group.xml");
+        final MediaGroup[] mediaGroups = module.getMediaGroups();
+        assertEquals("wrong count of media:group", 1, mediaGroups.length);
+        final MediaGroup mediaGroup = mediaGroups[0];
+        final MediaContent[] contents = mediaGroup.getContents();
+        assertEquals("wrong count of media:content inside group", 5, contents.length);
+        final Thumbnail[] thumbnails = mediaGroup.getThumbnails();
+        assertEquals("wrong coung of media:thumbnail inside group", 1, thumbnails.length);
     }
 
     /**

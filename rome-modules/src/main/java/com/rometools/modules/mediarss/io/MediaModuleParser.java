@@ -288,6 +288,7 @@ public class MediaModuleParser implements ModuleParser {
             }
 
             g.setMetadata(parseMetadata(group, locale));
+            g.setThumbnails(parseThumbnail(group));
             values.add(g);
         }
 
