@@ -40,6 +40,7 @@ import com.rometools.rome.feed.impl.ToStringBean;
 public class MediaGroup implements Cloneable, Serializable {
     private static final long serialVersionUID = 1L;
 
+    private Thumbnail[] thumbnails;
     private Integer defaultContentIndex;
     private Metadata metadata;
     private MediaContent[] contents = new MediaContent[0];
@@ -69,6 +70,24 @@ public class MediaGroup implements Cloneable, Serializable {
         setContents(contents);
         setDefaultContentIndex(defaultContentIndex);
         setMetadata(metadata);
+    }
+
+    /**
+     * Thumbnails for the group
+     *
+     * @return thumbnails Thumbnails for the group
+     */
+    public Thumbnail[] getThumbnails() {
+        return thumbnails;
+    }
+
+    /**
+     * Thumbnails for the group
+     *
+     * @param thumbnails Thumbnails for the group
+     */
+    public void setThumbnails(Thumbnail[] thumbnails) {
+        this.thumbnails = thumbnails == null ? new Thumbnail[0] : thumbnails;
     }
 
     /**

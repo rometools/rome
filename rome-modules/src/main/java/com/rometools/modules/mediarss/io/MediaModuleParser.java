@@ -79,7 +79,7 @@ import com.rometools.utils.Strings;
 
 /**
  * @author Nathanial X. Freitas
- * 
+ *
  */
 public class MediaModuleParser implements ModuleParser {
 
@@ -252,6 +252,8 @@ public class MediaModuleParser implements ModuleParser {
                     if (content.getAttributeValue("isDefault") != null) {
                         mc.setDefaultContent(Boolean.valueOf(content.getAttributeValue("isDefault")));
                     }
+
+                    mc.setThumbnails(parseThumbnail(content));
                 } else {
                     LOG.warn("Could not find MediaContent.");
                 }
@@ -286,6 +288,7 @@ public class MediaModuleParser implements ModuleParser {
             }
 
             g.setMetadata(parseMetadata(group, locale));
+            g.setThumbnails(parseThumbnail(group));
             values.add(g);
         }
 
@@ -307,7 +310,7 @@ public class MediaModuleParser implements ModuleParser {
         parseKeywords(e, md);
         parseRatings(e, md);
         parseText(e, md);
-        parseThumbnail(e, md);
+        md.setThumbnail(parseThumbnail(e));
         parseTitle(e, md);
         parseRestrictions(e, md);
         parseAdultMetadata(e, md);
@@ -780,9 +783,8 @@ public class MediaModuleParser implements ModuleParser {
 
     /**
      * @param e element to parse
-     * @param md metadata to fill in
      */
-    private void parseThumbnail(final Element e, final Metadata md) {
+    private Thumbnail[] parseThumbnail(final Element e) {
         final ArrayList<Thumbnail> values = new ArrayList<Thumbnail>();
 
         final List<Element> thumbnails = e.getChildren("thumbnail", getNS());
@@ -812,7 +814,7 @@ public class MediaModuleParser implements ModuleParser {
             }
         }
 
-        md.setThumbnail(values.toArray(new Thumbnail[values.size()]));
+        return values.toArray(new Thumbnail[values.size()]);
     }
 
     /**
