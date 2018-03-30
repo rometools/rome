@@ -555,15 +555,6 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
         this.authors = authors;
     }
 
-    /**
-     * Returns the entry author.
-     * <p>
-     * This method is a convenience method, it maps to the Dublin Core module creator.
-     * <p>
-     *
-     * @return the entry author, empty String if none.
-     *
-     */
     @Override
     public String getAuthor() {
 
