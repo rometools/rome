@@ -15,6 +15,11 @@
  */
 package com.rometools.rome.feed.synd.impl;
 
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+
 /**
  * Utility class for normalizing an URI as specified in RFC 2396bis.
  */
@@ -24,18 +29,35 @@ public class URINormalizer {
     }
 
     /**
-     * Normalizes an URI as specified in RFC 2396bis.
+     * Normalizes an URI as specified in RFC 2396bis and replace spaces with %20
      * <p>
      *
      * @param uri to normalize.
      * @return the normalized value of the given URI, or <b>null</b> if the given URI was
-     *         <b>null</b>.
+     * <b>null</b>.
      */
     public static String normalize(final String uri) {
-        String normalizedUri = null;
         if (uri != null) {
-            normalizedUri = uri; // TODO THIS HAS TO BE IMPLEMENTED
+            try {
+                URL url = new URL(uri);
+                return new
+                        URI(
+                        url.getProtocol(),
+                        url.getUserInfo(),
+                        url.getHost(),
+                        url.getPort(),
+                        url.getPath(),
+                        url.getQuery(),
+                        url.getRef())
+                        .normalize()
+                        .toString();
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
         }
-        return normalizedUri;
+        return null;
     }
 }
