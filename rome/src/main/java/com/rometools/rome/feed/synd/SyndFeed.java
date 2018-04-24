@@ -566,7 +566,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
      * This tag should contain a URL that references a description of the channel.
      *
      * @since 2.0.0
-     * @param channel description URL
+     * @param docs description URL
      */
     public void setDocs(String docs);
 
@@ -582,7 +582,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
      * A string indicating the program used to generate the channel.
      *
      * @since 2.0.0
-     * @param string indicating the program
+     * @param generator indicating the program
      */
     public void setGenerator(String generator);
 
