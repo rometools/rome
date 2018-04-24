@@ -90,7 +90,6 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
         IGNORE_PROPERTIES.add("author");
 
         final Map<String, Class<?>> basePropInterfaceMap = new HashMap<String, Class<?>>();
-        basePropInterfaceMap.put("uri", String.class);
         basePropInterfaceMap.put("title", String.class);
         basePropInterfaceMap.put("link", String.class);
         basePropInterfaceMap.put("uri", String.class);
