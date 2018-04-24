@@ -629,7 +629,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      * Sets the feed icon.
      * <p>
      *
-     * @param image the feed icon to set, <b>null</b> if none.
+     * @param icon the feed icon to set, <b>null</b> if none.
      *
      */
     @Override
