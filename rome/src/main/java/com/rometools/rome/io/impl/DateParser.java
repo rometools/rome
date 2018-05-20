@@ -105,8 +105,12 @@ public class DateParser {
         Date d = null;
         for (int i = 0; d == null && i < masks.length; i++) {
             final DateFormat df = new SimpleDateFormat(masks[i], locale);
-            // df.setLenient(false);
-            df.setLenient(true);
+
+            if (masks[i].length() != 4)
+                df.setLenient(true);
+            else
+                df.setLenient(false);
+
             try {
                 pp = new ParsePosition(0);
                 d = df.parse(sDate, pp);
@@ -211,7 +215,7 @@ public class DateParser {
                 final String post = sDate.substring(tzdIndex);
                 sDate = pre + "GMT" + post;
             }
-        } else {
+        } else if (sDate.indexOf('-') > 0 || sDate.length() == 4){
             sDate += "T00:00GMT";
         }
         return parseUsingMask(W3CDATETIME_MASKS, sDate, locale);

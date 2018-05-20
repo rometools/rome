@@ -101,6 +101,17 @@ public class TestDateParser {
         assertNull(DateParser.parseDate("X00:00 2005-07-19", Locale.US));
     }
 
+    @Test
+    public void testInvalidDate2() {
+        assertNull(DateParser.parseDate("20180520230838", Locale.US));
+    }
+
+    @Test
+    public void testOnlyYear() {
+        assertEquals(date("2005-01-01 00:00:00"),
+                DateParser.parseDate("2005", Locale.US));
+    }
+
     static Date date(String dateString) {
         return date(dateString, TimeZone.getTimeZone("UTC"));
     }
