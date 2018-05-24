@@ -160,7 +160,7 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
 
         setComplete(info.getComplete());
         setNewFeedUrl(info.getNewFeedUrl());
-        setExplicit(info.getExplicit());
+        setExplicitNullable(info.getExplicitNullable());
 
         try {
             if (info.getImage() != null) {

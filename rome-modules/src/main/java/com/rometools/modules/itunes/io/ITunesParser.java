@@ -18,6 +18,7 @@ package com.rometools.modules.itunes.io;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.StringTokenizer;
@@ -41,6 +42,9 @@ import com.rometools.rome.io.WireFeedParser;
 public class ITunesParser implements ModuleParser {
 
     private static final Logger LOG = LoggerFactory.getLogger(ITunesParser.class);
+
+    private static final List<String> EXPLICIT_TRUE = Arrays.asList("yes", "explicit", "true");
+    private static final List<String> EXPLICIT_FALSE = Arrays.asList("clean", "no", "false");
 
     Namespace ns = Namespace.getNamespace(AbstractITunesObject.URI);
 
@@ -192,8 +196,16 @@ public class ITunesParser implements ModuleParser {
 
             final Element explicit = element.getChild("explicit", ns);
 
-            if (explicit != null && explicit.getValue() != null && explicit.getValue().trim().equalsIgnoreCase("yes")) {
-                module.setExplicit(true);
+            if (explicit != null && explicit.getValue() != null) {
+                String explicitValue = explicit.getValue().trim();
+
+                if (EXPLICIT_TRUE.contains(explicitValue)) {
+                    module.setExplicit(true);
+                }
+
+                if (EXPLICIT_FALSE.contains(explicitValue)) {
+                    module.setExplicit(false);
+                }
             }
 
             final Element keywords = element.getChild("keywords", ns);

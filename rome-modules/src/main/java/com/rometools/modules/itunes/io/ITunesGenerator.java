@@ -128,10 +128,12 @@ public class ITunesGenerator implements ModuleGenerator {
             element.addContent(generateSimpleElement("block", ""));
         }
 
-        if (itunes.getExplicit()) {
-            element.addContent(generateSimpleElement("explicit", "yes"));
-        } else {
-            element.addContent(generateSimpleElement("explicit", "no"));
+        if (itunes.getExplicitNullable() != null) {
+            if (itunes.getExplicitNullable()) {
+                element.addContent(generateSimpleElement("explicit", "yes"));
+            } else {
+                element.addContent(generateSimpleElement("explicit", "no"));
+            }
         }
 
         if (itunes.getImage() != null) {

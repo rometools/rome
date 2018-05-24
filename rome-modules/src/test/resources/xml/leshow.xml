@@ -107,7 +107,7 @@
 
 
 
-    <itunes:explicit>no</itunes:explicit>
+    <itunes:explicit>yes</itunes:explicit>
 	
 	    <itunes:duration>44:00</itunes:duration>
 	
@@ -148,8 +148,7 @@
 
 
 
-    <itunes:explicit>no</itunes:explicit>
-	
+
 	    <itunes:duration>48:33</itunes:duration>
 	
     <itunes:keywords></itunes:keywords>  
@@ -186,8 +185,7 @@
 
 
 
-    <itunes:explicit>no</itunes:explicit>
-	
+
 	    <itunes:duration>45:56</itunes:duration>
 	
     <itunes:keywords></itunes:keywords>  

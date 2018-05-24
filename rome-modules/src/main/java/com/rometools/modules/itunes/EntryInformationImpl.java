@@ -127,7 +127,7 @@ public class EntryInformationImpl extends AbstractITunesObject implements EntryI
             setDuration(new Duration(info.getDuration().getMilliseconds()));
         }
 
-        setExplicit(info.getExplicit());
+        setExplicitNullable(info.getExplicitNullable());
 
         try {
             if (info.getImage() != null) {

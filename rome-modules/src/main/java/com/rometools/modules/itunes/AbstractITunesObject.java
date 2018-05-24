@@ -45,7 +45,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
     public static final String PREFIX = "itunes";
     private String author;
     private boolean block;
-    private boolean explicit;
+    private Boolean explicit;
     private URL image;
     private String[] keywords;
     private String subtitle;
@@ -126,6 +126,11 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
      */
     @Override
     public boolean getExplicit() {
+        return explicit != null ? explicit : false;
+    }
+
+    @Override
+    public Boolean getExplicitNullable() {
         return explicit;
     }
 
@@ -136,6 +141,11 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
      */
     @Override
     public void setExplicit(final boolean explicit) {
+        this.explicit = explicit;
+    }
+
+    @Override
+    public void setExplicitNullable(final Boolean explicit) {
         this.explicit = explicit;
     }
 
@@ -221,7 +231,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
         sb.append(" Block: ");
         sb.append(getBlock());
         sb.append(" Explicit: ");
-        sb.append(getExplicit());
+        sb.append(getExplicitNullable());
         sb.append(" Image: ");
         sb.append(getImage());
         sb.append(" Keywords: ");
