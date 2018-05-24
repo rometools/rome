@@ -136,6 +136,16 @@ public class ITunesParserTest extends AbstractTestCase {
         assertEquals(true, entryInfo.getClosedCaptioned());
         assertEquals(Integer.valueOf(2), entryInfo.getOrder());
         assertEquals("http://example.org/image.png", entryInfo.getImage().toString());
+        assertFalse(entryInfo.getExplicit());
+
+        SyndEntry entry1 = syndfeed.getEntries().get(1);
+        EntryInformationImpl entryInfo1 = (EntryInformationImpl) entry1.getModule(AbstractITunesObject.URI);
+        assertTrue(entryInfo1.getExplicit());
+
+        SyndEntry entry2 = syndfeed.getEntries().get(2);
+        EntryInformationImpl entryInfo2 = (EntryInformationImpl) entry2.getModule(AbstractITunesObject.URI);
+        assertFalse(entryInfo2.getExplicit());
+        assertNull(entryInfo2.getExplicitNullable());
     }
 
     public void testDuration() throws Exception {
