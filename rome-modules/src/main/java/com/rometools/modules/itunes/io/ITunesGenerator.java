@@ -118,6 +118,9 @@ public class ITunesGenerator implements ModuleGenerator {
             if (info.getEpisode() != null && info.getEpisode() > 0) {
                 element.addContent(generateSimpleElement("episode", info.getEpisode().toString()));
             }
+            if (info.getTitle() != null) {
+                element.addContent(generateSimpleElement("title", info.getTitle()));
+            }
         }
 
         if (itunes.getAuthor() != null) {
