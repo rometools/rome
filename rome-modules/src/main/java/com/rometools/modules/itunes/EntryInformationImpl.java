@@ -40,6 +40,7 @@ public class EntryInformationImpl extends AbstractITunesObject implements EntryI
     private String episodeType;
     private Integer season;
     private Integer episode;
+    private String title;
 
     public EntryInformationImpl() {
     }
@@ -112,6 +113,16 @@ public class EntryInformationImpl extends AbstractITunesObject implements EntryI
     @Override
     public void setEpisode(Integer episode) { this.episode = episode; }
 
+    @Override
+    public String getTitle() {
+        return title;
+    }
+
+    @Override
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     /**
      * Defined by the ROME module API
      *
@@ -148,6 +159,7 @@ public class EntryInformationImpl extends AbstractITunesObject implements EntryI
         setEpisodeType(info.getEpisodeType());
         setSeason(info.getSeason());
         setEpisode(info.getEpisode());
+        setTitle(info.getTitle());
     }
 
     /**
@@ -176,6 +188,8 @@ public class EntryInformationImpl extends AbstractITunesObject implements EntryI
         sb.append(getSeason());
         sb.append(" episode: ");
         sb.append(getEpisode());
+        sb.append(" title: ");
+        sb.append(getTitle());
         sb.append(" episodeType: ");
         sb.append(getEpisodeType());
         sb.append("]");

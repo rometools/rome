@@ -66,5 +66,7 @@ public interface EntryInformation extends ITunes {
 
     public void setEpisode(Integer episode);
 
+    public String getTitle();
 
+    public void setTitle(String title);
 }

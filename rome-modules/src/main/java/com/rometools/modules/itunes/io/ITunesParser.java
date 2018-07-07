@@ -179,6 +179,12 @@ public class ITunesParser implements ModuleParser {
             if (episodeType != null && episodeType.getValue() != null) {
                 entryInfo.setEpisodeType(episodeType.getTextTrim());
             }
+
+            final Element title = element.getChild("title", ns);
+
+            if (title != null && title.getValue() != null) {
+                entryInfo.setTitle(title.getValue().trim());
+            }
         }
         if (module != null) {
             // All these are common to both Channel and Item
