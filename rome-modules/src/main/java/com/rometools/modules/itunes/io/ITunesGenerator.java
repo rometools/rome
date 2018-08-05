@@ -128,7 +128,7 @@ public class ITunesGenerator implements ModuleGenerator {
         }
 
         if (itunes.getBlock()) {
-            element.addContent(generateSimpleElement("block", ""));
+            element.addContent(generateSimpleElement("block", "Yes"));
         }
 
         if (itunes.getExplicitNullable() != null) {
