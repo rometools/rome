@@ -83,6 +83,7 @@ public class ITunesParserTest extends AbstractTestCase {
         final Module module = syndfeed.getModule(AbstractITunesObject.URI);
         final FeedInformationImpl feedInfo = (FeedInformationImpl) module;
 
+        assertTrue(feedInfo.getBlock());
         assertEquals("owner", "Harry Shearer", feedInfo.getOwnerName());
         assertEquals("email", "", feedInfo.getOwnerEmailAddress());
         assertEquals("image", "http://a1.phobos.apple.com/Music/y2005/m06/d26/h21/mcdrrifv.jpg", feedInfo.getImage().toExternalForm());

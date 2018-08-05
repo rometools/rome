@@ -10,6 +10,7 @@
         <itunes:type>serial</itunes:type>
         <itunes:complete>yes</itunes:complete>
         <itunes:new-feed-url>http://example.org</itunes:new-feed-url>
+        <itunes:block>Yes</itunes:block>
         <language>en</language>
 
         <copyright>KCRW 2005</copyright>

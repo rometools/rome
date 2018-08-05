@@ -196,7 +196,10 @@ public class ITunesParser implements ModuleParser {
 
             final Element block = element.getChild("block", ns);
 
-            if (block != null) {
+            // Ignore case of the value, assuming that any kind of "yes" clearly shows the intent.
+            if (block != null
+                    && block.getValue() != null
+                    && block.getValue().trim().equalsIgnoreCase("Yes")) {
                 module.setBlock(true);
             }
 
