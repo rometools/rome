@@ -57,8 +57,8 @@ public class SlashModuleParser implements ModuleParser {
         }
         tag = null;
         tag = element.getChild("comments", SlashModuleParser.NS);
-        if (tag != null) {
-            si.setComments(new Integer(tag.getText()));
+        if (tag != null && !tag.getText().trim().isEmpty()) {
+            si.setComments(new Integer(tag.getText().trim()));
         }
         tag = null;
         tag = element.getChild("department", SlashModuleParser.NS);
