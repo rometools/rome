@@ -19,10 +19,10 @@ Todo list
  * {{{http://radio.userland.com/userGuide/reference/howToRedirectRss}RSS Redirection}}
 
  * Unit Tests: smart unit tests along the lines of Mark Pilgrim's tests, in his
- 	\-{{{http://diveintomark.org/projects/feed_parser/}Python Universal Feed Parser}}. He instantiates a web server to a local directory where the samples live,
+ 	\-{{{https://pypi.org/project/feedparser/}Python Universal Feed Parser}}. He instantiates a web server to a local directory where the samples live,
  	and then fetches the feeds from the server, which allows him to test in depth the behavior of gzip compression and etags handling.\- Done 30\-June\-2004
 
- * Better character encoding handling \- See {{{http://diveintomark.org/archives/2004/02/13/xml\-media\-types}http://diveintomark.org/archives/2004/02/13/xml\-media\-types}}
+ * Better character encoding handling \- See {{{https://web.archive.org/web/20060706153721/http://diveintomark.org/archives/2004/02/13/xml\-media\-types}https://web.archive.org/web/20060706153721/http://diveintomark.org/archives/2004/02/13/xml\-media\-types (Archived)}}
 
  * A caching feed fetcher
 

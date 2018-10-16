@@ -11,7 +11,7 @@ Rome Fetcher
  The Rome Fetcher (see modules/fetcher) allows the retrieval of feeds via HTTP. It supports
  {{{http://fishbowl.pastiche.org/2002/10/21/http_conditional_get_for_rss_hackers}HTTP conditional gets}}
  (ie: last modified and ETag handling) and GZip encoded feeds. It should enable user to write aggregators that follow the
- {{{http://diveintomark.org/archives/2003/07/21/atom_aggregator_behavior_http_level}Atom aggregator behaviour recommendations}}
+ {{{https://web.archive.org/web/20060712072932/http://diveintomark.org/archives/2003/07/21/atom_aggregator_behavior_http_level}Atom aggregator behaviour recommendations (Archived)}}
 
  As with the rest of Rome, the Fetcher subproject is ultra\-lean \- it requires {{{./Dependencies/index.html}no new dependencies}}
  over the requirements for Rome.
