@@ -8,17 +8,9 @@ pipeline {
         pollSCM('H/5 * * * *')
     }
     stages {
-        stage('build') {
+        stage('Build') {
             steps {
-                sh 'mvn -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true clean verify'
-            }
-        }
-        stage('deploy') {
-            when {
-                branch 'master'
-            }
-            steps {
-                sh 'mvn deploy'
+                sh 'mvn clean verify'
             }
         }
     }
