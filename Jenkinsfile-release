@@ -1,0 +1,28 @@
+pipeline {
+
+    agent any
+    
+    tools {
+        jdk 'Java 8'
+        maven 'Maven 3.5.4'
+    }
+    
+    parameters {
+        string(name: 'releaseVersion')
+        string(name: 'nextVersion')
+    }
+    
+    stages {
+        stage('Build') {
+            steps {
+                sh 'mvn versions:set -DgenerateBackupPoms=false -DnewVersion=$releaseVersion'
+                sh 'mvn clean deploy -P release'
+                sh 'mvn scm:checkin "-Dmessage=Updates version to $releaseVersion"'
+                sh 'mvn scm:tag -Dtag=$releaseVersion'
+                sh 'mvn versions:set -DgenerateBackupPoms=false -DnewVersion=$nextVersion'
+                sh 'mvn scm:checkin "-Dmessage=Updates version to $nextVersion"'
+            }
+        }
+    }
+
+}
