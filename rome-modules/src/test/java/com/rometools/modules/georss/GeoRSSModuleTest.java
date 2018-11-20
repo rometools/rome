@@ -16,34 +16,19 @@
  */
 package com.rometools.modules.georss;
 
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.StringWriter;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import com.rometools.modules.AbstractTestCase;
-import com.rometools.modules.georss.GMLModuleImpl;
-import com.rometools.modules.georss.GeoRSSModule;
-import com.rometools.modules.georss.GeoRSSUtils;
-import com.rometools.modules.georss.SimpleModuleImpl;
 import com.rometools.modules.georss.geometries.LineString;
 import com.rometools.modules.georss.geometries.Position;
 import com.rometools.modules.georss.geometries.PositionList;
-import com.rometools.rome.feed.synd.SyndContent;
-import com.rometools.rome.feed.synd.SyndContentImpl;
-import com.rometools.rome.feed.synd.SyndEntry;
-import com.rometools.rome.feed.synd.SyndEntryImpl;
-import com.rometools.rome.feed.synd.SyndFeed;
-import com.rometools.rome.feed.synd.SyndFeedImpl;
+import com.rometools.rome.feed.synd.*;
 import com.rometools.rome.io.FeedException;
 import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.SyndFeedOutput;
 import com.rometools.rome.io.XmlReader;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  * tests for geo-rss module.
@@ -286,10 +271,33 @@ public class GeoRSSModuleTest extends AbstractTestCase {
         assertTestFile("georss-double-space-issue.xml", lat, lng);
     }
 
+    /**
+     * Tests whether a feed with invalid point values can be parsed
+     * (https://github.com/rometools/rome-modules/issues/02).
+     *
+     * @throws IOException if file not found or not accessible
+     * @throws FeedException when the feed can't be parsed
+     *
+     */
+    public void testParseElevValue() throws IOException, FeedException {
+        final SyndFeed feed = getSyndFeed("org/rometools/feed/module/georss/usgs-gov-earthquakes-all-hour-atom.xml");
+        final List<SyndEntry> entries = feed.getEntries();
+        for (int i = 0; i < entries.size(); i++) {
+            final SyndEntry entry = entries.get(i);
+            final GeoRSSModule geoRSSModule = GeoRSSUtils.getGeoRSS(entry);
+            assert geoRSSModule != null;
+            assert geoRSSModule.getFeatureTypeTag().equals("position");
+            assert entry.getTitle().indexOf(geoRSSModule.getFeatureNameTag()) > 0;
+            assert geoRSSModule.getRelationshipTag().equals("is-centered-at");
+            assert geoRSSModule.getElev() != null;
+            assert geoRSSModule.getFloor() == 0;
+            assert geoRSSModule.getRadius() == 1.0;
+        }
+    }
+
     private SyndFeed getSyndFeed(final String filePath) throws IOException, FeedException {
         final String fullPath = getTestFile(filePath);
         final File file = new File(fullPath);
         return new SyndFeedInput().build(file);
     }
-
 }

@@ -17,9 +17,8 @@
 package com.rometools.modules.georss;
 
 import java.util.Locale;
-
+import com.rometools.utils.Integers;
 import org.jdom2.Element;
-
 import com.rometools.modules.georss.geometries.Envelope;
 import com.rometools.modules.georss.geometries.LineString;
 import com.rometools.modules.georss.geometries.LinearRing;
@@ -80,6 +79,12 @@ public class SimpleParser implements ModuleParser {
         final Element polygonElement = element.getChild("polygon", GeoRSSModule.SIMPLE_NS);
         final Element boxElement = element.getChild("box", GeoRSSModule.SIMPLE_NS);
         final Element whereElement = element.getChild("where", GeoRSSModule.SIMPLE_NS);
+        final Element featureNameTagElement = element.getChild("featurename", GeoRSSModule.SIMPLE_NS);
+        final Element featureTypeTagElement = element.getChild("featuretypetag", GeoRSSModule.SIMPLE_NS);
+        final Element relationshipTagElement = element.getChild("relationshiptag", GeoRSSModule.SIMPLE_NS);
+        final Element elevElement = element.getChild("elev", GeoRSSModule.SIMPLE_NS);
+        final Element floorElement = element.getChild("floor", GeoRSSModule.SIMPLE_NS);
+        final Element radiusElement = element.getChild("radius", GeoRSSModule.SIMPLE_NS);
 
         GeoRSSModule geoRSSModule = null;
 
@@ -161,12 +166,30 @@ public class SimpleParser implements ModuleParser {
             }
 
         } else if (whereElement != null) {
-
             geoRSSModule = (GeoRSSModule) GMLParser.parseGML(whereElement);
+        }
 
+        if (geoRSSModule != null) {
+
+            if (featureTypeTagElement != null)
+                geoRSSModule.setFeatureTypeTag(featureTypeTagElement.getText());
+
+            if (featureNameTagElement != null)
+                geoRSSModule.setFeatureNameTag(featureNameTagElement.getText());
+
+            if (relationshipTagElement != null)
+                geoRSSModule.setRelationshipTag(relationshipTagElement.getText());
+
+            if (elevElement != null)
+                geoRSSModule.setElev(Doubles.parse(elevElement.getText()));
+
+            if (floorElement != null)
+                geoRSSModule.setFloor(Integers.parse(floorElement.getText()));
+
+            if (radiusElement != null)
+                geoRSSModule.setRadius(Doubles.parse(radiusElement.getText()));
         }
 
         return geoRSSModule;
     }
-
 }
