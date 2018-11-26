@@ -16,13 +16,14 @@
 package com.rometools.modules.opensearch.entity;
 
 import java.io.Serializable;
+import java.util.Collections;
 
-import com.rometools.rome.feed.impl.ObjectBean;
+import com.rometools.rome.feed.impl.CloneableBean;
+import com.rometools.rome.feed.impl.EqualsBean;
+import com.rometools.rome.feed.impl.ToStringBean;
 
 public class OSQuery implements Cloneable, Serializable {
     private static final long serialVersionUID = 1L;
-
-    ObjectBean _objBean = null;
 
     // role is required
     private String role;
@@ -32,9 +33,7 @@ public class OSQuery implements Cloneable, Serializable {
     private String title;
     private String searchTerms;
 
-    public OSQuery() {
-        _objBean = new ObjectBean(this.getClass(), this);
-    }
+    public OSQuery() { }
 
     /**
      * Creates a deep 'bean' clone of the object.
@@ -46,7 +45,7 @@ public class OSQuery implements Cloneable, Serializable {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return _objBean.clone();
+        return CloneableBean.beanClone(this, Collections.<String>emptySet());
     }
 
     /**
@@ -60,7 +59,7 @@ public class OSQuery implements Cloneable, Serializable {
      */
     @Override
     public boolean equals(final Object other) {
-        return _objBean.equals(other);
+        return EqualsBean.beanEquals(this.getClass(), this, other);
     }
 
     /**
@@ -74,7 +73,7 @@ public class OSQuery implements Cloneable, Serializable {
      */
     @Override
     public int hashCode() {
-        return _objBean.hashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     /**
@@ -86,7 +85,7 @@ public class OSQuery implements Cloneable, Serializable {
      */
     @Override
     public String toString() {
-        return _objBean.toString();
+        return ToStringBean.toString(this.getClass(), this);
     }
 
     /**

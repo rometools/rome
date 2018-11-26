@@ -103,19 +103,16 @@ public class AtomLinkModuleImpl implements AtomLinkModule, Cloneable, Serializab
 
     @Override
     public boolean equals(final Object obj) {
-        final EqualsBean eBean = new EqualsBean(AtomLinkModuleImpl.class, this);
-        return eBean.beanEquals(obj);
+        return EqualsBean.beanEquals(AtomLinkModuleImpl.class, this, obj);
     }
 
     @Override
     public int hashCode() {
-        final EqualsBean equals = new EqualsBean(AtomLinkModuleImpl.class, this);
-        return equals.beanHashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     @Override
     public String toString() {
-        final ToStringBean tsBean = new ToStringBean(AtomLinkModuleImpl.class, this);
-        return tsBean.toString();
+        return ToStringBean.toString(AtomLinkModuleImpl.class, this);
     }
 }

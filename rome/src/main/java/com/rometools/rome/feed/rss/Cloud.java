@@ -18,24 +18,24 @@
 package com.rometools.rome.feed.rss;
 
 import java.io.Serializable;
+import java.util.Collections;
 
-import com.rometools.rome.feed.impl.ObjectBean;
+import com.rometools.rome.feed.impl.CloneableBean;
+import com.rometools.rome.feed.impl.EqualsBean;
+import com.rometools.rome.feed.impl.ToStringBean;
 
 /**
  * Bean for clouds of RSS feeds.
  */
 public class Cloud implements Cloneable, Serializable {
     private static final long serialVersionUID = 1L;
-    private final ObjectBean objBean;
     private String domain;
     private int port;
     private String path;
     private String registerProcedure;
     private String protocol;
 
-    public Cloud() {
-        objBean = new ObjectBean(this.getClass(), this);
-    }
+    public Cloud() { }
 
     /**
      * Creates a deep 'bean' clone of the object.
@@ -47,7 +47,7 @@ public class Cloud implements Cloneable, Serializable {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return objBean.clone();
+        return CloneableBean.beanClone(this, Collections.<String>emptySet());
     }
 
     /**
@@ -61,7 +61,7 @@ public class Cloud implements Cloneable, Serializable {
      */
     @Override
     public boolean equals(final Object other) {
-        return objBean.equals(other);
+        return EqualsBean.beanEquals(this.getClass(), this, other);
     }
 
     /**
@@ -75,7 +75,7 @@ public class Cloud implements Cloneable, Serializable {
      */
     @Override
     public int hashCode() {
-        return objBean.hashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     /**
@@ -87,7 +87,7 @@ public class Cloud implements Cloneable, Serializable {
      */
     @Override
     public String toString() {
-        return objBean.toString();
+        return ToStringBean.toString(this.getClass(), this);
     }
 
     /**

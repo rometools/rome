@@ -21,7 +21,7 @@ import java.util.Date;
 
 import org.jdom2.Namespace;
 
-import com.rometools.rome.feed.impl.ObjectBean;
+import com.rometools.rome.feed.impl.EqualsBean;
 
 /**
  * An EntryValue implementation representing a "date" data-type.
@@ -29,8 +29,6 @@ import com.rometools.rome.feed.impl.ObjectBean;
 public class DateValue implements EntryValue {
 
     private static final long serialVersionUID = 1L;
-
-    private final ObjectBean obj = new ObjectBean(DateValue.class, this);
 
     private String element;
     private String label;
@@ -85,12 +83,12 @@ public class DateValue implements EntryValue {
 
     @Override
     public boolean equals(final Object o) {
-        return obj.equals(o);
+        return EqualsBean.beanEquals(DateValue.class, this, o);
     }
 
     @Override
     public int hashCode() {
-        return obj.hashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     @Override

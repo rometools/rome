@@ -78,16 +78,12 @@ public class Time implements Serializable {
 
     @Override
     public boolean equals(final Object obj) {
-        final EqualsBean eBean = new EqualsBean(this.getClass(), this);
-
-        return eBean.beanEquals(obj);
+        return EqualsBean.beanEquals(this.getClass(), this, obj);
     }
 
     @Override
     public int hashCode() {
-        final EqualsBean equals = new EqualsBean(this.getClass(), this);
-
-        return equals.beanHashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     @Override

@@ -67,17 +67,17 @@ public class Attribute implements Cloneable, Serializable {
 
     @Override
     public boolean equals(final Object obj) {
-        return new EqualsBean(Attribute.class, this).beanEquals(obj);
+        return EqualsBean.beanEquals(Attribute.class, this, obj);
     }
 
     @Override
     public int hashCode() {
-        return new EqualsBean(Attribute.class, this).beanHashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     @Override
     public String toString() {
-        return new ToStringBean(Attribute.class, this).toString();
+        return ToStringBean.toString(Attribute.class, this);
     }
 
 }

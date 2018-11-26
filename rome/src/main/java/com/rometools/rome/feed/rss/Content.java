@@ -18,8 +18,11 @@
 package com.rometools.rome.feed.rss;
 
 import java.io.Serializable;
+import java.util.Collections;
 
-import com.rometools.rome.feed.impl.ObjectBean;
+import com.rometools.rome.feed.impl.CloneableBean;
+import com.rometools.rome.feed.impl.EqualsBean;
+import com.rometools.rome.feed.impl.ToStringBean;
 
 /**
  * Bean for item descriptions of RSS feeds.
@@ -28,13 +31,10 @@ public class Content implements Cloneable, Serializable {
     private static final long serialVersionUID = 1L;
     public static final String HTML = "html";
     public static final String TEXT = "text";
-    private final ObjectBean objBean;
     private String type;
     private String value;
 
-    public Content() {
-        objBean = new ObjectBean(this.getClass(), this);
-    }
+    public Content() { }
 
     /**
      * Sets the description type.
@@ -90,7 +90,7 @@ public class Content implements Cloneable, Serializable {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return objBean.clone();
+        return CloneableBean.beanClone(this, Collections.<String>emptySet());
     }
 
     /**
@@ -108,7 +108,7 @@ public class Content implements Cloneable, Serializable {
             return false;
         }
 
-        return objBean.equals(other);
+        return EqualsBean.beanEquals(this.getClass(), this, other);
     }
 
     /**
@@ -122,7 +122,7 @@ public class Content implements Cloneable, Serializable {
      */
     @Override
     public int hashCode() {
-        return objBean.hashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     /**
@@ -134,6 +134,6 @@ public class Content implements Cloneable, Serializable {
      */
     @Override
     public String toString() {
-        return objBean.toString();
+        return ToStringBean.toString(this.getClass(), this);
     }
 }

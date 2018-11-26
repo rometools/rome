@@ -23,8 +23,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.rometools.rome.feed.CopyFrom;
+import com.rometools.rome.feed.impl.CloneableBean;
 import com.rometools.rome.feed.impl.CopyFromHelper;
-import com.rometools.rome.feed.impl.ObjectBean;
+import com.rometools.rome.feed.impl.EqualsBean;
+import com.rometools.rome.feed.impl.ToStringBean;
 import com.rometools.rome.feed.module.DCSubject;
 import com.rometools.rome.feed.module.DCSubjectImpl;
 
@@ -37,7 +39,6 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
 
     private static final CopyFromHelper COPY_FROM_HELPER;
 
-    private final ObjectBean objBean;
     private final DCSubject subject;
 
     static {
@@ -56,7 +57,6 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
      * @param subject the DC subject to wrap.
      */
     SyndCategoryImpl(final DCSubject subject) {
-        objBean = new ObjectBean(SyndCategory.class, this);
         this.subject = subject;
     }
 
@@ -70,7 +70,7 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return objBean.clone();
+        return CloneableBean.beanClone(this, Collections.<String>emptySet());
     }
 
     /**
@@ -87,7 +87,7 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
         if (!(other instanceof SyndCategoryImpl)) {
             return false;
         }
-        return objBean.equals(other);
+        return EqualsBean.beanEquals(SyndCategory.class, this, other);
     }
 
     /**
@@ -101,7 +101,7 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
      */
     @Override
     public int hashCode() {
-        return objBean.hashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     /**
@@ -113,7 +113,7 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
      */
     @Override
     public String toString() {
-        return objBean.toString();
+        return ToStringBean.toString(SyndCategory.class, this);
     }
 
     /**

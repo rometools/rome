@@ -1378,9 +1378,7 @@ public class GoogleBaseImpl implements GoogleBase {
 
     @Override
     public boolean equals(final Object obj) {
-        final EqualsBean eBean = new EqualsBean(this.getClass(), this);
-
-        return eBean.beanEquals(obj);
+        return EqualsBean.beanEquals(this.getClass(), this, obj);
     }
 
     private Object arrayCopy(final Object[] source) {

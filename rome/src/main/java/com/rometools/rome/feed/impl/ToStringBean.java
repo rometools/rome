@@ -16,7 +16,6 @@
  */
 package com.rometools.rome.feed.impl;
 
-import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.lang.reflect.Method;
 import java.util.Collection;
@@ -35,60 +34,15 @@ import org.slf4j.LoggerFactory;
  * It works on all read/write properties, recursively. It support all primitive types, Strings,
  * Collections, ToString objects and multi-dimensional arrays of any of them.
  */
-public class ToStringBean implements Serializable {
+public class ToStringBean {
 
-    private static final long serialVersionUID = 1L;
     private static final Logger LOG = LoggerFactory.getLogger(ToStringBean.class);
 
     private static final ThreadLocal<Stack<String[]>> PREFIX_TL = new ThreadLocal<Stack<String[]>>();
 
     private static final Object[] NO_PARAMS = new Object[0];
 
-    private final Class<?> beanClass;
-    private final Object obj;
-
-    /**
-     * Default constructor.
-     * <p>
-     * To be used by classes extending ToStringBean only.
-     * <p>
-     *
-     * @param beanClass indicates the class to scan for properties, normally an interface class.
-     *
-     */
-    protected ToStringBean(final Class<?> beanClass) {
-        this.beanClass = beanClass;
-        obj = this;
-    }
-
-    /**
-     * Creates a ToStringBean to be used in a delegation pattern.
-     * <p>
-     * For example:
-     * <p>
-     * <code>
-     *   public class Foo implements ToString {
-     * 
-     *       public String toString(String prefix) {
-     *           ToStringBean tsb = new ToStringBean(this);
-     *           return tsb.toString(prefix);
-     *       }
-     * 
-     *       public String toString() {
-     *           return toString("Foo");
-     *       }
-     * 
-     *   }
-     * </code>
-     * <p>
-     *
-     * @param beanClass indicates the class to scan for properties, normally an interface class.
-     * @param obj object bean to create String representation.
-     *
-     */
-    public ToStringBean(final Class<?> beanClass, final Object obj) {
-        this.beanClass = beanClass;
-        this.obj = obj;
+    private ToStringBean() {
     }
 
     /**
@@ -100,8 +54,7 @@ public class ToStringBean implements Serializable {
      * @return bean object String representation.
      *
      */
-    @Override
-    public String toString() {
+    public static String toString(Class<?> beanClass, Object obj) {
         Stack<String[]> stack = PREFIX_TL.get();
         boolean needStackCleanup = false;
 
@@ -126,7 +79,7 @@ public class ToStringBean implements Serializable {
             tsInfo[1] = prefix;
         }
 
-        final String result = toString(prefix);
+        final String result = toString(beanClass, obj, prefix);
 
         if (needStackCleanup) {
           PREFIX_TL.remove();
@@ -143,7 +96,7 @@ public class ToStringBean implements Serializable {
      * @return bean object String representation.
      *
      */
-    private String toString(final String prefix) {
+    private static String toString(final Class<?> beanClass, final Object obj, final String prefix) {
 
         final StringBuffer sb = new StringBuffer(128);
 
@@ -162,7 +115,7 @@ public class ToStringBean implements Serializable {
 
         } catch (final Exception e) {
             LOG.error("Error while generating toString", e);
-            final Class<? extends Object> clazz = obj.getClass();
+            final Class<?> clazz = obj.getClass();
             final String errorMessage = e.getMessage();
             sb.append(String.format("\n\nEXCEPTION: Could not complete %s.toString(): %s\n", clazz, errorMessage));
         }
@@ -170,7 +123,7 @@ public class ToStringBean implements Serializable {
         return sb.toString();
     }
 
-    private void printProperty(final StringBuffer sb, final String prefix, final Object value) {
+    private static void printProperty(final StringBuffer sb, final String prefix, final Object value) {
 
         if (value == null) {
 
@@ -271,7 +224,7 @@ public class ToStringBean implements Serializable {
         }
     }
 
-    private void printArrayProperty(final StringBuffer sb, final String prefix, final Object array) {
+    private static void printArrayProperty(final StringBuffer sb, final String prefix, final Object array) {
         final int length = Array.getLength(array);
         for (int i = 0; i < length; i++) {
             final Object obj = Array.get(array, i);

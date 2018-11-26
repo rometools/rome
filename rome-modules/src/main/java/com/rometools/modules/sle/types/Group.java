@@ -21,7 +21,8 @@ import java.io.Serializable;
 
 import org.jdom2.Namespace;
 
-import com.rometools.rome.feed.impl.ObjectBean;
+import com.rometools.rome.feed.impl.EqualsBean;
+import com.rometools.rome.feed.impl.ToStringBean;
 
 /**
  * The <code>cf:group</code> element is intended to inform the client that the&nbsp;property to
@@ -58,7 +59,6 @@ import com.rometools.rome.feed.impl.ObjectBean;
 public class Group implements Serializable, Cloneable {
     private static final long serialVersionUID = 1L;
     private Namespace namespace = Namespace.XML_NAMESPACE;
-    private final ObjectBean obj = new ObjectBean(Group.class, this);
     private final String element;
     private final String label;
 
@@ -107,16 +107,16 @@ public class Group implements Serializable, Cloneable {
 
     @Override
     public boolean equals(final Object o) {
-        return obj.equals(o);
+        return EqualsBean.beanEquals(Group.class, this, o);
     }
 
     @Override
     public int hashCode() {
-        return obj.hashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     @Override
     public String toString() {
-        return obj.toString();
+        return ToStringBean.toString(Group.class, this);
     }
 }

@@ -104,20 +104,17 @@ public class ThreadingModuleImpl extends ModuleImpl implements ThreadingModule {
 
     @Override
     public boolean equals(final Object obj) {
-        final EqualsBean eBean = new EqualsBean(ThreadingModuleImpl.class, this);
-        return eBean.beanEquals(obj);
+        return EqualsBean.beanEquals(ThreadingModuleImpl.class, this, obj);
     }
 
     @Override
     public int hashCode() {
-        final EqualsBean equals = new EqualsBean(ThreadingModuleImpl.class, this);
-        return equals.beanHashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     @Override
     public String toString() {
-        final ToStringBean tsBean = new ToStringBean(ThreadingModuleImpl.class, this);
-        return tsBean.toString();
+        return ToStringBean.toString(ThreadingModuleImpl.class, this);
     }
 
 }

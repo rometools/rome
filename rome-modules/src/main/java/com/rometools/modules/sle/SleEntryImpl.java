@@ -17,6 +17,8 @@
  */
 package com.rometools.modules.sle;
 
+import java.util.Collections;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,7 +28,9 @@ import com.rometools.modules.sle.types.EntryValue;
 import com.rometools.modules.sle.types.Group;
 import com.rometools.modules.sle.types.Sort;
 import com.rometools.rome.feed.CopyFrom;
-import com.rometools.rome.feed.impl.ObjectBean;
+import com.rometools.rome.feed.impl.CloneableBean;
+import com.rometools.rome.feed.impl.EqualsBean;
+import com.rometools.rome.feed.impl.ToStringBean;
 
 /**
  * This is a <b>parse only</b> module that holds the values of enternal fields declared in the SLE
@@ -40,7 +44,6 @@ public class SleEntryImpl implements SleEntry {
     private static final Logger LOG = LoggerFactory.getLogger(SleEntryImpl.class);
 
     private static final EntryValue[] EMPTY_VALUES = new EntryValue[0];
-    private final ObjectBean obj = new ObjectBean(SleEntryImpl.class, this);
     private EntryValue[] groupValues = EMPTY_VALUES;
     private EntryValue[] sortValues = EMPTY_VALUES;
 
@@ -122,7 +125,7 @@ public class SleEntryImpl implements SleEntry {
 
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return obj.clone();
+        return CloneableBean.beanClone(this, Collections.<String>emptySet());
     }
 
     /**
@@ -145,17 +148,17 @@ public class SleEntryImpl implements SleEntry {
 
     @Override
     public boolean equals(final Object o) {
-        return obj.equals(o);
+        return EqualsBean.beanEquals(SleEntryImpl.class, this, o);
     }
 
     @Override
     public int hashCode() {
-        return obj.hashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     @Override
     public String toString() {
-        return obj.toString();
+        return ToStringBean.toString(SleEntryImpl.class, this);
     }
 
 }

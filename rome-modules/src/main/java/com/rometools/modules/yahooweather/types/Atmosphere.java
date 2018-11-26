@@ -37,8 +37,7 @@ import com.rometools.rome.feed.impl.ToStringBean;
 public class Atmosphere implements Serializable, Cloneable {
 
     private static final long serialVersionUID = 1L;
-    private final EqualsBean equals = new EqualsBean(Atmosphere.class, this);
-    private final ToStringBean toString = new ToStringBean(Atmosphere.class, this);
+
     private int humidity;
     private double visibility;
     private double pressure;
@@ -67,17 +66,17 @@ public class Atmosphere implements Serializable, Cloneable {
 
     @Override
     public boolean equals(final Object o) {
-        return equals.equals(o);
+        return EqualsBean.beanEquals(Atmosphere.class, this, o);
     }
 
     @Override
     public int hashCode() {
-        return equals.hashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     @Override
     public String toString() {
-        return toString.toString();
+        return ToStringBean.toString(Atmosphere.class, this);
     }
 
     /**

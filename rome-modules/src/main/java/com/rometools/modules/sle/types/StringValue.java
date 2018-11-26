@@ -19,7 +19,7 @@ package com.rometools.modules.sle.types;
 
 import org.jdom2.Namespace;
 
-import com.rometools.rome.feed.impl.ObjectBean;
+import com.rometools.rome.feed.impl.EqualsBean;
 
 /**
  * An EntryValue implementation for "text" data-types.
@@ -27,8 +27,6 @@ import com.rometools.rome.feed.impl.ObjectBean;
 public class StringValue implements EntryValue {
 
     private static final long serialVersionUID = 1L;
-
-    private final ObjectBean obj = new ObjectBean(StringValue.class, this);
 
     private String element;
     private String label;
@@ -83,12 +81,12 @@ public class StringValue implements EntryValue {
 
     @Override
     public boolean equals(final Object o) {
-        return obj.equals(o);
+        return EqualsBean.beanEquals(StringValue.class, this, o);
     }
 
     @Override
     public int hashCode() {
-        return obj.hashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     @Override

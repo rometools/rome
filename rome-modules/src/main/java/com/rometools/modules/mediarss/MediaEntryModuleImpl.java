@@ -98,23 +98,17 @@ public class MediaEntryModuleImpl extends MediaModuleImpl implements MediaEntryM
 
     @Override
     public boolean equals(final Object obj) {
-        final EqualsBean eBean = new EqualsBean(MediaEntryModuleImpl.class, this);
-
-        return eBean.beanEquals(obj);
+        return EqualsBean.beanEquals(MediaEntryModuleImpl.class, this, obj);
     }
 
     @Override
     public int hashCode() {
-        final EqualsBean equals = new EqualsBean(MediaEntryModuleImpl.class, this);
-
-        return equals.beanHashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     @Override
     public String toString() {
-        final ToStringBean tsBean = new ToStringBean(MediaEntryModuleImpl.class, this);
-
-        return tsBean.toString();
+        return ToStringBean.toString(MediaEntryModuleImpl.class, this);
     }
 
     @Override

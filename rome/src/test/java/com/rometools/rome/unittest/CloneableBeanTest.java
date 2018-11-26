@@ -97,7 +97,7 @@ public class CloneableBeanTest extends TestCase {
         Set<String> set = new HashSet<String>(asList("x", "y"));
         bean.setCollection(set);
 
-        TestBean clonedBean = (TestBean) new CloneableBean(bean).beanClone();
+        TestBean clonedBean = (TestBean) CloneableBean.beanClone(bean, Collections.<String>emptySet());
 
         Collection<String> clonedSet = clonedBean.getCollection();
         assertNotSame(set, clonedSet);
@@ -108,7 +108,7 @@ public class CloneableBeanTest extends TestCase {
         TestBean bean = new TestBean();
         bean.setCollection(unmodifiableSet(new HashSet<String>(asList("x", "y"))));
 
-        TestBean clonedBean = (TestBean) new CloneableBean(bean).beanClone();
+        TestBean clonedBean = (TestBean) CloneableBean.beanClone(bean, Collections.<String>emptySet());
 
         assertEquals(new HashSet<String>(asList("x", "y")), clonedBean.getCollection());
     }
@@ -118,7 +118,7 @@ public class CloneableBeanTest extends TestCase {
         SortedSet<String> sortedSet = new TreeSet<String>(asList("x", "y"));
         bean.setCollection(sortedSet);
 
-        TestBean clonedBean = (TestBean) new CloneableBean(bean).beanClone();
+        TestBean clonedBean = (TestBean) CloneableBean.beanClone(bean, Collections.<String>emptySet());
 
         Collection<String> clonedSortedSet = clonedBean.getCollection();
         assertNotSame(sortedSet, clonedSortedSet);
@@ -130,7 +130,7 @@ public class CloneableBeanTest extends TestCase {
         TestBean bean = new TestBean();
         bean.setCollection(unmodifiableSortedSet(new TreeSet<String>(asList("x", "y"))));
 
-        TestBean clonedBean = (TestBean) new CloneableBean(bean).beanClone();
+        TestBean clonedBean = (TestBean) CloneableBean.beanClone(bean, Collections.<String>emptySet());
 
         assertEquals(new TreeSet<String>(asList("x", "y")), clonedBean.getCollection());
     }
@@ -140,7 +140,7 @@ public class CloneableBeanTest extends TestCase {
         List<String> list = new ArrayList<String>(asList("x", "y"));
         bean.setCollection(list);
 
-        TestBean clonedBean = (TestBean) new CloneableBean(bean).beanClone();
+        TestBean clonedBean = (TestBean) CloneableBean.beanClone(bean, Collections.<String>emptySet());
 
         Collection<String> clonedList = clonedBean.getCollection();
         assertNotSame(list, clonedList);
@@ -151,7 +151,7 @@ public class CloneableBeanTest extends TestCase {
         TestBean bean = new TestBean();
         bean.setCollection(unmodifiableList(asList("x", "y")));
 
-        TestBean clonedBean = (TestBean) new CloneableBean(bean).beanClone();
+        TestBean clonedBean = (TestBean) CloneableBean.beanClone(bean, Collections.<String>emptySet());
 
         assertEquals(asList("x", "y"), clonedBean.getCollection());
     }
@@ -161,7 +161,7 @@ public class CloneableBeanTest extends TestCase {
         Map<String, String> map = new HashMap<String, String>(mapOf("x1", "y1", "x2", "y2"));
         bean.setMap(map);
 
-        TestBean clonedBean = (TestBean) new CloneableBean(bean).beanClone();
+        TestBean clonedBean = (TestBean) CloneableBean.beanClone(bean, Collections.<String>emptySet());
 
         Map<String, String> clonedMap = clonedBean.getMap();
         assertNotSame(map, clonedMap);
@@ -172,7 +172,7 @@ public class CloneableBeanTest extends TestCase {
         TestBean bean = new TestBean();
         bean.setMap(unmodifiableMap(mapOf("x1", "y1", "x2", "y2")));
 
-        TestBean clonedBean = (TestBean) new CloneableBean(bean).beanClone();
+        TestBean clonedBean = (TestBean) CloneableBean.beanClone(bean, Collections.<String>emptySet());
 
         assertEquals(mapOf("x1", "y1", "x2", "y2"), clonedBean.getMap());
     }
@@ -182,7 +182,7 @@ public class CloneableBeanTest extends TestCase {
         SortedMap<String, String> sortedMap = new TreeMap<String, String>(mapOf("x1", "y1", "x2", "y2"));
         bean.setMap(sortedMap);
 
-        TestBean clonedBean = (TestBean) new CloneableBean(bean).beanClone();
+        TestBean clonedBean = (TestBean) CloneableBean.beanClone(bean, Collections.<String>emptySet());
 
         Map<String, String> clonedSortedMap = clonedBean.getMap();
         assertNotSame(sortedMap, clonedSortedMap);
@@ -194,7 +194,7 @@ public class CloneableBeanTest extends TestCase {
         TestBean bean = new TestBean();
         bean.setMap(unmodifiableSortedMap(new TreeMap<String, String>(mapOf("x1", "y1", "x2", "y2"))));
 
-        TestBean clonedBean = (TestBean) new CloneableBean(bean).beanClone();
+        TestBean clonedBean = (TestBean) CloneableBean.beanClone(bean, Collections.<String>emptySet());
 
         assertEquals(mapOf("x1", "y1", "x2", "y2"), clonedBean.getMap());
     }
@@ -204,7 +204,7 @@ public class CloneableBeanTest extends TestCase {
         Collection<String> collection = new TestCollection<String>(asList("x", "y"));
         bean.setCollection(collection);
 
-        TestBean clonedBean = (TestBean) new CloneableBean(bean).beanClone();
+        TestBean clonedBean = (TestBean) CloneableBean.beanClone(bean, Collections.<String>emptySet());
 
         Collection<String> clonedCollection = clonedBean.getCollection();
         assertNotSame(collection, clonedCollection);

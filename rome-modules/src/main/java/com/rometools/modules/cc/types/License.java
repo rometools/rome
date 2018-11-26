@@ -121,9 +121,7 @@ public class License {
 
     @Override
     public String toString() {
-
-        final ToStringBean tsb = new ToStringBean(License.class, this);
-        return tsb.toString();
+        return ToStringBean.toString(License.class, this);
     }
 
     public String getValue() {
@@ -132,14 +130,12 @@ public class License {
 
     @Override
     public boolean equals(final Object obj) {
-        final EqualsBean eBean = new EqualsBean(License.class, this);
-        return eBean.beanEquals(obj);
+        return EqualsBean.beanEquals(License.class, this, obj);
     }
 
     @Override
     public int hashCode() {
-        final EqualsBean equals = new EqualsBean(License.class, this);
-        return equals.beanHashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     public static class Behaviour {

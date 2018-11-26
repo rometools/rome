@@ -18,9 +18,12 @@
 package com.rometools.rome.feed.synd;
 
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 
-import com.rometools.rome.feed.impl.ObjectBean;
+import com.rometools.rome.feed.impl.CloneableBean;
+import com.rometools.rome.feed.impl.EqualsBean;
+import com.rometools.rome.feed.impl.ToStringBean;
 import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.feed.module.impl.ModuleUtils;
 import com.rometools.utils.Lists;
@@ -32,8 +35,6 @@ public class SyndPersonImpl implements Serializable, SyndPerson {
 
     private static final long serialVersionUID = 1L;
 
-    private final ObjectBean objBean;
-
     private String name;
     private String uri;
     private String email;
@@ -43,9 +44,7 @@ public class SyndPersonImpl implements Serializable, SyndPerson {
      * For implementations extending SyndContentImpl to be able to use the ObjectBean functionality
      * with extended interfaces.
      */
-    public SyndPersonImpl() {
-        objBean = new ObjectBean(SyndPerson.class, this);
-    }
+    public SyndPersonImpl() { }
 
     /**
      * Creates a deep 'bean' clone of the object.
@@ -57,7 +56,7 @@ public class SyndPersonImpl implements Serializable, SyndPerson {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return objBean.clone();
+        return CloneableBean.beanClone(this, Collections.<String>emptySet());
     }
 
     /**
@@ -74,7 +73,7 @@ public class SyndPersonImpl implements Serializable, SyndPerson {
         if (!(other instanceof SyndPersonImpl)) {
             return false;
         }
-        return objBean.equals(other);
+        return EqualsBean.beanEquals(SyndPerson.class, this, other);
     }
 
     /**
@@ -88,7 +87,7 @@ public class SyndPersonImpl implements Serializable, SyndPerson {
      */
     @Override
     public int hashCode() {
-        return objBean.hashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     /**
@@ -100,7 +99,7 @@ public class SyndPersonImpl implements Serializable, SyndPerson {
      */
     @Override
     public String toString() {
-        return objBean.toString();
+        return ToStringBean.toString(SyndPerson.class, this);
     }
 
     /**

@@ -18,16 +18,17 @@
 package com.rometools.rome.feed.synd;
 
 import java.io.Serializable;
+import java.util.Collections;
 
-import com.rometools.rome.feed.impl.ObjectBean;
+import com.rometools.rome.feed.impl.CloneableBean;
+import com.rometools.rome.feed.impl.EqualsBean;
+import com.rometools.rome.feed.impl.ToStringBean;
 
 /**
  * Represents a link or an enclosure.
  */
 public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
     private static final long serialVersionUID = 1L;
-
-    private final ObjectBean objBean;
 
     private String href;
     private String rel;
@@ -36,9 +37,7 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
     private String title;
     private long length;
 
-    public SyndLinkImpl() {
-        objBean = new ObjectBean(this.getClass(), this);
-    }
+    public SyndLinkImpl() { }
 
     /**
      * Creates a deep 'bean' clone of the object.
@@ -50,7 +49,7 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return objBean.clone();
+        return CloneableBean.beanClone(this, Collections.<String>emptySet());
     }
 
     /**
@@ -67,7 +66,7 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
         if (!(other instanceof SyndLinkImpl)) {
             return false;
         }
-        return objBean.equals(other);
+        return EqualsBean.beanEquals(this.getClass(), this, other);
     }
 
     /**
@@ -81,7 +80,7 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
      */
     @Override
     public int hashCode() {
-        return objBean.hashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     /**
@@ -93,7 +92,7 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
      */
     @Override
     public String toString() {
-        return objBean.toString();
+        return ToStringBean.toString(this.getClass(), this);
     }
 
     /**

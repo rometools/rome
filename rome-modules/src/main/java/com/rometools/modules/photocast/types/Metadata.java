@@ -64,22 +64,16 @@ public class Metadata {
      */
     @Override
     public String toString() {
-        final ToStringBean tsBean = new ToStringBean(Metadata.class, this);
-
-        return tsBean.toString();
+        return ToStringBean.toString(Metadata.class, this);
     }
 
     @Override
     public boolean equals(final Object obj) {
-        final EqualsBean eBean = new EqualsBean(Metadata.class, this);
-
-        return eBean.beanEquals(obj);
+        return EqualsBean.beanEquals(Metadata.class, this, obj);
     }
 
     @Override
     public int hashCode() {
-        final EqualsBean equals = new EqualsBean(Metadata.class, this);
-
-        return equals.beanHashCode();
+        return EqualsBean.beanHashCode(this);
     }
 }

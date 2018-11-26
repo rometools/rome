@@ -120,22 +120,16 @@ public class PhotocastModuleImpl implements PhotocastModule {
 
     @Override
     public String toString() {
-        final ToStringBean tsBean = new ToStringBean(PhotocastModuleImpl.class, this);
-
-        return tsBean.toString();
+        return ToStringBean.toString(PhotocastModuleImpl.class, this);
     }
 
     @Override
     public boolean equals(final Object obj) {
-        final EqualsBean eBean = new EqualsBean(PhotocastModuleImpl.class, this);
-
-        return eBean.beanEquals(obj);
+        return EqualsBean.beanEquals(PhotocastModuleImpl.class, this, obj);
     }
 
     @Override
     public int hashCode() {
-        final EqualsBean equals = new EqualsBean(PhotocastModuleImpl.class, this);
-
-        return equals.beanHashCode();
+        return EqualsBean.beanHashCode(this);
     }
 }
