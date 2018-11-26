@@ -349,17 +349,17 @@ public class Outline implements Cloneable, Serializable {
 
     @Override
     public boolean equals(final Object obj) {
-        return new EqualsBean(Outline.class, this).beanEquals(obj);
+        return EqualsBean.beanEquals(Outline.class, this, obj);
     }
 
     @Override
     public int hashCode() {
-        return new EqualsBean(Outline.class, this).beanHashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     @Override
     public String toString() {
-        return new ToStringBean(Outline.class, this).toString();
+        return ToStringBean.toString(Outline.class, this);
     }
 
 }

@@ -39,8 +39,6 @@ import com.rometools.rome.feed.impl.ToStringBean;
 public class Condition implements Serializable, Cloneable {
 
     private static final long serialVersionUID = 1L;
-    private final EqualsBean equals = new EqualsBean(Condition.class, this);
-    private final ToStringBean toString = new ToStringBean(Condition.class, this);
     private String text;
     private ConditionCode code;
     private int temperature;
@@ -140,17 +138,17 @@ public class Condition implements Serializable, Cloneable {
 
     @Override
     public boolean equals(final Object o) {
-        return equals.equals(o);
+        return EqualsBean.beanEquals(Condition.class, this, o);
     }
 
     @Override
     public int hashCode() {
-        return equals.hashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     @Override
     public String toString() {
-        return toString.toString();
+        return ToStringBean.toString(Condition.class, this);
     }
 
     @Override

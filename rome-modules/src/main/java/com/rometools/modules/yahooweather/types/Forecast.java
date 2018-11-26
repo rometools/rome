@@ -45,8 +45,6 @@ import com.rometools.rome.feed.impl.ToStringBean;
 public class Forecast implements Serializable, Cloneable {
 
     private static final long serialVersionUID = 1L;
-    private transient ToStringBean toString = new ToStringBean(Forecast.class, this);
-    private transient EqualsBean equals = new EqualsBean(Forecast.class, this);
     private String day;
     private Date date;
     private int low;
@@ -196,17 +194,17 @@ public class Forecast implements Serializable, Cloneable {
 
     @Override
     public boolean equals(final Object o) {
-        return equals.equals(o);
+        return EqualsBean.beanEquals(Forecast.class, this, o);
     }
 
     @Override
     public int hashCode() {
-        return equals.hashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     @Override
     public String toString() {
-        return toString.toString();
+        return ToStringBean.toString(Forecast.class, this);
     }
 
     @Override

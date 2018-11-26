@@ -579,22 +579,16 @@ public class MediaContent implements Serializable {
 
     @Override
     public boolean equals(final Object obj) {
-        final EqualsBean eBean = new EqualsBean(MediaContent.class, this);
-
-        return eBean.beanEquals(obj);
+        return EqualsBean.beanEquals(MediaContent.class, this, obj);
     }
 
     @Override
     public int hashCode() {
-        final EqualsBean equals = new EqualsBean(MediaContent.class, this);
-
-        return equals.beanHashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     @Override
     public String toString() {
-        final ToStringBean tsBean = new ToStringBean(MediaContent.class, this);
-
-        return tsBean.toString();
+        return ToStringBean.toString(MediaContent.class, this);
     }
 }

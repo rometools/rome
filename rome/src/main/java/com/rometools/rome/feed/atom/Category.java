@@ -17,8 +17,11 @@
 package com.rometools.rome.feed.atom;
 
 import java.io.Serializable;
+import java.util.Collections;
 
-import com.rometools.rome.feed.impl.ObjectBean;
+import com.rometools.rome.feed.impl.CloneableBean;
+import com.rometools.rome.feed.impl.EqualsBean;
+import com.rometools.rome.feed.impl.ToStringBean;
 import com.rometools.utils.Alternatives;
 
 /**
@@ -28,16 +31,12 @@ public class Category implements Cloneable, Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private final ObjectBean objBean;
-
     private String term;
     private String scheme;
     private String schemeResolved;
     private String label;
 
-    public Category() {
-        objBean = new ObjectBean(this.getClass(), this);
-    }
+    public Category() { }
 
     /**
      * Creates a deep 'bean' clone of the object.
@@ -49,7 +48,7 @@ public class Category implements Cloneable, Serializable {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return objBean.clone();
+        return CloneableBean.beanClone(this, Collections.<String>emptySet());
     }
 
     /**
@@ -66,7 +65,7 @@ public class Category implements Cloneable, Serializable {
         if (!(other instanceof Category)) {
             return false;
         }
-        return objBean.equals(other);
+        return EqualsBean.beanEquals(this.getClass(), this, other);
     }
 
     /**
@@ -80,7 +79,7 @@ public class Category implements Cloneable, Serializable {
      */
     @Override
     public int hashCode() {
-        return objBean.hashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     /**
@@ -92,7 +91,7 @@ public class Category implements Cloneable, Serializable {
      */
     @Override
     public String toString() {
-        return objBean.toString();
+        return ToStringBean.toString(this.getClass(), this);
     }
 
     /**

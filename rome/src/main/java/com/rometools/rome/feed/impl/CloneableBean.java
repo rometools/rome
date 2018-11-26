@@ -16,13 +16,11 @@
  */
 package com.rometools.rome.feed.impl;
 
-import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -43,17 +41,13 @@ import org.slf4j.LoggerFactory;
  * It works on all read/write properties, recursively. It support all primitive types, Strings,
  * Collections, Cloneable objects and multi-dimensional arrays of any of them.
  */
-public class CloneableBean implements Serializable, Cloneable {
+public class CloneableBean {
 
-    private static final long serialVersionUID = 1L;
     private static final Logger LOG = LoggerFactory.getLogger(CloneableBean.class);
 
     private static final Set<Class<?>> BASIC_TYPES = new HashSet<Class<?>>();
     private static final Class<?>[] NO_PARAMS_DEF = new Class[0];
     private static final Object[] NO_PARAMS = new Object[0];
-
-    private final Object obj;
-    private Set<String> ignoreProperties;
 
     static {
         BASIC_TYPES.add(Boolean.class);
@@ -67,83 +61,7 @@ public class CloneableBean implements Serializable, Cloneable {
         BASIC_TYPES.add(String.class);
     }
 
-    /**
-     * Default constructor.
-     * <p>
-     * To be used by classes extending CloneableBean only.
-     * <p>
-     *
-     */
-    protected CloneableBean() {
-        obj = this;
-    }
-
-    /**
-     * Creates a CloneableBean to be used in a delegation pattern.
-     * <p>
-     * For example:
-     * <p>
-     * <code>
-     *   public class Foo implements Cloneable {
-     *       private CloneableBean cloneableBean;
-     * 
-     *       public Foo() {
-     *           cloneableBean = new CloneableBean(this);
-     *       }
-     * 
-     *       public Object clone() throws CloneNotSupportedException {
-     *           return cloneableBean.beanClone();
-     *       }
-     * 
-     *   }
-     * </code>
-     * <p>
-     *
-     * @param obj object bean to clone.
-     *
-     */
-    public CloneableBean(final Object obj) {
-        this(obj, null);
-    }
-
-    /**
-     * Creates a CloneableBean to be used in a delegation pattern.
-     * <p>
-     * The property names in the ignoreProperties Set will not be copied into the cloned instance.
-     * This is useful for cases where the Bean has convenience properties (properties that are
-     * actually references to other properties or properties of properties). For example SyndFeed
-     * and SyndEntry beans have convenience properties, publishedDate, author, copyright and
-     * categories all of them mapped to properties in the DC Module.
-     * <p>
-     *
-     * @param obj object bean to clone.
-     * @param ignoreProperties properties to ignore when cloning.
-     *
-     */
-    public CloneableBean(final Object obj, final Set<String> ignoreProperties) {
-        this.obj = obj;
-        if (ignoreProperties == null) {
-            this.ignoreProperties = Collections.<String> emptySet();
-        } else {
-            this.ignoreProperties = ignoreProperties;
-        }
-    }
-
-    /**
-     * Makes a deep bean clone of the object.
-     * <p>
-     * To be used by classes extending CloneableBean. Although it works also for classes using
-     * CloneableBean in a delegation pattern, for correctness those classes should use the
-     *
-     * @see #beanClone() beanClone method.
-     *      <p>
-     * @return a clone of the object bean.
-     * @throws CloneNotSupportedException thrown if the object bean could not be cloned.
-     *
-     */
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return beanClone();
+    private CloneableBean() {
     }
 
     /**
@@ -151,15 +69,13 @@ public class CloneableBean implements Serializable, Cloneable {
      * <p>
      * To be used by classes using CloneableBean in a delegation pattern,
      *
-     * @see #CloneableBean(Object) constructor.
-     *
      * @return a clone of the object bean.
      * @throws CloneNotSupportedException thrown if the object bean could not be cloned.
      *
      */
-    public Object beanClone() throws CloneNotSupportedException {
+    public static Object beanClone(Object obj, Set<String> ignoreProperties) throws CloneNotSupportedException {
 
-        final Class<? extends Object> clazz = obj.getClass();
+        final Class<?> clazz = obj.getClass();
 
         try {
 
@@ -200,7 +116,7 @@ public class CloneableBean implements Serializable, Cloneable {
     }
 
     @SuppressWarnings("unchecked")
-    private <T extends Object> T doClone(T value) throws Exception {
+    private static <T> T doClone(T value) throws Exception {
         if (value != null) {
             final Class<?> vClass = value.getClass();
             if (vClass.isArray()) {
@@ -225,7 +141,7 @@ public class CloneableBean implements Serializable, Cloneable {
         return value;
     }
 
-    private <T> T cloneArray(final T array) throws Exception {
+    private static <T> T cloneArray(final T array) throws Exception {
         final Class<?> elementClass = array.getClass().getComponentType();
         final int length = Array.getLength(array);
         @SuppressWarnings("unchecked")
@@ -236,7 +152,7 @@ public class CloneableBean implements Serializable, Cloneable {
         return newArray;
     }
 
-    private <T> Collection<T> cloneCollection(final Collection<T> collection) throws Exception {
+    private static <T> Collection<T> cloneCollection(final Collection<T> collection) throws Exception {
         @SuppressWarnings("unchecked")
         final Collection<T> newCollection = newCollection(collection.getClass());
         for (final T item : collection) {
@@ -260,7 +176,7 @@ public class CloneableBean implements Serializable, Cloneable {
         return collection;
     }
 
-    private <K, V> Map<K, V> cloneMap(final Map<K, V> map) throws Exception {
+    private static <K, V> Map<K, V> cloneMap(final Map<K, V> map) throws Exception {
         @SuppressWarnings("unchecked")
         final Map<K, V> newMap = newMap(map.getClass());
         for (final Entry<K, V> entry : map.entrySet()) {
@@ -282,7 +198,7 @@ public class CloneableBean implements Serializable, Cloneable {
         return map;
     }
 
-    private boolean isBasicType(final Class<?> vClass) {
+    private static boolean isBasicType(final Class<?> vClass) {
         return BASIC_TYPES.contains(vClass);
     }
 

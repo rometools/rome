@@ -22,8 +22,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.rometools.rome.feed.CopyFrom;
+import com.rometools.rome.feed.impl.CloneableBean;
 import com.rometools.rome.feed.impl.CopyFromHelper;
-import com.rometools.rome.feed.impl.ObjectBean;
+import com.rometools.rome.feed.impl.EqualsBean;
+import com.rometools.rome.feed.impl.ToStringBean;
 
 /**
  * Bean for images of SyndFeedImpl feeds.
@@ -33,8 +35,6 @@ public class SyndImageImpl implements Serializable, SyndImage {
     private static final long serialVersionUID = 1L;
 
     private static final CopyFromHelper COPY_FROM_HELPER;
-
-    private final ObjectBean objBean;
 
     private String title;
     private String url;
@@ -57,9 +57,7 @@ public class SyndImageImpl implements Serializable, SyndImage {
         COPY_FROM_HELPER = new CopyFromHelper(SyndImage.class, basePropInterfaceMap, basePropClassImplMap);
     }
 
-    public SyndImageImpl() {
-        objBean = new ObjectBean(SyndImage.class, this);
-    }
+    public SyndImageImpl() { }
 
     /**
      * Creates a deep 'bean' clone of the object.
@@ -71,7 +69,7 @@ public class SyndImageImpl implements Serializable, SyndImage {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return objBean.clone();
+        return CloneableBean.beanClone(this, Collections.<String>emptySet());
     }
 
     /**
@@ -85,7 +83,7 @@ public class SyndImageImpl implements Serializable, SyndImage {
      */
     @Override
     public boolean equals(final Object other) {
-        return objBean.equals(other);
+        return EqualsBean.beanEquals(SyndImage.class, this, other);
     }
 
     /**
@@ -99,7 +97,7 @@ public class SyndImageImpl implements Serializable, SyndImage {
      */
     @Override
     public int hashCode() {
-        return objBean.hashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     /**
@@ -111,7 +109,7 @@ public class SyndImageImpl implements Serializable, SyndImage {
      */
     @Override
     public String toString() {
-        return objBean.toString();
+        return ToStringBean.toString(SyndImage.class, this);
     }
 
     /**

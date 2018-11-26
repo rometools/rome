@@ -29,8 +29,10 @@ import java.util.Set;
 import org.jdom2.Element;
 
 import com.rometools.rome.feed.CopyFrom;
+import com.rometools.rome.feed.impl.CloneableBean;
 import com.rometools.rome.feed.impl.CopyFromHelper;
-import com.rometools.rome.feed.impl.ObjectBean;
+import com.rometools.rome.feed.impl.EqualsBean;
+import com.rometools.rome.feed.impl.ToStringBean;
 import com.rometools.rome.feed.module.DCModule;
 import com.rometools.rome.feed.module.DCModuleImpl;
 import com.rometools.rome.feed.module.Module;
@@ -51,7 +53,8 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
 
     private static final CopyFromHelper COPY_FROM_HELPER;
 
-    private final ObjectBean objBean;
+    private final Class<?> beanClass;
+    private final Set<String> convenienceProperties;
 
     private String uri;
     private String link;
@@ -121,7 +124,8 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      *
      */
     protected SyndEntryImpl(final Class<?> beanClass, final Set<String> convenienceProperties) {
-        objBean = new ObjectBean(beanClass, this, convenienceProperties);
+        this.beanClass = beanClass;
+        this.convenienceProperties = convenienceProperties;
     }
 
     public SyndEntryImpl() {
@@ -138,7 +142,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return objBean.clone();
+        return CloneableBean.beanClone(this, convenienceProperties);
     }
 
     /**
@@ -164,7 +168,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
         // can't use foreign markup in equals, due to JDOM equals impl
         final List<Element> fm = getForeignMarkup();
         setForeignMarkup(((SyndEntryImpl) other).getForeignMarkup());
-        final boolean ret = objBean.equals(other);
+        final boolean ret = EqualsBean.beanEquals(beanClass, this, other);
         // restore foreign markup
         setForeignMarkup(fm);
         return ret;
@@ -181,7 +185,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public int hashCode() {
-        return objBean.hashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     /**
@@ -193,7 +197,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      */
     @Override
     public String toString() {
-        return objBean.toString();
+        return ToStringBean.toString(beanClass, this);
     }
 
     /**

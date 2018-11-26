@@ -109,8 +109,7 @@ public class SlashImpl implements Slash {
 
     @Override
     public boolean equals(final Object obj) {
-        final EqualsBean eBean = new EqualsBean(this.getClass(), this);
-        return eBean.beanEquals(obj);
+        return EqualsBean.beanEquals(this.getClass(), this, obj);
     }
 
 }

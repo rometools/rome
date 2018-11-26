@@ -38,11 +38,11 @@ import com.rometools.rome.feed.impl.ToStringBean;
  * <pre>
  * &lt;media:category scheme="http://search.yahoo.com/mrss/category_
  *        schema"&gt;music/artist/album/song&lt;/media:category&gt;
- * 
+ *
  *        &lt;media:category scheme="http://dmoz.org" label="Ace Ventura - Pet
  *        Detective"&gt;Arts/Movies/Titles/A/Ace_Ventura_Series/Ace_Ventura_
  *        -_Pet_Detective&lt;/media:category&gt;
- * 
+ *
  *        &lt;media:category scheme="urn:flickr:tags"&gt;ycantpark
  *        mobile&lt;/media:category&gt;
  * </pre>
@@ -121,22 +121,16 @@ public class Category implements Serializable {
 
     @Override
     public boolean equals(final Object obj) {
-        final EqualsBean eBean = new EqualsBean(this.getClass(), this);
-
-        return eBean.beanEquals(obj);
+        return EqualsBean.beanEquals(this.getClass(), this, obj);
     }
 
     @Override
     public int hashCode() {
-        final EqualsBean equals = new EqualsBean(this.getClass(), this);
-
-        return equals.beanHashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     @Override
     public String toString() {
-        final ToStringBean tsBean = new ToStringBean(this.getClass(), this);
-
-        return tsBean.toString();
+        return ToStringBean.toString(this.getClass(), this);
     }
 }

@@ -84,9 +84,7 @@ public class CreativeCommonsImpl implements CreativeCommons {
 
     @Override
     public boolean equals(final Object obj) {
-        final EqualsBean eBean = new EqualsBean(this.getClass(), this);
-
-        return eBean.beanEquals(obj);
+        return EqualsBean.beanEquals(CreativeCommonsImpl.class, this, obj);
     }
 
     @Override
@@ -101,8 +99,7 @@ public class CreativeCommonsImpl implements CreativeCommons {
 
     @Override
     public String toString() {
-        final ToStringBean tsb = new ToStringBean(CreativeCommonsImpl.class, this);
-        return tsb.toString();
+        return ToStringBean.toString(CreativeCommonsImpl.class, this);
     }
 
 }

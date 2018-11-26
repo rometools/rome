@@ -40,7 +40,7 @@ import com.rometools.rome.feed.impl.ToStringBean;
  * <pre>
  * &lt;media:text type="plain" lang="en" start="00:00:03.000"
  *        end="00:00:10.000"&gt; Oh, say, can you see&lt;/media:text&gt;
- * 
+ *
  *        &lt;media:text type="plain" lang="en" start="00:00:10.000"
  *        end="00:00:17.000"&gt;By the dawn's early light&lt;/media:text&gt;
  * </pre>
@@ -149,22 +149,16 @@ public class Text implements Serializable {
 
     @Override
     public boolean equals(final Object obj) {
-        final EqualsBean eBean = new EqualsBean(this.getClass(), this);
-
-        return eBean.beanEquals(obj);
+        return EqualsBean.beanEquals(this.getClass(), this, obj);
     }
 
     @Override
     public int hashCode() {
-        final EqualsBean equals = new EqualsBean(this.getClass(), this);
-
-        return equals.beanHashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     @Override
     public String toString() {
-        final ToStringBean tsBean = new ToStringBean(this.getClass(), this);
-
-        return tsBean.toString();
+        return ToStringBean.toString(this.getClass(), this);
     }
 }

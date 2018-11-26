@@ -17,12 +17,15 @@
 package com.rometools.rome.feed.atom;
 
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
 import org.jdom2.Element;
 
-import com.rometools.rome.feed.impl.ObjectBean;
+import com.rometools.rome.feed.impl.CloneableBean;
+import com.rometools.rome.feed.impl.EqualsBean;
+import com.rometools.rome.feed.impl.ToStringBean;
 import com.rometools.rome.feed.module.Extendable;
 import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.feed.module.impl.ModuleUtils;
@@ -51,14 +54,11 @@ public class Entry implements Cloneable, Serializable, Extendable {
     private List<Element> foreignMarkup;
     private List<Module> modules;
     private List<Link> otherLinks;
-    private final ObjectBean objBean;
     private String id;
     private String rights;
     private String xmlBase;
 
-    public Entry() {
-        objBean = new ObjectBean(this.getClass(), this);
-    }
+    public Entry() { }
 
     /**
      * Sets the entry alternate links.
@@ -539,7 +539,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return objBean.clone();
+        return CloneableBean.beanClone(this, Collections.<String>emptySet());
     }
 
     /**
@@ -563,7 +563,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
         final List<Element> fm = getForeignMarkup();
         setForeignMarkup(((Entry) other).getForeignMarkup());
 
-        final boolean ret = objBean.equals(other);
+        final boolean ret = EqualsBean.beanEquals(this.getClass(), this, other);
         // restore foreign markup
         setForeignMarkup(fm);
 
@@ -581,7 +581,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      */
     @Override
     public int hashCode() {
-        return objBean.hashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     /**
@@ -593,7 +593,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      */
     @Override
     public String toString() {
-        return objBean.toString();
+        return ToStringBean.toString(this.getClass(), this);
     }
 
     public Link findRelatedLink(final String relation) {

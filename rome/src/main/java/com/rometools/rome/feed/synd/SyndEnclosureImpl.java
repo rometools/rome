@@ -21,16 +21,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.rometools.rome.feed.CopyFrom;
+import com.rometools.rome.feed.impl.CloneableBean;
 import com.rometools.rome.feed.impl.CopyFromHelper;
-import com.rometools.rome.feed.impl.ObjectBean;
+import com.rometools.rome.feed.impl.EqualsBean;
+import com.rometools.rome.feed.impl.ToStringBean;
 
 public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
 
     private static final long serialVersionUID = 1L;
 
     private static final CopyFromHelper COPY_FROM_HELPER;
-
-    private final ObjectBean objBean;
 
     private String url;
     private String type;
@@ -47,9 +47,7 @@ public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
         COPY_FROM_HELPER = new CopyFromHelper(SyndEnclosure.class, basePropInterfaceMap, basePropClassImplMap);
     }
 
-    public SyndEnclosureImpl() {
-        objBean = new ObjectBean(SyndEnclosure.class, this);
-    }
+    public SyndEnclosureImpl() { }
 
     /**
      * Creates a deep 'bean' clone of the object.
@@ -61,7 +59,7 @@ public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return objBean.clone();
+        return CloneableBean.beanClone(this, Collections.<String>emptySet());
     }
 
     /**
@@ -75,7 +73,7 @@ public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
      */
     @Override
     public boolean equals(final Object other) {
-        return objBean.equals(other);
+        return EqualsBean.beanEquals(SyndEnclosure.class, this, other);
     }
 
     /**
@@ -89,7 +87,7 @@ public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
      */
     @Override
     public int hashCode() {
-        return objBean.hashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     /**
@@ -101,7 +99,7 @@ public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
      */
     @Override
     public String toString() {
-        return objBean.toString();
+        return ToStringBean.toString(SyndEnclosure.class, this);
     }
 
     /**
