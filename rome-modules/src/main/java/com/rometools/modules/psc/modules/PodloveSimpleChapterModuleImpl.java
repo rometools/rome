@@ -87,19 +87,16 @@ public class PodloveSimpleChapterModuleImpl
 
     @Override
     public boolean equals(final Object obj) {
-        final EqualsBean eBean = new EqualsBean(PodloveSimpleChapterModuleImpl.class, this);
-        return eBean.beanEquals(obj);
+        return EqualsBean.beanEquals(PodloveSimpleChapterModuleImpl.class, this, obj);
     }
 
     @Override
     public int hashCode() {
-        final EqualsBean equals = new EqualsBean(PodloveSimpleChapterModuleImpl.class, this);
-        return equals.beanHashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     @Override
     public String toString() {
-        final ToStringBean tsBean = new ToStringBean(PodloveSimpleChapterModuleImpl.class, this);
-        return tsBean.toString();
+        return ToStringBean.toString(PodloveSimpleChapterModuleImpl.class, this);
     }
 }
