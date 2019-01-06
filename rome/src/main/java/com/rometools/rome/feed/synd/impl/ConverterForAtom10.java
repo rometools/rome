@@ -241,8 +241,7 @@ public class ConverterForAtom10 implements Converter {
                 final SyndCategory syndCategory = new SyndCategoryImpl();
                 syndCategory.setName(category.getTerm());
                 syndCategory.setTaxonomyUri(category.getSchemeResolved());
-                // TODO: categories MAY have labels
-                // syndCategory.setLabel(c.getLabel());
+                syndCategory.setLabel(category.getLabel());
                 syndCategories.add(syndCategory);
             }
             syndEntry.setCategories(syndCategories);

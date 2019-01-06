@@ -155,6 +155,14 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
         subject.setValue(name);
     }
 
+    @Override
+    public void setLabel(final String label) {
+        subject.setLabel(label);
+    }
+
+    @Override
+    public String getLabel() { return subject.getLabel(); }
+
     /**
      * Returns the category taxonomy URI.
      * <p>

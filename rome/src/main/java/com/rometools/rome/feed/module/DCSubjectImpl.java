@@ -40,11 +40,13 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
 
     private String taxonomyUri;
     private String value;
+    private String label;
 
     static {
         final Map<String, Class<?>> basePropInterfaceMap = new HashMap<String, Class<?>>();
         basePropInterfaceMap.put("taxonomyUri", String.class);
         basePropInterfaceMap.put("value", String.class);
+        basePropInterfaceMap.put("label",String.class);
 
         final Map<Class<? extends CopyFrom>, Class<?>> basePropClassImplMap = Collections.<Class<? extends CopyFrom>, Class<?>> emptyMap();
 
@@ -131,6 +133,27 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
     @Override
     public void setTaxonomyUri(final String taxonomyUri) {
         this.taxonomyUri = taxonomyUri;
+    }
+
+    /**
+     *
+     * Returns the category label, <b>null</b> if none.
+     * <p>
+     * @return label, <b>null</b> if none
+     * </p>
+     */
+    @Override
+    public String getLabel() {return label;}
+
+    /**
+     * Sets the subject label
+     * <p>
+     * @param label the category label to set, <b>null</b> if none.
+     * </p>
+     */
+    @Override
+    public void setLabel(final String label)  {
+        this.label = label;
     }
 
     /**

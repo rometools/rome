@@ -44,6 +44,23 @@ public interface DCSubject extends Cloneable, CopyFrom {
     void setTaxonomyUri(String taxonomyUri);
 
     /**
+     *
+     * Returns the category label, <b>null</b> if none.
+     * <p>
+     * @return label, <b>null</b> if none
+     * </p>
+     */
+    String getLabel();
+
+    /**
+     * Sets the subject label
+     * <p>
+     * @param label the category label to set, <b>null</b> if none.
+     * </p>
+     */
+    void setLabel(String label);
+
+    /**
      * Returns the DublinCore subject value.
      * <p>
      *
@@ -70,5 +87,6 @@ public interface DCSubject extends Cloneable, CopyFrom {
      *
      */
     public Object clone() throws CloneNotSupportedException;
+
 
 }
