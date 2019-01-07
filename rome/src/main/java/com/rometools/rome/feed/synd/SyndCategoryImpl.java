@@ -45,6 +45,7 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
         final Map<String, Class<?>> basePropInterfaceMap = new HashMap<String, Class<?>>();
         basePropInterfaceMap.put("name", String.class);
         basePropInterfaceMap.put("taxonomyUri", String.class);
+        basePropInterfaceMap.put("label", String.class);
         final Map<Class<? extends CopyFrom>, Class<?>> basePropClassImplMap = Collections.emptyMap();
         COPY_FROM_HELPER = new CopyFromHelper(SyndCategory.class, basePropInterfaceMap, basePropClassImplMap);
     }
