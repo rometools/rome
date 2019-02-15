@@ -16,26 +16,13 @@
  */
 package com.rometools.rome.feed.synd.impl;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
-
 import com.rometools.rome.feed.WireFeed;
 import com.rometools.rome.feed.module.DCModule;
-import com.rometools.rome.feed.rss.Channel;
-import com.rometools.rome.feed.rss.Content;
-import com.rometools.rome.feed.rss.Description;
-import com.rometools.rome.feed.rss.Image;
-import com.rometools.rome.feed.rss.Item;
-import com.rometools.rome.feed.synd.SyndContent;
-import com.rometools.rome.feed.synd.SyndContentImpl;
-import com.rometools.rome.feed.synd.SyndEntry;
-import com.rometools.rome.feed.synd.SyndFeed;
-import com.rometools.rome.feed.synd.SyndImage;
-import com.rometools.rome.feed.synd.SyndPerson;
+import com.rometools.rome.feed.rss.*;
+import com.rometools.rome.feed.synd.*;
 import com.rometools.utils.Lists;
+
+import java.util.*;
 
 public class ConverterForRSS091Userland extends ConverterForRSS090 {
 
@@ -88,6 +75,11 @@ public class ConverterForRSS091Userland extends ConverterForRSS090 {
                 creators.clear();
                 creators.addAll(s);
             }
+        }
+
+        final List<Item> items = channel.getItems();
+        if (items != null) {
+            syndFeed.setEntries(createSyndEntries(items, syndFeed.isPreservingWireFeed()));
         }
     }
 
@@ -165,6 +157,8 @@ public class ConverterForRSS091Userland extends ConverterForRSS090 {
         final Description desc = item.getDescription();
 
         syndEntry.setComments(item.getComments());
+
+        syndEntry.setPublishedDate(item.getPubDate());
 
         if (desc != null) {
             final SyndContent descContent = new SyndContentImpl();
