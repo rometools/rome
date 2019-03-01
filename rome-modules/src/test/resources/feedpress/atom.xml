@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:feedpress="https://feed.press/xmlns">
+    <title>Lorem Ipsum</title>
+    <link href="http://example.org"/>
+    <feedpress:newsletterId>abc123</feedpress:newsletterId>
+    <feedpress:locale>en</feedpress:locale>
+    <feedpress:podcastId>xyz123</feedpress:podcastId>
+    <feedpress:cssFile>http://example.org/style.css</feedpress:cssFile>
+    <entry>
+        <title>Lorem Ipsum</title>
+        <link href="http://example.org/episode1"/>
+        <link rel="enclosure"
+              href="http://example.org/episode1.m4a" />
+    </entry>
+</feed>
