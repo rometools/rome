@@ -19,6 +19,7 @@ package com.rometools.modules.atom.io;
 import com.rometools.modules.atom.modules.AtomLinkModule;
 import com.rometools.rome.feed.atom.Link;
 import com.rometools.rome.feed.module.Module;
+import com.rometools.rome.feed.synd.SyndPerson;
 import com.rometools.rome.io.ModuleGenerator;
 import org.jdom2.Attribute;
 import org.jdom2.Element;
@@ -53,8 +54,10 @@ public class AtomModuleGenerator implements ModuleGenerator {
     @Override
     public void generate(Module module, Element element) {
         if (module instanceof AtomLinkModule) {
-            AtomLinkModule m = (AtomLinkModule) module;
-            generateLinks(m.getLinks(), element);
+            final AtomLinkModule atom = (AtomLinkModule) module;
+            generateLinks(atom.getLinks(), element);
+            generatePersons(AtomPersonElement.AUTHOR_PREFIX, atom.getAuthors(), element);
+            generatePersons(AtomPersonElement.CONTRIBUTOR_PREFIX, atom.getContributors(), element);
         }
     }
 
@@ -97,6 +100,36 @@ public class AtomModuleGenerator implements ModuleGenerator {
             element.addContent(generateLink(link));
         }
 
+    }
+
+    private void generatePersons(String elementName, List<SyndPerson> persons, Element parent) {
+        for (SyndPerson person : persons) {
+            parent.addContent(generatePerson(elementName, person));
+        }
+    }
+
+    private Element generatePerson(String elementName, SyndPerson person) {
+        final Element element = new Element(elementName, NS);
+
+        if (person.getName() != null) {
+            final Element name = new Element(AtomPersonElement.NAME_ELEMENT, NS);
+            name.setText(person.getName());
+            element.addContent(name);
+        }
+
+        if (person.getEmail() != null) {
+            final Element email = new Element(AtomPersonElement.EMAIL_ELEMENT, NS);
+            email.setText(person.getEmail());
+            element.addContent(email);
+        }
+
+        if (person.getUri() != null) {
+            final Element uri = new Element(AtomPersonElement.URI_ELEMENT, NS);
+            uri.setText(person.getUri());
+            element.addContent(uri);
+        }
+
+        return element;
     }
 
 }
