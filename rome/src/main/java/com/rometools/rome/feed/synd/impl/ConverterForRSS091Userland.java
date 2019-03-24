@@ -89,11 +89,6 @@ public class ConverterForRSS091Userland extends ConverterForRSS090 {
                 creators.addAll(s);
             }
         }
-
-        final List<Item> items = channel.getItems();
-        if (items != null) {
-            syndFeed.setEntries(createSyndEntries(items, syndFeed.isPreservingWireFeed()));
-        }
     }
 
     protected Description createItemDescription(final SyndContent sContent) {
