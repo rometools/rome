@@ -143,8 +143,6 @@ public class RSS091UserlandParser extends RSS090Parser {
             channel.setSkipDays(skipDays);
         }
 
-        channel.setItems(parseItems(rssRoot, locale));
-
         return channel;
     }
 
@@ -247,25 +245,6 @@ public class RSS091UserlandParser extends RSS090Parser {
             return null;
         }
 
-    }
-
-    /**
-     * Parses the root element of an RSS document looking for all items information.
-     * <p/>
-     * It iterates through the item elements list, obtained from the getItems() method, and invoke
-     * parseItem() for each item element. The resulting RSSItem of each item element is stored in a
-     * list.
-     * <p/>
-     *
-     * @param rssRoot the root element of the RSS document to parse for all items information.
-     * @return a list with all the parsed RSSItem beans.
-     */
-    protected List<Item> parseItems(final Element rssRoot, final Locale locale) {
-        final List<Item> items = new ArrayList<Item>();
-        for (final Element item : getItems(rssRoot)) {
-            items.add(parseItem(rssRoot, item, locale));
-        }
-        return items;
     }
 
     /**
