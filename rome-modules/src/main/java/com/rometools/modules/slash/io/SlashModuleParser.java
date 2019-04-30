@@ -26,6 +26,7 @@ import com.rometools.modules.slash.Slash;
 import com.rometools.modules.slash.SlashImpl;
 import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.io.ModuleParser;
+import com.rometools.utils.Strings;
 
 /**
  * ModuleParser implementation for Slash RSS.
@@ -57,7 +58,7 @@ public class SlashModuleParser implements ModuleParser {
         }
         tag = null;
         tag = element.getChild("comments", SlashModuleParser.NS);
-        if (tag != null) {
+        if (tag != null && Strings.isNotEmpty(tag.getText())) {
             si.setComments(new Integer(tag.getText()));
         }
         tag = null;
