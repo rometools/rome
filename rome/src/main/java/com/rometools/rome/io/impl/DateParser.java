@@ -104,7 +104,7 @@ public class DateParser {
         ParsePosition pp = null;
         Date d = null;
         for (int i = 0; d == null && i < masks.length; i++) {
-            final DateFormat df = new SimpleDateFormat(masks[i], locale);
+            final DateFormat df = new SimpleDateFormat(masks[i].trim(), locale);
             // df.setLenient(false);
             df.setLenient(true);
             try {
