@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:psc="http://podlove.org/simple-chapters">
+    <title>Lorem Ipsum</title>
+    <link href="http://example.org"/>
+    <entry>
+        <title>Lorem Ipsum</title>
+        <link href="http://example.org/episode1"/>
+        <link rel="enclosure"
+              href="http://example.org/episode1.m4a" />
+        <psc:chapters version="1.2">
+            <psc:chapter start="00:00:00.000" title="Lorem Ipsum" href="http://example.org" image="http://example.org/cover"/>
+            <psc:chapter start="00:00:00.000" title="Lorem Ipsum" href="http://example.org" image="http://example.org/cover"/>
+            <psc:chapter start="00:00:00.000" title="Lorem Ipsum" href="http://example.org" image="http://example.org/cover"/>
+        </psc:chapters>
+    </entry>
+</feed>
