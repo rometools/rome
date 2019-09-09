@@ -3,9 +3,8 @@ script: mvn verify
 matrix:
   include:
     - dist: trusty
-      jdk: openjdk7
-    - dist: trusty
       jdk: openjdk8
+  allow_failures:
     - dist: bionic
       jdk: openjdk11
     - dist: bionic
