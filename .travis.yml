@@ -1,5 +1,12 @@
 language: java
-jdk:
-  - oraclejdk8
-  - openjdk7
 script: mvn verify
+matrix:
+  include:
+    - dist: trusty
+      jdk: openjdk7
+    - dist: trusty
+      jdk: openjdk8
+    - dist: bionic
+      jdk: openjdk11
+    - dist: bionic
+      jdk: openjdk12
