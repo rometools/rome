@@ -206,7 +206,7 @@ public class ITunesParser implements ModuleParser {
             final Element explicit = element.getChild("explicit", ns);
 
             if (explicit != null && explicit.getValue() != null) {
-                String explicitValue = explicit.getValue().trim();
+                String explicitValue = explicit.getValue().trim().toLowerCase();
 
                 if (EXPLICIT_TRUE.contains(explicitValue)) {
                     module.setExplicit(true);

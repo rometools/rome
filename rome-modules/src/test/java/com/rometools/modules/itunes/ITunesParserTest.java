@@ -20,6 +20,7 @@
 package com.rometools.modules.itunes;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -172,5 +173,33 @@ public class ITunesParserTest extends AbstractTestCase {
         EntryInformationImpl module = (EntryInformationImpl) entry.getModule(AbstractITunesObject.URI);
 
         assertNull(module.getDuration());
+    }
+
+    public void testExplicitnessTrue() throws Exception {
+        ArrayList<String> xmlFiles = new ArrayList<String>();
+        xmlFiles.add("explicitness-capital-yes.xml");
+        xmlFiles.add("explicitness-yes.xml");
+
+        for (String xml : xmlFiles) {
+            SyndFeed feed = new SyndFeedInput().build(new XmlReader(getClass().getResource(xml)));
+            SyndEntry entry = feed.getEntries().get(0);
+            EntryInformationImpl module = (EntryInformationImpl) entry.getModule(AbstractITunesObject.URI);
+
+            assertTrue(module.getExplicitNullable());
+        }
+    }
+
+    public void testExplicitnessFalse() throws Exception {
+        ArrayList<String> xmlFiles = new ArrayList<String>();
+        xmlFiles.add("explicitness-no.xml");
+        xmlFiles.add("explicitness-clean.xml");
+
+        for (String xml : xmlFiles) {
+            SyndFeed feed = new SyndFeedInput().build(new XmlReader(getClass().getResource(xml)));
+            SyndEntry entry = feed.getEntries().get(0);
+            EntryInformationImpl module = (EntryInformationImpl) entry.getModule(AbstractITunesObject.URI);
+
+            assertFalse(module.getExplicitNullable());
+        }
     }
 }
