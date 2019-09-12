@@ -182,8 +182,7 @@ public class ITunesParserTest extends AbstractTestCase {
 
         for (String xml : xmlFiles) {
             SyndFeed feed = new SyndFeedInput().build(new XmlReader(getClass().getResource(xml)));
-            SyndEntry entry = feed.getEntries().get(0);
-            EntryInformationImpl module = (EntryInformationImpl) entry.getModule(AbstractITunesObject.URI);
+            FeedInformationImpl module = (FeedInformationImpl) feed.getModule(AbstractITunesObject.URI);
 
             assertTrue(module.getExplicitNullable());
         }
@@ -196,8 +195,7 @@ public class ITunesParserTest extends AbstractTestCase {
 
         for (String xml : xmlFiles) {
             SyndFeed feed = new SyndFeedInput().build(new XmlReader(getClass().getResource(xml)));
-            SyndEntry entry = feed.getEntries().get(0);
-            EntryInformationImpl module = (EntryInformationImpl) entry.getModule(AbstractITunesObject.URI);
+            FeedInformationImpl module = (FeedInformationImpl) feed.getModule(AbstractITunesObject.URI);
 
             assertFalse(module.getExplicitNullable());
         }
