@@ -30,7 +30,7 @@ import com.rometools.rome.feed.impl.ToStringBean;
 public class Enclosure implements Cloneable, Serializable {
     private static final long serialVersionUID = 1L;
     private String url;
-    private long length;
+    private long length = -1L;
     private String type;
 
     public Enclosure() { }
