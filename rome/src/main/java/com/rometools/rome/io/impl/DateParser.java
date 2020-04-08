@@ -150,8 +150,10 @@ public class DateParser {
     private static String convertUnsupportedTimeZones(String sDate) {
         final List<String> unsupportedZeroOffsetTimeZones = Arrays.asList("UT", "Z");
 
+    	List<String> splitted = Arrays.asList(sDate.split(" "));
         for (String timeZone : unsupportedZeroOffsetTimeZones) {
-            if (sDate.endsWith(timeZone)) {
+            if (splitted.contains(timeZone)) {
+//        	if (sDate.endsWith(timeZone)) {
                 return replaceLastOccurrence(sDate, timeZone, "UTC");
             }
         }
