@@ -17,6 +17,7 @@
 package com.rometools.modules.itunes;
 
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -162,12 +163,20 @@ public class FeedInformationImpl extends AbstractITunesObject implements FeedInf
         setNewFeedUrl(info.getNewFeedUrl());
         setExplicitNullable(info.getExplicitNullable());
 
-        try {
-            if (info.getImage() != null) {
+        if (info.getImage() != null) {
+            try {
                 setImage(new URL(info.getImage().toExternalForm()));
+            } catch (final MalformedURLException e) {
+                LOG.debug("Error copying URL:" + info.getImage(), e);
             }
-        } catch (final MalformedURLException e) {
-            LOG.debug("Error copying URL:" + info.getImage(), e);
+        }
+
+        if (info.getImageUri() != null) {
+            try {
+                setImageUri(new java.net.URI(info.getImageUri().toString()));
+            } catch (final URISyntaxException  e) {
+                LOG.debug("Error copying URI:" + info.getImageUri(), e);
+            }
         }
 
         if (info.getKeywords() != null) {

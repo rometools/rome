@@ -19,6 +19,7 @@ package com.rometools.modules.itunes;
 import com.rometools.modules.itunes.types.Duration;
 import com.rometools.rome.feed.CopyFrom;
 
+import java.net.URISyntaxException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -140,12 +141,20 @@ public class EntryInformationImpl extends AbstractITunesObject implements EntryI
 
         setExplicitNullable(info.getExplicitNullable());
 
-        try {
-            if (info.getImage() != null) {
+        if (info.getImage() != null) {
+            try {
                 setImage(new URL(info.getImage().toExternalForm()));
+            } catch (final MalformedURLException e) {
+                LOG.debug("Error copying URL:" + info.getImage(), e);
             }
-        } catch (final MalformedURLException e) {
-            LOG.debug("Error copying URL:" + info.getImage(), e);
+        }
+
+        if (info.getImageUri() != null) {
+            try {
+                setImageUri(new java.net.URI(info.getImageUri().toString()));
+            } catch (final URISyntaxException  e) {
+                LOG.debug("Error copying URI:" + info.getImageUri(), e);
+            }
         }
 
         if (info.getKeywords() != null) {

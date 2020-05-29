@@ -20,6 +20,7 @@
 package com.rometools.modules.itunes;
 
 import java.io.File;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -199,5 +200,20 @@ public class ITunesParserTest extends AbstractTestCase {
 
             assertFalse(module.getExplicitNullable());
         }
+    }
+
+    public void testParseNonHttpUris() throws Exception {
+        File feed = new File(getTestFile("itunes/no-http-uris.xml"));
+        final SyndFeedInput input = new SyndFeedInput();
+        SyndFeed syndfeed = input.build(new XmlReader(feed.toURI().toURL()));
+
+        final FeedInformationImpl feedInfo = (FeedInformationImpl) syndfeed.getModule(AbstractITunesObject.URI);
+
+        assertEquals(URI.create("file://some-location/1.jpg"), feedInfo.getImageUri());
+
+        SyndEntry entry = syndfeed.getEntries().get(0);
+        EntryInformationImpl module = (EntryInformationImpl) entry.getModule(AbstractITunesObject.URI);
+
+        assertEquals(URI.create("gs://some-location/2.jpg"), module.getImageUri());
     }
 }

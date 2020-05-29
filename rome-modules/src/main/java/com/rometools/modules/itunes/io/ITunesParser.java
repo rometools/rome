@@ -17,6 +17,8 @@
 package com.rometools.modules.itunes.io;
 
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
@@ -250,6 +252,13 @@ public class ITunesParser implements ModuleParser {
                     module.setImage(imageURL);
                 } catch (final MalformedURLException e) {
                     LOG.warn("Malformed URL Exception reading itunes:image tag: {}", image.getAttributeValue("href"));
+                }
+
+                try {
+                    final URI imageUri = new URI(image.getAttributeValue("href").trim());
+                    module.setImageUri(imageUri);
+                } catch (final URISyntaxException  e) {
+                    LOG.warn("URISyntaxException reading itunes:image tag: {}", image.getAttributeValue("href"));
                 }
             }
         }
