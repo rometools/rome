@@ -16,7 +16,6 @@
         <module>rome-fetcher</module>
         <module>rome-modules</module>
         <module>rome-opml</module>
-        <module>rome-osgi-test</module>
         <module>rome-propono</module>
         <module>rome-utils</module>
     </modules>
