@@ -19,20 +19,7 @@
  */
 package com.rometools.modules.itunes;
 
-import java.io.File;
-import java.io.StringWriter;
-import java.util.List;
-
-import junit.framework.Test;
-import junit.framework.TestSuite;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.rometools.modules.AbstractTestCase;
-import com.rometools.modules.itunes.AbstractITunesObject;
-import com.rometools.modules.itunes.FeedInformation;
-import com.rometools.modules.itunes.FeedInformationImpl;
 import com.rometools.modules.itunes.types.Category;
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndFeed;
@@ -40,6 +27,15 @@ import com.rometools.rome.feed.synd.SyndFeedImpl;
 import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.SyndFeedOutput;
 import com.rometools.rome.io.XmlReader;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.StringWriter;
+import java.net.URL;
+import java.util.List;
+import junit.framework.Test;
+import junit.framework.TestSuite;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ITunesGeneratorTest extends AbstractTestCase {
 
@@ -114,6 +110,73 @@ public class ITunesGeneratorTest extends AbstractTestCase {
         final StringWriter writer = new StringWriter();
         output.output(feed, writer);
         LOG.debug("{}", writer);
+    }
 
+    public void testImage() throws Exception {
+        SyndFeed feed = new SyndFeedImpl();
+        feed.setFeedType("rss_2.0");
+        feed.setTitle("title");
+        feed.setDescription("description");
+        feed.setLink("https://example.org");
+
+        FeedInformation itunesFeed = new FeedInformationImpl();
+        itunesFeed.setImage(new URL("https://example.org/test.png"));
+        feed.getModules().add(itunesFeed);
+
+        String xml = new SyndFeedOutput().outputString(feed);
+
+        AbstractITunesObject parsedItunesFeed =
+                (AbstractITunesObject) new SyndFeedInput()
+                        .build(new XmlReader(new ByteArrayInputStream(xml.getBytes("UTF-8"))))
+                        .getModule(AbstractITunesObject.URI);
+        assertEquals(new URL("https://example.org/test.png"), parsedItunesFeed.getImage());
+        assertEquals(new java.net.URI("https://example.org/test.png"),
+                parsedItunesFeed.getImageUri());
+    }
+
+    public void testImageUri() throws Exception {
+        SyndFeed feed = new SyndFeedImpl();
+        feed.setFeedType("rss_2.0");
+        feed.setTitle("title");
+        feed.setDescription("description");
+        feed.setLink("https://example.org");
+
+        FeedInformation itunesFeed = new FeedInformationImpl();
+        itunesFeed.setImageUri(new java.net.URI("https://example.org/test.png"));
+        feed.getModules().add(itunesFeed);
+
+        String xml = new SyndFeedOutput().outputString(feed);
+
+        AbstractITunesObject parsedItunesFeed =
+                (AbstractITunesObject) new SyndFeedInput()
+                        .build(new XmlReader(new ByteArrayInputStream(xml.getBytes("UTF-8"))))
+                        .getModule(AbstractITunesObject.URI);
+        assertEquals(new java.net.URI("https://example.org/test.png"),
+                parsedItunesFeed.getImageUri());
+        assertEquals(new URL("https://example.org/test.png"),
+                parsedItunesFeed.getImage());
+    }
+
+    public void testImageTakesPrecedenceOverImageUri() throws Exception {
+        SyndFeed feed = new SyndFeedImpl();
+        feed.setFeedType("rss_2.0");
+        feed.setTitle("title");
+        feed.setDescription("description");
+        feed.setLink("https://example.org");
+
+        FeedInformation itunesFeed = new FeedInformationImpl();
+        itunesFeed.setImage(new URL("https://example.org/test1.png"));
+        itunesFeed.setImageUri(new java.net.URI("https://example.org/test2.png"));
+        feed.getModules().add(itunesFeed);
+
+        String xml = new SyndFeedOutput().outputString(feed);
+
+        AbstractITunesObject parsedItunesFeed =
+                (AbstractITunesObject) new SyndFeedInput()
+                        .build(new XmlReader(new ByteArrayInputStream(xml.getBytes("UTF-8"))))
+                        .getModule(AbstractITunesObject.URI);
+        assertEquals(new URL("https://example.org/test1.png"), parsedItunesFeed.getImage());
+        assertEquals(new java.net.URI("https://example.org/test1.png"),
+                parsedItunesFeed.getImageUri());
     }
 }
