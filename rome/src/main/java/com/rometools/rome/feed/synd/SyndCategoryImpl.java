@@ -40,6 +40,7 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
     private static final CopyFromHelper COPY_FROM_HELPER;
 
     private final DCSubject subject;
+    private String label;
 
     static {
         final Map<String, Class<?>> basePropInterfaceMap = new HashMap<String, Class<?>>();
@@ -164,11 +165,11 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
      */
     @Override
     public void setLabel(final String label) {
-        subject.setLabel(label);
+        this.label = label;
     }
 
     @Override
-    public String getLabel() { return subject.getLabel(); }
+    public String getLabel() { return label; }
 
     /**
      * Returns the category taxonomy URI.
