@@ -136,27 +136,6 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
     }
 
     /**
-     *
-     * Returns the category label, <b>null</b> if none.
-     * <p>
-     * @return label, <b>null</b> if none
-     * </p>
-     */
-    @Override
-    public String getLabel() {return label;}
-
-    /**
-     * Sets the subject label
-     * <p>
-     * @param label the category label to set, <b>null</b> if none.
-     * </p>
-     */
-    @Override
-    public void setLabel(final String label)  {
-        this.label = label;
-    }
-
-    /**
      * Returns the DublinCore subject value.
      * <p>
      *

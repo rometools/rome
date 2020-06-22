@@ -156,6 +156,12 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
         subject.setValue(name);
     }
 
+    /**
+     * Sets the category Label.
+     * <p>
+     * @param label the category label to set, <b>null</b> if none
+     *
+     */
     @Override
     public void setLabel(final String label) {
         subject.setLabel(label);
