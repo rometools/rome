@@ -1,9 +1,0 @@
-language: java
-script: mvn verify
-matrix:
-  include:
-    - dist: bionic
-      jdk: openjdk11
-  allow_failures:
-    - dist: bionic
-      jdk: openjdk12
