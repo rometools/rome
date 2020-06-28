@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.rometools</groupId>
         <artifactId>rome-parent</artifactId>
-        <version>${revision}</version>
+        <version>1.14.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 

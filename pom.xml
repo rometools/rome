@@ -6,7 +6,7 @@
 
     <groupId>com.rometools</groupId>
     <artifactId>rome-parent</artifactId>
-    <version>${revision}</version>
+    <version>1.14.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
@@ -52,7 +52,6 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <revision>1.14.1-SNAPSHOT</revision>
     </properties>
 
     <build>
@@ -208,42 +207,42 @@
             <dependency>
                 <groupId>com.rometools</groupId>
                 <artifactId>rome</artifactId>
-                <version>${revision}</version>
+                <version>1.14.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.rometools</groupId>
                 <artifactId>rome-certiorem</artifactId>
-                <version>${revision}</version>
+                <version>1.14.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.rometools</groupId>
                 <artifactId>rome-certiorem-webapp</artifactId>
-                <version>${revision}</version>
+                <version>1.14.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.rometools</groupId>
                 <artifactId>rome-fetcher</artifactId>
-                <version>${revision}</version>
+                <version>1.14.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.rometools</groupId>
                 <artifactId>rome-modules</artifactId>
-                <version>${revision}</version>
+                <version>1.14.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.rometools</groupId>
                 <artifactId>rome-opml</artifactId>
-                <version>${revision}</version>
+                <version>1.14.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.rometools</groupId>
                 <artifactId>rome-propono</artifactId>
-                <version>${revision}</version>
+                <version>1.14.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.rometools</groupId>
                 <artifactId>rome-utils</artifactId>
-                <version>${revision}</version>
+                <version>1.14.1-SNAPSHOT</version>
             </dependency>
             <!-- JDOM -->
             <dependency>
