@@ -18,7 +18,6 @@ package com.rometools.modules.itunes;
 
 import com.rometools.rome.feed.module.Module;
 
-import java.net.URI;
 import java.net.URL;
 
 /**
@@ -124,7 +123,7 @@ public interface ITunes extends Module {
      */
     public void setSummary(String summary);
 
-    public java.net.URI getImageUri();
+    public String getImageUri();
 
-    public void setImageUri(java.net.URI image);
+    public void setImageUri(String image);
 }

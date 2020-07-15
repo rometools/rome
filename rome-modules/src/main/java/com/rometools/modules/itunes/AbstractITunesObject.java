@@ -16,7 +16,6 @@
  */
 package com.rometools.modules.itunes;
 
-import java.net.URI;
 import java.net.URL;
 
 /**
@@ -48,7 +47,7 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
     private boolean block;
     private Boolean explicit;
     private URL image;
-    private URI imageUri;
+    private String imageUri;
     private String[] keywords;
     private String subtitle;
     private String summary;
@@ -226,12 +225,12 @@ public abstract class AbstractITunesObject implements ITunes, java.lang.Cloneabl
     }
 
     @Override
-    public URI getImageUri() {
+    public String getImageUri() {
         return imageUri;
     }
 
     @Override
-    public void setImageUri(final URI image) {
+    public void setImageUri(final String image) {
         this.imageUri = image;
     }
 

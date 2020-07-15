@@ -130,8 +130,7 @@ public class ITunesGeneratorTest extends AbstractTestCase {
                         .build(new XmlReader(new ByteArrayInputStream(xml.getBytes("UTF-8"))))
                         .getModule(AbstractITunesObject.URI);
         assertEquals(new URL("https://example.org/test.png"), parsedItunesFeed.getImage());
-        assertEquals(new java.net.URI("https://example.org/test.png"),
-                parsedItunesFeed.getImageUri());
+        assertEquals("https://example.org/test.png", parsedItunesFeed.getImageUri());
     }
 
     public void testImageUri() throws Exception {
@@ -142,7 +141,7 @@ public class ITunesGeneratorTest extends AbstractTestCase {
         feed.setLink("https://example.org");
 
         FeedInformation itunesFeed = new FeedInformationImpl();
-        itunesFeed.setImageUri(new java.net.URI("https://example.org/test.png"));
+        itunesFeed.setImageUri("https://example.org/test.png");
         feed.getModules().add(itunesFeed);
 
         String xml = new SyndFeedOutput().outputString(feed);
@@ -151,7 +150,7 @@ public class ITunesGeneratorTest extends AbstractTestCase {
                 (AbstractITunesObject) new SyndFeedInput()
                         .build(new XmlReader(new ByteArrayInputStream(xml.getBytes("UTF-8"))))
                         .getModule(AbstractITunesObject.URI);
-        assertEquals(new java.net.URI("https://example.org/test.png"),
+        assertEquals("https://example.org/test.png",
                 parsedItunesFeed.getImageUri());
         assertEquals(new URL("https://example.org/test.png"),
                 parsedItunesFeed.getImage());
@@ -166,7 +165,7 @@ public class ITunesGeneratorTest extends AbstractTestCase {
 
         FeedInformation itunesFeed = new FeedInformationImpl();
         itunesFeed.setImage(new URL("https://example.org/test1.png"));
-        itunesFeed.setImageUri(new java.net.URI("https://example.org/test2.png"));
+        itunesFeed.setImageUri("https://example.org/test2.png");
         feed.getModules().add(itunesFeed);
 
         String xml = new SyndFeedOutput().outputString(feed);
@@ -176,7 +175,6 @@ public class ITunesGeneratorTest extends AbstractTestCase {
                         .build(new XmlReader(new ByteArrayInputStream(xml.getBytes("UTF-8"))))
                         .getModule(AbstractITunesObject.URI);
         assertEquals(new URL("https://example.org/test1.png"), parsedItunesFeed.getImage());
-        assertEquals(new java.net.URI("https://example.org/test1.png"),
-                parsedItunesFeed.getImageUri());
+        assertEquals("https://example.org/test1.png", parsedItunesFeed.getImageUri());
     }
 }
