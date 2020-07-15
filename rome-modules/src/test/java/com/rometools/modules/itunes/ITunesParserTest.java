@@ -209,11 +209,11 @@ public class ITunesParserTest extends AbstractTestCase {
 
         final FeedInformationImpl feedInfo = (FeedInformationImpl) syndfeed.getModule(AbstractITunesObject.URI);
 
-        assertEquals(URI.create("file://some-location/1.jpg"), feedInfo.getImageUri());
+        assertEquals("file://some-location/1.jpg", feedInfo.getImageUri());
 
         SyndEntry entry = syndfeed.getEntries().get(0);
         EntryInformationImpl module = (EntryInformationImpl) entry.getModule(AbstractITunesObject.URI);
 
-        assertEquals(URI.create("gs://some-location/2.jpg"), module.getImageUri());
+        assertEquals("gs://some-location/whitespaces are allowed/2.jpg", module.getImageUri());
     }
 }

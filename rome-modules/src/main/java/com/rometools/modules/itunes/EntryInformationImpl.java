@@ -150,11 +150,7 @@ public class EntryInformationImpl extends AbstractITunesObject implements EntryI
         }
 
         if (info.getImageUri() != null) {
-            try {
-                setImageUri(new java.net.URI(info.getImageUri().toString()));
-            } catch (final URISyntaxException  e) {
-                LOG.debug("Error copying URI:" + info.getImageUri(), e);
-            }
+            setImageUri(info.getImageUri());
         }
 
         if (info.getKeywords() != null) {
