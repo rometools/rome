@@ -141,7 +141,11 @@ public class ITunesGenerator implements ModuleGenerator {
 
         if (itunes.getImage() != null) {
             final Element image = generateSimpleElement("image", "");
-            image.setAttribute("href", itunes.getImage().toExternalForm());
+            image.setAttribute("href", itunes.getImage().toString());
+            element.addContent(image);
+        } else if (itunes.getImageUri() != null) {
+            final Element image = generateSimpleElement("image", "");
+            image.setAttribute("href", itunes.getImageUri().toString());
             element.addContent(image);
         }
 

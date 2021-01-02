@@ -6,7 +6,8 @@
     <parent>
         <groupId>com.rometools</groupId>
         <artifactId>rome-parent</artifactId>
-        <version>1.12.1-SNAPSHOT</version>
+        <version>1.15.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>rome-fetcher</artifactId>

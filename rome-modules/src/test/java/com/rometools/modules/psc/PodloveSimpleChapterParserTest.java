@@ -34,22 +34,40 @@ public class PodloveSimpleChapterParserTest extends AbstractTestCase {
         return new TestSuite(PodloveSimpleChapterParserTest.class);
     }
 
-    public void testParse() throws Exception {
+    public void testParseRss() throws Exception {
 
-        log.debug("testParse");
+        log.debug("testParseRss");
 
         final SyndFeedInput input = new SyndFeedInput();
-        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("psc/test1.xml")).toURI().toURL()));
+        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("psc/rss.xml")).toURI().toURL()));
         final SyndEntry entry = feed.getEntries().get(0);
-        final PodloveSimpleChapterModule module = (PodloveSimpleChapterModule) entry.getModule(PodloveSimpleChapterModule.URI);
+        final PodloveSimpleChapterModule simpleChapters = (PodloveSimpleChapterModule) entry.getModule(PodloveSimpleChapterModule.URI);
 
-        for (SimpleChapter c : module.getChapters()) {
+        assertNotNull(simpleChapters);
+        for (SimpleChapter c : simpleChapters.getChapters()) {
             assertEquals("00:00:00.000", c.getStart());
             assertEquals("Lorem Ipsum", c.getTitle());
             assertEquals("http://example.org", c.getHref());
             assertEquals("http://example.org/cover", c.getImage());
         }
+    }
 
+    public void testParseAtom() throws Exception {
+
+        log.debug("testParseAtom");
+
+        final SyndFeedInput input = new SyndFeedInput();
+        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("psc/atom.xml")).toURI().toURL()));
+        final SyndEntry entry = feed.getEntries().get(0);
+        final PodloveSimpleChapterModule simpleChapters = (PodloveSimpleChapterModule) entry.getModule(PodloveSimpleChapterModule.URI);
+
+        assertNotNull(simpleChapters);
+        for (SimpleChapter c : simpleChapters.getChapters()) {
+            assertEquals("00:00:00.000", c.getStart());
+            assertEquals("Lorem Ipsum", c.getTitle());
+            assertEquals("http://example.org", c.getHref());
+            assertEquals("http://example.org/cover", c.getImage());
+        }
     }
 
     public void testGetNamespaceUri() {

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:fyyd="https://fyyd.de/fyyd-ns/" version="2.0">
+    <channel>
+        <title>Lorem Ipsum</title>
+        <link>http://example.org</link>
+        <description>Lorem Ipsum</description>
+        <fyyd:verify>abcdefg</fyyd:verify>
+        <item>
+            <title>Lorem Ipsum</title>
+            <link>http://example.org/episode1</link>
+            <description><![CDATA[Lorem Ipsum]]></description>
+        </item>
+    </channel>
+</rss>

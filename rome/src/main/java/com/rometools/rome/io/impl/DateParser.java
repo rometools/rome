@@ -104,7 +104,7 @@ public class DateParser {
         ParsePosition pp = null;
         Date d = null;
         for (int i = 0; d == null && i < masks.length; i++) {
-            final DateFormat df = new SimpleDateFormat(masks[i], locale);
+            final DateFormat df = new SimpleDateFormat(masks[i].trim(), locale);
             // df.setLenient(false);
             df.setLenient(true);
             try {
@@ -227,12 +227,16 @@ public class DateParser {
      *
      * */
     public static Date parseDate(final String sDate, final Locale locale) {
-        Date date = parseW3CDateTime(sDate, locale);
+    	Date date = null;
+    	if (ADDITIONAL_MASKS.length > 0) {
+    		date = parseUsingMask(ADDITIONAL_MASKS, sDate, locale);
+    		if (date != null) {
+    			return date;
+    		}
+    	}
+        date = parseW3CDateTime(sDate, locale);
         if (date == null) {
             date = parseRFC822(sDate, locale);
-            if (date == null && ADDITIONAL_MASKS.length > 0) {
-                date = parseUsingMask(ADDITIONAL_MASKS, sDate, locale);
-            }
         }
         return date;
     }

@@ -71,4 +71,5 @@ public interface DCSubject extends Cloneable, CopyFrom {
      */
     public Object clone() throws CloneNotSupportedException;
 
+
 }

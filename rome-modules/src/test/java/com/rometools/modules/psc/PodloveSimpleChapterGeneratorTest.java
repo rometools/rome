@@ -35,24 +35,44 @@ public class PodloveSimpleChapterGeneratorTest extends AbstractTestCase {
         return new TestSuite(PodloveSimpleChapterGeneratorTest.class);
     }
 
-    public void testGenerate() throws Exception {
+    public void testGenerateRss() throws Exception {
 
-        log.debug("testGenerate");
+        log.debug("testGenerateRss");
 
         final SyndFeedInput input = new SyndFeedInput();
-        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("psc/test1.xml")).toURI().toURL()));
+        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("psc/rss.xml")).toURI().toURL()));
         final SyndEntry entry = feed.getEntries().get(0);
         entry.getModule(PodloveSimpleChapterModule.URI);
         final SyndFeedOutput output = new SyndFeedOutput();
         final StringWriter writer = new StringWriter();
         output.output(feed, writer);
 
+        final String xml = writer.toString();
         log.debug("{}", writer);
 
+        assertTrue(xml.contains("xmlns:psc=\"http://podlove.org/simple-chapters\""));
+        assertTrue(xml.contains("<psc:chapters version=\"1.2\">"));
+        assertTrue(xml.contains("<psc:chapter start=\"00:00:00.000\" title=\"Lorem Ipsum\" href=\"http://example.org\" image=\"http://example.org/cover\" />"));
     }
 
-    public void testGetNamespaces() {
-        // TODO add test code
+    public void testGenerateAtom() throws Exception {
+
+        log.debug("testGenerateAtom");
+
+        final SyndFeedInput input = new SyndFeedInput();
+        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("psc/atom.xml")).toURI().toURL()));
+        final SyndEntry entry = feed.getEntries().get(0);
+        entry.getModule(PodloveSimpleChapterModule.URI);
+        final SyndFeedOutput output = new SyndFeedOutput();
+        final StringWriter writer = new StringWriter();
+        output.output(feed, writer);
+
+        final String xml = writer.toString();
+        log.debug("{}", writer);
+
+        assertTrue(xml.contains("xmlns:psc=\"http://podlove.org/simple-chapters\""));
+        assertTrue(xml.contains("<psc:chapters version=\"1.2\">"));
+        assertTrue(xml.contains("<psc:chapter start=\"00:00:00.000\" title=\"Lorem Ipsum\" href=\"http://example.org\" image=\"http://example.org/cover\" />"));
     }
 
     public void testGetNamespaceUri() {

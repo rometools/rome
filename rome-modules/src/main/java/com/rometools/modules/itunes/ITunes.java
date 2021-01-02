@@ -123,4 +123,7 @@ public interface ITunes extends Module {
      */
     public void setSummary(String summary);
 
+    public String getImageUri();
+
+    public void setImageUri(String image);
 }
