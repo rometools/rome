@@ -153,7 +153,6 @@ public class DateParser {
     	List<String> splitted = Arrays.asList(sDate.split(" "));
         for (String timeZone : unsupportedZeroOffsetTimeZones) {
             if (splitted.contains(timeZone)) {
-//        	if (sDate.endsWith(timeZone)) {
                 return replaceLastOccurrence(sDate, timeZone, "UTC");
             }
         }
