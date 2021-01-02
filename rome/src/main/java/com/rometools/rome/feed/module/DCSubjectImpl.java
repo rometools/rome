@@ -40,13 +40,11 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
 
     private String taxonomyUri;
     private String value;
-    private String label;
 
     static {
         final Map<String, Class<?>> basePropInterfaceMap = new HashMap<String, Class<?>>();
         basePropInterfaceMap.put("taxonomyUri", String.class);
         basePropInterfaceMap.put("value", String.class);
-        basePropInterfaceMap.put("label",String.class);
 
         final Map<Class<? extends CopyFrom>, Class<?>> basePropClassImplMap = Collections.<Class<? extends CopyFrom>, Class<?>> emptyMap();
 

@@ -395,7 +395,7 @@ public class ConverterForAtom10 implements Converter {
             for (final SyndCategory sCat : sCats) {
                 final Category aCat = new Category();
                 aCat.setTerm(sCat.getName());
-                // TODO: aCat.setLabel(sCat.getLabel());
+                aCat.setLabel(sCat.getLabel());
                 aCat.setScheme(sCat.getTaxonomyUri());
                 aCats.add(aCat);
             }
