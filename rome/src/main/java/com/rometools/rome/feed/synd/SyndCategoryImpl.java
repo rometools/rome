@@ -40,11 +40,13 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
     private static final CopyFromHelper COPY_FROM_HELPER;
 
     private final DCSubject subject;
+    private String label;
 
     static {
         final Map<String, Class<?>> basePropInterfaceMap = new HashMap<String, Class<?>>();
         basePropInterfaceMap.put("name", String.class);
         basePropInterfaceMap.put("taxonomyUri", String.class);
+        basePropInterfaceMap.put("label", String.class);
         final Map<Class<? extends CopyFrom>, Class<?>> basePropClassImplMap = Collections.emptyMap();
         COPY_FROM_HELPER = new CopyFromHelper(SyndCategory.class, basePropInterfaceMap, basePropClassImplMap);
     }
@@ -154,6 +156,20 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
     public void setName(final String name) {
         subject.setValue(name);
     }
+
+    /**
+     * Sets the category Label.
+     * <p>
+     * @param label the category label to set, <b>null</b> if none
+     *
+     */
+    @Override
+    public void setLabel(final String label) {
+        this.label = label;
+    }
+
+    @Override
+    public String getLabel() { return label; }
 
     /**
      * Returns the category taxonomy URI.

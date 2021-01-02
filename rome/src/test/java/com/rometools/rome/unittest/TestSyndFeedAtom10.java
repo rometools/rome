@@ -114,8 +114,10 @@ public class TestSyndFeedAtom10 extends TestSyndFeedAtom03 {
         } else {
             final SyndLink slink = entry.getLinks().get(2);
             assertTrue(slink.getHref().startsWith("tag:"));
-
         }
+        assertFalse(entry.getCategories().isEmpty());
+        assertEquals("test.category.label", entry.getCategories().get(0).getLabel());
+        assertEquals("test.category.term", entry.getCategories().get(0).getName());
     }
 
     @Override
