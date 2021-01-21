@@ -109,6 +109,13 @@ public class OPML20Parser extends OPML10Parser {
 
                 break;
             }
+
+            if (a.getName().equals("category"))
+            {
+                String categories = a.getValue();
+                if (categories != null) retValue.setCategories(Arrays.asList(categories.split(",")));
+                break;
+            }
         }
 
         return retValue;
