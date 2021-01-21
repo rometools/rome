@@ -17,6 +17,7 @@
  */
 package com.rometools.opml.io.impl;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -107,6 +108,13 @@ public class OPML20Parser extends OPML10Parser {
             if (a.getName().equals("created")) {
                 retValue.getAttributes().remove(a);
 
+                break;
+            }
+
+            if (a.getName().equals("category"))
+            {
+                String categories = a.getValue();
+                if (categories != null) retValue.setCategories(Arrays.asList(categories.split(",")));
                 break;
             }
         }
