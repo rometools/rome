@@ -25,6 +25,7 @@ import com.rometools.rome.io.FeedException;
 import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.SyndFeedOutput;
 import com.rometools.rome.io.XmlReader;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -295,6 +296,32 @@ public class GeoRSSModuleTest extends AbstractTestCase {
             assert geoRSSModule.getFloor() == 0;
             assert geoRSSModule.getRadius() == 1.0;
         }
+    }
+
+    public void testFeatureNameTag() throws Exception {
+        SyndFeed feed = createFeed();
+
+        SimpleModuleImpl geoRSSModule = new SimpleModuleImpl();
+        geoRSSModule.setPosition(new Position(50.714, -1.876));
+        geoRSSModule.setFeatureNameTag("Bournemouth Pier");
+        SyndEntry entry = feed.getEntries().get(0);
+        entry.getModules().add(geoRSSModule);
+
+        final SyndFeedOutput output = new SyndFeedOutput();
+
+        final StringWriter stringWriter = new StringWriter();
+        output.output(feed, stringWriter);
+
+        final InputStream in = new ByteArrayInputStream(stringWriter.toString().getBytes("UTF8"));
+        final SyndFeedInput input = new SyndFeedInput();
+
+        feed = input.build(new XmlReader(in));
+
+        final List<SyndEntry> entries = feed.getEntries();
+        entry = entries.get(0);
+        geoRSSModule = (SimpleModuleImpl) GeoRSSUtils.getGeoRSS(entry);
+
+        assertEquals("Bournemouth Pier", geoRSSModule.getFeatureNameTag());
     }
 
     private SyndFeed getSyndFeed(final String filePath) throws IOException, FeedException {
