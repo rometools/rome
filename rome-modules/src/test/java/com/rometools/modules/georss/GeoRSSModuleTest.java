@@ -240,12 +240,14 @@ public class GeoRSSModuleTest extends AbstractTestCase {
         feed = input.build(new XmlReader(in));
 
         final List<SyndEntry> entries = feed.getEntries();
-        for (int i = 0; i < entries.size(); i++) {
-            entry = entries.get(i);
-            geoRSSModule = (SimpleModuleImpl) GeoRSSUtils.getGeoRSS(entry);
-            final LineString lineString = (LineString) geoRSSModule.getGeometry();
-            positionList = lineString.getPositionList();
+        assertEquals(1, entries.size());
 
+        // Check line points
+        entry = entries.get(0);
+        geoRSSModule = (SimpleModuleImpl) GeoRSSUtils.getGeoRSS(entry);
+        final LineString lineString = (LineString) geoRSSModule.getGeometry();
+        positionList = lineString.getPositionList();
+        for (int i = 0; i < positionList.size(); i++) {
             assertEquals(latitudes[i], positionList.getLatitude(i), DELTA);
             assertEquals(longitudes[i], positionList.getLongitude(i), DELTA);
         }
