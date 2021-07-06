@@ -691,6 +691,8 @@ public class Atom10Parser extends BaseWireFeedParser {
 
         // Parse entry into JDOM tree
         final SAXBuilder builder = new SAXBuilder();
+        builder.setExpandEntities(false);
+
         final Document entryDoc = builder.build(rd);
         final Element fetchedEntryElement = entryDoc.getRootElement();
         fetchedEntryElement.detach();
