@@ -16,20 +16,16 @@
  */
 package com.rometools.rome.feed.atom;
 
-import java.io.Serializable;
-import java.util.List;
-import java.util.ArrayList;
-
-import com.rometools.rome.feed.WireFeed;
-import org.jdom2.Attribute;
-
-import java.util.Collections;
-
 import com.rometools.rome.feed.impl.CloneableBean;
 import com.rometools.rome.feed.impl.EqualsBean;
 import com.rometools.rome.feed.impl.ToStringBean;
 import com.rometools.utils.Alternatives;
 import com.rometools.utils.Lists;
+import org.jdom2.Attribute;
+
+import java.io.Serializable;
+import java.util.Collections;
+import java.util.List;
 
 
 /**
