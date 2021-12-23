@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.rometools</groupId>
         <artifactId>rome-parent</artifactId>
-        <version>1.9.1-onto</version>
+        <version>1.11.2-onto</version>
     </parent>
 
     <artifactId>rome</artifactId>
@@ -30,6 +30,9 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
                     <archive>
+                        <manifestEntries>
+                            <Automatic-Module-Name>com.rometools.rome</Automatic-Module-Name>
+                        </manifestEntries>
                         <manifest>
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                             <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
@@ -99,5 +102,5 @@
         </dependency>
     </dependencies>
 
-    <version>1.9.1-onto</version>
+    <version>1.11.2-onto</version>
 </project>

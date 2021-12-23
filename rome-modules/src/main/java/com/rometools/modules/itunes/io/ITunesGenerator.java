@@ -118,6 +118,9 @@ public class ITunesGenerator implements ModuleGenerator {
             if (info.getEpisode() != null && info.getEpisode() > 0) {
                 element.addContent(generateSimpleElement("episode", info.getEpisode().toString()));
             }
+            if (info.getTitle() != null) {
+                element.addContent(generateSimpleElement("title", info.getTitle()));
+            }
         }
 
         if (itunes.getAuthor() != null) {
@@ -125,13 +128,15 @@ public class ITunesGenerator implements ModuleGenerator {
         }
 
         if (itunes.getBlock()) {
-            element.addContent(generateSimpleElement("block", ""));
+            element.addContent(generateSimpleElement("block", "Yes"));
         }
 
-        if (itunes.getExplicit()) {
-            element.addContent(generateSimpleElement("explicit", "yes"));
-        } else {
-            element.addContent(generateSimpleElement("explicit", "no"));
+        if (itunes.getExplicitNullable() != null) {
+            if (itunes.getExplicitNullable()) {
+                element.addContent(generateSimpleElement("explicit", "yes"));
+            } else {
+                element.addContent(generateSimpleElement("explicit", "no"));
+            }
         }
 
         if (itunes.getImage() != null) {

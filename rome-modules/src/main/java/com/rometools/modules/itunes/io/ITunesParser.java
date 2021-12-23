@@ -18,6 +18,7 @@ package com.rometools.modules.itunes.io;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.StringTokenizer;
@@ -41,6 +42,9 @@ import com.rometools.rome.io.WireFeedParser;
 public class ITunesParser implements ModuleParser {
 
     private static final Logger LOG = LoggerFactory.getLogger(ITunesParser.class);
+
+    private static final List<String> EXPLICIT_TRUE = Arrays.asList("yes", "explicit", "true");
+    private static final List<String> EXPLICIT_FALSE = Arrays.asList("clean", "no", "false");
 
     Namespace ns = Namespace.getNamespace(AbstractITunesObject.URI);
 
@@ -175,6 +179,12 @@ public class ITunesParser implements ModuleParser {
             if (episodeType != null && episodeType.getValue() != null) {
                 entryInfo.setEpisodeType(episodeType.getTextTrim());
             }
+
+            final Element title = element.getChild("title", ns);
+
+            if (title != null && title.getValue() != null) {
+                entryInfo.setTitle(title.getValue().trim());
+            }
         }
         if (module != null) {
             // All these are common to both Channel and Item
@@ -186,14 +196,25 @@ public class ITunesParser implements ModuleParser {
 
             final Element block = element.getChild("block", ns);
 
-            if (block != null) {
+            // Ignore case of the value, assuming that any kind of "yes" clearly shows the intent.
+            if (block != null
+                    && block.getValue() != null
+                    && block.getValue().trim().equalsIgnoreCase("Yes")) {
                 module.setBlock(true);
             }
 
             final Element explicit = element.getChild("explicit", ns);
 
-            if (explicit != null && explicit.getValue() != null && explicit.getValue().trim().equalsIgnoreCase("yes")) {
-                module.setExplicit(true);
+            if (explicit != null && explicit.getValue() != null) {
+                String explicitValue = explicit.getValue().trim();
+
+                if (EXPLICIT_TRUE.contains(explicitValue)) {
+                    module.setExplicit(true);
+                }
+
+                if (EXPLICIT_FALSE.contains(explicitValue)) {
+                    module.setExplicit(false);
+                }
             }
 
             final Element keywords = element.getChild("keywords", ns);

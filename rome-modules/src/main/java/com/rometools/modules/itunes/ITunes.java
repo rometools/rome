@@ -62,12 +62,16 @@ public interface ITunes extends Module {
      */
     public boolean getExplicit();
 
+    public Boolean getExplicitNullable();
+
     /**
      * Boolean as to whether this feed or entry contains adult content
      *
      * @param explicit Boolean as to whether this feed or entry contains adult content
      */
     public void setExplicit(boolean explicit);
+
+    public void setExplicitNullable(Boolean explicit);
 
     public URL getImage();
 

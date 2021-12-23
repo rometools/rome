@@ -90,7 +90,6 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
         IGNORE_PROPERTIES.add("author");
 
         final Map<String, Class<?>> basePropInterfaceMap = new HashMap<String, Class<?>>();
-        basePropInterfaceMap.put("uri", String.class);
         basePropInterfaceMap.put("title", String.class);
         basePropInterfaceMap.put("link", String.class);
         basePropInterfaceMap.put("uri", String.class);
@@ -555,15 +554,6 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
         this.authors = authors;
     }
 
-    /**
-     * Returns the entry author.
-     * <p>
-     * This method is a convenience method, it maps to the Dublin Core module creator.
-     * <p>
-     *
-     * @return the entry author, empty String if none.
-     *
-     */
     @Override
     public String getAuthor() {
 

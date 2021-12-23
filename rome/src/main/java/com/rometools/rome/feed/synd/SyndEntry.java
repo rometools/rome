@@ -231,23 +231,21 @@ public interface SyndEntry extends Cloneable, CopyFrom, Extendable {
     /**
      * Returns the entry authors.
      * <p>
-     * For Atom feeds, this returns the authors as a list of SyndPerson objects, for RSS feeds this
-     * method is a convenience method, it maps to the Dublin Core module creator.
+     * For Atom feeds, this returns the authors as a list of SyndPerson objects.
      * <p>
      *
-     * @return the feed author, <b>null</b> if none.
+     * @return the feed authors, empty list if none.
      *
      */
     List<SyndPerson> getAuthors();
 
     /**
-     * Sets the entry author.
+     * Sets the entry authors.
      * <p>
-     * For Atom feeds, this sets the authors as a list of SyndPerson objects, for RSS feeds this
-     * method is a convenience method, it maps to the Dublin Core module creator.
+     * For Atom feeds, this sets the authors as a list of SyndPerson objects.
      * <p>
      *
-     * @param authors the feed author to set, <b>null</b> if none.
+     * @param authors the feed authors to set, <b>null</b> if none.
      *
      */
     void setAuthors(List<SyndPerson> authors);
@@ -259,7 +257,7 @@ public interface SyndEntry extends Cloneable, CopyFrom, Extendable {
      * method is a convenience method, it maps to the Dublin Core module creator.
      * <p>
      *
-     * @return the feed author, <b>null</b> if none.
+     * @return the feed author, empty string if none.
      *
      */
     String getAuthor();

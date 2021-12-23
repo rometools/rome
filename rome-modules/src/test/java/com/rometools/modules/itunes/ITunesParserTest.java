@@ -83,6 +83,7 @@ public class ITunesParserTest extends AbstractTestCase {
         final Module module = syndfeed.getModule(AbstractITunesObject.URI);
         final FeedInformationImpl feedInfo = (FeedInformationImpl) module;
 
+        assertTrue(feedInfo.getBlock());
         assertEquals("owner", "Harry Shearer", feedInfo.getOwnerName());
         assertEquals("email", "", feedInfo.getOwnerEmailAddress());
         assertEquals("image", "http://a1.phobos.apple.com/Music/y2005/m06/d26/h21/mcdrrifv.jpg", feedInfo.getImage().toExternalForm());
@@ -136,6 +137,17 @@ public class ITunesParserTest extends AbstractTestCase {
         assertEquals(true, entryInfo.getClosedCaptioned());
         assertEquals(Integer.valueOf(2), entryInfo.getOrder());
         assertEquals("http://example.org/image.png", entryInfo.getImage().toString());
+        assertFalse(entryInfo.getExplicit());
+        assertEquals("test-itunes-title", entryInfo.getTitle());
+
+        SyndEntry entry1 = syndfeed.getEntries().get(1);
+        EntryInformationImpl entryInfo1 = (EntryInformationImpl) entry1.getModule(AbstractITunesObject.URI);
+        assertTrue(entryInfo1.getExplicit());
+
+        SyndEntry entry2 = syndfeed.getEntries().get(2);
+        EntryInformationImpl entryInfo2 = (EntryInformationImpl) entry2.getModule(AbstractITunesObject.URI);
+        assertFalse(entryInfo2.getExplicit());
+        assertNull(entryInfo2.getExplicitNullable());
     }
 
     public void testDuration() throws Exception {

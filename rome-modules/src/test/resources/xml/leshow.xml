@@ -41,6 +41,7 @@
     <title>le Show</title>
     <itunes:author>Harry Shearer</itunes:author>
     <description></description>
+    <itunes:title>test-itunes-title</itunes:title>
     <itunes:subtitle></itunes:subtitle>
     <itunes:summary></itunes:summary>
     <enclosure url="http://a1.phobos.apple.com/Podcasts/y2005/m08/d01/h14/eosmhmit.mp3" length="16770270" type=""/>
@@ -107,7 +108,7 @@
 
 
 
-    <itunes:explicit>no</itunes:explicit>
+    <itunes:explicit>yes</itunes:explicit>
 	
 	    <itunes:duration>44:00</itunes:duration>
 	
@@ -148,8 +149,7 @@
 
 
 
-    <itunes:explicit>no</itunes:explicit>
-	
+
 	    <itunes:duration>48:33</itunes:duration>
 	
     <itunes:keywords></itunes:keywords>  
@@ -186,8 +186,7 @@
 
 
 
-    <itunes:explicit>no</itunes:explicit>
-	
+
 	    <itunes:duration>45:56</itunes:duration>
 	
     <itunes:keywords></itunes:keywords>  
