@@ -125,6 +125,9 @@ public class TestSyndFeedAtom10 extends TestSyndFeedAtom03 {
             assertEquals("847763bd4a72e3536702f2a8853edaeaaaab2040383ddbc71d91545da9cc2fa6",
                     shaAttr.getValue());
         }
+        assertFalse(entry.getCategories().isEmpty());
+        assertEquals("test.category.label", entry.getCategories().get(0).getLabel());
+        assertEquals("test.category.term", entry.getCategories().get(0).getName());
     }
 
     @Override

@@ -52,6 +52,7 @@
     <content type="html">atom_1.0.feed.entry[0].content[0]</content>
     <rometest:test>rometest</rometest:test>
 	<rights>atom_1.0.feed.entry[0].rights</rights>
+    <category label="test.category.label" term="test.category.term" />
   </entry>
     <entry>
       <title type="text">atom_1.0.feed.entry[1].title</title>
@@ -80,5 +81,6 @@
       <summary type="html">atom_1.0.feed.entry[1].summary</summary>
       <content type="html">atom_1.0.feed.entry[1].content[0]</content>
       <rometest:test>rometest</rometest:test>
+      <category label="test.category.label" term="test.category.term" />
     </entry>
     </feed>

@@ -242,8 +242,7 @@ public class ConverterForAtom10 implements Converter {
                 final SyndCategory syndCategory = new SyndCategoryImpl();
                 syndCategory.setName(category.getTerm());
                 syndCategory.setTaxonomyUri(category.getSchemeResolved());
-                // TODO: categories MAY have labels
-                // syndCategory.setLabel(c.getLabel());
+                syndCategory.setLabel(category.getLabel());
                 syndCategories.add(syndCategory);
             }
             syndEntry.setCategories(syndCategories);
@@ -403,7 +402,7 @@ public class ConverterForAtom10 implements Converter {
             for (final SyndCategory sCat : sCats) {
                 final Category aCat = new Category();
                 aCat.setTerm(sCat.getName());
-                // TODO: aCat.setLabel(sCat.getLabel());
+                aCat.setLabel(sCat.getLabel());
                 aCat.setScheme(sCat.getTaxonomyUri());
                 aCats.add(aCat);
             }
@@ -564,7 +563,7 @@ public class ConverterForAtom10 implements Converter {
             for (final SyndCategory sCat : sCats) {
                 final Category aCat = new Category();
                 aCat.setTerm(sCat.getName());
-                // TODO: aCat.setLabel(sCat.getLabel());
+                aCat.setLabel(sCat.getLabel());
                 aCat.setScheme(sCat.getTaxonomyUri());
                 aCats.add(aCat);
             }

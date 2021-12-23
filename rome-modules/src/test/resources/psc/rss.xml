@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:psc="http://podlove.org/simple-chapters" version="2.0">
+    <channel>
+        <title>Lorem Ipsum</title>
+        <link>http://example.org</link>
+        <description>Lorem Ipsum</description>
+        <item>
+            <title>Lorem Ipsum</title>
+            <link>http://example.org/episode1</link>
+            <description><![CDATA[Lorem Ipsum]]></description>
+            <psc:chapters version="1.2">
+                <psc:chapter start="00:00:00.000" title="Lorem Ipsum" href="http://example.org" image="http://example.org/cover"/>
+                <psc:chapter start="00:00:00.000" title="Lorem Ipsum" href="http://example.org" image="http://example.org/cover"/>
+                <psc:chapter start="00:00:00.000" title="Lorem Ipsum" href="http://example.org" image="http://example.org/cover"/>
+            </psc:chapters>
+        </item>
+    </channel>
+</rss>

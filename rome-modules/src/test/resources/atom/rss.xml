@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="/~files/feed-premium.xsl"?>
+
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Lorem Ipsum</title>
+        <link>http://example.org</link>
+        <description>Lorem Ipsum</description>
+        <atom:link href="http://test.com" type="application/rss+xml" rel="self" />
+        <atom:link href="http://test.com/alt" type="application/rss+xml" rel="alternate" />
+        <atom:author>
+            <atom:name>Lorem Ipsum</atom:name>
+            <atom:email>test@example.org</atom:email>
+            <atom:uri>http://example.org</atom:uri>
+        </atom:author>
+        <atom:contributor>
+            <atom:name>Lorem Ipsum</atom:name>
+            <atom:email>test@example.org</atom:email>
+            <atom:uri>http://example.org</atom:uri>
+        </atom:contributor>
+        <item>
+            <title>Lorem Ipsum</title>
+            <link>http://example.org/episode1</link>
+            <description><![CDATA[Lorem Ipsum]]></description>
+            <atom:author>
+                <atom:name>Lorem Ipsum</atom:name>
+                <atom:email>test@example.org</atom:email>
+                <atom:uri>http://example.org</atom:uri>
+            </atom:author>
+            <atom:contributor>
+                <atom:name>Lorem Ipsum</atom:name>
+                <atom:email>test@example.org</atom:email>
+                <atom:uri>http://example.org</atom:uri>
+            </atom:contributor>
+        </item>
+    </channel>
+</rss>

@@ -36,7 +36,7 @@ public class Time implements Serializable {
 
     private static final long SECOND = 1000;
     private static final long MINUTE = 60 * SECOND;
-    private static final long HOUR = 60 * MINUTE * SECOND;
+    private static final long HOUR = 60 * MINUTE;
     private static final NumberFormat nf = NumberFormat.getInstance();
 
     static {
