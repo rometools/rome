@@ -17,8 +17,6 @@
  */
 package com.rometools.rome.feed.synd;
 
-import com.rometools.rome.feed.WireFeed;
-import com.rometools.rome.feed.atom.Link;
 import com.rometools.rome.feed.impl.CloneableBean;
 import com.rometools.rome.feed.impl.EqualsBean;
 import com.rometools.rome.feed.impl.ToStringBean;
