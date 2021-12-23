@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.rometools</groupId>
         <artifactId>rome-parent</artifactId>
-        <version>1.8.1</version>
+        <version>1.9.0</version>
     </parent>
 
     <artifactId>rome-modules</artifactId>
@@ -71,6 +71,11 @@
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-library</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>xmlunit</groupId>
+            <artifactId>xmlunit</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>

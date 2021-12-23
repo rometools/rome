@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.rometools</groupId>
         <artifactId>rome-parent</artifactId>
-        <version>1.8.2-onto</version>
+        <version>1.9.1-onto</version>
     </parent>
 
     <artifactId>rome</artifactId>
@@ -99,5 +99,5 @@
         </dependency>
     </dependencies>
 
-    <version>1.8.2-onto</version>
+    <version>1.9.1-onto</version>
 </project>
