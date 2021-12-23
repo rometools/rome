@@ -87,13 +87,16 @@ public class ITunesParser implements ModuleParser {
                     final Category cat = new Category();
                     cat.setName(category.getAttribute("text").getValue().trim());
 
-                    final Element subcategory = category.getChild("category", ns);
+                    final List<Element> subCategories = category.getChildren("category", ns);
 
-                    if (subcategory != null && subcategory.getAttribute("text") != null) {
-                        final Subcategory subcat = new Subcategory();
-                        subcat.setName(subcategory.getAttribute("text").getValue().trim());
-                        cat.setSubcategory(subcat);
+                    for (Element subCategory : subCategories) {
+                        if (subCategory.getAttribute("text") != null) {
+                            final Subcategory subcat = new Subcategory();
+                            subcat.setName(subCategory.getAttribute("text").getValue().trim());
+                            cat.addSubcategory(subcat);
+                        }
                     }
+
 
                     feedInfo.getCategories().add(cat);
                 }
@@ -107,6 +110,11 @@ public class ITunesParser implements ModuleParser {
             final Element newFeedUrl = element.getChild("new-feed-url", ns);
             if (newFeedUrl != null) {
                 feedInfo.setNewFeedUrl(newFeedUrl.getTextTrim());
+            }
+
+            final Element type = element.getChild("type", ns);
+            if (type != null) {
+                feedInfo.setType(type.getTextTrim());
             }
 
         } else if (element.getName().equals("item")) {
@@ -137,6 +145,26 @@ public class ITunesParser implements ModuleParser {
             if (order != null && order.getValue() != null) {
                 final Integer o = Integer.valueOf(order.getValue().trim());
                 entryInfo.setOrder(o);
+            }
+
+            final Element season = element.getChild("season", ns);
+
+            if (season != null && season.getValue() != null) {
+                final Integer o = Integer.valueOf(season.getValue().trim());
+                entryInfo.setSeason(o);
+            }
+
+            final Element episode = element.getChild("episode", ns);
+
+            if (episode != null && episode.getValue() != null) {
+                final Integer o = Integer.valueOf(episode.getValue().trim());
+                entryInfo.setEpisode(o);
+            }
+
+            final Element episodeType = element.getChild("episodeType", ns);
+
+            if (episodeType != null && episodeType.getValue() != null) {
+                entryInfo.setEpisodeType(episodeType.getTextTrim());
             }
         }
         if (module != null) {

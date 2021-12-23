@@ -37,6 +37,9 @@ public class EntryInformationImpl extends AbstractITunesObject implements EntryI
     private Duration duration;
     private boolean closedCaptioned;
     private Integer order;
+    private String episodeType;
+    private Integer season;
+    private Integer episode;
 
     public EntryInformationImpl() {
     }
@@ -82,6 +85,34 @@ public class EntryInformationImpl extends AbstractITunesObject implements EntryI
     }
 
     /**
+     * Get the episode type
+     *
+     * @see #setEpisodeType(String) setEpisodeType(episodeType) for details
+     */
+    @Override
+    public String getEpisodeType() { return episodeType; }
+
+    /**
+     * Set the episode type to one of full (default), trailer or bonus. See see the <a href="http://podcasts.apple.com/resources/spec/ApplePodcastsSpecUpdatesiOS11.pdf">new spec by Apple</a> for details.
+     *
+     * @param episodeType
+     */
+    @Override
+    public void setEpisodeType(String episodeType) { this.episodeType = episodeType; }
+
+    @Override
+    public Integer getSeason() { return season; }
+
+    @Override
+    public void setSeason(Integer season) { this.season = season; }
+
+    @Override
+    public Integer getEpisode() { return episode; }
+
+    @Override
+    public void setEpisode(Integer episode) { this.episode = episode; }
+
+    /**
      * Defined by the ROME module API
      *
      * @param obj Object to copy from
@@ -114,6 +145,9 @@ public class EntryInformationImpl extends AbstractITunesObject implements EntryI
         setSummary(info.getSummary());
         setClosedCaptioned(info.getClosedCaptioned());
         setOrder(info.getOrder());
+        setEpisodeType(info.getEpisodeType());
+        setSeason(info.getSeason());
+        setEpisode(info.getEpisode());
     }
 
     /**
@@ -138,6 +172,12 @@ public class EntryInformationImpl extends AbstractITunesObject implements EntryI
         sb.append(getClosedCaptioned());
         sb.append(" order: ");
         sb.append(getOrder());
+        sb.append(" season: ");
+        sb.append(getSeason());
+        sb.append(" episode: ");
+        sb.append(getEpisode());
+        sb.append(" episodeType: ");
+        sb.append(getEpisodeType());
         sb.append("]");
         sb.append(super.toString());
 

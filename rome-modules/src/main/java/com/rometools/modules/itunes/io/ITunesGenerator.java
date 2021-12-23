@@ -16,6 +16,7 @@
  */
 package com.rometools.modules.itunes.io;
 
+import com.rometools.modules.itunes.types.Subcategory;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -75,13 +76,17 @@ public class ITunesGenerator implements ModuleGenerator {
                 final Element category = generateSimpleElement("category", "");
                 category.setAttribute("text", cat.getName());
 
-                if (cat.getSubcategory() != null) {
+                for (Subcategory subcategory : cat.getSubcategories()) {
                     final Element subcat = generateSimpleElement("category", "");
-                    subcat.setAttribute("text", cat.getSubcategory().getName());
+                    subcat.setAttribute("text", subcategory.getName());
                     category.addContent(subcat);
                 }
 
                 element.addContent(category);
+            }
+
+            if (info.getType() != null) {
+                element.addContent(generateSimpleElement("type",info.getType()));
             }
 
             if (info.getComplete()) {
@@ -103,6 +108,15 @@ public class ITunesGenerator implements ModuleGenerator {
             }
             if (info.getOrder() != null) {
                 element.addContent(generateSimpleElement("order", info.getOrder().toString()));
+            }
+            if (info.getEpisodeType() != null) {
+                element.addContent(generateSimpleElement("episodeType", info.getEpisodeType()));
+            }
+            if (info.getSeason() != null && info.getSeason() > 0) {
+                element.addContent(generateSimpleElement("season", info.getSeason().toString()));
+            }
+            if (info.getEpisode() != null && info.getEpisode() > 0) {
+                element.addContent(generateSimpleElement("episode", info.getEpisode().toString()));
             }
         }
 

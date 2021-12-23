@@ -75,4 +75,19 @@ public interface FeedInformation extends ITunes {
      * @return Returns the owner name for the feed
      */
     public String getOwnerName();
+
+    /**
+     * Set the type of podcast to either Episodic (original type of podcasts) or Serial (should be consumed from oldest to newest)
+     * @see #getType() getType() for more details
+     * @param type  the type (Either 'serial' or 'episodic')
+     */
+    public void setType(String type);
+
+    /**
+     * Return the type of podcast (either Episodic or Serial) as introduced in the new Apple Podcast spec for iOS 11.
+     * For more information see the <a href="http://podcasts.apple.com/resources/spec/ApplePodcastsSpecUpdatesiOS11.pdf">new spec by Apple</a>
+     * @return either 'episodic' (old school podcasts) or 'serial' (should be listened to from oldest to newest)
+     */
+    public String getType();
+
 }
