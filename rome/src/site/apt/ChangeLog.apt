@@ -601,7 +601,7 @@ public XmlReader(InputStream is, boolean lenient, String defaultEncoding)
  As part of the generators refactoring the generators now verify the data in the Rome beans does not generate invalid feeds.
  
  [[1]] Addition. New XmlReader that detects charset encoding\
- The XmlReader class handles the charset encoding of XML documents in Files, raw streams and HTTP streams. It following the rules defined by HTTP, MIME types and XML specifications. All this is nicely explained by Mark Pilgrim in his blog, {{{http://diveintomark.org/archives/2004/02/13/xml\-media\-types}http://diveintomark.org/archives/2004/02/13/xml\-media\-types}}
+ The XmlReader class handles the charset encoding of XML documents in Files, raw streams and HTTP streams. It following the rules defined by HTTP, MIME types and XML specifications. All this is nicely explained by Mark Pilgrim in his blog, {{{https://web.archive.org/web/20060706153721/http://diveintomark.org/archives/2004/02/13/xml\-media\-types}http://diveintomark.org/archives/2004/02/13/xml\-media\-types (Archived)}}
  
  [[1]] Rome now uses JDOM 1.0\
  Dependencies have been updated to use JDOM 1.0. No code changes were needed because of this.

@@ -17,15 +17,17 @@
 package com.rometools.rome.feed.rss;
 
 import java.io.Serializable;
+import java.util.Collections;
 
-import com.rometools.rome.feed.impl.ObjectBean;
+import com.rometools.rome.feed.impl.CloneableBean;
+import com.rometools.rome.feed.impl.EqualsBean;
+import com.rometools.rome.feed.impl.ToStringBean;
 
 /**
  * Bean for images of RSS feeds.
  */
 public class Image implements Cloneable, Serializable {
     private static final long serialVersionUID = 1L;
-    private final ObjectBean objBean;
     private String title;
     private String url;
     private String link;
@@ -33,9 +35,7 @@ public class Image implements Cloneable, Serializable {
     private Integer height = -1;
     private String description;
 
-    public Image() {
-        objBean = new ObjectBean(this.getClass(), this);
-    }
+    public Image() { }
 
     /**
      * Creates a deep 'bean' clone of the object.
@@ -47,7 +47,7 @@ public class Image implements Cloneable, Serializable {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return objBean.clone();
+        return CloneableBean.beanClone(this, Collections.<String>emptySet());
     }
 
     /**
@@ -64,7 +64,7 @@ public class Image implements Cloneable, Serializable {
         if (!(other instanceof Image)) {
             return false;
         }
-        return objBean.equals(other);
+        return EqualsBean.beanEquals(this.getClass(), this, other);
     }
 
     /**
@@ -78,7 +78,7 @@ public class Image implements Cloneable, Serializable {
      */
     @Override
     public int hashCode() {
-        return objBean.hashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     /**
@@ -90,7 +90,7 @@ public class Image implements Cloneable, Serializable {
      */
     @Override
     public String toString() {
-        return objBean.toString();
+        return ToStringBean.toString(this.getClass(), this);
     }
 
     /**

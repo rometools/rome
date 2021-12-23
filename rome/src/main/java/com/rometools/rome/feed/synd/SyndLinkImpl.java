@@ -17,21 +17,23 @@
  */
 package com.rometools.rome.feed.synd;
 
-import java.io.Serializable;
-import java.util.List;
-
+import com.rometools.rome.feed.WireFeed;
+import com.rometools.rome.feed.atom.Link;
+import com.rometools.rome.feed.impl.CloneableBean;
+import com.rometools.rome.feed.impl.EqualsBean;
+import com.rometools.rome.feed.impl.ToStringBean;
+import com.rometools.utils.Lists;
 import org.jdom2.Attribute;
 
-import com.rometools.rome.feed.impl.ObjectBean;
-import com.rometools.utils.Lists;
+import java.io.Serializable;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Represents a link or an enclosure.
  */
 public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
     private static final long serialVersionUID = 1L;
-
-    private final ObjectBean objBean;
 
     private String href;
     private String rel;
@@ -41,9 +43,7 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
     private long length;
     private List<Attribute> foreignAttributes;
 
-    public SyndLinkImpl() {
-        objBean = new ObjectBean(this.getClass(), this);
-    }
+    public SyndLinkImpl() { }
 
     /**
      * Creates a deep 'bean' clone of the object.
@@ -55,7 +55,7 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return objBean.clone();
+        return CloneableBean.beanClone(this, Collections.<String>emptySet());
     }
 
     /**
@@ -69,17 +69,21 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
      */
     @Override
     public boolean equals(final Object other) {
+
+        if (other == null) {
+            return false;
+        }
+
         if (!(other instanceof SyndLinkImpl)) {
             return false;
         }
-        // can't use foreign attributes in equals, due to JDOM equals impl
-        final List<Attribute> fm = getForeignAttributes();
-        setForeignAttributes(((SyndLink) other).getForeignAttributes());
 
-        boolean ret = objBean.equals(other);
+        // can't use foreign markup in equals, due to JDOM equals impl
+        final List<Attribute> fa = getForeignAttributes();
+        setForeignAttributes(((SyndLinkImpl) other).getForeignAttributes());
+        final boolean ret = EqualsBean.beanEquals(this.getClass(), this, other);
         // restore foreign markup
-        setForeignAttributes(fm);
-
+        setForeignAttributes(fa);
         return ret;
     }
 
@@ -94,7 +98,7 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
      */
     @Override
     public int hashCode() {
-        return objBean.hashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     /**
@@ -106,7 +110,7 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
      */
     @Override
     public String toString() {
-        return objBean.toString();
+        return ToStringBean.toString(this.getClass(), this);
     }
 
     /**

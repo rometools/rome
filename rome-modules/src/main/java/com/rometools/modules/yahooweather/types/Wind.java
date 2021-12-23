@@ -37,8 +37,6 @@ import com.rometools.rome.feed.impl.ToStringBean;
 public class Wind implements Serializable, Cloneable {
 
     private static final long serialVersionUID = 1L;
-    private transient ToStringBean toString = new ToStringBean(Wind.class, this);
-    private transient EqualsBean equals = new EqualsBean(Wind.class, this);
     private int chill;
     private int direction;
     private int speed;
@@ -61,17 +59,17 @@ public class Wind implements Serializable, Cloneable {
 
     @Override
     public boolean equals(final Object o) {
-        return equals.equals(o);
+        return EqualsBean.beanEquals(Wind.class, this, o);
     }
 
     @Override
     public int hashCode() {
-        return equals.hashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     @Override
     public String toString() {
-        return toString.toString();
+        return ToStringBean.toString(Wind.class, this);
     }
 
     /**

@@ -38,7 +38,7 @@ import com.rometools.rome.feed.impl.ToStringBean;
  * &lt;media:rating scheme="urn:simple"&gt;adult&lt;/media:rating&gt;
  *               &lt;media:rating scheme="urn:icra"&gt;r (cz 1 lz 1 nz 1 oz 1 vz 1)&lt;/media:rating&gt;
  *               &lt;media:rating scheme="urn:mpaa"&gt;pg&lt;/media:rating&gt;
- * 
+ *
  *               &lt;media:rating scheme="urn:v-chip"&gt;tv-y7-fv&lt;/media:rating&gt;
  * </pre>
  *
@@ -73,22 +73,16 @@ public class Rating extends AbstractSchemeValue {
 
     @Override
     public boolean equals(final Object obj) {
-        final EqualsBean eBean = new EqualsBean(this.getClass(), this);
-
-        return eBean.beanEquals(obj);
+        return EqualsBean.beanEquals(this.getClass(), this, obj);
     }
 
     @Override
     public int hashCode() {
-        final EqualsBean equals = new EqualsBean(this.getClass(), this);
-
-        return equals.beanHashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     @Override
     public String toString() {
-        final ToStringBean tsBean = new ToStringBean(this.getClass(), this);
-
-        return tsBean.toString();
+        return ToStringBean.toString(this.getClass(), this);
     }
 }

@@ -18,10 +18,19 @@ package com.rometools.rome.feed.atom;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.ArrayList;
 
+import com.rometools.rome.feed.WireFeed;
 import org.jdom2.Attribute;
-import com.rometools.rome.feed.impl.ObjectBean;
+
+import java.util.Collections;
+
+import com.rometools.rome.feed.impl.CloneableBean;
+import com.rometools.rome.feed.impl.EqualsBean;
+import com.rometools.rome.feed.impl.ToStringBean;
 import com.rometools.utils.Alternatives;
+import com.rometools.utils.Lists;
+
 
 /**
  * Bean for link elements of Atom feeds.
@@ -29,8 +38,6 @@ import com.rometools.utils.Alternatives;
 public class Link implements Cloneable, Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    private final ObjectBean objBean;
 
     private String href;
     private String hrefResolved;
@@ -42,9 +49,7 @@ public class Link implements Cloneable, Serializable {
     private List<Attribute> foreignAttributes;
 
 
-    public Link() {
-        objBean = new ObjectBean(this.getClass(), this);
-    }
+    public Link() { }
 
     /**
      * Creates a deep 'bean' clone of the object.
@@ -56,7 +61,7 @@ public class Link implements Cloneable, Serializable {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return objBean.clone();
+        return CloneableBean.beanClone(this, Collections.<String>emptySet());
     }
 
     /**
@@ -70,20 +75,21 @@ public class Link implements Cloneable, Serializable {
      */
     @Override
     public boolean equals(final Object other) {
+
         if (other == null) {
             return false;
         }
+
         if (!(other instanceof Link)) {
             return false;
         }
-        // can't use foreign attributes in equals, due to JDOM equals impl
-        final List<Attribute> fm = getForeignAttributes();
+
+        // can't use foreign markup in equals, due to JDOM equals impl
+        final List<Attribute> fa = getForeignAttributes();
         setForeignAttributes(((Link) other).getForeignAttributes());
-
-        final boolean ret = objBean.equals(other);
+        final boolean ret = EqualsBean.beanEquals(this.getClass(), this, other);
         // restore foreign markup
-        setForeignAttributes(fm);
-
+        setForeignAttributes(fa);
         return ret;
     }
 
@@ -98,7 +104,7 @@ public class Link implements Cloneable, Serializable {
      */
     @Override
     public int hashCode() {
-        return objBean.hashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     /**
@@ -110,7 +116,7 @@ public class Link implements Cloneable, Serializable {
      */
     @Override
     public String toString() {
-        return objBean.toString();
+        return ToStringBean.toString(this.getClass(), this);
     }
 
     /**
@@ -258,7 +264,7 @@ public class Link implements Cloneable, Serializable {
      * @return the foreignAttributes (mutable)
      */
     public List<Attribute> getForeignAttributes() {
-        return foreignAttributes;
+        return Lists.createWhenNull(foreignAttributes);
     }
 
     /**

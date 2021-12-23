@@ -18,11 +18,14 @@
 package com.rometools.rome.feed;
 
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 
 import org.jdom2.Element;
 
-import com.rometools.rome.feed.impl.ObjectBean;
+import com.rometools.rome.feed.impl.CloneableBean;
+import com.rometools.rome.feed.impl.EqualsBean;
+import com.rometools.rome.feed.impl.ToStringBean;
 import com.rometools.rome.feed.module.Extendable;
 import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.feed.module.impl.ModuleUtils;
@@ -42,8 +45,6 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
 
     private static final long serialVersionUID = 1L;
 
-    private final ObjectBean objBean;
-
     private String feedType;
     private String encoding;
     private String styleSheet;
@@ -53,9 +54,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
     /**
      * Default constructor, for bean cloning purposes only.
      */
-    protected WireFeed() {
-        objBean = new ObjectBean(this.getClass(), this);
-    }
+    protected WireFeed() { }
 
     /**
      * Creates a feed for a given type.
@@ -77,7 +76,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return objBean.clone();
+        return CloneableBean.beanClone(this, Collections.<String>emptySet());
     }
 
     /**
@@ -102,7 +101,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
         // can't use foreign markup in equals, due to JDOM equals impl
         final List<Element> fm = getForeignMarkup();
         setForeignMarkup(((WireFeed) other).getForeignMarkup());
-        final boolean ret = objBean.equals(other);
+        final boolean ret = EqualsBean.beanEquals(this.getClass(), this, other);
         // restore foreign markup
         setForeignMarkup(fm);
         return ret;
@@ -120,7 +119,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      */
     @Override
     public int hashCode() {
-        return objBean.hashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     /**
@@ -132,7 +131,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
      */
     @Override
     public String toString() {
-        return objBean.toString();
+        return ToStringBean.toString(this.getClass(), this);
     }
 
     /**

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss">
+   <title>USGS All Earthquakes, Past Hour</title>
+   <updated>2018-11-19T21:46:19Z</updated>
+   <author>
+      <name>U.S. Geological Survey</name>
+      <uri>https://earthquake.usgs.gov/</uri>
+   </author>
+   <id>https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.atom</id>
+   <link rel="self" href="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.atom" />
+   <icon>https://earthquake.usgs.gov/favicon.ico</icon>
+   <entry>
+      <id>urn:earthquake-usgs-gov:ci:38138255</id>
+      <title>M 2.1 - 27km SE of Campo, CA</title>
+      <updated>2018-11-19T21:45:04.398Z</updated>
+      <link rel="alternate" type="text/html" href="https://earthquake.usgs.gov/earthquakes/eventpage/ci38138255" />
+      <summary type="html"><![CDATA[<dl><dt>Time</dt><dd>2018-11-19 21:42:38 UTC</dd><dd>2018-11-19 13:42:38 -08:00 at epicenter</dd><dt>Location</dt><dd>32.413&deg;N 116.292&deg;W</dd><dt>Depth</dt><dd>-0.47 km (-0.29 mi)</dd></dl>]]></summary>
+      <georss:point>32.4126663 -116.2923355</georss:point>
+      <georss:elev>470</georss:elev>
+      <georss:floor>0</georss:floor>
+      <georss:radius>1</georss:radius>
+      <georss:featuretypetag>position</georss:featuretypetag>
+      <georss:relationshiptag>is-centered-at</georss:relationshiptag>
+      <georss:featurename>Campo, CA</georss:featurename>
+      <category label="Age" term="Past Hour" />
+      <category label="Magnitude" term="Magnitude 2" />
+      <category label="Contributor" term="ci" />
+      <category label="Author" term="ci" />
+   </entry>
+   <entry>
+      <id>urn:earthquake-usgs-gov:ak:20384107</id>
+      <title>M 1.4 - 81km W of Healy, Alaska</title>
+      <updated>2018-11-19T21:42:41.869Z</updated>
+      <link rel="alternate" type="text/html" href="https://earthquake.usgs.gov/earthquakes/eventpage/ak20384107" />
+      <summary type="html"><![CDATA[<dl><dt>Time</dt><dd>2018-11-19 21:39:41 UTC</dd><dd>2018-11-19 12:39:41 -09:00 at epicenter</dd><dt>Location</dt><dd>63.895&deg;N 150.624&deg;W</dd><dt>Depth</dt><dd>19.30 km (11.99 mi)</dd></dl>]]></summary>
+      <georss:point>63.8949 -150.6237</georss:point>
+      <georss:elev>-19300</georss:elev>
+      <georss:floor>0</georss:floor>
+      <georss:radius>1</georss:radius>
+      <georss:featuretypetag>position</georss:featuretypetag>
+      <georss:relationshiptag>is-centered-at</georss:relationshiptag>
+      <georss:featurename>Healy, Alaska</georss:featurename>
+      <category label="Age" term="Past Hour" />
+      <category label="Magnitude" term="Magnitude 1" />
+      <category label="Contributor" term="ak" />
+      <category label="Author" term="ak" />
+   </entry>
+   <entry>
+      <id>urn:earthquake-usgs-gov:ak:20384102</id>
+      <title>M 2.0 - 62km NE of Eielson Air Force Base, Alaska</title>
+      <updated>2018-11-19T21:39:31.132Z</updated>
+      <link rel="alternate" type="text/html" href="https://earthquake.usgs.gov/earthquakes/eventpage/ak20384102" />
+      <summary type="html"><![CDATA[<dl><dt>Time</dt><dd>2018-11-19 21:26:15 UTC</dd><dd>2018-11-19 12:26:15 -09:00 at epicenter</dd><dt>Location</dt><dd>65.117&deg;N 146.290&deg;W</dd><dt>Depth</dt><dd>8.50 km (5.28 mi)</dd></dl>]]></summary>
+      <georss:point>65.1174 -146.2904</georss:point>
+      <georss:elev>-8500</georss:elev>
+      <georss:floor>0</georss:floor>
+      <georss:radius>1</georss:radius>
+      <georss:featuretypetag>position</georss:featuretypetag>
+      <georss:relationshiptag>is-centered-at</georss:relationshiptag>
+      <georss:featurename>Eielson Air Force Base, Alaska</georss:featurename>
+      <category label="Age" term="Past Hour" />
+      <category label="Magnitude" term="Magnitude 2" />
+      <category label="Contributor" term="ak" />
+      <category label="Author" term="ak" />
+   </entry>
+   <entry>
+      <id>urn:earthquake-usgs-gov:ak:20384096</id>
+      <title>M 1.9 - 79km WSW of Cantwell, Alaska</title>
+      <updated>2018-11-19T21:17:37.546Z</updated>
+      <link rel="alternate" type="text/html" href="https://earthquake.usgs.gov/earthquakes/eventpage/ak20384096" />
+      <summary type="html"><![CDATA[<dl><dt>Time</dt><dd>2018-11-19 21:09:47 UTC</dd><dd>2018-11-19 12:09:47 -09:00 at epicenter</dd><dt>Location</dt><dd>63.173&deg;N 150.459&deg;W</dd><dt>Depth</dt><dd>101.10 km (62.82 mi)</dd></dl>]]></summary>
+      <georss:point>63.1726 -150.4591</georss:point>
+      <georss:elev>-101100</georss:elev>
+      <georss:floor>0</georss:floor>
+      <georss:radius>1</georss:radius>
+      <georss:featuretypetag>position</georss:featuretypetag>
+      <georss:relationshiptag>is-centered-at</georss:relationshiptag>
+      <georss:featurename>Cantwell, Alaska</georss:featurename>
+      <category label="Age" term="Past Hour" />
+      <category label="Magnitude" term="Magnitude 1" />
+      <category label="Contributor" term="ak" />
+      <category label="Author" term="ak" />
+   </entry>
+   <entry>
+      <id>urn:earthquake-usgs-gov:ci:38138223</id>
+      <title>M 2.6 - 10km WNW of Alberto Oviedo Mota, B.C., MX</title>
+      <updated>2018-11-19T21:36:30.394Z</updated>
+      <link rel="alternate" type="text/html" href="https://earthquake.usgs.gov/earthquakes/eventpage/ci38138223" />
+      <summary type="html"><![CDATA[<p class="quicksummary"><a href="https://earthquake.usgs.gov/earthquakes/eventpage/ci38138223#dyfi" class="mmi-II" title="Did You Feel It? maximum reported intensity (1 reports)">DYFI? - <strong class="roman">II</strong></a></p><dl><dt>Time</dt><dd>2018-11-19 20:57:19 UTC</dd><dd>2018-11-19 12:57:19 -08:00 at epicenter</dd><dt>Location</dt><dd>32.254&deg;N 115.275&deg;W</dd><dt>Depth</dt><dd>16.63 km (10.33 mi)</dd></dl>]]></summary>
+      <georss:point>32.254 -115.2745</georss:point>
+      <georss:elev>-16630</georss:elev>
+      <georss:floor>0</georss:floor>
+      <georss:radius>1</georss:radius>
+      <georss:featuretypetag>position</georss:featuretypetag>
+      <georss:relationshiptag>is-centered-at</georss:relationshiptag>
+      <georss:featurename>Alberto Oviedo Mota, B.C., MX</georss:featurename>
+      <category label="Age" term="Past Hour" />
+      <category label="Magnitude" term="Magnitude 2" />
+      <category label="Contributor" term="ci" />
+      <category label="Author" term="ci" />
+   </entry>
+   <entry>
+      <id>urn:earthquake-usgs-gov:nc:73112941</id>
+      <title>M 0.6 - 16km WSW of Toms Place, CA</title>
+      <updated>2018-11-19T21:15:51.555Z</updated>
+      <link rel="alternate" type="text/html" href="https://earthquake.usgs.gov/earthquakes/eventpage/nc73112941" />
+      <summary type="html"><![CDATA[<dl><dt>Time</dt><dd>2018-11-19 20:54:12 UTC</dd><dd>2018-11-19 12:54:12 -08:00 at epicenter</dd><dt>Location</dt><dd>37.499&deg;N 118.848&deg;W</dd><dt>Depth</dt><dd>1.83 km (1.14 mi)</dd></dl>]]></summary>
+      <georss:point>37.4991667 -118.8478333</georss:point>
+      <georss:elev>-1830</georss:elev>
+      <georss:floor>0</georss:floor>
+      <georss:radius>1</georss:radius>
+      <georss:featuretypetag>position</georss:featuretypetag>
+      <georss:relationshiptag>is-centered-at</georss:relationshiptag>
+      <georss:featurename>Toms Place, CA</georss:featurename>
+      <category label="Age" term="Past Hour" />
+      <category label="Magnitude" term="Magnitude 0" />
+      <category label="Contributor" term="nc" />
+      <category label="Author" term="nc" />
+   </entry>
+</feed>

@@ -29,8 +29,10 @@ import org.jdom2.Element;
 
 import com.rometools.rome.feed.CopyFrom;
 import com.rometools.rome.feed.WireFeed;
+import com.rometools.rome.feed.impl.CloneableBean;
 import com.rometools.rome.feed.impl.CopyFromHelper;
-import com.rometools.rome.feed.impl.ObjectBean;
+import com.rometools.rome.feed.impl.EqualsBean;
+import com.rometools.rome.feed.impl.ToStringBean;
 import com.rometools.rome.feed.module.DCModule;
 import com.rometools.rome.feed.module.DCModuleImpl;
 import com.rometools.rome.feed.module.Module;
@@ -53,7 +55,8 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
 
     private static final CopyFromHelper COPY_FROM_HELPER;
 
-    private final ObjectBean objBean;
+    private final Class<?> beanClass;
+    private final Set<String> convenienceProperties;
 
     private String encoding;
     private String uri;
@@ -144,7 +147,8 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      *
      */
     protected SyndFeedImpl(final Class<?> beanClass, final Set<String> convenienceProperties) {
-        objBean = new ObjectBean(beanClass, this, convenienceProperties);
+        this.beanClass = beanClass;
+        this.convenienceProperties = convenienceProperties;
     }
 
     public SyndFeedImpl() {
@@ -197,7 +201,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return objBean.clone();
+        return CloneableBean.beanClone(this, convenienceProperties);
     }
 
     /**
@@ -217,7 +221,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
         // can't use foreign markup in equals, due to JDOM equals impl
         final List<Element> fm = getForeignMarkup();
         setForeignMarkup(((SyndFeedImpl) other).getForeignMarkup());
-        final boolean ret = objBean.equals(other);
+        final boolean ret = EqualsBean.beanEquals(beanClass, this, other);
         setForeignMarkup(fm); // restore foreign markup
         return ret;
     }
@@ -233,7 +237,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public int hashCode() {
-        return objBean.hashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     /**
@@ -245,7 +249,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public String toString() {
-        return objBean.toString();
+        return ToStringBean.toString(beanClass, this);
     }
 
     /**

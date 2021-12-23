@@ -25,8 +25,10 @@ import java.util.Map;
 import java.util.Set;
 
 import com.rometools.rome.feed.CopyFrom;
+import com.rometools.rome.feed.impl.CloneableBean;
 import com.rometools.rome.feed.impl.CopyFromHelper;
-import com.rometools.rome.feed.impl.ObjectBean;
+import com.rometools.rome.feed.impl.EqualsBean;
+import com.rometools.rome.feed.impl.ToStringBean;
 import com.rometools.utils.Lists;
 
 /**
@@ -39,7 +41,6 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
 
     private static final long serialVersionUID = 1L;
 
-    private final ObjectBean objBean;
     private List<String> title;
     private List<String> creator;
     private List<DCSubject> subject;
@@ -89,7 +90,6 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
 
     public DCModuleImpl() {
         super(DCModule.class, URI);
-        objBean = new ObjectBean(DCModule.class, this, CONVENIENCE_PROPERTIES);
     }
 
     /**
@@ -857,7 +857,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public final Object clone() throws CloneNotSupportedException {
-        return objBean.clone();
+        return CloneableBean.beanClone(this, CONVENIENCE_PROPERTIES);
     }
 
     /**
@@ -871,7 +871,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public final boolean equals(final Object other) {
-        return objBean.equals(other);
+        return EqualsBean.beanEquals(DCModule.class, this, other);
     }
 
     /**
@@ -885,7 +885,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public final int hashCode() {
-        return objBean.hashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     /**
@@ -897,7 +897,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      */
     @Override
     public final String toString() {
-        return objBean.toString();
+        return ToStringBean.toString(DCModule.class, this);
     }
 
     @Override

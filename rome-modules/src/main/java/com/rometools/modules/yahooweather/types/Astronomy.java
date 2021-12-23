@@ -33,8 +33,6 @@ import com.rometools.rome.feed.impl.ToStringBean;
 public class Astronomy implements Serializable, Cloneable {
 
     private static final long serialVersionUID = 1L;
-    private final EqualsBean equals = new EqualsBean(Astronomy.class, this);
-    private final ToStringBean toString = new ToStringBean(Astronomy.class, this);
     private Date sunrise;
     private Date sunset;
 
@@ -61,17 +59,17 @@ public class Astronomy implements Serializable, Cloneable {
 
     @Override
     public boolean equals(final Object o) {
-        return equals.equals(o);
+        return EqualsBean.beanEquals(Astronomy.class, this, o);
     }
 
     @Override
     public int hashCode() {
-        return equals.hashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     @Override
     public String toString() {
-        return toString.toString();
+        return ToStringBean.toString(Astronomy.class, this);
     }
 
     /**

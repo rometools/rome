@@ -17,8 +17,11 @@
 package com.rometools.rome.feed.module;
 
 import java.io.Serializable;
+import java.util.Collections;
 
-import com.rometools.rome.feed.impl.ObjectBean;
+import com.rometools.rome.feed.impl.CloneableBean;
+import com.rometools.rome.feed.impl.EqualsBean;
+import com.rometools.rome.feed.impl.ToStringBean;
 
 /**
  * Base class for modules describing Metadata of feeds, default implementations. Examples of such
@@ -26,7 +29,7 @@ import com.rometools.rome.feed.impl.ObjectBean;
  */
 public abstract class ModuleImpl implements Cloneable, Serializable, Module {
     private static final long serialVersionUID = 1L;
-    private final ObjectBean objBean;
+    private final Class<?> beanClass;
     private final String uri;
 
     /**
@@ -34,7 +37,7 @@ public abstract class ModuleImpl implements Cloneable, Serializable, Module {
      *
      */
     protected ModuleImpl(final Class<?> beanClass, final String uri) {
-        objBean = new ObjectBean(beanClass, this);
+        this.beanClass = beanClass;
         this.uri = uri;
     }
 
@@ -48,7 +51,7 @@ public abstract class ModuleImpl implements Cloneable, Serializable, Module {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return objBean.clone();
+        return CloneableBean.beanClone(this, Collections.<String>emptySet());
     }
 
     /**
@@ -65,7 +68,7 @@ public abstract class ModuleImpl implements Cloneable, Serializable, Module {
         if (!(other instanceof ModuleImpl)) {
             return false;
         }
-        return objBean.equals(other);
+        return EqualsBean.beanEquals(beanClass, this, other);
     }
 
     /**
@@ -79,7 +82,7 @@ public abstract class ModuleImpl implements Cloneable, Serializable, Module {
      */
     @Override
     public int hashCode() {
-        return objBean.hashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     /**
@@ -91,7 +94,7 @@ public abstract class ModuleImpl implements Cloneable, Serializable, Module {
      */
     @Override
     public String toString() {
-        return objBean.toString();
+        return ToStringBean.toString(beanClass, this);
     }
 
     /**

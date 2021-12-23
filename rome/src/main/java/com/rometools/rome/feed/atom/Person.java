@@ -17,9 +17,12 @@
 package com.rometools.rome.feed.atom;
 
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 
-import com.rometools.rome.feed.impl.ObjectBean;
+import com.rometools.rome.feed.impl.CloneableBean;
+import com.rometools.rome.feed.impl.EqualsBean;
+import com.rometools.rome.feed.impl.ToStringBean;
 import com.rometools.rome.feed.module.Extendable;
 import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.feed.module.impl.ModuleUtils;
@@ -34,17 +37,13 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
 
     private static final long serialVersionUID = 1L;
 
-    private final ObjectBean objBean;
-
     private String name;
     private String uri; // since Atom 1.0 (was called url)
     private String uriResolved;
     private String email;
     private List<Module> modules;
 
-    public Person() {
-        objBean = new ObjectBean(this.getClass(), this);
-    }
+    public Person() { }
 
     /**
      * Creates a deep 'bean' clone of the object.
@@ -56,7 +55,7 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return objBean.clone();
+        return CloneableBean.beanClone(this, Collections.<String>emptySet());
     }
 
     /**
@@ -70,7 +69,7 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
      */
     @Override
     public boolean equals(final Object other) {
-        return objBean.equals(other);
+        return EqualsBean.beanEquals(this.getClass(), this, other);
     }
 
     /**
@@ -84,7 +83,7 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
      */
     @Override
     public int hashCode() {
-        return objBean.hashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     /**
@@ -96,7 +95,7 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
      */
     @Override
     public String toString() {
-        return objBean.toString();
+        return ToStringBean.toString(this.getClass(), this);
     }
 
     /**

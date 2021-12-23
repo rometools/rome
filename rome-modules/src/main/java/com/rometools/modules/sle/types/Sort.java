@@ -21,7 +21,8 @@ import java.io.Serializable;
 
 import org.jdom2.Namespace;
 
-import com.rometools.rome.feed.impl.ObjectBean;
+import com.rometools.rome.feed.impl.EqualsBean;
+import com.rometools.rome.feed.impl.ToStringBean;
 
 /**
  * <p>
@@ -87,7 +88,6 @@ public class Sort implements Serializable, Cloneable {
      */
     public static final String NUMBER_TYPE = "number";
     private Namespace namespace = Namespace.XML_NAMESPACE;
-    private final ObjectBean obj = new ObjectBean(Sort.class, this);
     private final String dataType;
     private final String element;
     private final String label;
@@ -161,16 +161,16 @@ public class Sort implements Serializable, Cloneable {
 
     @Override
     public boolean equals(final Object o) {
-        return obj.equals(o);
+        return EqualsBean.beanEquals(Sort.class, this, o);
     }
 
     @Override
     public int hashCode() {
-        return obj.hashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     @Override
     public String toString() {
-        return obj.toString();
+        return ToStringBean.toString(Sort.class, this);
     }
 }

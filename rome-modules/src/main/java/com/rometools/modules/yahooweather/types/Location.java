@@ -31,8 +31,6 @@ import com.rometools.rome.feed.impl.ToStringBean;
 public class Location implements Serializable, Cloneable {
 
     private static final long serialVersionUID = 1L;
-    private transient ToStringBean toString = new ToStringBean(Location.class, this);
-    private transient EqualsBean equals = new EqualsBean(Location.class, this);
     private String city;
     private String region;
     private String country;
@@ -109,17 +107,17 @@ public class Location implements Serializable, Cloneable {
 
     @Override
     public boolean equals(final Object o) {
-        return equals.equals(o);
+        return EqualsBean.beanEquals(Location.class, this, o);
     }
 
     @Override
     public int hashCode() {
-        return equals.hashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     @Override
     public String toString() {
-        return toString.toString();
+        return ToStringBean.toString(Location.class, this);
     }
 
     @Override

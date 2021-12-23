@@ -316,7 +316,6 @@ public class ConditionCode implements Serializable {
     public static final ConditionCode NOT_AVAILABLE = new ConditionCode(3200, "not available");
     private final int code;
     private final String description;
-    private transient EqualsBean equals = new EqualsBean(ConditionCode.class, this);
 
     private ConditionCode(final int code, final String description) {
         this.code = code;
@@ -357,12 +356,12 @@ public class ConditionCode implements Serializable {
 
     @Override
     public boolean equals(final Object o) {
-        return equals.equals(o);
+        return EqualsBean.beanEquals(ConditionCode.class, this, o);
     }
 
     @Override
     public int hashCode() {
-        return equals.hashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     @Override

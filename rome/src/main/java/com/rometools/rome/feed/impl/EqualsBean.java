@@ -16,7 +16,6 @@
  */
 package com.rometools.rome.feed.impl;
 
-import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.lang.reflect.Method;
 import java.util.List;
@@ -29,82 +28,11 @@ import java.util.List;
  * <p>
  * The hashcode is calculated by getting the hashcode of the Bean String representation.
  */
-public class EqualsBean implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class EqualsBean {
 
     private static final Object[] NO_PARAMS = new Object[0];
 
-    private final Class<?> beanClass;
-    private final Object obj;
-
-    /**
-     * Default constructor.
-     * <p>
-     * To be used by classes extending EqualsBean only.
-     * <p>
-     *
-     * @param beanClass the class/interface to be used for property scanning.
-     *
-     */
-    protected EqualsBean(final Class<?> beanClass) {
-        this.beanClass = beanClass;
-        obj = this;
-    }
-
-    /**
-     * Creates a EqualsBean to be used in a delegation pattern.
-     * <p>
-     * For example:
-     * <p>
-     * <code>
-     *   public class Foo  implements FooI {
-     *       private EqualsBean equalsBean;
-     * 
-     *       public Foo() {
-     *           equalsBean = new EqualsBean(FooI.class);
-     *       }
-     * 
-     *       public boolean equals(Object obj) {
-     *           return equalsBean.beanEquals(obj);
-     *       }
-     * 
-     *       public int hashCode() {
-     *           return equalsBean.beanHashCode();
-     *       }
-     * 
-     *   }
-     * </code>
-     * <p>
-     *
-     * @param beanClass the class/interface to be used for property scanning.
-     * @param obj object bean to test equality.
-     *
-     */
-    public EqualsBean(final Class<?> beanClass, final Object obj) {
-        if (!beanClass.isInstance(obj)) {
-            throw new IllegalArgumentException(obj.getClass() + " is not instance of " + beanClass);
-        }
-        this.beanClass = beanClass;
-        this.obj = obj;
-    }
-
-    /**
-     * Indicates whether some other object is "equal to" this object as defined by the Object
-     * equals() method.
-     * <p>
-     * To be used by classes extending EqualsBean. Although it works also for classes using
-     * EqualsBean in a delegation pattern, for correctness those classes should use the
-     *
-     * @see #beanEquals(Object) beanEquals method.
-     *      <p>
-     * @param obj he reference object with which to compare.
-     * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     *
-     */
-    @Override
-    public boolean equals(final Object obj) {
-        return beanEquals(obj);
+    private EqualsBean() {
     }
 
     /**
@@ -113,24 +41,19 @@ public class EqualsBean implements Serializable {
      * <p>
      * To be used by classes using EqualsBean in a delegation pattern,
      *
-     * @see #EqualsBean(Class,Object) constructor.
-     *      <p>
-     * @param obj he reference object with which to compare.
+     * @param obj1 The reference object with which to compare.
+     * @param obj2 The object to which to compare.
      * @return <b>true</b> if the object passed in the constructor is equal to the 'obj' object.
      *
      */
-    public boolean beanEquals(final Object obj) {
-
-        final Object bean1 = this.obj;
-        final Object bean2 = obj;
-
+    public static boolean beanEquals(Class<?> beanClass, final Object obj1, final Object obj2) {
         boolean eq;
 
-        if (bean1 == null && bean2 == null) { // both are null
+        if (obj1 == null && obj2 == null) { // both are null
             eq = true;
-        } else if (bean1 == null || bean2 == null) { // one of the objects is null
+        } else if (obj1 == null || obj2 == null) { // one of the objects is null
             eq = false;
-        } else if (!beanClass.isInstance(bean2)) { // not of the same type
+        } else if (!beanClass.isInstance(obj2)) { // not of the same type
             eq = false;
         } else {
             eq = true;
@@ -141,8 +64,8 @@ public class EqualsBean implements Serializable {
 
                     final Method getter = propertyDescriptor.getReadMethod();
 
-                    final Object value1 = getter.invoke(bean1, NO_PARAMS);
-                    final Object value2 = getter.invoke(bean2, NO_PARAMS);
+                    final Object value1 = getter.invoke(obj1, NO_PARAMS);
+                    final Object value2 = getter.invoke(obj2, NO_PARAMS);
 
                     eq = doEquals(value1, value2);
 
@@ -161,26 +84,6 @@ public class EqualsBean implements Serializable {
     }
 
     /**
-     * Returns the hashcode for this object.
-     * <p>
-     * It follows the contract defined by the Object hashCode() method.
-     * <p>
-     * The hashcode is calculated by getting the hashcode of the Bean String representation.
-     * <p>
-     * To be used by classes extending EqualsBean. Although it works also for classes using
-     * EqualsBean in a delegation pattern, for correctness those classes should use the
-     *
-     * @see #beanHashCode() beanHashCode method.
-     *      <p>
-     * @return the hashcode of the bean object.
-     *
-     */
-    @Override
-    public int hashCode() {
-        return beanHashCode();
-    }
-
-    /**
      * Returns the hashcode for the object passed in the constructor.
      * <p>
      * It follows the contract defined by the Object hashCode() method.
@@ -189,16 +92,14 @@ public class EqualsBean implements Serializable {
      * <p>
      * To be used by classes using EqualsBean in a delegation pattern,
      *
-     * @see #EqualsBean(Class,Object) constructor.
-     *      <p>
      * @return the hashcode of the bean object.
      *
      */
-    public int beanHashCode() {
+    public static int beanHashCode(Object obj) {
         return obj.toString().hashCode();
     }
 
-    private boolean doEquals(final Object obj1, final Object obj2) {
+    private static boolean doEquals(final Object obj1, final Object obj2) {
         boolean eq = obj1 == obj2;
         if (!eq && obj1 != null && obj2 != null) {
             final Class<?> classObj1 = obj1.getClass();
@@ -212,7 +113,7 @@ public class EqualsBean implements Serializable {
         return eq;
     }
 
-    private boolean equalsArray(final Object array1, final Object array2) {
+    private static boolean equalsArray(final Object array1, final Object array2) {
         boolean eq;
         final int length1 = Array.getLength(array1);
         final int length2 = Array.getLength(array2);

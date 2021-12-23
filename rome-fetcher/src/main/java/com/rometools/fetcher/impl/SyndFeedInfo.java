@@ -18,8 +18,11 @@ package com.rometools.fetcher.impl;
 
 import java.io.Serializable;
 import java.net.URL;
+import java.util.Collections;
 
-import com.rometools.rome.feed.impl.ObjectBean;
+import com.rometools.rome.feed.impl.CloneableBean;
+import com.rometools.rome.feed.impl.EqualsBean;
+import com.rometools.rome.feed.impl.ToStringBean;
 import com.rometools.rome.feed.synd.SyndFeed;
 
 /**
@@ -33,24 +36,21 @@ import com.rometools.rome.feed.synd.SyndFeed;
  * </p>
  *
  * @author Nick Lothian
- * 
- * @deprecated ROME Fetcher will be dropped in the next major version of ROME (version 2). For more information and some migration hints, 
+ *
+ * @deprecated ROME Fetcher will be dropped in the next major version of ROME (version 2). For more information and some migration hints,
  * please have a look at our <a href="https://github.com/rometools/rome/issues/276">detailed explanation</a>.
  */
 @Deprecated
 public class SyndFeedInfo implements Cloneable, Serializable {
     private static final long serialVersionUID = 1L;
 
-    private final ObjectBean _objBean;
     private String id;
     private URL url;
     private Object lastModified;
     private String eTag;
     private SyndFeed syndFeed;
 
-    public SyndFeedInfo() {
-        _objBean = new ObjectBean(this.getClass(), this);
-    }
+    public SyndFeedInfo() { }
 
     /**
      * Creates a deep 'bean' clone of the object.
@@ -62,7 +62,7 @@ public class SyndFeedInfo implements Cloneable, Serializable {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return _objBean.clone();
+        return CloneableBean.beanClone(this, Collections.<String>emptySet());
     }
 
     /**
@@ -76,7 +76,7 @@ public class SyndFeedInfo implements Cloneable, Serializable {
      */
     @Override
     public boolean equals(final Object other) {
-        return _objBean.equals(other);
+        return EqualsBean.beanEquals(this.getClass(), this, other);
     }
 
     /**
@@ -90,7 +90,7 @@ public class SyndFeedInfo implements Cloneable, Serializable {
      */
     @Override
     public int hashCode() {
-        return _objBean.hashCode();
+        return EqualsBean.beanHashCode(this);
     }
 
     /**
@@ -102,7 +102,7 @@ public class SyndFeedInfo implements Cloneable, Serializable {
      */
     @Override
     public String toString() {
-        return _objBean.toString();
+        return ToStringBean.toString(this.getClass(), this);
     }
 
     /**
