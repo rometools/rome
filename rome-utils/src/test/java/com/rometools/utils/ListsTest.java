@@ -14,10 +14,10 @@
 
 package com.rometools.utils;
 
-import static org.hamcrest.Matchers.hasItem;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.hamcrest.Matchers.nullValue;
+import static org.hamcrest.CoreMatchers.hasItem;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.CoreMatchers.nullValue;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
 import java.util.ArrayList;
@@ -28,6 +28,7 @@ import org.junit.Test;
 
 public class ListsTest {
 
+    @SuppressWarnings("static-method")
     @Test
     public void testCreateWhenNull() {
 

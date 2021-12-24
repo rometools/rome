@@ -21,8 +21,8 @@
 package com.rometools.modules.mediarss;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -119,7 +119,7 @@ public class MediaModuleTest extends AbstractTestCase {
      * @throws IOException if file not found or not accessible
      * @throws FeedException when the feed can't be parsed
      */
-    private void compareFeedFiles(final File expected, final File generated) throws IOException, FeedException {
+    private static void compareFeedFiles(final File expected, final File generated) throws IOException, FeedException {
         final SyndFeed feed = getSyndFeed(expected);
         final List<SyndEntry> entries = feed.getEntries();
         final SyndFeedOutput output = new SyndFeedOutput();
@@ -289,7 +289,7 @@ public class MediaModuleTest extends AbstractTestCase {
      * @throws IOException if file not found or not accessible
      * @throws FeedException when the feed can't be parsed
      */
-    private SyndFeed getSyndFeed(final File file) throws IOException, FeedException {
+    private static SyndFeed getSyndFeed(final File file) throws IOException, FeedException {
         return new SyndFeedInput().build(file);
     }
 
