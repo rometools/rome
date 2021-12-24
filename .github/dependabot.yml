@@ -6,8 +6,10 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    open-pull-requests-limit: 100
 
   - package-ecosystem: maven
     directory: "/"
     schedule:
       interval: "daily"
+    open-pull-requests-limit: 100
