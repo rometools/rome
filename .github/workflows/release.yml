@@ -31,4 +31,7 @@ jobs:
         env:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
-        run: mvn -B -ntp deploy scm:tag -P release -Drevision=${{ github.event.inputs.version }} -Dgpg.passphrase=${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
+        run: |
+          git config --global user.name github-actions
+          git config --global user.email github-actions@github.com
+          mvn -B -ntp deploy scm:tag -P release -Drevision=${{ github.event.inputs.version }} -Dgpg.passphrase=${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
