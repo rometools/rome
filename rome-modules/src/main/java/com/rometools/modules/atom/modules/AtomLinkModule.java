@@ -18,6 +18,7 @@ package com.rometools.modules.atom.modules;
 
 import com.rometools.rome.feed.atom.Link;
 import com.rometools.rome.feed.module.Module;
+import com.rometools.rome.feed.synd.SyndPerson;
 
 import java.util.List;
 
@@ -32,4 +33,13 @@ public interface AtomLinkModule extends Module {
     void setLinks(List<Link> links);
     @Deprecated
     void setLink(Link link);
+
+    List<SyndPerson> getAuthors();
+
+    void setAuthors(List<SyndPerson> authors);
+
+    List<SyndPerson> getContributors();
+
+    void setContributors(List<SyndPerson> contributors);
+
 }

@@ -20,6 +20,8 @@ import com.rometools.rome.feed.CopyFrom;
 import com.rometools.rome.feed.atom.Link;
 import com.rometools.rome.feed.impl.EqualsBean;
 import com.rometools.rome.feed.impl.ToStringBean;
+import com.rometools.rome.feed.synd.SyndPerson;
+import com.rometools.rome.feed.synd.SyndPersonImpl;
 
 import java.io.Serializable;
 import java.util.LinkedList;
@@ -28,6 +30,8 @@ import java.util.List;
 public class AtomLinkModuleImpl implements AtomLinkModule, Cloneable, Serializable {
 
     private List<Link> links = new LinkedList<Link>();
+    private List<SyndPerson> authors = new LinkedList<SyndPerson>();
+    private List<SyndPerson> contributors = new LinkedList<SyndPerson>();
 
     @Override
     public List<Link> getLinks() {
@@ -57,6 +61,26 @@ public class AtomLinkModuleImpl implements AtomLinkModule, Cloneable, Serializab
     }
 
     @Override
+    public List<SyndPerson> getAuthors() {
+        return this.authors;
+    }
+
+    @Override
+    public void setAuthors(List<SyndPerson> authors) {
+        this.authors = authors;
+    }
+
+    @Override
+    public List<SyndPerson> getContributors() {
+        return this.contributors;
+    }
+
+    @Override
+    public void setContributors(List<SyndPerson> contributors) {
+        this.contributors = contributors;
+    }
+
+    @Override
     public String getUri() {
         return URI;
     }
@@ -68,36 +92,51 @@ public class AtomLinkModuleImpl implements AtomLinkModule, Cloneable, Serializab
 
     @Override
     public void copyFrom(CopyFrom obj) {
-        AtomLinkModule other = (AtomLinkModule) obj;
-        List<Link> links = other.getLinks();
-        for (Link link : links) {
-            Link l = new Link();
+        final AtomLinkModule other = (AtomLinkModule) obj;
+        copyLinks(other.getLinks(), this.links);
+        copyPerson(other.getAuthors(), this.authors);
+        copyPerson(other.getContributors(), this.contributors);
+    }
+
+    private void copyLinks(List<Link> from, List<Link> to) {
+        for (Link link : from) {
+            final Link l = new Link();
             l.setHref(link.getHref());
             l.setType(link.getType());
             l.setRel(link.getRel());
             l.setHreflang(link.getHreflang());
             l.setTitle(link.getTitle());
             l.setLength(link.getLength());
-            this.links.add(l);
+            to.add(l);
+        }
+    }
+
+    private void copyPerson(List<SyndPerson> from, List<SyndPerson> to) {
+        for (SyndPerson person : from) {
+            final SyndPerson p = new SyndPersonImpl();
+            p.setName(person.getName());
+            p.setEmail(person.getEmail());
+            p.setUri(person.getUri());
+            to.add(p);
         }
     }
 
     @Override
     public Object clone() {
         final AtomLinkModuleImpl m = new AtomLinkModuleImpl();
-        List<Link> result = new LinkedList<Link>();
-        for(Link link : this.getLinks()) {
-            Link l = new Link();
-            l.setHref(link.getHref());
-            l.setType(link.getType());
-            l.setRel(link.getRel());
-            l.setHreflang(link.getHreflang());
-            l.setTitle(link.getTitle());
-            l.setLength(link.getLength());
-            result.add(l);
-        }
-        links.subList(0, links.size());
-        m.setLinks(result);
+
+        final List<Link> linksCopy = new LinkedList<Link>();
+        copyLinks(this.getLinks(), linksCopy);
+        m.setLinks(linksCopy);
+
+        final List<SyndPerson> authorsCopy = new LinkedList<SyndPerson>();
+        copyPerson(this.getAuthors(), authorsCopy);
+        m.setAuthors(authorsCopy);
+
+        final List<SyndPerson> contributorsCopy = new LinkedList<SyndPerson>();
+        copyPerson(this.getContributors(), contributorsCopy);
+        m.setContributors(contributorsCopy);
+
         return m;
     }
 

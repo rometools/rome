@@ -60,6 +60,19 @@ public interface SyndCategory extends Cloneable, CopyFrom {
     void setTaxonomyUri(String taxonomyUri);
 
     /**
+     * Sets the category Label
+     * <p>
+     * @param label the catagory label to set, <b>null</b> if none
+     * </p>
+     */
+    void setLabel(String label);
+
+    /**
+     * Returns the category label, <b>null</b> if none
+     */
+    String getLabel();
+
+    /**
      * Creates a deep clone of the object.
      * <p>
      *

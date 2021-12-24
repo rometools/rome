@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="/~files/feed-premium.xsl"?>
+
+<rss xmlns:feedpress="https://feed.press/xmlns" version="2.0">
+    <channel>
+        <title>Lorem Ipsum</title>
+        <link>http://example.org</link>
+        <description>Lorem Ipsum</description>
+        <feedpress:newsletterId>abc123</feedpress:newsletterId>
+        <feedpress:locale>en</feedpress:locale>
+        <feedpress:podcastId>xyz123</feedpress:podcastId>
+        <feedpress:cssFile>http://example.org/style.css</feedpress:cssFile>
+        <item>
+            <title>Lorem Ipsum</title>
+            <link>http://example.org/episode1</link>
+            <description><![CDATA[Lorem Ipsum]]></description>
+        </item>
+    </channel>
+</rss>

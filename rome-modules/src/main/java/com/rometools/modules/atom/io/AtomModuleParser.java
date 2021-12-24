@@ -20,6 +20,8 @@ import com.rometools.modules.atom.modules.AtomLinkModule;
 import com.rometools.modules.atom.modules.AtomLinkModuleImpl;
 import com.rometools.rome.feed.atom.Link;
 import com.rometools.rome.feed.module.Module;
+import com.rometools.rome.feed.synd.SyndPerson;
+import com.rometools.rome.feed.synd.SyndPersonImpl;
 import com.rometools.rome.io.ModuleParser;
 import com.rometools.rome.io.impl.NumberParser;
 import org.jdom2.Attribute;
@@ -36,23 +38,47 @@ public class AtomModuleParser implements ModuleParser {
 
     @Override
     public String getNamespaceUri() {
-        return null;
+        return AtomLinkModule.URI;
     }
 
     @Override
     public Module parse(Element element, Locale locale) {
-        AtomLinkModuleImpl mod = new AtomLinkModuleImpl();
+        AtomLinkModuleImpl mod = null;
         if (element.getName().equals("channel") || element.getName().equals("item")) {
-            List<Element> links = element.getChildren("link", NS);
-            List<Link> result = new LinkedList<Link>();
-            for (Element link : links) {
-                Link l = parseLink(link);
-                result.add(l);
-            }
-            mod.setLinks(result);
-            return mod;
+            mod = new AtomLinkModuleImpl();
+            mod.setLinks(parseLinks(element));
+            mod.setAuthors(parseAuthors(element));
+            mod.setContributors(parseContributor(element));
         }
-        return null;
+        return mod;
+    }
+
+    private List<Link> parseLinks(Element parent) {
+        final List<Link> result = new LinkedList<Link>();
+        final List<Element> links = parent.getChildren("link", NS);
+        for (Element link : links) {
+            Link l = parseLink(link);
+            result.add(l);
+        }
+        return result;
+    }
+
+    private List<SyndPerson> parseAuthors(Element parent) {
+        final List<SyndPerson> result = new LinkedList<SyndPerson>();
+        final List<Element> authors = parent.getChildren("author", NS);
+        for (Element author : authors) {
+            result.add(parsePerson(author));
+        }
+        return result;
+    }
+
+    private List<SyndPerson> parseContributor(Element parent) {
+        final List<SyndPerson> result = new LinkedList<SyndPerson>();
+        final List<Element> contributors = parent.getChildren("contributor", NS);
+        for (Element contributor : contributors) {
+            result.add(parsePerson(contributor));
+        }
+        return result;
     }
 
     private Link parseLink(final Element eLink) {
@@ -107,4 +133,26 @@ public class AtomModuleParser implements ModuleParser {
             return null;
         }
     }
+
+    private SyndPerson parsePerson(Element element) {
+        final SyndPerson person = new SyndPersonImpl();
+
+        final Element name = element.getChild("name", NS);
+        if (name != null && name.getValue() != null) {
+            person.setName(name.getValue().trim());
+        }
+
+        final Element email = element.getChild("email", NS);
+        if (email != null && email.getValue() != null) {
+            person.setEmail(email.getValue().trim());
+        }
+
+        final Element uri = element.getChild("uri", NS);
+        if (uri != null && uri.getValue() != null) {
+            person.setUri(uri.getValue().trim());
+        }
+
+        return person;
+    }
+
 }

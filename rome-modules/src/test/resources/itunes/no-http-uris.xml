@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
+  <channel>
+    <title>KCRW&#39;s Le Show</title>
+    <itunes:author>Harry Shearer</itunes:author>
+    <link>http://www.kcrw.com/show/ls</link>
+    <description>A weekly, hour-long romp through the worlds of media, politics, sports and show business, leavened with an eclectic mix of mysterious music, hosted by Harry Shearer.</description>
+    <itunes:type>serial</itunes:type>
+    <itunes:complete>yes</itunes:complete>
+    <itunes:new-feed-url>http://example.org</itunes:new-feed-url>
+    <itunes:block>Yes</itunes:block>
+    <language>en</language>
+    <copyright>KCRW 2005</copyright>
+    <itunes:owner>
+      <itunes:name>Harry Shearer</itunes:name>
+      <itunes:email></itunes:email>
+    </itunes:owner>
+    <itunes:image rel="image" href="file://some-location/1.jpg">KCRW&#39;s Le Show</itunes:image>
+    <category>Comedy</category>
+    <itunes:category text="Comedy" />
+    <itunes:category text="Arts &amp; Entertainment">
+      <itunes:category text="Entertainment" />
+    </itunes:category>
+    <item>
+      <title>le Show</title>
+      <itunes:author>Harry Shearer</itunes:author>
+      <description></description>
+      <itunes:image rel="image" href="gs://some-location/whitespaces are allowed/2.jpg"></itunes:image>
+      <enclosure url="http://a1.phobos.apple.com/Podcasts/y2005/m08/d01/h14/eosmhmit.mp3" length="16770270" type="" />
+      <guid>http://66.186.18.80/podcast/mp3/ls/ls050731le_Show.mp3</guid>
+      <pubDate>Sun, 31 Jul 2005 16:00:00 GMT</pubDate>
+      <category>Comedy</category>
+      <itunes:category text="Comedy" />
+      <itunes:category text="Comedy" />
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:duration>46:34</itunes:duration>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>1</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+    </item>
+  </channel>
+</rss>

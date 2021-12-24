@@ -58,16 +58,13 @@ public class AtomLinkTest extends AbstractTestCase {
         return new TestSuite(AtomLinkTest.class);
     }
 
-    /**
-     * Test of getNamespaceUri method, of class com.rometools.rome.feed.module.sse.SSE091
-     */
     public void testGetNamespaceUri() {
         assertEquals("Namespace", AtomLinkModule.URI, new AtomModuleGenerator().getNamespaceUri());
     }
 
     public void test() throws Exception {
 
-        final File testdata = new File(super.getTestFile("atom/atom.xml"));
+        final File testdata = new File(super.getTestFile("atom/rss.xml"));
         final SyndFeed feed = new SyndFeedInput().build(testdata);
 
         final AtomLinkModule atomLinkModule = (AtomLinkModule) feed.getModule(AtomLinkModule.URI);
@@ -78,7 +75,6 @@ public class AtomLinkTest extends AbstractTestCase {
             assertEquals(rel[i], link.getRel());
             assertEquals(type[i], link.getType());
         }
-
     }
     
     public void testSetLinkShouldWork() {
