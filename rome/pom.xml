@@ -72,11 +72,6 @@
                     </instructions>
                 </configuration>
             </plugin>
-            <plugin>
-                <!-- mvn spotbugs:spotbugs spotbugs:gui -->
-                <groupId>com.github.spotbugs</groupId>
-                <artifactId>spotbugs-maven-plugin</artifactId>
-            </plugin>
         </plugins>
     </build>
 
