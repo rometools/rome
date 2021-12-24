@@ -136,11 +136,6 @@
                     <artifactId>spotbugs-maven-plugin</artifactId>
                     <version>4.5.2.0</version>
                 </plugin>
-                <plugin>
-                    <groupId>org.owasp</groupId>
-                    <artifactId>dependency-check-maven</artifactId>
-                    <version>6.5.1</version>
-                </plugin>
             </plugins>
         </pluginManagement>
         <plugins>
