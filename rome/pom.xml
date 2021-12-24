@@ -76,21 +76,11 @@
                 <!-- mvn spotbugs:spotbugs spotbugs:gui -->
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>3.1.11</version>
-                <dependencies>
-                    <!-- overwrite dependency on spotbugs if you want to specify the version of spotbugs -->
-                    <dependency>
-                        <groupId>com.github.spotbugs</groupId>
-                        <artifactId>spotbugs</artifactId>
-                        <version>3.1.12</version>
-                    </dependency>
-                </dependencies>
             </plugin>
             <plugin>
                 <!-- mvn verify -->
                 <groupId>org.owasp</groupId>
                 <artifactId>dependency-check-maven</artifactId>
-                <version>6.0.3</version>
                 <executions>
                     <execution>
                         <goals>
