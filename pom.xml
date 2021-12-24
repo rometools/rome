@@ -139,7 +139,7 @@
                 <plugin>
                     <groupId>org.owasp</groupId>
                     <artifactId>dependency-check-maven</artifactId>
-                    <version>6.0.3</version>
+                    <version>6.5.1</version>
                 </plugin>
             </plugins>
         </pluginManagement>
