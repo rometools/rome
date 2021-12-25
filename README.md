@@ -5,7 +5,7 @@
 
 Rome is a Java framework for RSS and Atom feeds. The framework consist of several modules:
 
-> &#x26a0;&#xfe0f; This project is in maintenance mode due to a shortage of active maintainers. We won't accept new features but try to keep all dependencies up-to-date.
+> &#x26a0;&#xfe0f; This project is in maintenance mode due to a shortage of active developers. We won't accept new features but try to keep all dependencies up-to-date.
 
 ## Project structure
 
