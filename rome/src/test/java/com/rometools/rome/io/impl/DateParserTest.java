@@ -37,7 +37,7 @@ public class DateParserTest {
     	
     	assertEquals(
                 c.getTime(),
-                DateParser.parseRFC822("Sa, 28 Mär 20 09:12:38 MEZ", Locale.GERMANY)
+                DateParser.parseRFC822("Sa., 28 Mär 20 09:12:38 MEZ", Locale.GERMANY)
         );
     }
 }
