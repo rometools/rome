@@ -15,15 +15,18 @@
  */
 package com.rometools.rome.unittest;
 
-public class TestOpsRSS091N extends FeedOpsTest {
+import static org.assertj.core.api.Assertions.assertThat;
 
-    public static void main(final String[] args) throws Exception {
-        final FeedOpsTest test = new TestOpsRSS091N();
-        test.testWireFeedSyndFeedConversion();
-    }
+public class TestOpsRSS091N extends FeedOpsTest {
 
     public TestOpsRSS091N() {
         super("rss_0.91N", true);
+    }
+    
+    @Override
+    public void testStylesheet() throws Exception {
+        assertThat(this.getCachedSyndFeed().getStyleSheet()).isEqualTo("style.xsl");
+        assertThat(this.getCachedWireFeed().getStyleSheet()).isEqualTo("style.xsl");
     }
 
 }

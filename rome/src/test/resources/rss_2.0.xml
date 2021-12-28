@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<?xml-stylesheet type="text/xsl" href="http://test.example/test.xslt"?>
+<?xml-stylesheet type="text/xsl" href="style.xsl"?>
 <rss version="2.0" 
     xmlns:rometest='http://rome.dev.java.net/namespacetest'
     xmlns:content='http://purl.org/rss/1.0/modules/content/'>
