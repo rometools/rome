@@ -20,12 +20,14 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
 
 import org.jdom2.Document;
 import org.jdom2.JDOMException;
+import org.jdom2.ProcessingInstruction;
 import org.jdom2.output.DOMOutputter;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
@@ -119,6 +121,7 @@ public class WireFeedOutput {
      *
      */
     public String outputString(final WireFeed feed, final boolean prettyPrint) throws IllegalArgumentException, FeedException {
+
         final Document doc = outputJDom(feed);
         final String encoding = feed.getEncoding();
         Format format;
@@ -130,6 +133,7 @@ public class WireFeedOutput {
         if (encoding != null) {
             format.setEncoding(encoding);
         }
+
         final XMLOutputter outputter = new XMLOutputter(format);
         return outputter.outputString(doc);
     }
@@ -232,6 +236,7 @@ public class WireFeedOutput {
      *
      */
     public void output(final WireFeed feed, final Writer writer, final boolean prettyPrint) throws IllegalArgumentException, IOException, FeedException {
+
         final Document doc = outputJDom(feed);
         final String encoding = feed.getEncoding();
         Format format;
@@ -243,8 +248,10 @@ public class WireFeedOutput {
         if (encoding != null) {
             format.setEncoding(encoding);
         }
+
         final XMLOutputter outputter = new XMLOutputter(format);
         outputter.output(doc, writer);
+
     }
 
     /**
@@ -290,7 +297,9 @@ public class WireFeedOutput {
      *
      */
     public Document outputJDom(final WireFeed feed) throws IllegalArgumentException, FeedException {
+
         final String type = feed.getFeedType();
+
         final WireFeedGenerator generator = getFeedGenerators().getGenerator(type);
         if (generator == null) {
             throw new IllegalArgumentException("Invalid feed type [" + type + "]");
@@ -299,7 +308,19 @@ public class WireFeedOutput {
         if (!generator.getType().equals(type)) {
             throw new IllegalArgumentException("WireFeedOutput type[" + type + "] and WireFeed type [" + type + "] don't match");
         }
-        return generator.generate(feed);
+
+        final Document doc = generator.generate(feed);
+
+        final String styleSheet = feed.getStyleSheet();
+        if (styleSheet != null) {
+            final Map<String, String> data = new LinkedHashMap<String, String>();
+            data.put("type", "text/xsl");
+            data.put("href", styleSheet);
+            doc.addContent(0, new ProcessingInstruction("xml-stylesheet", data));
+        }
+
+        return doc;
+
     }
 
 }

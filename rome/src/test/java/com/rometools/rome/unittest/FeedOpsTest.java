@@ -15,6 +15,8 @@
  */
 package com.rometools.rome.unittest;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
@@ -23,13 +25,14 @@ import java.io.ObjectOutputStream;
 import com.rometools.rome.feed.WireFeed;
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.feed.synd.SyndFeedImpl;
+import com.rometools.rome.io.SyndFeedOutput;
 
 public abstract class FeedOpsTest extends FeedTest {
 
     protected FeedOpsTest(final String feedType) {
         super(feedType + ".xml");
     }
-    
+
     protected FeedOpsTest(final String feedType, boolean allowDoctypes) {
         super(feedType + ".xml", allowDoctypes);
     }
@@ -121,6 +124,19 @@ public abstract class FeedOpsTest extends FeedTest {
         ois.close();
 
         assertTrue(feed1.equals(feed2));
+    }
+
+    public void testStylesheet() throws Exception {
+
+        // verify parser
+        assertThat(this.getCachedSyndFeed().getStyleSheet()).isEqualTo("style.xsl");
+        assertThat(this.getCachedWireFeed().getStyleSheet()).isEqualTo("style.xsl");
+
+        // verify output
+        final SyndFeed feed = this.getCachedSyndFeed();
+        final String xml = new SyndFeedOutput().outputString(feed);
+        assertThat(xml).contains("<?xml-stylesheet type=\"text/xsl\" href=\"style.xsl\"?>");
+
     }
 
 }
