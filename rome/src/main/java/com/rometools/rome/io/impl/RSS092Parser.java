@@ -34,6 +34,7 @@ import com.rometools.rome.feed.rss.Description;
 import com.rometools.rome.feed.rss.Enclosure;
 import com.rometools.rome.feed.rss.Item;
 import com.rometools.rome.feed.rss.Source;
+import com.rometools.utils.Strings;
 
 public class RSS092Parser extends RSS091UserlandParser {
 
@@ -156,28 +157,31 @@ public class RSS092Parser extends RSS091UserlandParser {
 
     protected List<Category> parseCategories(final List<Element> eCats) {
 
-        List<Category> cats = null;
+        final List<Category> cats = new ArrayList<Category>();
 
-        if (!eCats.isEmpty()) {
+        for (final Element eCat : eCats) {
 
-            cats = new ArrayList<Category>();
-            for (final Element eCat : eCats) {
-
-                final Category cat = new Category();
-
-                // getRSSNamespace()); DONT KNOW WHY DOESN'T WORK
-                final String domain = eCat.getAttributeValue("domain");
-                if (domain != null) {
-                    cat.setDomain(domain);
-                }
-
-                cat.setValue(eCat.getText());
-
-                cats.add(cat);
-
+            // skip categories without value
+            final String text = eCat.getText();
+            if(Strings.isBlank(text)) {
+                continue;
             }
-        }
 
+            final Category cat = new Category();               
+            final String domain = eCat.getAttributeValue("domain");
+            if (domain != null) {
+                cat.setDomain(domain);
+            }
+            cat.setValue(text);
+
+            cats.add(cat);
+
+        }
+        
+        if(cats.isEmpty()) {
+            return null;
+        }
+        
         return cats;
 
     }
