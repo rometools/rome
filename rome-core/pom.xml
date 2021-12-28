@@ -6,12 +6,12 @@
 
     <parent>
         <groupId>com.rometools</groupId>
-        <artifactId>rome-parent</artifactId>
+        <artifactId>rome</artifactId>
         <version>${revision}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>rome</artifactId>
+    <artifactId>rome-core</artifactId>
     <packaging>jar</packaging>
 
     <name>rome</name>

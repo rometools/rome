@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.rometools</groupId>
-    <artifactId>rome-parent</artifactId>
+    <artifactId>rome</artifactId>
     <version>${revision}</version>
     <packaging>pom</packaging>
 
     <modules>
-        <module>rome</module>
+        <module>rome-core</module>
         <module>rome-modules</module>
         <module>rome-opml</module>
         <module>rome-utils</module>
@@ -234,7 +234,7 @@
             <!-- ROME -->
             <dependency>
                 <groupId>com.rometools</groupId>
-                <artifactId>rome</artifactId>
+                <artifactId>rome-core</artifactId>
                 <version>${revision}</version>
             </dependency>
             <dependency>
