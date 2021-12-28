@@ -19,7 +19,7 @@
         <outline title="The String Coffee Table" htmlUrl="http://golem.ph.utexas.edu/string/" type="rss" xmlUrl="http://golem.ph.utexas.edu/string/rss2.xml"/>
         <outline title="Musings" htmlUrl="http://golem.ph.utexas.edu/~distler/blog/" type="rss" xmlUrl="http://golem.ph.utexas.edu/~distler/blog/rss2.xml"/>
         <outline title="New Scientist - Latest Headlines" htmlUrl="http://www.newscientist.com/news.ns" type="rss" xmlUrl="http://www.newscientist.com/feed.ns?index=online-news"/>
-        <outline category="foo, bar, baz" title="Slashdot" htmlUrl="http://slashdot.org/" type="rss" xmlUrl="http://rss.slashdot.org/slashdot/eqWf"/>
+        <outline category="foo,bar,baz" title="Slashdot" htmlUrl="http://slashdot.org/" type="rss" xmlUrl="http://rss.slashdot.org/slashdot/eqWf"/>
     </outline>
     <outline title="tech people">
     </outline>
