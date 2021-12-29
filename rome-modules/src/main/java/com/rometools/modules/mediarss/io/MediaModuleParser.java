@@ -76,6 +76,7 @@ import com.rometools.utils.Doubles;
 import com.rometools.utils.Integers;
 import com.rometools.utils.Longs;
 import com.rometools.utils.Strings;
+import com.rometools.utils.URIs;
 
 /**
  * @author Nathanial X. Freitas
@@ -162,7 +163,7 @@ public class MediaModuleParser implements ModuleParser {
 
                 if (content.getAttributeValue("url") != null) {
                     try {
-                        mc = new MediaContent(new UrlReference(new URI(content.getAttributeValue("url").replace(' ', '+'))));
+                        mc = new MediaContent(new UrlReference(URIs.parse(content.getAttributeValue("url"))));
                         mc.setPlayer(parsePlayer(content));
                     } catch (final Exception ex) {
                         LOG.warn("Exception parsing content tag.", ex);
