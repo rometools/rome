@@ -14,8 +14,7 @@
     <artifactId>rome-core</artifactId>
     <packaging>jar</packaging>
 
-    <name>rome</name>
-
+    <name>rome-core</name>
     <description>Core library for generating, parsing and converting RSS and ATOM feeds</description>
 
     <build>
