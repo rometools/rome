@@ -15,22 +15,10 @@
     <packaging>jar</packaging>
 
     <name>rome-modules</name>
-
-    <description>Plugin collection for the ROME RSS and Atom Utilities</description>
+    <description>   Support for extensions like MediaRSS, GeoRSS and others</description>
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <configuration>
-                    <archive>
-                        <manifestEntries>
-                            <Automatic-Module-Name>com.rometools.rome.modules</Automatic-Module-Name>
-                        </manifestEntries>
-                    </archive>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
@@ -59,37 +47,35 @@
                             com.rometools.rome.io,
                             com.rometools.utils
                         </_exportcontents>
-                        <Embed-Dependency>*;artifactId=rome|rome-utils</Embed-Dependency>
+                        <Embed-Dependency>*;artifactId=rome-core|rome-utils</Embed-Dependency>
                         <Embed-Transitive>true</Embed-Transitive>
                     </instructions>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <Automatic-Module-Name>com.rometools.rome.modules</Automatic-Module-Name>
+                        </manifestEntries>
+                    </archive>
                 </configuration>
             </plugin>
         </plugins>
     </build>
 
     <dependencies>
+        <!-- Rome -->
         <dependency>
             <groupId>com.rometools</groupId>
             <artifactId>rome-core</artifactId>
         </dependency>
+        <!-- Test dependencies -->
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-library</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>xmlunit</groupId>
-            <artifactId>xmlunit</artifactId>
+            <groupId>com.rometools</groupId>
+            <artifactId>rome-test</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
