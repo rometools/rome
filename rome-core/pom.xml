@@ -11,12 +11,20 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>rome-modules</artifactId>
+    <artifactId>rome-core</artifactId>
     <packaging>jar</packaging>
 
-    <name>rome-modules</name>
+    <name>rome</name>
 
-    <description>Plugin collection for the ROME RSS and Atom Utilities</description>
+    <description>All Roads Lead to ROME. ROME is a set of Atom/RSS Java utilities that make it
+        easy to work in Java with most syndication formats. Today it accepts all flavors of RSS
+        (0.90, 0.91, 0.92, 0.93, 0.94, 1.0 and 2.0), Atom 0.3 and Atom 1.0 feeds. Rome includes
+        a set of parsers and generators for the various flavors of feeds, as well as converters
+        to convert from one format to another. The parsers can give you back Java objects that
+        are either specific for the format you want to work with, or a generic normalized
+        SyndFeed object that lets you work on with the data without bothering about the
+        underlying format.
+    </description>
 
     <build>
         <plugins>
@@ -26,8 +34,12 @@
                 <configuration>
                     <archive>
                         <manifestEntries>
-                            <Automatic-Module-Name>com.rometools.rome.modules</Automatic-Module-Name>
+                            <Automatic-Module-Name>com.rometools.rome</Automatic-Module-Name>
                         </manifestEntries>
+                        <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                        </manifest>
                     </archive>
                 </configuration>
             </plugin>
@@ -37,8 +49,13 @@
                 <configuration>
                     <instructions>
                         <Export-Package>
-                            !com.rometools.modules.*.io,
-                            com.rometools.modules.*,
+                            com.rometools.rome.feed,
+                            com.rometools.rome.feed.atom,
+                            com.rometools.rome.feed.impl,
+                            com.rometools.rome.feed.module,
+                            com.rometools.rome.feed.rss,
+                            com.rometools.rome.feed.synd,
+                            com.rometools.rome.io,
                         </Export-Package>
                         <Import-Package>
                             org.jdom2,
@@ -50,17 +67,8 @@
                             org.w3c.dom,
                             org.xml.sax
                         </Import-Package>
-                        <_exportcontents>
-                            com.rometools.rome.feed,
-                            com.rometools.rome.feed.atom,
-                            com.rometools.rome.feed.module,
-                            com.rometools.rome.feed.rss,
-                            com.rometools.rome.feed.synd,
-                            com.rometools.rome.io,
-                            com.rometools.utils
-                        </_exportcontents>
-                        <Embed-Dependency>*;artifactId=rome|rome-utils</Embed-Dependency>
-                        <Embed-Transitive>true</Embed-Transitive>
+                        <_exportcontents>com.rometools.utils</_exportcontents>
+                        <Embed-Dependency>rome-utils</Embed-Dependency>
                     </instructions>
                 </configuration>
             </plugin>
@@ -70,7 +78,15 @@
     <dependencies>
         <dependency>
             <groupId>com.rometools</groupId>
-            <artifactId>rome-core</artifactId>
+            <artifactId>rome-utils</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jdom</groupId>
+            <artifactId>jdom2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
@@ -83,13 +99,13 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-library</artifactId>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>xmlunit</groupId>
-            <artifactId>xmlunit</artifactId>
+            <groupId>com.github.tomakehurst</groupId>
+            <artifactId>wiremock</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>

@@ -134,6 +134,12 @@ public class SimpleGenerator implements ModuleGenerator {
         } else {
             LOG.error("GeoRSS simple format can't handle geometries of type: " + geometry.getClass().getName());
         }
+
+        if (geoRSSModule.getFeatureNameTag() != null) {
+            Element featureNameElement = new Element("featurename", GeoRSSModule.SIMPLE_NS);
+            featureNameElement.addContent(geoRSSModule.getFeatureNameTag());
+            element.addContent(featureNameElement);
+        }
     }
 
 }
