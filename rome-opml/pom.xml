@@ -15,34 +15,7 @@
     <packaging>jar</packaging>
 
     <name>rome-opml</name>
-
-    <description>Support for OPML 1 and OPML 2 in ROME</description>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.rometools</groupId>
-            <artifactId>rome-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-library</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>xmlunit</groupId>
-            <artifactId>xmlunit</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+    <description>Support for OPML</description>
 
     <build>
         <plugins>
@@ -59,4 +32,19 @@
             </plugin>
         </plugins>
     </build>
+
+    <dependencies>
+        <!-- Rome -->
+        <dependency>
+            <groupId>com.rometools</groupId>
+            <artifactId>rome-core</artifactId>
+        </dependency>
+        <!-- Test dependencies -->
+        <dependency>
+            <groupId>com.rometools</groupId>
+            <artifactId>rome-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
 </project>
