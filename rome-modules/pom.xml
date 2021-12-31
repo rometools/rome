@@ -15,7 +15,7 @@
     <packaging>jar</packaging>
 
     <name>rome-modules</name>
-    <description>   Support for extensions like MediaRSS, GeoRSS and others</description>
+    <description>Support for extensions like MediaRSS, GeoRSS and others</description>
 
     <build>
         <plugins>
@@ -24,10 +24,6 @@
                 <artifactId>maven-bundle-plugin</artifactId>
                 <configuration>
                     <instructions>
-                        <Export-Package>
-                            !com.rometools.modules.*.io,
-                            com.rometools.modules.*,
-                        </Export-Package>
                         <Import-Package>
                             org.jdom2,
                             org.jdom2.filter,
@@ -38,6 +34,10 @@
                             org.w3c.dom,
                             org.xml.sax
                         </Import-Package>
+                        <Export-Package>
+                            !com.rometools.modules.*.io,
+                            com.rometools.modules.*,
+                        </Export-Package>
                         <_exportcontents>
                             com.rometools.rome.feed,
                             com.rometools.rome.feed.atom,

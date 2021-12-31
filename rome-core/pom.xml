@@ -15,7 +15,7 @@
     <packaging>jar</packaging>
 
     <name>rome-core</name>
-    <description>Core library for generating, parsing and converting RSS and ATOM feeds</description>
+    <description>Core module for generating, parsing and converting RSS and Atom feeds</description>
 
     <build>
         <plugins>
@@ -76,11 +76,6 @@
         <dependency>
             <groupId>org.jdom</groupId>
             <artifactId>jdom2</artifactId>
-        </dependency>
-        <!-- SLF4J -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
         </dependency>
         <!-- Test dependencies -->
         <dependency>
