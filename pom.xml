@@ -13,7 +13,7 @@
         <module>rome-core</module>
         <module>rome-modules</module>
         <module>rome-opml</module>
-        <module>rome-test</module>
+<!--        <module>rome-test</module>-->
         <module>rome-utils</module>
     </modules>
 
@@ -138,6 +138,16 @@
                     <artifactId>nexus-staging-maven-plugin</artifactId>
                     <version>1.6.8</version>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>3.10.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-project-info-reports-plugin</artifactId>
+                    <version>3.1.2</version>
+                </plugin>
             </plugins>
         </pluginManagement>
 
@@ -162,10 +172,15 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <configuration>
-                    <doclint>none</doclint>
-                </configuration>
                 <executions>
                     <execution>
                         <goals>
@@ -240,11 +255,11 @@
                 <artifactId>rome-opml</artifactId>
                 <version>${revision}</version>
             </dependency>
-            <dependency>
-                <groupId>com.rometools</groupId>
-                <artifactId>rome-test</artifactId>
-                <version>${revision}</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>com.rometools</groupId>-->
+<!--                <artifactId>rome-test</artifactId>-->
+<!--                <version>${revision}</version>-->
+<!--            </dependency>-->
             <dependency>
                 <groupId>com.rometools</groupId>
                 <artifactId>rome-utils</artifactId>

@@ -40,11 +40,11 @@
             <artifactId>rome-core</artifactId>
         </dependency>
         <!-- Test dependencies -->
-        <dependency>
-            <groupId>com.rometools</groupId>
-            <artifactId>rome-test</artifactId>
-            <scope>test</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.rometools</groupId>-->
+<!--            <artifactId>rome-test</artifactId>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
     </dependencies>
 
 </project>
