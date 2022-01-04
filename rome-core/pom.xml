@@ -14,20 +14,40 @@
     <artifactId>rome-core</artifactId>
     <packaging>jar</packaging>
 
-    <name>rome</name>
-
-    <description>All Roads Lead to ROME. ROME is a set of Atom/RSS Java utilities that make it
-        easy to work in Java with most syndication formats. Today it accepts all flavors of RSS
-        (0.90, 0.91, 0.92, 0.93, 0.94, 1.0 and 2.0), Atom 0.3 and Atom 1.0 feeds. Rome includes
-        a set of parsers and generators for the various flavors of feeds, as well as converters
-        to convert from one format to another. The parsers can give you back Java objects that
-        are either specific for the format you want to work with, or a generic normalized
-        SyndFeed object that lets you work on with the data without bothering about the
-        underlying format.
-    </description>
+    <name>rome-core</name>
+    <description>Core module for generating, parsing and converting RSS and Atom feeds</description>
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <configuration>
+                    <instructions>
+                        <Import-Package>
+                            org.jdom2,
+                            org.jdom2.filter,
+                            org.jdom2.input,
+                            org.jdom2.input.sax,
+                            org.jdom2.output,
+                            org.slf4j,
+                            org.w3c.dom,
+                            org.xml.sax
+                        </Import-Package>
+                        <Export-Package>
+                            com.rometools.rome.feed,
+                            com.rometools.rome.feed.atom,
+                            com.rometools.rome.feed.impl,
+                            com.rometools.rome.feed.module,
+                            com.rometools.rome.feed.rss,
+                            com.rometools.rome.feed.synd,
+                            com.rometools.rome.io,
+                        </Export-Package>
+                        <_exportcontents>com.rometools.utils</_exportcontents>
+                        <Embed-Dependency>rome-utils</Embed-Dependency>
+                    </instructions>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -43,69 +63,24 @@
                     </archive>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-bundle-plugin</artifactId>
-                <configuration>
-                    <instructions>
-                        <Export-Package>
-                            com.rometools.rome.feed,
-                            com.rometools.rome.feed.atom,
-                            com.rometools.rome.feed.impl,
-                            com.rometools.rome.feed.module,
-                            com.rometools.rome.feed.rss,
-                            com.rometools.rome.feed.synd,
-                            com.rometools.rome.io,
-                        </Export-Package>
-                        <Import-Package>
-                            org.jdom2,
-                            org.jdom2.filter,
-                            org.jdom2.input,
-                            org.jdom2.input.sax,
-                            org.jdom2.output,
-                            org.slf4j,
-                            org.w3c.dom,
-                            org.xml.sax
-                        </Import-Package>
-                        <_exportcontents>com.rometools.utils</_exportcontents>
-                        <Embed-Dependency>rome-utils</Embed-Dependency>
-                    </instructions>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
     <dependencies>
+        <!-- Rome -->
         <dependency>
             <groupId>com.rometools</groupId>
             <artifactId>rome-utils</artifactId>
         </dependency>
+        <!-- JDOM -->
         <dependency>
             <groupId>org.jdom</groupId>
             <artifactId>jdom2</artifactId>
         </dependency>
+        <!-- Test dependencies -->
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.github.tomakehurst</groupId>
-            <artifactId>wiremock</artifactId>
+            <groupId>com.rometools</groupId>
+            <artifactId>rome-test</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
