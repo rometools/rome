@@ -19,6 +19,7 @@ package com.rometools.rome.feed.atom;
 import com.rometools.rome.feed.impl.CloneableBean;
 import com.rometools.rome.feed.impl.EqualsBean;
 import com.rometools.rome.feed.impl.ToStringBean;
+import com.rometools.rome.feed.synd.SyndLinkAttribute;
 import com.rometools.utils.Alternatives;
 import com.rometools.utils.Lists;
 import org.jdom2.Attribute;
@@ -42,7 +43,7 @@ public class Link implements Cloneable, Serializable {
     private String hreflang;
     private String title;
     private long length;
-    private List<Attribute> foreignAttributes;
+    private List<LinkAttribute> attributes;
 
 
     public Link() { }
@@ -71,22 +72,7 @@ public class Link implements Cloneable, Serializable {
      */
     @Override
     public boolean equals(final Object other) {
-
-        if (other == null) {
-            return false;
-        }
-
-        if (!(other instanceof Link)) {
-            return false;
-        }
-
-        // can't use foreign markup in equals, due to JDOM equals impl
-        final List<Attribute> fa = getForeignAttributes();
-        setForeignAttributes(((Link) other).getForeignAttributes());
-        final boolean ret = EqualsBean.beanEquals(this.getClass(), this, other);
-        // restore foreign markup
-        setForeignAttributes(fa);
-        return ret;
+        return EqualsBean.beanEquals(Link.class, this, other);
     }
 
     /**
@@ -255,20 +241,20 @@ public class Link implements Cloneable, Serializable {
     }
 
     /**
-     * Returns foreign attributes found on the Link object
+     * Returns link attributes found on the Link object
      * 
-     * @return the foreignAttributes (mutable)
+     * @return the link attributes (mutable)
      */
-    public List<Attribute> getForeignAttributes() {
-        return Lists.createWhenNull(foreignAttributes);
+    public List<LinkAttribute> getLinkAttributes() {
+        return attributes = Lists.createWhenNull(attributes);
     }
 
     /**
-     * Sets foreign attributes on the Link object
+     * Sets link attributes on the Link object
      * 
-     * @param foreignAttributes the foreignAttributes to set
+     * @param attributes the link attributes to set
      */
-    public void setForeignAttributes(List<Attribute> foreignAttributes) {
-        this.foreignAttributes = foreignAttributes;
+    public void setLinkAttributes(List<LinkAttribute> attributes) {
+        this.attributes = attributes;
     }
 }

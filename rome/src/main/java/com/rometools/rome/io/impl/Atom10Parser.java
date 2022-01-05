@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.regex.Pattern;
 
+import com.rometools.rome.feed.atom.*;
 import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -34,13 +35,6 @@ import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.XMLOutputter;
 
 import com.rometools.rome.feed.WireFeed;
-import com.rometools.rome.feed.atom.Category;
-import com.rometools.rome.feed.atom.Content;
-import com.rometools.rome.feed.atom.Entry;
-import com.rometools.rome.feed.atom.Feed;
-import com.rometools.rome.feed.atom.Generator;
-import com.rometools.rome.feed.atom.Link;
-import com.rometools.rome.feed.atom.Person;
 import com.rometools.rome.feed.synd.SyndPerson;
 import com.rometools.rome.io.FeedException;
 import com.rometools.rome.io.WireFeedInput;
@@ -258,10 +252,16 @@ public class Atom10Parser extends BaseWireFeedParser {
 
         final List<Attribute> foreignAttributes = extractForeignAttributes(eLink, getAtomNamespace());
         if (!foreignAttributes.isEmpty()) {
-            link.setForeignAttributes(foreignAttributes);
+            for (Attribute attr : foreignAttributes) {
+                LinkAttribute linkAttr = new LinkAttribute();
+                linkAttr.setName(attr.getName());
+                linkAttr.setValue(attr.getValue());
+                linkAttr.setNamespaceURI(attr.getNamespaceURI());
+                linkAttr.setNamespacePrefix(attr.getNamespacePrefix());
+                link.getLinkAttributes().add(linkAttr);
+            }
         }
 
-        
         return link;
 
     }

@@ -180,14 +180,14 @@ public interface SyndLink {
      * @return Opaque object to discourage use
      *
      */
-    public List<Attribute> getForeignAttributes();
+    public List<SyndLinkAttribute> getLinkAttributes();
 
     /**
      * Sets foreign markup found at channel level.
      * <p>
      *
-     * @param foreignMarkup Opaque object to discourage use
+     * @param attributes Opaque object to discourage use
      *
      */
-    public void setForeignAttributes(List<Attribute> foreignMarkup);
+    public void setLinkAttributes(List<SyndLinkAttribute> attributes);
 }

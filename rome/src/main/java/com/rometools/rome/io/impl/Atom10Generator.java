@@ -24,6 +24,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import com.rometools.rome.feed.atom.*;
 import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -32,12 +33,6 @@ import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.XMLOutputter;
 
 import com.rometools.rome.feed.WireFeed;
-import com.rometools.rome.feed.atom.Category;
-import com.rometools.rome.feed.atom.Content;
-import com.rometools.rome.feed.atom.Entry;
-import com.rometools.rome.feed.atom.Feed;
-import com.rometools.rome.feed.atom.Generator;
-import com.rometools.rome.feed.atom.Link;
 import com.rometools.rome.feed.synd.SyndPerson;
 import com.rometools.rome.io.FeedException;
 import com.rometools.rome.io.WireFeedOutput;
@@ -403,9 +398,14 @@ public class Atom10Generator extends BaseWireFeedGenerator {
             linkElement.setAttribute(lenght);
         }
 
-        final List<Attribute> foreignAttributes = link.getForeignAttributes();
-        if (null != foreignAttributes) {
-            generateForeignAttributes(linkElement, foreignAttributes);
+        final List<LinkAttribute> linkAttributes = link.getLinkAttributes();
+        if (null != linkAttributes) {
+                for (final LinkAttribute linkAttribute : linkAttributes) {
+                    final Attribute foreignAttribute = new Attribute(linkAttribute.getName(),
+                            linkAttribute.getValue(),
+                            Namespace.getNamespace(linkAttribute.getNamespacePrefix(), linkAttribute.getNamespaceURI()));
+                    linkElement.setAttribute(foreignAttribute);
+                }
         }
 
         return linkElement;

@@ -21,30 +21,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.rometools.rome.feed.atom.*;
+import com.rometools.rome.feed.synd.*;
 import org.jdom2.Attribute;
 import org.jdom2.Element;
 
 import com.rometools.rome.feed.WireFeed;
-import com.rometools.rome.feed.atom.Content;
-import com.rometools.rome.feed.atom.Entry;
-import com.rometools.rome.feed.atom.Feed;
-import com.rometools.rome.feed.atom.Link;
-import com.rometools.rome.feed.atom.Person;
 import com.rometools.rome.feed.module.impl.ModuleUtils;
-import com.rometools.rome.feed.synd.Converter;
-import com.rometools.rome.feed.synd.SyndContent;
-import com.rometools.rome.feed.synd.SyndContentImpl;
-import com.rometools.rome.feed.synd.SyndEnclosure;
-import com.rometools.rome.feed.synd.SyndEnclosureImpl;
-import com.rometools.rome.feed.synd.SyndEntry;
-import com.rometools.rome.feed.synd.SyndEntryImpl;
-import com.rometools.rome.feed.synd.SyndFeed;
-import com.rometools.rome.feed.synd.SyndImage;
-import com.rometools.rome.feed.synd.SyndImageImpl;
-import com.rometools.rome.feed.synd.SyndLink;
-import com.rometools.rome.feed.synd.SyndLinkImpl;
-import com.rometools.rome.feed.synd.SyndPerson;
-import com.rometools.rome.feed.synd.SyndPersonImpl;
 import com.rometools.utils.Alternatives;
 import com.rometools.utils.Lists;
 import com.rometools.utils.Strings;
@@ -169,9 +152,13 @@ public class ConverterForAtom03 implements Converter {
         syndLink.setHref(link.getHrefResolved());
         syndLink.setTitle(link.getTitle());
 
-        final List<Attribute> foreignAttributes = link.getForeignAttributes();
-        if (Lists.isNotEmpty(foreignAttributes)) {
-            syndLink.setForeignAttributes(foreignAttributes);
+        for (LinkAttribute attr : link.getLinkAttributes()) {
+            final SyndLinkAttribute syndLinkAttr = new SyndLinkAttributeImpl();
+            syndLinkAttr.setName(attr.getName());
+            syndLinkAttr.setValue(attr.getValue());
+            syndLinkAttr.setNamespaceURI(attr.getNamespaceURI());
+            syndLinkAttr.setNamespacePrefix(attr.getNamespacePrefix());
+            syndLink.getLinkAttributes().add(syndLinkAttr);
         }
 
         return syndLink;
@@ -528,6 +515,14 @@ public class ConverterForAtom03 implements Converter {
         link.setType(syndLink.getType());
         link.setHref(syndLink.getHref());
         link.setTitle(syndLink.getTitle());
+        for (SyndLinkAttribute syndLinkAttr : syndLink.getLinkAttributes()) {
+            final LinkAttribute linkAttr = new LinkAttribute();
+            linkAttr.setName(syndLinkAttr.getName());
+            linkAttr.setValue(syndLinkAttr.getValue());
+            linkAttr.setNamespaceURI(syndLinkAttr.getNamespaceURI());
+            linkAttr.setNamespacePrefix(syndLinkAttr.getNamespacePrefix());
+            link.getLinkAttributes().add(linkAttr);
+        }
         return link;
     }
 
