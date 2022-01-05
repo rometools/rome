@@ -249,7 +249,7 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
 
     protected Integer readInteger(final String value) {
         if (value != null) {
-            return new Integer(value);
+            return Integer.valueOf(value);
         } else {
             return null;
         }

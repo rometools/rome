@@ -23,9 +23,6 @@ package com.rometools.modules.yahooweather.io;
 import java.io.File;
 import java.util.List;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,10 +31,12 @@ import com.rometools.modules.cc.io.CCModuleGenerator;
 import com.rometools.modules.yahooweather.YWeatherEntryModule;
 import com.rometools.modules.yahooweather.YWeatherModule;
 import com.rometools.modules.yahooweather.YWeatherModuleImpl;
-import com.rometools.modules.yahooweather.io.WeatherModuleParser;
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.SyndFeedInput;
+
+import junit.framework.Test;
+import junit.framework.TestSuite;
 
 public class WeatherModuleParserTest extends AbstractTestCase {
 

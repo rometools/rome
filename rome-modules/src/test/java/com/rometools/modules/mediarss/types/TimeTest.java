@@ -20,15 +20,13 @@
 
 package com.rometools.modules.mediarss.types;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-
 import org.junit.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.rometools.modules.mediarss.types.Time;
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
 
 public class TimeTest extends TestCase {
 

@@ -27,9 +27,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
-
 import org.jdom2.Attribute;
 import org.jdom2.Content;
 import org.jdom2.Document;
@@ -37,7 +34,6 @@ import org.jdom2.Element;
 import org.jdom2.input.SAXBuilder;
 
 import com.rometools.modules.AbstractTestCase;
-import com.rometools.modules.sse.SSE091Generator;
 import com.rometools.modules.sse.modules.Conflict;
 import com.rometools.modules.sse.modules.History;
 import com.rometools.modules.sse.modules.SSEModule;
@@ -49,6 +45,9 @@ import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.SyndFeedOutput;
 import com.rometools.rome.io.XmlReader;
 import com.rometools.rome.io.impl.DateParser;
+
+import junit.framework.Test;
+import junit.framework.TestSuite;
 
 /**
  * Test to verify correctness of SSE subproject.

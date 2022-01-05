@@ -17,6 +17,7 @@
 package com.rometools.rome.feed.impl;
 
 import java.lang.reflect.Array;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
@@ -79,7 +80,7 @@ public class CloneableBean {
 
         try {
 
-            final Object clonedBean = clazz.newInstance();
+            final Object clonedBean = clazz.getDeclaredConstructor().newInstance();
 
             final List<PropertyDescriptor> propertyDescriptors = BeanIntrospector.getPropertyDescriptorsWithGettersAndSetters(clazz);
             for (final PropertyDescriptor propertyDescriptor : propertyDescriptors) {
@@ -163,7 +164,7 @@ public class CloneableBean {
 
     private static <T extends Collection<E>, E> Collection<E> newCollection(Class<T> type)
         throws InstantiationException, IllegalAccessException {
-        Collection<E> collection;
+        Collection<E> collection = null;
         if (SortedSet.class.isAssignableFrom(type)) {
             collection = new TreeSet<E>();
         } else if (Set.class.isAssignableFrom(type)) {
@@ -171,7 +172,12 @@ public class CloneableBean {
         } else if (List.class.isAssignableFrom(type)) {
             collection = new ArrayList<E>();
         } else {
-            collection = type.newInstance();
+            try {
+				collection = type.getDeclaredConstructor().newInstance();
+			} catch (InstantiationException | IllegalAccessException | IllegalArgumentException
+					| InvocationTargetException | NoSuchMethodException | SecurityException e) {
+				LOG.error("Error", e);
+			}
         }
         return collection;
     }

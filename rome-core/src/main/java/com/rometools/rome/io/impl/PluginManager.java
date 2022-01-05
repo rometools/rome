@@ -92,7 +92,7 @@ public abstract class PluginManager<T> {
             for (final Class<T> clazz : classes) {
 
                 className = clazz.getName();
-                final T plugin = clazz.newInstance();
+                final T plugin = clazz.getDeclaredConstructor().newInstance();
 
                 if (plugin instanceof DelegatingModuleParser) {
                     ((DelegatingModuleParser) plugin).setFeedParser(parentParser);

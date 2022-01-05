@@ -208,7 +208,7 @@ public class SSE091Parser implements DelegatingModuleParser {
         Integer integerAttr = null;
         if (integerAttribute != null) {
             try {
-                integerAttr = new Integer(integerAttribute.getIntValue());
+                integerAttr = Integer.valueOf(integerAttribute.getIntValue());
             } catch (final DataConversionException e) {
                 // dont use the data
             }

@@ -17,12 +17,10 @@
 
 package com.rometools.modules.activitystreams.types;
 
-import junit.framework.TestCase;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.rometools.modules.activitystreams.types.Verb;
+import junit.framework.TestCase;
 
 public class VerbTest extends TestCase {
 

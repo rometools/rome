@@ -24,9 +24,6 @@ import java.net.URL;
 import java.util.Calendar;
 import java.util.List;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
-
 import org.junit.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,7 +43,6 @@ import com.rometools.modules.base.Service;
 import com.rometools.modules.base.Travel;
 import com.rometools.modules.base.Vehicle;
 import com.rometools.modules.base.Wanted;
-import com.rometools.modules.base.io.GoogleBaseParser;
 import com.rometools.modules.base.types.CurrencyEnumeration;
 import com.rometools.modules.base.types.FloatUnit;
 import com.rometools.modules.base.types.GenderEnumeration;
@@ -56,6 +52,9 @@ import com.rometools.modules.base.types.ShippingType;
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.SyndFeedInput;
+
+import junit.framework.Test;
+import junit.framework.TestSuite;
 
 public class GoogleBaseParserTest extends AbstractTestCase {
 
@@ -151,10 +150,9 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         Assert.assertEquals("End Time", cal.getTime(), event.getEventDateRange().getEnd());
         Assert.assertEquals("Location", "1600 Amphitheatre Parkway, Mountain View, CA, 94043", event.getLocation());
         Assert.assertEquals("Shipping Price", (float) 32.95, event.getShipping()[0].getPrice().getValue(), 0);
-        // TODO: Determine what to do about the bogus services.
         Assert.assertEquals("Shipping Country", "US", event.getShipping()[0].getCountry());
         Assert.assertEquals("Tax Region", "California", event.getTaxRegion());
-        Assert.assertEquals("Tax Percentage", new Float(8.25), event.getTaxPercent());
+        Assert.assertEquals("Tax Percentage", Float.valueOf(8.25f), event.getTaxPercent());
 
         entry = entries.get(1);
         event = (Event) entry.getModule(GoogleBase.URI);
@@ -180,10 +178,9 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         Assert.assertEquals("End Time", cal.getTime(), event.getEventDateRange().getEnd());
         Assert.assertEquals("Location", "123 Main St, Anytown, CA, 12345, USA", event.getLocation());
         Assert.assertEquals("Shipping Price", (float) 32.95, event.getShipping()[0].getPrice().getValue(), 0);
-        // TODO: Determine what to do about the bogus services.
         Assert.assertEquals("Shipping Country", "US", event.getShipping()[0].getCountry());
         Assert.assertEquals("Tax Region", "California", event.getTaxRegion());
-        Assert.assertEquals("Tax Percentage", new Float(8.25), event.getTaxPercent());
+        Assert.assertEquals("Tax Percentage", Float.valueOf(8.25f), event.getTaxPercent());
 
     }
 
@@ -210,19 +207,19 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         this.assertEquals("Payment Accepted", new PaymentTypeEnumeration[] { PaymentTypeEnumeration.CASH, PaymentTypeEnumeration.CHECK,
                 PaymentTypeEnumeration.VISA }, module.getPaymentAccepted());
         Assert.assertEquals("Payment Notes", "1000 deposit", module.getPaymentNotes());
-        Assert.assertEquals("Listing Type", new Boolean(true), module.getListingType());
+        Assert.assertEquals("Listing Type", Boolean.TRUE, module.getListingType());
         this.assertEquals("PropertyTypes", new String[] { "Townhouse" }, module.getPropertyTypes());
         Assert.assertEquals("Location", "123 Main St, Anytown, CA, 12345, USA", module.getLocation());
-        Assert.assertEquals("Bedrooms", new Integer(3), module.getBedrooms());
-        Assert.assertEquals("Bathrooms", new Float(3), module.getBathrooms());
+        Assert.assertEquals("Bedrooms", Integer.valueOf(3), module.getBedrooms());
+        Assert.assertEquals("Bathrooms", Float.valueOf(3f), module.getBathrooms());
         Assert.assertEquals("Area", 1300, module.getArea().getValue());
         Assert.assertEquals("Area Units", null, module.getArea().getUnits());
         Assert.assertEquals("School District", "Union School District", module.getSchoolDistrict());
-        Assert.assertEquals("HOA Dues", new Float(120), module.getHoaDues());
+        Assert.assertEquals("HOA Dues", Float.valueOf(120f), module.getHoaDues());
         Assert.assertEquals("Year", "2005", module.getYear().toString());
         this.assertEquals("Agents", new String[] { "Sue Smith" }, module.getAgents());
         Assert.assertEquals("Tax Region", "California", module.getTaxRegion());
-        Assert.assertEquals("Tax Percentage", new Float(8.25), module.getTaxPercent());
+        Assert.assertEquals("Tax Percentage", Float.valueOf(8.25f), module.getTaxPercent());
 
         entry = entries.get(1);
         module = (Housing) entry.getModule(GoogleBase.URI);
@@ -236,11 +233,11 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         Assert.assertEquals("PriceType", PriceTypeEnumeration.STARTING, module.getPriceType());
         this.assertEquals("Payment Accepted", new PaymentTypeEnumeration[] { PaymentTypeEnumeration.CHECK }, module.getPaymentAccepted());
         Assert.assertEquals("Payment Notes", "1000 deposit", module.getPaymentNotes());
-        Assert.assertEquals("Listing Type", new Boolean(false), module.getListingType());
+        Assert.assertEquals("Listing Type", Boolean.FALSE, module.getListingType());
         this.assertEquals("PropertyTypes", new String[] { "apartment" }, module.getPropertyTypes());
         Assert.assertEquals("Location", "123 Main St, Anytown, CA, 12345, USA", module.getLocation());
-        Assert.assertEquals("Bedrooms", new Integer(2), module.getBedrooms());
-        Assert.assertEquals("Bathrooms", new Float(2), module.getBathrooms());
+        Assert.assertEquals("Bedrooms", Integer.valueOf(2), module.getBedrooms());
+        Assert.assertEquals("Bathrooms", Float.valueOf(2f), module.getBathrooms());
         Assert.assertEquals("Area", 1100, module.getArea().getValue());
         Assert.assertEquals("Area Units", null, module.getArea().getUnits());
         Assert.assertEquals("School District", "Union School District", module.getSchoolDistrict());
@@ -273,7 +270,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         LOG.debug("{}", new Object[] { module.getJobTypes() });
         this.assertEquals("Job Type", new String[] { "full-time" }, module.getJobTypes());
         Assert.assertEquals("Currency", CurrencyEnumeration.USD, module.getCurrency());
-        Assert.assertEquals("Salary", new Float(40000), module.getSalary());
+        Assert.assertEquals("Salary", Float.valueOf(40000f), module.getSalary());
         Assert.assertEquals("Salary Type", PriceTypeEnumeration.STARTING, module.getSalaryType());
         Assert.assertEquals("Education", "BS", module.getEducation());
         Assert.assertEquals("Immigration", "Permanent Resident", module.getImmigrationStatus());
@@ -301,7 +298,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         cal.set(1961, 3, 12, 0, 0, 0);
         Assert.assertEquals("Pub Date", cal.getTime(), module.getPublishDate());
         this.assertEquals("Authors", new String[] { "James Smith" }, module.getAuthors());
-        Assert.assertEquals("Pages", new Integer(1), module.getPages());
+        Assert.assertEquals("Pages", Integer.valueOf(1), module.getPages());
 
     }
 
@@ -328,7 +325,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         this.assertEquals("Payment Accepted", new PaymentTypeEnumeration[] { PaymentTypeEnumeration.CHECK, PaymentTypeEnumeration.VISA },
                 module.getPaymentAccepted());
         Assert.assertEquals("Payment notes", "minimum payment on credit cards:45", module.getPaymentNotes());
-        Assert.assertEquals("Quantity", new Integer(204), module.getQuantity());
+        Assert.assertEquals("Quantity", Integer.valueOf(204), module.getQuantity());
         Assert.assertEquals("From", "Mytown, USA", module.getFromLocation());
         Assert.assertEquals("To", "Anytown, USA", module.getToLocation());
         cal.set(2005, 11, 20, 18, 0, 0);
@@ -339,7 +336,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         this.assertEquals("Shipping", new ShippingType[] { new ShippingType(new FloatUnit("32.95"), ShippingType.ServiceEnumeration.OVERNIGHT, "US") },
                 module.getShipping());
         Assert.assertEquals("Tax Region", "California", module.getTaxRegion());
-        Assert.assertEquals("Tax Percentage", new Float(8.25), module.getTaxPercent());
+        Assert.assertEquals("Tax Percentage", Float.valueOf(8.25f), module.getTaxPercent());
 
     }
 
@@ -366,7 +363,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         Assert.assertEquals("Marital Status", "single", module.getMaritalStatus());
         Assert.assertEquals("Occupation", "Sales", module.getOccupation());
         Assert.assertEquals("Employer", "Google, Inc.", module.getEmployer());
-        Assert.assertEquals("Age", new Integer(23), module.getAge());
+        Assert.assertEquals("Age", Integer.valueOf(23), module.getAge());
         Assert.assertEquals("Location", "Anytown, 12345, USA", module.getLocation());
 
     }
@@ -403,7 +400,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         Assert.assertEquals("Size", 50, module.getSize().getWidth().getValue(), 0);
         Assert.assertEquals("Size", 20, module.getSize().getHeight().getValue(), 0);
         Assert.assertEquals("Weight", 2, module.getWeight().getValue(), 0);
-        Assert.assertEquals("Quantity", new Integer(300), module.getQuantity());
+        Assert.assertEquals("Quantity", Integer.valueOf(300), module.getQuantity());
         Assert.assertEquals("Condition", "new", module.getCondition());
         this.assertEquals("Colors", new String[] { "blue" }, module.getColors());
         Assert.assertEquals("Location", "1600 Amphitheatre Pkwy Mountain View, CA 94043-1351, US", module.getLocation());
@@ -431,7 +428,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         this.assertEquals("Authors", new String[] { "James Smith" }, module.getAuthors());
         Assert.assertEquals("Pub Name", "Tsunami and the Economy", module.getPublicationName());
         Assert.assertEquals("Pub Vol", "III", module.getPublicationVolume());
-        Assert.assertEquals("Pages", new Integer(5), module.getPages());
+        Assert.assertEquals("Pages", Integer.valueOf(5), module.getPages());
     }
 
     /**
@@ -456,7 +453,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         Assert.assertEquals("Name of Item Rev", "Google Earth", module.getNameOfItemBeingReviewed());
         Assert.assertEquals("Type", "Product", module.getReviewType());
         Assert.assertEquals("Rever Type", "editorial", module.getReviewerType());
-        Assert.assertEquals("Rating", new Float(5), module.getRating());
+        Assert.assertEquals("Rating", Float.valueOf(5f), module.getRating());
         Assert.assertEquals("URL of Item", new URL("http://earth.google.com/"), module.getUrlOfItemBeingReviewed());
 
     }
@@ -518,7 +515,7 @@ public class GoogleBaseParserTest extends AbstractTestCase {
         Assert.assertEquals("Make", "Mini", module.getMake());
         Assert.assertEquals("Model", "Cooper S", module.getModel());
         Assert.assertEquals("Year", "2006", module.getYear().toString());
-        Assert.assertEquals("Mileage", new Integer(0), module.getMileage());
+        Assert.assertEquals("Mileage", Integer.valueOf(0), module.getMileage());
         this.assertEquals("Colors", new String[] { "red" }, module.getColors());
         Assert.assertEquals("Vin", "1M8GDM9AXKP042788", module.getVin());
         Assert.assertEquals("Location", "123 Main Street, Anytown, CA, 12345, USA", module.getLocation());

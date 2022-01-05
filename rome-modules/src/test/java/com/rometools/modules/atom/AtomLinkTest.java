@@ -20,6 +20,7 @@
 package com.rometools.modules.atom;
 
 import java.io.File;
+import java.util.List;
 
 import com.rometools.modules.AbstractTestCase;
 import com.rometools.modules.atom.io.AtomModuleGenerator;
@@ -28,11 +29,9 @@ import com.rometools.modules.atom.modules.AtomLinkModuleImpl;
 import com.rometools.rome.feed.atom.Link;
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.SyndFeedInput;
+
 import junit.framework.Test;
 import junit.framework.TestSuite;
-
-import java.io.File;
-import java.util.List;
 
 /**
  * Test to verify correctness of SSE subproject.

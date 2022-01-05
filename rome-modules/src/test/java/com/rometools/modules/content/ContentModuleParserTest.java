@@ -23,8 +23,6 @@ import java.io.File;
 import java.util.List;
 
 import com.rometools.modules.AbstractTestCase;
-import com.rometools.modules.content.ContentItem;
-import com.rometools.modules.content.ContentModule;
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.SyndFeedInput;
