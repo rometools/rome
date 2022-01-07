@@ -17,6 +17,7 @@
 package com.rometools.rome.feed.impl;
 
 import java.lang.reflect.Array;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Provides deep <b>Bean</b> clonning support.
- * <p>
+
  * It works on all read/write properties, recursively. It support all primitive types, Strings,
  * Collections, Cloneable objects and multi-dimensional arrays of any of them.
  */
@@ -66,9 +67,10 @@ public class CloneableBean {
 
     /**
      * Makes a deep bean clone of the object passed in the constructor.
-     * <p>
      * To be used by classes using CloneableBean in a delegation pattern,
-     *
+     * 
+     * @param obj the object to be cloned
+     * @param ignoreProperties properties ignore in clone phase
      * @return a clone of the object bean.
      * @throws CloneNotSupportedException thrown if the object bean could not be cloned.
      *
@@ -79,7 +81,7 @@ public class CloneableBean {
 
         try {
 
-            final Object clonedBean = clazz.newInstance();
+            final Object clonedBean = clazz.getDeclaredConstructor().newInstance();
 
             final List<PropertyDescriptor> propertyDescriptors = BeanIntrospector.getPropertyDescriptorsWithGettersAndSetters(clazz);
             for (final PropertyDescriptor propertyDescriptor : propertyDescriptors) {
@@ -163,7 +165,7 @@ public class CloneableBean {
 
     private static <T extends Collection<E>, E> Collection<E> newCollection(Class<T> type)
         throws InstantiationException, IllegalAccessException {
-        Collection<E> collection;
+        Collection<E> collection = null;
         if (SortedSet.class.isAssignableFrom(type)) {
             collection = new TreeSet<E>();
         } else if (Set.class.isAssignableFrom(type)) {
@@ -171,7 +173,12 @@ public class CloneableBean {
         } else if (List.class.isAssignableFrom(type)) {
             collection = new ArrayList<E>();
         } else {
-            collection = type.newInstance();
+            try {
+				collection = type.getDeclaredConstructor().newInstance();
+			} catch (InstantiationException | IllegalAccessException | IllegalArgumentException
+					| InvocationTargetException | NoSuchMethodException | SecurityException e) {
+				LOG.error("Error", e);
+			}
         }
         return collection;
     }

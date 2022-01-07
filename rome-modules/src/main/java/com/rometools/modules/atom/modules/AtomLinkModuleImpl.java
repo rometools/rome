@@ -29,7 +29,12 @@ import java.util.List;
 
 public class AtomLinkModuleImpl implements AtomLinkModule, Cloneable, Serializable {
 
-    private List<Link> links = new LinkedList<Link>();
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1830237533424528186L;
+	
+	private List<Link> links = new LinkedList<Link>();
     private List<SyndPerson> authors = new LinkedList<SyndPerson>();
     private List<SyndPerson> contributors = new LinkedList<SyndPerson>();
 
@@ -39,25 +44,8 @@ public class AtomLinkModuleImpl implements AtomLinkModule, Cloneable, Serializab
     }
 
     @Override
-    public Link getLink() {
-        if(links.size() > 0) {
-            return links.get(0);
-        }
-        return null;
-    }
-
-    @Override
     public void setLinks(List<Link> links) {
         this.links = links;
-    }
-
-    @Override
-    public void setLink(Link link) {
-        if(links.size() > 0) {
-            links.set(0, link);
-        } else {
-            links.add(link);
-        }
     }
 
     @Override

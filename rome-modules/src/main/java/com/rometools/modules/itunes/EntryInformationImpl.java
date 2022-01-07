@@ -16,15 +16,14 @@
  */
 package com.rometools.modules.itunes;
 
-import com.rometools.modules.itunes.types.Duration;
-import com.rometools.rome.feed.CopyFrom;
+import java.net.MalformedURLException;
+import java.net.URL;
 
-import java.net.URISyntaxException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.net.MalformedURLException;
-import java.net.URL;
+import com.rometools.modules.itunes.types.Duration;
+import com.rometools.rome.feed.CopyFrom;
 
 /**
  * This class contains information for iTunes podcast feeds that exist at the Item level.

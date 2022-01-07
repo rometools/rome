@@ -34,12 +34,15 @@ import com.rometools.rome.io.FeedException;
 
 /**
  * Feed Generator for RSS 0.91
- * <p/>
+ * 
  */
 public class RSS091UserlandGenerator extends RSS090Generator {
 
     private final String version;
 
+    /**
+     * Public constructor.
+     */
     public RSS091UserlandGenerator() {
         this("rss_0.91U", "0.91");
     }
@@ -56,6 +59,7 @@ public class RSS091UserlandGenerator extends RSS090Generator {
 
     /**
      * To be overriden by RSS 0.91 Netscape and RSS 0.94
+     * @return the result of is hour format 24.
      */
     protected boolean isHourFormat24() {
         return true;

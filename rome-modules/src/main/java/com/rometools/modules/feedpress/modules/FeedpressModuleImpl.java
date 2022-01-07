@@ -11,7 +11,12 @@ public class FeedpressModuleImpl
         extends ModuleImpl
         implements FeedpressModule, Cloneable, Serializable {
 
-    private String newsletterId;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 5013141869124014476L;
+	
+	private String newsletterId;
     private String locale;
     private String podcastId;
     private String cssFile;

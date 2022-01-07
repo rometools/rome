@@ -11,6 +11,7 @@
  */
 package com.rometools.modules.sse.modules;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -59,14 +60,14 @@ public abstract class SSEModule implements Module {
     public Object clone() {
         SSEModule clone = null;
         try {
-            clone = this.getClass().newInstance();
-            clone.copyFrom(this);
-        } catch (final InstantiationException e) {
-            LOG.error("Error", e);
-        } catch (final IllegalAccessException e) {
-            LOG.error("Error", e);
-        }
+			clone = this.getClass().getDeclaredConstructor().newInstance();
+			clone.copyFrom(this);
+		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException
+				| InvocationTargetException | NoSuchMethodException | SecurityException e) {
+			LOG.error("Error", e);
+		}
         return clone;
+        
     }
 
     @Override

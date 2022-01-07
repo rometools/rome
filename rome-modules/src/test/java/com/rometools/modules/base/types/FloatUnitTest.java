@@ -20,14 +20,12 @@
 
 package com.rometools.modules.base.types;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.rometools.modules.base.types.FloatUnit;
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
 
 public class FloatUnitTest extends TestCase {
 

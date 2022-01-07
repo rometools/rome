@@ -20,13 +20,13 @@ import com.rometools.rome.feed.CopyFrom;
 
 /**
  * <pre>
- * <sx:related>
+ * &lt;sx:related&gt;
  * </pre>
  *
  * Element within
  *
  * <pre>
- * <sx:sharing>
+ * &lt;sx:sharing&gt;
  * </pre>
  *
  * .
@@ -114,10 +114,10 @@ public class Related extends SSEModule {
 
     /**
      * type A required, string attribute. This attribute can have one of the following values:
-     * <p>
+
      * "complete" if the link points to file containing the complete collection of items for this
      * feed.
-     * <p>
+
      * "aggregated" if the link points to a feed whose contents are being incorporated into this
      * feed by the publisher.
      *

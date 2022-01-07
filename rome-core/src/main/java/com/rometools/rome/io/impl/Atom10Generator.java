@@ -45,7 +45,7 @@ import com.rometools.utils.Lists;
 
 /**
  * Feed Generator for Atom
- * <p/>
+ * 
  */
 public class Atom10Generator extends BaseWireFeedGenerator {
 
@@ -54,6 +54,9 @@ public class Atom10Generator extends BaseWireFeedGenerator {
 
     private final String version;
 
+    /**
+     * Public constructor.
+     */
     public Atom10Generator() {
         this("atom_1.0", "1.0");
     }
@@ -71,6 +74,9 @@ public class Atom10Generator extends BaseWireFeedGenerator {
         return ATOM_NS;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Document generate(final WireFeed wFeed) throws FeedException {
         final Feed feed = (Feed) wFeed;
@@ -537,6 +543,11 @@ public class Atom10Generator extends BaseWireFeedGenerator {
 
     /**
      * Utility method to serialize an entry to writer.
+     * @param entry the entry to serialize
+     * @param writer the writer to commit entry
+     * @throws IllegalArgumentException any illegal argument exception
+     * @throws FeedException any feed exception
+     * @throws IOException any I/O exception
      */
     public static void serializeEntry(final Entry entry, final Writer writer) throws IllegalArgumentException, FeedException, IOException {
 

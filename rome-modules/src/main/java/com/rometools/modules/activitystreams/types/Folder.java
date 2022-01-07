@@ -18,19 +18,19 @@
 package com.rometools.modules.activitystreams.types;
 
 /**
- * <p>
+
  * The "folder" object type represents a collection of files or media objects. This is similar to
  * the "photo album" object type, but not specifically representing a collection of "photos."
- * </p>
- * <p>
+
+
  * The "folder" object type is identified by the URI
- * <tt>http://activitystrea.ms/schema/1.0/folder</tt>.
- * </p>
- * <p>
+ * "http://activitystrea.ms/schema/1.0/folder".
+
+
  * A folder has the following additional components:
- * </p>
- * <p>
- * </p>
+
+
+
  * <blockquote class="text">
  * <dl>
  * <dt>Preview Image Link</dt>

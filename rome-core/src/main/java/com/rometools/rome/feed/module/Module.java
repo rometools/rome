@@ -28,7 +28,7 @@ public interface Module extends Cloneable, CopyFrom, Serializable {
 
     /**
      * Returns the URI of the module.
-     * <p>
+
      *
      * @return URI of the module.
      *
@@ -37,7 +37,7 @@ public interface Module extends Cloneable, CopyFrom, Serializable {
 
     /**
      * Creates a deep clone of the object.
-     * <p>
+
      *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.

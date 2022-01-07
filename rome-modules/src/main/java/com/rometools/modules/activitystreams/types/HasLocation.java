@@ -21,7 +21,7 @@ import com.rometools.modules.georss.GeoRSSModule;
 import com.rometools.modules.portablecontacts.ContactModule;
 
 /**
- * <p>
+
  * Location is a concept which can be used inside the atom:entry level, atom:author and
  * activity:object. Location can be specified via geographic coordinates, a street address, a
  * free-form location name or a combination of these. Geographic coordinates should be included as a
@@ -31,18 +31,9 @@ import com.rometools.modules.portablecontacts.ContactModule;
  * location represents the primary location of the author. Finally, the location within other
  * objects represents the physical location of those objects. All location fields are optional. For
  * free form addresses use the poco:formatted field.
- * </p>
- * <p>
  * <a class='info' href='#location-poco'>Figure&nbsp;1<span> (</span><span class='info'>Location
  * Example</span><span>)</span></a>
- * </p>
- * <p>
- * <br />
- * <hr class="insert" />
- * <a name="location-poco"></a>
- * </p>
- * <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'>
- *
+ * <a id="location-poco"></a>
  * <pre>
  * &lt;entry&gt;
  *   &lt;id&gt;tag:world:activity:1212121212121&lt;/id&gt;
@@ -76,27 +67,30 @@ import com.rometools.modules.portablecontacts.ContactModule;
  *   &lt;activity:verb&gt;http://activitystrea.ms/schema/1.0/like&lt;/activity:verb&gt;
  * &lt;/entry&gt;
  * </pre>
- *
- * </div>
- * <p>
- * <table border="0" cellpadding="0" cellspacing="2" align="center">
- * <tr>
- * <td align="center"><font face="monaco, MS Sans Serif" size="1"><b>&nbsp;Figure&nbsp;1: Location
- * Example&nbsp;</b></font><br />
- * </td>
- * </tr>
- * </table>
- * <hr class="insert" />
- *
- * </p>
  */
 public interface HasLocation {
 
+	/**
+	 * Returns the location.
+	 * @return the location.
+	 */
     public GeoRSSModule getLocation();
 
+    /**
+     * Sets the location
+     * @param location the location.
+     */
     public void setLocation(GeoRSSModule location);
 
+    /**
+     * Returns the address in ContactModule format.
+     * @return the address.
+     */
     public ContactModule getAddress();
 
+    /**
+     * Sets the address from ContactModule format.
+     * @param address the address to set.
+     */
     public void setAddress(ContactModule address);
 }

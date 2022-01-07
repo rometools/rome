@@ -18,11 +18,10 @@ package com.rometools.rome.io.impl;
 /**
  * A helper class that parses Numbers out of Strings in a lenient manner.
  *
- * <p>
+
  * No method will throw any sort of Exception when parsing a string. All methods accept any Java
  * String or null as legal input, if the input is non null, whitespace will be trimmed first, and
  * then parsing will be attempted.
- * </p>
  */
 public final class NumberParser {
 
@@ -42,7 +41,7 @@ public final class NumberParser {
     public static Long parseLong(final String str) {
         if (null != str) {
             try {
-                return new Long(Long.parseLong(str.trim()));
+                return Long.valueOf(str.trim());
             } catch (final Exception e) {
                 // :IGNORE:
             }
@@ -60,7 +59,7 @@ public final class NumberParser {
     public static Integer parseInt(final String str) {
         if (null != str) {
             try {
-                return new Integer(Integer.parseInt(str.trim()));
+                return Integer.valueOf(str.trim());
             } catch (final Exception e) {
                 // :IGNORE:
             }
@@ -78,7 +77,7 @@ public final class NumberParser {
     public static Float parseFloat(final String str) {
         if (null != str) {
             try {
-                return new Float(Float.parseFloat(str.trim()));
+                return Float.valueOf(str.trim());
             } catch (final Exception e) {
                 // :IGNORE:
             }
@@ -89,8 +88,9 @@ public final class NumberParser {
     /**
      * Parse a float from a String, with a default value
      *
-     * @param str
+     * @param str the string to be parsed.
      * @param def the value to return if the String cannot be parsed
+     * @return the str float-parsed
      */
     public static float parseFloat(final String str, final float def) {
         final Float result = parseFloat(str);

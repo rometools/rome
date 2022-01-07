@@ -18,31 +18,31 @@
 package com.rometools.modules.activitystreams.types;
 
 /**
- * <p>
+
  * The "file" Object type represents some document or other file with no additional machine-readable
  * semantics.
- * </p>
- * <p>
+
+
  * It is intended that this type be used as a base type for other Objects that manifest as files, so
  * that additional semantics can be added while providing a fallback ability for clients that do not
  * support the more specific Object type.
- * </p>
- * <p>
- * The "file" Object type is identified by the URI <tt>http://activitystrea.ms/schema/1.0/file</tt>.
- * </p>
- * <p>
+
+
+ * The "file" Object type is identified by the URI "http://activitystrea.ms/schema/1.0/file".
+
+
  * A file has the following additional components:
- * </p>
- * <p>
- * </p>
+
+
+
  * <blockquote class="text">
  * <dl>
  * <dt>Associated File URL</dt>
  * <dd>The URL of the file described by this Object Construct. Represented in JSON by a property
- * called <tt>fileUrl</tt> whose value is a JSON string containing the URL.</dd>
+ * called "fileUrl" whose value is a JSON string containing the URL.</dd>
  * <dt>File MIME Type</dt>
  * <dd>The MIME type of the file described by this Object Construct. Represented in JSON by a
- * property called <tt>mimeType</tt> whose value is a JSON string containing the MIME type.</dd>
+ * property called "mimeType" whose value is a JSON string containing the MIME type.</dd>
  * </dl>
  * </blockquote>
  */

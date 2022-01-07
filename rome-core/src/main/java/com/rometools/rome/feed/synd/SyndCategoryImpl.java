@@ -54,7 +54,6 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
     /**
      * For implementations extending SyndContentImpl to be able to use the ObjectBean functionality
      * with extended interfaces.
-     * <p>
      *
      * @param subject the DC subject to wrap.
      */
@@ -64,7 +63,6 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
 
     /**
      * Creates a deep 'bean' clone of the object.
-     * <p>
      *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
@@ -78,7 +76,6 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
     /**
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
-     * <p>
      *
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
@@ -94,9 +91,7 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
 
     /**
      * Returns a hashcode value for the object.
-     * <p>
      * It follows the contract defined by the Object hashCode() method.
-     * <p>
      *
      * @return the hashcode of the bean object.
      *
@@ -108,7 +103,6 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
 
     /**
      * Returns the String representation for the object.
-     * <p>
      *
      * @return String representation for the object.
      *
@@ -120,7 +114,6 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
 
     /**
      * Package private constructor, used by SyndCategoryListFacade.
-     * <p>
      *
      * @return the DC subject being wrapped.
      *
@@ -129,13 +122,15 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
         return subject;
     }
 
+    /**
+     * Public constructor.
+     */
     public SyndCategoryImpl() {
         this(new DCSubjectImpl());
     }
 
     /**
      * Returns the category name.
-     * <p>
      *
      * @return the category name, <b>null</b> if none.
      *
@@ -147,7 +142,6 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
 
     /**
      * Sets the category name.
-     * <p>
      *
      * @param name the category name to set, <b>null</b> if none.
      *
@@ -159,7 +153,6 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
 
     /**
      * Sets the category Label.
-     * <p>
      * @param label the category label to set, <b>null</b> if none
      *
      */
@@ -168,12 +161,16 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
         this.label = label;
     }
 
+    /**
+     * Returns the label
+     * 
+     * @return the label.
+     */
     @Override
     public String getLabel() { return label; }
 
     /**
      * Returns the category taxonomy URI.
-     * <p>
      *
      * @return the category taxonomy URI, <b>null</b> if none.
      *
@@ -185,7 +182,6 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
 
     /**
      * Sets the category taxonomy URI.
-     * <p>
      *
      * @param taxonomyUri the category taxonomy URI to set, <b>null</b> if none.
      *
@@ -195,11 +191,21 @@ public class SyndCategoryImpl implements Serializable, SyndCategory {
         subject.setTaxonomyUri(taxonomyUri);
     }
 
+    /**
+     * Returns the Class interface
+     * 
+     * @return the class interface.
+     */
     @Override
     public Class<? extends CopyFrom> getInterface() {
         return SyndCategory.class;
     }
 
+    /**
+     * Copy execution using CopyFrom helper class.
+     * 
+     * @param obj the source origin object.
+     */
     @Override
     public void copyFrom(final CopyFrom obj) {
         COPY_FROM_HELPER.copy(this, obj);

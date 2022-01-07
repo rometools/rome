@@ -20,19 +20,19 @@ import com.rometools.rome.feed.CopyFrom;
 
 /**
  * <pre>
- * <sx:sharing>
+ * &lt;sx:sharing&gt;
  * </pre>
  *
  * Element within RSS
  *
  * <pre>
- * <channel>
+ * &lt;channel&gt;
  * </pre>
  *
  * or OPML
  *
  * <pre>
- * <head>
+ * &lt;head&gt;
  * </pre>
  *
  * .

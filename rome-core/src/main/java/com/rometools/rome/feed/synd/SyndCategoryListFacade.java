@@ -24,14 +24,14 @@ import com.rometools.rome.feed.module.DCSubject;
 /**
  * List implementation for SyndCategoryImpl elements. To be directly used by the SyndFeedImpl and
  * SyndEntryImpl classes only.
- * <p>
+
  * It acts as a facade on top of the DCSubjectImpl elements of the underlying list and remains in
  * synch with it. It is possible to work on either list, the categories one or the subjects one and
  * they remain in synch.
- * <p>
+
  * This is necessary because the SyndFeedImpl categories are just a convenience to access the
  * DublinCore subjects.
- * <P>
+
  * All this mess to avoid making DCSubjectImpl implement SyndCategory (which it would be odd).
  */
 class SyndCategoryListFacade extends AbstractList<SyndCategory> {
@@ -47,7 +47,7 @@ class SyndCategoryListFacade extends AbstractList<SyndCategory> {
 
     /**
      * Creates a facade list of categories on top the given subject list.
-     * <P>
+
      *
      * @param subjects the list of subjects to create the facade.
      *
@@ -58,7 +58,7 @@ class SyndCategoryListFacade extends AbstractList<SyndCategory> {
 
     /**
      * Gets the category by index.
-     * <p>
+
      *
      * @param index the index position to retrieve the category.
      * @return the SyndCategoryImpl in position index, <b>null</b> if none.
@@ -71,7 +71,7 @@ class SyndCategoryListFacade extends AbstractList<SyndCategory> {
 
     /**
      * Returns the size of the list.
-     * <p>
+
      *
      * @return the size of the list.
      *
@@ -83,7 +83,7 @@ class SyndCategoryListFacade extends AbstractList<SyndCategory> {
 
     /**
      * Sets a category in an existing position in the list.
-     * <p>
+
      *
      * @param index position to set the category.
      * @param obj the SyndCategoryImpl object to set.
@@ -109,7 +109,7 @@ class SyndCategoryListFacade extends AbstractList<SyndCategory> {
 
     /**
      * Adds a category to the list.
-     * <p>
+
      *
      * @param index position to add the category.
      * @param obj the SyndCategoryImpl object to add.
@@ -129,7 +129,7 @@ class SyndCategoryListFacade extends AbstractList<SyndCategory> {
 
     /**
      * Removes a category element from a specific position.
-     * <p>
+
      *
      * @param index position to remove the category from.
      * @return the SyndCategoryImpl being removed from position index, <b>null</b> if none.
@@ -148,7 +148,7 @@ class SyndCategoryListFacade extends AbstractList<SyndCategory> {
     /**
      * Returns a list with the DCSubject elements of the SyndCategoryImpl list facade. To be used by
      * the SyndFeedImpl class only.
-     * <p>
+
      *
      * @param cList the list with SyndCategoryImpl elements to convert to subject list.
      * @return a list with DCSubject elements corresponding to the categories in the given list.

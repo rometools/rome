@@ -51,14 +51,14 @@ public class SlashModuleParser implements ModuleParser {
             final StringTokenizer tok = new StringTokenizer(tag.getText(), ",");
             final Integer[] hp = new Integer[tok.countTokens()];
             for (int i = 0; tok.hasMoreTokens(); i++) {
-                hp[i] = new Integer(tok.nextToken());
+                hp[i] = Integer.valueOf(tok.nextToken());
             }
             si.setHitParade(hp);
         }
         tag = null;
         tag = element.getChild("comments", SlashModuleParser.NS);
         if (tag != null && !tag.getText().trim().isEmpty()) {
-            si.setComments(new Integer(tag.getText().trim()));
+            si.setComments(Integer.valueOf(tag.getText().trim()));
         }
         tag = null;
         tag = element.getChild("department", SlashModuleParser.NS);

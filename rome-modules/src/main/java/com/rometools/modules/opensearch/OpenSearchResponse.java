@@ -51,7 +51,7 @@ public interface OpenSearchResponse {
      * * Restrictions: An integer greater than or equal to 1. * Note: The first result is 1. *
      * Default: 1 * Requirements: May appear zero or one time.
      *
-     * @param startIndex int value >= 1.
+     * @param startIndex int value &gt;= 1.
      */
     public void setStartIndex(int startIndex);
 
@@ -61,7 +61,7 @@ public interface OpenSearchResponse {
      * * Restrictions: An integer greater than or equal to 1. * Note: The first result is 1. *
      * Default: 1 * Requirements: May appear zero or one time.
      *
-     * @return int value >= 1.
+     * @return int value &gt;= 1.
      */
     public int getStartIndex();
 
@@ -71,7 +71,7 @@ public interface OpenSearchResponse {
      * * Restrictions: An integer greater than or equal to 1. * Default: The number of items that
      * were returned in this set of results. * Requirements: May appear zero or one time.
      *
-     * @param itemsPerPage int value >= 1.
+     * @param itemsPerPage int value &gt;= 1.
      */
     public void setItemsPerPage(int itemsPerPage);
 
@@ -81,7 +81,7 @@ public interface OpenSearchResponse {
      * * Restrictions: An integer greater than or equal to 1. * Default: The number of items that
      * were returned in this set of results. * Requirements: May appear zero or one time.
      *
-     * @return int value >= 1
+     * @return int value &gt;= 1
      */
     public int getItemsPerPage();
 
@@ -108,6 +108,7 @@ public interface OpenSearchResponse {
     public Link getLink();
 
     // list of OSResponseQuery interfaces
+    
     /**
      * <code>Query</code> – in an OpenSearch Response, can be used both to echo back the original
      * query and to suggest new searches. Please see the <a href="../query/">OpenSearch Query
@@ -115,7 +116,8 @@ public interface OpenSearchResponse {
      * <ul>
      * <li>Note: <em>New in version 1.1.</em></li>
      * <li>Requirements: May appear zero or more times. Note that the “Q” is capitalized.</li>
-     *
+     * </ul>
+     * 
      * @param query List of OSQuery objects.
      */
     public void setQueries(List<OSQuery> query);
@@ -127,12 +129,14 @@ public interface OpenSearchResponse {
      * <ul>
      * <li>Note: <em>New in version 1.1.</em></li>
      * <li>Requirements: May appear zero or more times. Note that the “Q” is capitalized.</li>
-     *
+     * </ul>
+     * 
      * @return A list of OSQuery objects.
      */
     public List<OSQuery> getQueries();
 
     // convenience method
+    
     /**
      * Adds a query to the module.
      *

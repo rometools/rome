@@ -21,27 +21,47 @@ import com.rometools.modules.georss.GeoRSSModule;
 import com.rometools.modules.portablecontacts.ContactModule;
 import com.rometools.rome.feed.atom.Entry;
 
+/**
+ * The ActivityObject class
+ *
+ */
 public abstract class ActivityObject extends Entry implements HasLocation {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * Returns the type IRI.
+     * @return the type IRI.
+     */
     public abstract String getTypeIRI();
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public GeoRSSModule getLocation() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setLocation(final GeoRSSModule location) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public ContactModule getAddress() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setAddress(final ContactModule address) {
         throw new UnsupportedOperationException("Not supported yet.");

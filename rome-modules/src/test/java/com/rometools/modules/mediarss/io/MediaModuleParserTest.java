@@ -14,14 +14,16 @@
 
 package com.rometools.modules.mediarss.io;
 
-import com.rometools.modules.AbstractTestCase;
-import junit.framework.Test;
-import junit.framework.TestSuite;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.math.BigDecimal;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import org.hamcrest.core.Is;
+
+import com.rometools.modules.AbstractTestCase;
+
+import junit.framework.Test;
+import junit.framework.TestSuite;
 
 public class MediaModuleParserTest extends AbstractTestCase {
 
@@ -34,35 +36,35 @@ public class MediaModuleParserTest extends AbstractTestCase {
     }
 
     public void testParsesFileSizeWithoutUnit() {
-        assertThat(MediaModuleParser.parseFileSize("1234567"), is(1234567L));
+        assertThat(MediaModuleParser.parseFileSize("1234567"), Is.is(1234567L));
     }
 
     public void testParsesFileSizeWithByteUnit() {
-        assertThat(MediaModuleParser.parseFileSize("1B"), is(1L));
+        assertThat(MediaModuleParser.parseFileSize("1B"), Is.is(1L));
     }
 
     public void testParsesFileSizeWithKiloByteUnit() {
-        assertThat(MediaModuleParser.parseFileSize("1KB"), is(1000L));
+        assertThat(MediaModuleParser.parseFileSize("1KB"), Is.is(1000L));
     }
 
     public void testParsesFileSizeWithMegaByteUnit() {
-        assertThat(MediaModuleParser.parseFileSize("1MB"), is(new BigDecimal(1000).pow(2).longValue()));
+        assertThat(MediaModuleParser.parseFileSize("1MB"), Is.is(new BigDecimal(1000).pow(2).longValue()));
     }
 
     public void testParsesFileSizeWithGigaByteUnit() {
-        assertThat(MediaModuleParser.parseFileSize("1GB"), is(new BigDecimal(1000).pow(3).longValue()));
+        assertThat(MediaModuleParser.parseFileSize("1GB"), Is.is(new BigDecimal(1000).pow(3).longValue()));
     }
 
     public void testParsesFileSizeWithTeraByteUnit() {
-        assertThat(MediaModuleParser.parseFileSize("1TB"), is(new BigDecimal(1000).pow(4).longValue()));
+        assertThat(MediaModuleParser.parseFileSize("1TB"), Is.is(new BigDecimal(1000).pow(4).longValue()));
     }
 
     public void testParsesFileSizeHandlesSpaces() {
-        assertThat(MediaModuleParser.parseFileSize(" 1 KB "), is(new BigDecimal(1000).longValue()));
+        assertThat(MediaModuleParser.parseFileSize(" 1 KB "), Is.is(new BigDecimal(1000).longValue()));
     }
 
     public void testParsesFileSizeHandlesDecimals() {
-        assertThat(MediaModuleParser.parseFileSize("1.23KB"), is(new BigDecimal(1230).longValue()));
+        assertThat(MediaModuleParser.parseFileSize("1.23KB"), Is.is(new BigDecimal(1230).longValue()));
     }
 
     public void testThrowsExceptionOnInvalidFileSize() {

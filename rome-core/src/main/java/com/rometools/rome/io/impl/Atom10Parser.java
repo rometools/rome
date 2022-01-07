@@ -57,14 +57,25 @@ public class Atom10Parser extends BaseWireFeedParser {
 
     private static boolean resolveURIs = false;
 
+    /**
+     * 
+     * @param resolveURIs flag to resolve URIs
+     */
     public static void setResolveURIs(final boolean resolveURIs) {
         Atom10Parser.resolveURIs = resolveURIs;
     }
 
+    /**
+     * 
+     * @return the resolveURIs value
+     */
     public static boolean getResolveURIs() {
         return resolveURIs;
     }
 
+    /**
+     * Public constructor.
+     */
     public Atom10Parser() {
         this("atom_1.0");
     }
@@ -77,6 +88,9 @@ public class Atom10Parser extends BaseWireFeedParser {
         return ATOM_10_NS;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean isMyType(final Document document) {
         final Element rssRoot = document.getRootElement();
@@ -84,6 +98,9 @@ public class Atom10Parser extends BaseWireFeedParser {
         return defaultNS != null && defaultNS.equals(getAtomNamespace());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public WireFeed parse(final Document document, final boolean validate, final Locale locale) throws IllegalArgumentException, FeedException {
         if (validate) {
@@ -450,7 +467,6 @@ public class Atom10Parser extends BaseWireFeedParser {
         final List<Element> categories = eEntry.getChildren("category", getAtomNamespace());
         entry.setCategories(parseCategories(baseURI, categories));
 
-        // TODO: SHOULD handle Atom entry source element
         final Element source = eEntry.getChild("source", getAtomNamespace());
         if (source != null) {
             entry.setSource(parseFeedMetadata(baseURI, source, locale));
@@ -512,11 +528,20 @@ public class Atom10Parser extends BaseWireFeedParser {
     // by a colon, followed by anything -- specified by this regex:
     static Pattern absoluteURIPattern = Pattern.compile("^[a-z0-9]*:.*$");
 
+    /**
+     * 
+     * @param uri the uri parameter to confirm as absolute.
+     * @return the matcher result
+     */
     public static boolean isAbsoluteURI(final String uri) {
         return absoluteURIPattern.matcher(uri).find();
     }
 
-    /** Returns true if URI is relative. */
+    /**
+     * Returns true if URI is relative. 
+     * @param uri the URI to evaluate
+     * @return The evaluation result.
+     */
     public static boolean isRelativeURI(final String uri) {
         return !isAbsoluteURI(uri);
     }
@@ -528,6 +553,7 @@ public class Atom10Parser extends BaseWireFeedParser {
      * @param baseURI Base URI used to fetch the XML document
      * @param parent Parent element from which to consider xml:base
      * @param url URL to be resolved
+     * @return The resolve URI
      */
     public static String resolveURI(final String baseURI, final Parent parent, String url) {
 
@@ -685,6 +711,14 @@ public class Atom10Parser extends BaseWireFeedParser {
 
     /**
      * Parse entry from reader.
+     * @param rd the reader from the entry origins
+     * @param baseURI the base URI of entry
+     * @param locale the Locale used for entry
+     * @return The Entry object
+     * @throws JDOMException Any DOM exception
+     * @throws IOException Any I/O exception
+     * @throws IllegalArgumentException Any illegal argument exception
+     * @throws FeedException Any feed exception
      */
     public static Entry parseEntry(final Reader rd, final String baseURI, final Locale locale) throws JDOMException, IOException, IllegalArgumentException,
             FeedException {

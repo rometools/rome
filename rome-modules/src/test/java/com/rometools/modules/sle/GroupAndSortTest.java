@@ -19,20 +19,18 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.rometools.modules.AbstractTestCase;
-import com.rometools.modules.sle.SimpleListExtension;
-import com.rometools.modules.sle.SleUtility;
 import com.rometools.modules.sle.types.Sort;
 import com.rometools.rome.feed.module.Extendable;
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.SyndFeedInput;
+
+import junit.framework.Test;
+import junit.framework.TestSuite;
 
 public class GroupAndSortTest extends AbstractTestCase {
 

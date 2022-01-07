@@ -17,6 +17,7 @@
 package com.rometools.modules.photocast.types;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Date;
 
 /**
@@ -66,8 +67,8 @@ public class PhotoDate extends Date {
         BigDecimal d = new BigDecimal(getTime());
         d = d.subtract(new BigDecimal(Y2K));
         d = d.multiply(new BigDecimal(1000000));
-        d = d.divide(new BigDecimal(DAY), BigDecimal.ROUND_HALF_UP);
-        return d.divide(new BigDecimal(1000000), 7, BigDecimal.ROUND_HALF_UP).toString();
+        d = d.divide(new BigDecimal(DAY), RoundingMode.HALF_UP);
+        return d.divide(new BigDecimal(1000000), 7, RoundingMode.HALF_UP).toString();
     }
 
     @Override

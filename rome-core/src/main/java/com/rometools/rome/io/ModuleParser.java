@@ -24,29 +24,25 @@ import com.rometools.rome.feed.module.Module;
 
 /**
  * Parses module metadata from a XML node (JDOM element).
- * <p>
  * ModuleParser instances must thread safe.
- * <p>
- * TODO: explain how developers can plugin their own implementations.
  */
 public interface ModuleParser {
 
     /**
      * Returns the namespace URI this parser handles.
-     * <p>
      *
      * @return the namespace URI.
      *
      */
-    public String getNamespaceUri();
+    String getNamespaceUri();
 
     /**
      * Parses the XML node (JDOM element) extracting module information.
-     * <p>
      *
      * @param element the XML node (JDOM element) to extract module information from.
+     * @param locale the Locale instance.
      * @return a module instance, <b>null</b> if the element did not have module information.
      *
      */
-    public Module parse(Element element, Locale locale);
+    Module parse(Element element, Locale locale);
 }

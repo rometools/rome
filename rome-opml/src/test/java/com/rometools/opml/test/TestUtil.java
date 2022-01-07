@@ -18,11 +18,20 @@ package com.rometools.opml.test;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
+/**
+ * TestUtil class 
+ *
+ */
 public final class TestUtil {
 
     private TestUtil() {
     }
 
+    /**
+     * Load the file that path indicates
+     * @param path the pathfile
+     * @return a Reader open object.
+     */
     public static Reader loadFile(final String path) {
         return new InputStreamReader(TestUtil.class.getResourceAsStream(path));
     }

@@ -25,7 +25,7 @@ import com.rometools.rome.feed.CopyFrom;
 public interface SyndImage extends Cloneable, CopyFrom {
     /**
      * Returns the image title.
-     * <p>
+
      *
      * @return the image title, <b>null</b> if none.
      *
@@ -34,7 +34,7 @@ public interface SyndImage extends Cloneable, CopyFrom {
 
     /**
      * Sets the image title.
-     * <p>
+
      *
      * @param title the image title to set, <b>null</b> if none.
      *
@@ -43,7 +43,7 @@ public interface SyndImage extends Cloneable, CopyFrom {
 
     /**
      * Returns the image URL.
-     * <p>
+
      *
      * @return the image URL, <b>null</b> if none.
      *
@@ -52,7 +52,7 @@ public interface SyndImage extends Cloneable, CopyFrom {
 
     /**
      * Sets the image URL.
-     * <p>
+
      *
      * @param url the image URL to set, <b>null</b> if none.
      *
@@ -61,7 +61,7 @@ public interface SyndImage extends Cloneable, CopyFrom {
 
     /**
      * Returns the image width.
-     * <p>
+
      *
      * @return the image width, <b>null</b> if none.
      *
@@ -70,7 +70,7 @@ public interface SyndImage extends Cloneable, CopyFrom {
 
     /**
      * Sets the image width.
-     * <p>
+
      *
      * @param width the image width to set, <b>null</b> if none.
      *
@@ -79,7 +79,7 @@ public interface SyndImage extends Cloneable, CopyFrom {
 
     /**
      * Returns the image height.
-     * <p>
+
      *
      * @return the image height, <b>null</b> if none.
      *
@@ -88,7 +88,7 @@ public interface SyndImage extends Cloneable, CopyFrom {
 
     /**
      * Sets the image height.
-     * <p>
+
      *
      * @param height the image height to set, <b>null</b> if none.
      *
@@ -97,7 +97,7 @@ public interface SyndImage extends Cloneable, CopyFrom {
 
     /**
      * Returns the image link.
-     * <p>
+
      *
      * @return the image link, <b>null</b> if none.
      *
@@ -106,7 +106,7 @@ public interface SyndImage extends Cloneable, CopyFrom {
 
     /**
      * Sets the image link.
-     * <p>
+
      *
      * @param link the image link to set, <b>null</b> if none.
      *
@@ -115,7 +115,7 @@ public interface SyndImage extends Cloneable, CopyFrom {
 
     /**
      * Returns the image description.
-     * <p>
+
      *
      * @return the image description, <b>null</b> if none.
      *
@@ -124,7 +124,7 @@ public interface SyndImage extends Cloneable, CopyFrom {
 
     /**
      * Sets the image description.
-     * <p>
+
      *
      * @param description the image description to set, <b>null</b> if none.
      *
@@ -133,7 +133,7 @@ public interface SyndImage extends Cloneable, CopyFrom {
 
     /**
      * Creates a deep clone of the object.
-     * <p>
+
      *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.

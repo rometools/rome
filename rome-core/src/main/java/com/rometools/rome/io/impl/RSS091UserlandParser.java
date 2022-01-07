@@ -28,8 +28,18 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * RSS 0.91 Userland Parser. 
+ *
+ */
 public class RSS091UserlandParser extends RSS090Parser {
 
+	/** The TEXTINPUT constant. */
+	private static final String TEXTINPUT = "textInput";
+	
+	/**
+	 * Public constructor.
+	 */
     public RSS091UserlandParser() {
         this("rss_0.91U");
     }
@@ -38,6 +48,9 @@ public class RSS091UserlandParser extends RSS090Parser {
         super(type, null);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean isMyType(final Document document) {
         final Element rssRoot = document.getRootElement();
@@ -56,6 +69,9 @@ public class RSS091UserlandParser extends RSS090Parser {
 
     /**
      * To be overriden by RSS 0.91 Netscape and RSS 0.94
+     * 
+     * @param rssRoot the root element of the RSS document to parse.
+     * @return the result of is hour format 24.
      */
     protected boolean isHourFormat24(final Element rssRoot) {
         return true;
@@ -63,12 +79,13 @@ public class RSS091UserlandParser extends RSS090Parser {
 
     /**
      * Parses the root element of an RSS document into a Channel bean.
-     * <p/>
+     * 
      * It first invokes super.parseChannel and then parses and injects the following properties if
      * present: language, pubDate, rating and copyright.
-     * <p/>
+     * 
      *
      * @param rssRoot the root element of the RSS document to parse.
+     * @param locale for date/time parsing
      * @return the parsed Channel bean.
      */
     @Override
@@ -128,7 +145,7 @@ public class RSS091UserlandParser extends RSS090Parser {
             final List<Integer> skipHours = new ArrayList<Integer>();
             final List<Element> eHours = eSkipHours.getChildren("hour", getRSSNamespace());
             for (final Element eHour : eHours) {
-                skipHours.add(new Integer(eHour.getText().trim()));
+                skipHours.add(Integer.valueOf(eHour.getText().trim()));
             }
             channel.setSkipHours(skipHours);
         }
@@ -148,10 +165,10 @@ public class RSS091UserlandParser extends RSS090Parser {
 
     /**
      * Parses the root element of an RSS document looking for image information.
-     * <p/>
+     * 
      * It first invokes super.parseImage and then parses and injects the following properties if
      * present: url, link, width, height and description.
-     * <p/>
+     * 
      *
      * @param rssRoot the root element of the RSS document to parse for image information.
      * @return the parsed RSSImage bean.
@@ -225,9 +242,10 @@ public class RSS091UserlandParser extends RSS090Parser {
 
     /**
      * To be overriden by RSS 0.91 Netscape parser
+     * @return the TEXTINPUT constant.
      */
     protected String getTextInputLabel() {
-        return "textInput";
+        return TEXTINPUT;
     }
 
     /**
@@ -249,13 +267,14 @@ public class RSS091UserlandParser extends RSS090Parser {
 
     /**
      * Parses an item element of an RSS document looking for item information.
-     * <p/>
+     * 
      * It first invokes super.parseItem and then parses and injects the description property if
      * present.
-     * <p/>
+     * 
      *
      * @param rssRoot the root element of the RSS document in case it's needed for context.
      * @param eItem the item element to parse.
+     * @param locale for date/time parsing
      * @return the parsed RSSItem bean.
      */
     @Override

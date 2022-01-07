@@ -21,7 +21,7 @@ import com.rometools.rome.feed.CopyFrom;
 import com.rometools.rome.feed.rss.Item;
 
 /**
- * <sx:conflict> element within <sx:conflicts>
+ * &lt;sx:conflict&gt; element within &lt;sx:conflicts&lt;
  */
 public class Conflict extends SSEModule {
     private static final long serialVersionUID = 1L;
@@ -36,7 +36,7 @@ public class Conflict extends SSEModule {
      * An optional, string attribute. This text attribute identifies the endpoint that made the
      * conflicting modification. It is used and compared programmatically. See sx:update for format
      * guidance.
-     * <p>
+
      * Note: Either or both of the when or by attributes MUST be present; it is invalid to have
      * neither.
      */
@@ -50,7 +50,7 @@ public class Conflict extends SSEModule {
     /**
      * An optional, date-time attribute. This is the date-time when the conflicting modification
      * took place. See sx:update for format guidance.
-     * <p>
+
      * Note: Either or both of the when or by attributes MUST be present; it is invalid to have
      * neither.
      */

@@ -27,6 +27,10 @@ import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.feed.synd.SyndFeedImpl;
 import com.rometools.rome.io.SyndFeedOutput;
 
+/**
+ * Abstract feed options test class. 
+ *
+ */
 public abstract class FeedOpsTest extends FeedTest {
 
     protected FeedOpsTest(final String feedType) {

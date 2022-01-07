@@ -18,27 +18,27 @@
 package com.rometools.modules.activitystreams.types;
 
 /**
- * <p>
+
  * The "place" object type represents a location on Earth.
- * </p>
- * <p>
+
+
  * The "place" object type is identified by the URI
- * <tt>http://activitystrea.ms/schema/1.0/place</tt>.
- * </p>
- * <p>
+ * "http://activitystrea.ms/schema/1.0/place".
+
+
  * A place has the following additional components:
- * </p>
- * <p>
- * </p>
+
+
+
  * <blockquote class="text">
  * <dl>
  * <dt>Latitude</dt>
  * <dd>The latitude of the place as a point on Earth. Represented in JSON as a property named
- * <tt>latitude</tt> whose value is a JSON number containing a decimal representation of the
+ * "latitude" whose value is a JSON number containing a decimal representation of the
  * latitude in degrees.</dd>
  * <dt>Longitude</dt>
  * <dd>The longitude of the place as a point on Earth. Represented in JSON as a property named
- * <tt>longitude</tt> whose value is a JSON number containing a decimal representation of the
+ * "longitude" whose value is a JSON number containing a decimal representation of the
  * longitude in degrees.</dd>
  * </dl>
  * </blockquote>

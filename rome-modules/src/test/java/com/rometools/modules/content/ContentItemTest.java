@@ -20,12 +20,10 @@
 
 package com.rometools.modules.content;
 
-import junit.framework.TestCase;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.rometools.modules.content.ContentItem;
+import junit.framework.TestCase;
 
 /**
  * This is all standard property storage testing.
@@ -142,14 +140,14 @@ public class ContentItemTest extends TestCase {
 
         assertTrue(test.equals(test));
         final ContentItem test2 = ContentModuleImplTest.contentItems.get(0);
-        assertTrue(!test.equals(test2));
+        assertFalse(test.equals(test2.getContentFormat()));
         final ContentItem test3 = new ContentItem();
         test3.setContentFormat(new String("http://www.w3.org/1999/xhtml"));
         test3.setContentEncoding(new String("http://www.w3.org/TR/REC-xml#dt-wellformed"));
-        test3.setContentEncoding(new String("Literal"));
+        test3.setContentValueParseType(new String("Literal"));
         // test3.setContentValueNamespace(new String("http://www.w3.org/1999/xhtml"));
         test3.setContentValue(new String("<em>This is <strong>very</strong></em> <strong>cool</strong>."));
-        // assertEquals( test2, test3 );
+        assertEquals( test2, test3 );
     }
 
 }

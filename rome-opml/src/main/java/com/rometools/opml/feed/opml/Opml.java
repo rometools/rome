@@ -47,7 +47,7 @@ public class Opml extends WireFeed {
     private int[] expansionState;
 
     /**
-     * <dateCreated> is a date-time, indicating when the document was created.
+     * &lt;dateCreated&gt; is a date-time, indicating when the document was created.
      *
      * @param created date-time, indicating when the document was created.
      */
@@ -167,10 +167,10 @@ public class Opml extends WireFeed {
     }
 
     /**
-     * (OPML 2) &lt;ownerId&gt; is the http address of a web page that contains <strike>an HTML</strike> a form that
+     * (OPML 2) &lt;ownerId&gt; is the http address of a web page that contains a form that
      * allows a human reader to communicate with the author of the document via email or other means.
      *
-     * @param ownerId http address of a web page that contains <strike>an HTML</strike> a form that allows a human
+     * @param ownerId http address of a web page that contains a form that allows a human
      *            reader to communicate with the author of the document via email or other means.
      */
     public void setOwnerId(final String ownerId) {
@@ -178,10 +178,10 @@ public class Opml extends WireFeed {
     }
 
     /**
-     * (OPML 2) &lt;ownerId&gt; is the http address of a web page that contains <strike>an HTML</strike> a form that
+     * (OPML 2) &lt;ownerId&gt; is the http address of a web page that contains a form that
      * allows a human reader to communicate with the author of the document via email or other means.
      *
-     * @return http address of a web page that contains <strike>an HTML</strike> a form that allows a human reader to
+     * @return http address of a web page that contains a form that allows a human reader to
      *         communicate with the author of the document via email or other means.
      */
     public String getOwnerId() {

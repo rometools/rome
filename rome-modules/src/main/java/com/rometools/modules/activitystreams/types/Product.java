@@ -18,18 +18,18 @@
 package com.rometools.modules.activitystreams.types;
 
 /**
- * <p>
+
  * The "product" object type represents a commercial good or service.
- * </p>
- * <p>
+
+
  * The "product" object type is identified by the URI
- * <tt>http://activitystrea.ms/schema/1.0/product</tt>.
- * </p>
- * <p>
+ * "http://activitystrea.ms/schema/1.0/product".
+
+
  * A product has the following additional components:
- * </p>
- * <p>
- * </p>
+
+
+
  * <blockquote class="text">
  * <dl>
  * <dt>Thumbnail</dt>
@@ -38,7 +38,7 @@ package com.rometools.modules.activitystreams.types;
  * that are of an inappropriate size for their user interface.</dd>
  * <dt>Larger Image</dt>
  * <dd>A Media Link Construct linking to a larger -- ideally, full-size -- version of the photo of
- * the product. Represented in JSON as a property named <tt>fullImage</tt> whose value is a JSON
+ * the product. Represented in JSON as a property named "fullImage" whose value is a JSON
  * object with properties as defined in [TODO: xref the JSON serialization of a Media Link
  * Construct].</dd>
  * </dl>

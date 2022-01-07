@@ -27,10 +27,10 @@ import com.rometools.rome.feed.module.Module;
 
 /**
  * This is the base module for MediaRSS.
- * <p>
+
  * It represents information that can be stored at the feed level, as well is a base for entry level
  * information, as the same information can apply.
- * </p>
+
  */
 public interface MediaModule extends Module {
     // the URI of the MediaRSS specification as hosted by yahoo

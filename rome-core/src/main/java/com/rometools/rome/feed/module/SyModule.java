@@ -20,9 +20,9 @@ import java.util.Date;
 
 /**
  * Syndication ModuleImpl.
- * <p>
+
  *
- * @see <a href="http://web.resource.org/rss/1.0/modules/syndication/">Syndication module</a>.
+ * @see <a href="http://web.resource.org/rss/1.0/modules/syndication/">Syndication module</a>
  */
 public interface SyModule extends Module {
 
@@ -32,15 +32,20 @@ public interface SyModule extends Module {
      */
     static final String URI = "http://purl.org/rss/1.0/modules/syndication/";
 
+    /** the HOURLY constant */
     static final String HOURLY = "hourly";
+    /** the DAILY constant */
     static final String DAILY = "daily";
+    /** the WEEKLY constant */
     static final String WEEKLY = "weekly";
+    /** the MONTHLY constant */
     static final String MONTHLY = "monthly";
+    /** the YEARLY constant */
     static final String YEARLY = "yearly";
 
     /**
      * Returns the Syndication module update period.
-     * <p>
+
      *
      * @return the Syndication module update period, <b>null</b> if none.
      *
@@ -49,7 +54,7 @@ public interface SyModule extends Module {
 
     /**
      * Sets the Syndication module update period.
-     * <p>
+
      *
      * @param updatePeriod the Syndication module update period to set, <b>null</b> if none.
      *
@@ -58,7 +63,7 @@ public interface SyModule extends Module {
 
     /**
      * Returns the Syndication module update frequency.
-     * <p>
+
      *
      * @return the Syndication module update frequency, <b>null</b> if none.
      *
@@ -67,7 +72,7 @@ public interface SyModule extends Module {
 
     /**
      * Sets the Syndication module update frequency.
-     * <p>
+
      *
      * @param updateFrequency the Syndication module update frequency to set, <b>null</b> if none.
      *
@@ -76,7 +81,7 @@ public interface SyModule extends Module {
 
     /**
      * Returns the Syndication module update base date.
-     * <p>
+
      *
      * @return the Syndication module update base date, <b>null</b> if none.
      *
@@ -85,7 +90,7 @@ public interface SyModule extends Module {
 
     /**
      * Sets the Syndication module update base date.
-     * <p>
+
      *
      * @param updateBase the Syndication module update base date to set, <b>null</b> if none.
      *

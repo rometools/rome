@@ -18,11 +18,12 @@ package com.rometools.rome.feed.atom;
 
 import java.io.Serializable;
 import java.util.Collections;
+import java.util.Objects;
+import java.util.stream.Stream;
 
 import com.rometools.rome.feed.impl.CloneableBean;
 import com.rometools.rome.feed.impl.EqualsBean;
 import com.rometools.rome.feed.impl.ToStringBean;
-import com.rometools.utils.Alternatives;
 
 /**
  * Bean for category elements of Atom feeds.
@@ -36,11 +37,14 @@ public class Category implements Cloneable, Serializable {
     private String schemeResolved;
     private String label;
 
+    /**
+     * Public constructor
+     */
     public Category() { }
 
     /**
      * Creates a deep 'bean' clone of the object.
-     * <p>
+
      *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
@@ -54,7 +58,7 @@ public class Category implements Cloneable, Serializable {
     /**
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
-     * <p>
+
      *
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
@@ -70,9 +74,9 @@ public class Category implements Cloneable, Serializable {
 
     /**
      * Returns a hashcode value for the object.
-     * <p>
+
      * It follows the contract defined by the Object hashCode() method.
-     * <p>
+
      *
      * @return the hashcode of the bean object.
      *
@@ -84,7 +88,7 @@ public class Category implements Cloneable, Serializable {
 
     /**
      * Returns the String representation for the object.
-     * <p>
+
      *
      * @return String representation for the object.
      *
@@ -96,7 +100,7 @@ public class Category implements Cloneable, Serializable {
 
     /**
      * Get label for category.
-     * <p>
+
      *
      * @return Label for category.
      */
@@ -106,7 +110,7 @@ public class Category implements Cloneable, Serializable {
 
     /**
      * Set label for category.
-     * <p>
+
      *
      * @param label Label for category.
      */
@@ -116,7 +120,7 @@ public class Category implements Cloneable, Serializable {
 
     /**
      * Get Scheme URI for category.
-     * <p>
+
      *
      * @return Scheme URI for category.
      */
@@ -126,7 +130,7 @@ public class Category implements Cloneable, Serializable {
 
     /**
      * Set scheme URI for category.
-     * <p>
+
      *
      * @param scheme Scheme URI for category.
      */
@@ -134,17 +138,26 @@ public class Category implements Cloneable, Serializable {
         this.scheme = scheme;
     }
 
+    /**
+     * The schemeResolved setter
+     * @param schemeResolved The schemeResolved to set
+     */
     public void setSchemeResolved(final String schemeResolved) {
         this.schemeResolved = schemeResolved;
     }
 
+    /**
+     * The schemeResolved getter
+     * @return The schemeResolved value
+     */
     public String getSchemeResolved() {
-        return Alternatives.firstNotNull(schemeResolved, scheme);
+        //return Alternatives.firstNotNull();
+    	return Stream.of(new String[] {schemeResolved, scheme}).filter(Objects::nonNull).findFirst().orElse(null);
     }
 
     /**
      * Return term for category.
-     * <p>
+
      *
      * @return Term for category.
      */
@@ -154,7 +167,7 @@ public class Category implements Cloneable, Serializable {
 
     /**
      * Set term for category.
-     * <p>
+
      *
      * @param term Term for category.
      */

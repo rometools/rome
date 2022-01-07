@@ -25,7 +25,6 @@ import com.rometools.rome.feed.CopyFrom;
 public interface SyndCategory extends Cloneable, CopyFrom {
     /**
      * Returns the category name.
-     * <p>
      *
      * @return the category name, <b>null</b> if none.
      *
@@ -34,7 +33,6 @@ public interface SyndCategory extends Cloneable, CopyFrom {
 
     /**
      * Sets the category name.
-     * <p>
      *
      * @param name the category name to set, <b>null</b> if none.
      *
@@ -43,7 +41,6 @@ public interface SyndCategory extends Cloneable, CopyFrom {
 
     /**
      * Returns the category taxonomy URI.
-     * <p>
      *
      * @return the category taxonomy URI, <b>null</b> if none.
      *
@@ -52,7 +49,6 @@ public interface SyndCategory extends Cloneable, CopyFrom {
 
     /**
      * Sets the category taxonomy URI.
-     * <p>
      *
      * @param taxonomyUri the category taxonomy URI to set, <b>null</b> if none.
      *
@@ -61,20 +57,20 @@ public interface SyndCategory extends Cloneable, CopyFrom {
 
     /**
      * Sets the category Label
-     * <p>
      * @param label the catagory label to set, <b>null</b> if none
-     * </p>
      */
     void setLabel(String label);
 
     /**
      * Returns the category label, <b>null</b> if none
+     * 
+     * @return the label.
      */
     String getLabel();
 
     /**
      * Creates a deep clone of the object.
-     * <p>
+
      *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.

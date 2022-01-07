@@ -20,11 +20,11 @@ import com.rometools.rome.feed.module.Module;
 /**
  * This is the root interface for the Google Base module.
  *
- * <p>
+
  * It supports all the individual data "types". If you want to work with, for instance, just the
  * Article or Job datatype, you can cast it to the respective interface and see only methods related
  * to a particular entry type.
- * </p>
+
  */
 public interface GoogleBase extends Module, Article, Course, Event, Job, Person, Product, Review, ScholarlyArticle, Service, Travel, Unknown, Vehicle, Wanted,
         Housing {

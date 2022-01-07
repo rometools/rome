@@ -15,15 +15,15 @@
 package com.rometools.utils;
 
 import static org.hamcrest.CoreMatchers.hasItem;
-import static org.hamcrest.core.Is.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.nullValue;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.hamcrest.core.Is;
 import org.junit.Test;
 
 public class ListsTest {
@@ -34,9 +34,9 @@ public class ListsTest {
         final List<Integer> list = new ArrayList<Integer>();
         final List<Integer> nullList = null;
 
-        assertThat(Lists.createWhenNull(list), is(notNullValue()));
-        assertThat(Lists.createWhenNull(list), is(list));
-        assertThat(Lists.createWhenNull(nullList), is(notNullValue()));
+        assertThat(Lists.createWhenNull(list), Is.is(notNullValue()));
+        assertThat(Lists.createWhenNull(list), Is.is(list));
+        assertThat(Lists.createWhenNull(nullList), Is.is(notNullValue()));
 
     }
 
@@ -44,8 +44,8 @@ public class ListsTest {
     public void testCreate() {
 
         final List<Integer> create = Lists.create(1);
-        assertThat(create, is(notNullValue()));
-        assertThat(create.size(), is(1));
+        assertThat(create, Is.is(notNullValue()));
+        assertThat(create.size(), Is.is(1));
         assertThat(create, hasItem(1));
 
     }
@@ -58,10 +58,10 @@ public class ListsTest {
         final List<Integer> listWithOneEntry = Arrays.asList(1);
         final List<Integer> listWithTwoEntries = Arrays.asList(1, 2);
 
-        assertThat(Lists.firstEntry(nullList), is(nullValue()));
-        assertThat(Lists.firstEntry(listWithoutEntries), is(nullValue()));
-        assertThat(Lists.firstEntry(listWithOneEntry), is(1));
-        assertThat(Lists.firstEntry(listWithTwoEntries), is(1));
+        assertThat(Lists.firstEntry(nullList), Is.is(nullValue()));
+        assertThat(Lists.firstEntry(listWithoutEntries), Is.is(nullValue()));
+        assertThat(Lists.firstEntry(listWithOneEntry), Is.is(1));
+        assertThat(Lists.firstEntry(listWithTwoEntries), Is.is(1));
 
     }
 
@@ -72,9 +72,9 @@ public class ListsTest {
         final List<Integer> listWithoutEntries = new ArrayList<Integer>();
         final List<Integer> listWithOneEntry = Arrays.asList(1);
 
-        assertThat(Lists.isEmpty(nullList), is(true));
-        assertThat(Lists.isEmpty(listWithoutEntries), is(true));
-        assertThat(Lists.isEmpty(listWithOneEntry), is(false));
+        assertThat(Lists.isEmpty(nullList), Is.is(true));
+        assertThat(Lists.isEmpty(listWithoutEntries), Is.is(true));
+        assertThat(Lists.isEmpty(listWithOneEntry), Is.is(false));
 
     }
 
@@ -85,9 +85,9 @@ public class ListsTest {
         final List<Integer> listWithoutEntries = new ArrayList<Integer>();
         final List<Integer> listWithOneEntry = Arrays.asList(1);
 
-        assertThat(Lists.isNotEmpty(nullList), is(false));
-        assertThat(Lists.isNotEmpty(listWithoutEntries), is(false));
-        assertThat(Lists.isNotEmpty(listWithOneEntry), is(true));
+        assertThat(Lists.isNotEmpty(nullList), Is.is(false));
+        assertThat(Lists.isNotEmpty(listWithoutEntries), Is.is(false));
+        assertThat(Lists.isNotEmpty(listWithOneEntry), Is.is(true));
     }
 
     @Test
@@ -97,9 +97,9 @@ public class ListsTest {
         final List<Integer> listWithoutEntries = new ArrayList<Integer>();
         final List<Integer> listWithOneEntry = Arrays.asList(1);
 
-        assertThat(Lists.sizeIs(nullList, 0), is(true));
-        assertThat(Lists.sizeIs(listWithoutEntries, 0), is(true));
-        assertThat(Lists.sizeIs(listWithOneEntry, 1), is(true));
+        assertThat(Lists.sizeIs(nullList, 0), Is.is(true));
+        assertThat(Lists.sizeIs(listWithoutEntries, 0), Is.is(true));
+        assertThat(Lists.sizeIs(listWithOneEntry, 1), Is.is(true));
 
     }
 
@@ -110,9 +110,9 @@ public class ListsTest {
         final List<Integer> listWithoutEntries = new ArrayList<Integer>();
         final List<Integer> listWithOneEntry = Arrays.asList(1);
 
-        assertThat(Lists.emptyToNull(nullList), is(nullValue()));
-        assertThat(Lists.emptyToNull(listWithoutEntries), is(nullValue()));
-        assertThat(Lists.emptyToNull(listWithOneEntry), is(notNullValue()));
+        assertThat(Lists.emptyToNull(nullList), Is.is(nullValue()));
+        assertThat(Lists.emptyToNull(listWithoutEntries), Is.is(nullValue()));
+        assertThat(Lists.emptyToNull(listWithOneEntry), Is.is(notNullValue()));
 
     }
 

@@ -92,7 +92,7 @@ public abstract class PluginManager<T> {
             for (final Class<T> clazz : classes) {
 
                 className = clazz.getName();
-                final T plugin = clazz.newInstance();
+                final T plugin = clazz.getDeclaredConstructor().newInstance();
 
                 if (plugin instanceof DelegatingModuleParser) {
                     ((DelegatingModuleParser) plugin).setFeedParser(parentParser);
@@ -136,7 +136,7 @@ public abstract class PluginManager<T> {
      * "rome.pluginmanager.useloadclass" is set to true then classLoader.loadClass will be used to
      * load classes (instead of Class.forName). This is designed to improve OSGi compatibility.
      * Further information can be found in https://rome.dev.java.net/issues/show_bug.cgi?id=118
-     * <p>
+
      *
      * @return array containing the classes defined in the properties files.
      * @throws java.lang.ClassNotFoundException thrown if one of the classes defined in the

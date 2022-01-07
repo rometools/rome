@@ -44,6 +44,9 @@ public class DCModuleParser implements ModuleParser {
     private static final Namespace RDF_NS = Namespace.getNamespace(RDF_URI);
     private static final Namespace TAXO_NS = Namespace.getNamespace(TAXO_URI);
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public final String getNamespaceUri() {
         return DCModule.URI;
@@ -63,7 +66,6 @@ public class DCModuleParser implements ModuleParser {
 
     /**
      * Parse an element tree and return the module found in it.
-     * <p>
      *
      * @param dcRoot the root element containing the module elements.
      * @param locale for date/time parsing
@@ -175,7 +177,6 @@ public class DCModuleParser implements ModuleParser {
 
     /**
      * Utility method to parse a taxonomy from an element.
-     * <p>
      *
      * @param desc the taxonomy description element.
      * @return the string contained in the resource of the element.
@@ -194,7 +195,6 @@ public class DCModuleParser implements ModuleParser {
 
     /**
      * Utility method to parse a list of subjects out of a list of elements.
-     * <p>
      *
      * @param eList the element list to parse.
      * @return a list of subjects parsed from the elements.
@@ -233,7 +233,6 @@ public class DCModuleParser implements ModuleParser {
 
     /**
      * Utility method to parse a list of strings out of a list of elements.
-     * <p>
      *
      * @param elements the list of elements to parse.
      * @return the list of strings
@@ -248,9 +247,9 @@ public class DCModuleParser implements ModuleParser {
 
     /**
      * Utility method to parse a list of dates out of a list of elements.
-     * <p>
      *
      * @param elements the list of elements to parse.
+     * @param locale for date/time parsing
      * @return the list of dates.
      */
     protected final List<Date> parseElementListDate(final List<Element> elements, final Locale locale) {

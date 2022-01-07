@@ -50,7 +50,7 @@ public class UrlReference implements Reference, Serializable {
 
     /**
      * @param url String value of a URL
-     * @throws java.net.MalformedURLException thrown on bad URLs
+     * @throws URISyntaxException thrown on bad URLs
      */
     public UrlReference(final String url) throws URISyntaxException {
         super();

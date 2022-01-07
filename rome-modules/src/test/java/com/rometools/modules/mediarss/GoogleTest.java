@@ -23,15 +23,13 @@ package com.rometools.modules.mediarss;
 import java.io.InputStreamReader;
 import java.net.URL;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
-
 import com.rometools.modules.AbstractTestCase;
-import com.rometools.modules.mediarss.MediaEntryModule;
-import com.rometools.modules.mediarss.MediaModule;
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.SyndFeedInput;
+
+import junit.framework.Test;
+import junit.framework.TestSuite;
 
 public class GoogleTest extends AbstractTestCase {
 

@@ -10,9 +10,10 @@
     This is a feed-level module. However, for the purposes of sorting and goupding
     it provides the SleEntry module, which is dynamically generated with values for 
     sorting and grouping.
-    
-    Sample Usage:
-<xmp>
+  </p>
+  <p>Sample Usage:</p>
+
+<pre>
     SimpleListExtension sle = (SimpleListExtension) feed.getModule( SimpleListExtension.URI );
     System.out.println( sle );
     Group[] groups = sle.getGroupFields();
@@ -34,6 +35,7 @@
     SleUtility.initializeForSorting( feed );
     
     // Be aware, this is a VERY heavy operation and should not be used frequently.
-</xmp>
+</pre>
+
   </body>
 </html>

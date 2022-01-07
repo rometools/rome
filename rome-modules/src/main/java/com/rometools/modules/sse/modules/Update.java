@@ -20,13 +20,13 @@ import com.rometools.rome.feed.CopyFrom;
 
 /**
  * <pre>
- * <sx:update>
+ * &lt;sx:update&gt;
  * </pre>
  *
  * Element within
  *
  * <pre>
- * <sx:history>
+ * &lt;sx:history&gt;
  * </pre>
  *
  * .

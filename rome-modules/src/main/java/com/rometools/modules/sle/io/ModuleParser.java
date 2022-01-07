@@ -45,7 +45,7 @@ public class ModuleParser implements com.rometools.rome.io.ModuleParser {
 
     /**
      * Returns the namespace URI this parser handles.
-     * <p>
+
      *
      * @return the namespace URI.
      */
@@ -56,7 +56,7 @@ public class ModuleParser implements com.rometools.rome.io.ModuleParser {
 
     /**
      * Parses the XML node (JDOM element) extracting module information.
-     * <p>
+
      *
      * @param element the XML node (JDOM element) to extract module information from.
      * @return a module instance, <b>null</b> if the element did not have module information.
@@ -88,7 +88,7 @@ public class ModuleParser implements com.rometools.rome.io.ModuleParser {
             final String elementName = se.getAttributeValue("element");
             final String label = se.getAttributeValue("label");
             final String dataType = se.getAttributeValue("data-type");
-            final boolean defaultOrder = se.getAttributeValue("default") == null ? false : new Boolean(se.getAttributeValue("default")).booleanValue();
+            final boolean defaultOrder = se.getAttributeValue("default") == null ? false : Boolean.valueOf(se.getAttributeValue("default")).booleanValue();
             values.add(new Sort(ns, elementName, dataType, label, defaultOrder));
         }
 

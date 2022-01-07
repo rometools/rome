@@ -46,6 +46,9 @@ public class Outline implements Cloneable, Serializable {
     private boolean breakpoint;
     private boolean comment;
 
+    /**
+     * Empty public constructor.
+     */
     public Outline() {
     }
 
@@ -227,10 +230,18 @@ public class Outline implements Cloneable, Serializable {
         return getAttributeValue("htmlUrl");
     }
 
+    /**
+     * Sets the list of modules
+     * @param modules the new list of modules.
+     */
     public void setModules(final List<Module> modules) {
         this.modules = modules;
     }
 
+    /**
+     * Returns the module list.
+     * @return the module list.
+     */
     public List<Module> getModules() {
         if (modules == null) {
             modules = new ArrayList<Module>();
@@ -306,6 +317,7 @@ public class Outline implements Cloneable, Serializable {
      * Returns the value of an attribute on the outline or null.
      *
      * @param name name of the attribute.
+     * @return the value of an attribute.
      */
     public String getAttributeValue(final String name) {
         final List<Attribute> attributes = Collections.synchronizedList(getAttributes());
@@ -319,6 +331,9 @@ public class Outline implements Cloneable, Serializable {
         return null;
     }
 
+    /**
+     * Clones this object.
+     */
     @Override
     public Object clone() {
 
@@ -347,16 +362,25 @@ public class Outline implements Cloneable, Serializable {
         return o;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean equals(final Object obj) {
         return EqualsBean.beanEquals(Outline.class, this, obj);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int hashCode() {
         return EqualsBean.beanHashCode(this);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String toString() {
         return ToStringBean.toString(Outline.class, this);

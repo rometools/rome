@@ -58,11 +58,14 @@ public class Entry implements Cloneable, Serializable, Extendable {
     private String rights;
     private String xmlBase;
 
+    /**
+     * Public constructor
+     */
     public Entry() { }
 
     /**
      * Sets the entry alternate links.
-     * <p>
+
      *
      * @param alternateLinks the list of Link elements with the entry alternate links to set, an
      *            empty list or <b>null</b> if none.
@@ -73,7 +76,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Returns the entry alternate links.
-     * <p>
+
      *
      * @return a list of Link elements with the entry alternate links, an empty list if none.
      */
@@ -83,7 +86,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Sets the author of the entry.
-     * <p>
+
      *
      * @param authors the author of the entry, <b>null</b> if none.
      *
@@ -94,7 +97,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Returns the entry author.
-     * <p>
+
      *
      * @return the entry author, <b>null</b> if none.
      *
@@ -105,7 +108,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Set the categories
-     * <p>
+
      *
      * @param categories The categories to set.
      * @since Atom 1.0
@@ -116,7 +119,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Returns the categories
-     * <p>
+
      *
      * @return Returns the categories.
      * @since Atom 1.0
@@ -127,7 +130,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Sets the entry contents.
-     * <p>
+
      *
      * @param contents the list of Content elements with the entry contents to set, an empty list or
      *            <b>null</b> if none.
@@ -138,7 +141,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Returns the entry contents.
-     * <p>
+
      *
      * @return a list of Content elements with the entry contents, an empty list if none.
      */
@@ -148,7 +151,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Sets the entry contributors.
-     * <p>
+
      *
      * @param contributors the list of Person elements with the entry contributors to set, an empty
      *            list or <b>null</b> if none.
@@ -160,7 +163,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Returns the entry contributors.
-     * <p>
+
      *
      * @return a list of Person elements with the entry contributors, an empty list if none.
      *
@@ -171,7 +174,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Sets the entry created date (Atom 0.3 only)
-     * <p>
+
      *
      * @param created the entry created date, <b>null</b> if none.
      */
@@ -181,7 +184,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Returns the entry created date (Atom 0.3 only)
-     * <p>
+
      *
      * @return the entry created date, <b>null</b> if none.
      */
@@ -191,7 +194,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Sets foreign markup found at entry level.
-     * <p>
+
      *
      * @param foreignMarkup Opaque object to discourage use
      *
@@ -202,7 +205,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Returns foreign markup found at entry level.
-     * <p>
+
      *
      * @return list of Opaque object to discourage use
      *
@@ -213,7 +216,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Sets the entry ID.
-     * <p>
+
      *
      * @param id the entry ID, <b>null</b> if none.
      *
@@ -224,7 +227,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Returns the entry ID.
-     * <p>
+
      *
      * @return the entry ID, <b>null</b> if none.
      *
@@ -235,7 +238,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Sets the entry issued date (Atom 0.3, maps to {@link #setPublished(java.util.Date)}).
-     * <p>
+
      *
      * @param issued the entry issued date, <b>null</b> if none.
      */
@@ -245,7 +248,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Returns the entry issued date (Atom 0.3, maps to {@link #getPublished()} ).
-     * <p>
+
      *
      * @return the entry issued date, <b>null</b> if none.
      */
@@ -272,7 +275,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Sets the entry modified date (Atom 0.3, maps to {@link #setUpdated(java.util.Date)}).
-     * <p>
+
      *
      * @param modified the entry modified date, <b>null</b> if none.
      */
@@ -282,7 +285,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Returns the entry modified date (Atom 0.3, maps to {@link #getUpdated()} ).
-     * <p>
+
      *
      * @return the entry modified date, <b>null</b> if none.
      */
@@ -292,7 +295,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Returns the module identified by a given URI.
-     * <p>
+
      *
      * @param uri the URI of the ModuleImpl.
      * @return The module with the given URI, <b>null</b> if none.
@@ -304,7 +307,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Sets the entry modules.
-     * <p>
+
      *
      * @param modules the list of ModuleImpl elements with the entry modules to set, an empty list
      *            or <b>null</b> if none.
@@ -317,7 +320,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Returns the entry modules.
-     * <p>
+
      *
      * @return a list of ModuleImpl elements with the entry modules, an emtpy list if none.
      *
@@ -329,7 +332,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Sets the entry non-alternate links.
-     * <p>
+
      *
      * @param otherLinks the list Link elements with the entry non-alternate links to set, an empty
      *            list or <b>null</b> if none.
@@ -340,7 +343,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Returns the entry non-alternate links.
-     * <p>
+
      *
      * @return the list of Link elements with the entry non-alternate links to set, an empty list if
      *         none.
@@ -351,7 +354,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Set the published
-     * <p>
+
      *
      * @param published The published to set.
      * @since Atom 1.0
@@ -362,7 +365,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Returns the published
-     * <p>
+
      *
      * @return Returns the published.
      * @since Atom 1.0
@@ -373,7 +376,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Set the rights
-     * <p>
+
      *
      * @param rights The rights to set.
      * @since Atom 1.0
@@ -384,7 +387,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Returns the rights
-     * <p>
+
      *
      * @return Returns the rights.
      * @since Atom 1.0
@@ -395,7 +398,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Set the source
-     * <p>
+
      *
      * @param source The source to set.
      */
@@ -405,7 +408,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Returns the source
-     * <p>
+
      *
      * @return Returns the source.
      */
@@ -415,7 +418,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Sets the entry summary.
-     * <p>
+
      *
      * @param summary the entry summary, <b>null</b> if none.
      *
@@ -426,7 +429,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Returns the entry summary.
-     * <p>
+
      *
      * @return the entry summary, <b>null</b> if none.
      *
@@ -437,7 +440,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Sets the entry title.
-     * <p>
+
      *
      * @param title the entry title, <b>null</b> if none.
      *
@@ -451,7 +454,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Returns the entry title.
-     * <p>
+
      *
      * @return the entry title, <b>null</b> if none.
      *
@@ -465,7 +468,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Sets the entry title as a text construct.
-     * <p>
+
      *
      * @param title the entry title, <b>null</b> if none.
      *
@@ -476,7 +479,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Returns the entry title as a text construct.
-     * <p>
+
      *
      * @return the entry title, <b>null</b> if none.
      *
@@ -487,7 +490,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Set the updated
-     * <p>
+
      *
      * @param updated The updated to set.
      * @since Atom 1.0
@@ -498,7 +501,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Returns the updated
-     * <p>
+
      *
      * @return Returns the updated.
      * @since Atom 1.0
@@ -509,7 +512,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Set the xmlBase
-     * <p>
+
      *
      * @param xmlBase The xmlBase to set.
      * @since Atom 1.0
@@ -520,7 +523,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Returns the xmlBase
-     * <p>
+
      *
      * @return Returns the xmlBase.
      * @since Atom 1.0
@@ -531,7 +534,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Creates a deep 'bean' clone of the object.
-     * <p>
+
      *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
@@ -545,7 +548,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
     /**
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
-     * <p>
+
      *
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
@@ -572,9 +575,9 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Returns a hashcode value for the object.
-     * <p>
+
      * It follows the contract defined by the Object hashCode() method.
-     * <p>
+
      *
      * @return the hashcode of the bean object.
      *
@@ -586,7 +589,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     /**
      * Returns the String representation for the object.
-     * <p>
+
      *
      * @return String representation for the object.
      *
@@ -596,6 +599,11 @@ public class Entry implements Cloneable, Serializable, Extendable {
         return ToStringBean.toString(this.getClass(), this);
     }
 
+    /**
+     * Return the related link
+     * @param relation Relation to evaluate
+     * @return the related link
+     */
     public Link findRelatedLink(final String relation) {
         for (final Link link : otherLinks) {
             if (relation.equals(link.getRel())) {

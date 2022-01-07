@@ -27,7 +27,7 @@ import com.rometools.rome.feed.synd.SyndFeed;
 /**
  * Generates an XML document (String, File, OutputStream, Writer, W3C DOM document or JDOM document)
  * out of an SyndFeedImpl..
- * <p>
+
  * It delegates to a WireFeedOutput to generate all feed types.
  */
 public class SyndFeedOutput {
@@ -36,11 +36,11 @@ public class SyndFeedOutput {
 
     /**
      * Creates a String with the XML representation for the given SyndFeedImpl.
-     * <p>
+
      * If the feed encoding is not NULL, it will be used in the XML prolog encoding attribute. It is
      * the responsibility of the developer to ensure that if the String is written to a character
      * stream the stream charset is the same as the feed encoding property.
-     * <p>
+
      *
      * @param feed Abstract feed to create XML representation from. The type of the SyndFeedImpl
      *            must match the type given to the FeedOuptut constructor.
@@ -54,11 +54,11 @@ public class SyndFeedOutput {
 
     /**
      * Creates a String with the XML representation for the given SyndFeedImpl.
-     * <p>
+
      * If the feed encoding is not NULL, it will be used in the XML prolog encoding attribute. It is
      * the responsibility of the developer to ensure that if the String is written to a character
      * stream the stream charset is the same as the feed encoding property.
-     * <p>
+
      *
      * @param feed Abstract feed to create XML representation from. The type of the SyndFeedImpl
      *            must match the type given to the FeedOuptut constructor.
@@ -73,12 +73,12 @@ public class SyndFeedOutput {
 
     /**
      * Creates a File containing with the XML representation for the given SyndFeedImpl.
-     * <p>
+
      * If the feed encoding is not NULL, it will be used in the XML prolog encoding attribute. The
      * platform default charset encoding is used to write the feed to the file. It is the
      * responsibility of the developer to ensure the feed encoding is set to the platform charset
      * encoding.
-     * <p>
+
      *
      * @param feed Abstract feed to create XML representation from. The type of the SyndFeedImpl
      *            must match the type given to the FeedOuptut constructor.
@@ -93,12 +93,12 @@ public class SyndFeedOutput {
 
     /**
      * Creates a File containing with the XML representation for the given SyndFeedImpl.
-     * <p>
+
      * If the feed encoding is not NULL, it will be used in the XML prolog encoding attribute. The
      * platform default charset encoding is used to write the feed to the file. It is the
      * responsibility of the developer to ensure the feed encoding is set to the platform charset
      * encoding.
-     * <p>
+
      *
      * @param feed Abstract feed to create XML representation from. The type of the SyndFeedImpl
      *            must match the type given to the FeedOuptut constructor.
@@ -114,11 +114,11 @@ public class SyndFeedOutput {
 
     /**
      * Writes to an Writer the XML representation for the given SyndFeedImpl.
-     * <p>
+
      * If the feed encoding is not NULL, it will be used in the XML prolog encoding attribute. It is
      * the responsibility of the developer to ensure that if the String is written to a character
      * stream the stream charset is the same as the feed encoding property.
-     * <p>
+
      *
      * @param feed Abstract feed to create XML representation from. The type of the SyndFeedImpl
      *            must match the type given to the FeedOuptut constructor.
@@ -133,11 +133,11 @@ public class SyndFeedOutput {
 
     /**
      * Writes to an Writer the XML representation for the given SyndFeedImpl.
-     * <p>
+
      * If the feed encoding is not NULL, it will be used in the XML prolog encoding attribute. It is
      * the responsibility of the developer to ensure that if the String is written to a character
      * stream the stream charset is the same as the feed encoding property.
-     * <p>
+
      *
      * @param feed Abstract feed to create XML representation from. The type of the SyndFeedImpl
      *            must match the type given to the FeedOuptut constructor.
@@ -153,9 +153,9 @@ public class SyndFeedOutput {
 
     /**
      * Creates a W3C DOM document for the given SyndFeedImpl.
-     * <p>
+
      * This method does not use the feed encoding property.
-     * <p>
+
      *
      * @param feed Abstract feed to create W3C DOM document from. The type of the SyndFeedImpl must
      *            match the type given to the FeedOuptut constructor.
@@ -169,9 +169,9 @@ public class SyndFeedOutput {
 
     /**
      * Creates a JDOM document for the given SyndFeedImpl.
-     * <p>
+
      * This method does not use the feed encoding property.
-     * <p>
+
      *
      * @param feed Abstract feed to create JDOM document from. The type of the SyndFeedImpl must
      *            match the type given to the FeedOuptut constructor.

@@ -20,7 +20,7 @@ import org.jdom2.input.sax.XMLReaderJDOMFactory;
 import org.jdom2.input.sax.XMLReaders;
 import org.xml.sax.XMLReader;
 
-/*
+/**
  *  This code is needed to fix the security problem outlined in http://www.securityfocus.com/archive/1/297714
  *
  * Unfortunately there isn't an easy way to check if an XML parser supports a particular feature, so
@@ -33,6 +33,10 @@ import org.xml.sax.XMLReader;
  */
 public class SAXBuilder extends org.jdom2.input.SAXBuilder {
 
+	/**
+	 * Public constructor.
+	 * @param factory the XMLReaderJDOMFactory factory.
+	 */
     public SAXBuilder(final XMLReaderJDOMFactory factory) {
         super(factory);
     }
@@ -41,12 +45,16 @@ public class SAXBuilder extends org.jdom2.input.SAXBuilder {
      *
      * @deprecated use SAXBuilder(XMLReaderJDOMFactory) with either XMLReaders.DTDVALIDATING or
      *             XMLReaders.NONVALIDATING
+     * @param validate XMLReaders flag.
      */
     @Deprecated
     public SAXBuilder(final boolean validate) {
         super(validate ? XMLReaders.DTDVALIDATING : XMLReaders.NONVALIDATING);
     }
 
+    /**
+     * @throws JDOMException any JDOM exception.
+     */
     @Override
     public XMLReader createParser() throws JDOMException {
         return super.createParser();

@@ -22,19 +22,19 @@ import com.rometools.rome.feed.CopyFrom;
 
 /**
  * <pre>
- * <sx:sync>
+ * &lt;sx:sync&gt;
  * </pre>
  *
  * Element within RSS
  *
  * <pre>
- * <item>
+ * &lt;item&gt;
  * </pre>
  *
  * or OPML
  *
  * <pre>
- * <outline>
+ * &lt;outline&gt;
  * </pre>
  *
  * .
@@ -78,7 +78,7 @@ public class Sync extends SSEModule {
     /**
      * Provides access to the sync id, a required, string attribute. This is the identifier for the
      * item.
-     * <p/>
+     * 
      * The ID is assigned by the creator of the item, and MUST NOT be changed by subsequent
      * publishers. Applications will collate and compare these identifiers, therefore they MUST
      * conform to the syntax for Namespace Specific Strings (the NSS portion of a URN) in RFC 2141.

@@ -35,11 +35,14 @@ public class Cloud implements Cloneable, Serializable {
     private String registerProcedure;
     private String protocol;
 
+    /**
+     * Public constructor.
+     */
     public Cloud() { }
 
     /**
      * Creates a deep 'bean' clone of the object.
-     * <p>
+
      *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
@@ -53,7 +56,7 @@ public class Cloud implements Cloneable, Serializable {
     /**
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
-     * <p>
+
      *
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
@@ -66,9 +69,9 @@ public class Cloud implements Cloneable, Serializable {
 
     /**
      * Returns a hashcode value for the object.
-     * <p>
+
      * It follows the contract defined by the Object hashCode() method.
-     * <p>
+
      *
      * @return the hashcode of the bean object.
      *
@@ -80,7 +83,7 @@ public class Cloud implements Cloneable, Serializable {
 
     /**
      * Returns the String representation for the object.
-     * <p>
+
      *
      * @return String representation for the object.
      *
@@ -92,7 +95,7 @@ public class Cloud implements Cloneable, Serializable {
 
     /**
      * Returns the cloud domain.
-     * <p>
+
      *
      * @return the cloud domain, <b>null</b> if none.
      *
@@ -103,7 +106,7 @@ public class Cloud implements Cloneable, Serializable {
 
     /**
      * Sets the cloud domain.
-     * <p>
+
      *
      * @param domain the cloud domain to set, <b>null</b> if none.
      *
@@ -114,7 +117,7 @@ public class Cloud implements Cloneable, Serializable {
 
     /**
      * Returns the cloud port.
-     * <p>
+
      *
      * @return the cloud port, <b>null</b> if none.
      *
@@ -125,7 +128,7 @@ public class Cloud implements Cloneable, Serializable {
 
     /**
      * Sets the cloud port.
-     * <p>
+
      *
      * @param port the cloud port to set, <b>null</b> if none.
      *
@@ -136,7 +139,7 @@ public class Cloud implements Cloneable, Serializable {
 
     /**
      * Returns the cloud path.
-     * <p>
+
      *
      * @return the cloud path, <b>null</b> if none.
      *
@@ -147,7 +150,7 @@ public class Cloud implements Cloneable, Serializable {
 
     /**
      * Sets the cloud path.
-     * <p>
+
      *
      * @param path the cloud path to set, <b>null</b> if none.
      *
@@ -158,7 +161,7 @@ public class Cloud implements Cloneable, Serializable {
 
     /**
      * Returns the cloud register procedure.
-     * <p>
+
      *
      * @return the cloud register procedure, <b>null</b> if none.
      *
@@ -169,7 +172,7 @@ public class Cloud implements Cloneable, Serializable {
 
     /**
      * Sets the cloud register procedure.
-     * <p>
+
      *
      * @param registerProcedure the cloud register procedure to set, <b>null</b> if none.
      *
@@ -180,7 +183,7 @@ public class Cloud implements Cloneable, Serializable {
 
     /**
      * Returns the cloud protocol.
-     * <p>
+
      *
      * @return the cloud protocol, <b>null</b> if none.
      *
@@ -191,7 +194,7 @@ public class Cloud implements Cloneable, Serializable {
 
     /**
      * Sets the cloud protocol.
-     * <p>
+
      *
      * @param protocol the cloud protocol to set, <b>null</b> if none.
      *

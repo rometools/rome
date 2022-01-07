@@ -28,40 +28,23 @@ import com.rometools.rome.feed.impl.EqualsBean;
 import com.rometools.rome.feed.impl.ToStringBean;
 
 /**
- * <strong>&lt;media:thumbnail&gt;</strong></p>
- *
- *
- * <p>
  * Allows particular images to be used as representative images for the media object. If multiple
  * thumbnails are included, and time coding is not at play, it is assumed that the images are in
  * order of importance. It has 1 required attribute and 3 optional attributes.
- * </p>
- *
- *
- *
- *
- *
+ * 
  * <pre>
  * &lt;media:thumbnail url="http://www.foo.com/keyframe.jpg" width="75" height="50" time="12:05:01.123" /&gt;
  * </pre>
- * <p>
  * <em>url</em> specifies the url of the thumbnail. It is a required attribute.
- * </p>
- * <p>
  * <em>height</em> specifies the height of the thumbnail. It is an optional attribute.
- * </p>
- * <p>
  * <em>width</em> specifies the width of the thumbnail. It is an optional attribute.
- * </p>
  *
  *
- * <p>
  * <em>time</em> specifies the time offset in relation to the media object. Typically this is used
  * when creating multiple keyframes within a single video. The format for this attribute should be
  * in the DSM-CC's Normal Play Time (NTP) as used in RTSP [<a
  * href="http://www.ietf.org/rfc/rfc2326.txt">RFC 2326 3.6 Normal Play Time</a>]. It is an optional
  * attribute.
- * </p>
  */
 public class Thumbnail implements Cloneable, Serializable {
     private static final long serialVersionUID = 1L;

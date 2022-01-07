@@ -21,21 +21,21 @@ import com.rometools.rome.feed.WireFeed;
 /**
  * Interface that defines the functionality to convert a SyndFeedImpl to a real feed (RSS or Atom)
  * and vice versa.
- * <p>
+
  * Each implementation knows how to deal with a specific type (version) of a real feed.
- * <p>
+
  * Implementations must be thread safe.
- * <p>
+
  * TODO: explain how developers can plugin their own implementations.
  */
 public interface Converter {
 
     /**
      * Returns the type (version) of the real feed this converter handles.
-     * <p>
+
      *
      * @see WireFeed for details on the format of this string.
-     *      <p>
+
      * @return the real feed type.
      *
      */
@@ -43,9 +43,9 @@ public interface Converter {
 
     /**
      * Makes a deep copy/conversion of the values of a real feed into a SyndFeedImpl.
-     * <p>
+
      * It assumes the given SyndFeedImpl has no properties set.
-     * <p>
+
      *
      * @param feed real feed to copy/convert.
      * @param syndFeed the SyndFeedImpl that will contain the copied/converted values of the real
@@ -56,7 +56,7 @@ public interface Converter {
 
     /**
      * Creates real feed with a deep copy/conversion of the values of a SyndFeedImpl.
-     * <p>
+
      *
      * @param syndFeed SyndFeedImpl to copy/convert value from.
      * @return a real feed with copied/converted values of the SyndFeedImpl.

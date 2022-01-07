@@ -17,6 +17,7 @@
 package com.rometools.rome.io.impl;
 
 import java.io.StringReader;
+import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -39,7 +40,7 @@ import com.rometools.utils.Lists;
 
 /**
  * Feed Generator for Atom
- * <p/>
+ * 
  */
 
 public class Atom03Generator extends BaseWireFeedGenerator {
@@ -49,6 +50,9 @@ public class Atom03Generator extends BaseWireFeedGenerator {
 
     private final String version;
 
+    /**
+     * Public constructor.
+     */
     public Atom03Generator() {
         this("atom_0.3", "0.3");
     }
@@ -66,6 +70,9 @@ public class Atom03Generator extends BaseWireFeedGenerator {
         return ATOM_NS;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Document generate(final WireFeed wFeed) throws FeedException {
         final Feed feed = (Feed) wFeed;
@@ -361,7 +368,7 @@ public class Atom03Generator extends BaseWireFeedGenerator {
 
             } else if (mode.equals(Content.BASE64)) {
 
-                contentElement.addContent(Base64.encode(value));
+                contentElement.addContent(Base64.getEncoder().encodeToString(value.getBytes()));
 
             } else if (mode.equals(Content.XML)) {
 

@@ -23,7 +23,7 @@ package com.rometools.rome.feed.synd;
 public interface SyndLink {
     /**
      * Creates a deep 'bean' clone of the object.
-     * <p>
+
      *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
@@ -34,7 +34,7 @@ public interface SyndLink {
     /**
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
-     * <p>
+
      *
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
@@ -45,9 +45,9 @@ public interface SyndLink {
 
     /**
      * Returns a hashcode value for the object.
-     * <p>
+
      * It follows the contract defined by the Object hashCode() method.
-     * <p>
+
      *
      * @return the hashcode of the bean object.
      *
@@ -57,7 +57,7 @@ public interface SyndLink {
 
     /**
      * Returns the String representation for the object.
-     * <p>
+
      *
      * @return String representation for the object.
      *
@@ -67,7 +67,7 @@ public interface SyndLink {
 
     /**
      * Returns the link rel.
-     * <p>
+
      *
      * @return the link rel, <b>null</b> if none.
      *
@@ -76,7 +76,7 @@ public interface SyndLink {
 
     /**
      * Sets the link rel.
-     * <p>
+
      *
      * @param rel the link rel,, <b>null</b> if none.
      *
@@ -85,7 +85,7 @@ public interface SyndLink {
 
     /**
      * Returns the link type.
-     * <p>
+
      *
      * @return the link type, <b>null</b> if none.
      *
@@ -94,7 +94,7 @@ public interface SyndLink {
 
     /**
      * Sets the link type.
-     * <p>
+
      *
      * @param type the link type, <b>null</b> if none.
      *
@@ -103,7 +103,7 @@ public interface SyndLink {
 
     /**
      * Returns the link href.
-     * <p>
+
      *
      * @return the link href, <b>null</b> if none.
      *
@@ -112,7 +112,7 @@ public interface SyndLink {
 
     /**
      * Sets the link href.
-     * <p>
+
      *
      * @param href the link href, <b>null</b> if none.
      *
@@ -121,7 +121,7 @@ public interface SyndLink {
 
     /**
      * Returns the link title.
-     * <p>
+
      *
      * @return the link title, <b>null</b> if none.
      *
@@ -130,7 +130,7 @@ public interface SyndLink {
 
     /**
      * Sets the link title.
-     * <p>
+
      *
      * @param title the link title, <b>null</b> if none.
      *
@@ -139,7 +139,7 @@ public interface SyndLink {
 
     /**
      * Returns the hreflang
-     * <p>
+
      *
      * @return Returns the hreflang.
      */
@@ -147,7 +147,7 @@ public interface SyndLink {
 
     /**
      * Set the hreflang
-     * <p>
+
      *
      * @param hreflang The hreflang to set.
      */
@@ -155,7 +155,7 @@ public interface SyndLink {
 
     /**
      * Returns the length
-     * <p>
+
      *
      * @return Returns the length.
      */
@@ -163,7 +163,7 @@ public interface SyndLink {
 
     /**
      * Set the length
-     * <p>
+
      *
      * @param length The length to set.
      */

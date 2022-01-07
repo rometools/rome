@@ -25,7 +25,7 @@ import com.rometools.rome.feed.impl.EqualsBean;
 import com.rometools.rome.feed.impl.ToStringBean;
 
 /**
- * <p>
+
  * The <code>cf:sort</code> element is intended to inform the client that the property to which it
  * refers
  *
@@ -33,18 +33,18 @@ import com.rometools.rome.feed.impl.ToStringBean;
  * the
  *
  * user to sort on that property.
- * </p>
+
  *
- * <p>
+
  * The <code>cf:sort</code> element can also be used to provide a label for the default sort that
  * appears
  *
  * in the list (in this case, only the label attribute should be included).
- * </p>
+
  *
- * <p>
+
  * The <code>cf:sort</code> element contains the following attributes:
- * </p>
+
  *
  * <ul>
  * <li><b>ns</b> - this attribute is the full namespace used in the property element. If the

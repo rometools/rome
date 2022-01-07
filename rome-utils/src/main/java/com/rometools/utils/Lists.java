@@ -24,7 +24,8 @@ public final class Lists {
 
     /**
      * Returns the list when it is not null. Returns a new list otherwise.
-     *
+     * 
+     * @param <T> generic type
      * @param list The list to process, can be null
      * @return The input list when it is not null, a new list otherwise
      */
@@ -39,6 +40,7 @@ public final class Lists {
     /**
      * Creates a new List with the given item as the first entry.
      *
+     * @param <T> generic type
      * @param item The item to add to the new list
      * @return List containing the given item
      */
@@ -51,6 +53,7 @@ public final class Lists {
     /**
      * Extracts the first entry of the list when it is not null and contains values.
      *
+     * @param <T> generic type
      * @param list The list to extract the first entry from, can be null
      * @return The first entry of the list when it is not null or empty, null otherwise
      */
@@ -102,6 +105,7 @@ public final class Lists {
     /**
      * Returns null, when the given list is empty or null
      *
+     * @param <T> generic type
      * @param list The list to process
      * @return null when the list is empty or null, the given list otherwise
      */

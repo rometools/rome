@@ -30,8 +30,17 @@ import junit.framework.TestCase;
 
 import com.rometools.rome.io.XmlReader;
 
+/**
+ * TestXMLReader test class.
+ *
+ */
 public class TestXmlReader extends TestCase {
 
+	/**
+	 * Main method
+	 * @param args arguments
+	 * @throws Exception any exceptions
+	 */
     public static void main(final String[] args) throws Exception {
         final TestXmlReader test = new TestXmlReader();
         test.testRawBom();
@@ -72,6 +81,10 @@ public class TestXmlReader extends TestCase {
         }
     }
 
+    /**
+     * testRawNoBom
+     * @throws Exception any exception
+     */
     public void testRawNoBom() throws Exception {
         _testRawNoBomValid("US-ASCII");
         _testRawNoBomValid("UTF-8");
@@ -100,6 +113,10 @@ public class TestXmlReader extends TestCase {
         }
     }
 
+    /**
+     * testRawBom
+     * @throws Exception any exception
+     */
     public void testRawBom() throws Exception {
         _testRawBomValid("UTF-8");
         _testRawBomValid("UTF-16BE");
@@ -116,6 +133,10 @@ public class TestXmlReader extends TestCase {
         _testRawBomInvalid("UTF-16LE-bom", "UTF-16LE", "UTF-8");
     }
 
+    /**
+     * testHttp
+     * @throws Exception any exceptions
+     */
     public void testHttp() throws Exception {
         _testHttpValid("application/xml", "no-bom", "US-ASCII", null);
         _testHttpValid("application/xml", "UTF-8-bom", "US-ASCII", null);
@@ -168,6 +189,14 @@ public class TestXmlReader extends TestCase {
         _testHttpLenient("text/html;charset=UTF-16BE", "no-bom", "US-ASCII", "UTF-8", "UTF-8");
     }
 
+    /**
+     * _testHttpValid
+     * @param cT Content type
+     * @param bomEnc BOM Encoding
+     * @param streamEnc Stream encoding
+     * @param prologEnc Prolog encoding
+     * @throws Exception any exceptions
+     */
     public void _testHttpValid(final String cT, final String bomEnc, final String streamEnc, final String prologEnc) throws Exception {
         final InputStream is = getXmlStream(bomEnc, prologEnc == null ? "xml" : "xml-prolog-encoding", streamEnc, prologEnc);
         final XmlReader xmlReader = new XmlReader(is, cT, false);

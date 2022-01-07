@@ -18,15 +18,15 @@
 package com.rometools.modules.activitystreams.types;
 
 /**
- * <p>
+
  * The "list" object type represents a collection of related objects.
- * </p>
- * <p>
- * The "list" object type is identified by the URI <tt>http://activitystrea.ms/schema/1.0/list</tt>.
- * </p>
- * <p>
+
+
+ * The "list" object type is identified by the URI "http://activitystrea.ms/schema/1.0/list".
+
+
  * A list has no additional components.
- * </p>
+
  */
 public class List extends ActivityObject {
 

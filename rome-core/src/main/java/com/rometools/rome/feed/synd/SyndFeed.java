@@ -28,14 +28,14 @@ import com.rometools.rome.feed.module.Module;
 
 /**
  * Bean interface for all types of feeds.
- * <p>
+
  * It handles all RSS versions and Atom 0.3, it normalizes all info, it may lose information.
  */
 public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Returns the real feed types the SyndFeedImpl supports when converting from and to.
-     * <p>
+
      *
      * @return the real feed type supported.
      */
@@ -43,9 +43,9 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Creates a real feed containing the information of the SyndFeedImpl.
-     * <p>
+
      * The feed type of the created WireFeed is taken from the SyndFeedImpl feedType property.
-     * <p>
+
      *
      * @return the real feed.
      *
@@ -54,7 +54,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Creates a real feed containing the information of the SyndFeedImpl.
-     * <p>
+
      *
      * @param feedType the feed type for the WireFeed to be created.
      * @return the real feed.
@@ -79,7 +79,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Returns the wire feed type the feed had/will-have when converted from/to a WireFeed.
-     * <p>
+
      *
      * @return the feed type, <b>null</b> if none.
      *
@@ -88,7 +88,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Sets the wire feed type the feed will-have when coverted to a WireFeed.
-     * <p>
+
      *
      * @param feedType the feed type to set, <b>null</b> if none.
      *
@@ -97,7 +97,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Returns the charset encoding of a the feed. This is not set by Rome parsers.
-     * <p>
+
      *
      * @return the charset encoding of the feed.
      *
@@ -106,7 +106,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Sets the charset encoding of a the feed. This is not set by Rome parsers.
-     * <p>
+
      *
      * @param encoding the charset encoding of the feed.
      *
@@ -115,14 +115,14 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Returns the feed URI.
-     * <p>
+
      * How the feed URI maps to a concrete feed type (RSS or Atom) depends on the concrete feed
      * type. This is explained in detail in Rome documentation, <a
      * href="http://wiki.java.net/bin/edit/Javawsxml/Rome04URIMapping">Feed and entry URI
      * mapping</a>.
-     * <p>
+
      * The returned URI is a normalized URI as specified in RFC 2396bis.
-     * <p>
+
      * Note: The URI is the unique identifier, in the RSS 2.0/atom case this is the GUID, for RSS
      * 1.0 this is the URI attribute of the item. The Link is the URL that the item is accessible
      * under, the URI is the permanent identifier which the aggregator should use to reference this
@@ -132,7 +132,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
      * multiple items with the same link but a different URI and associated metadata which need to
      * be treated as distinct entities. In the RSS 1.0 case the URI must be a valid RDF URI
      * reference.
-     * <p>
+
      *
      * @return the feed URI, <b>null</b> if none.
      *
@@ -141,12 +141,12 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Sets the feed URI.
-     * <p>
+
      * How the feed URI maps to a concrete feed type (RSS or Atom) depends on the concrete feed
      * type. This is explained in detail in Rome documentation, <a
      * href="http://wiki.java.net/bin/edit/Javawsxml/Rome04URIMapping">Feed and entry URI
      * mapping</a>.
-     * <p>
+
      * Note: The URI is the unique identifier, in the RSS 2.0/atom case this is the GUID, for RSS
      * 1.0 this is the URI attribute of the item. The Link is the URL that the item is accessible
      * under, the URI is the permanent identifier which the aggregator should use to reference this
@@ -156,7 +156,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
      * multiple items with the same link but a different URI and associated metadata which need to
      * be treated as distinct entities. In the RSS 1.0 case the URI must be a valid RDF URI
      * reference.
-     * <p>
+
      *
      * @param uri the feed URI to set, <b>null</b> if none.
      *
@@ -165,7 +165,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Returns the feed title.
-     * <p>
+
      *
      * @return the feed title, <b>null</b> if none.
      *
@@ -174,7 +174,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Sets the feed title.
-     * <p>
+
      *
      * @param title the feed title to set, <b>null</b> if none.
      *
@@ -183,7 +183,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Returns the feed title.
-     * <p>
+
      *
      * @return the feed title, <b>null</b> if none.
      *
@@ -192,7 +192,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Sets the feed title.
-     * <p>
+
      *
      * @param title the feed title to set, <b>null</b> if none.
      *
@@ -201,7 +201,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Returns the feed link.
-     * <p>
+
      * Note: The URI is the unique identifier, in the RSS 2.0/atom case this is the GUID, for RSS
      * 1.0 this is the URI attribute of the item. The Link is the URL that the item is accessible
      * under, the URI is the permanent identifier which the aggregator should use to reference this
@@ -211,7 +211,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
      * multiple items with the same link but a different URI and associated metadata which need to
      * be treated as distinct entities. In the RSS 1.0 case the URI must be a valid RDF URI
      * reference.
-     * <p>
+
      *
      * @return the feed link, <b>null</b> if none.
      *
@@ -220,7 +220,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Sets the feed link.
-     * <p>
+
      * Note: The URI is the unique identifier, in the RSS 2.0/atom case this is the GUID, for RSS
      * 1.0 this is the URI attribute of the item. The Link is the URL that the item is accessible
      * under, the URI is the permanent identifier which the aggregator should use to reference this
@@ -230,7 +230,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
      * multiple items with the same link but a different URI and associated metadata which need to
      * be treated as distinct entities. In the RSS 1.0 case the URI must be a valid RDF URI
      * reference.
-     * <p>
+
      *
      * @param link the feed link to set, <b>null</b> if none.
      *
@@ -239,7 +239,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Returns the entry links
-     * <p>
+
      *
      * @return the entry links, <b>null</b> if none.
      *
@@ -248,7 +248,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Sets the entry links.
-     * <p>
+
      *
      * @param links the entry links to set, <b>null</b> if none.
      *
@@ -257,7 +257,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Returns the feed description.
-     * <p>
+
      *
      * @return the feed description, <b>null</b> if none.
      *
@@ -266,7 +266,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Sets the feed description.
-     * <p>
+
      *
      * @param description the feed description to set, <b>null</b> if none.
      *
@@ -275,7 +275,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Returns the feed description as a text construct.
-     * <p>
+
      *
      * @return the feed description, <b>null</b> if none.
      *
@@ -284,7 +284,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Sets the feed description as a text construct.
-     * <p>
+
      *
      * @param description the feed description to set, <b>null</b> if none.
      *
@@ -293,9 +293,9 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Returns the feed published date.
-     * <p>
+
      * This method is a convenience method, it maps to the Dublin Core module date.
-     * <p>
+
      *
      * @return the feed published date, <b>null</b> if none.
      *
@@ -304,9 +304,9 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Sets the feed published date.
-     * <p>
+
      * This method is a convenience method, it maps to the Dublin Core module date.
-     * <p>
+
      *
      * @param publishedDate the feed published date to set, <b>null</b> if none.
      *
@@ -315,10 +315,10 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Returns the feed authors.
-     * <p>
+
      * For Atom feeds, this returns the authors as a list of SyndPerson objects, for RSS feeds this
      * method is a convenience method, it maps to the Dublin Core module creator.
-     * <p>
+
      *
      * @return the feed authors, <b>null</b> if none.
      *
@@ -327,10 +327,10 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Sets the feed authors.
-     * <p>
+
      * For Atom feeds, this sets the authors as a list of SyndPerson objects, for RSS feeds this
      * method is a convenience method, it maps to the Dublin Core module creator.
-     * <p>
+
      *
      * @param authors the feed authors to set, <b>null</b> if none.
      *
@@ -339,10 +339,10 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Returns the name of the first feed author in the collection of authors.
-     * <p>
+
      * For Atom feeds, this returns the authors as a list of SyndPerson objects, for RSS feeds this
      * method is a convenience method, it maps to the Dublin Core module creator.
-     * <p>
+
      *
      * @return the feed author, <b>null</b> if none.
      *
@@ -351,10 +351,10 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Sets the feed author.
-     * <p>
+
      * For Atom feeds, this sets the feed author's name, for RSS feeds this method is a convenience
      * method, it maps to the Dublin Core module creator.
-     * <p>
+
      *
      * @param author the feed author to set, <b>null</b> if none.
      *
@@ -363,9 +363,9 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Returns the feed author.
-     * <p>
+
      * For Atom feeds, this returns the contributors as a list of SyndPerson objects
-     * <p>
+
      *
      * @return the feed author, <b>null</b> if none.
      *
@@ -374,9 +374,9 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Sets the feed author.
-     * <p>
+
      * Returns contributors as a list of SyndPerson objects.
-     * <p>
+
      *
      * @param contributors the feed contributors to set, <b>null</b> if none.
      *
@@ -385,9 +385,9 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Returns the feed copyright.
-     * <p>
+
      * This method is a convenience method, it maps to the Dublin Core module rights.
-     * <p>
+
      *
      * @return the feed copyright, <b>null</b> if none.
      *
@@ -396,9 +396,9 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Sets the feed copyright.
-     * <p>
+
      * This method is a convenience method, it maps to the Dublin Core module rights.
-     * <p>
+
      *
      * @param copyright the feed copyright to set, <b>null</b> if none.
      *
@@ -407,7 +407,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Returns the feed image.
-     * <p>
+
      *
      * @return the feed image, <b>null</b> if none.
      *
@@ -416,7 +416,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Sets the feed image.
-     * <p>
+
      *
      * @param image the feed image to set, <b>null</b> if none.
      *
@@ -425,7 +425,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Returns the feed icon.
-     * <p>
+
      *
      * @return the feed icon, <b>null</b> if none.
      *
@@ -434,7 +434,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Sets the feed icon.
-     * <p>
+
      *
      * @param icon the feed icon to set, <b>null</b> if none.
      *
@@ -443,9 +443,9 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Returns the feed categories.
-     * <p>
+
      * This method is a convenience method, it maps to the Dublin Core module subjects.
-     * <p>
+
      *
      * @return a list of SyndCategoryImpl elements with the feed categories, an empty list if none.
      *
@@ -454,9 +454,9 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Sets the feed categories.
-     * <p>
+
      * This method is a convenience method, it maps to the Dublin Core module subjects.
-     * <p>
+
      *
      * @param categories the list of SyndCategoryImpl elements with the feed categories to set, an
      *            empty list or <b>null</b> if none.
@@ -466,7 +466,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Returns the feed entries.
-     * <p>
+
      *
      * @return a list of SyndEntry elements with the feed entries, an empty list if none.
      *
@@ -475,7 +475,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Sets the feed entries.
-     * <p>
+
      *
      * @param entries the list of SyndEntryImpl elements with the feed entries to set, an empty list
      *            or <b>null</b> if none.
@@ -485,9 +485,9 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Returns the feed language.
-     * <p>
+
      * This method is a convenience method, it maps to the Dublin Core module language.
-     * <p>
+
      *
      * @return the feed language, <b>null</b> if none.
      *
@@ -496,9 +496,9 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Sets the feed language.
-     * <p>
+
      * This method is a convenience method, it maps to the Dublin Core module language.
-     * <p>
+
      *
      * @param language the feed language to set, <b>null</b> if none.
      *
@@ -507,7 +507,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Returns the module identified by a given URI.
-     * <p>
+
      *
      * @param uri the URI of the ModuleImpl.
      * @return The module with the given URI, <b>null</b> if none.
@@ -517,7 +517,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Returns the feed modules.
-     * <p>
+
      *
      * @return a list of ModuleImpl elements with the feed modules, an empty list if none.
      *
@@ -527,7 +527,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Sets the feed modules.
-     * <p>
+
      *
      * @param modules the list of ModuleImpl elements with the feed modules to set, an empty list or
      *            <b>null</b> if none.
@@ -538,7 +538,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Returns foreign markup found at channel level.
-     * <p>
+
      *
      * @return Opaque object to discourage use
      *
@@ -547,7 +547,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Sets foreign markup found at channel level.
-     * <p>
+
      *
      * @param foreignMarkup Opaque object to discourage use
      *
@@ -640,7 +640,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
 
     /**
      * Creates a deep clone of the object.
-     * <p>
+
      *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.

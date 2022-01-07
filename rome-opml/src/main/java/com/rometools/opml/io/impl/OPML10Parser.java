@@ -36,14 +36,25 @@ import com.rometools.rome.io.WireFeedParser;
 import com.rometools.rome.io.impl.BaseWireFeedParser;
 import com.rometools.rome.io.impl.DateParser;
 
+/**
+ * OPML 1.0 Parser class
+ *
+ */
 public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
 
     private static Logger LOG = LoggerFactory.getLogger(OPML10Parser.class);
 
+    /**
+     * Public constructor.
+     */
     public OPML10Parser() {
         super("opml_1.0", null);
     }
 
+    /**
+     * Public constructor.
+     * @param type the OPML 1.0 type (opml_1.0 by default)
+     */
     public OPML10Parser(final String type) {
         super(type, null);
     }
@@ -249,7 +260,7 @@ public class OPML10Parser extends BaseWireFeedParser implements WireFeedParser {
 
     protected Integer readInteger(final String value) {
         if (value != null) {
-            return new Integer(value);
+            return Integer.valueOf(value);
         } else {
             return null;
         }

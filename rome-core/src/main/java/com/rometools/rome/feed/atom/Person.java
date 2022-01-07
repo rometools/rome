@@ -19,6 +19,8 @@ package com.rometools.rome.feed.atom;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Stream;
 
 import com.rometools.rome.feed.impl.CloneableBean;
 import com.rometools.rome.feed.impl.EqualsBean;
@@ -27,7 +29,6 @@ import com.rometools.rome.feed.module.Extendable;
 import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.feed.module.impl.ModuleUtils;
 import com.rometools.rome.feed.synd.SyndPerson;
-import com.rometools.utils.Alternatives;
 import com.rometools.utils.Lists;
 
 /**
@@ -43,11 +44,14 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
     private String email;
     private List<Module> modules;
 
+    /**
+     * Public constructor
+     */
     public Person() { }
 
     /**
      * Creates a deep 'bean' clone of the object.
-     * <p>
+
      *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
@@ -61,7 +65,7 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
     /**
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
-     * <p>
+
      *
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
@@ -74,9 +78,9 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
 
     /**
      * Returns a hashcode value for the object.
-     * <p>
+
      * It follows the contract defined by the Object hashCode() method.
-     * <p>
+
      *
      * @return the hashcode of the bean object.
      *
@@ -88,7 +92,7 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
 
     /**
      * Returns the String representation for the object.
-     * <p>
+
      *
      * @return String representation for the object.
      *
@@ -100,7 +104,7 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
 
     /**
      * Returns the person name.
-     * <p>
+
      *
      * @return the person name, <b>null</b> if none.
      *
@@ -112,7 +116,7 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
 
     /**
      * Sets the personname.
-     * <p>
+
      *
      * @param name the person name, <b>null</b> if none.
      *
@@ -124,7 +128,7 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
 
     /**
      * Returns the person URL (same as {@link #getUri()})
-     * <p>
+
      *
      * @return the person URL, <b>null</b> if none.
      */
@@ -134,7 +138,7 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
 
     /**
      * Sets the person URL (same as {@link #setUri(java.lang.String)})
-     * <p>
+
      *
      * @param url the person URL, <b>null</b> if none.
      */
@@ -142,17 +146,27 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
         uri = url;
     }
 
+    /**
+     * Sets the URI resolved.
+     * @param uriResolved the new uriResolved value
+     */
     public void setUriResolved(final String uriResolved) {
         this.uriResolved = uriResolved;
     }
 
+    /**
+     * Returns the first not null URI resolved.
+     * @param resolveURI the resolveUri default value
+     * @return the first not null URI resolved.
+     */
     public String getUriResolved(final String resolveURI) {
-        return Alternatives.firstNotNull(uriResolved, uri);
+        //return Alternatives.firstNotNull(uriResolved, uri);
+    	return Stream.of(new String[] {uriResolved, uri}).filter(Objects::nonNull).findFirst().orElse(null);
     }
 
     /**
      * Returns the person email.
-     * <p>
+
      *
      * @return the person email, <b>null</b> if none.
      *
@@ -164,7 +178,7 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
 
     /**
      * Sets the person email.
-     * <p>
+
      *
      * @param email the person email, <b>null</b> if none.
      *
@@ -176,7 +190,7 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
 
     /**
      * Returns the uri
-     * <p>
+
      *
      * @return Returns the uri.
      * @since Atom 1.0
@@ -188,7 +202,7 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
 
     /**
      * Set the uri
-     * <p>
+
      *
      * @param uri The uri to set.
      * @since Atom 1.0
@@ -200,7 +214,7 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
 
     /**
      * Returns the entry modules.
-     * <p>
+
      *
      * @return a list of ModuleImpl elements with the entry modules, an emtpy list if none.
      *
@@ -212,7 +226,7 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
 
     /**
      * Sets the entry modules.
-     * <p>
+
      *
      * @param modules the list of ModuleImpl elements with the entry modules to set, an empty list
      *            or <b>null</b> if none.
@@ -225,7 +239,7 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
 
     /**
      * Returns the module identified by a given URI.
-     * <p>
+
      *
      * @param uri the URI of the ModuleImpl.
      * @return The module with the given URI, <b>null</b> if none.

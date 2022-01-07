@@ -32,11 +32,14 @@ public class Category implements Cloneable, Serializable {
     private String domain;
     private String value;
 
+    /**
+     * Public constructor.
+     */
     public Category() { }
 
     /**
      * Creates a deep 'bean' clone of the object.
-     * <p>
+
      *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
@@ -50,7 +53,7 @@ public class Category implements Cloneable, Serializable {
     /**
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
-     * <p>
+
      *
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
@@ -66,9 +69,9 @@ public class Category implements Cloneable, Serializable {
 
     /**
      * Returns a hashcode value for the object.
-     * <p>
+
      * It follows the contract defined by the Object hashCode() method.
-     * <p>
+
      *
      * @return the hashcode of the bean object.
      *
@@ -80,7 +83,7 @@ public class Category implements Cloneable, Serializable {
 
     /**
      * Returns the String representation for the object.
-     * <p>
+
      *
      * @return String representation for the object.
      *
@@ -92,7 +95,7 @@ public class Category implements Cloneable, Serializable {
 
     /**
      * Returns the category domain.
-     * <p>
+
      *
      * @return the category domain, <b>null</b> if none.
      *
@@ -103,7 +106,7 @@ public class Category implements Cloneable, Serializable {
 
     /**
      * Sets the category domain.
-     * <p>
+
      *
      * @param domain the category domain to set, <b>null</b> if none.
      *
@@ -114,7 +117,7 @@ public class Category implements Cloneable, Serializable {
 
     /**
      * Returns the category value.
-     * <p>
+
      *
      * @return the category value, <b>null</b> if none.
      *
@@ -125,7 +128,7 @@ public class Category implements Cloneable, Serializable {
 
     /**
      * Sets the category value.
-     * <p>
+
      *
      * @param value the category value to set, <b>null</b> if none.
      *

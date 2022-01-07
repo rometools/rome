@@ -34,6 +34,9 @@ import org.slf4j.LoggerFactory;
 
 import com.rometools.rome.feed.CopyFrom;
 
+/**
+ * The CopyFrom helper class.
+ */
 public class CopyFromHelper {
 
     private static final Logger LOG = LoggerFactory.getLogger(CopyFromHelper.class);
@@ -58,6 +61,12 @@ public class CopyFromHelper {
         BASIC_TYPES.add(Date.class);
     }
 
+    /**
+     * Public constructor.
+     * @param beanInterfaceClass the origin class
+     * @param basePropInterfaceMap the base properties interface map
+     * @param basePropClassImplMap the base properties class implementation map
+     */
     public CopyFromHelper(final Class<? extends CopyFrom> beanInterfaceClass, final Map<String, Class<?>> basePropInterfaceMap,
             final Map<Class<? extends CopyFrom>, Class<?>> basePropClassImplMap) {
         this.beanInterfaceClass = beanInterfaceClass;
@@ -65,6 +74,11 @@ public class CopyFromHelper {
         baseImplMap = basePropClassImplMap;
     }
 
+    /**
+     * Copy from source to target.
+     * @param target the target reference
+     * @param source the source reference
+     */
     public void copy(final Object target, final Object source) {
 
         try {
@@ -103,7 +117,7 @@ public class CopyFromHelper {
         if (baseImplMap.get(interfaceClass) == null) {
             return null;
         } else {
-            return (CopyFrom) baseImplMap.get(interfaceClass).newInstance();
+            return (CopyFrom) baseImplMap.get(interfaceClass).getDeclaredConstructor().newInstance();
         }
     }
 
@@ -127,7 +141,7 @@ public class CopyFromHelper {
                     final CopyFrom source = (CopyFrom) value;
                     CopyFrom target = createInstance(source.getInterface());
                     if (target == null) {
-                        target = (CopyFrom) value.getClass().newInstance();
+                        target = (CopyFrom) value.getClass().getDeclaredConstructor().newInstance();
                     }
                     target.copyFrom(source);
                     value = (T) target;
