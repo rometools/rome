@@ -29,9 +29,9 @@ import com.rometools.rome.feed.impl.ToStringBean;
 
 /**
  * Subject of the Dublin Core ModuleImpl, default implementation.
- * <p>
+
  *
- * @see <a href="http://web.resource.org/rss/1.0/modules/dc/">Dublin Core module</a>.
+ * @see <a href="http://web.resource.org/rss/1.0/modules/dc/">Dublin Core module</a>
  */
 public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
 
@@ -51,11 +51,14 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
         COPY_FROM_HELPER = new CopyFromHelper(DCSubject.class, basePropInterfaceMap, basePropClassImplMap);
     }
 
+    /**
+     * Public constructor.
+     */
     public DCSubjectImpl() { }
 
     /**
      * Creates a deep 'bean' clone of the object.
-     * <p>
+
      *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
@@ -69,7 +72,7 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
     /**
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
-     * <p>
+
      *
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
@@ -85,9 +88,9 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
 
     /**
      * Returns a hashcode value for the object.
-     * <p>
+
      * It follows the contract defined by the Object hashCode() method.
-     * <p>
+
      *
      * @return the hashcode of the bean object.
      *
@@ -99,7 +102,7 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
 
     /**
      * Returns the String representation for the object.
-     * <p>
+
      *
      * @return String representation for the object.
      *
@@ -111,7 +114,7 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
 
     /**
      * Returns the DublinCore subject taxonomy URI.
-     * <p>
+
      *
      * @return the DublinCore subject taxonomy URI, <b>null</b> if none.
      *
@@ -123,7 +126,7 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
 
     /**
      * Sets the DublinCore subject taxonomy URI.
-     * <p>
+
      *
      * @param taxonomyUri the DublinCore subject taxonomy URI to set, <b>null</b> if none.
      *
@@ -135,7 +138,7 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
 
     /**
      * Returns the DublinCore subject value.
-     * <p>
+
      *
      * @return the DublinCore subject value, <b>null</b> if none.
      *
@@ -147,7 +150,7 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
 
     /**
      * Sets the DublinCore subject value.
-     * <p>
+
      *
      * @param value the DublinCore subject value to set, <b>null</b> if none.
      *
@@ -157,11 +160,17 @@ public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
         this.value = value;
     }
 
+    /**
+     * Return the Class interface.
+     */
     @Override
     public Class<DCSubject> getInterface() {
         return DCSubject.class;
     }
 
+    /**
+     * Copy execution using CopyFrom helper class
+     */
     @Override
     public void copyFrom(final CopyFrom obj) {
         COPY_FROM_HELPER.copy(this, obj);

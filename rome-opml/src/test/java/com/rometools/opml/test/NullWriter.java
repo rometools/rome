@@ -18,16 +18,29 @@ package com.rometools.opml.test;
 import java.io.IOException;
 import java.io.Writer;
 
+/**
+ * NullWriter class
+ *
+ */
 public class NullWriter extends Writer {
 
+	/**
+	 * {@inheritDoc}
+	 */
     @Override
     public void write(final char[] cbuf, final int off, final int len) throws IOException {
     }
 
+    /**
+	 * {@inheritDoc}
+	 */
     @Override
     public void flush() throws IOException {
     }
 
+    /**
+	 * {@inheritDoc}
+	 */
     @Override
     public void close() throws IOException {
     }

@@ -23,6 +23,9 @@ package com.rometools.rome.feed.impl;
  */
 public enum ConfigurableClassLoader {
 
+    /**
+     * The enum instance
+     */
     INSTANCE;
 
     private ClassLoader classLoader;

@@ -18,10 +18,17 @@ package com.rometools.opml.feed.synd.impl;
 import com.rometools.rome.feed.synd.SyndCategory;
 import com.rometools.rome.feed.synd.SyndCategoryImpl;
 
+/**
+ * TreeCategory implementation class. 
+ *
+ */
 public class TreeCategoryImpl extends SyndCategoryImpl {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean equals(final Object o) {
         final SyndCategory c = (SyndCategory) o;

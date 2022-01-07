@@ -44,37 +44,65 @@ public class Attribute implements Cloneable, Serializable {
         setValue(value);
     }
 
+    /**
+     * Sets the name.
+     * @param name the name
+     */
     public void setName(final String name) {
         this.name = name;
     }
 
+    /**
+     * Returns the name
+     * @return the name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets the value
+     * @param value the value to set.
+     */
     public void setValue(final String value) {
         this.value = value;
     }
 
+    /**
+     * Returns the value.
+     * @return the value.
+     */
     public String getValue() {
         return value;
     }
 
+    /**
+     * Clones this object.
+     */
     @Override
     public Object clone() {
         return new Attribute(name, value);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean equals(final Object obj) {
         return EqualsBean.beanEquals(Attribute.class, this, obj);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int hashCode() {
         return EqualsBean.beanHashCode(this);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String toString() {
         return ToStringBean.toString(Attribute.class, this);

@@ -7,10 +7,10 @@
   <body>
   This package represents the Apple iPhoto Photocasting 0.9 namespace support.
   Sample Usage:
-<xmp>
+<pre>
         SyndFeed feed = input.build(  new File( "/foo.rss" ) ) );
         List entries = feed.getEntries();
-        for( int i =0; i < entries.size() ; i++ ){
+        for( int i =0; i &lt; entries.size() ; i++ ){
             System.out.println( ((SyndEntry)entries.get(i)).getModule( PhotocastModule.URI ) );
         }
         
@@ -28,6 +28,6 @@
         pm.setPhotoDate( new Date() );
         pm.setMetaData( new PhotoDate(), "Some comments that I think always get ignored." );
         myEntry.getModules().add( pm );
-</xmp>
+</pre>
   </body>
 </html>

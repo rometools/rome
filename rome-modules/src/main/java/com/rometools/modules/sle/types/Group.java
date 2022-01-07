@@ -33,11 +33,11 @@ import com.rometools.rome.feed.impl.ToStringBean;
  * allows the user to group or filter on the values of that property. Groupable&nbsp;properties
  * should contain
  *
- * a small set of discrete values (e.g. book genres are perfect for groups). </p>
+
  *
- * <p>
+
  * The <code>cf:group</code> element contains the following attributes:
- * </p>
+
  *
  * <ul>
  * <li><b>ns </b>- this attribute is the full namespace used in the property element. If the

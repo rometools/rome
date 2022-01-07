@@ -40,7 +40,7 @@ public class ModuleGenerator implements com.rometools.rome.io.ModuleGenerator {
 
     /**
      * Returns the namespace URI this generator handles.
-     * <p>
+
      *
      * @return the namespace URI.
      */
@@ -51,10 +51,10 @@ public class ModuleGenerator implements com.rometools.rome.io.ModuleGenerator {
 
     /**
      * Returns a set with all the URIs (JDOM Namespace elements) this module generator uses.
-     * <p/>
+     * 
      * It is used by the the feed generators to add their namespace definition in the root element
      * of the generated document (forward-missing of Java 5.0 Generics).
-     * <p/>
+     * 
      *
      * @return a set with all the URIs (JDOM Namespace elements) this module generator uses.
      */
@@ -65,7 +65,7 @@ public class ModuleGenerator implements com.rometools.rome.io.ModuleGenerator {
 
     /**
      * Generates and injectts module metadata in a XML node (JDOM element).
-     * <p>
+
      *
      * @param module the module to inject into the XML node (JDOM element).
      * @param element the XML node to inject the module metadata to.

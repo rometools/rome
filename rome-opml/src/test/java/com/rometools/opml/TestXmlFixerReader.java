@@ -31,9 +31,17 @@ import org.jdom2.input.SAXBuilder;
 import com.rometools.rome.io.XmlReader;
 import com.rometools.rome.io.impl.XmlFixerReader;
 
+/**
+ * TestXmlFixerReader class 
+ *
+ */
 public class TestXmlFixerReader extends TestCase {
     private static final String XML_PROLOG = "<?xml version=\"1.0\" ?>";
 
+    /**
+     * testTrim
+     * @throws Exception any exception
+     */
     public void testTrim() throws Exception {
         _testValidTrim("", "<hello></hello>");
         _testValidTrim("", XML_PROLOG + "<hello></hello>");
@@ -70,6 +78,10 @@ public class TestXmlFixerReader extends TestCase {
         _testInvalidTrim(" <!-- - -- --> x\n <!-- - -- --> ", XML_PROLOG + "<hello></hello>");
     }
 
+    /**
+     * testHtmlEntities
+     * @throws Exception any exception
+     */
     public void testHtmlEntities() throws Exception {
         _testValidEntities("<hello></hello>");
         _testValidEntities(XML_PROLOG + "<hello></hello>");

@@ -17,6 +17,7 @@
 package com.rometools.rome.io.impl;
 
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.Locale;
 
@@ -36,11 +37,17 @@ import com.rometools.rome.feed.synd.SyndPerson;
 import com.rometools.rome.io.FeedException;
 import com.rometools.utils.Lists;
 
+/**
+ * Atom 0.3 Parser
+ */
 public class Atom03Parser extends BaseWireFeedParser {
 
     private static final String ATOM_03_URI = "http://purl.org/atom/ns#";
     private static final Namespace ATOM_03_NS = Namespace.getNamespace(ATOM_03_URI);
 
+    /**
+     * Public constructor.
+     */
     public Atom03Parser() {
         this("atom_0.3", ATOM_03_NS);
     }
@@ -277,7 +284,7 @@ public class Atom03Parser extends BaseWireFeedParser {
 
         } else if (mode.equals(Content.BASE64)) {
 
-            value = Base64.decode(e.getText());
+            value = new String(Base64.getDecoder().decode(e.getText().getBytes()));
 
         } else if (mode.equals(Content.XML)) {
 

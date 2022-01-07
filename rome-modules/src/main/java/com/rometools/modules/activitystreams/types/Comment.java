@@ -18,22 +18,22 @@
 package com.rometools.modules.activitystreams.types;
 
 /**
- * <p>
+
  * The "comment" object type represents a textual response to another object.
- * </p>
- * <p>
+
+
  * The comment object type MUST NOT be used for other kinds of replies, such as video replies or
  * reviews.
- * </p>
- * <p>
+
+
  * The "comment" object type is identified by the URI
- * <tt>http://activitystrea.ms/schema/1.0/comment</tt>.
- * </p>
- * <p>
+ * "http://activitystrea.ms/schema/1.0/comment".
+
+
  * A comment has the following additional components:
- * </p>
- * <p>
- * </p>
+
+
+
  * <blockquote class="text">
  * <dl>
  * <dt>Subject</dt>
@@ -42,7 +42,7 @@ package com.rometools.modules.activitystreams.types;
  * the Name component. Processors SHOULD refer to such comments as simply being "a comment", with
  * appropriate localization, if they are to be described in a sentence.</dd>
  * <dt>Content</dt>
- * <dd>The content of the comment. Represented in JSON as a property called <tt>content</tt> whose
+ * <dd>The content of the comment. Represented in JSON as a property called "content" whose
  * value is a JSON string containing a fragment of HTML that represents the content. Publishers
  * SHOULD include any markup necessary to achieve a similar presentation to that on the publisher's
  * own HTML pages, including any links that the service automatically adds. Processors MAY remove

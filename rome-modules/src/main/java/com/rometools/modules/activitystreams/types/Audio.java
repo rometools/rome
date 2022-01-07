@@ -17,27 +17,18 @@
 package com.rometools.modules.activitystreams.types;
 
 /**
- * <p>
  * The "audio" Object type represents audio content.
- * </p>
- * <p>
  * The "audio" Object type is identified by the URI
- * <tt>http://activitystrea.ms/schema/1.0/audio</tt>.
- * </p>
- * <p>
+ * "http://activitystrea.ms/schema/1.0/audio".
  * An audio has the following additional components:
- * </p>
- * <p>
- * </p>
- * <blockquote class="text">
  * <dl>
  * <dt>Audio Stream Link</dt>
  * <dd>A Media Link Construct linking to the audio content itself. Represented in JSON as a property
- * called <tt>stream</tt> whose value is a JSON object with properties as defined in [TODO: xref the
+ * called "stream" whose value is a JSON object with properties as defined in [TODO: xref the
  * JSON serialization of a Media Link Construct]</dd>
  * <dt>Embed Code</dt>
  * <dd>An HTML fragment that, when embedded in an HTML page, will provide an interactive player UI
- * for the audio stream. Represented in JSON as a property called <tt>embedCode</tt> whose value is
+ * for the audio stream. Represented in JSON as a property called "embedCode" whose value is
  * a JSON string containing the fragment of HTML.</dd>
  * </dl>
  */
@@ -83,6 +74,9 @@ public class Audio extends ActivityObject {
         return streamLink;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String getTypeIRI() {
         return "http://activitystrea.ms/schema/1.0/audio";

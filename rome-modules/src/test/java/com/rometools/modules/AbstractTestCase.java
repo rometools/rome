@@ -29,6 +29,10 @@ public abstract class AbstractTestCase extends TestCase {
      */
     public String basedir = System.getProperty("basedir") + "/src/test/resources";
 
+    /**
+     * Public constructor
+     * @param testName the test name.
+     */
     public AbstractTestCase(final String testName) {
         super(testName);
     }
@@ -37,6 +41,7 @@ public abstract class AbstractTestCase extends TestCase {
      * Get test input file.
      *
      * @param path Path to test input file.
+     * @return the absolute path.
      */
     public String getTestFile(final String path) {
         try {
@@ -46,6 +51,14 @@ public abstract class AbstractTestCase extends TestCase {
         }
     }
 
+    /**
+     * Assert equals
+     * 
+     * @param message The message to show
+     * @param control The control flags
+     * @param test The tests to evaluate
+     * @return The assert result
+     */
     public boolean assertEquals(final String message, final Object[] control, final Object[] test) {
         if (control == null && test == null) {
             return true;

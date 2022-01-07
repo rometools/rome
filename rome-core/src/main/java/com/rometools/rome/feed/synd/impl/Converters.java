@@ -33,10 +33,18 @@ public class Converters extends PluginManager<Converter> {
      */
     public static final String CONVERTERS_KEY = "Converter.classes";
 
+    /**
+     * Empty public constructor.
+     */
     public Converters() {
         super(CONVERTERS_KEY);
     }
 
+    /**
+     * Returns the converter filtered by feed type.
+     * @param feedType the feed type to filter.
+     * @return the Converter filtered.
+     */
     public Converter getConverter(final String feedType) {
         return getPlugin(feedType);
     }
@@ -46,6 +54,10 @@ public class Converters extends PluginManager<Converter> {
         return obj.getType();
     }
 
+    /**
+     * Returns the supported feed types.
+     * @return the supported feed types.
+     */
     public List<String> getSupportedFeedTypes() {
         return getKeys();
     }

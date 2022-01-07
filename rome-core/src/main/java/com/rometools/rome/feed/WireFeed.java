@@ -33,11 +33,11 @@ import com.rometools.utils.Lists;
 
 /**
  * Parent class of the RSS (Channel) and Atom (Feed) feed beans.
- * <p>
+
  * NOTE: We don't like this class at this package level but the alternative would have been a
  * proliferation of packages (one more level to hold atom and rss package with this class just in
  * that package).
- * <p>
+
  * The format of the 'type' property must be [FEEDNAME]_[FEEDVERSION] with the FEEDNAME in lower
  * case, for example: rss_0.9, rss_0.93, atom_0.3
  */
@@ -110,9 +110,9 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
 
     /**
      * Returns a hashcode value for the object.
-     * <p>
+
      * It follows the contract defined by the Object hashCode() method.
-     * <p>
+
      *
      * @return the hashcode of the bean object.
      *
@@ -124,7 +124,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
 
     /**
      * Returns the String representation for the object.
-     * <p>
+
      *
      * @return String representation for the object.
      *
@@ -136,7 +136,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
 
     /**
      * Sets the feedType of a the feed. <b>Do not use</b>, for bean cloning purposes only.
-     * <p>
+
      *
      * @param feedType the feedType of the feed.
      *
@@ -156,10 +156,10 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
 
     /**
      * Returns the charset encoding of a the feed.
-     * <p>
+
      * This property is not set by feed parsers. But it is used by feed generators to set the
      * encoding in the XML prolog.
-     * <p>
+
      *
      * @return the charset encoding of the feed.
      *
@@ -170,10 +170,10 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
 
     /**
      * Sets the charset encoding of a the feed.
-     * <p>
+
      * This property is not set by feed parsers. But it is used by feed generators to set the
      * encoding in the XML prolog.
-     * <p>
+
      *
      * @param encoding the charset encoding of the feed.
      *
@@ -184,7 +184,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
 
     /**
      * Returns the channel modules.
-     * <p>
+
      *
      * @return a list of ModuleImpl elements with the channel modules, an empty list if none.
      *
@@ -196,7 +196,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
 
     /**
      * Sets the channel modules.
-     * <p>
+
      *
      * @param modules the list of ModuleImpl elements with the channel modules to set, an empty list
      *            or <b>null</b> if none.
@@ -209,7 +209,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
 
     /**
      * Returns the module identified by a given URI.
-     * <p>
+
      *
      * @param uri the URI of the ModuleImpl.
      * @return The module with the given URI, <b>null</b> if none.
@@ -221,7 +221,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
 
     /**
      * Returns foreign markup found at channel level.
-     * <p>
+
      *
      * @return Opaque object to discourage use
      *
@@ -232,7 +232,7 @@ public abstract class WireFeed implements Cloneable, Serializable, Extendable {
 
     /**
      * Sets foreign markup found at channel level.
-     * <p>
+
      *
      * @param foreignMarkup Opaque object to discourage use
      *

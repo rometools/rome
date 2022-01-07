@@ -87,7 +87,7 @@ public class Price implements Serializable {
     }
 
     /**
-     * use ISO 4217 {@link http://en.wikipedia.org/wiki/ISO_4217} for currency codes. This is an optional attribute.
+     * use ISO 4217 for currency codes. This is an optional attribute.
      * 
      * @return ISO 4217 currency code
      */
@@ -96,7 +96,7 @@ public class Price implements Serializable {
     }
 
     /**
-     * use ISO 4217 {@link http://en.wikipedia.org/wiki/ISO_4217} for currency codes. This is an optional attribute.
+     * use ISO 4217 for currency codes. This is an optional attribute.
      * 
      * @param currency ISO 4217 currency code
      */

@@ -118,10 +118,12 @@ public abstract class BaseWireFeedGenerator implements WireFeedGenerator {
      * first place. So, we should still ask the ROME guys to fix their code (not adding dozens of
      * unnecessary module declarations). Having said that: purging them here, before XML generation,
      * is more efficient than parsing and re-molding the XML after ROME generates it.
-     * <p/>
+     * 
      * Note that the calling app could still add declarations/modules to the Feed tree after this.
      * Which is fine. But those modules are then responsible for crawling to the root of the tree,
      * at generate() time, to make sure their namespace declarations are present.
+     * 
+     * @param root the root element.
      */
     protected static void purgeUnusedNamespaceDeclarations(final Element root) {
 

@@ -38,7 +38,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Provides deep <b>Bean</b> clonning support.
- * <p>
+
  * It works on all read/write properties, recursively. It support all primitive types, Strings,
  * Collections, Cloneable objects and multi-dimensional arrays of any of them.
  */
@@ -67,9 +67,10 @@ public class CloneableBean {
 
     /**
      * Makes a deep bean clone of the object passed in the constructor.
-     * <p>
      * To be used by classes using CloneableBean in a delegation pattern,
-     *
+     * 
+     * @param obj the object to be cloned
+     * @param ignoreProperties properties ignore in clone phase
      * @return a clone of the object bean.
      * @throws CloneNotSupportedException thrown if the object bean could not be cloned.
      *

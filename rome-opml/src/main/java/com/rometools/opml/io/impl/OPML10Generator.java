@@ -34,12 +34,23 @@ import com.rometools.rome.io.WireFeedGenerator;
 import com.rometools.rome.io.impl.BaseWireFeedGenerator;
 import com.rometools.rome.io.impl.DateParser;
 
+/**
+ * OPML 1.0 Generator class
+ *
+ */
 public class OPML10Generator extends BaseWireFeedGenerator implements WireFeedGenerator {
 
+	/**
+	 * Public constructor
+	 */
     public OPML10Generator() {
         super("opml_1.0");
     }
 
+    /**
+     * Public constructor
+     * @param type the OPML 1.0 type (opml_1.0 by default)
+     */
     public OPML10Generator(final String type) {
         super(type);
     }

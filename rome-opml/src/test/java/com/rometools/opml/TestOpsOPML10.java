@@ -28,12 +28,22 @@ import com.rometools.rome.feed.WireFeed;
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.feed.synd.SyndFeedImpl;
 
+/**
+ * TestOpsOPML20 class 
+ *
+ */
 public class TestOpsOPML10 extends FeedOpsTest {
 
+	/**
+	 * Public constructor.
+	 */
     public TestOpsOPML10() {
         super("opml_1.0");
     }
 
+    /**
+     * {@inheritDoc}
+     */
     // 1.6
     @Override
     public void testWireFeedSyndFeedConversion() throws Exception {

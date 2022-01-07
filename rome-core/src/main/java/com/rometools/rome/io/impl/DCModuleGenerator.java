@@ -35,7 +35,7 @@ import com.rometools.rome.io.ModuleGenerator;
 
 /**
  * Feed Generator for DublinCore Module.
- * <p/>
+ * 
  */
 public class DCModuleGenerator implements ModuleGenerator {
 
@@ -76,10 +76,10 @@ public class DCModuleGenerator implements ModuleGenerator {
 
     /**
      * Returns a set with all the URIs (JDOM Namespace elements) this module generator uses.
-     * <p/>
+     * 
      * It is used by the the feed generators to add their namespace definition in the root element
      * of the generated document (forward-missing of Java 5.0 Generics).
-     * <p/>
+     * 
      *
      * @return a set with all the URIs this module generator uses.
      */
@@ -90,7 +90,7 @@ public class DCModuleGenerator implements ModuleGenerator {
 
     /**
      * Populate an element tree with elements for a module.
-     * <p>
+
      *
      * @param module the module to populate from.
      * @param element the root element to attach child elements to.
@@ -181,7 +181,7 @@ public class DCModuleGenerator implements ModuleGenerator {
 
     /**
      * Utility method to generate an element for a subject.
-     * <p>
+
      *
      * @param subject the subject to generate an element for.
      * @return the element for the subject.
@@ -220,7 +220,7 @@ public class DCModuleGenerator implements ModuleGenerator {
 
     /**
      * Utility method to generate a single element containing a string.
-     * <p>
+
      *
      * @param name the name of the elment to generate.
      * @param value the value of the text in the element.
@@ -234,7 +234,7 @@ public class DCModuleGenerator implements ModuleGenerator {
 
     /**
      * Utility method to generate a list of simple elements.
-     * <p>
+
      *
      * @param name the name of the element list to generate.
      * @param values the list of values for the elements.

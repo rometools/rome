@@ -31,7 +31,7 @@ import com.rometools.rome.feed.synd.SyndFeedImpl;
 /**
  * Parses an XML document (File, InputStream, Reader, W3C SAX InputSource, W3C DOM Document or JDom
  * DOcument) into an SyndFeedImpl.
- * <p>
+
  * It delegates to a WireFeedInput to handle all feed types.
  */
 public class SyndFeedInput {
@@ -40,7 +40,6 @@ public class SyndFeedInput {
 
     /**
      * Creates a SyndFeedInput instance with input validation turned off.
-     * <p>
      *
      */
     public SyndFeedInput() {
@@ -49,10 +48,10 @@ public class SyndFeedInput {
 
     /**
      * Creates a SyndFeedInput instance.
-     * <p>
      *
      * @param validate indicates if the input should be validated. NOT IMPLEMENTED YET (validation
      *            does not happen)
+     * @param locale the Locale instance.
      *
      */
     public SyndFeedInput(final boolean validate, final Locale locale) {
@@ -61,15 +60,10 @@ public class SyndFeedInput {
 
     /**
      * Enables XML healing in the WiredFeedInput instance.
-     * <p>
      * Healing trims leading chars from the stream (empty spaces and comments) until the XML prolog.
-     * <p>
      * Healing resolves HTML entities (from literal to code number) in the reader.
-     * <p>
      * The healing is done only with the build(File) and build(Reader) signatures.
-     * <p>
      * By default is TRUE.
-     * <p>
      *
      * @param heals TRUE enables stream healing, FALSE disables it.
      *
@@ -80,15 +74,10 @@ public class SyndFeedInput {
 
     /**
      * Indicates if the WiredFeedInput instance will XML heal (if necessary) the character stream.
-     * <p>
      * Healing trims leading chars from the stream (empty spaces and comments) until the XML prolog.
-     * <p>
      * Healing resolves HTML entities (from literal to code number) in the reader.
-     * <p>
      * The healing is done only with the build(File) and build(Reader) signatures.
-     * <p>
      * By default is TRUE.
-     * <p>
      *
      * @return TRUE if healing is enabled, FALSE if not.
      *
@@ -120,7 +109,6 @@ public class SyndFeedInput {
 
     /**
      * Builds SyndFeedImpl from a file.
-     * <p>
      *
      * @param file file to read to create the SyndFeedImpl.
      * @return the SyndFeedImpl read from the file.
@@ -137,7 +125,6 @@ public class SyndFeedInput {
 
     /**
      * Builds SyndFeedImpl from an Reader.
-     * <p>
      *
      * @param reader Reader to read to create the SyndFeedImpl.
      * @return the SyndFeedImpl read from the Reader.
@@ -152,7 +139,6 @@ public class SyndFeedInput {
 
     /**
      * Builds SyndFeedImpl from an W3C SAX InputSource.
-     * <p>
      *
      * @param is W3C SAX InputSource to read to create the SyndFeedImpl.
      * @return the SyndFeedImpl read from the W3C SAX InputSource.
@@ -167,7 +153,6 @@ public class SyndFeedInput {
 
     /**
      * Builds SyndFeedImpl from an W3C DOM document.
-     * <p>
      *
      * @param document W3C DOM document to read to create the SyndFeedImpl.
      * @return the SyndFeedImpl read from the W3C DOM document.
@@ -182,7 +167,6 @@ public class SyndFeedInput {
 
     /**
      * Builds SyndFeedImpl from an JDOM document.
-     * <p>
      *
      * @param document JDOM document to read to create the SyndFeedImpl.
      * @return the SyndFeedImpl read from the JDOM document.

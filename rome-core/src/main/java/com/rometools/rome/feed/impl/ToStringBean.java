@@ -30,7 +30,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Provides deep <b>Bean</b> toString support.
- * <p>
+
  * It works on all read/write properties, recursively. It support all primitive types, Strings,
  * Collections, ToString objects and multi-dimensional arrays of any of them.
  */
@@ -47,9 +47,9 @@ public class ToStringBean {
 
     /**
      * Returns the String representation of the bean given in the constructor.
-     * <p>
      * It uses the Class name as the prefix.
-     * <p>
+     * @param beanClass the bean class
+     * @param obj the object reference
      *
      * @return bean object String representation.
      *
@@ -90,7 +90,7 @@ public class ToStringBean {
 
     /**
      * Returns the String representation of the bean given in the constructor.
-     * <p>
+
      *
      * @param prefix to use for bean properties.
      * @return bean object String representation.

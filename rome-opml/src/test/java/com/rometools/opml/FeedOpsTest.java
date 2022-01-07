@@ -34,6 +34,9 @@ import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.feed.synd.SyndFeedImpl;
 import com.rometools.rome.io.WireFeedOutput;
 
+/**
+ * FeedOps abstract test class
+ */
 public abstract class FeedOpsTest extends FeedTest {
 
     protected FeedOpsTest(final String feedType) {
@@ -41,6 +44,10 @@ public abstract class FeedOpsTest extends FeedTest {
         new File("target/test-reports").mkdirs();
     }
 
+    /**
+     * testWireFeedEquals
+     * @throws Exception any exception
+     */
     // 1.2a
     public void testWireFeedEquals() throws Exception {
         final WireFeed feed1 = getCachedWireFeed();
@@ -48,6 +55,10 @@ public abstract class FeedOpsTest extends FeedTest {
         assertTrue(feed1.equals(feed2));
     }
 
+    /**
+     * testWireFeedNotEqual
+     * @throws Exception any exception
+     */
     // 1.2b
     public void testWireFeedNotEqual() throws Exception {
         final WireFeed feed1 = getCachedWireFeed();
@@ -56,6 +67,10 @@ public abstract class FeedOpsTest extends FeedTest {
         assertFalse(feed1.equals(feed2));
     }
 
+    /**
+     * testWireFeedCloning
+     * @throws Exception any exception
+     */
     // 1.3
     public void testWireFeedCloning() throws Exception {
         final WireFeed feed1 = getCachedWireFeed();
@@ -64,6 +79,10 @@ public abstract class FeedOpsTest extends FeedTest {
         assertTrue(feed1.equals(feed2));
     }
 
+    /**
+     * testWireFeedSerialization
+     * @throws Exception any exception
+     */
     // 1.4
     public void testWireFeedSerialization() throws Exception {
         final WireFeed feed1 = getCachedWireFeed();
@@ -81,6 +100,10 @@ public abstract class FeedOpsTest extends FeedTest {
         assertTrue(feed1.equals(feed2));
     }
 
+    /**
+     * testWireFeedJDOMSerialization
+     * @throws Exception any exception
+     */
     // 1.5
     public void testWireFeedJDOMSerialization() throws Exception {
         Document inputDoc = getCachedJDomDoc();
@@ -102,6 +125,10 @@ public abstract class FeedOpsTest extends FeedTest {
         XMLAssert.assertXMLEqual(diff, true);
     }
 
+    /**
+     * testWireFeedSyndFeedConversion
+     * @throws Exception any exception
+     */
     // 1.6
     public void testWireFeedSyndFeedConversion() throws Exception {
         final SyndFeed sFeed1 = getCachedSyndFeed();
@@ -111,6 +138,10 @@ public abstract class FeedOpsTest extends FeedTest {
         assertEquals(sFeed1, sFeed2);
     }
 
+    /**
+     * testSyndFeedEquals
+     * @throws Exception any exception
+     */
     // 1.7a
     public void testSyndFeedEquals() throws Exception {
         final SyndFeed feed1 = getCachedSyndFeed();
@@ -118,6 +149,10 @@ public abstract class FeedOpsTest extends FeedTest {
         assertTrue(feed1.equals(feed2));
     }
 
+    /**
+     * testSyndFeedNotEqual
+     * @throws Exception any exception
+     */
     // 1.7b
     public void testSyndFeedNotEqual() throws Exception {
         final SyndFeed feed1 = getCachedSyndFeed();
@@ -126,6 +161,10 @@ public abstract class FeedOpsTest extends FeedTest {
         assertFalse(feed1.equals(feed2));
     }
 
+    /**
+     * testSyndFeedCloning
+     * @throws Exception any exception
+     */
     // 1.8
     public void testSyndFeedCloning() throws Exception {
         final SyndFeed feed1 = getCachedSyndFeed();
@@ -134,6 +173,10 @@ public abstract class FeedOpsTest extends FeedTest {
         assertTrue(feed1.equals(feed2));
     }
 
+    /**
+     * testSyndFeedSerialization
+     * @throws Exception any exception
+     */
     // 1.9
     public void testSyndFeedSerialization() throws Exception {
         final SyndFeed feed1 = getCachedSyndFeed();

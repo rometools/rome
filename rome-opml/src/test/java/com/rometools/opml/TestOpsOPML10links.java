@@ -32,12 +32,21 @@ import com.rometools.rome.feed.synd.SyndFeedImpl;
 import com.rometools.rome.io.WireFeedInput;
 import com.rometools.rome.io.WireFeedOutput;
 
+/**
+ * TestOpsOPML10links class
+ */
 public class TestOpsOPML10links extends FeedOpsTest {
 
+	/**
+	 * Public constructor.
+	 */
     public TestOpsOPML10links() {
         super("opml_1.0_links");
     }
 
+    /**
+     * {@inheritDoc}
+     */
     // 1.6
     @Override
     public void testWireFeedSyndFeedConversion() throws Exception {
@@ -54,6 +63,10 @@ public class TestOpsOPML10links extends FeedOpsTest {
         assertEquals(sFeed2.createWireFeed(), sFeed1.createWireFeed());
     }
 
+    /**
+     * testTemp
+     * @throws Exception any exception
+     */
     public void testTemp() throws Exception {
         final WireFeedInput input = new WireFeedInput();
         final WireFeed wf = input.build(TestUtil.loadFile("/opml_1.0_links.xml"));

@@ -30,28 +30,47 @@ import com.rometools.opml.feed.opml.Opml;
 import com.rometools.opml.feed.opml.Outline;
 import com.rometools.rome.io.WireFeedOutput;
 
+/**
+ * OPML 2.0 Generator test class.
+ *
+ */
 public class OPML20GeneratorTest {
 
+	/**
+	 * testOutputOfNullCategory
+	 */
     @Test
     public void testOutputOfNullCategory() {
         assertThat(categoryOf((String) null).getLength(), is(equalTo(0)));
     }
 
+    /**
+	 * testOutputOfEmptyCategory
+	 */
     @Test
     public void testOutputOfEmptyCategory() {
         assertThat(categoryOf("").getLength(), is(equalTo(0)));
     }
 
+    /**
+	 * testOutputOfBlankCategory
+	 */
     @Test
     public void testOutputOfBlankCategory() {
         assertThat(categoryOf(" ").getLength(), is(equalTo(0)));
     }
 
+    /**
+	 * testOutputOfOneCategory
+	 */
     @Test
     public void testOutputOfOneCategory() {
         assertThat(categoryValueOf("category1"), is(equalTo("category1")));
     }
 
+    /**
+	 * testOutputOfMultipleCategories
+	 */
     @Test
     public void testOutputOfMultipleCategories() {
         assertThat(categoryValueOf("category1", "category2"), is(equalTo("category1,category2")));

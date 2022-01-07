@@ -39,7 +39,7 @@ import com.rometools.rome.io.impl.FeedGenerators;
 /**
  * Generates an XML document (String, File, OutputStream, Writer, W3C DOM document or JDOM document)
  * out of an WireFeed (RSS/Atom).
- * <p>
+
  * It generates all flavors of RSS (0.90, 0.91, 0.92, 0.93, 0.94, 1.0 and 2.0) and Atom 0.3 feeds.
  * Generators are plugable (they must implement the ModuleParser interface).
  */
@@ -60,10 +60,10 @@ public class WireFeedOutput {
 
     /**
      * Returns the list of supported output feed types.
-     * <p>
+
      *
      * @see WireFeed for details on the format of these strings.
-     *      <p>
+
      * @return a list of String elements with the supported output feed types.
      *
      */
@@ -73,7 +73,7 @@ public class WireFeedOutput {
 
     /**
      * Creates a FeedOuput instance.
-     * <p>
+
      *
      */
     public WireFeedOutput() {
@@ -81,13 +81,13 @@ public class WireFeedOutput {
 
     /**
      * Creates a String with the XML representation for the given WireFeed.
-     * <p>
+
      * If the feed encoding is not NULL, it will be used in the XML prolog encoding attribute. It is
      * the responsibility of the developer to ensure that if the String is written to a character
      * stream the stream charset is the same as the feed encoding property.
-     * <p>
+
      * NOTE: This method delages to the 'Document WireFeedOutput#outputJDom(WireFeed)'.
-     * <p>
+
      *
      * @param feed Abstract feed to create XML representation from. The type of the WireFeed must
      *            match the type given to the FeedOuptut constructor.
@@ -103,13 +103,13 @@ public class WireFeedOutput {
 
     /**
      * Creates a String with the XML representation for the given WireFeed.
-     * <p>
+
      * If the feed encoding is not NULL, it will be used in the XML prolog encoding attribute. It is
      * the responsibility of the developer to ensure that if the String is written to a character
      * stream the stream charset is the same as the feed encoding property.
-     * <p>
+
      * NOTE: This method delages to the 'Document WireFeedOutput#outputJDom(WireFeed)'.
-     * <p>
+
      *
      * @param feed Abstract feed to create XML representation from. The type of the WireFeed must
      *            match the type given to the FeedOuptut constructor.
@@ -140,14 +140,14 @@ public class WireFeedOutput {
 
     /**
      * Creates a File containing with the XML representation for the given WireFeed.
-     * <p>
+
      * If the feed encoding is not NULL, it will be used in the XML prolog encoding attribute. The
      * platform default charset encoding is used to write the feed to the file. It is the
      * responsibility of the developer to ensure the feed encoding is set to the platform charset
      * encoding.
-     * <p>
+
      * NOTE: This method delages to the 'Document WireFeedOutput#outputJDom(WireFeed)'.
-     * <p>
+
      *
      * @param feed Abstract feed to create XML representation from. The type of the WireFeed must
      *            match the type given to the FeedOuptut constructor.
@@ -164,14 +164,14 @@ public class WireFeedOutput {
 
     /**
      * Creates a File containing with the XML representation for the given WireFeed.
-     * <p>
+
      * If the feed encoding is not NULL, it will be used in the XML prolog encoding attribute. The
      * platform default charset encoding is used to write the feed to the file. It is the
      * responsibility of the developer to ensure the feed encoding is set to the platform charset
      * encoding.
-     * <p>
+
      * NOTE: This method delages to the 'Document WireFeedOutput#outputJDom(WireFeed)'.
-     * <p>
+
      *
      * @param feed Abstract feed to create XML representation from. The type of the WireFeed must
      *            match the type given to the FeedOuptut constructor.
@@ -194,13 +194,13 @@ public class WireFeedOutput {
 
     /**
      * Writes to an Writer the XML representation for the given WireFeed.
-     * <p>
+
      * If the feed encoding is not NULL, it will be used in the XML prolog encoding attribute. It is
      * the responsibility of the developer to ensure the Writer instance is using the same charset
      * encoding.
-     * <p>
+
      * NOTE: This method delages to the 'Document WireFeedOutput#outputJDom(WireFeed)'.
-     * <p>
+
      *
      * @param feed Abstract feed to create XML representation from. The type of the WireFeed must
      *            match the type given to the FeedOuptut constructor.
@@ -217,13 +217,13 @@ public class WireFeedOutput {
 
     /**
      * Writes to an Writer the XML representation for the given WireFeed.
-     * <p>
+
      * If the feed encoding is not NULL, it will be used in the XML prolog encoding attribute. It is
      * the responsibility of the developer to ensure the Writer instance is using the same charset
      * encoding.
-     * <p>
+
      * NOTE: This method delages to the 'Document WireFeedOutput#outputJDom(WireFeed)'.
-     * <p>
+
      *
      * @param feed Abstract feed to create XML representation from. The type of the WireFeed must
      *            match the type given to the FeedOuptut constructor.
@@ -256,11 +256,11 @@ public class WireFeedOutput {
 
     /**
      * Creates a W3C DOM document for the given WireFeed.
-     * <p>
+
      * This method does not use the feed encoding property.
-     * <p>
+
      * NOTE: This method delages to the 'Document WireFeedOutput#outputJDom(WireFeed)'.
-     * <p>
+
      *
      * @param feed Abstract feed to create W3C DOM document from. The type of the WireFeed must
      *            match the type given to the FeedOuptut constructor.
@@ -282,11 +282,11 @@ public class WireFeedOutput {
 
     /**
      * Creates a JDOM document for the given WireFeed.
-     * <p>
+
      * This method does not use the feed encoding property.
-     * <p>
+
      * NOTE: All other output methods delegate to this method.
-     * <p>
+
      *
      * @param feed Abstract feed to create JDOM document from. The type of the WireFeed must match
      *            the type given to the FeedOuptut constructor.

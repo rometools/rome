@@ -22,19 +22,17 @@ import com.rometools.rome.feed.WireFeed;
 
 /**
  * Generates an XML document (JDOM) out of a feed for a specific real feed type.
- * <p>
+
  * WireFeedGenerator instances must thread safe.
- * <p>
+
  * TODO: explain how developers can plugin their own implementations.
  */
 public interface WireFeedGenerator {
 
     /**
      * Returns the type of feed the generator creates.
-     * <p>
      *
      * @see WireFeed for details on the format of this string.
-     *      <p>
      * @return the type of feed the generator creates.
      *
      */
@@ -42,7 +40,6 @@ public interface WireFeedGenerator {
 
     /**
      * Creates an XML document (JDOM) for the given feed bean.
-     * <p>
      *
      * @param feed the feed bean to generate the XML document from.
      * @return the generated XML document (JDOM).

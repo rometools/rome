@@ -20,6 +20,7 @@
 package com.rometools.modules.atom;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.rometools.modules.AbstractTestCase;
@@ -76,11 +77,13 @@ public class AtomLinkTest extends AbstractTestCase {
         }
     }
     
-    public void testSetLinkShouldWork() {
+    public void testSetLinksShouldWork() {
         final AtomLinkModuleImpl atomLinkModule = new AtomLinkModuleImpl();
         final Link link = new Link();
-        atomLinkModule.setLink(link);
-        assertEquals(link, atomLinkModule.getLink());
+        final List<Link> links = new ArrayList<>(1);
+        links.add(link);
+        atomLinkModule.setLinks(links);
+        assertEquals(link, atomLinkModule.getLinks().get(0));
     }
 }
 

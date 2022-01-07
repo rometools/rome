@@ -60,7 +60,7 @@ public interface SleEntry extends Module {
     /**
      * Returns an array of EntryValues for the fields declared in the heading.
      *
-     * <b>NB:</b><br />
+     * <b>NB:</b>
      * Right now the parser will take any default=true field and change it to an integer value
      * representing the default order in the field. You should not rely on these values data display
      * to a user!

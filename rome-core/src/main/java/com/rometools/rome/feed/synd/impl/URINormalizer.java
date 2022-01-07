@@ -25,7 +25,7 @@ public class URINormalizer {
 
     /**
      * Normalizes an URI as specified in RFC 2396bis.
-     * <p>
+
      *
      * @param uri to normalize.
      * @return the normalized value of the given URI, or <b>null</b> if the given URI was

@@ -50,11 +50,14 @@ public class SyndContentImpl implements Serializable, SyndContent {
         COPY_FROM_HELPER = new CopyFromHelper(SyndContent.class, basePropInterfaceMap, basePropClassImplMap);
     }
 
+    /**
+     * Empty public constructor.
+     */
     public SyndContentImpl() { }
 
     /**
      * Creates a deep 'bean' clone of the object.
-     * <p>
+
      *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
@@ -68,7 +71,7 @@ public class SyndContentImpl implements Serializable, SyndContent {
     /**
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
-     * <p>
+
      *
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
@@ -81,9 +84,9 @@ public class SyndContentImpl implements Serializable, SyndContent {
 
     /**
      * Returns a hashcode value for the object.
-     * <p>
+
      * It follows the contract defined by the Object hashCode() method.
-     * <p>
+
      *
      * @return the hashcode of the bean object.
      *
@@ -95,7 +98,7 @@ public class SyndContentImpl implements Serializable, SyndContent {
 
     /**
      * Returns the String representation for the object.
-     * <p>
+
      *
      * @return String representation for the object.
      *
@@ -107,9 +110,9 @@ public class SyndContentImpl implements Serializable, SyndContent {
 
     /**
      * Returns the content type.
-     * <p>
+
      * When used for the description of an entry, if <b>null</b> 'text/plain' must be assumed.
-     * <p>
+
      *
      * @return the content type, <b>null</b> if none.
      *
@@ -121,9 +124,9 @@ public class SyndContentImpl implements Serializable, SyndContent {
 
     /**
      * Sets the content type.
-     * <p>
+
      * When used for the description of an entry, if <b>null</b> 'text/plain' must be assumed.
-     * <p>
+
      *
      * @param type the content type to set, <b>null</b> if none.
      *
@@ -157,7 +160,7 @@ public class SyndContentImpl implements Serializable, SyndContent {
 
     /**
      * Returns the content value.
-     * <p>
+
      *
      * @return the content value, <b>null</b> if none.
      *
@@ -169,7 +172,7 @@ public class SyndContentImpl implements Serializable, SyndContent {
 
     /**
      * Sets the content value.
-     * <p>
+
      *
      * @param value the content value to set, <b>null</b> if none.
      *
@@ -179,11 +182,21 @@ public class SyndContentImpl implements Serializable, SyndContent {
         this.value = value;
     }
 
+    /**
+     * Return the Class interface
+     * 
+     * @return the class interface.
+     */
     @Override
     public Class<SyndContent> getInterface() {
         return SyndContent.class;
     }
 
+    /**
+     * Copy execution using CopyFrom helper class.
+     * 
+     * @param obj the source origin object.
+     */
     @Override
     public void copyFrom(final CopyFrom obj) {
         COPY_FROM_HELPER.copy(this, obj);

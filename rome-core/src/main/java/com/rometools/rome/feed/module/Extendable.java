@@ -26,7 +26,7 @@ public interface Extendable {
 
     /**
      * Returns the module identified by a given URI.
-     * <p>
+
      *
      * @param uri the URI of the ModuleImpl.
      * @return The module with the given URI, <b>null</b> if none.
@@ -35,7 +35,7 @@ public interface Extendable {
 
     /**
      * Returns the entry modules.
-     * <p>
+
      *
      * @return a list of ModuleImpl elements with the entry modules, an empty list if none.
      *
@@ -44,7 +44,7 @@ public interface Extendable {
 
     /**
      * Sets the entry modules.
-     * <p>
+
      *
      * @param modules the list of ModuleImpl elements with the entry modules to set, an empty list
      *            or <b>null</b> if none.

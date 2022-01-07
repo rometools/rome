@@ -29,11 +29,8 @@ import com.rometools.rome.feed.impl.ToStringBean;
 
 /**
  *
- * <strong>&lt;media:category&gt;</strong></p>
- * <p>
  * Allows a taxonomy to be set that gives an indication of the type of media content, and its
  * particular contents. It has 2 optional attributes.
- * </p>
  *
  * <pre>
  * &lt;media:category scheme="http://search.yahoo.com/mrss/category_
@@ -46,17 +43,11 @@ import com.rometools.rome.feed.impl.ToStringBean;
  *        &lt;media:category scheme="urn:flickr:tags"&gt;ycantpark
  *        mobile&lt;/media:category&gt;
  * </pre>
- *
- * <p>
  * <em>scheme</em> is the URI that identifies the categorization scheme. It is an optional
  * attribute. If this attribute is not included, the default scheme is
  * 'http://search.yahoo.com/mrss/category_schema'.
- * </p>
- *
- * <p>
  * <em>label</em> is the human readable label that can be displayed in end user applications. It is
  * an optional attribute.
- * </p>
  */
 public class Category implements Serializable {
     private static final long serialVersionUID = 1L;

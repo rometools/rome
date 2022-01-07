@@ -43,7 +43,7 @@ public class RSS10Parser extends RSS090Parser {
 
     /**
      * Indicates if a JDom document is an RSS instance that can be parsed with the parser.
-     * <p/>
+     * 
      * It checks for RDF ("http://www.w3.org/1999/02/22-rdf-syntax-ns#") namespace being defined in
      * the root element and for the RSS 1.0 ("http://purl.org/rss/1.0/") namespace in the channel
      * element.
@@ -60,7 +60,7 @@ public class RSS10Parser extends RSS090Parser {
 
     /**
      * Returns the namespace used by RSS elements in document of the RSS 1.0
-     * <P>
+
      *
      * @return returns "http://purl.org/rss/1.0/".
      */
@@ -71,10 +71,10 @@ public class RSS10Parser extends RSS090Parser {
 
     /**
      * Parses an item element of an RSS document looking for item information.
-     * <p/>
+     * 
      * It first invokes super.parseItem and then parses and injects the description property if
      * present.
-     * <p/>
+     * 
      *
      * @param rssRoot the root element of the RSS document in case it's needed for context.
      * @param eItem the item element to parse.

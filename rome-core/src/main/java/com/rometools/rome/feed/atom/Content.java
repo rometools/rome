@@ -63,11 +63,14 @@ public class Content implements Cloneable, Serializable {
         MODES.add(ESCAPED);
     }
 
+    /**
+     * Public constructor.
+     */
     public Content() { }
 
     /**
      * Creates a deep 'bean' clone of the object.
-     * <p>
+
      *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
@@ -81,7 +84,7 @@ public class Content implements Cloneable, Serializable {
     /**
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
-     * <p>
+
      *
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
@@ -97,9 +100,9 @@ public class Content implements Cloneable, Serializable {
 
     /**
      * Returns a hashcode value for the object.
-     * <p>
+
      * It follows the contract defined by the Object hashCode() method.
-     * <p>
+
      *
      * @return the hashcode of the bean object.
      *
@@ -111,7 +114,7 @@ public class Content implements Cloneable, Serializable {
 
     /**
      * Returns the String representation for the object.
-     * <p>
+
      *
      * @return String representation for the object.
      *
@@ -123,10 +126,9 @@ public class Content implements Cloneable, Serializable {
 
     /**
      * Returns the content type.
-     * <p>
      * The type indicates how the value was/will-be encoded in the XML feed.
-     * </p>
      *
+     * @return type The type
      * @since Atom 1.0
      */
     public String getType() {
@@ -135,10 +137,9 @@ public class Content implements Cloneable, Serializable {
 
     /**
      * Sets the content type.
-     * <p>
      * The type indicates how the value was/will-be encoded in the XML feed.
-     * </p>
      *
+     * @param type The type
      * @since Atom 1.0
      */
     public void setType(final String type) {
@@ -147,9 +148,7 @@ public class Content implements Cloneable, Serializable {
 
     /**
      * Returns the content mode (Atom 0.3 only).
-     * <p>
      * The mode indicates how the value was/will-be encoded in the XML feed.
-     * <p>
      *
      * @return the content mode, <b>null</b> if none.
      */
@@ -159,9 +158,9 @@ public class Content implements Cloneable, Serializable {
 
     /**
      * Sets the content mode (Atom 0.3 only).
-     * <p>
+
      * The mode indicates how the value was/will-be encoded in the XML feed.
-     * <p>
+
      *
      * @param mode the content mode, <b>null</b> if none.
      */
@@ -174,9 +173,9 @@ public class Content implements Cloneable, Serializable {
 
     /**
      * Returns the content value.
-     * <p>
+
      * The return value should be decoded.
-     * <p>
+
      *
      * @return the content value, <b>null</b> if none.
      *
@@ -187,9 +186,9 @@ public class Content implements Cloneable, Serializable {
 
     /**
      * Sets the content value.
-     * <p>
+
      * The value being set should be decoded.
-     * <p>
+
      *
      * @param value the content value, <b>null</b> if none.
      *
@@ -200,7 +199,7 @@ public class Content implements Cloneable, Serializable {
 
     /**
      * Returns the src
-     * <p>
+
      *
      * @return Returns the src.
      * @since Atom 1.0
@@ -211,7 +210,7 @@ public class Content implements Cloneable, Serializable {
 
     /**
      * Set the src
-     * <p>
+
      *
      * @param src The src to set.
      * @since Atom 1.0

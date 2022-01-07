@@ -18,18 +18,18 @@
 package com.rometools.modules.activitystreams.types;
 
 /**
- * <p>
+
  * The "photo" object type represents a graphical still image.
- * </p>
- * <p>
+
+
  * The "photo" Object type is identified by the URI
- * <tt>http://activitystrea.ms/schema/1.0/photo</tt>.
- * </p>
- * <p>
+ * "http://activitystrea.ms/schema/1.0/photo".
+
+
  * A photo has the following additional components:
- * </p>
- * <p>
- * </p>
+
+
+
  * <blockquote class="text">
  * <dl>
  * <dt>Thumbnail</dt>
@@ -38,7 +38,7 @@ package com.rometools.modules.activitystreams.types;
  * for their user interface.</dd>
  * <dt>Larger Image</dt>
  * <dd>A Media Link Construct linking to a larger -- ideally, full-size -- version of the photo
- * intended for standalone viewing. Represented in JSON as a property named <tt>fullImage</tt> whose
+ * intended for standalone viewing. Represented in JSON as a property named "fullImage" whose
  * value is a JSON object with properties as defined in [TODO: xref the JSON serialization of a
  * Media Link Construct].</dd>
  * </dl>

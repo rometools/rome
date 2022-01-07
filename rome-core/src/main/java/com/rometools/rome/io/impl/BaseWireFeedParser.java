@@ -67,10 +67,10 @@ public abstract class BaseWireFeedParser implements WireFeedParser {
 
     /**
      * Returns the type of feed the parser handles.
-     * <p>
+
      *
      * @see WireFeed for details on the format of this string.
-     *      <p>
+
      * @return the type of feed the parser handles.
      *
      */

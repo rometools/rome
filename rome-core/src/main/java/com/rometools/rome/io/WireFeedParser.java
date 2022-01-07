@@ -24,19 +24,14 @@ import com.rometools.rome.feed.WireFeed;
 
 /**
  * Parses an XML document (JDOM) into a feed bean.
- * <p>
  * WireFeedParser instances must thread safe.
- * <p>
- * TODO: explain how developers can plugin their own implementations.
  */
 public interface WireFeedParser {
 
     /**
      * Returns the type of feed the parser handles.
-     * <p>
      *
      * @see WireFeed for details on the format of this string.
-     *      <p>
      * @return the type of feed the parser handles.
      *
      */
@@ -44,9 +39,7 @@ public interface WireFeedParser {
 
     /**
      * Inspects an XML Document (JDOM) to check if it can parse it.
-     * <p>
      * It checks if the given document if the type of feeds the parser understands.
-     * <p>
      *
      * @param document XML Document (JDOM) to check if it can be parsed by this parser.
      * @return <b>true</b> if the parser know how to parser this feed, <b>false</b> otherwise.
@@ -56,10 +49,10 @@ public interface WireFeedParser {
 
     /**
      * Parses an XML document (JDOM Document) into a feed bean.
-     * <p>
      *
      * @param document XML document (JDOM) to parse.
      * @param validate indicates if the feed should be strictly validated (NOT YET IMPLEMENTED).
+     * @param locale the Locale instance.
      * @return the resulting feed bean.
      * @throws IllegalArgumentException thrown if the parser cannot handle the given feed type.
      * @throws FeedException thrown if a feed bean cannot be created out of the XML document (JDOM).

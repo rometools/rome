@@ -20,19 +20,19 @@ package com.rometools.modules.activitystreams.types;
 import com.rometools.rome.feed.atom.Link;
 
 /**
- * <p>
+
  * The "person" Object type represents a user account. This is often represents a person, but might
  * also be a company or fictitious character that is being represented by a user account.
- * </p>
- * <p>
+
+
  * The "person" Object type is identified by the URI
- * <tt>http://activitystrea.ms/schema/1.0/person</tt>.
- * </p>
- * <p>
+ * "http://activitystrea.ms/schema/1.0/person".
+
+
  * A person has the following additional components:
- * </p>
- * <p>
- * </p>
+
+
+
  * <blockquote class="text">
  * <dl>
  * <dt>Display Name</dt>

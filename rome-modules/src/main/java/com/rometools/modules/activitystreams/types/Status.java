@@ -18,26 +18,26 @@
 package com.rometools.modules.activitystreams.types;
 
 /**
- * <p>
+
  * The "status" Object type represents a human-readable update of the author's situation, mood,
  * location or other status.
- * </p>
- * <p>
+
+
  * A status is similar in structure to a note, but carries the additional meaning that the content
  * is primarily describing something its author is doing, feeling or experiencing.
- * </p>
- * <p>
+
+
  * A consumers MAY consider the content of the most recent status object it encountered to be the
  * user's current status, unless the most recent status update is old. When a status becomes too old
  * is not defined by this specification.
- * </p>
- * <p>
+
+
  * The "status" object type is identified by the URI
- * <tt>http://activitystrea.ms/schema/1.0/status</tt>.
- * </p>
- * <p>
+ * "http://activitystrea.ms/schema/1.0/status".
+
+
  * A status has the same components as a note.
- * </p>
+
  */
 public class Status extends ActivityObject {
 

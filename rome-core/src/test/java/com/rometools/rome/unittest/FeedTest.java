@@ -31,6 +31,9 @@ import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.WireFeedInput;
 
+/**
+ * Abstract feed test class.
+ */
 public abstract class FeedTest extends TestCase {
     
     private final String feedFileName;

@@ -29,20 +29,13 @@ import com.rometools.rome.feed.impl.ToStringBean;
 
 /**
  *
- * <strong>&lt;media:hash&gt;</strong></p>
- *
- * <p>
  * This is the hash of the binary media file. It can appear multiple times as long as each instance
  * is a different <em>algo</em>. It has 1 optional attribute.
- * </p>
- * <p>
- * </p>
  *
  * <pre>
  * &lt;media:hash algo="md5"&gt;dfdec888b72151965a34b4b59031290a&lt;/media:hash&gt;
  * </pre>
  *
- * <p>
  * <em>algo</em> indicates the algorithm used to create the hash. Possible values are 'md5' and
  * 'sha-1'. Default value is 'md5'. It is an optional attribute.
  */
@@ -60,14 +53,14 @@ public class Hash extends AbstractSchemeValue implements Serializable {
     /**
      * Creates a new instance of Hash assuming the default algorithm of MD5
      *
-     * @param algorithm algoright used
+     * @param value algorithm used
      */
     public Hash(final String value) {
         this(null, value);
     }
 
     /**
-     * Alsorithm used for the hash
+     * Algorithm used for the hash
      *
      * @return Alsorithm used for the hash
      */

@@ -24,13 +24,13 @@ import com.rometools.rome.io.WireFeedParser;
 
 /**
  * Parses an XML document (JDOM Document) into a Feed.
- * <p>
+
  * It accepts all flavors of RSS (0.90, 0.91, 0.92, 0.93, 0.94, 1.0 and 2.0) and Atom 0.3 feeds.
- * <p>
+
  * The WireFeedParser is a liberal parser.
- * <p>
+
  * WireFeedParser instances are thread safe.
- * <p>
+
  * Parsers for a specific type must extend this class and register in the parser list. (Right now
  * registration is hardcoded in the WireFeedParser constructor).
  */
@@ -44,7 +44,7 @@ public class FeedParsers extends PluginManager<WireFeedParser> {
 
     /**
      * Creates a parser instance.
-     * <p>
+
      *
      */
     public FeedParsers() {
@@ -57,7 +57,7 @@ public class FeedParsers extends PluginManager<WireFeedParser> {
 
     /**
      * Finds the real parser type for the given document feed.
-     * <p>
+
      *
      * @param document document feed to find the parser for.
      * @return the parser for the given document or <b>null</b> if there is no parser for that

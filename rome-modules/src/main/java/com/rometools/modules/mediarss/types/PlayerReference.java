@@ -30,28 +30,19 @@ import com.rometools.rome.feed.impl.ToStringBean;
 
 /**
  *
- * <strong>&lt;media:player&gt;</strong></p>
- * <p>
  * Allows the media object to be accessed through a web browser media player console. This element
  * is required only if a direct media <em>url</em> attribute is not specified in the
  * &lt;media:content&gt; element. It has 1 required attribute, and 2 optional attributes.
- * </p>
  *
  * <pre>
  * &lt;media:player url="http://www.foo.com/player?id=1111" height="200" width="400" /&gt;
  * </pre>
- * <p>
  * <em>url</em> is the url of the player console that plays the media. It is a required attribute.
- * </p>
  *
- * <p>
  * <em>height</em> is the height of the browser window that the <em>url</em> should be opened in. It
  * is an optional attribute.
- * </p>
- * <p>
  * <em>width</em> is the width of the browser window that the <em>url</em> should be opened in. It
  * is an optional attribute.
- * </p>
  */
 public class PlayerReference implements Reference, Serializable {
     private static final long serialVersionUID = 1L;

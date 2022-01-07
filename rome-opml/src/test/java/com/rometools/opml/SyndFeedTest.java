@@ -15,6 +15,10 @@
  */
 package com.rometools.opml;
 
+/**
+ * SyndFeedTest abstract test class 
+ *
+ */
 public abstract class SyndFeedTest extends FeedTest {
     private String _prefix = null;
 
@@ -35,6 +39,10 @@ public abstract class SyndFeedTest extends FeedTest {
         assertEquals(property, getPrefix() + "." + value);
     }
 
+    /**
+     * testType
+     * @throws Exception any exception
+     */
     public void testType() throws Exception {
         assertEquals(getCachedSyndFeed().getFeedType(), getPrefix());
     }

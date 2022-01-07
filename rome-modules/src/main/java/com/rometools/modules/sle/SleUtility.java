@@ -32,10 +32,10 @@ import com.rometools.rome.io.SyndFeedOutput;
 /**
  * This is a utiltiy class for grouping and sorting lists of entries based on the SLE.
  *
- * <p>
+
  * Note, this class can <b>ONLY</b> be used on parsed feeds, unless you manually add the appropriate
  * SleEntry objects on the items.
- * </p>
+
  *
  * @see SleEntry
  */

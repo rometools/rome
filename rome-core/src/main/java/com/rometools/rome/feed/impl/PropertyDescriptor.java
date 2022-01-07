@@ -23,12 +23,21 @@ package com.rometools.rome.feed.impl;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
+/**
+ * The PropertyDescriptor class.
+ */
 public class PropertyDescriptor {
 
     private final String name;
     private final Method getter;
     private final Method setter;
 
+    /**
+     * Public constructor.
+     * @param name the name property
+     * @param getter the getter property
+     * @param setter the setter property
+     */
     public PropertyDescriptor(String name, Method getter, Method setter) {
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException("Bad property name");
@@ -39,18 +48,34 @@ public class PropertyDescriptor {
         this.setter = checkSetter(setter);
     }
 
+    /**
+     * Returns the name
+     * @return name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Returns the getter
+     * @return getter
+     */
     public Method getReadMethod() {
         return getter;
     }
 
+    /**
+     * Return the setter
+     * @return setter
+     */
     public Method getWriteMethod() {
         return setter;
     }
 
+    /**
+     * Returns the property type
+     * @return the property type
+     */
     public Class<?> getPropertyType() {
         if (getter != null) {
             return getter.getReturnType();

@@ -31,7 +31,7 @@ import com.rometools.utils.Lists;
 
 /**
  * Bean for RSS feeds.
- * <p>
+
  * It handles all RSS versions (0.9, 0.91, 0.92, 0.93, 0.94, 1.0 and 2.0) without losing
  * information.
  */
@@ -39,12 +39,19 @@ public class Channel extends WireFeed {
 
     private static final long serialVersionUID = 1L;
 
+    /** the SUNDAY constant */
     public static final String SUNDAY = "sunday";
+    /** the MONDAY constant */
     public static final String MONDAY = "monday";
+    /** the TUESDAY constant */
     public static final String TUESDAY = "tuesday";
+    /** the WEDNESDAY constant */
     public static final String WEDNESDAY = "wednesday";
+    /** the THURSDAY constant */
     public static final String THURSDAY = "thursday";
+    /** the FRIDAY constant */
     public static final String FRIDAY = "friday";
+    /** the SATURDAY constant */
     public static final String SATURDAY = "saturday";
 
     private static final Set<String> DAYS;
@@ -93,7 +100,7 @@ public class Channel extends WireFeed {
 
     /**
      * Channel Constructor. All properties, except the type, are set to <b>null</b>.
-     * <p>
+
      *
      * @param type the type of the RSS feed.
      *
@@ -104,7 +111,7 @@ public class Channel extends WireFeed {
 
     /**
      * Returns the channel title.
-     * <p>
+
      *
      * @return the channel title, <b>null</b> if none.
      *
@@ -115,7 +122,7 @@ public class Channel extends WireFeed {
 
     /**
      * Sets the channel title.
-     * <p>
+
      *
      * @param title the channel title to set, <b>null</b> if none.
      *
@@ -126,7 +133,7 @@ public class Channel extends WireFeed {
 
     /**
      * Returns the channel description.
-     * <p>
+
      *
      * @return the channel description, <b>null</b> if none.
      *
@@ -137,7 +144,7 @@ public class Channel extends WireFeed {
 
     /**
      * Sets the channel description.
-     * <p>
+
      *
      * @param description the channel description to set, <b>null</b> if none.
      *
@@ -148,7 +155,7 @@ public class Channel extends WireFeed {
 
     /**
      * Returns the channel link.
-     * <p>
+
      *
      * @return the channel link, <b>null</b> if none.
      *
@@ -159,7 +166,7 @@ public class Channel extends WireFeed {
 
     /**
      * Sets the channel link.
-     * <p>
+
      *
      * @param link the channel link to set, <b>null</b> if none.
      *
@@ -170,7 +177,7 @@ public class Channel extends WireFeed {
 
     /**
      * Returns the channel uri.
-     * <p>
+
      *
      * @return the channel uri, <b>null</b> if none.
      */
@@ -180,7 +187,7 @@ public class Channel extends WireFeed {
 
     /**
      * Sets the channel uri.
-     * <p>
+
      *
      * @param uri the channel uri, <b>null</b> if none.
      */
@@ -190,7 +197,7 @@ public class Channel extends WireFeed {
 
     /**
      * Returns the channel image.
-     * <p>
+
      *
      * @return the channel image, <b>null</b> if none.
      *
@@ -201,7 +208,7 @@ public class Channel extends WireFeed {
 
     /**
      * Sets the channel image.
-     * <p>
+
      *
      * @param image the channel image to set, <b>null</b> if none.
      *
@@ -212,7 +219,7 @@ public class Channel extends WireFeed {
 
     /**
      * Returns the channel items.
-     * <p>
+
      *
      * @return a list of Item elements with the channel items, an empty list if none.
      *
@@ -223,7 +230,7 @@ public class Channel extends WireFeed {
 
     /**
      * Sets the channel items.
-     * <p>
+
      *
      * @param items the list of Item elements with the channel items to set, an empty list or
      *            <b>null</b> if none.
@@ -235,7 +242,7 @@ public class Channel extends WireFeed {
 
     /**
      * Returns the channel text input.
-     * <p>
+
      *
      * @return the channel text input, <b>null</b> if none.
      *
@@ -246,7 +253,7 @@ public class Channel extends WireFeed {
 
     /**
      * Sets the channel text input.
-     * <p>
+
      *
      * @param textInput the channel text input to set, <b>null</b> if none.
      *
@@ -257,7 +264,7 @@ public class Channel extends WireFeed {
 
     /**
      * Returns the channel language.
-     * <p>
+
      *
      * @return the channel language, <b>null</b> if none.
      *
@@ -268,7 +275,7 @@ public class Channel extends WireFeed {
 
     /**
      * Sets the channel language.
-     * <p>
+
      *
      * @param language the channel language to set, <b>null</b> if none.
      *
@@ -279,7 +286,7 @@ public class Channel extends WireFeed {
 
     /**
      * Returns the channel rating.
-     * <p>
+
      *
      * @return the channel rating, <b>null</b> if none.
      *
@@ -290,7 +297,7 @@ public class Channel extends WireFeed {
 
     /**
      * Sets the channel rating.
-     * <p>
+
      *
      * @param rating the channel rating to set, <b>null</b> if none.
      *
@@ -301,7 +308,7 @@ public class Channel extends WireFeed {
 
     /**
      * Returns the channel copyright.
-     * <p>
+
      *
      * @return the channel copyright, <b>null</b> if none.
      *
@@ -312,7 +319,7 @@ public class Channel extends WireFeed {
 
     /**
      * Sets the channel copyright.
-     * <p>
+
      *
      * @param copyright the channel copyright to set, <b>null</b> if none.
      *
@@ -323,7 +330,7 @@ public class Channel extends WireFeed {
 
     /**
      * Returns the channel publishing date.
-     * <p>
+
      *
      * @return the channel publishing date, <b>null</b> if none.
      *
@@ -334,7 +341,7 @@ public class Channel extends WireFeed {
 
     /**
      * Sets the channel publishing date.
-     * <p>
+
      *
      * @param pubDate the channel publishing date to set, <b>null</b> if none.
      *
@@ -345,7 +352,7 @@ public class Channel extends WireFeed {
 
     /**
      * Returns the channel last build date.
-     * <p>
+
      *
      * @return the channel last build date, <b>null</b> if none.
      *
@@ -356,7 +363,7 @@ public class Channel extends WireFeed {
 
     /**
      * Sets the channel last build date.
-     * <p>
+
      *
      * @param lastBuildDate the channel last build date to set, <b>null</b> if none.
      *
@@ -367,7 +374,7 @@ public class Channel extends WireFeed {
 
     /**
      * Returns the channel docs.
-     * <p>
+
      *
      * @return the channel docs, <b>null</b> if none.
      *
@@ -378,7 +385,7 @@ public class Channel extends WireFeed {
 
     /**
      * Sets the channel docs.
-     * <p>
+
      *
      * @param docs the channel docs to set, <b>null</b> if none.
      *
@@ -389,7 +396,7 @@ public class Channel extends WireFeed {
 
     /**
      * Returns the channel managing editor.
-     * <p>
+
      *
      * @return the channel managing editor, <b>null</b> if none.
      *
@@ -400,7 +407,7 @@ public class Channel extends WireFeed {
 
     /**
      * Sets the channel managing editor.
-     * <p>
+
      *
      * @param managingEditor the channel managing editor to set, <b>null</b> if none.
      *
@@ -411,7 +418,7 @@ public class Channel extends WireFeed {
 
     /**
      * Returns the channel web master.
-     * <p>
+
      *
      * @return the channel web master, <b>null</b> if none.
      *
@@ -422,7 +429,7 @@ public class Channel extends WireFeed {
 
     /**
      * Sets the channel web master.
-     * <p>
+
      *
      * @param webMaster the channel web master to set, <b>null</b> if none.
      *
@@ -433,7 +440,7 @@ public class Channel extends WireFeed {
 
     /**
      * Returns the channel skip hours.
-     * <p>
+
      *
      * @return a list of Integer elements with the channel skip hours, an empty list if none.
      *
@@ -444,7 +451,7 @@ public class Channel extends WireFeed {
 
     /**
      * Sets the channel skip hours.
-     * <p>
+
      *
      * @param skipHours the list of Integer elements with the channel skip hours to set, an empty
      *            list or <b>null</b> if none.
@@ -469,7 +476,7 @@ public class Channel extends WireFeed {
 
     /**
      * Returns the channel skip days.
-     * <p>
+
      *
      * @return a list of Day elements with the channel skip days, an empty list if none.
      *
@@ -480,7 +487,7 @@ public class Channel extends WireFeed {
 
     /**
      * Sets the channel skip days.
-     * <p>
+
      *
      * @param skipDays the list of Day elements with the channel skip days to set, an empty list or
      *            <b>null</b> if none.
@@ -506,7 +513,7 @@ public class Channel extends WireFeed {
 
     /**
      * Returns the channel cloud.
-     * <p>
+
      *
      * @return the channel cloud, <b>null</b> if none.
      *
@@ -517,7 +524,7 @@ public class Channel extends WireFeed {
 
     /**
      * Sets the channel cloud.
-     * <p>
+
      *
      * @param cloud the channel cloud to set, <b>null</b> if none.
      *
@@ -528,7 +535,7 @@ public class Channel extends WireFeed {
 
     /**
      * Returns the channel categories.
-     * <p>
+
      *
      * @return a list of Category elements with the channel categories, an empty list if none.
      *
@@ -539,7 +546,7 @@ public class Channel extends WireFeed {
 
     /**
      * Sets the channel categories.
-     * <p>
+
      *
      * @param categories the list of Category elements with the channel categories to set, an empty
      *            list or <b>null</b> if none.
@@ -551,7 +558,7 @@ public class Channel extends WireFeed {
 
     /**
      * Returns the channel generator.
-     * <p>
+
      *
      * @return the channel generator, <b>null</b> if none.
      *
@@ -562,7 +569,7 @@ public class Channel extends WireFeed {
 
     /**
      * Sets the channel generator.
-     * <p>
+
      *
      * @param generator the channel generator to set, <b>null</b> if none.
      *
@@ -573,7 +580,7 @@ public class Channel extends WireFeed {
 
     /**
      * Returns the channel time to live.
-     * <p>
+
      *
      * @return the channel time to live, <b>null</b> if none.
      *
@@ -584,7 +591,7 @@ public class Channel extends WireFeed {
 
     /**
      * Sets the channel time to live.
-     * <p>
+
      *
      * @param ttl the channel time to live to set, <b>null</b> if none.
      *
@@ -595,7 +602,7 @@ public class Channel extends WireFeed {
 
     /**
      * Returns the channel modules.
-     * <p>
+
      *
      * @return a list of ModuleImpl elements with the channel modules, an empty list if none.
      *
@@ -607,7 +614,7 @@ public class Channel extends WireFeed {
 
     /**
      * Sets the channel modules.
-     * <p>
+
      *
      * @param modules the list of ModuleImpl elements with the channel modules to set, an empty list
      *            or <b>null</b> if none.
@@ -620,7 +627,7 @@ public class Channel extends WireFeed {
 
     /**
      * Returns the module identified by a given URI.
-     * <p>
+
      *
      * @param uri the URI of the ModuleImpl.
      * @return The module with the given URI, <b>null</b> if none.

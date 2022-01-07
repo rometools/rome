@@ -43,11 +43,17 @@ import com.rometools.rome.feed.synd.SyndLinkImpl;
 import com.rometools.rome.feed.synd.SyndPerson;
 import com.rometools.rome.feed.synd.SyndPersonImpl;
 
+/**
+ * OPML 1.0 Converter
+ *
+ */
 public class ConverterForOPML10 implements Converter {
 
     private static final Logger LOG = LoggerFactory.getLogger(ConverterForOPML10.class);
 
+    /** the URI_TREE constant */
     public static final String URI_TREE = "urn:rome.tree";
+    /** the URI_ATTRIBUTE constant */
     public static final String URI_ATTRIBUTE = "urn:rome.attribute#";
 
     protected void addOwner(final Opml opml, final SyndFeed syndFeed) {

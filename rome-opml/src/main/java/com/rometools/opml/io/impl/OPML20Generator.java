@@ -35,6 +35,9 @@ import com.rometools.rome.io.impl.DateParser;
  */
 public class OPML20Generator extends OPML10Generator {
 
+	/**
+	 * Public constructor
+	 */
     public OPML20Generator() {
     }
 

@@ -28,14 +28,11 @@ import com.rometools.rome.feed.impl.EqualsBean;
 import com.rometools.rome.feed.impl.ToStringBean;
 
 /**
- * <strong>&lt;media:text&gt;</strong></p>
- * <p>
  * Allows the inclusion of a text transcript, closed captioning, or lyrics of the media content.
  * Many of these elements are permitted to provide a time series of text. In such cases, it is
  * encouraged, but not required, that the elements be grouped by language and appear in time
  * sequence order based on the <em>start</em> time. Elements can have overlapping <em>start</em> and
  * <em>end</em> times. It has 4 optional attributes.
- * </p>
  *
  * <pre>
  * &lt;media:text type="plain" lang="en" start="00:00:03.000"
@@ -44,33 +41,25 @@ import com.rometools.rome.feed.impl.ToStringBean;
  *        &lt;media:text type="plain" lang="en" start="00:00:10.000"
  *        end="00:00:17.000"&gt;By the dawn's early light&lt;/media:text&gt;
  * </pre>
- * <p>
  * <em>type</em> specifies the type of text embedded. Possible values are either 'plain' or 'html'.
  * Default value is 'plain'. All html must be entity-encoded. It is an optional attribute.
- * </p>
  *
  *
  *
  *
  *
  *
- * <p>
  * <em>lang</em> is the primary language encapsulated in the media object. Language codes possible
  * are detailed in RFC 3066. This attribute is used similar to the xml:lang attribute detailed in
  * the XML 1.0 Specification (Third Edition). It is an optional attribute.
- * </p>
  *
- * <p>
  * <em>start</em> specifies the start time offset that the text starts being relevant to the media
  * object. An example of this would be for closed captioning. It uses the NTP time code format (see:
  * the time attribute used in &lt;media:thumbnail&gt;).&nbsp;It is an optional attribute.
- * </p>
  *
- * <p>
  * <em>end</em> specifies the end time that the text is relevant. If this attribute is not provided,
  * and a <em>start</em> time is used, it is expected that the end time is either the end of the clip
  * or the start of the next &lt;media:text&gt; element.
- * </p>
  */
 public class Text implements Serializable {
     private static final long serialVersionUID = 1L;

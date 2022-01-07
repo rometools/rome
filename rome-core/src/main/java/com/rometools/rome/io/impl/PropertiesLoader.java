@@ -31,11 +31,11 @@ import com.rometools.rome.feed.impl.ConfigurableClassLoader;
 /**
  * Properties loader that aggregates a master properties file and several extra
  * properties files, all from the current classpath.
- * <P>
+
  * The master properties file has to be in a distinct location than the extra
  * properties files. First the master properties file is loaded, then all the
  * extra properties files in their order of appearance in the classpath.
- * <P>
+
  * Current use cases (plugin manager for parsers/converters/generators for feeds
  * and modules and date formats) assume properties are list of tokens, that why
  * the only method to get property values is the getTokenizedProperty().
@@ -74,7 +74,7 @@ public class PropertiesLoader {
 
 	/**
 	 * Creates a PropertiesLoader.
-	 * <p>
+
 	 *
 	 * @param masterFileLocation
 	 *            master file location, there must be only one.
@@ -124,7 +124,7 @@ public class PropertiesLoader {
 	 * Returns an array of tokenized values stored under a property key in all
 	 * properties files. If the master file has this property its tokens will be
 	 * the first ones in the array.
-	 * <p>
+
 	 *
 	 * @param key
 	 *            property key to retrieve values
@@ -156,7 +156,7 @@ public class PropertiesLoader {
 	 * Returns an array of values stored under a property key in all properties
 	 * files. If the master file has this property it will be the first ones in
 	 * the array.
-	 * <p>
+
 	 *
 	 * @param key
 	 *            property key to retrieve values

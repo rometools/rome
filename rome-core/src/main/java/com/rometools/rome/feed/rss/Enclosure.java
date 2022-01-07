@@ -33,11 +33,14 @@ public class Enclosure implements Cloneable, Serializable {
     private long length;
     private String type;
 
+    /**
+     * Empty public constructor.
+     */
     public Enclosure() { }
 
     /**
      * Creates a deep 'bean' clone of the object.
-     * <p>
+
      *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
@@ -51,7 +54,7 @@ public class Enclosure implements Cloneable, Serializable {
     /**
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
-     * <p>
+
      *
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
@@ -67,9 +70,9 @@ public class Enclosure implements Cloneable, Serializable {
 
     /**
      * Returns a hashcode value for the object.
-     * <p>
+
      * It follows the contract defined by the Object hashCode() method.
-     * <p>
+
      *
      * @return the hashcode of the bean object.
      *
@@ -81,7 +84,7 @@ public class Enclosure implements Cloneable, Serializable {
 
     /**
      * Returns the String representation for the object.
-     * <p>
+
      *
      * @return String representation for the object.
      *
@@ -93,7 +96,7 @@ public class Enclosure implements Cloneable, Serializable {
 
     /**
      * Returns the enclosure URL.
-     * <p>
+
      *
      * @return the enclosure URL, <b>null</b> if none.
      *
@@ -104,7 +107,7 @@ public class Enclosure implements Cloneable, Serializable {
 
     /**
      * Sets the enclosure URL.
-     * <p>
+
      *
      * @param url the enclosure URL to set, <b>null</b> if none.
      *
@@ -115,7 +118,7 @@ public class Enclosure implements Cloneable, Serializable {
 
     /**
      * Returns the enclosure length.
-     * <p>
+
      *
      * @return the enclosure length, <b>0</b> if none.
      *
@@ -126,7 +129,7 @@ public class Enclosure implements Cloneable, Serializable {
 
     /**
      * Sets the enclosure length.
-     * <p>
+
      *
      * @param length the enclosure length to set, <b>0</b> if none.
      *
@@ -137,7 +140,7 @@ public class Enclosure implements Cloneable, Serializable {
 
     /**
      * Returns the enclosure type.
-     * <p>
+
      *
      * @return the enclosure type, <b>null</b> if none.
      *
@@ -148,7 +151,7 @@ public class Enclosure implements Cloneable, Serializable {
 
     /**
      * Sets the enclosure type.
-     * <p>
+
      *
      * @param type the enclosure type to set, <b>null</b> if none.
      *

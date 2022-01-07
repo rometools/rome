@@ -18,18 +18,18 @@
 package com.rometools.modules.activitystreams.types;
 
 /**
- * <p>
+
  * The "review" object type represents a primarily prose-based commentary on another object.
- * </p>
- * <p>
+
+
  * The "review" object type is identified by the URI
- * <tt>http://activitystrea.ms/schema/1.0/review</tt>.
- * </p>
- * <p>
+ * "http://activitystrea.ms/schema/1.0/review".
+
+
  * A review has the following additional components:
- * </p>
- * <p>
- * </p>
+
+
+
  * <blockquote class="text">
  * <dl>
  * <dt>Title</dt>
@@ -38,7 +38,7 @@ package com.rometools.modules.activitystreams.types;
  * component. Processors SHOULD refer to such reviews as simply being "a review", with appropriate
  * localization, if they are to be described in a sentence.</dd>
  * <dt>Content</dt>
- * <dd>The content of the comment. Represented in JSON as a property called <tt>content</tt> whose
+ * <dd>The content of the comment. Represented in JSON as a property called "content" whose
  * value is a JSON string containing a fragment of HTML that represents the content. Publishers
  * SHOULD include any markup necessary to achieve a similar presentation to that on the publisher's
  * own HTML pages, including any links that the service automatically adds. Processors MAY remove
@@ -48,7 +48,7 @@ package com.rometools.modules.activitystreams.types;
  * Reply To Object component of the base Object Construct.</dd>
  * <dt>Rating</dt>
  * <dd>A rating for the item, given as a number between 1.0 and 5.0 inclusive with one decimal place
- * of precision. Represented in JSON as a property called <tt>rating</tt> whose value is a JSON
+ * of precision. Represented in JSON as a property called "rating" whose value is a JSON
  * number giving the rating.</dd>
  * </dl>
  * </blockquote>

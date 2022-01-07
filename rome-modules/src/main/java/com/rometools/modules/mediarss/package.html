@@ -11,7 +11,7 @@
   <pre>
             SyndFeed feed =  input.build( myRSSFile );
             List entries = feed.getEntries();
-            for( int i = 0; i < entries.size(); i++ ){
+            for( int i = 0; i &lt; entries.size(); i++ ){
                 System.out.println( ((SyndEntry) entries.get(i)).getModule( MediaModule.URI ) );
             }
   </pre>

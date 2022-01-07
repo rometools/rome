@@ -17,33 +17,21 @@
 package com.rometools.modules.activitystreams.types;
 
 /**
- * <p>
  * The "article" Object type indicates that the Object is an article, such as a news article, a
  * knowledge base entry, or other similar construct.
- * </p>
- * <p>
  * Articles generally consist of paragraphs of text, in some cases incorporating embedded media such
  * as photos and inline hyperlinks to other resources.
- * </p>
- * <p>
  * The "Article" Object type is identified by the URL
- * <tt>http://activitystrea.ms/schema/1.0/article</tt>.
- * </p>
- * <p>
+ * "http://activitystrea.ms/schema/1.0/article".
  * An article has the following additional components:
- * </p>
- * <p>
- * </p>
- * <blockquote class="text">
  * <dl>
  * <dt>Name</dt>
  * <dd>The title of the article. Represented by the Name component of the base Object Construct.</dd>
  * <dt>Content</dt>
  * <dd>The main body content of the article. Represented in JSON as a property called
- * <tt>content</tt> whose value is a JSON string containing a fragment of HTML that represents the
+ * "content" whose value is a JSON string containing a fragment of HTML that represents the
  * content.</dd>
  * </dl>
- * </blockquote>
  */
 public class Article extends ActivityObject {
     private static final long serialVersionUID = 1L;

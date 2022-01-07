@@ -18,18 +18,18 @@
 package com.rometools.modules.activitystreams.types;
 
 /**
- * <p>
+
  * The "photo album" object type represents a collection of images.
- * </p>
- * <p>
+
+
  * The "photo album" object type is identified by the URI
- * <tt>http://activitystrea.ms/schema/1.0/photo-album</tt>.
- * </p>
- * <p>
+ * "http://activitystrea.ms/schema/1.0/photo-album".
+
+
  * The photo album has the following additional components:
- * </p>
- * <p>
- * </p>
+
+
+
  * <blockquote class="text">
  * <dl>
  * <dt>Preview Image Link</dt>

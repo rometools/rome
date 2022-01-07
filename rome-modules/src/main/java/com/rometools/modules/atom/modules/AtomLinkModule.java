@@ -24,22 +24,45 @@ import java.util.List;
 
 public interface AtomLinkModule extends Module {
 
+	/**
+	 * the URI constant
+	 */
     String URI = "http://www.w3.org/2005/Atom";
 
+    /**
+     * Return the links
+     * @return the links
+     */
     List<Link> getLinks();
-    @Deprecated
-    Link getLink();
-
+    
+    /**
+     * Sets the links
+     * @param links The links to set.
+     */
     void setLinks(List<Link> links);
-    @Deprecated
-    void setLink(Link link);
 
+    /**
+     * Returns a list of authors
+     * @return the authors list.
+     */
     List<SyndPerson> getAuthors();
 
+    /**
+     * Sets the authors list
+     * @param authors the authors list.
+     */
     void setAuthors(List<SyndPerson> authors);
 
+    /**
+     * Returns the contributors list.
+     * @return the contributors list.
+     */
     List<SyndPerson> getContributors();
 
+    /**
+     * Sets the contributors list.
+     * @param contributors the contributors list.
+     */
     void setContributors(List<SyndPerson> contributors);
 
 }

@@ -18,23 +18,23 @@ package com.rometools.modules.activitystreams.types;
 
 /**
  *
- * <p>
+
  * Mood describes the mood of the user when the activity was performed. This is usually collected
  * via an extra field in the user interface used to perform the activity. For the purpose of this
  * schema, a mood is a freeform, short mood keyword or phrase along with an optional mood icon
  * image.
- * </p>
- * <p>
- * Moods are included via a mood element in the namespace <tt>http://activitystrea.ms/context/</tt>.
- * </p>
- * <p>
+
+
+ * Moods are included via a mood element in the namespace "http://activitystrea.ms/context/".
+
+
  * The content of the mood element is the mood keyword or phrase.
- * </p>
- * <p>
- * The mood element may have an optional <tt>icon</tt> attribute which contains the URL of a mood
+
+
+ * The mood element may have an optional "icon" attribute which contains the URL of a mood
  * icon image. The mood icon image SHOULD be small and appropriate to be displayed alongside the
  * mood keyword at a normal text size.
- * </p>
+
  */
 public class Mood {
     private String iconUrl;

@@ -40,11 +40,14 @@ public class Link implements Cloneable, Serializable {
     private String title;
     private long length;
 
+    /**
+     * Public constructor.
+     */
     public Link() { }
 
     /**
      * Creates a deep 'bean' clone of the object.
-     * <p>
+
      *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
@@ -58,7 +61,7 @@ public class Link implements Cloneable, Serializable {
     /**
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
-     * <p>
+
      *
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
@@ -71,9 +74,9 @@ public class Link implements Cloneable, Serializable {
 
     /**
      * Returns a hashcode value for the object.
-     * <p>
+
      * It follows the contract defined by the Object hashCode() method.
-     * <p>
+
      *
      * @return the hashcode of the bean object.
      *
@@ -85,7 +88,7 @@ public class Link implements Cloneable, Serializable {
 
     /**
      * Returns the String representation for the object.
-     * <p>
+
      *
      * @return String representation for the object.
      *
@@ -97,7 +100,7 @@ public class Link implements Cloneable, Serializable {
 
     /**
      * Returns the link rel.
-     * <p>
+
      *
      * @return the link rel, <b>null</b> if none.
      *
@@ -108,19 +111,18 @@ public class Link implements Cloneable, Serializable {
 
     /**
      * Sets the link rel.
-     * <p>
+
      *
      * @param rel the link rel,, <b>null</b> if none.
      *
      */
     public void setRel(final String rel) {
-        // TODO add check, ask P@ about the check
         this.rel = rel;
     }
 
     /**
      * Returns the link type.
-     * <p>
+
      *
      * @return the link type, <b>null</b> if none.
      *
@@ -131,7 +133,7 @@ public class Link implements Cloneable, Serializable {
 
     /**
      * Sets the link type.
-     * <p>
+
      *
      * @param type the link type, <b>null</b> if none.
      *
@@ -142,7 +144,6 @@ public class Link implements Cloneable, Serializable {
 
     /**
      * Returns the link href.
-     * <p>
      *
      * @return the link href, <b>null</b> if none.
      *
@@ -153,7 +154,6 @@ public class Link implements Cloneable, Serializable {
 
     /**
      * Sets the link href.
-     * <p>
      *
      * @param href the link href, <b>null</b> if none.
      *
@@ -162,18 +162,25 @@ public class Link implements Cloneable, Serializable {
         this.href = href;
     }
 
+    /**
+     * Sets the hrefResolved.
+     * @param hrefResolved the new value of hrefResolved
+     */
     public void setHrefResolved(final String hrefResolved) {
         this.hrefResolved = hrefResolved;
     }
 
+    /**
+     * Sets the first not null hrefResolved.
+     * @return the first not null hrefResolved.
+     */
     public String getHrefResolved() {
-        //return Alternatives.firstNotNull();
     	return Stream.of(new String[] {hrefResolved, href}).filter(Objects::nonNull).findFirst().orElse(null);
     }
 
     /**
      * Returns the link title.
-     * <p>
+
      *
      * @return the link title, <b>null</b> if none.
      *
@@ -184,7 +191,7 @@ public class Link implements Cloneable, Serializable {
 
     /**
      * Sets the link title.
-     * <p>
+
      *
      * @param title the link title, <b>null</b> if none.
      *
@@ -195,7 +202,7 @@ public class Link implements Cloneable, Serializable {
 
     /**
      * Returns the hreflang
-     * <p>
+
      *
      * @return Returns the hreflang.
      * @since Atom 1.0
@@ -206,7 +213,7 @@ public class Link implements Cloneable, Serializable {
 
     /**
      * Set the hreflang
-     * <p>
+
      *
      * @param hreflang The hreflang to set.
      * @since Atom 1.0
@@ -217,7 +224,7 @@ public class Link implements Cloneable, Serializable {
 
     /**
      * Returns the length
-     * <p>
+
      *
      * @return Returns the length.
      */
@@ -227,7 +234,7 @@ public class Link implements Cloneable, Serializable {
 
     /**
      * Set the length
-     * <p>
+
      *
      * @param length The length to set.
      */

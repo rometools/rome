@@ -29,16 +29,23 @@ import com.rometools.rome.feed.impl.ToStringBean;
  */
 public class Content implements Cloneable, Serializable {
     private static final long serialVersionUID = 1L;
+    
+    /** the HTML constant */
     public static final String HTML = "html";
+    /** the TEXT constant */
     public static final String TEXT = "text";
+    
     private String type;
     private String value;
 
+    /**
+     * Empty public constructor.
+     */
     public Content() { }
 
     /**
      * Sets the description type.
-     * <p>
+
      *
      * @param type the description type to set, <b>null</b> if none.
      *
@@ -49,7 +56,7 @@ public class Content implements Cloneable, Serializable {
 
     /**
      * Returns the description type.
-     * <p>
+
      *
      * @return the description type, <b>null</b> if none.
      *
@@ -60,7 +67,7 @@ public class Content implements Cloneable, Serializable {
 
     /**
      * Sets the description value.
-     * <p>
+
      *
      * @param value the description value to set, <b>null</b> if none.
      *
@@ -71,7 +78,7 @@ public class Content implements Cloneable, Serializable {
 
     /**
      * Returns the description value.
-     * <p>
+
      *
      * @return the description value, <b>null</b> if none.
      *
@@ -82,7 +89,7 @@ public class Content implements Cloneable, Serializable {
 
     /**
      * Creates a deep 'bean' clone of the object.
-     * <p>
+
      *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
@@ -96,7 +103,7 @@ public class Content implements Cloneable, Serializable {
     /**
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
-     * <p>
+
      *
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
@@ -113,9 +120,9 @@ public class Content implements Cloneable, Serializable {
 
     /**
      * Returns a hashcode value for the object.
-     * <p>
+
      * It follows the contract defined by the Object hashCode() method.
-     * <p>
+
      *
      * @return the hashcode of the bean object.
      *
@@ -127,7 +134,7 @@ public class Content implements Cloneable, Serializable {
 
     /**
      * Returns the String representation for the object.
-     * <p>
+
      *
      * @return String representation for the object.
      *

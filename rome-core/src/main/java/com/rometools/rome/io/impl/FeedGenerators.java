@@ -22,11 +22,11 @@ import com.rometools.rome.io.WireFeedGenerator;
 
 /**
  * Generates an XML document (JDOM Document) out of a Feed.
- * <p>
+
  * It can generate all flavors of RSS (0.90, 0.91, 0.92, 0.93, 0.94, 1.0 and 2.0) and Atom 0.3 feed.
- * <p>
+
  * WireFeedGenerator instances are thread safe.
- * <p>
+
  * Generators for a specific type must extend this class and register in the generator list. (Right
  * now registration is hardcoded in the WireFeedGenerator constructor).
  */

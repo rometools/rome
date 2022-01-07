@@ -26,6 +26,10 @@ import com.rometools.rome.feed.impl.CopyFromHelper;
 import com.rometools.rome.feed.impl.EqualsBean;
 import com.rometools.rome.feed.impl.ToStringBean;
 
+/**
+ * The SyndEnclosure implementation class. 
+ *
+ */
 public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
 
     private static final long serialVersionUID = 1L;
@@ -47,11 +51,14 @@ public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
         COPY_FROM_HELPER = new CopyFromHelper(SyndEnclosure.class, basePropInterfaceMap, basePropClassImplMap);
     }
 
+    /**
+     * Empty public constructor.
+     */
     public SyndEnclosureImpl() { }
 
     /**
      * Creates a deep 'bean' clone of the object.
-     * <p>
+
      *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
@@ -65,7 +72,7 @@ public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
     /**
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
-     * <p>
+
      *
      * @param other he reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
@@ -78,9 +85,9 @@ public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
 
     /**
      * Returns a hashcode value for the object.
-     * <p>
+
      * It follows the contract defined by the Object hashCode() method.
-     * <p>
+
      *
      * @return the hashcode of the bean object.
      *
@@ -92,7 +99,7 @@ public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
 
     /**
      * Returns the String representation for the object.
-     * <p>
+
      *
      * @return String representation for the object.
      *
@@ -104,7 +111,7 @@ public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
 
     /**
      * Returns the enclosure URL.
-     * <p/>
+     * 
      *
      * @return the enclosure URL, <b>null</b> if none.
      */
@@ -115,7 +122,7 @@ public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
 
     /**
      * Sets the enclosure URL.
-     * <p/>
+     * 
      *
      * @param url the enclosure URL to set, <b>null</b> if none.
      */
@@ -126,7 +133,7 @@ public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
 
     /**
      * Returns the enclosure length.
-     * <p/>
+     * 
      *
      * @return the enclosure length, <b>null</b> if none.
      */
@@ -137,7 +144,7 @@ public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
 
     /**
      * Sets the enclosure length.
-     * <p/>
+     * 
      *
      * @param length the enclosure length to set, <b>null</b> if none.
      */
@@ -148,7 +155,7 @@ public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
 
     /**
      * Returns the enclosure type.
-     * <p/>
+     * 
      *
      * @return the enclosure type, <b>null</b> if none.
      */
@@ -159,7 +166,7 @@ public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
 
     /**
      * Sets the enclosure type.
-     * <p/>
+     * 
      *
      * @param type the enclosure type to set, <b>null</b> if none.
      */
@@ -168,11 +175,21 @@ public class SyndEnclosureImpl implements Serializable, SyndEnclosure {
         this.type = type;
     }
 
+    /**
+     * The Class interface representation.
+     * 
+     * @return the class interface.
+     */
     @Override
     public Class<SyndEnclosure> getInterface() {
         return SyndEnclosure.class;
     }
 
+    /**
+     * Copy execution using CopyFrom helper class.
+     * 
+     * @param obj the source origin object.
+     */
     @Override
     public void copyFrom(final CopyFrom obj) {
         COPY_FROM_HELPER.copy(this, obj);

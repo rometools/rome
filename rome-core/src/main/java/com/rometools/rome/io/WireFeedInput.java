@@ -46,10 +46,10 @@ import com.rometools.rome.io.impl.XmlFixerReader;
 /**
  * Parses an XML document (File, InputStream, Reader, W3C SAX InputSource, W3C DOM Document or JDom
  * DOcument) into an WireFeed (RSS/Atom).
- * <p>
+
  * It accepts all flavors of RSS (0.90, 0.91, 0.92, 0.93, 0.94, 1.0 and 2.0) and Atom 0.3 feeds.
  * Parsers are plugable (they must implement the WireFeedParser interface).
- * <p>
+
  * The WireFeedInput useds liberal parsers.
  */
 public class WireFeedInput {
@@ -89,10 +89,10 @@ public class WireFeedInput {
 
     /**
      * Returns the list of supported input feed types.
-     * <p>
+
      *
      * @see WireFeed for details on the format of these strings.
-     *      <p>
+
      * @return a list of String elements with the supported input feed types.
      *
      */
@@ -102,7 +102,7 @@ public class WireFeedInput {
 
     /**
      * Creates a WireFeedInput instance with input validation turned off.
-     * <p>
+
      *
      */
     public WireFeedInput() {
@@ -111,10 +111,10 @@ public class WireFeedInput {
 
     /**
      * Creates a WireFeedInput instance.
-     * <p>
      *
      * @param validate indicates if the input should be validated. NOT IMPLEMENTED YET (validation
      *            does not happen)
+     * @param locale the Locale instance.
      *
      */
     public WireFeedInput(final boolean validate, final Locale locale) {
@@ -125,15 +125,15 @@ public class WireFeedInput {
 
     /**
      * Enables XML healing in the WiredFeedInput instance.
-     * <p>
+
      * Healing trims leading chars from the stream (empty spaces and comments) until the XML prolog.
-     * <p>
+
      * Healing resolves HTML entities (from literal to code number) in the reader.
-     * <p>
+
      * The healing is done only with the build(File) and build(Reader) signatures.
-     * <p>
+
      * By default is TRUE.
-     * <p>
+
      *
      * @param heals TRUE enables stream healing, FALSE disables it.
      *
@@ -144,15 +144,15 @@ public class WireFeedInput {
 
     /**
      * Indicates if the WiredFeedInput instance will XML heal (if necessary) the character stream.
-     * <p>
+
      * Healing trims leading chars from the stream (empty spaces and comments) until the XML prolog.
-     * <p>
+
      * Healing resolves HTML entities (from literal to code number) in the reader.
-     * <p>
+
      * The healing is done only with the build(File) and build(Reader) signatures.
-     * <p>
+
      * By default is TRUE.
-     * <p>
+
      *
      * @return TRUE if healing is enabled, FALSE if not.
      *
@@ -184,9 +184,9 @@ public class WireFeedInput {
 
     /**
      * Builds an WireFeed (RSS or Atom) from a file.
-     * <p>
+
      * NOTE: This method delages to the 'AsbtractFeed WireFeedInput#build(org.jdom2.Document)'.
-     * <p>
+
      *
      * @param file file to read to create the WireFeed.
      * @return the WireFeed read from the file.
@@ -213,9 +213,9 @@ public class WireFeedInput {
 
     /**
      * Builds an WireFeed (RSS or Atom) from an Reader.
-     * <p>
+
      * NOTE: This method delages to the 'AsbtractFeed WireFeedInput#build(org.jdom2.Document)'.
-     * <p>
+
      *
      * @param reader Reader to read to create the WireFeed.
      * @return the WireFeed read from the Reader.
@@ -243,9 +243,9 @@ public class WireFeedInput {
 
     /**
      * Builds an WireFeed (RSS or Atom) from an W3C SAX InputSource.
-     * <p>
+
      * NOTE: This method delages to the 'AsbtractFeed WireFeedInput#build(org.jdom2.Document)'.
-     * <p>
+
      *
      * @param is W3C SAX InputSource to read to create the WireFeed.
      * @return the WireFeed read from the W3C SAX InputSource.
@@ -270,9 +270,9 @@ public class WireFeedInput {
 
     /**
      * Builds an WireFeed (RSS or Atom) from an W3C DOM document.
-     * <p>
+
      * NOTE: This method delages to the 'AsbtractFeed WireFeedInput#build(org.jdom2.Document)'.
-     * <p>
+
      *
      * @param document W3C DOM document to read to create the WireFeed.
      * @return the WireFeed read from the W3C DOM document.
@@ -295,9 +295,9 @@ public class WireFeedInput {
 
     /**
      * Builds an WireFeed (RSS or Atom) from an JDOM document.
-     * <p>
+
      * NOTE: All other build methods delegate to this method.
-     * <p>
+
      *
      * @param document JDOM document to read to create the WireFeed.
      * @return the WireFeed read from the JDOM document.

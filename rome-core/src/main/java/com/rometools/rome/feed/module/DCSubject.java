@@ -20,14 +20,14 @@ import com.rometools.rome.feed.CopyFrom;
 
 /**
  * Subject of the Dublin Core ModuleImpl.
- * <p>
+
  *
- * @see <a href="http://web.resource.org/rss/1.0/modules/dc/">Dublin Core module</a>.
+ * @see <a href="http://web.resource.org/rss/1.0/modules/dc/">Dublin Core module</a>
  */
 public interface DCSubject extends Cloneable, CopyFrom {
     /**
      * Returns the DublinCore subject taxonomy URI.
-     * <p>
+
      *
      * @return the DublinCore subject taxonomy URI, <b>null</b> if none.
      *
@@ -36,7 +36,7 @@ public interface DCSubject extends Cloneable, CopyFrom {
 
     /**
      * Sets the DublinCore subject taxonomy URI.
-     * <p>
+
      *
      * @param taxonomyUri the DublinCore subject taxonomy URI to set, <b>null</b> if none.
      *
@@ -45,7 +45,7 @@ public interface DCSubject extends Cloneable, CopyFrom {
 
     /**
      * Returns the DublinCore subject value.
-     * <p>
+
      *
      * @return the DublinCore subject value, <b>null</b> if none.
      *
@@ -54,7 +54,7 @@ public interface DCSubject extends Cloneable, CopyFrom {
 
     /**
      * Sets the DublinCore subject value.
-     * <p>
+
      *
      * @param value the DublinCore subject value to set, <b>null</b> if none.
      *
@@ -63,7 +63,7 @@ public interface DCSubject extends Cloneable, CopyFrom {
 
     /**
      * Creates a deep clone of the object.
-     * <p>
+
      *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.

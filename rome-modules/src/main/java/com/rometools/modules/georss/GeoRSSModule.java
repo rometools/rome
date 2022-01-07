@@ -230,7 +230,7 @@ public abstract class GeoRSSModule extends ModuleImpl implements Cloneable {
     /**
      * Convenience method to set point geometry.
      *
-     * @return geometry
+     * @param pos the point geometry
      */
     public void setPosition(final Position pos) {
         if (pos != null) {

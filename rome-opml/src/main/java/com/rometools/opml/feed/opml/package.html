@@ -16,16 +16,16 @@
         on an Outline object. Since OPML supports free-form attribute
         assignments, this is a very multi-purpose class.
     </p>
-    <p>Sample Usage:
+    <p>Sample Usage:<br>
         To use this parser, simply include the jar file in your classpath
         as you are using ROME. Be sure it exists at the same level as ROME,
         such that, if ROME is in the common classpath of an application server,
-        don't include this jar in your webapps WEB-INF/lib.
-        <code><pre>
+        don't include this jar in your webapps WEB-INF/lib.</p>
+        <pre>
   WireFeedInput input = new WireFeedInput();
   Opml feed = (Opml) input.build( new File("myOpml.xml") );
   List&lt;Outline&gt; outlines = (List&lt;Outline&gt;) feed.getOutlines();
-        </pre></code>
-    </p>
+        </pre>
+    
   </body>
 </html>

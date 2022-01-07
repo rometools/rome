@@ -17,8 +17,7 @@ package com.rometools.modules.sse.modules;
 import com.rometools.rome.feed.CopyFrom;
 
 /**
- * <sx:conflicts> element within <sx:sync>
- * <p>
+ * &lt;sx:conflicts&gt; element within &lt;sx:sync&gt;
  * The sx:conflicts element MUST contain one or more sx:conflict sub-elements.
  */
 public class Conflicts extends SSEModule {

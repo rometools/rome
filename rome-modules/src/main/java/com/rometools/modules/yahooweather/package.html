@@ -7,23 +7,22 @@
       <a href="http://developer.yahoo.com/weather/">Yahoo! Weather</a>.
       
       <h2>Example usage:</h2>
-      <p> Retrieving information from a feed:
-      <code><pre>
+      <p> Retrieving information from a feed:</p>
+      <pre>
           SyndFeed feed = input.build( ... );
           YWeatherFeedModule yfeed = (YWeatherFeedModule) feed.getModule( YWeatherFeedModule.URI );
           System.out.println( yfeed.getLocation().getCity() );
           SyndEntry entry = (SyndEntry) feed.getEntries().get(0);
           YWeatherEntryModule yentry = (YWeatherEntryModule) entry.getModule( YWeatherEntryModule.URI );
           System.out.println( yentry.getForecasts()[0].getHigh();
-      </pre></code>
-      </p>
+      </pre>
       <p> To add information to a feed, construct a YWeatherModuleImpl and cast it to
-      the appropriate interface:
-      <code><pre>
+      the appropriate interface:</p>
+      <pre>
           SyndEntry entry = new SyndEntryImpl();
           YWeatherEntryModule yentry = new YWeatherModuleImpl();
           yentry.setCondition( Condition("Partly Cloudy", ConditionCode.PARTLY_CLOUDY, 65, new Date() ) );
           entry.getModules.add(yentry);
-        </pre></code>
+        </pre>
   </body>
 </html>

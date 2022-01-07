@@ -24,6 +24,10 @@ import org.slf4j.LoggerFactory;
 
 import com.rometools.rome.feed.module.Module;
 
+/**
+ * 
+ *
+ */
 public class ModuleUtils {
 
     private static final Logger LOG = LoggerFactory.getLogger(ModuleUtils.class);
@@ -31,6 +35,11 @@ public class ModuleUtils {
     private ModuleUtils() {
     }
 
+    /**
+     * 
+     * @param modules the modules to clone
+     * @return a new module cloned list
+     */
     public static List<Module> cloneModules(final List<Module> modules) {
         List<Module> cModules = null;
         if (modules != null) {
@@ -50,7 +59,11 @@ public class ModuleUtils {
     }
 
     /**
-     *
+     * Get the first module filtered by URI.
+     * 
+     * @param modules the module list
+     * @param uri the URI to be filtered
+     * @return the module filtered by URI.
      *
      * @since 1.5 Changed to return the first, not the last.
      */

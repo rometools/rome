@@ -22,10 +22,10 @@ import java.util.List;
 
 /**
  * Provides deep <b>Bean</b> equals() and hashCode() functionality for Java Beans.
- * <p>
+
  * It works on all read/write properties, recursively. It support all primitive types, Strings,
  * Collections, bean-like objects and multi-dimensional arrays of any of them.
- * <p>
+
  * The hashcode is calculated by getting the hashcode of the Bean String representation.
  */
 public class EqualsBean {
@@ -38,9 +38,10 @@ public class EqualsBean {
     /**
      * Indicates whether some other object is "equal to" the object passed in the constructor, as
      * defined by the Object equals() method.
-     * <p>
+
      * To be used by classes using EqualsBean in a delegation pattern,
-     *
+     * 
+     * @param beanClass the bean class to be compared
      * @param obj1 The reference object with which to compare.
      * @param obj2 The object to which to compare.
      * @return <b>true</b> if the object passed in the constructor is equal to the 'obj' object.
@@ -85,13 +86,14 @@ public class EqualsBean {
 
     /**
      * Returns the hashcode for the object passed in the constructor.
-     * <p>
+
      * It follows the contract defined by the Object hashCode() method.
-     * <p>
+
      * The hashcode is calculated by getting the hashcode of the Bean String representation.
-     * <p>
+
      * To be used by classes using EqualsBean in a delegation pattern,
-     *
+     * 
+     * @param obj  the hashcode reference
      * @return the hashcode of the bean object.
      *
      */
