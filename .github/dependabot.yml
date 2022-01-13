@@ -1,0 +1,18 @@
+version: 2
+
+updates:
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: "daily"
+    labels: []
+    open-pull-requests-limit: 100
+
+  - package-ecosystem: maven
+    directory: "/"
+    schedule:
+      interval: "daily"
+    labels:
+      - "type: dependency"
+    open-pull-requests-limit: 100

@@ -17,6 +17,8 @@
  */
 package com.rometools.opml.io.impl;
 
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
@@ -91,26 +93,35 @@ public class OPML20Parser extends OPML10Parser {
 
     @Override
     protected Outline parseOutline(final Element e, final boolean validate, final Locale locale) throws FeedException {
-        Outline retValue;
 
-        retValue = super.parseOutline(e, validate, locale);
+        final Outline outline = super.parseOutline(e, validate, locale);
 
-        if (e.getAttributeValue("created") != null) {
-            retValue.setCreated(DateParser.parseRFC822(e.getAttributeValue("created"), locale));
-        }
+        final Iterator<Attribute> iterator = outline.getAttributes().iterator();
 
-        final List<Attribute> atts = retValue.getAttributes();
+        while (iterator.hasNext()) {
 
-        for (int i = 0; i < atts.size(); i++) {
-            final Attribute a = atts.get(i);
+            final Attribute attribute = iterator.next();
+            final String name = attribute.getName();
+            final String value = attribute.getValue();
 
-            if (a.getName().equals("created")) {
-                retValue.getAttributes().remove(a);
+            if (Arrays.asList("created", "category").contains(name)) {
 
-                break;
+                if ("created".equals(name)) {
+                    outline.setCreated(DateParser.parseRFC822(value, locale));
+                } else if ("category".equals(name)) {
+                    final List<String> categories = Arrays.asList(value.split(","));
+                    outline.setCategories(categories);
+                }
+
+                // remove attribute after processing
+                iterator.remove();
+
             }
+
         }
 
-        return retValue;
+        return outline;
+
     }
+
 }

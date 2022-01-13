@@ -1,0 +1,22 @@
+changelog:
+  categories:
+  
+    - title: ⭐ New Features
+      labels:
+        - "type: enhancement"
+
+    - title: 🐞 Bug Fixes
+      labels:
+        - "type: bug"
+
+    - title: 📔 Documentation
+      labels:
+        - "type: documentation"
+
+    - title: 🔨 Dependency Upgrades
+      labels:
+        - "type: dependency"
+
+    - title: Other Changes
+      labels:
+        - "*"

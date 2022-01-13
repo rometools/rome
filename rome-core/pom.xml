@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.rometools</groupId>
+        <artifactId>rome</artifactId>
+        <version>${revision}</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>rome-core</artifactId>
+    <packaging>jar</packaging>
+
+    <name>rome-core</name>
+    <description>Core module for generating, parsing and converting RSS and Atom feeds</description>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <configuration>
+                    <instructions>
+                        <Import-Package>
+                            org.jdom2,
+                            org.jdom2.filter,
+                            org.jdom2.input,
+                            org.jdom2.input.sax,
+                            org.jdom2.output,
+                            org.slf4j,
+                            org.w3c.dom,
+                            org.xml.sax
+                        </Import-Package>
+                        <Export-Package>
+                            com.rometools.rome.feed,
+                            com.rometools.rome.feed.atom,
+                            com.rometools.rome.feed.impl,
+                            com.rometools.rome.feed.module,
+                            com.rometools.rome.feed.rss,
+                            com.rometools.rome.feed.synd,
+                            com.rometools.rome.io,
+                        </Export-Package>
+                        <_exportcontents>com.rometools.utils</_exportcontents>
+                        <Embed-Dependency>rome-utils</Embed-Dependency>
+                    </instructions>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <Automatic-Module-Name>com.rometools.rome</Automatic-Module-Name>
+                        </manifestEntries>
+                        <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <!-- Rome -->
+        <dependency>
+            <groupId>com.rometools</groupId>
+            <artifactId>rome-utils</artifactId>
+        </dependency>
+        <!-- JDOM -->
+        <dependency>
+            <groupId>org.jdom</groupId>
+            <artifactId>jdom2</artifactId>
+        </dependency>
+        <!-- Test dependencies -->
+        <dependency>
+            <groupId>com.rometools</groupId>
+            <artifactId>rome-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>

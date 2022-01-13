@@ -15,8 +15,8 @@
 package com.rometools.utils;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.nullValue;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.CoreMatchers.nullValue;
 
 import org.junit.Test;
 

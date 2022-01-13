@@ -21,8 +21,8 @@
 package com.rometools.modules.mediarss;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -188,7 +188,7 @@ public class MediaModuleTest extends AbstractTestCase {
         assertNotNull("missing media:content", mediaContents);
         assertEquals("wrong count of media:content", 1, mediaContents.length);
         final MediaContent mediaContent = mediaContents[0];
-        assertEquals("http://www.foo.com/path/containing+spaces/trailer.mov", mediaContent.getReference().toString());
+        assertEquals("http://www.foo.com/path/containing%20spaces/trailer.mov", mediaContent.getReference().toString());
     }
 
     /**
