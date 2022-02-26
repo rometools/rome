@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v2.4.0
 
       - name: Setup Java
-        uses: actions/setup-java@v2.5.0
+        uses: actions/setup-java@v3.0.0
         with:
           distribution: liberica
           java-version: 11
@@ -35,4 +35,4 @@ jobs:
         run: |
           git config --global user.name github-actions
           git config --global user.email github-actions@github.com
-          mvn -B -ntp deploy scm:tag -Drevision=${{ github.event.inputs.version }}
+          mvn -B -ntp -P release deploy scm:tag -Drevision=${{ github.event.inputs.version }}
