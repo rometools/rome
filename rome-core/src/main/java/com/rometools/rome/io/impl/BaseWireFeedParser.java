@@ -18,6 +18,7 @@ package com.rometools.rome.io.impl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.stream.Collectors;
 
 import org.jdom2.Attribute;
 import org.jdom2.Content;
@@ -113,17 +114,11 @@ public abstract class BaseWireFeedParser implements WireFeedParser {
     }
 
     protected List<Attribute> extractForeignAttributes(final Element e, final Namespace namespace) {
-        final ArrayList<Attribute> foreignAttributes = new ArrayList<Attribute>();
-
-        for (final Attribute attr : e.getAttributes()) {
-            if (!namespace.equals(attr.getNamespace()) && !namespace.getPrefix().equals(attr.getNamespacePrefix())) {
-                foreignAttributes.add(attr.clone());
-            }
-        }
-
-        for (final Attribute foreignAttribute : foreignAttributes) {
-            foreignAttribute.detach();
-        }
+        final List<Attribute> foreignAttributes = e.getAttributes().stream()
+                .filter(a -> a.getNamespace().equals(namespace) && a.getNamespacePrefix().equals(namespace.getPrefix()))
+                .map(a -> a.clone())
+                .collect(Collectors.toList());
+        foreignAttributes.forEach(a -> a.detach());
 
         return foreignAttributes;
     }

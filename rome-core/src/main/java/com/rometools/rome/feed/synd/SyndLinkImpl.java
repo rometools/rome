@@ -43,8 +43,156 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
     public SyndLinkImpl() { }
 
     /**
+     * Returns the link rel.
+     *
+     * @return the link rel, <b>null</b> if none.
+     *
+     */
+    @Override
+    public String getRel() {
+        return rel;
+    }
+
+    /**
+     * Sets the link rel.
+     *
+     * @param rel the link rel,, <b>null</b> if none.
+     *
+     */
+    @Override
+    public void setRel(final String rel) {
+        // TODO add check, ask P@ about the check
+        this.rel = rel;
+    }
+
+    /**
+     * Returns the link type.
+     *
+     * @return the link type, <b>null</b> if none.
+     *
+     */
+    @Override
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * Sets the link type.
+     *
+     * @param type the link type, <b>null</b> if none.
+     *
+     */
+    @Override
+    public void setType(final String type) {
+        this.type = type;
+    }
+
+    /**
+     * Returns the link href.
+     *
+     * @return the link href, <b>null</b> if none.
+     *
+     */
+    @Override
+    public String getHref() {
+        return href;
+    }
+
+    /**
+     * Sets the link href.
+     *
+     * @param href the link href, <b>null</b> if none.
+     *
+     */
+    @Override
+    public void setHref(final String href) {
+        this.href = href;
+    }
+
+    /**
+     * Returns the link title.
+     *
+     * @return the link title, <b>null</b> if none.
+     *
+     */
+    @Override
+    public String getTitle() {
+        return title;
+    }
+
+    /**
+     * Sets the link title.
+     *
+     * @param title the link title, <b>null</b> if none.
+     *
+     */
+    @Override
+    public void setTitle(final String title) {
+        this.title = title;
+    }
+
+    /**
+     * Returns the hreflang
+     *
+     * @return Returns the hreflang.
+     */
+    @Override
+    public String getHreflang() {
+        return hreflang;
+    }
+
+    /**
+     * Set the hreflang
+     *
+     * @param hreflang The hreflang to set.
+     */
+    @Override
+    public void setHreflang(final String hreflang) {
+        this.hreflang = hreflang;
+    }
+
+    /**
+     * Returns the length
+     *
+     * @return Returns the length.
+     */
+    @Override
+    public long getLength() {
+        return length;
+    }
+
+    /**
+     * Set the length
+     *
+     * @param length The length to set.
+     */
+    @Override
+    public void setLength(final long length) {
+        this.length = length;
+    }
+
+    /**
+     * Returns foreign attributes
+     *
+     * @return Opaque object to discourage use
+     */
+    @Override
+    public List<SyndLinkAttribute> getLinkAttributes() {
+        return attributes = Lists.createWhenNull(attributes);
+    }
+
+    /**
+     * Sets foreign attributes
+     *
+     * @param attributes list of foreign attributes, or an empty list if none.
+     */
+    @Override
+    public void setLinkAttributes(List<SyndLinkAttribute> attributes) {
+        this.attributes = attributes;
+    }
+
+    /**
      * Creates a deep 'bean' clone of the object.
-     * <p>
      *
      * @return a clone of the object.
      * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
@@ -58,9 +206,8 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
     /**
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
-     * <p>
      *
-     * @param other he reference object with which to compare.
+     * @param other the object to compare with.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
      *
      */
@@ -71,9 +218,7 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
 
     /**
      * Returns a hashcode value for the object.
-     * <p>
      * It follows the contract defined by the Object hashCode() method.
-     * <p>
      *
      * @return the hashcode of the bean object.
      *
@@ -85,7 +230,6 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
 
     /**
      * Returns the String representation for the object.
-     * <p>
      *
      * @return String representation for the object.
      *
@@ -93,171 +237,5 @@ public class SyndLinkImpl implements Cloneable, Serializable, SyndLink {
     @Override
     public String toString() {
         return ToStringBean.toString(this.getClass(), this);
-    }
-
-    /**
-     * Returns the link rel.
-     * <p>
-     *
-     * @return the link rel, <b>null</b> if none.
-     *
-     */
-    @Override
-    public String getRel() {
-        return rel;
-    }
-
-    /**
-     * Sets the link rel.
-     * <p>
-     *
-     * @param rel the link rel,, <b>null</b> if none.
-     *
-     */
-    @Override
-    public void setRel(final String rel) {
-        // TODO add check, ask P@ about the check
-        this.rel = rel;
-    }
-
-    /**
-     * Returns the link type.
-     * <p>
-     *
-     * @return the link type, <b>null</b> if none.
-     *
-     */
-    @Override
-    public String getType() {
-        return type;
-    }
-
-    /**
-     * Sets the link type.
-     * <p>
-     *
-     * @param type the link type, <b>null</b> if none.
-     *
-     */
-    @Override
-    public void setType(final String type) {
-        this.type = type;
-    }
-
-    /**
-     * Returns the link href.
-     * <p>
-     *
-     * @return the link href, <b>null</b> if none.
-     *
-     */
-    @Override
-    public String getHref() {
-        return href;
-    }
-
-    /**
-     * Sets the link href.
-     * <p>
-     *
-     * @param href the link href, <b>null</b> if none.
-     *
-     */
-    @Override
-    public void setHref(final String href) {
-        this.href = href;
-    }
-
-    /**
-     * Returns the link title.
-     * <p>
-     *
-     * @return the link title, <b>null</b> if none.
-     *
-     */
-    @Override
-    public String getTitle() {
-        return title;
-    }
-
-    /**
-     * Sets the link title.
-     * <p>
-     *
-     * @param title the link title, <b>null</b> if none.
-     *
-     */
-    @Override
-    public void setTitle(final String title) {
-        this.title = title;
-    }
-
-    /**
-     * Returns the hreflang
-     * <p>
-     *
-     * @return Returns the hreflang.
-     */
-    @Override
-    public String getHreflang() {
-        return hreflang;
-    }
-
-    /**
-     * Set the hreflang
-     * <p>
-     *
-     * @param hreflang The hreflang to set.
-     */
-    @Override
-    public void setHreflang(final String hreflang) {
-        this.hreflang = hreflang;
-    }
-
-    /**
-     * Returns the length
-     * <p>
-     *
-     * @return Returns the length.
-     */
-    @Override
-    public long getLength() {
-        return length;
-    }
-
-    /**
-     * Set the length
-     * <p>
-     *
-     * @param length The length to set.
-     */
-    @Override
-    public void setLength(final long length) {
-        this.length = length;
-    }
-
-    /**
-     * Returns foreign markup found at channel level.
-     * <p>
-     *
-     * @return Opaque object to discourage use
-     *
-     */
-    @Override
-    public List<SyndLinkAttribute> getLinkAttributes() {
-        return attributes = Lists.createWhenNull(attributes);
-    }
-
-    /**
-     * Sets foreign markup found at channel level.
-     * <p>
-     *
-     * @param attributes list of JDOM nodes containing channel-level foreign markup, an empty
-     *            list if none.
-     *
-     */
-    @Override
-    public void setLinkAttributes(List<SyndLinkAttribute> attributes) {
-        this.attributes = attributes;
     }
 }

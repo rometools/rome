@@ -18,59 +18,6 @@ public class LinkAttribute implements Cloneable, Serializable {
 
     public LinkAttribute() { }
 
-    /**
-     * Creates a deep 'bean' clone of the object.
-     * <p>
-     *
-     * @return a clone of the object.
-     * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
-     *
-     */
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return CloneableBean.beanClone(this, Collections.<String>emptySet());
-    }
-
-    /**
-     * Indicates whether some other object is "equal to" this one as defined by the Object equals()
-     * method.
-     * <p>
-     *
-     * @param other he reference object with which to compare.
-     * @return <b>true</b> if 'this' object is equal to the 'other' object.
-     *
-     */
-    @Override
-    public boolean equals(final Object other) {
-        return EqualsBean.beanEquals(LinkAttribute.class, this, other);
-    }
-
-    /**
-     * Returns a hashcode value for the object.
-     * <p>
-     * It follows the contract defined by the Object hashCode() method.
-     * <p>
-     *
-     * @return the hashcode of the bean object.
-     *
-     */
-    @Override
-    public int hashCode() {
-        return EqualsBean.beanHashCode(this);
-    }
-
-    /**
-     * Returns the String representation for the object.
-     * <p>
-     *
-     * @return String representation for the object.
-     *
-     */
-    @Override
-    public String toString() {
-        return ToStringBean.toString(this.getClass(), this);
-    }
-
     public String getName() {
         return this.name;
     }
@@ -111,5 +58,53 @@ public class LinkAttribute implements Cloneable, Serializable {
      */
     public void setNamespacePrefix(String prefix) {
         this.namespacePrefix = prefix;
+    }
+
+    /**
+     * Creates a deep 'bean' clone of the object.
+     *
+     * @return a clone of the object.
+     * @throws CloneNotSupportedException thrown if an element of the object cannot be cloned.
+     *
+     */
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return CloneableBean.beanClone(this, Collections.<String>emptySet());
+    }
+
+    /**
+     * Indicates whether some other object is "equal to" this one as defined by the Object equals()
+     * method.
+     *
+     * @param other he reference object with which to compare.
+     * @return <b>true</b> if 'this' object is equal to the 'other' object.
+     *
+     */
+    @Override
+    public boolean equals(final Object other) {
+        return EqualsBean.beanEquals(LinkAttribute.class, this, other);
+    }
+
+    /**
+     * Returns a hashcode value for the object.
+     * It follows the contract defined by the Object hashCode() method.
+     *
+     * @return the hashcode of the bean object.
+     *
+     */
+    @Override
+    public int hashCode() {
+        return EqualsBean.beanHashCode(this);
+    }
+
+    /**
+     * Returns the String representation for the object.
+     *
+     * @return String representation for the object.
+     *
+     */
+    @Override
+    public String toString() {
+        return ToStringBean.toString(this.getClass(), this);
     }
 }

@@ -24,7 +24,14 @@ import java.util.List;
 import java.util.Locale;
 import java.util.regex.Pattern;
 
-import com.rometools.rome.feed.atom.*;
+import com.rometools.rome.feed.atom.Category;
+import com.rometools.rome.feed.atom.Content;
+import com.rometools.rome.feed.atom.Entry;
+import com.rometools.rome.feed.atom.Feed;
+import com.rometools.rome.feed.atom.Generator;
+import com.rometools.rome.feed.atom.Link;
+import com.rometools.rome.feed.atom.LinkAttribute;
+import com.rometools.rome.feed.atom.Person;
 import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;

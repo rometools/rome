@@ -17,20 +17,38 @@
  */
 package com.rometools.rome.feed.synd.impl;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import com.rometools.rome.feed.atom.*;
-import com.rometools.rome.feed.synd.*;
-import org.jdom2.Attribute;
-import org.jdom2.Element;
-
 import com.rometools.rome.feed.WireFeed;
+import com.rometools.rome.feed.atom.Content;
+import com.rometools.rome.feed.atom.Entry;
+import com.rometools.rome.feed.atom.Feed;
+import com.rometools.rome.feed.atom.Link;
+import com.rometools.rome.feed.atom.LinkAttribute;
+import com.rometools.rome.feed.atom.Person;
 import com.rometools.rome.feed.module.impl.ModuleUtils;
+import com.rometools.rome.feed.synd.Converter;
+import com.rometools.rome.feed.synd.SyndContent;
+import com.rometools.rome.feed.synd.SyndContentImpl;
+import com.rometools.rome.feed.synd.SyndEnclosure;
+import com.rometools.rome.feed.synd.SyndEnclosureImpl;
+import com.rometools.rome.feed.synd.SyndEntry;
+import com.rometools.rome.feed.synd.SyndEntryImpl;
+import com.rometools.rome.feed.synd.SyndFeed;
+import com.rometools.rome.feed.synd.SyndImage;
+import com.rometools.rome.feed.synd.SyndImageImpl;
+import com.rometools.rome.feed.synd.SyndLink;
+import com.rometools.rome.feed.synd.SyndLinkAttribute;
+import com.rometools.rome.feed.synd.SyndLinkAttributeImpl;
+import com.rometools.rome.feed.synd.SyndLinkImpl;
+import com.rometools.rome.feed.synd.SyndPerson;
+import com.rometools.rome.feed.synd.SyndPersonImpl;
 import com.rometools.utils.Alternatives;
 import com.rometools.utils.Lists;
 import com.rometools.utils.Strings;
+import org.jdom2.Element;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class ConverterForAtom03 implements Converter {
 

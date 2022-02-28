@@ -24,7 +24,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import com.rometools.rome.feed.atom.*;
+import com.rometools.rome.feed.atom.Category;
+import com.rometools.rome.feed.atom.Content;
+import com.rometools.rome.feed.atom.Entry;
+import com.rometools.rome.feed.atom.Feed;
+import com.rometools.rome.feed.atom.Generator;
+import com.rometools.rome.feed.atom.Link;
+import com.rometools.rome.feed.atom.LinkAttribute;
 import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -401,10 +407,9 @@ public class Atom10Generator extends BaseWireFeedGenerator {
         final List<LinkAttribute> linkAttributes = link.getLinkAttributes();
         if (null != linkAttributes) {
                 for (final LinkAttribute linkAttribute : linkAttributes) {
-                    final Attribute foreignAttribute = new Attribute(linkAttribute.getName(),
+                    linkElement.setAttribute(new Attribute(linkAttribute.getName(),
                             linkAttribute.getValue(),
-                            Namespace.getNamespace(linkAttribute.getNamespacePrefix(), linkAttribute.getNamespaceURI()));
-                    linkElement.setAttribute(foreignAttribute);
+                            Namespace.getNamespace(linkAttribute.getNamespacePrefix(), linkAttribute.getNamespaceURI())));
                 }
         }
 
