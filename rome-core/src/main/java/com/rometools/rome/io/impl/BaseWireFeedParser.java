@@ -115,7 +115,7 @@ public abstract class BaseWireFeedParser implements WireFeedParser {
 
     protected List<Attribute> extractForeignAttributes(final Element e, final Namespace namespace) {
         final List<Attribute> foreignAttributes = e.getAttributes().stream()
-                .filter(a -> a.getNamespace().equals(namespace) && a.getNamespacePrefix().equals(namespace.getPrefix()))
+                .filter(a -> !a.getNamespace().equals(namespace) && !a.getNamespacePrefix().equals(namespace.getPrefix()))
                 .map(a -> a.clone())
                 .collect(Collectors.toList());
         foreignAttributes.forEach(a -> a.detach());
