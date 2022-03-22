@@ -116,7 +116,7 @@ public class ConverterForAtom10 implements Converter {
         // Set the first "self" link as LINK
         syndFeed.setLink(aFeed.getOtherLinks().stream().filter(l -> "self".equals(l.getRel())).findFirst().map(Link::getHrefResolved).orElse(null));
 
-        // otherwise, use first alternate links as THE link
+        // otherwise, use first alternate link as THE link
         final List<Link> alternateLinks = aFeed.getAlternateLinks();
         if (Lists.isNotEmpty(alternateLinks) && syndFeed.getLink() == null) {
             final Link theLink = alternateLinks.get(0);
