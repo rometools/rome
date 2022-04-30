@@ -58,7 +58,7 @@ public class TestSyndFeedAtom10 extends TestSyndFeedAtom03 {
 
     @Override
     public void testLink() throws Exception {
-        assertEquals(this.getCachedSyndFeed().getLink(), "http://example.com/blog");
+        assertEquals(this.getCachedSyndFeed().getLink(), "http://example.com/blog/atom_1.0.xml");
     }
 
     @Override
