@@ -57,7 +57,7 @@
                 <plugin>
                     <groupId>org.apache.felix</groupId>
                     <artifactId>maven-bundle-plugin</artifactId>
-                    <version>5.1.4</version>
+                    <version>5.1.5</version>
                     <executions>
                         <execution>
                             <phase>package</phase>
@@ -136,7 +136,7 @@
                 <plugin>
                     <groupId>org.sonatype.plugins</groupId>
                     <artifactId>nexus-staging-maven-plugin</artifactId>
-                    <version>1.6.12</version>
+                    <version>1.6.13</version>
                 </plugin>
             </plugins>
         </pluginManagement>
