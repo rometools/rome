@@ -56,7 +56,7 @@ public class WeatherModuleGenerator implements ModuleGenerator {
                 astro.setAttribute("sunrise", TIME_ONLY.format(weather.getAstronomy().getSunrise()).toLowerCase());
             }
 
-            if (weather.getAstronomy().getSunrise() != null) {
+            if (weather.getAstronomy().getSunset() != null) {
                 astro.setAttribute("sunset", TIME_ONLY.format(weather.getAstronomy().getSunset()).toLowerCase());
             }
 
