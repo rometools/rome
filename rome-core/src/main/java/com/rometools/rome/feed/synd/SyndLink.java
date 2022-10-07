@@ -38,7 +38,7 @@ public interface SyndLink {
      * Indicates whether some other object is "equal to" this one as defined by the Object equals()
      * method.
      *
-     * @param other he reference object with which to compare.
+     * @param other The reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
      *
      */

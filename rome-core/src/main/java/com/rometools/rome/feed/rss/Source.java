@@ -53,7 +53,7 @@ public class Source implements Cloneable, Serializable {
      * method.
      * <p>
      *
-     * @param other he reference object with which to compare.
+     * @param other The reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
      *
      */
