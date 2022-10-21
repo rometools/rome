@@ -33,7 +33,8 @@ public class Issue2Test extends TestSyndFeedRSS094 {
     }
 
     protected void testComments(final SyndEntry entry, final int i) throws Exception {
-        assertProperty(entry.findRelatedLink("comments").getHref(), "rss_0.94.channel.item[" + i + "].comments");
+        final String property = entry.findRelatedLink("comments").getHref();
+        assertProperty(property, "channel.item[" + i + "].comments");
     }
 
 }
