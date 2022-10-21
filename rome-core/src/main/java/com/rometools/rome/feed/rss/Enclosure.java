@@ -30,7 +30,7 @@ import com.rometools.rome.feed.impl.ToStringBean;
 public class Enclosure implements Cloneable, Serializable {
     private static final long serialVersionUID = 1L;
     private String url;
-    private long length = -1L;
+    private Long length = Long.valueOf(-1L);
     private String type;
 
     public Enclosure() { }
@@ -117,10 +117,10 @@ public class Enclosure implements Cloneable, Serializable {
      * Returns the enclosure length.
      * <p>
      *
-     * @return the enclosure length, <b>0</b> if none.
+     * @return the enclosure length, <b>-1</b> if none.
      *
      */
-    public long getLength() {
+    public Long getLength() {
         return length;
     }
 
@@ -128,10 +128,10 @@ public class Enclosure implements Cloneable, Serializable {
      * Sets the enclosure length.
      * <p>
      *
-     * @param length the enclosure length to set, <b>0</b> if none.
+     * @param length the enclosure length to set, <b>-1</b> if none.
      *
      */
-    public void setLength(final long length) {
+    public void setLength(final Long length) {
         this.length = length;
     }
 
