@@ -141,8 +141,8 @@ public class RSS092Generator extends RSS091UserlandGenerator {
             enclosureElement.setAttribute("url", url);
         }
 
-        final Long length = enclosure.getLength();
-        if (null != length && length > -1L) {
+        final long length = enclosure.getLength();
+        if (length > -1L) {
             enclosureElement.setAttribute("length", String.valueOf(length));
         }
 
