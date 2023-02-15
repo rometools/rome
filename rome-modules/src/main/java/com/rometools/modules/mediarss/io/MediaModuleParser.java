@@ -26,11 +26,12 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Currency;
 import java.util.List;
 import java.util.Locale;
+import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.StringTokenizer;
 
 import org.jdom2.Element;
 import org.jdom2.Namespace;
@@ -464,10 +465,28 @@ public class MediaModuleParser implements ModuleParser {
         final List<Element> priceElements = e.getChildren("price", getNS());
         final Price[] prices = new Price[priceElements.size()];
         for (int i = 0; i < priceElements.size(); i++) {
+
             final Element priceElement = priceElements.get(i);
             prices[i] = new Price();
-            prices[i].setCurrency(priceElement.getAttributeValue("currency"));
-            prices[i].setPrice(Doubles.parse(priceElement.getAttributeValue("price")));
+            
+            final String currency = priceElement.getAttributeValue("currency");
+            if (currency != null) {
+                try {
+                    prices[i].setCurrency(Currency.getInstance(currency));
+                } catch (IllegalArgumentException ex) {
+                    LOG.warn("Invalid currency", ex);
+                }
+            }
+
+            final String price = priceElement.getAttributeValue("price");
+            if (price != null) {
+                try {
+                    prices[i].setPrice(new BigDecimal(price));
+                } catch (NumberFormatException ex) {
+                    LOG.warn("Invalid price", ex);
+                }
+            }
+
             if (priceElement.getAttributeValue("type") != null) {
                 prices[i].setType(Price.Type.valueOf(priceElement.getAttributeValue("type").toUpperCase()));
             }
