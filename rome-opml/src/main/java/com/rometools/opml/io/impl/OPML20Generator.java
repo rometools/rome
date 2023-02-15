@@ -68,11 +68,14 @@ public class OPML20Generator extends OPML10Generator {
     @Override
     protected Element generateHead(final Opml opml) {
 
-        final Element docsElement = new Element("docs");
-        docsElement.setText(opml.getDocs());
-
         final Element headElement = super.generateHead(opml);
-        headElement.addContent(docsElement);
+
+        if (headElement != null && opml.getDocs() != null) {
+            final Element docsElement = new Element("docs");
+            docsElement.setText(opml.getDocs());
+            headElement.addContent(docsElement);
+        }
+
         return headElement;
 
     }
