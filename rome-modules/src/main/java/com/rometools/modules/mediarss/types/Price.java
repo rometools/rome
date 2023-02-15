@@ -20,7 +20,9 @@
 package com.rometools.modules.mediarss.types;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.net.URL;
+import java.util.Currency;
 
 /**
  * Optional tag to include pricing information about a media object.
@@ -40,8 +42,8 @@ public class Price implements Serializable {
     }
 
     private Type type;
-    private Double price;
-    private String currency;
+    private BigDecimal price;
+    private Currency currency;
     private URL info;
 
     /**
@@ -69,7 +71,7 @@ public class Price implements Serializable {
      * 
      * @return the price
      */
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
@@ -80,7 +82,7 @@ public class Price implements Serializable {
      * 
      * @param price the price
      */
-    public void setPrice(final Double price) {
+    public void setPrice(final BigDecimal price) {
         this.price = price;
     }
 
@@ -89,7 +91,7 @@ public class Price implements Serializable {
      * 
      * @return ISO 4217 currency code
      */
-    public String getCurrency() {
+    public Currency getCurrency() {
         return currency;
     }
 
@@ -98,7 +100,7 @@ public class Price implements Serializable {
      * 
      * @param currency ISO 4217 currency code
      */
-    public void setCurrency(final String currency) {
+    public void setCurrency(final Currency currency) {
         this.currency = currency;
     }
 
