@@ -11,12 +11,8 @@
 
     <modules>
         <module>rome</module>
-        <module>rome-certiorem</module>
-        <module>rome-certiorem-webapp</module>
-        <module>rome-fetcher</module>
         <module>rome-modules</module>
         <module>rome-opml</module>
-        <module>rome-propono</module>
         <module>rome-utils</module>
     </modules>
 
