@@ -20,12 +20,10 @@
 
 package com.rometools.modules.content;
 
-import junit.framework.TestCase;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.rometools.modules.content.ContentItem;
+import junit.framework.TestCase;
 
 /**
  * This is all standard property storage testing.
@@ -136,20 +134,20 @@ public class ContentItemTest extends TestCase {
      * @todo make better Test of ContentResource method, of class
      *       com.totsp.xml.syndication.content.ContentItem.
      */
-    public void testEquals() {
-        LOG.debug("testEquals");
-        final String test = "http://www.w3.org/2000/svg";
+	public void testEquals() {
 
-        assertTrue(test.equals(test));
-        final ContentItem test2 = ContentModuleImplTest.contentItems.get(0);
-        assertTrue(!test.equals(test2));
-        final ContentItem test3 = new ContentItem();
-        test3.setContentFormat(new String("http://www.w3.org/1999/xhtml"));
-        test3.setContentEncoding(new String("http://www.w3.org/TR/REC-xml#dt-wellformed"));
-        test3.setContentEncoding(new String("Literal"));
-        // test3.setContentValueNamespace(new String("http://www.w3.org/1999/xhtml"));
-        test3.setContentValue(new String("<em>This is <strong>very</strong></em> <strong>cool</strong>."));
-        // assertEquals( test2, test3 );
-    }
+		LOG.debug("testEquals");
+
+		final ContentItem item1 = ContentModuleImplTest.contentItems.get(0);
+
+		final ContentItem item2 = new ContentItem();
+		item2.setContentFormat(new String("http://www.w3.org/1999/xhtml"));
+		item2.setContentEncoding(new String("http://www.w3.org/TR/REC-xml#dt-wellformed"));
+		item2.setContentValue(new String("<em>This is <strong>very</strong></em> <strong>cool</strong>."));
+		item2.setContentValueParseType(new String("Literal"));
+
+		assertEquals(item1, item2);
+
+	}
 
 }
