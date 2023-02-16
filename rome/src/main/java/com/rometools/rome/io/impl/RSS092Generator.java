@@ -142,9 +142,7 @@ public class RSS092Generator extends RSS091UserlandGenerator {
         }
 
         final long length = enclosure.getLength();
-        if (length != 0) {
-            enclosureElement.setAttribute("length", String.valueOf(length));
-        }
+        enclosureElement.setAttribute("length", String.valueOf(length));
 
         final String type = enclosure.getType();
         if (type != null) {
