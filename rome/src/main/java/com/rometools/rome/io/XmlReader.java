@@ -208,8 +208,10 @@ public class XmlReader extends Reader {
      *
      * @param url URL to create a Reader from.
      * @throws IOException thrown if there is a problem reading the stream of the URL.
+     * @deprecated As of release 2.0.0 and will be removed in version 3.0.0 due to too many problems with this approach.
      *
      */
+    @Deprecated
     public XmlReader(final URL url) throws IOException {
         this(url, null);
     }
@@ -230,8 +232,10 @@ public class XmlReader extends Reader {
      * @param url URL to create a Reader from.
      * @param requestHeaders optional Map of headers to set on http request.
      * @throws IOException thrown if there is a problem reading the stream of the URL.
+     * @deprecated As of release 2.0.0 and will be removed in version 3.0.0 due to too many problems with this approach.
      *
      */
+    @Deprecated
     public XmlReader(final URL url, final Map<String, String> requestHeaders) throws IOException {
         this(url.openConnection(), requestHeaders);
     }
@@ -251,8 +255,10 @@ public class XmlReader extends Reader {
      *
      * @param conn URLConnection to create a Reader from.
      * @throws IOException thrown if there is a problem reading the stream of the URLConnection.
+     * @deprecated As of release 2.0.0 and will be removed in version 3.0.0 due to too many problems with this approach.
      *
      */
+    @Deprecated
     public XmlReader(final URLConnection conn) throws IOException {
         this(conn, null);
     }
@@ -273,8 +279,10 @@ public class XmlReader extends Reader {
      * @param conn URLConnection to create a Reader from.
      * @param requestHeaders optional Map of headers to set on http request.
      * @throws IOException thrown if there is a problem reading the stream of the URLConnection.
+     * @deprecated As of release 2.0.0 and will be removed in version 3.0.0 due to too many problems with this approach.
      *
      */
+    @Deprecated
     public XmlReader(final URLConnection conn, final Map<String, String> requestHeaders) throws IOException {
         defaultEncoding = staticDefaultEncoding;
         final boolean lenient = true;
