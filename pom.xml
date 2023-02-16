@@ -342,7 +342,7 @@
             <dependency>
                 <groupId>com.google.inject.extensions</groupId>
                 <artifactId>guice-servlet</artifactId>
-                <version>5.0.1</version>
+                <version>5.1.0</version>
             </dependency>
             <!-- Apache Commons -->
             <dependency>
