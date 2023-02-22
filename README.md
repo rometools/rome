@@ -5,10 +5,6 @@
 
 Rome is a Java framework for RSS and Atom feeds. The framework consist of several modules:
 
-> &#x26a0;&#xfe0f; This project is in maintenance mode due to a shortage of active developers. We won't accept new features but try to keep all dependencies up-to-date.
-
-## Project structure
-
 | Module | Description |
 | ------ | ----------- |
 | `rome` | Library for generating and parsing RSS and Atom feeds. |
@@ -16,24 +12,39 @@ Rome is a Java framework for RSS and Atom feeds. The framework consist of severa
 | `rome-opml` | [OPML](https://en.wikipedia.org/wiki/OPML) parsers and tools. |
 | `rome-utils` | Internal utility classes. |
 
-## Examples
+## Getting started
 
-Parse a feed:
+### System Requirements
+Starting with Rome 2.0.0, Java 11 or higher is required.
 
+### Dependency (Maven)
+```xml
+<dependencies>
+    <dependency>
+        <groupId>com.rometools</groupId>
+        <artifactId>rome</artifactId>
+        <version>${rome.version}</version>
+    </dependency>
+</dependencies>
+```
+
+### Parse a feed
 ```java
 String url = "https://stackoverflow.com/feeds/tag?tagnames=rome";
 SyndFeed feed = new SyndFeedInput().build(new XmlReader(new URL(url)));
+
 System.out.println(feed.getTitle());
 ```
-**Beware!** The `URL` class used in this example is rudimentary and works only for simplest cases. Please consider using a separate library for fetching the feed (see example in [#276](https://github.com/rometools/rome/issues/276)).
+**Beware!** The `URL` variant used in this example is deprecated and works only for simplest cases. Please consider using a separate library for fetching the 
+feed (see examples in [#276](https://github.com/rometools/rome/issues/276)).
 
-Generate a feed:
-
+### Generate a feed
 ```java
 SyndFeed feed = new SyndFeedImpl();
 feed.setFeedType("rss_2.0");
 feed.setTitle("test-title");
 feed.setDescription("test-description");
 feed.setLink("https://example.org");
+
 System.out.println(new SyndFeedOutput().outputString(feed));
 ```
