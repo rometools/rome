@@ -50,7 +50,7 @@ public class TestSyndFeedRSS094 extends TestSyndFeedRSS093 {
         final SyndEntry entry = items.get(i);
 
         assertProperty(entry.getAuthor(), "channel.item[" + i + "].author");
-
+        testUri(entry, i);
     }
 
     @Override
