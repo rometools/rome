@@ -465,7 +465,7 @@ public class MediaModuleParser implements ModuleParser {
         final List<Element> priceElements = e.getChildren("price", getNS());
         final Price[] prices = new Price[priceElements.size()];
         for (int i = 0; i < priceElements.size(); i++) {
-            
+
             final Element priceElement = priceElements.get(i);
             prices[i] = new Price();
             
@@ -486,7 +486,7 @@ public class MediaModuleParser implements ModuleParser {
                     LOG.warn("Invalid price", ex);
                 }
             }
-            
+
             if (priceElement.getAttributeValue("type") != null) {
                 prices[i].setType(Price.Type.valueOf(priceElement.getAttributeValue("type").toUpperCase()));
             }

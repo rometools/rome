@@ -6,18 +6,18 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import lombok.experimental.UtilityClass;
-
-@UtilityClass
-public class URIs {
+public final class URIs {
 
     private static final Map<String, String> FIXES = new HashMap<>();
 
     static {
         FIXES.put(" ", "%20"); // fix spaces
     }
+    
+    private URIs() {
+    }
 
-    public URI parse(final String str) throws URISyntaxException {
+    public static URI parse(final String str) throws URISyntaxException {
 
         String fixed = str;
         for (final Entry<String, String> entry : FIXES.entrySet()) {
