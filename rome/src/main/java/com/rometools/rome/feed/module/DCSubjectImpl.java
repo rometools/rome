@@ -33,7 +33,7 @@ import com.rometools.rome.feed.impl.ToStringBean;
  *
  * @see <a href="http://web.resource.org/rss/1.0/modules/dc/">Dublin Core module</a>.
  */
-public class DCSubjectImpl implements Cloneable, Serializable, DCSubject {
+public class DCSubjectImpl implements Serializable, DCSubject {
 
     private static final long serialVersionUID = 1L;
     private static final CopyFromHelper COPY_FROM_HELPER;

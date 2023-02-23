@@ -17,14 +17,12 @@
 
 package com.rometools.modules.feedburner;
 
-import java.io.Serializable;
-
 import com.rometools.rome.feed.module.Module;
 
 /**
  * Interface for the FeedBurner RSS extension.
  */
-public interface FeedBurner extends Module, Serializable, Cloneable {
+public interface FeedBurner extends Module {
 
     public static final String URI = "http://rssnamespace.org/feedburner/ext/1.0";
 

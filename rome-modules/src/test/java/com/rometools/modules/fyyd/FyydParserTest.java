@@ -37,7 +37,7 @@ public class FyydParserTest extends AbstractTestCase {
         log.debug("testParseRss");
 
         final SyndFeedInput input = new SyndFeedInput();
-        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("fyyd/rss.xml")).toURI().toURL()));
+        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("fyyd/rss.xml"))));
         final FyydModule fyyd = (FyydModule) feed.getModule(FyydModule.URI);
 
         assertNotNull(fyyd);
@@ -49,7 +49,7 @@ public class FyydParserTest extends AbstractTestCase {
         log.debug("testParseAtom");
 
         final SyndFeedInput input = new SyndFeedInput();
-        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("fyyd/atom.xml")).toURI().toURL()));
+        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("fyyd/atom.xml"))));
         final FyydModule fyyd = (FyydModule) feed.getModule(FyydModule.URI);
 
         assertNotNull(fyyd);

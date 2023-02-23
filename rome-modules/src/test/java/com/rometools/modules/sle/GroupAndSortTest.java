@@ -26,8 +26,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.rometools.modules.AbstractTestCase;
-import com.rometools.modules.sle.SimpleListExtension;
-import com.rometools.modules.sle.SleUtility;
 import com.rometools.modules.sle.types.Sort;
 import com.rometools.rome.feed.module.Extendable;
 import com.rometools.rome.feed.synd.SyndEntry;

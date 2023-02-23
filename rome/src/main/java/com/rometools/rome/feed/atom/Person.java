@@ -19,21 +19,21 @@ package com.rometools.rome.feed.atom;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Stream;
 
 import com.rometools.rome.feed.impl.CloneableBean;
 import com.rometools.rome.feed.impl.EqualsBean;
 import com.rometools.rome.feed.impl.ToStringBean;
-import com.rometools.rome.feed.module.Extendable;
 import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.feed.module.impl.ModuleUtils;
 import com.rometools.rome.feed.synd.SyndPerson;
-import com.rometools.utils.Alternatives;
 import com.rometools.utils.Lists;
 
 /**
  * Bean for person elements of Atom feeds.
  */
-public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
+public class Person implements SyndPerson, Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -147,7 +147,7 @@ public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
     }
 
     public String getUriResolved(final String resolveURI) {
-        return Alternatives.firstNotNull(uriResolved, uri);
+        return Stream.of(new String[] {uriResolved, uri}).filter(Objects::nonNull).findFirst().orElse(null);
     }
 
     /**

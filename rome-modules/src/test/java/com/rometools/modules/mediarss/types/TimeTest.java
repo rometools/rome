@@ -28,8 +28,6 @@ import org.junit.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.rometools.modules.mediarss.types.Time;
-
 public class TimeTest extends TestCase {
 
     private static final Logger LOG = LoggerFactory.getLogger(TimeTest.class);

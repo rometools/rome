@@ -174,7 +174,7 @@ public class ConverterForOPML10 implements Converter {
 
         entry.setModules(outline.getModules());
         allEntries.add(entry);
-        context.push(new Integer(outline.hashCode()));
+        context.push(Integer.valueOf(outline.hashCode()));
         createEntries(context, allEntries, outline.getChildren());
         context.pop();
 

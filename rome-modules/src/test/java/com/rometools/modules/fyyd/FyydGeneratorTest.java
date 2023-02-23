@@ -39,7 +39,7 @@ public class FyydGeneratorTest extends AbstractTestCase {
         log.debug("testGenerateRss");
 
         final SyndFeedInput input = new SyndFeedInput();
-        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("fyyd/rss.xml")).toURI().toURL()));
+        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("fyyd/rss.xml"))));
         feed.getModule(FyydModule.URI);
         final SyndFeedOutput output = new SyndFeedOutput();
         final StringWriter writer = new StringWriter();
@@ -58,7 +58,7 @@ public class FyydGeneratorTest extends AbstractTestCase {
         log.debug("testGenerateAtom");
 
         final SyndFeedInput input = new SyndFeedInput();
-        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("fyyd/atom.xml")).toURI().toURL()));
+        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("fyyd/atom.xml"))));
         feed.getModule(FyydModule.URI);
         final SyndFeedOutput output = new SyndFeedOutput();
         final StringWriter writer = new StringWriter();

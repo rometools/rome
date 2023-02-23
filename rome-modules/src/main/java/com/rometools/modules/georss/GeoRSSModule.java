@@ -26,7 +26,7 @@ import com.rometools.rome.feed.module.ModuleImpl;
  * GeoRSSModule is the main georss interface defining the methods to produce and consume georss
  * elements.
  */
-public abstract class GeoRSSModule extends ModuleImpl implements Cloneable {
+public abstract class GeoRSSModule extends ModuleImpl {
 
     private static final long serialVersionUID = 1L;
 

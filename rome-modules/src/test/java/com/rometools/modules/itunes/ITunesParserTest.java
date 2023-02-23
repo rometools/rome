@@ -20,7 +20,6 @@
 package com.rometools.modules.itunes;
 
 import java.io.File;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -32,11 +31,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.rometools.modules.AbstractTestCase;
-import com.rometools.modules.itunes.AbstractITunesObject;
-import com.rometools.modules.itunes.EntryInformationImpl;
-import com.rometools.modules.itunes.FeedInformationImpl;
 import com.rometools.modules.itunes.io.ITunesGenerator;
-import com.rometools.modules.itunes.types.Duration;
 import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndFeed;
@@ -80,7 +75,7 @@ public class ITunesParserTest extends AbstractTestCase {
     public void testParse() throws Exception {
         File feed = new File(getTestFile("itunes/leshow.xml"));
         final SyndFeedInput input = new SyndFeedInput();
-        SyndFeed syndfeed = input.build(new XmlReader(feed.toURI().toURL()));
+        SyndFeed syndfeed = input.build(new XmlReader(feed));
 
         final Module module = syndfeed.getModule(AbstractITunesObject.URI);
         final FeedInformationImpl feedInfo = (FeedInformationImpl) module;
@@ -114,7 +109,7 @@ public class ITunesParserTest extends AbstractTestCase {
         }
 
         feed = new File(getTestFile("xml/rsr.xml"));
-        syndfeed = input.build(new XmlReader(feed.toURI().toURL()));
+        syndfeed = input.build(new XmlReader(feed));
         entries = syndfeed.getEntries();
         it = entries.iterator();
 
@@ -131,7 +126,7 @@ public class ITunesParserTest extends AbstractTestCase {
     public void testParseItem() throws Exception {
         File feed = new File(getTestFile("xml/leshow.xml"));
         final SyndFeedInput input = new SyndFeedInput();
-        SyndFeed syndfeed = input.build(new XmlReader(feed.toURI().toURL()));
+        SyndFeed syndfeed = input.build(new XmlReader(feed));
 
         SyndEntry entry = syndfeed.getEntries().get(0);
 
@@ -153,7 +148,8 @@ public class ITunesParserTest extends AbstractTestCase {
     }
 
     public void testDuration() throws Exception {
-        SyndFeed feed = new SyndFeedInput().build(new XmlReader(getClass().getResource("duration.xml")));
+        final File feedFile = new File(getTestFile("com/rometools/modules/itunes/duration.xml"));
+        SyndFeed feed = new SyndFeedInput().build(new XmlReader(feedFile));
         SyndEntry entry = feed.getEntries().get(0);
         EntryInformationImpl module = (EntryInformationImpl) entry.getModule(AbstractITunesObject.URI);
 
@@ -161,7 +157,8 @@ public class ITunesParserTest extends AbstractTestCase {
     }
 
     public void testDurationEmpty() throws Exception {
-        SyndFeed feed = new SyndFeedInput().build(new XmlReader(getClass().getResource("duration-empty.xml")));
+        final File feedFile = new File(getTestFile("com/rometools/modules/itunes/duration-empty.xml"));
+        SyndFeed feed = new SyndFeedInput().build(new XmlReader(feedFile));
         SyndEntry entry = feed.getEntries().get(0);
         EntryInformationImpl module = (EntryInformationImpl) entry.getModule(AbstractITunesObject.URI);
 
@@ -169,7 +166,8 @@ public class ITunesParserTest extends AbstractTestCase {
     }
 
     public void testDurationBad() throws Exception {
-        SyndFeed feed = new SyndFeedInput().build(new XmlReader(getClass().getResource("duration-bad.xml")));
+        final File feedFile = new File(getTestFile("com/rometools/modules/itunes/duration-bad.xml"));
+        SyndFeed feed = new SyndFeedInput().build(new XmlReader(feedFile));
         SyndEntry entry = feed.getEntries().get(0);
         EntryInformationImpl module = (EntryInformationImpl) entry.getModule(AbstractITunesObject.URI);
 
@@ -178,11 +176,12 @@ public class ITunesParserTest extends AbstractTestCase {
 
     public void testExplicitnessTrue() throws Exception {
         ArrayList<String> xmlFiles = new ArrayList<String>();
-        xmlFiles.add("explicitness-capital-yes.xml");
-        xmlFiles.add("explicitness-yes.xml");
+        xmlFiles.add("com/rometools/modules/itunes/explicitness-capital-yes.xml");
+        xmlFiles.add("com/rometools/modules/itunes/explicitness-yes.xml");
 
         for (String xml : xmlFiles) {
-            SyndFeed feed = new SyndFeedInput().build(new XmlReader(getClass().getResource(xml)));
+            final File feedFile = new File(getTestFile(xml));
+            SyndFeed feed = new SyndFeedInput().build(new XmlReader(feedFile));
             FeedInformationImpl module = (FeedInformationImpl) feed.getModule(AbstractITunesObject.URI);
 
             assertTrue(module.getExplicitNullable());
@@ -191,11 +190,12 @@ public class ITunesParserTest extends AbstractTestCase {
 
     public void testExplicitnessFalse() throws Exception {
         ArrayList<String> xmlFiles = new ArrayList<String>();
-        xmlFiles.add("explicitness-no.xml");
-        xmlFiles.add("explicitness-clean.xml");
+        xmlFiles.add("com/rometools/modules/itunes/explicitness-no.xml");
+        xmlFiles.add("com/rometools/modules/itunes/explicitness-clean.xml");
 
         for (String xml : xmlFiles) {
-            SyndFeed feed = new SyndFeedInput().build(new XmlReader(getClass().getResource(xml)));
+            final File feedFile = new File(getTestFile(xml));
+            SyndFeed feed = new SyndFeedInput().build(new XmlReader(feedFile));
             FeedInformationImpl module = (FeedInformationImpl) feed.getModule(AbstractITunesObject.URI);
 
             assertFalse(module.getExplicitNullable());
@@ -205,7 +205,7 @@ public class ITunesParserTest extends AbstractTestCase {
     public void testParseNonHttpUris() throws Exception {
         File feed = new File(getTestFile("itunes/no-http-uris.xml"));
         final SyndFeedInput input = new SyndFeedInput();
-        SyndFeed syndfeed = input.build(new XmlReader(feed.toURI().toURL()));
+        SyndFeed syndfeed = input.build(new XmlReader(feed));
 
         final FeedInformationImpl feedInfo = (FeedInformationImpl) syndfeed.getModule(AbstractITunesObject.URI);
 

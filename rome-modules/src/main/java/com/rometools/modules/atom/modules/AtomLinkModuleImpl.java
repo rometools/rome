@@ -23,11 +23,10 @@ import com.rometools.rome.feed.impl.ToStringBean;
 import com.rometools.rome.feed.synd.SyndPerson;
 import com.rometools.rome.feed.synd.SyndPersonImpl;
 
-import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
-public class AtomLinkModuleImpl implements AtomLinkModule, Cloneable, Serializable {
+public class AtomLinkModuleImpl implements AtomLinkModule {
 
     private List<Link> links = new LinkedList<Link>();
     private List<SyndPerson> authors = new LinkedList<SyndPerson>();

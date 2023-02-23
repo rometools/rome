@@ -16,14 +16,12 @@
 
 package com.rometools.modules.slash;
 
-import java.io.Serializable;
-
 import com.rometools.rome.feed.module.Module;
 
 /**
  * This interface represents the Slash RSS extension.
  */
-public interface Slash extends Module, Serializable {
+public interface Slash extends Module {
 
     public static final String URI = "http://purl.org/rss/1.0/modules/slash/";
 

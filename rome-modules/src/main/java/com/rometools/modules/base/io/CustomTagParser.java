@@ -65,9 +65,9 @@ public class CustomTagParser implements ModuleParser {
                     } else if (type.equals("string")) {
                         tags.add(new CustomTagImpl(child.getName(), child.getText()));
                     } else if (type.equals("int")) {
-                        tags.add(new CustomTagImpl(child.getName(), new Integer(child.getTextTrim())));
+                        tags.add(new CustomTagImpl(child.getName(), Integer.valueOf(child.getTextTrim())));
                     } else if (type.equals("float")) {
-                        tags.add(new CustomTagImpl(child.getName(), new Float(child.getTextTrim())));
+                        tags.add(new CustomTagImpl(child.getName(), Float.valueOf(child.getTextTrim())));
                     } else if (type.equals("intUnit")) {
                         tags.add(new CustomTagImpl(child.getName(), new IntUnit(child.getTextTrim())));
                     } else if (type.equals("floatUnit")) {
@@ -99,7 +99,7 @@ public class CustomTagParser implements ModuleParser {
                             LOG.warn("Unable to parse URL type on " + child.getName(), e);
                         }
                     } else if (type.equals("boolean")) {
-                        tags.add(new CustomTagImpl(child.getName(), new Boolean(child.getTextTrim().toLowerCase())));
+                        tags.add(new CustomTagImpl(child.getName(), Boolean.valueOf(child.getTextTrim().toLowerCase())));
                     } else if (type.equals("location")) {
                         tags.add(new CustomTagImpl(child.getName(), new CustomTagImpl.Location(child.getText())));
                     } else {

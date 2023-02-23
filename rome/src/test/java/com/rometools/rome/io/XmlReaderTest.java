@@ -22,9 +22,9 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import org.junit.Rule;
+import org.junit.Assert;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
+import org.junit.function.ThrowingRunnable;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -44,9 +44,6 @@ public class XmlReaderTest {
     private static final String XML3 = "xml-prolog-encoding-double-quotes";
     private static final String XML2 = "xml-prolog";
     private static final String XML1 = "xml";
-
-    @Rule
-    public ExpectedException expectedException = ExpectedException.none();
 
     public static void main(final String[] args) throws Exception {
         final XmlReaderTest test = new XmlReaderTest();
@@ -258,8 +255,7 @@ public class XmlReaderTest {
         } else {
             is = getXmlStream(bomEnc, XML3, streamEnc, prologEnc);
         }
-        try {
-            new XmlReader(is, cT, false);
+        try (XmlReader xr = new XmlReader(is, cT, false);) {
             fail("It should have failed for HTTP Content-type " + cT + ", BOM " + bomEnc + ", streamEnc " + streamEnc + " and prologEnc " + prologEnc);
         } catch (final IOException ex) {
             assertTrue(ex.getMessage().indexOf("Invalid encoding,") > -1);
@@ -433,9 +429,8 @@ public class XmlReaderTest {
         final InputStream input = stringToStream("<?xml encoding=\"TEST\"?>", "UTF-16BE");
         final String guessedEncoding = "UTF-16LE";
 
-        expectedException.expect(IOException.class);
-
-        XmlReader.getXmlProlog(input, guessedEncoding);
+        final ThrowingRunnable tr = () -> XmlReader.getXmlProlog(input, guessedEncoding);
+        Assert.<IOException>assertThrows(IOException.class, tr);
     }
 
     @Test
@@ -443,9 +438,8 @@ public class XmlReaderTest {
         final InputStream input = stringToStream("<?xml encoding=\"TEST\"", "UTF-8");
         final String guessedEncoding = "UTF-8";
 
-        expectedException.expect(IOException.class);
-
-        XmlReader.getXmlProlog(input, guessedEncoding);
+        final ThrowingRunnable tr = () -> XmlReader.getXmlProlog(input, guessedEncoding);
+        Assert.<IOException>assertThrows(IOException.class, tr);
     }
 
     @Test
@@ -453,9 +447,8 @@ public class XmlReaderTest {
         final InputStream input = stringToStream("", "UTF-8");
         final String guessedEncoding = "UTF-8";
 
-        expectedException.expect(IOException.class);
-
-        XmlReader.getXmlProlog(input, guessedEncoding);
+        final ThrowingRunnable tr = () -> XmlReader.getXmlProlog(input, guessedEncoding);
+        Assert.<IOException>assertThrows(IOException.class, tr);
     }
 
     @Test
@@ -468,9 +461,8 @@ public class XmlReaderTest {
         final InputStream input = stringToStream("<?xml encoding=\"TEST\"?" + spaces + ">", "UTF-8");
         final String guessedEncoding = "UTF-8";
 
-        expectedException.expect(IOException.class);
-
-        XmlReader.getXmlProlog(input, guessedEncoding);
+        final ThrowingRunnable tr = () -> XmlReader.getXmlProlog(input, guessedEncoding);
+        Assert.<IOException>assertThrows(IOException.class, tr);
     }
 
     static InputStream stringToStream(String string, String encoding) {

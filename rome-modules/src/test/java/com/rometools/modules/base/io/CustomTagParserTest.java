@@ -70,7 +70,7 @@ public class CustomTagParserTest extends AbstractTestCase {
                 Assert.assertEquals("Fluent in English and German", tag.getValue());
             }
             if (tag.getName().equals("prior_experience_years")) {
-                Assert.assertEquals(new Integer(5), tag.getValue());
+                Assert.assertEquals(Integer.valueOf(5), tag.getValue());
             } else if (tag.getName().equals("start_date")) {
                 final Calendar cal = Calendar.getInstance();
                 cal.setTimeInMillis(0);
@@ -79,7 +79,7 @@ public class CustomTagParserTest extends AbstractTestCase {
             } else if (tag.getName().equals("test_url")) {
                 Assert.assertEquals(new URL("http://www.screaming-penguin.com"), tag.getValue());
             } else if (tag.getName().equals("test_boolean")) {
-                Assert.assertEquals(new Boolean(true), tag.getValue());
+                Assert.assertEquals(Boolean.TRUE, tag.getValue());
             } else if (tag.getName().equals("test_intUnit")) {
                 Assert.assertEquals(new IntUnit(25, "horses"), tag.getValue());
             } else if (tag.getName().equals("test_floatUnit")) {

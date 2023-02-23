@@ -22,7 +22,6 @@ import com.rometools.rome.feed.impl.EqualsBean;
 import com.rometools.rome.feed.impl.ToStringBean;
 import com.rometools.rome.feed.module.ModuleImpl;
 
-import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -31,7 +30,7 @@ import java.util.List;
  */
 public class PodloveSimpleChapterModuleImpl
         extends ModuleImpl
-        implements PodloveSimpleChapterModule, Cloneable, Serializable {
+        implements PodloveSimpleChapterModule {
 
     private List<SimpleChapter> chapters;
 

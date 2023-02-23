@@ -37,7 +37,7 @@ public class FeedpressParserTest extends AbstractTestCase {
         log.debug("testParseRss");
 
         final SyndFeedInput input = new SyndFeedInput();
-        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("feedpress/rss.xml")).toURI().toURL()));
+        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("feedpress/rss.xml"))));
         final FeedpressModule feedpress = (FeedpressModule) feed.getModule(FeedpressModule.URI);
 
         assertNotNull(feedpress);
@@ -52,7 +52,7 @@ public class FeedpressParserTest extends AbstractTestCase {
         log.debug("testParseAtom");
 
         final SyndFeedInput input = new SyndFeedInput();
-        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("feedpress/atom.xml")).toURI().toURL()));
+        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("feedpress/atom.xml"))));
         final FeedpressModule feedpress = (FeedpressModule) feed.getModule(FeedpressModule.URI);
 
         assertNotNull(feedpress);

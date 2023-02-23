@@ -42,7 +42,7 @@ public final class NumberParser {
     public static Long parseLong(final String str) {
         if (null != str) {
             try {
-                return new Long(Long.parseLong(str.trim()));
+                return Long.valueOf(str.trim());
             } catch (final Exception e) {
                 // :IGNORE:
             }
@@ -60,7 +60,7 @@ public final class NumberParser {
     public static Integer parseInt(final String str) {
         if (null != str) {
             try {
-                return new Integer(Integer.parseInt(str.trim()));
+                return Integer.valueOf(Integer.parseInt(str.trim()));
             } catch (final Exception e) {
                 // :IGNORE:
             }
@@ -78,7 +78,7 @@ public final class NumberParser {
     public static Float parseFloat(final String str) {
         if (null != str) {
             try {
-                return new Float(Float.parseFloat(str.trim()));
+                return Float.valueOf(str.trim());
             } catch (final Exception e) {
                 // :IGNORE:
             }

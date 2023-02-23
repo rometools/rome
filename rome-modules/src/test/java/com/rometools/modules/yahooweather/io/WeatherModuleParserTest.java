@@ -34,7 +34,6 @@ import com.rometools.modules.cc.io.CCModuleGenerator;
 import com.rometools.modules.yahooweather.YWeatherEntryModule;
 import com.rometools.modules.yahooweather.YWeatherModule;
 import com.rometools.modules.yahooweather.YWeatherModuleImpl;
-import com.rometools.modules.yahooweather.io.WeatherModuleParser;
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.SyndFeedInput;
