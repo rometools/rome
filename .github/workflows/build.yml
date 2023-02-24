@@ -2,9 +2,7 @@ name: CI Build
 
 on:
   push:
-    branches: ['**']
   pull_request:
-    branches: ['**']
   workflow_dispatch:
 
 jobs:
@@ -12,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - name: Checkout sourcecode
+      - name: Checkout
         uses: actions/checkout@v3.3.0
 
       - name: Setup Java
@@ -20,6 +18,7 @@ jobs:
         with:
           distribution: liberica
           java-version: 11
+          cache: maven
 
       - name: Build
         run: mvn -B -ntp verify
