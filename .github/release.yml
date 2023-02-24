@@ -1,22 +1,29 @@
 changelog:
   categories:
-  
+    - title: 🔥 Breaking Changes
+      labels:
+        - "type: breaking"
+
     - title: ⭐ New Features
       labels:
-        - "type: enhancement"
+        - "type: feature"
 
     - title: 🐞 Bug Fixes
       labels:
         - "type: bug"
 
-    - title: 📔 Documentation
-      labels:
-        - "type: documentation"
-
     - title: 🔨 Dependency Upgrades
       labels:
         - "type: dependency"
 
-    - title: Other Changes
+    - title: 📔 Documentation
+      labels:
+        - "type: documentation"
+
+    - title: 🧹 Cleanup
+      labels:
+        - "type: polish"
+
+    - title: ✔ Other Changes
       labels:
         - "*"
