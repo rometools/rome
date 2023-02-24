@@ -1,0 +1,102 @@
+::: section
+## Rome v0.2 Tutorial, Using Rome to convert a syndication feed from one type to another
+
+**Software requirements:** Synd J2SE 1.4+, JDOM B10 and Rome 0.2.
+
+Rome represents syndication feeds (RSS and Atom) as instances of the
+com.rometools.rome.synd.SyndFeedI interface. The SyndFeedI interfaces
+and its properties follow the Java Bean patterns. The default
+implementations provided with Rome are all lightweight classes.
+
+Rome includes parsers to process syndication feeds into SyndFeedI
+instances. The SyndFeedInput class handles the parsers using the correct
+one based on the syndication feed being processed. The developer does
+not need to worry about selecting the right parser for a syndication
+feed, the SyndFeedInput will take care of it by peeking at the
+syndication feed structure. All it takes to read a syndication feed
+using Rome are the following 2 lines of code:
+
+```java
+    SyndFeedInput input = new SyndFeedInput();
+    SyndFeedI feed = input.build(feedUrl.openStream());
+```
+
+The first line creates a SyndFeedInput instance that will work with any
+syndication feed type (RSS and Atom versions). The second line instructs
+the SyndFeedInput to read the syndication feed from the InputStream of a
+URL pointing to the feed. The SyndFeedInput.build() method returns a
+SyndFeedI instance that can be easily processed.
+
+Rome also includes generators to create syndication feeds out of
+SyndFeedI instances. The SyndFeedOutput class does this generation. The
+SyndFeedOutput will generate a syndication feed of the feed type
+indicated by the SyndFeedI object being output. The following two lines
+of code show how to create a syndication feed output from a SyndFeedI
+instance:
+
+```java
+    SyndFeedOutput output = new SyndFeedOutput();
+    output.output(feed,System.out);
+```
+
+The first line creates a SyndFeedOutput instance that will produce
+syndication feeds. It can output feeds of any type (rss_0.9, rss_0.91,
+rss_0.92, rss_0.93, rss_0.94, rss_1.0, rss_2.0 & atom_0.3), the
+SyndFeedI feedType property indicates the type. The second line writes
+the SyndFeedI as a syndication feed into the application\'s output.
+
+Following is the full code for a Java application that reads a
+syndication feed and converts it to other syndication feed type, writing
+the converted feed to the application\'s output.
+
+```java
+    package com.rometools.rome.samples;
+
+    import java.net.URL;
+    import com.rometools.rome.feed.synd.SyndFeedI;
+    import com.rometools.rome.io.SyndFeedInput;
+    import com.rometools.rome.io.SyndFeedOutput;
+
+    /**
+     * It Converts any RSS/Atom feed type to a an RSS/Atom feed of the
+     * specified type.
+     * <p>
+     * @author Alejandro Abdelnur
+     *
+     */
+    public class FeedConverter {
+
+        public static void main(String[] args) {
+            boolean ok = false;
+            if (args.length==2) {
+                try {
+                    String outputType = args[0];
+
+                    URL feedUrl = new URL(args[1]);
+
+                    SyndFeedInput input = new SyndFeedInput();
+                    SyndFeedI feed = input.build(feedUrl.openStream());
+                    feed.setFeedType(outputType);
+                    SyndFeedOutput output = new SyndFeedOutput();
+                    output.output(feed,System.out);
+
+                    ok = true;
+                }
+                catch (Exception ex) {
+                    System.out.println("ERROR: "+ex.getMessage());
+                }
+            }
+
+            if (!ok) {
+                System.out.println();
+                System.out.println("FeedConverter converts between syndication feeds types.");
+                System.out.println("The first parameter must be the feed type to convert to.");
+                System.out.println(" [valid values are: rss_0.9, rss_0.91, rss_0.92, rss_0.93, ]");
+                System.out.println(" [                  rss_0.94, rss_1.0, rss_2.0 & atom_0.3  ]");
+                System.out.println("The second parameter must be the URL of the feed to convert.");
+                System.out.println();
+            }
+        }
+
+    }
+```

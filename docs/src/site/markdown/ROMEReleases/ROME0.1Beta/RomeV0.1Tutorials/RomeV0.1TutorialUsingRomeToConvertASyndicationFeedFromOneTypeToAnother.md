@@ -1,0 +1,97 @@
+::: section
+## Rome v0.1 Tutorial, Using Rome to convert a syndication feed from one type to another
+
+**Software requirements:** Synd J2SE 1.4+, Xerces 2.4.0, JDOM B10,
+Commons Codec 1.2 and Rome 0.1.
+
+Rome represents syndication feeds (RSS and Atom) as instances of the
+com.rometools.rome.synd.SyndFeedI interface. The SyndFeedI interfaces
+and its properties follow the Java Bean patterns. The default
+implementations provided with Rome are all lightweight classes.
+
+Rome includes parsers to process syndication feeds into SyndFeedI
+instances. The SyndInput class handles the parsers using the correct one
+based on the syndication feed being processed. The developer does not
+need to worry about selecting the right parser for a syndication feed,
+the SyndInput will take care of it by peeking at the syndication feed
+structure. All it takes to read a syndication feed using Rome are the
+following 2 lines of code:
+
+```java
+    SyndInput input = new SyndInput();
+    SyndFeedI feed = input.build(feedUrl.openStream());
+```
+
+The first line creates a SyndInput instance that will work with any
+syndication feed type (RSS and Atom versions). The second line instructs
+the SyndInput to read the syndication feed from the InputStream of a URL
+pointing to the feed. The SyndInput.build() method returns a SyndFeedI
+instance that can be easily processed.
+
+Rome also includes generators to create syndication feeds out of
+SyndFeedI instances. The SyndOutput class does this generation. When
+creating a syndication feed output, the developer has to indicate the
+syndication feed type for the ouput, and the SyndOutput will use the
+right generator for it. The following two lines of code show how to
+create a syndication feed output from a SyndFeedI instance:
+
+```java
+    SyndOutput output = new SyndOutput(outputType);
+    output.output(feed,System.out);
+```
+
+The first line creates a SyndOutput instance that will produce
+syndication feeds of the type indicated by the outputType parameter. The
+outputType parameter can be any of the following values: rss_0.9,
+rss_0.91, rss_0.92, rss_0.93, rss_0.94, rss_1.0, rss_2.0 & atom_0.3. The
+second line writes the SyndFeedI as a syndication feed into the
+application\'s output.
+
+Following is the full code for a Java application that reads a
+syndication feed and converts it to other syndication feed type, writing
+the converted feed to the application\'s output.
+
+```java
+    package com.rometools.rome.samples;
+
+    import java.net.URL;
+    import com.rometools.rome.feed.synd.SyndFeedI;
+    import com.rometools.rome.io.SyndInput;
+    import com.rometools.rome.io.SyndOutput;
+
+    public class FeedConverter {
+
+        public static void main(String[] args) {
+            boolean ok = false;
+            if (args.length==2) {
+                try {
+                    String outputType = args[0];
+
+                    URL feedUrl = new URL(args[1]);
+
+                    SyndInput input = new SyndInput(false);
+                    SyndFeedI feed = input.build(feedUrl.openStream());
+
+                    SyndOutput output = new SyndOutput(outputType);
+                    output.output(feed,System.out);
+
+                    ok = true;
+                }
+                catch (Exception ex) {
+                    System.out.println("ERROR: "+ex.getMessage());
+                }
+            }
+
+            if (!ok) {
+                System.out.println();
+                System.out.println("FeedConverter converts between syndication feeds types.");
+                System.out.println("The first parameter must be the feed type to convert to.");
+                System.out.println(" [valid values are: rss_0.9, rss_0.91, rss_0.92, rss_0.93, ]");
+                System.out.println(" [                  rss_0.94, rss_1.0, rss_2.0 & atom_0.3  ]");
+                System.out.println("The second parameter must be the URL of the feed to convert.");
+                System.out.println();
+            }
+        }
+
+    }
+```
