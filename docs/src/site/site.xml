@@ -33,8 +33,8 @@
     <body>
         <menu name="ROME">
             <item name="Home" href="index.html" />
-            <item name="Build from source" href="HowToBuildRome.html" />
-            <item name="Maven 2" href="ROMEAndMaven2.html" />
+            <item name="Building from source" href="HowToBuildRome.html" />
+            <item name="Installation" href="ROMEAndMaven2.html" />
             <item name="OSGI" href="ROMEAndOSGI.html" />
             <item name="How Rome works" href="HowRomeWorks/index.html" collapse="true">
                 <item name="Overview" href="RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/index.html" />
@@ -45,7 +45,9 @@
                 <item name="Charset detection" href="RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/XMLCharsetEncodingDetectionHowRssAndAtOMUtilitiEsROMEHelpsGettingTheRightCharsetEncoding.html" />
                 <item name="Bean Utilities" href="RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/UnderstandingRssAndAtOMUtilitiEsROMEBeanUtilities.html" />
                 <item name="CopyFrom Interface" href="RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/TheCopyFromInterface.html" />
-                <item name="PreservingWireFeeds" href="PreservingWireFeeds.html" />
+                <item name="Preserve Wire Feeds" href="PreservingWireFeeds.html" />
+                <item name="Custom Module" href="RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEV0.5TutorialDefiningACustomModuleBeanParserAndGenerator.html" />
+                <item name="Date and Time handling" href="RssAndAtOMUtiliEsROMEV0.7DateAndTimeParsing.html" />
             </item>
             <item name="Powered by ROME" href="ProductsOrSitesPoweredByROME.html" />
             <item name="FAQ" href="RomeAPIFAQ.html" />
