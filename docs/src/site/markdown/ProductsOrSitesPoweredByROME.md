@@ -1,4 +1,4 @@
-## Products or sites powered by ROME
+## Powered by Rome
 
 If your site or project is powered by ROME, please take the time to
 write a short testimonial on this wiki page, or send a mail to
@@ -308,10 +308,3 @@ badge variations are available at the bottom of this page.)
     and cross product topics like mobile, cloud and analytics. Rome is
     running on background and fetching stories from various sites.
 
-### Powered By ROME Badges Here are badges for use with your ROME-powered site or software:
-
--   **Static:**
--   **Animated:**
-
-Please copy the image to your own server rather than link to the image
-on its current host.

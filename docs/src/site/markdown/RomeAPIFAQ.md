@@ -1,8 +1,7 @@
 ## Rome API FAQ
 
-As we were designing and implementing Rome we had discusssions,
-brainstorming and code reviews on the API. We\'ve captured them in this
-document.
+As we were designing and implementing Rome we had discussions, brainstorming and
+code reviews on the API. We've captured them in this document.
 
 ### Do SyndFeed support arbitrary Metadata?
 
