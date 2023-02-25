@@ -116,11 +116,6 @@
                     <item name="Instructions" href="ROMEReleases/ROME0.1Beta/RomeV0.1Tutorials/RomeV0.1HowToBuildAndRunTheTutorialsSampleCode.html" />
                 </item>
             </item>
-            <item name="Proposals" href="ROMEDevelopmentProposals/index.html" collapse="true">
-                <item name="ROME2 1st proposal" href="ROMEDevelopmentProposals/ROME21stProposalJune10th2006NOTCURRENT.html" />
-                <item name="ROME2 2nd proposal" href="ROMEDevelopmentProposals/ROME22ndProposalJuly18th2006CURRENT.html" />
-                <item name="Feature Requests" href="ROMEDevelopmentProposals/ROMEFeatureRequests.html" />
-            </item>
         </menu>
         <menu name="Certiorem">
             <item name="Home" href="Certiorem/index.html" />
