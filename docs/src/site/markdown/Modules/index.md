@@ -1,33 +1,33 @@
-## The ROME Modules Subproject.
+## ROME Modules
 
 The ROME Modules project is an effort to roll up contributed module
 support into a single distribution for users.
 
 ### Current modules in the subproject include:
 
--   [iTunes Podcasting (modules)](./ITunesPodcasting.html) -- Apples
+-   [iTunes Podcasting](./ITunesPodcasting.html) -- Apples
     extensions for listing in the iTunes podcast directory.
--   [GeoRSS (modules)](./GeoRSS.html) -- For adding location information
+-   [GeoRSS](./GeoRSS.html) -- For adding location information
     to RSS/Atom.
--   [Slash (modules)](./Slash.html) -- Used by Slash-based blogs.
--   [Google Base (modules)](./GoogleBase.html) -- For working with the
+-   [Slash](./Slash.html) -- Used by Slash-based blogs.
+-   [Google Base](./GoogleBase.html) -- For working with the
     Google Base types and custom tagsets.
--   [Content (modules)](./Content.html) -- For using content:encoded
+-   [Content](./Content.html) -- For using content:encoded
     tags.
--   [Creative Commons (modules)](./CreativeCommons.html) -- A unified
+-   [Creative Commons](./CreativeCommons.html) -- A unified
     module for working with the RDF and RSS/Atom Creative Commons
     License information.
 -   [Yahoo! MediaRSS](./MediaRSS.html) -- For working with Yahoo!
     MediaRSS feeds (and Flickr Photostreams)
--   [iPhoto Photocasting (modules)](./IPhotoPhotocasting.html) -- For
+-   [iPhoto Photocasting](./IPhotoPhotocasting.html) -- For
     working with Apple iPhoto Photocasts
--   [A9 OpenSearch (modules)](./A9OpenSearch.html) -- For working with
+-   [A9 OpenSearch](./A9OpenSearch.html) -- For working with
     Amazon/OpenSearch.org results.
 -   [Microsoft Simple List Extensions
-    (modules)](./MicrosoftSimpleListExtensions.html) -- for sorting and
+   ](./MicrosoftSimpleListExtensions.html) -- for sorting and
     grouping entries.
 -   [Microsoft Simple Sharing Extensions
-    (modules)](./MicrosoftSimpleSharingExtensions.html) -- for
+   ](./MicrosoftSimpleSharingExtensions.html) -- for
     synchronizing across bi-directional RSS and [OPML](./index.html)
     feeds.
 -   [Yahoo! Weather](./Weather.html) -- For use with the Yahoo Weather

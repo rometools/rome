@@ -21,10 +21,6 @@ Note that there was no 1.0 RC1 Fetcher release
 
 -   [Fetcher API Docs](./rome-fetcher-1.0RC2-javadoc.jar)
 
-### Todo list
-
--   [Todo list (fetcher)](../TodoList.html)
-
 ### Issues
 
 -   [Known Issues (fetcher)](../KnownIssues.html)

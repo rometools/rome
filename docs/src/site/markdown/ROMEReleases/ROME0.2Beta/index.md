@@ -1,4 +1,4 @@
-## ROME 0.2 Beta
+## ROME 0.2 Beta (Jun 16, 2004)
 
 ### Dependencies
 
@@ -7,19 +7,16 @@
 
 ### Downloads
 
--   [rome-0.2-src.zip](./rome-0.2-src.zip)
--   [rome-0.2.tar.gz](./rome-0.2.tar.gz)
 -   [rome-0.2.zip](./rome-0.2.zip)
+-   [rome-0.2.tar.gz](./rome-0.2.tar.gz)
+-   [rome-0.2-src.zip](./rome-0.2-src.zip)
 -   [rome-0.2-src.tar.gz](./rome-0.2-src.tar.gz)
+
+### TODO Remove
 -   [rome-samples-0.2-src.tar.gz](./rome-samples-0.2-src.tar.gz)
 -   [rome-samples-0.2.tar.gz](./rome-samples-0.2.tar.gz)
 -   [rome-samples-0.2.zip](./rome-samples-0.2.zip)
 -   [rome-samples-0.2-src.zip](./rome-samples-0.2-src.zip)
-
-### Aditional Information
-
--   [Tutorials](./RomeV0.2Tutorials/index.html)
--   Changes Log
 
 ### Known Issues
 

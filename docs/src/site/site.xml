@@ -35,9 +35,16 @@
             <item name="Home" href="index.html" />
             <item name="Building from source" href="HowToBuildRome.html" />
             <item name="Installation" href="ROMEAndMaven2.html" />
+            <item name="Tutorials" href="RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/index.html" collapse="true">
+                <item name="Read feeds" href="RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEV0.5TutorialUsingROMEToReadASyndicationFeed.html" />
+                <item name="Convert feeds" href="RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEV0.5TutorialUsingROMEToConvertASyndicationFeedFromOneTypeToAnother.html" />
+                <item name="Aggregate feeds" href="RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEV0.5TutorialUsingROMEToAggregateManySyndicationFeedsIntoASingleOne.html" />
+                <item name="Write feeds" href="RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEV0.5TutorialUsingROMEToCreateAndWriteASyndicationFeed.html" />
+                <item name="Custom module" href="RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEV0.5TutorialDefiningACustomModuleBeanParserAndGenerator.html" />
+                <item name="Servlet" href="RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEV0.5TutorialUsingROMEWithinAServletToCreateAndReturnAFeed.html" />
+            </item>
             <item name="OSGI" href="ROMEAndOSGI.html" />
             <item name="How Rome works" href="HowRomeWorks/index.html" collapse="true">
-                <item name="Overview" href="RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/index.html" />
                 <item name="Common classes and interfaces" href="HowRomeWorks/UnderstandingTheRomeCommonClassesAndInterfaces.html" />
                 <item name="Plugin Mechanism" href="RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEPluginsMechanism.html" />
                 <item name="Date Mapping" href="RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/FeedsDateElementsMappingToSyndFeedAndSyndEntry.html" />
@@ -46,7 +53,6 @@
                 <item name="Bean Utilities" href="RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/UnderstandingRssAndAtOMUtilitiEsROMEBeanUtilities.html" />
                 <item name="CopyFrom Interface" href="RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/TheCopyFromInterface.html" />
                 <item name="Preserve Wire Feeds" href="PreservingWireFeeds.html" />
-                <item name="Custom Module" href="RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEV0.5TutorialDefiningACustomModuleBeanParserAndGenerator.html" />
                 <item name="Date and Time handling" href="RssAndAtOMUtiliEsROMEV0.7DateAndTimeParsing.html" />
             </item>
             <item name="Powered by ROME" href="ProductsOrSitesPoweredByROME.html" />
@@ -62,22 +68,9 @@
                 <item name="1.0 RC1" href="ROMEReleases/ROME1.0RC1.html" />
                 <item name="0.9 Beta" href="ROMEReleases/ROME0.9Beta.html" />
                 <item name="0.8 Beta" href="ROMEReleases/ROME0.8Beta.html" />
-                <item name="0.7 Beta" href="ROMEReleases/ROME0.7Beta.html" collapse="true">
-                    <item name="Date and Time handling" href="RssAndAtOMUtiliEsROMEV0.7DateAndTimeParsing.html" />
-                </item>
+                <item name="0.7 Beta" href="ROMEReleases/ROME0.7Beta.html" />
                 <item name="0.6 Beta" href="ROMEReleases/ROME0.6Beta.html" />
-                <item name="0.5 Beta" href="ROMEReleases/ROME0.5Beta/index.html" collapse="true">
-                    <item name="Tutorials" href="RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/index.html" collapse="true">
-                        <item name="Read feeds" href="RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEV0.5TutorialUsingROMEToReadASyndicationFeed.html" />
-                        <item name="Convert feeds" href="RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEV0.5TutorialUsingROMEToConvertASyndicationFeedFromOneTypeToAnother.html" />
-                        <item name="Aggregate feeds" href="RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEV0.5TutorialUsingROMEToAggregateManySyndicationFeedsIntoASingleOne.html" />
-                        <item name="Write feeds" href="RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEV0.5TutorialUsingROMEToCreateAndWriteASyndicationFeed.html" />
-                        <item name="Custom module" href="RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEV0.5TutorialDefiningACustomModuleBeanParserAndGenerator.html" />
-                        <item name="Servlet" href="RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEV0.5TutorialUsingROMEWithinAServletToCreateAndReturnAFeed.html" />
-                    </item>
-                    <item name="Instructions" href="RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEV0.5HowToBuildAndRunTheTutorialsSampleCode.html" />
-                    <item name="T-Shirt" href="ROMEReleases/ROME0.5Beta/ROMET-Shirt.html" />
-                </item>
+                <item name="0.5 Beta" href="ROMEReleases/ROME0.5Beta/index.html" />
                 <item name="0.4 Beta" href="ROMEReleases/ROME0.4Beta/index.html" collapse="true">
                     <item name="Tutorials" href="ROMEReleases/ROME0.4Beta/RomeV0.4Tutorials/index.html" collapse="true">
                         <item name="Read feeds" href="HowRomeWorks/RomeV0.4TutorialUsingRomeToReadASyndicationFeed.html" />
@@ -123,10 +116,7 @@
         </menu>
         <menu name="Fetcher">
             <item name="Home" href="Fetcher/index.html" />
-            <item name="Build from source" href="Fetcher/BuildingTheRomeFetcher.html" />
-            <item name="Examples" href="Fetcher/SampleProgramsIncluded.html" collapse="true">
-                <item name="Fetch feed" href="Fetcher/UsingTheRomeFetcherModuleToRetrieveFeeds.html" />
-            </item>
+            <item name="Example" href="Fetcher/UsingTheRomeFetcherModuleToRetrieveFeeds.html" />
             <item name="Dependencies" href="Fetcher/Dependencies/index.html" collapse="true">
                 <item name=" HttpClientFeedFetcher" href="Fetcher/Dependencies/HttpClientFeedFetcher.html" />
             </item>
@@ -142,8 +132,6 @@
                 <item name="0.4" href="Fetcher/Releases/RomeFetcher0.4.html" />
                 <item name="0.3" href="Fetcher/Releases/RomeFetcher0.3.html" />
             </item>
-            <item name="TODO" href="Fetcher/TodoList.html" />
-            <item name="Wishlist" href="Fetcher/WishList.html" />
         </menu>
         <menu name="Modules">
             <item name="Home" href="Modules/index.html" collapse="true">
@@ -165,8 +153,7 @@
             <item name="Home" href="Opml/index.html"/>
         </menu>
         <menu name="Propono">
-            <item name="Home" href="Propono/index.html"/>
-            <item name="Releases" href="Propono/releases.html" collapse="true">
+            <item name="Home" href="Propono/index.html" collapse="true">
                 <item name="1.0" href="Propono/ROMEProponoVersion1.0.html" />
                 <item name="0.6" href="Propono/ROMEProponoVersion0.6.html" />
                 <item name="0.5" href="Propono/ROMEProponoVersion0.5.html" />

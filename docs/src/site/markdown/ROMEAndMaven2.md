@@ -1,6 +1,7 @@
 ## Installation
 
-Rome uses Maven Central to distribute its packages.
+All versions since 1.5.0 are available on Maven Central under the following 
+coordinates:
 
 ```xml
 <dependency>
@@ -12,7 +13,13 @@ Rome uses Maven Central to distribute its packages.
 
 ### Older versions
 
-Versions before 1.5.0 were distributed under another groupId:
+The following old releases are available under another groupId:
+- 0.3
+- 0.5
+- 0.8
+- 0.9
+- 1.0RC2
+- 1.0
 
 ```xml
 <dependency>

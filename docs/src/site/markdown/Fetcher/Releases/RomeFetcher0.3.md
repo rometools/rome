@@ -19,10 +19,6 @@ core Rome project release.
     (fetcher)](../UsingTheRomeFetcherModuleToRetrieveFeeds.html)
 -   [Sample programs included (fetcher)](../SampleProgramsIncluded.html)
 
-### Todo list
-
--   [Todo list (fetcher)](../TodoList.html)
-
 ### Issues
 
 -   [Known Issues (fetcher)](../KnownIssues.html)

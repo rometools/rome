@@ -18,10 +18,6 @@
 
 -   [Fetcher API Docs](./rome-fetcher-1.0-javadoc.jar)
 
-### Todo list
-
--   [Todo list (fetcher)](../TodoList.html)
-
 ### Issues
 
 -   [Known Issues (fetcher)](../KnownIssues.html)

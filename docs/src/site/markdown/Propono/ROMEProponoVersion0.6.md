@@ -2,33 +2,19 @@
 
 September 30, 2007
 
-This is the third release of the [Rome Propono](./index.html) publishing
-library. It includes major changes to add support for the final Atom
-Publishing Protocol specification relative URIs and out-of-line
-categories. It\'s an an interim release it includes a pre-release
-version of ROME 0.9.1-dev. A new version will follow as soon as ROME
-0.9.1 (or 1.0) has been finalized.
-
-### Downloads
-
--   [rome-propono-0.6-src.zip](./rome-propono-0.6-src.zip)
--   [rome-propono-0.6.tar.gz](./rome-propono-0.6.tar.gz)
--   [rome-propono-0.6.zip](./rome-propono-0.6.zip)
--   [rome-propono-0.6-src.tar.gz](./rome-propono-0.6-src.tar.gz)
-
-### API Docs
-
--   [Propono 0.6 API
-    Docs](https://rome.dev.java.net/apidocs/subprojects/propono/0.6/overview-summary.html)
+This is the third release of the Rome Propono publishing library. It includes 
+major changes to add support for the final Atom Publishing Protocol 
+specification relative URIs and out-of-line categories. It's an an interim 
+release it includes a pre-release version of ROME 0.9.1-dev. A new version will
+follow as soon as ROME 0.9.1 (or 1.0) has been finalized.
 
 ### Changes
 
--   Updated for APP final (draft #17) w/new APP URI
-    \"http://www.w3.org/2007/app\"
--   Tested file-based server against Tim Bray\'s Ape (from CVS September
+-   Updated for APP final (draft #17) w/new APP URI "http://www.w3.org/2007/app"
+-   Tested file-based server against Tim Bray's Ape (from CVS September
     30, 2007).
 -   Now includes pre-release of ROME 0.9.1 with key Atom parse fixes.
--   Changed arguements in Atom server\'s AtomHandler interface to accept
+-   Changed arguements in Atom server's AtomHandler interface to accept
     AtomRequest objects instead of String\[\] pathinfo arrays.
 -   Added support for relative URIs in the Service Document
     -   Fixes
@@ -59,3 +45,10 @@ version of ROME 0.9.1-dev. A new version will follow as soon as ROME
 -   Renamed PubControlModule to AppModule becuase it also supports
     app:edited
     -   Added rome.properties file to configure AppModule
+
+### Downloads
+
+-   [rome-propono-0.6.zip](./rome-propono-0.6.zip)
+-   [rome-propono-0.6.tar.gz](./rome-propono-0.6.tar.gz)
+-   [rome-propono-0.6-src.zip](./rome-propono-0.6-src.zip)
+-   [rome-propono-0.6-src.tar.gz](./rome-propono-0.6-src.tar.gz)

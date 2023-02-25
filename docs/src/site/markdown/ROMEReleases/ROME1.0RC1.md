@@ -1,12 +1,6 @@
-## ROME 1.0 RC1
+## ROME 1.0 RC1 (Jul 16, 2007)
 
-### Rss and atOM utiliEs (ROME) v1.0 RC1 (16 Jul 2008)
-
-Normally each release of ROME includes a whole new set of Wiki pages
-with the corresponding version number. ROME 1.0 is reusing wikis from
-previous versions as there are not significant changes.
-
-### What is New, Highlights
+### Release Notes
 
 -   Several XmlReader fixes
 -   Several Atom 1.0 bean, parser and generator fixes
@@ -21,9 +15,11 @@ previous versions as there are not significant changes.
 
 ### Downloads
 
--   [rome-samples-1.0RC1-src.zip](./rome-samples-1.0RC1-src.zip)
--   [rome-1.0RC1-src.zip](./rome-1.0RC1-src.zip)
--   [rome-1.0RC1.tar.gz](./rome-1.0RC1.tar.gz)
 -   [rome-1.0RC1.zip](./rome-1.0RC1.zip)
+-   [rome-1.0RC1.tar.gz](./rome-1.0RC1.tar.gz)
+-   [rome-1.0RC1-src.zip](./rome-1.0RC1-src.zip)
 -   [rome-1.0RC1-src.tar.gz](./rome-1.0RC1-src.tar.gz)
+
+### TODO Remove
 -   [rome-samples-1.0RC1-src.tar.gz](./rome-samples-1.0RC1-src.tar.gz)
+-   [rome-samples-1.0RC1-src.zip](./rome-samples-1.0RC1-src.zip)

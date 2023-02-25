@@ -1,4 +1,4 @@
-## Using the Rome Fetcher module to retrieve feeds
+## Retrieve feed with Rome Fetcher
 
 The HttpURLFeedFetcher class does the actual HTTP request. It relies on
 the FeedInfoCacheI interface which stores information about each feed
@@ -19,18 +19,13 @@ Any subsequent fetches of
 by any FeedFetcher using feedInfoCache will now only retrieve the feed
 if it has changed.
 
-FeedFetcher can be used without a cache if required. Simply create it
-using the zero-parameter constructor:
+FeedFetcher can be used without a cache if required. Simply create it using the 
+zero-parameter constructor:
 
 ```
 FeedFetcher feedFetcher = new HttpURLFeedFetcher();
 ```
 
-A more complete sample (including the use of listener on Fetcher events)
-[is included in the Rome Fetcher
-project](https://github.com/rometools/rome-fetcher/blob/master/src/java/org/rometools/fetcher/samples/FeedReader.java)
-
-Note that there has been considerable discussion on the rome-dev list
-about the best way to manage the creation of the feed fetcher. Currently
-the client code needs to be responsible for creating specific
-implementations of the FeedFetcherI interface.
+Note that there has been considerable discussion on the rome-dev list about the 
+best way to manage the creation of the feed fetcher. Currently the client code 
+needs to be responsible for creating specific implementations of the FeedFetcherI interface.

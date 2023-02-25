@@ -6,14 +6,9 @@ legacy MetaWeblog API. Propono includes an Atom client library, an Atom
 server framework and a Blog client that supports both Atom protocol and
 the MetaWeblog API.
 
-## Documentation
-
--   See the [Propono API docs](./apidocs/overview-summary.html) for an
-    explanation of Propono usage, diagrams and code examples.
-
 ## Releases
 
--   [ROME Propono Version 1.0 (propono)](./ROMEProponoVersion1.0.html)
--   [ROME Propono Version 0.6 (propono)](./ROMEProponoVersion0.6.html)
--   [ROME Propono Version 0.5 (propono)](./ROMEProponoVersion0.5.html)
--   [ROME Propono Version 0.4 (propono)](./ROMEProponoVersion0.4.html)
+-   [Version 1.0](./ROMEProponoVersion1.0.html)
+-   [Version 0.6](./ROMEProponoVersion0.6.html)
+-   [Version 0.5](./ROMEProponoVersion0.5.html)
+-   [Version 0.4](./ROMEProponoVersion0.4.html)

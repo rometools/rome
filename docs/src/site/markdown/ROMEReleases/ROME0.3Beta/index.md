@@ -1,4 +1,4 @@
-## ROME 0.3 Beta
+## ROME 0.3 Beta (Jul 28, 2004)
 
 ### Dependencies
 
@@ -7,17 +7,14 @@
 
 ### Downloads
 
--   [rome-0.3-src.zip](./rome-0.3-src.zip)
--   [rome-0.3.tar.gz](./rome-0.3.tar.gz)
 -   [rome-0.3.zip](./rome-0.3.zip)
+-   [rome-0.3.tar.gz](./rome-0.3.tar.gz)
+-   [rome-0.3-src.zip](./rome-0.3-src.zip)
 -   [rome-0.3-src.tar.gz](./rome-0.3-src.tar.gz)
+
+### TODO Remove
 -   [rome-samples-0.3-src.tar.gz](./rome-samples-0.3-src.tar.gz)
 -   [rome-samples-0.3-src.zip](./rome-samples-0.3-src.zip)
-
-### Additional Information
-
--   [Tutorials](./RomeV0.3Tutorials/index.html) (2 New ones)
--   Changes Log
 
 ### Known Issues
 

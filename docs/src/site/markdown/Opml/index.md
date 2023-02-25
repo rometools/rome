@@ -1,18 +1,13 @@
 ## ROME OPML
 
-This project provides support for
-[OPML](http://www.opml.org/) in ROME.
-
-### Downloads
-
--   [JavaDocs](./apidocs/index.html)
+This project provides support for [OPML](http://www.opml.org/) in ROME.
 
 ### Sample Usage
 
-To use this parser, simply include the jar file in your classpath as you
-are using ROME. Be sure it exists at the same level as ROME, such that,
-if ROME is in the common classpath of an application server, don\'t
-include this jar in your webapps WEB-INF/lib.
+To use this parser, simply include the jar file in your classpath as you are 
+using ROME. Be sure it exists at the same level as ROME, such that, if ROME is 
+in the common classpath of an application server, don't include this jar in your
+webapps WEB-INF/lib.
 
 ```xml
 WireFeedInput input = new WireFeedInput();
@@ -22,11 +17,9 @@ List<Outline> outlines = (List<Outline>) feed.getOutlines();
 
 ### Hierarchy vs Flat
 
-Since OPML is a hierarchical format, some magic is required to preserve
-this information when they feed is moved to a Synd\* structure. This is
-accomplished by adding categories indicating the tree structure to the
-[SyndEntries](http://wiki.java.net/bin/edit/Javawsxml/SyndEntries?topicparent=Javawsxml.OPML;nowysiwyg=0)
-\...
+Since OPML is a hierarchical format, some magic is required to preserve this 
+information when they feed is moved to a Synd* structure. This is accomplished 
+by adding categories indicating the tree structure to the SyndEntries
 
 For example:
 
@@ -59,7 +52,6 @@ For example:
 </body>
 ```
 
-\...\
 When converted to RSS2 becomes:
 
 ```xml

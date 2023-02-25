@@ -1,27 +1,24 @@
-## ROME 0.1 Beta
+## ROME 0.1 Beta (Jun 08, 2004)
 
 ### Dependencies
 
 -   J2SE 1.4+ (Not J2SE 1.3+ as it was initially documented)
 -   [JDOM Beta 10](http://www.jdom.org/)
--   [Jakarta Commons Codec
-    1.2](http://jakarta.apache.org/commons/codec/)
+-   [Jakarta Commons Codec 1.2](http://jakarta.apache.org/commons/codec/)
 -   Rome v0.1 does not depend on Xerces as it was initially documented
 
 ### Downloads
 
--   [rome-0.1-src.zip](./rome-0.1-src.zip)
--   [rome-0.1.tar.gz](./rome-0.1.tar.gz)
 -   [rome-0.1.zip](./rome-0.1.zip)
+-   [rome-0.1.tar.gz](./rome-0.1.tar.gz)
+-   [rome-0.1-src.zip](./rome-0.1-src.zip)
 -   [rome-0.1-src.tar.gz](./rome-0.1-src.tar.gz)
+
+### TODO Remove
 -   [rome-samples-0.1-src.zip](./rome-samples-0.1-src.zip)
 -   [rome-samples-0.1.tar.gz](./rome-samples-0.1.tar.gz)
 -   [rome-samples-0.1.zip](./rome-samples-0.1.zip)
 -   [rome-samples-0.1-src.tar.gz](./rome-samples-0.1-src.tar.gz)
-
-### Additional Information
-
--   [Tutorials](./RomeV0.1Tutorials/index.html)
 
 ### Known Issues
 
