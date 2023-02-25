@@ -1,4 +1,3 @@
-::: section
 ## ROME Propono Version 0.6
 
 September 30, 2007
@@ -10,23 +9,18 @@ categories. It\'s an an interim release it includes a pre-release
 version of ROME 0.9.1-dev. A new version will follow as soon as ROME
 0.9.1 (or 1.0) has been finalized.
 
-::: section
 ### Downloads
 
 -   [rome-propono-0.6-src.zip](./rome-propono-0.6-src.zip)
 -   [rome-propono-0.6.tar.gz](./rome-propono-0.6.tar.gz)
 -   [rome-propono-0.6.zip](./rome-propono-0.6.zip)
 -   [rome-propono-0.6-src.tar.gz](./rome-propono-0.6-src.tar.gz)
-:::
 
-::: section
 ### API Docs
 
 -   [Propono 0.6 API
-    Docs](https://rome.dev.java.net/apidocs/subprojects/propono/0.6/overview-summary.html){.externalLink}
-:::
+    Docs](https://rome.dev.java.net/apidocs/subprojects/propono/0.6/overview-summary.html)
 
-::: section
 ### Changes
 
 -   Updated for APP final (draft #17) w/new APP URI
@@ -38,7 +32,7 @@ version of ROME 0.9.1-dev. A new version will follow as soon as ROME
     AtomRequest objects instead of String\[\] pathinfo arrays.
 -   Added support for relative URIs in the Service Document
     -   Fixes
-        [http://java.net/jira/browse/ROME-67](http://java.net/jira/browse/ROME-67){.externalLink}
+        [http://java.net/jira/browse/ROME-67](http://java.net/jira/browse/ROME-67)
     -   Added Collection.getHrefResolved()
     -   Added Categories.getHrefResolved()
 -   Added new options to the file-based server\'s propono.properties
@@ -50,7 +44,7 @@ version of ROME 0.9.1-dev. A new version will follow as soon as ROME
     -   New ClientCategories classes can fetch remote categories from
         href URI
     -   Fixes
-        [http://java.net/jira/browse/ROME-68](http://java.net/jira/browse/ROME-68){.externalLink}
+        [http://java.net/jira/browse/ROME-68](http://java.net/jira/browse/ROME-68)
 -   Added support for out-of-line categories in Atom server classes
     -   New AtomHandler.getCategoriesDocument(String\[\] pathInfo)
         method
@@ -65,5 +59,3 @@ version of ROME 0.9.1-dev. A new version will follow as soon as ROME
 -   Renamed PubControlModule to AppModule becuase it also supports
     app:edited
     -   Added rome.properties file to configure AppModule
-:::
-:::

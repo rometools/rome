@@ -1,19 +1,15 @@
-::: section
 ## Certiorem
 
 Certiorem is an implementation of the
-[PubSubHubub](http://pubsubhubbub.googlecode.com/svn/trunk/pubsubhubbub-core-0.3.html){.externalLink}
+[PubSubHubub](http://pubsubhubbub.googlecode.com/svn/trunk/pubsubhubbub-core-0.3.html)
 protocol for ROME.
 
 It is dependent on ROME and ROME-Fetcher for the base implementations,
 and will provide standard plugins for Propono to allow for publish
 eventing, where applicable.
 
-::: section
 ### Primary Components
-:::
 
-::: section
 ### Hub Implementation and Scaffolding (Done)
 
 The first part of Certiorem is a basic set of scaffolding classes that
@@ -28,7 +24,6 @@ Controller class use constructor-time composition/configuration so that
 the user/developer can easily construct a custom configuration of the
 Hub.
 
-::: section
 #### Client Implementation Integrated with ROME-Fetcher (Done)
 
 For web-based applications that use ROME-Fetcher, an extended
@@ -40,9 +35,7 @@ of changes in the form of a listener that exectutes in a TBD thread
 state relative to the callback servlet. This should be packaged as a
 simple JAR with no more deps than fetcher that defines the callback
 servlet, and automagically does subscribes where link=rel appropriate.
-:::
 
-::: section
 #### Notification Implementation for Propono based and JAX-RS based Servers (In Progress)
 
 This should be a simple API call to notify a Hub of changes to topics.
@@ -53,14 +46,10 @@ the Hub.
 
 References: 
 
-[https://github.com/nlothian/RTUpdates/blob/master/src/com/nicklothian/pubsubhub/PubSubHubSubscriptionServlet.java](https://github.com/nlothian/RTUpdates/blob/master/src/com/nicklothian/pubsubhub/PubSubHubSubscriptionServlet.java){.externalLink}
+[https://github.com/nlothian/RTUpdates/blob/master/src/com/nicklothian/pubsubhub/PubSubHubSubscriptionServlet.java](https://github.com/nlothian/RTUpdates/blob/master/src/com/nicklothian/pubsubhub/PubSubHubSubscriptionServlet.java)
 
-[http://grack.com/blog/2009/09/09/parsing-the-pubsubhubbub-notifications/](http://grack.com/blog/2009/09/09/parsing-the-pubsubhubbub-notifications/){.externalLink}
-:::
-:::
-:::
+[http://grack.com/blog/2009/09/09/parsing-the-pubsubhubbub-notifications/](http://grack.com/blog/2009/09/09/parsing-the-pubsubhubbub-notifications/)
 
-::: section
 ## Notes on the Code
 
 It is still mostly a rough sketch, but the big outlines are there:
@@ -92,4 +81,3 @@ data, and a Requester that makes the subscription requests to hubs.
 I am hoping to have a basic end to end example working sometime in the
 next week or so, but if anyone wants to look over what is there, feel
 free.
-:::

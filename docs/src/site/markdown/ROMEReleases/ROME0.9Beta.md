@@ -1,27 +1,21 @@
-::: section
 ## ROME 0.9 Beta
 
 Normally each release of ROME includes a whole new set of Wiki pages
 with the corresponding version number. ROME 0.9 is reusing ROME 0.8 Wiki
 pages as much as possible.
 
-::: section
 ### What is New, Highlights
 
 -   Better support for RSS feeds that use
 -   Better mapping for RSS description/content and Atom summary/content
 -   Numerous bug fixes
 -   Details in the ChangeList
-:::
 
-::: section
 ### Dependencies
 
 -   J2SE 1.4+
--   [JDOM 1.0](http://www.jdom.org/){.externalLink}
-:::
+-   [JDOM 1.0](http://www.jdom.org/)
 
-::: section
 ### Downloads
 
 -   [rome-samples-0.9.tar.gz](./rome-samples-0.9.tar.gz)
@@ -32,9 +26,7 @@ pages as much as possible.
 -   [rome-samples-0.9.zip](./rome-samples-0.9.zip)
 -   [rome-samples-0.9-src.tar.gz](./rome-samples-0.9-src.tar.gz)
 -   [rome-samples-0.9-src.zip](./rome-samples-0.9-src.zip)
-:::
 
-::: section
 ### Additional Information
 
 -   [Tutorials](../RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/index.html)
@@ -67,13 +59,9 @@ pages as much as possible.
     -   [Customizing Date and time
         parsing](../RssAndAtOMUtiliEsROMEV0.7DateAndTimeParsing.html) in
         the rome.properties file **NEW**
-:::
 
-::: section
 ### Known Issues
 
 None.
 
 \-- Main.snoopdave - 06 Dec 2006
-:::
-:::

@@ -1,4 +1,3 @@
-::: section
 ## ROME2 1st Proposal (June 10th 2006) NOT CURRENT
 
 It has been 2 years since ROME started and along the way we\'ve fixed,
@@ -17,7 +16,6 @@ existence of 2 abstraction levels for feed, Synd and Wire beans).
 This proposal attempts to address the problems and limitations we
 currently have with ROME.
 
-::: section
 ### Backwards Compatibility, Support and Upgrade
 
 ROME2 will change the API breaking backwards compatibility (after all we
@@ -26,16 +24,12 @@ are an Open Source Project and that is what they do best).
 We will maintain ROME 1.0 (bugfixing only) for 1 year to allow a smooth
 transition for all ROME users. We will also prepare migration/upgrade
 tips (based on our own experience) for the ROME community.
-:::
 
-::: section
 ### Leveraging New Language Features
 
 ROME2 will make use of Generics to type collections in its beans. It
 will also use the **enum** construct when applicable.
-:::
 
-::: section
 ### Minimum Number of Dependencies
 
 ROME2 will implement its core competency (Atom and RSS parsing,
@@ -43,9 +37,7 @@ generation and manipulation), it will leverage other components as much
 as possible but it will focus, as ROME, in being as lean as possible not
 only in its code by in its dependencies (keeping them down to a
 reasonable minimum).
-:::
 
-::: section
 ### One Abstraction Level, 2 Models
 
 ROME2 will not have an abstract representation of feeds (the Synd
@@ -56,9 +48,7 @@ ROME2 users will use the model that fits more their needs.
 
 Conversion (automatic and implicit) between the 2 models will be part of
 ROME2.
-:::
 
-::: section
 ### No Interfaces, Pluggable Beans
 
 Interfaces are good, in fact they are great. However, when using them
@@ -72,11 +62,11 @@ implementation, with a side effect of removing clarity from the code.
 ROME2 will bring the best of both worlds, it will allow coding such as
 
 ```java
-    Feed feed = new Feed();
-    Entry entry1 = new Entry();
-    Entry entry2 = new Entry();
-    feed.getEntries().add(entry1);
-    feed.getEntries().add(entry2);
+Feed feed = new Feed();
+Entry entry1 = new Entry();
+Entry entry2 = new Entry();
+feed.getEntries().add(entry1);
+feed.getEntries().add(entry2);
 ```
 
 While allowing pluggability of the beans implementation. The
@@ -87,48 +77,48 @@ For example the ROME2 API bean for the Atom feed would be something
 like:
 
 ```java
-    public class Feed {
-        private Feed feed;
+public class Feed {
+    private Feed feed;
 
-        public Feed() {
-            if (this.getClass() == Feed.class) {
-                feed = BeanFactory.getFactory().create(Feed.class);
-            }
+    public Feed() {
+        if (this.getClass() == Feed.class) {
+            feed = BeanFactory.getFactory().create(Feed.class);
         }
-
-        public final Feed getImplementation() {
-            return feed;
-        }
-
-        public Text getTitle() {
-            return feed.getTitle();
-        }
-
-        public void setTitle(Text title) {
-            feed.setTitle(title);
-        }
-
-    ...
     }
+
+    public final Feed getImplementation() {
+        return feed;
+    }
+
+    public Text getTitle() {
+        return feed.getTitle();
+    }
+
+    public void setTitle(Text title) {
+        feed.setTitle(title);
+    }
+
+...
+}
 ```
 
 The ROME2 (default/provided) implementation bean for the Atom feed would
 be something like:
 
 ```java
-    public class FeedBean extends Feed {
-        private Text title;
+public class FeedBean extends Feed {
+    private Text title;
 
-        public Text getTitle() {
-            return title;
-        }
-
-        public void setTitle(Text title) {
-            this.title = title;
-        }
-
-    ...
+    public Text getTitle() {
+        return title;
     }
+
+    public void setTitle(Text title) {
+        this.title = title;
+    }
+
+...
+}
 ```
 
 ROME2 users will use the ROME2 API bean as plain objects that they are.
@@ -150,9 +140,7 @@ beans for the the additional module.
 For cases (they shouldn\'t be many) that a ROME2 user needs to
 manipulate the implementation bean, all ROME2 API beans will give access
 to it via the getImplementation() method.
-:::
 
-::: section
 ### Using multiple Bean implementations simultaneously
 
 ROME2 will support the use of multiple implementation beans
@@ -167,13 +155,13 @@ internet.
 ROME2 public API will include the following classes for this purpose:
 
 ```java
-    public abstract class BeanFactory {
-        public abstract <T>  T create(Class<T> beanClass);
-    }
+public abstract class BeanFactory {
+    public abstract <T>  T create(Class<T> beanClass);
+}
 
-    public class BeanFactoryInjector {
-        public static void execute(BeanFactory factory, Runnable runnable) { .. }
-    }
+public class BeanFactoryInjector {
+    public static void execute(BeanFactory factory, Runnable runnable) { .. }
+}
 ```
 
 When these two classes are not used explicitly ROME2 will use the
@@ -191,9 +179,7 @@ The created ROME2 beans could be used outside of the Runnable.run()
 method, because of this ROME2 users have to be aware that it is possible
 to mix and match implementation beans and that may not always have a
 happy ending if not thought properly.
-:::
 
-::: section
 ### Collection Elements
 
 All collection properties (such as the authors, categories,
@@ -201,11 +187,11 @@ contributors, links and entries of an Atom feed bean) will only have
 getter methods in the ROME2 API beans, no setter methods. For example:
 
 ```java
-    public class Feed {
-        public List<Person> getAuthors() { ... }
-        public List<Category> getCategories() { ... }
-        ...
-    }
+public class Feed {
+    public List<Person> getAuthors() { ... }
+    public List<Category> getCategories() { ... }
+    ...
+}
 ```
 
 This will ensure that the implementation bean has control on the
@@ -214,9 +200,7 @@ important to enable alternate implementation beans to fetch data from a
 repository as the collection is iterated over.
 
 Persistent experts we need your input here.
-:::
 
-::: section
 ### Modules
 
 Feeds, both RSS and Atom, are extensible via namespaced elements at
@@ -225,7 +209,7 @@ modules. Beans supporting modules (feed, channel, entry and item) will
 all have the following method to support modules.
 
 ```java
-    public Map<String,Module> getModules() { ... }
+public Map<String,Module> getModules() { ... }
 ```
 
 Because modules are uniquely identified by their URI, a Map will be
@@ -237,16 +221,12 @@ controlled by the implementation bean.
 Module URIs in ROME2, as all the links URLs in the beans, will be
 Strings thus reducing object creation explosion a bit. For cases that
 some URI manipulation is required, the JDK URI class should be used.
-:::
 
-::: section
 ### Dynamic Modules Support
 
 ROME2 modules design has to ensure it provides simple and comprehensive
 support for dynamic modules such as SLE and GData.
-:::
 
-::: section
 ### Unknown Modules
 
 A special Module subclass, UnknownModule, will serve as placeholder for
@@ -264,16 +244,12 @@ for the module they need to manipulate.
 Because unknown modules brings some extra overhead in the parsing and
 generating process ROME2 will have a property to enable/disable
 processing of unknown modules.
-:::
 
-::: section
 ### The xml:lang Attributes
 
 All ROME2 API beans will have xml:lang attributes, String and enum and
 primitive types properties won\'t.
-:::
 
-::: section
 ### The xml:base Attributes
 
 The xml:base attribute will not be present in any ROME2 API bean.
@@ -282,18 +258,14 @@ It will be the responsibility of the parsers to resolve any relative URL
 present in the feed at parsing time. Similarly, generators may
 relativize URLs as a size optimization (for God\'s sake we are doing
 XML).
-:::
 
-::: section
 ### Conversion between Feed Types
 
 A FeedConverter class will provide conversion from Atom to RSS beans and
 vice versa, both at feed/channel and entry/item level. All properties,
 including modules data will be copied, after an conversion the state of
 the beans will be completely independent.
-:::
 
-::: section
 ### Object Class Methods in ROME2 Beans
 
 The equals() and hashCode() methods will not be overridden. All ROME2
@@ -305,10 +277,10 @@ copyFrom() method which is type safe and does a deep copy. Cloning a
 ROME2 bean will be a two step process, for example:
 
 ```java
-    Feed feed1 = new Feed();
-    ...
-    Feed feed2 = new Feed();
-    feed2.copyFrom(feed1);
+Feed feed1 = new Feed();
+...
+Feed feed2 = new Feed();
+feed2.copyFrom(feed1);
 ```
 
 The toString() method in the beans will print the property that most
@@ -316,7 +288,7 @@ likely identifies the bean plus the class name of the implementation
 bean. For example for a Feed bean the output of toString() would be:
 
 ```
-    [http://foo.com/atom.xml - xxx.rome2.impl.pojo.atom.FeedBean]
+[http://foo.com/atom.xml - xxx.rome2.impl.pojo.atom.FeedBean]
 ```
 
 \--++ Plugins ClassLoading
@@ -336,9 +308,7 @@ beans/parsers/generators/modules, the singletons managing them are in
 ROME2 core, managed by the common classLoader, a simple singleton won\'t
 cut it. ROME2 core will be small enough that it will not be a memory
 consumption issue if it is once in each web-app.
-:::
 
-::: section
 ### Parsers and Generators
 
 XML parsing and generation will support stream mode. We may even
@@ -351,63 +321,57 @@ For example, the streaming version of an Atom parser and generator would
 be something like:
 
 ```java
-    public interface AtomReader {
+public interface AtomReader {
 
-        // repeatable operation, returns was has been read from the header so far
-        Feed readFeed() throws FeedException;
+    // repeatable operation, returns was has been read from the header so far
+    Feed readFeed() throws FeedException;
 
-        // returns null when reaches the end of the feed
-        Entry readEntry() throws FeedException;
+    // returns null when reaches the end of the feed
+    Entry readEntry() throws FeedException;
 
-        void close() throws FeedException;
-      }
+    void close() throws FeedException;
+}
 
-    public interface AtomWriter {
+public interface AtomWriter {
 
-        // if called must be called once and before a write(Entry)
-        void write(Feed feed) throws FeedException;
+    // if called must be called once and before a write(Entry)
+    void write(Feed feed) throws FeedException;
 
-        // if the first write is for an entry, then the output is an entry document
-        abstract void write(Entry entry) throws FeedException;
+    // if the first write is for an entry, then the output is an entry document
+    abstract void write(Entry entry) throws FeedException;
 
-        void close() throws FeedException;
-      }
+    void close() throws FeedException;
+}
 ```
 
 As with ROME, in ROME2 Parsers will be as lenient as possible.
 Generators will be strict.
-:::
 
-::: section
 ### Feed Validators
 
 A bean FeedValidator class will verify that a feed or entry bean is
 valid for a given feed type. Feed generators would use this class to
 ensure feed correctness.
-:::
 
-::: section
 ### Feed Conversion
 
 Conversion from Atom beans to RSS beans and vice versa will be done by a
 FeedConverter class that would have the following signature:
 
 ```java
-    public class FeedConverter {
-        public Feed convertToFeed(Channel channel, boolean processItems) { ... }
-        public Entry convertToEntry(Item item) { ... }
-        public Channel convertToChannel(Feed feed, boolean processEntries) { ... }
-        public Item convertToItem(Entry entry) { ... }
-    }
+public class FeedConverter {
+    public Feed convertToFeed(Channel channel, boolean processItems) { ... }
+    public Entry convertToEntry(Item item) { ... }
+    public Channel convertToChannel(Feed feed, boolean processEntries) { ... }
+    public Item convertToItem(Entry entry) { ... }
+}
 ```
 
 Because the mapping from Atom to RSS elements is sometimes subject do
 discussion and different requirements the FeedConverter class will be
 pluggable. It will implement the self-proxy pattern ROME2 API beans
 implement.
-:::
 
-::: section
 ### Parser and Generator Filters
 
 Manipulation of feeds during parsing and generation at feed/channel and
@@ -415,11 +379,7 @@ entry/item level will be possible by implementing readers and writers
 wrappers that work on top of the original reader and writer instances.
 
 This filtering/wrapping could be automated via configuration.
-:::
 
-::: section
 ### Sources
 
 -   [rome2proto.zip](./rome2proto.zip)
-:::
-:::

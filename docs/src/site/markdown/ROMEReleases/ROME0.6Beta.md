@@ -1,4 +1,3 @@
-::: section
 ## ROME 0.6 Beta
 
 Normally each release of ROME includes a whole new set of Wiki pages
@@ -6,20 +5,15 @@ with the corresponding version number. ROME 0.6 is reusing ROME 0.5 Wiki
 pages as most of the changes are internal and the documentation has not
 changed.
 
-::: section
 ### What is New, Highlights
 
 -   Bug fixes
-:::
 
-::: section
 ### Dependencies
 
 -   J2SE 1.4+
--   [JDOM 1.0](http://www.jdom.org/){.externalLink}
-:::
+-   [JDOM 1.0](http://www.jdom.org/)
 
-::: section
 ### Downloads
 
 -   [rome-0.6-src.zip](./rome-0.6-src.zip)
@@ -28,9 +22,7 @@ changed.
 -   [rome-0.6-src.tar.gz](./rome-0.6-src.tar.gz)
 -   [rome-samples-0.6-src.tar.gz](./rome-samples-0.6-src.tar.gz)
 -   [rome-samples-0.6-src.zip](./rome-samples-0.6-src.zip)
-:::
 
-::: section
 ### Additional Information
 
 -   [Tutorials](../RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/index.html)
@@ -61,11 +53,7 @@ changed.
 -   Implementation documents
     -   [ROME bean utilities, equals, toString and
         clonning](../RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/UnderstandingRssAndAtOMUtilitiEsROMEBeanUtilities.html)
-:::
 
-::: section
 ### Known Issues
 
 None.
-:::
-:::

@@ -1,4 +1,3 @@
-::: section
 ## Rss and atOM utiliEs (ROME) v0.7 Date and Time Parsing
 
 Date and time elements seem to be error prone. RSS feeds use RFC822
@@ -15,7 +14,6 @@ To help cope with this ROME makes a few tricks:
 -   It uses custom format masks (if provided) when the previous steps
     fail.
 
-::: section
 ### Using Custom Format Masks
 
 Custom format masks can be specified in the */rome.properties* file in
@@ -32,5 +30,3 @@ masks.
 
 If datetime masks are specified in more than one */rome.properties* file
 in teh classpath, they are all aggregated.
-:::
-:::

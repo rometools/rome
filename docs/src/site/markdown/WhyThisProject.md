@@ -1,4 +1,3 @@
-::: section
 ## Why this project?
 
 Various flavors of RSS and Atom syndication formats were reaching a
@@ -6,11 +5,11 @@ tipping point in 2004. At Sun we started various projects involving
 these Syndication formats, but when looking around for Java libraries to
 take care of the parsing and generation of RSS we were not satisfied
 with what we found. [Project
-ROME](https://rometools.jira.com/){.externalLink} was started out of
+ROME](https://rometools.jira.com/) was started out of
 this frustration.
 
 Our requirements are to **ESCAPE** from [Syndication Feeds
-Hell](http://blogs.sun.com/tucu/entry/syndication_feeds_hell){.externalLink}.
+Hell](http://blogs.sun.com/tucu/entry/syndication_feeds_hell).
 In order to allow that the library must be:
 
 -   \*E\*asy to use: given a url, get back a feed object independent of
@@ -38,15 +37,14 @@ In order to allow that the library must be:
     to provide support for future extensions of the formats.
 
 \* - not so, it was originally \"RDF Site Summary\", see: [RSS
-History](http://goatee.net/2003/rss-history.html){.externalLink}
+History](http://goatee.net/2003/rss-history.html)
 
 We set out to create this library in the same spirit as the
-[JDOM](http://www.jdom.org/mission/index.html){.externalLink} library
+[JDOM](http://www.jdom.org/mission/index.html) library
 for XML manipulation in Java, incorporating XOM\'s [Elliotte Rusty
 Harold\'s pearls of wisdom about API design and
-refactoring](http://www.artima.com/intv/jdom.html){.externalLink} (see
+refactoring](http://www.artima.com/intv/jdom.html) (see
 [Air Bags and Other Design
-Principles](http://www.artima.com/intv/airbags.html){.externalLink}
+Principles](http://www.artima.com/intv/airbags.html)
 which links his 6 interviews with Bill Venners). ROME implementation
 uses JDOM.
-:::

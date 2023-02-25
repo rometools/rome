@@ -1,40 +1,32 @@
-::: section
 ## ROME 0.8 Beta
 
 Normally each release of ROME includes a whole new set of Wiki pages
 with the corresponding version number. ROME 0.8 is reusing ROME 0.7 Wiki
 pages as much as possible.
 
-::: section
 ### What is New, Highlights
 
 -   ROME now supports the final version of the Atom Syndication Format
-    [RFC 4287](http://www.ietf.org/rfc/rfc4287){.externalLink}: let\'s
+    [RFC 4287](http://www.ietf.org/rfc/rfc4287): let\'s
     Nuke all these feeds! **NEW**
 -   Enclosure support at the Synd level, for all our podcaster friends
 -   Bug fixes
 -   details in the ChangeList
 -   Modules galore: Content, iTunes Podcast, Slash, Google Base,
     Creative Commons, MediaRSS
-:::
 
-::: section
 ### Dependencies
 
 -   J2SE 1.4+
--   [JDOM 1.0](http://www.jdom.org/){.externalLink}
-:::
+-   [JDOM 1.0](http://www.jdom.org/)
 
-::: section
 ### Downloads
 
 -   [rome-0.8-src.zip](./rome-0.8-src.zip)
 -   [rome-0.8.tar.gz](./rome-0.8.tar.gz)
 -   [rome-0.8.zip](./rome-0.8.zip)
 -   [rome-0.8-src.tar.gz](./rome-0.8-src.tar.gz)
-:::
 
-::: section
 ### Additional Information
 
 -   [Tutorials](../RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/index.html)
@@ -67,15 +59,11 @@ pages as much as possible.
     -   [Customizing Date and time
         parsing](../RssAndAtOMUtiliEsROMEV0.7DateAndTimeParsing.html) in
         the rome.properties file **NEW**
-:::
 
-::: section
 ### Known Issues
 
 None.
 
 \--
-[PatrickChanezon](http://wiki.java.net/twiki/bin/view/Main/PatrickChanezon){.externalLink} -
+[PatrickChanezon](http://wiki.java.net/twiki/bin/view/Main/PatrickChanezon) -
 02 Feb 2006
-:::
-:::

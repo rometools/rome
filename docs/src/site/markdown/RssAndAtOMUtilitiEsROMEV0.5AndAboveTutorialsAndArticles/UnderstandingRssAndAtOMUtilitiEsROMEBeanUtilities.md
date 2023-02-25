@@ -1,4 +1,3 @@
-::: section
 ## Understanding Bean Utilities
 
 ROME bean utilities are not part of ROME public API. They are used by
@@ -20,7 +19,6 @@ classes use instrospection on the properties of the classes using them.
 This is done recursively on all properties. All ROME Beans default
 implementations leverage these classes.
 
-::: section
 ### ToStringBean
 
 Beans implementing the ToString interface must implement the
@@ -37,35 +35,32 @@ being processed. The ToStringBean constructor takes the class definition
 the ToStringBean class should use for properties scanning -using
 instrospection- for printing, normally it is the class of the Bean using
 the ToStringBean.
-:::
 
-::: section
 ### Using the ToStringBean class
 
 ```java
-        public class MyBean {
+public class MyBean {
 
-            public Foo getFoo() { ... }
-            public void setFoo(Foo foo) { ... }
+    public Foo getFoo() { ... }
+    public void setFoo(Foo foo) { ... }
 
-            public String getName() { ... }
-            public void setName(String name) { ... }
+    public String getName() { ... }
+    public void setName(String name) { ... }
 
-            public List getValues() { ... }
-            public void setValues(List values) { ... }
+    public List getValues() { ... }
+    public void setValues(List values) { ... }
 
-            public String toString(String prefix) {
-                ToStringBean tsBean = new ToStringBean(MyBean.class,this);
-                return tsBean.toString(prefix);
-            }
+    public String toString(String prefix) {
+        ToStringBean tsBean = new ToStringBean(MyBean.class,this);
+        return tsBean.toString(prefix);
+    }
 
-            public String toString() {
-                return toString("myBean");
-            }
-        }
+    public String toString() {
+        return toString("myBean");
+    }
+}
 ```
 
-::: section
 ### EqualBean
 
 The EqualsBean class provides a recursive introspetion-based
@@ -75,34 +70,32 @@ that should be properties scanned (using introspection) by the equals()
 and thehashCode() methods. The EqualsBean class works on array,
 collection, bean and basic type properties.
 
-::: section
 #### Using the EqualsBean class
 
 ```java
-        public class MyBean  {
+public class MyBean  {
 
-            public Foo getFoo() { ... }
-            public void setFoo(Foo foo) { ... }
+    public Foo getFoo() { ... }
+    public void setFoo(Foo foo) { ... }
 
-            public String getName() { ... }
-            public void setName(String name) { ... }
+    public String getName() { ... }
+    public void setName(String name) { ... }
 
-            public List getValues() { ... }
-            public void setValues(List values) { ... }
+    public List getValues() { ... }
+    public void setValues(List values) { ... }
 
-            public boolean equals(Object obj) {
-                EqualsBean eBean = new EqualsBean(MyBean.class,this);
-                return eBean.beanEquals(obj);
-            }
+    public boolean equals(Object obj) {
+        EqualsBean eBean = new EqualsBean(MyBean.class,this);
+        return eBean.beanEquals(obj);
+    }
 
-            public int hashCode() {
-                EqualsBean equals = new EqualsBean(MyBean.class,this);
-                return equals.beanHashCode();
-            }
-        }
+    public int hashCode() {
+        EqualsBean equals = new EqualsBean(MyBean.class,this);
+        return equals.beanHashCode();
+    }
+}
 ```
 
-::: section
 ### CloneableBean
 
 The CloneableBean class provides a recursive introspetion-based
@@ -110,26 +103,25 @@ implementation of the clone() method working on the Bean properties. The
 CloneableBean class works on array, collection, bean and basic type
 properties.
 
-::: section
 #### Using the CloneableBean class
 
 ```java
-        public class MyBean implements Cloneable {
+public class MyBean implements Cloneable {
 
-            public Foo getFoo() { ... }
-            public void setFoo(Foo foo) { ... }
+    public Foo getFoo() { ... }
+    public void setFoo(Foo foo) { ... }
 
-            public String getName() { ... }
-            public void setName(String name) { ... }
+    public String getName() { ... }
+    public void setName(String name) { ... }
 
-            public List getValues() { ... }
-            public void setValues(List values) { ... }
+    public List getValues() { ... }
+    public void setValues(List values) { ... }
 
-            public Object clone() {
-                CloneableBean cBean = new CloneableBean(this);
-                return cBean.beanClone();
-            }
-        }
+    public Object clone() {
+        CloneableBean cBean = new CloneableBean(this);
+        return cBean.beanClone();
+    }
+}
 ```
 
 By default, the CloneableBean copies all properties of the given object.
@@ -140,10 +132,7 @@ references to other properties or properties of properties). For example
 SyndFeed and SyndEntry beans have convenience properties, publishedDate,
 author, copyright and categories all of them mapped to properties in the
 DC Module.
-:::
-:::
 
-::: section
 ### ObjectBean
 
 The ObjectBean is a convenience bean providing ToStringBean, EqualsBean
@@ -155,24 +144,22 @@ equals(),hashCode() and clone() support as defined above.
 And example of using the ObjectBean class is:
 
 ```java
-        public class MyBean extends ObjectBean {
+public class MyBean extends ObjectBean {
 
-            public MyBean() {
-                super(MyBean.class);
-            }
+    public MyBean() {
+        super(MyBean.class);
+    }
 
-            public Foo getFoo() { ... }
-            public void setFoo(Foo foo) { ... }
+    public Foo getFoo() { ... }
+    public void setFoo(Foo foo) { ... }
 
-            public String getName() { ... }
-            public void setName(String name) { ... }
+    public String getName() { ... }
+    public void setName(String name) { ... }
 
-            public List getValues() { ... }
-            public void setValues(List values) { ... }
-        }
+    public List getValues() { ... }
+    public void setValues(List values) { ... }
+}
 ```
 
 It can also be used in delegation mode instead as some of the previous
 examples.
-:::
-:::

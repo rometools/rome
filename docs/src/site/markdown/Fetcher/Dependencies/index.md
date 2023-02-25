@@ -1,4 +1,3 @@
-::: section
 ## Dependencies
 
 The Rome Fetcher aims to introduce the absolute minimum number of extra
@@ -12,7 +11,7 @@ The current dependencies required to use the Rome Fetcher are:
 -   JDom v 1.0
 
 To build the Rome Fetcher the [Jakarta HTTP
-Client](http://jakarta.apache.org/commons/httpclient/){.externalLink} is
+Client](http://jakarta.apache.org/commons/httpclient/) is
 required.
 
 If the [HttpClientFeedFetcher (fetcher)](./HttpClientFeedFetcher.html)
@@ -27,4 +26,3 @@ additional dependencies are required:
 
 Note that Maven will automatically download the correct versions of all
 dependancies.
-:::

@@ -1,4 +1,3 @@
-::: section
 ## The CopyFrom interface
 
 The CopyFrom interface defines functionality similar to a deep cloning.
@@ -20,78 +19,78 @@ in common).
 A simple example using the CopyFrom interface is:
 
 ```java
-        public interface Foo extends CopyFrom {
-            public void setName(String name);
-            public String getName();
+public interface Foo extends CopyFrom {
+    public void setName(String name);
+    public String getName();
 
-            public void setValues(Set values);
-            public Set getValues();
-        }
+    public void setValues(Set values);
+    public Set getValues();
+}
 
-        public class FooImplA implements Foo {
-            private String _name;
-            private Set _values;
+public class FooImplA implements Foo {
+    private String _name;
+    private Set _values;
 
-            public void setName(String name) {
-                _name = name;
-            }
+    public void setName(String name) {
+        _name = name;
+    }
 
-            public String getName() {
-                return _name;
-            }
+    public String getName() {
+        return _name;
+    }
 
-            public void setValues(Set values) {
-                _values = values;
-            }
+    public void setValues(Set values) {
+        _values = values;
+    }
 
-            public Set getValues() {
-                return _values;
-            }
+    public Set getValues() {
+        return _values;
+    }
 
-            public void copyFrom(Object obj) {
-                Foo other = (Foo) obj;
-                setName(other.getName());
-                setValues(new HashSet(other.getValues());
-            }
+    public void copyFrom(Object obj) {
+        Foo other = (Foo) obj;
+        setName(other.getName());
+        setValues(new HashSet(other.getValues());
+    }
 
-            public Class getInterface() {
-                return Foo.class;
-            }
-        }
+    public Class getInterface() {
+        return Foo.class;
+    }
+}
 
-        public class FooImplB implements Foo {
-            private Map _data;
+public class FooImplB implements Foo {
+    private Map _data;
 
-            public FooImplB() {
-                _data = new HashMap();
-            }
+    public FooImplB() {
+        _data = new HashMap();
+    }
 
-            public void setName(String name) {
-                _data.put("name",name);
-            }
+    public void setName(String name) {
+        _data.put("name",name);
+    }
 
-            public String getName() {
-                return (String) _data.get("name");
-            }
+    public String getName() {
+        return (String) _data.get("name");
+    }
 
-            public void setValues(Set values) {
-                _data.put("values",values);
-            }
+    public void setValues(Set values) {
+        _data.put("values",values);
+    }
 
-            public Set getValues() {
-                return (Set) _data.get("values");
-            }
+    public Set getValues() {
+        return (Set) _data.get("values");
+    }
 
-            public void copyFrom(Object obj) {
-                Foo other = (Foo) obj;
-                setName(other.getName());
-                setValues(new HashSet(other.getValues());
-            }
+    public void copyFrom(Object obj) {
+        Foo other = (Foo) obj;
+        setName(other.getName());
+        setValues(new HashSet(other.getValues());
+    }
 
-            public Class getInterface() {
-                return Foo.class;
-            }
-        }
+    public Class getInterface() {
+        return Foo.class;
+    }
+}
 ```
 
 A use case for the CopyFrom functionality is a Java Bean implementation
@@ -112,4 +111,3 @@ property of the SyndFeed and SyndEntry beans is a use case of this
 feature where the copyFrom() invocation must create different beans
 subclasses for each type of module, the getInteface() helps to find the
 right implementation.
-:::

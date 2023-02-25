@@ -1,4 +1,3 @@
-::: section
 ## Feeds Date Elements Mapping to SyndFeed and SyndEntry
 
 The different RSS versions and Atom define different date elements at
@@ -8,9 +7,9 @@ There is not always a possible mapping or conversion of this information
 when going from one format to another.
 
 As this is still subject of debate ([How About a
-Date](http://www.tbray.org/ongoing/When/200x/2004/07/30/Dates){.externalLink}
+Date](http://www.tbray.org/ongoing/When/200x/2004/07/30/Dates)
 and [Date
-Survey](http://www.intertwingly.net/wiki/pie/DateSurvey){.externalLink}),
+Survey](http://www.intertwingly.net/wiki/pie/DateSurvey)),
 for now, in Rss and atOM utilitiEs (ROME) we\'ve taken a simplistic
 approach.
 
@@ -26,24 +25,19 @@ possible to use the Syndication Module.
 The mapping of the date elements from the different feed formats to
 SyndFeed is as follows.
 
-::: section
 ### For RSS 0.90
 
 RSS 0.90 does not define date elements.
 
 There is no mapping to `SyndFeed` and `SyndEntry` date properties.
-:::
 
-::: section
 ### For RSS 0.91, 0.92
 
 RSS 0.91 and 0.92 define `pubDate` and `lastBuildDate` at feed level.
 
 The feed `pubDate` element is mapped to the `SyndFeed` `publishedDate`
 property. The `lastBuildDate` element is lost.
-:::
 
-::: section
 ### For RSS 0.93, 0.94 and 2.0
 
 RSS 0.93, 0.94 and 2.0 define `pubDate` and `lastBuildDate` at feed
@@ -54,9 +48,7 @@ property. The `lastBuildDate` element is lost.
 
 The item `pubDate` element is mapped to the `SyndEntry` `publishedDate`
 property. The `expirationDate` element is lost.
-:::
 
-::: section
 ### For RSS 1.0
 
 RSS 1.0 use DC Module data at feed an item level to indicate date
@@ -64,9 +56,7 @@ information about the feed and the items.
 
 `SyndFeed` and `SyndEntry` use the DC Module `date` element for the
 `publishedDate` property.
-:::
 
-::: section
 ### For Atom 0.3
 
 Atom 0.3 defines a `modified` element at feed level and the `modified`,
@@ -77,9 +67,7 @@ property.
 
 The item `modified` element is mapped to the `SyndEntry` `publishedDate`
 property. The entry elements, `created` and `issued`, are lost.
-:::
 
-::: section
 ### For Atom 1.0
 
 (Atom 1.0 supported in ROME since v0.8)
@@ -90,5 +78,3 @@ to `SyndFeed.publishedDate`.
 Atom 1.0 defines `updated` and `published` elements at the entry level,
 which ROME maps to `SyndEntry.updatedDate` and `SyndEntry.publishedDate`
 respectively.
-:::
-:::

@@ -1,9 +1,7 @@
-::: section
 ## How to build and run the tutorials sample code
 
 These instructions are outdated
 
-::: section
 ### Building the samples with Maven
 
 This is, as usual, the easiest way.
@@ -28,9 +26,7 @@ samples sub-project and you are all set.
 To build the sample Web Application, just run maven war in the samples
 sub-project. The WAR file, `rome-samples.war`, will be created under the
 `target` directory.
-:::
 
-::: section
 ### Building the samples with Ant
 
 The targets present in the build.xml are very helpful, ant get-deps will
@@ -45,9 +41,7 @@ Once this is done, change to the samples directory, and just run ant.
 This will produce two files, rome-samples.jar which contains the sample
 applications, and rome-samples.war which will contain a deployable web
 application war file for the FeedServlet sample.
-:::
 
-::: section
 ### Running the samples with Maven
 
 The Maven goals for running the samples are defined in maven.xml.
@@ -63,11 +57,9 @@ To run the sample Web Application you\'ll need to deploy the WAR file
 into your servlet container. If you are using Tomcat 4 or Tomcat 5 and
 the WAR file was dropped in the `${TOMCAT}/webapps` directory the URL
 for the `FeedServlet` would be
-[http://localhost:8080/rome-samples/feed](http://localhost:8080/rome-samples/feed){.externalLink}
+[http://localhost:8080/rome-samples/feed](http://localhost:8080/rome-samples/feed)
 in a default localhost Tomcat installation.
-:::
 
-::: section
 ### Running the samples with Ant
 
 All ant targets for the samples generate the same file named toto: feel
@@ -81,5 +73,3 @@ have already built. Get rid of that once your project is well setup.
 -   `ant run-write` runs the FeedWriter sample
 -   `ant run-sampleModule` runs the FeedConverter sample against a file
     with Sample Module data (shows off custom module plugin)
-:::
-:::

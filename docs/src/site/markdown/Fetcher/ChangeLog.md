@@ -1,7 +1,5 @@
-::: section
 ## Change Log
 
-::: section
 ### Prior to first release (on the way to v0.3)
 
 1.  Updated to handle removal of IO methods using byte streams\
@@ -28,9 +26,7 @@
     The benefit of the FeedFetcherFactory was arguable. Now the client
     code will need to manage the creation of specific implementations of
     the FeedFetcher
-:::
 
-::: section
 ### Prior to second release (on the way to v0.4)
 
 1.  Refectored to match Rome naming standards\
@@ -42,42 +38,32 @@
 3.  Added GZip support to HttpClientFeedFetcher\
     HttpClientFeedFetcher now supports GZip compression. Tests have been
     added.
-:::
 
-::: section
 ### Prior to third release (on the way to v0.5)
 
 1.  SyndFeedInfo implements Serializable\
     SyndFeedInfo implements Serializable to make it easier to store
 2.  Support for rfc3229 delta encoding\
     The Fetcher now supports rfc3229 delta encoding. See
-    [http://www.ietf.org/rfc/rfc3229.txt](http://www.ietf.org/rfc/rfc3229.txt){.externalLink}
+    [http://www.ietf.org/rfc/rfc3229.txt](http://www.ietf.org/rfc/rfc3229.txt)
     and
-    [http://bobwyman.pubsub.com/main/2004/09/using_rfc3229_w.html](http://bobwyman.pubsub.com/main/2004/09/using_rfc3229_w.html){.externalLink}.
+    [http://bobwyman.pubsub.com/main/2004/09/using_rfc3229_w.html](http://bobwyman.pubsub.com/main/2004/09/using_rfc3229_w.html).
     Note that this is support is experimental and disabled by default
-:::
 
-::: section
 ### Prior to 0.6
 
 1.  Feed passed to FetcherEvents\
     When a feed is retrieved it is now passed to the Fetcher Event. This
     makes it easier to code applications using an event oriented style.
-:::
 
-::: section
 ### Prior to 0.7
 
 1.  Fix for URL Connection leak\
     In some circumstances URLConnection objects were not closed. This
     could cause problems in long-running application.
-:::
 
-::: section
 ### 0.8 was never released
-:::
 
-::: section
 ### Prior to 0.9
 
 1.  Fix for potential synchronization issue\
@@ -86,9 +72,7 @@
 2.  New LinkedHashMapFeedInfoCache FeedFetcherCache implementation\
     The new LinkedHashMapFeedInfoCache has the advantage that it will
     not grow unbound
-:::
 
-::: section
 ### Prior to 1.0RC2
 
 1.  BeanInfo class added for AbstractFeedFetcher\
@@ -101,17 +85,13 @@
     agent wasn\'t being set properly
 3.  Support for clearing cache\
     See
-    [http://java.net/jira/browse/ROME-119](http://java.net/jira/browse/ROME-119){.externalLink}
+    [http://java.net/jira/browse/ROME-119](http://java.net/jira/browse/ROME-119)
     for details
-:::
 
-::: section
 ### Prior to 1.0
 
 1.  Support for preserving wire feed data.\
     The fetcher now has a setPreserveWireFeed() method which will setup
     ROME to preserve WireFeed data. See
-    [PreservingWireFeeds](http://rometools.github.io/rome/PreservingWireFeeds.html){.externalLink}
+    [PreservingWireFeeds](http://rometools.github.io/rome/PreservingWireFeeds.html)
     for further information.
-:::
-:::

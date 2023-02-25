@@ -1,17 +1,13 @@
-::: section
 ## Change Log
 
-::: section
 ### Changes made since v1.0
 
-1.  [Issue 127](http://java.net/jira/browse/ROME-127){.externalLink}:
+1.  [Issue 127](http://java.net/jira/browse/ROME-127):
     Rome 1.0 not JDK 1.4 compatible
-:::
 
-::: section
 ### Changes made since v1.0RC2
 
-1.  [Issue 121](http://java.net/jira/browse/ROME-121){.externalLink}:
+1.  [Issue 121](http://java.net/jira/browse/ROME-121):
     RSS item category iteration should try to reflect document order
 2.  New property preserveWireFeed available on SyndFeedInput\
     WireFeeds will be preserved if the property preserveWireFeed is set
@@ -19,9 +15,7 @@
     objects are also available from SyndEntry objects if the WireFeed is
     preserved using the new getWireEntry() method. See [Preserving
     WireFeeds (rome)](./PreservingWireFeeds.html) for details.
-:::
 
-::: section
 ### Changes made since v1.0RC1
 
 1.  Fix. Date parsing for Atom10 entry and additional W3C masks\
@@ -31,7 +25,7 @@
     timezone (ie \'-800\'):
 
     ```
-        yyyy-MM-dd'T'HH:mm:ssZ yyyy-MM-dd't'HH:mm:sszZ
+    yyyy-MM-dd'T'HH:mm:ssZ yyyy-MM-dd't'HH:mm:sszZ
     ```
 2.  Fix. Contributors properties in SyndEntry were not implementing the
     semantics of list properties.\
@@ -46,27 +40,27 @@
 5.  New. Added new constructor to XmlReader
 
     ```java
-        public XmlReader(InputStream is, boolean lenient, String defaultEncoding)
+    public XmlReader(InputStream is, boolean lenient, String defaultEncoding)
     ```
 6.  New. Support atom person construct extensions, using the Extendable
     interface on SyndPerson:\
     Patch from James Roper. See [Issue
-    1101](http://java.net/jira/browse/ROME-110){.externalLink} for
+    1101](http://java.net/jira/browse/ROME-110) for
     details
 7.  New. Maven 2 build for main project\
     ROME can now be built with Maven 2
 8.  New. OSGi support\
     OSGi headers to MANIFEST.MF so that rome.jar can also be used in an
     OSGi environment. See [Issue
-    117](http://java.net/jira/browse/ROME-117){.externalLink} for
+    117](http://java.net/jira/browse/ROME-117) for
     details.
 9.  New. Allow pretty printing to be turned on and off\
-    see [Issue 114](http://java.net/jira/browse/ROME-114){.externalLink}
+    see [Issue 114](http://java.net/jira/browse/ROME-114)
     for details. Thanks to Martin Kurz for the patch.
 10. Configurable classloading behavior for OSGi compatibility.\
     We have received a report of some issues with plugin loading in an
     OSGi environment ([Issue
-    118](http://java.net/jira/browse/ROME-118){.externalLink}). The fix
+    118](http://java.net/jira/browse/ROME-118)). The fix
     appears to be to change Class.forName to classLoader.loadClass, but
     the semantics for this are subtly different, so we have made this
     new behavior user selectable. Set the
@@ -76,13 +70,11 @@
     There were a number of problems with feeds providing blank or
     invalid values in fields which would be numbers. ROME will now
     handles these better. See issues
-    [104](http://java.net/jira/browse/ROME-104){.externalLink},
-    [107](http://java.net/jira/browse/ROME-107){.externalLink} and
-    [108](http://java.net/jira/browse/ROME-108){.externalLink} for
+    [104](http://java.net/jira/browse/ROME-104),
+    [107](http://java.net/jira/browse/ROME-107) and
+    [108](http://java.net/jira/browse/ROME-108) for
     details.
-:::
 
-::: section
 ### Changes made from v0.9 to v1.0RC1
 
 1.  New. XmlReader support for default encoding\
@@ -117,7 +109,7 @@
     AtomGenerator now adds icon and logo elements to xml tree
 9.  Fix. Updated AtomPub namespace to its permenent home.\
     AtomService namespace updated to
-    [http://www.w3.org/2007/app](http://www.w3.org/2007/app){.externalLink}
+    [http://www.w3.org/2007/app](http://www.w3.org/2007/app)
 10. New. Added support for configuration per classloader level.\
     The PluginManager (handles Parsers and Generators) now is singleton
     at classloader level allowing different configurations in different
@@ -183,7 +175,7 @@
     is not recognized.\
     Previously the IllegalArgumentException was wrapped by a
     ParsingFeedException (Reported by [Issue
-    91](http://java.net/jira/browse/ROME-91){.externalLink}).
+    91](http://java.net/jira/browse/ROME-91)).
 21. Fix. SyndFeedImpl.equals(other) checks for instance of other before
     casting.\
     The underlying ObjectBean does this check, but in this method a cast
@@ -192,7 +184,7 @@
 22. Fix. Atom content based elements related fixes
     -   Atom 0.3 Parser/Generator
         -   Changed title to be treated as a Content construct.
-            ([http://www.mnot.net/drafts/draft-nottingham-atom-format-02.html#rfc.section.4.3](http://www.mnot.net/drafts/draft-nottingham-atom-format-02.html#rfc.section.4.3){.externalLink})
+            ([http://www.mnot.net/drafts/draft-nottingham-atom-format-02.html#rfc.section.4.3](http://www.mnot.net/drafts/draft-nottingham-atom-format-02.html#rfc.section.4.3))
     -   Atom 1.0 Generator:
         -   changed feed title/subtitle and entry title to be treated as
             Content constructs. (Parser had this implemented already.)
@@ -213,7 +205,7 @@
     -   RSS 1.0 Generator
         -   channel/items/Seq/li/@resource now get\'s the item URI
             instead of the Link.
-            ([http://web.resource.org/rss/1.0/spec#s5.3.5](http://web.resource.org/rss/1.0/spec#s5.3.5){.externalLink})
+            ([http://web.resource.org/rss/1.0/spec#s5.3.5](http://web.resource.org/rss/1.0/spec#s5.3.5))
 25. Fix. Javadocs corrections.
     -   Fixed some javadoc comments for SyndEntry.
 26. Fix. Atom content based elements were not parsed with XML mime
@@ -237,21 +229,19 @@
 30. New. Removal of all unused namespaces from generated feeds.\
     The generators now remove all unused namespaces from the XML
     document before generating it.
-:::
 
-::: section
 ### Changes made from v0.8 to v0.9
 
 1.  Design changes
     -   Support Atom feed.title, feed.subtitle and entry.title [Issue
-        48](http://java.net/jira/browse/ROME-48){.externalLink}\
+        48](http://java.net/jira/browse/ROME-48)\
         #48 fixed via better support for Atom text constructs title and
         subtitle. Added get/setTitleEx() and get/setSubtitleEx(), which
         get get SyndContent objects. Title and subtitle still available
         from old getters/setters.
     -   Support for mapping Atom summary/content to RSS
         description/content
-        [https://rome.dev.java.net/servlets/ReadMsg?list=dev&msgNo=1680](https://rome.dev.java.net/servlets/ReadMsg?list=dev&msgNo=1680){.externalLink}
+        [https://rome.dev.java.net/servlets/ReadMsg?list=dev&msgNo=1680](https://rome.dev.java.net/servlets/ReadMsg?list=dev&msgNo=1680)
     -   Fixed by introduced Content object in RSS model. ROME now parses
         as RSS Content. That makes parsing easier and allows us to
         support a more logical summary/content mapping:
@@ -260,7 +250,7 @@
 2.  General parsing fixes
     -   XmlReader xml prolog regular expression does not allow for
         single quotes [Issue
-        36](http://java.net/jira/browse/ROME-36){.externalLink}\
+        36](http://java.net/jira/browse/ROME-36)\
         The XmlReader was only parsing prolog encodings within double
         quotes, the regular expression to detect the encoding has been
         change to detect single or double quotes.
@@ -270,29 +260,29 @@
         encoding was not being detected. The fix accepts all valid
         whitespace characters (as defined in the XML spec).
     -   RSS parser does not recognize version=\"2.00\" [Issue
-        33](http://java.net/jira/browse/ROME-33){.externalLink}
+        33](http://java.net/jira/browse/ROME-33)
     -   Atom 1.0 Text Types Not Set Correctly [Issue
-        39](http://java.net/jira/browse/ROME-39){.externalLink}
+        39](http://java.net/jira/browse/ROME-39)
     -   Security issue [Issue
-        46](http://java.net/jira/browse/ROME-46){.externalLink}
+        46](http://java.net/jira/browse/ROME-46)
     -   Fix for the potential problem outlined in
-        [http://www.securiteam.com/securitynews/6D0100A5PU.html](http://www.securiteam.com/securitynews/6D0100A5PU.html){.externalLink}.
+        [http://www.securiteam.com/securitynews/6D0100A5PU.html](http://www.securiteam.com/securitynews/6D0100A5PU.html).
         Thanks to Nelson Minar for bringing this to our attention.
     -   Fix. Wrong default description type for RSS 2.0 Fix for [Issue
-        26](http://java.net/jira/browse/ROME-26){.externalLink}
+        26](http://java.net/jira/browse/ROME-26)
     -   Change default description type for RSS 2.0 from text/plain to
         text/html as per RSS 2.0 spec
     -   Fix to add all HTML4 entities, according to
-        [http://www.w3.org/TR/REC-html40/sgml/entities.html](http://www.w3.org/TR/REC-html40/sgml/entities.html){.externalLink}
+        [http://www.w3.org/TR/REC-html40/sgml/entities.html](http://www.w3.org/TR/REC-html40/sgml/entities.html)
         specially for the HTMLsymbol set (Mathematical, Greek and
         Symbolic characters for HTML) and the HTMLspecial set (Special
         characters for HTML).
 3.  Date parsing fixes
     -   Additional version and date leniency could extract more
         information [Issue
-        24](http://java.net/jira/browse/ROME-24){.externalLink}
+        24](http://java.net/jira/browse/ROME-24)
     -   Non RFC822 Dates not processed in RSS pubDate field [Issue
-        27](http://java.net/jira/browse/ROME-27){.externalLink}
+        27](http://java.net/jira/browse/ROME-27)
         -   RSS feed parsers were were only parsing RFC822 dates because
             they were not using the proper date-time parsing function
             for the date-time elements.
@@ -302,11 +292,11 @@
         -   Current JDKs do not handle \'UT\' timezone indicator, ROME
             DateParser class has been modified to handle it.
         -   Use Atom updated instead of published [Issue
-            41](http://java.net/jira/browse/ROME-41){.externalLink}
+            41](http://java.net/jira/browse/ROME-41)
         -   Atom 1.0 Date (Updated or Published) Not Set [Issue
-            42](http://java.net/jira/browse/ROME-42){.externalLink}
+            42](http://java.net/jira/browse/ROME-42)
         -   lastBuildDate does not populate publishedDate [Issue
-            43](http://java.net/jira/browse/ROME-43){.externalLink}
+            43](http://java.net/jira/browse/ROME-43)
             Provides a feed date for RSS 0.91 feeds that specify
             lastBuildDate but not pubDate.
     -   Fix. Parsing some numeric elements was failing due to
@@ -315,23 +305,21 @@
         now being trimmed before doing the integer parsing.
 4.  Atom link and URI fixes
     -   Improper relative link resolution in Atom10Parser [Issue
-        37](http://java.net/jira/browse/ROME-37){.externalLink}
+        37](http://java.net/jira/browse/ROME-37)
     -   ATOM 1.0 Entry links parsing [Issue
-        38](http://java.net/jira/browse/ROME-38){.externalLink}
+        38](http://java.net/jira/browse/ROME-38)
     -   ConverterForRSS10.java does not set URI for item [Issue
-        25](http://java.net/jira/browse/ROME-25){.externalLink}
+        25](http://java.net/jira/browse/ROME-25)
     -   Valid IRI href attributes are stripped for atom:link [Issue
-        34](http://java.net/jira/browse/ROME-34){.externalLink}
+        34](http://java.net/jira/browse/ROME-34)
 5.  Module fixes
     -   iTunes Module has incorrect author and category support [Issue
-        35](http://java.net/jira/browse/ROME-35){.externalLink}
+        35](http://java.net/jira/browse/ROME-35)
     -   mediarss.io.MediaModuleParser NumberFormatException [Issue
-        45](http://java.net/jira/browse/ROME-45){.externalLink}
+        45](http://java.net/jira/browse/ROME-45)
     -   Slash module not serializable for FeedFetcher [Issue
-        44](http://java.net/jira/browse/ROME-44){.externalLink}
-:::
+        44](http://java.net/jira/browse/ROME-44)
 
-::: section
 ### Changes made from v0.7 to v0.8
 
 1.  Change. Added enclosure support at Synd\* level\
@@ -367,9 +355,7 @@
         links collection and support for multiple authors.
     -   In com.sun.syndication.synd.impl, added Atom10Parser.java,
         Atom10Generator.java and ConverterForAtom10.java.
-:::
 
-::: section
 ### Changes made from v0.6 to v0.7
 
 1.  Fix. RFC-882 dates parsing and generation were using localized names
@@ -436,7 +422,7 @@
     example, \"&ent=\" becomes \"&ent\"). This was most visible when the
     XmlFixerReader encountered an URL with a query string that has more
     than one parameter (e.g.
-    [http://www.url.com/index.html?qp1=1&qp2=2](http://www.url.com/index.html?qp1=1&qp2=2){.externalLink})
+    [http://www.url.com/index.html?qp1=1&qp2=2](http://www.url.com/index.html?qp1=1&qp2=2))
     \-- all \"=\" after the first one would disappear.
 14. Change. DateParser can use additional custom datetime masks\
     Besides attempting to parse datetime values in W3C and RFC822
@@ -446,9 +432,7 @@
     other characters are considered part of the mask. As with
     parser/generators/converter plugins the masks are read from all
     /rome.properties file in the classpath.
-:::
 
-::: section
 ### Changes made from v0.5 to v0.6
 
 1.  Fix. W3C date-time parsing now handles date-time with \'Z\'
@@ -565,9 +549,7 @@
     for some of the elements. ROME was enforcing those lenghts when
     generating RSS1.0 feeds. This enforcement has been removed becuase
     is not mandatory.
-:::
 
-::: section
 ### Changes made from v0.4 to v0.5
 
 1.  Change. Got rid of Enum class\
@@ -614,9 +596,7 @@
     by the constructor. The XmlReaderException contains all the charset
     encoding information gathered from the stream including the
     unconsumed stream.
-:::
 
-::: section
 ### Changes made from v0.3 to v0.4
 
 1.  Fix. Date elements on generated feeds use the right format now\
@@ -752,7 +732,7 @@
     by HTTP, MIME types and XML specifications. All this is nicely
     explained by Mark Pilgrim in his blog,
     [http://diveintomark.org/archives/2004/02/13/xml-media-types
-    (Archived)](https://web.archive.org/web/20060706153721/http://diveintomark.org/archives/2004/02/13/xml-media-types){.externalLink}
+    (Archived)](https://web.archive.org/web/20060706153721/http://diveintomark.org/archives/2004/02/13/xml-media-types)
 23. Rome now uses JDOM 1.0\
     Dependencies have been updated to use JDOM 1.0. No code changes were
     needed because of this.
@@ -774,9 +754,7 @@
     implementations there is one set for each one of them. This allows
     to differenciate incoming RSS0.91 Userland feeds from RSS0.91
     Netscape feeds as well as choosing which one to generate.
-:::
 
-::: section
 ### Changes made from v0.2 to v0.3
 
 1.  Changed loading mechanism for parsers, generators and converters\
@@ -899,9 +877,7 @@
 22. Undoing change #13 as Date is not inmutable\
     The Date class is not inmutable, CloneableBean now clones Date
     properties.
-:::
 
-::: section
 ### Changes made from v0.1 to v0.2
 
 1.  FeedInput, added default constructor. Semantics is \'validation
@@ -943,14 +919,13 @@
 13. Renamed syndication.io classes/interfaces\
     Renaming for naming consistency and to reflect on what type of feed
     they work on.
-
     ```
-        FeedInput     --> WireFeedInput
-        FeedOutput    --> WireFeedOutput
-        FeedParser    --> WireFeedParser
-        FeedGenerator --> WireFeedGenerator
-        SyndInput     --> SyndFeedInput
-        SyndOutput    --> SyndFeedOutputt
+    FeedInput     --> WireFeedInput
+    FeedOutput    --> WireFeedOutput
+    FeedParser    --> WireFeedParser
+    FeedGenerator --> WireFeedGenerator
+    SyndInput     --> SyndFeedInput
+    SyndOutput    --> SyndFeedOutputt
     ```
 14. Removed syndication.util package, PlugableClasses is now private\
     The PlugableClasses class has no business in Rome public API, it\'s
@@ -958,5 +933,3 @@
     later with a micro-container).
 15. Added samples to the Rome project directory structure\
     Rome samples are a sub-project located at rome/modules/sample.
-:::
-:::

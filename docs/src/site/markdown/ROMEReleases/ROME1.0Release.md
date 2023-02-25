@@ -1,9 +1,7 @@
-::: section
 ## ROME 1.0 Release
 
 *ROME 1.0 was released on March 12, 2009*
 
-::: section
 ### What is New / Highlights
 
 Normally each release of ROME includes a whole new set of Wiki pages
@@ -15,12 +13,8 @@ previous versions as there are not significant changes.
     [PreservingWireFeeds](../PreservingWireFeeds.html) for further
     details
 
-```{=html}
-<!-- -->
-```
 -   Complete details in the [change log](../ChangeLog.html)
 
-::: section
 #### Downloads
 
 -   [rome-1.0.jar](./rome-1.0.jar)
@@ -29,19 +23,12 @@ previous versions as there are not significant changes.
 -   [rome-1.0.jar](./rome-1.0.jar)
 -   [rome-1.0-javadoc.jar](./rome-1.0-javadoc.jar)
 -   [rome-1.0-sources.jar](./rome-1.0-sources.jar)
-:::
 
-::: section
 #### Dependencies
 
 -   J2SE 1.4+
--   [JDOM 1.0](http://www.jdom.org/){.externalLink}\\
-:::
+-   [JDOM 1.0](http://www.jdom.org/)
 
-::: section
 #### Documentation
 
--   [Javadocs](http://rome.dev.java.net/apidocs/1_0/overview-summary.html){.externalLink}
-:::
-:::
-:::
+-   [Javadocs](http://rome.dev.java.net/apidocs/1_0/overview-summary.html)

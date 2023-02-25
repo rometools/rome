@@ -1,7 +1,5 @@
-::: section
 ## Rome v0.3, How to build and run the tutorials sample code
 
-::: section
 ### Building the samples with Maven
 
 This is, as usual, the easiest way.
@@ -22,9 +20,7 @@ Maven repository (on UNIX that would be
 
 Then building the samples it\'s easy as a pie, just run maven jar in the
 rome-samples project and you are all set.
-:::
 
-::: section
 ### Building the samples with Ant
 
 Hopefully maven is helpful in supporting poor ant users who did not make
@@ -42,9 +38,7 @@ UNIX would be `cp rome-0.3/rome-0.3.jar  rome-samples/target/lib`, where
 rome-0.3 is the binary distribution).
 
 To build rome-samples just run `ant jar`.
-:::
 
-::: section
 ### Running the samples with Maven
 
 The Maven goals for running the samples are defined in maven.xml. They
@@ -58,9 +52,7 @@ that glitch later.
 -   `maven run-write` runs the FeedWriter sample
 -   `maven run-sampleModule` runs the FeedConverter sample against a
     file with Sample Module data (shows off custom module plugin)
-:::
 
-::: section
 ### Running the samples with Ant
 
 All ant targets for the samples generate the same file named toto: feel
@@ -74,5 +66,3 @@ have already built. Get rid of that once your project is well setup.
 -   `ant run-write` runs the FeedWriter sample
 -   `ant run-sampleModule` runs the FeedConverter sample against a file
     with Sample Module data (shows off custom module plugin)
-:::
-:::

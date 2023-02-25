@@ -1,4 +1,3 @@
-::: section
 ## Using ROME to convert a syndication feed from one type to another
 
 ROME represents syndication feeds (RSS and Atom) as instances of the
@@ -15,8 +14,8 @@ syndication feed structure. All it takes to read a syndication feed
 using ROME are the following 2 lines of code:
 
 ```java
-    SyndFeedInput input = new SyndFeedInput();
-    SyndFeed feed = input.build(new XmlReader(feedUrl));
+SyndFeedInput input = new SyndFeedInput();
+SyndFeed feed = input.build(new XmlReader(feedUrl));
 ```
 
 The first line creates a SyndFeedInput instance that will work with any
@@ -35,8 +34,8 @@ of code show how to create a syndication feed output from a SyndFeed
 instance:
 
 ```java
-    SyndFeedOutput output = new SyndFeedOutput();
-    output.output(feed,new PrintWriter(System.out));
+SyndFeedOutput output = new SyndFeedOutput();
+output.output(feed,new PrintWriter(System.out));
 ```
 
 The first line creates a SyndFeedOutput instance that will produce
@@ -50,56 +49,56 @@ syndication feed and converts it to other syndication feed type, writing
 the converted feed to the application\'s output.
 
 ```java
-    package com.rometools.rome.samples;
+package com.rometools.rome.samples;
 
-    import java.net.URL;
-    import java.io.InputStreamReader;
-    import java.io.PrintWriter;
-    import com.rometools.rome.feed.synd.SyndFeed;
-    import com.rometools.rome.io.SyndFeedInput;
-    import com.rometools.rome.io.SyndFeedOutput;
-    import com.rometools.rome.io.XmlReader;
+import java.net.URL;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import com.rometools.rome.feed.synd.SyndFeed;
+import com.rometools.rome.io.SyndFeedInput;
+import com.rometools.rome.io.SyndFeedOutput;
+import com.rometools.rome.io.XmlReader;
 
-    /**
-     * It Converts any RSS/Atom feed type to a an RSS/Atom feed of the
-     * specified type.
-     * <p>
-     * @author Alejandro Abdelnur
-     *
-     */
-    public class FeedConverter {
+/**
+    * It Converts any RSS/Atom feed type to a an RSS/Atom feed of the
+    * specified type.
+    * <p>
+    * @author Alejandro Abdelnur
+    *
+    */
+public class FeedConverter {
 
-        public static void main(String[] args) {
-            boolean ok = false;
-            if (args.length==2) {
-                try {
-                    String outputType = args[0];
+    public static void main(String[] args) {
+        boolean ok = false;
+        if (args.length==2) {
+            try {
+                String outputType = args[0];
 
-                    URL feedUrl = new URL(args[1]);
+                URL feedUrl = new URL(args[1]);
 
-                    SyndFeedInput input = new SyndFeedInput();
-                    SyndFeed feed = input.build(new XmlReader(feedUrl));
-                    feed.setFeedType(outputType);
-                    SyndFeedOutput output = new SyndFeedOutput();
-                    output.output(feed,new PrintWriter(System.out));
+                SyndFeedInput input = new SyndFeedInput();
+                SyndFeed feed = input.build(new XmlReader(feedUrl));
+                feed.setFeedType(outputType);
+                SyndFeedOutput output = new SyndFeedOutput();
+                output.output(feed,new PrintWriter(System.out));
 
-                    ok = true;
-                }
-                catch (Exception ex) {
-                    System.out.println("ERROR: "+ex.getMessage());
-                }
+                ok = true;
             }
-
-            if (!ok) {
-                System.out.println();
-                System.out.println("FeedConverter converts between syndication feeds types.");
-                System.out.println("The first parameter must be the feed type to convert to.");
-                System.out.println(" [valid values are: rss_0.9, rss_0.91, rss_0.92, rss_0.93, ]");
-                System.out.println(" [                  rss_0.94, rss_1.0, rss_2.0 & atom_0.3  ]");
-                System.out.println("The second parameter must be the URL of the feed to convert.");
-                System.out.println();
+            catch (Exception ex) {
+                System.out.println("ERROR: "+ex.getMessage());
             }
         }
 
+        if (!ok) {
+            System.out.println();
+            System.out.println("FeedConverter converts between syndication feeds types.");
+            System.out.println("The first parameter must be the feed type to convert to.");
+            System.out.println(" [valid values are: rss_0.9, rss_0.91, rss_0.92, rss_0.93, ]");
+            System.out.println(" [                  rss_0.94, rss_1.0, rss_2.0 & atom_0.3  ]");
+            System.out.println("The second parameter must be the URL of the feed to convert.");
+            System.out.println();
+        }
     }
+
+}
 ```

@@ -1,4 +1,3 @@
-::: section
 ## Plugins Mechanism
 
 ROME has been designed around a plugin mechanism. All the supported feed
@@ -11,7 +10,6 @@ done using plugins.
 Plugins for new functionality can be added and default plugins can be
 easily replaced with alternate plugins.
 
-::: section
 ### Plugins definition files
 
 Plugins are defined in a properties file, the `rome.properties` file.
@@ -44,9 +42,7 @@ default plugins with custom ones).
 The plugins are read, loaded and managed by the implementation class
 `com.rometools.rome.io.impl.PluginManager`. This class is an abstract
 class and it is extended to provide support for each type of plugin.
-:::
 
-::: section
 ### Parser Plugins
 
 Parser plugins are managed by the
@@ -58,18 +54,18 @@ whitespaces or commas. For example, the default `rome.properties` file
 parser plugins definition is as follows:
 
 ```properties
-    # Feed Parser implementation classes
-    #
-    WireFeedParser.classes=com.rometools.rome.io.impl.RSS090Parser \
-                           com.rometools.rome.io.impl.RSS091NetscapeParser \
-                           com.rometools.rome.io.impl.RSS091UserlandParser \
-                           com.rometools.rome.io.impl.RSS092Parser \
-                           com.rometools.rome.io.impl.RSS093Parser \
-                           com.rometools.rome.io.impl.RSS094Parser \
-                           com.rometools.rome.io.impl.RSS10Parser  \
-                           com.rometools.rome.io.impl.RSS20wNSParser  \
-                           com.rometools.rome.io.impl.RSS20Parser  \
-                           com.rometools.rome.io.impl.Atom03Parser
+# Feed Parser implementation classes
+#
+WireFeedParser.classes=com.rometools.rome.io.impl.RSS090Parser \
+                        com.rometools.rome.io.impl.RSS091NetscapeParser \
+                        com.rometools.rome.io.impl.RSS091UserlandParser \
+                        com.rometools.rome.io.impl.RSS092Parser \
+                        com.rometools.rome.io.impl.RSS093Parser \
+                        com.rometools.rome.io.impl.RSS094Parser \
+                        com.rometools.rome.io.impl.RSS10Parser  \
+                        com.rometools.rome.io.impl.RSS20wNSParser  \
+                        com.rometools.rome.io.impl.RSS20Parser  \
+                        com.rometools.rome.io.impl.Atom03Parser
 ```
 
 All the classes defined in this property have to implement the
@@ -77,9 +73,7 @@ All the classes defined in this property have to implement the
 be thread safe. The return value of the `getType()` method is used as
 the primary key. If more than one parser returns the same type, the
 latter one prevails.
-:::
 
-::: section
 ### Generator Plugins
 
 Generator plugins are managed by the
@@ -91,17 +85,17 @@ whitespaces or commas. For example, the default `rome.properties` file
 generator plugins definition is as follows:
 
 ```properties
-    # Feed Generator implementation classes
-    #
-    WireFeedGenerator.classes=com.rometools.rome.io.impl.RSS090Generator \
-                              com.rometools.rome.io.impl.RSS091NetscapeGenerator \
-                              com.rometools.rome.io.impl.RSS091UserlandGenerator \
-                              com.rometools.rome.io.impl.RSS092Generator \
-                              com.rometools.rome.io.impl.RSS093Generator \
-                              com.rometools.rome.io.impl.RSS094Generator \
-                              com.rometools.rome.io.impl.RSS10Generator  \
-                              com.rometools.rome.io.impl.RSS20Generator  \
-                              com.rometools.rome.io.impl.Atom03Generator
+# Feed Generator implementation classes
+#
+WireFeedGenerator.classes=com.rometools.rome.io.impl.RSS090Generator \
+                            com.rometools.rome.io.impl.RSS091NetscapeGenerator \
+                            com.rometools.rome.io.impl.RSS091UserlandGenerator \
+                            com.rometools.rome.io.impl.RSS092Generator \
+                            com.rometools.rome.io.impl.RSS093Generator \
+                            com.rometools.rome.io.impl.RSS094Generator \
+                            com.rometools.rome.io.impl.RSS10Generator  \
+                            com.rometools.rome.io.impl.RSS20Generator  \
+                            com.rometools.rome.io.impl.Atom03Generator
 ```
 
 All the classes defined in this property have to implement the
@@ -109,9 +103,7 @@ All the classes defined in this property have to implement the
 must be thread safe. The return value of the `getType()` method is used
 as the primary key. If more than one generator returns the same type,
 the latter one prevails.
-:::
 
-::: section
 ### Converter Plugins
 
 Converter plugins are managed by the
@@ -123,17 +115,17 @@ example, the default `rome.properties` file converter plugins definition
 is as follows:
 
 ```properties
-    # Feed Conversor implementation classes
-    #
-    Converter.classes=com.rometools.rome.feed.synd.impl.ConverterForAtom03 \
-                      com.rometools.rome.feed.synd.impl.ConverterForRSS090 \
-                      com.rometools.rome.feed.synd.impl.ConverterForRSS091Netscape \
-                      com.rometools.rome.feed.synd.impl.ConverterForRSS091Userland \
-                      com.rometools.rome.feed.synd.impl.ConverterForRSS092 \
-                      com.rometools.rome.feed.synd.impl.ConverterForRSS093 \
-                      com.rometools.rome.feed.synd.impl.ConverterForRSS094 \
-                      com.rometools.rome.feed.synd.impl.ConverterForRSS10  \
-                      com.rometools.rome.feed.synd.impl.ConverterForRSS20
+# Feed Conversor implementation classes
+#
+Converter.classes=com.rometools.rome.feed.synd.impl.ConverterForAtom03 \
+                    com.rometools.rome.feed.synd.impl.ConverterForRSS090 \
+                    com.rometools.rome.feed.synd.impl.ConverterForRSS091Netscape \
+                    com.rometools.rome.feed.synd.impl.ConverterForRSS091Userland \
+                    com.rometools.rome.feed.synd.impl.ConverterForRSS092 \
+                    com.rometools.rome.feed.synd.impl.ConverterForRSS093 \
+                    com.rometools.rome.feed.synd.impl.ConverterForRSS094 \
+                    com.rometools.rome.feed.synd.impl.ConverterForRSS10  \
+                    com.rometools.rome.feed.synd.impl.ConverterForRSS20
 ```
 
 All the classes defined in this property have to implement the
@@ -141,9 +133,7 @@ All the classes defined in this property have to implement the
 be thread safe. The return value of the `getType()` method is used as
 the primary key. If more than one converter returns the same type, the
 latter one prevails.
-:::
 
-::: section
 ### Module Plugins
 
 There are 2 types of module plugins, module parser plugins and module
@@ -175,31 +165,31 @@ example, the default `rome.properties` file modules parser plugins
 definition is as follows:
 
 ```properties
-    # Parsers for Atom 0.3 feed modules
-    #
-    atom_0.3.feed.ModuleParser.classes=com.rometools.rome.io.impl.SyModuleParser \
-                              com.rometools.rome.io.impl.DCModuleParser
+# Parsers for Atom 0.3 feed modules
+#
+atom_0.3.feed.ModuleParser.classes=com.rometools.rome.io.impl.SyModuleParser \
+                            com.rometools.rome.io.impl.DCModuleParser
 
-    # Parsers for Atom 0.3 entry modules
-    #
-    atom_0.3.item.ModuleParser.classes=com.rometools.rome.io.impl.DCModuleParser
+# Parsers for Atom 0.3 entry modules
+#
+atom_0.3.item.ModuleParser.classes=com.rometools.rome.io.impl.DCModuleParser
 
-    # Parsers for RSS 1.0 feed modules
-    #
-    rss_1.0.feed.ModuleParser.classes=com.rometools.rome.io.impl.SyModuleParser \
-                              com.rometools.rome.io.impl.DCModuleParser
+# Parsers for RSS 1.0 feed modules
+#
+rss_1.0.feed.ModuleParser.classes=com.rometools.rome.io.impl.SyModuleParser \
+                            com.rometools.rome.io.impl.DCModuleParser
 
-    # Parsers for RSS 1.0 item modules
-    #
-    rss_1.0.item.ModuleParser.classes=com.rometools.rome.io.impl.DCModuleParser
+# Parsers for RSS 1.0 item modules
+#
+rss_1.0.item.ModuleParser.classes=com.rometools.rome.io.impl.DCModuleParser
 
-    # Parsers for RSS 2.0 feed modules
-    #
-    rss_2.0.feed.ModuleParser.classes=
+# Parsers for RSS 2.0 feed modules
+#
+rss_2.0.feed.ModuleParser.classes=
 
-    # Parsers for RSS 2.0 item modules
-    #
-    rss_2.0.item.ModuleParser.classes=
+# Parsers for RSS 2.0 item modules
+#
+rss_2.0.item.ModuleParser.classes=
 ```
 
 All the classes defined in this property have to implement the
@@ -219,31 +209,31 @@ For example, the default `rome.properties` file modules generator
 plugins definition is as follows:
 
 ```properties
-    # Generators for Atom 0.3 feed modules
-    #
-    atom_0.3.feed.ModuleGenerator.classes=com.rometools.rome.io.impl.SyModuleGenerator \
-                                 com.rometools.rome.io.impl.DCModuleGenerator
+# Generators for Atom 0.3 feed modules
+#
+atom_0.3.feed.ModuleGenerator.classes=com.rometools.rome.io.impl.SyModuleGenerator \
+                                com.rometools.rome.io.impl.DCModuleGenerator
 
-    # Generators for Atom 0.3 entry modules
-    #
-    atom_0.3.item.ModuleGenerator.classes=com.rometools.rome.io.impl.DCModuleGenerator
+# Generators for Atom 0.3 entry modules
+#
+atom_0.3.item.ModuleGenerator.classes=com.rometools.rome.io.impl.DCModuleGenerator
 
-    # Generators for RSS 1.0 feed modules
-    #
-    rss_1.0.feed.ModuleGenerator.classes=com.rometools.rome.io.impl.SyModuleGenerator \
-                                 com.rometools.rome.io.impl.DCModuleGenerator
+# Generators for RSS 1.0 feed modules
+#
+rss_1.0.feed.ModuleGenerator.classes=com.rometools.rome.io.impl.SyModuleGenerator \
+                                com.rometools.rome.io.impl.DCModuleGenerator
 
-    # Generators for RSS_1.0 entry modules
-    #
-    rss_1.0.item.ModuleGenerator.classes=com.rometools.rome.io.impl.DCModuleGenerator
+# Generators for RSS_1.0 entry modules
+#
+rss_1.0.item.ModuleGenerator.classes=com.rometools.rome.io.impl.DCModuleGenerator
 
-    # Generators for RSS 2.0 feed modules
-    #
-    rss_2.0.feed.ModuleGenerator.classes=
+# Generators for RSS 2.0 feed modules
+#
+rss_2.0.feed.ModuleGenerator.classes=
 
-    # Generators for RSS_2.0 entry modules
-    #
-    rss_2.0.item.ModuleGenerator.classes=
+# Generators for RSS_2.0 entry modules
+#
+rss_2.0.item.ModuleGenerator.classes=
 ```
 
 All the classes defined in this property have to implement the
@@ -254,5 +244,3 @@ module generator returns the same URI, the latter one prevails.
 
 See also: a step-by-step [tutorial for implementing a custom
 module](./RssAndAtOMUtilitiEsROMEV0.5TutorialDefiningACustomModuleBeanParserAndGenerator.html).
-:::
-:::

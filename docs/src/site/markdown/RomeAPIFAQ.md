@@ -1,17 +1,15 @@
-::: section
 ## Rome API FAQ
 
 As we were designing and implementing Rome we had discusssions,
 brainstorming and code reviews on the API. We\'ve captured them in this
 document.
 
-::: section
 ### Do SyndFeed support arbitrary Metadata?
 
 Yes, using what we call Modules. Currently we support the 2 modules
 defined in RSS 1.0, [Dublin
-Core](http://purl.org/rss/1.0/modules/dc/){.externalLink} and
-[Syndication](http://purl.org/rss/1.0/modules/syndication/){.externalLink}.
+Core](http://purl.org/rss/1.0/modules/dc/) and
+[Syndication](http://purl.org/rss/1.0/modules/syndication/).
 They are wired when converting from SyndFeed beans to RSS/Atom feeds
 beans and vice versa. We use the RSS 1.0 terminology of Modules because
 RSS 1.0 is the specification that defined and used extensibility the
@@ -23,17 +21,13 @@ specific Modules to handle future RSS 2.0 and Atom extensions.
 If additional modules are defined to express metadata the converters
 should be modified to handle them. And the same goes for the parsers and
 generators or RSS/Atom feeds.
-:::
 
-::: section
 ### Why those package, interfaces, classes and method names?
 
 We\'ve struggled (and still are struggling) with names. We renamed and
 moved things around until we got dizzy. If you have suggestions please
 let us know.
-:::
 
-::: section
 ### Where are the parser, generator and converter implementations?
 
 They are in hidden (not javadoc-ed) packages within the Rome jar file.
@@ -41,9 +35,7 @@ Their classes are loaded using declarations in a properties file. It is
 possible for developers to add or replace implementations of these
 components without modifying Rome source code, just by indicating an
 addition properties file to look for extra implementation classes.
-:::
 
-::: section
 ### What are the interfaces and classes in the syndication.common package for? And why most bean (or interface) extend/implement them?
 
 At first we got tired of modifying the toString() methods every time we
@@ -61,25 +53,19 @@ support.
 The ObjectBean is a base class that implements all these features. All
 Rome beans extend ObjectBean getting a toString, equals, hashcode and
 clone support for free.
-:::
 
-::: section
 ### What are the property values when not set?
 
 For Boolean is **false**. For numbers is 1. For String is null. For
 collections is an empty collection (even if you set it to null you get
 an empty collection). For all other objects is null.
-:::
 
-::: section
 ### Are properties copied by value or by reference when set or gotten?
 
 All properties as always handled by reference (except primitive types).
 If they are not immutable and you modify them you are affecting the
 bean/s that reference them too.
-:::
 
-::: section
 ### What is with the interface and implementation names in the synd and module packages?
 
 Interfaces have the following naming pattern: \<NAME\>I. Default
@@ -88,9 +74,7 @@ SyndFeedI is the interface and SyndFeed is the default implementation.
 
 We decided to use \<NAME\> for the default implementation classes as we
 think they\'ll be the implementation of choice most of the time.
-:::
 
-::: section
 ### Why the beans in the synd and module packages have interface and implementation versions of them?
 
 We added interfaces only for the higher abstraction layer of Rome,
@@ -99,9 +83,7 @@ for SyndFeed instances). The reasoning behind such decoupling was to
 allow facading existing classes as SyndFeed beans. For example some
 persistent classes. This would allow to process them through components
 that work with SyndFeedI.
-:::
 
-::: section
 ### Why the RSS and Atom beans don\'t have interface and implementation versions of it?
 
 We thought about this, we dismissed the idea. The reasoning was that we
@@ -111,9 +93,7 @@ and Atom only because we have folks going and making up things without
 talking to each other. In short, we expect all our application
 processing to be done in a feed agnostic way in Java using SyndFeed and
 Module beans.
-:::
 
-::: section
 ### How all the escaping for the description elements is handled for the different feed types as they keep changing their mind version after version?
 
 Item description MIME type, depending on the RSS version is text/plain
@@ -124,33 +104,25 @@ escaped. This is not 100% correct but it will work in most of the cases.
 
 Note that type in feed beans indicate what was the escaping type of the
 underlying feed, but if you get the value is already unescaped.
-:::
 
-::: section
 ### How does Rome handle Atom content elements that support encoding (Base64, XML, plain) using the mode attribute?
 
 The mode in feed in content indicates what was the encoding of the
 element in the feed, but when you get the value is already unencoded.
-:::
 
-::: section
 ### What kind of input and output Rome supports?
 
 Rome implementation currently uses JDOM for parsing and generating
 syndication feeds. As people tend to use the XML libraries they feel
 more comfortable with we have built in support for SAX, DOM, JDOM, byte
 streams, character streams and strings.
-:::
 
-::: section
 ### What is the SyndFeedI.getSupportedFeedTypes() method for?
 
 This method was originally a static method in the SyndFeed class. We\'ve
 moved ot the SyndFeedI interface as we thought it would be useful to be
 able to ask a SyndFeedI instance the feed converters it handles.
-:::
 
-::: section
 ### Are Rome beans Serializable? Why?
 
 Yes, the default bean implementations of SyndFeedI provided with Rome
@@ -162,11 +134,7 @@ the \*I interfaces. You may want to extend some existing classes to
 implement SyndFeedI, and these classes you are extending may not be
 Serializable and cannot be (for example, they are tied to a live
 InputStream).
-:::
 
-::: section
 ### Why all those packages?
 
 TBD
-:::
-:::

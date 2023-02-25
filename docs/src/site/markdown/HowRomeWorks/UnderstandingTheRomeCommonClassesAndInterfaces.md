@@ -1,4 +1,3 @@
-::: section
 ## Understanding the Rome common classes and interfaces
 
 The Rome common package contains a set of Java classes that provide
@@ -24,7 +23,6 @@ component outside of Rome as they are not syndication specific
 naming). They cannot be hidden in an implementation package as Rome
 public API uses them.
 
-::: section
 ### ToString and ToStringBean
 
 Beans implementing the ToString interface must implement the
@@ -41,56 +39,54 @@ the class definition the ToStringBean class should use for properties
 scanning -using instrospection- for printing, normally it is the class
 of the Bean using the ToStringBean. Beans leveraging the ToStringBean
 implementation can do it using two different patterns.
-:::
 
-::: section
 ### Extending ToStringBean
 
 ```java
-    public class MyBean extend ToStringBean {
+public class MyBean extend ToStringBean {
 
-            public MyBean() {
-                super(MyBean.class);
-            }
+    public MyBean() {
+        super(MyBean.class);
+    }
 
-            public Foo getFoo() { ... }
-            public void setFoo(Foo foo) { ... }
+    public Foo getFoo() { ... }
+    public void setFoo(Foo foo) { ... }
 
-            public String getName() { ... }
-            public void setName(String name) { ... }
+    public String getName() { ... }
+    public void setName(String name) { ... }
 
-            public List getValues() { ... }
-            public void setValues(List values) { ... }
-        }
+    public List getValues() { ... }
+    public void setValues(List values) { ... }
+
+}
 ```
 
-::: section
 #### Using a ToStringBean in delegation mode
 
 ```java
-    public class MyBean implements ToString {
+public class MyBean implements ToString {
 
-            public Foo getFoo() { ... }
-            public void setFoo(Foo foo) { ... }
+    public Foo getFoo() { ... }
+    public void setFoo(Foo foo) { ... }
 
-            public String getName() { ... }
-            public void setName(String name) { ... }
+    public String getName() { ... }
+    public void setName(String name) { ... }
 
-            public List getValues() { ... }
-            public void setValues(List values) { ... }
+    public List getValues() { ... }
+    public void setValues(List values) { ... }
 
-            public String toString(String prefix) {
-            ToStringBean tsBean = new ToStringBean(MyBean.class,this);
-            return tsBean.toString(prefix);
-            }
+    public String toString(String prefix) {
+        ToStringBean tsBean = new ToStringBean(MyBean.class,this);
+        return tsBean.toString(prefix);
+    }
 
-            public String toString() {
-                return toString("myBean");
-            }
-        }
+    public String toString() {
+        return toString("myBean");
+    }
+
+}
 ```
 
-::: section
 ### EqualBean
 
 The EqualsBean class provides a recursive introspetion-based
@@ -101,55 +97,54 @@ and thehashCode() methods. The EqualsBean class works on array,
 collection, bean and basic type properties. Java Beans leveraging the
 EqualsBean implementation can do it using two different patterns.
 
-::: section
 #### Extending EqualsBean
 
 ```java
-    public class MyBean extend EqualsBean {
+public class MyBean extend EqualsBean {
 
-            public MyBean() {
-                super(MyBean.class);
-            }
+    public MyBean() {
+        super(MyBean.class);
+    }
 
-            public Foo getFoo() { ... }
-            public void setFoo(Foo foo) { ... }
+    public Foo getFoo() { ... }
+    public void setFoo(Foo foo) { ... }
 
-            public String getName() { ... }
-            public void setName(String name) { ... }
+    public String getName() { ... }
+    public void setName(String name) { ... }
 
-            public List getValues() { ... }
-            public void setValues(List values) { ... }
-        }
+    public List getValues() { ... }
+    public void setValues(List values) { ... }
+
+}
 ```
 
-::: section
 #### Using a EqualsBean in delegation mode
 
 ```java
-    public class MyBean implements ToString {
+public class MyBean implements ToString {
 
-            public Foo getFoo() { ... }
-            public void setFoo(Foo foo) { ... }
+    public Foo getFoo() { ... }
+    public void setFoo(Foo foo) { ... }
 
-            public String getName() { ... }
-            public void setName(String name) { ... }
+    public String getName() { ... }
+    public void setName(String name) { ... }
 
-            public List getValues() { ... }
-            public void setValues(List values) { ... }
+    public List getValues() { ... }
+    public void setValues(List values) { ... }
 
-            public boolean equals(Object obj) {
-                EqualsBean eBean = new EqualsBean(MyBean.class,this);
-                return eBean.beanEquals(obj);
-            }
+    public boolean equals(Object obj) {
+        EqualsBean eBean = new EqualsBean(MyBean.class,this);
+        return eBean.beanEquals(obj);
+    }
 
-            public int hashCode() {
-                EqualsBean equals = new EqualsBean(MyBean.class,this);
-                return equals.beanHashCode();
-            }
-        }
+    public int hashCode() {
+        EqualsBean equals = new EqualsBean(MyBean.class,this);
+        return equals.beanHashCode();
+    }
+
+}
 ```
 
-::: section
 ### CloneableBean
 
 The CloneableBean class provides a recursive introspetion-based
@@ -158,43 +153,43 @@ CloneableBean class works on array, collection, bean and basic type
 properties. Java Beans leveraging the CloneableBean implementation can
 do it using two different patterns.
 
-::: section
 #### Extending CloneableBean
 
 ```java
-    public class MyBean extend CloneableBean {
+public class MyBean extend CloneableBean {
 
-            public Foo getFoo() { ... }
-            public void setFoo(Foo foo) { ... }
+    public Foo getFoo() { ... }
+    public void setFoo(Foo foo) { ... }
 
-            public String getName() { ... }
-            public void setName(String name) { ... }
+    public String getName() { ... }
+    public void setName(String name) { ... }
 
-            public List getValues() { ... }
-            public void setValues(List values) { ... }
-        }
+    public List getValues() { ... }
+    public void setValues(List values) { ... }
+
+}
 ```
 
-::: section
 #### Using a CloneableBean in delegation mode
 
 ```java
-    public class MyBean implements Cloneable {
+public class MyBean implements Cloneable {
 
-            public Foo getFoo() { ... }
-            public void setFoo(Foo foo) { ... }
+    public Foo getFoo() { ... }
+    public void setFoo(Foo foo) { ... }
 
-            public String getName() { ... }
-            public void setName(String name) { ... }
+    public String getName() { ... }
+    public void setName(String name) { ... }
 
-            public List getValues() { ... }
-            public void setValues(List values) { ... }
+    public List getValues() { ... }
+    public void setValues(List values) { ... }
 
-            public Object clone() {
-                CloneableBean cBean = new CloneableBean(this);
-                return cBean.beanClone();
-            }
-        }
+    public Object clone() {
+        CloneableBean cBean = new CloneableBean(this);
+        return cBean.beanClone();
+    }
+
+}
 ```
 
 By default, the CloneableBean copies all properties of the given object.
@@ -205,10 +200,7 @@ references to other properties or properties of properties). For example
 SyndFeed and SyndEntry beans have convenience properties, publishedDate,
 author, copyright and categories all of them mapped to properties in the
 DC Module.
-:::
-:::
 
-::: section
 ### ObjectBean
 
 The ObjectBean is a convenience bean providing ToStringBean, EqualsBean
@@ -220,24 +212,24 @@ hashCode() and clone() support as defined above.
 And example of using the ObjectBean class is:
 
 ```java
-    public class MyBean extends ObjectBean {
+public class MyBean extends ObjectBean {
 
-            public MyBean() {
-                super(MyBean.class);
-            }
+    public MyBean() {
+        super(MyBean.class);
+    }
 
-            public Foo getFoo() { ... }
-            public void setFoo(Foo foo) { ... }
+    public Foo getFoo() { ... }
+    public void setFoo(Foo foo) { ... }
 
-            public String getName() { ... }
-            public void setName(String name) { ... }
+    public String getName() { ... }
+    public void setName(String name) { ... }
 
-            public List getValues() { ... }
-            public void setValues(List values) { ... }
-        }
+    public List getValues() { ... }
+    public void setValues(List values) { ... }
+
+}
 ```
 
-::: section
 ### Enum
 
 The Enum is an enumeration base class \[Too bad Java 5.0 is not here yet
@@ -248,23 +240,23 @@ of the above function it provides a seamless integration.
 And example of using the EnumBean class is:
 
 ```java
-    public static class Day extends Enum {
-            private Day(String name) {
-                super(name);
-            }
+public static class Day extends Enum {
 
-            public static final Day SUNDAY = new Day("sunday");
-            public static final Day MONDAY = new Day("monday");
-            public static final Day TUESDAY = new Day("tuesday");
-            public static final Day WEDNESDAY = new Day("wednesday");
-            public static final Day THURSDAY = new Day("thursday");
-            public static final Day FRIDAY = new Day("friday");
-            public static final Day SATURDAY = new Day("saturday");
+    private Day(String name) {
+        super(name);
+    }
 
-        }
+    public static final Day SUNDAY = new Day("sunday");
+    public static final Day MONDAY = new Day("monday");
+    public static final Day TUESDAY = new Day("tuesday");
+    public static final Day WEDNESDAY = new Day("wednesday");
+    public static final Day THURSDAY = new Day("thursday");
+    public static final Day FRIDAY = new Day("friday");
+    public static final Day SATURDAY = new Day("saturday");
+
+}
 ```
 
-::: section
 ### CopyFrom
 
 The CopyFrom interface defines functionality similar to a deep cloning.
@@ -286,78 +278,84 @@ in common).
 A simple example using the CopyFrom interface is:
 
 ```java
-    public interface Foo extends CopyFrom {
-            public void setName(String name);
-            public String getName();
+public interface Foo extends CopyFrom {
 
-            public void setValues(Set values);
-            public Set getValues();
-        }
+    public void setName(String name);
+    public String getName();
 
-        public class FooImplA implements Foo {
-            private String _name;
-            private Set _values;
+    public void setValues(Set values);
+    public Set getValues();
 
-            public void setName(String name) {
-                _name = name;
-            }
+}
 
-            public String getName() {
-                return _name;
-            }
+public class FooImplA implements Foo {
 
-            public void setValues(Set values) {
-                _values = values;
-            }
+    private String _name;
+    private Set _values;
 
-            public Set getValues() {
-                return _values;
-            }
+    public void setName(String name) {
+        _name = name;
+    }
 
-            public void copyFrom(Object obj) {
-                Foo other = (Foo) obj;
-                setName(other.getName());
-                setValues(new HashSet(other.getValues());
-            }
+    public String getName() {
+        return _name;
+    }
 
-            public Class getInterface() {
-                return Foo.class;
-            }
-        }
+    public void setValues(Set values) {
+        _values = values;
+    }
 
-        public class FooImplB implements Foo {
-            private Map _data;
+    public Set getValues() {
+        return _values;
+    }
 
-            public FooImplB() {
-                _data = new HashMap();
-            }
+    public void copyFrom(Object obj) {
+        Foo other = (Foo) obj;
+        setName(other.getName());
+        setValues(new HashSet(other.getValues());
+    }
 
-            public void setName(String name) {
-                _data.put("name",name);
-            }
+    public Class getInterface() {
+        return Foo.class;
+    }
 
-            public String getName() {
-                return (String) _data.get("name");
-            }
+}
 
-            public void setValues(Set values) {
-                _data.put("values",values);
-            }
+public class FooImplB implements Foo {
 
-            public Set getValues() {
-                return (Set) _data.get("values");
-            }
+    private Map _data;
 
-            public void copyFrom(Object obj) {
-                Foo other = (Foo) obj;
-                setName(other.getName());
-                setValues(new HashSet(other.getValues());
-            }
+    public FooImplB() {
+        _data = new HashMap();
+    }
 
-            public Class getInterface() {
-                return Foo.class;
-            }
-        }
+    public void setName(String name) {
+        _data.put("name",name);
+    }
+
+    public String getName() {
+        return (String) _data.get("name");
+    }
+
+    public void setValues(Set values) {
+        _data.put("values",values);
+    }
+
+    public Set getValues() {
+        return (Set) _data.get("values");
+    }
+
+    public void copyFrom(Object obj) {
+        Foo other = (Foo) obj;
+        setName(other.getName());
+        setValues(new HashSet(other.getValues());
+    }
+
+    public Class getInterface() {
+        return Foo.class;
+    }
+
+}
 ```
 
 A use case for the CopyFrom functionality is a Java Bean implementation
@@ -378,5 +376,3 @@ property of the SyndFeed and SyndEntry beans is a use case of this
 feature where the copyFrom() invocation must create different beans
 subclasses for each type of module, the getInteface() helps to find the
 right implementation.
-:::
-:::

@@ -1,7 +1,5 @@
-::: section
 ## ROME 0.5 Beta
 
-::: section
 ### What is New, Highlights
 
 -   Removed common package and classes from the public API
@@ -9,16 +7,12 @@
 -   XmlReader now has a lenient behavior for charset encoding detection
 -   Bug fixes
 -   [ROME T-Shirt (rome)](./ROMET-Shirt.html)
-:::
 
-::: section
 ### Dependencies
 
 -   J2SE 1.4+
--   [JDOM 1.0](http://www.jdom.org/){.externalLink}
-:::
+-   [JDOM 1.0](http://www.jdom.org/)
 
-::: section
 ### Downloads
 
 -   [rome-0.5-src.zip](./rome-0.5-src.zip)
@@ -27,9 +21,7 @@
 -   [rome-0.5-src.tar.gz](./rome-0.5-src.tar.gz)
 -   [rome-samples-0.5-src.tar.gz](./rome-samples-0.5-src.tar.gz)
 -   [rome-samples-0.5-src.zip](./rome-samples-0.5-src.zip)
-:::
 
-::: section
 ### Additional Information
 
 -   [Tutorials](../../RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/index.html)
@@ -60,11 +52,7 @@
 -   Implementation documents
     -   [ROME bean utilities, equals, toString and
         clonning](../../RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/UnderstandingRssAndAtOMUtilitiEsROMEBeanUtilities.html)
-:::
 
-::: section
 ### Known Issues
 
 None.
-:::
-:::

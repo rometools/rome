@@ -1,11 +1,10 @@
-::: section
 ## ROME Feature Requests
 
 -   **BUG:** com.rometools.rome.io.impl.DateParser:Date
     parseW3CDateTime(String) incorrectly uses a comma (\",\") rather
     than a decimal (\".\") to delimit the seconds from miliseconds. The
     correct format can be found on
-    [http://www.w3.org/TR/NOTE-datetime](http://www.w3.org/TR/NOTE-datetime){.externalLink}.
+    [http://www.w3.org/TR/NOTE-datetime](http://www.w3.org/TR/NOTE-datetime).
     The bug is on line 170 (version 0.8). The fix is to replace the line
     with this: `int secFraction = pre.indexOf(".");` \-- JLP 9/4/2006
 
@@ -16,9 +15,9 @@
 
 -   **BUG:** Link in description is not parsed\
     Try to parse
-    [http://jakarta.apache.org/site/rss.xml](http://jakarta.apache.org/site/rss.xml){.externalLink},
+    [http://jakarta.apache.org/site/rss.xml](http://jakarta.apache.org/site/rss.xml),
     look at entry
-    [http://jakarta.apache.org/site/news/news-2006-q1.html#20060107.1](http://jakarta.apache.org/site/news/news-2006-q1.html#20060107.1){.externalLink}
+    [http://jakarta.apache.org/site/news/news-2006-q1.html#20060107.1](http://jakarta.apache.org/site/news/news-2006-q1.html#20060107.1)
     This entry has an \"\<a href\...\" in the first line, which isn\'t
     parsed by Rome \-- Main.iterson - 25 Jan 2006
 
@@ -52,7 +51,7 @@
     associated modules and retrieve the appropriate dc:date when the
     getDate() method returns null. This way entries from feeds like this
     one:
-    [http://www.magpiebrain.com/index.xml](http://www.magpiebrain.com/index.xml){.externalLink}
+    [http://www.magpiebrain.com/index.xml](http://www.magpiebrain.com/index.xml)
     would have valid dates without requiring me to write code work out
     what format the feed is in and act accordingly.
 
@@ -63,12 +62,12 @@
     by default does not process Modules. Refer to the Modules Plugins
     documentation to see how to enable this.
 
--   [RFC3229](http://bobwyman.pubsub.com/main/2004/09/implementations.html){.externalLink}
+-   [RFC3229](http://bobwyman.pubsub.com/main/2004/09/implementations.html)
     support (in [RomeFetcher](../../fetcher/index.html) and example code
     implementing it for production) would be a killer feature.
 
 -   The RSS 1.0 Spec
-    [http://web.resource.org/rss/1.0/spec](http://web.resource.org/rss/1.0/spec){.externalLink}
+    [http://web.resource.org/rss/1.0/spec](http://web.resource.org/rss/1.0/spec)
     indicates that the **suggested** maximum length for a description
     field on an entry is 500 characters, but the 0.4 codebase enforces
     500 characters as a hard limit \-- exceeding it on input or output
@@ -84,7 +83,7 @@
     Hence, RSS feeds will be incorrect in many cases however they still
     could join the party with a tolerant parser. Maybe Rome could do for
     Java what [Mark
-    Pilgrim](https://pypi.org/project/feedparser/){.externalLink} has
+    Pilgrim](https://pypi.org/project/feedparser/) has
     done for Python (although I did not verify his ultraliberal
     parser\'s tolerance)?
 
@@ -96,9 +95,9 @@
 
 -   I think that Rome has problems parsing rss feeds where the xml
     contains a link to a stylesheet. Try parsing
-    [http://ihatemyflatmate.blogspot.com/atom.xml](http://ihatemyflatmate.blogspot.com/atom.xml){.externalLink}
+    [http://ihatemyflatmate.blogspot.com/atom.xml](http://ihatemyflatmate.blogspot.com/atom.xml)
     (Atom) or
-    [http://msdn.microsoft.com/rss.xml](http://msdn.microsoft.com/rss.xml){.externalLink}
+    [http://msdn.microsoft.com/rss.xml](http://msdn.microsoft.com/rss.xml)
     (RSS 1.0). I get Exceptions with both, and they both have
     stylesheets, whereas other working feeds don\'t.
 
@@ -111,14 +110,14 @@
     the following:
 
     ```html
-        <FONT size="2">Quatre pi&amp;#232;ces</FONT>
+    <FONT size="2">Quatre pi&amp;#232;ces</FONT>
     ```
 
     In the hope of gettin \"Quatre pièces\" in your html feed. You get
     from the SynFeedOutput.output() this:
 
     ```html
-        &amp;lt;FONT size="2"&amp;gt;Quatre pi&amp;amp;#232;ces&amp;lt;/FONT&amp;gt;
+    &amp;lt;FONT size="2"&amp;gt;Quatre pi&amp;amp;#232;ces&amp;lt;/FONT&amp;gt;
     ```
 
     Which ends up with \"Quatre pièces\" being displayed in the RSS
@@ -134,4 +133,3 @@
 -   Provide support for lastBuildDate in RSS, many news provider,
     including Yahoo News and BBC use lastBuildDate instead of
     lastPublishDate.
-:::

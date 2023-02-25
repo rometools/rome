@@ -1,4 +1,3 @@
-::: section
 ## Rome v0.1 Tutorial, Using Rome to convert a syndication feed from one type to another
 
 **Software requirements:** Synd J2SE 1.4+, Xerces 2.4.0, JDOM B10,
@@ -18,8 +17,8 @@ structure. All it takes to read a syndication feed using Rome are the
 following 2 lines of code:
 
 ```java
-    SyndInput input = new SyndInput();
-    SyndFeedI feed = input.build(feedUrl.openStream());
+SyndInput input = new SyndInput();
+SyndFeedI feed = input.build(feedUrl.openStream());
 ```
 
 The first line creates a SyndInput instance that will work with any
@@ -36,8 +35,8 @@ right generator for it. The following two lines of code show how to
 create a syndication feed output from a SyndFeedI instance:
 
 ```java
-    SyndOutput output = new SyndOutput(outputType);
-    output.output(feed,System.out);
+SyndOutput output = new SyndOutput(outputType);
+output.output(feed,System.out);
 ```
 
 The first line creates a SyndOutput instance that will produce
@@ -52,46 +51,46 @@ syndication feed and converts it to other syndication feed type, writing
 the converted feed to the application\'s output.
 
 ```java
-    package com.rometools.rome.samples;
+package com.rometools.rome.samples;
 
-    import java.net.URL;
-    import com.rometools.rome.feed.synd.SyndFeedI;
-    import com.rometools.rome.io.SyndInput;
-    import com.rometools.rome.io.SyndOutput;
+import java.net.URL;
+import com.rometools.rome.feed.synd.SyndFeedI;
+import com.rometools.rome.io.SyndInput;
+import com.rometools.rome.io.SyndOutput;
 
-    public class FeedConverter {
+public class FeedConverter {
 
-        public static void main(String[] args) {
-            boolean ok = false;
-            if (args.length==2) {
-                try {
-                    String outputType = args[0];
+    public static void main(String[] args) {
+        boolean ok = false;
+        if (args.length==2) {
+            try {
+                String outputType = args[0];
 
-                    URL feedUrl = new URL(args[1]);
+                URL feedUrl = new URL(args[1]);
 
-                    SyndInput input = new SyndInput(false);
-                    SyndFeedI feed = input.build(feedUrl.openStream());
+                SyndInput input = new SyndInput(false);
+                SyndFeedI feed = input.build(feedUrl.openStream());
 
-                    SyndOutput output = new SyndOutput(outputType);
-                    output.output(feed,System.out);
+                SyndOutput output = new SyndOutput(outputType);
+                output.output(feed,System.out);
 
-                    ok = true;
-                }
-                catch (Exception ex) {
-                    System.out.println("ERROR: "+ex.getMessage());
-                }
+                ok = true;
             }
-
-            if (!ok) {
-                System.out.println();
-                System.out.println("FeedConverter converts between syndication feeds types.");
-                System.out.println("The first parameter must be the feed type to convert to.");
-                System.out.println(" [valid values are: rss_0.9, rss_0.91, rss_0.92, rss_0.93, ]");
-                System.out.println(" [                  rss_0.94, rss_1.0, rss_2.0 & atom_0.3  ]");
-                System.out.println("The second parameter must be the URL of the feed to convert.");
-                System.out.println();
+            catch (Exception ex) {
+                System.out.println("ERROR: "+ex.getMessage());
             }
         }
 
+        if (!ok) {
+            System.out.println();
+            System.out.println("FeedConverter converts between syndication feeds types.");
+            System.out.println("The first parameter must be the feed type to convert to.");
+            System.out.println(" [valid values are: rss_0.9, rss_0.91, rss_0.92, rss_0.93, ]");
+            System.out.println(" [                  rss_0.94, rss_1.0, rss_2.0 & atom_0.3  ]");
+            System.out.println("The second parameter must be the URL of the feed to convert.");
+            System.out.println();
+        }
     }
+
+}
 ```

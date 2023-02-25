@@ -1,4 +1,3 @@
-::: section
 ## Rome v0.2 Tutorials
 
 The following tutorials show how to use the Rome API. They focus on the
@@ -19,4 +18,3 @@ types in use today.
 The instructions for building and running the samples are identical to
 the [instructions for Rome
 v0.1](../../ROME0.1Beta/RomeV0.1Tutorials/RomeV0.1HowToBuildAndRunTheTutorialsSampleCode.html).
-:::

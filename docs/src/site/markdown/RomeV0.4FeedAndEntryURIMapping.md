@@ -1,4 +1,3 @@
-::: section
 ## Rome v0.4, Feed and Entry URI Mapping
 
 Rome Synd beans define the concept of URI at both feed and entry levels.
@@ -7,7 +6,6 @@ entries when processed with Rome. This is particularly useful when a
 system is persisting feeds and when doing data manipulation where a
 primary key for the feeds or the entries is needed.
 
-::: section
 ### The Problem
 
 RSS 0.90, 0.91, 0.92, 0.93 and 1.0 do not define any special element for
@@ -34,9 +32,7 @@ requires the id element to contain a normalized URI as defined by RFC
 The RSS0.94 and RSS 2.0 guid element and the Atom 0.3 id element are
 optional elements. Because of this, they may not be present at all in
 feeds.
-:::
 
-::: section
 ### Rome\'s Solution
 
 Because the concept of a URI it is not defined in all the feed formats,
@@ -44,25 +40,20 @@ Rome makes an arbitrary design decision to provide the URI functionality
 regardless of the original (or target) feed type. The following behavior
 as been chosen based on expected and assumed usage pattern of feed and
 entry data.
-:::
 
-::: section
 ### URI Normalization
 
 If the uri property of a SyndFeed or SyndEntry bean is not NULL, the
 getter method must return a normalized URI following the rules defined
 in RFC2396bis.
 
-::: section
 #### Converting from WireFeed (RSS or Atom) to SyndFeed
 
 The common use case for this scenario is when consuming a feed. Because
 of that, for clarity purposes, when referring to the data in the
 WireFeed the following sections talks about elements (as in the XML
 feed) instead of talking of properties.
-:::
 
-::: section
 #### SyndFeed
 
 None of the RSS versions define an ID at channel level. In addition to
@@ -75,7 +66,6 @@ In the case of Atom 0.3, if the id element is present in the feed, the
 SyndFeed uri property will be set with the value of the id element. If
 it is not present, the developer must set (if needed) a URI manually.
 
-::: section
 ##### SyndEntry
 
 For RSS 0.91, RSS 0.92, RSS 0.93 & RSS 1.0 if the link element is
@@ -96,10 +86,7 @@ For Atom 0.3 if the id element is present, the SyndEntry uri property is
 set with the value of the id element. If the id element is not present,
 the SyndEntry uri property is set with the value of the alternate link
 element.
-:::
-:::
 
-::: section
 #### Converting from SyndFeed to WireFeed (RSS or Atom)
 
 The common use case for this scenario is when generating a feed. Because
@@ -107,7 +94,6 @@ of that, for clarity purposes, when referring to the data in the
 WireFeed the following sections talks about elements (as in the XML
 feed) instead of talking of properties.
 
-::: section
 ##### SyndFeed
 
 For RSS 0.91, RSS 0.92, RSS 0.93, RSS 1.0 & RSS 2.0 the SyndFeed uri
@@ -116,9 +102,7 @@ element for it.
 
 For Atom 0.3 set the SyndFeed uri property is set as the value for the
 id element.
-:::
 
-::: section
 ##### SyndEntry
 
 For RSS 0.91, RSS 0.92, RSS 0.93 & RSS 1.0 the SyndEntry uri property is
@@ -139,7 +123,3 @@ values of the guid elements of the original feed.
 For Atom 0.3 the SyndEntry uri property is set as the id element.
 
 Mosh\...
-:::
-:::
-:::
-:::

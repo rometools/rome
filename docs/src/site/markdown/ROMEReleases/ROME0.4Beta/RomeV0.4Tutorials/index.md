@@ -1,4 +1,3 @@
-::: section
 ## Rome v0.4 Tutorials
 
 The following tutorials show how to use the Rome API. They focus on the
@@ -26,4 +25,3 @@ types in use today.
 For instructions on how to build and run the samples used in the
 tutorials [click
 here](./RomeV0.4HowToBuildAndRunTheTutorialsSampleCode.html).
-:::

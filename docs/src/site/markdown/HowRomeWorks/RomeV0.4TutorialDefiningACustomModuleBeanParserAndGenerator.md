@@ -1,4 +1,3 @@
-::: section
 ## Defining a Custom Module (bean, parser and generator)
 
 This tutorial walks through the steps of creating a custom module for
@@ -16,7 +15,6 @@ provided.
 The complete source for this tutorial is in the Rome samples bundle as
 well as in SVN.
 
-::: section
 ### What is the intended outcome of the tutorial?
 
 The goal is to add support for a hypothetical Sample Module by defining
@@ -30,41 +28,40 @@ element may occur several times. For example, a feed with the Sample
 Module data would look like:
 
 ```xml
-    <?xml version="1.0"?>
-    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-             xmlns="http://purl.org/rss/1.0/"
-             xmlns:sample="http://rome.dev.java.net/module/sample/1.0">
-        <channel>
-            <title>RSS 1.0 Feed with Sample Module</title>
-            <link>http://rome.dev.java.net</link>
-            <description>This is a feed showing how to use a custom module with Rome</description>
-            <items>
-                <rdf:Seq>
-                    <rdf:li resource="item01" />
-                    <rdf:li resource="item02" />
-                </rdf:Seq>
-            </items>
-            <sample:bar>Channel bar</sample:bar>
-            <sample:foo>Channel first foo</sample:foo>
-            <sample:foo>Channel second foo</sample:foo>
-        </channel>
-        <item rdf:about="item01">
-            <title>Title of Item 01</title>
-            <link>http://rome.dev.java.net/item01</link>
-            <description>Item 01 does not have Sample module data</description>
-        </item>
-        <item rdf:about="item02">
-            <title>Title of Item 02</title>
-            <link>http://rome.dev.java.net/item02</link>
-            <description>Item 02 has Sample module data</description>
-            <sample:bar>Item 02 bar</sample:bar>
-            <sample:foo>Item 02 only foo</sample:foo>
-            <sample:date>2004-07-27T00:00+00:00</sample:date>
-        </item>
-    </rdf:RDF>
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+            xmlns="http://purl.org/rss/1.0/"
+            xmlns:sample="http://rome.dev.java.net/module/sample/1.0">
+    <channel>
+        <title>RSS 1.0 Feed with Sample Module</title>
+        <link>http://rome.dev.java.net</link>
+        <description>This is a feed showing how to use a custom module with Rome</description>
+        <items>
+            <rdf:Seq>
+                <rdf:li resource="item01" />
+                <rdf:li resource="item02" />
+            </rdf:Seq>
+        </items>
+        <sample:bar>Channel bar</sample:bar>
+        <sample:foo>Channel first foo</sample:foo>
+        <sample:foo>Channel second foo</sample:foo>
+    </channel>
+    <item rdf:about="item01">
+        <title>Title of Item 01</title>
+        <link>http://rome.dev.java.net/item01</link>
+        <description>Item 01 does not have Sample module data</description>
+    </item>
+    <item rdf:about="item02">
+        <title>Title of Item 02</title>
+        <link>http://rome.dev.java.net/item02</link>
+        <description>Item 02 has Sample module data</description>
+        <sample:bar>Item 02 bar</sample:bar>
+        <sample:foo>Item 02 only foo</sample:foo>
+        <sample:date>2004-07-27T00:00+00:00</sample:date>
+    </item>
+</rdf:RDF>
 ```
 
-::: section
 ### Sample Module Bean
 
 First we must start with the bean interface, SampleModule. SampleModule
@@ -74,7 +71,7 @@ also extends the Cloneable, ToString and CopyFrom interfaces to ensure
 that the beans provide support for basic features as cloning, equality,
 toString, etc. (for more details on this check the [Understanding the
 Rome common classes and
-interfaces](http://wiki.java.net/twiki/bin/view/Javawsxml/Rome04Common){.externalLink}
+interfaces](http://wiki.java.net/twiki/bin/view/Javawsxml/Rome04Common)
 document).
 
 The SampleModule\'s URI is defined as a constant, accessible via the
@@ -86,19 +83,19 @@ Then the module defines 3 properties: bar (String), foos (List) and date
 for Java 5 generics already?).
 
 ```java
-    public interface SampleModule extends Module,CopyFrom {
+public interface SampleModule extends Module,CopyFrom {
 
-        public static final String URI = "http://rome.dev.java.net/module/sample/1.0";
+    public static final String URI = "http://rome.dev.java.net/module/sample/1.0";
 
-        public String getBar();
-        public void setBar(String bar);
+    public String getBar();
+    public void setBar(String bar);
 
-        public List getFoos();
-        public void setFoos(List foos);
+    public List getFoos();
+    public void setFoos(List foos);
 
-        public Date getDate();
-        public void setDate(Date date);
-    }
+    public Date getDate();
+    public void setDate(Date date);
+}
 ```
 
 Next we have to write the bean implementation, SampleModuleImpl.
@@ -111,16 +108,17 @@ the URI of the Sample module is indicated; it will be used by the
 Module.getUri() method.
 
 ```java
-    public class SampleModuleImpl extends ModuleImpl implements SampleModule {
-        ...
-        public SampleModule() {
-            super(SampleModule.class,SampleModule.URI);
-        }
+public class SampleModuleImpl extends ModuleImpl implements SampleModule {
+    ...
+    public SampleModule() {
+        super(SampleModule.class,SampleModule.URI);
+    }
 
-        public String getBar() {
-            return _bar;
-        }
-        ...
+    public String getBar() {
+        return _bar;
+    }
+    ...
+}
 ```
 
 The module properties are just Java Bean properties. The only catch is
@@ -130,35 +128,36 @@ Also, following Rome semantics, all properties are by reference,
 including mutable ones.
 
 ```java
-    public class SampleModuleImpl extends ModuleImpl implements SampleModule {
-        private String _bar;
-        private List _foos;
-        private Date _date;
-        ...
-        public void setBar(String bar) {
-            _bar = bar;
-        }
+public class SampleModuleImpl extends ModuleImpl implements SampleModule {
+    private String _bar;
+    private List _foos;
+    private Date _date;
+    ...
+    public void setBar(String bar) {
+        _bar = bar;
+    }
 
-        public List getFoos() {
-            return (_foos==null) ? (_foos=new ArrayList()) : _foos;
-        }
+    public List getFoos() {
+        return (_foos==null) ? (_foos=new ArrayList()) : _foos;
+    }
 
-        public void setFoos(List foos) {
-            _foos = foos;
-        }
+    public void setFoos(List foos) {
+        _foos = foos;
+    }
 
-        public Date getDate() {
-            return _date;
-        }
+    public Date getDate() {
+        return _date;
+    }
 
-        public void setDate(Date date) {
-            _date = date;
-        }
+    public void setDate(Date date) {
+        _date = date;
+    }
+}
 ```
 
 Now the weird part: the bits for the CopyFrom logic. The [Understanding
 the Rome common classes and
-interfaces](http://wiki.java.net/twiki/bin/view/Javawsxml/Rome04Common){.externalLink}
+interfaces](http://wiki.java.net/twiki/bin/view/Javawsxml/Rome04Common)
 document fully explains the CopyFrom logic in detail. In short, the
 CopyFrom interface is to support copying properties from one
 implementation of a bean (defined through an interface) to another
@@ -173,24 +172,23 @@ object (which must be a SampleModule implementation) into the caller
 bean properties. Note that the copyFrom must do a deep copy.
 
 ```java
-    public class SampleModuleImpl extends ModuleImpl implements SampleModule {
-        ...
-        public Class getInterface() {
-            return SampleModuleI.class;
-        }
-
-        public void copyFrom(Object obj) {
-            SampleModule sm = (SampleModule) obj;
-            setBar(sm.getBar());
-            List foos = new ArrayList(sm.getFoos()); // this is enough for the copy because the list elements are inmutable (Strings)
-            setFoos(foos);
-            setDate((Date)sm.getDate().clone()); // because Date is not inmutable.
-        }
-
+public class SampleModuleImpl extends ModuleImpl implements SampleModule {
+    ...
+    public Class getInterface() {
+        return SampleModuleI.class;
     }
+
+    public void copyFrom(Object obj) {
+        SampleModule sm = (SampleModule) obj;
+        setBar(sm.getBar());
+        List foos = new ArrayList(sm.getFoos()); // this is enough for the copy because the list elements are inmutable (Strings)
+        setFoos(foos);
+        setDate((Date)sm.getDate().clone()); // because Date is not inmutable.
+    }
+
+}
 ```
 
-::: section
 ### Sample Module Parser
 
 The sample module parser must implement the ModuleParser interface. This
@@ -215,49 +213,48 @@ method returns null. This is to avoid having an empty instance of a
 module -not present in the feed- in the feed bean or in the item bean.
 
 ```java
-    public class SampleModuleParser implements ModuleParser {
+public class SampleModuleParser implements ModuleParser {
 
-        private static final Namespace SAMPLE_NS  = Namespace.getNamespace("sample", SampleModule.URI);
+    private static final Namespace SAMPLE_NS  = Namespace.getNamespace("sample", SampleModule.URI);
 
-        public String getNamespaceUri() {
-            return SampleModule.URI;
-        }
-
-        public Module parse(Element dcRoot) {
-            boolean foundSomething = false;
-            SampleModule fm = new SampleModuleImpl();
-
-            Element e = dcRoot.getChild("bar", SAMPLE_NS);
-            if (e != null) {
-                foundSomething = true;
-                fm.setBar(e.getText());
-            }
-            List eList = dcRoot.getChildren("foo", SAMPLE_NS);
-            if (eList.size() > 0) {
-                foundSomething = true;
-                fm.setFoos(parseFoos(eList));
-            }
-            e = dcRoot.getChild("date", SAMPLE_NS);
-            if (e != null) {
-                foundSomething = true;
-                fm.setDate(DateParser.parseW3CDateTime(e.getText()));
-            }
-            return (foundSomething) ? fm : null;
-        }
-
-        private List parseFoos(List eList) {
-            List foos = new ArrayList();
-            for (int i = 0; i < eList.size(); i++) {
-                Element e = (Element) eList.get(i);
-                foos.add(e.getText());
-            }
-            return foos;
-        }
-
+    public String getNamespaceUri() {
+        return SampleModule.URI;
     }
+
+    public Module parse(Element dcRoot) {
+        boolean foundSomething = false;
+        SampleModule fm = new SampleModuleImpl();
+
+        Element e = dcRoot.getChild("bar", SAMPLE_NS);
+        if (e != null) {
+            foundSomething = true;
+            fm.setBar(e.getText());
+        }
+        List eList = dcRoot.getChildren("foo", SAMPLE_NS);
+        if (eList.size() > 0) {
+            foundSomething = true;
+            fm.setFoos(parseFoos(eList));
+        }
+        e = dcRoot.getChild("date", SAMPLE_NS);
+        if (e != null) {
+            foundSomething = true;
+            fm.setDate(DateParser.parseW3CDateTime(e.getText()));
+        }
+        return (foundSomething) ? fm : null;
+    }
+
+    private List parseFoos(List eList) {
+        List foos = new ArrayList();
+        for (int i = 0; i < eList.size(); i++) {
+            Element e = (Element) eList.get(i);
+            foos.add(e.getText());
+        }
+        return foos;
+    }
+
+}
 ```
 
-::: section
 ### Sample Module Generator
 
 The sample module generator must implement the ModuleGenerator
@@ -276,57 +273,57 @@ If no Sample Module bean is in the feed bean the module generator is not
 invoked at all.
 
 ```java
-    public class SampleModuleGenerator  implements ModuleGenerator {
-        private static final Namespace SAMPLE_NS  = Namespace.getNamespace("sample", SampleModule.URI);
+public class SampleModuleGenerator  implements ModuleGenerator {
 
-        public String getNamespaceUri() {
-            return SampleModule.URI;
-        }
+    private static final Namespace SAMPLE_NS  = Namespace.getNamespace("sample", SampleModule.URI);
 
-        private static final Set NAMESPACES;
-
-        static {
-            Set nss = new HashSet();
-            nss.add(SAMPLE_NS);
-            NAMESPACES = Collections.unmodifiableSet(nss);
-        }
-
-        public Set getNamespaceUris() {
-            return NAMESPACES;
-        }
-
-        public void generate(Module module, Element element) {
-
-            // this is not necessary, it is done to avoid the namespace definition in every item.
-            Element root = element;
-            while (root.getParent()!=null && root.getParent() instanceof Element) {
-                root = (Element) element.getParent();
-            }
-            root.addNamespaceDeclaration(SAMPLE_NS);
-
-            SampleModuleI fm = (SampleModule)module;
-            if (fm.getBar() != null) {
-                element.addContent(generateSimpleElement("bar", fm.getBar()));
-            }
-            List foos = fm.getFoos();
-            for (int i = 0; i < foos.size(); i++) {
-                element.addContent(generateSimpleElement("foo",foos.get(i).toString()));
-            }
-            if (fm.getDate() != null) {
-                element.addContent(generateSimpleElement("date", DateParser.formatW3CDateTime(fm.getDate())));
-            }
-        }
-
-        protected Element generateSimpleElement(String name, String value)  {
-            Element element = new Element(name, SAMPLE_NS);
-            element.addContent(value);
-            return element;
-        }
-
+    public String getNamespaceUri() {
+        return SampleModule.URI;
     }
+
+    private static final Set NAMESPACES;
+
+    static {
+        Set nss = new HashSet();
+        nss.add(SAMPLE_NS);
+        NAMESPACES = Collections.unmodifiableSet(nss);
+    }
+
+    public Set getNamespaceUris() {
+        return NAMESPACES;
+    }
+
+    public void generate(Module module, Element element) {
+
+        // this is not necessary, it is done to avoid the namespace definition in every item.
+        Element root = element;
+        while (root.getParent()!=null && root.getParent() instanceof Element) {
+            root = (Element) element.getParent();
+        }
+        root.addNamespaceDeclaration(SAMPLE_NS);
+
+        SampleModuleI fm = (SampleModule)module;
+        if (fm.getBar() != null) {
+            element.addContent(generateSimpleElement("bar", fm.getBar()));
+        }
+        List foos = fm.getFoos();
+        for (int i = 0; i < foos.size(); i++) {
+            element.addContent(generateSimpleElement("foo",foos.get(i).toString()));
+        }
+        if (fm.getDate() != null) {
+            element.addContent(generateSimpleElement("date", DateParser.formatW3CDateTime(fm.getDate())));
+        }
+    }
+
+    protected Element generateSimpleElement(String name, String value)  {
+        Element element = new Element(name, SAMPLE_NS);
+        element.addContent(value);
+        return element;
+    }
+
+}
 ```
 
-::: section
 ### Configuration to make Rome process Sample Module in feeds
 
 The last step is to setup the configuration file to indicate to Rome how
@@ -345,28 +342,26 @@ Following is the \'rome.properties\' file for the Sample Module, it\'s
 defined for RSS 1.0 only, for both feed and item elements.
 
 ```properties
-    # Parsers for RSS 1.0 feed modules
-    #
-    rss_1.0.feed.ModuleParser.classes=com.rometools.rome.samples.module.SampleModuleParser
+# Parsers for RSS 1.0 feed modules
+#
+rss_1.0.feed.ModuleParser.classes=com.rometools.rome.samples.module.SampleModuleParser
 
-    # Parsers for RSS 1.0 item modules
-    #
-    rss_1.0.item.ModuleParser.classes=com.rometools.rome.samples.module.SampleModuleParser
+# Parsers for RSS 1.0 item modules
+#
+rss_1.0.item.ModuleParser.classes=com.rometools.rome.samples.module.SampleModuleParser
 
-    # Generators for RSS 1.0 feed modules
-    #
-    rss_1.0.feed.ModuleGenerator.classes=com.rometools.rome.samples.module.SampleModuleGenerator
+# Generators for RSS 1.0 feed modules
+#
+rss_1.0.feed.ModuleGenerator.classes=com.rometools.rome.samples.module.SampleModuleGenerator
 
-    # Generators for RSS_1.0 entry modules
-    #
-    rss_1.0.item.ModuleGenerator.classes=com.rometools.rome.samples.module.SampleModuleGenerator
+# Generators for RSS_1.0 entry modules
+#
+rss_1.0.item.ModuleGenerator.classes=com.rometools.rome.samples.module.SampleModuleGenerator
 ```
 
 If you are defining more than one module, indicate the parser and
 generator implementation classes separated by commas or spaces.
-:::
 
-::: section
 ### Using the Sample Module from the SyndFeed beans
 
 They will be there, just use them. You may get the SampleModule bean
@@ -376,7 +371,5 @@ SyndEntry bean.
 Adding or replacing a syndication feed parser, generator or converter
 goes along the same lines of what it has been explained in the tutorial
 for modules. This is explained in the [Rome Plugins
-Mechanism](http://wiki.java.net/twiki/bin/view/Javawsxml/Rome04Plugins){.externalLink}
+Mechanism](http://wiki.java.net/twiki/bin/view/Javawsxml/Rome04Plugins)
 topic.
-:::
-:::

@@ -1,4 +1,3 @@
-::: section
 ## What part of the API you should be using
 
 Rome API allows developers to work with classes that closely resemble a
@@ -12,4 +11,3 @@ For day to day coding, we found ourselves using the **Synd\*** classes
 and **com.rometools.rome.io** packages) as we need to do applications
 that understand the different syndication feed types. And it is much
 simpler to work with a higher and independent abstraction.
-:::

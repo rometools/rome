@@ -1,4 +1,3 @@
-::: section
 ## XML Charset Encoding detection, how ROME helps getting the right charset encoding
 
 Determining the charset set encoding of an XML document it may prove not
@@ -9,26 +8,26 @@ Current Java libraries or utilities don\'t do this by default, A JAXP
 SAX parser may detect the charset encoding of a XML document looking at
 the first bytes of the stream as defined Section 4.3.3 and Appendix F.1
 of the in [XML 1.0 (Third
-Edition)](http://www.w3.org/TR/2004/REC-xml-20040204/){.externalLink}
+Edition)](http://www.w3.org/TR/2004/REC-xml-20040204/)
 specification. But Appendix F.1 is non-normative and not all Java XML
 parsers do it right now. For example the JAXP SAX parser implementation
-in [J2SE 1.4.2](http://java.sun.com/j2se/1.4.2){.externalLink} does not
+in [J2SE 1.4.2](http://java.sun.com/j2se/1.4.2) does not
 handle Appendix F.1 and [Xerces
-2.6.2](http://xml.apache.org/xerces2-j/){.externalLink} just added
+2.6.2](http://xml.apache.org/xerces2-j/) just added
 support for it. But still this does not solve the whole problem. JAXP
 SAX parsers are not aware of the HTTP transport rules for charset
 encoding resolution as defined by [RFC
-3023](http://www.ietf.org/rfc/rfc3023.txt){.externalLink}. They are not
+3023](http://www.ietf.org/rfc/rfc3023.txt). They are not
 because they operate on a byte stream or a char stream without any
 knowledge of the stream transport protocol, HTTP in this case.
 
 [Mark
-Pilgrim](https://en.wikipedia.org/wiki/Mark_Pilgrim){.externalLink} did
+Pilgrim](https://en.wikipedia.org/wiki/Mark_Pilgrim) did
 a very good job explaining how the charset encoding should be
 determined, [Determining the character encoding of a feed
-(Archived)](https://web.archive.org/web/20060706153721/http://diveintomark.org/archives/2004/02/13/xml-media-types){.externalLink}
+(Archived)](https://web.archive.org/web/20060706153721/http://diveintomark.org/archives/2004/02/13/xml-media-types)
 and [XML on the Web Has
-Failed](http://www.xml.com/pub/a/2004/07/21/dive.html){.externalLink}.
+Failed](http://www.xml.com/pub/a/2004/07/21/dive.html).
 
 To isolate developers from this issue ROME has a special character
 stream class, the *XmlReader*. The *XmlReader* class is a subclass of
@@ -37,7 +36,6 @@ read from files, input streams, URLs and input streams obtained over
 HTTP. Ideally this should be built into the JAXP SAX classes, most
 likely in the InputSource class.
 
-::: section
 ### Default Lenient Behavior
 
 It is very common for many sites, due to improper configuration or lack
@@ -61,64 +59,60 @@ The XmlReader class has 2 constructors that allow a strict (non-lenient)
 charset encoding detection to be performed. This constructors take a
 lenient boolean flag, the flag should be set to *false* for a strict
 detection.
-:::
 
-::: section
 ### The Algorithms per XML 1.0 and RFC 3023 specifications
 
 Following it\'s a detailed explanation on the algorithms the *XmlReader*
 uses to determine the charset encoding. These algorithms first appeared
 in [Tucu\'s
-Weblog](http://blogs.sun.com/roller/page/tucu/Weblog){.externalLink}.
-:::
+Weblog](http://blogs.sun.com/roller/page/tucu/Weblog).
 
-::: section
 ### Raw XML charset encoding detection
 
 Detection of the charset encoding of a XML document without external
 information (i.e. reading a XML document from a file). Following
 [Section
-4.3.3](http://www.w3.org/TR/2004/REC-xml-20040204/#charencoding){.externalLink}
+4.3.3](http://www.w3.org/TR/2004/REC-xml-20040204/#charencoding)
 and [Appendix
-F.1](http://www.w3.org/TR/REC-xml/#sec-guessing-no-ext-info){.externalLink}
+F.1](http://www.w3.org/TR/REC-xml/#sec-guessing-no-ext-info)
 of the XML 1.0 specification the charset encoding of an XML document is
 determined as follows:
 
 ```
-    BOMEnc     : byte order mark. Possible values: 'UTF-8', 'UTF-16BE', 'UTF-16LE' or NULL
-    XMLGuessEnc: best guess using the byte representation of the first bytes of XML declaration
-                 ('<?xml...?>') if present. Possible values: 'UTF-8', 'UTF-16BE', 'UTF-16LE' or NULL
-    XMLEnc     : encoding in the XML declaration ('<?xml encoding="..."?>'). Possible values: anything or NULL
+BOMEnc     : byte order mark. Possible values: 'UTF-8', 'UTF-16BE', 'UTF-16LE' or NULL
+XMLGuessEnc: best guess using the byte representation of the first bytes of XML declaration
+              ('<?xml...?>') if present. Possible values: 'UTF-8', 'UTF-16BE', 'UTF-16LE' or NULL
+XMLEnc     : encoding in the XML declaration ('<?xml encoding="..."?>'). Possible values: anything or NULL
 
-    if BOMEnc is NULL
-      if XMLGuessEnc is NULL or XMLEnc is NULL
-        encoding is 'UTF-8'                                                                   [1.0]
-      else
-      if XMLEnc is 'UTF-16' and (XMLGuessEnc is 'UTF-16BE' or XMLGuessEnc is 'UTF-16LE')
-        encoding is XMLGuessEnc                                                               [1.1]
-      else
-        encoding is XMLEnc                                                                    [1.2]
-    else
-    if BOMEnc is 'UTF-8'
-      if XMLGuessEnc is not NULL and XMLGuessEnc is not 'UTF-8'
-        ERROR, encoding mismatch                                                              [1.3]
-      if XMLEnc is not NULL and XMLEnc is not 'UTF-8'
-        ERROR, encoding mismatch                                                              [1.4]
-      encoding is 'UTF-8'
-    else
-    if BOMEnc is 'UTF-16BE' or BOMEnc is 'UTF-16LE'
-      if XMLGuessEnc is not NULL and XMLGuessEnc is not BOMEnc
-        ERROR, encoding mismatch                                                              [1.5]
-      if XMLEnc is not NULL and XMLEnc is not 'UTF-16' and XMLEnc is not BOMEnc
-        ERROR, encoding mismatch                                                              [1.6]
-      encoding is BOMEnc
-    else
-      ERROR, cannot happen given BOMEnc possible values (see above)                           [1.7]
+if BOMEnc is NULL
+  if XMLGuessEnc is NULL or XMLEnc is NULL
+    encoding is 'UTF-8'                                                                   [1.0]
+  else
+  if XMLEnc is 'UTF-16' and (XMLGuessEnc is 'UTF-16BE' or XMLGuessEnc is 'UTF-16LE')
+    encoding is XMLGuessEnc                                                               [1.1]
+  else
+    encoding is XMLEnc                                                                    [1.2]
+else
+if BOMEnc is 'UTF-8'
+  if XMLGuessEnc is not NULL and XMLGuessEnc is not 'UTF-8'
+    ERROR, encoding mismatch                                                              [1.3]
+  if XMLEnc is not NULL and XMLEnc is not 'UTF-8'
+    ERROR, encoding mismatch                                                              [1.4]
+  encoding is 'UTF-8'
+else
+if BOMEnc is 'UTF-16BE' or BOMEnc is 'UTF-16LE'
+  if XMLGuessEnc is not NULL and XMLGuessEnc is not BOMEnc
+    ERROR, encoding mismatch                                                              [1.5]
+  if XMLEnc is not NULL and XMLEnc is not 'UTF-16' and XMLEnc is not BOMEnc
+    ERROR, encoding mismatch                                                              [1.6]
+  encoding is BOMEnc
+else
+  ERROR, cannot happen given BOMEnc possible values (see above)                           [1.7]
 ```
 
 Byte Order Mark encoding and XML guessed encoding detection rules are
 clearly explained in the [XML 1.0 Third Edition Appendix
-F.1](http://www.w3.org/TR/REC-xml/#sec-guessing-no-ext-info){.externalLink}.
+F.1](http://www.w3.org/TR/REC-xml/#sec-guessing-no-ext-info).
 Note that in this algorithm BOMEnc and XMLGuessEnc are restricted to
 UTF-8 and UTF-16\* encodings.
 
@@ -126,7 +120,7 @@ UTF-8 and UTF-16\* encodings.
     guessed from the first bytes in the stream, defaulting to UTF-8.
 -   **#1.1.** Strictly following [XML 1.0 Third Edition Section 4.3.3
     Charset Encoding in
-    Entities](http://www.w3.org/TR/2004/REC-xml-20040204/#charencoding){.externalLink}
+    Entities](http://www.w3.org/TR/2004/REC-xml-20040204/#charencoding)
     (2nd paragraph) no BOM and UTF-16 XML declaration encoding is an
     error. The BOM is required to identify if the encoding is BE or LE.
     But if XMLEnc was read it means that the encoding byte order of the
@@ -148,56 +142,55 @@ UTF-8 and UTF-16\* encodings.
     happen. *IMPORTANT:* To handle other encodings (i.e. USC-4 or EBCDIC
     encoding families) the algorithm should be extended here.
 
-::: section
 #### XML over HTTP charset encoding detection
 
 Detection of the charset encoding of a XML document with external
 information (provided by HTTP). Following [Section
-4.3.3](http://www.w3.org/TR/2004/REC-xml-20040204/#charencoding){.externalLink},
+4.3.3](http://www.w3.org/TR/2004/REC-xml-20040204/#charencoding),
 [Appendix
-F.1](http://www.w3.org/TR/REC-xml/#sec-guessing-no-ext-info){.externalLink}
+F.1](http://www.w3.org/TR/REC-xml/#sec-guessing-no-ext-info)
 and [Appendix
-F.2](http://www.w3.org/TR/2004/REC-xml-20040204/#sec-guessing-with-ext-info){.externalLink}
+F.2](http://www.w3.org/TR/2004/REC-xml-20040204/#sec-guessing-with-ext-info)
 of the XML 1.0 specification, plus [RFC
-3023](http://www.ietf.org/rfc/rfc3023.txt){.externalLink} the charset
+3023](http://www.ietf.org/rfc/rfc3023.txt) the charset
 encoding of an XML document served over HTTP is determined as follows:
 
 ```
-    ContentType: Content-Type HTTP header
-    CTMime     : MIME type defined in the ContentType
-    CTEnc      : charset encoding defined in the ContentType, NULL otherwise
-    BOMEnc     : byte order mark. Possible values: 'UTF-8', 'UTF-16BE', 'UTF-16LE' or NULL
-    XMLGuessEnc: best guess using the byte representation of the first bytes of XML declaration
-                 ('<?xml...?>') if present. Possible values: 'UTF-8', 'UTF-16BE', 'UTF-16LE' or NULL
-    XMLEnc     : encoding in the XML declaration ('<?xml encoding="..."?>'). Possible values: anything or NULL
-    APP-XML    : RFC 3023 defined 'application/*xml' types
-    TEXT-XML   : RFC 3023 defined 'text/*xml' types
+ContentType: Content-Type HTTP header
+CTMime     : MIME type defined in the ContentType
+CTEnc      : charset encoding defined in the ContentType, NULL otherwise
+BOMEnc     : byte order mark. Possible values: 'UTF-8', 'UTF-16BE', 'UTF-16LE' or NULL
+XMLGuessEnc: best guess using the byte representation of the first bytes of XML declaration
+              ('<?xml...?>') if present. Possible values: 'UTF-8', 'UTF-16BE', 'UTF-16LE' or NULL
+XMLEnc     : encoding in the XML declaration ('<?xml encoding="..."?>'). Possible values: anything or NULL
+APP-XML    : RFC 3023 defined 'application/*xml' types
+TEXT-XML   : RFC 3023 defined 'text/*xml' types
 
-    if CTMime is APP-XML or CTMime is TEXT-XML
-      if CTEnc is NULL
-        if CTMime is APP-XML
-          encoding is determined using the Raw XML charset encoding detection algorithm      [2.0]
-        else
-        if CTMime is TEXT-XML
-          encoding is 'US-ASCII'                                                             [2.1]
-      else
-      if (CTEnc is 'UTF-16BE' or CTEnc is 'UTF-16LE') and BOMEnc is not NULL
-        ERROR, RFC 3023 explicitly forbids this                                              [2.2]
-      else
-      if CTEnc is 'UTF-16'
-        if BOMEnc is 'UTF-16BE' or BOMEnc is 'UTF-16LE'
-          encoding is BOMEnc                                                                 [2.3]
-        else
-          ERROR, missing BOM or encoding mismatch                                            [2.4]
-      else
-        encoding is CTEnc                                                                    [2.5]
+if CTMime is APP-XML or CTMime is TEXT-XML
+  if CTEnc is NULL
+    if CTMime is APP-XML
+      encoding is determined using the Raw XML charset encoding detection algorithm      [2.0]
     else
-      ERROR, handling for other MIME types is undefined                                      [2.6]
+    if CTMime is TEXT-XML
+      encoding is 'US-ASCII'                                                             [2.1]
+  else
+  if (CTEnc is 'UTF-16BE' or CTEnc is 'UTF-16LE') and BOMEnc is not NULL
+    ERROR, RFC 3023 explicitly forbids this                                              [2.2]
+  else
+  if CTEnc is 'UTF-16'
+    if BOMEnc is 'UTF-16BE' or BOMEnc is 'UTF-16LE'
+      encoding is BOMEnc                                                                 [2.3]
+    else
+      ERROR, missing BOM or encoding mismatch                                            [2.4]
+  else
+    encoding is CTEnc                                                                    [2.5]
+else
+  ERROR, handling for other MIME types is undefined                                      [2.6]
 ```
 
 Byte Order Mark encoding and XML guessed encoding detection rules are
 clearly explained in the [XML 1.0 Third Edition Appendix
-F.1](http://www.w3.org/TR/REC-xml/#sec-guessing-no-ext-info){.externalLink}.
+F.1](http://www.w3.org/TR/REC-xml/#sec-guessing-no-ext-info).
 Note that in this algorithm BOMEnc and XMLGuessEnc are restricted to
 UTF-8 and UTF-16\* encodings.
 
@@ -205,29 +198,29 @@ UTF-8 and UTF-16\* encodings.
     XML sub-type. There is not HTTP Content-type charset encoding
     information. The charset encoding is determined using the Raw XML
     charset encoding detection algorithm. Refer to [RFC
-    3023](http://www.ietf.org/rfc/rfc3023.txt){.externalLink} Section
+    3023](http://www.ietf.org/rfc/rfc3023.txt) Section
     *3.2. Application/xml Registration*.
 -   **#2.1.** HTTP content type declares a MIME of text type and XML
     sub-type. There is not HTTP Content-type charset encoding
     information. The charset encoding is US-ASCII. Refer to [RFC
-    3023](http://www.ietf.org/rfc/rfc3023.txt){.externalLink} Section
+    3023](http://www.ietf.org/rfc/rfc3023.txt) Section
     *3.1. Text/xml Registration*.
 -   **#2.2.** For text-XML and application-XML MIME types if the HTTP
     content type declares \'UTF-16BE\' or \'UTF-16LE\' as the charset
     encoding, a BOM is prohibited. Refer to [RFC
-    3023](http://www.ietf.org/rfc/rfc3023.txt){.externalLink} Section
+    3023](http://www.ietf.org/rfc/rfc3023.txt) Section
     *4. The Byte Order Mark (BOM) and Conversions to/from the UTF-16
     Charset*.
 -   **#2.3.** For text-XML and application-XML MIME types if the HTTP
     content type declares \'UTF-16\' as the charset encoding, a BOM is
     required and it must be used to determine the byte order. Refer to
-    [RFC 3023](http://www.ietf.org/rfc/rfc3023.txt){.externalLink}
+    [RFC 3023](http://www.ietf.org/rfc/rfc3023.txt)
     Section *4. The Byte Order Mark (BOM) and Conversions to/from the
     UTF-16 Charset*.
 -   **#2.4.** For text-XML and application-XML MIME types if the HTTP
     content type declares \'UTF-16\' as the charset encoding, a BOM must
     be present and it must be \'UTF-16BE\' or \'UTF-16LE\'. Refer to
-    [RFC 3023](http://www.ietf.org/rfc/rfc3023.txt){.externalLink}
+    [RFC 3023](http://www.ietf.org/rfc/rfc3023.txt)
     Section *4. The Byte Order Mark (BOM) and Conversions to/from the
     UTF-16 Charset*.
 -   **#2.5.** For text-XML and application-XML MIME types if the HTTP
@@ -236,6 +229,3 @@ UTF-8 and UTF-16\* encodings.
     is required.
 -   **#2.6.** There is not defined logic to determine the charset
     encoding based on the MIME type given by the HTTP content type.
-:::
-:::
-:::

@@ -1,4 +1,3 @@
-::: section
 ## ROME Propono Version 0.5
 
 This is the second release of the [Rome Propono](./index.html)
@@ -10,19 +9,14 @@ the changes:
 -   Fixed issue #66: don\'t expect entry to be returned from update
 -   Made example builds more configurable
 
-::: section
 ### Downloads
 
 -   [rome-propono-0.5-src.zip](./rome-propono-0.5-src.zip)
 -   [rome-propono-0.5.tar.gz](./rome-propono-0.5.tar.gz)
 -   [rome-propono-0.5.zip](./rome-propono-0.5.zip)
 -   [rome-propono-0.5-src.tar.gz](./rome-propono-0.5-src.tar.gz)
-:::
 
-::: section
 ### API Docs
 
 -   [Propono 0.5 API
-    Docs](https://rome.dev.java.net/apidocs/subprojects/propono/0.5/overview-summary.html){.externalLink}
-:::
-:::
+    Docs](https://rome.dev.java.net/apidocs/subprojects/propono/0.5/overview-summary.html)

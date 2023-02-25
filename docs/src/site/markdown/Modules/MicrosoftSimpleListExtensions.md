@@ -1,4 +1,3 @@
-::: section
 ## Microsoft Simple List Extensions
 
 This plug in is for use with feeds ith Microsoft Simple List Extensions.
@@ -6,39 +5,33 @@ This plug in is for use with feeds ith Microsoft Simple List Extensions.
 Note you need to use the current CVS version of ROME or 0.9 when
 available.
 
-::: section
 ### Sample Usage
 
 ```java
-    SimpleListExtension sle = (SimpleListExtension) feed.getModule( SimpleListExtension.URI );
-    System.out.println( sle );
-    Group[] groups = sle.getGroupFields();
-    System.out.println( groups[0].getLabel() );
+SimpleListExtension sle = (SimpleListExtension) feed.getModule( SimpleListExtension.URI );
+System.out.println( sle );
+Group[] groups = sle.getGroupFields();
+System.out.println( groups[0].getLabel() );
 
-    //You can use the SleUtility class to do sorting and grouping:
+//You can use the SleUtility class to do sorting and grouping:
 
-    List sortedEntries = SleUtility.sort( feed.getEntries(),  sle.getSortFields()[1], true );
-    SyndEntry entry = (SyndEntry) sortedEntries.get( 0 );
+List sortedEntries = SleUtility.sort( feed.getEntries(),  sle.getSortFields()[1], true );
+SyndEntry entry = (SyndEntry) sortedEntries.get( 0 );
 
-    //You can also Group or Sort and Group
+//You can also Group or Sort and Group
 
-    List sortedAndGroupedEntries = SleUtility.sortAndGroup( feed.getEntries, sle.getGroupFields(), sle.getSortFields()[0], false );
+List sortedAndGroupedEntries = SleUtility.sortAndGroup( feed.getEntries, sle.getGroupFields(), sle.getSortFields()[0], false );
 
-    // If you change, for instance, module values on a feed and want to reinitialize it for
-    // grouping and sorting...
+// If you change, for instance, module values on a feed and want to reinitialize it for
+// grouping and sorting...
 
-    SleUtility.initializeForSorting( feed );
+SleUtility.initializeForSorting( feed );
 
-    // Be aware, this is a VERY heavy operation and should not be used frequently.
+// Be aware, this is a VERY heavy operation and should not be used frequently.
 ```
 
-::: section
 ### Changes
 
-::: section
 #### 0.1
 
 Initial release from ROME.
-:::
-:::
-:::

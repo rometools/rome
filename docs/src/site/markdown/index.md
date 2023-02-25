@@ -15,8 +15,8 @@ about the incoming or outgoing feed type.
 | Subproject | Purpose |
 | --- | --- |
 | [Modules](./Modules/index.html) | Provide support for feed extensions such as GeoRSS, iTunes, Microsoft SSE and SLE, Google GData and others. |
-| [Fetcher](./Fetcher/index.html) (deprecated) |A caching feed fetcher that supports retrieval of feeds via [HTTP conditional GET](http://fishbowl.pastiche.org/2002/10/21/http_conditional_get_for_rss_hackers){.externalLink}. Supports ETags, GZip compression, and [RFC3229 Delta encoding](http://bobwyman.pubsub.com/main/2004/09/using_rfc3229_w.html){.externalLink}. |
-| [Propono](./Propono/index.html) | Supports publishing protocols, specifically the Atom Publishing Protocol and the legacy MetaWeblog API. Propono includes an Atom client library, an Atom server framework and a Blog client that supports both Atom protocol and the MetaWeblog API. |
+| [Fetcher](./Fetcher/index.html) (deprecated) |A caching feed fetcher that supports retrieval of feeds via [HTTP conditional GET](http://fishbowl.pastiche.org/2002/10/21/http_conditional_get_for_rss_hackers). Supports ETags, GZip compression, and [RFC3229 Delta encoding](http://bobwyman.pubsub.com/main/2004/09/using_rfc3229_w.html). |
+| [Propono](./Propono/index.html) (deprecated) | Supports publishing protocols, specifically the Atom Publishing Protocol and the legacy MetaWeblog API. Propono includes an Atom client library, an Atom server framework and a Blog client that supports both Atom protocol and the MetaWeblog API. |
 | [OPML](./Opml/index.html) | Outline Processor Markup Language (OPML) parser and tools. |
 
 ### Further information
@@ -66,7 +66,7 @@ about the incoming or outgoing feed type.
         fields](./PreservingWireFeeds.html)
 -   ROME development
     -   [How to build ROME](./HowToBuildRome.html) (ROME uses
-        [Maven](http://maven.apache.org/){.externalLink})
+        [Maven](http://maven.apache.org/))
     -   [Changes Log](./ChangeLog.html), what and when
     -   [ROME Development Process (rome)](./ROMEDevelopmentProcess.html)
     -   [ROME Development Proposals

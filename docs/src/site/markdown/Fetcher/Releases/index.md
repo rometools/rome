@@ -1,3 +1,1 @@
-::: section
 ## Releases
-:::

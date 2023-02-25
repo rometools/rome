@@ -1,27 +1,21 @@
-::: section
 ## ROME 0.7 Beta
 
 Normally each release of ROME includes a whole new set of Wiki pages
 with the corresponding version number. ROME 0.7 is reusing ROME 0.5 Wiki
 pages as most of the changes are internal.
 
-::: section
 ### What is New, Highlights
 
 -   We got a cool logo
 -   Bug fixes
 -   Several Date and time parsing improvements including support for
     custom parsing masks
-:::
 
-::: section
 ### Dependencies
 
 -   J2SE 1.4+
--   [JDOM 1.0](http://www.jdom.org/){.externalLink}
-:::
+-   [JDOM 1.0](http://www.jdom.org/)
 
-::: section
 ### Downloads
 
 -   [rome-0.7-src.zip](./rome-0.7-src.zip)
@@ -30,9 +24,7 @@ pages as most of the changes are internal.
 -   [rome-0.7-src.tar.gz](./rome-0.7-src.tar.gz)
 -   [rome-samples-0.7-src.tar.gz](./rome-samples-0.7-src.tar.gz)
 -   [rome-samples-0.7-src.zip](./rome-samples-0.7-src.zip)
-:::
 
-::: section
 ### Additional Information
 
 -   [Tutorials](../RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/index.html)
@@ -65,11 +57,7 @@ pages as most of the changes are internal.
     -   [Customizing Date and time
         parsing](../RssAndAtOMUtiliEsROMEV0.7DateAndTimeParsing.html) in
         the rome.properties file **NEW**
-:::
 
-::: section
 ### Known Issues
 
 None.
-:::
-:::

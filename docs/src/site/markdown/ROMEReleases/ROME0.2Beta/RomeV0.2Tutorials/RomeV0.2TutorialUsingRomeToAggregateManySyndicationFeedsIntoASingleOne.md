@@ -1,4 +1,3 @@
-::: section
 ## Rome v0.2 Tutorial, Using Rome to aggregate many syndication feeds into a single one
 
 **Software requirements:** J2SE 1.4+, JDOM B10 and Rome 0.2.
@@ -17,8 +16,8 @@ syndication feed structure. All it takes to read a syndication feed
 using Rome are the following 2 lines of code:
 
 ```java
-    SyndFeedInput input = new SyndFeedInput();
-    SyndFeedI feed = input.build(feedUrl.openStream());
+SyndFeedInput input = new SyndFeedInput();
+SyndFeedI feed = input.build(feedUrl.openStream());
 ```
 
 The first line creates a SyndFeedInput instance that will work with any
@@ -35,8 +34,8 @@ of code show how to create a syndication feed output from a SyndFeedI
 instance:
 
 ```java
-    SyndFeedOutput output = new SyndFeedOutput();
-    output.output(feed,System.out);
+SyndFeedOutput output = new SyndFeedOutput();
+output.output(feed,System.out);
 ```
 
 The first line creates a SyndFeedOutput instance that will produce
@@ -49,12 +48,12 @@ SyndFeedI can also be created and populated within the code. For
 example:
 
 ```java
-    SyndFeedI aggrFeed = new SyndFeed();
-    aggrFeed.setFeedType("rss_1.0");
-    aggrFeed.setTitle("Aggregated Feed");
-    aggrFeed.setDescription("Anonymous Aggregated Feed");
-    aggrFeed.setAuthor("anonymous");
-    aggrFeed.setLink("http://www.anonymous.com");
+SyndFeedI aggrFeed = new SyndFeed();
+aggrFeed.setFeedType("rss_1.0");
+aggrFeed.setTitle("Aggregated Feed");
+aggrFeed.setDescription("Anonymous Aggregated Feed");
+aggrFeed.setAuthor("anonymous");
+aggrFeed.setLink("http://www.anonymous.com");
 ```
 
 The snipped of code above creates a SyndFeedI instance using the default
@@ -76,73 +75,73 @@ instance being read (inFeed) into a SyndFeedI instance being created
 within the application (feed):
 
 ```java
-    package com.rometools.rome.samples;
+package com.rometools.rome.samples;
 
-    import java.net.URL;
-    import java.util.List;
-    import java.util.ArrayList;
+import java.net.URL;
+import java.util.List;
+import java.util.ArrayList;
 
-    import com.rometools.rome.feed.synd.SyndFeedI;
-    import com.rometools.rome.feed.synd.SyndFeed;
-    import com.rometools.rome.io.SyndFeedOutput;
-    import com.rometools.rome.io.SyndFeedInput;
+import com.rometools.rome.feed.synd.SyndFeedI;
+import com.rometools.rome.feed.synd.SyndFeed;
+import com.rometools.rome.io.SyndFeedOutput;
+import com.rometools.rome.io.SyndFeedInput;
 
-    /**
-     * It aggregates a list of RSS/Atom feeds (they can be of different types)
-     * into a single feed of the specified type.
-     * <p>
-     * @author Alejandro Abdelnur
-     *
-     */
-    public class FeedAggregator {
+/**
+    * It aggregates a list of RSS/Atom feeds (they can be of different types)
+    * into a single feed of the specified type.
+    * <p>
+    * @author Alejandro Abdelnur
+    *
+    */
+public class FeedAggregator {
 
-        public static void main(String[] args) {
-            boolean ok = false;
-            if (args.length>=2) {
-                try {
-                    String outputType = args[0];
+    public static void main(String[] args) {
+        boolean ok = false;
+        if (args.length>=2) {
+            try {
+                String outputType = args[0];
 
-                    SyndFeedI feed = new SyndFeed();
-                    feed.setFeedType(outputType);
+                SyndFeedI feed = new SyndFeed();
+                feed.setFeedType(outputType);
 
-                    feed.setTitle("Aggregated Feed");
-                    feed.setDescription("Anonymous Aggregated Feed");
-                    feed.setAuthor("anonymous");
-                    feed.setLink("http://www.anonymous.com");
+                feed.setTitle("Aggregated Feed");
+                feed.setDescription("Anonymous Aggregated Feed");
+                feed.setAuthor("anonymous");
+                feed.setLink("http://www.anonymous.com");
 
-                    List entries = new ArrayList();
-                    feed.setEntries(entries);
+                List entries = new ArrayList();
+                feed.setEntries(entries);
 
-                    for (int i=1;i<args.length;i++) {
-                        URL inputUrl = new URL(args[i]);
+                for (int i=1;i<args.length;i++) {
+                    URL inputUrl = new URL(args[i]);
 
-                        SyndFeedInput input = new SyndFeedInput();
-                        SyndFeedI inFeed = input.build(inputUrl.openStream());
+                    SyndFeedInput input = new SyndFeedInput();
+                    SyndFeedI inFeed = input.build(inputUrl.openStream());
 
-                        entries.addAll(inFeed.getEntries());
+                    entries.addAll(inFeed.getEntries());
 
-                    }
-
-                    SyndFeedOutput output = new SyndFeedOutput();
-                    output.output(feed,System.out);
-
-                    ok = true;
                 }
-                catch (Exception ex) {
-                    System.out.println("ERROR: "+ex.getMessage());
-                }
+
+                SyndFeedOutput output = new SyndFeedOutput();
+                output.output(feed,System.out);
+
+                ok = true;
             }
-
-            if (!ok) {
-                System.out.println();
-                System.out.println("FeedAggregator aggregates different feeds into a single one.");
-                System.out.println("The first parameter must be the feed type for the aggregated feed.");
-                System.out.println(" [valid values are: rss_0.9, rss_0.91, rss_0.92, rss_0.93, ]");
-                System.out.println(" [                  rss_0.94, rss_1.0, rss_2.0 & atom_0.3  ]");
-                System.out.println("The second to last parameters are the URLs of feeds to aggregate.");
-                System.out.println();
+            catch (Exception ex) {
+                System.out.println("ERROR: "+ex.getMessage());
             }
         }
 
+        if (!ok) {
+            System.out.println();
+            System.out.println("FeedAggregator aggregates different feeds into a single one.");
+            System.out.println("The first parameter must be the feed type for the aggregated feed.");
+            System.out.println(" [valid values are: rss_0.9, rss_0.91, rss_0.92, rss_0.93, ]");
+            System.out.println(" [                  rss_0.94, rss_1.0, rss_2.0 & atom_0.3  ]");
+            System.out.println("The second to last parameters are the URLs of feeds to aggregate.");
+            System.out.println();
+        }
     }
+
+}
 ```

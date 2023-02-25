@@ -1,4 +1,3 @@
-::: section
 ## Certiorem Tutorial
 
 Certiorem is a PubSubHubub (PSH) implementation for ROME. It isn\'t an
@@ -6,10 +5,8 @@ application, but an API for building each of the three components
 (Publisher, Subscriber and Hub) into your web apps.
 
 You can see an [example webapp
-here](https://github.com/rometools/rome-incubator/tree/master/pubsubhubub/webapp){.externalLink}.
-:::
+here](https://github.com/rometools/rome-incubator/tree/master/pubsubhubub/webapp).
 
-::: section
 ## Creating a Hub
 
 Hubs take notifications, or \"Pings\" that tell it the content of a feed
@@ -20,14 +17,13 @@ the change. As you will begin to see, Certiorem is very much about
 Looking at the example webapp we see:
 
 ```java
-    @Provides
-    @Singleton
-    public Hub buildHub() {
-        FeedFetcher fetcher = new HttpURLFeedFetcher(new DeltaFeedInfoCache());
-        Hub hub = new Hub(new InMemoryHubDAO(), new UnthreadedVerifier(), new UnthreadedNotifier(), fetcher);
-
-        return hub;
-    }
+@Provides
+@Singleton
+public Hub buildHub() {
+    FeedFetcher fetcher = new HttpURLFeedFetcher(new DeltaFeedInfoCache());
+    Hub hub = new Hub(new InMemoryHubDAO(), new UnthreadedVerifier(), new UnthreadedNotifier(), fetcher);
+    return hub;
+}
 ```
 
 First we construct an instance of FeedFetcher, from the Fetcher
@@ -62,24 +58,22 @@ the Guice wired example, we simply create a servlet with an injected Hub
 implementation.
 
 ```java
-    @Singleton
-    public class HubServlet extends AbstractHubServlet {
+@Singleton
+public class HubServlet extends AbstractHubServlet {
 
-        @Inject
-        public HubServlet(final Hub hub){
-            super(hub);
-        }
+    @Inject
+    public HubServlet(final Hub hub){
+        super(hub);
     }
-    //... in the ServerModule...
+}
+//... in the ServerModule...
 
-    serve("/hub*").with(HubServlet.class);
+serve("/hub*").with(HubServlet.class);
 ```
 
 We can now include a \<link rel=\"hub\"\> value in our feeds and publish
 notifications of changes. 
-:::
 
-::: section
 ## Publishing Ping Notifications
 
 This is perhaps the easiest thing to do. The Publisher class will take
@@ -91,20 +85,18 @@ you can use the URL strings where appropriate.
 The example couldn\'t be simpler:
 
 ```java
-    Publisher pub = new Publisher();
-    try {
-        pub.sendUpdateNotification("http://localhost/webapp/hub", "http://localhost/webapp/research-atom.xml");
-    } catch (NotificationException ex) {
-        Logger.getLogger(NotifyTest.class.getName()).log(Level.SEVERE, null, ex);
-        throw new ServletException(ex);
-    }
+Publisher pub = new Publisher();
+try {
+    pub.sendUpdateNotification("http://localhost/webapp/hub", "http://localhost/webapp/research-atom.xml");
+} catch (NotificationException ex) {
+    Logger.getLogger(NotifyTest.class.getName()).log(Level.SEVERE, null, ex);
+    throw new ServletException(ex);
+}
 ```
 
 Once this notification is sent, the hub will make a request to the feed
 and notify the clients of new entries.
-:::
 
-::: section
 ## Subscribing to Feeds
 
 To set up a feed subscriber, you need to go through a process very much
@@ -112,13 +104,13 @@ like setting up a Hub. First, create the Subscriptions class by
 composition:
 
 ```java
-    @Provides
-    @Singleton
-    public Subscriptions buildSubs(){
-        Subscriptions subs = new Subscriptions(new HashMapFeedInfoCache(), new AsyncRequester(),
-                "http://localhost/webapp/subscriptions/", new InMemorySubDAO());
-        return subs;
-    }
+@Provides
+@Singleton
+public Subscriptions buildSubs(){
+    Subscriptions subs = new Subscriptions(new HashMapFeedInfoCache(), new AsyncRequester(),
+            "http://localhost/webapp/subscriptions/", new InMemorySubDAO());
+    return subs;
+}
 ```
 
 First we need a FeedInfoCache implementation. This will be updated as
@@ -134,17 +126,17 @@ As in the Hub, we need a wrapper servlet to call into the Subscriptions
 class
 
 ```java
-    @Singleton
-    public class SubServlet extends AbstractSubServlet {
+@Singleton
+public class SubServlet extends AbstractSubServlet {
 
-        @Inject
-        public SubServlet(final Subscriptions subscriptions){
-            super(subscriptions);
-        }
+    @Inject
+    public SubServlet(final Subscriptions subscriptions){
+        super(subscriptions);
     }
+}
 
-    // In the ServerModule...
-    serve("/subscriptions/*").with(SubServlet.class)
+// In the ServerModule...
+serve("/subscriptions/*").with(SubServlet.class)
 ```
 
 Now if we want to subscribe to a feed, we get a reference to the
@@ -152,21 +144,20 @@ Subscriptions object, and pass in either the SyndFeed (with appropriate
 rel=\"hub\" and rel=\"self\" links) or simply a couple of URLs:
 
 ```java
-     subs.subscribe("http://localhost/webapp/hub", "http://localhost/webapp/research-atom.xml", true, -1, null, new SubscriptionCallback(){
+subs.subscribe("http://localhost/webapp/hub", "http://localhost/webapp/research-atom.xml", true, -1, null, new SubscriptionCallback() {
 
-                public void onFailure(Exception e) {
-                    e.printStackTrace();
-                }
+    public void onFailure(Exception e) {
+        e.printStackTrace();
+    }
 
-                public void onSubscribe(Subscription subscribed) {
-                    System.out.println("Subscribed "+subscribed.getId() +" "+subscribed.getSourceUrl());
-                }
+    public void onSubscribe(Subscription subscribed) {
+        System.out.println("Subscribed "+subscribed.getId() +" "+subscribed.getSourceUrl());
+    }
 
-            });
+});
 ```
 
 Here we pass in the URL of the Hub, the URL of the feed, a boolean
 indicating we want to make the subscription request synchronously, the
 lease seconds we want to keep the subscription for, a null cryptographic
 secret, and a Callback invoked when the subscribe request completes.
-:::

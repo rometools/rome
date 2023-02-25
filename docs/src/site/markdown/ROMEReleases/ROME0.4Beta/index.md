@@ -1,7 +1,5 @@
-::: section
 ## ROME 0.4 Beta
 
-::: section
 ### What is New, Highlights
 
 -   Changed naming convention of bean interfaces and implementations
@@ -17,16 +15,12 @@
 -   Bug fixes
 -   More documentation and samples
 -   Dependencies, upgraded to JDom 1.0 and removed Xerces
-:::
 
-::: section
 ### Dependencies
 
 -   J2SE 1.4+
--   [JDOM 1.0](http://www.jdom.org/){.externalLink}
-:::
+-   [JDOM 1.0](http://www.jdom.org/)
 
-::: section
 ### Downloads
 
 -   [rome-0.4-src.zip](./rome-0.4-src.zip)
@@ -35,9 +29,7 @@
 -   [rome-0.4-src.tar.gz](./rome-0.4-src.tar.gz)
 -   [rome-samples-0.4-src.tar.gz](./rome-samples-0.4-src.tar.gz)
 -   [rome-samples-0.4-src.zip](./rome-samples-0.4-src.zip)
-:::
 
-::: section
 ### Additional Information
 
 -   [Tutorials](./RomeV0.4Tutorials/index.html)
@@ -62,11 +54,7 @@
     -   [XML Charset Encoding
         Detection](../../RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/XMLCharsetEncodingDetectionHowRssAndAtOMUtilitiEsROMEHelpsGettingTheRightCharsetEncoding.html),
         how Rome helps getting the right charset encoding
-:::
 
-::: section
 ### Known Issues
 
 None.
-:::
-:::

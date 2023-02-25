@@ -1,4 +1,3 @@
-::: section
 ## Rome v0.1 Tutorial, Using Rome to read a syndication feed
 
 **Software requirements:** J2SE 1.4+, Xerces 2.4.0, JDOM B10, Commons
@@ -18,8 +17,8 @@ structure. All it takes to read a syndication feed using Rome are the
 following 2 lines of code:
 
 ```java
-    SyndInput input = new SyndInput();
-    SyndFeedI feed = input.build(feedUrl.openStream());
+SyndInput input = new SyndInput();
+SyndFeedI feed = input.build(feedUrl.openStream());
 ```
 
 The first line creates a SyndInput instance that will work with any
@@ -33,7 +32,7 @@ implementation. The following line just prints it to the application\'s
 output.
 
 ```java
-    System.out.println(feed);
+System.out.println(feed);
 ```
 
 Following is the full code for a Java application that reads a
@@ -41,39 +40,39 @@ syndication feed and prints the SyndFeedI bean to the application\'s
 output.
 
 ```java
-    package com.rometools.rome.samples;
+package com.rometools.rome.samples;
 
-    import java.net.URL;
-    import com.rometools.rome.feed.synd.SyndFeedI;
-    import com.rometools.rome.io.SyndInput;
+import java.net.URL;
+import com.rometools.rome.feed.synd.SyndFeedI;
+import com.rometools.rome.io.SyndInput;
 
-    public class FeedReader {
+public class FeedReader {
 
-        public static void main(String[] args) {
-            boolean ok = false;
-            if (args.length==1) {
-                try {
-                    URL feedUrl = new URL(args[0]);
+    public static void main(String[] args) {
+        boolean ok = false;
+        if (args.length==1) {
+            try {
+                URL feedUrl = new URL(args[0]);
 
-                    SyndInput input = new SyndInput();
-                    SyndFeedI feed = input.build(feedUrl.openStream());
+                SyndInput input = new SyndInput();
+                SyndFeedI feed = input.build(feedUrl.openStream());
 
-                    System.out.println(feed);
+                System.out.println(feed);
 
-                    ok = true;
-                }
-                catch (Exception ex) {
-                    System.out.println("ERROR: "+ex.getMessage());
-                }
+                ok = true;
             }
-
-            if (!ok) {
-                System.out.println();
-                System.out.println("FeedReader reads and prints any RSS/Atom feed type.");
-                System.out.println("The first parameter must be the URL of the feed to read.");
-                System.out.println();
+            catch (Exception ex) {
+                System.out.println("ERROR: "+ex.getMessage());
             }
         }
 
+        if (!ok) {
+            System.out.println();
+            System.out.println("FeedReader reads and prints any RSS/Atom feed type.");
+            System.out.println("The first parameter must be the URL of the feed to read.");
+            System.out.println();
+        }
     }
+
+}
 ```

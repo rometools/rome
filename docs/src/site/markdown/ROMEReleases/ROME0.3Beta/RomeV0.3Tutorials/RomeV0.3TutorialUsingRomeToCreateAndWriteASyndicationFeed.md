@@ -1,4 +1,3 @@
-::: section
 ## Rome v0.3 Tutorial, Using Rome to create and write a syndication feed
 
 **Software requirements:** J2SE 1.4+, JDOM B10 and Rome 0.3.
@@ -17,12 +16,12 @@ format is set and the feed header info (title, link, description) is
 also set.
 
 ```java
-    SyndFeedI feed = new SyndFeed();
-    feed.setFeedType(feedType);
+SyndFeedI feed = new SyndFeed();
+feed.setFeedType(feedType);
 
-    feed.setTitle("Sample Feed (created with Rome)");
-    feed.setLink("http://rome.dev.java.net");
-    feed.setDescription("This feed has been created using Rome (Java syndication utilities");
+feed.setTitle("Sample Feed (created with Rome)");
+feed.setLink("http://rome.dev.java.net");
+feed.setDescription("This feed has been created using Rome (Java syndication utilities");
 ```
 
 Then a list for entries is created, entries are created and added to the
@@ -31,36 +30,36 @@ description. The description for the first entry is plain test, for the
 third entry is HTML. After each entry is created is added to the list.
 
 ```java
-    List entries = new ArrayList();
-    SyndEntryI entry;
-    SyndContentI description;
+List entries = new ArrayList();
+SyndEntryI entry;
+SyndContentI description;
 
-    entry = new SyndEntry();
-    entry.setTitle("Rome v1.0");
-    entry.setLink("http://wiki.java.net/bin/view/Javawsxml/Rome01");
-    entry.setPublishedDate(DATE_PARSER.parse("2004-06-08"));
-    description = new SyndContent();
-    description.setType("text/plain");
-    description.setValue("Initial release of Rome");
-    entry.setDescription(description);
-    entries.add(entry);
-    ...
-    entry = new SyndEntry();
-    entry.setTitle("Rome v3.0");
-    entry.setLink("http://wiki.java.net/bin/view/Javawsxml/Rome03");
-    entry.setPublishedDate(DATE_PARSER.parse("2004-07-27"));
-    description = new SyndContent();
-    description.setType("text/html");
-    description.setValue("<p>More Bug fixes, mor API changes, some new features and some Unit testing</p>"+
-                         "<p>For details check the <a href=\"http://wiki.java.net/bin/view/Javawsxml/RomeChangesLog#RomeV03\">Changes Log</a></p>");
-    entry.setDescription(description);
-    entries.add(entry);
+entry = new SyndEntry();
+entry.setTitle("Rome v1.0");
+entry.setLink("http://wiki.java.net/bin/view/Javawsxml/Rome01");
+entry.setPublishedDate(DATE_PARSER.parse("2004-06-08"));
+description = new SyndContent();
+description.setType("text/plain");
+description.setValue("Initial release of Rome");
+entry.setDescription(description);
+entries.add(entry);
+...
+entry = new SyndEntry();
+entry.setTitle("Rome v3.0");
+entry.setLink("http://wiki.java.net/bin/view/Javawsxml/Rome03");
+entry.setPublishedDate(DATE_PARSER.parse("2004-07-27"));
+description = new SyndContent();
+description.setType("text/html");
+description.setValue("<p>More Bug fixes, mor API changes, some new features and some Unit testing</p>"+
+                        "<p>For details check the <a href=\"http://wiki.java.net/bin/view/Javawsxml/RomeChangesLog#RomeV03\">Changes Log</a></p>");
+entry.setDescription(description);
+entries.add(entry);
 ```
 
 Finally the list with entries is added to the SyndFeedI bean.
 
 ```java
-    feed.setEntries(entries);
+feed.setEntries(entries);
 ```
 
 The SyndFeedI bean is now ready to be written out to a syndication feed
@@ -78,11 +77,11 @@ bean. All it takes to write a syndication feed XML document using Rome
 following lines of code:
 
 ```java
-    SyndFeedI feed = ...;
-    Writer writer = ...;
+SyndFeedI feed = ...;
+Writer writer = ...;
 
-    SyndFeedOutput output = new SyndFeedOutput();
-    output.output(feed,writer);
+SyndFeedOutput output = new SyndFeedOutput();
+output.output(feed,writer);
 ```
 
 First a SyndFeedOutput instance is created, this instance will work with
@@ -96,102 +95,102 @@ syndication feed and writes it to a file in the specified syndication
 format.
 
 ```java
-    package com.rometools.rome.samples;
+package com.rometools.rome.samples;
 
-    import com.rometools.rome.feed.synd.*;
-    import com.rometools.rome.io.SyndFeedOutput;
+import com.rometools.rome.feed.synd.*;
+import com.rometools.rome.io.SyndFeedOutput;
 
-    import java.io.FileWriter;
-    import java.io.Writer;
-    import java.text.DateFormat;
-    import java.text.SimpleDateFormat;
-    import java.util.ArrayList;
-    import java.util.List;
+import java.io.FileWriter;
+import java.io.Writer;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
-    /**
-     * It creates a feed and writes it to a file.
-     * <p>
-     *
-     */
-    public class FeedWriter {
+/**
+    * It creates a feed and writes it to a file.
+    * <p>
+    *
+    */
+public class FeedWriter {
 
-        private static final DateFormat DATE_PARSER = new SimpleDateFormat("yyyy-MM-dd");
+    private static final DateFormat DATE_PARSER = new SimpleDateFormat("yyyy-MM-dd");
 
-        public static void main(String[] args) {
-            boolean ok = false;
-            if (args.length==2) {
-                try {
-                    String feedType = args[0];
-                    String fileName = args[1];
+    public static void main(String[] args) {
+        boolean ok = false;
+        if (args.length==2) {
+            try {
+                String feedType = args[0];
+                String fileName = args[1];
 
-                    SyndFeedI feed = new SyndFeed();
-                    feed.setFeedType(feedType);
+                SyndFeedI feed = new SyndFeed();
+                feed.setFeedType(feedType);
 
-                    feed.setTitle("Sample Feed (created with Rome)");
-                    feed.setLink("http://rome.dev.java.net");
-                    feed.setDescription("This feed has been created using Rome (Java syndication utilities");
+                feed.setTitle("Sample Feed (created with Rome)");
+                feed.setLink("http://rome.dev.java.net");
+                feed.setDescription("This feed has been created using Rome (Java syndication utilities");
 
-                    List entries = new ArrayList();
-                    SyndEntryI entry;
-                    SyndContentI description;
+                List entries = new ArrayList();
+                SyndEntryI entry;
+                SyndContentI description;
 
-                    entry = new SyndEntry();
-                    entry.setTitle("Rome v1.0");
-                    entry.setLink("http://wiki.java.net/bin/view/Javawsxml/Rome01");
-                    entry.setPublishedDate(DATE_PARSER.parse("2004-06-08"));
-                    description = new SyndContent();
-                    description.setType("text/plain");
-                    description.setValue("Initial release of Rome");
-                    entry.setDescription(description);
-                    entries.add(entry);
+                entry = new SyndEntry();
+                entry.setTitle("Rome v1.0");
+                entry.setLink("http://wiki.java.net/bin/view/Javawsxml/Rome01");
+                entry.setPublishedDate(DATE_PARSER.parse("2004-06-08"));
+                description = new SyndContent();
+                description.setType("text/plain");
+                description.setValue("Initial release of Rome");
+                entry.setDescription(description);
+                entries.add(entry);
 
-                    entry = new SyndEntry();
-                    entry.setTitle("Rome v2.0");
-                    entry.setLink("http://wiki.java.net/bin/view/Javawsxml/Rome02");
-                    entry.setPublishedDate(DATE_PARSER.parse("2004-06-16"));
-                    description = new SyndContent();
-                    description.setType("text/plain");
-                    description.setValue("Bug fixes, minor API changes and some new features");
-                    entry.setDescription(description);
-                    entries.add(entry);
+                entry = new SyndEntry();
+                entry.setTitle("Rome v2.0");
+                entry.setLink("http://wiki.java.net/bin/view/Javawsxml/Rome02");
+                entry.setPublishedDate(DATE_PARSER.parse("2004-06-16"));
+                description = new SyndContent();
+                description.setType("text/plain");
+                description.setValue("Bug fixes, minor API changes and some new features");
+                entry.setDescription(description);
+                entries.add(entry);
 
-                    entry = new SyndEntry();
-                    entry.setTitle("Rome v3.0");
-                    entry.setLink("http://wiki.java.net/bin/view/Javawsxml/Rome03");
-                    entry.setPublishedDate(DATE_PARSER.parse("2004-07-27"));
-                    description = new SyndContent();
-                    description.setType("text/html");
-                    description.setValue("<p>More Bug fixes, mor API changes, some new features and some Unit testing</p>"+
-                                         "<p>For details check the <a href=\"http://wiki.java.net/bin/view/Javawsxml/RomeChangesLog#RomeV03\">Changes Log</a></p>");
-                    entry.setDescription(description);
-                    entries.add(entry);
+                entry = new SyndEntry();
+                entry.setTitle("Rome v3.0");
+                entry.setLink("http://wiki.java.net/bin/view/Javawsxml/Rome03");
+                entry.setPublishedDate(DATE_PARSER.parse("2004-07-27"));
+                description = new SyndContent();
+                description.setType("text/html");
+                description.setValue("<p>More Bug fixes, mor API changes, some new features and some Unit testing</p>"+
+                                        "<p>For details check the <a href=\"http://wiki.java.net/bin/view/Javawsxml/RomeChangesLog#RomeV03\">Changes Log</a></p>");
+                entry.setDescription(description);
+                entries.add(entry);
 
-                    feed.setEntries(entries);
+                feed.setEntries(entries);
 
-                    Writer writer = new FileWriter(fileName);
-                    SyndFeedOutput output = new SyndFeedOutput();
-                    output.output(feed,writer);
-                    writer.close();
+                Writer writer = new FileWriter(fileName);
+                SyndFeedOutput output = new SyndFeedOutput();
+                output.output(feed,writer);
+                writer.close();
 
-                    System.out.println("The feed has been written to the file ["+fileName+"]");
+                System.out.println("The feed has been written to the file ["+fileName+"]");
 
-                    ok = true;
-                }
-                catch (Exception ex) {
-                    ex.printStackTrace();
-                    System.out.println("ERROR: "+ex.getMessage());
-                }
+                ok = true;
             }
-
-            if (!ok) {
-                System.out.println();
-                System.out.println("FeedWriter creates a RSS/Atom feed and writes it to a file.");
-                System.out.println("The first parameter must be the syndication format for the feed");
-                System.out.println("  (rss_0.90, rss_0.91, rss_0.92, rss_0.93, rss_0.94, rss_1.0 rss_2.0 or atom_0.3)");
-                System.out.println("The second parameter must be the file name for the feed");
-                System.out.println();
+            catch (Exception ex) {
+                ex.printStackTrace();
+                System.out.println("ERROR: "+ex.getMessage());
             }
         }
 
+        if (!ok) {
+            System.out.println();
+            System.out.println("FeedWriter creates a RSS/Atom feed and writes it to a file.");
+            System.out.println("The first parameter must be the syndication format for the feed");
+            System.out.println("  (rss_0.90, rss_0.91, rss_0.92, rss_0.93, rss_0.94, rss_1.0 rss_2.0 or atom_0.3)");
+            System.out.println("The second parameter must be the file name for the feed");
+            System.out.println();
+        }
     }
+
+}
 ```

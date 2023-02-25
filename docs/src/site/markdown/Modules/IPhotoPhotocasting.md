@@ -1,4 +1,3 @@
-::: section
 ## iPhoto Photocasting
 
 This plug in is for use with iPhoto Photocast listings.
@@ -11,39 +10,33 @@ wanting to publish, rather than read, consider using the [MediaRSS
 [MediaRSS (modules)](./MediaRSS.html) (Flickr Photostream) feeds as
 well.
 
-::: section
 ### Sample Usage
 
 ```java
-    SyndFeed feed = input.build(  new File( "/foo.rss" ) ) );
-    List entries = feed.getEntries();
-    for( int i =0; i < entries.size() ; i++ ){
-        System.out.println( ((SyndEntry)entries.get(i)).getModule( PhotocastModule.URI ) );
-    }
+SyndFeed feed = input.build(  new File( "/foo.rss" ) ) );
+List entries = feed.getEntries();
+for( int i =0; i < entries.size() ; i++ ){
+    System.out.println( ((SyndEntry)entries.get(i)).getModule( PhotocastModule.URI ) );
+}
 
-    // or to create a photocast module:
+// or to create a photocast module:
 
-    SyndFeed myFeed = new SyndFeedImpl();
-    myFeed.getModules().add( new PhotocastModuleImpl() );
-    // you need this as a placeholder so the version gets in the feed.
+SyndFeed myFeed = new SyndFeedImpl();
+myFeed.getModules().add( new PhotocastModuleImpl() );
+// you need this as a placeholder so the version gets in the feed.
 
-    SyndEntry myEntry = new SyndEntryImpl();
-    PhotocastModule pm = new PhotocastModuleImpl();
-    pm.setUrl( new URL("http://foo.com/img.jpg" ) );
-    pm.setThumnail( new URL("http://foo.com/img-small.jpg" ) );
-    pm.setCropDate( new Date() );
-    pm.setPhotoDate( new Date() );
-    pm.setMetaData( new PhotoDate(), "Some comments that I think always get ignored." );
-    myEntry.getModules().add( pm );
+SyndEntry myEntry = new SyndEntryImpl();
+PhotocastModule pm = new PhotocastModuleImpl();
+pm.setUrl( new URL("http://foo.com/img.jpg" ) );
+pm.setThumnail( new URL("http://foo.com/img-small.jpg" ) );
+pm.setCropDate( new Date() );
+pm.setPhotoDate( new Date() );
+pm.setMetaData( new PhotoDate(), "Some comments that I think always get ignored." );
+myEntry.getModules().add( pm );
 ```
 
-::: section
 ### Changes:
 
-::: section
 #### 0.2
 
 Initial move to the ROME project.
-:::
-:::
-:::

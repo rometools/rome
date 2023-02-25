@@ -1,4 +1,3 @@
-::: section
 ## Using ROME to read a syndication feed
 
 ROME represents syndication feeds (RSS and Atom) as instances of the
@@ -15,8 +14,8 @@ syndication feed structure. All it takes to read a syndication feed
 using ROME are the following 2 lines of code:
 
 ```java
-    SyndFeedInput input = new SyndFeedInput();
-    SyndFeed feed = input.build(new XmlReader(feedUrl));
+SyndFeedInput input = new SyndFeedInput();
+SyndFeed feed = input.build(new XmlReader(feedUrl));
 ```
 
 The first line creates a SyndFeedInput instance that will work with any
@@ -32,7 +31,7 @@ implementation. The following line just prints it to the application\'s
 output.
 
 ```java
-      System.out.println(feed);
+System.out.println(feed);
 ```
 
 Following is the full code for a Java application that reads a
@@ -40,48 +39,48 @@ syndication feed and prints the SyndFeed bean to the application\'s
 output.
 
 ```java
-    package com.rometools.rome.samples;
+package com.rometools.rome.samples;
 
-    import java.net.URL;
-    import java.io.InputStreamReader;
-    import com.rometools.rome.feed.synd.SyndFeed;
-    import com.rometools.rome.io.SyndFeedInput;
-    import com.rometools.rome.io.XmlReader;
+import java.net.URL;
+import java.io.InputStreamReader;
+import com.rometools.rome.feed.synd.SyndFeed;
+import com.rometools.rome.io.SyndFeedInput;
+import com.rometools.rome.io.XmlReader;
 
-    /**
-     * It Reads and prints any RSS/Atom feed type.
-     * <p>
-     * @author Alejandro Abdelnur
-     *
-     */
-    public class FeedReader {
+/**
+    * It Reads and prints any RSS/Atom feed type.
+    * <p>
+    * @author Alejandro Abdelnur
+    *
+    */
+public class FeedReader {
 
-        public static void main(String[] args) {
-            boolean ok = false;
-            if (args.length==1) {
-                try {
-                    URL feedUrl = new URL(args[0]);
+    public static void main(String[] args) {
+        boolean ok = false;
+        if (args.length==1) {
+            try {
+                URL feedUrl = new URL(args[0]);
 
-                    SyndFeedInput input = new SyndFeedInput();
-                    SyndFeed feed = input.build(new XmlReader(feedUrl));
+                SyndFeedInput input = new SyndFeedInput();
+                SyndFeed feed = input.build(new XmlReader(feedUrl));
 
-                    System.out.println(feed);
+                System.out.println(feed);
 
-                    ok = true;
-                }
-                catch (Exception ex) {
-                    ex.printStackTrace();
-                    System.out.println("ERROR: "+ex.getMessage());
-                }
+                ok = true;
             }
-
-            if (!ok) {
-                System.out.println();
-                System.out.println("FeedReader reads and prints any RSS/Atom feed type.");
-                System.out.println("The first parameter must be the URL of the feed to read.");
-                System.out.println();
+            catch (Exception ex) {
+                ex.printStackTrace();
+                System.out.println("ERROR: "+ex.getMessage());
             }
         }
 
+        if (!ok) {
+            System.out.println();
+            System.out.println("FeedReader reads and prints any RSS/Atom feed type.");
+            System.out.println("The first parameter must be the URL of the feed to read.");
+            System.out.println();
+        }
     }
+
+}
 ```

@@ -1,7 +1,5 @@
-::: section
 ## Tutorials and Articles
 
-::: section
 ### Tutorials and documentation
 
 -   Inside ROME, How Things Work
@@ -92,29 +90,25 @@
         one](./ROMEReleases/ROME0.1Beta/RomeV0.1Tutorials/RomeV0.1TutorialUsingRomeToAggregateManySyndicationFeedsIntoASingleOne.html)
     -   [instructions on how to build and run the samples used in the
         tutorials](./ROMEReleases/ROME0.1Beta/RomeV0.1Tutorials/RomeV0.1HowToBuildAndRunTheTutorialsSampleCode.html)
-:::
 
-::: section
 ### Articles
 
 -   [O\'Reilly - ROME in a Day: Parse and Publish Feeds in
-    Java](http://www.xml.com/pub/a/2006/02/22/rome-parse-publish-rss-atom-feeds-java.html){.externalLink}
-    by [Mark Woodman](http://markwoodman.com/){.externalLink} (February
+    Java](http://www.xml.com/pub/a/2006/02/22/rome-parse-publish-rss-atom-feeds-java.html)
+    by [Mark Woodman](http://markwoodman.com/) (February
     22, 2006).\
     *A hands-on tutorial that shows you how to act like your own
     FeedBurner and add a footer to existing feed items.*
 -   [java.net - Taking a Tour of
-    ROME](http://today.java.net/pub/a/today/2006/02/02/tour-of-rome.html){.externalLink}
-    by [Randy J. Ray](http://www.rjray.org/){.externalLink} (February 2,
+    ROME](http://today.java.net/pub/a/today/2006/02/02/tour-of-rome.html)
+    by [Randy J. Ray](http://www.rjray.org/) (February 2,
     2006).\
     *Working with web syndication? Your development path may lead you to
     ROME\--not the city, but the syndication framework, which makes
     working with RSS and Atom a breeze for both server-and client-side
     code. Randy J. Ray has an introduction to this project.*
 -   [inkBlots - Interview with Patrick
-    Chanezon](http://inkblots.markwoodman.com/rss-diaries/patrick-chanezon){.externalLink}
-    by [Mark Woodman](http://markwoodman.com/){.externalLink} (July 13,
+    Chanezon](http://inkblots.markwoodman.com/rss-diaries/patrick-chanezon)
+    by [Mark Woodman](http://markwoodman.com/) (July 13,
     2005).\
     *Why and how we started this project.*
-:::
-:::
