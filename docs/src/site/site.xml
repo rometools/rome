@@ -55,13 +55,7 @@
                 <item name="Preserve Wire Feeds" href="PreservingWireFeeds.html" />
                 <item name="Date and Time handling" href="RssAndAtOMUtiliEsROMEV0.7DateAndTimeParsing.html" />
             </item>
-            <item name="Powered by ROME" href="ProductsOrSitesPoweredByROME.html" />
-            <item name="FAQ" href="RomeAPIFAQ.html" />
             <item name="Changelog" href="ChangeLog.html" />
-            
-            <item name="What part of the API you should be using" href="WhatPartOfTheAPIYouShouldBeUsing.html" />
-            <item name="Why This Project" href="WhyThisProject.html" />
-            
             <item name="Releases" href="ROMEReleases/index.html" collapse="true">
                 <item name="1.0" href="ROMEReleases/ROME1.0Release.html" />
                 <item name="1.0 RC2" href="ROMEReleases/ROME1.0RC2.html" />
@@ -109,10 +103,14 @@
                     <item name="Instructions" href="ROMEReleases/ROME0.1Beta/RomeV0.1Tutorials/RomeV0.1HowToBuildAndRunTheTutorialsSampleCode.html" />
                 </item>
             </item>
+            <item name="Powered by ROME" href="ProductsOrSitesPoweredByROME.html" />
+            <item name="What part of the API you should be using" href="WhatPartOfTheAPIYouShouldBeUsing.html" />
+            <item name="Why This Project" href="WhyThisProject.html" />
+            <item name="FAQ" href="RomeAPIFAQ.html" />
         </menu>
         <menu name="Certiorem">
             <item name="Home" href="Certiorem/index.html" />
-            <item name="Tutorial" href="Certiorem/CertioremTutorial.html" />
+            <item name="Examples" href="Certiorem/CertioremTutorial.html" />
         </menu>
         <menu name="Fetcher">
             <item name="Home" href="Fetcher/index.html" />

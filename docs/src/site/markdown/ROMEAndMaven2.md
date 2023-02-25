@@ -13,7 +13,7 @@ coordinates:
 
 ### Older versions
 
-The following old releases are available under another groupId:
+The following old releases are available on Maven Central under another groupId:
 - 0.3
 - 0.5
 - 0.8

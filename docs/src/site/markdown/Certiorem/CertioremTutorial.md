@@ -4,9 +4,6 @@ Certiorem is a PubSubHubub (PSH) implementation for ROME. It isn\'t an
 application, but an API for building each of the three components
 (Publisher, Subscriber and Hub) into your web apps.
 
-You can see an [example webapp
-here](https://github.com/rometools/rome-incubator/tree/master/pubsubhubub/webapp).
-
 ## Creating a Hub
 
 Hubs take notifications, or \"Pings\" that tell it the content of a feed
