@@ -54,7 +54,6 @@
             <item name="Changelog" href="ChangeLog.html" />
             
             <item name="What part of the API you should be using" href="WhatPartOfTheAPIYouShouldBeUsing.html" />
-            <item name="What's wrong with other libraries" href="WhatSWrongWithOtherExistingRSSParsingLibraries.html" />
             <item name="Why This Project" href="WhyThisProject.html" />
             
             <item name="Releases" href="ROMEReleases/index.html" collapse="true">
