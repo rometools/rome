@@ -28,7 +28,3 @@ previous versions as there are not significant changes.
 
 -   J2SE 1.4+
 -   [JDOM 1.0](http://www.jdom.org/)
-
-#### Documentation
-
--   [Javadocs](http://rome.dev.java.net/apidocs/1_0/overview-summary.html)

@@ -27,7 +27,3 @@ previous versions as there are not significant changes.
 -   [rome-1.0RC1.zip](./rome-1.0RC1.zip)
 -   [rome-1.0RC1-src.tar.gz](./rome-1.0RC1-src.tar.gz)
 -   [rome-samples-1.0RC1-src.tar.gz](./rome-samples-1.0RC1-src.tar.gz)
-
-### Documentation
-
--   [Javadocs](http://rome.dev.java.net/apidocs/1_0RC1/overview-summary.html)

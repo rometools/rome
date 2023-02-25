@@ -21,7 +21,3 @@
 -   [rome-1.0RC2.jar](./rome-1.0RC2.jar)
 -   [rome-1.0RC2-javadoc.jar](./rome-1.0RC2-javadoc.jar)
 -   [rome-1.0RC2-sources.jar](./rome-1.0RC2-sources.jar)
-
-### Documentation
-
--   [Javadocs](http://rome.dev.java.net/apidocs/1_0RC2/overview-summary.html)
