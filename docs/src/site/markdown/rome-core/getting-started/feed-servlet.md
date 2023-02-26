@@ -1,0 +1,238 @@
+## Create a feed Servlet
+
+This sample consists of a servlet that serves a feed as response. The
+feed type (RSS in any of its variants or Atom) can be specified as a URL
+parameter when requesting the feed. The returned feed is hardwired in
+the sample and it would be straight forward to modify the sample to
+generate the feed dynamically (i.e. from data stored in a database).
+
+The core logic of the `FeedServlet` is in the following fragment of
+code:
+
+```java
+public class FeedServlet extends HttpServlet {
+    ...
+
+    public void doGet(HttpServletRequest req,HttpServletResponse res) throws IOException {
+            ...
+            SyndFeed feed = getFeed(req);
+
+            String feedType = req.getParameter(FEED_TYPE);
+            feedType = (feedType!=null) ? feedType : _defaultFeedType;
+            feed.setFeedType(feedType);
+
+            res.setContentType(MIME_TYPE);
+            SyndFeedOutput output = new SyndFeedOutput();
+            output.output(feed,res.getWriter());
+            ...
+    }
+
+    protected SyndFeed getFeed(HttpServletRequest req) throws IOException,FeedException {
+        SyndFeed feed = new SyndFeedImpl();
+        feed = ...
+        return feed;
+    }
+
+}
+```
+
+The servlet returns a feed upon HTTP GET requests with the `doGet()`
+method.
+
+First the `SyndFeed` bean is obtained by invoking the `getFeed()`
+method, the request object is passed as it could be used to obtain
+request contextual information to create the feed. How to create a feed
+using SyndFeed bean is explained in detail in the [Using ROME to create
+and write a
+feed](create-feed.html)
+Tutorial.
+
+Then the feed type of the response is determined, first looking at the
+request parameters and falling back to a default feed type (specified by
+a servlet init parameter) if the type is not indicated in the request
+parameters. Setting the feed type in the feed bean will indicate the
+`SyndFeedOutput` the feed type to output.
+
+Finally, the response is set with the proper content type (the MIME_TYPE
+constant is \'application/xml; charset=UTF-8\') and the feed is written
+to response writer using the `SyndFeedOutput` output classes.
+
+Following is the full code for the servlet.
+
+```java
+package com.rometools.rome.samples.servlet;
+
+import com.rometools.rome.feed.synd.*;
+import com.rometools.rome.io.FeedException;
+import com.rometools.rome.io.SyndFeedOutput;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+    * Sample Servlet that serves a feed created with ROME.
+    * <p>
+    * The feed type is determined by the 'type' request parameter, if the parameter is missing it defaults
+    * to the 'default.feed.type' servlet init parameter, if the init parameter is missing it defaults to 'atom_0.3'
+    * <p>
+    * @author Alejandro Abdelnur
+    *
+    */
+public class FeedServlet extends HttpServlet {
+    private static final String DEFAULT_FEED_TYPE = "default.feed.type";
+    private static final String FEED_TYPE = "type";
+    private static final String MIME_TYPE = "application/xml; charset=UTF-8";
+    private static final String COULD_NOT_GENERATE_FEED_ERROR = "Could not generate feed";
+
+    private static final DateFormat DATE_PARSER = new SimpleDateFormat("yyyy-MM-dd");
+
+    private String _defaultFeedType;
+
+    public void init() {
+        _defaultFeedType = getServletConfig().getInitParameter(DEFAULT_FEED_TYPE);
+        _defaultFeedType = (_defaultFeedType!=null) ? _defaultFeedType : "atom_0.3";
+    }
+
+    public void doGet(HttpServletRequest req,HttpServletResponse res) throws IOException {
+        try {
+            SyndFeed feed = getFeed(req);
+
+            String feedType = req.getParameter(FEED_TYPE);
+            feedType = (feedType!=null) ? feedType : _defaultFeedType;
+            feed.setFeedType(feedType);
+
+            res.setContentType(MIME_TYPE);
+            SyndFeedOutput output = new SyndFeedOutput();
+            output.output(feed,res.getWriter());
+        }
+        catch (FeedException ex) {
+            String msg = COULD_NOT_GENERATE_FEED_ERROR;
+            log(msg,ex);
+            res.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,msg);
+        }
+    }
+
+    protected SyndFeed getFeed(HttpServletRequest req) throws IOException,FeedException {
+        SyndFeed feed = new SyndFeedImpl();
+
+        feed.setTitle("Sample Feed (created with ROME)");
+        feed.setLink("http://rome.dev.java.net");
+        feed.setDescription("This feed has been created using ROME (Java syndication utilities");
+
+        List entries = new ArrayList();
+        SyndEntry entry;
+        SyndContent description;
+
+        entry = new SyndEntryImpl();
+        entry.setTitle("ROME v0.1");
+        entry.setLink("http://wiki.java.net/bin/view/Javawsxml/rome01");
+        try {
+            entry.setPublishedDate(DATE_PARSER.parse("2004-06-08"));
+        }
+        catch (ParseException ex) {
+            // IT CANNOT HAPPEN WITH THIS SAMPLE
+        }
+        description = new SyndContentImpl();
+        description.setType("text/plain");
+        description.setValue("Initial release of ROME");
+        entry.setDescription(description);
+        entries.add(entry);
+
+        entry = new SyndEntryImpl();
+        entry.setTitle("Rome v0.2");
+        entry.setLink("http://wiki.java.net/bin/view/Javawsxml/rome02");
+        try {
+            entry.setPublishedDate(DATE_PARSER.parse("2004-06-16"));
+        }
+        catch (ParseException ex) {
+            // IT CANNOT HAPPEN WITH THIS SAMPLE
+        }
+        description = new SyndContentImpl();
+        description.setType("text/plain");
+        description.setValue("Bug fixes, minor API changes and some new features"+
+                                "<p>For details check the <a href=\"https://rometools.jira.com/wiki/display/ROME/Change+Log#ChangeLog-Changesmadefromv0.2tov0.3\">Changes Log for 0.2</a></p>");
+        entry.setDescription(description);
+        entries.add(entry);
+
+        entry = new SyndEntryImpl();
+        entry.setTitle("ROME v0.3");
+        entry.setLink("http://wiki.java.net/bin/view/Javawsxml/rome03");
+        try {
+            entry.setPublishedDate(DATE_PARSER.parse("2004-07-27"));
+        }
+        catch (ParseException ex) {
+            // IT CANNOT HAPPEN WITH THIS SAMPLE
+        }
+        description = new SyndContentImpl();
+        description.setType("text/html");
+        description.setValue("<p>Bug fixes, API changes, some new features and some Unit testing</p>"+
+                                "<p>For details check the <a href=\"https://rometools.jira.com/wiki/display/ROME/Change+Log#ChangeLog-Changesmadefromv0.3tov0.4\">Changes Log for 0.3</a></p>");
+        entry.setDescription(description);
+        entries.add(entry);
+
+        entry = new SyndEntryImpl();
+        entry.setTitle("ROME v0.4");
+        entry.setLink("http://wiki.java.net/bin/view/Javawsxml/rome04");
+        try {
+            entry.setPublishedDate(DATE_PARSER.parse("2004-09-24"));
+        }
+        catch (ParseException ex) {
+            // IT CANNOT HAPPEN WITH THIS SAMPLE
+        }
+        description = new SyndContentImpl();
+        description.setType("text/html");
+        description.setValue("<p>Bug fixes, API changes, some new features, Unit testing completed</p>"+
+                                "<p>For details check the <a href=\"https://rometools.jira.com/wiki/display/ROME/Change+Log#ChangeLog-Changesmadefromv0.4tov0.5\">Changes Log for 0.4</a></p>");
+        entry.setDescription(description);
+        entries.add(entry);
+
+        feed.setEntries(entries);
+
+        return feed;
+    }
+
+}
+```
+
+To use the `FeedServlet` we need to create a Web Application. For the
+Web Application we need a deployment descriptor, the `web.xml` file:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+    <display-name>ROME Samples</display-name>
+
+    <servlet>
+        <servlet-name>FeedServlet</servlet-name>
+        <servlet-class>com.rometools.rome.samples.servlet.FeedServlet</servlet-class>
+        <init-param>
+            <param-name>default.feed.type</param-name>
+            <param-value>rss_2.0</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+            <servlet-name>FeedServlet</servlet-name>
+            <url-pattern>/feed</url-pattern>
+    </servlet-mapping>
+
+</web-app>
+```
+
+To build the sample Web Application, just run maven war in the samples
+sub-project. The WAR file, `rome-samples.war`, will be created under the
+`target` directory. Deploy the WAR in a servlet container and the
+`FeedServlet` should be up an running. If you are using Tomcat 4 or
+Tomcat 5 and the WAR file was dropped in the `${TOMCAT}/webapps`
+directory the URL for the `FeedServlet` would be
+[http://localhost:8080/rome-samples/feed](http://localhost:8080/rome-samples/feed)
+in a default localhost Tomcat installation.

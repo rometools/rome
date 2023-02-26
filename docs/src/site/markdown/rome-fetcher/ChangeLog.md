@@ -93,5 +93,5 @@
 1.  Support for preserving wire feed data.\
     The fetcher now has a setPreserveWireFeed() method which will setup
     ROME to preserve WireFeed data. See
-    [PreservingWireFeeds](http://rometools.github.io/rome/PreservingWireFeeds.html)
+    [PreservingWireFeeds](rome-core/getting-started/preserve-wirefeed.html)
     for further information.

@@ -14,7 +14,7 @@
     on the SyndFeedInput object it is built from. Atom/RSS Entry/Item
     objects are also available from SyndEntry objects if the WireFeed is
     preserved using the new getWireEntry() method. See [Preserving
-    WireFeeds (rome)](./PreservingWireFeeds.html) for details.
+    WireFeeds (rome)](rome-core/getting-started/preserve-wirefeed.html) for details.
 
 ### Changes made since v1.0RC1
 
