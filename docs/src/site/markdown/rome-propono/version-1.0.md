@@ -13,7 +13,7 @@ and provide feedback to us on the ROME dev mail list.
 
 ### Downloads
 
--   [rome-propono-1.0RC1.zip](./rome-propono-1.0RC1.zip)
--   [rome-propono-1.0RC1.tar.gz](./rome-propono-1.0RC1.tar.gz)
--   [rome-propono-1.0RC1-src.zip](./rome-propono-1.0RC1-src.zip)
--   [rome-propono-1.0RC1-src.tar.gz](./rome-propono-1.0RC1-src.tar.gz)
+-   [rome-propono-1.0RC1.zip](rome-propono-1.0RC1.zip)
+-   [rome-propono-1.0RC1.tar.gz](rome-propono-1.0RC1.tar.gz)
+-   [rome-propono-1.0RC1-src.zip](rome-propono-1.0RC1-src.zip)
+-   [rome-propono-1.0RC1-src.tar.gz](rome-propono-1.0RC1-src.tar.gz)

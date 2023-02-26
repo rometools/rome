@@ -14,8 +14,8 @@ type.
 
 | Module | Description |
 | --- | --- |
-| [Certiorem](./Certiorem/index.html) (deprecated) | PubSubHubub protocol for ROME. |
-| [Fetcher](./Fetcher/index.html) (deprecated) |A caching feed fetcher that supports retrieval of feeds via [HTTP conditional GET](http://fishbowl.pastiche.org/2002/10/21/http_conditional_get_for_rss_hackers). Supports ETags, GZip compression, and [RFC3229 Delta encoding](https://en.wikipedia.org/wiki/Delta_encoding#Delta_encoding_in_HTTP). |
-| [Modules](./Modules/index.html) | Provide support for feed extensions such as GeoRSS, iTunes, Microsoft SSE and SLE, Google GData and others. |
-| [OPML](./Opml/index.html) | Outline Processor Markup Language (OPML) parser and tools. |
-| [Propono](./Propono/index.html) (deprecated) | Supports publishing protocols, specifically the Atom Publishing Protocol and the legacy MetaWeblog API. Propono includes an Atom client library, an Atom server framework and a Blog client that supports both the Atom protocol and the MetaWeblog API. |
+| [Certiorem](rome-certiorem/index.html) (deprecated) | [PubSubHubub](https://en.wikipedia.org/wiki/WebSub) protocol for ROME. |
+| [Fetcher](rome-fetcher/index.html) (deprecated) |A caching feed fetcher that supports retrieval of feeds via [HTTP conditional GET](http://fishbowl.pastiche.org/2002/10/21/http_conditional_get_for_rss_hackers). Supports ETags, GZip compression and [RFC3229 Delta encoding](https://en.wikipedia.org/wiki/Delta_encoding#Delta_encoding_in_HTTP). |
+| [Modules](rome-modules/index.html) | Provide support for feed extensions such as GeoRSS, iTunes, Microsoft SSE and SLE, Google GData and others. |
+| [OPML](rome-opml/index.html) | Outline Processor Markup Language (OPML) parser and tools. |
+| [Propono](rome-propono/index.html) (deprecated) | Supports publishing protocols, specifically the Atom Publishing Protocol and the legacy MetaWeblog API. Propono includes an Atom client library, an Atom server framework and a Blog client that supports both the Atom protocol and the MetaWeblog API. |

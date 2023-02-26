@@ -12,8 +12,8 @@ fix release follow-on to 0.4.
 
 ### Downloads
 
--   [rome-propono-0.5.zip](./rome-propono-0.5.zip)
--   [rome-propono-0.5.tar.gz](./rome-propono-0.5.tar.gz)
--   [rome-propono-0.5-src.zip](./rome-propono-0.5-src.zip)
--   [rome-propono-0.5-src.tar.gz](./rome-propono-0.5-src.tar.gz)
+-   [rome-propono-0.5.zip](rome-propono-0.5.zip)
+-   [rome-propono-0.5.tar.gz](rome-propono-0.5.tar.gz)
+-   [rome-propono-0.5-src.zip](rome-propono-0.5-src.zip)
+-   [rome-propono-0.5-src.tar.gz](rome-propono-0.5-src.tar.gz)
 

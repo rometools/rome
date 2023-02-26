@@ -48,7 +48,7 @@ follow as soon as ROME 0.9.1 (or 1.0) has been finalized.
 
 ### Downloads
 
--   [rome-propono-0.6.zip](./rome-propono-0.6.zip)
--   [rome-propono-0.6.tar.gz](./rome-propono-0.6.tar.gz)
--   [rome-propono-0.6-src.zip](./rome-propono-0.6-src.zip)
--   [rome-propono-0.6-src.tar.gz](./rome-propono-0.6-src.tar.gz)
+-   [rome-propono-0.6.zip](rome-propono-0.6.zip)
+-   [rome-propono-0.6.tar.gz](rome-propono-0.6.tar.gz)
+-   [rome-propono-0.6-src.zip](rome-propono-0.6-src.zip)
+-   [rome-propono-0.6-src.tar.gz](rome-propono-0.6-src.tar.gz)

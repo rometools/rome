@@ -33,8 +33,7 @@
     <body>
         <menu name="ROME">
             <item name="Home" href="index.html" />
-            <item name="Building from source" href="HowToBuildRome.html" />
-            <item name="Installation" href="ROMEAndMaven2.html" />
+            <item name="Installation" href="installation.html" />
             <item name="Tutorials" href="RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/index.html" collapse="true">
                 <item name="Read feeds" href="RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEV0.5TutorialUsingROMEToReadASyndicationFeed.html" />
                 <item name="Convert feeds" href="RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEV0.5TutorialUsingROMEToConvertASyndicationFeedFromOneTypeToAnother.html" />
@@ -43,7 +42,7 @@
                 <item name="Custom module" href="RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEV0.5TutorialDefiningACustomModuleBeanParserAndGenerator.html" />
                 <item name="Servlet" href="RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEV0.5TutorialUsingROMEWithinAServletToCreateAndReturnAFeed.html" />
             </item>
-            <item name="OSGI" href="ROMEAndOSGI.html" />
+            <item name="OSGI" href="osgi.html" />
             <item name="How Rome works" href="HowRomeWorks/index.html" collapse="true">
                 <item name="Common classes and interfaces" href="HowRomeWorks/UnderstandingTheRomeCommonClassesAndInterfaces.html" />
                 <item name="Plugin Mechanism" href="RssAndAtOMUtilitiEsROMEV0.5AndAboveTutorialsAndArticles/RssAndAtOMUtilitiEsROMEPluginsMechanism.html" />
@@ -109,53 +108,53 @@
             <item name="FAQ" href="RomeAPIFAQ.html" />
         </menu>
         <menu name="Certiorem">
-            <item name="Home" href="Certiorem/index.html" />
-            <item name="Examples" href="Certiorem/CertioremTutorial.html" />
+            <item name="Home" href="rome-certiorem/index.html" />
+            <item name="Examples" href="rome-certiorem/tutorial.html" />
         </menu>
         <menu name="Fetcher">
-            <item name="Home" href="Fetcher/index.html" />
-            <item name="Example" href="Fetcher/UsingTheRomeFetcherModuleToRetrieveFeeds.html" />
-            <item name="Dependencies" href="Fetcher/Dependencies/index.html" collapse="true">
-                <item name=" HttpClientFeedFetcher" href="Fetcher/Dependencies/HttpClientFeedFetcher.html" />
+            <item name="Home" href="rome-fetcher/index.html" />
+            <item name="Example" href="rome-fetcher/UsingTheRomeFetcherModuleToRetrieveFeeds.html" />
+            <item name="Dependencies" href="rome-fetcher/Dependencies/index.html" collapse="true">
+                <item name=" HttpClientFeedFetcher" href="rome-fetcher/Dependencies/HttpClientFeedFetcher.html" />
             </item>
-            <item name="Changelog" href="Fetcher/ChangeLog.html" />
-            <item name="Known issues" href="Fetcher/KnownIssues.html" />
-            <item name="Releases" href="Fetcher/Releases/index.html" collapse="true">
-                <item name="1.0" href="Fetcher/Releases/ROMEFetcher1.0.html" />
-                <item name="1.0 RC2" href="Fetcher/Releases/ROMEFetcher1.0RC2.html" />
-                <item name="0.9" href="Fetcher/Releases/ROMEFetcher0.9.html" />
-                <item name="0.7" href="Fetcher/Releases/ROMEFetcher0.7.html" />
-                <item name="0.6" href="Fetcher/Releases/ROMEFetcher0.6.html" />
-                <item name="0.5" href="Fetcher/Releases/RomeFetcher0.5.html" />
-                <item name="0.4" href="Fetcher/Releases/RomeFetcher0.4.html" />
-                <item name="0.3" href="Fetcher/Releases/RomeFetcher0.3.html" />
+            <item name="Changelog" href="rome-fetcher/ChangeLog.html" />
+            <item name="Known issues" href="rome-fetcher/KnownIssues.html" />
+            <item name="Releases" href="rome-fetcher/Releases/index.html" collapse="true">
+                <item name="1.0" href="rome-fetcher/Releases/ROMEFetcher1.0.html" />
+                <item name="1.0 RC2" href="rome-fetcher/Releases/ROMEFetcher1.0RC2.html" />
+                <item name="0.9" href="rome-fetcher/Releases/ROMEFetcher0.9.html" />
+                <item name="0.7" href="rome-fetcher/Releases/ROMEFetcher0.7.html" />
+                <item name="0.6" href="rome-fetcher/Releases/ROMEFetcher0.6.html" />
+                <item name="0.5" href="rome-fetcher/Releases/RomeFetcher0.5.html" />
+                <item name="0.4" href="rome-fetcher/Releases/RomeFetcher0.4.html" />
+                <item name="0.3" href="rome-fetcher/Releases/RomeFetcher0.3.html" />
             </item>
         </menu>
         <menu name="Modules">
-            <item name="Home" href="Modules/index.html" collapse="true">
-                <item name="A9 OpenSearch" href="Modules/A9OpenSearch.html" />
-                <item name="Content" href="Modules/Content.html" />
-                <item name="Creative Commons" href="Modules/CreativeCommons.html" />
-                <item name="GeoRSS.html" href="Modules/GeoRSS.html" />
-                <item name="Google Base" href="Modules/GoogleBase.html" />
-                <item name="iPhoto Photocasting" href="Modules/IPhotoPhotocasting.html" />
-                <item name="iTunes Podcasting" href="Modules/ITunesPodcasting.html" />
-                <item name="Microsoft Simple List Extensions" href="Modules/MicrosoftSimpleListExtensions.html" />
-                <item name="Microsoft Simple Sharing Extensions" href="Modules/MicrosoftSimpleSharingExtensions.html" />
-                <item name="Slash" href="Modules/Slash.html" />
-                <item name="Yahoo! MediaRSS" href="Modules/MediaRSS.html" />
-                <item name="Yahoo! Weather" href="Modules/Weather.html" />
+            <item name="Home" href="rome-modules/index.html" collapse="true">
+                <item name="A9 OpenSearch" href="rome-modules/A9OpenSearch.html" />
+                <item name="Content" href="rome-modules/Content.html" />
+                <item name="Creative Commons" href="rome-modules/CreativeCommons.html" />
+                <item name="GeoRSS.html" href="rome-modules/GeoRSS.html" />
+                <item name="Google Base" href="rome-modules/GoogleBase.html" />
+                <item name="iPhoto Photocasting" href="rome-modules/IPhotoPhotocasting.html" />
+                <item name="iTunes Podcasting" href="rome-modules/ITunesPodcasting.html" />
+                <item name="Microsoft Simple List Extensions" href="rome-modules/MicrosoftSimpleListExtensions.html" />
+                <item name="Microsoft Simple Sharing Extensions" href="rome-modules/MicrosoftSimpleSharingExtensions.html" />
+                <item name="Slash" href="rome-modules/Slash.html" />
+                <item name="Yahoo! MediaRSS" href="rome-modules/MediaRSS.html" />
+                <item name="Yahoo! Weather" href="rome-modules/Weather.html" />
             </item>
         </menu>
         <menu name="OPML">
-            <item name="Home" href="Opml/index.html"/>
+            <item name="Home" href="rome-opml/index.html"/>
         </menu>
         <menu name="Propono">
-            <item name="Home" href="Propono/index.html" collapse="true">
-                <item name="1.0" href="Propono/ROMEProponoVersion1.0.html" />
-                <item name="0.6" href="Propono/ROMEProponoVersion0.6.html" />
-                <item name="0.5" href="Propono/ROMEProponoVersion0.5.html" />
-                <item name="0.4" href="Propono/ROMEProponoVersion0.4.html" />
+            <item name="Home" href="rome-propono/index.html" collapse="true">
+                <item name="1.0" href="rome-propono/version-1.0.html" />
+                <item name="0.6" href="rome-propono/version-0.6.html" />
+                <item name="0.5" href="rome-propono/version-0.5.html" />
+                <item name="0.4" href="rome-propono/version-0.4.html" />
             </item>
         </menu>
     </body>

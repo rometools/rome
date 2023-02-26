@@ -8,7 +8,7 @@ the MetaWeblog API.
 
 ## Releases
 
--   [Version 1.0](./ROMEProponoVersion1.0.html)
--   [Version 0.6](./ROMEProponoVersion0.6.html)
--   [Version 0.5](./ROMEProponoVersion0.5.html)
--   [Version 0.4](./ROMEProponoVersion0.4.html)
+-   [Version 1.0](version-1.0.html)
+-   [Version 0.6](version-0.6.html)
+-   [Version 0.5](version-0.5.html)
+-   [Version 0.4](version-0.4.html)
