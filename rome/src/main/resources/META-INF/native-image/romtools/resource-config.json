@@ -1,0 +1,15 @@
+{
+  "resources": {
+    "includes": [
+      {
+        "pattern": "\\Qcom/rometools/rome/rome.properties\\E"
+      },
+      {
+        "pattern": "\\Qrome.properties\\E"
+      },
+      {
+        "pattern": "\\Qcom/rometools/modules/base/io/tags.properties\\E"
+      }
+    ]
+  }
+}

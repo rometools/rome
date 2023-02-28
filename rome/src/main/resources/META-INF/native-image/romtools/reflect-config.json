@@ -1,0 +1,148 @@
+[
+  {
+    "name": "com.rometools.rome.feed.module.DCModuleImpl",
+    "queryAllPublicMethods": true,
+    "allPublicMethods": true,
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.feed.synd.impl.ConverterForAtom03",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.feed.synd.impl.ConverterForAtom10",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.feed.synd.impl.ConverterForRSS090",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.feed.synd.impl.ConverterForRSS091Netscape",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.feed.synd.impl.ConverterForRSS091Userland",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.feed.synd.impl.ConverterForRSS092",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.feed.synd.impl.ConverterForRSS093",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.feed.synd.impl.ConverterForRSS094",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.feed.synd.impl.ConverterForRSS10",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.feed.synd.impl.ConverterForRSS20",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.io.impl.Atom03Generator",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.io.impl.Atom03Parser",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.io.impl.Atom10Generator",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.io.impl.Atom10Parser",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.io.impl.DCModuleGenerator",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.io.impl.DCModuleParser",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.io.impl.RSS090Generator",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.io.impl.RSS090Parser",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.io.impl.RSS091NetscapeGenerator",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.io.impl.RSS091NetscapeParser",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.io.impl.RSS091UserlandGenerator",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.io.impl.RSS091UserlandParser",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.io.impl.RSS092Generator",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.io.impl.RSS092Parser",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.io.impl.RSS093Generator",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.io.impl.RSS093Parser",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.io.impl.RSS094Generator",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.io.impl.RSS094Parser",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.io.impl.RSS10Generator",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.io.impl.RSS10Parser",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.io.impl.RSS20Generator",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.io.impl.RSS20Parser",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.io.impl.RSS20wNSParser",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.io.impl.SyModuleGenerator",
+    "allPublicConstructors":true
+  },
+  {
+    "name": "com.rometools.rome.io.impl.SyModuleParser",
+    "allPublicConstructors":true
+  }
+]
