@@ -1,8 +1,7 @@
 ## Certiorem
 
-Certiorem is an implementation of the
-[PubSubHubub](http://pubsubhubbub.googlecode.com/svn/trunk/pubsubhubbub-core-0.3.html)
-protocol for ROME.
+Certiorem is an implementation of the 
+[PubSubHubub](https://en.wikipedia.org/wiki/WebSub) protocol for ROME.
 
 It is dependent on ROME and ROME-Fetcher for the base implementations,
 and will provide standard plugins for Propono to allow for publish

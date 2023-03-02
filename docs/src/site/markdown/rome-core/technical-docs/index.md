@@ -13,7 +13,7 @@ intermediate Wire Feed models and the idealized Syndication Feed model.
 
 Here is what happens during Rome Newsfeed parsing:
 
-![](HowRomeWorks.png)
+![](overview.png)
 
 1.  Your code calls *SyndFeedInput* to parse a Newsfeed.
 2.  SyndFeedInput delegates to WireFeedInput to do the actual parsing.

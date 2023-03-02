@@ -20,7 +20,7 @@ type.
 | [OPML](rome-opml/index.html) | Outline Processor Markup Language (OPML) parser and tools. |
 | [Propono](rome-propono/index.html) (deprecated) | Supports publishing protocols, specifically the Atom Publishing Protocol and the legacy MetaWeblog API. Propono includes an Atom client library, an Atom server framework and a Blog client that supports both the Atom protocol and the MetaWeblog API. |
 
-## Why this project?
+### Motivation
 
 Various flavors of RSS and Atom syndication formats were reaching a tipping 
 point in 2004. At Sun we started various projects involving these Syndication 

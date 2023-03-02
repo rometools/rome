@@ -8,7 +8,7 @@ the MetaWeblog API.
 
 ## Releases
 
--   [Version 1.0](version-1.0.html)
--   [Version 0.6](version-0.6.html)
--   [Version 0.5](version-0.5.html)
--   [Version 0.4](version-0.4.html)
+-   [1.0](1.0.html)
+-   [0.6](0.6.html)
+-   [0.5](0.5.html)
+-   [0.4](0.4.html)

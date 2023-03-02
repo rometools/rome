@@ -35,7 +35,6 @@
             <item name="Home" href="index.html" />
             <item name="Getting Started" href="rome-core/getting-started/index.html" collapse="true">
                 <item name="Installation" href="rome-core/getting-started/installation.html" />
-                <item name="Best Practice" href="rome-core/getting-started/best-practice.html" />
                 <item name="Create feed" href="rome-core/getting-started/create-feed.html" />
                 <item name="Read feed" href="rome-core/getting-started/read-feed.html" />
                 <item name="Convert feed" href="rome-core/getting-started/convert-feed.html" />
@@ -49,84 +48,48 @@
                 <item name="CopyFrom Interface" href="rome-core/technical-docs/copyfrom-interface.html" />
                 <item name="Common classes and interfaces" href="rome-core/technical-docs/common-classes-and-interfaces.html" />
                 <item name="Date Mapping" href="rome-core/technical-docs/date-mapping.html" />
-                <item name="Date and Time handling (TODO)" href="RssAndAtOMUtiliEsROMEV0.7DateAndTimeParsing.html" />
+                <item name="Date Parsing" href="rome-core/technical-docs/date-parsing.html" />
                 <item name="Encoding detection" href="rome-core/technical-docs/encoding-detection.html" />
                 <item name="OSGI" href="rome-core/technical-docs/osgi.html" />
                 <item name="Plugin Mechanism" href="rome-core/technical-docs/plugin-mechanism.html" />
                 <item name="URI Mapping" href="rome-core/technical-docs/uri-mapping.html" />
             </item>
-            <item name="Changelog" href="ChangeLog.html" />
-            <item name="Releases" href="rome-core/releases/index.html" collapse="true">
-                <item name="1.0" href="rome-core/releases/ROME1.0Release.html" />
-                <item name="1.0 RC2" href="rome-core/releases/ROME1.0RC2.html" />
-                <item name="1.0 RC1" href="rome-core/releases/ROME1.0RC1.html" />
-                <item name="0.9 Beta" href="rome-core/releases/ROME0.9Beta.html" />
-                <item name="0.8 Beta" href="rome-core/releases/ROME0.8Beta.html" />
-                <item name="0.7 Beta" href="rome-core/releases/ROME0.7Beta.html" />
-                <item name="0.6 Beta" href="rome-core/releases/ROME0.6Beta.html" />
-                <item name="0.5 Beta" href="rome-core/releases/ROME0.5Beta/index.html" />
-                <item name="0.4 Beta" href="rome-core/releases/ROME0.4Beta/index.html" collapse="true">
-                    <item name="Tutorials" href="rome-core/releases/ROME0.4Beta/RomeV0.4Tutorials/index.html" collapse="true">
-                        <item name="Read feeds" href="rome-core/releases/ROME0.4Beta/RomeV0.4Tutorials/RomeV0.4TutorialUsingRomeToReadASyndicationFeed.html" />
-                        <item name="Convert feeds" href="rome-core/releases/ROME0.4Beta/RomeV0.4Tutorials/RomeV0.4TutorialUsingRomeToConvertASyndicationFeedFromOneTypeToAnother.html" />
-                        <item name="Aggregate feeds" href="rome-core/releases/ROME0.4Beta/RomeV0.4Tutorials/RomeV0.4TutorialUsingRomeToAggregateManySyndicationFeedsIntoASingleOne.html" />
-                        <item name="Write feeds" href="rome-core/releases/ROME0.4Beta/RomeV0.4Tutorials/RomeV0.4TutorialUsingRomeToCreateAndWriteASyndicationFeed.html" />
-                        <item name="Custom module" href="rome-core/releases/ROME0.4Beta/RomeV0.4Tutorials/RomeV0.4TutorialDefiningACustomModuleBeanParserAndGenerator.html" />
-                        <item name="Servlet" href="rome-core/releases/ROME0.4Beta/RomeV0.4Tutorials/RomeV0.4TutorialUsingRomeWithinAServletToCreateAndReturnAFeed.html" />
-                    </item>
-                    <item name="Instructions" href="rome-core/releases/ROME0.4Beta/RomeV0.4Tutorials/RomeV0.4HowToBuildAndRunTheTutorialsSampleCode.html" />
-                    <item name="URI Mapping" href="RomeV0.4FeedAndEntryURIMapping.html" />
-                </item>
-                <item name="0.3 Beta" href="rome-core/releases/ROME0.3Beta/index.html" collapse="true">
-                    <item name="Tutorials" href="rome-core/releases/ROME0.3Beta/RomeV0.3Tutorials/index.html" collapse="true">
-                        <item name="Read feeds" href="rome-core/releases/ROME0.3Beta/RomeV0.3Tutorials/RomeV0.3TutorialUsingRomeToReadASyndicationFeed.html" />
-                        <item name="Convert feeds" href="rome-core/releases/ROME0.3Beta/RomeV0.3Tutorials/RomeV0.3TutorialUsingRomeToConvertASyndicationFeedFromOneTypeToAnother.html" />
-                        <item name="Aggregate feeds" href="rome-core/releases/ROME0.3Beta/RomeV0.3Tutorials/RomeV0.3TutorialUsingRomeToAggregateManySyndicationFeedsIntoASingleOne.html" />
-                        <item name="Write feed" href="rome-core/releases/ROME0.3Beta/RomeV0.3Tutorials/RomeV0.3TutorialUsingRomeToCreateAndWriteASyndicationFeed.html" />
-                        <item name="Custom module" href="rome-core/releases/ROME0.3Beta/RomeV0.3Tutorials/RomeV0.3TutorialDefiningACustomModuleBeanParserAndGenerator.html" />
-                    </item>
-                    <item name="Instructions" href="rome-core/releases/ROME0.3Beta/RomeV0.3Tutorials/RomeV0.3HowToBuildAndRunTheTutorialsSampleCode.html" />
-                </item>
-                <item name="0.2 Beta" href="rome-core/releases/ROME0.2Beta/index.html" collapse="true">
-                    <item name="Tutorials" href="rome-core/releases/ROME0.2Beta/RomeV0.2Tutorials/index.html" collapse="true">
-                        <item name="Read feeds" href="rome-core/releases/ROME0.2Beta/RomeV0.2Tutorials/RomeV0.2TutorialUsingRomeToReadASyndicationFeed.html" />
-                        <item name="Convert feeds" href="rome-core/releases/ROME0.2Beta/RomeV0.2Tutorials/RomeV0.2TutorialUsingRomeToConvertASyndicationFeedFromOneTypeToAnother.html" />
-                        <item name="Aggregate feeds" href="rome-core/releases/ROME0.2Beta/RomeV0.2Tutorials/RomeV0.2TutorialUsingRomeToAggregateManySyndicationFeedsIntoASingleOne.html" />
-                    </item>
-                </item>
-                <item name="0.1 Beta" href="rome-core/releases/ROME0.1Beta/index.html" collapse="true">
-                    <item name="Tutorials" href="rome-core/releases/ROME0.1Beta/RomeV0.1Tutorials/index.html" collapse="true">
-                        <item name="Read feeds" href="rome-core/releases/ROME0.1Beta/RomeV0.1Tutorials/RomeV0.1TutorialUsingRomeToReadASyndicationFeed.html" />
-                        <item name="Convert feeds" href="rome-core/releases/ROME0.1Beta/RomeV0.1Tutorials/RomeV0.1TutorialUsingRomeToConvertASyndicationFeedFromOneTypeToAnother.html" />
-                        <item name="Aggregate feeds" href="rome-core/releases/ROME0.1Beta/RomeV0.1Tutorials/RomeV0.1TutorialUsingRomeToAggregateManySyndicationFeedsIntoASingleOne.html" />
-                    </item>
-                    <item name="Instructions" href="rome-core/releases/ROME0.1Beta/RomeV0.1Tutorials/RomeV0.1HowToBuildAndRunTheTutorialsSampleCode.html" />
-                </item>
+            <item name="Archive" href="rome-core/releases/index.html" collapse="true">
+                <item name="1.0" href="rome-core/releases/1.0-release/index.html" />
+                <item name="1.0 RC2" href="rome-core/releases/1.0-rc2/index.html" />
+                <item name="1.0 RC1" href="rome-core/releases/1.0-rc1/index.html" />
+                <item name="0.9 Beta" href="rome-core/releases/0.9-beta/index.html" />
+                <item name="0.8 Beta" href="rome-core/releases/0.8-beta/index.html" />
+                <item name="0.7 Beta" href="rome-core/releases/0.7-beta/index.html" />
+                <item name="0.6 Beta" href="rome-core/releases/0.6-beta/index.html" />
+                <item name="0.5 Beta" href="rome-core/releases/0.5-beta/index.html" />
+                <item name="0.4 Beta" href="rome-core/releases/0.4-beta/index.html" />
+                <item name="0.3 Beta" href="rome-core/releases/0.3-beta/index.html" />
+                <item name="0.2 Beta" href="rome-core/releases/0.2-beta/index.html" />
+                <item name="0.1 Beta" href="rome-core/releases/0.1-beta/index.html" />
             </item>
             <item name="Powered by ROME" href="powered-by-rome.html" />            
             <item name="FAQ" href="faq.html" />
         </menu>
         <menu name="Certiorem">
             <item name="Home" href="rome-certiorem/index.html" />
-            <item name="Examples" href="rome-certiorem/tutorial.html" />
+            <item name="Getting Started" href="rome-certiorem/getting-started/index.html" />
         </menu>
         <menu name="Fetcher">
             <item name="Home" href="rome-fetcher/index.html" />
-            <item name="Example" href="rome-fetcher/UsingTheRomeFetcherModuleToRetrieveFeeds.html" />
-            <item name="Dependencies" href="rome-fetcher/Dependencies/index.html" collapse="true">
-                <item name=" HttpClientFeedFetcher" href="rome-fetcher/Dependencies/HttpClientFeedFetcher.html" />
+            <item name="Getting Started" href="rome-fetcher/getting-started/index.html" />
+            <item name="Dependencies" href="rome-fetcher/dependencies/index.html" collapse="true">
+                <item name=" HttpClientFeedFetcher" href="rome-fetcher/dependencies/HttpClientFeedFetcher.html" />
             </item>
-            <item name="Changelog" href="rome-fetcher/ChangeLog.html" />
-            <item name="Known issues" href="rome-fetcher/KnownIssues.html" />
-            <item name="Releases" href="rome-fetcher/Releases/index.html" collapse="true">
-                <item name="1.0" href="rome-fetcher/Releases/ROMEFetcher1.0.html" />
-                <item name="1.0 RC2" href="rome-fetcher/Releases/ROMEFetcher1.0RC2.html" />
-                <item name="0.9" href="rome-fetcher/Releases/ROMEFetcher0.9.html" />
-                <item name="0.7" href="rome-fetcher/Releases/ROMEFetcher0.7.html" />
-                <item name="0.6" href="rome-fetcher/Releases/ROMEFetcher0.6.html" />
-                <item name="0.5" href="rome-fetcher/Releases/RomeFetcher0.5.html" />
-                <item name="0.4" href="rome-fetcher/Releases/RomeFetcher0.4.html" />
-                <item name="0.3" href="rome-fetcher/Releases/RomeFetcher0.3.html" />
+            <item name="Releases" href="rome-fetcher/releases/index.html" collapse="true">
+                <item name="1.0" href="rome-fetcher/releases/1.0-release/index.html" />
+                <item name="1.0 RC2" href="rome-fetcher/releases/1.0-rc2/index.html" />
+                <item name="0.9" href="rome-fetcher/releases/0.9/index.html" />
+                <item name="0.7" href="rome-fetcher/releases/0.7/index.html" />
+                <item name="0.6" href="rome-fetcher/releases/0.6/index.html" />
+                <item name="0.5" href="rome-fetcher/releases/0.5/index.html" />
+                <item name="0.4" href="rome-fetcher/releases/0.4/index.html" />
+                <item name="0.3" href="rome-fetcher/releases/0.3/index.html" />
             </item>
         </menu>
         <menu name="Modules">
@@ -150,10 +113,10 @@
         </menu>
         <menu name="Propono">
             <item name="Home" href="rome-propono/index.html" collapse="true">
-                <item name="1.0" href="rome-propono/version-1.0.html" />
-                <item name="0.6" href="rome-propono/version-0.6.html" />
-                <item name="0.5" href="rome-propono/version-0.5.html" />
-                <item name="0.4" href="rome-propono/version-0.4.html" />
+                <item name="1.0" href="rome-propono/1.0.html" />
+                <item name="0.6" href="rome-propono/0.6.html" />
+                <item name="0.5" href="rome-propono/0.5.html" />
+                <item name="0.4" href="rome-propono/0.4.html" />
             </item>
         </menu>
     </body>

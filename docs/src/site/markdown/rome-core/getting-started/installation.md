@@ -15,13 +15,7 @@ coordinates:
 </dependency>
 ```
 
-The following old releases are available on Maven Central under another groupId:
-- 0.3
-- 0.5
-- 0.8
-- 0.9
-- 1.0RC2
-- 1.0
+Some earlier versions are available on Maven Central under another groupId:
 
 ```xml
 <dependency>
@@ -35,7 +29,7 @@ The following old releases are available on Maven Central under another groupId:
 
 If you want to build the library from source you just have clone the source from
 [GitHub](https://github.com/rometools/rome) and install the package using the 
-[Maven Wrapper](https://maven.apache.org/wrapper/). Please note that JDK 11 is
+[Maven Wrapper](https://maven.apache.org/wrapper/). Please note that JDK 8 is
 required to install Rome from source.
 
 **Linux**
