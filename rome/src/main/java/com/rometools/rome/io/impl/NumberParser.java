@@ -60,7 +60,7 @@ public final class NumberParser {
     public static Integer parseInt(final String str) {
         if (null != str) {
             try {
-                return Integer.valueOf(Integer.parseInt(str.trim()));
+                return Integer.valueOf(str.trim());
             } catch (final Exception e) {
                 // :IGNORE:
             }
