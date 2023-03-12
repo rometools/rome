@@ -26,7 +26,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.rometools.modules.AbstractTestCase;
-import com.rometools.modules.content.ContentModule;
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.SyndFeedInput;
@@ -63,7 +62,7 @@ public class ContentModuleGeneratorTest extends AbstractTestCase {
         LOG.debug("testGenerate");
 
         final SyndFeedInput input = new SyndFeedInput();
-        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("xml/test-rdf.xml")).toURI().toURL()));
+        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("xml/test-rdf.xml"))));
         final SyndEntry entry = feed.getEntries().get(0);
         entry.getModule(ContentModule.URI);
         final SyndFeedOutput output = new SyndFeedOutput();

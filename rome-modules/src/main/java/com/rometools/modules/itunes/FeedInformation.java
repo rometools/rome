@@ -16,7 +16,6 @@
  */
 package com.rometools.modules.itunes;
 
-import java.net.URL;
 import java.util.List;
 
 import com.rometools.modules.itunes.types.Category;

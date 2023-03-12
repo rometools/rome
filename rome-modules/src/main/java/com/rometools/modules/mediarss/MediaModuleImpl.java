@@ -22,8 +22,6 @@
  */
 package com.rometools.modules.mediarss;
 
-import java.io.Serializable;
-
 import com.rometools.modules.mediarss.types.Metadata;
 import com.rometools.modules.mediarss.types.PlayerReference;
 import com.rometools.rome.feed.CopyFrom;
@@ -33,7 +31,7 @@ import com.rometools.rome.feed.module.ModuleImpl;
  *
  * This class represents feed/channel level elements for MediaRSS
  */
-public class MediaModuleImpl extends ModuleImpl implements MediaModule, Serializable {
+public class MediaModuleImpl extends ModuleImpl implements MediaModule {
     private static final long serialVersionUID = 1L;
 
     private Metadata metadata;

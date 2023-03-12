@@ -27,7 +27,6 @@ import junit.framework.TestSuite;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.rometools.modules.base.types.IntUnit;
 import com.rometools.modules.cc.io.CCModuleGenerator;
 
 public class IntUnitTest extends TestCase {

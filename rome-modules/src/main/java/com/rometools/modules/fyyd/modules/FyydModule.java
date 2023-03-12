@@ -15,13 +15,12 @@
  */
 package com.rometools.modules.fyyd.modules;
 
-import com.rometools.rome.feed.CopyFrom;
 import com.rometools.rome.feed.module.Module;
 
 /**
  * This is a ROME module that provides support for the <a href="https://fyyd.de/fyyd-ns/">https://fyyd.de/fyyd-ns/</a> namespace.
  */
-public interface FyydModule extends Module, CopyFrom {
+public interface FyydModule extends Module {
 
     /**
      * The URI of the namespace. (<a href="https://fyyd.de/fyyd-ns/">https://fyyd.de/fyyd-ns/</a>)

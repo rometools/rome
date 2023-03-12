@@ -11,7 +11,6 @@
  */
 package com.rometools.modules.opensearch.impl;
 
-import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -24,7 +23,7 @@ import com.rometools.rome.feed.CopyFrom;
 import com.rometools.rome.feed.atom.Link;
 import com.rometools.rome.feed.module.ModuleImpl;
 
-public class OpenSearchModuleImpl extends ModuleImpl implements OpenSearchModule, Serializable {
+public class OpenSearchModuleImpl extends ModuleImpl implements OpenSearchModule {
     private static final long serialVersionUID = 1L;
     private static final Logger LOG = LoggerFactory.getLogger(OpenSearchModuleImpl.class);
     private int totalResults = -1;

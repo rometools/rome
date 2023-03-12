@@ -88,7 +88,7 @@ public class ModuleParser implements com.rometools.rome.io.ModuleParser {
             final String elementName = se.getAttributeValue("element");
             final String label = se.getAttributeValue("label");
             final String dataType = se.getAttributeValue("data-type");
-            final boolean defaultOrder = se.getAttributeValue("default") == null ? false : new Boolean(se.getAttributeValue("default")).booleanValue();
+            final boolean defaultOrder = se.getAttributeValue("default") == null ? false : Boolean.valueOf(se.getAttributeValue("default")).booleanValue();
             values.add(new Sort(ns, elementName, dataType, label, defaultOrder));
         }
 

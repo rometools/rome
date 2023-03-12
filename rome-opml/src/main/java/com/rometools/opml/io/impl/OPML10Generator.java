@@ -30,11 +30,10 @@ import com.rometools.opml.feed.opml.Opml;
 import com.rometools.opml.feed.opml.Outline;
 import com.rometools.rome.feed.WireFeed;
 import com.rometools.rome.io.FeedException;
-import com.rometools.rome.io.WireFeedGenerator;
 import com.rometools.rome.io.impl.BaseWireFeedGenerator;
 import com.rometools.rome.io.impl.DateParser;
 
-public class OPML10Generator extends BaseWireFeedGenerator implements WireFeedGenerator {
+public class OPML10Generator extends BaseWireFeedGenerator {
 
     public OPML10Generator() {
         super("opml_1.0");

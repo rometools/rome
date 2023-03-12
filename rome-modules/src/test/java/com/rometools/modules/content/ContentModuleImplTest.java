@@ -28,10 +28,6 @@ import junit.framework.TestCase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.rometools.modules.content.ContentItem;
-import com.rometools.modules.content.ContentModule;
-import com.rometools.modules.content.ContentModuleImpl;
-
 public class ContentModuleImplTest extends TestCase {
 
     private static final Logger LOG = LoggerFactory.getLogger(ContentModuleImplTest.class);

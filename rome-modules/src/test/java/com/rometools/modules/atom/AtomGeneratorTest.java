@@ -40,7 +40,7 @@ public class AtomGeneratorTest extends AbstractTestCase {
         log.debug("testGenerate");
 
         final SyndFeedInput input = new SyndFeedInput();
-        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("atom/rss.xml")).toURI().toURL()));
+        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("atom/rss.xml"))));
         feed.getModule(AtomLinkModule.URI);
 
         final SyndEntry entry = feed.getEntries().get(0);

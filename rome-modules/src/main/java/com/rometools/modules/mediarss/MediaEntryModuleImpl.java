@@ -21,8 +21,6 @@
  */
 package com.rometools.modules.mediarss;
 
-import java.io.Serializable;
-
 import com.rometools.modules.mediarss.types.MediaContent;
 import com.rometools.modules.mediarss.types.MediaGroup;
 import com.rometools.modules.mediarss.types.Metadata;
@@ -33,7 +31,7 @@ import com.rometools.rome.feed.impl.ToStringBean;
 /**
  * Represents information for an Entry/Item level.
  */
-public class MediaEntryModuleImpl extends MediaModuleImpl implements MediaEntryModule, Cloneable, Serializable {
+public class MediaEntryModuleImpl extends MediaModuleImpl implements MediaEntryModule {
     private static final long serialVersionUID = 1L;
 
     /*
