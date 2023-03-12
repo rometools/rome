@@ -18,12 +18,11 @@ package com.rometools.rome.feed.atom;
 
 import java.io.Serializable;
 import java.util.Collections;
-import java.util.Objects;
-import java.util.stream.Stream;
 
 import com.rometools.rome.feed.impl.CloneableBean;
 import com.rometools.rome.feed.impl.EqualsBean;
 import com.rometools.rome.feed.impl.ToStringBean;
+import com.rometools.utils.Alternatives;
 
 /**
  * Bean for link elements of Atom feeds.
@@ -167,7 +166,7 @@ public class Link implements Cloneable, Serializable {
     }
 
     public String getHrefResolved() {
-        return Stream.of(new String[] {hrefResolved, href}).filter(Objects::nonNull).findFirst().orElse(null);
+        return Alternatives.firstNotNull(hrefResolved, href);
     }
 
     /**
