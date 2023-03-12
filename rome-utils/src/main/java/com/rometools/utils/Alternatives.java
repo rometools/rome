@@ -14,6 +14,9 @@
 
 package com.rometools.utils;
 
+import java.util.Objects;
+import java.util.stream.Stream;
+
 public final class Alternatives {
 
     private Alternatives() {
@@ -25,13 +28,12 @@ public final class Alternatives {
      * @param objects The objects to process
      * @return The first value that is not null. null when there is no not-null value
      */
+    @SafeVarargs
     public static <T> T firstNotNull(final T... objects) {
-        for (final T object : objects) {
-            if (object != null) {
-                return object;
-            }
-        }
-        return null;
+        return Stream.of(objects)
+            .filter(Objects::nonNull)
+            .findFirst()
+            .orElse(null);
     }
 
 }

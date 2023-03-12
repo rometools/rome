@@ -40,7 +40,7 @@ public class PodloveSimpleChapterGeneratorTest extends AbstractTestCase {
         log.debug("testGenerateRss");
 
         final SyndFeedInput input = new SyndFeedInput();
-        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("psc/rss.xml")).toURI().toURL()));
+        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("psc/rss.xml"))));
         final SyndEntry entry = feed.getEntries().get(0);
         entry.getModule(PodloveSimpleChapterModule.URI);
         final SyndFeedOutput output = new SyndFeedOutput();
@@ -60,7 +60,7 @@ public class PodloveSimpleChapterGeneratorTest extends AbstractTestCase {
         log.debug("testGenerateAtom");
 
         final SyndFeedInput input = new SyndFeedInput();
-        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("psc/atom.xml")).toURI().toURL()));
+        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("psc/atom.xml"))));
         final SyndEntry entry = feed.getEntries().get(0);
         entry.getModule(PodloveSimpleChapterModule.URI);
         final SyndFeedOutput output = new SyndFeedOutput();

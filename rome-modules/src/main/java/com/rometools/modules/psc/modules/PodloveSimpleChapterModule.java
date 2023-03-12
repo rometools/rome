@@ -17,7 +17,6 @@
 package com.rometools.modules.psc.modules;
 
 import com.rometools.modules.psc.types.SimpleChapter;
-import com.rometools.rome.feed.CopyFrom;
 import com.rometools.rome.feed.module.Module;
 
 import java.util.List;
@@ -25,7 +24,7 @@ import java.util.List;
 /**
  * An interface describing the item level data for Podlove Simple Chapters.
  */
-public interface PodloveSimpleChapterModule extends Module, CopyFrom {
+public interface PodloveSimpleChapterModule extends Module {
 
     /** "http://podlove.org/simple-chapters". */
     String URI = "http://podlove.org/simple-chapters";

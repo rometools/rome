@@ -19,7 +19,6 @@ package com.rometools.modules.itunes;
 import com.rometools.modules.itunes.types.Duration;
 import com.rometools.rome.feed.CopyFrom;
 
-import java.net.URISyntaxException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

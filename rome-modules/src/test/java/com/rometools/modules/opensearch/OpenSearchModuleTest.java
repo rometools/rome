@@ -26,7 +26,6 @@ import junit.framework.Test;
 import junit.framework.TestSuite;
 
 import com.rometools.modules.AbstractTestCase;
-import com.rometools.modules.opensearch.OpenSearchModule;
 import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.SyndFeedInput;

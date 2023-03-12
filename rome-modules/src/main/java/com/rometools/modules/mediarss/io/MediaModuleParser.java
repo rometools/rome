@@ -281,7 +281,7 @@ public class MediaModuleParser implements ModuleParser {
 
             for (int j = 0; j < g.getContents().length; j++) {
                 if (g.getContents()[j].isDefaultContent()) {
-                    g.setDefaultContentIndex(new Integer(j));
+                    g.setDefaultContentIndex(Integer.valueOf(j));
 
                     break;
                 }

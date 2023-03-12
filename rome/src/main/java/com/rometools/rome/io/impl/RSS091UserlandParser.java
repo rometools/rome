@@ -128,7 +128,7 @@ public class RSS091UserlandParser extends RSS090Parser {
             final List<Integer> skipHours = new ArrayList<Integer>();
             final List<Element> eHours = eSkipHours.getChildren("hour", getRSSNamespace());
             for (final Element eHour : eHours) {
-                skipHours.add(new Integer(eHour.getText().trim()));
+                skipHours.add(Integer.valueOf(eHour.getText().trim()));
             }
             channel.setSkipHours(skipHours);
         }

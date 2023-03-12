@@ -15,13 +15,12 @@
  */
 package com.rometools.modules.feedpress.modules;
 
-import com.rometools.rome.feed.CopyFrom;
 import com.rometools.rome.feed.module.Module;
 
 /**
  * This is a ROME module that provides support for the <a href="https://feed.press/xmlns">https://feed.press/xmlns</a> namespace.
  */
-public interface FeedpressModule extends Module, CopyFrom {
+public interface FeedpressModule extends Module {
 
     /**
      * The URI of the namespace. (<a href="https://feed.press/xmlns">https://feed.press/xmlns</a>)

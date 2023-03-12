@@ -22,8 +22,6 @@ import junit.framework.TestCase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.rometools.modules.activitystreams.types.Verb;
-
 public class VerbTest extends TestCase {
 
     private static final Logger LOG = LoggerFactory.getLogger(VerbTest.class);

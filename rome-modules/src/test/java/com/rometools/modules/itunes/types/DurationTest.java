@@ -22,8 +22,6 @@ import junit.framework.TestSuite;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.rometools.modules.itunes.types.Duration;
-
 public class DurationTest extends TestCase {
 
     private static final Logger LOG = LoggerFactory.getLogger(DurationTest.class);

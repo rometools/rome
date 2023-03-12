@@ -63,13 +63,13 @@ public class ITunesGeneratorTest extends AbstractTestCase {
     private void testFile(final String filename) throws Exception {
         final File feed = new File(getTestFile(filename));
         final SyndFeedInput input = new SyndFeedInput();
-        final SyndFeed syndfeed = input.build(new XmlReader(feed.toURI().toURL()));
+        final SyndFeed syndfeed = input.build(new XmlReader(feed));
 
         final SyndFeedOutput output = new SyndFeedOutput();
         final File outfeed = new File("target/" + feed.getName());
         output.output(syndfeed, outfeed);
 
-        final SyndFeed syndCheck = input.build(new XmlReader(outfeed.toURI().toURL()));
+        final SyndFeed syndCheck = input.build(new XmlReader(outfeed));
         LOG.debug(syndCheck.getModule(AbstractITunesObject.URI).toString());
         assertEquals("Feed Level: ", syndfeed.getModule(AbstractITunesObject.URI).toString(), syndCheck.getModule(AbstractITunesObject.URI).toString());
 

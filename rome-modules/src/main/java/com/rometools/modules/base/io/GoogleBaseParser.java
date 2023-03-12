@@ -142,15 +142,15 @@ public class GoogleBaseParser implements ModuleParser {
         Object tagValue = null;
 
         if (pd.getPropertyType() == Integer.class || pd.getPropertyType().getComponentType() == Integer.class) {
-            tagValue = new Integer(GoogleBaseParser.stripNonValidCharacters(GoogleBaseParser.INTEGER_CHARS, tag.getText()));
+            tagValue = Integer.valueOf(GoogleBaseParser.stripNonValidCharacters(GoogleBaseParser.INTEGER_CHARS, tag.getText()));
         } else if (pd.getPropertyType() == Float.class || pd.getPropertyType().getComponentType() == Float.class) {
-            tagValue = new Float(GoogleBaseParser.stripNonValidCharacters(GoogleBaseParser.FLOAT_CHARS, tag.getText()));
+            tagValue = Float.valueOf(GoogleBaseParser.stripNonValidCharacters(GoogleBaseParser.FLOAT_CHARS, tag.getText()));
         } else if (pd.getPropertyType() == String.class || pd.getPropertyType().getComponentType() == String.class) {
             tagValue = tag.getText();
         } else if (pd.getPropertyType() == URL.class || pd.getPropertyType().getComponentType() == URL.class) {
             tagValue = new URL(tag.getText().trim());
         } else if (pd.getPropertyType() == Boolean.class || pd.getPropertyType().getComponentType() == Boolean.class) {
-            tagValue = new Boolean(tag.getText().trim());
+            tagValue = Boolean.valueOf(tag.getText().trim());
         } else if (pd.getPropertyType() == Date.class || pd.getPropertyType().getComponentType() == Date.class) {
             final String text = tag.getText().trim();
 

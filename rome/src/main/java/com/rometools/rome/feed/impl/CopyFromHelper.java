@@ -97,7 +97,7 @@ public class CopyFromHelper {
         if (baseImplMap.get(interfaceClass) == null) {
             return null;
         } else {
-            return (CopyFrom) baseImplMap.get(interfaceClass).newInstance();
+            return (CopyFrom) baseImplMap.get(interfaceClass).getDeclaredConstructor().newInstance();
         }
     }
 
@@ -121,7 +121,7 @@ public class CopyFromHelper {
                     final CopyFrom source = (CopyFrom) value;
                     CopyFrom target = createInstance(source.getInterface());
                     if (target == null) {
-                        target = (CopyFrom) value.getClass().newInstance();
+                        target = (CopyFrom) value.getClass().getDeclaredConstructor().newInstance();
                     }
                     target.copyFrom(source);
                     value = (T) target;

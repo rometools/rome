@@ -39,7 +39,7 @@ public class AtomParserTest extends AbstractTestCase {
         log.debug("testParse");
 
         final SyndFeedInput input = new SyndFeedInput();
-        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("atom/rss.xml")).toURI().toURL()));
+        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("atom/rss.xml"))));
 
         final AtomLinkModule feedAtomModule = (AtomLinkModule) feed.getModule(AtomLinkModule.URI);
         for (SyndPerson author : feedAtomModule.getAuthors()) {

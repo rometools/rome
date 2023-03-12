@@ -39,7 +39,7 @@ public class FeedpressGeneratorTest extends AbstractTestCase {
         log.debug("testGenerateRss");
 
         final SyndFeedInput input = new SyndFeedInput();
-        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("feedpress/rss.xml")).toURI().toURL()));
+        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("feedpress/rss.xml"))));
         feed.getModule(FeedpressModule.URI);
         final SyndFeedOutput output = new SyndFeedOutput();
         final StringWriter writer = new StringWriter();
@@ -61,7 +61,7 @@ public class FeedpressGeneratorTest extends AbstractTestCase {
         log.debug("testGenerateAtom");
 
         final SyndFeedInput input = new SyndFeedInput();
-        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("feedpress/atom.xml")).toURI().toURL()));
+        final SyndFeed feed = input.build(new XmlReader(new File(getTestFile("feedpress/atom.xml"))));
         feed.getModule(FeedpressModule.URI);
         final SyndFeedOutput output = new SyndFeedOutput();
         final StringWriter writer = new StringWriter();

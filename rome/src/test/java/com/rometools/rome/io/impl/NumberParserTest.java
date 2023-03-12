@@ -4,7 +4,6 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 
 
 public class NumberParserTest {
@@ -18,7 +17,7 @@ public class NumberParserTest {
     @Test
     public void testLongParseSuccess() {
         Long num = NumberParser.parseLong("1");
-        assertEquals(new Long(1L), num);
+        assertEquals(Long.valueOf(1L), num);
     }
 
     @Test
@@ -42,7 +41,7 @@ public class NumberParserTest {
     @Test
     public void testIntParseSuccess() {
         Integer num = NumberParser.parseInt("1");
-        assertEquals(new Integer(1), num);
+        assertEquals(Integer.valueOf(1), num);
     }
 
     @Test
@@ -54,7 +53,7 @@ public class NumberParserTest {
     @Test
     public void testFloatParseSuccess() {
         Float num = NumberParser.parseFloat("1.0");
-        assertEquals(new Float(1.0f), num);
+        assertEquals(Float.valueOf(1.0f), num);
     }
 
     @Test

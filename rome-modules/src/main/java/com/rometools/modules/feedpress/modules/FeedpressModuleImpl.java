@@ -5,11 +5,9 @@ import com.rometools.rome.feed.impl.EqualsBean;
 import com.rometools.rome.feed.impl.ToStringBean;
 import com.rometools.rome.feed.module.ModuleImpl;
 
-import java.io.Serializable;
-
 public class FeedpressModuleImpl
         extends ModuleImpl
-        implements FeedpressModule, Cloneable, Serializable {
+        implements FeedpressModule {
 
     private String newsletterId;
     private String locale;

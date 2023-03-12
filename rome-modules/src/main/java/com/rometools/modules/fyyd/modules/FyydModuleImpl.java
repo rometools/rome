@@ -20,11 +20,9 @@ import com.rometools.rome.feed.impl.EqualsBean;
 import com.rometools.rome.feed.impl.ToStringBean;
 import com.rometools.rome.feed.module.ModuleImpl;
 
-import java.io.Serializable;
-
 public class FyydModuleImpl
         extends ModuleImpl
-        implements FyydModule, Cloneable, Serializable {
+        implements FyydModule {
 
     private String verify;
 
