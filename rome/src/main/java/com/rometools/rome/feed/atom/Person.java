@@ -25,6 +25,7 @@ import java.util.stream.Stream;
 import com.rometools.rome.feed.impl.CloneableBean;
 import com.rometools.rome.feed.impl.EqualsBean;
 import com.rometools.rome.feed.impl.ToStringBean;
+import com.rometools.rome.feed.module.Extendable;
 import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.feed.module.impl.ModuleUtils;
 import com.rometools.rome.feed.synd.SyndPerson;
@@ -33,7 +34,7 @@ import com.rometools.utils.Lists;
 /**
  * Bean for person elements of Atom feeds.
  */
-public class Person implements SyndPerson, Serializable {
+public class Person implements SyndPerson, Cloneable, Serializable, Extendable {
 
     private static final long serialVersionUID = 1L;
 
