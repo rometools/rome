@@ -29,14 +29,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.rometools.rome.feed.CopyFrom;
 
 public class CopyFromHelper {
-
-    private static final Logger LOG = LoggerFactory.getLogger(CopyFromHelper.class);
 
     private static final Set<Class<?>> BASIC_TYPES = new HashSet<Class<?>>();
     private static final Object[] NO_PARAMS = new Object[0];
@@ -93,7 +88,6 @@ public class CopyFromHelper {
             }
 
         } catch (final Exception e) {
-            LOG.error("Error while copying object", e);
             throw new RuntimeException("Could not do a copyFrom " + e, e);
         }
 
