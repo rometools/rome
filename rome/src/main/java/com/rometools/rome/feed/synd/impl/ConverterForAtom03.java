@@ -46,6 +46,7 @@ import com.rometools.rome.feed.synd.SyndLink;
 import com.rometools.rome.feed.synd.SyndLinkImpl;
 import com.rometools.rome.feed.synd.SyndPerson;
 import com.rometools.rome.feed.synd.SyndPersonImpl;
+import com.rometools.utils.Alternatives;
 import com.rometools.utils.Lists;
 import com.rometools.utils.Strings;
 
@@ -273,7 +274,7 @@ public class ConverterForAtom03 implements Converter {
 
         Date date = entry.getModified();
         if (date == null) {
-            date = Stream.of(new Date[] {entry.getIssued(), entry.getCreated()}).filter(Objects::nonNull).findFirst().orElse(null);
+            date = Alternatives.firstNotNull(entry.getIssued(), entry.getCreated());
         }
 
         if (date != null) {

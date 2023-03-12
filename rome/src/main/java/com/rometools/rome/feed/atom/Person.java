@@ -28,6 +28,7 @@ import com.rometools.rome.feed.impl.ToStringBean;
 import com.rometools.rome.feed.module.Module;
 import com.rometools.rome.feed.module.impl.ModuleUtils;
 import com.rometools.rome.feed.synd.SyndPerson;
+import com.rometools.utils.Alternatives;
 import com.rometools.utils.Lists;
 
 /**
@@ -147,7 +148,7 @@ public class Person implements SyndPerson, Serializable {
     }
 
     public String getUriResolved(final String resolveURI) {
-        return Stream.of(new String[] {uriResolved, uri}).filter(Objects::nonNull).findFirst().orElse(null);
+        return Alternatives.firstNotNull(uriResolved, uri);
     }
 
     /**

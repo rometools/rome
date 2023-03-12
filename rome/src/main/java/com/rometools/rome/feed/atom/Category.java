@@ -24,6 +24,7 @@ import java.util.stream.Stream;
 import com.rometools.rome.feed.impl.CloneableBean;
 import com.rometools.rome.feed.impl.EqualsBean;
 import com.rometools.rome.feed.impl.ToStringBean;
+import com.rometools.utils.Alternatives;
 
 /**
  * Bean for category elements of Atom feeds.
@@ -140,7 +141,7 @@ public class Category implements Cloneable, Serializable {
     }
 
     public String getSchemeResolved() {
-        return Stream.of(new String[] {schemeResolved, scheme}).filter(Objects::nonNull).findFirst().orElse(null);
+        return Alternatives.firstNotNull(schemeResolved, scheme);
     }
 
     /**
