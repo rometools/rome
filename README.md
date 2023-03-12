@@ -1,9 +1,9 @@
-# Rome
+# ROME
 
 [![Build Status](https://travis-ci.org/rometools/rome.svg?branch=master)](https://travis-ci.org/rometools/rome)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.rometools/rome/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.rometools/rome)
 
-Rome is a Java framework for RSS and Atom feeds. The framework consist of several modules:
+ROME is a Java framework for RSS and Atom feeds. The framework consist of several modules:
 
 | Module | Description |
 | ------ | ----------- |
@@ -15,7 +15,8 @@ Rome is a Java framework for RSS and Atom feeds. The framework consist of severa
 ## Getting started
 
 ### System Requirements
-Starting with Rome 2.0.0, Java 11 or higher is required.
+Starting with ROME 2.x Java 8 or higher is required. The only exception is version 2.0.0, which requires Java 11. However, this has been corrected in version 
+2.1.0.
 
 ### Dependency (Maven)
 ```xml
