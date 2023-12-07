@@ -18,7 +18,9 @@ ROME is a Java framework for RSS and Atom feeds. The framework consist of severa
 Starting with ROME 2.x Java 8 or higher is required. The only exception is version 2.0.0, which requires Java 11. However, this has been corrected in version 
 2.1.0.
 
-### Dependency (Maven)
+### Dependency
+
+#### Maven
 ```xml
 <dependencies>
     <dependency>
@@ -27,6 +29,13 @@ Starting with ROME 2.x Java 8 or higher is required. The only exception is versi
         <version>${rome.version}</version>
     </dependency>
 </dependencies>
+```
+
+#### Gradle Kotlin Script
+```kts
+dependencies {
+    implementation("com.rometools:rome:${romeVersion}")
+}
 ```
 
 ### Parse a feed
