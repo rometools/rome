@@ -16,7 +16,7 @@
  */
 package com.rometools.rome.io.impl;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Locale;
 
@@ -194,12 +194,12 @@ public class RSS091UserlandGenerator extends RSS090Generator {
             eChannel.addContent(generateSimpleElement("copyright", copyright));
         }
 
-        final Date pubDate = channel.getPubDate();
+        final LocalDateTime pubDate = channel.getPubDate();
         if (pubDate != null) {
             eChannel.addContent(generateSimpleElement("pubDate", DateParser.formatRFC822(pubDate, Locale.US)));
         }
 
-        final Date lastBuildDate = channel.getLastBuildDate();
+        final LocalDateTime lastBuildDate = channel.getLastBuildDate();
         if (lastBuildDate != null) {
             eChannel.addContent(generateSimpleElement("lastBuildDate", DateParser.formatRFC822(lastBuildDate, Locale.US)));
         }

@@ -14,6 +14,8 @@
 
 package com.rometools.rome.unittest;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 
 import com.rometools.rome.feed.module.DCModule;
@@ -29,6 +31,15 @@ public class DublinCoreTest extends FeedTest {
         final SyndEntry entry = this.getCachedSyndFeed().getEntries().get(0);
         final DCModule dublinCore = (DCModule) entry.getModule(DCModule.URI);
 
-        assertEquals(new Date(1000), dublinCore.getDate());
+        Date expectedDate = new Date(1000);
+
+        LocalDateTime expectedDateTime = expectedDate.toInstant()
+                .atZone(ZoneId.of("GMT"))
+                .toLocalDateTime();
+
+        assertEquals(
+                expectedDateTime,
+                dublinCore.getDate()
+        );
     }
 }

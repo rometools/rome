@@ -20,6 +20,7 @@ import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -127,6 +128,8 @@ public class CloneableBean {
             } else if (value instanceof Map) {
                 value = (T) cloneMap((Map<Object, Object>) value);
             } else if (isBasicType(vClass)) {
+                // NOTHING SPECIAL TO DO HERE, THEY ARE INMUTABLE
+            } else if (value instanceof LocalDateTime) {
                 // NOTHING SPECIAL TO DO HERE, THEY ARE INMUTABLE
             } else if (value instanceof Cloneable) {
                 final Method cloneMethod = vClass.getMethod("clone", NO_PARAMS_DEF);

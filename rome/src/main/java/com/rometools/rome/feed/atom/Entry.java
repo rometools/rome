@@ -17,6 +17,7 @@
 package com.rometools.rome.feed.atom;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -42,9 +43,9 @@ public class Entry implements Cloneable, Serializable, Extendable {
 
     private Content summary;
     private Content title;
-    private Date created; // Atom 0.3 only
-    private Date published; // AKA issued
-    private Date updated; // AKA modified
+    private LocalDateTime created; // Atom 0.3 only
+    private LocalDateTime published; // AKA issued
+    private LocalDateTime updated; // AKA modified
     private Feed source;
     private List<Link> alternateLinks;
     private List<SyndPerson> authors;
@@ -175,7 +176,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      *
      * @param created the entry created date, <b>null</b> if none.
      */
-    public void setCreated(final Date created) {
+    public void setCreated(final LocalDateTime created) {
         this.created = Dates.copy(created);
     }
 
@@ -185,7 +186,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      *
      * @return the entry created date, <b>null</b> if none.
      */
-    public Date getCreated() {
+    public LocalDateTime getCreated() {
         return Dates.copy(created);
     }
 
@@ -234,12 +235,12 @@ public class Entry implements Cloneable, Serializable, Extendable {
     }
 
     /**
-     * Sets the entry issued date (Atom 0.3, maps to {@link #setPublished(java.util.Date)}).
+     * Sets the entry issued date (Atom 0.3, maps to {@link #setPublished(LocalDateTime)}).
      * <p>
      *
      * @param issued the entry issued date, <b>null</b> if none.
      */
-    public void setIssued(final Date issued) {
+    public void setIssued(final LocalDateTime issued) {
         published = Dates.copy(issued);
     }
 
@@ -249,7 +250,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      *
      * @return the entry issued date, <b>null</b> if none.
      */
-    public Date getIssued() {
+    public LocalDateTime getIssued() {
         return Dates.copy(published);
     }
 
@@ -271,12 +272,12 @@ public class Entry implements Cloneable, Serializable, Extendable {
     }
 
     /**
-     * Sets the entry modified date (Atom 0.3, maps to {@link #setUpdated(java.util.Date)}).
+     * Sets the entry modified date (Atom 0.3, maps to {@link #setUpdated(LocalDateTime)}).
      * <p>
      *
      * @param modified the entry modified date, <b>null</b> if none.
      */
-    public void setModified(final Date modified) {
+    public void setModified(final LocalDateTime modified) {
         updated = Dates.copy(modified);
     }
 
@@ -286,7 +287,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      *
      * @return the entry modified date, <b>null</b> if none.
      */
-    public Date getModified() {
+    public LocalDateTime getModified() {
         return Dates.copy(updated);
     }
 
@@ -356,7 +357,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @param published The published to set.
      * @since Atom 1.0
      */
-    public void setPublished(final Date published) {
+    public void setPublished(final LocalDateTime published) {
         this.published = Dates.copy(published);
     }
 
@@ -367,7 +368,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @return Returns the published.
      * @since Atom 1.0
      */
-    public Date getPublished() {
+    public LocalDateTime getPublished() {
         return Dates.copy(published);
     }
 
@@ -492,7 +493,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @param updated The updated to set.
      * @since Atom 1.0
      */
-    public void setUpdated(final Date updated) {
+    public void setUpdated(final LocalDateTime updated) {
         this.updated = Dates.copy(updated);
     }
 
@@ -503,7 +504,7 @@ public class Entry implements Cloneable, Serializable, Extendable {
      * @return Returns the updated.
      * @since Atom 1.0
      */
-    public Date getUpdated() {
+    public LocalDateTime getUpdated() {
         return Dates.copy(updated);
     }
 

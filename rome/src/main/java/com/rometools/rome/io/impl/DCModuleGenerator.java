@@ -16,6 +16,7 @@
  */
 package com.rometools.rome.io.impl;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -130,9 +131,9 @@ public class DCModuleGenerator implements ModuleGenerator {
             element.addContent(generateSimpleElementList("contributor", contributors));
         }
 
-        final Date dcDate = dcModule.getDate();
+        final LocalDateTime dcDate = dcModule.getDate();
         if (dcDate != null) {
-            for (final Date date : dcModule.getDates()) {
+            for (final LocalDateTime date : dcModule.getDates()) {
                 element.addContent(generateSimpleElement("date", DateParser.formatW3CDateTime(date, Locale.US)));
             }
         }

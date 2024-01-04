@@ -23,6 +23,7 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.Namespace;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -270,7 +271,8 @@ public class RSS091UserlandParser extends RSS090Parser {
 
         final Element pubDate = eItem.getChild("pubDate", getRSSNamespace());
         if (pubDate != null) {
-            item.setPubDate(DateParser.parseDate(pubDate.getText(), locale));
+            LocalDateTime localDateTime = DateParser.parseDate(pubDate.getText(), locale);
+            item.setPubDate(localDateTime);
         }
 
         final Element encoded = eItem.getChild("encoded", getContentNamespace());

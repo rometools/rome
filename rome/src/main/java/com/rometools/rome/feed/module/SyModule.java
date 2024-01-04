@@ -16,7 +16,8 @@
  */
 package com.rometools.rome.feed.module;
 
-import java.util.Date;
+
+import java.time.LocalDateTime;
 
 /**
  * Syndication ModuleImpl.
@@ -81,7 +82,7 @@ public interface SyModule extends Module {
      * @return the Syndication module update base date, <b>null</b> if none.
      *
      */
-    Date getUpdateBase();
+    LocalDateTime getUpdateBase();
 
     /**
      * Sets the Syndication module update base date.
@@ -90,6 +91,6 @@ public interface SyModule extends Module {
      * @param updateBase the Syndication module update base date to set, <b>null</b> if none.
      *
      */
-    void setUpdateBase(Date updateBase);
+    void setUpdateBase(LocalDateTime updateBase);
 
 }

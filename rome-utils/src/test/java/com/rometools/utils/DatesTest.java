@@ -19,6 +19,7 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import org.junit.Test;
@@ -28,11 +29,11 @@ public class DatesTest {
     @Test
     public void testCopy() {
 
-        final Date date = new Date();
-        final Date nullDate = null;
+        final LocalDateTime date = LocalDateTime.now();
+        final LocalDateTime nullDate = null;
 
         assertThat(Dates.copy(date), is(notNullValue()));
-        assertThat(Dates.copy(date).getTime(), is(date.getTime()));
+        assertThat(Dates.copy(date), is(date));
         assertThat(Dates.copy(nullDate), is(nullValue()));
 
     }

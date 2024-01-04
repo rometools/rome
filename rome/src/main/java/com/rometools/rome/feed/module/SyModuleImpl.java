@@ -16,8 +16,8 @@
  */
 package com.rometools.rome.feed.module;
 
+import java.time.LocalDateTime;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -42,7 +42,7 @@ public class SyModuleImpl extends ModuleImpl implements SyModule {
 
     private String updatePeriod;
     private int updateFrequency;
-    private Date updateBase;
+    private LocalDateTime updateBase;
 
     static {
 
@@ -55,7 +55,7 @@ public class SyModuleImpl extends ModuleImpl implements SyModule {
         final Map<String, Class<?>> basePropInterfaceMap = new HashMap<String, Class<?>>();
         basePropInterfaceMap.put("updatePeriod", String.class);
         basePropInterfaceMap.put("updateFrequency", Integer.TYPE);
-        basePropInterfaceMap.put("updateBase", Date.class);
+        basePropInterfaceMap.put("updateBase", LocalDateTime.class);
         final Map<Class<? extends CopyFrom>, Class<?>> basePropClassImplMap = Collections.<Class<? extends CopyFrom>, Class<?>> emptyMap();
         COPY_FROM_HELPER = new CopyFromHelper(SyModule.class, basePropInterfaceMap, basePropClassImplMap);
 
@@ -124,7 +124,7 @@ public class SyModuleImpl extends ModuleImpl implements SyModule {
      *
      */
     @Override
-    public Date getUpdateBase() {
+    public LocalDateTime getUpdateBase() {
         return Dates.copy(updateBase);
     }
 
@@ -136,7 +136,7 @@ public class SyModuleImpl extends ModuleImpl implements SyModule {
      *
      */
     @Override
-    public void setUpdateBase(final Date updateBase) {
+    public void setUpdateBase(final LocalDateTime updateBase) {
         this.updateBase = Dates.copy(updateBase);
     }
 

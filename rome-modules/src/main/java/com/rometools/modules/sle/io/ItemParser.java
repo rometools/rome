@@ -18,8 +18,8 @@
 package com.rometools.modules.sle.io;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -109,7 +109,7 @@ public class ItemParser implements com.rometools.rome.io.ModuleParser {
                 } else {
                     value.setNamespace(element.getDocument().getRootElement().getNamespace());
                 }
-                Date dateValue = null;
+                LocalDateTime dateValue = null;
 
                 try {
                     dateValue = DateParser.parseRFC822(sort.getAttributeValue("value"), locale);

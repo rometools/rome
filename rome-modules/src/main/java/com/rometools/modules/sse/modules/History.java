@@ -14,8 +14,8 @@
  */
 package com.rometools.modules.sse.modules;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import com.rometools.rome.feed.CopyFrom;
@@ -37,7 +37,7 @@ public class History extends SSEModule {
     private static final long serialVersionUID = 1L;
 
     // A date-time attribute.
-    private Date when;
+    private LocalDateTime when;
 
     // A string attribute.
     private String by;
@@ -55,7 +55,7 @@ public class History extends SSEModule {
     @Override
     public void copyFrom(final CopyFrom other) {
         final History otherHistory = (History) other;
-        when = otherHistory.when == null ? null : (Date) otherHistory.when.clone();
+        when = otherHistory.when == null ? null : (LocalDateTime) otherHistory.when;
         // dont copy immutable
         by = otherHistory.by;
 
@@ -73,7 +73,7 @@ public class History extends SSEModule {
      *
      * @return the date-time when the most recent modification took place.
      */
-    public Date getWhen() {
+    public LocalDateTime getWhen() {
         // TODO: convert to the earliest time in RFC 822 (which is what?)
         return when;
     }
@@ -85,7 +85,7 @@ public class History extends SSEModule {
      *
      * @param when the date-time when the most recent modification took place.
      */
-    public void setWhen(final Date when) {
+    public void setWhen(final LocalDateTime when) {
         this.when = when;
     }
 

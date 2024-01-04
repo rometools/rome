@@ -16,8 +16,8 @@
  */
 package com.rometools.rome.feed.module;
 
+import java.time.LocalDateTime;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -47,7 +47,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
     private List<String> description;
     private List<String> publisher;
     private List<String> contributors;
-    private List<Date> date;
+    private List<LocalDateTime> date;
     private List<String> type;
     private List<String> format;
     private List<String> identifier;
@@ -60,7 +60,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
     /**
      * Properties to be ignored when cloning.
      */
-    private static final Set<String> IGNORE_PROPERTIES = new HashSet<String>();
+    private static final Set<String> IGNORE_PROPERTIES = new HashSet<>();
 
     /**
      * Unmodifiable Set containing the convenience properties of this class.
@@ -404,7 +404,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      *
      */
     @Override
-    public List<Date> getDates() {
+    public List<LocalDateTime> getDates() {
         return date = Lists.createWhenNull(date);
     }
 
@@ -417,7 +417,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      *
      */
     @Override
-    public void setDates(final List<Date> dates) {
+    public void setDates(final List<LocalDateTime> dates) {
         date = dates;
     }
 
@@ -429,7 +429,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      * @return the first DublinCore module date, <b>null</b> if none.
      */
     @Override
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return Lists.firstEntry(date);
     }
 
@@ -442,7 +442,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      *
      */
     @Override
-    public void setDate(final Date date) {
+    public void setDate(final LocalDateTime date) {
         this.date = Lists.create(date);
     }
 
@@ -865,7 +865,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
      * method.
      * <p>
      *
-     * @param other he reference object with which to compare.
+     * @param other the reference object with which to compare.
      * @return <b>true</b> if 'this' object is equal to the 'other' object.
      *
      */
@@ -920,7 +920,7 @@ public class DCModuleImpl extends ModuleImpl implements DCModule {
         basePropInterfaceMap.put("descriptions", String.class);
         basePropInterfaceMap.put("publishers", String.class);
         basePropInterfaceMap.put("contributors", String.class);
-        basePropInterfaceMap.put("dates", Date.class);
+        basePropInterfaceMap.put("dates", LocalDateTime.class);
         basePropInterfaceMap.put("types", String.class);
         basePropInterfaceMap.put("formats", String.class);
         basePropInterfaceMap.put("identifiers", String.class);

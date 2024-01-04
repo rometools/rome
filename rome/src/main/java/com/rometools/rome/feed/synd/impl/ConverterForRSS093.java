@@ -16,10 +16,10 @@
  */
 package com.rometools.rome.feed.synd.impl;
 
-import java.util.Date;
-
 import com.rometools.rome.feed.rss.Item;
 import com.rometools.rome.feed.synd.SyndEntry;
+
+import java.time.LocalDateTime;
 
 public class ConverterForRSS093 extends ConverterForRSS092 {
 
@@ -36,8 +36,8 @@ public class ConverterForRSS093 extends ConverterForRSS092 {
 
         final SyndEntry syndEntry = super.createSyndEntry(item, preserveWireItem);
 
-        final Date pubDate = item.getPubDate();
-        final Date publishedDate = syndEntry.getPublishedDate();
+        final LocalDateTime pubDate = item.getPubDate();
+        final LocalDateTime publishedDate = syndEntry.getPublishedDate();
         if (pubDate != null && publishedDate == null) {
             syndEntry.setPublishedDate(pubDate); // c
         }

@@ -14,9 +14,9 @@
  */
 package com.rometools.modules.sse.modules;
 
-import java.util.Date;
-
 import com.rometools.rome.feed.CopyFrom;
+
+import java.time.LocalDateTime;
 
 /**
  * <pre>
@@ -55,9 +55,9 @@ public class Related extends SSEModule {
     // the type of the relation "complete" or "aggregated"
     private Integer type;
     // starting point of the related feed
-    private Date since;
+    private LocalDateTime since;
     // ending point of a feed
-    private Date until;
+    private LocalDateTime until;
 
     public static final String LINK_ATTRIBUTE = "link";
     public static final String SINCE_ATTRIBUTE = "since";
@@ -69,10 +69,10 @@ public class Related extends SSEModule {
     public void copyFrom(final CopyFrom obj) {
         final Related related = (Related) obj;
         related.link = link;
-        related.since = since == null ? null : (Date) since.clone();
+        related.since = since == null ? null : since;
         related.title = title;
         related.type = type;
-        related.until = until == null ? null : (Date) until.clone();
+        related.until = until == null ? null : until;
     }
 
     /**
@@ -142,7 +142,7 @@ public class Related extends SSEModule {
      *
      * @return the starting point of the related feed.
      */
-    public Date getSince() {
+    public LocalDateTime getSince() {
         return since;
     }
 
@@ -151,7 +151,7 @@ public class Related extends SSEModule {
      *
      * @param since the starting point of the related feed.
      */
-    public void setSince(final Date since) {
+    public void setSince(final LocalDateTime since) {
         this.since = since;
     }
 
@@ -160,7 +160,7 @@ public class Related extends SSEModule {
      *
      * @return the ending point of the feed, until.
      */
-    public Date getUntil() {
+    public LocalDateTime getUntil() {
         return until;
     }
 
@@ -169,7 +169,7 @@ public class Related extends SSEModule {
      *
      * @param until the ending point of the feed.
      */
-    public void setUntil(final Date until) {
+    public void setUntil(final LocalDateTime until) {
         this.until = until;
     }
 }

@@ -11,7 +11,7 @@
       <link>http://www.foo.com</link>
       <pubDate>Tue, 28 Aug 2001 00:08:56 GMT</pubDate>
       <guid isPermaLink="false">http://www.foo.com</guid>
-      <dc:date>2001-08-28T00:08:56Z</dc:date>
+      <dc:date>2001-08-28T00:08:56.000Z</dc:date>
       <media:community>
         <media:starRating average="3.5" count="20" min="1" max="10" />
         <media:statistics views="5" favorites="5" />

@@ -16,7 +16,7 @@
  */
 package com.rometools.rome.io.impl;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Locale;
 
@@ -43,12 +43,12 @@ public class RSS093Generator extends RSS092Generator {
     protected void populateItem(final Item item, final Element eItem, final int index) {
         super.populateItem(item, eItem, index);
 
-        final Date pubDate = item.getPubDate();
+        final LocalDateTime pubDate = item.getPubDate();
         if (pubDate != null) {
             eItem.addContent(generateSimpleElement("pubDate", DateParser.formatRFC822(pubDate, Locale.US)));
         }
 
-        final Date expirationDate = item.getExpirationDate();
+        final LocalDateTime expirationDate = item.getExpirationDate();
         if (expirationDate != null) {
             eItem.addContent(generateSimpleElement("expirationDate", DateParser.formatRFC822(expirationDate, Locale.US)));
         }

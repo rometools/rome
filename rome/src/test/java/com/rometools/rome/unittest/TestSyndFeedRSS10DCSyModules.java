@@ -15,7 +15,7 @@
  */
 package com.rometools.rome.unittest;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Locale;
 
@@ -61,7 +61,7 @@ public class TestSyndFeedRSS10DCSyModules extends TestSyndFeedRSS10 {
         assertProperty(dc.getPublisher(), prefix + "dc:publisher");
         assertProperty(dc.getContributors().get(0), prefix + "dc:contributor[0]");
         assertProperty(dc.getContributors().get(1), prefix + "dc:contributor[1]");
-        final Date date = DateParser.parseW3CDateTime("2001-01-01T00:00+00:00", Locale.US);
+        final LocalDateTime date = DateParser.parseW3CDateTime("2001-01-01T00:00+00:00", Locale.US);
         assertEquals(dc.getDate(), date);
         assertProperty(dc.getType(), prefix + "dc:type");
         assertProperty(dc.getFormat(), prefix + "dc:format");
@@ -78,7 +78,7 @@ public class TestSyndFeedRSS10DCSyModules extends TestSyndFeedRSS10 {
         assertNotNull(sy);
         assertEquals(sy.getUpdatePeriod(), SyModule.HOURLY);
         assertEquals(sy.getUpdateFrequency(), 100);
-        final Date date = DateParser.parseW3CDateTime("2001-01-01T01:00+00:00", Locale.US);
+        final LocalDateTime date = DateParser.parseW3CDateTime("2001-01-01T01:00+00:00", Locale.US);
         assertEquals(sy.getUpdateBase(), date);
     }
 

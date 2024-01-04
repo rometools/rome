@@ -17,7 +17,7 @@
 package com.rometools.rome.io.impl;
 
 import java.io.StringReader;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Locale;
 
@@ -179,7 +179,7 @@ public class Atom03Generator extends BaseWireFeedGenerator {
             eFeed.addContent(infoElement);
         }
 
-        final Date modified = feed.getModified();
+        final LocalDateTime modified = feed.getModified();
         if (modified != null) {
             final Element modifiedElement = new Element("modified", getFeedNamespace());
             modifiedElement.addContent(DateParser.formatW3CDateTime(modified, Locale.US));
@@ -226,21 +226,21 @@ public class Atom03Generator extends BaseWireFeedGenerator {
             eEntry.addContent(generateSimpleElement("id", id));
         }
 
-        final Date modified = entry.getModified();
+        final LocalDateTime modified = entry.getModified();
         if (modified != null) {
             final Element modifiedElement = new Element("modified", getFeedNamespace());
             modifiedElement.addContent(DateParser.formatW3CDateTime(modified, Locale.US));
             eEntry.addContent(modifiedElement);
         }
 
-        final Date issued = entry.getIssued();
+        final LocalDateTime issued = entry.getIssued();
         if (issued != null) {
             final Element issuedElement = new Element("issued", getFeedNamespace());
             issuedElement.addContent(DateParser.formatW3CDateTime(issued, Locale.US));
             eEntry.addContent(issuedElement);
         }
 
-        final Date created = entry.getCreated();
+        final LocalDateTime created = entry.getCreated();
         if (created != null) {
             final Element createdElement = new Element("created", getFeedNamespace());
             createdElement.addContent(DateParser.formatW3CDateTime(created, Locale.US));

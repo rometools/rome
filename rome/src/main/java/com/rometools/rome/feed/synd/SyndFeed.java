@@ -16,7 +16,7 @@
  */
 package com.rometools.rome.feed.synd;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.jdom2.Element;
@@ -300,7 +300,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
      * @return the feed published date, <b>null</b> if none.
      *
      */
-    Date getPublishedDate();
+    LocalDateTime getPublishedDate();
 
     /**
      * Sets the feed published date.
@@ -311,7 +311,7 @@ public interface SyndFeed extends Cloneable, CopyFrom, Extendable {
      * @param publishedDate the feed published date to set, <b>null</b> if none.
      *
      */
-    void setPublishedDate(Date publishedDate);
+    void setPublishedDate(LocalDateTime publishedDate);
 
     /**
      * Returns the feed authors.

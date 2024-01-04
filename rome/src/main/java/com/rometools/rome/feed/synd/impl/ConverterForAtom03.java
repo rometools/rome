@@ -17,8 +17,8 @@
  */
 package com.rometools.rome.feed.synd.impl;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.jdom2.Element;
@@ -142,7 +142,7 @@ public class ConverterForAtom03 implements Converter {
             syndFeed.setCopyright(copyright);
         }
 
-        final Date date = aFeed.getModified();
+        final LocalDateTime date = aFeed.getModified();
         if (date != null) {
             syndFeed.setPublishedDate(date);
         }
@@ -150,11 +150,10 @@ public class ConverterForAtom03 implements Converter {
     }
 
     protected List<SyndLink> createSyndLinks(final List<Link> atomLinks) {
-        final ArrayList<SyndLink> syndLinks = new ArrayList<SyndLink>();
+        final ArrayList<SyndLink> syndLinks = new ArrayList<>();
         for (final Link atomLink : atomLinks) {
-            final Link link = atomLink;
-            if (!link.getRel().equals("enclosure")) {
-                final SyndLink syndLink = createSyndLink(link);
+            if (!atomLink.getRel().equals("enclosure")) {
+                final SyndLink syndLink = createSyndLink(atomLink);
                 syndLinks.add(syndLink);
             }
         }
@@ -207,9 +206,8 @@ public class ConverterForAtom03 implements Converter {
         final List<Link> otherLinks = entry.getOtherLinks();
         if (Lists.isNotEmpty(otherLinks)) {
             for (final Link otherLink : otherLinks) {
-                final Link thisLink = otherLink;
-                if ("enclosure".equals(thisLink.getRel())) {
-                    syndEnclosures.add(createSyndEnclosure(entry, thisLink));
+                if ("enclosure".equals(otherLink.getRel())) {
+                    syndEnclosures.add(createSyndEnclosure(entry, otherLink));
                 }
             }
         }
@@ -270,7 +268,7 @@ public class ConverterForAtom03 implements Converter {
             syndEntry.setAuthor(firstPerson.getName());
         }
 
-        Date date = entry.getModified();
+        LocalDateTime date = entry.getModified();
         if (date == null) {
             date = Alternatives.firstNotNull(entry.getIssued(), entry.getCreated());
         }
@@ -325,8 +323,7 @@ public class ConverterForAtom03 implements Converter {
         final List<SyndLink> slinks = syndFeed.getLinks();
         if (slinks != null) {
             for (final SyndLink syndLink2 : slinks) {
-                final SyndLink syndLink = syndLink2;
-                final Link link = createAtomLink(syndLink);
+                final Link link = createAtomLink(syndLink2);
                 final String rel = link.getRel();
                 if (Strings.isBlank(rel) || "alternate".equals(rel)) {
                     alternateLinks.add(link);
@@ -380,12 +377,11 @@ public class ConverterForAtom03 implements Converter {
     protected static List<SyndPerson> createAtomPersons(final List<SyndPerson> sPersons) {
         final List<SyndPerson> persons = new ArrayList<SyndPerson>();
         for (final SyndPerson syndPerson : sPersons) {
-            final SyndPerson sPerson = syndPerson;
             final Person person = new Person();
-            person.setName(sPerson.getName());
-            person.setUri(sPerson.getUri());
-            person.setEmail(sPerson.getEmail());
-            person.setModules(sPerson.getModules());
+            person.setName(syndPerson.getName());
+            person.setUri(syndPerson.getUri());
+            person.setEmail(syndPerson.getEmail());
+            person.setModules(syndPerson.getModules());
             persons.add(person);
         }
         return persons;
@@ -436,8 +432,8 @@ public class ConverterForAtom03 implements Converter {
         }
 
         // separate SyndEntry's links collection into alternate and other links
-        final List<Link> alternateLinks = new ArrayList<Link>();
-        final List<Link> otherLinks = new ArrayList<Link>();
+        final List<Link> alternateLinks = new ArrayList<>();
+        final List<Link> otherLinks = new ArrayList<>();
         final List<SyndLink> syndLinks = sEntry.getLinks();
 
         if (syndLinks != null) {

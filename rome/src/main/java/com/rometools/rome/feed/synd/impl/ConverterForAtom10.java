@@ -16,8 +16,8 @@
  */
 package com.rometools.rome.feed.synd.impl;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.jdom2.Element;
@@ -160,7 +160,7 @@ public class ConverterForAtom10 implements Converter {
             syndFeed.setCopyright(rights);
         }
 
-        final Date date = aFeed.getUpdated();
+        final LocalDateTime date = aFeed.getUpdated();
         if (date != null) {
             syndFeed.setPublishedDate(date);
         }
@@ -227,7 +227,7 @@ public class ConverterForAtom10 implements Converter {
             syndEntry.setContributors(ConverterForAtom03.createSyndPersons(contributors));
         }
 
-        Date date = entry.getPublished();
+        LocalDateTime date = entry.getPublished();
         if (date != null) {
             syndEntry.setPublishedDate(date);
         }

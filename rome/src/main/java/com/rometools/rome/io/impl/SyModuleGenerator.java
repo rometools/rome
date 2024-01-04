@@ -16,8 +16,8 @@
  */
 package com.rometools.rome.io.impl;
 
+import java.time.LocalDateTime;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
@@ -81,7 +81,7 @@ public class SyModuleGenerator implements ModuleGenerator {
         updateFrequencyElement.addContent(String.valueOf(syModule.getUpdateFrequency()));
         element.addContent(updateFrequencyElement);
 
-        final Date updateBase = syModule.getUpdateBase();
+        final LocalDateTime updateBase = syModule.getUpdateBase();
         if (updateBase != null) {
             final Element updateBaseElement = new Element("updateBase", SY_NS);
             updateBaseElement.addContent(DateParser.formatW3CDateTime(updateBase, Locale.US));

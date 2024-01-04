@@ -17,8 +17,8 @@
 package com.rometools.rome.feed.synd;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -102,7 +102,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
         IGNORE_PROPERTIES.add("categories");
         IGNORE_PROPERTIES.add("language");
 
-        final Map<String, Class<?>> basePropInterfaceMap = new HashMap<String, Class<?>>();
+        final Map<String, Class<?>> basePropInterfaceMap = new HashMap<>();
         basePropInterfaceMap.put("feedType", String.class);
         basePropInterfaceMap.put("encoding", String.class);
         basePropInterfaceMap.put("uri", String.class);
@@ -114,7 +114,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
         basePropInterfaceMap.put("modules", Module.class);
         basePropInterfaceMap.put("categories", SyndCategory.class);
 
-        final Map<Class<? extends CopyFrom>, Class<?>> basePropClassImplMap = new HashMap<Class<? extends CopyFrom>, Class<?>>();
+        final Map<Class<? extends CopyFrom>, Class<?>> basePropClassImplMap = new HashMap<>();
         basePropClassImplMap.put(SyndEntry.class, SyndEntryImpl.class);
         basePropClassImplMap.put(SyndImage.class, SyndImageImpl.class);
         basePropClassImplMap.put(SyndCategory.class, SyndCategoryImpl.class);
@@ -215,7 +215,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      */
     @Override
     public boolean equals(final Object other) {
-        if (other == null || !(other instanceof SyndFeedImpl)) {
+        if (!(other instanceof SyndFeedImpl)) {
             return false;
         }
         // can't use foreign markup in equals, due to JDOM equals impl
@@ -571,7 +571,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      *
      */
     @Override
-    public Date getPublishedDate() {
+    public LocalDateTime getPublishedDate() {
         return getDCModule().getDate();
     }
 
@@ -585,7 +585,7 @@ public class SyndFeedImpl implements Serializable, SyndFeed {
      *
      */
     @Override
-    public void setPublishedDate(final Date publishedDate) {
+    public void setPublishedDate(final LocalDateTime publishedDate) {
         getDCModule().setDate(publishedDate);
     }
 

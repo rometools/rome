@@ -17,7 +17,7 @@
  */
 package com.rometools.rome.unittest;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Locale;
 
@@ -43,7 +43,8 @@ public class TestSyndFeedRSS093 extends TestSyndFeedRSS092 {
         super.testItem(i);
         final List<SyndEntry> items = this.getCachedSyndFeed().getEntries();
         final SyndEntry entry = items.get(i);
-        final Date d = DateParser.parseRFC822("Mon, 0" + (i + 1) + " Jan 2001 00:00:00 GMT", Locale.US);
+        final String date = "0" + (i + 1) + " Jan 2001 00:00:00 GMT";
+        final LocalDateTime d = DateParser.parseRFC822(date, Locale.US);
         assertEquals(entry.getPublishedDate(), d);
         testDescriptionType(entry, i);
     }
@@ -54,8 +55,14 @@ public class TestSyndFeedRSS093 extends TestSyndFeedRSS092 {
 
     @Override
     public void testEntryPublishedDate() throws Exception {
-        assertEquals(DateParser.parseRFC822("Mon, 01 Jan 2001 00:00:00 GMT", Locale.US), getEntryPublishedDate(this.getCachedSyndFeed().getEntries().get(0)));
-        assertEquals(DateParser.parseRFC822("Tue, 02 Jan 2001 00:00:00 GMT", Locale.US), getEntryPublishedDate(this.getCachedSyndFeed().getEntries().get(1)));
+        assertEquals(
+                DateParser.parseRFC822("Mon, 01 Jan 2001 00:00:00 GMT", Locale.US),
+                getEntryPublishedDate(this.getCachedSyndFeed().getEntries().get(0))
+        );
+        assertEquals(
+                DateParser.parseRFC822("Tue, 02 Jan 2001 00:00:00 GMT", Locale.US),
+                getEntryPublishedDate(this.getCachedSyndFeed().getEntries().get(1))
+        );
     }
 
 }

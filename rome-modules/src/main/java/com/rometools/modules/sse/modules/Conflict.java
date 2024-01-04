@@ -12,13 +12,13 @@
 
 package com.rometools.modules.sse.modules;
 
-import java.util.Date;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.rometools.rome.feed.CopyFrom;
 import com.rometools.rome.feed.rss.Item;
+
+import java.time.LocalDateTime;
 
 /**
  * <sx:conflict> element within <sx:conflicts>
@@ -57,14 +57,14 @@ public class Conflict extends SSEModule {
     public static final String WHEN_ATTRIBUTE = "when";
 
     private Integer version;
-    private Date when;
+    private LocalDateTime when;
     private String by;
     private Item conflictItem;
 
     @Override
     public void copyFrom(final CopyFrom obj) {
         final Conflict conflict = (Conflict) obj;
-        conflict.when = when == null ? null : (Date) when.clone();
+        conflict.when = when == null ? null : when;
         conflict.by = by;
         conflict.version = version;
         try {
@@ -91,11 +91,11 @@ public class Conflict extends SSEModule {
         this.version = version;
     }
 
-    public Date getWhen() {
+    public LocalDateTime getWhen() {
         return when;
     }
 
-    public void setWhen(final Date when) {
+    public void setWhen(final LocalDateTime when) {
         this.when = when;
     }
 

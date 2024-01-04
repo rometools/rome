@@ -16,7 +16,7 @@
  */
 package com.rometools.rome.feed.synd;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.jdom2.Element;
@@ -197,7 +197,7 @@ public interface SyndEntry extends Cloneable, CopyFrom, Extendable {
      * @return the entry published date, <b>null</b> if none.
      *
      */
-    Date getPublishedDate();
+    LocalDateTime getPublishedDate();
 
     /**
      * Sets the entry published date.
@@ -208,7 +208,7 @@ public interface SyndEntry extends Cloneable, CopyFrom, Extendable {
      * @param publishedDate the entry published date to set, <b>null</b> if none.
      *
      */
-    void setPublishedDate(Date publishedDate);
+    void setPublishedDate(LocalDateTime publishedDate);
 
     /**
      * Returns the entry updated date.
@@ -217,7 +217,7 @@ public interface SyndEntry extends Cloneable, CopyFrom, Extendable {
      * @return the entry updated date, <b>null</b> if none.
      *
      */
-    Date getUpdatedDate();
+    LocalDateTime getUpdatedDate();
 
     /**
      * Sets the entry updated date.
@@ -226,7 +226,7 @@ public interface SyndEntry extends Cloneable, CopyFrom, Extendable {
      * @param updatedDate the entry updated date to set, <b>null</b> if none.
      *
      */
-    void setUpdatedDate(Date updatedDate);
+    void setUpdatedDate(LocalDateTime updatedDate);
 
     /**
      * Returns the entry authors.

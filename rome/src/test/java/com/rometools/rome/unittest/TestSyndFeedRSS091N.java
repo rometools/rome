@@ -17,7 +17,7 @@
  */
 package com.rometools.rome.unittest;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Locale;
 
@@ -49,7 +49,7 @@ public class TestSyndFeedRSS091N extends SyndFeedTest {
 
     @Override
     public void testPublishedDate() throws Exception {
-        final Date d = DateParser.parseRFC822("Mon, 01 Jan 2001 00:00:00 GMT", Locale.US);
+        final LocalDateTime d = DateParser.parseRFC822("Mon, 01 Jan 2001 00:00:00 GMT", Locale.US);
         assertEquals(this.getCachedSyndFeed().getPublishedDate(), d);
     }
 

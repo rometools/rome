@@ -14,6 +14,7 @@
 
 package com.rometools.utils;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public final class Dates {
@@ -27,11 +28,11 @@ public final class Dates {
      * @param d The Date to copy, can be null
      * @return null when the input Date was null, a copy of the Date otherwise
      */
-    public static Date copy(final Date d) {
+    public static LocalDateTime copy(final LocalDateTime d) {
         if (d == null) {
             return null;
         } else {
-            return new Date(d.getTime());
+            return d;
         }
     }
 

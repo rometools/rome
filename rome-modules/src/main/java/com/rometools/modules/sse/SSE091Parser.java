@@ -15,8 +15,8 @@
 
 package com.rometools.modules.sse;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -229,9 +229,9 @@ public class SSE091Parser implements DelegatingModuleParser {
         return attrValue;
     }
 
-    private Date parseDateAttribute(final Element childElement, final String attrName, final Locale locale) {
+    private LocalDateTime parseDateAttribute(final Element childElement, final String attrName, final Locale locale) {
         final Attribute dateAttribute = childElement.getAttribute(attrName);
-        final Date date = null;
+        final LocalDateTime date = null;
         if (dateAttribute != null) {
             // SSE spec requires the timezone to be 'GMT'
             // admittedly, this is a bit heavy-handed

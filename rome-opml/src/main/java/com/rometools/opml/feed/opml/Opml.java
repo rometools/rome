@@ -17,8 +17,8 @@
  */
 package com.rometools.opml.feed.opml;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import com.rometools.rome.feed.WireFeed;
@@ -31,8 +31,8 @@ public class Opml extends WireFeed {
 
     private static final long serialVersionUID = 1L;
 
-    private Date created;
-    private Date modified;
+    private LocalDateTime created;
+    private LocalDateTime modified;
     private Integer verticalScrollState;
     private Integer windowBottom;
     private Integer windowLeft;
@@ -51,7 +51,7 @@ public class Opml extends WireFeed {
      *
      * @param created date-time, indicating when the document was created.
      */
-    public void setCreated(final Date created) {
+    public void setCreated(final LocalDateTime created) {
         this.created = created;
     }
 
@@ -60,7 +60,7 @@ public class Opml extends WireFeed {
      *
      * @return date-time, indicating when the document was created.
      */
-    public Date getCreated() {
+    public LocalDateTime getCreated() {
         return created;
     }
 
@@ -113,7 +113,7 @@ public class Opml extends WireFeed {
      *
      * @param modified date-time, indicating when the document was last modified.
      */
-    public void setModified(final Date modified) {
+    public void setModified(final LocalDateTime modified) {
         this.modified = modified;
     }
 
@@ -122,7 +122,7 @@ public class Opml extends WireFeed {
      *
      * @return date-time, indicating when the document was last modified.
      */
-    public Date getModified() {
+    public LocalDateTime getModified() {
         return modified;
     }
 

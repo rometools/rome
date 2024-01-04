@@ -17,6 +17,7 @@
  */
 package com.rometools.rome.feed.rss;
 
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
@@ -71,8 +72,8 @@ public class Channel extends WireFeed {
     private String language;
     private String rating;
     private String copyright;
-    private Date pubDate;
-    private Date lastBuildDate;
+    private LocalDateTime pubDate;
+    private LocalDateTime lastBuildDate;
     private String docs;
     private String managingEditor;
     private String webMaster;
@@ -328,7 +329,7 @@ public class Channel extends WireFeed {
      * @return the channel publishing date, <b>null</b> if none.
      *
      */
-    public Date getPubDate() {
+    public LocalDateTime getPubDate() {
         return Dates.copy(pubDate);
     }
 
@@ -339,7 +340,7 @@ public class Channel extends WireFeed {
      * @param pubDate the channel publishing date to set, <b>null</b> if none.
      *
      */
-    public void setPubDate(final Date pubDate) {
+    public void setPubDate(final LocalDateTime pubDate) {
         this.pubDate = Dates.copy(pubDate);
     }
 
@@ -350,7 +351,7 @@ public class Channel extends WireFeed {
      * @return the channel last build date, <b>null</b> if none.
      *
      */
-    public Date getLastBuildDate() {
+    public LocalDateTime getLastBuildDate() {
         return Dates.copy(lastBuildDate);
     }
 
@@ -361,8 +362,8 @@ public class Channel extends WireFeed {
      * @param lastBuildDate the channel last build date to set, <b>null</b> if none.
      *
      */
-    public void setLastBuildDate(final Date lastBuildDate) {
-        this.lastBuildDate = Dates.copy(lastBuildDate);
+    public void setLastBuildDate(final LocalDateTime lastBuildDate) {
+        this.lastBuildDate = lastBuildDate;
     }
 
     /**

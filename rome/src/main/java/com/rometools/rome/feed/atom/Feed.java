@@ -16,7 +16,7 @@
  */
 package com.rometools.rome.feed.atom;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.rometools.rome.feed.WireFeed;
@@ -43,7 +43,7 @@ public class Feed extends WireFeed {
     private String rights; // AKA copyright
     private Content subtitle; // AKA tagline
     private Content title;
-    private Date updated; // AKA modified
+    private LocalDateTime updated; // AKA modified
     private List<Link> alternateLinks;
     private List<Link> otherLinks;
     private List<Entry> entries;
@@ -342,7 +342,7 @@ public class Feed extends WireFeed {
      *
      * @return the feed modified date, <b>null</b> if none.
      */
-    public Date getModified() {
+    public LocalDateTime getModified() {
         return updated;
     }
 
@@ -352,7 +352,7 @@ public class Feed extends WireFeed {
      *
      * @param modified the feed modified date to set, <b>null</b> if none.
      */
-    public void setModified(final Date modified) {
+    public void setModified(final LocalDateTime modified) {
         updated = modified;
     }
 
@@ -533,7 +533,7 @@ public class Feed extends WireFeed {
      * @return Returns the updated.
      * @since Atom 1.0
      */
-    public Date getUpdated() {
+    public LocalDateTime getUpdated() {
         return updated;
     }
 
@@ -544,7 +544,7 @@ public class Feed extends WireFeed {
      * @param updated The updated to set.
      * @since Atom 1.0
      */
-    public void setUpdated(final Date updated) {
+    public void setUpdated(final LocalDateTime updated) {
         this.updated = updated;
     }
 

@@ -19,8 +19,8 @@ package com.rometools.rome.io.impl;
 import java.io.IOException;
 import java.io.StringReader;
 import java.io.Writer;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -222,7 +222,7 @@ public class Atom10Generator extends BaseWireFeedGenerator {
             eFeed.addContent(generateSimpleElement("logo", logo));
         }
 
-        final Date updated = feed.getUpdated();
+        final LocalDateTime updated = feed.getUpdated();
         if (updated != null) {
             final Element updatedElement = new Element("updated", getFeedNamespace());
             updatedElement.addContent(DateParser.formatW3CDateTime(updated, Locale.US));
@@ -284,14 +284,14 @@ public class Atom10Generator extends BaseWireFeedGenerator {
             eEntry.addContent(generateSimpleElement("id", id));
         }
 
-        final Date updated = entry.getUpdated();
+        final LocalDateTime updated = entry.getUpdated();
         if (updated != null) {
             final Element updatedElement = new Element("updated", getFeedNamespace());
             updatedElement.addContent(DateParser.formatW3CDateTime(updated, Locale.US));
             eEntry.addContent(updatedElement);
         }
 
-        final Date published = entry.getPublished();
+        final LocalDateTime published = entry.getPublished();
         if (published != null) {
             final Element publishedElement = new Element("published", getFeedNamespace());
             publishedElement.addContent(DateParser.formatW3CDateTime(published, Locale.US));

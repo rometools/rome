@@ -31,8 +31,8 @@ import com.rometools.rome.feed.synd.SyndImage;
 import com.rometools.rome.feed.synd.SyndPerson;
 import com.rometools.utils.Lists;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -66,7 +66,7 @@ public class ConverterForRSS091Userland extends ConverterForRSS090 {
 
         syndFeed.setGenerator(channel.getGenerator());
 
-        final Date pubDate = channel.getPubDate();
+        final LocalDateTime pubDate = channel.getPubDate();
 
         if (pubDate != null) {
             syndFeed.setPublishedDate(pubDate); // c
@@ -82,8 +82,7 @@ public class ConverterForRSS091Userland extends ConverterForRSS090 {
 
             if (!creators.contains(author)) {
                 // using a set to remove duplicates
-                final Set<String> s = new LinkedHashSet<String>();
-                s.addAll(creators); // DC creators
+                final Set<String> s = new LinkedHashSet<>(creators); // DC creators
                 s.add(author); // feed native author
                 creators.clear();
                 creators.addAll(s);

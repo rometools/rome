@@ -27,6 +27,7 @@ import com.rometools.rome.io.SyndFeedOutput;
 import com.rometools.rome.io.XmlReader;
 
 import java.io.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -100,7 +101,7 @@ public class GeoRSSModuleTest extends AbstractTestCase {
         entry = new SyndEntryImpl();
         entry.setTitle("ROME v1.0");
         entry.setLink("http://wiki.java.net/bin/view/Javawsxml/Rome01");
-        entry.setPublishedDate(new Date());
+        entry.setPublishedDate(LocalDateTime.now());
         description = new SyndContentImpl();
         description.setType("text/plain");
         description.setValue("Initial release of ROME");

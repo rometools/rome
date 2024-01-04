@@ -14,9 +14,9 @@
  */
 package com.rometools.modules.sse.modules;
 
-import java.util.Date;
-
 import com.rometools.rome.feed.CopyFrom;
+
+import java.time.LocalDateTime;
 
 /**
  * <pre>
@@ -37,13 +37,13 @@ public class Update extends SSEModule {
     public static final String BY_ATTRIBUTE = "by";
     public static final String WHEN_ATTRIBUTE = "when";
 
-    private Date when;
+    private LocalDateTime when;
     private String by;
 
     @Override
     public void copyFrom(final CopyFrom other) {
         final Update otherUpdate = (Update) other;
-        otherUpdate.when = when == null ? null : (Date) when.clone();
+        otherUpdate.when = when == null ? null : when;
         // dont copy immutable
         otherUpdate.by = by;
     }
@@ -53,7 +53,7 @@ public class Update extends SSEModule {
      * omitted the value defaults to the earliest time representable in RFC 822. Either or both of
      * the when or by attributes MUST be present; it is invalid to have neither.
      */
-    public Date getWhen() {
+    public LocalDateTime getWhen() {
         return when;
     }
 
@@ -62,7 +62,7 @@ public class Update extends SSEModule {
      *
      * @param when the date-time when the modification took place.
      */
-    public void setWhen(final Date when) {
+    public void setWhen(final LocalDateTime when) {
         this.when = when;
     }
 

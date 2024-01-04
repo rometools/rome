@@ -17,9 +17,9 @@
 package com.rometools.rome.feed.synd;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -59,7 +59,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
     private String uri;
     private String link;
     private String comments;
-    private Date updatedDate;
+    private LocalDateTime updatedDate;
     private SyndContent title;
     private SyndContent description;
     private List<SyndLink> links;
@@ -398,7 +398,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      *
      */
     @Override
-    public Date getPublishedDate() {
+    public LocalDateTime getPublishedDate() {
         return getDCModule().getDate();
     }
 
@@ -412,7 +412,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      *
      */
     @Override
-    public void setPublishedDate(final Date publishedDate) {
+    public void setPublishedDate(final LocalDateTime publishedDate) {
         getDCModule().setDate(publishedDate);
     }
 
@@ -533,7 +533,7 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      * @return Returns the updatedDate.
      */
     @Override
-    public Date getUpdatedDate() {
+    public LocalDateTime getUpdatedDate() {
         return Dates.copy(updatedDate);
     }
 
@@ -544,8 +544,8 @@ public class SyndEntryImpl implements Serializable, SyndEntry {
      * @param updatedDate The updatedDate to set.
      */
     @Override
-    public void setUpdatedDate(final Date updatedDate) {
-        this.updatedDate = new Date(updatedDate.getTime());
+    public void setUpdatedDate(final LocalDateTime updatedDate) {
+        this.updatedDate = updatedDate;
     }
 
     @Override

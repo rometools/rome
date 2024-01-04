@@ -14,9 +14,9 @@
  */
 package com.rometools.modules.sse.modules;
 
-import java.util.Date;
-
 import com.rometools.rome.feed.CopyFrom;
+
+import java.time.LocalDateTime;
 
 /**
  * <pre>
@@ -55,22 +55,22 @@ public class Sharing extends SSEModule {
     // expresses size of the window of change history kept by the published.
     private Integer window;
     // date after which updated items are included in the feed.
-    private Date since;
+    private LocalDateTime since;
     // date after which updated items are not included in the feed.
 
     // version of the sse in shared channel
     private String version;
 
-    private Date until;
+    private LocalDateTime until;
     private Related related;
 
     @Override
     public void copyFrom(final CopyFrom obj) {
         final Sharing sharing = (Sharing) obj;
         ordered = sharing.ordered;
-        since = sharing.since == null ? null : (Date) sharing.since.clone();
+        since = sharing.since == null ? null : sharing.since;
         window = sharing.window;
-        until = sharing.until == null ? null : (Date) sharing.until.clone();
+        until = sharing.until == null ? null : sharing.until;
         version = sharing.version;
     }
 
@@ -123,7 +123,7 @@ public class Sharing extends SSEModule {
      *
      * @return An optional date-time attribute.
      */
-    public Date getSince() {
+    public LocalDateTime getSince() {
         return since;
     }
 
@@ -133,7 +133,7 @@ public class Sharing extends SSEModule {
      *
      * @param since An optional date-time attribute.
      */
-    public void setSince(final Date since) {
+    public void setSince(final LocalDateTime since) {
         this.since = since;
     }
 
@@ -145,7 +145,7 @@ public class Sharing extends SSEModule {
      *
      * @return the date where items updated after this date are not included in the feed.
      */
-    public Date getUntil() {
+    public LocalDateTime getUntil() {
         return until;
     }
 
@@ -154,7 +154,7 @@ public class Sharing extends SSEModule {
      *
      * @param until the date where items updated after this date are not included in the feed.
      */
-    public void setUntil(final Date until) {
+    public void setUntil(final LocalDateTime until) {
         this.until = until;
     }
 

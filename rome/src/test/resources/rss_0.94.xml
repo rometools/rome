@@ -55,8 +55,8 @@
                        type="rss_0.94.channel.item[1].enclousure[1]^type"/>
             <category domain="rss_0.94.channel.item[1].category[0]^domain">rss_0.94.channel.item[1].category[0]</category>
             <category domain="rss_0.94.channel.item[1].category[1]^domain">rss_0.94.channel.item[1].category[1]</category>
-            <pubDate>Mon, 02 Jan 2001 00:00:00 GMT</pubDate>
-            <expirationDate>Mon, 02 Jan 2001 01:00:00 GMT</expirationDate>
+            <pubDate>Tue, 02 Jan 2001 00:00:00 GMT</pubDate>
+            <expirationDate>Tue, 02 Jan 2001 01:00:00 GMT</expirationDate>
             <author>rss_0.94.channel.item[1].author</author>
             <comments>rss_0.94.channel.item[1].comments</comments>
             <guid isPermaLink="true">rss_0.94.channel.item[1].guid</guid>
