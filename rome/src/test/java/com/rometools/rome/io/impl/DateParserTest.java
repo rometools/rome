@@ -33,7 +33,7 @@ public class DateParserTest {
         Date expectedDate = new Date(1000);
 
         LocalDateTime expectedDateTime = expectedDate.toInstant()
-                .atZone(ZoneId.systemDefault())
+                .atZone(ZoneId.of("GMT"))
                 .toLocalDateTime();
         assertEquals(
                 expectedDateTime,
