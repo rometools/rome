@@ -37,7 +37,7 @@ public class DateParserTest {
                 .toLocalDateTime();
         assertEquals(
                 expectedDateTime,
-                DateParser.parseW3CDateTime("1970-01-01T01:00:01+00:00        ", Locale.GERMANY)
+                DateParser.parseW3CDateTime("1970-01-01T00:00:01+00:00        ", Locale.GERMANY)
         );
     }
 
