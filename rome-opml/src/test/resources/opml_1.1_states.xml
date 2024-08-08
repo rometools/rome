@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<opml version="1.1">
+	<head>
+		<title>states</title>
+		<dateCreated>Fri, 21 Dec 2001 20:46:26 GMT</dateCreated>
+		<dateModified>Sat, 22 Dec 2001 22:41:18 GMT</dateModified>
+		<ownerName>Dave Winer</ownerName>
+		<ownerEmail>dave@userland.com</ownerEmail>
+		<expansionState>1,12</expansionState>
+		<vertScrollState>1</vertScrollState>
+		<windowTop>92</windowTop>
+		<windowLeft>252</windowLeft>
+		<windowBottom>558</windowBottom>
+		<windowRight>736</windowRight>
+		<cloud domain="radio.xmlstoragesystem.com" port="80" path="/RPC2" registerProcedure="xmlStorageSystem.rssPleaseNotify" protocol="xml-rpc"/>
+		</head>
+	<body>
+		<outline text="A-M">
+			<outline text="A">
+				<outline text="Alabama" type="link" url="http://www.google.com/search?q=alabama"/>
+				<outline text="Alaska" type="link" url="http://www.google.com/search?q=alaska"/>
+				<outline text="Arizona" type="link" url="http://www.google.com/search?q=arizona"/>
+				<outline text="Arkansas" type="link" url="http://www.google.com/search?q=arkansas"/>
+				</outline>
+			<outline text="C">
+				<outline text="California" type="link" url="http://www.google.com/search?q=california"/>
+				<outline text="Colorado" type="link" url="http://www.google.com/search?q=colorado"/>
+				<outline text="Connecticut" type="link" url="http://www.google.com/search?q=connecticut"/>
+				</outline>
+			<outline text="D">
+				<outline text="Delaware" type="link" url="http://www.google.com/search?q=delaware"/>
+				</outline>
+			<outline text="F">
+				<outline text="Florida" type="link" url="http://www.google.com/search?q=florida"/>
+				</outline>
+			<outline text="G">
+				<outline text="Georgia" type="link" url="http://www.google.com/search?q=georgia"/>
+				</outline>
+			<outline text="H">
+				<outline text="Hawaii" type="link" url="http://www.google.com/search?q=hawaii"/>
+				</outline>
+			<outline text="I">
+				<outline text="Idaho" type="link" url="http://www.google.com/search?q=idaho"/>
+				<outline text="Illinois" type="link" url="http://www.google.com/search?q=illinois"/>
+				<outline text="Indiana" type="link" url="http://www.google.com/search?q=indiana"/>
+				<outline text="Iowa" type="link" url="http://www.google.com/search?q=iowa"/>
+				</outline>
+			<outline text="K">
+				<outline text="Kansas" type="link" url="http://www.google.com/search?q=kansas"/>
+				<outline text="Kentucky" type="link" url="http://www.google.com/search?q=kentucky"/>
+				</outline>
+			<outline text="L">
+				<outline text="Louisiana" type="link" url="http://www.google.com/search?q=louisiana"/>
+				</outline>
+			<outline text="M">
+				<outline text="Maine" type="link" url="http://www.google.com/search?q=maine"/>
+				<outline text="Maryland" type="link" url="http://www.google.com/search?q=maryland"/>
+				<outline text="Massachusetts" type="link" url="http://www.google.com/search?q=massachusetts"/>
+				<outline text="Michigan" type="link" url="http://www.google.com/search?q=michigan"/>
+				<outline text="Minnesota" type="link" url="http://www.google.com/search?q=minnesota"/>
+				<outline text="Mississippi" type="link" url="http://www.google.com/search?q=mississippi"/>
+				<outline text="Missouri" type="link" url="http://www.google.com/search?q=missouri"/>
+				<outline text="Montana" type="link" url="http://www.google.com/search?q=montana"/>
+				</outline>
+			</outline>
+		<outline text="N-Z">
+			<outline text="Nebraska" type="link" url="http://www.google.com/search?q=nebraska"/>
+			<outline text="Nevada" type="link" url="http://www.google.com/search?q=nevada"/>
+			<outline text="New Hampshire" type="link" url="http://www.google.com/search?q=new hampshire"/>
+			<outline text="New Jersey" type="link" url="http://www.google.com/search?q=new jersey"/>
+			<outline text="New Mexico" type="link" url="http://www.google.com/search?q=new mexico"/>
+			<outline text="New York" type="link" url="http://www.google.com/search?q=new york"/>
+			<outline text="North Carolina" type="link" url="http://www.google.com/search?q=north carolina"/>
+			<outline text="North Dakota" type="link" url="http://www.google.com/search?q=north dakota"/>
+			<outline text="Ohio" type="link" url="http://www.google.com/search?q=ohio"/>
+			<outline text="Oklahoma" type="link" url="http://www.google.com/search?q=oklahoma"/>
+			<outline text="Oregon" type="link" url="http://www.google.com/search?q=oregon"/>
+			<outline text="Pennsylvania" type="link" url="http://www.google.com/search?q=pennsylvania"/>
+			<outline text="Rhode Island" type="link" url="http://www.google.com/search?q=rhode island"/>
+			<outline text="South Carolina" type="link" url="http://www.google.com/search?q=south carolina"/>
+			<outline text="South Dakota" type="link" url="http://www.google.com/search?q=south dakota"/>
+			<outline text="Tennessee" type="link" url="http://www.google.com/search?q=tennessee"/>
+			<outline text="Texas" type="link" url="http://www.google.com/search?q=texas"/>
+			<outline text="Utah" type="link" url="http://www.google.com/search?q=utah"/>
+			<outline text="Vermont" type="link" url="http://www.google.com/search?q=vermont"/>
+			<outline text="Virginia" type="link" url="http://www.google.com/search?q=virginia"/>
+			<outline text="Washington" type="link" url="http://www.google.com/search?q=washington"/>
+			<outline text="West Virginia" type="link" url="http://www.google.com/search?q=west virginia"/>
+			<outline text="Wisconsin" type="link" url="http://www.google.com/search?q=wisconsin"/>
+			<outline text="Wyoming" type="link" url="http://www.google.com/search?q=wyoming"/>
+			</outline>
+		</body>
+	</opml>

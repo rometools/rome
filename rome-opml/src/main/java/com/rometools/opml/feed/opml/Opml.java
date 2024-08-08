@@ -45,6 +45,7 @@ public class Opml extends WireFeed {
     private String ownerName;
     private String title;
     private int[] expansionState;
+    private Cloud cloud;
 
     /**
      * <dateCreated> is a date-time, indicating when the document was created.
@@ -317,4 +318,19 @@ public class Opml extends WireFeed {
         return windowTop;
     }
 
+    /**
+     * &lt;cloud&gt; is a Cloud object, contains information about cloud (spec 1.1)
+     * @return the cloud element
+     */
+    public Cloud getCloud() {
+        return this.cloud;
+    }
+
+    /**
+     * &lt;cloud&gt; is a Cloud object, contains information about cloud (spec 1.1)
+     * @param c the cloud element
+     */
+    public void setCloud(final Cloud c) {
+        this.cloud = c;
+    }
 }
