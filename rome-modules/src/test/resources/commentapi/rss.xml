@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:wfw="http://wellformedweb.org/CommentAPI/">
+    <channel>
+		<title>Example</title>
+		<description>An RSS Example with WFW</description>
+		<lastBuildDate>Sun, 15 May 2005 13:02:08 -0500</lastBuildDate>
+		<link>http://www.example.com</link>
+		<item>
+			<title>I like Root Beer</title>
+			<guid>d77d2e80-0487-4e8c-a35d-a93f12a0ff7d:article:54320</guid>
+			<pubDate>Sun, 15 May 2005 13:02:08 -0500</pubDate>
+			<link>http://www.example.com/article/54320</link>
+			<wfw:comment>http://www.example.com/feed/rss/54320/comments</wfw:comment>
+			<wfw:commentRss>http://www.example.com/feed/rss/54320/commentsRss</wfw:commentRss>
+		</item>
+		<item>
+			<title>Rain is Wet</title>
+			<guid>d77d2e80-0487-4e8c-a35d-a93f12a0ff7d:article:54321</guid>
+			<pubDate>Sun, 15 May 2005 10:55:12 -0500</pubDate>
+			<link>http://www.example.com/article/54321</link>
+			<wfw:comment>http://www.example.com/feed/rss/54321/comments</wfw:comment>
+			<wfw:commentRss>http://www.example.com/feed/rss/54321/commentsRss</wfw:commentRss>
+		</item>
+		<item>
+			<title>Huh?!</title>
+			<guid>d77d2e80-0487-4e8c-a35d-a93f12a0ff7d:article:54322</guid>
+			<pubDate>Sun, 15 May 2005 08:14:11 -0500</pubDate>
+			<link>http://www.example.com/article/54322</link>
+			<wfw:comment>http://www.example.com/feed/rss/54322/comments</wfw:comment>
+			<wfw:commentRss>http://www.example.com/feed/rss/54322/commentsRss</wfw:commentRss>
+		</item>
+	</channel>
+</rss>
