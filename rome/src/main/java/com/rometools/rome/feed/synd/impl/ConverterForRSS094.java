@@ -112,6 +112,7 @@ public class ConverterForRSS094 extends ConverterForRSS093 {
             comments.setRel("comments");
             comments.setHref(item.getComments());
             comments.setType("text/html");
+            syndEntry.getLinks().add(comments);
         }
 
         return syndEntry;
