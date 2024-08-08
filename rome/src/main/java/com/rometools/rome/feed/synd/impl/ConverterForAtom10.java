@@ -449,6 +449,7 @@ public class ConverterForAtom10 implements Converter {
         final SyndContent sContent = new SyndContentImpl();
         sContent.setType(content.getType());
         sContent.setValue(content.getValue());
+        sContent.setXmlBase(content.getXmlBase());
         return sContent;
     }
 

@@ -79,6 +79,24 @@ public interface SyndContent extends Cloneable, CopyFrom {
     void setValue(String value);
 
     /**
+     * Returns the content xmlBase.
+     * <p>
+     *
+     * @return the content xmlBase, <b>null</b> if none.
+     *
+     */
+    String getXmlBase();
+
+    /**
+     * Sets the content xmlBase.
+     * <p>
+     *
+     * @param xmlBase the content xmlBase to set, <b>null</b> if none.
+     *
+     */
+    void setXmlBase(String xmlBase);
+    
+    /**
      * Creates a deep clone of the object.
      * <p>
      *

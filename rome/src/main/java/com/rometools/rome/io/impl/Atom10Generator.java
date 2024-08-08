@@ -502,6 +502,12 @@ public class Atom10Generator extends BaseWireFeedGenerator {
             }
 
         }
+
+        final String xmlBase = content.getXmlBase();
+        if (xmlBase != null) {
+            final Attribute xmlBaseAttribute = new Attribute("base", xmlBase, Namespace.XML_NAMESPACE);
+            contentElement.setAttribute(xmlBaseAttribute);
+        }
     }
 
     protected Element generateGeneratorElement(final Generator generator) {

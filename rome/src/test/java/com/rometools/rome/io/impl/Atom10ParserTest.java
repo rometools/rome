@@ -13,7 +13,11 @@ import org.jdom2.JDOMException;
 import org.junit.Test;
 
 import com.rometools.rome.feed.atom.Entry;
+import com.rometools.rome.feed.synd.SyndEntry;
+import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.FeedException;
+import com.rometools.rome.io.SyndFeedInput;
+import com.rometools.rome.io.XmlReader;
 
 public class Atom10ParserTest {
 
@@ -39,6 +43,16 @@ public class Atom10ParserTest {
         final Entry entry = Atom10Parser.parseEntry(reader, null, Locale.ENGLISH);
         assertEquals("Hello ", entry.getTitle());
 
+    }
+
+    @Test
+    public void testIssue689() throws Exception {
+        String url = "http://feeds.kottke.org/main";
+        SyndFeed feed = new SyndFeedInput().build(new XmlReader(new java.net.URL(url)));
+        for (SyndEntry e : feed.getEntries()) {
+            assertEquals("https://kottke.org/", e.getContents().iterator().next().getXmlBase());
+        }
+        
     }
 
 }

@@ -36,6 +36,7 @@ public class Content implements Cloneable, Serializable {
     private String type;
     private String value;
     private String src;
+    private String xmlBase;
 
     /** @since Atom 1.0 */
     public static final String TEXT = "text";
@@ -218,5 +219,27 @@ public class Content implements Cloneable, Serializable {
      */
     public void setSrc(final String src) {
         this.src = src;
+    }
+
+    /**
+     * Returns the xmlBase
+
+     *
+     * @return Returns the xmlBase.
+     * @since Atom 1.0
+     */
+    public String getXmlBase() {
+        return xmlBase;
+    }
+
+    /**
+     * Set the xmlBase
+
+     *
+     * @param xmlBase The xmlBase to set.
+     * @since Atom 1.0
+     */
+    public void setXmlBase(final String xmlBase) {
+        this.xmlBase = xmlBase;
     }
 }

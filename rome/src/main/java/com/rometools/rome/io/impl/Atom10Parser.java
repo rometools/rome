@@ -333,11 +333,13 @@ public class Atom10Parser extends BaseWireFeedParser {
         final String value = parseTextConstructToString(e);
         final String src = getAttributeValue(e, "src");
         final String type = getAttributeValue(e, "type");
+        final String xmlBase = e.getAttributeValue("base", Namespace.XML_NAMESPACE);
 
         final Content content = new Content();
         content.setSrc(src);
         content.setType(type);
         content.setValue(value);
+        content.setXmlBase(xmlBase);
         return content;
 
     }

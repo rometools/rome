@@ -39,6 +39,7 @@ public class SyndContentImpl implements Serializable, SyndContent {
     private String type;
     private String value;
     private String mode;
+    private String xmlBase;
 
     static {
         final Map<String, Class<?>> basePropInterfaceMap = new HashMap<String, Class<?>>();
@@ -179,6 +180,35 @@ public class SyndContentImpl implements Serializable, SyndContent {
         this.value = value;
     }
 
+    /**
+     * Returns the content xmlBase.
+     * <p>
+     *
+     * @return the content xmlBase, <b>null</b> if none.
+     *
+     */
+    @Override
+    public String getXmlBase() {
+        return this.xmlBase;
+    }
+
+    /**
+     * Sets the content xmlBase.
+     * <p>
+     *
+     * @param xmlBase the content xmlBase to set, <b>null</b> if none.
+     *
+     */
+    @Override
+    public void setXmlBase(final String xmlBase) {
+        this.xmlBase = xmlBase;
+    }
+    
+    /**
+     * Return the Class interface
+     * 
+     * @return the class interface.
+     */
     @Override
     public Class<SyndContent> getInterface() {
         return SyndContent.class;
