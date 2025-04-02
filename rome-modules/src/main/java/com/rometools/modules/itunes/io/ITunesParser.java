@@ -108,7 +108,7 @@ public class ITunesParser implements ModuleParser {
 
             final Element complete = element.getChild("complete", ns);
             if (complete != null) {
-                feedInfo.setComplete("yes".equals(complete.getTextTrim().toLowerCase()));
+                feedInfo.setComplete("yes".equalsIgnoreCase(complete.getTextTrim()));
             }
 
             final Element newFeedUrl = element.getChild("new-feed-url", ns);
@@ -140,7 +140,7 @@ public class ITunesParser implements ModuleParser {
 
             final Element closedCaptioned = element.getChild("isClosedCaptioned", ns);
 
-            if (closedCaptioned != null && closedCaptioned.getValue() != null && closedCaptioned.getValue().trim().equalsIgnoreCase("yes")) {
+            if (closedCaptioned != null && closedCaptioned.getValue() != null && "yes".equalsIgnoreCase(closedCaptioned.getValue().trim())) {
                 entryInfo.setClosedCaptioned(true);
             }
 
@@ -199,7 +199,7 @@ public class ITunesParser implements ModuleParser {
             // Ignore case of the value, assuming that any kind of "yes" clearly shows the intent.
             if (block != null
                     && block.getValue() != null
-                    && block.getValue().trim().equalsIgnoreCase("Yes")) {
+                    && "yes".equalsIgnoreCase(block.getValue().trim())) {
                 module.setBlock(true);
             }
 

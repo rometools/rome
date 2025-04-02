@@ -90,7 +90,7 @@ public class ITunesGenerator implements ModuleGenerator {
             }
 
             if (info.getComplete()) {
-                element.addContent(generateSimpleElement("complete", "yes"));
+                element.addContent(generateSimpleElement("complete", "Yes"));
             }
 
             if (info.getNewFeedUrl() != null) {
@@ -104,7 +104,7 @@ public class ITunesGenerator implements ModuleGenerator {
                 element.addContent(generateSimpleElement("duration", info.getDuration().toString()));
             }
             if (info.getClosedCaptioned()) {
-                element.addContent(generateSimpleElement("isClosedCaptioned", "yes"));
+                element.addContent(generateSimpleElement("isClosedCaptioned", "Yes"));
             }
             if (info.getOrder() != null) {
                 element.addContent(generateSimpleElement("order", info.getOrder().toString()));
@@ -133,9 +133,9 @@ public class ITunesGenerator implements ModuleGenerator {
 
         if (itunes.getExplicitNullable() != null) {
             if (itunes.getExplicitNullable()) {
-                element.addContent(generateSimpleElement("explicit", "yes"));
+                element.addContent(generateSimpleElement("explicit", "true"));
             } else {
-                element.addContent(generateSimpleElement("explicit", "no"));
+                element.addContent(generateSimpleElement("explicit", "false"));
             }
         }
 
