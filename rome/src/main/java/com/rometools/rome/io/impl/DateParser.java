@@ -192,8 +192,7 @@ public class DateParser {
      *
      */
     public static Date parseW3CDateTime(String sDate, final Locale locale) {
-        // if sDate has time on it, it injects 'GTM' before de TZ displacement to allow the
-        // SimpleDateFormat parser to parse it properly
+        // Insert 'GMT' before a colon-separated TZ displacement so SimpleDateFormat can parse it.
         final int tIndex = sDate.indexOf("T");
         if (tIndex > -1) {
             if (sDate.endsWith("Z")) {
@@ -210,7 +209,7 @@ public class DateParser {
                     pre = pre.substring(0, secFraction);
                 }
                 final String post = sDate.substring(tzdIndex);
-                sDate = pre + "GMT" + post;
+                sDate = pre + (post.contains(":") ? "GMT" : "") + post;
             }
         } else {
             sDate += "T00:00GMT";

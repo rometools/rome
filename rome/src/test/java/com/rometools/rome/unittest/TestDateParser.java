@@ -43,6 +43,62 @@ public class TestDateParser {
     }
 
     @Test
+    public void testW3cCompactPositiveOffset() {
+        assertEquals(date("2005-07-19 14:30:42"),
+                     DateParser.parseW3CDateTime("2005-07-19T17:00:42+0230", Locale.US));
+    }
+
+    @Test
+    public void testW3cCompactNegativeOffset() {
+        assertEquals(date("2005-07-19 20:30:42"),
+                     DateParser.parseW3CDateTime("2005-07-19T17:00:42-0330", Locale.US));
+    }
+
+    @Test
+    public void testW3cCompactZeroOffset() {
+        assertEquals(date("2005-07-19 17:00:42"),
+                     DateParser.parseW3CDateTime("2005-07-19T17:00:42+0000", Locale.US));
+    }
+
+    @Test
+    public void testW3cCompactOffsetWithMilliseconds() {
+        assertEquals(new Date(date("2005-07-19 14:30:42").getTime() + 125),
+                     DateParser.parseW3CDateTime("2005-07-19T17:00:42.125+0230", Locale.US));
+    }
+
+    @Test
+    public void testW3cCompactOffsetWithoutSeconds() {
+        assertEquals(date("2005-07-19 14:30:00"),
+                     DateParser.parseW3CDateTime("2005-07-19T17:00+0230", Locale.US));
+    }
+
+    @Test
+    public void testParseDateWithCompactOffset() {
+        assertEquals(date("2005-07-19 20:00:42"),
+                     DateParser.parseDate("2005-07-19T17:00:42-0300", Locale.US));
+    }
+
+    @Test
+    public void testW3cColonOffset() {
+        assertEquals(date("2005-07-19 14:30:42"),
+                     DateParser.parseW3CDateTime("2005-07-19T17:00:42+02:30", Locale.US));
+        assertEquals(date("2005-07-19 20:30:42"),
+                     DateParser.parseW3CDateTime("2005-07-19T17:00:42-03:30", Locale.US));
+    }
+
+    @Test
+    public void testW3cShortHourOffset() {
+        assertEquals(date("2005-07-19 11:30:42"),
+                     DateParser.parseW3CDateTime("2005-07-19T17:00:42+5:30", Locale.US));
+    }
+
+    @Test
+    public void testW3cCommaFraction() {
+        assertEquals(date("2005-07-19 14:30:42"),
+                     DateParser.parseW3CDateTime("2005-07-19T17:00:42,125+02:30", Locale.US));
+    }
+
+    @Test
     public void testW3cNoTime() {
         assertEquals(date("2005-07-19 00:00:00"),
                      DateParser.parseW3CDateTime("2005-07-19", Locale.US));
